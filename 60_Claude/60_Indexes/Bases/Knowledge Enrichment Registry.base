@@ -1,0 +1,14 @@
+{
+  "headings": [
+    {"heading": "name", "type": "name"},
+    {"heading": "type", "type": "property"},
+    {"heading": "status", "type": "property"},
+    {"heading": "track", "type": "property"},
+    {"heading": "enrichment_status", "type": "property"},
+    {"heading": "enrichment_level", "type": "property"},
+    {"heading": "updated", "type": "property"},
+    {"heading": "next_drill", "type": "property"}
+  ],
+  "filter": "(type = \"concept\" OR type = \"evergreen\" OR type = \"project\") AND enrichment_status != \"enriched\"",
+  "sort": [{"heading": "updated", "direction": "asc"}]
+}

@@ -1,6 +1,22 @@
 {
   "recentFiles": [
     {
+      "basename": "Portfolio Strategy",
+      "path": "60_Claude/20_Distilled_Notes/Portfolio Strategy.md"
+    },
+    {
+      "basename": "Kairo — Know What's Coming - Summary",
+      "path": "60_Claude/30_Source_Summaries/Kairo — Know What's Coming - Summary.md"
+    },
+    {
+      "basename": "Kairo — Know What's Coming",
+      "path": "60_Claude/05_Clippings/Kairo — Know What's Coming.md"
+    },
+    {
+      "basename": "Cognitive AI",
+      "path": "60_Claude/20_Distilled_Notes/Cognitive AI.md"
+    },
+    {
       "basename": "Wearable AI",
       "path": "60_Claude/20_Distilled_Notes/Wearable AI.md"
     },
@@ -15,10 +31,6 @@
     {
       "basename": "Dynamic Programming",
       "path": "60_Claude/20_Distilled_Notes/Dynamic Programming.md"
-    },
-    {
-      "basename": "Cognitive AI",
-      "path": "60_Claude/20_Distilled_Notes/Cognitive AI.md"
     },
     {
       "basename": "10 care coordination challenges draining your healthcare organization’s ROI and operational efficiency",
@@ -187,18 +199,6 @@
     {
       "basename": "Atomic Habits",
       "path": "00_Inbox/Headway/Books/Atomic Habits.md"
-    },
-    {
-      "basename": "4 Day Hackathon",
-      "path": "20_Progress/Projects/4 Day Hackathon.md"
-    },
-    {
-      "basename": "01_Summit",
-      "path": "20_Progress/Projects/01_Summit.md"
-    },
-    {
-      "basename": "Reading Assignments",
-      "path": "10_UMN/_Homework/Lib Ed/MUS/Reading Assignments.md"
     }
   ],
   "omittedPaths": [],

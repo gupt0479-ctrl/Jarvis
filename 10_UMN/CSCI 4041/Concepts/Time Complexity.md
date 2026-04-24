@@ -15,6 +15,10 @@ last_drilled:
 next_drill:
 drill_interval: 14
 created: 2026-02-01
+updated: 2026-04-24
+enrichment_status: enriched
+enrichment_level: standard
+source_status: vault-grounded
 topics:
   - "[[CSCI 4041 Board]]"
   - "[[Introduction to Algorithms]]"
@@ -136,6 +140,91 @@ related:
 - I can compare linear search, merge sort, and hashing without looking at notes.
 - I can explain why asymptotic analysis ignores constants but still matters in system design and interview settings.
 - I can use complexity to justify an algorithm choice, not just recite symbols.
+
+## Jarvis Enrichment
+
+### Precise Definition
+
+Time complexity is a function-level claim about how an algorithm's number of primitive operations grows with input size. It abstracts away the exact machine, language, and clock time so you can compare algorithms by growth rate.
+
+The important phrase is **growth rate**. Time complexity is not "how fast this code felt when I ran it once." It is a way to predict what happens when the input gets large.
+
+### Mechanism
+
+To analyze an algorithm:
+
+1. choose the input-size variable, usually `n`, `V`, `E`, `m`, or `capacity`
+2. identify the repeated work
+3. count how often that work runs as the input grows
+4. discard constant factors and lower-order terms
+5. express the result with asymptotic notation
+
+Example:
+
+```text
+for i in range(n):
+    for j in range(n):
+        do_constant_work()
+```
+
+The inner work runs `n * n` times, so the time complexity is `Theta(n^2)`.
+
+### Why It Matters
+
+Time complexity gives you a scale instinct. It tells you when a solution that works on a homework sample will collapse on real input.
+
+In Jarvis, this connects directly to:
+
+- [[10_UMN/CSCI 4041/Concepts/Algorithms/Dynamic Programming|Dynamic Programming]] because DP often trades exponential recursion for polynomial tables
+- [[10_UMN/CSCI 4041/Concepts/Graphs/Graph Algorithms|Graph Algorithms]] because `O(V + E)` means graph size includes both vertices and edges
+- [[10_UMN/CSCI 4041/Concepts/Data Structures & Methods/Hashing|Hashing]] because average-case and worst-case complexity can differ sharply
+- [[10_UMN/CSCI 4041/Concepts/Algorithms/Sorting Algorithms|Sorting Algorithms]] because `n log n` and `n^2` feel similar on tiny inputs but diverge fast
+
+### Concrete Example From This Vault
+
+The cleanest contrast is naive Fibonacci versus memoized Fibonacci in [[10_UMN/CSCI 4041/Concepts/Algorithms/Dynamic Programming|Dynamic Programming]].
+
+- naive recursion repeatedly recomputes the same subproblems, producing exponential growth
+- memoization stores each subproblem once, producing linear growth
+
+The algorithm is solving the same mathematical recurrence, but the implementation changes the amount of repeated work.
+
+### Failure Modes / Misconceptions
+
+- Big-O is not always a tight bound. Saying `O(n^2)` for a linear algorithm is technically an upper bound but not useful.
+- Constants can matter in real systems even when asymptotic notation hides them.
+- Average-case complexity is not the same as worst-case complexity.
+- `O(1)` does not mean instant. It means the work does not grow with input size.
+- Pseudo-polynomial time, like some knapsack DP, can still be too large if the numeric capacity is huge.
+
+### Diagnostic Questions
+
+- What is the input-size variable in this problem?
+- Is the repeated work nested, recursive, or driven by graph edges?
+- Am I claiming an upper bound, lower bound, or tight bound?
+- Does the algorithm's average case hide a bad worst case?
+
+### Source Anchors
+
+- [[10_UMN/CSCI 4041/Concepts/Algorithms/Dynamic Programming|Dynamic Programming]] - repeated subproblems and DP table complexity.
+- [[10_UMN/CSCI 4041/Concepts/Algorithms/Sorting Algorithms|Sorting Algorithms]] - `n log n` versus `n^2` sorting behavior.
+- [[10_UMN/CSCI 4041/Concepts/Graphs/Graph Algorithms|Graph Algorithms]] - `O(V + E)` traversal pattern.
+- [[10_UMN/CSCI 4041/Concepts/Data Structures & Methods/Hashing|Hashing]] - average-case constant time versus worst-case linear time.
+
+### Drill Cards
+
+#cards/CSCI4041
+
+- Time complexity::How algorithm work grows as input size grows.
+- Tight bound::A bound that captures growth from both above and below up to constant factors.
+- `O(1)`::Work does not grow with input size, not "zero time."
+- `O(V + E)`::Graph traversal complexity that accounts for vertices and edges.
+
+### Understanding Proof
+
+- I can identify the input-size variable before counting loops.
+- I can explain why memoization changes Fibonacci from exponential to linear.
+- I can distinguish Big-O as an upper bound from Theta as a tight bound.
 
 ## Flashcards
 #cards/CSCI4041

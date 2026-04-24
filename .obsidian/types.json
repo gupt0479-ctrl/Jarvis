@@ -59,6 +59,9 @@
     "output_kind": "text",
     "source_concepts": "multitext",
     "concepts": "multitext",
-    "tracks": "multitext"
+    "tracks": "multitext",
+    "enrichment_status": "text",
+    "enrichment_level": "text",
+    "source_status": "text"
   }
 }

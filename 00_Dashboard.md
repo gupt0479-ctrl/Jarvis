@@ -13,6 +13,10 @@ notes:
   - "[[30_Order/Templates/MOC]]"
   - "[[40_Resources/Obsidian/Vault Operating System]]"
   - "[[60_Claude/60_Indexes/Vault Health Dashboard]]"
+  - "[[60_Claude/60_Indexes/Knowledge Enrichment Dashboard]]"
+  - "[[40_Resources/Obsidian/Jarvis Enrichment Engine]]"
+  - "[[20_Progress/Projects/Jarvis]]"
+  - "[[60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan]]"
 ---
 # Jarvis — AI-Powered PKM
 
@@ -23,6 +27,10 @@ notes:
 - [[AGENTS.md]]
 - [[60_Claude/60_Indexes/Claude Layer Index]]
 - [[60_Claude/60_Indexes/Vault Health Dashboard]]
+- [[60_Claude/60_Indexes/Knowledge Enrichment Dashboard]]
+- [[40_Resources/Obsidian/Jarvis Enrichment Engine]]
+- [[20_Progress/Projects/Jarvis]]
+- [[60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan]]
 - [[30_Order/Templates/MOC]]
 
 ## Capability Engine
@@ -35,6 +43,21 @@ notes:
 - [[60_Claude/60_Indexes/Field OS/Algorithms Field OS|Algorithms Field OS]]
 - [[60_Claude/60_Indexes/Field OS/Career Field OS|Career Field OS]]
 - [[60_Claude/60_Indexes/Field OS/Trading Field OS|Trading Field OS]]
+
+## Knowledge Enrichment
+
+- [[60_Claude/60_Indexes/Knowledge Enrichment Dashboard|Knowledge Enrichment Dashboard]]
+- [[40_Resources/Obsidian/Jarvis Enrichment Engine|Jarvis Enrichment Engine]]
+- [[30_Order/Templates/Capability/Jarvis Enrichment Template|Jarvis Enrichment Template]]
+
+```dataview
+TABLE type, status, track, enrichment_status, file.mtime AS "Updated"
+FROM "10_UMN" OR "20_Progress" OR "40_Resources" OR "60_Claude/20_Distilled_Notes"
+WHERE (type = "concept" OR type = "evergreen" OR type = "project")
+AND (!enrichment_status OR enrichment_status != "enriched")
+SORT file.mtime ASC
+LIMIT 10
+```
 
 ## Active Projects
 
