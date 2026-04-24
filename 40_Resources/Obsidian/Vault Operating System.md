@@ -41,6 +41,14 @@ This note is the canonical operating contract for Jarvis as an AI second brain.
 | `thought_kind` | text | Thought subtype like `reflection`, `memory`, `musing` |
 | `deadline` | date | Project or task deadline |
 | `reviewed` | date | Last review date for system or reference notes |
+| `enrichment_status` | text | Enrichment state: `candidate`, `in-progress`, `enriched`, `needs-review` |
+| `enrichment_level` | text | Depth of enrichment: `light`, `standard`, `deep` |
+| `source_status` | text | Claim grounding state: `vault-grounded`, `externally-sourced`, `mixed`, `uncertain` |
+| `cli_used` | boolean | Whether jarvis-cli was available during the ops scan |
+| `scan_dimensions` | number | Number of health check dimensions scanned |
+| `critical_count` | number | Count of critical-priority triage items in an Ops Report |
+| `high_count` | number | Count of high-priority triage items in an Ops Report |
+| `carry_forward_count` | number | Count of triage items carried from the previous Ops Report |
 
 ## Capability Extension Properties
 
@@ -129,3 +137,11 @@ School notes in `10_UMN/` are a feeder layer. Avoid broad restructuring there, b
 - Keep raw sources raw.
 - Keep indexes dynamic where possible with Dataview rather than manually maintained tables.
 - Add system docs in `40_Resources/Obsidian/` and operational dashboards in `60_Claude/60_Indexes/`.
+
+## Enrichment Rules
+
+- Preserve existing human-written note content unless the user explicitly asks for rewriting.
+- Prefer adding `## Jarvis Enrichment` or `## Addendum - Jarvis Enrichment YYYY-MM-DD` over reorganizing the whole note.
+- Enrichment should add mechanism, concrete definitions, examples, contrasts, misconceptions, source anchors, and drills.
+- Mark enriched notes with `enrichment_status` and `enrichment_level` so dashboards can track progress.
+- Use [[Jarvis Enrichment Engine]] for the detailed enrichment workflow.

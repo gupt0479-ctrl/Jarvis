@@ -25,6 +25,10 @@ Before scanning or editing, read:
 - `HUMAN_WRITING.md`
 - `40_Resources/Obsidian/Vault Operating System.md`
 
+### 0. Check Latest Ops Report
+
+Before scanning, search for the most recent note tagged `ops-health` (by `created` date). Read it. Use its findings to skip issues the daily Health Check already caught. Focus curator effort on what daily ops misses: deep structural problems, cross-folder duplication, and long-term link graph health.
+
 ### 1. Full Vault Scan
 
 Read structure across all folders:
@@ -48,6 +52,7 @@ Read structure across all folders:
 - Search for similar titles
 - Compare content overlap
 - Flag potential merges
+- When a duplicate pair includes one note with Capability Engine fields (`track`, `mastery_level`, `evidence`) and one without: prefer preserving the enriched version, suggest linking the non-enriched note to it rather than merging. If both notes are enriched, flag for manual review.
 
 **Frontmatter Health:**
 - Notes missing `type:`
@@ -118,6 +123,19 @@ notes:
 | Note | Missing | Fix |
 |------|---------|-----|
 | [[Note]] | `type:`, `tags:` | Add convention |
+
+## Capability Engine Maintenance
+
+| Issue | Note | Details |
+|-------|------|---------|
+| Conflicting property type | [[Note]] | `track` is string, expected list |
+| Stale track | ai | No enriched notes in 30+ days |
+| Broken concept link | [[Synthesis Note]] | [[Missing Concept]] not found |
+
+Checks:
+- Notes where the same property (`track`, `mastery_level`, etc.) has conflicting types across the vault (string in one note, list in another)
+- Tracks with no enriched notes in 30 days — the track exists but nothing in it has been updated or drilled recently
+- Synthesis notes with `concepts:` fields pointing to notes that don't exist
 
 ## Recommended Actions
 

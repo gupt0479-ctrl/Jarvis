@@ -117,6 +117,10 @@ At the end of each working session:
 3. List outcomes, open questions, and next steps
 4. Optionally run `/closeday` for a daily summary
 
+### Daily Operations Cadence
+
+Run `/ops morning-start` to open the day: gathers context, builds a plan, runs a health check, and surfaces the top triage items and overdue drills. Work through the day normally. Run `/ops evening-close` to wrap up: creates the closeday summary, runs a capability audit, and logs the health delta. See `.claude/skills/ops.md` for all operations and cost profiles.
+
 ## Available Skills
 
 | Skill | Command |
@@ -131,6 +135,7 @@ At the end of each working session:
 | End of day | `/closeday` |
 | Weekly review | `/weekly-review` |
 | Lint Claude layer | `/lint-claude-layer` |
+| Daily vault ops | `/ops [operation]` |
 
 ## Available Agents
 

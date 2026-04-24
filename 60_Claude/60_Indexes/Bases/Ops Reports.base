@@ -1,0 +1,11 @@
+{
+  "headings": [
+    {"heading": "name", "type": "name"},
+    {"heading": "created", "type": "property"},
+    {"heading": "critical_count", "type": "property"},
+    {"heading": "high_count", "type": "property"},
+    {"heading": "carry_forward_count", "type": "property"}
+  ],
+  "filter": "contains(tags, \"ops-health\")",
+  "sort": [{"heading": "created", "direction": "desc"}]
+}

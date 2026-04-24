@@ -73,3 +73,32 @@ WHERE date(file.mtime) <= date(today) - dur(45 days)
 SORT file.mtime ASC
 LIMIT 20
 ```
+
+## Latest Ops Reports
+
+```dataview
+TABLE created AS "Date", critical_count AS "Critical", high_count AS "High", carry_forward_count AS "Carried"
+FROM "60_Claude/50_Reviews"
+WHERE contains(tags, "ops-health")
+SORT created DESC
+LIMIT 5
+```
+
+## Latest Morning Briefings
+
+```dataview
+TABLE created AS "Date", status
+FROM "60_Claude/50_Reviews"
+WHERE contains(tags, "ops") AND contains(tags, "plan")
+SORT created DESC
+LIMIT 5
+```
+
+## Latest CLI Reports
+
+```dataview
+TABLE file.ctime AS "Generated"
+FROM "60_Claude/50_Reviews/Ops Reports"
+SORT file.ctime DESC
+LIMIT 5
+```
