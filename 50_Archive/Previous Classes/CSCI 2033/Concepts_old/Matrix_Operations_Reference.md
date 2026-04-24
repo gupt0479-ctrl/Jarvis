@@ -1,6 +1,6 @@
 ---
-type: reference
-status: complete
+type: evergreen
+status: archived
 created: 2025-12-31
 topic: "Matrix Operations"
 tags:

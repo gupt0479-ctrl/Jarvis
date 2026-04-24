@@ -1,15 +1,62 @@
 ---
-type: evergreen
+type: concept
 status: sprout
 created: 2026-04-23
+updated: 2026-04-27
 tags:
+  - concept
   - evergreen
 notes:
   - "[[Learning/Alerts and Data Flow]]"
   - "[[Learning/Docker WSL and Local Setup]]"
   - "[[Mocks/Mock Alert Lifecycle]]"
+track:
+  - systems
+prerequisites:
+  - "[[BOOM]]"
+  - "[[Learning/Docker WSL and Local Setup]]"
+used_in:
+  - "[[API Work]]"
+  - "[[Symposium]]"
+evidence:
+  - "[[60_Claude/45_Outputs/Kafka Pipeline Architecture Story]]"
+difficulty: 4
+mastery_level: novice
+drill_interval: 7
+last_drilled: 2026-04-25
+next_drill: 2026-05-02
 ---
 # Kafka Redis and Workers
+
+## Deep Dive
+
+### One-Sentence Version
+
+Kafka handles external data streams while Redis handles internal task queues, and workers process jobs between them.
+
+### What It Is
+
+A staged processing architecture where Kafka ingests survey alert streams, Redis queues internal work items, and typed worker pools (alert, enrichment, filter) process data through MongoDB before emitting results downstream.
+
+### Why It Matters
+
+This pattern — external stream layer plus internal task queue plus worker pools — appears in most data-intensive backend systems. Understanding it from BOOM transfers directly to ML pipelines, event-driven microservices, and data platform work.
+
+### Real Example
+
+In BOOM, the Kafka producer replays archived ZTF alerts into a topic. The consumer drains that topic into Redis queues. Alert workers parse and normalize packets into MongoDB. Enrichment workers add cross-match data. Filter workers evaluate user-defined logic and emit passing alerts to a Kafka output topic. Each boundary is a place where observability matters most.
+
+### Contrast With
+
+- **Kafka vs Redis in BOOM**: Kafka is the external stream layer (high-throughput, ordered, durable). Redis is the internal handoff layer (simple, fast, ephemeral). They are not redundant — they serve different responsibilities.
+- **Workers vs serverless functions**: Workers have lifecycle management (startup, heartbeat, shutdown). Serverless functions are stateless invocations. BOOM needs the former because processing is stateful and batched.
+
+### Source Anchors
+
+- `src/bin/kafka_consumer.rs`, `src/bin/kafka_producer.rs` — Kafka integration
+- `src/scheduler/base.rs` — worker orchestration
+- `src/enrichment/base.rs` — queue-driven worker pattern
+- BOOM architecture docs — Redis vs Kafka responsibility split
 
 This note explains BOOM as a staged processing system built around streams, internal queues, and worker pools.
 

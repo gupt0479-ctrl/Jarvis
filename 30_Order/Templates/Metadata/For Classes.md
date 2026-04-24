@@ -1,12 +1,11 @@
 ---
 type: class
-input_kind:
-status:
+course:
+status: active
 created:
 updated:
-area:
+area: []
 tags:
-  - "#class"
+  - class
 next:
 ---
-

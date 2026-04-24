@@ -8,6 +8,8 @@
 .obsidian/plugins/copilot/data.json
 .obsidian/plugins/quickadd/data.json
 .obsidian/plugins/obsidian-local-rest-api/data.json
+.claude/settings.json
+.claude/settings.local.json
 
 # Copilot vector index (large, regenerated)
 .obsidian/copilot-index-*.json

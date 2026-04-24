@@ -1,6 +1,34 @@
 {
   "recentFiles": [
     {
+      "basename": "Wearable AI",
+      "path": "60_Claude/20_Distilled_Notes/Wearable AI.md"
+    },
+    {
+      "basename": "Observability in Backend vs Evaluation in AI",
+      "path": "60_Claude/20_Distilled_Notes/Synthesis/Observability in Backend vs Evaluation in AI.md"
+    },
+    {
+      "basename": "Kafka Pipelines vs Agent Tool Orchestration",
+      "path": "60_Claude/20_Distilled_Notes/Synthesis/Kafka Pipelines vs Agent Tool Orchestration.md"
+    },
+    {
+      "basename": "Dynamic Programming",
+      "path": "60_Claude/20_Distilled_Notes/Dynamic Programming.md"
+    },
+    {
+      "basename": "Cognitive AI",
+      "path": "60_Claude/20_Distilled_Notes/Cognitive AI.md"
+    },
+    {
+      "basename": "10 care coordination challenges draining your healthcare organization’s ROI and operational efficiency",
+      "path": "60_Claude/05_Clippings/10 care coordination challenges draining your healthcare organization’s ROI and operational efficiency.md"
+    },
+    {
+      "basename": "00_Inbox Board",
+      "path": "60_Claude/00_Inbox/00_Inbox Board.md"
+    },
+    {
       "basename": "00_Dashboard",
       "path": "00_Dashboard.md"
     },
@@ -37,16 +65,8 @@
       "path": "60_Claude/30_Source_Summaries/Vault Web Ingestion/1Ctwo 3T0ozmwvkpwek2ihqme2njuk4qr (drive.google.com).md"
     },
     {
-      "basename": "00_Inbox Board",
-      "path": "60_Claude/00_Inbox/00_Inbox Board.md"
-    },
-    {
       "basename": "aaif-goosegoose an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM",
       "path": "60_Claude/05_Clippings/aaif-goosegoose an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM.md"
-    },
-    {
-      "basename": "10 care coordination challenges draining your healthcare organization’s ROI and operational efficiency",
-      "path": "60_Claude/05_Clippings/10 care coordination challenges draining your healthcare organization’s ROI and operational efficiency.md"
     },
     {
       "basename": "AI_Second_Brain_Vault_Structure@20260423_203909",
@@ -179,26 +199,6 @@
     {
       "basename": "Reading Assignments",
       "path": "10_UMN/_Homework/Lib Ed/MUS/Reading Assignments.md"
-    },
-    {
-      "basename": "Small Group Assignments",
-      "path": "10_UMN/_Homework/Lib Ed/MGMT/Small Group Assignments.md"
-    },
-    {
-      "basename": "Spring'26 Syllabus",
-      "path": "10_UMN/Spring'26 Syllabus.md"
-    },
-    {
-      "basename": "Week - 1 & 2",
-      "path": "50_Archive/Previous Classes/CSCI 2033/Week - 1 & 2.md"
-    },
-    {
-      "basename": "Graphs_and_PageRank",
-      "path": "50_Archive/Previous Classes/CSCI 2033/Concepts_old/Graphs_and_PageRank.md"
-    },
-    {
-      "basename": "Week - 12",
-      "path": "10_UMN/CSCI 4041/Week - 12.md"
     }
   ],
   "omittedPaths": [],

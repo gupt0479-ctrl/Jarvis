@@ -2,18 +2,78 @@
 type: evergreen
 status: tree
 created: 2026-04-23
+updated: 2026-04-25
 tags:
   - evergreen
   - dashboard
 notes:
   - "[[CLAUDE.md]]"
+  - "[[AGENTS.md]]"
   - "[[Random]]"
   - "[[30_Order/Templates/MOC]]"
+  - "[[40_Resources/Obsidian/Vault Operating System]]"
+  - "[[60_Claude/60_Indexes/Vault Health Dashboard]]"
 ---
 # Jarvis — AI-Powered PKM
 
-## Quick Capture
-> Use `Ctrl+Shift+I` (QuickAdd) to capture thoughts instantly.
+## System
+
+- [[40_Resources/Obsidian/Vault Operating System]]
+- [[CLAUDE.md]]
+- [[AGENTS.md]]
+- [[60_Claude/60_Indexes/Claude Layer Index]]
+- [[60_Claude/60_Indexes/Vault Health Dashboard]]
+- [[30_Order/Templates/MOC]]
+
+## Capability Engine
+
+- [[60_Claude/60_Indexes/Capability Dashboard|Capability Dashboard]]
+- [[60_Claude/60_Indexes/Proof Dashboard|Proof Dashboard]]
+- [[60_Claude/60_Indexes/Question Dashboard|Question Dashboard]]
+- [[60_Claude/60_Indexes/Field OS/AI Field OS|AI Field OS]]
+- [[60_Claude/60_Indexes/Field OS/Systems Field OS|Systems Field OS]]
+- [[60_Claude/60_Indexes/Field OS/Algorithms Field OS|Algorithms Field OS]]
+- [[60_Claude/60_Indexes/Field OS/Career Field OS|Career Field OS]]
+- [[60_Claude/60_Indexes/Field OS/Trading Field OS|Trading Field OS]]
+
+## Active Projects
+
+```dataview
+TABLE status, deadline, next, file.mtime AS "Updated"
+FROM "20_Progress"
+WHERE type = "project" AND status != "archived"
+SORT deadline ASC, file.mtime DESC
+LIMIT 12
+```
+
+## Projects Missing a Next Action
+
+```dataview
+TABLE status, deadline, file.mtime AS "Updated"
+FROM "20_Progress"
+WHERE type = "project" AND status != "archived" AND !next
+SORT file.mtime DESC
+LIMIT 10
+```
+
+## AI Staging Queue
+
+```dataview
+TABLE type, status, next, file.mtime AS "Updated"
+FROM "60_Claude/00_Inbox"
+WHERE file.name != "00_Inbox Board"
+SORT file.mtime DESC
+LIMIT 12
+```
+
+## Raw Clippings To Distill
+
+```dataview
+TABLE file.ctime AS "Captured"
+FROM "60_Claude/05_Clippings"
+SORT file.ctime DESC
+LIMIT 12
+```
 
 ## Active Classes
 ```dataview
@@ -25,31 +85,22 @@ WHERE contains(file.name, "Board")
 SORT file.name ASC
 ```
 
-## Active Projects
-```dataview
-TABLE status, deadline, next
-FROM "20_Progress"
-WHERE type = "project" AND status != "archived"
-SORT status ASC, file.mtime DESC
-LIMIT 10
-```
-
 ## Recent Claude Outputs
 ```dataview
-TABLE created, status, type
+TABLE created, status, type, file.folder AS Folder
 FROM "60_Claude"
 WHERE !contains(file.folder, "60_Claude/60_Indexes")
 SORT file.mtime DESC
 LIMIT 8
 ```
 
-## Unprocessed Clippings
+## Open Tasks
 ```dataview
-LIST
-FROM "60_Claude/05_Clippings"
-WHERE !contains(file.name, "board")
-SORT file.ctime DESC
-LIMIT 10
+TASK
+FROM "20_Progress" OR "10_UMN/_Homework"
+WHERE !completed
+SORT due ASC
+LIMIT 15
 ```
 
 ## Flashcard Review Queue
@@ -61,19 +112,29 @@ SORT file.mtime DESC
 LIMIT 10
 ```
 
-## Orphan Notes (no backlinks)
+## Orphan Durable Notes
 ```dataview
-LIST
+TABLE file.folder AS Folder, status, file.mtime AS "Updated"
 FROM "40_Resources" OR "60_Claude/20_Distilled_Notes"
 WHERE length(file.inlinks) = 0
 SORT file.mtime DESC
-LIMIT 8
+LIMIT 12
 ```
 
-## Weekly Review
+## Metadata Cleanup Queue
 ```dataview
-TABLE file.ctime AS "Created"
-FROM "60_Claude/50_Reviews/Weekly"
-SORT file.name DESC
-LIMIT 4
+TABLE file.folder AS Folder, file.mtime AS "Updated"
+FROM "10_UMN" OR "20_Progress" OR "40_Resources" OR "60_Claude"
+WHERE !type OR !status
+SORT file.mtime DESC
+LIMIT 12
+```
+
+## Recent Reviews
+```dataview
+TABLE file.folder AS Folder, file.ctime AS "Created"
+FROM "60_Claude/50_Reviews"
+WHERE file.name != "50_Reviews Board"
+SORT file.ctime DESC
+LIMIT 8
 ```

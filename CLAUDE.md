@@ -6,15 +6,25 @@ updated: 2026-04-08
 tags:
   - evergreen
 notes:
+  - "[[AI_CONTEXT]]"
   - "[[AI Workflow]]"
   - "[[40_Resources/CS/Links|Links]]"
   - "[[Claude Code]]"
   - "[[MCPs]]"
   - "[[60_Claude/60_Claude Board]]"
+  - "[[HUMAN_WRITING]]"
 ---
 # CLAUDE.md — Vault Operating Contract
 
 This vault is a personal knowledge system powered by Claude Code. The assistant reads, writes, and maintains notes directly in Obsidian.
+
+Shared vault context lives in:
+
+- [[AI_CONTEXT]]
+- [[AGENTS]]
+- [[HUMAN_WRITING]]
+
+Do not duplicate shared workspace rules here unless they are Claude-specific.
 
 ## Folder Roles
 
@@ -37,6 +47,8 @@ This vault is a personal knowledge system powered by Claude Code. The assistant 
 2. **Preserve frontmatter** — Never remove or rename frontmatter keys unless explicitly asked.
 3. **Search before creating** — Use MCP search to check if a note already exists before creating a new one.
 4. **Respect maturity** — Notes with `status: tree` are stable; propose changes before modifying.
+5. **Read `HUMAN_WRITING.md` before drafting prose** — remove filler, avoid generic AI tone, prefer mechanism, contrast, and concrete examples from the vault.
+6. **Use `AI_CONTEXT.md` for continuity** — read the dashboard and session log before assuming current project state.
 
 ### Note Creation Conventions
 
@@ -111,6 +123,7 @@ At the end of each working session:
 |-------|---------|
 | Ingest clipping | `/ingest-clipping "filename.md"` |
 | Distill note | `/distill-note` |
+| Remove AI slop | `/remove-ai-slop` |
 | Get context | `/context` |
 | Today plan | `/today` |
 | Trace topic | `/trace-topic "topic"` |

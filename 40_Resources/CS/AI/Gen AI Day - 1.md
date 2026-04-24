@@ -1,14 +1,28 @@
 ---
 type: concept
 course: AI
-status: sprout
+status: seed
 mastery (1/10): 0
 created: 2026-02-15
+updated: 2026-07-27
 topics:
   - "[[Gen AI Day - 2]]"
   - "[[Chat Gpt Prompts]]"
 related:
   - "[[Gen AI Meeting]]"
+tags:
+  - concept
+track:
+  - ai
+prerequisites: []
+used_in: []
+evidence: []
+difficulty: 2
+mastery_level: novice
+mastery_score: null
+last_drilled: 2026-04-25
+next_drill: 2026-05-09
+drill_interval: 14
 ---
 # Day - 1
 ## MOC
@@ -143,3 +157,50 @@ The problem it solves
 - Fireflies/Otter for transcript capture + summaries
 
 ## Flashcards (best 3–8)
+
+
+---
+
+## Deep Dive
+
+### One-Sentence Version
+
+An LLM predicts the next token by converting text into numeric vectors (embeddings), weighting which tokens matter most (self-attention), and sampling from a probability distribution — it does not "understand" anything, it pattern-matches at scale.
+
+### What It Is
+
+The 5-step model from Session 1 is the clearest mental model for how LLMs work:
+
+1. **Tokenization** — text splits into subword chunks mapped to integer IDs. Costs and context limits are measured in tokens, not words (~100 tokens ≈ 75 words).
+2. **Embeddings** — token IDs become high-dimensional vectors. Words used in similar contexts cluster together. "Bank" near "river" gets a different vector than "bank" near "finance."
+3. **Self-attention** — the model assigns weights to decide which input tokens matter most for generating the current output token. This is why prompt structure (headers, bullets, constraints) changes output quality.
+4. **Next-token prediction** — the model computes a probability distribution over all possible next tokens and samples from it. This is why the same prompt can produce different outputs.
+5. **Output generation** — repeat step 4 token by token until the response is complete.
+
+The model does not retrieve facts from a database. It reconstructs plausible continuations from patterns learned during training. This is why it can be confidently wrong.
+
+### Why It Matters
+
+- Understanding the 5-step pipeline explains *why* prompt engineering works: you're shaping what self-attention focuses on.
+- It explains *why* LLMs hallucinate: next-token prediction optimizes for plausibility, not truth.
+- It explains *why* temperature matters: higher temperature flattens the probability distribution (more variety), lower temperature sharpens it (more predictable).
+- If you don't understand this pipeline, you'll treat the model as a search engine and get frustrated when it invents things.
+
+### Real Example
+
+From the Gen AI Mastermind course: when you add "explain like I'm 5" to a prompt, self-attention shifts weight toward simpler vocabulary and shorter sentences. The model doesn't "decide" to simplify — the attention weights change which token patterns get activated, and simpler patterns win.
+
+Another example: the Magic Prompt Formula (Role → Task → Context → Format) works because each section gives self-attention distinct anchors to weight. Without structure, the model spreads attention across a flat blob of text and produces generic output.
+
+### Contrast With
+
+**LLMs vs. search engines**: A search engine retrieves existing documents that match a query. An LLM generates new text by predicting tokens. Search can't produce novel combinations; LLMs can't guarantee factual accuracy. RAG tries to bridge this gap by feeding retrieved documents into the LLM's context.
+
+**LLMs vs. traditional NLP**: Older NLP systems (rule-based parsers, bag-of-words classifiers) operated on hand-crafted features. LLMs learn features from data via self-attention. The tradeoff: LLMs are far more flexible but far less interpretable — you can't inspect why a specific token was chosen the way you could trace a rule-based parse.
+
+### Source Anchors
+
+- Gen AI Mastermind Session 1 — the 5-step LLM mental model (tokenization → embeddings → self-attention → prediction → output)
+- [[Gen AI Day - 2]] — builds on this with MCP and vibe coding applications
+- [[Gen AI Roadmap]] — Level 1 foundations map directly to this note
+- [[Chat Gpt Prompts]] — prompt patterns that exploit the attention mechanism described here

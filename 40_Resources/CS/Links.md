@@ -91,13 +91,3 @@ https://github.com/SimplifyJobs/Summer2026-Internships
 ### Competetions
 1. Coding Competitions - HackerRank, Codeforces, and Topcoder
 2. Bug Bounty Programs -  Bugcrowd and HackerOne
-## Keys
-1. Openrouter: Jan - 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
-2. OpenAI: 
-3. Anthropic:
-4. GROQ:
-5. Sanity:
-6. Google AI Studio:
-7. Supabse PW:
-	- OpsPilot DB: BuildingRealSolutions@v0
-	- 

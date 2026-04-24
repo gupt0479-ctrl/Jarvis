@@ -1,13 +1,26 @@
 ---
-type: brainstorm
-status: sprout
+type: concept
+status: seed
 created: 2026-03-04
+updated: 2026-07-27
 related_progress:
   - "[[AI Workflow]]"
   - "[[Gen AI Roadmap]]"
 tags:
-  - brainstorm
+  - concept
 next: "[[Cursor AI]]"
+track:
+  - ai
+prerequisites: []
+used_in: []
+evidence:
+  - "[[60_Claude/45_Outputs/Vault Enrichment Prompt]]"
+difficulty: 3
+mastery_level: novice
+mastery_score: null
+last_drilled: 2026-04-25
+next_drill: 2026-05-05
+drill_interval: 10
 ---
 ## The Setup
 
@@ -95,3 +108,45 @@ For local development:
 2. *Git MCP*: Summarizes recent changes, drafts clean commit messages, generates changelogs, and flags risky diffs automatically.
 3. *GitHub MCP*: Pulls issue and PR context, drafts PR descriptions, and links your code changes to existing tickets.
 4. *Obsidian Second brain manager*: The agent modifies the notes based on the file properties of each note, modifies the content only which was asked to modify. Make sure to not touch files that were specifically asked not to cover. Make the notes better, interconnected and keep a track of the changes being made per file. 
+
+---
+
+## Deep Dive
+
+### One-Sentence Version
+
+MCP is a JSON-RPC protocol that lets an AI model call external tools (databases, file systems, APIs) through a standardized client-server interface instead of relying on whatever the user pastes into the chat.
+
+### What It Is
+
+Model Context Protocol defines a contract between a **host** (the AI-powered editor or agent), a **client** (the protocol handler inside that host), and one or more **servers** (each exposing a set of tools). The server advertises capabilities — read a file, query a database, list GitHub issues — and the client invokes them on behalf of the model.
+
+The transport layer is usually `stdio` for local servers (a subprocess the host spawns) or `Streamable HTTP` for remote ones. The model never talks to the server directly; the client mediates, enforces permissions, and handles serialization.
+
+This matters because without MCP, every tool integration is bespoke. With it, one protocol covers filesystem access, Git operations, database queries, and browser automation — the same way HTTP standardized web requests regardless of what the server does behind the endpoint.
+
+### Why It Matters
+
+- Without MCP, an AI agent can only work with what fits in its context window. It cannot inspect a live database schema, read a file it hasn't been shown, or check the status of a GitHub PR.
+- With MCP, the agent gains **action capability**: it can read, write, and query external systems through structured tool calls.
+- The protocol is open (Anthropic published the spec), so it works across Cursor, Claude Desktop, Kiro, and any client that implements the handshake.
+- In this vault, the Obsidian Local REST API acts as an MCP server — that's how AI tools read and modify notes without manual copy-paste.
+
+### Real Example
+
+In the Jarvis vault right now: Kiro connects to the `obsidian-local-rest-api` MCP server. When a spec task says "read the note at `40_Resources/CS/AI/MCPs.md`," Kiro's MCP client sends a JSON-RPC request to the Obsidian server, which returns the note content. The model never opens a file browser — it calls a tool, gets structured data back, and acts on it.
+
+Another example from the Cursor workflow: connecting a Supabase MCP server lets the agent inspect your database schema before writing a migration, instead of guessing table names from code comments.
+
+### Contrast With
+
+**MCP vs. plain function calling**: Function calling (OpenAI-style) lets a model output a JSON blob that your application code interprets. MCP goes further — it standardizes discovery (the server advertises what tools exist), invocation (JSON-RPC with typed parameters), and transport (stdio or HTTP). Function calling is "the model suggests an action." MCP is "the model executes an action through a protocol."
+
+**MCP vs. plugins/extensions**: Browser plugins (like ChatGPT plugins, now deprecated) were platform-locked and required marketplace approval. MCP servers are local processes you control, with no marketplace gatekeeping. You can write a server in any language, run it on your machine, and connect it to any MCP-compatible client.
+
+### Source Anchors
+
+- MCP specification: published by Anthropic, defines the client-server handshake, tool advertisement, and transport layers
+- Cursor MCP docs: Settings → Features → Model Context Protocol for server management
+- [[Gen AI Day - 2]] — session notes covering MCP as "connectors + permissions + tool menu"
+- [[AI Workflow]] — integration plan showing MCP in the coding lane

@@ -1,0 +1,20 @@
+---
+description: Load the shared Jarvis workspace context and live continuity sources for Markdown and vault work.
+alwaysApply: true
+---
+
+Use the same shared context files as the other AI tools in this workspace.
+
+Read and follow:
+
+- `AGENTS.md`
+- `AI_CONTEXT.md`
+- `HUMAN_WRITING.md`
+
+For live state, consult:
+
+- `00_Dashboard.md`
+- `60_Claude/10_Session_Logs/log.md`
+- `40_Resources/Obsidian/Vault Operating System.md`
+
+Do not invent a separate Cursor-only context model when these files already exist.

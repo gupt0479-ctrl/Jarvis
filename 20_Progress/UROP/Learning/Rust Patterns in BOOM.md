@@ -1,15 +1,63 @@
 ---
-type: evergreen
+type: concept
 status: sprout
 created: 2026-04-23
+updated: 2026-04-27
 tags:
+  - concept
   - evergreen
 notes:
   - "[[Rust]]"
   - "[[Rust/04 Async Traits and Concurrency]]"
   - "[[Learning/API and Backend]]"
+track:
+  - systems
+prerequisites:
+  - "[[BOOM]]"
+  - "[[Rust]]"
+used_in:
+  - "[[API Work]]"
+  - "[[Symposium]]"
+evidence:
+  - "[[60_Claude/45_Outputs/Rust Type Safety Story]]"
+difficulty: 4
+mastery_level: novice
+drill_interval: 7
+last_drilled: 2026-04-25
+next_drill: 2026-05-02
 ---
 # Rust Patterns in BOOM
+
+## Deep Dive
+
+### One-Sentence Version
+
+BOOM uses Rust's type system, trait contracts, explicit errors, and function-boundary instrumentation to build a backend that is correct by construction rather than by convention.
+
+### What It Is
+
+Six applied Rust patterns visible in BOOM: shared library with multiple binaries, traits as pipeline contracts, typed error propagation, config as a first-class system concept, observability at function boundaries, and async-plus-threads for realistic concurrency.
+
+### Why It Matters
+
+These patterns show how Rust shapes real backend systems — not just syntax exercises. Understanding them transfers to any typed systems language and to backend architecture decisions in general.
+
+### Real Example
+
+BOOM's `src/conf.rs` controls runtime behavior, service connectivity, secrets, feature toggles, and environment-specific startup. This is not boring setup code — it is part of the program's correctness. A wrong config value can silently change system behavior in ways that only surface under load or in production.
+
+### Contrast With
+
+- **Traits vs interfaces (Go/Java)**: Rust traits enforce contracts at compile time with zero-cost abstraction. Go interfaces are satisfied implicitly. Java interfaces require explicit `implements`. Rust catches contract violations before the code runs.
+- **Typed errors vs string errors**: BOOM uses `thiserror` for explicit error types. This means error propagation is type-checked, traces are cleaner, and debugging is faster than chasing string messages.
+- **Async + threads vs async-only**: BOOM uses both async I/O and explicit worker threads. Most tutorials pretend async solves everything. BOOM shows the realistic picture.
+
+### Source Anchors
+
+- `src/lib.rs` — module map and shared library structure
+- `src/conf.rs` — config as first-class system concept
+- `src/api/auth.rs` — typed error and instrumentation example
+- `src/utils/o11y/logging.rs` — observability at function boundaries
 
 This note connects Rust language concepts to actual BOOM design choices.
 

@@ -1,7 +1,7 @@
 ---
 type: concept
 course: MGMT 3001
-status: enhanced
+status: tree
 created: 2026-03-22
 updated: 2026-03-22
 topics:

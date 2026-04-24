@@ -1,0 +1,12 @@
+{
+  "headings": [
+    {"heading": "name", "type": "name"},
+    {"heading": "status", "type": "property"},
+    {"heading": "output_kind", "type": "property"},
+    {"heading": "track", "type": "property"},
+    {"heading": "source_concepts", "type": "property"},
+    {"heading": "created", "type": "property"}
+  ],
+  "filter": "type = \"output\"",
+  "sort": [{"heading": "created", "direction": "desc"}]
+}

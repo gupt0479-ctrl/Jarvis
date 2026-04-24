@@ -1,8 +1,10 @@
 ---
 type: evergreen
-status:
+status: seed
 created:
+updated:
 tags:
   - evergreen
-notes:
+notes: []
+next:
 ---

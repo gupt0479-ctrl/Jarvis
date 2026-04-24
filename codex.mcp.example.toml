@@ -1,0 +1,21 @@
+[mcp_servers.obsidianVault]
+command = "npx"
+args = ["-y", "obsidian-local-rest-api-mcp"]
+env = { OBSIDIAN_API_URL = "http://127.0.0.1:27123" }
+env_vars = ["OBSIDIAN_API_KEY"]
+disabled_tools = ["delete_item"]
+
+[mcp_servers.github]
+url = "https://api.githubcopilot.com/mcp/readonly"
+bearer_token_env_var = "GITHUB_PERSONAL_ACCESS_TOKEN"
+http_headers = { "X-MCP-Toolsets" = "repos,issues,pull_requests,actions,users" }
+
+[mcp_servers.context7]
+url = "https://mcp.context7.com/mcp"
+
+[mcp_servers.openaiDeveloperDocs]
+url = "https://developers.openai.com/mcp"
+
+[mcp_servers.playwright]
+command = "npx"
+args = ["-y", "@playwright/mcp@latest"]

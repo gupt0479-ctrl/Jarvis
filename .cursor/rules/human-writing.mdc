@@ -1,0 +1,15 @@
+---
+description: Enforce the Jarvis human-writing standard for all Markdown note drafting and rewriting.
+alwaysApply: true
+---
+
+Read `HUMAN_WRITING.md` and follow it when editing Markdown in this workspace.
+
+Priority rules:
+
+- do not write AI slop
+- cut filler and generic framing
+- prefer mechanism over polish
+- prefer real examples from this vault over invented generic examples
+- add contrast, misconceptions, or failure modes when helpful
+- preserve the user's meaning while making the prose sound sharper and more human

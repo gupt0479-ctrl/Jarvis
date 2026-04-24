@@ -1,9 +1,10 @@
 ---
-type: "# thought | input | evergreen | class | project | template"
-status: "# seed | sprout | tree | paused | archived"
+type:
+status:
 created:
 updated:
-area:
-tags:
+area: []
+tags: []
+notes: []
 next:
 ---

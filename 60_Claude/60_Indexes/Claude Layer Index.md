@@ -1,57 +1,79 @@
 ---
-type: evergreen
-status: sprout
+type: index
+status: active
 created: 2026-04-08
+updated: 2026-04-24
 tags:
-  - evergreen
   - index
 notes:
   - "[[60_Claude Board]]"
+  - "[[60_Claude/60_Indexes/Vault Health Dashboard]]"
 ---
 
 # Claude Layer Index
 
-Catalog of all Claude-generated content in this vault.
+Dynamic catalog of the Claude layer.
 
-## By Category
+## Source Summaries
 
-### Source Summaries
+```dataview
+TABLE created, status
+FROM "60_Claude/30_Source_Summaries"
+WHERE !contains(file.name, "Board")
+SORT file.mtime DESC
+LIMIT 30
+```
 
-| Note | Summary | Created |
-|------|---------|---------|
-| [[30_Source_Summaries/Kairo — Know What's Coming - Summary]] | Meta's TRIBE v2 open-source brain model; cognitive AI timeline | 2026-04-08 |
+## Distilled Notes
 
-### Distilled Notes
+```dataview
+TABLE created, status
+FROM "60_Claude/20_Distilled_Notes"
+WHERE !contains(file.name, "Board")
+SORT file.mtime DESC
+LIMIT 30
+```
 
-| Note | Summary | Created |
-|------|---------|---------|
-| [[20_Distilled_Notes/Cognitive AI]] | AI that understands how the brain processes reality; TRIBE v2 foundation | 2026-04-08 |
-| [[20_Distilled_Notes/Wearable AI]] | Devices that capture + understand cognitive states; $340B market by 2030 | 2026-04-08 |
+## Project Briefs
 
-### Project Briefs
+```dataview
+TABLE created, status
+FROM "60_Claude/40_Project_Briefs"
+WHERE !contains(file.name, "Board")
+SORT file.mtime DESC
+LIMIT 20
+```
 
-| Note | Summary | Created |
-|------|---------|---------|
-| *No briefs yet* | — | — |
+## Reviews
 
-### Reviews
+```dataview
+TABLE file.folder AS Folder, created, status
+FROM "60_Claude/50_Reviews"
+WHERE file.name != "50_Reviews Board"
+SORT file.mtime DESC
+LIMIT 20
+```
 
-| Note | Summary | Created |
-|------|---------|---------|
-| [[10_Session_Logs/log]] | Session initialization | 2026-04-08 |
+## Session Logs
 
----
+```dataview
+TABLE created, updated
+FROM "60_Claude/10_Session_Logs"
+SORT file.mtime DESC
+LIMIT 20
+```
 
-## How to Use
+## Staging Inbox
 
-1. **Finding relevant pages**: Search this index first when querying the Claude layer
-2. **After ingestion**: Claude updates this index when new sources are processed
-3. **For queries**: Claude reads relevant pages from here before synthesizing answers
+```dataview
+TABLE type, status, next, file.mtime AS Updated
+FROM "60_Claude/00_Inbox"
+WHERE file.name != "00_Inbox Board"
+SORT file.mtime DESC
+LIMIT 20
+```
 
 ## Maintenance
 
-Run `/lint-claude-layer` periodically to:
-- Find orphan pages
-- Identify stale claims
-- Suggest new cross-references
-- Detect duplicates
+- Use [[60_Claude/60_Indexes/Vault Health Dashboard]] for metadata gaps, orphan notes, and stale inbox items.
+- Prefer keeping this index query-driven instead of manually maintained.

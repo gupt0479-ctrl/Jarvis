@@ -1,15 +1,58 @@
 ---
-type: evergreen
+type: concept
 status: sprout
 created: 2026-04-23
+updated: 2026-04-27
 tags:
+  - concept
   - evergreen
 notes:
   - "[[Learning/Docker WSL and Local Setup]]"
   - "[[Learning/Observability and Tracing]]"
   - "[[Logs]]"
+track:
+  - systems
+prerequisites:
+  - "[[BOOM]]"
+  - "[[Learning/Docker WSL and Local Setup]]"
+  - "[[Learning/Observability and Tracing]]"
+used_in:
+  - "[[API Work]]"
+evidence: []
+difficulty: 3
+mastery_level: novice
+drill_interval: 10
 ---
 # Testing Debugging and Deployment
+
+## Deep Dive
+
+### One-Sentence Version
+
+Engineering maturity means knowing how to validate a system, classify failures by layer, and debug in a fixed order instead of randomly.
+
+### What It Is
+
+BOOM's testing surface includes unit tests (`cargo test`), integration tests across config/API/Kafka/scheduler, and end-to-end validation by running producer + consumer + scheduler + API together. Debugging follows a layered order: infrastructure → config → input → state → traces → code logic.
+
+### Why It Matters
+
+Most BOOM issues are environment-dependent, not code-logic bugs. Being able to classify failure class quickly (input bug vs environment-state bug vs runtime dependency bug vs correctness bug) is a transferable engineering skill.
+
+### Real Example
+
+The malformed bearer token failure: looks like an auth code bug, but the trace shows the request header was malformed. Without the layered debugging order, you might spend hours reading auth code when the fix is in the client request.
+
+### Contrast With
+
+- **Unit tests vs end-to-end validation**: Unit tests verify isolated logic. End-to-end validation verifies that services cooperate correctly. BOOM needs both because many failures only appear when services interact.
+- **Code bugs vs environment bugs**: A route logic issue is a code bug. A missing Kafka topic is an environment bug. The debugging order matters because environment bugs are more common and easier to fix once identified.
+
+### Source Anchors
+
+- `tests/README.md` — test surface overview
+- `tests/test_api.rs`, `tests/test_kafka.rs` — integration tests
+- BOOM `docs/deployment.md` — deployment architecture
 
 This note collects the practical engineering side of BOOM: how to test it, debug it, and reason about running it as a real system.
 

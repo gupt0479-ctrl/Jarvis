@@ -1,7 +1,7 @@
 ---
 type: class
 input_kind: book
-status: refined
+status: tree
 created: 2026-03-22
 updated: 2026-03-22
 area:

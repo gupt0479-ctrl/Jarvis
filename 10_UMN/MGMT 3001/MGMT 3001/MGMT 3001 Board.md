@@ -1,7 +1,7 @@
 ---
-type: board
+type: dashboard
 course: MGMT 3001
-status: enhanced
+status: tree
 updated: 2026-03-22
 ---
 

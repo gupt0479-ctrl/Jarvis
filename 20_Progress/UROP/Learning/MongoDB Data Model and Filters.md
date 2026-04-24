@@ -1,15 +1,61 @@
 ---
-type: evergreen
+type: concept
 status: sprout
 created: 2026-04-23
+updated: 2026-04-27
 tags:
+  - concept
   - evergreen
 notes:
   - "[[Learning/Alerts and Data Flow]]"
   - "[[Learning/API and Backend]]"
   - "[[Postman]]"
+track:
+  - systems
+prerequisites:
+  - "[[BOOM]]"
+  - "[[Learning/API and Backend]]"
+used_in:
+  - "[[API Work]]"
+evidence:
+  - "[[60_Claude/45_Outputs/Data Pipeline Portfolio Bullet]]"
+difficulty: 3
+mastery_level: novice
+drill_interval: 10
+last_drilled: 2026-04-25
+next_drill: 2026-05-05
 ---
 # MongoDB Data Model and Filters
+
+## Deep Dive
+
+### One-Sentence Version
+
+MongoDB stores BOOM's nested, evolving alert data as documents, and filters turn raw streams into scientifically useful results by operating on enriched records.
+
+### What It Is
+
+BOOM's storage layer uses MongoDB for alert, object, image, filter, and catalog records. Rust structs define strict in-memory types; MongoDB documents are sanitized for storage and query patterns. Filters evaluate enriched records using cross-match data, derived quantities, and classifier outputs.
+
+### Why It Matters
+
+Storage design is not the same as in-memory type design. This lesson transfers to feature stores, experiment tracking, and any system where query patterns should drive schema decisions rather than code structure alone.
+
+### Real Example
+
+BOOM filters can use cross-match identities, derived features, and classifier outputs — not just raw alert fields. That makes filtering after enrichment significantly more powerful than filtering raw data. A filter version is stored so results are reproducible even when filter logic changes.
+
+### Contrast With
+
+- **Document DB vs relational DB**: MongoDB fits BOOM because alert data is nested, heterogeneous, and evolving. A relational schema would require constant migrations as survey formats change.
+- **Rust structs vs MongoDB documents**: Rust types are strict and optimized for code correctness. MongoDB documents are optimized for storage and query. Blindly serializing everything produces noisy, null-heavy records.
+- **Filtering raw vs enriched data**: Raw filtering can only use fields from the original alert. Post-enrichment filtering uses cross-matches, derived quantities, and model outputs — much more powerful.
+
+### Source Anchors
+
+- `src/filter/base.rs` — filter logic
+- `src/api/db.rs` — database access patterns
+- BOOM data-model docs — entity definitions and storage rationale
 
 This note explains the storage side of BOOM and why filters are central to its usefulness.
 

@@ -1,7 +1,7 @@
 ---
 type: concept
 course: CSCI 4041
-status: evergreen
+status: tree
 mastery (1/10): 4
 created: 2026-02-25
 updated: 2026-04-16
