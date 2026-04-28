@@ -5,11 +5,11 @@ status: tree
 created: 2025-09-18
 source_url: CSAPP
 related_progress:
-  - "[[50_Archive/Previous Classes/CSCI 2021/Midterm - 1]]"
+  - "[[50_Archive/UMN/Classes/Previous Classes/CSCI 2021/Midterm - 1]]"
   - "[[C Language]]"
 tags:
   - input
-next: "[[50_Archive/Previous Classes/CSCI 2021/Week - 1]]"
+next: "[[50_Archive/UMN/Classes/Previous Classes/CSCI 2021/Week - 1]]"
 ---
 To understand what's happening under the hood, we need a basic model of the hardware.
 

@@ -1,33 +1,22 @@
 # AI Context Manifest
-
 This is the shared context manifest for Jarvis.
-
 Its purpose is to keep Codex, Claude, Kiro, Cursor, and other AI tools aligned without copying the same instructions into multiple files.
-
 Do not duplicate the contents of this file into tool-specific docs.
 Tool-specific docs should point here.
-
 ## How To Use This File
-
 If you are an AI tool working in this vault:
-
 1. Read `AGENTS.md` for root behavioral rules.
 2. Read `HUMAN_WRITING.md` for writing quality.
 3. Read this file to discover the live context sources.
 4. Read the live context sources relevant to the current task.
-
 This file is the manifest.
 The files it points to are the source of truth.
-
 ## Canonical Shared Sources
-
 These are the main cross-tool context files:
-
 - `AGENTS.md`
 - `HUMAN_WRITING.md`
 - `40_Resources/Obsidian/Vault Operating System.md`
 - `00_Dashboard.md`
-
 ## Live State Sources
 
 These are the files that tell you what is going on right now.

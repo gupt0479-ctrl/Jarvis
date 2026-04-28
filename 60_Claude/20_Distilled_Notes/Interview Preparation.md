@@ -6,14 +6,14 @@ updated: 2026-04-27
 tags:
   - concept
 notes:
-  - "[[20_Progress/Career/Internship/ABB Interview Prep]]"
-  - "[[20_Progress/Career/Internship/Interview Questions]]"
+  - "[[ABB Interview Prep]]"
+  - "[[Interview Questions]]"
   - "[[20_Progress/Mentorship Program/Plan]]"
 track:
   - career
 prerequisites: []
 used_in:
-  - "[[20_Progress/Career/Internship/ABB Interview Prep]]"
+  - "[[ABB Interview Prep]]"
 evidence: []
 difficulty: 3
 mastery_level: novice
@@ -24,7 +24,7 @@ next_drill: 2026-05-05
 
 # Interview Preparation
 
-> Distilled from [[20_Progress/Career/Internship/ABB Interview Prep]], [[20_Progress/Career/Internship/Interview Questions]], and mentorship notes
+> Distilled from [[ABB Interview Prep]], [[Interview Questions]], and mentorship notes
 
 ## Deep Dive
 
@@ -60,8 +60,8 @@ The elevator pitch connected all three: "I build AI systems where data pipelines
 
 ### Source Anchors
 
-- [[20_Progress/Career/Internship/ABB Interview Prep]] — full ABB interview prep with talking points
-- [[20_Progress/Career/Internship/Interview Questions]] — behavioral question templates
+- [[ABB Interview Prep]] — full ABB interview prep with talking points
+- [[Interview Questions]] — behavioral question templates
 - [[20_Progress/Mentorship Program/Plan]] — mock interview planning with mentor
 
 ## Diagnostic Questions

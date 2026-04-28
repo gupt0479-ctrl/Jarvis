@@ -1,6 +1,54 @@
 {
   "recentFiles": [
     {
+      "basename": "Knowledge Enrichment Dashboard",
+      "path": "60_Claude/60_Indexes/Knowledge Enrichment Dashboard.md"
+    },
+    {
+      "basename": "Jarvis Enrichment Engine",
+      "path": "40_Resources/Obsidian/Jarvis Enrichment Engine.md"
+    },
+    {
+      "basename": "Vault Operating System",
+      "path": "40_Resources/Obsidian/Vault Operating System.md"
+    },
+    {
+      "basename": "AI_CONTEXT",
+      "path": "AI_CONTEXT.md"
+    },
+    {
+      "basename": "Question Triage",
+      "path": "60_Claude/60_Indexes/Bases/Question Triage.base"
+    },
+    {
+      "basename": "README",
+      "path": "30_Order/System/jarvis-cli/README.md"
+    },
+    {
+      "basename": "00_Dashboard",
+      "path": "00_Dashboard.md"
+    },
+    {
+      "basename": "Bank Accounts",
+      "path": "10_Areas/Career/Finance/Bank Accounts.md"
+    },
+    {
+      "basename": "Track Definitions",
+      "path": "40_Resources/Capability/Track Definitions.md"
+    },
+    {
+      "basename": "Trading Question Bank",
+      "path": "60_Claude/60_Indexes/Field OS/Trading Question Bank.md"
+    },
+    {
+      "basename": "Trading Field OS",
+      "path": "60_Claude/60_Indexes/Field OS/Trading Field OS.md"
+    },
+    {
+      "basename": "Random",
+      "path": "Random.md"
+    },
+    {
       "basename": "Portfolio Strategy",
       "path": "60_Claude/20_Distilled_Notes/Portfolio Strategy.md"
     },
@@ -39,14 +87,6 @@
     {
       "basename": "00_Inbox Board",
       "path": "60_Claude/00_Inbox/00_Inbox Board.md"
-    },
-    {
-      "basename": "00_Dashboard",
-      "path": "00_Dashboard.md"
-    },
-    {
-      "basename": "Random",
-      "path": "Random.md"
     },
     {
       "basename": "Links",
@@ -122,7 +162,7 @@
     },
     {
       "basename": "Winter Break",
-      "path": "20_Progress/Winter Break.md"
+      "path": "20_Progress/Mentorship Program/Winter Break.md"
     },
     {
       "basename": "Symposium",
@@ -159,46 +199,6 @@
     {
       "basename": "Kafka Redis and Workers",
       "path": "20_Progress/UROP/Learning/Kafka Redis and Workers.md"
-    },
-    {
-      "basename": "Alerts and Data Flow",
-      "path": "20_Progress/UROP/Learning/Alerts and Data Flow.md"
-    },
-    {
-      "basename": "API and Backend",
-      "path": "20_Progress/UROP/Learning/API and Backend.md"
-    },
-    {
-      "basename": "Mock Trace Walkthrough",
-      "path": "20_Progress/UROP/Mocks/Mock Trace Walkthrough.md"
-    },
-    {
-      "basename": "Mock Alert Lifecycle",
-      "path": "20_Progress/UROP/Mocks/Mock Alert Lifecycle.md"
-    },
-    {
-      "basename": "boom-observability-qr-poster",
-      "path": "20_Progress/UROP/Presentation Assets/boom-observability-qr-poster.pdf"
-    },
-    {
-      "basename": "Prompt for claude",
-      "path": "Prompt for claude.md"
-    },
-    {
-      "basename": "APAS",
-      "path": "10_UMN/The Plan/APAS.md"
-    },
-    {
-      "basename": "Hack Your Brain",
-      "path": "00_Inbox/Headway/Hack Your Brain.md"
-    },
-    {
-      "basename": "Resolutions '26",
-      "path": "00_Inbox/Headway/Enumerate/Yearly/Resolutions '26.md"
-    },
-    {
-      "basename": "Atomic Habits",
-      "path": "00_Inbox/Headway/Books/Atomic Habits.md"
     }
   ],
   "omittedPaths": [],

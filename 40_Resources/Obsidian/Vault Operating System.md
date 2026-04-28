@@ -13,43 +13,38 @@ notes:
   - "[[30_Order/Templates/MOC]]"
 ---
 # Vault Operating System
-
 This note is the canonical operating contract for Jarvis as an AI second brain.
-
 ## What this vault is for
-
 - Capture fast.
 - Distill deliberately.
 - Retrieve reliably.
 - Keep one durable home for each idea, project, and source trail.
-
 ## Canonical Properties
 
-| Property | Type | Use |
-|---|---|---|
-| `type` | text | Note class: `input`, `evergreen`, `concept`, `project`, `thought`, `brainstorm`, `class`, `plan`, `review`, `dashboard`, `index`, `output` |
-| `status` | text | State or maturity: `seed`, `sprout`, `tree`, `active`, `paused`, `complete`, `archived` |
-| `created` | date | Creation date |
-| `updated` | date | Last meaningful update |
-| `tags` | tags | Retrieval tags, not folder replacements |
-| `notes` | list | Primary related notes |
-| `next` | text | Next concrete action or next note |
-| `area` | list | Ongoing life or work area when useful |
-| `related_progress` | list | Active project links |
-| `source_url` | text | External source pointer |
-| `input_kind` | text | Input subtype like `book`, `article`, `board`, `ai` |
-| `thought_kind` | text | Thought subtype like `reflection`, `memory`, `musing` |
-| `deadline` | date | Project or task deadline |
-| `reviewed` | date | Last review date for system or reference notes |
-| `enrichment_status` | text | Enrichment state: `candidate`, `in-progress`, `enriched`, `needs-review` |
-| `enrichment_level` | text | Depth of enrichment: `light`, `standard`, `deep` |
-| `source_status` | text | Claim grounding state: `vault-grounded`, `externally-sourced`, `mixed`, `uncertain` |
-| `cli_used` | boolean | Whether jarvis-cli was available during the ops scan |
-| `scan_dimensions` | number | Number of health check dimensions scanned |
-| `critical_count` | number | Count of critical-priority triage items in an Ops Report |
-| `high_count` | number | Count of high-priority triage items in an Ops Report |
-| `carry_forward_count` | number | Count of triage items carried from the previous Ops Report |
-
+| Property              | Type    | Use                                                                                                                                        |
+| --------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `type`                | text    | Note class: `input`, `evergreen`, `concept`, `project`, `thought`, `brainstorm`, `class`, `plan`, `review`, `dashboard`, `index`, `output` |
+| `status`              | text    | State or maturity: `seed`, `sprout`, `tree`, `active`, `paused`, `complete`, `archived`                                                    |
+| `created`             | date    | Creation date                                                                                                                              |
+| `updated`             | date    | Last meaningful update                                                                                                                     |
+| `tags`                | tags    | Retrieval tags, not folder replacements                                                                                                    |
+| `notes`               | list    | Primary related notes                                                                                                                      |
+| `next`                | text    | Next concrete action or next note                                                                                                          |
+| `area`                | list    | Ongoing life or work area when useful                                                                                                      |
+| `related_progress`    | list    | Active project links                                                                                                                       |
+| `source_url`          | text    | External source pointer                                                                                                                    |
+| `input_kind`          | text    | Input subtype like `book`, `article`, `board`, `ai`                                                                                        |
+| `thought_kind`        | text    | Thought subtype like `reflection`, `memory`, `musing`                                                                                      |
+| `deadline`            | date    | Project or task deadline                                                                                                                   |
+| `reviewed`            | date    | Last review date for system or reference notes                                                                                             |
+| `enrichment_status`   | text    | Enrichment state: `candidate`, `in-progress`, `enriched`, `needs-review`                                                                   |
+| `enrichment_level`    | text    | Depth of enrichment: `light`, `standard`, `deep`                                                                                           |
+| `source_status`       | text    | Claim grounding state: `vault-grounded`, `externally-sourced`, `mixed`, `uncertain`                                                        |
+| `cli_used`            | boolean | Whether jarvis-cli was available during the ops scan                                                                                       |
+| `scan_dimensions`     | number  | Number of health check dimensions scanned                                                                                                  |
+| `critical_count`      | number  | Count of critical-priority triage items in an Ops Report                                                                                   |
+| `high_count`          | number  | Count of high-priority triage items in an Ops Report                                                                                       |
+| `carry_forward_count` | number  | Count of triage items carried from the previous Ops Report                                                                                 |
 ## Capability Extension Properties
 
 | Property | Type | Use |
@@ -70,41 +65,26 @@ This note is the canonical operating contract for Jarvis as an AI second brain.
 | `source_concepts` | list | Concept notes that feed an output |
 | `concepts` | list | Concept links inside a synthesis note |
 | `tracks` | list | Tracks bridged by a synthesis note |
-
 ## Folder Logic
-
 ### Capture
-
 - `60_Claude/00_Inbox/`: AI outputs waiting to be reviewed or filed.
 - `60_Claude/05_Clippings/`: raw clips, imports, pasted sources, and ingestion inputs.
-
 ### Work
-
 - `10_UMN/`: current school work.
 - `20_Progress/`: current execution and projects.
-
 School notes in `10_UMN/` are a feeder layer. Avoid broad restructuring there, but selectively enrich flagship concept notes or create distilled mirror notes when they contribute to long-term tracks.
-
 ### Structure
-
 - `30_Order/Templates/`: templates only.
-
 ### Durable Knowledge
-
 - `40_Resources/`: stable reference material and system docs.
 - `60_Claude/20_Distilled_Notes/`: evergreen AI-synthesized knowledge.
 - `60_Claude/30_Source_Summaries/`: source-linked summaries.
 - `60_Claude/40_Project_Briefs/`: synthesized project docs.
-
 ### Review and Retrieval
-
 - `60_Claude/50_Reviews/`: daily, weekly, monthly reviews.
 - `60_Claude/60_Indexes/`: dashboards, indexes, and health checks.
-
 ## Default Workflows
-
 ### 1. Capture
-
 - Fast thought -> `60_Claude/00_Inbox/`
 - Web/article/source clip -> `60_Claude/05_Clippings/`
 - Active task or execution note -> `20_Progress/`

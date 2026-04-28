@@ -6,14 +6,13 @@ updated: 2026-04-27
 tags:
   - concept
 notes:
-  - "[[10_UMN/CSCI 4041/Concepts/Graphs/Graph Algorithms]]"
-  - "[[10_UMN/CSCI 4041/Concepts/Graphs/Minimum Spanning Trees]]"
+  - "[[50_Archive/UMN/Classes/CSCI 4041/Concepts/Graphs/Graph Algorithms]]"
+  - "[[Minimum Spanning Trees]]"
 track:
   - algorithms
 prerequisites:
-  - "[[10_UMN/CSCI 4041/Concepts/Time Complexity]]"
-  - "[[10_UMN/CSCI 4041/Concepts/Data Structures & Methods/Elementary Data
-    Structures]]"
+  - "[[Time Complexity]]"
+  - "[[Elementary Data Structures]]"
 used_in: []
 evidence: []
 difficulty: 4
@@ -25,7 +24,7 @@ next_drill: 2026-05-02
 
 # Graph Algorithms
 
-> Distilled from [[10_UMN/CSCI 4041/Concepts/Graphs/Graph Algorithms|CSCI 4041 — Graph Algorithms]]
+> Distilled from [[50_Archive/UMN/Classes/CSCI 4041/Concepts/Graphs/Graph Algorithms|CSCI 4041 — Graph Algorithms]]
 
 ## Deep Dive
 
@@ -61,9 +60,9 @@ Course prerequisite scheduling is topological sort: run DFS on the prerequisite 
 
 ### Source Anchors
 
-- [[10_UMN/CSCI 4041/Concepts/Graphs/Graph Algorithms]] — full lecture notes with BFS/DFS/topo/SCC code
-- [[10_UMN/CSCI 4041/Textbook/Chapter - 20]] — CLRS graph representations and algorithms
-- [[10_UMN/CSCI 4041/Week - 11]], [[10_UMN/CSCI 4041/Week - 12]] — lecture coverage
+- [[50_Archive/UMN/Classes/CSCI 4041/Concepts/Graphs/Graph Algorithms]] — full lecture notes with BFS/DFS/topo/SCC code
+- [[Chapter - 20]] — CLRS graph representations and algorithms
+- [[50_Archive/UMN/Classes/CSCI 4041/Week - 11]], [[50_Archive/UMN/Classes/CSCI 4041/Week - 12]] — lecture coverage
 
 ## Complexity
 

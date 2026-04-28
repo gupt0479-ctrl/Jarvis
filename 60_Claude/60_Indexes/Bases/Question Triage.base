@@ -1,11 +1,18 @@
-{
-  "headings": [
-    {"heading": "name", "type": "name"},
-    {"heading": "track", "type": "property"},
-    {"heading": "question_kind", "type": "property"},
-    {"heading": "question_status", "type": "property"},
-    {"heading": "created", "type": "property"}
-  ],
-  "filter": "type = \"thought\" AND contains(tags, \"question\")",
-  "sort": [{"heading": "created", "direction": "desc"}]
-}
+headings:
+  - heading: name
+    type: name
+  - heading: track
+    type: property
+  - heading: question_kind
+    type: property
+  - heading: question_status
+    type: property
+  - heading: created
+    type: property
+filter: type = "thought" AND contains(tags, "question")
+sort:
+  - heading: created
+    direction: desc
+views:
+  - type: table
+    name: Table

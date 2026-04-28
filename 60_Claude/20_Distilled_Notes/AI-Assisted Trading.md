@@ -6,8 +6,8 @@ updated: 2026-04-27
 tags:
   - concept
 notes:
-  - "[[40_Resources/Trading/Trading with Ai]]"
-  - "[[40_Resources/Trading/Links]]"
+  - "[[Trading with Ai]]"
+  - "[[10_Areas/Trading/Links]]"
 track:
   - trading
   - ai
@@ -26,7 +26,7 @@ next_drill: 2026-05-02
 
 # AI-Assisted Trading
 
-> Distilled from [[40_Resources/Trading/Trading with Ai]] and cross-track AI knowledge
+> Distilled from [[Trading with Ai]] and cross-track AI knowledge
 
 ## Deep Dive
 
@@ -67,8 +67,8 @@ The honest result: most simple models barely beat random on out-of-sample data. 
 
 ### Source Anchors
 
-- [[40_Resources/Trading/Trading with Ai]] — initial exploration notes
-- [[40_Resources/Trading/Links]] — Tradevisor AI and other AI trading tools
+- [[Trading with Ai]] — initial exploration notes
+- [[10_Areas/Trading/Links]] — Tradevisor AI and other AI trading tools
 - Cross-reference with AI track: embeddings, data pipelines, model evaluation
 
 ## Diagnostic Questions

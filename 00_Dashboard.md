@@ -19,9 +19,7 @@ notes:
   - "[[60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan]]"
 ---
 # Jarvis — AI-Powered PKM
-
 ## System
-
 - [[40_Resources/Obsidian/Vault Operating System]]
 - [[CLAUDE.md]]
 - [[AGENTS.md]]
@@ -32,9 +30,7 @@ notes:
 - [[20_Progress/Projects/Jarvis]]
 - [[60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan]]
 - [[30_Order/Templates/MOC]]
-
 ## Capability Engine
-
 - [[60_Claude/60_Indexes/Capability Dashboard|Capability Dashboard]]
 - [[60_Claude/60_Indexes/Proof Dashboard|Proof Dashboard]]
 - [[60_Claude/60_Indexes/Question Dashboard|Question Dashboard]]
@@ -43,9 +39,7 @@ notes:
 - [[60_Claude/60_Indexes/Field OS/Algorithms Field OS|Algorithms Field OS]]
 - [[60_Claude/60_Indexes/Field OS/Career Field OS|Career Field OS]]
 - [[60_Claude/60_Indexes/Field OS/Trading Field OS|Trading Field OS]]
-
 ## Knowledge Enrichment
-
 - [[60_Claude/60_Indexes/Knowledge Enrichment Dashboard|Knowledge Enrichment Dashboard]]
 - [[40_Resources/Obsidian/Jarvis Enrichment Engine|Jarvis Enrichment Engine]]
 - [[30_Order/Templates/Capability/Jarvis Enrichment Template|Jarvis Enrichment Template]]
@@ -58,9 +52,7 @@ AND (!enrichment_status OR enrichment_status != "enriched")
 SORT file.mtime ASC
 LIMIT 10
 ```
-
 ## Active Projects
-
 ```dataview
 TABLE status, deadline, next, file.mtime AS "Updated"
 FROM "20_Progress"
@@ -68,9 +60,7 @@ WHERE type = "project" AND status != "archived"
 SORT deadline ASC, file.mtime DESC
 LIMIT 12
 ```
-
 ## Projects Missing a Next Action
-
 ```dataview
 TABLE status, deadline, file.mtime AS "Updated"
 FROM "20_Progress"
@@ -78,9 +68,7 @@ WHERE type = "project" AND status != "archived" AND !next
 SORT file.mtime DESC
 LIMIT 10
 ```
-
 ## AI Staging Queue
-
 ```dataview
 TABLE type, status, next, file.mtime AS "Updated"
 FROM "60_Claude/00_Inbox"
@@ -88,16 +76,13 @@ WHERE file.name != "00_Inbox Board"
 SORT file.mtime DESC
 LIMIT 12
 ```
-
 ## Raw Clippings To Distill
-
 ```dataview
 TABLE file.ctime AS "Captured"
 FROM "60_Claude/05_Clippings"
 SORT file.ctime DESC
 LIMIT 12
 ```
-
 ## Active Classes
 ```dataview
 TABLE WITHOUT ID
@@ -107,7 +92,6 @@ FROM "10_UMN"
 WHERE contains(file.name, "Board")
 SORT file.name ASC
 ```
-
 ## Recent Claude Outputs
 ```dataview
 TABLE created, status, type, file.folder AS Folder
@@ -116,7 +100,6 @@ WHERE !contains(file.folder, "60_Claude/60_Indexes")
 SORT file.mtime DESC
 LIMIT 8
 ```
-
 ## Open Tasks
 ```dataview
 TASK
@@ -125,7 +108,6 @@ WHERE !completed
 SORT due ASC
 LIMIT 15
 ```
-
 ## Flashcard Review Queue
 ```dataview
 LIST
@@ -134,7 +116,6 @@ WHERE !contains(file.folder, "30_Order/Templates")
 SORT file.mtime DESC
 LIMIT 10
 ```
-
 ## Orphan Durable Notes
 ```dataview
 TABLE file.folder AS Folder, status, file.mtime AS "Updated"
@@ -143,7 +124,6 @@ WHERE length(file.inlinks) = 0
 SORT file.mtime DESC
 LIMIT 12
 ```
-
 ## Metadata Cleanup Queue
 ```dataview
 TABLE file.folder AS Folder, file.mtime AS "Updated"
@@ -152,7 +132,6 @@ WHERE !type OR !status
 SORT file.mtime DESC
 LIMIT 12
 ```
-
 ## Recent Reviews
 ```dataview
 TABLE file.folder AS Folder, file.ctime AS "Created"

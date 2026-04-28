@@ -51,7 +51,7 @@ Modeled after the [[BOOM Board]]. Career track covers portfolio building, interv
 
 ## Deep Relearning Pass
 
-Start at [[20_Progress/Career/Useful Links|Career Useful Links]], then review the full internship folder. Revisit [[Mentorship Board]] for mentorship context.
+Start at [[Useful Links|Career Useful Links]], then review the full internship folder. Revisit [[Mentorship Board]] for mentorship context.
 
 ## Overdue Drills
 

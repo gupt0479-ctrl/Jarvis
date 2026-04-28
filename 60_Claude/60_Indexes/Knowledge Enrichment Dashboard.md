@@ -13,9 +13,7 @@ notes:
   - "[[40_Resources/Capability/Capability Engine Guide]]"
 ---
 # Knowledge Enrichment Dashboard
-
 Use this page to find notes that should become stronger learning nodes.
-
 ## Enrichment Queue
 
 ```dataview
@@ -58,9 +56,7 @@ AND (!source_status OR source_status = "uncertain")
 SORT file.mtime DESC
 LIMIT 20
 ```
-
 ## Enrichment CLI
-
 ```powershell
 .\30_Order\System\jarvis-cli\jarvis.ps1 enrich-candidates --limit 25
 ```

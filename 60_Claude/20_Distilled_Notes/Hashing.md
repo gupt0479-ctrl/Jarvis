@@ -6,12 +6,11 @@ updated: 2026-04-27
 tags:
   - concept
 notes:
-  - "[[10_UMN/CSCI 4041/Concepts/Data Structures & Methods/Hashing]]"
+  - "[[50_Archive/UMN/Classes/CSCI 4041/Concepts/Data Structures & Methods/Hashing]]"
 track:
   - algorithms
 prerequisites:
-  - "[[10_UMN/CSCI 4041/Concepts/Data Structures & Methods/Elementary Data
-    Structures]]"
+  - "[[Elementary Data Structures]]"
 used_in: []
 evidence: []
 difficulty: 3
@@ -23,7 +22,7 @@ next_drill: 2026-05-05
 
 # Hashing
 
-> Distilled from [[10_UMN/CSCI 4041/Concepts/Data Structures & Methods/Hashing|CSCI 4041 — Hashing]]
+> Distilled from [[50_Archive/UMN/Classes/CSCI 4041/Concepts/Data Structures & Methods/Hashing|CSCI 4041 — Hashing]]
 
 ## Deep Dive
 
@@ -55,9 +54,9 @@ Linear probing creates primary clustering: consecutive occupied slots form long 
 
 ### Source Anchors
 
-- [[10_UMN/CSCI 4041/Concepts/Data Structures & Methods/Hashing]] — full lecture notes with chaining and probing code
-- [[10_UMN/CSCI 4041/Textbook/Chapter - 11]] — CLRS hash tables and open addressing
-- [[10_UMN/CSCI 4041/Week - 8]] — lecture coverage
+- [[50_Archive/UMN/Classes/CSCI 4041/Concepts/Data Structures & Methods/Hashing]] — full lecture notes with chaining and probing code
+- [[Chapter - 11]] — CLRS hash tables and open addressing
+- [[50_Archive/UMN/Classes/CSCI 4041/Week - 8]] — lecture coverage
 
 ## Complexity
 

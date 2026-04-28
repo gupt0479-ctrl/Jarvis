@@ -15,17 +15,11 @@ notes:
   - "[[HUMAN_WRITING]]"
 ---
 # Jarvis Enrichment Engine
-
 Jarvis should make existing notes stronger without erasing the human work already there.
-
 The enrichment engine is the vault-wide layer that finds incomplete nodes, appends concrete knowledge, links the note into the graph, and turns the note into something you can learn from later.
-
 ## Core Rule
-
 Preserve the original note. Add a clearly marked enrichment layer.
-
 Jarvis can clean obvious encoding damage or metadata drift when asked, but the default behavior is append-first:
-
 ```text
 human note
   -> gap scan
@@ -35,11 +29,8 @@ human note
   -> append under Jarvis Enrichment
   -> dashboard + drill scheduling
 ```
-
 ## What Counts As Enriched
-
 A strong concept node should have:
-
 - one-sentence version
 - precise definition
 - mechanism

@@ -19,8 +19,8 @@ Modeled after the [[BOOM Board]]. Trading track covers technical analysis, risk 
 ## Core Concepts
 
 - [[Trading with Ai]]
-- [[40_Resources/Trading/Reddit|Trading Reddit Resources]]
-- [[40_Resources/Trading/Links|Trading Links]]
+- [[Reddit|Trading Reddit Resources]]
+- [[10_Areas/Trading/Links|Trading Links]]
 
 Placeholder concepts to seed as enriched notes:
 
@@ -46,14 +46,14 @@ Placeholder concepts to seed as enriched notes:
 ## 2-Hour Technical Refresher
 
 1. [[Trading with Ai]]
-2. [[40_Resources/Trading/Links|Trading Links]] — review current tool stack
+2. [[10_Areas/Trading/Links|Trading Links]] — review current tool stack
 3. Walk through a backtesting example
 4. Review position sizing rules
 5. Analyze one real trade with entry/exit reasoning
 
 ## Deep Relearning Pass
 
-Start at [[40_Resources/Trading/Links|Trading Links]] and work through each resource. Then review clippings tagged with trading for recent captures.
+Start at [[10_Areas/Trading/Links|Trading Links]] and work through each resource. Then review clippings tagged with trading for recent captures.
 
 ## Overdue Drills
 

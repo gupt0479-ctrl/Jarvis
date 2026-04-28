@@ -6,12 +6,12 @@ updated: 2026-04-27
 tags:
   - concept
 notes:
-  - "[[10_UMN/CSCI 2041/Concepts/OCaml - Pattern Matching]]"
-  - "[[10_UMN/CSCI 2041/Concepts/OCaml - Basics]]"
+  - "[[OCaml - Pattern Matching]]"
+  - "[[OCaml - Basics]]"
 track:
   - algorithms
 prerequisites:
-  - "[[10_UMN/CSCI 2041/Concepts/OCaml - Basics]]"
+  - "[[OCaml - Basics]]"
 used_in: []
 evidence: []
 difficulty: 3
@@ -23,7 +23,7 @@ next_drill: 2026-05-05
 
 # OCaml Pattern Matching
 
-> Distilled from [[10_UMN/CSCI 2041/Concepts/OCaml - Pattern Matching|CSCI 2041 — Pattern Matching]]
+> Distilled from [[OCaml - Pattern Matching|CSCI 2041 — Pattern Matching]]
 
 ## Deep Dive
 
@@ -66,9 +66,9 @@ This is safe case analysis plus data destruction: you check which constructor yo
 
 ### Source Anchors
 
-- [[10_UMN/CSCI 2041/Concepts/OCaml - Pattern Matching]] — full lecture notes with all pattern forms
-- [[10_UMN/CSCI 2041/Textbook/Chapter - 3 & 4]] — textbook coverage of pattern matching
-- [[10_UMN/CSCI 2041/Concepts/OCaml - BST Problems]] — applied pattern matching on trees
+- [[OCaml - Pattern Matching]] — full lecture notes with all pattern forms
+- [[50_Archive/UMN/Classes/CSCI 2041/Textbook/Chapter - 3 & 4]] — textbook coverage of pattern matching
+- [[OCaml - BST Problems]] — applied pattern matching on trees
 
 ## Diagnostic Questions
 

@@ -7,7 +7,7 @@ tags:
 notes:
   - "[[Useful Links]]"
   - "[[Random]]"
-  - "[[10_UMN/Links|Links]]"
+  - "[[10_Areas/Links|Links]]"
 ---
 # Applications to use
 

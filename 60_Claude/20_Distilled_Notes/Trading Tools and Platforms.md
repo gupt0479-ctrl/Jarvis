@@ -6,8 +6,8 @@ updated: 2026-04-27
 tags:
   - concept
 notes:
-  - "[[40_Resources/Trading/Links]]"
-  - "[[40_Resources/Trading/Reddit]]"
+  - "[[10_Areas/Trading/Links]]"
+  - "[[Reddit]]"
 track:
   - trading
 prerequisites:
@@ -24,7 +24,7 @@ next_drill: 2026-05-09
 
 # Trading Tools and Platforms
 
-> Distilled from [[40_Resources/Trading/Links]] and market research
+> Distilled from [[10_Areas/Trading/Links]] and market research
 
 ## Deep Dive
 
@@ -62,8 +62,8 @@ The Reddit discussion on Bloomberg terminal vs retail software highlights the ga
 
 ### Source Anchors
 
-- [[40_Resources/Trading/Links]] — curated tool links
-- [[40_Resources/Trading/Reddit]] — community discussion on tools and platforms
+- [[10_Areas/Trading/Links]] — curated tool links
+- [[Reddit]] — community discussion on tools and platforms
 
 ## Diagnostic Questions
 

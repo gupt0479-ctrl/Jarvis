@@ -6,8 +6,8 @@ updated: 2026-04-27
 tags:
   - concept
 notes:
-  - "[[40_Resources/Trading/Reddit]]"
-  - "[[20_Progress/Career/Finance/Stocks]]"
+  - "[[Reddit]]"
+  - "[[Stocks]]"
 track:
   - trading
 prerequisites: []
@@ -22,7 +22,7 @@ next_drill: 2026-05-09
 
 # Index Fund Investing
 
-> Distilled from [[40_Resources/Trading/Reddit]] and [[20_Progress/Career/Finance/Stocks]]
+> Distilled from [[Reddit]] and [[Stocks]]
 
 ## Deep Dive
 
@@ -61,8 +61,8 @@ The Reddit beginner guide's 12-month action plan: Month 1 open account + fund em
 
 ### Source Anchors
 
-- [[40_Resources/Trading/Reddit]] — beginner investing guide with phased approach
-- [[20_Progress/Career/Finance/Stocks]] — basic investing principles
+- [[Reddit]] — beginner investing guide with phased approach
+- [[Stocks]] — basic investing principles
 - Investor.gov — diversification and DCA definitions
 
 ## Diagnostic Questions

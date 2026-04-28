@@ -123,27 +123,33 @@ Run `/ops morning-start` to open the day: gathers context, builds a plan, runs a
 
 ## Available Skills
 
-| Skill | Command |
-|-------|---------|
-| Ingest clipping | `/ingest-clipping "filename.md"` |
-| Distill note | `/distill-note` |
-| Remove AI slop | `/remove-ai-slop` |
-| Get context | `/context` |
-| Today plan | `/today` |
-| Trace topic | `/trace-topic "topic"` |
-| Connect notes | `/connect-notes` |
-| End of day | `/closeday` |
-| Weekly review | `/weekly-review` |
-| Lint Claude layer | `/lint-claude-layer` |
-| Daily vault ops | `/ops [operation]` |
+When a user invokes a skill command, read the corresponding file from `.claude/skills/` and follow its instructions.
+
+| Skill | Command | File |
+|-------|---------|------|
+| Ingest clipping | `/ingest-clipping "filename.md"` | `.claude/skills/ingest-clipping.md` |
+| Distill note | `/distill-note` | `.claude/skills/distill-note.md` |
+| Remove AI slop | `/remove-ai-slop` | `.claude/skills/remove-ai-slop.md` |
+| Get context | `/context` | `.claude/skills/context.md` |
+| Today plan | `/today` | `.claude/skills/today.md` |
+| Trace topic | `/trace-topic "topic"` | `.claude/skills/trace-topic.md` |
+| Connect notes | `/connect-notes` | `.claude/skills/connect-notes.md` |
+| End of day | `/closeday` | `.claude/skills/closeday.md` |
+| Weekly review | `/weekly-review` | `.claude/skills/weekly-review.md` |
+| Lint Claude layer | `/lint-claude-layer` | `.claude/skills/lint-claude-layer.md` |
+| Daily vault ops | `/ops [operation]` | `.claude/skills/ops.md` |
+| Organize CSCI 2033 | `/organize-csci2033` | `.claude/skills/organize-csci2033.md` |
 
 ## Available Agents
 
-| Agent | Purpose |
-|-------|---------|
-| `research-distiller` | Turns sources into durable notes |
-| `vault-curator` | Maintains links, deduplication, structure |
-| `career-operator` | Handles career/internship/portfolio notes |
+When a user invokes an agent, read the corresponding file from `.claude/agents/` and follow its instructions.
+
+| Agent | Purpose | File |
+|-------|---------|------|
+| `research-distiller` | Turns sources into durable notes | `.claude/agents/research-distiller.md` |
+| `vault-curator` | Maintains links, deduplication, structure | `.claude/agents/vault-curator.md` |
+| `career-operator` | Handles career/internship/portfolio notes | `.claude/agents/career-operator.md` |
+| `anti-slop-editor` | Rewrites AI-sounding prose into human writing | `.claude/agents/anti-slop-editor.md` |
 
 ---
 

@@ -6,14 +6,13 @@ updated: 2026-04-27
 tags:
   - concept
 notes:
-  - "[[10_UMN/CSCI 4041/Concepts/Trees/AVL Trees]]"
-  - "[[10_UMN/CSCI 4041/Concepts/Trees/B-Trees]]"
+  - "[[50_Archive/UMN/Classes/CSCI 4041/Concepts/Trees/AVL Trees]]"
+  - "[[B-Trees]]"
 track:
   - algorithms
 prerequisites:
-  - "[[10_UMN/CSCI 4041/Concepts/Data Structures & Methods/Elementary Data
-    Structures]]"
-  - "[[10_UMN/CSCI 4041/Concepts/Time Complexity]]"
+  - "[[Elementary Data Structures]]"
+  - "[[Time Complexity]]"
 used_in: []
 evidence: []
 difficulty: 3
@@ -25,7 +24,7 @@ next_drill: 2026-05-05
 
 # AVL Trees
 
-> Distilled from [[10_UMN/CSCI 4041/Concepts/Trees/AVL Trees|CSCI 4041 — AVL Trees]]
+> Distilled from [[50_Archive/UMN/Classes/CSCI 4041/Concepts/Trees/AVL Trees|CSCI 4041 — AVL Trees]]
 
 ## Deep Dive
 
@@ -57,9 +56,9 @@ Insert `[30, 10, 20]` into an empty AVL tree. After inserting 20, the root (30) 
 
 ### Source Anchors
 
-- [[10_UMN/CSCI 4041/Concepts/Trees/AVL Trees]] — full lecture notes with rotation code and trigger sequences
-- [[10_UMN/CSCI 4041/Textbook/Chapter - 13]] — CLRS rotation machinery
-- [[10_UMN/CSCI 4041/Week - 6]], [[10_UMN/CSCI 4041/Week - 7]] — lecture coverage
+- [[50_Archive/UMN/Classes/CSCI 4041/Concepts/Trees/AVL Trees]] — full lecture notes with rotation code and trigger sequences
+- [[50_Archive/UMN/Classes/CSCI 4041/Textbook/Chapter - 13]] — CLRS rotation machinery
+- [[50_Archive/UMN/Classes/CSCI 4041/Week - 6]], [[50_Archive/UMN/Classes/CSCI 4041/Week - 7]] — lecture coverage
 
 ## Four Rotation Cases
 

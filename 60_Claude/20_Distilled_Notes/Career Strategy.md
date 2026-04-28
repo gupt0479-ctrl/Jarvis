@@ -7,7 +7,7 @@ tags:
   - concept
 notes:
   - "[[20_Progress/Mentorship Program/Plan]]"
-  - "[[20_Progress/Career/Internship/Companies giving OPT & CPT]]"
+  - "[[Companies giving OPT & CPT]]"
   - "[[20_Progress/Projects/Portfolio]]"
 track:
   - career
@@ -65,7 +65,7 @@ Decision framework uses MoSCoW:
 ### Source Anchors
 
 - [[20_Progress/Mentorship Program/Plan]] — summer planning framework and decision matrix
-- [[20_Progress/Career/Internship/Companies giving OPT & CPT]] — target company list
+- [[Companies giving OPT & CPT]] — target company list
 - [[20_Progress/Projects/Portfolio]] — portfolio as career artifact
 
 ## Diagnostic Questions

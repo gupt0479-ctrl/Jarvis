@@ -4,12 +4,12 @@ status: archived
 created: 2025-10-23
 updated: 2025-09-12
 area:
-  - "[[50_Archive/Previous Classes/CSCI 2021/Week - 3|Week - 3]]"
+  - "[[50_Archive/UMN/Classes/Previous Classes/CSCI 2021/Week - 3|Week - 3]]"
   - "[[C Language]]"
-  - "[[50_Archive/Previous Classes/CSCI 2021/Midterm - 1|Midterm - 1]]"
+  - "[[50_Archive/UMN/Classes/Previous Classes/CSCI 2021/Midterm - 1|Midterm - 1]]"
 tags:
   - "#class"
-next: "[[50_Archive/Previous Classes/CSCI 2021/Week - 3|Week - 3]]"
+next: "[[50_Archive/UMN/Classes/Previous Classes/CSCI 2021/Week - 3|Week - 3]]"
 ---
 ### Standard and File I/O Functions in `stdio.h`
 The C `stdio.h` library has many functions for reading and writing to files and to the standard file-like streams (`stdin`, `stdout`, and `stderr`).
