@@ -63,36 +63,59 @@ Exam trap: **follicular/luteal** are ovarian phases. **menses/proliferative/secr
 | Progesterone | LH-driven corpus luteum activity after ovulation | Corpus luteum (later placenta if pregnant) | Uterus/endometrium, hypothalamus/pituitary | Maintains thick secretory endometrium; strong negative feedback on GnRH/FSH/LH (prevents new follicle development during luteal phase) |
 
 ## Phase Logic
-### Follicular phase
-- Follicles grow in the ovary.
-- FSH supports follicle development.
-- Growing follicle secretes estrogen.
-- Estrogen causes the endometrium to proliferate.
-- When estrogen gets high enough, it helps trigger the LH surge.
+### Follicular phase (Days 1-14)
+- Multiple follicles begin growing in the ovary (recruited by FSH).
+- Usually only one follicle becomes dominant.
+- FSH supports follicle development by stimulating granulosa cells.
+- Growing follicle secretes **increasing estrogen**.
+- Estrogen causes the endometrium to proliferate (rebuild after menses).
+- Early/moderate estrogen provides **negative feedback** on hypothalamus/pituitary (keeps FSH/LH from spiking too early).
+- As the dominant follicle grows larger, estrogen rises higher and higher.
+- When estrogen reaches a **high sustained threshold** (typically after ~10-12 days of rising), it **switches to positive feedback**.
+- Positive feedback → hypothalamus increases GnRH pulse frequency → anterior pituitary releases massive LH (and some FSH).
 
-### Ovulation
-- Around day 14 in a typical 28-day cycle.
-- LH surge is the best predictor.
-- The oocyte leaves the follicle.
+### Ovulation (Around Day 14)
+- **LH surge** is the direct trigger for ovulation.
+- The mature follicle ruptures and releases the oocyte.
+- Oocyte enters the fallopian tube (swept in by fimbriae).
+- The oocyte is viable for ~24 hours after release.
 - The body shifts from follicular phase to luteal phase.
+- The ruptured follicle transforms into the corpus luteum.
 
-### Luteal phase
-- The ruptured follicle becomes the corpus luteum.
-- Corpus luteum secretes progesterone and some estrogen.
-- Progesterone maintains the endometrium in the secretory phase.
-- If no pregnancy occurs, the corpus luteum degenerates, progesterone drops, and menses begins.
+### Luteal phase (Days 15-28)
+- The corpus luteum forms from the collapsed follicle.
+- Corpus luteum secretes **high progesterone** and moderate estrogen.
+- Progesterone maintains the endometrium in the secretory phase (thick, vascular, glandular, ready for implantation).
+- Progesterone provides **strong negative feedback** on GnRH/FSH/LH → prevents new follicle recruitment → prevents a second ovulation in the same cycle.
+- If no pregnancy: corpus luteum degenerates after ~10-12 days → progesterone and estrogen drop → endometrium cannot be maintained → menses begins → cycle restarts.
+- If pregnancy: hCG from embryo maintains corpus luteum → progesterone stays high → no menses.
 
-### Menses
+### Menses (Days 1-5)
 - Day 1 is defined by the start of menstrual bleeding.
 - The endometrium is shed because progesterone and estrogen have fallen.
+- The functional layer of the endometrium breaks down and exits through the cervix and vagina.
+- Hormone levels are at their lowest point.
+- FSH begins to rise slightly at the end of menses, starting the next follicular phase.
 
-### Proliferative phase
-- Estrogen rebuilds the endometrium.
-- Happens before ovulation.
+### Proliferative phase (Days 6-14, uterine cycle)
+- Estrogen from the growing follicle stimulates endometrial cells to divide and thicken.
+- Blood vessels regrow in the endometrium.
+- Endometrium goes from thin (post-menses) to thick.
+- This phase ends at ovulation.
 
-### Secretory phase
-- Progesterone keeps the endometrium thick, vascular, and secretory.
-- Happens after ovulation.
+### Secretory phase (Days 15-28, uterine cycle)
+- Progesterone from the corpus luteum transforms the endometrium.
+- Endometrial glands secrete glycogen-rich fluid (nutrients for potential embryo).
+- Blood vessels become coiled and extensive.
+- Endometrium is at maximum thickness and receptivity.
+- If no implantation → corpus luteum dies → progesterone drops → secretory endometrium cannot be maintained → menses.
+
+### Estrogen: Two Different Jobs Depending on Level
+| Estrogen level | Effect on hypothalamus/pituitary | Effect on uterus |
+|---|---|---|
+| Low/moderate (early-mid follicular) | **Negative feedback** — keeps GnRH/FSH/LH from spiking | Stimulates endometrial proliferation |
+| High sustained (late follicular, ~day 12-13) | **Positive feedback** — triggers LH surge → ovulation | Endometrium is thick; cervical mucus becomes thin/stretchy (sperm-friendly) |
+| Moderate (luteal phase, from corpus luteum) | Contributes to negative feedback along with progesterone | Helps maintain endometrium alongside progesterone |
 
 ## Hormone Level Anchors
 Use these as quick pattern recognition.

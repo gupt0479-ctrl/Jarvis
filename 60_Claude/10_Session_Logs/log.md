@@ -288,3 +288,17 @@ Expanded the Theme 4 study set beyond objective-level notes into a fuller source
 - [[Meiosis and Gametogenesis]] now includes spermatogenesis/oogenesis sequence detail and additional flashcards.
 
 **Direction:** the concept notes remain the fast exam layer; the deep notes preserve lecture/course-packet flow for solving packets later.
+
+## [2026-05-06] review + deepen | BIOL 1012 Theme 4 notes
+
+Reviewed all 12 Theme 4 files created/enriched by Codex. Identified and fixed critical gaps:
+
+**Deepened (major rewrites):**
+- Uterine and Ovarian Cycles: expanded Phase Logic with full follicular/ovulation/luteal/menses/proliferative/secretory detail; added estrogen dual-role table (negative vs positive feedback by level); added primary vs secondary sex characteristics side-by-side comparison; added key feedback difference table (testes vs ovaries)
+- Fertilization Pregnancy and Birth: expanded trimesters with specific events per trimester; expanded germ layers with full derivatives + memory anchor; added differentiation timing (gastrulation ~week 3); added corpus luteum → placenta transition timeline; added placenta functions; expanded contraception with method types and reliability table; rewrote childbirth positive feedback as full step-by-step loop with comparison table
+- Cell Cycle and Cancer: rewrote checkpoints with exam question pattern logic; expanded p53 with full mechanism and "guardian of the genome" framing; added benign vs malignant distinction; added angiogenesis; added 5-7 mutation threshold
+- Cancer Treatments and Ethics: expanded treatment comparison with detailed mechanisms; added chemo side effect logic; expanded puberty blocker mechanism (GnRH agonist desensitization); added full informed consent definition with 5 components
+- Prediction Drill Bank: added 10 multi-step integration drills (31-40) covering hormonal contraception mechanism, luteal phase defect, GnRH agonist, p53 loss, BRCA + oncogene, anovulatory cycle, ectopic pregnancy, full day comparison table, cancer staging, and BRCA family ethics; added 5 more rapid mixed questions
+- Lecture and Packet Deep Notes: expanded hormonal birth control to 10-step mechanism; added corpus luteum → placenta transition; added placenta functions
+
+**Status:** Notes are now deep enough to serve as standalone exam prep for Theme 4.

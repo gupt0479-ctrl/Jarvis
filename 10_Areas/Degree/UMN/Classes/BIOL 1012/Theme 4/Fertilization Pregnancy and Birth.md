@@ -52,47 +52,94 @@ Exam trap: many sperm may reach the egg, but normally only one fertilizes it.
 ## hCG and Early Pregnancy
 | Hormone | Source | Target | Response/action |
 |---|---|---|---|
-| hCG | Early embryo/trophoblast/chorion, later associated with placenta development | Corpus luteum in ovary | Maintains corpus luteum so progesterone and estrogen stay high |
+| hCG | Early embryo/trophoblast/chorion (outer cells of blastocyst that become placenta) | Corpus luteum in ovary | Maintains corpus luteum so progesterone and estrogen stay high |
 
 Why hCG matters:
-- Without hCG, the corpus luteum would degenerate.
+- Without hCG, the corpus luteum would degenerate ~10-12 days after ovulation.
 - If corpus luteum degenerates, progesterone drops.
-- If progesterone drops, the endometrium is shed.
+- If progesterone drops, the endometrium is shed → pregnancy loss.
 - hCG prevents that early loss of the uterine lining.
 
-Pregnancy tests detect hCG.
+Pregnancy tests detect hCG in urine or blood.
+
+### Corpus Luteum → Placenta Transition
+| Weeks of pregnancy | Progesterone source | What's happening |
+|---|---|---|
+| Weeks 1-4 | Corpus luteum (maintained by hCG) | hCG from embryo keeps corpus luteum alive |
+| Weeks 5-10 | Corpus luteum + developing placenta | Placenta begins producing its own progesterone |
+| Weeks 10-12+ | Placenta takes over | Corpus luteum no longer needed; placenta sustains pregnancy |
+
+- hCG peaks around weeks 8-10, then declines (because placenta takes over).
+- Morning sickness often correlates with peak hCG levels.
+- After ~week 10-12, even if corpus luteum were removed, the placenta can sustain the pregnancy.
+
+### Placenta Functions
+- Exchanges O2 and CO2 between maternal and fetal blood (without mixing blood directly).
+- Delivers nutrients (glucose, amino acids) to fetus.
+- Removes fetal waste products.
+- Produces hormones: hCG (early), progesterone, estrogen, human placental lactogen.
+- Transfers maternal antibodies (IgG) to fetus, especially in third trimester.
+- Acts as a partial barrier (imperfect — alcohol, some drugs, some pathogens can cross).
 
 ## Contraception
 ### How contraceptives prevent pregnancy
 Contraceptives can work by:
-- preventing ovulation
-- blocking sperm from reaching egg
-- reducing sperm survival/movement
-- preventing fertilization
-- preventing implantation or changing uterine/cervical conditions depending method
+- preventing ovulation (hormonal methods)
+- blocking sperm from reaching egg (barrier methods)
+- killing/immobilizing sperm (spermicides)
+- preventing fertilization (multiple mechanisms)
+- creating a hostile environment for implantation (some IUDs, some hormonal effects)
+- permanent prevention (sterilization)
 
 ### Hormonal contraception
 Lecture phrasing: hormonal birth control keeps hormone levels **constant medium-ish** instead of allowing the normal cyclical surge.
 
-Mechanism:
-1. Synthetic estrogen and/or progesterone provides steady feedback.
-2. GnRH/FSH/LH patterns are suppressed or flattened.
-3. No big estrogen/LH surge.
-4. No ovulation.
-5. No egg released, so fertilization cannot occur.
+**Step-by-step mechanism (this is the exam answer):**
+1. Synthetic estrogen and/or progestin provides steady blood hormone levels.
+2. Steady estrogen → **constant negative feedback** on hypothalamus.
+3. GnRH release is suppressed/flattened.
+4. Less GnRH → anterior pituitary releases less FSH and LH.
+5. Without natural follicle growth, no rising estrogen from follicle.
+6. Without high sustained estrogen, **no positive feedback switch**.
+7. Without positive feedback, **no LH surge**.
+8. Without LH surge, **no ovulation**.
+9. No egg released → fertilization cannot occur.
 
-Other common effects:
-- cervical mucus can become thicker
-- endometrium may become less favorable for implantation
+**Secondary effects of progestin:**
+- Thickens cervical mucus → sperm cannot easily pass through cervix.
+- Can thin the endometrium → less favorable for implantation.
+
+**Types of hormonal contraception:**
+- Combined pill (estrogen + progestin) — daily oral
+- Progestin-only pill ("mini-pill") — daily oral
+- Hormonal IUD (releases progestin locally)
+- Implant (progestin, lasts years)
+- Injection (progestin, every 3 months)
+- Patch, ring (combined hormones)
 
 ### Reliability pattern
-- Most reliable pregnancy prevention: long-acting reversible contraceptives such as hormonal implants and IUDs, plus sterilization. These work well because they do not depend on perfect use each time.
-- Most reliable STI prevention among contraceptive methods: barrier methods, especially condoms, because they reduce exchange of body fluids and direct contact.
+| Category | Pregnancy prevention | STI prevention |
+|---|---|---|
+| Long-acting reversible (implants, hormonal IUDs) | Very high (>99%) | None |
+| Sterilization (tubal ligation, vasectomy) | Very high (>99%) | None |
+| Combined pill / progestin-only pill | High with perfect use (~91-99%) | None |
+| Condoms (male/female) | Moderate (~82-98% depending on use) | **Best available** |
+| Copper IUD | Very high (>99%) | None |
+| Spermicide alone | Low (~72-86%) | None |
+| No method | ~85% chance of pregnancy within a year | None |
 
-Exam trap: hormonal contraception can be very effective for pregnancy prevention, but it does **not** reliably prevent STI spread.
+**Exam key points:**
+- Most reliable pregnancy prevention: long-acting reversible contraceptives (implants, IUDs) and sterilization — they don't depend on remembering to take/use something.
+- Most reliable STI prevention: **barrier methods, especially condoms** — they reduce exchange of body fluids and direct skin-to-skin contact.
+- Hormonal contraception does NOT reliably prevent STI spread.
+- No method is 100% effective at both pregnancy and STI prevention simultaneously.
 
 ### Fertile window
-If trying to get pregnant, the best timing is around ovulation and the days before ovulation. Practice key anchor: roughly days 8-15 in a typical 28-day cycle, especially days 13-15 closest to ovulation.
+If trying to get pregnant, the best timing is around ovulation and the days before ovulation.
+- Egg survives ~24 hours after ovulation.
+- Sperm can survive ~3-5 days in the reproductive tract.
+- Fertile window: roughly days 10-15 in a typical 28-day cycle, especially days 12-14.
+- Sex before ovulation can lead to pregnancy because sperm are already waiting when the egg arrives.
 
 ## Differentiation and Pregnancy
 ### Differentiation
@@ -146,19 +193,36 @@ Exam trap: differentiation is NOT caused by cells losing DNA. Nearly all cells k
 - Ends with labor and delivery.
 
 ## Childbirth Positive Feedback
-Positive feedback means the response increases the original stimulus until a clear endpoint occurs.
+Positive feedback means the response **amplifies** the original stimulus until a dramatic endpoint occurs. This is fundamentally different from negative feedback (which stabilizes).
 
-Childbirth loop:
-1. Fetus presses/stretchs cervix.
-2. Stretch signals cause oxytocin release.
-3. Oxytocin stimulates uterine contractions.
-4. Contractions push fetus harder against cervix.
-5. More cervical stretch causes more oxytocin.
-6. Loop continues until fetus is expelled and stretch stimulus ends.
+### The oxytocin-contraction loop (step by step):
+1. Late in pregnancy, the fetus grows large and drops lower in the uterus.
+2. Fetal head presses against the **cervix**, stretching it.
+3. Stretch receptors in the cervix send nerve signals to the **hypothalamus**.
+4. Hypothalamus signals the **posterior pituitary** to release **oxytocin**.
+5. Oxytocin travels through blood to the **myometrium** (uterine smooth muscle).
+6. Myometrium contracts, pushing the fetus harder against the cervix.
+7. More cervical stretch → more nerve signals → more oxytocin → stronger contractions.
+8. Each cycle amplifies the previous one (positive feedback loop).
+9. Contractions become increasingly powerful and frequent.
+10. Loop continues until the fetus is **expelled** (born).
+11. Once the baby is delivered, cervical stretch stops → oxytocin release drops → contractions diminish.
+12. The endpoint (birth) breaks the positive feedback loop.
 
-Key contrast:
-- Negative feedback stabilizes hormone levels.
-- Childbirth positive feedback escalates contractions until birth.
+### Why this is positive feedback and not negative:
+| Feature | Negative feedback | Positive feedback (childbirth) |
+|---|---|---|
+| Direction | Response opposes the stimulus | Response amplifies the stimulus |
+| Goal | Return to set point / stability | Push toward a dramatic endpoint |
+| Duration | Ongoing / continuous regulation | Temporary — ends when endpoint is reached |
+| Example | Testosterone inhibits GnRH | Cervical stretch → oxytocin → more stretch |
+| Outcome | Homeostasis maintained | Birth occurs, then loop stops |
+
+### Exam application:
+- "How does positive feedback differ from negative feedback in this context?" → Negative feedback stabilizes (e.g., testosterone keeping GnRH steady). Positive feedback escalates (contractions get stronger until birth).
+- "What stops the positive feedback?" → Delivery of the baby removes the cervical stretch stimulus.
+- "What hormone drives contractions?" → Oxytocin.
+- "Where is oxytocin released from?" → Posterior pituitary (but hypothalamus produces it).
 
 ## Exam-Style Applications
 - "Where does fertilization occur?" -> fallopian tube/oviduct.

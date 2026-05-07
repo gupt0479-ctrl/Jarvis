@@ -39,19 +39,43 @@ Cancer usually needs **multiple mutations**, not one single mutation.
 | M     | Mitosis and cell division/cytokinesis.                                                 |
 Exam trap: DNA is replicated **once** in S phase, not repeatedly throughout the cycle.
 ## Checkpoints
-Checkpoints prevent damaged cells from moving forward.
+Checkpoints prevent damaged cells from moving forward. Think of them as quality-control gates.
 
-| Checkpoint    | What is checked                                                           | Why it matters                            |
-| ------------- | ------------------------------------------------------------------------- | ----------------------------------------- |
-| G1 checkpoint | Cell size, energy reserves, growth signals, DNA damage before replication | Prevents damaged DNA from being copied.   |
-| G2 checkpoint | DNA replicated correctly, DNA not damaged, energy for division            | Prevents division after bad replication.  |
-| M checkpoint  | Chromosomes attached/aligned correctly                                    | Prevents incorrect chromosome separation. |
+| Checkpoint | Location in cycle | What is checked | What happens if check fails |
+|---|---|---|---|
+| G1 checkpoint (restriction point) | End of G1, before S | Cell size adequate? Growth signals present? DNA undamaged? Nutrients available? | Cell enters G0 (stops dividing) or triggers repair. If damage is irreparable, apoptosis (cell death). |
+| G2 checkpoint | End of G2, before M | DNA replicated completely and correctly? No replication errors? Cell large enough? | Cell pauses for repair. If repair fails, apoptosis. |
+| M checkpoint (spindle checkpoint) | During M, before anaphase | All chromosomes attached to spindle fibers? Chromosomes aligned at metaphase plate? | Cell pauses until attachment is correct. Prevents unequal chromosome distribution. |
+
+### How to use checkpoints on the exam
+**Question pattern:** "A cell has DNA damage. At which checkpoint should it be stopped?"
+- If damage exists BEFORE DNA is copied → **G1 checkpoint** (prevents copying damaged DNA)
+- If damage occurred DURING copying → **G2 checkpoint** (prevents dividing with bad copies)
+- If chromosomes aren't lined up properly → **M checkpoint** (prevents unequal division)
+
+**Question pattern:** "Both daughter cells have the same mutation. When did the error likely occur?"
+- Before S phase (the error was copied during replication) → G1 checkpoint should have caught it.
+
+**Question pattern:** "Only one daughter cell has a mutation. When did the error likely occur?"
+- During S phase (replication error in one copy) → G2 checkpoint should have caught it.
+
 ### p53
-- **p53** is a tumor suppressor gene.
+- **p53** is a tumor suppressor gene (often called "guardian of the genome").
 - It acts mainly at the **G1 checkpoint**.
-- Normal role: detect abnormal/damaged DNA and stop division until repair happens.
-- If damage cannot be repaired, p53 can help trigger cell death.
-Exam wording: p53 does **not** accelerate cell division. It helps stop unsafe division.
+- Normal p53 function:
+  1. Detects DNA damage or abnormal signals.
+  2. Halts the cell cycle at G1 (prevents entry into S phase).
+  3. Activates DNA repair machinery.
+  4. If repair succeeds → cell can proceed.
+  5. If repair fails → p53 triggers **apoptosis** (programmed cell death).
+- Mutated p53:
+  - Cannot detect damage or cannot stop the cycle.
+  - Damaged DNA gets copied in S phase.
+  - Mutations accumulate in daughter cells.
+  - Cancer risk increases dramatically.
+  - p53 is mutated in **over 50% of human cancers** — it's the most commonly mutated gene in cancer.
+
+Exam wording: p53 does **not** accelerate cell division. It helps stop unsafe division. It is a brake, not a gas pedal.
 ## Mitosis vs Meiosis
 | Feature           | Mitosis                                                | Meiosis                                 |
 | ----------------- | ------------------------------------------------------ | --------------------------------------- |

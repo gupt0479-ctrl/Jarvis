@@ -26,11 +26,8 @@ notes:
 next: "[[Theme 4 Practice and Figures]]"
 ---
 # BIOL 1012 Theme 4 Hub
-
 Theme question: **How does a unique individual develop from a single cell?**
-
 Exam-first answer: Theme 4 is about reproduction, hormone control, embryonic development, cell division, and what happens when cell division control fails in cancer.
-
 ## Review Order
 1. [[Sex Characteristics and Endocrine Signaling]]
 2. [[Meiosis and Gametogenesis]]
@@ -42,15 +39,12 @@ Exam-first answer: Theme 4 is about reproduction, hormone control, embryonic dev
 8. [[Theme 4 Practice and Figures]]
 9. [[Theme 4 Prediction Drill Bank]]
 10. [[Theme 4 Lecture and Packet Deep Notes]]
-
 ## Detail Layer
 - [[Theme 4 Lecture and Packet Deep Notes]] keeps source-by-source lecture/packet model details.
 - [[Theme 4 Prediction Drill Bank]] is for active recall and "predict what happens if..." questions.
 - [[Theme 4 Source Coverage Checklist]] audits which provided files are represented where.
-
 ## Source Priority
 Use sources in this order when notes conflict:
-
 1. `D:\Users\_Anant\Downloads\Theme 4 Exam Objectives.pdf`
 2. Lecture transcripts:
    - `D:\Users\_Anant\Downloads\en-4.1 Sex, Gender and Endocrine System.txt`
@@ -63,9 +57,7 @@ Use sources in this order when notes conflict:
 5. `Exam 4 Figures Fall 2024.pdf` and `Exam 4 practice questions Fa20.pdf`
 6. Textbook sections 4.1-4.8 from `Textbook - Human Biology 2nd edition.pdf`
 7. `4 Ethical Pillars Overview.pdf`
-
 Missing source note: no `en-4.4 Pregnancy.txt` transcript was provided, so pregnancy notes are grounded mainly in CP 4.4, slides, textbook 4.5-4.6, exam objectives, and exam figures.
-
 ## Objective Coverage Map
 Use this as the checklist. If a packet question asks for a concept, find the matching objective first.
 

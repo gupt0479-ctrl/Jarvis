@@ -36,12 +36,20 @@ From lecture/course packet 4.6:
 ## Cancer Treatment Comparison
 | Treatment | How it works | Advantages | Limitations / side effects |
 |---|---|---|---|
-| Surgery | Physically removes tumor/cancer tissue. | Can fully remove localized tumor; more targeted than whole-body drug treatment. | May not work if cancer has spread; invasive; can leave cells behind; can damage nearby tissue. |
-| Radiation | Uses targeted radiation to damage DNA and kill cancer cells in a local area. | Useful for localized tumors; can reduce need for major surgery; local rather than whole-body. | Can damage nearby healthy cells; fatigue/low blood count; radiation itself can cause DNA damage. |
-| Chemotherapy | Drugs/toxins kill or inhibit rapidly dividing cells. | Can reach cells that surgery/radiation miss; useful after spread; often combined with other treatments. | Hits healthy rapidly dividing cells too: hair, skin, gut lining, immune cells; nausea, hair loss, infection risk, fatigue; expensive. |
-| Immunotherapy | Uses or modifies immune system to target cancer. Includes engineered T cells, antibodies, checkpoint inhibitors, cytokines, vaccines, or viruses. | Can be specific to cancer markers; can work when other treatments fail; uses immune targeting. | Requires information about the cancer; can be individualized/expensive; immune side effects; not all cancers respond. |
+| **Surgery** | Physically cuts out/removes tumor tissue from the body. Surgeon removes visible tumor plus margin of healthy tissue. | Can completely remove localized tumor; most direct approach; immediate reduction in cancer burden; tissue can be examined for staging. | Only works if cancer is localized and accessible; invasive (anesthesia, recovery); may not get all cells at margins; cannot address metastasis; can damage nearby structures. |
+| **Radiation** | Directs high-energy beams (X-rays, gamma rays, protons) at tumor location. Radiation damages DNA in targeted cells, causing them to die or stop dividing. | Localized treatment; can shrink tumors before surgery or kill remaining cells after surgery; non-invasive compared to surgery; can treat tumors in hard-to-reach locations. | Damages nearby healthy cells in the radiation field; fatigue; skin irritation; can cause secondary cancers (radiation itself is a mutagen); low blood counts; not effective for widespread/metastatic cancer alone. |
+| **Chemotherapy** | Systemic drugs (injected or oral) that kill or inhibit **rapidly dividing cells** throughout the body. Different drugs target different parts of cell division (DNA replication, mitosis, etc.). | Can reach cancer cells anywhere in the body (systemic); useful after surgery to kill remaining cells; can treat metastatic cancer; often combined with other treatments. | Cannot distinguish cancer cells from other rapidly dividing cells → side effects: **hair loss** (hair follicles divide rapidly), **nausea/vomiting** (gut lining cells divide rapidly), **immune suppression** (bone marrow cells divide rapidly), **fatigue**, **bruising/bleeding** (platelet precursors affected); expensive; resistance can develop. |
+| **Immunotherapy** | Uses or enhances the immune system to recognize and attack cancer cells. Includes: engineered T cells (CAR-T), checkpoint inhibitors (release brakes on immune cells), monoclonal antibodies (target cancer surface markers), cancer vaccines, oncolytic viruses, cytokines. | Can be highly specific to cancer markers; can produce lasting immune memory; can work when other treatments fail; may have fewer "collateral damage" side effects than chemo. | Requires knowledge of cancer-specific markers; expensive and specialized; not all cancers respond; can cause autoimmune-like side effects (immune system attacks healthy tissue); can be slow to work; individualized (not one-size-fits-all). |
 
-Exam trap: chemotherapy does not "know" cancer cells by identity. It mainly targets rapidly dividing cells, which is why side effects happen.
+### Why chemotherapy causes specific side effects (exam favorite):
+Chemo targets rapidly dividing cells. Cancer cells divide rapidly, but so do:
+- **Hair follicle cells** → hair loss
+- **Gut/intestinal lining cells** → nausea, vomiting, diarrhea
+- **Bone marrow cells** → low white blood cells (infection risk), low red blood cells (fatigue/anemia), low platelets (bruising/bleeding)
+- **Skin cells** → skin sensitivity, rashes
+- **Reproductive cells** → potential fertility effects
+
+The drug doesn't "know" which rapidly dividing cells are cancer. It hits all of them.
 
 ## PET Scan Logic
 PET scan reasoning:

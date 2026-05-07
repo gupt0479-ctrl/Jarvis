@@ -377,6 +377,29 @@ If implantation happens:
 
 If someone has a 28-day cycle and implantation happens around day 21, their next period would have been expected around day 28. That is about a week after implantation.
 
+### Corpus Luteum → Placenta Transition
+This is a critical timeline the exam can test:
+
+| Weeks of pregnancy | Progesterone source | What's happening |
+|---|---|---|
+| Weeks 1-4 | Corpus luteum (maintained by hCG) | hCG from embryo keeps corpus luteum alive |
+| Weeks 5-10 | Corpus luteum + developing placenta | Placenta begins producing its own progesterone |
+| Weeks 10-12+ | Placenta takes over | Corpus luteum is no longer needed; placenta produces enough progesterone on its own |
+
+Why this matters:
+- If hCG fails early (weeks 1-8), corpus luteum degenerates → progesterone drops → pregnancy loss.
+- After ~week 10-12, even if corpus luteum were removed, the placenta can sustain the pregnancy.
+- hCG levels peak around weeks 8-10, then decline (because placenta takes over progesterone production).
+
+### Placenta Functions
+The placenta is not just a progesterone factory. It also:
+- exchanges oxygen and CO2 between maternal and fetal blood (without mixing blood directly)
+- delivers nutrients (glucose, amino acids) to fetus
+- removes fetal waste products
+- produces hormones: hCG (early), progesterone, estrogen, human placental lactogen
+- provides some immune protection (antibody transfer, especially IgG in third trimester)
+- acts as a barrier (imperfect — some pathogens, drugs, and alcohol can cross)
+
 ### Review Questions from CP 4.4
 If hypothalamus cannot secrete GnRH:
 
@@ -406,15 +429,38 @@ The lecture bridges:
 - cancer as failed cell-cycle control
 
 ### Hormonal Birth Control Mechanism
-Packet/lecture mechanism:
+Packet/lecture mechanism (step by step for exam):
 
-- estrogen/progesterone levels held at medium-ish steady levels
-- estrogen negative feedback -> less GnRH
-- less GnRH -> less FSH/LH
-- no LH surge -> no ovulation
-- progesterone thickens cervical mucus, making sperm passage harder
-- progesterone can make the endometrium less ready for implantation
-- placebo/no-hormone week -> hormone drop -> withdrawal bleeding
+**How hormonal contraception prevents ovulation:**
+1. Synthetic estrogen and/or progestin (synthetic progesterone) are taken daily.
+2. Blood levels of these hormones stay at a **steady medium level** — no natural rise and fall.
+3. Steady estrogen provides **constant negative feedback** on the hypothalamus.
+4. Hypothalamus reduces GnRH release.
+5. Less GnRH → anterior pituitary releases less FSH and LH.
+6. Without the natural estrogen rise from a growing follicle, there is **no high sustained estrogen threshold**.
+7. Without that threshold, **no positive feedback switch** occurs.
+8. Without positive feedback, **no LH surge**.
+9. Without LH surge, **no ovulation**.
+10. No egg released → fertilization cannot occur.
+
+**Additional effects (secondary mechanisms):**
+- Progestin thickens cervical mucus → harder for sperm to pass through cervix.
+- Progestin can make endometrium thinner/less receptive → less favorable for implantation.
+- Some methods suppress follicle development entirely.
+
+**Placebo/sugar pill week:**
+- No hormones taken for ~7 days.
+- Hormone levels drop.
+- Endometrium partially sheds → withdrawal bleeding (not a true period, because no ovulation occurred).
+
+**Why this is different from the natural cycle:**
+- Natural cycle: estrogen rises gradually from growing follicle → eventually hits positive feedback threshold → LH surge → ovulation.
+- Hormonal contraception: steady external hormones prevent the natural rise → threshold never reached → no surge → no ovulation.
+
+**Exam key distinction:**
+- Hormonal contraception is highly effective at preventing pregnancy.
+- Hormonal contraception does NOT prevent STI transmission.
+- Barrier methods (condoms) are needed for STI prevention.
 
 ### Early Embryo Reminder in 4.5
 The lecture notes:
