@@ -50,7 +50,7 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "50_Archive/UMN/UMN Board.md",
+        "pattern": "10_Areas/Degree/UMN/UMN Board.md",
         "patternType": "STRICT"
       },
       {
@@ -71,14 +71,14 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "50_Archive/UMN/Classes/Previous Classes/CSCI 2033/CSCI 2033 Board.md",
+        "pattern": "10_Areas/Degree/UMN/Classes/Previous Classes/CSCI 2033/CSCI 2033 Board.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "50_Archive/UMN/Classes/Previous Classes/CSCI 2021/CSCI 2021 Board.md",
+        "pattern": "10_Areas/Degree/UMN/Classes/Previous Classes/CSCI 2021/CSCI 2021 Board.md",
         "patternType": "STRICT"
       },
       {
@@ -113,56 +113,56 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "50_Archive/UMN/Classes/Previous Classes/CSCI 2011/CSCI 2011 Board.md",
+        "pattern": "10_Areas/Degree/UMN/Classes/Previous Classes/CSCI 2011/CSCI 2011 Board.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "50_Archive/UMN/Classes/CSCI 4041/CSCI 4041 Board.md",
+        "pattern": "10_Areas/Degree/UMN/Classes/CSCI 4041/CSCI 4041 Board.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "50_Archive/UMN/Classes/CSCI 2041/CSCI 2041 Board.md",
+        "pattern": "10_Areas/Degree/UMN/Classes/CSCI 2041/CSCI 2041 Board.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "50_Archive/UMN/Classes/_Homework/Weekly Board.md",
+        "pattern": "10_Areas/Degree/UMN/Classes/_Homework/Weekly Board.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "50_Archive/UMN/Classes/BIOL 1012/BIOL Board.md",
+        "pattern": "10_Areas/Degree/UMN/Classes/BIOL 1012/BIOL Board.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "50_Archive/UMN/Classes/MGMT 3001/MGMT 3001 Board.md",
+        "pattern": "10_Areas/Degree/UMN/Classes/MGMT 3001/MGMT 3001 Board.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "50_Archive/UMN/Classes/MUS 1013/MUS Board.md",
+        "pattern": "10_Areas/Degree/UMN/Classes/MUS 1013/MUS Board.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "50_Archive/UMN/Classes/CSCI 3923/CSCI 3923 Board.md",
+        "pattern": "10_Areas/Degree/UMN/Classes/CSCI 3923/CSCI 3923 Board.md",
         "patternType": "STRICT"
       },
       {
@@ -176,14 +176,14 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "50_Archive/UMN/Classes/CSCI 4041/Concepts/DSA.md",
+        "pattern": "10_Areas/Degree/UMN/Classes/CSCI 4041/Concepts/DSA.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "50_Archive/UMN/Classes/CSCI 2041/Concepts/OCaml.md",
+        "pattern": "10_Areas/Degree/UMN/Classes/CSCI 2041/Concepts/OCaml.md",
         "patternType": "STRICT"
       },
       {
@@ -204,7 +204,7 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "50_Archive/UMN/Classes/Previous Classes/CSCI 2033/Concepts/Python.md",
+        "pattern": "10_Areas/Degree/UMN/Classes/Previous Classes/CSCI 2033/Concepts/Python.md",
         "patternType": "STRICT"
       },
       {
@@ -219,6 +219,13 @@
         "active": true,
         "type": "FILES",
         "pattern": "Random.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "10_Areas/Degree/UMN/Classes/BIOL 1012/Theme 4/Theme 4 Hub.md",
         "patternType": "STRICT"
       }
     ],

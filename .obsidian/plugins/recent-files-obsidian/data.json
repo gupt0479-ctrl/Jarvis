@@ -1,6 +1,26 @@
 {
   "recentFiles": [
     {
+      "basename": "Cell Cycle and Cancer",
+      "path": "10_Areas/Degree/UMN/Classes/BIOL 1012/Theme 4/Cell Cycle and Cancer.md"
+    },
+    {
+      "basename": "Cancer Treatments and Ethics",
+      "path": "10_Areas/Degree/UMN/Classes/BIOL 1012/Theme 4/Cancer Treatments and Ethics.md"
+    },
+    {
+      "basename": "Fertilization Pregnancy and Birth",
+      "path": "10_Areas/Degree/UMN/Classes/BIOL 1012/Theme 4/Fertilization Pregnancy and Birth.md"
+    },
+    {
+      "basename": "Theme 4 Hub",
+      "path": "10_Areas/Degree/UMN/Classes/BIOL 1012/Theme 4/Theme 4 Hub.md"
+    },
+    {
+      "basename": "CSCI 2041 Note Production Plan",
+      "path": "10_Areas/Degree/UMN/Classes/CSCI 2041/CSCI 2041 Note Production Plan.md"
+    },
+    {
       "basename": "Knowledge Enrichment Dashboard",
       "path": "60_Claude/60_Indexes/Knowledge Enrichment Dashboard.md"
     },
@@ -179,26 +199,6 @@
     {
       "basename": "Testing Debugging and Deployment",
       "path": "20_Progress/UROP/Learning/Testing Debugging and Deployment.md"
-    },
-    {
-      "basename": "Systems Lessons for AI ML",
-      "path": "20_Progress/UROP/Learning/Systems Lessons for AI ML.md"
-    },
-    {
-      "basename": "Rust Patterns in BOOM",
-      "path": "20_Progress/UROP/Learning/Rust Patterns in BOOM.md"
-    },
-    {
-      "basename": "Observability and Tracing",
-      "path": "20_Progress/UROP/Learning/Observability and Tracing.md"
-    },
-    {
-      "basename": "MongoDB Data Model and Filters",
-      "path": "20_Progress/UROP/Learning/MongoDB Data Model and Filters.md"
-    },
-    {
-      "basename": "Kafka Redis and Workers",
-      "path": "20_Progress/UROP/Learning/Kafka Redis and Workers.md"
     }
   ],
   "omittedPaths": [],

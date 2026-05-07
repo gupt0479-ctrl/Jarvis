@@ -6,7 +6,7 @@ updated: 2026-04-27
 tags:
   - concept
 notes:
-  - "[[50_Archive/UMN/Classes/CSCI 4041/Concepts/Algorithms/Dynamic Programming]]"
+  - "[[10_Areas/Degree/UMN/Classes/CSCI 4041/Concepts/Algorithms/Dynamic Programming]]"
   - "[[Greedy Algorithms]]"
   - "[[Divide and Conquer]]"
 track:
@@ -25,7 +25,7 @@ next_drill: 2026-05-02
 
 # Dynamic Programming
 
-> Distilled from [[50_Archive/UMN/Classes/CSCI 4041/Concepts/Algorithms/Dynamic Programming|CSCI 4041 — Dynamic Programming]]
+> Distilled from [[10_Areas/Degree/UMN/Classes/CSCI 4041/Concepts/Algorithms/Dynamic Programming|CSCI 4041 — Dynamic Programming]]
 
 ## Deep Dive
 
@@ -59,9 +59,9 @@ Naive Fibonacci computes `F(2)` exponentially many times. Memoized Fibonacci sto
 
 ### Source Anchors
 
-- [[50_Archive/UMN/Classes/CSCI 4041/Concepts/Algorithms/Dynamic Programming]] — full lecture notes with code
+- [[10_Areas/Degree/UMN/Classes/CSCI 4041/Concepts/Algorithms/Dynamic Programming]] — full lecture notes with code
 - [[Chapter - 14]] — CLRS rod cutting, LCS, matrix chain, optimal BST
-- [[50_Archive/UMN/Classes/CSCI 4041/Week - 9]] — lecture coverage
+- [[10_Areas/Degree/UMN/Classes/CSCI 4041/Week - 9]] — lecture coverage
 
 ## Key Recurrences
 

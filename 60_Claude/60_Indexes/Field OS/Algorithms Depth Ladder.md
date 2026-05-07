@@ -18,12 +18,12 @@ Modeled after the [[BOOM Board]]. Seeded from CSCI 4041 (algorithms) and CSCI 20
 
 ## Core Concepts
 
-- [[50_Archive/UMN/Classes/CSCI 4041/Concepts/Algorithms/Dynamic Programming|Dynamic Programming]]
-- [[50_Archive/UMN/Classes/CSCI 4041/Concepts/Graphs/Graph Algorithms|Graph Algorithms]]
+- [[10_Areas/Degree/UMN/Classes/CSCI 4041/Concepts/Algorithms/Dynamic Programming|Dynamic Programming]]
+- [[10_Areas/Degree/UMN/Classes/CSCI 4041/Concepts/Graphs/Graph Algorithms|Graph Algorithms]]
 - [[QuickSort|QuickSort]]
 - [[HeapSort|HeapSort]]
-- [[50_Archive/UMN/Classes/CSCI 4041/Concepts/Trees/AVL Trees|AVL Trees]]
-- [[50_Archive/UMN/Classes/CSCI 4041/Concepts/Data Structures & Methods/Hashing|Hashing]]
+- [[10_Areas/Degree/UMN/Classes/CSCI 4041/Concepts/Trees/AVL Trees|AVL Trees]]
+- [[10_Areas/Degree/UMN/Classes/CSCI 4041/Concepts/Data Structures & Methods/Hashing|Hashing]]
 - [[OCaml - Pattern Matching]]
 - [[Time Complexity]]
 
@@ -39,17 +39,17 @@ Modeled after the [[BOOM Board]]. Seeded from CSCI 4041 (algorithms) and CSCI 20
 ## 30-Minute Refresher
 
 1. [[Time Complexity]]
-2. [[50_Archive/UMN/Classes/CSCI 4041/Concepts/Algorithms/Dynamic Programming|Dynamic Programming]]
-3. [[50_Archive/UMN/Classes/CSCI 4041/Concepts/Graphs/Graph Algorithms|Graph Algorithms]]
+2. [[10_Areas/Degree/UMN/Classes/CSCI 4041/Concepts/Algorithms/Dynamic Programming|Dynamic Programming]]
+3. [[10_Areas/Degree/UMN/Classes/CSCI 4041/Concepts/Graphs/Graph Algorithms|Graph Algorithms]]
 
 ## 2-Hour Technical Refresher
 
 1. [[Time Complexity]]
 2. [[Sorting Algorithms|Sorting Algorithms]]
 3. [[QuickSort|QuickSort]]
-4. [[50_Archive/UMN/Classes/CSCI 4041/Concepts/Algorithms/Dynamic Programming|Dynamic Programming]]
-5. [[50_Archive/UMN/Classes/CSCI 4041/Concepts/Graphs/Graph Algorithms|Graph Algorithms]]
-6. [[50_Archive/UMN/Classes/CSCI 4041/Concepts/Trees/AVL Trees|AVL Trees]]
+4. [[10_Areas/Degree/UMN/Classes/CSCI 4041/Concepts/Algorithms/Dynamic Programming|Dynamic Programming]]
+5. [[10_Areas/Degree/UMN/Classes/CSCI 4041/Concepts/Graphs/Graph Algorithms|Graph Algorithms]]
+6. [[10_Areas/Degree/UMN/Classes/CSCI 4041/Concepts/Trees/AVL Trees|AVL Trees]]
 7. [[OCaml - Pattern Matching]]
 
 ## Deep Relearning Pass

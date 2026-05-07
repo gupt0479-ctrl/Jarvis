@@ -5,11 +5,11 @@ status: sprout
 created: 2025-09-30
 source_url: DIS
 related_progress:
-  - "[[50_Archive/UMN/Classes/Previous Classes/CSCI 2021/Midterm - 1]]"
+  - "[[10_Areas/Degree/UMN/Classes/Previous Classes/CSCI 2021/Midterm - 1]]"
   - "[[C Language]]"
 tags:
   - input
-next: "[[50_Archive/UMN/Classes/Previous Classes/CSCI 2021/Week - 3|Week - 3]]"
+next: "[[10_Areas/Degree/UMN/Classes/Previous Classes/CSCI 2021/Week - 3|Week - 3]]"
 ---
 This example code snippet creates a linked list containing three elements (the list itself is referred to by the `head` variable that points to the first node in the list):
 

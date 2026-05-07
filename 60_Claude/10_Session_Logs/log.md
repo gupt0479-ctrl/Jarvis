@@ -238,3 +238,53 @@ Implemented the `/ops` dispatcher skill and supporting components for daily vaul
 - [x] Dashboard uses Dataview queries only — no unsupported plugins
 
 **Ops skill sections:** dispatcher/menu, health check engine, capability audit, triage queue, report generator, session log, tool layer awareness, safety constraints, cost profiles, usage examples.
+
+## [2026-05-06] setup | CSCI 2041 note-production workflow
+
+Configured Codex for the CSCI 2041 OCaml note project.
+
+**Created:**
+- `D:\Users\_Anant\20_Progress\Classes\CSCI\CSCI 2041\AGENTS.md`
+- [[CSCI 2041 Note Production Plan]]
+
+**Updated:**
+- [[CSCI 2041 Board]]
+
+**Direction:** use the CSCI 2041 source corpus of transcripts, professor notes, labs, projects, and Hickey textbook material to build source-grounded weekly, concept, lab, project, and review notes. Start with Week 6 onward while cleaning Week 1-5 rather than replacing them.
+
+## [2026-05-06] build | BIOL 1012 Theme 4 exam-first notes
+
+Created a linked Theme 4 study set for BIOL 1012 with the exam objectives as the coverage spine and lecture files as the main explanatory source.
+
+**Created:**
+- [[Theme 4 Hub]]
+- [[Sex Characteristics and Endocrine Signaling]]
+- [[Meiosis and Gametogenesis]]
+- [[Hormones of Spermatogenesis]]
+- [[Uterine and Ovarian Cycles]]
+- [[Fertilization Pregnancy and Birth]]
+- [[Cell Cycle and Cancer]]
+- [[Cancer Treatments and Ethics]]
+- [[Theme 4 Practice and Figures]]
+
+**Updated:**
+- [[BIOL Board]] now links the Theme 4 note set and uses the live BIOL course path in its class/concept dataview queries.
+
+**Source emphasis:** Theme 4 exam objectives, lecture transcripts/PDFs/slides, exam figures, and practice questions. No 4.4 pregnancy transcript was available, so that note is grounded in CP 4.4, slides, textbook, objectives, and figures.
+
+## [2026-05-06] enrich | BIOL 1012 Theme 4 source-depth pass
+
+Expanded the Theme 4 study set beyond objective-level notes into a fuller source-grounded layer.
+
+**Created:**
+- [[Theme 4 Lecture and Packet Deep Notes]]
+- [[Theme 4 Prediction Drill Bank]]
+- [[Theme 4 Source Coverage Checklist]]
+
+**Updated:**
+- [[Theme 4 Hub]] now links the detail layer and source audit.
+- [[BIOL Board]] now links the new Theme 4 support notes.
+- [[Hormones of Spermatogenesis]] now includes the glucagon endocrine model, testosterone supplement trap, and inhibin backup detail.
+- [[Meiosis and Gametogenesis]] now includes spermatogenesis/oogenesis sequence detail and additional flashcards.
+
+**Direction:** the concept notes remain the fast exam layer; the deep notes preserve lecture/course-packet flow for solving packets later.
