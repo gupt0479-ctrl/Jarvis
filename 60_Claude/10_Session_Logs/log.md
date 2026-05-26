@@ -302,3 +302,149 @@ Reviewed all 12 Theme 4 files created/enriched by Codex. Identified and fixed cr
 - Lecture and Packet Deep Notes: expanded hormonal birth control to 10-step mechanism; added corpus luteum → placenta transition; added placenta functions
 
 **Status:** Notes are now deep enough to serve as standalone exam prep for Theme 4.
+
+## [2026-05-07] build | Habit Kanban boards
+
+Created a lightweight Obsidian Kanban habit area under `10_Areas/Life/habits`.
+
+**Created:**
+- [[Habit Tracker Board]]
+- [[Habit Scorecard Board]]
+- [[Habit Experiments Board]]
+
+**Direction:** use the Kanban plugin boards for habit placeholders, scorecard categories, and small habit experiments. No generated daily notes or Dataview habit database.
+
+## [2026-05-08] source map | CSCI 2041 notes
+
+Updated [[CSCI 2041 Note Production Plan]] as a source map only. Mapped lecture transcripts, professor note folders, labs, projects, practice files, and Hickey textbook sections to likely weeks from [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 6]] through final review. Did not modify [[10_Areas/UMN/Classes/Previous Classes/Lib Ed/MUS 1013/Week - 1]] through [[10_Areas/UMN/Classes/Previous Classes/Lib Ed/BIOL 1012/Week - 5]].
+
+**Direction:** start note production at [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 6]] using the plan's source rows, and verify the marked transcript/date uncertainties before drafting.
+
+## [2026-05-08] rewrite | CSCI 2041 production contract
+
+Rewrote [[CSCI 2041 Note Production Plan]] into a stricter note-production contract. Added source-of-truth rules that limit factual claims to the local CSCI 2041 source folder, a very detailed content standard, concept-note primacy, exact source coverage requirements, a professor-note page ledger, week-by-week production details from [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 6]] through final review, and stronger lab/project/concept backlink rules.
+
+**Direction:** future CSCI 2041 note creation should treat concept notes as the durable source-of-truth layer and read every listed source file/page before drafting.
+
+## [2026-05-08] build | CSCI 2041 Week 6-15 archive notes
+
+Created weekly notes [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 6]] through [[Week - 15]] under `50_Archive/UMN/Classes/CSCI 2041`, plus [[CSCI 2041 Board]] in that archive folder. Notes synthesize the source-map transcripts, professor note folders, labs/projects/practice files, and Hickey textbook anchors. [[10_Areas/UMN/Classes/Previous Classes/Lib Ed/MUS 1013/Week - 1]] through [[10_Areas/UMN/Classes/Previous Classes/Lib Ed/BIOL 1012/Week - 5]] were not edited.
+
+**Direction:** next pass should create the linked concept/lab/project notes, then strengthen backlinks from weekly notes to concrete concept headings.
+
+## [2026-05-08] build | CSCI 2041 Week 6+ concept notes
+
+Created 24 source-grounded concept notes under `50_Archive/UMN/Classes/CSCI 2041/Concepts` for the Week 6 onward material: streams, laziness, memoization, mutation, modules, ADTs, higher-order functions, recursion patterns, Project 1 expression solving, Lisp representation, scanner/parser/printer/evaluator architecture, environments/closures, primitives/special forms, REPL integration, continuations, if-normalized tautology checking, macros, association lists, and error boundaries.
+
+**Updated:** [[CSCI 2041 Board]] now links the concept layer. [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 6]] through [[Week - 15]] now point at the actual concept note names for the created OCaml concepts. [[10_Areas/UMN/Classes/Previous Classes/Lib Ed/MUS 1013/Week - 1]] through [[10_Areas/UMN/Classes/Previous Classes/Lib Ed/BIOL 1012/Week - 5]] were not edited.
+
+**Direction:** create lab and project notes next, then add more precise backlinks from concepts into lab/project notes once those files exist.
+
+## [2026-05-08] build | CSCI 2041 final review map
+
+Created [[Final Review Map]] under `50_Archive/UMN/Classes/CSCI 2041` from the final exam topic list and the existing Week 6 onward weekly/concept notes. The map organizes review by concrete exam abilities, week path, lab/project skills, concepts to drill, code patterns to reproduce, common mistakes, practice questions, and flashcards.
+
+**Updated:** [[CSCI 2041 Board]] now links the final review map.
+
+## [2026-05-08] build | CSCI 2041 project notes in live Degree path
+
+Created [[Project - 1 Equation Solver|Project - 1 Equation Solver]] and [[Project - 2 Lisp Parser|Project - 2 Lisp Parser]] under `10_Areas/Degree/UMN/Classes/CSCI 2041/Projects`. The notes are grounded in the requested project source/test files and link back to the existing Week 7, Week 10-12, Week 15, final review, and concept notes.
+
+**Updated:** [[CSCI 2041 Board]] now has a Projects section, and [[Final Review Map]] now links to the project notes through the `Projects/` folder path. The `50_Archive` CSCI 2041 folder was not modified in this pass.
+
+## [2026-05-08] update | CSCI 2041 weekly lab anchors in live Degree path
+
+Added lightweight lab sections for Lab 1 through Lab 12 in the live `10_Areas/Degree/UMN/Classes/CSCI 2041` weekly notes. Each section names the source lab file, matching test file when present, the tested concepts, and one final-exam check. Lab 12 explicitly notes that no `Labs/tests12.ml` file was found in the source corpus.
+
+**Updated:** [[CSCI 2041 Board]] now has a Labs index mapping each lab to its weekly note. The old `50_Archive` CSCI 2041 folder and standalone project notes were not modified.
+
+## [2026-05-11] update | CSCI 2041 Week 1-5 final polish
+
+Improved [[10_Areas/UMN/Classes/Previous Classes/Lib Ed/MUS 1013/Week - 1]] through [[10_Areas/UMN/Classes/Previous Classes/Lib Ed/BIOL 1012/Week - 5]] in the live `10_Areas/Degree/UMN/Classes/CSCI 2041` folder. Filled empty or placeholder weekly sections with concrete skills, textbook anchors, concept links, representative examples, takeaways, and flashcards. Kept the existing lecture bodies intact and strengthened lab connections for Lab 1 through Lab 4. Also updated [[CSCI 2041 Board]] so the Weekly Notes index includes Week 1 through Week 15.
+
+**Audit notes:** remaining cleanup targets are concept-level: [[OCaml - Polymorphism]] and [[OCaml - Tautology Problems]] are still template shells; [[OCaml]] contains leftover MOC/template bullets; several concept notes still link to non-existent standalone lab notes like `[[Lab - 8 Association Module]]` even though labs currently live as weekly anchors.
+
+## [2026-05-11] update | CSCI 2041 Week 5 lecture spine
+
+Reworked the [[10_Areas/UMN/Classes/Previous Classes/Lib Ed/BIOL 1012/Week - 5]] lecture section without deleting the existing lecture notes. Added a lecture map, source/concept anchors, a cleaned code spine for reduce, CPS, tautology checking, and Lab 4 permutations, plus a short "what to retain" guide before the detailed Feb 16/18/20 notes.
+
+**Direction:** next refinement pass should consolidate the concept layer into a smaller canonical set, keeping source-grounded material from the existing concept notes while replacing standalone lab-note links with weekly lab anchors.
+
+## [2026-05-12] update | CSCI 2041 weekly lecture source spines
+
+Enhanced the live `10_Areas/Degree/UMN/Classes/CSCI 2041` weekly notes with explicit source-grounded lecture maps. Added new lecture-map sections to [[10_Areas/UMN/Classes/Previous Classes/Lib Ed/MUS 1013/Week - 1]] through [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 4]] and [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 6]] through [[Week - 15]], preserving the existing lecture bodies; [[10_Areas/UMN/Classes/Previous Classes/Lib Ed/BIOL 1012/Week - 5]] already had the fuller lecture spine from the prior pass. The maps connect transcript numbers/dates, professor-note folders, labs/projects/practice files, and the core mechanism for each week. Also expanded the dated lecture headings in [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 6]] through [[Week - 15]] with professor-transcript details about announcements, source-file mechanics, control-flow invariants, and final-exam distinctions.
+
+**Verification:** all weekly notes now show `updated: 2026-05-12` and each has a `### Week N lecture map` heading in the `## Lecture` section. No writes were made to the old `50_Archive` CSCI 2041 path.
+
+## [2026-05-12] build | CSCI 2041 final exam practice solutions
+
+Created [[Final Exam Practice Solutions]] in the live `10_Areas/Degree/UMN/Classes/CSCI 2041` folder. The note gives professor-style final exam answers for the five practice prompts without restating the questions: evaluator primitive `max`, polymorphic binary tree/mirror, lexical-scope closure behavior, `notany`, and tail-recursive binary search.
+
+**Sources used:** Labs 10-12, especially the evaluator primitive style in `lab11.ml`/`lab12.ml`, plus existing Jarvis concept notes on Lisp evaluation, interpreter primitives, closures, ADTs, pattern matching, and tail recursion.
+
+## [2026-05-15] build | AI agent Obsidian operating docs
+
+Created the first documentation set under `60_Claude/7_AI_Information` for future AI agents working in Jarvis.
+
+**Created:**
+- [[Plugins]]
+- [[Jarvis Writing and Formatting]]
+- [[Agent Operating Guide]]
+
+**Direction:** these notes make the `.obsidian` plugin setup, writing rules, and agent workflow explicit without redesigning the vault. The existing empty typo-like folder `60_Claude/7_Al_Information` was left untouched.
+
+## [2026-05-15] build | Stable Obsidian plugin reference layer
+
+Created the stable plugin reference layer under `40_Resources/Obsidian/Plugins` to complement the agent-facing docs in `60_Claude/7_AI_Information`.
+
+**Created:**
+- [[40_Resources/Obsidian/Plugins/00 Plugin Reference Index]]
+- [[40_Resources/Obsidian/Plugins/Plugin Inventory and Configuration Map]]
+- [[40_Resources/Obsidian/Plugins/Dataview and Dashboards]]
+- [[40_Resources/Obsidian/Plugins/Tasks Kanban and Project Tracking]]
+- [[40_Resources/Obsidian/Plugins/Templates Capture and Periodic Notes]]
+- [[40_Resources/Obsidian/Plugins/Spaced Repetition and Learning Loops]]
+- [[40_Resources/Obsidian/Plugins/Visual Thinking with Canvas and Excalidraw]]
+- [[40_Resources/Obsidian/Plugins/Search Linking and Navigation]]
+- [[40_Resources/Obsidian/Plugins/AI Automation and Local Interfaces]]
+- [[40_Resources/Obsidian/Plugins/Git Recovery and Vault Safety]]
+- [[40_Resources/Obsidian/Plugins/Appearance Code Math and Reading Experience]]
+- [[40_Resources/Obsidian/Plugins/Plugin Gaps Recommendations and Verification]]
+
+**Updated:**
+- [[60_Claude/7_AI_Information/Plugins]]
+- [[60_Claude/7_AI_Information/Jarvis Writing and Formatting]]
+- [[60_Claude/7_AI_Information/Agent Operating Guide]]
+
+**Direction:** `60_Claude/7_AI_Information` remains the operating layer for agents. `40_Resources/Obsidian/Plugins` is now the durable reference layer for plugin settings, workflows, safety, gaps, and verification notes. `.obsidian`, raw clippings, archive notes, and `60_Claude/7_Al_Information` were not edited.
+
+## [2026-05-15] update | Deep Obsidian plugin reference pass
+
+Expanded the 12 stable plugin reference notes under `40_Resources/Obsidian/Plugins` with richer Jarvis-specific operating rules, source sections, current local settings, workflow examples, safety boundaries, and `needs verification` decisions. Kept `60_Claude/7_AI_Information` as the short agent operating layer and did not edit `.obsidian`, plugin data, raw clippings, archive notes, or `60_Claude/7_Al_Information`.
+
+## [2026-05-26] setup | Claude Pro workflow spine
+
+Implemented the Claude Pro + Jarvis workflow setup for a strict-budget summer AI workflow.
+
+**Created:**
+- [[40_Resources/Obsidian/Claude Pro Workflow]]
+- `30_Order/System/claude-workflow/README.md`
+- `30_Order/System/claude-workflow/hooks/jarvis-session-continuity.ps1`
+- `30_Order/System/claude-workflow/claude_desktop_config.read-first.example.json`
+- `.mcp.json`
+
+**Updated:**
+- [[00_Dashboard]]
+- [[CLAUDE.md]]
+- [[AI_CONTEXT]]
+- local Claude Code project settings to remove provider/token/model overrides and Obsidian delete auto-approval
+- global Claude Code settings with lightweight `SessionStart` and `SessionEnd` hooks
+- Claude Desktop standard Roaming config with a single `obsidian-jarvis` MCP server
+
+**Verification:**
+- `claude --version` returns Claude Code 2.1.128.
+- JSON parsing passed for Claude Code project MCP/settings, global Claude settings, Desktop config, and the Desktop example config.
+- Simulated `SessionStart` hook returned valid JSON with additional Jarvis context.
+- Escalated `claude mcp list` health check connected to `obsidian`, `context7`, `playwright`, and `openaiDeveloperDocs`.
+
+**Next:** In Claude Code, run `/status` interactively after logging into Claude Pro and confirm it uses Claude.ai subscription auth rather than API/provider overrides.

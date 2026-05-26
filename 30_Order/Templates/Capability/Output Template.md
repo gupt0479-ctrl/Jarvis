@@ -10,7 +10,6 @@ output_kind:
 source_concepts: []
 notes: []
 ---
-
 # <% tp.file.title %>
 
 ## Goal

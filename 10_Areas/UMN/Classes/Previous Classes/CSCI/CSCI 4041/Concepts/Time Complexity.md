@@ -1,0 +1,237 @@
+---
+type: concept
+course: CSCI 4041
+status: sprout
+mastery (1/10): 0
+track:
+  - algorithms
+difficulty: 2
+mastery_level: novice
+prerequisites:
+  - "[[Introduction to Algorithms]]"
+used_in: []
+evidence: []
+last_drilled:
+next_drill:
+drill_interval: 14
+created: 2026-02-01
+updated: 2026-04-24
+enrichment_status: enriched
+enrichment_level: standard
+source_status: vault-grounded
+topics:
+  - "[[CSCI 4041 Board]]"
+  - "[[Introduction to Algorithms]]"
+related:
+  - "[[DSA]]"
+---
+# Time Complexity Boxes
+
+## One-Line Answer
+- Time complexity describes how an algorithm's work grows as input size grows.
+
+## 30-Second Explanation
+- Time complexity is not about the exact seconds your laptop takes today. It is about the growth pattern of the algorithm as `n` gets bigger.
+- That is why two algorithms can both be "fast" on small inputs but behave very differently at scale.
+
+## Teach It To A Beginner
+- Imagine doubling the number of items you need to process.
+- If the work also roughly doubles, the algorithm is linear.
+- If the work becomes four times larger, it is closer to quadratic.
+- Time complexity is the language we use to compare those growth patterns without getting distracted by hardware details.
+
+## MOC
+- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 1 & 2#Key ideas (textbook)|Week - 1 & 2]]
+- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 1 & 2#2.2 Analyzing Algorithms|Chapter - 1 & 2 - Analyzing Algorithms]]
+- [[Sorting Algorithms#Complexity + Tradeoffs|Sorting Algorithms - Complexity + Tradeoffs]]
+- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Graphs/Graph Algorithms#Complexity + Tradeoffs|Graph Algorithms - Complexity + Tradeoffs]]
+
+## Definition
+- **Time complexity** measures how the amount of work grows as the input size grows.
+- **Space complexity** measures how extra memory usage grows.
+- In this course, asymptotic notation is used to describe eventual growth rather than exact timing on one machine.
+
+## Contrast With
+- **Runtime measurement** asks how long a program took on one machine, one implementation, one input.
+- **Time complexity** asks how the work grows as input size grows, ignoring machine-specific constants.
+- **Space complexity** tracks extra memory growth, which may differ from time growth.
+
+## Foundation Box
+### Asymptotic Notation
+> [!summary]
+> - **O(g(n))**: eventual upper bound
+> - **Ω(g(n))**: eventual lower bound
+> - **Θ(g(n))**: tight bound up to constant factors
+
+## [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 1 & 2#Getting Started|Chapter - 1 & 2]]
+### Linear Search
+> [!summary] Linear Search
+> - Best case: $Θ(1)$
+> - Worst / average: $Θ(n)$
+> - Extra space: $O(1)$
+
+### Insertion Sort
+> [!summary] Insertion Sort
+> - Best case: $Θ(n)$
+> - Worst / average: $Θ(n^2)$
+> - Extra space: $O(1)$ for the in-place version
+
+### Merge Sort
+> [!summary] Merge Sort
+> - Recurrence: $T(n)=2T(n/2)+Θ(n)$
+> - All cases: $Θ(n \log n)$
+> - Extra space: $Θ(n)$ in the lecture's list-based implementations
+
+## [[QuickSort#Complexity + Tradeoffs|QuickSort]]
+### QuickSort
+> [!summary] QuickSort
+> - Best / average: $Θ(n \log n)$
+> - Worst: $Θ(n^2)$
+> - Extra space: recursion stack, typically $O(\log n)$ on average
+
+## [[HeapSort#Complexity + Tradeoffs|HeapSort]]
+### Heap Operations
+> [!summary] Heap Basics
+> - `MAX-HEAPIFY`: $O(\log n)$
+> - `BUILD-MAX-HEAP`: $O(n)$
+> - `HEAPSORT`: $O(n \log n)$
+> - Extra space: $O(1)$ auxiliary
+
+## [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Data Structures & Methods/Hashing#Complexity + Tradeoffs|Hashing]]
+### Hash Tables
+> [!summary] Hashing
+> - Chaining average search: $Θ(1 + α)$
+> - Open addressing average search: near constant when $α$ is small
+> - Worst case: $Θ(n)$
+
+## [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Algorithms/Dynamic Programming#Complexity + Tradeoffs|Dynamic Programming]]
+### Dynamic Programming
+> [!summary] Common DP Patterns
+> - Fibonacci memoized: $Θ(n)$
+> - Fibonacci bottom-up: $Θ(n)$
+> - Knapsack: $O(NM)$
+> - LCS: $Θ(mn)$
+
+## [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Graphs/Graph Algorithms#Complexity + Tradeoffs|Graph Algorithms]]
+### Graph Traversals
+> [!summary] BFS / DFS
+> - BFS: $O(V + E)$
+> - DFS: $O(V + E)$
+> - Topological sort: $O(V + E)$
+> - SCC (Kosaraju-style two-pass): $O(V + E)$
+
+## [[Minimum Spanning Trees#Complexity + Tradeoffs|Minimum Spanning Trees]]
+### MST
+> [!summary] MST
+> - Kruskal: dominated by edge sorting, usually $O(E \log E)$
+> - Prim with heap: $O(E \log V)$
+
+## Mini-test (answer without looking)
+- [ ] Can I explain why `BUILD-MAX-HEAP` is linear?
+- [ ] Can I distinguish average-case hash performance from worst-case?
+- [ ] Can I identify when a recurrence should solve to linear, logarithmic, or $n \log n$ growth?
+
+## Diagnostic Questions
+- If two algorithms have the same Big-O but different constants, when does asymptotic analysis help and when does it hide something important?
+- Why is `O(n log n)` qualitatively different from `O(n^2)` as `n` grows?
+- Why can an algorithm have good average-case complexity but bad worst-case complexity?
+
+## Understanding Proof
+- I can compare linear search, merge sort, and hashing without looking at notes.
+- I can explain why asymptotic analysis ignores constants but still matters in system design and interview settings.
+- I can use complexity to justify an algorithm choice, not just recite symbols.
+
+## Jarvis Enrichment
+
+### Precise Definition
+
+Time complexity is a function-level claim about how an algorithm's number of primitive operations grows with input size. It abstracts away the exact machine, language, and clock time so you can compare algorithms by growth rate.
+
+The important phrase is **growth rate**. Time complexity is not "how fast this code felt when I ran it once." It is a way to predict what happens when the input gets large.
+
+### Mechanism
+
+To analyze an algorithm:
+
+1. choose the input-size variable, usually `n`, `V`, `E`, `m`, or `capacity`
+2. identify the repeated work
+3. count how often that work runs as the input grows
+4. discard constant factors and lower-order terms
+5. express the result with asymptotic notation
+
+Example:
+
+```text
+for i in range(n):
+    for j in range(n):
+        do_constant_work()
+```
+
+The inner work runs `n * n` times, so the time complexity is `Theta(n^2)`.
+
+### Why It Matters
+
+Time complexity gives you a scale instinct. It tells you when a solution that works on a homework sample will collapse on real input.
+
+In Jarvis, this connects directly to:
+
+- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Algorithms/Dynamic Programming|Dynamic Programming]] because DP often trades exponential recursion for polynomial tables
+- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Graphs/Graph Algorithms|Graph Algorithms]] because `O(V + E)` means graph size includes both vertices and edges
+- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Data Structures & Methods/Hashing|Hashing]] because average-case and worst-case complexity can differ sharply
+- [[Sorting Algorithms|Sorting Algorithms]] because `n log n` and `n^2` feel similar on tiny inputs but diverge fast
+
+### Concrete Example From This Vault
+
+The cleanest contrast is naive Fibonacci versus memoized Fibonacci in [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Algorithms/Dynamic Programming|Dynamic Programming]].
+
+- naive recursion repeatedly recomputes the same subproblems, producing exponential growth
+- memoization stores each subproblem once, producing linear growth
+
+The algorithm is solving the same mathematical recurrence, but the implementation changes the amount of repeated work.
+
+### Failure Modes / Misconceptions
+
+- Big-O is not always a tight bound. Saying `O(n^2)` for a linear algorithm is technically an upper bound but not useful.
+- Constants can matter in real systems even when asymptotic notation hides them.
+- Average-case complexity is not the same as worst-case complexity.
+- `O(1)` does not mean instant. It means the work does not grow with input size.
+- Pseudo-polynomial time, like some knapsack DP, can still be too large if the numeric capacity is huge.
+
+### Diagnostic Questions
+
+- What is the input-size variable in this problem?
+- Is the repeated work nested, recursive, or driven by graph edges?
+- Am I claiming an upper bound, lower bound, or tight bound?
+- Does the algorithm's average case hide a bad worst case?
+
+### Source Anchors
+
+- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Algorithms/Dynamic Programming|Dynamic Programming]] - repeated subproblems and DP table complexity.
+- [[Sorting Algorithms|Sorting Algorithms]] - `n log n` versus `n^2` sorting behavior.
+- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Graphs/Graph Algorithms|Graph Algorithms]] - `O(V + E)` traversal pattern.
+- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Data Structures & Methods/Hashing|Hashing]] - average-case constant time versus worst-case linear time.
+
+### Drill Cards
+
+#cards/CSCI4041
+
+- Time complexity::How algorithm work grows as input size grows.
+- Tight bound::A bound that captures growth from both above and below up to constant factors.
+- `O(1)`::Work does not grow with input size, not "zero time."
+- `O(V + E)`::Graph traversal complexity that accounts for vertices and edges.
+
+### Understanding Proof
+
+- I can identify the input-size variable before counting loops.
+- I can explain why memoization changes Fibonacci from exponential to linear.
+- I can distinguish Big-O as an upper bound from Theta as a tight bound.
+
+## Flashcards
+#cards/CSCI4041
+1. What does Θ mean::A tight asymptotic bound up to constant factors.
+2. Merge-sort time::$Θ(n \log n)$.
+3. Quicksort worst case::$Θ(n^2)$.
+4. Build-max-heap time::$O(n)$.
+5. BFS / DFS time::$O(V + E)$.
+6. Knapsack DP time::$O(NM)$.
+7. Hashing worst-case search::$Θ(n)$ even though average behavior is much better.

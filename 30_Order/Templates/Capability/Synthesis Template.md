@@ -10,7 +10,6 @@ notes: []
 concepts: []
 tracks: []
 ---
-
 # <% tp.file.title %>
 
 ## The Connection

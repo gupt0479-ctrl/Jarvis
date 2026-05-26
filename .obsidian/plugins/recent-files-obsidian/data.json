@@ -1,24 +1,196 @@
 {
   "recentFiles": [
     {
-      "basename": "Cell Cycle and Cancer",
-      "path": "10_Areas/Degree/UMN/Classes/BIOL 1012/Theme 4/Cell Cycle and Cancer.md"
+      "basename": "AGENTS",
+      "path": "AGENTS.md"
     },
     {
-      "basename": "Cancer Treatments and Ethics",
-      "path": "10_Areas/Degree/UMN/Classes/BIOL 1012/Theme 4/Cancer Treatments and Ethics.md"
+      "basename": "CLAUDE",
+      "path": "CLAUDE.md"
     },
     {
-      "basename": "Fertilization Pregnancy and Birth",
-      "path": "10_Areas/Degree/UMN/Classes/BIOL 1012/Theme 4/Fertilization Pregnancy and Birth.md"
+      "basename": "Weekly Synthesis Template",
+      "path": "30_Order/Templates/Capability/Weekly Synthesis Template.md"
     },
     {
-      "basename": "Theme 4 Hub",
-      "path": "10_Areas/Degree/UMN/Classes/BIOL 1012/Theme 4/Theme 4 Hub.md"
+      "basename": "Synthesis Template",
+      "path": "30_Order/Templates/Capability/Synthesis Template.md"
+    },
+    {
+      "basename": "Question Bank Template",
+      "path": "30_Order/Templates/Capability/Question Bank Template.md"
+    },
+    {
+      "basename": "Output Template",
+      "path": "30_Order/Templates/Capability/Output Template.md"
+    },
+    {
+      "basename": "Jarvis Enrichment Template",
+      "path": "30_Order/Templates/Capability/Jarvis Enrichment Template.md"
+    },
+    {
+      "basename": "Field OS Template",
+      "path": "30_Order/Templates/Capability/Field OS Template.md"
+    },
+    {
+      "basename": "Depth Ladder Template",
+      "path": "30_Order/Templates/Capability/Depth Ladder Template.md"
+    },
+    {
+      "basename": "Deep Dive Template",
+      "path": "30_Order/Templates/Capability/Deep Dive Template.md"
+    },
+    {
+      "basename": "Clipping Distill Template",
+      "path": "30_Order/Templates/Capability/Clipping Distill Template.md"
+    },
+    {
+      "basename": "Hackathons",
+      "path": "10_Areas/Career/Internships/Hackathons.md"
+    },
+    {
+      "basename": "log",
+      "path": "60_Claude/10_Session_Logs/log.md"
+    },
+    {
+      "basename": "00_Dashboard",
+      "path": "00_Dashboard.md"
+    },
+    {
+      "basename": "Identities",
+      "path": "10_Areas/Life/Truths of Life/Identities.md"
+    },
+    {
+      "basename": "Personality",
+      "path": "10_Areas/Life/Truths of Life/Personality.md"
+    },
+    {
+      "basename": "Final Review Map",
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Final Review Map.md"
     },
     {
       "basename": "CSCI 2041 Note Production Plan",
-      "path": "10_Areas/Degree/UMN/Classes/CSCI 2041/CSCI 2041 Note Production Plan.md"
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/CSCI 2041 Note Production Plan.md"
+    },
+    {
+      "basename": "Final Exam Practice Solutions",
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Final Exam Practice Solutions.md"
+    },
+    {
+      "basename": "Week - 13",
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 13.md"
+    },
+    {
+      "basename": "Week - 14",
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 14.md"
+    },
+    {
+      "basename": "Week - 15",
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 15.md"
+    },
+    {
+      "basename": "Week - 12",
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 12.md"
+    },
+    {
+      "basename": "Week - 10",
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 10.md"
+    },
+    {
+      "basename": "Week - 1",
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 1.md"
+    },
+    {
+      "basename": "OCaml - Higher-Order Functions",
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Concepts/OCaml - Higher-Order Functions.md"
+    },
+    {
+      "basename": "Week - 5",
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 5.md"
+    },
+    {
+      "basename": "Week - 7",
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 7.md"
+    },
+    {
+      "basename": "Week - 6",
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 6.md"
+    },
+    {
+      "basename": "Week - 4",
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 4.md"
+    },
+    {
+      "basename": "Week - 3",
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 3.md"
+    },
+    {
+      "basename": "Week - 2",
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 2.md"
+    },
+    {
+      "basename": "Midterm",
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Midterm.md"
+    },
+    {
+      "basename": "OCaml - Expression Trees and Equation Solving",
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Concepts/OCaml - Expression Trees and Equation Solving.md"
+    },
+    {
+      "basename": "OCaml - Exceptions and Error Boundaries",
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Concepts/OCaml - Exceptions and Error Boundaries.md"
+    },
+    {
+      "basename": "OCaml - Environments and Closures",
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Concepts/OCaml - Environments and Closures.md"
+    },
+    {
+      "basename": "OCaml - Continuation Passing",
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Concepts/OCaml - Continuation Passing.md"
+    },
+    {
+      "basename": "OCaml - BST Problems",
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Concepts/OCaml - BST Problems.md"
+    },
+    {
+      "basename": "OCaml - Basics",
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Concepts/OCaml - Basics.md"
+    },
+    {
+      "basename": "OCaml - Association Lists",
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Concepts/OCaml - Association Lists.md"
+    },
+    {
+      "basename": "OCaml - Algebraic Data Types and Structural Recursion",
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Concepts/OCaml - Algebraic Data Types and Structural Recursion.md"
+    },
+    {
+      "basename": "Project - 1 Equation Solver",
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Projects/Project - 1 Equation Solver.md"
+    },
+    {
+      "basename": "Project - 2 Lisp Parser",
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Projects/Project - 2 Lisp Parser.md"
+    },
+    {
+      "basename": "OCaml",
+      "path": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Concepts/OCaml.md"
+    },
+    {
+      "basename": "Daily Habit Board",
+      "path": "10_Areas/Life/Habits/Daily Habit Board.md"
+    },
+    {
+      "basename": "Habit Tracker Board",
+      "path": "10_Areas/Life/Habits/Habit Tracker Board.md"
+    },
+    {
+      "basename": "Habit Scorecard Board",
+      "path": "10_Areas/Life/Habits/Habit Scorecard Board.md"
+    },
+    {
+      "basename": "Habit Experiments Board",
+      "path": "10_Areas/Life/Habits/Habit Experiments Board.md"
     },
     {
       "basename": "Knowledge Enrichment Dashboard",
@@ -27,178 +199,6 @@
     {
       "basename": "Jarvis Enrichment Engine",
       "path": "40_Resources/Obsidian/Jarvis Enrichment Engine.md"
-    },
-    {
-      "basename": "Vault Operating System",
-      "path": "40_Resources/Obsidian/Vault Operating System.md"
-    },
-    {
-      "basename": "AI_CONTEXT",
-      "path": "AI_CONTEXT.md"
-    },
-    {
-      "basename": "Question Triage",
-      "path": "60_Claude/60_Indexes/Bases/Question Triage.base"
-    },
-    {
-      "basename": "README",
-      "path": "30_Order/System/jarvis-cli/README.md"
-    },
-    {
-      "basename": "00_Dashboard",
-      "path": "00_Dashboard.md"
-    },
-    {
-      "basename": "Bank Accounts",
-      "path": "10_Areas/Career/Finance/Bank Accounts.md"
-    },
-    {
-      "basename": "Track Definitions",
-      "path": "40_Resources/Capability/Track Definitions.md"
-    },
-    {
-      "basename": "Trading Question Bank",
-      "path": "60_Claude/60_Indexes/Field OS/Trading Question Bank.md"
-    },
-    {
-      "basename": "Trading Field OS",
-      "path": "60_Claude/60_Indexes/Field OS/Trading Field OS.md"
-    },
-    {
-      "basename": "Random",
-      "path": "Random.md"
-    },
-    {
-      "basename": "Portfolio Strategy",
-      "path": "60_Claude/20_Distilled_Notes/Portfolio Strategy.md"
-    },
-    {
-      "basename": "Kairo — Know What's Coming - Summary",
-      "path": "60_Claude/30_Source_Summaries/Kairo — Know What's Coming - Summary.md"
-    },
-    {
-      "basename": "Kairo — Know What's Coming",
-      "path": "60_Claude/05_Clippings/Kairo — Know What's Coming.md"
-    },
-    {
-      "basename": "Cognitive AI",
-      "path": "60_Claude/20_Distilled_Notes/Cognitive AI.md"
-    },
-    {
-      "basename": "Wearable AI",
-      "path": "60_Claude/20_Distilled_Notes/Wearable AI.md"
-    },
-    {
-      "basename": "Observability in Backend vs Evaluation in AI",
-      "path": "60_Claude/20_Distilled_Notes/Synthesis/Observability in Backend vs Evaluation in AI.md"
-    },
-    {
-      "basename": "Kafka Pipelines vs Agent Tool Orchestration",
-      "path": "60_Claude/20_Distilled_Notes/Synthesis/Kafka Pipelines vs Agent Tool Orchestration.md"
-    },
-    {
-      "basename": "Dynamic Programming",
-      "path": "60_Claude/20_Distilled_Notes/Dynamic Programming.md"
-    },
-    {
-      "basename": "10 care coordination challenges draining your healthcare organization’s ROI and operational efficiency",
-      "path": "60_Claude/05_Clippings/10 care coordination challenges draining your healthcare organization’s ROI and operational efficiency.md"
-    },
-    {
-      "basename": "00_Inbox Board",
-      "path": "60_Claude/00_Inbox/00_Inbox Board.md"
-    },
-    {
-      "basename": "Links",
-      "path": "40_Resources/CS/Links.md"
-    },
-    {
-      "basename": "AI Journaling Deeper (app.myentries.ai)",
-      "path": "60_Claude/30_Source_Summaries/Vault Web Ingestion/AI Journaling Deeper (app.myentries.ai).md"
-    },
-    {
-      "basename": "60268 (umn.joinhandshake.com)",
-      "path": "60_Claude/30_Source_Summaries/Vault Web Ingestion/60268 (umn.joinhandshake.com).md"
-    },
-    {
-      "basename": "500 AI Projects with Code (github.com)",
-      "path": "60_Claude/30_Source_Summaries/Vault Web Ingestion/500 AI Projects with Code (github.com).md"
-    },
-    {
-      "basename": "4 Ethical Pillars Overview (docs.google.com)",
-      "path": "60_Claude/30_Source_Summaries/Vault Web Ingestion/4 Ethical Pillars Overview (docs.google.com).md"
-    },
-    {
-      "basename": "1Hqwxdwuz5kw4sdenxmcsk1ynpgf11s4n (drive.google.com)",
-      "path": "60_Claude/30_Source_Summaries/Vault Web Ingestion/1Hqwxdwuz5kw4sdenxmcsk1ynpgf11s4n (drive.google.com).md"
-    },
-    {
-      "basename": "1Ctwo 3T0ozmwvkpwek2ihqme2njuk4qr (drive.google.com)",
-      "path": "60_Claude/30_Source_Summaries/Vault Web Ingestion/1Ctwo 3T0ozmwvkpwek2ihqme2njuk4qr (drive.google.com).md"
-    },
-    {
-      "basename": "aaif-goosegoose an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM",
-      "path": "60_Claude/05_Clippings/aaif-goosegoose an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM.md"
-    },
-    {
-      "basename": "AI_Second_Brain_Vault_Structure@20260423_203909",
-      "path": "50_Archive/copilot/copilot-conversations/AI_Second_Brain_Vault_Structure@20260423_203909.md"
-    },
-    {
-      "basename": "AI Workflow",
-      "path": "40_Resources/CS/AI/AI Workflow.md"
-    },
-    {
-      "basename": "Chat Gpt Prompts",
-      "path": "40_Resources/CS/AI/Chat Gpt Prompts.md"
-    },
-    {
-      "basename": "Claude Code",
-      "path": "40_Resources/CS/AI/Claude Code.md"
-    },
-    {
-      "basename": "Postman Demo",
-      "path": "20_Progress/UROP/Mocks/Postman Demo.md"
-    },
-    {
-      "basename": "Postman",
-      "path": "20_Progress/UROP/Postman.md"
-    },
-    {
-      "basename": "index",
-      "path": "20_Progress/UROP/index.md"
-    },
-    {
-      "basename": "BOOM Board",
-      "path": "20_Progress/UROP/BOOM Board.md"
-    },
-    {
-      "basename": "BOOM",
-      "path": "20_Progress/UROP/BOOM.md"
-    },
-    {
-      "basename": "API Work",
-      "path": "20_Progress/UROP/API Work.md"
-    },
-    {
-      "basename": "Winter Break",
-      "path": "20_Progress/Mentorship Program/Winter Break.md"
-    },
-    {
-      "basename": "Symposium",
-      "path": "20_Progress/UROP/Symposium.md"
-    },
-    {
-      "basename": "Rust",
-      "path": "20_Progress/UROP/Rust.md"
-    },
-    {
-      "basename": "Presentation Site Narrative",
-      "path": "20_Progress/UROP/Learning/Presentation Site Narrative.md"
-    },
-    {
-      "basename": "Testing Debugging and Deployment",
-      "path": "20_Progress/UROP/Learning/Testing Debugging and Deployment.md"
     }
   ],
   "omittedPaths": [],

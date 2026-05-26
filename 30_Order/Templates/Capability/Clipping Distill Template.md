@@ -1,16 +1,16 @@
 ---
 type: input
 status: seed
-created: {{date:YYYY-MM-DD}}
-updated: {{date:YYYY-MM-DD}}
+created:
+  "{ date:YYYY-MM-DD }":
+updated:
+  "{ date:YYYY-MM-DD }":
 tags:
   - summary
 notes: []
-track: []
 source_url:
 input_kind: article
 ---
-
 # <% tp.file.title %>
 
 ## Source
@@ -23,4 +23,3 @@ input_kind: article
 
 ## Open Questions
 
-## Promotion Decision

@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "obsidian-jarvis": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "obsidian-mcp-server"
+      ],
+      "env": {
+        "OBSIDIAN_BASE_URL": "http://127.0.0.1:27123"
+      }
+    }
+  }
+}

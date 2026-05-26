@@ -2,12 +2,13 @@
 type: evergreen
 status: sprout
 created: 2026-04-03
-updated: 2026-04-08
+updated: 2026-05-26
 tags:
   - evergreen
 notes:
   - "[[AI_CONTEXT]]"
   - "[[AI Workflow]]"
+  - "[[40_Resources/Obsidian/Claude Pro Workflow]]"
   - "[[40_Resources/CS/Links|Links]]"
   - "[[Claude Code]]"
   - "[[MCPs]]"
@@ -15,29 +16,23 @@ notes:
   - "[[HUMAN_WRITING]]"
 ---
 # CLAUDE.md — Vault Operating Contract
-
-This vault is a personal knowledge system powered by Claude Code. The assistant reads, writes, and maintains notes directly in Obsidian.
-
-Shared vault context lives in:
-
+This vault is a personal knowledge system powered by Claude Code. The assistant reads, writes, and maintains notes directly in Obsidian. Shared vault context lives in:
 - [[AI_CONTEXT]]
 - [[AGENTS]]
 - [[HUMAN_WRITING]]
-
 Do not duplicate shared workspace rules here unless they are Claude-specific.
-
 ## Folder Roles
 
-| Folder | Purpose | Claude Behavior |
-|--------|---------|-----------------|
-| `60_Claude/05_Clippings/` | Raw source material (articles, clips, imports) | Read-only input; never modify |
-| `60_Claude/` | Claude-generated knowledge layer | Full write access; create distillations, summaries, reviews |
-| `20_Progress/` | Active projects, career, mentorship | Read for context; update with user permission |
-| `30_Order/` | Templates and system structure | Read for conventions; don't modify |
-| `40_Resources/` | Reference knowledge, concepts, links | Read for context; add backlinks when relevant |
-| `00_Inbox/` | User's quick capture | Read for context; don't modify unless asked |
-| `50_Archive/` | Past courses, completed work | Read-only; historical reference |
-| `.claude/` | Skills, agents, settings | Full write access for tooling |
+| Folder                    | Purpose                                        | Claude Behavior                                             |
+| ------------------------- | ---------------------------------------------- | ----------------------------------------------------------- |
+| `60_Claude/05_Clippings/` | Raw source material (articles, clips, imports) | Read-only input; never modify                               |
+| `60_Claude/`              | Claude-generated knowledge layer               | Full write access; create distillations, summaries, reviews |
+| `20_Progress/`            | Active projects, career, mentorship            | Read for context; update with user permission               |
+| `30_Order/`               | Templates and system structure                 | Read for conventions; don't modify                          |
+| `40_Resources/`           | Reference knowledge, concepts, links           | Read for context; add backlinks when relevant               |
+| `00_Inbox/`               | User's quick capture                           | Read for context; don't modify unless asked                 |
+| `50_Archive/`             | Past courses, completed work                   | Read-only; historical reference                             |
+| `.claude/`                | Skills, agents, settings                       | Full write access for tooling                               |
 
 ## Core Rules
 
@@ -49,6 +44,7 @@ Do not duplicate shared workspace rules here unless they are Claude-specific.
 4. **Respect maturity** — Notes with `status: tree` are stable; propose changes before modifying.
 5. **Read `HUMAN_WRITING.md` before drafting prose** — remove filler, avoid generic AI tone, prefer mechanism, contrast, and concrete examples from the vault.
 6. **Use `AI_CONTEXT.md` for continuity** — read the dashboard and session log before assuming current project state.
+7. **Use context packs, not vault dumps** — follow [[40_Resources/Obsidian/Claude Pro Workflow]]: read the manifest, dashboard, session log tail, and task-specific notes instead of scanning the whole vault.
 
 ### Note Creation Conventions
 

@@ -9,12 +9,9 @@ tags:
 track: []
 notes: []
 ---
-
 # <% tp.file.title %>
 
 ## Core Concepts
-
-## 30-Minute Refresher
 
 ## 2-Hour Technical Refresher
 

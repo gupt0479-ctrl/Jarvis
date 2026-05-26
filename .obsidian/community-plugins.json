@@ -5,10 +5,10 @@
   "lazy-plugins",
   "ninja-cursor",
   "obsidian-latex-suite",
-  "obsidian-local-rest-api",
   "obsidian-style-settings",
   "obsidian-tasks-plugin",
   "recent-files-obsidian",
   "templater-obsidian",
-  "url-into-selection"
+  "url-into-selection",
+  "obsidian-local-rest-api"
 ]

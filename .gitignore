@@ -10,6 +10,8 @@
 .obsidian/plugins/obsidian-local-rest-api/data.json
 .claude/settings.json
 .claude/settings.local.json
+.kiro/settings/
+
 
 # Copilot vector index (large, regenerated)
 .obsidian/copilot-index-*.json

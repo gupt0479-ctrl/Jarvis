@@ -67,7 +67,7 @@ This is safe case analysis plus data destruction: you check which constructor yo
 ### Source Anchors
 
 - [[OCaml - Pattern Matching]] — full lecture notes with all pattern forms
-- [[10_Areas/Degree/UMN/Classes/CSCI 2041/Textbook/Chapter - 3 & 4]] — textbook coverage of pattern matching
+- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4]] — textbook coverage of pattern matching
 - [[OCaml - BST Problems]] — applied pattern matching on trees
 
 ## Diagnostic Questions

@@ -2,7 +2,7 @@
 type: evergreen
 status: tree
 created: 2026-04-23
-updated: 2026-04-25
+updated: 2026-05-26
 tags:
   - evergreen
   - dashboard
@@ -12,6 +12,7 @@ notes:
   - "[[Random]]"
   - "[[30_Order/Templates/MOC]]"
   - "[[40_Resources/Obsidian/Vault Operating System]]"
+  - "[[40_Resources/Obsidian/Claude Pro Workflow]]"
   - "[[60_Claude/60_Indexes/Vault Health Dashboard]]"
   - "[[60_Claude/60_Indexes/Knowledge Enrichment Dashboard]]"
   - "[[40_Resources/Obsidian/Jarvis Enrichment Engine]]"
@@ -21,6 +22,7 @@ notes:
 # Jarvis — AI-Powered PKM
 ## System
 - [[40_Resources/Obsidian/Vault Operating System]]
+- [[40_Resources/Obsidian/Claude Pro Workflow]]
 - [[CLAUDE.md]]
 - [[AGENTS.md]]
 - [[60_Claude/60_Indexes/Claude Layer Index]]

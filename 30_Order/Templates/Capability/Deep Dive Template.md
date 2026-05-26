@@ -17,12 +17,9 @@ last_drilled:
 next_drill:
 drill_interval:
 ---
-
 # <% tp.file.title %>
 
 ## One-Sentence Version
-
-## 30-Second Version
 
 ## Teach It To A Beginner
 
@@ -32,9 +29,7 @@ drill_interval:
 
 ## Mental Model
 
-## Formal Model
-
-## Real Example
+### Real Example
 
 ## Implementation
 
@@ -51,7 +46,5 @@ drill_interval:
 ## Source Anchors
 
 ## Drill Cards
-
-## Understanding Proof
 
 ## Next Drill

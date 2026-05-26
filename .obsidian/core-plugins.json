@@ -29,5 +29,5 @@
   "publish": true,
   "sync": false,
   "bases": true,
-  "webviewer": true
+  "webviewer": false
 }

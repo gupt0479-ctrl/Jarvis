@@ -9,7 +9,6 @@ tags:
 track: []
 notes: []
 ---
-
 # <% tp.file.title %>
 
 ## Open Questions

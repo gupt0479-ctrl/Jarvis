@@ -20,6 +20,11 @@
     "folder": "60_Claude/50_Reviews/Monthly",
     "template": "30_Order/Templates/Headway Templates/Better Month.md"
   },
+  "quarterly": {
+    "format": "",
+    "template": "",
+    "folder": ""
+  },
   "yearly": {
     "enabled": false
   }
