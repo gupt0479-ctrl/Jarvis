@@ -3,7 +3,7 @@ type: class
 input_kind: lecture
 status: sprout
 created: 2026-02-25
-updated: 2026-05-12
+updated:
 area:
   - "[[UMN Board]]"
   - "[[CSCI 2041 Board]]"
@@ -13,58 +13,28 @@ tags:
   - "#class"
   - "#Lecture"
 next:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 4]]"
+  - "[[Week - 4"
 ---
 # Entire Week
 ## What you must be able to do
-- Translate an imperative loop with several changing values into a tail-recursive helper using `let` to preserve update order.
-- Define a recursive union type with capitalized constructors and explain the difference between a type name and a constructor.
-- Use `match ... with` to dispatch on constructors and bind the useful pieces of a value.
-- Explain why names in patterns bind new values rather than compare with old top-level names.
-- Write tail-recursive helpers over custom chains and ordinary lists.
-- Use `()` when a function has no meaningful argument, as in Lab 2's `euler ()`.
-- Explain association-list lookup, including why failed lookup is an exception case.
-- Trace Lab 2 rational arithmetic through tuple access, `gcd`, simplification, and tail-recursive Euler summation.
+- [[Textbook]]
+- 
 ## Key ideas (textbook)
 - **Patterns bind names:** in pattern matching, names in patterns bind (they don’t “compare against an existing name”).
-	- See: [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4#4.1 The `match` Expression]]
+	- See: [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4#4.1 The `match` Expression]]
 - **Variables in patterns always bind** (they do not “compare to an existing name”).  
 - **Let-bindings define names for values**. In `let x = e1 in e2`, `x` is available only in `e2` (the body), not in `e1`.  
-	- See: [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4#4.2 Pattern Types Constants and Variables]]
+	- See: [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4#4.2 Pattern Types Constants and Variables]]
 - **`function` keyword** is shorthand for `fun x -> match x with ...` (single-argument match).  
-	- See: [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4#4.3 Functions with Matching (`function`)]]
+	- See: [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4#4.3 Functions with Matching (`function`)]]
 - **Inexhaustive matches** warn at compile time and can raise `Match_failure` at runtime.  
-	- See: [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4#4.6 Exhaustiveness and Safety]]
+	- See: [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4#4.6 Exhaustiveness and Safety]]
 ## Concepts created today
-- [[OCaml - Pattern Matching]]
-- [[OCaml - Algebraic Data Types and Structural Recursion]]
-- [[OCaml - Tail Recursion and Internal Helpers]]
-- [[OCaml - Association Lists]]
-- [[OCaml - Exceptions and Error Boundaries]]
-- [[OCaml - Basics]]
+- [[Concept - ...]]
+- [[Concept - ...]]
 ## Examples worth keeping
-- Newton's method translation: compute `g'` first, then compute `h'`, then tail-call `sqrting g' h'`.
-- `type intyChain = Empty | NotEmpty of int * intyChain`: recursive union type with an empty case and a payload case.
-- `match p with Empty -> ... | NotEmpty (first, rest) -> ...`: pattern matching both selects the case and names the parts.
-- `let (a, b) = f x`: patterns are not only for `match`; they also appear in `let`, `fun`, and parameter lists.
-- `type ('key, 'value) al = ('key * 'value) list`: association list as a small map represented by a list of key-value pairs.
-- Lab 2: `rat` should simplify fractions immediately so later arithmetic functions can trust the representation.
+- 
 ## Lecture
-### Week 3 lecture map - names, types, patterns, and association lists
-Week 3 broadens recursion from built-in lists to user-defined data and maps. It is the week where "pattern matching is everywhere" becomes practical: in `match`, in function parameter lists, and in recursive type cases.
-
-Source anchors:
-- `Lecture - 5.txt` and professor notes `02Feb26/` use Newton's method to show loop-to-tail-recursion translation, including the need for internal helpers and carefully named intermediate values.
-- `Lecture - 6.txt` and professor notes `04Feb26/` introduce custom recursive types, pattern matching, parameterized types, and generic membership.
-- `Lecture - 7.txt` and professor notes `06Feb26/` continue pattern matching and introduce association lists, custom exceptions, and the BST lab preview.
-- `Labs/lab2.ml` and `Labs/tests2.ml` connect the week to rational arithmetic and approximation.
-
-The through-line:
-1. A "variable" in OCaml course language is usually a name bound to a value, not a mutable box.
-2. A recursive type gives a data structure its shape.
-3. Pattern matching is how the function follows that shape.
-4. Association lists are the first environment-like structure: a list of key/value bindings searched recursively.
-
 ### Lecture (Feb 2) 
 - Loops → tail recursion (Newton square root), evaluation order with `let`, intro: types + pattern matching
 - Goal of the day (what professor is building toward)
@@ -347,16 +317,6 @@ Links to connect:
 - [[OCaml - Basics#Primitive data types (with interlinks)|`unit`]]
 - [[OCaml - BST Problems|BST Problems]]
 - [[OCaml - Tautology Problems|Tautology Problems]] (association lists + later evaluator code)
-## Lab
-### Lab 2 — Rational Arithmetic and Euler Approximation
-Source: `Labs/lab2.ml`  
-Tests: `Labs/tests2.ml`
-
-- Tests tuple access with `fst`/`snd`, rational simplification through `gcd`, and arithmetic on numerator/denominator pairs.
-- Main functions: `rat`, `ratAdd`, `ratMul`, `ratDiv`, `ratGt`, `euler`.
-- Concepts: [[OCaml - Basics]], [[OCaml - Pattern Matching]], [[OCaml - Tail Recursion and Internal Helpers]]
-- Final check: be able to trace how `rat` normalizes a fraction and why `euler ()` uses `unit` plus an internal tail-recursive loop.
-
 ## Midterm Check
 ### Chapter - 4
 - [ ] **What happens if you provide a variable name in a pattern that is already used in a** **let** **binding at the top level?** (e.g., `let x = 5 in match y with x -> ...`).
@@ -370,18 +330,5 @@ Tests: `Labs/tests2.ml`
 - [ ] **Style Difference:** Why is it considered "bad practice" to catch an `Invalid_argument` exception, but "routine" to catch a `Failure` or `Not_found` exception?.
 - [ ] **The** **exn** **Type:** What makes the `exn` type different from a standard union type like `bool` or `list`?.
 - [ ] **The Stack:** When a `Match_failure` occurs deep within a series of recursive calls, how does OCaml find the correct `try...with` block to execute?.
-## Takeaways (questions to resolve)
-- [ ] Can I explain why a pattern variable like `x` matches anything instead of comparing to an outer `x`?
-- [ ] Can I write a recursive type and then write a structurally recursive function over it?
-- [ ] Can I identify whether `a || recursive_call` leaves the recursive call in a tail position?
-- [ ] Can I explain why `alGet` raises an exception rather than returning a made-up value?
-- [ ] Can I explain why `euler ()` is a function instead of a plain top-level rational value?
-- [ ] Can I trace Lab 2's `ratDiv` and say exactly where simplification happens?
 ## Flashcards
-#cards/CSCI2041
-- Pattern variables do what::They bind new names; they do not compare against existing bindings.
-- What does `function` mean::It is shorthand for `fun x -> match x with ...` for one argument.
-- Why use `let g' = ... in let h' = ...` in Newton translation::To preserve update order and avoid mixing old and new values.
-- Constructor naming rule::Constructors start with uppercase letters; type names start lowercase.
-- Association-list lookup cost::Linear in the number of pairs.
-- Lab 2 final check::Normalize rationals with `gcd`, and call `euler` with `()` because it has no meaningful argument.
+#cards/

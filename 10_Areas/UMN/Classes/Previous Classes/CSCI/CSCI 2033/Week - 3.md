@@ -5,7 +5,7 @@ created: 2025-09-30
 updated: 2025-12-31
 area:
   - "[[Final]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Midterm - 1]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Midterm - 1]]"
   - "[[Quiz]]"
 tags:
   - "#class"
@@ -14,7 +14,7 @@ tags:
   - "#Lecture"
   - "#Quiz"
   - "#Homework"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 4|Week - 4]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 4|Week - 4]]"
 ---
 # #Textbook Textbook (Ch - 3)
 ## 3.1 Norm

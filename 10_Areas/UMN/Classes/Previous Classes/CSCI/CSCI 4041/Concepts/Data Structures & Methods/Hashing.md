@@ -5,18 +5,18 @@ status: sprout
 mastery (1/10): 0
 created: 2026-03-16
 topics:
-  - "[[Chapter - 11]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 11]]"
   - "[[CSCI 4041 Board]]"
   - "[[DSA]]"
   - "[[Introduction to Algorithms]]"
 related:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 8|Week - 8]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 8|Week - 8]]"
 ---
-# [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Data Structures & Methods/Hashing]]
+# [[Hashing]]
 ## MOC
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 8#Jupyter Notebook Explanations|Week - 8]]
-- [[Chapter - 11#11.2 Hash Tables|Chapter - 11 - Hash Tables]]
-- [[Chapter - 11#11.4 Open Addressing|Chapter - 11 - Open Addressing]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 8#Jupyter Notebook Explanations|Week - 8]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 11#11.2 Hash Tables|Chapter - 11 - Hash Tables]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 11#11.4 Open Addressing|Chapter - 11 - Open Addressing]]
 - [[Elementary Data Structures#Definition|Elementary Data Structures]]
 
 ## Definition
@@ -98,6 +98,138 @@ The lecture point was that this is possible, but more delicate than using a tomb
 - Probe histograms show linear probing clusters.
 - Double hashing behaves more like the "ideal random" model.
 
+## Professor Code From Lecture
+### Ch11_ChainHashMap.ipynb — Full `chainhashmap` Implementation
+The `chainhashmap` class demonstrates separate chaining collision resolution. Each slot in the table is a linked list. The nested `item` class stores key-value pairs. The hash function `h` uses Python's built-in `hash()` with the division method (`hash(key) % m`). Insert checks for an existing key first — if found, it updates the value; otherwise it prepends a new item. Search hashes the key, walks the chain, and returns the item or `None`. Delete delegates to the linked list's own delete method. The table size `m` defaults to 11 (a prime, which helps distribute keys more evenly).
+
+```python
+class chainhashmap:
+    """a hash map which implements separate chaining collision resolution"""
+    
+    ################################################################ nested item class
+    class item:
+        """items for the table"""
+        
+        def __init__(self,key,value):
+            self.key = key
+            self.value = value
+        
+        def __eq__(self,other):
+            """comparison of item objects based on key attribute"""    
+            return self.key == other.key
+        
+        def __ne__(self,other):
+            """comparison of item objects based on key attribute"""    
+            if type(other)==str:
+                return self.key != other
+            else:
+                return self.key != other.key
+        
+        def __str__(self):
+            """printing utility"""
+            return "("+str(self.key)+","+str(self.value)+")"
+    ################################################################
+    
+    
+    def __init__(self,capacity=11):
+        """constructor for table hash map with m max slots"""
+        self.m = capacity                                     # table size
+        self.table = [linkedlist() for i in range(capacity)]  # initialize with empty lists
+    
+    def h(self,key):
+        """hash function for map -using python hash and division method"""
+        return hash(key) % self.m
+    
+    def insert(self,x):
+        """insert record x into the table"""
+        L = self.table[self.h(x.key)]     # extract appropriate linked-list
+        node = L.search(x.key)            # check for existing key
+        if node:
+            item = node.key               # extract existing item
+            if item.key == x.key:
+                item.value = x.value      # update existing value in table
+        else:
+            L.prepend(x)                  # insert new item in table
+
+    def search(self,key):
+        """search the table for key"""
+        L = self.table[self.h(key)]       # extract appropriate linked-list
+        node = L.search(key)              # call linked-list search for key
+        if node:
+            item = node.key               # extract item from node
+            return item                   # return item
+        else:
+            return None                   # key not found
+    
+    def delete(self,x):
+        """delete item x from the table"""
+        L = self.table[self.h(x.key)]     # extract linked-list
+        L.delete(x)                       # delete item from list
+    
+    def __str__(self):
+        """printing utility for chain hash map"""
+        out = ""
+        for ll in M.table:
+            out += str(ll) + "\n"
+        return out
+```
+
+### Ch11_ProbeHashMap.ipynb — Full `probehashmap` Implementation
+The `probehashmap` class demonstrates open addressing with linear probing. The table is a flat array (no linked lists). The `__DELETED__` sentinel string marks deleted slots so that search can continue through them without breaking the probe sequence. Insert probes linearly from the hash index until it finds an empty or deleted slot. Search probes linearly and stops at `None` (end of probe chain) or when the key is found. Delete simply marks the slot with `__DELETED__` — this is the tombstone approach discussed in the textbook (page 294 of CLRS). The key difference from chaining: everything lives inside the table, so load factor cannot exceed 1.
+
+```python
+class probehashmap:
+    """a hash map which implements linear probing for collision resolution"""
+    
+    def __init__(self,capacity=11):
+        """constructor for hash maps"""
+        self.m = capacity # table size
+        self.table = [None for i in range(capacity)]
+    
+    def h(self,key):
+        """hash function for map -using python hash and division method"""
+        return hash(key)%self.m
+    
+    def insert(self,k):
+        """insert key k into the table"""
+        hash_idx = self.h(k)     # compute the hash of key k
+        
+        i = 0
+        while i < self.m:
+            q = (hash_idx + i) % self.m  # linear probing
+            if self.table[q] in [None,"__DELETED__"]:
+                self.table[q] = k        # store key
+                return q                 # return the storage index
+            else:
+                i = i + 1                # move forward
+        if i==m:
+            raise Exception("hash table overflow")
+    
+    def search(self,k):
+        """search the table for key"""
+        hash_idx = self.h(k)     # compute the hash of key k
+        
+        i = 0
+        while i < self.m:
+            q = (hash_idx + i) % self.m  # linear probing
+            if self.table[q] == k:
+                return q               # return the storage index
+            elif self.table[q] == None:
+                return None            # check for end of probe sequence
+            else:
+                i = i + 1              # move forward
+        if i==self.m:
+            return None
+        
+    def delete(self,q):
+        """delete the key in index q (based on comments on page 294 of CLRS textbook)"""
+        self.table[q] = "__DELETED__"
+    
+    def __str__(self):
+        """printing utility for chain hash map"""
+        return str(self.table)
+```
+
 ## Proof / Reasoning Toolkit
 ### Load-Factor Checklist
 1. Define n and m clearly.
@@ -154,6 +286,8 @@ The lecture point was that this is possible, but more delicate than using a tomb
 - Design HashMap
 - Top K Frequent Elements
 - Any counting/frequency-table problem that naturally wants key-to-bucket mapping
+- CodingHW_5(chapter11-CLRS).ipynb: bit-vector set, multiplicative hashing, double hashing, delete without tombstone
+- Paper HW - 5 (Ch - 11).pdf: written problems on hash functions, chaining analysis, and open addressing
 
 ## Mini-test
 1. Why is hashing an average-case story?

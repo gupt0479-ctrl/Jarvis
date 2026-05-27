@@ -10,7 +10,7 @@ area:
 tags:
   - "#class"
   - "#Textbook"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 3923/Week - 1|Week - 1]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 3923/Week - 1|Week - 1]]"
 ---
 # Chapter - 1
 Chapter 1 of _Weapons of Math Destruction_, titled **"Bomb Parts: What Is a Model?"**, explains how mathematical "models" are built and why some of them turn into dangerous "weapons."

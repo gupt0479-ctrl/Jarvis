@@ -8,18 +8,18 @@ topics:
   - "[[CSCI 4041 Board]]"
   - "[[Introduction to Algorithms]]"
   - "[[DSA]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 3 & 4]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 3 & 4]]"
 related:
   - "[[Sorting Algorithms]]"
-  - "[[10_UMN/CSCI 4041/CSCI 4041/Concepts/Dynamic Programming|Dynamic Programming]]"
+  - "[[Dynamic Programming|Dynamic Programming]]"
 ---
 # [[Divide and Conquer]]
 ## MOC
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 3#Chapter - 4 Divide & Conquer Algorithms (DnC)|Week - 3]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 3 & 4#4.0 Introduction to Divide-and-Conquer and Recurrences|Chapter - 3 & 4 - Recurrences]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 3 & 4#4.2 Strassen’s Algorithm|Chapter - 3 & 4 - Strassen]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 3#Chapter - 4 Divide & Conquer Algorithms (DnC)|Week - 3]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 3 & 4#4.0 Introduction to Divide-and-Conquer and Recurrences|Chapter - 3 & 4 - Recurrences]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 3 & 4#4.2 Strassen’s Algorithm|Chapter - 3 & 4 - Strassen]]
 - [[Sorting Algorithms#Definition|Sorting Algorithms]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Algorithms/Dynamic Programming#Definition|Dynamic Programming]]
+- [[Dynamic Programming#Definition|Dynamic Programming]]
 
 ## Definition
 - **Divide-and-conquer**: recursively break a problem into smaller instances of the same problem, solve them, and combine the results.
@@ -184,6 +184,8 @@ These three functions all solve to `Theta(n)`, but `inner_prod_DnC` and `vector_
 - Matrix multiplication recurrences
 - Master Method exercises
 - Substitution proofs
+- CodingHW_2(chapter4-CLRS).ipynb: divide-and-conquer matrix addition, Strassen implementation, coarsening
+- Paper HW - 2 (Ch - 3 & 4).pdf: written problems on recurrences, Master Method, and asymptotic notation
 
 ## Mini-test
 1. What are the three steps of divide-and-conquer?

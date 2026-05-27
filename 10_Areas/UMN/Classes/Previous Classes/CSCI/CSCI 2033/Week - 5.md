@@ -5,14 +5,14 @@ created: 2025-10-17
 updated: 2025-10-19
 area:
   - "[[Final]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Midterm - 1|Midterm - 1]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Midterm - 1|Midterm - 1]]"
 tags:
   - "#class"
   - "#Textbook"
   - "#Lecture"
   - "#Jupyter"
   - "#Homework"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 6|Week - 6]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 6|Week - 6]]"
 ---
 # #Textbook Textbook (Ch - 5 & 6)
 ## Chapter 5: Linear independence

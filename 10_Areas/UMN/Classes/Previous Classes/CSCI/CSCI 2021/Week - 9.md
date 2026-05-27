@@ -12,7 +12,7 @@ tags:
   - "#Lecture"
   - "#Lab"
   - "#Homework"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 11|Week - 11]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 11|Week - 11]]"
 ---
 # #Textbook Textbook (CSAPP - 4.4 to 4.6)
 ## #CSAPP CSAPP
@@ -79,7 +79,7 @@ All of these form a **Sequential CPU**, meaning: Each instruction executes _comp
 	2. Update memory and registers by the **next clock tick**.
 That means: During one cycle → all five stages (Fetch → Decode → Execute → Memory → Writeback) happen.
 - At the _next_ rising clock edge → results are stored, and the next instruction begins. This is the simplest working CPU model — before adding **pipelining** (which overlaps stages).
-These stages were introduced in [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 8#Lecture 20]], but Lecture 21 now shows _how each stage works in hardware_.
+These stages were introduced in [[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 8#Lecture 20]], but Lecture 21 now shows _how each stage works in hardware_.
 
 | Stage            | Description                                                      | What Happens Electrically                                                                                                           |
 | ---------------- | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |

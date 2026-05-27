@@ -3,18 +3,20 @@ type: class
 input_kind: book
 status: sprout
 created: 2026-02-16
-updated: 2026-04-16
+updated: 2026-04-28
 area:
   - "[[UMN Board]]"
   - "[[CSCI 4041 Board]]"
+  - "[[DSA]]"
+  - "[[Introduction to Algorithms]]"
 tags:
   - "#class"
   - "#Textbook"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 5|Week - 5]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 5|Week - 5]]"
 ---
 # Chapter - 6 Heapsort
 ## Summary Links
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 5#Chapter 6 and Chapter 12 - Heaps, Priority Queues, and BST Operations|Week - 5]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 5#Chapter 6 and Chapter 12 - Heaps, Priority Queues, and BST Operations|Week - 5]]
 - [[HeapSort#Definition|HeapSort]]
 - [[Elementary Data Structures#Definition|Elementary Data Structures]]
 
@@ -244,3 +246,79 @@ Then `min(89)` is 77, so **77 replaces 67**, not 89. This is the cleanest way to
 
 > [!IMPORTANT] **Implementation Reminder**
 > The chapter is written conceptually in 1-indexed CLRS style, but the actual BST implementation is pointer-based. Once you are in Python or Java, the important translation is not array indexing; it is keeping the parent/child references consistent after every mutation.
+
+---
+
+## Overview
+- Chapters 6 and 12 pair an array-based tree structure with a pointer-based search tree structure.
+- In CSCI 4041, this note supports heapsort, priority queues, BST search/update operations, and later algorithms that reuse priority queues such as Prim, Dijkstra, and Huffman coding.
+- The course implementation emphasis is translation: CLRS often presents 1-indexed pseudocode, while the lecture code uses Python 0-indexed arrays and linked nodes.
+
+## Core Definitions
+- **Binary heap:** an array representing a nearly complete binary tree that satisfies the heap property.
+- **Max-heap property:** every node has key at least as large as its children.
+- **Priority queue:** an abstract data type supporting operations such as maximum/minimum, extract, and key update.
+- **Binary search tree:** a linked binary tree where all keys in a node's left subtree are at most the node key and all keys in the right subtree are at least it.
+- **Successor/predecessor:** next larger / next smaller key in sorted order.
+- **Transplant:** BST helper that replaces one subtree with another while preserving parent links.
+
+## Main Algorithms
+- `MAX-HEAPIFY`: repairs one possible heap violation by pushing a key down.
+- `BUILD-MAX-HEAP`: calls heapify bottom-up from the last internal node.
+- `HEAPSORT`: repeatedly swaps the max element to the end and heapifies the reduced heap.
+- `HEAP-EXTRACT-MAX`, `HEAP-INCREASE-KEY`, `MAX-HEAP-INSERT`: implement max-priority queue behavior.
+- `TREE-SEARCH`, `TREE-MINIMUM`, `TREE-MAXIMUM`, `TREE-SUCCESSOR`, `TREE-DELETE`: core BST operations.
+
+## Correctness Ideas
+- `MAX-HEAPIFY` assumes the left and right subtrees are already heaps; only the root of that subtree may violate the heap property.
+- `BUILD-MAX-HEAP` works because every leaf is already a heap, and processing internal nodes bottom-up satisfies the heapify precondition.
+- Heapsort maintains the invariant that the suffix after `heap_size` is sorted and contains the largest elements.
+- BST search correctness follows from the ordering invariant at every node.
+- BST deletion correctness is mostly pointer hygiene: after replacing a node with its successor, the in-order key order must remain unchanged.
+
+## Complexity
+- `MAX-HEAPIFY` is `O(lg n)` because it moves down at most the heap height.
+- `BUILD-MAX-HEAP` is `Theta(n)`, not `Theta(n lg n)`, because most nodes are near the leaves.
+- Heapsort is `Theta(n lg n)` time and `O(1)` extra array space.
+- BST search/insert/delete are `O(h)`, where `h` is tree height; this is `O(lg n)` for balanced trees and `O(n)` in the worst unbalanced case.
+
+## Lecture Emphasis
+- `Lectures/Week - 5/Ch6_ArrayTree.ipynb` grounds heaps in the array-tree representation.
+- `Lectures/Week - 5/Ch6_Heaps.ipynb` implements `heap`, `build_max_heap`, `max_heapify`, and `sort`.
+
+```python
+def build_max_heap(self):
+    for i in range(self.size//2,-1,-1):
+        self.max_heapify(i)
+```
+
+- `Lectures/Week - 5/Ch6_Heaps-PriorityQueue.ipynb` extends the heap into a priority queue with `maximum`, `extract_max`, and insert/key-update behavior.
+- `Lectures/Week - 5/Ch12_BinarySearchTree.ipynb` implements the pointer-based BST. The most important bridge is that textbook `left`, `right`, and `p` fields become node references.
+- `Homework/Coding/CodingHW_4(chapter6_and_12-CLRS).ipynb` asks for a min-priority queue and BST predecessor/successor-style operations, directly matching this note.
+- Weekly/concept links: [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 5|Week - 5]], [[HeapSort|HeapSort]], [[Elementary Data Structures|Elementary Data Structures]].
+
+## Examples
+- In a 0-indexed heap array, children of `i` are `2*i+1` and `2*i+2`; this is the lecture translation of CLRS's 1-indexed formulas.
+- In a BST, the successor of a node with a right child is the minimum of the right subtree.
+- If a BST node has two children, deletion usually copies/transplants the successor, because the successor is the smallest key larger than the deleted node.
+
+## Connections
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 5|Week - 5]]
+- [[HeapSort|HeapSort]]
+- [[Elementary Data Structures|Elementary Data Structures]]
+- [[Chapter - 21|Chapter - 21]] and [[Chapter - 22|Chapter - 22]] reuse priority queues in Prim and Dijkstra.
+- Source homework read: `Homework/Coding/CodingHW_4(chapter6_and_12-CLRS).ipynb` and `Homework/Paper/Paper HW - 4 (Ch - 6 & 12).pdf`.
+- TODO: source gap - no vault Homework/Paper Homework note exists for direct wikilinking.
+
+## Common Pitfalls
+- Calling `BUILD-MAX-HEAP` `Theta(n lg n)` because it calls heapify many times; the tighter bound is `Theta(n)`.
+- Mixing CLRS 1-indexed heap formulas with Python 0-indexed formulas.
+- Assuming BST operations are always logarithmic without a balance guarantee.
+- Losing parent pointers during BST deletion/transplant.
+
+## Review Checklist
+- [ ] Translate heap parent/left/right formulas between 1-indexed and 0-indexed arrays.
+- [ ] Implement `max_heapify`, `build_max_heap`, heapsort, and priority-queue operations.
+- [ ] Explain why `BUILD-MAX-HEAP` is linear.
+- [ ] Implement BST search, min/max, successor/predecessor, insert, and delete.
+- [ ] Analyze BST operations in terms of height.

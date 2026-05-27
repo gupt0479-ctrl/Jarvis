@@ -6,12 +6,12 @@ created: 2025-10-04
 source_url: CSAPP
 related_progress:
   - "[[C Language]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Midterm - 1|Midterm - 1]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 2]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Midterm - 1|Midterm - 1]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 2]]"
 tags:
   - input
   - "#class"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 2|Week - 2]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 2|Week - 2]]"
 ---
 `Malloc` function returns the base address of the allocated heap memory to the caller (or `NULL` if an error occurs). step by step:
 1. `malloc(sizeof(int))` asks for **enough bytes to hold 1 int**.

@@ -6,13 +6,13 @@ created: 2026-02-27
 updated:
 area:
   - "[[UMN Board]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 4|Week - 4]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2041/Week - 4|Week - 4]]"
   - "[[CSCI 2041 Board]]"
   - "[[OCaml]]"
 tags:
   - "#class"
   - "#Textbook"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 3|Week - 3]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2041/Week - 3|Week - 3]]"
 ---
 # Chapter 9 - Exceptions
 In OCaml, **exceptions** are a sophisticated control mechanism used to signal that a computation cannot proceed normally due to a run-time error or to intentionally alter the flow of execution. When an exception is raised, the current operation is **aborted**, and control jumps to the nearest active handler.

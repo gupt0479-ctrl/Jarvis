@@ -8,14 +8,14 @@ topics:
   - "[[CSCI 2041 Board]]"
   - "[[OCaml - Pattern Matching]]"
   - "[[UMN Board]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2|Chapter - 1 & 2]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2|Chapter - 1 & 2]]"
 related:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 1|Week - 1]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2041/Week - 1|Week - 1]]"
 ---
 # Basics
 ## MOC
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 1|Week - 1]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2|Chapter - 1 & 2]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 2041/Week - 1|Week - 1]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2|Chapter - 1 & 2]]
 - [[OCaml - Types of Programming|OCaml - Types of Programming]]
 - [[OCaml - Pattern Matching|OCaml - Pattern Matching]]
 - [[OCaml - Let bindings, Scope & Closures|OCaml - Let bindings, Scope & Closures]]
@@ -37,8 +37,8 @@ related:
 - `(* comment *)`
 - comments can be nested
 Links:
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#2.1 Comment Convention and Interaction|Textbook Ch2.1]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 1|Week - 1]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#2.1 Comment Convention and Interaction|Textbook Ch2.1]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 2041/Week - 1|Week - 1]]
 ## Core OCaml keywords you must recognize
 ### `let`
 - binds a name to a value
@@ -59,13 +59,13 @@ let rec fact n = ...
 - both branches must have the same type
 - missing `else` behaves like returning `()`
 Link:
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#2.3 Relations and Conditionals|Textbook Ch2.3]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#2.3 Relations and Conditionals|Textbook Ch2.3]]
 ## Strong typing + type inference (the exam framing)
 - OCaml is strongly typed: expressions of one type can’t be used where another type is expected.
 - you usually don’t write types; OCaml infers them.
 > [!WARNING] No implicit numeric coercions: `1 + 2.0` is invalid because `+` expects ints and `+.` expects floats.
 ## Primitive data types (with interlinks)
-Link: [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#2.2 Primitive Data Types|Textbook Ch2.2]]
+Link: [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#2.2 Primitive Data Types|Textbook Ch2.2]]
 ### unit
 - only value: `()`
 - used for side-effecting expressions (like updates/printing)
@@ -135,7 +135,7 @@ Two common patterns:
 1. **External helper** (defined outside)
 2. **Internal helper** (defined inside using `let ... in` to inherit parameters)
 Link:
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 1#Lecture (Jan 28) - Multi-argument function types, append, immutability/persistence, helpers|Week - 1]] (internal helper mention)
+- [[50_Archive/Previous Classes/CSCI/CSCI 2041/Week - 1#Lecture (Jan 28) - Multi-argument function types, append, immutability/persistence, helpers|Week - 1]] (internal helper mention)
 ## Tail recursion and stack frames (Jan 30 lecture)
 - **Stack frame (activation record):** parameters, local names, return point.
 - **Tail of a function:** chronologically last thing it does (not `tl`).

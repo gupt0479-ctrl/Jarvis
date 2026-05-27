@@ -8,17 +8,17 @@ topics:
   - "[[Midterm]]"
   - "[[CSCI 2041 Board]]"
   - "[[OCaml]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4|Chapter - 3 & 4]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4|Chapter - 3 & 4]]"
 related:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 2|Week - 2]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2041/Week - 2|Week - 2]]"
 ---
 # Pattern Matching
 ## MOC  
 - [[OCaml - Basics|OCaml - Basics]]  
 - [[OCaml - BST Problems|OCaml - BST Problems]]  
 - [[OCaml - Tautology Problems|OCaml - Tautology Problems]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4#Chapter 4 Basic pattern matching|Textbook: Chapter 4]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 2|Week - 2]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4#Chapter 4 Basic pattern matching|Textbook: Chapter 4]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 2041/Week - 2|Week - 2]]
 - [[OCaml - BST Problems#Week 1: Persistent BST Insert (lecture code)|BST Insert (pattern split)]]
 ## Definition  
 - **match evaluation rule:** evaluate matched expression once, try patterns top to bottom, first match wins.  

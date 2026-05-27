@@ -2,8 +2,8 @@
 type: class
 input_kind: lecture
 status: seed
-created: 2026-05-11
-updated: 2026-05-12
+created:
+updated:
 area:
   - "[[UMN Board]]"
 tags:
@@ -11,223 +11,16 @@ next: []
 ---
 # Entire Week
 ## What you must be able to do
-- Distinguish right-reduce and left-reduce by the parenthesization they produce.
-- Explain why the lecture's `rightReduce` and `leftReduce` versions are not tail-recursive.
-- Define continuation passing style: a function provides values by calling another function instead of returning the interesting value directly.
-- Trace `forLoop` and `generateBools`, including when the continuation is called zero, one, or many times.
-- Represent a logical proposition as a recursive OCaml union type.
-- Evaluate a proposition under an association-list assignment.
-- Generate truth-table assignments with CPS and short-circuit out when one row falsifies the proposition.
-- Connect Lab 4 permutation generation to the same CPS pattern as `generateBools`.
+- [[Textbook]]
+- 
 ## Key ideas (textbook)
-- [[Chapter - 5 & 6#5.3 Lists|Chapter 5 lists]] supports `map`, `filter`, `reduce`, `::`, `@`, and the list recursion used in `names`, `isIn`, and `uniquify`.
-- [[Chapter - 5 & 6#5.4 Tail Recursion Masterclass|Chapter 5 tail recursion]] is the frame for analyzing reduce, CPS loops, and helper accumulators.
-- [[Chapter - 5 & 6#Chapter 6 - Unions|Chapter 6 unions]] supports the proposition type: constants, variables, unary constructors, and binary constructors.
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4#3.1 Functional programming and Functions|Chapter 3 first-class functions]] explains why continuations and predicates can be passed as ordinary values.
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#2.2.6 bool Boolean Values|Chapter 2 booleans]] supports short-circuit `&&`/`||`, which becomes control flow in `isIn` and `generateAndTestPairs`.
+- 
 ## Concepts created today
-- [[OCaml - Continuation Passing]]
-- [[OCaml - Higher-Order Functions]]
-- [[OCaml - Tautology Problems]]
-- [[OCaml - Algebraic Data Types and Structural Recursion]]
-- [[OCaml - Association Lists]]
-- [[OCaml - Tail Recursion and Internal Helpers]]
+- [[Concept - ...]]
+- [[Concept - ...]]
 ## Examples worth keeping
-- `rightReduce f [1; 2; 3] 0` becomes `f 1 (f 2 (f 3 0))`.
-- `leftReduce f [1; 2; 3] 0` becomes `f (f (f 0 1) 2) 3`.
-- `forLoop etc min max`: calls `etc index` for each index, then tail-calls the loop helper.
-- `generateBools etc n`: calls `etc` once per completed boolean list; for `n` variables there are `2^n` leaves.
-- `type proposition = False | True | Var of string | Not of proposition | And of proposition * proposition | ...`: recursive type mirrors the grammar of propositions.
-- `evaluate proposition pairs`: pattern matching dispatches on the proposition constructor; `Var name` looks up `name` in the association list.
-- `generateAndTestPairs`: replaces sequencing `;` with `&&` so a false row can stop the search.
-- Lab 4: `permute etc things` generalizes the same idea as `generateBools`: generate candidates and hand each completed candidate to `etc`.
+- 
 ## Lecture
-### Week 5 lecture map - how the pieces fit
-Week 5 is one arc, not three separate topics:
-
-1. **Reduce** asks: how do we consume a list into one answer?
-2. **CPS** asks: what if a function has zero, one, or many answers, and returning one value is the wrong interface?
-3. **Tautology checking** uses CPS to generate truth-table rows, then short-circuits as soon as one assignment makes the proposition false.
-4. **Lab 4** turns that same CPS pattern into permutation generation: choose one element, recurse on the remaining elements, call `etc` when a complete result exists.
-
-The through-line is: **higher-order functions let the caller supply behavior**. In `reduce`, the caller supplies the combining function. In CPS, the caller supplies the continuation. In the tautology checker, the caller supplies the test to run on each generated assignment. In Lab 4, the caller supplies what to do with each permutation.
-
-### Source and concept anchors
-- Lecture Feb 16: `reduce`, left/right association, continuations, `forLoop`, `generateBools`.
-- Lecture Feb 18: proposition representation, `evaluate`, assignment association lists, `generatePairs`.
-- Lecture Feb 20: `isIn`, `uniquify`, `names`, `generateAndTestPairs`, `isTautology`.
-- Lab source: `Labs/lab4.ml`, `Labs/tests4.ml`.
-- Textbook anchors: [[Chapter - 5 & 6#5.3 Lists|Ch5 lists]], [[Chapter - 5 & 6#5.4 Tail Recursion Masterclass|Ch5 tail recursion]], [[Chapter - 5 & 6#Chapter 6 - Unions|Ch6 unions]], [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4#3.1 Functional programming and Functions|Ch3 functions]].
-- Concept anchors: [[OCaml - Higher-Order Functions]], [[OCaml - Continuation Passing]], [[OCaml - Tautology Problems]], [[OCaml - Association Lists]], [[OCaml - Algebraic Data Types and Structural Recursion]], [[OCaml - Tail Recursion and Internal Helpers]].
-
-### Clean code spine for the week
-Use this as the organized version of the lecture code. The detailed professor-note walkthrough remains below.
-
-#### 1. Reduce: list consumption with caller-supplied combination
-```ocaml
-let rightReduce func objects default =
-  let rec reducing objects =
-    match objects with
-    | [] -> default
-    | head :: tail -> func head (reducing tail)
-  in
-  reducing objects
-;;
-
-let leftReduce func objects default =
-  let rec reducing objects =
-    match objects with
-    | [] -> default
-    | head :: tail -> func (reducing tail) head
-  in
-  reducing objects
-;;
-```
-
-- Right reduce nests as `f e0 (f e1 (... default))`.
-- The lecture's `leftReduce` version flips which side receives the recursive result, so the nesting shape changes.
-- The lecture's main exam point is not library trivia. It is: **parenthesization controls evaluation shape**, and recursive position controls stack behavior.
-
-#### 2. CPS: caller supplies what happens to each generated value
-```ocaml
-let forLoop etc min max =
-  let rec looping index =
-    if index <= max
-    then (etc index; looping (index + 1))
-    else ()
-  in
-  looping min
-;;
-```
-
-- `etc` is the continuation.
-- `forLoop` may call `etc` zero times if `min > max`.
-- The normal return value is just `unit`; the useful results are delivered through continuation calls.
-
-```ocaml
-let generateBools etc n =
-  let rec generating bools n =
-    match n with
-    | 0 -> etc bools
-    | _ ->
-        generating (false :: bools) (n - 1);
-        generating (true :: bools) (n - 1)
-  in
-  generating [] n
-;;
-```
-
-- `generateBools` calls `etc` once per completed boolean list.
-- For `n` variables, that means `2^n` completed lists.
-- This is the bridge from CPS to truth-table generation.
-
-#### 3. Tautology checker: recursive propositions plus generated assignments
-```ocaml
-type proposition =
-  | False
-  | True
-  | Var of string
-  | Not of proposition
-  | And of proposition * proposition
-  | Or of proposition * proposition
-  | Imply of proposition * proposition
-  | Equiv of proposition * proposition
-;;
-```
-
-- This type is a direct OCaml representation of logical syntax.
-- `False` and `True` are constructors; they are not the primitive booleans `false` and `true`.
-- Recursive constructors like `Not`, `And`, and `Or` let propositions contain smaller propositions.
-
-```ocaml
-let evaluate proposition pairs =
-  let rec evaluating proposition =
-    match proposition with
-    | False -> false
-    | True -> true
-    | Var name -> alGet pairs name
-    | Not right -> not (evaluating right)
-    | And (left, right) -> evaluating left && evaluating right
-    | Or (left, right) -> evaluating left || evaluating right
-    | Imply (left, right) -> (not (evaluating left)) || evaluating right
-    | Equiv (left, right) -> evaluating left = evaluating right
-  in
-  evaluating proposition
-;;
-```
-
-- The evaluator is structural recursion over the proposition tree.
-- `Var name` is the case that connects the expression tree to an assignment association list.
-- `&&` and `||` matter because they short-circuit; they are both boolean operators and control-flow tools here.
-
-```ocaml
-let generateAndTestPairs etc names =
-  let rec generating names pairs =
-    match names with
-    | [] -> etc pairs
-    | name :: otherNames ->
-        generating otherNames (alPut pairs name false)
-        && generating otherNames (alPut pairs name true)
-  in
-  generating names []
-;;
-
-let isTautology proposition =
-  generateAndTestPairs
-    (fun pairs -> evaluate proposition pairs)
-    (names proposition)
-;;
-```
-
-- `generateAndTestPairs` is the same generator idea as `generateBools`, but it tests each completed assignment.
-- The `&&` lets the checker stop early when one assignment makes the proposition false.
-- `isTautology` is the final composition: get names, generate assignments, evaluate under each assignment.
-
-#### 4. Lab 4: CPS permutations are the same pattern
-```ocaml
-let rec choose etc things =
-  match things with
-  | [] -> ()
-  | first :: rest ->
-      etc first;
-      choose etc rest
-;;
-
-let rec allbut things thing =
-  match things with
-  | [] -> []
-  | first :: rest ->
-      if first = thing then rest
-      else first :: allbut rest thing
-;;
-
-let permute etc things =
-  let rec permuting permutedThings unpermutedThings =
-    match unpermutedThings with
-    | [] -> etc permutedThings
-    | _ ->
-        choose
-          (fun thing ->
-             permuting
-               (thing :: permutedThings)
-               (allbut unpermutedThings thing))
-          unpermutedThings
-  in
-  permuting [] things
-;;
-```
-
-- `choose` calls `etc` once for each possible next element.
-- `allbut` removes the chosen element for the next recursive layer.
-- `permute` calls `etc` only when a full permutation has been built.
-- `tests4.ml` cares about printed effects, not a returned list: each permutation of `[0; 1; 2]` must be printed exactly once.
-
-### What to retain from the long notes below
-- For **Feb 16**, keep the distinction between returning one value and calling `etc` many times.
-- For **Feb 18**, keep the proposition data model and evaluator flow.
-- For **Feb 20**, keep the final wiring: `names` to `generateAndTestPairs` to `evaluate`.
-- For **Lab 4**, keep the mental model: choose a next item, remove it from the remaining items, recurse, and call `etc` at the leaves.
-
 ### Lecture (Feb 16) 
 - Left vs Right Reduce, then CPS: continuations, `forLoop`, `generateBools`  
 #### Announcements + where we are going  
@@ -976,31 +769,8 @@ Links to connect:
 - [[OCaml - Basics#Lists: `[]`, `::`, `@`|`::` vs `@` in names collection]]
     
 - [[OCaml - Basics#Exceptions and `raise`|Association list lookup + errors]]
-## Lab
-### Lab 4 — CPS Permutations
-Source: `Labs/lab4.ml`  
-Tests: `Labs/tests4.ml`
-
-- Tests callbacks/continuations through `choose`, element removal with `allbut`, and permutation generation through `permute`.
-- `permute` calls `etc` on each complete permutation instead of returning one big result list.
-- Concepts: [[OCaml - Continuation Passing]], [[OCaml - Higher-Order Functions]], [[OCaml - Tail Recursion and Internal Helpers]]
-- Final check: be able to explain what continuation `etc` receives and why each permutation should print exactly once.
-
 ## Takeaways (questions to resolve)
-- [ ] Can I expand a left-reduce and right-reduce call by hand and see the difference?
-- [ ] Can I explain why CPS lets a function "return" many values without building a giant list?
-- [ ] Can I trace the exact value passed to `etc` in `generateBools` and Lab 4's `permute`?
-- [ ] Can I build a proposition value from a logical formula using constructors?
-- [ ] Can I explain why `evaluate` is structural recursion over the proposition tree?
-- [ ] Can I explain why `generateAndTestPairs` uses `&&` instead of `;`?
-- [ ] Can I identify where the tautology checker is exponential and why that is unavoidable for brute force truth tables?
+- [ ] Why does ...?
+- [ ] What changes if ...?
 ## Flashcards
-#cards/CSCI2041
-- CPS definition::A style where a function supplies results by calling a continuation instead of returning the interesting value directly.
-- What does `etc` represent in these lectures::The continuation, or "what to do next" with each generated value.
-- `generateBools` number of outputs::`2^n` boolean lists of length `n`.
-- Right-reduce shape::`f e0 (f e1 (... (f en default)))`.
-- Left-reduce shape::`f (... (f (f default e0) e1) ...) en`.
-- What does `Var name` do in `evaluate`::Looks up `name` in the assignment association list.
-- Why use `&&` in `generateAndTestPairs`::It short-circuits when one assignment makes the proposition false.
-- Lab 4 final check::Explain how `permute` calls `etc` once per completed permutation.
+#cards/

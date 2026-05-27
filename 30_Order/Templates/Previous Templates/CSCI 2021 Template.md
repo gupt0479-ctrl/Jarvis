@@ -6,7 +6,7 @@ updated: 2025-10-04
 area:
   - "[[C Language]]"
   - "[[CSCI 2021 Board]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Midterm - 1|Midterm - 1]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Midterm - 1|Midterm - 1]]"
 tags:
   - "#class"
   - "#Textbook"

@@ -6,16 +6,18 @@ created: 2026-03-18
 updated:
 area:
   - "[[UMN Board]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/Minor/MGMT 3001/MGMT 3001 Board]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/Minor/MGMT 3001/Textbook/Chapter - 15]]"
+  - "[[MGMT 3001 Board]]"
+  - "[[50_Archive/Previous Classes/Minor/MGMT 3001/Textbook/Chapter - 15|Chapter - 15]]"
+  - "[[Decision Making|Decision Making]]"
 tags:
   - "#class"
   - "#Lecture"
-next: []
+next:
+  - "[[50_Archive/Previous Classes/Minor/MGMT 3001/Week - 7|Week - 7]]"
 ---
-# Entire Week  
-## What you must be able to do  
-- [[Textbook]]  
+# Week 6 - Decision Making
+## What you must be able to do
+- [[50_Archive/Previous Classes/Minor/MGMT 3001/Textbook/Chapter - 15|Chapter - 15]]  
 - Explain the 6-step rational decision-making process clearly and in order.  
 - Distinguish rational decision making from bounded rationality and satisficing.  
 - Explain why managers often cannot be fully rational even when they want to be.  
@@ -23,7 +25,6 @@ next: []
 - Recognize major biases from lecture: availability, representativeness, anchoring/adjustment, confirmation, escalation of commitment, status quo, and framing.  
 - Explain how emotions and social situations affect decisions, even when a person thinks they are being objective.  
 - Apply the decision-making ideas to leadership, entrepreneurship, and speaking situations.  
-- Extend the lecture using innovation-related biases such as conformity bias, authority bias, ambiguity bias, bandwagon bias, and feature-positive effect.  
 - Explain how managers can reduce bias rather than pretending bias does not exist.  
   
 ## Key ideas (short)  
@@ -34,19 +35,18 @@ next: []
 - Bias is not random stupidity; it is a patterned shortcut that can help speed and hurt judgment.  
 - The strongest practical skill this week is not “never be biased.” It is learning to notice where bias enters the process.  
 - In groups, bias becomes even more dangerous because social pressure can make bad thinking feel normal.  
-- In innovation settings, bias often pushes people toward the familiar, the safe-looking, and the already-approved path. :contentReference[oaicite:1]{index=1}  
+
   
 ## Concepts created today  
-- [[Concept - Rational decision making vs bounded rationality]]  
-- [[Concept - Cognitive bias, innovation bias, and de-biasing decisions]]  
-  
+- [[Decision Making|Decision Making]]  
+- [[Entrepreneurship Management Playbook|Entrepreneurship Management Playbook]]  
 ## Examples worth keeping  
 - **Choosing a college** works well for the 6-step rational model because the criteria can be listed, weighted, and compared.  
 - **Judging people by gut reactions** shows how quickly stereotypes and social cues shape decision-making before evidence appears.  
 - **A low first salary offer** is a classic anchoring example because the starting number quietly shapes the whole negotiation.  
 - **Continuing a failing plan because too much has already been invested** is escalation of commitment.  
 - **A product with “90% survival” versus “10% death”** shows framing because the facts are equivalent but the response changes.  
-- **Innovation meetings where people say “that’s how we’ve always done it”** show how bias blocks new thinking. :contentReference[oaicite:2]{index=2}  
+
   
 ## Lecture  
 ### 1. The lecture starts with the ideal model  
@@ -246,23 +246,8 @@ This is why the lecture also mentions:
 In other words, bias management is not only personal.  
 It is also organizational.  
   
-### 9. Innovation bias additions from the outside reading  
-The Board of Innovation article adds several bias patterns that fit this week especially well in entrepreneurial and creative work.  
-  
-It distinguishes **information-processing biases** from **emotional biases**, and argues that both often push teams back toward the familiar, safer-looking option rather than truly new thinking. It also warns that many innovation teams say things like “that’s too disruptive,” “nobody would buy it,” or “we’ve already tested something like that” when biases are shaping the room. :contentReference[oaicite:3]{index=3}  
-  
-Important additions:  
-- **Conformity bias**: going along with the group even against your independent judgment. :contentReference[oaicite:4]{index=4}  
-- **Authority bias**: giving too much weight to the senior person’s view. :contentReference[oaicite:5]{index=5}  
-- **Ambiguity bias**: preferring the more knowable option over the less certain but possibly better one. :contentReference[oaicite:6]{index=6}  
-- **Bandwagon bias**: favoring an idea because others are favoring it. :contentReference[oaicite:7]{index=7}  
-- **Projection bias**: assuming future customers will want what current decision-makers want now. :contentReference[oaicite:8]{index=8}  
-- **Pro-innovation bias**: assuming “new” automatically means “good.” :contentReference[oaicite:9]{index=9}  
-- **Feature-positive effect**: focusing on appealing benefits while neglecting major downsides or missing information. :contentReference[oaicite:10]{index=10}  
-  
-These are especially useful because they connect decision-making theory to entrepreneurship and product design.  
-  
-### 10. Emotions and social situations should not be treated as side notes  
+
+### 9. Emotions and social situations should not be treated as side notes  
 Even though the lecture centers on bias, it also signals that decisions are affected by emotion and social context.  
   
 That means:  
@@ -277,7 +262,7 @@ A person may privately doubt an idea but publicly support it because:
 - the group energy is moving one direction  
 - disagreement feels costly  
   
-### 11. What the week is really teaching  
+### 10. What the week is really teaching  
 The deepest lesson is not:  
 - “Use the rational model always”  
   
@@ -287,6 +272,9 @@ It is:
 - watch for predictable judgment traps  
 - create habits and systems that improve the quality of decisions  
   
+## Textbook integration
+- [[50_Archive/Previous Classes/Minor/MGMT 3001/Textbook/Chapter - 15|Chapter - 15]] expands rational decision making, assumptions, bounded rationality, satisficing, heuristics, and biases.
+- The source-of-truth concept note for this week is [[Decision Making|Decision Making]].
 ## Leadership / entrepreneurship / speaking links  
 ### Leadership link  
 A strong leader does not just make fast calls.  
@@ -304,8 +292,6 @@ That makes them especially vulnerable to:
 - ambiguity bias  
 - escalation of commitment  
 - feature-positive effect  
-- projection bias :contentReference[oaicite:11]{index=11}  
-  
 Founders need to ask:  
 - are we learning, or are we protecting our original idea?  
 - are we testing customer reality, or only our own preferences?  
@@ -331,6 +317,17 @@ That speaking structure makes meetings sharper and more credible.
 - [ ] How can a leader invite disagreement without slowing the group too much?  
 - [ ] In innovation work, how do we stay open-minded without becoming unrealistic?  
   
+## Lecture-to-textbook synthesis
+- ==Definition anchor: decision making is choosing among alternatives under limits of information, time, goals, risk, uncertainty, emotion, and politics.==
+- *Mechanism:* the rational model gives a clean process, but the lecture and textbook both show why real decisions depart from it. Bounded rationality, satisficing, heuristics, bias, emotion, and social pressure are normal managerial conditions.
+- Lecture examples/scenarios: the college-choice example shows how criteria and weights structure a decision; the gut-reaction exercises show how emotion and social categories can enter before conscious reasoning catches up.
+- Textbook connection: [[50_Archive/Previous Classes/Minor/MGMT 3001/Textbook/Chapter - 15|Chapter - 15]] adds expected utility, conditions of certainty/risk/uncertainty/ambiguity, programmed vs nonprogrammed decisions, and organizational models like administrative, political, and garbage-can decision making.
+- Concept links: [[Decision Making|Decision Making]], [[Entrepreneurship Management Playbook|Entrepreneurship Management Playbook]].
+> [!WARNING]
+> The rational process is a tool, not a description of how managers always behave. The exam magnet is knowing when bounded rationality and bias are shaping the outcome.
+> [!SUMMARY]
+> Week 6 teaches disciplined skepticism: use structure to improve decisions, but assume the human system will add shortcuts, emotion, incentives, and pressure.
+
 ## Flashcards  
 #cards/MGMT  
 Decision making::The process of identifying issues and choosing among alternative courses of action.  

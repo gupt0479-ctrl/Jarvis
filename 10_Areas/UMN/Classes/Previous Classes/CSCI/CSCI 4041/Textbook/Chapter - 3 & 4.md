@@ -1,20 +1,22 @@
 ---
 type: class
 input_kind: book
-status: seed
+status: sprout
 created: 2026-02-02
-updated: 2026-04-16
+updated: 2026-04-28
 area:
   - "[[UMN Board]]"
   - "[[CSCI 4041 Board]]"
+  - "[[DSA]]"
+  - "[[Introduction to Algorithms]]"
 tags:
   - "#class"
   - "#Textbook"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 3|Week - 3]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 3|Week - 3]]"
 ---
 # Chapter - 3
 ## Summary Links
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 3#Chapter 3 and Chapter 4 - Asymptotic Notation, Recurrences, and Divide-and-Conquer|Week - 3]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 3#Chapter 3 and Chapter 4 - Asymptotic Notation, Recurrences, and Divide-and-Conquer|Week - 3]]
 - [[Divide and Conquer#Definition|Divide and Conquer]]
 - [[Time Complexity#Definition|Time Complexity]]
 
@@ -303,3 +305,78 @@ These are exactly the tools reused in the expected-analysis proof of randomized 
 
 > **Summary of Basics for Data Structures**
 > Understanding Chapter 5 is vital for data structures because it allows us to analyze average-case performance. For example, in hash tables the worst-case search is O(n), but probabilistic analysis proves the average-case is O(1). In quicksort, randomization ensures we avoid the quadratic worst case and achieve expected $O(n \lg n)$ time.
+
+---
+
+## Overview
+- Chapters 3 and 4 turn the Week 1 and 2 cost intuition into formal asymptotic notation, recurrence solving, and divide-and-conquer design.
+- In CSCI 4041, this material is the bridge from sorting examples to every later runtime proof: heaps, quicksort, dynamic programming, graph algorithms, and flow algorithms all depend on this language.
+- The course notebooks emphasize both mathematical recurrences and executable divide-and-conquer code, especially matrix multiplication variants.
+
+## Core Definitions
+See sections 3.1–3.3 and 4.0 above for full definitions.
+
+## Main Algorithms
+See sections 4.1–4.5 above for full algorithm descriptions.
+
+## Correctness Ideas
+- For asymptotic notation, correctness is mostly about quantifiers: choose positive constants and an `n_0` that make the inequality true for all sufficiently large `n`.
+- Divide-and-conquer correctness is usually induction on input size.
+- Recursion-tree reasoning accounts for total work by summing work level by level.
+- Substitution proves a guessed bound by induction after the recurrence suggests the right shape.
+
+## Complexity
+- Generic divide-and-conquer matrix multiplication has recurrence `T(n)=8T(n/2)+Theta(n^2)`, giving `Theta(n^3)`.
+- Strassen has recurrence `T(n)=7T(n/2)+Theta(n^2)`, giving `Theta(n^{lg 7})`.
+- Binary-search-style recurrences such as `T(n)=T(n/2)+Theta(1)` solve to `Theta(lg n)`.
+- Merge-sort-style recurrences such as `T(n)=2T(n/2)+Theta(n)` solve to `Theta(n lg n)`.
+
+## Lecture Emphasis
+- `Lectures/Week - 3/Ch4_Divide_and_Conquer(Examples).ipynb` builds small DnC examples before matrix multiplication. The `min_DnC` shape is the template:
+
+```python
+def min_DnC(A,p,r):
+    if p==r:
+        return A[p]
+    q = (p+r)//2
+    l_min = min_DnC(A,p,q)
+    r_min = min_DnC(A,q+1,r)
+    return l_min if l_min < r_min else r_min
+```
+
+- `Lectures/Week - 3/Ch4_Divide_and_Conquer(Matrix-Multiply).ipynb` contrasts cubic triple-loop multiplication with recursive quadrant multiplication:
+
+```python
+for i in range(n):
+    for j in range(n):
+        for k in range(n):
+            C[i][j] += A[i][k]*B[k][j]
+```
+
+- The lecture emphasis is that changing the recursion tree, not just rewriting loops recursively, is what changes the asymptotic result.
+- Weekly/concept links: [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 3|Week - 3]], [[Time Complexity|Time Complexity]], [[Divide and Conquer|Divide and Conquer]].
+
+## Examples
+- `7n^3 + 100n^2` is `Theta(n^3)` because the cubic term dominates after a large enough `n_0`.
+- A recursion tree for merge sort has `lg n` levels, each with `Theta(n)` merge work.
+- Strassen is the canonical example where doing more clever combine/algebra work reduces the number of recursive calls.
+
+## Connections
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 3|Week - 3]]
+- [[Time Complexity|Time Complexity]]
+- [[Divide and Conquer|Divide and Conquer]]
+- Source homework read: `Homework/Coding/CodingHW_2(chapter4-CLRS).ipynb` and `Homework/Paper/Paper HW - 2 (Ch - 3 & 4).pdf`.
+- TODO: source gap - no vault Homework/Paper Homework note exists for direct wikilinking.
+
+## Common Pitfalls
+- Using `O` when the claim is actually `Theta`.
+- Forgetting the "for all `n >= n_0`" part of asymptotic definitions.
+- Applying the Master Method to recurrences outside its required form.
+- Assuming recursive code is automatically faster than iterative code.
+
+## Review Checklist
+- [ ] State formal `O`, `Omega`, and `Theta` definitions with constants.
+- [ ] Solve simple recurrences by recursion tree, substitution, and Master Method.
+- [ ] Explain the divide/conquer/combine structure of matrix multiplication.
+- [ ] Compare standard recursive matrix multiplication with Strassen.
+- [ ] Identify when a recurrence theorem does not apply.

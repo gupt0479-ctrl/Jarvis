@@ -7,18 +7,18 @@ created: 2026-02-01
 topics:
   - "[[DSA]]"
   - "[[CSCI 4041 Board]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 1 & 2|Week - 1 & 2]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 1 & 2|Week - 1 & 2]]"
   - "[[Introduction to Algorithms]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 1 & 2]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 1 & 2]]"
 related:
   - "[[Divide and Conquer]]"
   - "[[Time Complexity]]"
 ---
 # [[Sorting Algorithms]]
 ## MOC
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 1 & 2#Chapter 1 and Chapter 2 - Insertion Sort, Cost Models, and Merge Sort|Week - 1 & 2]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 1 & 2#2.1 Insertion Sort|Chapter - 1 & 2 - Insertion Sort]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 1 & 2#2.3 Designing Algorithms|Chapter - 1 & 2 - Merge Sort]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 1 & 2#Chapter 1 and Chapter 2 - Insertion Sort, Cost Models, and Merge Sort|Week - 1 & 2]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 1 & 2#2.1 Insertion Sort|Chapter - 1 & 2 - Insertion Sort]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 1 & 2#2.3 Designing Algorithms|Chapter - 1 & 2 - Merge Sort]]
 - [[Divide and Conquer#Definition|Divide and Conquer]]
 - [[Time Complexity#Definition|Time Complexity]]
 
@@ -50,7 +50,7 @@ related:
 
 ## Core Ideas (Lecture)
 ### Three insertion-sort variants
-Lecture emphasized that [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 1 & 2#Chapter 1 and Chapter 2 - Insertion Sort, Cost Models, and Merge Sort|Week - 1 & 2]] was not about memorizing one code listing. It was about seeing how implementation choices affect cost.
+Lecture emphasized that [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 1 & 2#Chapter 1 and Chapter 2 - Insertion Sort, Cost Models, and Merge Sort|Week - 1 & 2]] was not about memorizing one code listing. It was about seeing how implementation choices affect cost.
 1. **CLRS in-place version**
 	- Stores the current key, shifts larger values right, and writes the key into the gap.
 	- This is the cleanest version for a loop-invariant proof and for RAM-model reasoning.
@@ -224,6 +224,8 @@ If there are `n/k` insertion-sorted leaves and each leaf costs `Theta(k^2)`, the
 - Merge two sorted arrays or lists.
 - Practice sorting-based grouping problems such as anagrams.
 - Rehearse a three-value partitioning problem as preparation for [[QuickSort#Definition|QuickSort]] later.
+- CodingHW_1(chapter2-CLRS).ipynb: insertion sort variants, merge sort, coarsened hybrid sort
+- Paper HW - 1 (Ch - 2).pdf: written problems on insertion sort analysis and loop invariants
 
 ## Mini-test
 1. Why is the CLRS insertion-sort implementation the cleanest one for a loop-invariant proof?

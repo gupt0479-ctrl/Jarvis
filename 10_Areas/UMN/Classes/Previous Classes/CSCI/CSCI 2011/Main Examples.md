@@ -4,15 +4,15 @@ status: archived
 created: 2025-12-09
 updated: 2025-12-13
 area:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2011/Chapter - 1]]"
-  - "[[Chapter - 2]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2011/Chapter - 1]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2011/Chapter - 2]]"
   - "[[Chapter - 4]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2011/Chapter - 5]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2011/Chapter - 6]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2011/Chapter - 5]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2011/Chapter - 6]]"
   - "[[Chapter - 7]]"
   - "[[Chapter - 9]]"
   - "[[Material]]"
-  - "[[Chapter - 3]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2011/Chapter - 3]]"
   - "[[Chapter - 10]]"
 tags:
   - "#class"

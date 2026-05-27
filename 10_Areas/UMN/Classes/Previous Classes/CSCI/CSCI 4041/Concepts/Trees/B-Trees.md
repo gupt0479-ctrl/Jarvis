@@ -1,7 +1,7 @@
 ---
 type: concept
 course: CSCI 4041
-status: tree
+status: evergreen
 mastery (1/10): 4
 created: 2026-02-25
 updated: 2026-04-16
@@ -10,16 +10,16 @@ topics:
   - "[[CSCI 4041 Board]]"
   - "[[Chapter - 18]]"
 related:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Trees/AVL Trees]]"
-  - "[[10_UMN/CSCI 4041/CSCI 4041/Concepts/Elementary Data Structures]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 6|Week - 6]]"
+  - "[[AVL Trees]]"
+  - "[[Elementary Data Structures]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 6|Week - 6]]"
 ---
 # [[B-Trees]]
 ## MOC
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 6#Jupyter Notebook Explanations|Week - 6]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 6#Jupyter Notebook Explanations|Week - 6]]
 - [[Chapter - 18#18.1 Definition of B-Trees|Chapter - 18 - Definition of B-Trees]]
 - [[Chapter - 18#18.3 Deletion|Chapter - 18 - Deletion]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Trees/AVL Trees#Complexity + Tradeoffs|AVL Trees - Complexity + Tradeoffs]]
+- [[AVL Trees#Complexity + Tradeoffs|AVL Trees - Complexity + Tradeoffs]]
 
 ## Definition
 - **B-tree** is a balanced multiway search tree designed for secondary storage.
@@ -84,6 +84,119 @@ The lecture emphasized that this is the opposite feel of BST insertion. The stru
 - underflow = redistribution case
 - height grows only when the root splits
 
+## Professor Code From Lecture
+### Ch18_B-Tree.ipynb — Full `Btree` Implementation
+The professor's complete B-tree class from [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 6|Week - 6]] (`Lectures/Week - 6/Ch18_B-Tree.ipynb`). This is a direct Python translation of the CLRS Chapter 18 pseudocode.
+
+```python
+class Btree:
+    """A B-Tree implementation based on chapter 18 of CLRS"""
+    
+    ####################################################################################
+    class node:
+        """a nested node class for Btree objects based on page 502 of CLRS-chapter 18"""
+
+        def __init__(self,n=0,keys=[],children=[],leaf=True):
+            """constructor for Btree nodes"""
+            self.n = n        # number of keys
+            self.key = keys  # sorted list of n keys
+            self.c = children # list of n+1 child links
+            self.leaf = leaf  # boolean for leaves
+    ####################################################################################
+    
+    def __init__(self,t=2):
+        """constructor for Btree python objects -see B-TREE-CREATE(T) on page 506"""
+        self.root = self.node(n=0,keys=[],children=[],leaf=True)            # create an initial empty node
+        self.t = t # B-tree parameter
+    
+    def search(self,x,k):
+        """multi-way search algorithm based on page 505 of CLRS-chapter 18"""
+        i = 0
+        while i < x.n and k > x.key[i]:    # walk forward through keys / links
+            i = i + 1
+        if i < x.n and k == x.key[i]:      # success
+            return x,i
+        elif x.leaf:
+            return None                    # failure
+        else:
+            return self.search(x.c[i],k)        # move down the tree (recursively)
+
+    def split(self,x,i):
+        """this is B-TREE-SPLIT-CHILD(x,i) from page 506 in CLRS-chapter 18
+        
+            splits y (which is child i of node x) into siblings y and z 
+                where y.key    <    y.key[self.t-1] = key    <    z.key
+        """
+        y = x.c[i]         # this is the node that is chopped up
+        
+        z = self.node()    # this is new
+        z.leaf = y.leaf
+        z.n = self.t - 1   # z should be the last self.t - 1
+        z.key = y.key[self.t:]
+        if not y.leaf:                     # check for children
+            z.c = y.c[self.t:]             # split the children
+        
+        key = y.key[self.t-1]     # this key is moved up below
+        
+        y.key = y.key[:self.t-1]  # extract the first t-1 keys
+        y.n = self.t - 1        # this is the first self.t - 1
+        y.c = y.c[:self.t]      # extract the first t children
+        
+        # insert new node z into x's child links
+        x.c.insert(i+1,z)
+        
+        # push middle key up to (the parent) x in position i
+        x.key.insert(i,key)
+        x.n = x.n + 1
+    
+    def insert(self,k):
+        """this is B-TREE-INSERT(T,k) from page 508 in CLRS-chapter 18"""
+        r = self.root
+        if r.n == 2*self.t - 1:       # check for max size
+            s = self.split_root()     # split root
+            self.insert_nonfull(s,k)  # insert into new root
+        else:
+            self.insert_nonfull(r,k)  # insert at root
+    
+    def split_root(self):
+        """this is B-TREE-SPLIT-ROOT(T) from page 509 in CLRS-chapter 18"""
+        s = self.node(n=0,keys=[],children=[self.root],leaf=False)         # create a node
+        self.root = s         # set as the root
+        self.split(s,0)       # split the child
+        return s
+    
+    def insert_nonfull(self,x,k):
+        """this is B-TREE-INSERT-NONFULL(x,k) from page 511 in CLRS-chapter 18"""
+        i = x.n - 1#-------------# the minus one is for 0-index
+        
+        if x.leaf:
+            #----------------------------------- insert at leaf ----------------------
+            while i >= 0 and k < x.key[i]: # find the insert location
+                 i = i - 1
+            x.key.insert(i+1,k)            # insert
+            x.n = x.n + 1
+        else:
+            #----------------------------- move down the tree-------------------------
+            while i >= 0 and k < x.key[i]:
+                i = i - 1
+            i = i + 1
+            if x.c[i].n == 2*self.t - 1:         # check for split on the way down (top-down)
+                self.split(x,i)
+                if k > x.key[i]:                 # check branch for change (after split)
+                    i = i + 1
+            self.insert_nonfull(x.c[i],k)        # move down the tree to child link i
+```
+
+#### Method-by-Method Breakdown
+- **Node structure** (`class node`): Each node stores `n` (key count), `key` (sorted list of keys), `c` (list of child links), and `leaf` (boolean). This maps directly to the CLRS textbook fields on page 502. The professor uses a nested class so every node belongs to a specific `Btree` instance.
+- **Constructor** (`__init__` on `Btree`): Creates an empty root node with `t=2` by default (making it a 2-3-4 tree). This corresponds to `B-TREE-CREATE(T)` on page 506. The tree stores its minimum degree `t` as an instance variable.
+- **Search** (`search(x, k)`): Multi-way search walks forward through keys in the current node to find the correct child interval, then recurses. Returns `(node, index)` on success or `None` on failure. Time: $O(\log_t n)$.
+- **Split** (`split(x, i)`): Splits child `i` of node `x` when it is full (`2t-1` keys). The middle key (`y.key[t-1]`) moves up to the parent. The left half stays in the original child `y`, the right half goes to a new sibling `z`. This is the core structural repair operation — it keeps nodes within the legal size range.
+- **Insert** (`insert(k)`): Top-down insertion. If the root is full, split it first via `split_root` (the only way height increases). Then call `insert_nonfull`. This guarantees we never descend into a full node.
+- **split_root**: Creates a new empty node, makes the old root its only child, then splits that child. The new node becomes the tree's root. This is the only operation that increases tree height.
+- **insert_nonfull** (`insert_nonfull(x, k)`): If at a leaf, find the correct position and insert directly. If at an internal node, find the correct child, split it if full, then recurse. The `i = x.n - 1` adjustment is for 0-indexing — the professor's comment marks this explicitly.
+- The professor emphasized that B-tree insertion is "top-down" — the tree is proactively repaired on the way down, unlike BST insertion which inserts first and repairs afterward. This means every node we visit is guaranteed to have room for a new key if needed.
+
 ## Proof / Reasoning Toolkit
 ### Height-Bound Checklist
 1. Start with the sparsest legal B-tree.
@@ -144,6 +257,7 @@ Compared with balanced binary trees, B-trees use more work per node but far fewe
 - Compare B-tree and AVL search paths conceptually
 - Explain why databases like high branching factors
 - Reconstruct a B-tree from a sequence of insertions for small t
+- [[Multiway Search Tree Project|Midterm Project - Multiway Search Tree]]: B-tree / multiway search tree implementation option
 
 ## Mini-test
 1. Why is minimum degree t the most important B-tree parameter?

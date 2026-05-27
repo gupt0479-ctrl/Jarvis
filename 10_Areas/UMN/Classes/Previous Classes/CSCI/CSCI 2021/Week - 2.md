@@ -5,7 +5,7 @@ created: 2025-10-03
 updated: 2025-10-06
 area:
   - "[[C Language]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Midterm - 1]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Midterm - 1]]"
   - "[[Mallac and free functions]]"
   - "[[Static and dynamic]]"
   - "[[Two Dimensional Arrays]]"
@@ -15,7 +15,7 @@ tags:
   - "#Lecture"
   - "#Lab"
   - "#Homework"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 3|Week - 3]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 3|Week - 3]]"
 ---
 # #Textbook Textbook (DIS - 1.5, 2.1 - 2.5)
 ## #DIS DIS
@@ -320,13 +320,13 @@ Implementing pass by pointers, malloc and free functions, linked list implementa
     understanding of how basic arithmetic is supposed to work. If you happen to know WHY this strangeness is happening, describe it below. If not, you will find out soon.
 	**Answer:** If you enter `5000` or `-5000`, the printed number of minutes is probably very large and may even be **negative** or otherwise “nonsense” compared to what you’d expect from normal arithmetic. 
 	- This happens because `age_minutes` is an `int`, and the expression`age_minutes = age_years * 365 * 24 * 60;`overflows the range of a 32-bit signed integer for such huge ages.
-	- When an `int` overflows, it wraps around according to two’s complement arithmetic [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 3#** Two's-Complement Encodings **|Two's complement]], producing incorrect (and sometimes negative) results. That’s why the output looks strange.
+	- When an `int` overflows, it wraps around according to two’s complement arithmetic [[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 3#** Two's-Complement Encodings **|Two's complement]], producing incorrect (and sometimes negative) results. That’s why the output looks strange.
 2. **Q1, D**: Describe which function is used to print information to the screen. Describe how it seems to work to substitute values into output and what _format specifier_ indicates an integer should be substituted.
 	**Answer:** The function used to print to the screen is **`printf`**. It takes a _format string_ plus additional arguments. Inside the format string, placeholders like `%d` are used, and `printf` substitutes the extra arguments into those placeholders when printing.
 	- Example from `age.c`:`printf("You are %d minutes old.\n", age_minutes);`
 		Here `%d` is the **format specifier for an `int`**, so `age_minutes` is printed as a decimal integer in that spot.
 3. **Q1, E**: Describe what function is used to read typed input interactively from a user in the 'age.c' program. Describe how its arguments differ from those for the arguments for printing to the screen earlier. Why is this difference necessary?
-	**Answer:** The function used to read input is **`scanf`**. In `age.c` it is called like this: `scanf("%d", &age_years);` [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 1#1.2|Format Strings and scanf]]
+	**Answer:** The function used to read input is **`scanf`**. In `age.c` it is called like this: `scanf("%d", &age_years);` [[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 1#1.2|Format Strings and scanf]]
 	- Differences from `printf`:
 		- `printf` takes values (e.g., `age_minutes`) to be **printed**.
 		- `scanf` takes **addresses** of variables (e.g., `&age_years`) so it can **store** the user’s input into those variables. This difference is necessary because `scanf` needs to _modify_ the caller’s variables. Passing the address (using `&`) lets `scanf` write the read value into `age_years`.

@@ -1,6 +1,6 @@
 ---
-type: evergreen
-status: archived
+type: reference
+status: complete
 created: 2025-12-31
 topic: "ML Foundations from CSCI 2033"
 tags:

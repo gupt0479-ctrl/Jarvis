@@ -3,7 +3,7 @@ type: class
 input_kind: lecture
 status: seed
 created:
-updated: 2026-05-12
+updated:
 area:
   - "[[UMN Board]]"
 tags:
@@ -11,52 +11,15 @@ next: []
 ---
 # Entire Week
 ## What you must be able to do
-- Represent a binary search tree with an algebraic data type and use pattern matching to inspect it.
-- Explain the BST property and use it to choose left, right, or found.
-- Trace persistent `bstInsert`: only the search path is rebuilt, untouched subtrees are shared.
-- Trace Lab 3 `bstDelete`, including empty tree, leaf, one-child, and two-child cases.
-- Explain why `bstIsIn` can be tail-recursive but `bstInsert` is not.
-- Explain static binding using `plusB`/`mystery` and the three parts of a closure.
-- Use operator functions like `(+)` and explain why `(*)` needs care because of comment syntax.
-- Use `map`, `filter`, and `reduce` as higher-order recursion templates and analyze their tail-call behavior.
+- 
 ## Key ideas (textbook)
-- [[Chapter - 5 & 6#Chapter 5 - Tuples, Lists, and Polymorphism|Chapter 5]] formalizes tuples, lists, polymorphism, and the list-recursion patterns behind `map`, `filter`, and `reduce`.
-- [[Chapter - 5 & 6#Chapter 6 - Unions|Chapter 6]] is the source for exact union types, constructors, recursive trees, options, and null-free data modeling.
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4#3.1.1 Scoping and Nested Functions|Chapter 3 scoping]] supports the closure/static-binding material from Feb 11.
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4#3.1 Functional programming and Functions|Chapter 3 functions]] explains curried functions, partial application, function application precedence, and operators-as-functions.
-- BST efficiency depends on height: expected `O(log n)` for balanced-ish trees, worst-case `O(n)` for skewed trees.
+- 
 ## Concepts created today
-- [[OCaml - BST Problems]]
-- [[OCaml - Algebraic Data Types and Structural Recursion]]
-- [[OCaml - Pattern Matching]]
-- [[OCaml - Let bindings, Scope & Closures]]
-- [[OCaml - Higher-Order Functions]]
-- [[OCaml - Tail Recursion and Internal Helpers]]
+- [[Chapter - 9 & 10|Textbook Chapter - 9]]
+- [[Concept - ...]]
 ## Examples worth keeping
-- `type 'key bst = BstEmpty | BstNode of 'key * 'key bst * 'key bst`: explicit empty case instead of null.
-- `bstIsIn key tree`: compare key, recurse left or right, and return immediately from each branch.
-- `bstInsert tree key`: rebuilds `BstNode (otherKey, inserting left, right)` after recursion returns, so it is not tail-recursive.
-- Insert `103` into the lecture tree: new nodes appear only along `100 -> 137 -> 102 -> empty`; other subtrees are reused.
-- `let b = 1;; let plusB a = a + b;; let mystery a = let b = 2 in plusB a;;`: returns `11`, not `12`, because the closure saved `b = 1`.
-- `map (fun number -> number + 1) [2; 3; 5; 1]`: anonymous function as a one-use transformation.
-- `filter (fun number -> number mod 2 = 0) [1; 2; 3; 4; 5; 6]`: predicate must return `bool`; do not write `pred x = true`.
-- Lab 3: deleting a node with two children uses `bstMaxKey` from the left subtree, then deletes that predecessor from the left branch.
+- 
 ## Lecture
-### Week 4 lecture map - persistent trees, closures, and higher-order list processing
-Week 4 is where the course starts to feel like the later interpreter. It connects persistent tree updates, environments/closures, and higher-order list functions. Those are not isolated topics: closures explain function values, environments explain name lookup, and higher-order functions explain how later primitive builders work.
-
-Source anchors:
-- `Lecture - 8.txt` and professor notes `09Feb26/` develop immutable binary search trees, membership, insertion, persistence, and asymptotic/stack concerns.
-- `Lecture - 9.txt` and professor notes `11Feb26/` finish BST insertion and shift to environments, bindings, closures, static binding, and operators as functions.
-- `Lecture - 10.txt` and professor notes `13Feb26/` introduce higher-order functions through `map`, anonymous functions, `filter`, and `reduce`.
-- `Labs/lab3.ml` and `Labs/tests3.ml` test BST deletion and reinforce persistent structural reconstruction.
-
-The week connects forward:
-- BSTs preview recursive ADT traversal.
-- Environments preview Lisp symbol lookup.
-- Closures preview Lisp `Closure (pars, body, env)`.
-- `map`, `filter`, and `reduce` preview both folds and higher-order primitive builders such as `makeRelation`.
-
 ### Lecture (Feb 9) 
 - BSTs in OCaml (Lab 3): review BST property, `type 'key bst`, `bstIsIn`, `bstInsert`, persistence + “copy as little as possible”  
 #### BSTs (Binary Search Trees) - what the professor is assuming you already know 
@@ -396,34 +359,13 @@ Links to connect:
 - [[OCaml - Let bindings, Scope & Closures|Closures as the reason higher-order functions work]]
 - [[OCaml - Pattern Matching#Pattern matching on lists (most common)|List patterns `[]` and `h :: t`]]
 - [[OCaml - Types of Programming|First-class functions + applicative style]]
-## Lab
-### Lab 3 — Binary Search Tree Deletion
-Source: `Labs/lab3.ml`  
-Tests: `Labs/tests3.ml`
-
-- Tests `type 'key bst = BstEmpty | BstNode ...`, `BadEmptyBst`, `bstMaxKey`, and persistent `bstDelete`.
-- Deletion cases: missing key/empty tree, leaf, one child, and two children using the max key from the left subtree.
-- Concepts: [[OCaml - BST Problems]], [[OCaml - Algebraic Data Types and Structural Recursion]], [[OCaml - Pattern Matching]], [[OCaml - Exceptions and Error Boundaries]]
-- Final check: be able to explain why two-child deletion replaces the key with `bstMaxKey l` and rebuilds only the path needed.
-
 ## Midterm Questions
 ### Chapter 6
 - [ ] **Constructor Syntax:** In the definition `type color = red | Blue`, one constructor is legal and one is not. Which one is invalid and why?.
 - [ ] **Null Pointers:** Explain how OCaml's `'a option` type provides a safer alternative to the "null" values found in languages like C or Java.
 - [ ] **Polymorphic Variants:** What is the primary difference between a "closed" variant type `[< ... ]` and an "open" variant type `[> ... ]`?.
 ## Takeaways (questions to resolve)
-- [ ] Can I draw which nodes are copied and which nodes are shared after a persistent BST insert?
-- [ ] Can I explain why `BstEmpty` is safer than a null pointer?
-- [ ] Can I trace Lab 3's two-child deletion without losing the BST property?
-- [ ] Can I explain the three parts of a closure and use them to predict `plusB`/`mystery`?
-- [ ] Can I give the type of `map`, `filter`, and `reduce` and say where each recursive call is or is not tail?
-- [ ] Can I explain why `(*)` as a function name needs parentheses/spacing?
+- [ ] Why does ...?
+- [ ] What changes if ...?
 ## Flashcards
-#cards/CSCI2041
-- BST property::All left keys are smaller than the node key, all right keys are larger, and duplicate keys are not inserted.
-- Why is persistent `bstInsert` not tail-recursive::After the recursive insert returns, it still rebuilds a `BstNode`.
-- What does Lab 3 use for two-child deletion::The maximum key from the left subtree, followed by deleting that predecessor from the left subtree.
-- Three parts of a closure::Parameters, body, and defining environment.
-- Static binding rule::A function uses the environment where it was defined, not where it is called.
-- `map` type shape::`('a -> 'b) -> 'a list -> 'b list`.
-- Predicate type for `filter`::`'a -> bool`.
+#cards/

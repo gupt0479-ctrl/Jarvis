@@ -7,17 +7,17 @@ created: 2026-04-16
 topics:
   - "[[DSA]]"
   - "[[CSCI 4041 Board]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 12|Week - 12]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 12|Week - 12]]"
   - "[[Chapter - 21]]"
 related:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Graphs/Graph Algorithms]]"
+  - "[[Graph Algorithms]]"
 ---
 # [[Minimum Spanning Trees]]
 ## MOC
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 12#Chapter 21 - Minimum Spanning Trees|Week - 12]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 12#Chapter 21 - Minimum Spanning Trees|Week - 12]]
 - [[Chapter - 21#21.1 Growing a Minimum Spanning Tree|Chapter - 21 - Generic MST]]
 - [[Chapter - 21#21.2 The Algorithms of Kruskal and Prim|Chapter - 21 - Kruskal and Prim]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Graphs/Graph Algorithms#Definition|Graph Algorithms]]
+- [[Graph Algorithms#Definition|Graph Algorithms]]
 
 ## Definition
 - **Spanning tree**: an acyclic subset of edges that connects all vertices of a connected graph.
@@ -176,6 +176,7 @@ class minheap:
 - Prim with a heap
 - Weighted-graph greedy proofs
 - Compare MST with shortest path goals
+- Paper HW - 9 (Ch - 21).pdf: written problems on MST properties, safe edges, and Kruskal/Prim analysis
 
 ## Mini-test
 1. What is the difference between a spanning tree and an MST?

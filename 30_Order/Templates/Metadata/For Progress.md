@@ -1,12 +1,9 @@
 ---
 type: project
-status: active
-created:
-updated:
+status:
 deadline:
-priority:
-related_progress: []
+related_progress:
 tags:
-  - progress
+  - "#progress"
 next:
 ---

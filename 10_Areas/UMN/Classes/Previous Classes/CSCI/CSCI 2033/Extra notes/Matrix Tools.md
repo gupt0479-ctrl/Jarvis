@@ -4,11 +4,11 @@ status: archived
 created: 2025-10-10
 updated: 2025-10-10
 area:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 6|Week - 6]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Midterm - 1|Midterm - 1]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 6|Week - 6]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Midterm - 1|Midterm - 1]]"
 tags:
   - "#class"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 6|Week - 6]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 6|Week - 6]]"
 ---
 ### Matrix_Tools
 The class below implements matrices in $\mathbb{R}^{m\times n}$. The rows of the matrix are stored in a python list ```data```. For simplicity of code, the number of rows are stored in ```self.m``` and the number of columns in ```self.n```. For convenience, the dimensions of the matrix are stored as a tuple in the variable ```self.shape```.

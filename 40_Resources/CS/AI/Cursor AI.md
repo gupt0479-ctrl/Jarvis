@@ -1,30 +1,14 @@
 ---
 type: concept
 course: AI
-status: seed
+status: sprout
 mastery (1/10): 2
 created: 2026-03-07
-updated: 2026-07-27
 topics:
   - "[[MCPs]]"
   - "[[AI Workflow]]"
 related:
   - "[[Gen AI Meeting]]"
-tags:
-  - concept
-track:
-  - ai
-prerequisites:
-  - "[[MCPs]]"
-used_in: []
-evidence:
-  - "[[60_Claude/45_Outputs/Plan-First Coding Prompt]]"
-difficulty: 3
-mastery_level: novice
-mastery_score: null
-last_drilled: 2026-04-25
-next_drill: 2026-05-05
-drill_interval: 10
 ---
 # Cursor Workflow Notes
 ## Resources
@@ -645,50 +629,3 @@ For any non-trivial task in Cursor:
 4. implement the smallest safe diff
 5. verify immediately
 6. capture the result back into repo docs# Cursor Workflow Notes
-
----
-
-## Deep Dive
-
-### One-Sentence Version
-
-Cursor is a repo-aware agent platform with five layers — context (rules, AGENTS.md, PRDs), access (MCP, terminal, browser), execution (Plan Mode, Agent mode, model selection), validation (tests, Debug Mode, Bugbot), and scale (subagents, cloud agents, worktrees) — and the most important habit is planning before coding.
-
-### What It Is
-
-Cursor evolved from "VS Code with AI chat" into a multi-layer development platform. The key architectural insight: it's not one tool, it's a stack.
-
-**Context layer**: AGENTS.md for repo-wide instructions, `.cursor/rules/` for folder-specific conventions, PRDs and architecture docs for feature context. The model reads these before acting.
-
-**Access layer**: MCP servers for external systems (database schemas, GitHub, filesystem), terminal for commands, browser tools for visual testing.
-
-**Execution layer**: Plan Mode (research → clarify → plan → approve → implement), Agent mode for multi-file edits, model selection by task type (fast model for flow, strong model for depth, visual model for UI).
-
-**Validation layer**: lint, typecheck, tests, Debug Mode for root-cause analysis, Bugbot for PR review.
-
-**Scale layer**: Git worktrees for branch isolation, subagents for task separation, cloud agents for long-running jobs, automations for recurring workflows.
-
-### Why It Matters
-
-- The shift from "chat editor" to "agent platform" means the workflow changes fundamentally. You don't type prompts into a chat — you set up context, select a mode, and let the agent plan before it touches code.
-- Plan Mode is the single most important feature for non-trivial work. Without it, the agent guesses at file structure and makes cascading changes. With it, the agent researches the codebase, asks clarifying questions, and proposes a plan you approve.
-- MCP integration means Cursor can inspect live database schemas, read GitHub issues, and test in a browser — all without leaving the editor. This is what makes it more than autocomplete.
-
-### Real Example
-
-From the distilled workflow notes: building a feature in Cursor now follows this sequence — (1) write a PRD in `docs/prd/`, (2) open Agent in Plan Mode, (3) reference the PRD with `@docs/prd/feature.md`, (4) let the agent research affected files and propose a plan, (5) approve the plan, (6) implement the smallest safe diff, (7) run lint + typecheck + tests, (8) use Debug Mode if something breaks, (9) use Bugbot for PR review.
-
-The older workflow (paste code into chat, ask for changes) still works for trivial edits but fails for anything touching auth, schema, or multiple files.
-
-### Contrast With
-
-**Cursor vs. Claude Code**: Claude Code is a terminal-first agent — you run it from the command line and it operates on your repo through file reads/writes. Cursor wraps the agent in a GUI with visual tools (browser, debug, bugbot). Claude Code is better for large refactors where you want the agent to run autonomously. Cursor is better when you need visual feedback, incremental control, and multi-model switching.
-
-**Cursor vs. GitHub Copilot**: Copilot is primarily an autocomplete engine — it predicts the next line based on surrounding code. Cursor's Agent mode can plan multi-file changes, run terminal commands, and use MCP tools. Copilot is faster for inline completions; Cursor is more capable for architectural work.
-
-### Source Anchors
-
-- Cursor official docs — Plan Mode, Rules, AGENTS.md, MCP, Debug Mode, Bugbot, Cloud Agents
-- Two workflow videos analyzed in this note (older 2025 workflow vs newer 2026 workflow)
-- [[MCPs]] — MCP protocol that Cursor uses for external tool access
-- [[AI Workflow]] — daily workflow plan showing Cursor in the coding lane

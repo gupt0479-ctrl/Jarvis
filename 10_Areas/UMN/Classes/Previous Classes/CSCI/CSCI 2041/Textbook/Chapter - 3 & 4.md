@@ -14,7 +14,7 @@ area:
 tags:
   - "#class"
   - "#Textbook"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 2|Week - 2]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2041/Week - 2|Week - 2]]"
 ---
 # Chapter 3 - Variables and Functions
 This chapter marks the transition from simple expressions to the structural logic of OCaml. It introduces how names are bound to values, the architecture of functions, and the rules governing the scope and visibility of those names.

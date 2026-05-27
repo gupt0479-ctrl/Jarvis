@@ -12,7 +12,7 @@ tags:
   - "#Jupyter"
   - "#Quiz"
   - "#Homework"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 11|Week - 11]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 11|Week - 11]]"
 ---
 # #Textbook Textbook (Ch - 11) 
 ## 11.1 Left and Right Inverses

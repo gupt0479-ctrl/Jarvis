@@ -10,7 +10,7 @@ area:
 tags:
   - "#class"
   - "#Textbook"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 3923/Week - 7|Week - 7]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 3923/Week - 7|Week - 7]]"
 ---
 # Chapter - 10
 Chapter 10 of _Weapons of Math Destruction_, titled **"THE TARGETED CITIZEN: Civic Life,"** explores how big tech companies and politicians use secret math to change how we think, how we feel, and how we vote.

@@ -1,20 +1,22 @@
 ---
 type: class
 input_kind: book
-status: seed
+status: sprout
 created: 2026-02-09
-updated: 2026-04-16
+updated: 2026-04-28
 area:
   - "[[UMN Board]]"
   - "[[CSCI 4041 Board]]"
+  - "[[DSA]]"
+  - "[[Introduction to Algorithms]]"
 tags:
   - "#class"
   - "#Textbook"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 4|Week - 4]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 4|Week - 4]]"
 ---
 # Chapter 7 - Quicksort
 ## Summary Links
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 4#Chapter 7 and Chapter 10 - Quicksort, Partitioning, and Elementary Data Structures|Week - 4]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 4#Chapter 7 and Chapter 10 - Quicksort, Partitioning, and Elementary Data Structures|Week - 4]]
 - [[QuickSort#Definition|QuickSort]]
 - [[Elementary Data Structures#Definition|Elementary Data Structures]]
 
@@ -228,5 +230,90 @@ while curr:
     prev, curr = curr, nxt
 return prev
 ```
+
+This is a classic example of pointer manipulation with $Theta(n)$ time and $O(1)$ extra space.
+
+---
+
+## Overview
+- Chapters 7 and 10 connect a major sorting algorithm, quicksort, with the elementary data structures used throughout the course.
+- In CSCI 4041, quicksort is the main randomized divide-and-conquer sorting example, while stacks, queues, linked lists, and rooted-tree representations become implementation tools for graph and tree algorithms.
+- The lecture notebooks emphasize both algorithm mechanics and Python data-structure edge cases.
+
+## Core Definitions
+- **Partition:** rearranges a subarray around a pivot so all smaller/equal keys are on one side and larger keys are on the other.
+- **Randomized quicksort:** chooses a random pivot to make the expected split behavior independent of the original input order.
+- **Stack:** last-in, first-out structure with `push` and `pop`.
+- **Queue:** first-in, first-out structure with `enqueue` and `dequeue`.
+- **Linked list:** node-based sequence using `next` references, optionally with head/tail sentinels.
+- **Rooted tree representation:** stores parent/child/sibling or left/right child pointers depending on tree shape.
+
+## Main Algorithms
+- `QUICKSORT(A,p,r)`: recursively partitions and sorts the two sides.
+- `PARTITION(A,p,r)`: scans once and maintains regions for keys `<= pivot`, `> pivot`, unknown keys, and pivot.
+- `RANDOMIZED-PARTITION`: swaps a random element into pivot position before partitioning.
+- Lecture variants include constant-subarray handling and algorithmic modifications from Chapter 7 exercises.
+- Chapter 10 implementations include array stack, circular queue, singly linked list, and linked binary tree.
+
+## Correctness Ideas
+- Partition correctness is a loop invariant over the four regions of the array.
+- Quicksort correctness follows by induction after partition places the pivot in its final sorted position.
+- Randomization does not change sortedness; it changes the probability distribution of split quality.
+- Stack/queue correctness is about preserving the LIFO/FIFO invariant after each operation.
+- Linked-list correctness depends on preserving reachability from `head` and not dropping nodes during pointer rewrites.
+
+## Complexity
+- Partition is `Theta(n)` on a subarray of length `n`.
+- Quicksort worst case is `Theta(n^2)` when partitions are maximally unbalanced.
+- Randomized quicksort expected time is `Theta(n lg n)`.
+- Quicksort auxiliary stack space is `O(lg n)` expected for balanced recursion and `O(n)` worst case.
+- Stack and queue operations are `O(1)` when overflow/underflow checks and circular indices are handled correctly; linked-list search is `Theta(n)`.
+
+## Lecture Emphasis
+- `Lectures/Week - 4/Ch7_QuickSort.ipynb` is the direct implementation of textbook quicksort:
+
+```python
+def Partition(A,p,r):
+    x = A[r]
+    i = p-1
+    for j in range(p,r):
+        if A[j] <= x:
+            i = i+1
+            A[i],A[j] = A[j],A[i]
+    A[i+1],A[r] = A[r],A[i+1]
+    return i+1
+```
+
+- `Ch7_QuickSort(AlgorithmicModifcationExamples).ipynb` adds the exercise-style variants, especially constant-subarray handling.
+- `Ch10_Stacks_and_Queues.ipynb` makes overflow/underflow and circular queue wraparound explicit.
+- `Ch10_LinkedLists.ipynb` and `Ch10_BinaryTree.ipynb` ground textbook fields in Python node objects.
+- `Homework/Coding/CodingHW_3(chapter10-CLRS).ipynb` asks for two stacks in one array, an array deque, and a stack via singly linked list.
+- Weekly/concept links: [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 4|Week - 4]], [[QuickSort|QuickSort]], [[Elementary Data Structures|Elementary Data Structures]].
+
+## Examples
+- Partitioning `[2, 8, 7, 1, 3, 5, 6, 4]` with pivot `4` leaves all values `<=4` left of the pivot and all values `>4` right of it.
+- A circular queue must treat index wraparound as part of the representation, not as a special later cleanup step.
+- Reversing a singly linked list uses three references: previous, current, and next.
+
+## Connections
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 4|Week - 4]]
+- [[QuickSort|QuickSort]]
+- [[Elementary Data Structures|Elementary Data Structures]]
+- Source homework read: `Homework/Coding/CodingHW_3(chapter10-CLRS).ipynb` and `Homework/Paper/Paper HW - 3 (Ch - 7 & 10).pdf`.
+- TODO: source gap - no vault Homework/Paper Homework note exists for direct wikilinking.
+
+## Common Pitfalls
+- Confusing quicksort's expected `Theta(n lg n)` with its worst-case `Theta(n^2)`.
+- Forgetting that partition places only the pivot in final position.
+- Mishandling arrays with many equal keys.
+- Letting circular queues use one slot ambiguity without a clear full/empty convention.
+- Reversing a linked list without saving `next` before overwriting it.
+
+## Review Checklist
+- [ ] Implement partition and state its loop invariant.
+- [ ] Explain randomized quicksort's expected-time advantage.
+- [ ] Trace stack, queue, deque, and linked-list operations by hand.
+- [ ] Explain the pointer updates for linked-list reversal.
+- [ ] Identify which data-structure operations are `O(1)` and which are linear.
 
 This is a classic example of pointer manipulation with $Θ(n)$ time and $O(1)$ extra space.

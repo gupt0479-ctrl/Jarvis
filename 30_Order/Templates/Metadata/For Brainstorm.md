@@ -1,10 +1,10 @@
 ---
 type: brainstorm
-status: seed
+status:
 created:
-updated:
 related_progress: []
 tags:
   - brainstorm
 next:
 ---
+

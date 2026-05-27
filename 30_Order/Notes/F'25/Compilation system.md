@@ -5,8 +5,8 @@ status: tree
 created: 2025-10-17
 source_url: CSAPP
 related_progress:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 1]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Midterm - 1]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 1]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Midterm - 1]]"
   - "[[C Language]]"
 tags:
   - input

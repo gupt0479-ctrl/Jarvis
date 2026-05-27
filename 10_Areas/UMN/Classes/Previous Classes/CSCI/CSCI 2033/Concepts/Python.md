@@ -5,7 +5,7 @@ created: 2025-10-02
 updated:
 area:
   - "[[Final]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Midterm - 1|Midterm - 1]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Midterm - 1|Midterm - 1]]"
 tags:
   - "#class"
 next: "[[Final]]"

@@ -8,14 +8,14 @@ topics:
   - "[[CSCI 2041 Board]]"
   - "[[Midterm]]"
   - "[[OCaml]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4|Chapter - 3 & 4]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4|Chapter - 3 & 4]]"
 related:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 2|Week - 2]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2041/Week - 2|Week - 2]]"
 ---
 # Let Bindings, Scope, and Closures
 ## MOC  
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4#3.1.1 Scoping and nested functions|Textbook: Ch3.1.1 Scoping]]  
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4#1.4 Code Example: plusB and Scoping|Textbook: plusB example]]  
+- [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4#3.1.1 Scoping and nested functions|Textbook: Ch3.1.1 Scoping]]  
+- [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4#1.4 Code Example: plusB and Scoping|Textbook: plusB example]]  
 - [[Midterm]]  
 - 
 ## Definition  

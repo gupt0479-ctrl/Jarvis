@@ -1,31 +1,16 @@
 ---
-type: concept
+type: input
 input_kind: ai
-status: seed
+status: sprout
 created: 2026-03-07
-updated: 2026-07-27
 source_url: gpt
 related_progress:
   - "[[Gen AI Meeting]]"
   - "[[Gen AI Roadmap]]"
   - "[[MCPs]]"
 tags:
-  - concept
+  - input
 next: "[[MCPs]]"
-track:
-  - ai
-prerequisites:
-  - "[[Gen AI Day - 1]]"
-used_in: []
-evidence:
-  - "[[60_Claude/45_Outputs/Vault Enrichment Prompt]]"
-  - "[[60_Claude/45_Outputs/Plan-First Coding Prompt]]"
-difficulty: 2
-mastery_level: novice
-mastery_score: null
-last_drilled: 2026-04-25
-next_drill: 2026-05-09
-drill_interval: 14
 ---
 # AI Workflow Implementation Plan
 Based on your current subscriptions, learning goals, and the Gen AI Mastermind curriculum, here's a comprehensive workflow designed for a CS student aspiring to become an AI/ML engineer.
@@ -582,48 +567,3 @@ Demo: [video/screenshots]
 8. **Connect workflows to real goals** - Every automation should save time for actual learning or building.
 The goal isn't to use every AI tool - it's to build a sustainable workflow that accelerates your path to becoming an AI/ML engineer while maintaining high output quality and learning velocity.
 Start with the "Immediate" action items today, and iterate based on what works for your specific needs.
-
----
-
-## Deep Dive
-
-### One-Sentence Version
-
-An AI workflow assigns each tool a role — Claude for long-context thinking, ChatGPT for fast tutoring and custom GPTs, Cursor/Copilot for repo-level coding, Ollama for private local work — and the discipline is using the right tool for the right task instead of forcing one tool to do everything.
-
-### What It Is
-
-This note is an operational plan for daily AI tool usage, organized by task type:
-
-- **Morning (planning + research)**: Claude Pro for strategic thinking, long-context document analysis, and PRD drafting. Claude handles 100K+ token contexts, which makes it the right tool for reviewing entire codebases or course materials.
-- **Coding sessions**: Cursor Pro for multi-file editing with Plan Mode, GitHub Copilot for inline completions, ChatGPT for complex debugging when you need to paste error context and get step-by-step diagnosis.
-- **Learning sessions**: Custom GPTs (ChatGPT) for converting course materials into flashcards and quizzes, Perplexity for citation-backed research.
-- **Private work**: Ollama + Jan for processing sensitive notes, personal journals, and confidential projects without sending data to cloud APIs.
-
-The "tool per role" system prevents decision fatigue: you don't choose a tool each time, you follow the lane assignment. If you haven't used a tool in 2 weeks, cancel it.
-
-### Why It Matters
-
-- Without role assignment, you waste time switching between tools or forcing one tool to handle tasks it's bad at. ChatGPT is fast but shallow on long documents. Claude is thorough but slower for quick questions. Cursor is powerful for code but useless for writing blog posts.
-- The 3-lane model (study → tutoring → coding) maps directly to how a CS student's day actually works. Each lane has a default tool and a fallback.
-- The budget analysis is practical: $38/month for ChatGPT Pro + Claude Pro + Perplexity Student saves 10-15 hours/week at ~$0.60-0.90/hour. If a tool doesn't save time, drop it.
-
-### Real Example
-
-From the workflow plan: when building a portfolio project, the sequence is — (1) use Claude to draft the PRD and review architecture, (2) use ChatGPT to generate acceptance criteria and edge cases, (3) use Cursor to implement with Plan Mode, (4) use Copilot for inline completions during implementation, (5) use Ollama to process private notes that feed into the project without uploading them to cloud APIs.
-
-The automation workflows are concrete: a weekly learning recap (trigger: Sunday, action: AI summarizes week's notes, output: saved to Obsidian), a job application tracker (trigger: new row in Google Sheet, action: AI generates cover letter), a daily standup generator (trigger: 9 AM, action: review commits + calendar).
-
-### Contrast With
-
-**Role-based workflow vs. single-tool workflow**: Using only ChatGPT for everything means you hit context limits on long documents, miss inline code completions, and send private data to OpenAI's servers. The role-based approach trades simplicity for effectiveness — more tools to manage, but each tool operates in its strength zone.
-
-**This workflow vs. "just use Claude Code for everything"**: Claude Code is powerful for autonomous coding but doesn't replace the planning phase (Claude Pro), the quick-question phase (ChatGPT), or the privacy phase (Ollama). The workflow is a stack, not a single tool.
-
-### Source Anchors
-
-- Generated from ChatGPT based on Gen AI Mastermind curriculum and current subscriptions
-- [[Gen AI Roadmap]] — the learning plan this workflow operationalizes
-- [[MCPs]] — MCP protocol that enables tool connections in the coding lane
-- [[Cursor AI]] — detailed Cursor workflow that expands on the coding lane
-- [[Gen AI Day - 1]] — LLM fundamentals that explain why different models have different strengths

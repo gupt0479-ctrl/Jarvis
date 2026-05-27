@@ -1,22 +1,22 @@
 ---
 type: concept
 course: CSCI 4041
-status: seed
+status: sprout
 mastery (1/10): 0
 created: 2026-03-25
 topics:
   - "[[CSCI 4041 Board]]"
   - "[[DSA]]"
   - "[[Introduction to Algorithms]]"
-  - "[[Chapter - 14]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 14]]"
 related:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 9|Week - 9]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 9|Week - 9]]"
 ---
-# [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Algorithms/Dynamic Programming]]
+# [[Dynamic Programming]]
 ## MOC
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 9#Chapter 14 - Dynamic Programming|Week - 9]]
-- [[Chapter - 14#14.1 Rod Cutting|Chapter - 14 - Rod Cutting]]
-- [[Chapter - 14#14.4 Longest Common Subsequence (LCS)|Chapter - 14 - LCS]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 9#Chapter 14 - Dynamic Programming|Week - 9]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 14#14.1 Rod Cutting|Chapter - 14 - Rod Cutting]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 14#14.4 Longest Common Subsequence (LCS)|Chapter - 14 - LCS]]
 - [[Divide and Conquer#Definition|Divide and Conquer]]
 - [[Greedy Algorithms#Definition|Greedy Algorithms]]
 
@@ -154,6 +154,33 @@ def generate_item_set(N,M):
     return Items
 ```
 
+The core DP table-filling loop compares "take item k" versus "skip item k" at each capacity level:
+
+```python
+def knapsack_dp(Items, N, M):
+    """0-1 knapsack DP table fill"""
+    dp = [[0 for _ in range(M+1)] for _ in range(N)]
+    best = [[None for _ in range(M+1)] for _ in range(N)]
+    
+    for k in range(N):
+        for slack in range(M+1):
+            skip = dp[k-1][slack] if k > 0 else 0
+            take = 0
+            if Items[k].size <= slack:
+                prev = dp[k-1][slack - Items[k].size] if k > 0 else 0
+                take = Items[k].value + prev
+            if take > skip:
+                dp[k][slack] = take
+                best[k][slack] = k
+            else:
+                dp[k][slack] = skip
+                best[k][slack] = best[k-1][slack] if k > 0 else None
+    
+    return dp, best
+```
+
+This is the table that `re_construct` reads from. Each `dp[k][slack]` cell is the best value using items `0..k` with remaining capacity `slack`. The `best` array stores which item was chosen at each cell for reconstruction.
+
 ```python
 def re_construct(Items,best,M,N):
     """Re-constructs the sub-set based on the best array of sub-choices"""
@@ -241,6 +268,8 @@ The lecture contrast here is crucial: brute force checks all `2^N` subsets, gree
 - LCS / 2D DP
 - Rod cutting / unbounded-choice DP
 - State-definition practice
+- CodingHW_6(chapter14-CLRS).ipynb: Fibonacci variants, knapsack DP implementation and testing
+- Paper HW - 6 (Ch - 14).pdf: written problems on rod cutting, LCS, and optimal substructure
 
 ## Mini-test
 1. What are the two hallmarks of a DP problem?

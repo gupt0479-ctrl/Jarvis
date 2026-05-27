@@ -6,7 +6,7 @@ tags:
   - evergreen
 notes:
   - "[[Cleaning Laptop]]"
-  - "[[Learning Tracker tool]]"
+  - "[[Arc (Learning Tracker)]]"
   - "[[Portfolio]]"
 ---
 # Data view

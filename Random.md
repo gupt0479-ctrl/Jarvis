@@ -6,7 +6,7 @@ tags:
   - evergreen
 notes:
   - "[[40_Resources/CS/Links|Links]]"
-  - "[[10_Areas/Links|Links]]"
+  - "[[10_UMN/Links|Links]]"
   - "[[Useful Links]]"
 ---
 # Links

@@ -6,18 +6,18 @@ created: 2026-03-18
 updated: 2026-03-18
 area:
   - "[[UMN Board]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/Minor/MGMT 3001/MGMT 3001 Board]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/Minor/MGMT 3001/Textbook/Chapter - 6|Chapter - 6]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/Minor/MGMT 3001/Concepts/Corporate Strategy & Vertical integration]]"
+  - "[[MGMT 3001 Board]]"
+  - "[[50_Archive/Previous Classes/Minor/MGMT 3001/Textbook/Chapter - 6|Chapter - 6]]"
+  - "[[Corporate Strategy and Vertical Integration|Corporate Strategy and Vertical Integration]]"
 tags:
   - "#class"
   - "#Lecture"
 next:
-  - "[[10_Areas/UMN/Classes/Previous Classes/Minor/MGMT 3001/Week - 5|Week - 5]]"
+  - "[[50_Archive/Previous Classes/Minor/MGMT 3001/Week - 5|Week - 5]]"
 ---
-# Entire Week  
-## What you must be able to do  
-- [[Textbook]]  
+# Week 4 - Corporate Strategy and Vertical Integration
+## What you must be able to do
+- [[50_Archive/Previous Classes/Minor/MGMT 3001/Textbook/Chapter - 6|Chapter - 6]]  
 - Distinguish business-level strategy from corporate-level strategy.  
 - Explain why firms pursue diversification and when diversification creates value.  
 - Compare single-business, related diversification, and unrelated diversification.  
@@ -38,8 +38,8 @@ next:
 - Internationalization is often used to find new markets, scale operations, and benefit from local advantages.  
 - Strategy is not finished once chosen; implementation and control determine whether intended strategy becomes realized strategy.  
 ## Concepts created today  
-- [[10_Areas/UMN/Classes/Previous Classes/Minor/MGMT 3001/Concepts/Corporate Strategy & Vertical integration|Concept - Corporate Strategy, Vertical Integration]]
-- [[10_Areas/UMN/Classes/Previous Classes/Minor/MGMT 3001/Textbook/Chapter - 6|Chapter - 6]]
+- [[Corporate Strategy and Vertical Integration|Corporate Strategy and Vertical Integration]]
+- [[50_Archive/Previous Classes/Minor/MGMT 3001/Textbook/Chapter - 6|Chapter - 6]]
 ## Examples worth keeping  
 - **McDonald’s:** single core business in fast food, related diversification into real estate, elements of vertical integration through supplier coordination, partnerships for growth in China, and internationalization through localized products.  
 - **Amazon:** example of broad diversification across retail, hardware, grocery, media, and digital services.  
@@ -99,7 +99,18 @@ next:
 - [ ] At what point do transaction-cost savings stop justifying vertical integration?  
 - [ ] How can managers tell whether a new opportunity should be owned, partnered, or outsourced?  
 - [ ] When should leaders allow emergent strategy to reshape the original plan?  
-## Flashcards  
+## Lecture-to-textbook synthesis
+- ==Definition anchor: corporate-level strategy decides the firm's scope - what businesses to be in, what to own, and how to coordinate across units.==
+- *Mechanism:* the lecture and textbook move from business-level positioning to corporate boundaries. Diversification asks whether multiple businesses create more value together; vertical integration asks whether the firm should own upstream inputs or downstream distribution.
+- Lecture example/scenario: a startup deciding whether to build an internal sales team or use channel partners is already making a corporate-scope decision. The question is not "can we own it?" but "does ownership create enough value to justify complexity?"
+- Textbook connection: [[50_Archive/Previous Classes/Minor/MGMT 3001/Textbook/Chapter - 6|Chapter - 6]] adds the diversification tests, related vs unrelated diversification, transaction costs, administrative costs, and alternatives to ownership.
+- Concept links: [[Corporate Strategy and Vertical Integration|Corporate Strategy and Vertical Integration]], [[Strategy and Competitive Advantage|Strategy and Competitive Advantage]].
+> [!TIP]
+> Apply the ownership test before recommending acquisition or integration. If partnership, outsourcing, licensing, or a spot contract solves the problem with less burden, ownership may be the wrong tool.
+> [!SUMMARY]
+> Week 4 extends strategy from "how do we compete?" to "where should the firm draw its boundaries?"
+
+## Flashcards
 #cards/MGMT 
 1. Business-level vs corporate-level strategy::Business-level strategy is how a firm competes in one business; corporate-level strategy is what businesses it should be in and how those businesses should be coordinated.  
 2. Corporate advantage::Value created when a firm’s collection of businesses performs better together than they would separately.  

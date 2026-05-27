@@ -10,7 +10,7 @@ area:
 tags:
   - "#class"
   - "#Textbook"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 3923/Week - 3|Week - 3]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 3923/Week - 3|Week - 3]]"
 ---
 # Chapter - 4
 Chapter 4 of _Weapons of Math Destruction_, titled **"Propaganda Machine: Online Advertising,"** explains how the internet is used to find people's weaknesses and sell them promises that often lead to a "death spiral" of debt.

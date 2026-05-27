@@ -10,12 +10,12 @@ topics:
   - "[[Chapter - 7 & 10]]"
   - "[[CSCI 4041 Board]]"
 related:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 4|Week - 4]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 4|Week - 4]]"
 ---
 # [[Elementary Data Structures]]
 ## MOC
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 4#Jupyter Notebook Explanations|Week - 4]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 5#Jupyter Notebook Explanations|Week - 5]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 4#Jupyter Notebook Explanations|Week - 4]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 5#Jupyter Notebook Explanations|Week - 5]]
 - [[Chapter - 7 & 10#10.1 Simple Array-Based Data Structures|Chapter - 7 & 10 - Simple Array-Based Data Structures]]
 - [[Chapter - 6 & 12#Chapter - 12 Binary Search Trees|Chapter - 6 & 12 - Binary Search Trees]]
 
@@ -196,6 +196,8 @@ It does **not** touch `u.left` or `u.right`. That is why the delete routine has 
 - Reverse Linked List
 - Binary Tree Inorder Traversal
 - Validate BST
+- CodingHW_3(chapter10-CLRS).ipynb: two stacks in one array, deque, linked-stack/queue, list reversal
+- Paper HW - 3 (Ch - 7 & 10).pdf: written problems on stacks, queues, linked lists, and BST operations
 
 ## Mini-test
 1. Why does a circular queue waste one array slot?

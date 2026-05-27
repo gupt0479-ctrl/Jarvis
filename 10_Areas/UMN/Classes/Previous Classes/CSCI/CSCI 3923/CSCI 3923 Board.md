@@ -7,7 +7,7 @@ updated: 2026-02-26
 area:
   - "[[Weekly Board]]"
   - "[[Spring'26 Syllabus]]"
-  - "[[10_Areas/Links|Links]]"
+  - "[[10_UMN/Links|Links]]"
 tags:
   - "#class"
 next: "[[UMN Board]]"

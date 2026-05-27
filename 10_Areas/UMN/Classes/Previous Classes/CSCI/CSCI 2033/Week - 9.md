@@ -12,10 +12,10 @@ tags:
   - "#Jupyter"
   - "#Homework"
   - "#Textbook"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 10]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 10]]"
 ---
 # #Textbook Textbook (Ch - 10) 
-[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 8#Textbook Textbook (Ch - 9 & 10)|Entire thing except householder reflector]]
+[[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 8#Textbook Textbook (Ch - 9 & 10)|Entire thing except householder reflector]]
 
 ---
 # #Lecture Lecture

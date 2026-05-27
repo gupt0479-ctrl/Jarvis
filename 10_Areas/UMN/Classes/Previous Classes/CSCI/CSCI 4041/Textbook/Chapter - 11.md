@@ -1,20 +1,23 @@
 ---
 type: class
 input_kind: book
-status: seed
-created:
-updated: 2026-04-16
+status: sprout
+created: 2026-03-09
+updated: 2026-04-28
 area:
   - "[[UMN Board]]"
+  - "[[CSCI 4041 Board]]"
+  - "[[DSA]]"
+  - "[[Introduction to Algorithms]]"
 tags:
   - "#class"
   - "#Textbook"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 8|Week - 8]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 8|Week - 8]]"
 ---
 # Chapter 11 - Hash Tables
 ## Summary Links
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 8#Chapter 11 - Hash Tables, Collision Handling, and Homework Variants|Week - 8]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Data Structures & Methods/Hashing#Definition|Hashing]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 8#Chapter 11 - Hash Tables, Collision Handling, and Homework Variants|Week - 8]]
+- [[Hashing#Definition|Hashing]]
 - [[Elementary Data Structures#Definition|Elementary Data Structures]]
 
 Hash tables are an effective data structure for implementing **dictionaries**, which support the dynamic-set operations `INSERT`, `SEARCH`, and `DELETE`. While worst-case search can take $Θ(n)$ time, hashing performs extremely well on average when the hash function behaves well and load is controlled.
@@ -113,3 +116,83 @@ The analysis notebooks are important because they connect the theory to observed
 - the histogram notebooks make primary clustering visible instead of just stated
 
 > [!IMPORTANT] The chapter's big lesson is not "hash tables are always O(1)." It is "hash tables are O(1) on average under specific assumptions about hashing and load."
+
+---
+
+## Overview
+- Chapter 11 studies dictionary implementations where array indexing is replaced by a hash function.
+- In CSCI 4041, the lecture emphasis is practical collision behavior: chaining, probing, deleted sentinels, load factor, and how experiments expose average-case assumptions.
+- This chapter is the first major place where worst-case and expected/average-case behavior sharply diverge.
+
+## Core Definitions
+- **Dictionary:** dynamic set supporting `INSERT`, `SEARCH`, and `DELETE`.
+- **Direct-address table:** table indexed directly by key, practical only for small universes.
+- **Hash function:** maps keys from a large universe into `m` table slots.
+- **Collision:** two keys map to the same slot.
+- **Chaining:** store colliding keys in a linked list or bucket at the slot.
+- **Open addressing:** store all keys directly in the table and probe alternative slots.
+- **Load factor:** `alpha = n/m`, the ratio of stored keys to table slots.
+- **Tombstone / deleted sentinel:** marker that preserves a probe chain after deletion.
+
+## Main Algorithms
+- `CHAINED-HASH-INSERT`, `CHAINED-HASH-SEARCH`, `CHAINED-HASH-DELETE`.
+- Division and multiplication hash methods.
+- Universal hashing as the textbook framework for randomized hash-function choice.
+- Linear probing, quadratic probing, and double hashing for open addressing.
+- Lecture variants: `chainhashmap`, `probehashmap`, analysis versions that measure collisions, chain lengths, and probe lengths.
+
+## Correctness Ideas
+- Chaining correctness depends on searching exactly the chain selected by `h(k)`.
+- Open-address search must follow the same probe sequence that insertion would have followed.
+- Deletion in open addressing needs a tombstone; replacing a deleted key with `None` can break later searches.
+- Uniform hashing assumptions are analysis assumptions, not guarantees from arbitrary Python string hashing.
+
+## Complexity
+- Direct addressing supports operations in `O(1)` time but can waste huge space.
+- Chaining has worst-case `Theta(n)` search if all keys collide; expected search is `Theta(1+alpha)` under simple uniform hashing.
+- Open addressing requires `alpha < 1`; expected probes grow as load factor approaches 1.
+- Double hashing reduces clustering compared with linear probing when the step sequence covers the table.
+
+## Lecture Emphasis
+- `Lectures/Week - 8/Ch11_ChainHashMap.ipynb` implements chaining with a nested `item` object and linked-list buckets.
+- `Ch11_ChainHashMap-Analysis.ipynb` and `Ch11_ChainHashMap-ChainLengthDistribution.ipynb` connect `alpha` to observed chain lengths.
+- `Lectures/Week - 8/Ch11_ProbeHashMap.ipynb` implements probing and makes the deleted sentinel concrete:
+
+```python
+while i < self.m:
+    q = self.h(k,i)
+    if self.table[q] in [None,"__DELETED__"]:
+        self.table[q] = k
+        return q
+    i += 1
+```
+
+- `Ch11_ProbeHashMap-Analysis.ipynb` and `Ch11_ProbeHashMap-ProbeLengthDistribution.ipynb` measure probe distances and collision behavior.
+- `Homework/Coding/CodingHW_5(chapter11-CLRS).ipynb` supports dynamic sets with bit vectors, random key selection from chaining, and multiplicative hashing.
+- Weekly/concept links: [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 8|Week - 8]], [[Hashing|Hashing]], [[Elementary Data Structures|Elementary Data Structures]].
+
+## Examples
+- If `m=11` and `h(k)=k mod 11`, keys `22`, `33`, and `44` all collide at slot 0.
+- In chaining, those keys can all live in the slot-0 chain.
+- In probing, deleting `33` must leave a tombstone so searching for `44` still continues past the old `33` position.
+
+## Connections
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 8|Week - 8]]
+- [[Hashing|Hashing]]
+- [[Elementary Data Structures|Elementary Data Structures]]
+- Source homework read: `Homework/Coding/CodingHW_5(chapter11-CLRS).ipynb` and `Homework/Paper/Paper HW - 5 (Ch - 11).pdf`.
+- TODO: source gap - no vault Homework/Paper Homework note exists for direct wikilinking.
+
+## Common Pitfalls
+- Saying hash tables are always `O(1)` without stating average-case assumptions.
+- Letting load factor approach 1 in open addressing.
+- Using `None` instead of a tombstone after deletion in a probe table.
+- Comparing chaining and probing without accounting for memory layout and clustering.
+- Forgetting that universal hashing is about choosing from a family of hash functions.
+
+## Review Checklist
+- [ ] Define direct addressing, hashing, collision, chaining, open addressing, and load factor.
+- [ ] Implement chained insert/search/delete.
+- [ ] Implement probe insert/search/delete with a deleted sentinel.
+- [ ] Explain why tombstones are necessary.
+- [ ] Analyze search time in terms of load factor and collision assumptions.

@@ -7,16 +7,16 @@ created: 2026-04-16
 topics:
   - "[[DSA]]"
   - "[[CSCI 4041 Board]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 11|Week - 11]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 12|Week - 12]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 11|Week - 11]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 12|Week - 12]]"
   - "[[Chapter - 20]]"
 related:
   - "[[Minimum Spanning Trees]]"
 ---
-# [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Graphs/Graph Algorithms]]
+# [[Graph Algorithms]]
 ## MOC
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 11#Chapter 20 - Graph Representations, BFS, and DFS|Week - 11]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 12#Chapter 20 - Topological Sort and Strongly Connected Components|Week - 12]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 11#Chapter 20 - Graph Representations, BFS, and DFS|Week - 11]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 12#Chapter 20 - Topological Sort and Strongly Connected Components|Week - 12]]
 - [[Chapter - 20#20.1 Representations of Graphs|Chapter - 20 - Representations]]
 - [[Chapter - 20#20.5 Strongly Connected Components (SCC)|Chapter - 20 - SCC]]
 ## Definition
@@ -247,6 +247,9 @@ def Strongly_Connected_Components(G):
 - DFS connected components
 - Cycle detection in directed graphs
 - Course schedule / topological ordering
+- CodingHW_8(chapter20-CLRS).ipynb: graph construction, BFS, DFS, adjacency list operations
+- Paper HW - 8 (Ch - 20).pdf: written problems on graph representations, BFS/DFS properties, and edge classification
+- [[Maze Project|Final Project - Maze]]: maze generation and solving using BFS/DFS on grid graphs
 ## Mini-test
 1. Why does BFS compute shortest-path distance only in unweighted graphs?
 2. What extra information does DFS provide that BFS does not?

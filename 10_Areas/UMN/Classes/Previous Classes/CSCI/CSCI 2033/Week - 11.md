@@ -7,7 +7,7 @@ area:
   - "[[Final]]"
 tags:
   - "#class"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 12]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 12]]"
 ---
 # Textbook (Ch - 12 & 13)
 

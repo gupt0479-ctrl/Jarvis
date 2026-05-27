@@ -1,10 +1,9 @@
 ---
 type: concept
 course: AI
-status: seed
+status: sprout
 mastery (1/10): 0
 created: 2026-02-15
-updated: 2026-07-27
 topics:
   - "[[Chat Gpt Prompts]]"
   - "[[Gen AI Day - 1]]"
@@ -12,20 +11,6 @@ topics:
   - "[[UMN Workflow]]"
 related:
   - "[[Gen AI Meeting]]"
-tags:
-  - concept
-track:
-  - ai
-prerequisites:
-  - "[[Gen AI Day - 1]]"
-used_in: []
-evidence: []
-difficulty: 2
-mastery_level: novice
-mastery_score: null
-last_drilled: 2026-04-25
-next_drill: 2026-05-09
-drill_interval: 14
 ---
 # Day - 2
 ## MOC
@@ -278,47 +263,3 @@ The course pushes “use more than one model” and adjust settings (temperature
 		- test
 - Keep this as “week 4/5 add-on” after your core app works.
 ## Flashcards (best 3–8)
-
-
----
-
-## Deep Dive
-
-### One-Sentence Version
-
-Vibe coding is an iterative build loop (plan → build one feature → test → fix with ODA → repeat) where AI generates the code and you control scope, architecture, and verification — it works only when you constrain the AI tightly with PRDs and small steps.
-
-### What It Is
-
-Two distinct workflows from Session 3 and Session 4:
-
-**AI Video Production** (Session 3): A pipeline from idea → creative brief → script → storyboard → image generation → image-to-video → voiceover + music → edit → final cut. Each stage uses a different AI tool (Claude for scripts, image models for stills, video models for animation, ElevenLabs for voice). The key insight: output quality depends on the brief and storyboard, not on which model generates the pixels.
-
-**Vibe Coding** (Session 4): An iterative development method where AI writes the code and you manage the spec. The 6 commandments: start with a plan, give specific instructions, build in small pieces, save constantly, make it responsive early, polish last. The PRD path has 3 stages: simple prompt → basic PRD → platform-optimized PRD (rewritten in the tool's "dialect").
-
-The ODA debugging loop (Observe → Diagnose → Ask) is the core recovery mechanism: copy the exact error, hypothesize why it broke, then give the AI a scoped fix request instead of letting it rewrite everything.
-
-### Why It Matters
-
-- Vibe coding lets you ship working prototypes without writing code yourself, but only if you maintain architectural control. Without a PRD and incremental testing, the AI generates plausible-looking code that breaks in non-obvious ways.
-- The 3-stage PRD path is the most transferable skill from this session — it works with Bolt, Cursor, Replit, or any AI coding tool. The tool changes; the spec discipline doesn't.
-- The ODA loop prevents the most common vibe-coding failure: asking the AI to "fix it" without context, which causes cascading rewrites.
-
-### Real Example
-
-From the course demo: they built a project management app in Bolt by starting with a Stage 1 prompt ("I want a project management tool"), converting it to a Stage 2 PRD (problem, users, core differentiator: AI task breakdown), then rewriting it as a Stage 3 Bolt-optimized prompt (React + TS routes, DB schema, auth provider, API contracts). Each feature was added one at a time — landing page, then auth, then CRUD, then the AI feature — with testing after each step.
-
-When the database connection broke, they used ODA: copied the exact error, diagnosed it as a missing env var, and asked Bolt to "only fix the Supabase connection string, don't touch other files."
-
-### Contrast With
-
-**Vibe coding vs. traditional development**: In traditional dev, you write the code and the tests. In vibe coding, AI writes the code and you write the spec + verify. The failure mode flips: traditional dev fails from implementation bugs; vibe coding fails from underspecified requirements. If your PRD is vague, the AI builds something that looks right but doesn't work.
-
-**Vibe coding vs. one-shot generation**: One-shot means "build me a full app from this description." Vibe coding explicitly rejects this — it's iterative by design. One-shot works for trivial demos; anything with auth, state, or external APIs needs the incremental loop.
-
-### Source Anchors
-
-- Gen AI Mastermind Sessions 3 & 4 — video production pipeline and vibe coding methodology
-- [[Gen AI Day - 1]] — prerequisite: LLM fundamentals that explain why prompt structure matters for code generation
-- [[Gen AI Roadmap]] — Levels 3-5 build on these workflows
-- [[MCPs]] — MCP section from this session explains how AI tools connect to external systems

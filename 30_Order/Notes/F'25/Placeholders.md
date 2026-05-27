@@ -5,10 +5,10 @@ created: 2025-10-17
 updated: 2025-10-18
 area:
   - "[[C Language]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Midterm - 1|Midterm - 1]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Midterm - 1|Midterm - 1]]"
 tags:
   - "#class"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 3|Week - 3]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 3|Week - 3]]"
 ---
 ```c
 %f, %g: placeholders for a float or double value

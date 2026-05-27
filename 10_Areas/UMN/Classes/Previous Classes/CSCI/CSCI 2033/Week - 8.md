@@ -7,7 +7,7 @@ area:
   - "[[Final]]"
 tags:
   - "#class"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 9|Week - 9]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 9|Week - 9]]"
 ---
 # #Textbook Textbook (Ch - 9 & 10) 
 ## Chapter 9
@@ -46,7 +46,7 @@ Matrix power, Ak, is simply the matrix A multiplied by itself k times. This is o
 	- **LDS Analysis:** Powers are essential for simulating and analyzing the long-term behavior of dynamic systems. For instance, analyzing how the current population distribution (state xt​) will evolve into the future population distribution (xt+L​) requires computing AL.
 	- **Network Analysis:** AL allows you to quickly count how many distinct ways (paths) exist to get from one node to another in exactly L steps in a network.
 ## 10.4 QR Factorization
-The QR factorization (A=QR) is the matrix representation of the [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 5#5.4 Gram–Schmidt algorithm|Gram-Schmidt algorithm (from Chapter 5)]]. It is a method of decomposing a matrix A (size m×n, assuming linearly independent columns) into a product of two matrices. Core Formula and Components $$A=QR$$
+The QR factorization (A=QR) is the matrix representation of the [[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 5#5.4 Gram–Schmidt algorithm|Gram-Schmidt algorithm (from Chapter 5)]]. It is a method of decomposing a matrix A (size m×n, assuming linearly independent columns) into a product of two matrices. Core Formula and Components $$A=QR$$
 1. **Q Matrix:** Q is an m×n matrix whose columns are **orthonormal** (unit length and mutually orthogonal). This property is expressed as: $Q^TQ=I$.
 2. **R Matrix:** R is an n×n **upper triangular** matrix with positive entries on the diagonal.
 	Key Concepts: 
@@ -86,7 +86,7 @@ where $\vec{d}$ is the vector of diagonal entries.
 	That’s exactly the opposite transformation. So geometrically:
 	-  G is (approximately) $A^{-1}$, the inverse of A.
 	- If $G = A^{-1}$, then G @ A = I, the identity matrix.
-4. [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 9#Householder reflector|Continuing Householder reflector]]
+4. [[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 9#Householder reflector|Continuing Householder reflector]]
 ## #Quiz Quiz - 6
 2. *Writing the system as $Ax=b$*: The system is $\begin{cases} 3x_1 + 1x_2 = 7\\ -1x_1 + 4x_2 = 11 \end{cases}$
 	- We want the matrix equation $A \begin{bmatrix}x_1\\x_2\end{bmatrix} = \begin{bmatrix}7\\11\end{bmatrix}$

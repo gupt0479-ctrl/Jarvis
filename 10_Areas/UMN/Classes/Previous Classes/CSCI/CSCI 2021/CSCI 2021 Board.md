@@ -5,7 +5,7 @@ created: 2025-12-24
 updated: 2025-12-25
 area:
   - "[[C Language]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Midterm - 1|Midterm - 1]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Midterm - 1|Midterm - 1]]"
 tags:
   - "#class"
 next: "[[C Language]]"

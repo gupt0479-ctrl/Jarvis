@@ -4,12 +4,12 @@ status: archived
 created: 2025-10-26
 updated: 2025-10-11
 area:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 3|Week - 3]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 11|Week - 11]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Midterm - 1|Midterm - 1]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 3|Week - 3]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 11|Week - 11]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Midterm - 1|Midterm - 1]]"
 tags:
   - "#class"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 3|Week - 3]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 3|Week - 3]]"
 ---
 # Defining a Struct type
 A struct type definition should appear _outside of any function_, typically near the top of the program’s `.c` file. The syntax (`struct` is a reserved keyword):

@@ -5,7 +5,7 @@ created: 2025-09-17
 updated: 2025-10-16
 area:
   - "[[Python]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Midterm - 1]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Midterm - 1]]"
   - "[[Final]]"
   - "[[Complexity]]"
 tags:
@@ -15,7 +15,7 @@ tags:
   - "#Homework"
   - "#Lecture"
   - "#Quiz"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 3|Week - 3]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 3|Week - 3]]"
 ---
 # #Textbook Textbook (Ch - 1 & 2) 
 ## Chapter - 1 Vectors

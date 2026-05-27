@@ -6,17 +6,18 @@ created: 2026-03-18
 updated:
 area:
   - "[[UMN Board]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/Minor/MGMT 3001/MGMT 3001 Board]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/Minor/MGMT 3001/Textbook/Chapter - 17]]"
+  - "[[MGMT 3001 Board]]"
+  - "[[Chapter - 17|Chapter - 17]]"
+  - "[[Teams and Team Effectiveness|Teams and Team Effectiveness]]"
 tags:
   - "#class"
   - "#Lecture"
 next:
-  - "[[10_Areas/UMN/Classes/Previous Classes/Minor/MGMT 3001/Week - 6|Week - 6]]"
+  - "[[50_Archive/Previous Classes/Minor/MGMT 3001/Week - 6|Week - 6]]"
 ---
-# Entire Week
+# Week 5 - Teams and Team Effectiveness
 ## What you must be able to do
-- [[Textbook]]
+- [[Chapter - 17|Chapter - 17]]
 - Define a team and distinguish it from a work group.
 - Explain when teams are useful and when they can become inefficient.
 - Identify different types of teams and the situations in which each type fits best.
@@ -28,20 +29,19 @@ next:
 - Evaluate team effectiveness using results, satisfaction, viability, and learning.
 - Connect team leadership to entrepreneurship, speaking, and classroom collaboration.
 ## Key ideas (short)
-- A team is not just a group of people in the same place; it requires interdependence, shared goals, and some responsibility for managing work together.
+- A team is not just a group of people in the same place. It requires interdependence, shared goals, and collective responsibility.
 - Teams are strongest when the task is complex enough to require multiple perspectives and coordinated action.
 - Teams fail not only because of weak talent, but because of weak process.
-- The IPO framework helps explain why some teams succeed: inputs shape team states and processes, which shape outcomes.
+- The IPO framework explains why some teams succeed: inputs shape team states and processes, which shape outcomes.
 - Team norms are one of the biggest hidden drivers of performance.
-- Psychological safety is essential because teams cannot learn, give feedback, or handle disagreement well without it.
-- Cohesion helps commitment, but too much pressure for agreement can create groupthink.
-- The best teams do not avoid conflict; they keep conflict focused on ideas rather than people.
-- Team leadership is about shaping conditions, not just giving instructions.
+- Psychological safety is essential — teams cannot learn, give feedback, or handle disagreement well without it.
+- Cohesion helps commitment, but too much pressure for agreement creates groupthink.
+- The best teams do not avoid conflict. They keep conflict focused on ideas rather than people.
+- Team leadership is about shaping conditions, not giving instructions.
 
 ## Concepts created today
-- [[Concept - IPO framework and team effectiveness]]
-- [[Concept - Team conflict, trust, and psychological safety]]
-
+- [[Teams and Team Effectiveness|Teams and Team Effectiveness]]
+- [[Conflict and Negotiation|Conflict and Negotiation]]
 ## Examples worth keeping
 - **Apollo 11:** shows why teams matter when tasks are high-stakes, specialized, and tightly interdependent.
 - **Wikipedia:** shows that teams can also operate through broad coordination, shared purpose, and distributed contribution.
@@ -430,6 +430,9 @@ It is easier to manage disagreement when:
 - respect is already present
 - shared purpose is already strong
 
+## Textbook integration
+- [[Chapter - 17|Chapter - 17]] expands this week with team types, IPO conditions, team states, processes, outputs, team development stages, and conflict inside teams.
+- The source-of-truth concept note for this week is [[Teams and Team Effectiveness|Teams and Team Effectiveness]].
 ## Leadership / entrepreneurship / speaking links
 ### Leadership link
 Leading a team is often less about commanding and more about shaping:
@@ -475,6 +478,15 @@ Useful discussion structure:
 - [ ] What norms matter most in a short-term student project team?
 - [ ] How can a leader raise psychological safety without lowering accountability?
 - [ ] What signals show that task conflict is starting to become relationship conflict?
+
+## Lecture-to-textbook synthesis
+- ==Definition anchor: a team is a group with complementary skills, shared purpose, interdependent work, and mutual accountability.==
+- *Mechanism:* the week uses the IPO framework to explain why team performance is built, not assumed. Inputs shape what the team can do; processes and states shape how people work; outputs reveal both results and future capacity.
+- Lecture examples/scenarios: psychological safety explains why people surface mistakes before they become expensive; groupthink explains why cohesion can become dangerous when disagreement is punished or softened away.
+- Textbook connection: [[Chapter - 17|Chapter - 17]] adds work group vs team, task complexity, task interdependence, norms, virtual teams, boundary management, and team effectiveness criteria.
+- Concept links: [[Teams and Team Effectiveness|Teams and Team Effectiveness]], [[Conflict and Negotiation|Conflict and Negotiation]], [[Management Foundations and Leadership|Management Foundations and Leadership]].
+> [!SUMMARY]
+> Week 5's practical test is simple: if a team is failing, diagnose whether the failure is in inputs, processes/states, or outputs before prescribing a fix.
 
 ## Flashcards
 #cards/MGMT

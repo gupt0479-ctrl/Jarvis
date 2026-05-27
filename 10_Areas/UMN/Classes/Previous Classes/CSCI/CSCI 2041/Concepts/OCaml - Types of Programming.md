@@ -10,12 +10,12 @@ topics:
   - "[[OCaml]]"
   - "[[OCaml - BST Problems]]"
 related:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 1|Week - 1]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2041/Week - 1|Week - 1]]"
 ---
 # Two Types
 ## Resources
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#1.2 Functional vs. Imperative Programming|Chapter 1.2]]  
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 1|Week - 1]]  
+- [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#1.2 Functional vs. Imperative Programming|Chapter 1.2]]  
+- [[50_Archive/Previous Classes/CSCI/CSCI 2041/Week - 1|Week - 1]]  
 - [[OCaml - Basics|OCaml - Basics]]  
 - [[OCaml - BST Problems|OCaml - BST Problems]]  
 ### How to use them  
@@ -71,7 +71,7 @@ A data structure is **persistent** if operations don’t destroy the old version
 > That sentence is basically the persistence test you should apply to every list/tree function.  
 ### Trees: persistence is the same idea, but along a path
 See the lecture BST insert explanation in:  
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#1.4 Code Example OCaml - BST Problems Week 1 Persistent BST Insert (lecture code) BST Insert|BST Insert]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#1.4 Code Example OCaml - BST Problems Week 1 Persistent BST Insert (lecture code) BST Insert|BST Insert]]
 - [[OCaml - BST Problems#Week 1 Persistent BST Insert (lecture code)|OCaml - BST Problems → Week 1]]
 ## Recursion in functional/applicative programming
 ### Why recursion replaces loops  

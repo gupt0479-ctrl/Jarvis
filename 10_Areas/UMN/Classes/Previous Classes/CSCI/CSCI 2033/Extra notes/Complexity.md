@@ -4,9 +4,9 @@ input_kind: book
 status: sprout
 created: 2025-09-25
 related_progress:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 1 & 2]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 6|Week - 6]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Midterm - 1]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 1 & 2]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 6|Week - 6]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Midterm - 1]]"
 tags:
   - input
 ---

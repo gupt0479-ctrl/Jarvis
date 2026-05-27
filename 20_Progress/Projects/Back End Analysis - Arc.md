@@ -10,7 +10,7 @@ related:
 ---
 # Arc Backend
 ## MOC
-- [[Learning Tracker tool]]
+- [[Arc (Learning Tracker)]]
 - [[HW__ - ...]]
 ## Definition
 - 

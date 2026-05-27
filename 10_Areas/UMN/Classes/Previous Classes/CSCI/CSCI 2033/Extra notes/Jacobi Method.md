@@ -3,13 +3,13 @@ type: input
 input_kind: lecture
 status: tree
 created: 2025-10-16
-source_url: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 6#Jacobi method|Linear Equations]]"
+source_url: "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 6#Jacobi method|Linear Equations]]"
 related_progress:
   - "[[Final]]"
   - "[[UMN Board]]"
 tags:
   - input
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 6|Week - 6]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 6|Week - 6]]"
 ---
 ```python
 def Jacobi(A,b):

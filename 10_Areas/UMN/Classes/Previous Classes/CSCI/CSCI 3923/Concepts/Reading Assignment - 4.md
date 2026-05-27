@@ -10,7 +10,7 @@ area:
 tags:
   - "#class"
   - "#Textbook"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 3923/Week - 5|Week - 5]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 3923/Week - 5|Week - 5]]"
 ---
 # Chapter - 6
 Chapter 6 of _Weapons of Math Destruction_, titled **"INELIGIBLE TO SERVE: Getting a Job,"** explores how big companies use computer programs to decide who gets hired, often creating unfair "walls" that keep good people out.

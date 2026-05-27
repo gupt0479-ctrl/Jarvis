@@ -15,7 +15,7 @@ tags:
   - "#Jupyter"
   - "#Quiz"
   - "#Homework"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 8|Week - 8]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 8|Week - 8]]"
 ---
 # #Textbook Textbook (Ch - 7 & 8) 
 ## Chapter 7
@@ -113,7 +113,7 @@ A matrix `A` is a **machine** that takes x to a new vector: $y = A x$
 In the plots: (Which color is which isn’t important; focus on how length/orientation change.)
 - one segment is the **original vector** x.
 - the other segment is the **transformed vector** Ax
-For any linear transformation: [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 6#7.1 Geometric Transformations|Geometric Transformations in detail]]
+For any linear transformation: [[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 6#7.1 Geometric Transformations|Geometric Transformations in detail]]
 > **Columns of A = images of the standard basis vectors.**  
 > First column = $A e_{1}$​, second column = $A e_{2}$​, etc.
 

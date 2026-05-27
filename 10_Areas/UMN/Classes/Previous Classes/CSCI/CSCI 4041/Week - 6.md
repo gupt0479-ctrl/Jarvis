@@ -12,14 +12,14 @@ tags:
   - "#Lecture"
   - "#class"
 next:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 7|Week - 7]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 7|Week - 7]]"
 ---
 # Entire Week
 ## What you must be able to do
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 13#13.2 Rotations|Chapter - 13 rotations]], [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 13#AVL Notes Anchored to Chapter 13|AVL notes anchored to Chapter 13]], and [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Trees/AVL Trees#Core Ideas (Lecture)|AVL Trees - Core Ideas (Lecture)]]: explain why balance matters, compute balance factors, and identify LL, RR, LR, and RL repair cases.
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 13#13.2 Rotations|Chapter - 13 rotations]], [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 13#AVL Notes Anchored to Chapter 13|AVL notes anchored to Chapter 13]], and [[AVL Trees#Core Ideas (Lecture)|AVL Trees - Core Ideas (Lecture)]]: explain why balance matters, compute balance factors, and identify LL, RR, LR, and RL repair cases.
 - [[Chapter - 18#18.1 Definition of B-Trees|Chapter - 18 B-tree definition]], [[Chapter - 18#18.2 Basic Operations|basic operations]], and [[B-Trees#Core Ideas (Lecture + Ch18_B-Tree.ipynb)|B-Trees - Core Ideas (Lecture + Ch18_B-Tree.ipynb)]]: describe B-tree nodes, minimum degree, split strategy, and why large branching factors matter for disk-based structures.
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Trees/AVL Trees#Proof / Reasoning Toolkit|AVL Trees - Proof / Reasoning Toolkit]] and [[B-Trees#Proof / Reasoning Toolkit|B-Trees - Proof / Reasoning Toolkit]]: understand the AVL height-bound recurrence and the B-tree height bound.
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Trees/AVL Trees#Practice Map|AVL Trees - Practice Map]] and [[B-Trees#Practice Map|B-Trees - Practice Map]]: rotations, height-balanced checks, and B-tree tracing are still open practice.
+- [[AVL Trees#Proof / Reasoning Toolkit|AVL Trees - Proof / Reasoning Toolkit]] and [[B-Trees#Proof / Reasoning Toolkit|B-Trees - Proof / Reasoning Toolkit]]: understand the AVL height-bound recurrence and the B-tree height bound.
+- [[AVL Trees#Practice Map|AVL Trees - Practice Map]] and [[B-Trees#Practice Map|B-Trees - Practice Map]]: rotations, height-balanced checks, and B-tree tracing are still open practice.
 
 ## Key ideas (textbook)
 - **Balance is about height control.** A BST can degrade into a linear chain, so the point of balanced trees is not cosmetic symmetry but guaranteed logarithmic search/update paths.
@@ -29,9 +29,9 @@ next:
 - **Both structures are best understood by invariants.** AVL maintains a bounded left/right height difference. B-trees maintain key-count bounds per node and equal leaf depth. The actual code is just the machinery for preserving those invariants under updates.
 
 ## Concepts created / updated today
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Trees/AVL Trees#Definition|AVL Trees]]
+- [[AVL Trees#Definition|AVL Trees]]
 - [[B-Trees#Definition|B-Trees]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 13#AVL Notes Anchored to Chapter 13|Chapter - 13 - AVL notes anchored to Chapter 13]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 13#AVL Notes Anchored to Chapter 13|Chapter - 13 - AVL notes anchored to Chapter 13]]
 
 ## Lecture
 ### Chapter - 13 Red-Black Trees

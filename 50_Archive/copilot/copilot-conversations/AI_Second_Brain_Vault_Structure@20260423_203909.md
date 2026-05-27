@@ -381,3 +381,78 @@ At the end of a working session:
 [^5]: [[Claude_Code_with_Obsidian_Integration@20260331_211446]]
 [^6]: [[CLAUDE]]
 [Timestamp: 2026/04/23 20:46:13]
+
+**user**: Provide me with the most interesting prompt that i can ask claude to think about. It should be about this second brain, maybe find things that i would not notice off. I need this prompt to make claude really think, look through the files and then give me an answer. It could literally be anything. I want this to be an interesting prompt that claude comes up about my second brain that i have developed so far.
+[Timestamp: 2026/04/23 21:22:19]
+
+**ai**: ```markdown
+# Role
+You are `vault-curator` + systems designer for an Obsidian-based “AI-powered second brain”.
+
+# Objective
+Perform a forensic, opinionated audit of my vault as a *system* (not just content) and surface the highest-leverage changes I would not notice myself.
+
+# Context (Vault Operating Contract)
+- Follow the vault contract: patch by heading, preserve frontmatter, search before creating, respect `status: tree` notes (propose changes first).[^1]
+- Folder roles matter (e.g., `60_Claude/05_Clippings/` is read-only input; `60_Claude/` is the Claude-generated layer; `.claude/` is tooling).[^1]
+- Use the query behavior: search Claude layer first (especially `60_Claude/60_Indexes/Claude Layer Index.md`), then widen search, and cite the notes that informed your conclusions using `[[note-title]]` links.[^1]
+
+# What to do (Deep audit tasks)
+1. **Trace the real operating system**
+   - Infer the current workflows I’m actually using (ingestion, summarization, reviews, prompting, coding) from the notes and folder structure.
+   - Identify where my “intended workflow” and “actual workflow” diverge.
+
+2. **Find silent failure modes**
+   - Identify 10 ways this second brain will fail over time (knowledge rot, duplication, missing indexes, AI-sludge accumulation, unstable notes being overwritten, clippings not distilled, etc.).
+   - For each failure mode: show the *early warning signal* I can track inside Obsidian.
+
+3. **Detect hidden structure problems**
+   - Spot note types that are inconsistent with the contract (frontmatter drift, unclear `type/status`, mixed “input” vs “evergreen”, wrong destination folders, missing backlinks).
+   - Call out any folder-role violations (e.g., derived edits in clippings).
+
+4. **Surface the “missing primitives”**
+   - Propose 3–5 “system primitives” (templates, indexes, or pipelines) that would multiply usefulness.
+   - Each primitive must map to an existing contract/workflow (ingestion, session log, weekly review, prompt library, tool-lanes).[^1]
+
+5. **Produce a prioritized roadmap**
+   - Give me a 2-week plan that follows: “one workflow at a time” (prompting → automation → vibe coding), with clear deliverables saved into the correct destinations.[^1]
+   - Include which skill/agent command to use when relevant (e.g., `/weekly-review`, `/connect-notes`, `/lint-claude-layer`).[^1]
+
+# Output format (strict)
+## Executive Diagnosis (5 bullets)
+- ...
+
+## The 10 Silent Failure Modes (table)
+| Failure mode | Evidence (links) | Early warning signal | Fix (smallest viable change) |
+|---|---|---|---|
+
+## The 5 Highest-Leverage Upgrades (ranked)
+1. ...
+- “Why this matters”
+- “Exactly what to change”
+- “Where it lives” (folder path)
+
+## Proposed New Primitives (3–5)
+- Primitive name
+- Template/pipeline spec
+- Trigger (manual/scheduled)
+- Output destination (per contract)
+
+## 2-Week Roadmap
+### Week 1 (Foundations)
+- Deliverables + where saved
+### Week 2 (RAG/Automation)
+- Deliverables + where saved
+
+## Open Questions for Me (to reduce hallucinations)
+- ...
+
+# Constraints
+- Do not invent files you didn’t find.
+- Every major claim must be backed by at least one `[[note]]` link.
+- If a `status: tree` note needs changes, propose them as a diff/patch plan instead of editing.
+```
+
+#### Sources
+[^1]: [[CLAUDE]]
+[Timestamp: 2026/04/23 21:22:51]

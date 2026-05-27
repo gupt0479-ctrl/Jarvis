@@ -1,27 +1,15 @@
 ---
-type: concept
-status: seed
+type: brainstorm
+status: sprout
 created: 2026-02-20
-updated: 2026-07-27
 related_progress:
   - "[[Gen AI Day - 2]]"
   - "[[Gen AI Day - 1]]"
   - "[[Chat Gpt Prompts]]"
   - "[[UMN Workflow]]"
 tags:
-  - concept
+  - brainstorm
 next: "[[Gen AI Meeting]]"
-track:
-  - ai
-prerequisites: []
-used_in: []
-evidence: []
-difficulty: 1
-mastery_level: novice
-mastery_score: null
-last_drilled: 2026-04-25
-next_drill: 2026-05-16
-drill_interval: 21
 ---
 # Gen AI Roadmap
 ## Definition
@@ -102,46 +90,3 @@ drill_interval: 21
 - Ship one automation + one “agent plan” doc (permissions + actions)
 ### Week 5: Level 5 app build
 - Ship a small app demo (vibe coding) + documentation + portfolio writeup
-
----
-
-## Deep Dive
-
-### One-Sentence Version
-
-A 5-level progression from LLM fundamentals through prompting, content creation, automations, and app building — each level has a concrete project that proves the skill, not just reading about it.
-
-### What It Is
-
-The roadmap is a structured learning path from the Gen AI Mastermind course, organized as 5 levels with increasing complexity:
-
-- **Level 1** (Foundations): How LLMs work + prompt basics → build system prompts and custom assistants
-- **Level 2** (Advanced prompting + RAG): Retrieval concepts, prompt refinement → build a RAG system and copilot agents
-- **Level 3** (Content creation): Diffusion models, image/video pipelines → produce AI-generated video ads
-- **Level 4** (Automations + agents): Process automation, agent orchestration → build personal assistant workflows
-- **Level 5** (App building): No-code/low-code + AI features → ship a deployed MVP
-
-Each level has a "minimum proof" project. The roadmap is useless without the projects — the levels are just categories, the projects are the actual learning.
-
-### Why It Matters
-
-- It sequences AI skills in dependency order: you can't build a RAG system (Level 2) without understanding embeddings (Level 1), and you can't orchestrate agents (Level 4) without understanding tool connections (Level 2-3).
-- The weekly schedule (5 weeks, one level per week) is aggressive but gives a concrete timeline instead of open-ended "learn AI."
-- For this vault specifically, the roadmap feeds directly into the `ai` track — each level maps to concepts that should become tracked, drilled, and eventually proven through outputs.
-
-### Real Example
-
-The recommended build sequence from the course: (1) system prompt + assistant prompt, (2) custom GPT using your prompt + knowledge, (3) one automation with Make/Zapier, (4) one vibe-coded app with CRUD + AI feature, (5) one AI video ad. Each artifact is small enough to finish in a week but concrete enough to demonstrate the skill.
-
-### Contrast With
-
-**Roadmap vs. tutorial collection**: A tutorial collection is unordered — you pick whatever looks interesting. This roadmap is sequenced with dependencies. Skipping Level 1 and jumping to Level 4 (agents) means you won't understand why your agent's tool calls fail, because you never learned how the model processes structured prompts.
-
-**This roadmap vs. a university ML curriculum**: A university curriculum goes deep on math (linear algebra, probability, optimization) before touching applications. This roadmap is application-first — you build things immediately and learn theory as needed. The tradeoff: you ship faster but may lack the mathematical foundation to debug novel model behavior.
-
-### Source Anchors
-
-- Gen AI Mastermind course — 5-level deck and sessions 1-4
-- [[Gen AI Day - 1]] — Level 1 content (LLM mechanics, prompting)
-- [[Gen AI Day - 2]] — Levels 3-4 content (video workflow, vibe coding, MCP, automations)
-- [[AI Workflow]] — implementation plan that operationalizes this roadmap into daily tool usage

@@ -9,13 +9,13 @@ topics:
   - "[[Introduction to Algorithms]]"
   - "[[Chapter - 7 & 10]]"
 related:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 4|Week - 4]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 4|Week - 4]]"
   - "[[Sorting Algorithms]]"
   - "[[Divide and Conquer]]"
 ---
 # [[QuickSort]]
 ## MOC
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 4#Jupyter Notebook Explanations|Week - 4]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 4#Jupyter Notebook Explanations|Week - 4]]
 - [[Chapter - 7 & 10#7.1 Description of Quicksort|Chapter - 7 & 10 - Quicksort]]
 - [[Sorting Algorithms#Core Ideas (Lecture)|Sorting Algorithms - Core Ideas (Lecture)]]
 - [[Divide and Conquer#Proof / Reasoning Toolkit|Divide and Conquer - Proof / Reasoning Toolkit]]
@@ -162,6 +162,8 @@ The critical intuition is that once one of the two elements is chosen as pivot, 
 - Quickselect-style partition problems
 - Course Schedule style topological sort only as a contrast: it is also linear partitioning of structure, but not a sorting algorithm
 - Any "implement sort an array" task where you compare quicksort against merge sort
+- CodingHW_3(chapter10-CLRS).ipynb: two stacks in one array, deque, linked-stack/queue, list reversal (Ch 7 & 10 combined)
+- Paper HW - 3 (Ch - 7 & 10).pdf: written problems on quicksort partitioning and data structure invariants
 
 ## Mini-test
 1. Why does partition return the pivot's final index rather than a temporary split point?

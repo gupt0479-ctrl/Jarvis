@@ -1,25 +1,25 @@
 ---
 type: class
 input_kind: lecture
-status: seed
+status: sprout
 created: 2026-03-02
 updated: 2026-04-16
 area:
-  - "[[UMN Board]]"
-  - "[[10_UMN/CSCI 4041/CSCI 4041/Concepts/DSA|DSA]]"
-  - "[[10_UMN/CSCI 4041/CSCI 4041/Concepts/Introduction to Algorithms|Introduction to Algorithms]]"
+  - "[[CSCI 4041 Board]]"
+  - "[[DSA]]"
+  - "[[Introduction to Algorithms]]"
 tags:
   - "#class"
   - "#Lecture"
 next:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 8|Week - 8]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 8|Week - 8]]"
 ---
 # Entire Week
 ## What you must be able to do
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 13#13.1 Properties of Red-Black Trees|Chapter - 13 red-black properties]], [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 13#13.3 Insertion|RB insert]], and [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 13#13.4 Deletion|RB delete]]: know the 5 properties, black-height idea, `T.nil`, and the high-level fix-up cases for insert/delete.
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Trees/AVL Trees#Core Ideas (Lecture)|AVL Trees - Core Ideas (Lecture)]], [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Trees/AVL Trees#Canonical Examples (Max 5)|AVL Trees - Canonical Examples]], and [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Trees/AVL Trees#Proof / Reasoning Toolkit|AVL Trees - Proof / Reasoning Toolkit]]: explain the AVL project implementation, the four rotation triggers, and the validation checks.
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 6#Chapter 13 and Chapter 18 - Balanced Trees, Rotations, and B-Trees|Week - 6]] and [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 13#AVL Notes Anchored to Chapter 13|Chapter - 13 - AVL notes anchored to Chapter 13]]: connect the red-black chapter invariants to the AVL project's stricter balance condition.
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Trees/AVL Trees#Practice Map|AVL Trees - Practice Map]]: height-balanced checks, rotations, and validation drills remain open.
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 13#13.1 Properties of Red-Black Trees|Chapter - 13 red-black properties]], [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 13#13.3 Insertion|RB insert]], and [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 13#13.4 Deletion|RB delete]]: know the 5 properties, black-height idea, `T.nil`, and the high-level fix-up cases for insert/delete.
+- [[AVL Trees#Core Ideas (Lecture)|AVL Trees - Core Ideas (Lecture)]], [[AVL Trees#Canonical Examples (Max 5)|AVL Trees - Canonical Examples]], and [[AVL Trees#Proof / Reasoning Toolkit|AVL Trees - Proof / Reasoning Toolkit]]: explain the AVL project implementation, the four rotation triggers, and the validation checks.
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 6#Chapter 13 and Chapter 18 - Balanced Trees, Rotations, and B-Trees|Week - 6]] and [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 13#AVL Notes Anchored to Chapter 13|Chapter - 13 - AVL notes anchored to Chapter 13]]: connect the red-black chapter invariants to the AVL project's stricter balance condition.
+- [[AVL Trees#Practice Map|AVL Trees - Practice Map]]: height-balanced checks, rotations, and validation drills remain open.
 
 ## Key ideas (textbook)
 - **Red-black trees encode balance indirectly.** Instead of storing subtree heights, they constrain coloring so the height can never grow beyond twice the black-height. That is enough to guarantee logarithmic operations.
@@ -29,9 +29,9 @@ next:
 - **The project work turns theory into correctness checks.** Once you implement rotations and rebalancing, you need invariants like "parent pointers are consistent" and "stored heights match computed heights" to trust the tree.
 
 ## Concepts created / updated today
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Trees/AVL Trees#Definition|AVL Trees]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 13#13.4 Deletion|Chapter - 13 - RB delete]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Trees/AVL Trees#Mini-test|AVL Trees - Mini-test]]
+- [[AVL Trees#Definition|AVL Trees]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 13#13.4 Deletion|Chapter - 13 - RB delete]]
+- [[AVL Trees#Mini-test|AVL Trees - Mini-test]]
 
 ## Lecture
 ### Chapter 13 and AVL Project Notes - Red-Black Trees and AVL Validation

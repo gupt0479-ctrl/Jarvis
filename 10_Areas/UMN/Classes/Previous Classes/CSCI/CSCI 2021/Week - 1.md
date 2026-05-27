@@ -5,7 +5,7 @@ created: 2025-09-17
 updated: 2025-09-25
 area:
   - "[[C Language]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Midterm - 1]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Midterm - 1]]"
   - "[[Compilation system]]"
   - "[[Hardware Organization]]"
 tags:
@@ -13,7 +13,7 @@ tags:
   - "#DIS"
   - "#Lecture"
   - "#class"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 2]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 2]]"
 ---
 # Textbook (CSAPP 1.1-1.6, DIS 1.1-1.4)
 ## CSAPP #CSAPP 

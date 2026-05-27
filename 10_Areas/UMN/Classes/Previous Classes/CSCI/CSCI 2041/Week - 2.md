@@ -3,21 +3,21 @@ type: class
 input_kind: lecture
 status: sprout
 created: 2026-02-25
-updated: 2026-05-12
+updated:
 area:
   - "[[UMN Board]]"
   - "[[CSCI 2041 Board]]"
   - "[[OCaml]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 3 & 4|Chapter - 3 & 4]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 3 & 4|Chapter - 3 & 4]]"
 tags:
   - "#Lecture"
   - "#class"
 next:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 3|Week - 3]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2041/Week - 3|Week - 3]]"
 ---
 # Entire Week
 ## What you must be able to do
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4|Chapter - 3 & 4]]  
+- [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4|Chapter - 3 & 4]]  
 - [[OCaml - Basics]]  
 - [[OCaml - Pattern Matching]]  
 - [[OCaml - Let bindings, Scope & Closures]]
@@ -29,23 +29,17 @@ next:
 ## Key ideas (textbook)
 - **`let ... in ...` scoping:** `let x = e1 in e2` binds `x` only inside `e2` (the body), not inside `e1`.  
 - **Static (lexical) binding**: a function uses values from where it was defined, not where it is called. Shadowing creates a new binding that temporarily hides the old one. 
-	- See: [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4#3.1.1 Scoping and Nested Functions]]
+	- See: [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4#3.1.1 Scoping and Nested Functions]]
 - **Function types associate to the right:** `t1 -> t2 -> t3` means `t1 -> (t2 -> t3)` (this is why partial application works).  
 - **Function application binds tightly:** `f x + y` is `(f x) + y` unless you add parentheses.  
 - **Partial application** produces a function waiting for the remaining arguments (common exam trap).  
-	- See: [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4#3.1 Functional programming and Functions]]
+	- See: [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4#3.1 Functional programming and Functions]]
 - Classic factorial is **not tail recursive** because `*` happens after the recursive call returns.
 - Tail recursion means: **all recursive calls are in the tail**.
 - Why tail recursion can be as stack-efficient as loops: compiler can reuse one frame for tail calls.
 - **Pattern matching**: evaluate the matched expression once, then try patterns in order, first match wins.  
 - **Recursion needs `rec`:** a function that calls itself must be defined with `let rec ...` or you’ll get an “unbound value” style error.  
 - **Tail recursion idea (core):** recursive call is the last thing the function does → compiler can reuse stack frames.
-## Concepts created / updated today
-- [[OCaml - Tail Recursion and Internal Helpers]]: stack frames, tail calls, accumulators, and loop-to-helper translation.
-- [[OCaml - Let bindings, Scope & Closures]]: static binding begins with `let ... in`, shadowing, and the rule that a name's meaning comes from its definition site.
-- [[OCaml - Pattern Matching]]: textbook Chapter 4 begins the "dispatcher" model; Week 2 uses it mainly as setup for Week 3.
-- [[OCaml - Basics]]: `rec`, `fun`, function application precedence, and the difference between returning a value and doing work after a recursive call.
-
 ## Examples worth keeping
 1. **Iterative factorial (imperative)**  
 	- Uses one stack frame (constant stack space) because the loop updates locals inside a single call.  
@@ -59,19 +53,6 @@ next:
 5. **Loop → tail recursion pattern**  
 	- “loop variables become parameters” + “assignments become new arguments” + “while-test becomes if-test”.
 ## Lecture
-### Week 2 lecture map - recursion replaces loops
-Week 2 turns the "no loops needed" claim into a stack model. The important point is not that OCaml has recursion; it is that a recursive function call creates a control-flow and memory pattern, and tail recursion can make that pattern behave like iteration.
-
-Source anchors:
-- `Lecture - 4.txt`, professor notes `30Jan26/`, and `Lectures/Notes/30Jan26/friday2041.html` focus on stacks, frames, iterative factorial, recursive factorial, and tail-recursive factorial.
-- `Labs/lab1.ml` and `Labs/tests1.ml` test the same idea through list recursion: `howMany`, `delete`, and `mean`.
-- Textbook support comes mainly from Hickey Ch. 3 and Ch. 5: recursive functions, list processing, and tail recursion.
-
-The lecture's lasting distinction:
-- Ordinary recursion may leave pending work after the recursive call returns.
-- Tail recursion makes the recursive call the last step, so the next call can reuse the current frame in principle.
-- Internal helpers are often the way to keep extra state, such as a running count or sum, without exposing that state in the public function.
-
 ### Jan 30 - Why we don’t need loops (stacks, frames, tail calls, tail recursion) 
 #### How calls happen (the stack model)  
 - Most languages maintain a **stack** with **push** and **pop**.  
@@ -155,17 +136,7 @@ let fac n = facing 1 n ;;
 - **While test** → `if` condition that decides recurse vs stop.
 - **Initializations** → the initial call to the helper with starting argument values.
 - **If a value never changes** → inherit it via an internal helper (`let rec helper ... in helper ...`) instead of passing it every time.
-## Lab
-### Lab 1 — List Recursion
-Source: `Labs/lab1.ml`  
-Tests: `Labs/tests1.ml`
-
-- Tests recursive list traversal through `howMany` and `delete`.
-- Tests internal helpers in `mean`: list length, float sum, and `float_of_int` before `/.`.
-- Concepts: [[OCaml - Basics]], [[OCaml - Pattern Matching]], [[OCaml - Tail Recursion and Internal Helpers]]
-- Final check: be able to explain the `[]` base case, why `hd`/`tl` must be guarded, and why `mean` uses float operators.
-
-### Lab 1 existing takeaways
+## Lab - 1 Takeaways
 ### Function 1 - `how many e l`
 *Goal*: Count how many times `e` appears in list `l`.
 1. Why the type is `'a -> 'a list -> int`
@@ -206,7 +177,7 @@ So `h :: delete e t` means:
 	- length as an `int`
 	- conversion: `float_of_int n`
 #### Why helper functions are used
-Your [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 1#Lecture (Jan 28) - Multi-argument function types, append, immutability/persistence, helpers|Week 1]] notes mention internal helpers: use `let ... in` to define helpers inside a function when it keeps things cleaner. So `mean` typically defines:
+Your [[50_Archive/Previous Classes/CSCI/CSCI 2041/Week - 1#Lecture (Jan 28) - Multi-argument function types, append, immutability/persistence, helpers|Week 1]] notes mention internal helpers: use `let ... in` to define helpers inside a function when it keeps things cleaner. So `mean` typically defines:
 - `length : 'a list -> int`
 - `sum : float list -> float`
 Then:
@@ -216,13 +187,6 @@ Then:
 > - `float_of_int n` is `float`    
 > - `/.` expects `(float, float)` and returns `float`  
 > - So the whole expression stays `float` — exactly what `mean` promises.
-## Takeaways (questions to resolve)
-- [ ] Can I point to the exact tail of a function body?
-- [ ] Can I explain why `n * fac (n - 1)` is not a tail call even though the recursive call appears at the end of the line?
-- [ ] Can I rewrite a loop by turning loop variables into helper parameters?
-- [ ] Can I explain why accumulators move work "on the way down" instead of "on the way back up"?
-- [ ] Can I connect Lab 1's `howMany`, `delete`, and `mean` to base case, recursive case, and helper design?
-
 ## Midterm Check
 ### Chapter - 3
 - [ ] **Static vs. Dynamic Binding:** If a function uses a variable defined outside its body, does it use the value of that variable from where the function was _defined_ or where it was _called_?.
@@ -238,9 +202,3 @@ Then:
 > [!NOTE] A likely exam prompt: *“Is this function tail recursive? Explain why. If not, rewrite in tail-recursive form if possible.”*
 ## Flashcards
 #cards/CSCI2041 
-- What is a stack frame, minimally::A function call record containing parameters, local names, and a return point.
-- What is the tail of a function::The chronologically last computation the function performs.
-- Tail call test::After the call returns, the caller must do nothing except return that result.
-- Why is classic factorial not tail-recursive::It must multiply by `n` after `fac (n - 1)` returns.
-- Loop-to-tail-recursion translation::Loop variables become parameters, assignments become new arguments, while-test becomes `if`, and initialization becomes the first helper call.
-- Lab 1 final check::Guard `hd` and `tl` with the `[]` case, and use `float_of_int` plus `/.` for `mean`.

@@ -1,9 +1,9 @@
 ---
 type: class
 input_kind: book
-status: tree
+status: sprout
 created: 2026-01-27
-updated: 2026-04-16
+updated: 2026-04-28
 area:
   - "[[UMN Board]]"
   - "[[CSCI 4041 Board]]"
@@ -13,7 +13,7 @@ area:
 tags:
   - "#class"
   - "#Textbook"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 1 & 2|Week - 1 & 2]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 1 & 2|Week - 1 & 2]]"
 ---
 # CLRS (Ch - 1 & 2)
 ## The Role of Algorithms in Computing
@@ -450,3 +450,72 @@ Choosing `k = Theta(lg n)` keeps the total at `Theta(n lg n)` while using insert
 > **Best/Average/Worst:** `Theta(n log n)`
 > **Space:** `Theta(n)` extra for temporary arrays or sliced sublists
 > **Stable:** Yes for the usual merge implementation
+
+---
+
+## Overview
+- Chapters 1 and 2 set up the course vocabulary: what an algorithm is, what it means for an algorithm to be correct, and how to compare algorithms by growth rate instead of machine-specific timing.
+- In CSCI 4041, this chapter pair supports the first sorting unit, the loop-invariant proof style, and the first transition from concrete Python timing to asymptotic analysis.
+- The chapter also establishes the first source-of-truth examples for later notes: insertion sort as an incremental algorithm and merge sort as the first divide-and-conquer sorting algorithm.
+
+## Core Definitions
+See sections 1.1 and 2.1–2.3 above for full definitions.
+
+## Main Algorithms
+See sections 2.1 (Insertion Sort) and 2.3 (Merge Sort) above for full algorithm descriptions and code.
+
+## Correctness Ideas
+- Insertion sort uses the invariant that `A[0:i-1]` is sorted before inserting `A[i]`.
+- Merge sort correctness follows by induction on subarray length: the recursive calls sort each half, and `MERGE` preserves sorted order while copying every element exactly once.
+- The merge loop invariant tracks that the output prefix contains the smallest already-considered elements from the two input halves.
+- The chapter's proof style matters later because heap, tree, graph, dynamic-programming, and greedy correctness arguments reuse the same pattern: state the invariant, show preservation, use termination.
+
+## Complexity
+- Insertion sort best case is `Theta(n)` when the array is already sorted, because the inner while loop fails immediately.
+- Insertion sort worst case is `Theta(n^2)` when each new key shifts through the whole sorted prefix.
+- Merge sort satisfies `T(n) = 2T(n/2) + Theta(n)`, so `T(n) = Theta(n lg n)`.
+- Merge sort uses `Theta(n)` auxiliary space in the textbook temporary-array version; insertion sort uses `O(1)` extra space.
+
+## Lecture Emphasis
+- `Lectures/Week - 1 & 2/Ch2_Insertion_Sort.ipynb` maps directly to textbook insertion sort and makes the inner shift loop concrete:
+
+```python
+for i in range(1,n):
+    key = A[i]
+    j = i-1
+    while j>=0 and A[j]>key:
+        A[j+1] = A[j]
+        j = j-1
+    A[j+1] = key
+```
+
+- `Lectures/Week - 1 & 2/Ch2_Merge_Sort.ipynb` implements the textbook `merge`/`merge_sort` split. The important bridge is that the merge step is linear because each cursor only moves forward.
+- `ch2_Asymptotic_Analysis.ipynb` compares insertion sort and merge sort empirically, connecting measured timings to the asymptotic claims.
+- `ch2_Asymptotic_Analysis-FLOPS.ipynb` adds operation-counting variants such as `insertion_sort_cost` and `merge_sort_cost`; this is the lecture bridge from informal timing to cost-model analysis.
+- Weekly/concept links: [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 1 & 2|Week - 1 & 2]], [[Sorting Algorithms|Sorting Algorithms]], [[Time Complexity|Time Complexity]].
+
+## Examples
+- The textbook sorting example `31, 41, 59, 26, 41, 58` demonstrates the output-permutation requirement.
+- For insertion sort, trace `5, 2, 4, 6, 1, 3`: after processing `4`, the prefix `2, 4, 5` is sorted, even though the whole array is not.
+- For merge sort, trace the merge of `2, 5, 9` and `1, 6, 8`: each comparison appends the smaller current front, giving a linear merge.
+- `CodingHW_1(chapter2-CLRS).ipynb` grounds the binary-addition exercise in arrays of bits and the carry invariant.
+
+## Connections
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 1 & 2|Week - 1 & 2]]
+- [[Sorting Algorithms|Sorting Algorithms]]
+- [[Time Complexity|Time Complexity]]
+- Source homework read: `Homework/Coding/CodingHW_1(chapter2-CLRS).ipynb` and `Homework/Paper/Paper HW - 1 (Ch - 2).pdf`.
+- TODO: source gap - no corresponding vault Homework/Paper Homework note folder was found, so these homework references are source-file references rather than vault wikilinks.
+
+## Common Pitfalls
+- Confusing "sorted prefix" with "whole array sorted" in the insertion-sort invariant.
+- Forgetting that merge sort's `Theta(n lg n)` comes from doing linear merge work at each recursion level.
+- Treating Python timing as the proof of complexity instead of using it as empirical support.
+- Saying merge sort is in-place when using the textbook temporary-array implementation.
+
+## Review Checklist
+- [ ] Define algorithm, problem instance, correctness, and loop invariant.
+- [ ] Implement insertion sort and explain the shifting loop.
+- [ ] Implement merge sort and the merge subroutine.
+- [ ] Prove insertion sort with initialization, maintenance, and termination.
+- [ ] Derive insertion sort and merge sort runtimes from the loops/recurrence.

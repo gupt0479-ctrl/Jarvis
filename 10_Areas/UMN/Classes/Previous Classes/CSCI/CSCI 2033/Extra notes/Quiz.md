@@ -4,12 +4,12 @@ status: archived
 created: 2025-10-04
 updated: 2025-10-16
 area:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 1 & 2]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 3|Week - 3]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 4|Week - 4]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 1 & 2]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 3|Week - 3]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 4|Week - 4]]"
 tags:
   - "#class"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Midterm - 1]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Midterm - 1]]"
 ---
 # Quizzes Solutions
 ## Chapter - 2
@@ -25,7 +25,7 @@ Now the additions:
 2. Multiplying a vector by a scalar **scales** its magnitude (length) without changing its direction (except when α is negative, which reverses direction).
 - q5. Linear combinations like av⃗+bw⃗a\vec{v} + b\vec{w}av+bw represent **combined effects** of multiple cost (or force, or velocity) components. Each coefficient acts as a scaling factor on its vector’s contribution.
 ## Chapter - 3
-1. [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 1 & 2#Regression Model]] - A linear regression model predicts an output variable $\hat{y}$ as a **linear combination** of input features:
+1. [[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 1 & 2#Regression Model]] - A linear regression model predicts an output variable $\hat{y}$ as a **linear combination** of input features:
 - $x_1, x_2, \dots$: input features (e.g., total area, number of beds).
 - $\beta_1, \beta_2, \dots$: coefficients (showing how sensitive $\hat{y}$ is to each feature).
 - $v$: intercept term (baseline prediction).

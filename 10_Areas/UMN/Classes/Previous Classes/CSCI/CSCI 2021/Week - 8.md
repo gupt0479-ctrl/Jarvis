@@ -12,7 +12,7 @@ tags:
   - "#Homework"
   - "#CSAPP"
   - "#Lecture"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 9|Week - 9]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 9|Week - 9]]"
 ---
 # #Textbook Textbook (CSAPP - 4.1 to 4.3)
 ## #CSAPP CSAPP

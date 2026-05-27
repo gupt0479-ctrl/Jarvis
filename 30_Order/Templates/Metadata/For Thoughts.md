@@ -1,9 +1,8 @@
 ---
 type: thought
-thought_kind:
-status: seed
+thought_kind: "# reflection | memory | musing"
+status:
 created:
-updated:
 related_progress:
 tags:
   - thought

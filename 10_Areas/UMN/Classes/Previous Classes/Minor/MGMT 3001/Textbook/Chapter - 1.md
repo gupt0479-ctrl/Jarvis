@@ -6,15 +6,29 @@ created: 2026-01-29
 updated: 2026-01-31
 area:
   - "[[UMN Board]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/Minor/MGMT 3001/MGMT 3001 Board]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/Minor/MGMT 3001/Concepts/Management vs Leadership]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/Minor/MGMT 3001/Concepts/Modern Management]]"
+  - "[[MGMT 3001 Board]]"
+  - "[[Management Foundations and Leadership|Management Foundations and Leadership]]"
 tags:
   - "#class"
   - "#Textbook"
-next: "[[10_Areas/UMN/Classes/Previous Classes/Minor/MGMT 3001/Week - 1|Week - 1]]"
+next:
+  - "[[50_Archive/Previous Classes/Minor/MGMT 3001/Week - 1|Week - 1]]"
 ---
-# Chapter - 1
+# Chapter 1 - Introduction to Management
+## Textbook anchor - how to use Chapter 1
+- ==Management coordinates strategic positioning, organizational design, and individual leadership so the organization can perform in context.==
+- *Mechanism:* the chapter moves from early efficiency theories to modern contingency thinking. Each theory solved a real problem, but each becomes dangerous when treated as universal.
+- Use the historical views as diagnosis tools:
+  - Scientific management fits repeatable, measurable work, but can dehumanize jobs when managers ignore motivation.
+  - Bureaucracy helps scale fairness and consistency, but can become rigid when rules replace judgment.
+  - Human relations explains why attention, belonging, and participation affect performance.
+  - Systems thinking explains why fixing one department can create problems elsewhere.
+  - Contingency thinking asks what the situation requires before choosing a management approach.
+> [!TIP]
+> For a scenario question, start with *fit*: what is the task, what kind of people are involved, how uncertain is the environment, and what does the strategy require?
+> [!WARNING]
+> Do not answer Chapter 1 questions by saying one theory is "best." The textbook's durable lesson is that management theories are tools, not universal laws.
+
 ## Big picture: what this course is training you to do
 The course roadmap includes topics like management theory, leadership, strategy, decision making, teams, culture, change, power, conflict/negotiation, ethics, and global management.
 A useful way to think about it:

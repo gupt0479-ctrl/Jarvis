@@ -12,7 +12,7 @@ tags:
   - "#Homework"
   - "#Discussion"
   - "#Textbook"
-next: "[[Chapter - 2]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2011/Chapter - 2]]"
 ---
 # #Textbook Textbook & Videos
 ## 1.1
@@ -382,7 +382,7 @@ Each rule is presented with its logical form, example, and how to write it as a 
     - $p \to q \equiv \neg(p \land \neg q)$
 ### Questions
 *20* [[Truth Table#Truth Table for →|Truth Table for if-then statements]]
-*26 to 29* - [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2011/Chapter - 1#Laws|laws]] 
+*26 to 29* - [[50_Archive/Previous Classes/CSCI/CSCI 2011/Chapter - 1#Laws|laws]] 
 *37* - [[Truth Table]]
 *44* and *45* - **This is just fancy notation for initial value and till what value**
 *52-54* - **NOR**

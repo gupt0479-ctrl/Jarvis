@@ -6,29 +6,42 @@ created:
 updated:
 area:
   - "[[UMN Board]]"
+  - "[[MGMT 3001 Board]]"
 tags:
   - "#class"
   - "#Textbook"
-next: week
+next:
+  - "[[50_Archive/Previous Classes/Minor/MGMT 3001/Week - 5|Week - 5]]"
 ---
-# Chapter - 17
-This in-depth guide covers every concept within **Chapter 17: Leading Teams**, moving from the basic definitions to the complex dynamics of team effectiveness and boundary management.
+# Chapter 17 - Leading Teams
+## Textbook anchor - team effectiveness
+- ==A team is a small number of people with complementary skills, shared purpose, mutual accountability, and interdependent work.==
+- *Mechanism:* teams outperform individuals only when the task requires interdependence, diverse information, coordinated effort, and shared commitment. Otherwise, teams can add coordination cost without adding value.
+- Use the IPO logic:
+  - *Inputs:* task design, team composition, size, interdependence, resources, leadership, and context.
+  - *Processes and states:* norms, trust, psychological safety, coordination, participation, conflict management, and shared mental models.
+  - *Outputs:* results, member satisfaction, learning, and future ability to work together.
+- Psychological safety does not mean comfort or agreement. It means people can raise concerns, admit mistakes, and challenge ideas without fear of punishment.
+> [!TIP]
+> In a team scenario, ask whether the problem is an input problem, a process/state problem, or an output problem before recommending a fix.
 
-1. Teams vs. Work Groups
+## Textbook
+Chapter 17 covers team dynamics from basic definitions to the complex dynamics of team effectiveness and boundary management.
+### 1. Teams vs. work groups
 
 The chapter begins by distinguishing between two types of groups. While people often use the words interchangeably, they function differently in a business setting.
 
 - **Work Group:** Characterized by a **clearly focused leader**, individual accountability, and a purpose that is the same as the organization’s overall mission. They typically handle straightforward, independent tasks where work is pre-determined and results in individual work products.
 - **Team:** A group of **two or more people** with **complementary skills** committed to a specific objective. Teams feature shared leadership roles, individual _and_ mutual accountability, and a purpose specific to the team. They are essential for complex, interdependent tasks that result in collective work products.
 
-2. When Are Teams Appropriate?
+### 2. When are teams appropriate?
 
 Teams are not always the right choice; they are "appropriate" based on two factors:
 
 - **Task Complexity:** This refers to the amount of information to be processed, uncertainty of outcomes, and the presence of subtasks requiring diverse skills. When a task is too large or complex for one person, a team is needed.
 - **Task Interdependence:** The degree to which members must rely on one another to produce the group's work. For example, product development requires the integrated expertise of marketing, manufacturing, and R&D.
 
-3. Team Characteristics and Design
+### 3. Team characteristics and design
 
 A well-designed team must have a clear formal organization to support collaboration.
 
@@ -43,7 +56,7 @@ A well-designed team must have a clear formal organization to support collaborat
     - **Advantage:** Diverse teams produce more creative and innovative solutions over the long term because they draw on broader networks and complementary information.
     - **Challenge:** They often struggle with group identity and conflict in the short term due to a lack of shared experiences.
 
-4. Team Development and Norms
+### 4. Team development and norms
 
 Teams generally evolve through a five-stage process known as **Tuckman's Model**:
 
@@ -63,7 +76,7 @@ Teams generally evolve through a five-stage process known as **Tuckman's Model**
 - **Leadership Norms:** The leadership structure to be used.
 - **Consideration Norms:** Treating others with mutual respect.
 
-5. The Team Process
+### 5. The team process
 
 The "team process" is how members interact to get work done.
 
@@ -76,7 +89,7 @@ The "team process" is how members interact to get work done.
 - **Constructive Conflict:** Teams must encourage **task-related (cognitive) conflict** to debate ideas while minimizing **affective (relationship) conflict**.
 - **Psychological Safety:** An environment where people feel safe to express ideas and vulnerabilities without fear of penalty.
 
-6. Team Effectiveness and Leadership
+### 6. Team effectiveness and leadership
 
 A team is effective only if it meets three specific conditions:
 
@@ -94,8 +107,6 @@ A team is effective only if it meets three specific conditions:
 
 **Leading Virtual Teams:** Requires extra effort, including sharing background information to prevent misinterpretations, finding allies in the organization, and probing for hidden conflicts in digital communication.
 
-What is the change process equation in chapter 11?
-
-Explain the difference between power, influence, and authority.
-
-How do gender norms affect the perception of leaders?
+## Links
+- [[50_Archive/Previous Classes/Minor/MGMT 3001/Week - 5|Week - 5]]
+- [[Teams and Team Effectiveness|Teams and Team Effectiveness]]

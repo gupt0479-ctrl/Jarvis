@@ -1,63 +1,15 @@
 ---
-type: concept
+type: evergreen
 status: sprout
 created: 2026-04-23
-updated: 2026-04-27
 tags:
-  - concept
   - evergreen
 notes:
   - "[[BOOM]]"
   - "[[Postman]]"
   - "[[API Work]]"
-track:
-  - systems
-prerequisites:
-  - "[[BOOM]]"
-used_in:
-  - "[[API Work]]"
-  - "[[Symposium]]"
-evidence:
-  - "[[60_Claude/45_Outputs/Observability Debugging Story]]"
-  - "[[60_Claude/45_Outputs/Rust Type Safety Story]]"
-difficulty: 3
-mastery_level: novice
-drill_interval: 10
-last_drilled: 2026-04-25
-next_drill: 2026-05-05
 ---
 # API and Backend
-
-## Deep Dive
-
-### One-Sentence Version
-
-BOOM's API is a full backend system — startup sequence, auth middleware, shared state injection, route handlers, and tracing — not just a list of endpoints.
-
-### What It Is
-
-An Actix Web HTTP server that loads config, initializes tracing, builds shared state (DB handle, auth provider, email service), registers middleware for tracing and JWT auth, mounts domain-grouped routes, and generates API docs with utoipa.
-
-### Why It Matters
-
-Backend engineering includes startup, auth, docs, and observability — not just routes. This pattern transfers to any service-oriented system. Even ML serving endpoints need auth, structured logging, and shared state.
-
-### Real Example
-
-The request lifecycle for `POST /api/auth`: client sends credentials → TracingLogger creates root span → auth middleware validates → route handler processes login → JWT token created with typed claims (`sub`, `iat`, `exp`) → response returned. If the bearer token is malformed, the trace localizes failure to `auth::decode_token` immediately.
-
-### Contrast With
-
-- **API vs microservice**: BOOM's API is one service in a larger system. It depends on MongoDB, auth state, and config — it is not a standalone function.
-- **Middleware vs per-route logic**: Middleware handles cross-cutting concerns (tracing, auth) once. Without it, every route duplicates the same validation code.
-- **`web::Data` vs global state**: Actix injects shared state explicitly through `web::Data`. This is easier to reason about than hidden globals and makes testing possible.
-
-### Source Anchors
-
-- `src/bin/api.rs` — service boot sequence
-- `src/api/auth.rs` — JWT auth flow
-- `src/api/db.rs` — database access layer
-- `src/api/routes/*` — domain-grouped route handlers
 
 This note explains BOOM's API as a backend system rather than just a list of endpoints.
 

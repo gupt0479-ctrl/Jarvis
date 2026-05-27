@@ -37,7 +37,7 @@ Total: 120 credits
 1. *Writing Intensive*: 2 more writing intensive classes: 
 	- WRIT 3562W counts as 2 upper-division WI courses.
 2. *Upper division writing intensive*:
-	- CSCI 3081W
+	- CSCI 3081W/
 3. **Diversified Core**
 	- *Biological Sciences* - completed in spring'26
 	- *Historical Perspectives* - 3 credits - ANSC 1701(==Summer==)
@@ -63,7 +63,7 @@ The B.S. includes 23 credits of upper division elective courses (sometimes refer
 	- Ethics in Computing: CSCI 3923(*Spring'26*)
 	- Statistics: STAT3021(*Summer*)
 - **Technical Electives**: Talk with an academic advisor about faculty-constructed tracks to complete a specialization within Computer Science. 23 credits needed to fulfill this requirement 11 must have a CSCI designator. 
-	- *Upper Division Math Oriented Requirement*: 1 course
+	- *Upper Division Math Oriented Requirement*: 1 course: *CSCI 5304*
 	- *The rest 22 credits*: You may use up to three total credits from CSCI4970w, CSCI5991, and CSCI5994 combined towards your Technical Elective requirements.
 	- *4xxx/5xxx-level CSCI coursework*: Of the 23 credits required for the Computer Science Technical Electives and Upper Division Math Oriented Requirement, 11 must have a CSCI designator - 11 credits.
 ## Elective Credits

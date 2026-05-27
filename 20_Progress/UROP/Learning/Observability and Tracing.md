@@ -2,48 +2,14 @@
 type: evergreen
 status: sprout
 created: 2026-04-23
-updated: 2026-04-24
 tags:
   - evergreen
 notes:
   - "[[Logs]]"
   - "[[API Work]]"
   - "[[Symposium]]"
-track:
-  - systems
-prerequisites:
-  - "[[BOOM]]"
-  - "[[Learning/API and Backend]]"
-used_in:
-  - "[[API Work]]"
-  - "[[Symposium]]"
-evidence:
-  - "[[60_Claude/45_Outputs/Observability Debugging Story]]"
-difficulty: 3
-mastery_level: familiar
-mastery_score: 6
-last_drilled: 2026-04-25
-next_drill: 2026-05-08
-drill_interval: 10
 ---
 # Observability and Tracing
-
-## One-Sentence Version
-
-Observability makes a system explain what happened, where it happened, and why it failed.
-
-## 30-Second Version
-
-Logs tell you isolated events. Traces connect events into a request or job flow. In BOOM, that mattered because work crossed API, auth, queues, workers, and model-related steps. Without structured tracing, failures turned into guesswork.
-
-## Teach It To A Beginner
-
-Imagine debugging a restaurant order.
-
-- A log is one sticky note that says, "Kitchen started cooking."
-- A trace is the full path of the order from cashier to kitchen to delivery, with timestamps and errors attached.
-
-That is why traces become so valuable once a system has multiple moving parts.
 
 This note covers the central engineering theme of the UROP: making BOOM explain itself.
 
@@ -84,14 +50,6 @@ Tracing tells you:
 - where the error occurred in the tree
 
 This is why tracing is more powerful in multi-stage systems.
-
-## Contrast With
-
-- **Logging** is event-oriented.
-- **Tracing** is flow-oriented.
-- **Metrics** are trend-oriented.
-
-You need all three, but tracing is the fastest way to localize failure inside a multi-stage request path.
 
 ## Why BOOM Needed It
 
@@ -259,18 +217,6 @@ The value of tracing is not that it prevents these failures. It makes them class
 - environment-driven `EnvFilter`
 - optional span lifecycle events through `BOOM_SPAN_EVENTS`
 - optional flamegraph output through `BOOM_FLAME_FILE`
-
-## Diagnostic Questions
-
-- Why would logs alone become insufficient once work moves through Kafka, workers, and API boundaries?
-- What information belongs on a span field versus a free-form log line?
-- Why is root-span plus nested-span structure more useful than flat request logs during debugging?
-
-## Understanding Proof
-
-- I can explain the difference between logging, tracing, and metrics without collapsing them into the same idea.
-- I can tell an interview-ready BOOM debugging story using the malformed auth header example.
-- I can point to concrete BOOM files and crates that implement observability rather than speaking only in abstractions.
 
 ## What `metrics.rs` Actually Adds
 

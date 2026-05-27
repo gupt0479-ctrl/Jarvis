@@ -10,11 +10,8 @@ notes:
   - "[[Symposium]]"
 ---
 # Mock Postman Demo Flow
-
 This note is the stripped-down demo version of the Postman workflow. The main operational note is [[Postman Demo]].
-
 ## Goal
-
 Use this note when you want a short live demo script for the API and tracing during a presentation or quick walkthrough.
 
 ## Demo Setup

@@ -6,13 +6,13 @@ updated: 2025-12-13
 area:
   - "[[Chapter - 9]]"
   - "[[Chapter - 7]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2011/Chapter - 6]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2011/Chapter - 5]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2011/Chapter - 6]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2011/Chapter - 5]]"
   - "[[Chapter - 4]]"
-  - "[[Chapter - 2]]"
-  - "[[Chapter - 3]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2011/Chapter - 2]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2011/Chapter - 3]]"
   - "[[Chapter - 10]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2011/Chapter - 1]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2011/Chapter - 1]]"
   - "[[Main Examples]]"
   - "[[Material]]"
 tags:

@@ -3,22 +3,23 @@ type: class
 input_kind: book
 status: sprout
 created: 2026-02-23
-updated: 2026-04-16
+updated: 2026-04-28
 area:
   - "[[UMN Board]]"
   - "[[CSCI 4041 Board]]"
   - "[[DSA]]"
   - "[[Elementary Data Structures]]"
+  - "[[Introduction to Algorithms]]"
 tags:
   - "#class"
   - "#Textbook"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 6|Week - 6]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 6|Week - 6]]"
 ---
 # Chapter - 13 Red-Black Trees
 ## Summary Links
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 6#Chapter 13 and Chapter 18 - Balanced Trees, Rotations, and B-Trees|Week - 6]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 7#Chapter 13 and AVL Project Notes - Red-Black Trees and AVL Validation|Week - 7]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Trees/AVL Trees#Definition|AVL Trees]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 6#Chapter 13 and Chapter 18 - Balanced Trees, Rotations, and B-Trees|Week - 6]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 7#Chapter 13 and AVL Project Notes - Red-Black Trees and AVL Validation|Week - 7]]
+- [[AVL Trees#Definition|AVL Trees]]
 - [[B-Trees#Definition|B-Trees]]
 
 Red-black trees are a variation of [[Chapter - 6 & 12#Chapter - 12 Binary Search Trees|binary search trees]] that are balanced enough to guarantee that basic dynamic-set operations take $O(\lg n)$ time in the worst case.
@@ -157,3 +158,82 @@ The lecture and project notes linked the modern implementation back to Adel'son-
 - original terminology stores branch-state information rather than today's direct "balance factor" vocabulary
 
 That is the reason AVL search, insert, and delete are all logarithmic in the worst case.
+
+---
+
+## Overview
+- Chapter 13 is the textbook red-black tree chapter, but the course implementation path also uses AVL trees and Sedgewick-style left-leaning red-black trees.
+- In CSCI 4041, this note should be read as the theory of balanced BST repair: rotations, color/height invariants, and worst-case logarithmic search/update.
+- The Midterm tree project notes make this chapter directly practical: AVL and red-black project options both extend the same BST/balanced-tree foundation.
+
+## Core Definitions
+- **Red-black tree:** a BST with one color bit per node and five invariants that bound height.
+- **Black-height:** number of black nodes on any path from a node down to descendant leaves, not counting the node itself depending on convention.
+- **Rotation:** local pointer rewrite that preserves in-order key order while changing height structure.
+- **AVL tree:** BST with height-balance factor at every node in `{-1,0,1}`.
+- **Left-leaning red-black tree (LLRB):** red-black variant where red links lean left, used in the Week 7 notebook and project notes.
+
+## Main Algorithms
+- `LEFT-ROTATE` and `RIGHT-ROTATE`: local structure repairs shared by red-black, AVL, and LLRB trees.
+- `RB-INSERT` followed by `RB-INSERT-FIXUP`: insert as in a BST, then recolor/rotate to restore red-black properties.
+- `RB-DELETE` followed by delete fixup: handles the extra-black problem after deleting a black node.
+- AVL project algorithms: update heights, compute balance factors, and apply LL/RR/LR/RL rotations after insert/delete.
+- LLRB algorithms: rotate left, rotate right, and flip colors to maintain left-leaning red-link structure.
+
+## Correctness Ideas
+- Rotations preserve the in-order sequence of keys, so they preserve the BST ordering invariant.
+- Red-black correctness rests on keeping every root-to-leaf path with the same black-height while forbidding red-red parent/child pairs.
+- The red-black height proof uses the fact that at least half the nodes on any root-to-leaf path are black.
+- AVL correctness uses a stronger height invariant and repairs the first unbalanced ancestor after mutation.
+- LLRB correctness is a constrained red-black interpretation of 2-3 tree balancing.
+
+## Complexity
+- Red-black search, insert, and delete are `O(lg n)` worst case.
+- AVL search, insert, and delete are also `O(lg n)` worst case, with stricter balance but potentially more rotations.
+- A single rotation is `O(1)`.
+- Extra space is `O(n)` for nodes plus `O(1)` metadata per node: color for RB/LLRB or height for AVL.
+
+## Lecture Emphasis
+- `Lectures/Week - 6/Ch13_BalancedSearchTrees.ipynb` implements the common rotation scaffold:
+
+```python
+def left_rotate(self,x):
+    y = x.right
+    x.right = y.left
+    if y.left:
+        y.left.parent = x
+    y.parent = x.parent
+```
+
+- `Lectures/Week - 7/LLRB-Tree(Sedgewick)-Construction.ipynb` shifts from full CLRS red-black cases to Sedgewick LLRB construction.
+- [[AVL Tree Project|AVL Tree Project]] confirms that AVL insertion/deletion, height updates, and validation were a project path.
+- [[Red Black Tree Project|Red Black Tree Project]] confirms the red-black/LLRB project path.
+- Supported course-emphasis statement: the textbook canonical structure is red-black trees, while the course implementation materials spend substantial time on rotations, AVL validation, and LLRB construction.
+- Weekly/concept links: [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 6|Week - 6]], [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 7|Week - 7]], [[AVL Trees|AVL Trees]].
+
+## Examples
+- A left rotation around `x` makes `x.right` move up, `x` become the left child, and the moved subtree become `x.right`.
+- AVL LL case is repaired by a right rotation; RR by a left rotation; LR and RL require two rotations.
+- Red-black insertion often fixes a red-red violation by either recoloring the parent/uncle/grandparent or rotating when the uncle is black.
+
+## Connections
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 6|Week - 6]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 7|Week - 7]]
+- [[AVL Trees|AVL Trees]]
+- [[AVL Tree Project|AVL Tree Project]]
+- [[Red Black Tree Project|Red Black Tree Project]]
+- [[Chapter - 18|Chapter - 18]] for multiway-tree contrast.
+
+## Common Pitfalls
+- Treating rotations as value swaps. They are pointer rewrites that preserve in-order order.
+- Forgetting to update parent pointers during rotation.
+- Confusing AVL balance factors with red-black colors.
+- Assuming the course's AVL emphasis replaces the textbook red-black definitions; it supplements them.
+- Ignoring sentinel/NIL leaves in CLRS red-black proofs.
+
+## Review Checklist
+- [ ] State the five red-black properties.
+- [ ] Explain black-height and the logarithmic height bound.
+- [ ] Trace left and right rotations with parent pointers.
+- [ ] Compare AVL, red-black, and LLRB invariants.
+- [ ] Connect Chapter 13 to the AVL/RB midterm project notes without mixing their repair rules.

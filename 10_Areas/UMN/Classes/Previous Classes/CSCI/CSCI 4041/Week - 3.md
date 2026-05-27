@@ -1,23 +1,23 @@
 ---
 type: class
 input_kind: lecture
-status: seed
+status: sprout
 created: 2026-02-02
 updated: 2026-04-16
 area:
-  - "[[UMN Board]]"
-  - "[[10_UMN/CSCI 4041/CSCI 4041/Concepts/DSA|DSA]]"
-  - "[[10_UMN/CSCI 4041/CSCI 4041/Concepts/Introduction to Algorithms|Introduction to Algorithms]]"
+  - "[[CSCI 4041 Board]]"
+  - "[[DSA]]"
+  - "[[Introduction to Algorithms]]"
 tags:
   - "#Lecture"
   - "#class"
 next:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 4|Week - 4]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 4|Week - 4]]"
 ---
 # Entire Week
 ## What you must be able to do
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 3 & 4#3.1 O - notation, Ω - notation, and Θ notation|Chapter - 3 asymptotic notation]], [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 3 & 4#3.2 Asymptotic Notation: Formal Definitions|formal definitions]], and [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 3 & 4#4.5 The Master Method|the Master Method]]: explain O, Ω, and Θ with quantifiers and solve standard divide-and-conquer recurrences.
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 3 & 4#4.0 Introduction to Divide-and-Conquer and Recurrences|Chapter - 4 recurrences]], [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 3 & 4#4.3 The Substitution Method|substitution method]], and [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 3 & 4#4.4 The Recursion-Tree Method|recursion trees]]: derive tree height from $n/2^k = 1$, use substitution correctly, and know when recursion trees are giving a guess versus a proof.
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 3 & 4#3.1 O - notation, Ω - notation, and Θ notation|Chapter - 3 asymptotic notation]], [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 3 & 4#3.2 Asymptotic Notation: Formal Definitions|formal definitions]], and [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 3 & 4#4.5 The Master Method|the Master Method]]: explain O, Ω, and Θ with quantifiers and solve standard divide-and-conquer recurrences.
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 3 & 4#4.0 Introduction to Divide-and-Conquer and Recurrences|Chapter - 4 recurrences]], [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 3 & 4#4.3 The Substitution Method|substitution method]], and [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 3 & 4#4.4 The Recursion-Tree Method|recursion trees]]: derive tree height from $n/2^k = 1$, use substitution correctly, and know when recursion trees are giving a guess versus a proof.
 - [[Divide and Conquer#Core Ideas (Lecture)|Divide and Conquer - Core Ideas (Lecture)]], [[Divide and Conquer#Proof / Reasoning Toolkit|Divide and Conquer - Proof / Reasoning Toolkit]], and [[Time Complexity#Definition|Time Complexity]]: connect the chapter methods to actual code from `min_DnC`, `inner_prod_DnC`, `vector_add_DnC`, and recursive matrix multiplication.
 - [[Divide and Conquer#Practice Map|Divide and Conquer - Practice Map]]: binary search, merge-sort reasoning, and recurrence drills are still open practice items.
 
@@ -31,7 +31,7 @@ next:
 ## Concepts created / updated today
 - [[Divide and Conquer#Definition|Divide and Conquer]]
 - [[Divide and Conquer#Core Ideas (Lecture)|Divide and Conquer - lecture code and recurrences]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 3 & 4#4.2 Strassen’s Algorithm|Chapter - 3 & 4 - Strassen]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 3 & 4#4.2 Strassen’s Algorithm|Chapter - 3 & 4 - Strassen]]
 
 ## Lecture
 ### Chapter - 3 Asymptotic analysis

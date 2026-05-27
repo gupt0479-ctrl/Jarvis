@@ -4,12 +4,12 @@ status: archived
 created: 2025-09-19
 updated: 2025-10-04
 area:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Midterm - 1|Midterm - 1]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Midterm - 1|Midterm - 1]]"
   - "[[Final]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 1 & 2]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 1 & 2]]"
 tags:
   - "#class"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 1 & 2]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 1 & 2]]"
 ---
 ```python
 class Vector:

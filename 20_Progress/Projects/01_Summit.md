@@ -25,7 +25,6 @@ related:
 - 
 ### How to use them
 1. 
-2. 
 ## Vibe Coding
 ### Before Hackathon
 - Set up agent skills across all coding platforms.

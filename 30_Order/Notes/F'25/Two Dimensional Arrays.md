@@ -5,10 +5,10 @@ created: 2025-09-19
 updated: 2025-09-20
 area:
   - "[[C Language]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 2]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 2]]"
 tags:
   - "#class"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 2]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 2]]"
 ---
 ```c
 #define COLS  (100)

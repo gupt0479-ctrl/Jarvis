@@ -6,7 +6,7 @@ tags:
   - evergreen
   - "#class"
 notes:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Midterm - 1|Midterm - 1]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Midterm - 1|Midterm - 1]]"
   - missing midterm - 2 and final
 ---
 # General

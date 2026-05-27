@@ -5,7 +5,7 @@ created: 2025-10-10
 updated: 2025-10-13
 area:
   - "[[C Language]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Midterm - 1]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Midterm - 1]]"
   - "[[Linked list]]"
   - "[[Text files]]"
 tags:
@@ -16,7 +16,7 @@ tags:
   - "#Lecture"
   - "#Lab"
   - "#Homework"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 4|Week - 4]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 4|Week - 4]]"
 ---
 # #Textbook Textbook (CSAPP - 2.1 - 2.4, DIS - 1.6, 2.7, 2.8)
 ## #CSAPP CSAPP
@@ -31,10 +31,10 @@ next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 4|Week - 4]
 	- **Little Endian:** The "little end" (*least significant byte*) comes first, at the lowest memory address. Most Intel-compatible machines, including those running Linux and Windows, use this ordering.
 	- **Big Endian:** The "big end" (*most significant byte*) comes first. Some machines from IBM and Oracle (Sun Microsystems) use this ordering.
 	- **Why it Matters:** For most programming, this is invisible. But it becomes important when you are looking at raw byte sequences (like in a debugger) or sending data over a network between different machine types.
-- **Bit-level and Logical Operations in C:** C provides operators to manipulate data at the bit level. [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 4#Bitwise Operations in C|Bit and Logical Operations]]
+- **Bit-level and Logical Operations in C:** C provides operators to manipulate data at the bit level. [[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 4#Bitwise Operations in C|Bit and Logical Operations]]
 	- `&` (AND), `|` (OR), `^` (XOR), `~` (NOT). These are great for masking operations, like isolating a specific byte from a word (e.g., `x & 0xFF`). 
 	- `&&` (Logical AND), `||` (Logical OR), `!` (Logical NOT). **Crucially, these are different!** They treat any non-zero value as `true` and return either `0` (false) or `1` (true). They also "short-circuit," meaning they don't evaluate the second argument if the result is already determined.
-	- `<<` (Left Shift) and `>>` (Right Shift). A left shift `x << k` is like multiplying `x` by 2<sup>k</sup>. A right shift has two forms: [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 4#Bit shifting|Bit Shift]]
+	- `<<` (Left Shift) and `>>` (Right Shift). A left shift `x << k` is like multiplying `x` by 2<sup>k</sup>. A right shift has two forms: [[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 4#Bit shifting|Bit Shift]]
 		- **Logical Right Shift:** Fills with 0s. Used for `unsigned` data in C.
 		- **Arithmetic Right Shift:** Fills with copies of the most significant bit (sign extension). Used for signed data in C and is like dividing by 2<sup>k</sup> (rounding down).
 ### 2.2

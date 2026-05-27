@@ -6,17 +6,28 @@ created:
 updated:
 area:
   - "[[UMN Board]]"
+  - "[[MGMT 3001 Board]]"
 tags:
   - "#class"
   - "#Textbook"
-next: week
+next:
+  - "[[50_Archive/Previous Classes/Minor/MGMT 3001/Week - 7|Week - 7]]"
 ---
-# Chapter - 8
-This in-depth study guide covers every concept within **Chapter 8: Organizational Culture**, explaining how these "invisible rules" provide the foundation for how work is accomplished and how individuals interact within a firm.
+# Chapter 8 - Organizational Culture
+## Textbook anchor - culture mechanics
+- ==Organizational culture is the pattern of shared assumptions, values, beliefs, and norms that teaches members what behavior is appropriate.==
+- *Mechanism:* culture works because repeated solutions become assumptions. Once a behavior has solved enough problems, people stop debating it and start treating it as "how things are done here."
+- The three levels matter because visible artifacts can mislead:
+  - *Artifacts* are visible signs like language, rituals, layout, dress, and ceremonies.
+  - *Beliefs and values* are stated meanings and priorities.
+  - *Underlying assumptions* are taken-for-granted beliefs that quietly drive behavior.
+- Culture strength depends on agreement and intensity. Strong cultures align behavior and reduce monitoring, but they can also block dissent, adaptation, or ethics if the shared assumptions are wrong.
+> [!TIP]
+> To analyze a culture, compare what the firm says, what it rewards, what leaders measure, how people are included or excluded, and what happens during a crisis.
 
---------------------------------------------------------------------------------
-
-1. Defining Organizational Culture
+## Textbook
+Chapter 8 covers how the invisible rules of organizational culture provide the foundation for how work is accomplished and how individuals interact within a firm.
+### 1. Defining organizational culture
 
 Culture is defined as a **pattern of shared basic assumptions** that a group learns as it solves problems. These assumptions work well enough to be considered valid and are taught to new members as the **"correct" way to perceive, think, and feel**.
 
@@ -28,7 +39,7 @@ For a beginner, it is helpful to think of culture as a **roadmap and a set of ru
 - **Work Rules and Norms:** These are the **implicit standards** (like "a fair day's work for a fair day's pay") that are passed down through stories and sanctions for bad behavior.
 - **Reward and Punishment System:** Clues to a culture are found in **how a group celebrates milestones** (like promotions) and how it punishes or ignores specific actions.
 
-2. The Three Levels of Culture
+### 2. The three levels of culture
 
 According to the textbook, culture exists on three levels, moving from the most visible to the deeply hidden.
 
@@ -36,7 +47,7 @@ According to the textbook, culture exists on three levels, moving from the most 
 - **Beliefs and Values (Known):** These represent the **meanings members attach to artifacts**. They drive what is considered important and often originate from the company's founder.
 - **Assumptions (Deeply Embedded):** This is the deepest level. An assumption is a behavior that successfully solved a problem in the past and eventually became **intrinsic, instinctive, and unconscious**. Because they are deeply embedded, they are no longer debatable.
 
-3. Impact of Culture on Performance
+### 3. Impact of culture on performance
 
 A strong, positive culture can be a major **driver of performance and competitive advantage**. It provides several benefits:
 
@@ -44,7 +55,7 @@ A strong, positive culture can be a major **driver of performance and competitiv
 - **Role Clarity:** Explicit expectations allow employees to operate with **greater consistency and autonomy**.
 - **Moral Compass:** Culture is often the most influential factor in defining right and wrong behavior, even more so than formal ethical programs. If employees believe the rules are **morally right**, they will obey them even without supervision.
 
-The Dimensions of Cultural Strength
+#### The dimensions of cultural strength
 
 The textbook measures cultural strength using two dimensions: **Agreement** about values and the **Intensity** (passion) of those values.
 
@@ -53,13 +64,13 @@ The textbook measures cultural strength using two dimensions: **Agreement** abou
 - **Passive Culture:** High agreement + Low intensity (people know what is important but lack the passion to act).
 - **Competing Forces:** Low agreement + High intensity (different groups are passionate about conflicting values, leading to rivalries).
 
-The Dark Side and Subcultures
+#### The dark side and subcultures
 
 Culture can also be a **double-edged sword**. Strong cultures may **discourage disagreement**, leading to poorly vetted decisions, or they may reward unethical behavior to meet specific goals. Furthermore, a strongly entrenched culture can make it **difficult to adapt to change** in turbulent environments.
 
 - **Subcultures:** These are cultures that form around specific **geographic, product, or functional units**. While they can empower their specific groups, they can also cause **conflict and rigidity** when different units try to work together.
 
-4. How Culture Develops
+### 4. How culture develops
 
 Culture is rarely static; it is reinvented and reshaped by several key actors.
 
@@ -68,7 +79,7 @@ Culture is rarely static; it is reinvented and reshaped by several key actors.
 - **Role of Teams:** When teams successfully solve problems, they create **"organizational routines"**. Once these routines are applied repeatedly without question, a group-based culture is born.
 - **Determinants:** Culture is determined by four factors: **People** (skills/attitudes), **Formal Organization**, **Task Requirements**, and the **Leader**—all operating within a specific **Context**.
 
-5. Cultural Socialization Tools
+### 5. Cultural socialization tools
 
 **Socialization** is the process by which new employees understand "how work gets done" and learn to interact. Companies use several tools for this:
 
@@ -78,7 +89,7 @@ Culture is rarely static; it is reinvented and reshaped by several key actors.
 - **Stories and Myths:** Parables about company "heroes" that encourage specific traits, like risk-taking.
 - **Recruiting and Selection:** Hiring for **"cultural fit"** by assessing candidates for cognitive ability and flexibility.
 
-Building Organizational Commitment
+#### Building organizational commitment
 
 The desired end result of socialization is **Organizational Commitment**, which evolves through three stages:
 
@@ -86,7 +97,7 @@ The desired end result of socialization is **Organizational Commitment**, which 
 2. **Identification:** Commitment based on a **sense of belonging**.
 3. **Internalization:** Commitment based on an **alignment between the firm’s and individual’s values**. Employees who internalize culture often feel like owners of the firm.
 
-4. Culture in Crucial Moments
+### 6. Culture in crucial moments
 
 Understanding culture becomes vital during major career or organizational shifts.
 

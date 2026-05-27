@@ -3,7 +3,7 @@ type: class
 input_kind: lecture
 status: tree
 created: 2026-01-21
-updated: 2026-05-12
+updated: 2026-02-25
 area:
   - "[[CSCI 2041 Board]]"
   - "[[UMN Board]]"
@@ -19,7 +19,7 @@ next:
 ---
 # Entire Week
 ## What you must be able to do
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2|Chapter - 1 & 2]]  
+- [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2|Chapter - 1 & 2]]  
 - [[OCaml - Types of Programming|OCaml - Types of Programming]]  
 - [[OCaml - Basics|OCaml - Basics]]
 - Be able to explain (and recognize) **imperative vs applicative** using the factorial example (state variables vs parameters).  
@@ -30,16 +30,11 @@ next:
 - Explain partial application: giving fewer arguments returns a function waiting for the rest.  
 - Explain when to use an internal helper (inherit an unchanged parameter via `let ... in`).
 ## Key ideas (textbook)  
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#1.2 Functional vs. Imperative Programming|Ch1.2 Functional vs. Imperative]]: functional progress via expression evaluation (often recursion); imperative progress via state changes.  
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#2.1 Comment Convention and Interaction|Ch2.1 Toploop + comments]]: `;;` ends toploop input; OCaml prints both type and value. 
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#2.2 Primitive Data Types|Ch2.2 Primitive types]]: everything has a type; no implicit numeric coercions.  
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#2.3 Relations and Conditionals|Ch2.3 Conditionals]]: both branches must have the same type; missing `else` behaves like `else ()`.  
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#1.1 Core Principles of OCaml|Ch1.1 Persistence]]: operations return new structures; originals remain usable.
-## Concepts created / updated today
-- [[OCaml - Basics]]: toploop workflow, primitive types, expression syntax, `if`, `let`, list syntax, and numeric operator families.
-- [[OCaml - Types of Programming]]: imperative vs applicative programming, first-class values, immutability, persistence, and why loops become recursion.
-- [[OCaml - Tail Recursion and Internal Helpers]]: first preview through factorial, list length, append, and helper functions that inherit unchanged arguments.
-- [[OCaml - Polymorphism]]: early list examples infer `'a list -> int` because the structure of the list matters more than the element type.
+- [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#1.2 Functional vs. Imperative Programming|Ch1.2 Functional vs. Imperative]]: functional progress via expression evaluation (often recursion); imperative progress via state changes.  
+- [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#2.1 Comment Convention and Interaction|Ch2.1 Toploop + comments]]: `;;` ends toploop input; OCaml prints both type and value. 
+- [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#2.2 Primitive Data Types|Ch2.2 Primitive types]]: everything has a type; no implicit numeric coercions.  
+- [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#2.3 Relations and Conditionals|Ch2.3 Conditionals]]: both branches must have the same type; missing `else` behaves like `else ()`.  
+- [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#1.1 Core Principles of OCaml|Ch1.1 Persistence]]: operations return new structures; originals remain usable.
 ## Examples worth keeping
 - Toploop transcript: `# 2 + 2;;` → `- : int = 4` and `# let n = 4;;` → `val n : int = 4`.  
 - Factorial translation (imperative loop vs recursive helper with accumulator parameters).  
@@ -47,30 +42,12 @@ next:
 - `::` persistence example: `0 :: x` returns a new list; `x` is unchanged.  
 - Append + partial application: `let f = append [1;2]` then `f [3;4]`.  
 - Internal helper example: use `let rec helper ... in helper ...` to inherit an unchanged argument.
-```ocaml
-let rec length s =
-  if s = [] then 0
-  else 1 + length (tl s)
-;;
-```
-- This is the week-one recursion skeleton: first prove the empty case, then reduce the problem to the tail. It is not tail-recursive because `1 + ...` waits for the recursive call to return.
 ## Lecture
-### Week 1 lecture map - OCaml as the course's working language
-Week 1 establishes the habits the rest of the course keeps using: read OCaml expressions by type, treat functions as values, build lists structurally, and replace mutation/loops with recursive definitions.
-
-Source anchors:
-- `Lecture - 1.txt` and `Lectures/Notes/21Jan26.jpg` introduce the course's OCaml workflow and the idea that OCaml evaluates expressions with static types.
-- `Lecture - 2.txt` and professor notes `26Jan26/` develop function definitions, simple recursion, and list syntax.
-- `Lecture - 3.txt` and professor notes `28Jan26/` move into multi-argument function types, append-style recursion, immutability, persistence, and helper functions.
-- The relevant textbook support is Hickey Ch. 1-3: functional vs imperative framing, simple expressions, functions, scope, and recursion.
-
-The week should be remembered as a setup week, not a syntax week. The syntax matters because every later topic uses these mechanics: ADTs, folds, streams, modules, parsers, and interpreters all rely on reading expressions by shape and type.
-
 ### Textbook tie-ins for this week  
-- Talking to OCaml/toploop: [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#2.1 Comment Convention and Interaction|Ch2.1]]  
-- Types + “everything has a type”: [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#2.2 Primitive Data Types|Ch2.2]]  
-- Applicative vs imperative + persistence: [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#1.2 Functional vs. Imperative Programming|Ch1.2]]  
-- Conditionals (`if ... then ... else ...`): [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#2.3 Relations and Conditionals|Ch2.3]]
+- Talking to OCaml/toploop: [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#2.1 Comment Convention and Interaction|Ch2.1]]  
+- Types + “everything has a type”: [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#2.2 Primitive Data Types|Ch2.2]]  
+- Applicative vs imperative + persistence: [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#1.2 Functional vs. Imperative Programming|Ch1.2]]  
+- Conditionals (`if ... then ... else ...`): [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2#2.3 Relations and Conditionals|Ch2.3]]
 ### Lecture (Jan 21) - Introduction to OCaml
 **How to talk to OCaml (toploop workflow)**: via Command line interface(`shell`)
 - Start from a shell: run `ocaml`, get a _herald message_, then the `#` prompt.
@@ -201,14 +178,6 @@ In this class’s language(*Applicative*), an object is “first-class” if you
 **`let ... in ...` meaning (scoping rule)**
 - `let n = e1 in e2` means: _inside `e2`_, `n` has value `e1`.
 - The `in` pairs with that `let` and can’t stand alone.
-## Takeaways (questions to resolve)
-- [ ] Can I explain the difference between a statement language and an expression language without using vague "OCaml is functional" language?
-- [ ] Can I predict the type and value printed by the toploop for a simple `let` binding?
-- [ ] Can I say why `1 + 2.0` is illegal and how to fix it?
-- [ ] Can I explain why `e :: xs` creates a new list without changing `xs`?
-- [ ] Can I identify which part of `append` is copied and which part is shared?
-- [ ] Can I explain why an internal helper can see an unchanged argument from the surrounding `let ... in`?
-
 ## Midterm Check
 ### Chapter 1
 - [ ] **Explain the concept of "Persistence"** in the context of OCaml data structures. Why is it useful for reasoning about programs?
@@ -220,9 +189,3 @@ In this class’s language(*Applicative*), an object is “first-class” if you
 - [ ] **Physical vs. Structural Equality:** What is the difference between `x = y` and `x == y`? Which one is generally faster, and which one checks for "identical" values in memory?
 ## Flashcards
 #cards/CSCI2041 
-- Applicative programming in this course::Computing by evaluating expressions and calling functions, usually without mutating state.
-- Imperative loop variables become what in OCaml translation::Parameters to a recursive helper.
-- What does `;;` do in the OCaml toploop::Signals the end of the input to evaluate.
-- Why does `1 + 2.0` fail::OCaml does not implicitly coerce `int` to `float`; use `+.` and explicit conversion if needed.
-- What does persistence mean for OCaml lists::Operations return new structures while the original list remains usable.
-- Why is `length` polymorphic::It only inspects the list structure, not the element values.

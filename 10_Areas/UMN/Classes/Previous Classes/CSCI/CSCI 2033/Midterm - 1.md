@@ -4,10 +4,10 @@ status: archived
 created: 2025-10-09
 updated: 2025-10-11
 area:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 1 & 2]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 3|Week - 3]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 4|Week - 4]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 5]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 1 & 2]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 3|Week - 3]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 4|Week - 4]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 5]]"
 tags:
   - "#class"
 next: "[[Final]]"

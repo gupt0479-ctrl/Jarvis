@@ -10,7 +10,7 @@ area:
 tags:
   - "#class"
   - "#Textbook"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 3923/Week - 6|Week - 6]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 3923/Week - 6|Week - 6]]"
 ---
 # Chapter - 8
 Chapter 8 of _Weapons of Math Destruction_, titled **"Collateral Damage: Landing Credit,"** explores how mathematical models decide who gets to borrow money and how these systems can unfairly punish people for being poor or for living in the "wrong" neighborhood.

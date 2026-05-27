@@ -7,18 +7,18 @@ created: 2026-04-16
 topics:
   - "[[DSA]]"
   - "[[CSCI 4041 Board]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 10|Week - 10]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 15]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 10|Week - 10]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 15]]"
 related:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Algorithms/Dynamic Programming]]"
+  - "[[Dynamic Programming]]"
   - "[[HeapSort]]"
 ---
 # [[Greedy Algorithms]]
 ## MOC
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 10#Chapter 15 - Greedy Algorithms and Huffman Coding|Week - 10]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 15#15.1 An Activity-Selection Problem|Chapter - 15 - Activity Selection]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 15#15.3 Huffman Codes|Chapter - 15 - Huffman Codes]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Algorithms/Dynamic Programming#Definition|Dynamic Programming]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 10#Chapter 15 - Greedy Algorithms and Huffman Coding|Week - 10]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 15#15.1 An Activity-Selection Problem|Chapter - 15 - Activity Selection]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 15#15.3 Huffman Codes|Chapter - 15 - Huffman Codes]]
+- [[Dynamic Programming#Definition|Dynamic Programming]]
 - [[HeapSort#Definition|HeapSort]]
 
 ## Definition
@@ -220,6 +220,8 @@ def room_scheduler(S):
 - Min-heap combine-cost pattern
 - Simple greedy room assignment
 - Huffman-style compression reasoning
+- CodingHW_7(chapter15-CLRS).ipynb: reverse greedy activity selection, room scheduling, max-value activity selection, simplified greedy knapsack
+- Paper HW - 7 (Ch - 15).pdf: written problems on greedy-choice property, exchange arguments, and Huffman coding
 
 ## Mini-test
 1. What is the greedy choice in the standard activity-selection problem?

@@ -1,6 +1,6 @@
 ---
 type: concept
-status: archived
+status: complete
 created: 2025-09-30
 updated: 2025-12-31
 week: "3"

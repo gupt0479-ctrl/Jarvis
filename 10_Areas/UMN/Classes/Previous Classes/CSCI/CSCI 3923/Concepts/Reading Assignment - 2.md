@@ -10,7 +10,7 @@ area:
 tags:
   - "#class"
   - "#Textbook"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 3923/Week - 2|Week - 2]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 3923/Week - 2|Week - 2]]"
 ---
 # Overview
 ## Requirements

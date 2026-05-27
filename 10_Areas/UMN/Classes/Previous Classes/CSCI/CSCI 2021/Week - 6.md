@@ -11,7 +11,7 @@ tags:
   - "#Lecture"
   - "#Lab"
   - "#Homework"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 7]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 7]]"
 ---
 # #Textbook Textbook (CSAPP - 3.1 - 3.5 )
 ## #CSAPP CSAPP
@@ -153,7 +153,7 @@ This section covers the instructions used for computation, which set the stage f
 So:
 - Signed numbers use **sar** 
 - Unsigned numbers use **shr**
-This is why two’s complement is preferred → uniform left shift [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 3#** Two's-Complement Encodings **| Two's Complement]]
+This is why two’s complement is preferred → uniform left shift [[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 3#** Two's-Complement Encodings **| Two's Complement]]
 4. Discussion: A key advantage of **two's-complement arithmetic** is that most arithmetic and logical operations (`add`, `sub`, `mul`, `and`, `or`, etc.) are identical for both signed and unsigned data representations. The only common operation that requires distinct instructions based on whether the data is signed or unsigned is the **right shift**.
 5. Special Arithmetic Operations: Complex operations like multiplication and division have dedicated instructions that require specific register usage:
 	- **Multiplication $(imulq)$:** A special one-operand `imulq S` instruction performs a signed multiplication where the source S is multiplied by the 64-bit value in `%rax`. The 128-bit result is stored across two registers: the high-order 64 bits in **%rdx** and the low-order 64 bits in **%rax**.
@@ -550,7 +550,7 @@ gcc -Og -S ipow_for.c
 gcc -Og -S ipow_while.c
 ```
 ### B & C
-Compile both the files for A and compare them: Both of them are the same. [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 7#Conditional Jump Instructions| Jump Instructions]]
+Compile both the files for A and compare them: Both of them are the same. [[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 7#Conditional Jump Instructions| Jump Instructions]]
 1. `ipow_for.c`
 ```bash
 ipow:

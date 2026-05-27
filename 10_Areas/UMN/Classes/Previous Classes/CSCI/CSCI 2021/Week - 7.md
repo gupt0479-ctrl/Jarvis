@@ -12,7 +12,7 @@ tags:
   - "#Lecture"
   - "#Lab"
   - "#Homework"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 8|Week - 8]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 8|Week - 8]]"
 ---
 # #Textbook Textbook (CSAPP - 3.6 to 3.11)
 ## #CSAPP CSAPP
@@ -270,7 +270,7 @@ Writing too much → overwrite return address → CPU `ret` jumps to attacker-su
 
 # #Lab Lab - 6
 Assembly.
-[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 6#Lab Lab - 5|Assembly Basics]]
+[[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 6#Lab Lab - 5|Assembly Basics]]
 
 ---
 

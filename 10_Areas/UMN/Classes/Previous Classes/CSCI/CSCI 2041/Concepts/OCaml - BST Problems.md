@@ -6,16 +6,16 @@ mastery (1/10): 0
 created: 2026-02-25
 topics:
   - "[[OCaml]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2|Chapter - 1 & 2]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2|Chapter - 1 & 2]]"
   - "[[UMN Board]]"
   - "[[CSCI 2041 Board]]"
 related:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 1|Week - 1]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2041/Week - 1|Week - 1]]"
 ---
 # OCaml - BST Problems
 ## MOC
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 1|Week - 1]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2|Chapter - 1 & 2]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 2041/Week - 1|Week - 1]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2|Chapter - 1 & 2]]
 - [[OCaml - Types of Programming|OCaml - Types of Programming]]
 - [[OCaml - Pattern Matching|OCaml - Pattern Matching]]
 ## Definition
@@ -25,15 +25,15 @@ A **Binary Search Tree (BST)** is a binary tree with an ordering invariant:
 > [!NOTE] Course emphasis: BST functions should be explainable using: recursion + pattern matching + persistence.
 ## Resources
 - [[10_UMN/CSCI 2041/Textbook/Chapter - 1 & 2#1.4 Code Example: [[OCaml - BST Problems#BST Insert|BST Insert]]|Chapter 1.4 BST Insert]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 1|Week - 1]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 2041/Week - 1|Week - 1]]
 - [[OCaml - Pattern Matching|Pattern matching]]
 ### How to use them
 1. For every BST function: write base case + recursive case first.
 2. State the invariant you’re preserving (ordering) before you explain the code.
 ## Week 1: Persistent BST Insert (lecture code)
 ### Links
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 1|Week - 1]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2|Chapter - 1 & 2]] → see the BST insert explanation block
+- [[50_Archive/Previous Classes/CSCI/CSCI 2041/Week - 1|Week - 1]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 1 & 2|Chapter - 1 & 2]] → see the BST insert explanation block
 - [[OCaml - Types of Programming#Persistence (the “copy as little as possible” model)|Persistence]]
 - [[OCaml - Pattern Matching#Canonical forms|Pattern matching forms]]
 ### Problem: insert a key into a BST **without modifying the original**
@@ -69,8 +69,8 @@ let rec bst_insert tree key =
 - balanced: `h = O(log n)`; worst-case skewed: `h = O(n)`
 ## Week 2: BST follow-ups (placeholder until more lecture/lab problems are added)
 ### Links
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 2|Week - 2]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4|Chapter - 3 & 4]] (for scoping + pattern matching patterns used in tree code)
+- [[50_Archive/Previous Classes/CSCI/CSCI 2041/Week - 2|Week - 2]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 2041/Textbook/Chapter - 3 & 4|Chapter - 3 & 4]] (for scoping + pattern matching patterns used in tree code)
 ### Problems to add here (when you upload them)
 -  `bst_mem` / membership search
 -  `bst_min` / `bst_max`

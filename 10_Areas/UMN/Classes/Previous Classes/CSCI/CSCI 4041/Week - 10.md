@@ -1,34 +1,37 @@
 ---
 type: class
 input_kind: lecture
-status: seed
+status: sprout
 created:
 updated: 2026-04-16
 area:
+  - "[[CSCI 4041 Board]]"
+  - "[[DSA]]"
+  - "[[Introduction to Algorithms]]"
 tags:
 next: []
 ---
 # Entire Week
 ## What you must be able to do
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 15#15.1 An Activity-Selection Problem|Chapter 15.1]], [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 15#15.2 Elements of the Greedy Strategy|Chapter 15.2]], and [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 15#15.3 Huffman Codes|Chapter 15.3]]: explain greedy-choice property, optimal substructure, activity selection, and Huffman coding.
-- [[Greedy Algorithms#Core Ideas (Textbook)|Greedy Algorithms - Core Ideas (Textbook)]], [[Greedy Algorithms#Core Ideas (Lecture)|Greedy Algorithms - Core Ideas (Lecture)]], and [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Algorithms/Dynamic Programming#Definition|Dynamic Programming]]: compare greedy reasoning against dynamic programming and say when the greedy shortcut is valid.
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 15#15.1 An Activity-Selection Problem|Chapter 15.1]], [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 15#15.2 Elements of the Greedy Strategy|Chapter 15.2]], and [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 15#15.3 Huffman Codes|Chapter 15.3]]: explain greedy-choice property, optimal substructure, activity selection, and Huffman coding.
+- [[Greedy Algorithms#Core Ideas (Textbook)|Greedy Algorithms - Core Ideas (Textbook)]], [[Greedy Algorithms#Core Ideas (Lecture)|Greedy Algorithms - Core Ideas (Lecture)]], and [[Dynamic Programming#Definition|Dynamic Programming]]: compare greedy reasoning against dynamic programming and say when the greedy shortcut is valid.
 - [[Greedy Algorithms#Canonical Examples (Max 5)|Greedy Algorithms - Canonical Examples]]: trace earliest-finish activity selection, Huffman tree construction, room scheduling, and the greedy failure boundary around knapsack-style problems.
 - [[Greedy Algorithms#Practice Map|Greedy Algorithms - Practice Map]]: map the week's material to interval scheduling, min-heap combination patterns, and greedy proof patterns.
 
 ## Key ideas (textbook)
 - **15.1 Activity Selection**: The optimization goal is to choose a maximum-size subset of pairwise compatible activities. Once activities are sorted by finish time, the earliest-finishing compatible activity is the safe greedy choice because it leaves the maximum room for all later choices. The lecture reinforces this by comparing brute force, dynamic programming, and greedy versions of the same problem.
-- **15.2 Greedy Strategy**: A greedy algorithm is appropriate when the problem has both the greedy-choice property and optimal substructure. This week keeps contrasting that with [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Algorithms/Dynamic Programming#Definition|dynamic programming]]: DP solves subproblems first and then chooses, while greedy chooses first and only solves what remains.
+- **15.2 Greedy Strategy**: A greedy algorithm is appropriate when the problem has both the greedy-choice property and optimal substructure. This week keeps contrasting that with [[Dynamic Programming#Definition|dynamic programming]]: DP solves subproblems first and then chooses, while greedy chooses first and only solves what remains.
 - **15.3 Huffman Codes**: Huffman coding builds an optimal prefix-free code by repeatedly combining the two least frequent symbols. The cost function is the frequency-weighted sum of codeword lengths, so low-frequency symbols should be deeper in the tree. This is why the implementation naturally uses a min-priority queue.
 - **15.4 Offline Caching**: The furthest-in-future rule shows that greedy thinking extends beyond intervals and compression. If the full future is known, evicting the block used furthest in the future is the safe local choice.
 
 ## Concepts created / updated today
 - [[Greedy Algorithms#Definition|Greedy Algorithms]]
 - [[Greedy Algorithms#Core Ideas (Lecture)|Greedy Algorithms - lecture details]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 15#15.3 Huffman Codes|Chapter - 15 - Huffman Codes]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 15#15.3 Huffman Codes|Chapter - 15 - Huffman Codes]]
 
 ## Lecture
 ### Chapter 15 - Greedy Algorithms and Huffman Coding
-This week is where the course starts separating "I can write a recurrence" from "I can justify a safe local choice." That is the conceptual jump from [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 9#Chapter 14 - Dynamic Programming|Week - 9 dynamic programming]] into greedy algorithms. The professor uses activity selection as the main example because it lets you see three viewpoints on the same problem. First, you can brute-force it by checking feasible compatible subsets. Second, you can write a dynamic program using dummy start and end activities and recursively optimize over all valid intermediate choices. Third, once the activities are sorted by finish time, you can make the greedy move: take the earliest-finishing activity compatible with what has already been selected. The lecture's point is that the greedy version is not "lucky." It works because that earliest finish leaves maximum room for the rest of the solution, and the remaining suffix is still an optimal subproblem.
+This week is where the course starts separating "I can write a recurrence" from "I can justify a safe local choice." That is the conceptual jump from [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 9#Chapter 14 - Dynamic Programming|Week - 9 dynamic programming]] into greedy algorithms. The professor uses activity selection as the main example because it lets you see three viewpoints on the same problem. First, you can brute-force it by checking feasible compatible subsets. Second, you can write a dynamic program using dummy start and end activities and recursively optimize over all valid intermediate choices. Third, once the activities are sorted by finish time, you can make the greedy move: take the earliest-finishing activity compatible with what has already been selected. The lecture's point is that the greedy version is not "lucky." It works because that earliest finish leaves maximum room for the rest of the solution, and the remaining suffix is still an optimal subproblem.
 
 The Huffman notebook then shows a different flavor of greedy reasoning. Instead of interval compatibility, the objective is compression cost. The local move is to combine the two least frequent characters first, because the deepest leaves in the final tree should correspond to the smallest frequencies. That is why the implementation builds a min-heap of weighted tree nodes, repeatedly extracts two minima, and inserts the merged parent back into the queue. The lecture is also practical here: it does not stop at "construct the tree." It turns a source string into frequency counts, builds the tree, derives an encoding dictionary by traversing the tree, compresses the original string into a bitstring, and decodes it back. This full pipeline is what makes the concept stick for exams.
 
@@ -222,7 +225,7 @@ These two exercises are useful because they force you to ask whether the origina
 - **Reverse greedy**: scan for the latest-starting activity still compatible with the current left/right boundaries.
 - **Room scheduling**: sort by start time and place each activity into the first room whose final activity finishes in time.
 - **Huffman merge step**: repeatedly combine the two minimum-frequency nodes into a parent with summed weight.
-- **Greedy boundary case**: simplified greedy knapsack is easy to code, but full 0-1 knapsack still belongs to [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Algorithms/Dynamic Programming#Definition|dynamic programming]].
+- **Greedy boundary case**: simplified greedy knapsack is easy to code, but full 0-1 knapsack still belongs to [[Dynamic Programming#Definition|dynamic programming]].
 
 ## Takeaways (questions to resolve)
 - [ ] Why does the earliest-finishing compatible activity count as a safe greedy choice?

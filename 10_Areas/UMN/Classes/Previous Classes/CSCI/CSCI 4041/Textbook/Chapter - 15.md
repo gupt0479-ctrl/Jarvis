@@ -3,17 +3,18 @@ type: class
 input_kind: book
 status: sprout
 created: 2026-04-01
-updated: 2026-04-16
+updated: 2026-04-28
 area:
   - "[[CSCI 4041 Board]]"
   - "[[DSA]]"
+  - "[[Introduction to Algorithms]]"
 tags:
   - "#class"
   - "#Textbook"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 10|Week - 10]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 10|Week - 10]]"
 ---
 # Chapter - 15
-Greedy algorithms are used for optimization problems. A greedy algorithm always makes the choice that looks best at the moment - a **locally optimal choice** - in the hope that this choice will lead to a **globally optimal solution**. Unlike [[60_Claude/20_Distilled_Notes/Dynamic Programming|dynamic programming]], greedy algorithms do not always yield optimal solutions, but for many problems they do.
+Greedy algorithms are used for optimization problems. A greedy algorithm always makes the choice that looks best at the moment - a **locally optimal choice** - in the hope that this choice will lead to a **globally optimal solution**. Unlike [[60_Jarvis/20_Distilled_Notes/Dynamic Programming|dynamic programming]], greedy algorithms do not always yield optimal solutions, but for many problems they do.
 
 ## 15.1 An Activity-Selection Problem
 The goal is to schedule a maximum-size set of mutually compatible activities that require exclusive use of a common resource.
@@ -130,7 +131,7 @@ A greedy algorithm is appropriate if a problem has the following two properties:
 	- **Fractional Knapsack:** Greedy works by taking the highest value-per-weight item first.
 
 ### Lecture Emphasis
-The lecture's comparison point was greedy versus [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Algorithms/Dynamic Programming#Definition|dynamic programming]].
+The lecture's comparison point was greedy versus [[Dynamic Programming#Definition|dynamic programming]].
 - In activity selection, a dynamic program can be written and understood, but the greedy solution is dramatically simpler once the safe choice is proved.
 - In 0-1 knapsack, greedy fails because the locally best immediate choice can block a better combination later.
 - In the **simplified** CodingHW7 `{0,1}` knapsack exercise, the greedy code sorts items by size and fills until full. That is an implementation exercise, not a proof that greedy solves the full knapsack problem.
@@ -279,6 +280,89 @@ This section applies greedy strategies to memory management.
 	- The furthest-in-future choice is safe and leads to an optimal offline strategy.
 
 ## Summary Links
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 10#Chapter 15 - Greedy Algorithms and Huffman Coding|Week - 10 lecture reference]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 10#Chapter 15 - Greedy Algorithms and Huffman Coding|Week - 10 lecture reference]]
 - [[Greedy Algorithms#Definition|Greedy Algorithms concept]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Algorithms/Dynamic Programming#Definition|Dynamic Programming contrast]]
+- [[Dynamic Programming#Definition|Dynamic Programming contrast]]
+
+---
+
+## Overview
+- Chapter 15 studies optimization problems where a locally safe choice can be made before solving the remaining subproblem.
+- In CSCI 4041, the major lecture examples are activity selection and Huffman coding, with homework variants that contrast greedy, DP, and scheduling implementations.
+- The chapter's central skill is proving that a greedy choice is safe; speed alone does not make an algorithm correct.
+
+## Core Definitions
+- **Greedy-choice property:** some optimal solution begins with the greedy choice.
+- **Optimal substructure:** after committing to the greedy choice, the remaining problem has the same form.
+- **Exchange argument:** transform an optimal solution into one that uses the greedy choice without worsening its value.
+- **Prefix-free code:** no codeword is a prefix of another.
+- **Huffman tree:** full binary tree minimizing weighted external path length.
+- **Offline caching:** cache replacement with full knowledge of future requests.
+
+## Main Algorithms
+- Recursive and iterative activity selection after sorting by finish time.
+- Dynamic-programming activity selection used as contrast in lecture/homework.
+- Huffman coding using a min-priority queue.
+- Offline caching by evicting the item whose next request is furthest in the future.
+- Homework-supported variants: reverse greedy activity selection, room scheduling, max-value activity selection, and simplified greedy knapsack.
+
+## Correctness Ideas
+- Activity selection uses an exchange argument: replacing the first activity in an optimal solution with the earliest-finishing compatible activity leaves at least as much room.
+- Huffman correctness uses the fact that the two least frequent symbols can be made siblings at maximum depth, then contracted.
+- Greedy proofs must name the local choice and prove it is safe; examples alone are not proofs.
+- Greedy and DP both use optimal substructure, but DP solves subproblems before choosing while greedy chooses before solving the residual problem.
+
+## Complexity
+- Activity selection is `Theta(n)` after activities are sorted by finish time; sorting costs `O(n lg n)` if needed.
+- Huffman coding with a binary min-heap is `O(n lg n)`.
+- Offline caching can be implemented efficiently with future-use information, but the proof idea matters more than implementation in this course note.
+- Greedy algorithms often have low runtime, but correctness depends on the problem structure.
+
+## Lecture Emphasis
+- `Lectures/Week - 10/Ch15_GreedyAlgorithms(ActivitySelectionProblem).ipynb` compares brute force, DP/memoization, and greedy recursion.
+
+```python
+sorted_S = [activity("_",0,0)] + sorted(S,key=lambda a:a.f)
+```
+
+- The dummy boundary activity in lecture is the Python bridge to the textbook's fictitious `a_0`.
+- `Lectures/Week - 10/Ch15_GreedyAlgorithms(HuffmanCoding).ipynb` uses a min-heap to repeatedly merge the two least frequent nodes:
+
+```python
+x = Q.extract_min()
+y = Q.extract_min()
+z.left, z.right = x, y
+z.value = x.value + y.value
+Q.insert(z)
+```
+
+- `Lectures/Week - 10/Ch6_Ch12(required_for_Huffman).ipynb` is the heap prerequisite needed by the Huffman implementation.
+- `Homework/Coding/CodingHW_7(chapter15-CLRS).ipynb` grounds reverse greedy, room scheduling, and solution reconstruction practice.
+- Weekly/concept links: [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 10|Week - 10]], [[Greedy Algorithms|Greedy Algorithms]], [[Dynamic Programming|Dynamic Programming]].
+
+## Examples
+- Activity selection: choose the compatible activity with the earliest finish time, then recurse on activities starting after it.
+- Huffman: if frequencies are `5, 9, 12, 13, 16, 45`, the first merge combines `5` and `9`.
+- Offline caching: evict the cached item whose next use lies furthest in the future.
+
+## Connections
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 10|Week - 10]]
+- [[Greedy Algorithms|Greedy Algorithms]]
+- [[Dynamic Programming|Dynamic Programming]]
+- [[HeapSort|HeapSort]] for the priority queue used by Huffman.
+- Source homework read: `Homework/Coding/CodingHW_7(chapter15-CLRS).ipynb` and `Homework/Paper/Paper HW - 7 (Ch - 15).pdf`.
+- TODO: source gap - no vault Homework/Paper Homework note exists for direct wikilinking.
+
+## Common Pitfalls
+- Sorting activity selection by start time instead of finish time.
+- Proving greedy with a few examples instead of a safety/exchange argument.
+- Assuming 0-1 knapsack is greedily solvable because fractional knapsack is.
+- Merging largest frequencies first in Huffman.
+- Forgetting that Huffman needs a prefix-free code tree.
+
+## Review Checklist
+- [ ] State the greedy-choice property and optimal substructure.
+- [ ] Prove activity selection with an exchange argument.
+- [ ] Trace Huffman coding with a min-priority queue.
+- [ ] Explain when greedy differs from dynamic programming.
+- [ ] Identify a greedy rule and prove or disprove its safety.

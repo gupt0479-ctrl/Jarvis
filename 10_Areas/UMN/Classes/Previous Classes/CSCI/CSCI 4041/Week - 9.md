@@ -1,13 +1,13 @@
 ---
 type: class
 input_kind: lecture
-status: seed
+status: sprout
 created: 2026-03-25
 updated: 2026-04-16
 area:
   - "[[CSCI 4041 Board]]"
   - "[[DSA]]"
-  - "[[Chapter - 14]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 14]]"
   - "[[10_UMN/CSCI 4041/CSCI 4041/Concepts/Introduction to Algorithms|Introduction to Algorithms]]"
 tags:
   - "#class"
@@ -16,10 +16,10 @@ next: []
 ---
 # Entire Week
 ## What you must be able to do
-- [[Chapter - 14#14.1 Rod Cutting|Chapter - 14 rod cutting]], [[Chapter - 14#14.3 Elements of Dynamic Programming|elements of dynamic programming]], and [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Algorithms/Dynamic Programming#Definition|Dynamic Programming]]: explain optimal substructure, overlapping subproblems, memoization, and bottom-up table construction.
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Algorithms/Dynamic Programming#Core Ideas (Lecture)|Dynamic Programming - Core Ideas (Lecture)]], [[Chapter - 14#Lecture Anchors: Fibonacci and Knapsack|lecture anchors]], and [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Algorithms/Dynamic Programming#Complexity + Tradeoffs|Dynamic Programming - Complexity + Tradeoffs]]: compare the four Fibonacci implementations and explain why knapsack needs DP rather than a simple greedy rule.
-- [[Chapter - 14#14.4 Longest Common Subsequence (LCS)|LCS]] and [[Chapter - 14#14.5 Optimal Binary Search Trees|optimal BST]]: know the broader chapter recurrence patterns even though the lecture focus is on Fibonacci and knapsack.
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Algorithms/Dynamic Programming#Practice Map|Dynamic Programming - Practice Map]]: 1D DP, 2D DP, and reconstruction-style practice are still open.
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 14#14.1 Rod Cutting|Chapter - 14 rod cutting]], [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 14#14.3 Elements of Dynamic Programming|elements of dynamic programming]], and [[Dynamic Programming#Definition|Dynamic Programming]]: explain optimal substructure, overlapping subproblems, memoization, and bottom-up table construction.
+- [[Dynamic Programming#Core Ideas (Lecture)|Dynamic Programming - Core Ideas (Lecture)]], [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 14#Lecture Anchors: Fibonacci and Knapsack|lecture anchors]], and [[Dynamic Programming#Complexity + Tradeoffs|Dynamic Programming - Complexity + Tradeoffs]]: compare the four Fibonacci implementations and explain why knapsack needs DP rather than a simple greedy rule.
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 14#14.4 Longest Common Subsequence (LCS)|LCS]] and [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 14#14.5 Optimal Binary Search Trees|optimal BST]]: know the broader chapter recurrence patterns even though the lecture focus is on Fibonacci and knapsack.
+- [[Dynamic Programming#Practice Map|Dynamic Programming - Practice Map]]: 1D DP, 2D DP, and reconstruction-style practice are still open.
 
 ## Key ideas (textbook)
 - **Dynamic programming is about repeated states, not just recursion.** A recursive problem becomes a DP problem when the same subproblems appear again and again and can be stored instead of recomputed.
@@ -29,9 +29,9 @@ next: []
 - **Reconstruction is a separate design choice.** Getting the optimal value is one problem; recovering the chosen items or chosen sequence is another, which is why many DP solutions store an additional decision table.
 
 ## Concepts created / updated today
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Algorithms/Dynamic Programming#Definition|Dynamic Programming]]
-- [[Chapter - 14#Lecture Anchors: Fibonacci and Knapsack|Chapter - 14 - lecture anchors]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Algorithms/Dynamic Programming#Canonical Examples (Max 5)|Dynamic Programming - Canonical Examples]]
+- [[Dynamic Programming#Definition|Dynamic Programming]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 14#Lecture Anchors: Fibonacci and Knapsack|Chapter - 14 - lecture anchors]]
+- [[Dynamic Programming#Canonical Examples (Max 5)|Dynamic Programming - Canonical Examples]]
 
 ## Lecture
 ### Chapter 14 - Dynamic Programming, Fibonacci, and Knapsack

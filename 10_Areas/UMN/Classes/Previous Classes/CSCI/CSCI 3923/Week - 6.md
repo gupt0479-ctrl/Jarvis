@@ -13,7 +13,7 @@ tags:
   - "#class"
   - "#Lecture"
 next:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 7]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 7]]"
 ---
 # Entire Week
 ## What you must be able to do

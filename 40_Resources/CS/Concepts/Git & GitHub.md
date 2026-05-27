@@ -15,7 +15,7 @@ related:
 # Git & GitHub
 ## MOC
 ### Used
-- [[Learning Tracker tool]]
+- [[Arc (Learning Tracker)]]
 - [[Portfolio]]
 - 
 ## Definition

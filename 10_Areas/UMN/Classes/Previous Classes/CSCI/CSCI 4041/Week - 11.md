@@ -1,28 +1,31 @@
 ---
 type: class
 input_kind: lecture
-status: seed
+status: sprout
 created:
 updated: 2026-04-16
 area:
-  - "[[UMN Board]]"
+  - "[[CSCI 4041 Board]]"
+  - "[[DSA]]"
+  - "[[Introduction to Algorithms]]"
 tags:
-next: []
+next:
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 12|Week - 12]]"
 ---
 # Entire Week
 ## What you must be able to do
 - [[Chapter - 20#20.1 Representations of Graphs|Chapter 20.1]], [[Chapter - 20#20.2 Breadth-First Search (BFS)|Chapter 20.2]], and [[Chapter - 20#20.3 Depth-First Search (DFS)|Chapter 20.3]]: explain graph representations, BFS, DFS, predecessor trees, timestamps, and `O(V+E)` runtime.
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Graphs/Graph Algorithms#Core Ideas (Textbook)|Graph Algorithms - Core Ideas (Textbook)]], [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Graphs/Graph Algorithms#Core Ideas (Lecture)|Graph Algorithms - Core Ideas (Lecture)]], and [[Chapter - 20#20.1 Representations of Graphs|Chapter - 20]]: compare adjacency-list and adjacency-matrix representations and explain why the lecture code base prefers adjacency lists for traversal algorithms.
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Graphs/Graph Algorithms#Canonical Examples (Max 5)|Graph Algorithms - Canonical Examples]]: trace BFS level discovery, DFS tree growth, timestamps, and reverse-graph construction.
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Graphs/Graph Algorithms#Practice Map|Graph Algorithms - Practice Map]]: connect the week's content to BFS/DFS grid problems, connected components, and directed-graph reasoning.
+- [[Graph Algorithms#Core Ideas (Textbook)|Graph Algorithms - Core Ideas (Textbook)]], [[Graph Algorithms#Core Ideas (Lecture)|Graph Algorithms - Core Ideas (Lecture)]], and [[Chapter - 20#20.1 Representations of Graphs|Chapter - 20]]: compare adjacency-list and adjacency-matrix representations and explain why the lecture code base prefers adjacency lists for traversal algorithms.
+- [[Graph Algorithms#Canonical Examples (Max 5)|Graph Algorithms - Canonical Examples]]: trace BFS level discovery, DFS tree growth, timestamps, and reverse-graph construction.
+- [[Graph Algorithms#Practice Map|Graph Algorithms - Practice Map]]: connect the week's content to BFS/DFS grid problems, connected components, and directed-graph reasoning.
 ## Key ideas (textbook)
 - **20.1 Graph Representations**: Graphs can be stored either as adjacency lists or adjacency matrices. Adjacency lists use `Theta(V+E)` space and are better for sparse graphs and traversal algorithms. Adjacency matrices use `Theta(V^2)` space and are better when dense connectivity or constant-time edge lookup matters.
 - **20.2 BFS**: Breadth-first search explores a graph layer by layer using a FIFO queue. It colors vertices White, Gray, and Black, computes shortest-path distance in number of edges from the source, and builds a breadth-first tree through predecessor pointers.
 - **20.3 DFS**: Depth-first search goes as deep as possible before backtracking. Its discovery and finishing times expose much more structure than BFS, which is why it becomes the engine for topological sort and strongly connected components in the following week.
 - **Traversal Complexity**: Both BFS and DFS run in `O(V+E)` on adjacency-list graphs because each vertex is initialized and each edge is explored a constant number of times. This complexity statement is one of the most important recurring graph facts in the course.
 ## Concepts created / updated today
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Graphs/Graph Algorithms#Definition|Graph Algorithms]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Graphs/Graph Algorithms#Core Ideas (Lecture)|Graph Algorithms - BFS and DFS]]
+- [[Graph Algorithms#Definition|Graph Algorithms]]
+- [[Graph Algorithms#Core Ideas (Lecture)|Graph Algorithms - BFS and DFS]]
 - [[Chapter - 20#20.2 Breadth-First Search (BFS)|Chapter - 20 - BFS]]
 ## Lecture
 ### Chapter 20 - Graph Representations, BFS, and DFS

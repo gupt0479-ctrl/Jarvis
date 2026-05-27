@@ -6,12 +6,18 @@ created:
 updated:
 area:
   - "[[UMN Board]]"
+  - "[[MGMT 3001 Board]]"
+  - "[[Chapter - 8|Chapter - 8]]"
+  - "[[Organizational Culture|Organizational Culture]]"
 tags:
-next: []
+  - "#class"
+  - "#Lecture"
+next:
+  - "[[50_Archive/Previous Classes/Minor/MGMT 3001/Week - 8|Week - 8]]"
 ---
-# Entire Week
+# Week 7 - Organizational Culture
 ## What you must be able to do
-- [[Textbook]]
+- [[Chapter - 8|Chapter - 8]]
 - Define organizational culture clearly and explain why it matters.
 - Distinguish artifacts, espoused values, and underlying assumptions.
 - Explain how culture affects employee behavior, performance, and coordination.
@@ -33,9 +39,8 @@ next: []
 - Culture change is hard because it requires changing repeated patterns, not just updating slogans.
 
 ## Concepts created today
-- [[Concept - Levels of organizational culture and how to read them]]
-- [[Concept - Culture strength, culture change, and leadership signals]]
-
+- [[Organizational Culture|Organizational Culture]]
+- [[Change Management|Change Management]]
 ## Lecture
 ### 1. The lecture begins with a strong claim: culture is hard to copy and shapes behavior
 The first slides make an important point:
@@ -510,6 +515,9 @@ A speaker who understands culture speaks more effectively because they can:
 - distinguish real norms from official slogans
 - persuade in a way that fits the setting
 
+## Textbook integration
+- [[Chapter - 8|Chapter - 8]] expands culture with the three levels, culture strength, culture change, founders/leaders/teams, and the mechanisms that transmit culture.
+- The source-of-truth concept note for this week is [[Organizational Culture|Organizational Culture]].
 ## Leadership / entrepreneurship / speaking links
 ### Leadership link
 Culture is one of the strongest forms of indirect leadership.
@@ -535,6 +543,17 @@ Useful speaking structure for culture analysis:
 - [ ] Which culture-spreading mechanism is strongest: rewards, leader behavior, stories, or hiring?
 - [ ] What does a crisis reveal that normal times can hide?
 - [ ] How can leaders change culture without relying only on speeches and slogans?
+
+## Lecture-to-textbook synthesis
+- ==Definition anchor: organizational culture is the shared assumptions, values, beliefs, and norms that define appropriate behavior inside a firm.==
+- *Mechanism:* culture shapes behavior by teaching what gets rewarded, punished, admired, ignored, and repeated. The lecture's company examples show culture through hiring, onboarding, recognition, autonomy, trust, and crisis behavior.
+- Lecture examples: Zappos uses culture-first hiring and culture camp; L.L. Bean ties work to outdoor identity and employee development; Warby Parker emphasizes onboarding, social consciousness, and open feedback; Adobe emphasizes trust and goal-based evaluation.
+- Textbook connection: [[Chapter - 8|Chapter - 8]] adds artifacts, beliefs/values, underlying assumptions, cultural strength, subcultures, socialization, and culture clashes in mergers.
+- Concept links: [[Organizational Culture|Organizational Culture]], [[Change Management|Change Management]], [[Entrepreneurship Management Playbook|Entrepreneurship Management Playbook]].
+> [!TIP]
+> To analyze culture, do not start with the stated values. Start with the repeated behavior: what gets hired, rewarded, copied, protected, and punished?
+> [!SUMMARY]
+> Week 7 shows why culture can be more valuable than strategy: it controls daily behavior when managers are not in the room.
 
 ## Flashcards
 #cards/MGMT

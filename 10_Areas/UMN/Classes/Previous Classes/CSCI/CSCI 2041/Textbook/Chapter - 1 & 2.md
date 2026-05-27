@@ -16,7 +16,7 @@ area:
 tags:
   - "#class"
   - "#Textbook"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Week - 1|Week - 1]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2041/Week - 1|Week - 1]]"
 ---
 # Chapter 1 - Introduction to OCaml
 This chapter introduces OCaml as a member of the ML (Meta-Language) family, originally designed for the Logic of Computable Functions (LCF) theorem prover. It establishes the foundational philosophy of **functional programming** and sets the stage for how it differs from the imperative style found in languages like C or Java.

@@ -1,24 +1,24 @@
 ---
 type: concept
 course: CSCI 4041
-status: tree
+status: evergreen
 mastery (1/10): 4
 created: 2026-02-23
 updated: 2026-04-16
 topics:
   - "[[DSA]]"
   - "[[CSCI 4041 Board]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 13]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 13]]"
 related:
-  - "[[10_UMN/CSCI 4041/CSCI 4041/Concepts/Elementary Data Structures]]"
+  - "[[Elementary Data Structures]]"
   - "[[B-Trees]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 6|Week - 6]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 6|Week - 6]]"
 ---
-# [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/Trees/AVL Trees]]
+# [[AVL Trees]]
 ## MOC
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 6#Jupyter Notebook Explanations|Week - 6]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 7#Jupyter Notebook Explanations|Week - 7]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 13#AVL Notes Anchored to Chapter 13|Chapter - 13 - AVL notes anchored to Chapter 13]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 6#Jupyter Notebook Explanations|Week - 6]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 7#Jupyter Notebook Explanations|Week - 7]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 13#AVL Notes Anchored to Chapter 13|Chapter - 13 - AVL notes anchored to Chapter 13]]
 - [[Elementary Data Structures#BST Delete — 4 Cases|Elementary Data Structures - BST Delete — 4 Cases]]
 
 ## Definition
@@ -179,6 +179,7 @@ AVL trees are usually more tightly balanced than red-black trees, which often me
 - Convert Sorted Array to BST
 - Trace AVL insertions by hand
 - Write out LL/RR/LR/RL repairs on small trees without code
+- [[AVL Tree Project|Midterm Project - AVL Tree]]: implements AVL insertion, deletion, and 4-invariant validation
 
 ## Mini-test
 1. Why does AVL need a height field in this implementation?

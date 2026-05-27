@@ -1,60 +1,15 @@
 ---
-type: concept
+type: evergreen
 status: sprout
 created: 2026-04-23
-updated: 2026-04-27
 tags:
-  - concept
   - evergreen
 notes:
   - "[[Learning/Testing Debugging and Deployment]]"
   - "[[Learning/Kafka Redis and Workers]]"
   - "[[Learning/Systems Lessons for AI ML]]"
-track:
-  - systems
-prerequisites:
-  - "[[BOOM]]"
-used_in:
-  - "[[API Work]]"
-evidence:
-  - "[[60_Claude/45_Outputs/Kafka Pipeline Architecture Story]]"
-difficulty: 2
-mastery_level: familiar
-drill_interval: 14
-last_drilled: 2026-04-25
-next_drill: 2026-05-13
 ---
 # Docker WSL and Local Setup
-
-## Deep Dive
-
-### One-Sentence Version
-
-Docker provides repeatable local infrastructure for BOOM's backing services, and WSL gives you a Linux environment that matches the deployment target.
-
-### What It Is
-
-BOOM depends on MongoDB, Redis/Valkey, Kafka, an OpenTelemetry collector, and Prometheus. Docker Compose runs all of these as named services on a shared network. WSL2 provides the Linux environment where Rust builds, shell scripts, and Docker commands behave like the deployment target.
-
-### Why It Matters
-
-Local environment setup is not a side skill. It is core infrastructure for backend, platform, and ML systems engineering. Most infrastructure bugs become manageable once you think in layers (host → WSL → Docker → BOOM binaries) and verify each layer explicitly.
-
-### Real Example
-
-A common BOOM failure: `openssl-sys` build fails because `libssl-dev` is missing in WSL. The fix is `sudo apt install libssl-dev`. Without the layered debugging model, you might waste time looking at Rust code when the problem is a missing system package.
-
-### Contrast With
-
-- **Docker vs native install**: Docker gives repeatable infrastructure. Native installs drift across machines and break in ways that are hard to reproduce.
-- **WSL vs dual-boot Linux**: WSL gives you Linux tooling without leaving Windows. The tradeoff is occasional filesystem performance overhead and Docker integration quirks.
-- **Docker Compose profiles vs running everything**: Profiles let you start only the services relevant to your current workflow. Running everything wastes resources and adds noise.
-
-### Source Anchors
-
-- BOOM `docker-compose.yml` — service definitions
-- BOOM `docs/deployment.md` — production shape
-- `.env.example` — environment-driven configuration
 
 This note explains how BOOM runs as a local system and what you should take away from Docker and WSL beyond this specific project.
 

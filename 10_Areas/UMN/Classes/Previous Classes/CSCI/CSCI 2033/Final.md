@@ -4,7 +4,7 @@ status: archived
 created: 2025-12-11
 updated: 2025-12-12
 area:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Midterm - 1|Midterm - 1]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Midterm - 1|Midterm - 1]]"
   - "[[Python]]"
   - "[[CSCI 2033 Board]]"
 tags:

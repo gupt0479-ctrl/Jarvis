@@ -4,7 +4,7 @@ status: archived
 created: 2025-10-10
 updated: 2025-11-01
 area:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Midterm - 1]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Midterm - 1]]"
   - "[[Final]]"
   - "[[Quiz]]"
 tags:
@@ -14,7 +14,7 @@ tags:
   - "#Lecture"
   - "#Jupyter"
   - "#Quiz"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 5]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 5]]"
 ---
 # #Textbook Textbook (Ch - 4) 
 ## Chapter 4: Clustering
@@ -65,7 +65,7 @@ Clustering provides valuable insight into large data sets and can be used for sp
 ---
 # #Lecture Lecture
 ## #Jupyter Jupyter
-[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Week - 3|Week - 3]]
+[[50_Archive/Previous Classes/CSCI/CSCI 2033/Week - 3|Week - 3]]
 ## #Quiz Quiz
 
 

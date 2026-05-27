@@ -5,15 +5,15 @@ status: sprout
 created: 2026-01-21
 updated: 2026-01-31
 area:
-  - "[[10_Areas/UMN/Classes/Previous Classes/Minor/MGMT 3001/MGMT 3001 Board]]"
+  - "[[MGMT 3001 Board]]"
   - "[[UMN Board]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/Minor/MGMT 3001/Textbook/Chapter - 1|Chapter - 1]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/Minor/MGMT 3001/Concepts/Modern Management]]"
+  - "[[50_Archive/Previous Classes/Minor/MGMT 3001/Textbook/Chapter - 1|Chapter - 1]]"
+  - "[[Management Foundations and Leadership|Management Foundations and Leadership]]"
 tags:
   - "#class"
   - "#Lecture"
 next:
-  - "[[10_Areas/UMN/Classes/Previous Classes/Minor/MGMT 3001/Week - 2|Week - 2]]"
+  - "[[50_Archive/Previous Classes/Minor/MGMT 3001/Week - 2|Week - 2]]"
 ---
 # Week 1 - Management Foundations & Historical Perspectives
 ## What you must be able to do
@@ -24,14 +24,14 @@ next:
 - Explain why the contingency view matters and why "one best way" thinking is insufficient.
 - Connect VUCA to why modern management requires contextual intelligence.
 ## Key ideas
-- Management is about getting results through people efficiently and effectively.
-- Leadership is about direction, alignment, and motivation — especially during change.
-- Management theory changed because business problems changed. Each theory answered a real gap.
-- There is no one best way to manage — **fit** between approach and context is what matters.
+- Management gets results through people — efficiently and effectively.
+- Leadership creates direction, alignment, and motivation, especially during change.
+- Management theory evolved because business problems evolved. Each theory answered a real gap.
+- There is no one best way to manage. **Fit** between approach and context is what matters.
 - Modern managers must think about stakeholders and environmental uncertainty, not just internal efficiency.
 ## Concept notes
-- [[10_Areas/UMN/Classes/Previous Classes/Minor/MGMT 3001/Concepts/Management vs Leadership|Management vs Leadership]]
-- [[10_Areas/UMN/Classes/Previous Classes/Minor/MGMT 3001/Concepts/Modern Management|Modern Management Theories]]
+- [[Management Foundations and Leadership|Management Foundations and Leadership]]
+- [[Entrepreneurship Management Playbook|Entrepreneurship Management Playbook]]
 ## Lecture
 ### 1. Course roadmap - three connected lenses
 The opening lecture frames MGMT 3001 around three interconnected ideas:
@@ -135,7 +135,7 @@ Business purpose has shifted over time:
 - **Stakeholder view** (since 1990s): Firm serves multiple constituencies who can affect or be affected by its activities
 A **stakeholder** is any group or individual who can affect, or is affected by, an organization's purpose.
 ## Textbook integration
-[[10_Areas/UMN/Classes/Previous Classes/Minor/MGMT 3001/Textbook/Chapter - 1|Chapter - 1]] expands on:
+[[50_Archive/Previous Classes/Minor/MGMT 3001/Textbook/Chapter - 1|Chapter - 1]] expands on:
 - VUCA and contextual intelligence
 - Stakeholder mapping (4-step process: map relationships → identify subsets → determine stakes → define connections)
 - Three pillars of management: strategic positioning, organizational design, individual leadership
@@ -146,6 +146,15 @@ A **stakeholder** is any group or individual who can affect, or is affected by, 
 - [ ] Can I give a real-world example of Theory X and Theory Y management in action?
 - [ ] Can I explain why contingency thinking is more realistic than "one best way"?
 - [ ] Can I distinguish artifacts, bureaucracy, and humanistic thinking in an exam scenario?
+## Lecture-to-textbook synthesis
+- ==Definition anchor: management coordinates work through planning, organizing, leading, and controlling; leadership creates direction, alignment, and motivation.==
+- *Mechanism:* the lecture uses history to show how management problems changed over time. Scientific management optimized tasks, bureaucracy scaled consistent rules, human relations brought attention to social needs, systems thinking connected the parts, and contingency thinking asks what fits the situation.
+- Lecture examples: Washington and MLK show leadership without a standard corporate manager role; McDonald's, Amazon, airlines, and call centers show scientific-management logic still alive in modern operations.
+- Textbook connection: [[50_Archive/Previous Classes/Minor/MGMT 3001/Textbook/Chapter - 1|Chapter - 1]] adds VUCA, stakeholder thinking, contextual intelligence, and the three pillars of management.
+- Concept links: [[Management Foundations and Leadership|Management Foundations and Leadership]], [[Entrepreneurship Management Playbook|Entrepreneurship Management Playbook]].
+> [!SUMMARY]
+> This week is the foundation for the whole course: management creates the system, leadership moves people through the system, and contingency thinking keeps both tied to the actual environment.
+
 ## Flashcards
 #cards/MGMT
 1. Three pillars of management::Strategic positioning, organizational design, and individual leadership — all three are interdependent.

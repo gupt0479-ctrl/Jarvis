@@ -6,15 +6,29 @@ created:
 updated:
 area:
   - "[[UMN Board]]"
+  - "[[MGMT 3001 Board]]"
 tags:
   - "#class"
   - "#Textbook"
-next: week
+next:
+  - "[[50_Archive/Previous Classes/Minor/MGMT 3001/Week - 4|Week - 4]]"
 ---
-# Chapter - 6
-**Chapter 6: Corporate-Level Strategy** focuses on the "big picture" decisions leaders make regarding the scope of their entire organization. While business-level strategy asks "how do we compete in this specific industry," corporate-level strategy asks "what industries should we be in?".
+# Chapter 6 - Corporate-Level Strategy
+## Textbook anchor - corporate scope decisions
+- ==Corporate-level strategy asks what businesses the firm should be in and how those businesses should be owned, coordinated, or connected.==
+- *Mechanism:* the chapter is about scope. A firm should diversify or integrate only when ownership creates more value than market exchange, partnership, or focus.
+- Diversification creates value when businesses share resources, capabilities, customers, technology, brand, knowledge, or operating systems. It destroys value when managers buy unrelated businesses mainly for size, status, or vague "synergy."
+- The three-part diversification test:
+  1. *Industry attractiveness:* is the new industry structurally worth entering?
+  2. *Cost of entry:* will the cost of getting in erase the expected benefits?
+  3. *Better-off test:* will the combined firm create value that neither unit could create alone?
+- Vertical integration logic compares *transaction costs* with *administrative costs*. Own the activity when market exchange is too costly or unreliable and internal coordination is worth the burden.
+> [!WARNING]
+> Do not treat ownership as automatically stronger than partnership. The textbook's ownership test asks whether the firm needs to own the activity at all.
 
-1. Defining Corporate-Level Strategy
+## Textbook
+Chapter 6 focuses on the big-picture decisions leaders make regarding the scope of their entire organization. While business-level strategy asks "how do we compete in this specific industry," corporate-level strategy asks "what industries should we be in?"
+### 1. Defining corporate-level strategy
 
 Corporate-level strategy involves managing a portfolio of multiple businesses to maximize their collective value. It is defined by three major types of decisions:
 
@@ -24,7 +38,7 @@ Corporate-level strategy involves managing a portfolio of multiple businesses to
 
 The ultimate goal is to achieve a **corporate advantage**, which occurs when a firm maximizes its resources to build a competitive advantage across all its business units. Essentially, the company should be "better off" by owning these businesses together than if they were independent. These decisions are often called **"big bets"** because they fundamentally define how the firm will compete.
 
-2. Diversification Strategy
+### 2. Diversification strategy
 
 **Diversification** is the strategy of engaging in several different businesses to create more value than if they existed as stand-alone entities. The goal is for the whole (the combined company) to be greater than the sum of its parts.
 
@@ -46,7 +60,7 @@ Managers seek diversification for several reasons:
 - **International Expansion:** Finding new markets abroad.
 - **Personal Gain:** Sometimes managers pursue it for their own status or compensation.
 
-3. Approaches to Diversification
+### 3. Approaches to diversification
 
 There are three primary paths a firm can take:
 
@@ -54,7 +68,7 @@ There are three primary paths a firm can take:
 - **Related Diversification:** Owning more than one business that uses a similar set of tangible or intangible resources. Firms do this to achieve **economies of scope**, where the costs of operating together are less than operating separately.
 - **Unrelated Diversification:** Managing several businesses with no reasonable connection. This focuses on creating **financial economies**—distributing capital over many units to drive profitability through financial means rather than shared resources.
 
-4. The Diversification Test
+### 4. The diversification test
 
 Diversification can destroy value if done poorly, so managers use a **three-pronged test** to evaluate if it makes sense:
 
@@ -64,7 +78,7 @@ Diversification can destroy value if done poorly, so managers use a **three-pron
 
 Additionally, the **Ownership Test** asks if the firm actually needs to own the business or if an alliance or partnership would be better. Research shows that firm performance often follows an **inverted U-shape**: performance increases with related diversification but decreases as a firm moves too far into unrelated industries.
 
-5. Vertical Integration
+### 5. Vertical integration
 
 **Vertical integration** occurs when a corporation owns business units that make inputs for its other units or handle its outputs.
 
@@ -80,7 +94,7 @@ Deciding to vertically integrate requires weighing two types of costs:
 
 If the transaction costs (the hassle/cost of buying from outside) are greater than the administrative costs (the cost of managing it yourself), vertical integration makes sense.
 
-6. Alternatives to Vertical Integration
+### 6. Alternatives to vertical integration
 
 - **Outsourcing:** Contracting with an outside entity to perform tasks the company used to do itself (e.g., hiring a separate call center for customer service).
 - **Spot Contracts:** Simple contracts that allow a buyer to purchase a commodity at a specific price.

@@ -13,7 +13,7 @@ tags:
   - "#class"
   - "#Lecture"
 next:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 3923/Week - 2|Week - 2]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 3923/Week - 2|Week - 2]]"
 ---
 # Entire Week
 ## What you must be able to do

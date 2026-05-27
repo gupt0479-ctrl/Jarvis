@@ -5,18 +5,18 @@ status: sprout
 created: 2026-01-22
 updated: 2026-04-16
 area:
-  - "[[CSCI 2041 Board]]"
+  - "[[CSCI 4041 Board]]"
   - "[[DSA]]"
   - "[[Introduction to Algorithms]]"
 tags:
   - "#class"
   - "#Lecture"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 3|Week - 3]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 3|Week - 3]]"
 ---
 # Entire Week
 ## What you must be able to do
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 1 & 2#1.1 Algorithms|Chapter 1.1]] and [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 1 & 2#1.2 Algorithms as a Technology|Chapter 1.2]]: explain the difference between a computational problem, a problem instance, an algorithm, and algorithmic correctness, and explain why asymptotic growth matters more than raw hardware for large inputs.
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 1 & 2#2.1 Insertion Sort|Chapter 2.1]], [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 1 & 2#2.2 Analyzing Algorithms|Chapter 2.2]], and [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 1 & 2#2.3 Designing Algorithms|Chapter 2.3]]: prove correctness with loop invariants, distinguish best/worst/average case, and derive `T(n) = 2T(n/2) + Theta(n)` for merge sort.
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 1 & 2#1.1 Algorithms|Chapter 1.1]] and [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 1 & 2#1.2 Algorithms as a Technology|Chapter 1.2]]: explain the difference between a computational problem, a problem instance, an algorithm, and algorithmic correctness, and explain why asymptotic growth matters more than raw hardware for large inputs.
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 1 & 2#2.1 Insertion Sort|Chapter 2.1]], [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 1 & 2#2.2 Analyzing Algorithms|Chapter 2.2]], and [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 1 & 2#2.3 Designing Algorithms|Chapter 2.3]]: prove correctness with loop invariants, distinguish best/worst/average case, and derive `T(n) = 2T(n/2) + Theta(n)` for merge sort.
 - [[Sorting Algorithms#Core Ideas (Lecture)|Sorting Algorithms - Core Ideas (Lecture)]], [[Sorting Algorithms#Proof / Reasoning Toolkit|Sorting Algorithms - Proof / Reasoning Toolkit]], and [[Time Complexity#Definition|Time Complexity]]: compare the three insertion-sort variants, explain the FLOPS notebook's chosen cost model, and justify the merge-sort recursion-tree solution.
 - [[Sorting Algorithms#Practice Map|Sorting Algorithms - Practice Map]]: connect the week's theory to concrete implementation practice such as insertion sort, merging sorted arrays, and hybrid merge-sort tuning.
 
@@ -31,7 +31,7 @@ next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 3|Week - 3]
 - [[Sorting Algorithms#Definition|Sorting Algorithms]]
 - [[Sorting Algorithms#Core Ideas (Lecture)|Sorting Algorithms - lecture implementation notes]]
 - [[Sorting Algorithms#Complexity + Tradeoffs|Sorting Algorithms - complexity and tradeoffs]]
-- [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 1 & 2#2.3 Designing Algorithms|Chapter - 1 & 2 - merge sort and divide-and-conquer]]
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 1 & 2#2.3 Designing Algorithms|Chapter - 1 & 2 - merge sort and divide-and-conquer]]
 
 ## Lecture
 ### Chapter 1 and Chapter 2 - Insertion Sort, Cost Models, and Merge Sort

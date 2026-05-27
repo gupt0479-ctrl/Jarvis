@@ -1,111 +1,56 @@
 ---
 type: class
 input_kind: project
-status: seed
-created: 2026-02-22
-updated: 2026-03-30
+status: sprout
+created: 2026-04-27
+updated: 2026-04-27
 area:
   - "[[CSCI 4041 Board]]"
   - "[[DSA]]"
   - "[[Introduction to Algorithms]]"
 tags:
   - "#class"
-  - "#Textbook"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 7|Week - 7]]"
+  - "#Project"
+related:
+  - "[[AVL Trees|AVL Trees]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 6|Week - 6]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 7|Week - 7]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 13|Chapter - 13]]"
+  - "[[Chapter - 18|Chapter - 18]]"
 ---
-# AVL Trees
+# Midterm Project
 ## Overview
-**What this project is asking you to build (your part = implementation)**  
-- You’re taking the professor’s Week 5 BST notebook (`Ch12_BinarySearchTree.ipynb`) and the Week 6 “balanced tree helper” notebook (`Ch13_BalancedSearchTrees.ipynb`) and turning them into a real **AVL tree** implementation.  
-- AVL = BST ordering **plus** a strict height-balance rule: for every node, the left and right subtree heights differ by at most 1.
-**Where each notebook fits**  
-- **Ch12** is your “pointer correctness + delete structure” reference:  
-- parent pointers (`p`)  
-- BST insert search path + attach leaf  
-- `transplant(u, v)` helper  
-- BST delete (0/1 child vs 2 children using successor)  
-- **Ch13** is your “AVL building blocks” reference:  
-- node `height`  
-- `update_height` while walking upward using `p`  
-- left/right rotations  
-- visualization that prints key + height + a height-tuple
-## Plan
-- [ ] Implement AVL **insert** and **delete** (modified from BST so balance is preserved). 
-- [ ] Keep code style consistent with the professor’s template notebooks.  
-- [ ] Keep invariants correct:
-	1. **BST property** always holds.  
-	2. **AVL balance** always holds: `|height(left) - height(right)| ≤ 1`.
-	3. **Parent pointers** (`p`) always correct after every pointer rewrite (insert, transplant, delete, rotations).
-## Work log
-1. Multi way Trees use the file in the lecture 10: Ch18 B-Trees. 
-	- The Data algorithms have given another way to solve the multi way trees, can use this as well. But stick to the file given by the professor.
-## Concepts used
-- [[Concept - BST invariant (ordering)]]  
-- [[Concept - Parent pointers (p)]]  
-- [[Concept - Inorder traversal ⇒ sorted output]]  
-- [[Concept - Successor (min of right subtree)]]  
-- [[Concept - Transplant]]  
-- [[Concept - Height + Balance factor]]  
-- [[Concept - Rotations (left/right)]]  
-- [[Concept - AVL cases (LL/RR/LR/RL)]]
-## Implementation
-AVL is a BST **plus** a height-balance rule:
-### Core invariants you must preserve
-1. **BST property** (from your Ch. 12 notes): ===left subtree keys ≤ node.key ≤ right subtree keys===.
-2. **AVL balance property**: for every node, `|height(left) - height(right)| ≤ 1`.
-### What changes vs normal BST insert/delete
-- **BST insert/delete** still does the structural change (same search path logic).
-- Then you walk back up the path and **update heights** and **rebalance** using rotations.
-### Rotations (the shared “language” with CLRS Ch. 13)
-CLRS doesn’t teach AVL directly in Ch. 13, but it gives the exact rotation mechanics used by balanced BSTs. Your notes already highlight rotations as the key local pointer rewrite that preserves inorder order.
-- Left rotation: (what pointers change in our code)  
-- Right rotation: (what pointers change in our code)
-### You’ll use the 4 classic AVL cases
-- **LL** (left-left): single right rotation
-- **RR** (right-right): single left rotation
-- **LR** (left-right): left rotation on child, then right rotation
-- **RL** (right-left): right rotation on child, then left rotation
-#### Test sequences  
-- Insert LL: [...]  
-- Insert RR: [...]  
-- Insert LR: [...]  
-- Insert RL: [...]  
-- Delete rebalance: [...]
-## Using this [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Week - 5#Jupyter file explaination|BST file]] to implement AVL for the project
-AVL insert/delete is: **BST insert/delete + rebalance**. What stays the same from this file:
-- The basic BST search path logic for insert and delete
-- The transplant helper idea (or a similar pointer-replace helper)
-- The inorder-sorted correctness check (inorder traversal should always be sorted)
-What AVL adds on top:
-1. **Extra field on each node**: `height` (or equivalent)
-2. **After insert**
-	- Start from the inserted node’s parent (`p`)
-	- Move upward using `p`:
-	    - update heights
-	    - compute balance factor
-	    - if unbalanced: rotate (LL / RR / LR / RL)
-3. **After delete**
-	- Start from the first affected parent (often the parent of the node that got physically removed / moved)
-	- Move upward using `p`:
-		- update heights
-		- rebalance as needed (can cascade upward)
-> [!NOTE] Why your `p` pointer matters even more in AVL:
-> - AVL fixing happens “on the way back up”.
-> - Without `p`, you’d need extra recursion or an explicit stack to find ancestors.
-## How to convert Ch13 scaffold into *your* AVL implementation (the missing piece)  
-You’ll add:  
-1. Define **AVL balance factor**: `balance_factor(x) = left_height - right_height`  
-2. An upward rebalance loop:  
-	- starting at the affected node, repeat:  
-	- update height  
-	- check `bf`  
-	- if `bf` is 2 or -2, choose one of the 4 cases:  
-		- **LL** → right rotate  
-		- **RR** → left rotate  
-		- **LR** → left rotate on child, then right rotate  
-		- **RL** → right rotate on child, then left rotate
-	Make sure heights are correct **after every rotation** (your scaffold already updates two nodes; AVL may need continued upward updates).
-
-## Post-submit reflection
-- What failed first?
-- What pattern repeats?
+The midterm project implements one of three balanced search tree variants. Each option extends a shared `balancedtree` scaffold with a specific balancing strategy. The project tests understanding of rotations, invariant maintenance, and correctness validation through stress testing.
+## Project Options
+### AVL Tree (chosen)
+- [[AVL Tree Project|AVL Tree Project]] — height-balanced BST with rotation-based rebalancing
+- Implements insertion, deletion, and a 4-invariant validation suite
+- Core algorithms: LL/RR/LR/RL rotations, fix-up walk, balance factor computation
+- Source: `Midterm_Project/AVL Tree/AVLTree.ipynb`, `Experiment.ipynb`
+- Reference papers include the original Adelson-Velsky and Landis paper (1962)
+### Red Black Tree
+- [[Red Black Tree Project|Red Black Tree Project]] — color-based balanced BST using Sedgewick's LLRB formulation
+- Implements the 5 red-black properties with left-leaning simplification
+- Core algorithms: recoloring, rotations, insert/delete fix-up
+- Source: `Midterm_Project/Red Black Tree/Ch13_DiChromaticTrees.ipynb`
+- Reference papers include Guibas and Sedgewick's dichromatic framework and Sedgewick's 2008 LLRB paper
+### Multiway Search Tree
+- [[Multiway Search Tree Project|Multiway Search Tree Project]] — 2-3 tree variant with node splitting
+- Generalizes BSTs to nodes with multiple keys and more than two children
+- Core algorithms: multiway search, node splitting, B-tree-style insertion
+- Source: `Midterm_Project/Multiway Search Tree/Ch12_MultiWayTree.ipynb`
+- Reference papers include the original 2-3 tree publication and Knuth's treatment
+## Chosen Project: AVL Tree
+The AVL tree project was the most directly connected to the lecture material. [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 7|Week - 7]] covered both the CLRS red-black tree chapter and the AVL project implementation. The four rotation trigger sequences (`[30,20,10]` for LL, `[10,20,30]` for RR, `[30,10,20]` for LR, `[10,30,20]` for RL) are the core mechanical skill. The stress test in `Experiment.ipynb` used `random.seed(4041)`, 600 mixed insert/delete operations, key space 200, and 60% insert / 40% delete ratio.
+The validation suite checks four independent invariants:
+1. Inorder traversal produces sorted output (BST property)
+2. Every node's balance factor is in $\{-1, 0, 1\}$ (AVL property)
+3. Parent pointers are consistent in both directions
+4. Stored height equals recomputed height
+This multi-invariant approach is the right mental model for debugging any tree implementation.
+## Concept Links
+- [[AVL Trees|AVL Trees]] — full concept note
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 6|Week - 6]] — balanced trees, rotations, B-Trees
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Week - 7|Week - 7]] — red-black trees and AVL project
+- [[50_Archive/Previous Classes/CSCI/CSCI 4041/Textbook/Chapter - 13|Chapter - 13]] — red-black trees (CLRS)
+- [[Chapter - 18|Chapter - 18]] — B-Trees (CLRS)

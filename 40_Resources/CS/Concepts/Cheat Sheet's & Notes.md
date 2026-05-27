@@ -7,7 +7,7 @@ created: 2026-01-23
 topics:
   - "[[Winter Break]]"
   - "[[Portfolio]]"
-  - "[[Learning Tracker tool]]"
+  - "[[Arc (Learning Tracker)]]"
   - "[[Git & GitHub]]"
 related:
   - "[[40_Resources/CS/Links|Links]]"

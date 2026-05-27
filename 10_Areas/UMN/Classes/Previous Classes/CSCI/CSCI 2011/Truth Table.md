@@ -4,11 +4,11 @@ status: archived
 created: 2025-09-24
 updated: 2025-10-11
 area:
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2011/Chapter - 1]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2011/Chapter - 1]]"
   - "[[Finals]]"
 tags:
   - "#class"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2011/Chapter - 1]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2011/Chapter - 1]]"
 ---
 Truth Tables are used to summarize the truth values of Propositions and their Connectives. Each row in a truth table represents a possible combination of truth values for the Propositions involved. 
 **Identifying Propositions**: 

@@ -5,7 +5,7 @@ created: 2025-10-17
 updated: 2025-12-20
 area:
   - "[[C Language]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Midterm - 1|Midterm - 1]]"
+  - "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Midterm - 1|Midterm - 1]]"
 tags:
   - "#class"
   - "#Textbook"
@@ -13,11 +13,11 @@ tags:
   - "#Lecture"
   - "#Lab"
   - "#Homework"
-next: "[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 6|Week - 6]]"
+next: "[[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 6|Week - 6]]"
 ---
 # #Textbook Textbook (CSAPP - 2.1 - 2.4)
 ## #CSAPP CSAPP
-### 2.1 to 2.3 [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 3|Week - 3]]
+### 2.1 to 2.3 [[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 3|Week - 3]]
 ### 2.4
 • **Fractional Binary Numbers:** These extend binary to include fractions, with bits to the right of a "binary point" having weights of 1/2, 1/4, 1/8, and so on. However, just as `1/3` cannot be represented exactly in decimal, numbers like `0.2` cannot be represented exactly in binary.
 • **IEEE 754 Floating-Point Standard:** This is the universal standard for representing floating-point numbers. A number is represented as `V = (-1)^s * M * 2^E`.
@@ -66,7 +66,7 @@ x << 2 = 110000 (48)
 - **Binary subtraction**: Subtraction can borrow past available bits. If we need an extra carry then, pretend there’s an extra significant digit for us to borrow from. Becomes maximum value representable when there is **underflow**. 
 ### Two's-Complement Encodings
 We need a way to represent **negative integers** in binary. **8-bit: −128 to +127.**
-Options historically: [[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 3#Two's-Complement Encodings|Two's]]
+Options historically: [[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 3#Two's-Complement Encodings|Two's]]
 1. **Sign-and-Magnitude**: leftmost bit = sign (0 = positive, 1 = negative).
     - Problem: two versions of 0 (`+0` and `-0`).
 **Negative number → positive number and vice versa is same. Rule: invert bits, add 1.**
@@ -259,7 +259,7 @@ What it means at the bit level ([[#Two's-Complement Encodings]])
 
 # #Homework Homework - 4
 ## Problem 1
-[[10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/Week - 3#Lecture 8|Conversions]]
+[[50_Archive/Previous Classes/CSCI/CSCI 2021/Week - 3#Lecture 8|Conversions]]
 1. **Fill the table**: Key moves:
 	- **Hex ↔ Binary:** 1 hex digit = 4 bits.
 	- **Oct ↔ Binary:** 1 oct digit = 3 bits.
