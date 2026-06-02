@@ -562,11 +562,11 @@ Built the full weekly review infrastructure for Jarvis.
 **Next:** Run the scheduled task Monday June 2 to validate it executes correctly. Priority 1 before then: create `60_Claude/05_Clippings/AI Conversations/` and `60_Claude/30_Source_Summaries/AI Conversations/` manually — this unblocks the Week 2 build spine without any Python work.
 
 ## 2026-05-28 — GitHub Claude Starred Repos Analysis
-Processed 27 repos from gupt0479-ctrl's Claude starred list (22 + 5 extras found on the list). Created notes under 60_Claude/30_Source_Summaries/GitHub - Claude Starred/. 15 repos marked sprout (useful), 12 marked seed (not priority). Updated 40_Resources/CS/Repos.md with Claude Starred section and backlinks.
+Processed 27 repos from gupta-builds's Claude starred list (22 + 5 extras found on the list). Created notes under 60_Claude/30_Source_Summaries/GitHub - Claude Starred/. 15 repos marked sprout (useful), 12 marked seed (not priority). Updated 40_Resources/CS/Repos.md with Claude Starred section and backlinks.
 
 ## 2026-05-29 — GitHub Claude Starred Repos Analysis
 
-Processed 27 repos from gupt0479-ctrl's Claude starred list (`https://github.com/stars/gupt0479-ctrl/lists/claude`). Created notes under `60_Claude/30_Source_Summaries/GitHub - Claude Starred/`.
+Processed 27 repos from gupta-builds's Claude starred list (`https://github.com/stars/gupta-builds/lists/claude`). Created notes under `60_Claude/30_Source_Summaries/GitHub - Claude Starred/`.
 
 **15 repos marked sprout (useful):** ECC, claude-code-templates, ruflo, gstack, beads, mattpocock-skills, graphify, obsidian-mind, spec-kit, agent-skills-addyosmani, context-sync, cpr-compress-preserve-resume, awesome-mcp-servers, claude-context, memsearch
 
@@ -576,7 +576,7 @@ Updated `40_Resources/CS/Repos.md` with `## Claude Starred` section containing w
 
 ## 2026-05-29 — GitHub Stars Vault Cleanup
 
-**Task:** Ingested all ~100 starred repos from GitHub (gupt0479-ctrl) and organized them into Jarvis.
+**Task:** Ingested all ~100 starred repos from GitHub (gupta-builds) and organized them into Jarvis.
 
 **Done:**
 - Rewrote `40_Resources/CS/Repos.md` — removed messy legacy sections, organized by 7 GitHub lists (Claude/AI/Building/Projects/Jobs/Learning/Cybersecurity) with clean one-liner entries for all 100 repos

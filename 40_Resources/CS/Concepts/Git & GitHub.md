@@ -26,7 +26,7 @@ A **repository (repo)** is:
 - A project folder **+** the full history of all changes Git is tracking.
 - On your machine: `~/projects/boom`
 - On GitHub: `https://github.com/boom-astro/boom` (upstream) and  
-    `https://github.com/gupt0479-ctrl/boom` (your fork)
+    `https://github.com/gupta-builds/boom` (your fork)
 Think: _one project, one repo_.
 #### What is a _branch_?
 A **branch** is a _line of development_ inside a repo.

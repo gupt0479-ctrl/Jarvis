@@ -10,7 +10,7 @@ tags:
 notes: null
 ---
 # GitHub Stars Index
-Organized by GitHub list. Each section mirrors the star list on [gupt0479-ctrl's profile](https://github.com/gupt0479-ctrl?tab=stars).
+Organized by GitHub list. Each section mirrors the star list on [gupta-builds's profile](https://github.com/gupta-builds?tab=stars).
 ## Claude (28)
 
 Claude Code tooling, memory systems, agent infrastructure. All entries have individual notes.
