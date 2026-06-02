@@ -2,6 +2,10 @@
 
 This file is the writing contract for Jarvis. Any AI tool editing notes in this vault should read and follow it before drafting or rewriting Markdown.
 
+## Voice here, structure in 30_Order
+
+This file governs how prose should *sound*. It is one half of the writing standard. The other half — how a note is *shaped, filed, and which template it uses* — lives in `30_Order/`: read its `Templates/` and `Workflows/` before writing. For where each note type belongs, see [[40_Resources/Obsidian/Jarvis Vault Architecture]]. Voice without structure produces tidy notes in the wrong place; structure without voice produces slop in the right place. You need both.
+
 ## Objective
 
 Write notes that sound like a sharp human who understands the material.
@@ -171,13 +175,23 @@ When cleaning AI slop from an existing note:
 6. add one contrast or misconception if the concept is easy to confuse
 7. leave the note shorter or denser than before
 
+## Vault Formatting Rules
+
+These rules apply to all Markdown written in this vault. Voice rules above are about what you say; these rules are about how it sits on the page.
+
+**Blank lines:**
+- Zero blank lines between `---` (frontmatter close) and the `#` title
+- Zero blank lines between any heading and its first content line
+- Zero blank lines between consecutive list items or consecutive sections
+- One blank line is permitted: after a callout (`> [!X]`) or blockquote (`> `) before a following paragraph of prose
+- The vault's `headerspace.css` snippet handles visual spacing. Extra blank lines are not style — they are noise.
+
+**Formatting markers** (`==`, `**`, `*`) carry SR cloze meaning — see [[Jarvis Writing and Formatting]] for the full pattern before using them.
+
 ## Final Check Before Saving
-
 Ask:
-
 1. Does this note contain actual information, or just smooth wording?
 2. Could a smart human have written this after doing real work?
 3. Does this note sound like this vault, or like the internet?
 4. Did I preserve the user's actual meaning?
-
 If the answer to any of these is no, rewrite again.

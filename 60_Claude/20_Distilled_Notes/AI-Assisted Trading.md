@@ -7,7 +7,7 @@ tags:
   - concept
 notes:
   - "[[Trading with Ai]]"
-  - "[[10_Areas/Trading/Links]]"
+  - "[[20_Progress/Projects/CS/TradingView/Links]]"
 track:
   - trading
   - ai
@@ -16,7 +16,7 @@ prerequisites:
   - "[[60_Claude/20_Distilled_Notes/Trading Tools and Platforms]]"
 used_in: []
 evidence:
-  - "[[60_Claude/45_Outputs/AI Market Analyzer Project Brief]]"
+  - "[[AI Market Analyzer Project Brief]]"
 difficulty: 4
 mastery_level: novice
 drill_interval: 7
@@ -68,7 +68,7 @@ The honest result: most simple models barely beat random on out-of-sample data. 
 ### Source Anchors
 
 - [[Trading with Ai]] — initial exploration notes
-- [[10_Areas/Trading/Links]] — Tradevisor AI and other AI trading tools
+- [[20_Progress/Projects/CS/TradingView/Links]] — Tradevisor AI and other AI trading tools
 - Cross-reference with AI track: embeddings, data pipelines, model evaluation
 
 ## Diagnostic Questions

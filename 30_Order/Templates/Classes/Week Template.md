@@ -2,28 +2,40 @@
 type: class
 input_kind: lecture
 status: seed
-created:
-updated:
+created: <% tp.date.now("YYYY-MM-DD") %>
+updated: <% tp.date.now("YYYY-MM-DD") %>
 area:
   - "[[UMN Board]]"
 tags:
+  - "#class"
+  - "#Lecture"
 next: []
 ---
-# Entire Week
+# <% tp.file.title %>
 ## What you must be able to do
-- [[Textbook]]
+- [[Chapter - ]]
 - 
-## Key ideas (textbook)
+## Key ideas (short)
 - 
 ## Concepts created today
-- [[Concept - ...]]
-- [[Concept - ...]]
+- [[Concept - ]]
 ## Examples worth keeping
 - 
 ## Lecture
-
+### 1.
+## Textbook integration
 ## Takeaways (questions to resolve)
-- [ ] Why does ...?
-- [ ] What changes if ...?
+- [ ]
+## Lecture-to-textbook synthesis
+- == ==
+- *Mechanism:*
+- Lecture example/scenario:
+- Textbook connection: [[Chapter - ]]
+- Concept links: [[Concept - ]], [[Concept - ]]
+> [!WARNING]
+>
+> [!SUMMARY]
+>
 ## Flashcards
-#cards/
+#cards/MGMT
+Concept A vs Concept B::The distinction in one line.

@@ -13,7 +13,7 @@ notes:
   - "[[AI_CONTEXT]]"
   - "[[HUMAN_WRITING]]"
   - "[[40_Resources/Obsidian/Vault Operating System]]"
-  - "[[60_Claude/7_AI_Information/Plugins]]"
+  - "[[60_Claude/07_AI_Information/Plugins]]"
   - "[[00 Plugin Reference Index]]"
 ---
 # Tasks Kanban and Project Tracking
@@ -226,6 +226,19 @@ When adding work to Jarvis:
 4. Use Kanban only if stage movement is useful.
 5. Avoid duplicate task systems.
 
+## Integration Map
+- **Tasks → Dataview:** an open `- [ ]` line with `📅` is read both by Tasks queries (emoji-aware) and by Dataview `TASK` blocks (metadata-aware). Use Tasks queries when due/recurrence/priority matter; Dataview when the dashboard is mostly page metadata. See [[Dataview and Dashboards]].
+- **Tasks vs `next:`:** `next:` frontmatter holds the *one* current move for a note; task lines hold the *many* trackable actions. Keeping a different next-step in prose, frontmatter, and a Kanban card is the drift this doc exists to prevent — pick one canonical move and let dashboards surface it.
+- **Kanban → notes:** a Kanban card that represents durable work should link to the project note where the real tasks and context live (`[[BOOM Board]]`), not duplicate them. Kanban tracks *stage*; the note tracks *substance*.
+- **Tasks → Open Questions:** source-summary and course notes put unresolved items under `## Open Questions` as `- [ ]`, not prose — so they become trackable and queryable. This is why Vault Rules Part 8 mandates Tasks format there.
+## Gold-Standard Example
+- *Tasks:* [[10_Areas/UMN/Previous Classes/Minor/MGMT 3001/Week - 9|Week - 9]] uses `- [ ]` under `## Takeaways (questions to resolve)` for real open questions rather than prose — the pattern the ingestion workflow requires.
+- *Kanban:* [[10_Areas/Life/Habits/Habit Tracker Board|Habit Tracker Board]] is a real lane-based board (stage movement is the point), not a task dump.
+- *next-driven project:* [[20_Progress/Projects/UROP/BOOM Board|BOOM Board]] keeps context in the note and surfaces one current move.
+## Verified Open State
+- Preferred priority scale for coursework vs projects (which of `🔺/⏫/🔼/🔽/⏬` maps to what)? — *unresolved; pick a convention before scaling Tasks usage*
+- Canonical lane names for future project boards (the doc offers four templates; none is yet declared the default)? — *needs user choice*
+- Should `00_Dashboard`'s open-task block migrate from a Dataview `TASK` query to a native `tasks` query for emoji-date accuracy? — *open; both work, Tasks is more date-aware*
 ## Sources
 
 - [Tasks User Guide - Task formats](https://publish.obsidian.md/tasks/Reference/Task+Formats/About+Task+Formats)

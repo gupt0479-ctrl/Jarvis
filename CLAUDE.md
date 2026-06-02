@@ -12,7 +12,7 @@ notes:
   - "[[40_Resources/CS/Links|Links]]"
   - "[[Claude Code]]"
   - "[[MCPs]]"
-  - "[[60_Claude/60_Claude Board]]"
+  - "[[Claude Board]]"
   - "[[HUMAN_WRITING]]"
 ---
 # CLAUDE.md — Vault Operating Contract
@@ -23,16 +23,19 @@ This vault is a personal knowledge system powered by Claude Code. The assistant 
 Do not duplicate shared workspace rules here unless they are Claude-specific.
 ## Folder Roles
 
-| Folder                    | Purpose                                        | Claude Behavior                                             |
-| ------------------------- | ---------------------------------------------- | ----------------------------------------------------------- |
-| `60_Claude/05_Clippings/` | Raw source material (articles, clips, imports) | Read-only input; never modify                               |
-| `60_Claude/`              | Claude-generated knowledge layer               | Full write access; create distillations, summaries, reviews |
-| `20_Progress/`            | Active projects, career, mentorship            | Read for context; update with user permission               |
-| `30_Order/`               | Templates and system structure                 | Read for conventions; don't modify                          |
-| `40_Resources/`           | Reference knowledge, concepts, links           | Read for context; add backlinks when relevant               |
-| `00_Inbox/`               | User's quick capture                           | Read for context; don't modify unless asked                 |
-| `50_Archive/`             | Past courses, completed work                   | Read-only; historical reference                             |
-| `.claude/`                | Skills, agents, settings                       | Full write access for tooling                               |
+| Folder                    | Purpose                                                  | Claude Behavior                                                          |
+| ------------------------- | ------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `10_Areas/`               | Identity layer; canonical source-of-truth per domain    | Read for context; patch by heading only; no new top-level files without explicit instruction |
+| `20_Progress/`            | Active execution layer; in-progress projects, career, mentorship, research | Write concrete project notes drawn from `60_Claude/40_Project_Briefs/` and `20_Distilled_Notes/` |
+| `30_Order/`               | System layer; templates, workflows, CLI tools           | Read-only unless the task is building a new template                    |
+| `40_Resources/`           | Stable reference knowledge, concepts, plugin docs       | Add entries; always backlink to the relevant `10_Areas/` area           |
+| `50_Archive/`             | Dead-letter office                                       | Never read, never write; excluded from context unless explicitly told  |
+| `60_Claude/`              | AI operating layer                                       | All AI writes originate here. See routing table                         |
+| `60_Claude/05_Clippings/` | Raw source material (articles, clips, imports)          | Read-only input; never modify                                           |
+| `Excalidraw/`             | Visual layer; diagrams organized by area or project     | Add diagrams; link from the notes they support                          |
+| `.claude/`                | Skills, agents, settings                                | Full write access for tooling                                           |
+
+The full note routing table lives in `AGENTS.md` under `## Note Routing`.
 
 ## Core Rules
 
@@ -42,8 +45,8 @@ Do not duplicate shared workspace rules here unless they are Claude-specific.
 2. **Preserve frontmatter** — Never remove or rename frontmatter keys unless explicitly asked.
 3. **Search before creating** — Use MCP search to check if a note already exists before creating a new one.
 4. **Respect maturity** — Notes with `status: tree` are stable; propose changes before modifying.
-5. **Read `HUMAN_WRITING.md` before drafting prose** — remove filler, avoid generic AI tone, prefer mechanism, contrast, and concrete examples from the vault.
-6. **Use `AI_CONTEXT.md` for continuity** — read the dashboard and session log before assuming current project state.
+5. **Read `HUMAN_WRITING.md` and `30_Order/` before writing** — `HUMAN_WRITING` governs voice; `30_Order/Templates/` and `30_Order/Workflows/` govern how each note type is shaped and filed. See [[40_Resources/Obsidian/Jarvis Vault Architecture]] for where each note goes.
+6. **Use `60_Claude/07_AI_Information/AI_CONTEXT.md` for continuity** — read the manifest, dashboard, and session log before assuming current project state. The wikilink `[[AI_CONTEXT]]` resolves to the same file.
 7. **Use context packs, not vault dumps** — follow [[40_Resources/Obsidian/Claude Pro Workflow]]: read the manifest, dashboard, session log tail, and task-specific notes instead of scanning the whole vault.
 
 ### Note Creation Conventions
@@ -66,8 +69,8 @@ next: "[[Next Action]]"  # optional
 
 **Type guide:**
 - `evergreen` — Distilled, reusable knowledge (`60_Claude/20_Distilled_Notes/`, `40_Resources/`)
-- `input` — Raw captures, source summaries (`60_Claude/05_Clippings/`, `60_Claude/30_Source_Summaries/`)
-- `concept` — Course concepts, definitions (`30_Order/Notes/`, `40_Resources/CS/`)
+- `input` — Raw captures, source summaries (`60_Claude/05_Clippings/`, `60_Claude/10_Source_Summaries/`)
+- `concept` — Course concepts, definitions (`10_Areas/UMN/`, `40_Resources/CS/`)
 - `project` — Active work with outcomes (`20_Progress/`)
 - `thought` / `brainstorm` — Inbox-style captures (`00_Inbox/`)
 
@@ -75,12 +78,13 @@ next: "[[Next Action]]"  # optional
 
 | Output Type | Destination |
 |-------------|-------------|
-| Session summaries | `60_Claude/10_Session_Logs/log.md` |
-| Source distillations | `60_Claude/30_Source_Summaries/` |
+| Session summaries | `60_Claude/07_AI_Information/Session Logs/log.md` |
+| Source summaries | `60_Claude/10_Source_Summaries/` |
 | Evergreen knowledge | `60_Claude/20_Distilled_Notes/` |
+| Output artifacts | `60_Claude/35_Outputs/` (with `source_concepts:`) |
 | Project briefs | `60_Claude/40_Project_Briefs/` |
 | Daily/weekly reviews | `60_Claude/50_Reviews/` |
-| Indexes | `60_Claude/60_Indexes/` |
+| Indexes | `60_Claude/44_Indexes/` |
 
 ### Ingestion Workflow (05_Clippings → 60_Claude)
 
@@ -89,17 +93,17 @@ next: "[[Next Action]]"  # optional
 3. Claude:
    - Reads the source
    - Extracts key claims, entities, concepts, quotes, actions
-   - Creates summary in `60_Claude/30_Source_Summaries/`
+   - Creates summary in `60_Claude/10_Source_Summaries/`
    - Updates/creates entity pages where relevant
    - Adds backlinks to related notes
-   - Appends to `60_Claude/10_Session_Logs/log.md`
+   - Appends to `60_Claude/07_AI_Information/Session Logs/log.md`
 4. User reviews in Obsidian, files or adjusts as needed
 
 ### Query Behavior
 
 When answering questions:
 
-1. **Search the Claude layer first** — Read `60_Claude/60_Indexes/Claude Layer Index.md` for relevant distillations
+1. **Search the Claude layer first** — Read `60_Claude/44_Indexes/Claude Layer Index.md` for relevant distillations
 2. **Then search the wider vault** — Use MCP search for broader context
 3. **Cite sources** — Link to notes that informed your answer
 4. **File useful outputs** — If an answer deserves preservation, save it to `60_Claude/`
@@ -108,7 +112,7 @@ When answering questions:
 
 At the end of each working session:
 
-1. Update `60_Claude/10_Session_Logs/log.md` with what was done
+1. Update `60_Claude/07_AI_Information/Session Logs/log.md` with what was done
 2. Create or update a summary note if significant work occurred
 3. List outcomes, open questions, and next steps
 4. Optionally run `/closeday` for a daily summary

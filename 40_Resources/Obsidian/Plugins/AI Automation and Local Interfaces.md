@@ -13,7 +13,7 @@ notes:
   - "[[AI_CONTEXT]]"
   - "[[HUMAN_WRITING]]"
   - "[[40_Resources/Obsidian/Vault Operating System]]"
-  - "[[60_Claude/7_AI_Information/Plugins]]"
+  - "[[60_Claude/07_AI_Information/Plugins]]"
   - "[[00 Plugin Reference Index]]"
 ---
 # AI Automation and Local Interfaces
@@ -32,7 +32,7 @@ Read in this order:
 2. [[HUMAN_WRITING]]
 3. [[40_Resources/Obsidian/Vault Operating System]]
 4. [[00_Dashboard]]
-5. [[60_Claude/10_Session_Logs/log]]
+5. [[log]]
 6. relevant source, project, course, or concept notes
 
 Copilot memory, chat history, embeddings, provider context, and recent files are secondary. They can suggest where to look; they do not overrule the notes.
@@ -138,6 +138,16 @@ Automation should make the vault easier to audit, not harder.
 | QuickAdd AI | Capture macros can mix raw and processed material. | Configure capture first, AI later. |
 | DataviewJS/HTML | Executable dashboard behavior. | Prefer plain Dataview. |
 
+## Integration Map
+- **Copilot ↔ vault (one-way trust):** Copilot reads the vault and stores memory under `50_Archive/copilot/`; the vault never trusts Copilot memory back. When facts conflict, notes win. Copilot's autonomous mode could write notes in parallel — that is the drift risk, so treat it as off until a workflow is approved.
+- **Local REST API ↔ MCP/filesystem:** the API exposes the same vault operations an agent already has via filesystem edits. For documentation and note work, prefer filesystem edits — they are easier to audit than HTTP calls. The API is a bridge for *external* tools, not a shortcut for an in-editor agent.
+- **Secrets ↔ `.gitignore`:** `copilot`, `quickadd`, and `local-rest-api` `data.json` files are gitignored precisely because they can hold credentials. This is why these docs describe behavior, never values. See [[Git Recovery and Vault Safety]].
+## Gold-Standard Example
+The correct pattern is restraint, so the example is a boundary, not a feature: `50_Archive/copilot/copilot-conversations` is read-only historical context — an agent may read it for continuity but must not treat it as a write target or as authority over current notes. There is no approved automation workflow in the vault yet, which is itself the honest current state: the safe default is "filesystem edits, logged."
+## Verified Open State
+- Should the Local REST API insecure server on port `27123` remain enabled, and which local tool needs it? — *security decision; insecure server is currently on*
+- Should Copilot's autonomous agent mode be allowed to make vault edits, or stay human-facing Q&A? — *unresolved; high-risk until scoped*
+- Which, if any, AI workflow is approved to call command endpoints? — *none currently approved*
 ## Sources
 
 - [Copilot docs](https://www.obsidiancopilot.com/en/docs)
@@ -147,4 +157,4 @@ Automation should make the vault easier to audit, not harder.
 - [QuickAdd docs](https://quickadd.obsidian.guide/docs/)
 - [QuickAdd Capture choice](https://quickadd.obsidian.guide/docs/Choices/CaptureChoice)
 - [[AI_CONTEXT]]
-- [[60_Claude/7_AI_Information/Agent Operating Guide]]
+- [[Agent Operating Guide]]

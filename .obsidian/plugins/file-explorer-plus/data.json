@@ -64,21 +64,21 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "30_Order/Templates/Metadata/For Everything.md",
+        "pattern": "30_Order/Templates/Frontmatter/For Everything.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/CSCI 2033 Board.md",
+        "pattern": "10_Areas/UMN/Previous Classes/CSCI/CSCI 2033/CSCI 2033 Board.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2021/CSCI 2021 Board.md",
+        "pattern": "10_Areas/UMN/Previous Classes/CSCI/CSCI 2021/CSCI 2021 Board.md",
         "patternType": "STRICT"
       },
       {
@@ -92,7 +92,7 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "20_Progress/UROP/BOOM Board.md",
+        "pattern": "20_Progress/Projects/UROP/BOOM Board.md",
         "patternType": "STRICT"
       },
       {
@@ -113,70 +113,70 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2011/CSCI 2011 Board.md",
+        "pattern": "10_Areas/UMN/Previous Classes/CSCI/CSCI 2011/CSCI 2011 Board.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/CSCI 4041 Board.md",
+        "pattern": "10_Areas/UMN/Previous Classes/CSCI/CSCI 4041/CSCI 4041 Board.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/CSCI 2041 Board.md",
+        "pattern": "10_Areas/UMN/Previous Classes/CSCI/CSCI 2041/CSCI 2041 Board.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/UMN/Classes/_Homework/Weekly Board.md",
+        "pattern": "10_Areas/UMN/Previous Classes/Weekly Board.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/UMN/Classes/Previous Classes/Minor/MGMT 3001/MGMT 3001 Board.md",
+        "pattern": "10_Areas/UMN/Previous Classes/Minor/MGMT 3001/MGMT 3001 Board.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/UMN/Classes/Previous Classes/Lib Ed/MUS 1013/MUS Board.md",
+        "pattern": "10_Areas/UMN/Previous Classes/Lib Ed/MUS 1013/MUS Board.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 3923/CSCI 3923 Board.md",
+        "pattern": "10_Areas/UMN/Previous Classes/CSCI/CSCI 3923/CSCI 3923 Board.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "Excalidraw/excalibrain.md",
+        "pattern": "10_Areas/Excalidraw/excalibrain.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 4041/Concepts/DSA.md",
+        "pattern": "10_Areas/UMN/Previous Classes/CSCI/CSCI 4041/Concepts/DSA.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2041/Concepts/OCaml.md",
+        "pattern": "10_Areas/UMN/Previous Classes/CSCI/CSCI 2041/Concepts/OCaml.md",
         "patternType": "STRICT"
       },
       {
@@ -197,7 +197,7 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/UMN/Classes/Previous Classes/CSCI/CSCI 2033/Concepts/Python.md",
+        "pattern": "10_Areas/UMN/Previous Classes/CSCI/CSCI 2033/Concepts/Python.md",
         "patternType": "STRICT"
       },
       {
@@ -211,7 +211,7 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "Random.md",
+        "pattern": "40_Resources/Random.md",
         "patternType": "STRICT"
       },
       {
@@ -219,6 +219,146 @@
         "active": true,
         "type": "FILES",
         "pattern": "10_Areas/Life/Habits/Daily Habit Board.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "40_Resources/CS/Repos.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "60_Claude/10_Source_Summaries/Source Summaries Board.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "60_Claude/05_Clippings/Clippings board.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "60_Claude/20_Distilled_Notes/Distilled Notes Board.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "60_Claude/20_Distilled_Notes/Synthesis/Synthesis Index.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "60_Claude/40_Project_Briefs/40_Project_Briefs Board.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "40_Resources/Capability/Track Definitions.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "60_Claude/Claude Board.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "60_Claude/35_Outputs/Output Index.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "60_Claude/50_Reviews/50_Reviews Board.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "20_Progress/Projects/CS/HiveMind/Hivemind.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "20_Progress/Projects/AI Second Brain/Jarvis.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "20_Progress/Degree/Summer Courses.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "60_Claude/00_Inbox/Inbox Board.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "60_Claude/05_Clippings/AI Conversations/README.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "60_Claude/07_AI_Information/AI_CONTEXT.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "60_Claude/07_AI_Information/Session Logs/Session Logs Board.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "60_Claude/07_AI_Information/AI Conversations/README.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "10_Areas/UMN/Previous Classes/Lib Ed/BIOL 1012/BIOL Board.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "30_Order/Templates/MOC.md",
         "patternType": "STRICT"
       }
     ],

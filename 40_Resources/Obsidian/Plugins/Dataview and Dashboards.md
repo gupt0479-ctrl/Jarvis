@@ -12,7 +12,7 @@ notes:
   - "[[AI_CONTEXT]]"
   - "[[HUMAN_WRITING]]"
   - "[[40_Resources/Obsidian/Vault Operating System]]"
-  - "[[60_Claude/7_AI_Information/Plugins]]"
+  - "[[60_Claude/07_AI_Information/Plugins]]"
   - "[[00 Plugin Reference Index]]"
 ---
 # Dataview and Dashboards
@@ -218,6 +218,16 @@ Before changing a dashboard:
 4. Keep examples in this doc and live dashboards aligned.
 5. Link the dashboard to this note if the pattern becomes canonical.
 
+## Integration Map
+- **Templater/QuickAdd → Dataview:** Dataview only sees fields that were written at note creation. Templater folder templates and (once configured) QuickAdd choices are what guarantee `type:`/`status:`/`track:` exist. A note created outside Obsidian without that frontmatter is invisible to every query here. See [[Templates Capture and Periodic Notes]] and [[QuickAdd Capture Menu]].
+- **Dataview vs Tasks:** Dataview answers questions about *notes* (which projects are active, which concepts lack enrichment); Tasks answers questions about *actions* (what is due, what is in progress). Dataview can render `TASK` blocks, but Tasks understands emoji dates and recurrence — do not build a second action system in inline fields. See [[Tasks Kanban and Project Tracking]].
+- **SR → Dataview:** the flashcard-queue recipe reads the `#cards` tag; capability dashboards read `last_drilled`/`next_drill`/`mastery_level`. Cards or capability notes with missing fields drop out of the queue. See [[Spaced Repetition and Learning Loops]].
+## Gold-Standard Example
+[[00_Dashboard]] is the canonical live example: it drives enrichment candidates, active projects, projects missing `next`, the AI staging queue, clippings-to-distill, the flashcard queue, orphan notes, and metadata cleanup entirely from frontmatter. It is the proof that the field schema is worth keeping consistent — every block there breaks the moment a note's metadata drifts.
+## Verified Open State
+- Several recipes above query `60_Claude/30_Source_Summaries`, but the live path is `60_Claude/10_Source_Summaries`. Are these recipes stale, and should they be repointed? — *known path drift; repair is tracked in the audit roadmap, out of scope for the current pass*
+- Is `source_status` actually populated on enough notes to query, or is it aspirational? — *the field is documented but inconsistently set*
+- Should DataviewJS/HTML stay enabled given the execution risk, or be restricted? — *risk noted; no change without user decision*
 ## Sources
 
 - [Dataview docs](https://blacksmithgu.github.io/obsidian-dataview/)

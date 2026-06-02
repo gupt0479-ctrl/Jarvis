@@ -1,20 +1,61 @@
 ---
-description: Load the shared Jarvis workspace context and live continuity sources for Markdown and vault work.
+description: Jarvis vault orientation, folder structure, write contract, and live-state sources. Load on every chat.
 alwaysApply: true
 ---
 
-Use the same shared context files as the other AI tools in this workspace.
+# Jarvis Workspace Context
 
-Read and follow:
+This workspace is an Obsidian vault ("Jarvis") used as a personal knowledge system. Treat it as a knowledge system first and a file tree second. Multiple AI tools (Claude, Cursor, Kiro, Copilot) write here, so consistency with the shared rules below is mandatory.
 
-- `AGENTS.md`
-- `AI_CONTEXT.md`
-- `HUMAN_WRITING.md`
+## The six folders
 
-For live state, consult:
+- `10_Areas/` — **Identity.** Canonical truth per domain (Career, Trading, Life, UMN). Patch by heading; never add top-level files without explicit instruction. Holds `Excalidraw/`.
+- `20_Progress/` — **Execution.** Active projects, each with a `next:`.
+- `30_Order/` — **Rules and machinery.** Templates, workflows, CLI tools. Read before writing any note; read-only otherwise.
+- `40_Resources/` — **Reference.** Curated guides, concepts, links. Add one backlinked entry at a time; never bulk-dump.
+- `50_Archive/` — **Dead.** Never read, never write.
+- `60_Claude/` — **AI workshop.** Where AI captures, drafts, and distills. Subfolders: `00_Inbox/`, `05_Clippings/` (raw, read-only), `07_AI_Information/` (agent docs + memory), `10_Source_Summaries/`, `20_Distilled_Notes/`, `35_Outputs/`, `40_Project_Briefs/`, `44_Indexes/`, `50_Reviews/`.
 
-- `00_Dashboard.md`
-- `60_Claude/10_Session_Logs/log.md`
-- `40_Resources/Obsidian/Vault Operating System.md`
+## Write contract (golden rules)
 
-Do not invent a separate Cursor-only context model when these files already exist.
+1. **Never create a file or folder at the vault root.** Root holds only `00_Dashboard.md`, `AGENTS.md`, `CLAUDE.md`, `HUMAN_WRITING.md`, and the numbered folders. This is the most damaging possible mistake.
+2. **When unsure where a note goes, write it to `60_Claude/00_Inbox/`.** Unsure means Inbox, never invent a location.
+3. **Read `30_Order/` (Templates + Workflows) before writing any note.**
+4. **Search before creating.** Extend the canonical note instead of duplicating.
+5. **Preserve frontmatter and wikilinks. Patch by heading.**
+
+## Routing (most common cases)
+
+| Content | Destination |
+|---|---|
+| Raw clip / PDF / import | `60_Claude/05_Clippings/` |
+| Unsure where it goes | `60_Claude/00_Inbox/` |
+| Summary of one source | `60_Claude/10_Source_Summaries/` |
+| Reusable concept | `60_Claude/20_Distilled_Notes/` → promote to `40_Resources/`/`10_Areas/` when stable |
+| Stable reference/guide | `40_Resources/` + backlink to its `10_Areas/` domain |
+| Active project work | `20_Progress/` |
+| Canonical domain fact | `10_Areas/` (patch by heading) |
+| Agent/system doc | `60_Claude/07_AI_Information/` |
+
+Full table: `AGENTS.md`. Placement source of truth: `40_Resources/Obsidian/Jarvis Vault Architecture.md`.
+
+## Shared context files
+
+Follow these (do not invent a Cursor-only context model):
+
+- `AGENTS.md` — write contract and routing
+- `HUMAN_WRITING.md` — voice standard
+- `60_Claude/07_AI_Information/Vault Rules — Complete AI Ruleset.md` — governing ruleset
+- `60_Claude/07_AI_Information/Why We Write Notes.md` — whether a note should exist at all
+- `60_Claude/07_AI_Information/Jarvis Writing and Formatting.md` — Obsidian formatting
+
+## Live state (read before assuming current state)
+
+- `00_Dashboard.md` — control panel
+- `60_Claude/07_AI_Information/Session Logs/log.md` — recent work (this is the correct session-log path)
+- `40_Resources/Obsidian/Vault Operating System.md` — property schema
+
+## When to stop and ask vs proceed
+
+- **Proceed** on naming, formatting, default values, and choosing among equivalent approaches.
+- **Stop and ask** before: editing plugin settings or `.obsidian/`/`.cursor/`/`.claude/` config, restructuring `status: tree` notes, deleting or moving notes, running Git commits/pushes, or any scope change beyond the request.

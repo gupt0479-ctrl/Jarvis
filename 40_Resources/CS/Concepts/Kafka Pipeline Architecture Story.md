@@ -9,8 +9,8 @@ track:
   - systems
 output_kind: interview-story
 source_concepts:
-  - "[[20_Progress/UROP/Learning/Kafka Redis and Workers]]"
-  - "[[20_Progress/UROP/Learning/Docker WSL and Local Setup]]"
+  - "[[Kafka Redis and Workers]]"
+  - "[[Docker WSL and Local Setup]]"
 ---
 # Kafka Pipeline Architecture Story
 ## STAR Format

@@ -13,7 +13,7 @@ notes:
   - "[[AI_CONTEXT]]"
   - "[[HUMAN_WRITING]]"
   - "[[40_Resources/Obsidian/Vault Operating System]]"
-  - "[[60_Claude/7_AI_Information/Plugins]]"
+  - "[[60_Claude/07_AI_Information/Plugins]]"
   - "[[00 Plugin Reference Index]]"
 ---
 # Git Recovery and Vault Safety
@@ -117,6 +117,15 @@ Agents should not:
 - touch `60_Claude/05_Clippings` unless explicitly asked
 - treat `50_Archive` as normal write space
 
+## Integration Map
+- **Obsidian Git ↔ agent edits:** auto-backup-on-change plus a `5`-minute auto-push means the working tree can commit or sync *while an agent is mid-edit*. So an agent must check `git status` before broad work and never assume a clean tree. The plugin's convenience for a human is a coordination hazard for an agent.
+- **`.gitignore` ↔ plugin secrets:** the ignore list covers `copilot`, `quickadd`, and `local-rest-api` `data.json`, plus Copilot vector indexes and workspace state. This is the safety net behind the "document behavior, never values" rule in [[AI Automation and Local Interfaces]] — do not remove these ignores for convenience.
+- **Git ↔ session log:** the session log in `60_Claude/07_AI_Information/Session Logs/log.md` is the human-readable audit trail; Git is the byte-level one. After meaningful edits, the agent appends to the log but does **not** commit unless asked.
+## Gold-Standard Example
+The correct example is a process, not a note: the repo at the start of this very session had ~100 unrelated dirty files (plugin updates, Excalidraw, archive moves). The right handling is to edit only the task's files, stage nothing unrelated, leave the rest of the dirty tree untouched, and never run a broad `add -A` or `reset`. That restraint *is* the gold standard for Git in a vault that multiple tools edit.
+## Verified Open State
+- Is a `5`-minute auto-push cadence still safe while Claude, Cursor, Kiro, and Copilot all edit the vault? — *needs user decision; concurrent writers raise conflict risk*
+- Should agents ever be allowed to commit, or remain commit-free by default? — *current rule is commit-free; confirm it stays*
 ## Sources
 
 - [Obsidian Git docs - Features](https://publish.obsidian.md/git-doc/Features)

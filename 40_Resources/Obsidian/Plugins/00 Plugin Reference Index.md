@@ -12,13 +12,13 @@ notes:
   - "[[AI_CONTEXT]]"
   - "[[HUMAN_WRITING]]"
   - "[[40_Resources/Obsidian/Vault Operating System]]"
-  - "[[60_Claude/7_AI_Information/Plugins]]"
+  - "[[60_Claude/07_AI_Information/Plugins]]"
 ---
 # Plugin Reference Index
 
 This is the stable reference layer for Obsidian plugins in Jarvis.
 
-Use [[60_Claude/7_AI_Information/Plugins]] when an agent needs quick operating rules. Use this folder when the human or an agent needs plugin behavior, settings, source links, syntax examples, safety boundaries, and verification notes.
+Use [[60_Claude/07_AI_Information/Plugins]] when an agent needs quick operating rules. Use this folder when the human or an agent needs plugin behavior, settings, source links, syntax examples, safety boundaries, and verification notes.
 
 ## Start Here
 
@@ -30,7 +30,7 @@ For humans:
 
 For AI agents:
 
-1. Read [[AI_CONTEXT]], [[HUMAN_WRITING]], [[40_Resources/Obsidian/Vault Operating System]], and [[60_Claude/7_AI_Information/Agent Operating Guide]] first.
+1. Read [[AI_CONTEXT]], [[HUMAN_WRITING]], [[40_Resources/Obsidian/Vault Operating System]], and [[Agent Operating Guide]] first.
 2. Use this folder for exact plugin syntax and vault-specific rules.
 3. Do not edit `.obsidian`, plugin `data.json`, secrets, raw clippings, archive material, or Git state unless the user explicitly asks.
 
@@ -38,13 +38,13 @@ For AI agents:
 
 | Workflow | Read | What the plugins let Jarvis do |
 |---|---|---|
-| Capture | [[Templates Capture and Periodic Notes]] | Put notes in the right folder with the right frontmatter instead of creating cleanup work. |
-| Search and retrieval | [[Search Linking and Navigation]] | Find existing notes before making duplicates; use backlinks, Omnisearch, previews, and pinned navigation. |
-| Writing and formatting | [[Appearance Code Math and Reading Experience]] and [[60_Claude/7_AI_Information/Jarvis Writing and Formatting]] | Write Markdown that works in Live Preview, Reading View, Dataview, Tasks, and Spaced Repetition. |
+| Capture | [[Templates Capture and Periodic Notes]], [[QuickAdd Capture Menu]] | Put notes in the right folder with the right frontmatter instead of creating cleanup work. |
+| Search and retrieval | [[Search Linking and Navigation]], [[Omnisearch and Retrieval]] | Find existing notes before making duplicates; use backlinks, Omnisearch, previews, and pinned navigation. |
+| Writing and formatting | [[Appearance Code Math and Reading Experience]] and [[Jarvis Writing and Formatting]] | Write Markdown that works in Live Preview, Reading View, Dataview, Tasks, and Spaced Repetition. |
 | Dashboards | [[Dataview and Dashboards]] | Rebuild live lists from metadata instead of maintaining stale manual indexes. |
 | Tasks and projects | [[Tasks Kanban and Project Tracking]] | Separate atomic actions, project context, and lane-based planning. |
 | Learning and review | [[Spaced Repetition and Learning Loops]] | Turn understood notes into recall prompts, not trivia harvested from raw clippings. |
-| Visual thinking | [[Visual Thinking with Canvas and Excalidraw]] | Use Canvas for spatial maps and Excalidraw for diagrams, annotations, and system sketches. |
+| Visual thinking | [[Visual Thinking with Canvas and Excalidraw]] → [[Canvas Spatial Maps]], [[Excalidraw Diagrams and Annotation]] | Use Canvas for spatial maps of notes and Excalidraw for diagrams, annotations, and system sketches. |
 | AI and automation | [[AI Automation and Local Interfaces]] | Keep Copilot, QuickAdd AI, and Local REST API useful without making secrets or uncontrolled writes part of the note layer. |
 | Safety and recovery | [[Git Recovery and Vault Safety]] | Understand Obsidian Git, File Recovery, dirty worktrees, and restore boundaries. |
 
@@ -58,6 +58,10 @@ For AI agents:
 | Where should a new note go when I am editing outside Obsidian? | [[Templates Capture and Periodic Notes]] |
 | How should I write cards without creating review noise? | [[Spaced Repetition and Learning Loops]] |
 | Should this diagram be Canvas, Excalidraw, or plain Markdown? | [[Visual Thinking with Canvas and Excalidraw]] |
+| How do I lay out notes spatially? | [[Canvas Spatial Maps]] |
+| How do I draw or annotate a figure? | [[Excalidraw Diagrams and Annotation]] |
+| What capture menu should QuickAdd run? | [[QuickAdd Capture Menu]] |
+| Why can't Omnisearch find my PDF? | [[Omnisearch and Retrieval]] |
 | How do I find a note before creating another one? | [[Search Linking and Navigation]] |
 | Can an agent use Copilot, QuickAdd AI, or Local REST API here? | [[AI Automation and Local Interfaces]] |
 | What protects the vault if a write goes wrong? | [[Git Recovery and Vault Safety]] |
@@ -79,9 +83,9 @@ The fastest practical improvement path is not "install more plugins." It is to m
 
 These notes remain the first stop for agent behavior:
 
-- [[60_Claude/7_AI_Information/Agent Operating Guide]]
-- [[60_Claude/7_AI_Information/Jarvis Writing and Formatting]]
-- [[60_Claude/7_AI_Information/Plugins]]
+- [[Agent Operating Guide]]
+- [[Jarvis Writing and Formatting]]
+- [[60_Claude/07_AI_Information/Plugins]]
 
 This folder should not duplicate their short operating rules. It explains the plugin mechanics behind those rules.
 

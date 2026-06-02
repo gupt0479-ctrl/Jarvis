@@ -13,10 +13,10 @@ notes:
   - "[[30_Order/Templates/MOC]]"
   - "[[40_Resources/Obsidian/Vault Operating System]]"
   - "[[40_Resources/Obsidian/Claude Pro Workflow]]"
-  - "[[60_Claude/60_Indexes/Vault Health Dashboard]]"
-  - "[[60_Claude/60_Indexes/Knowledge Enrichment Dashboard]]"
+  - "[[Vault Health Dashboard]]"
+  - "[[Knowledge Enrichment Dashboard]]"
   - "[[40_Resources/Obsidian/Jarvis Enrichment Engine]]"
-  - "[[20_Progress/Projects/Jarvis]]"
+  - "[[Jarvis]]"
   - "[[60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan]]"
 ---
 # Jarvis — AI-Powered PKM
@@ -25,24 +25,24 @@ notes:
 - [[40_Resources/Obsidian/Claude Pro Workflow]]
 - [[CLAUDE.md]]
 - [[AGENTS.md]]
-- [[60_Claude/60_Indexes/Claude Layer Index]]
-- [[60_Claude/60_Indexes/Vault Health Dashboard]]
-- [[60_Claude/60_Indexes/Knowledge Enrichment Dashboard]]
+- [[Claude Layer Index]]
+- [[Vault Health Dashboard]]
+- [[Knowledge Enrichment Dashboard]]
 - [[40_Resources/Obsidian/Jarvis Enrichment Engine]]
-- [[20_Progress/Projects/Jarvis]]
+- [[Jarvis]]
 - [[60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan]]
 - [[30_Order/Templates/MOC]]
 ## Capability Engine
-- [[60_Claude/60_Indexes/Capability Dashboard|Capability Dashboard]]
-- [[60_Claude/60_Indexes/Proof Dashboard|Proof Dashboard]]
-- [[60_Claude/60_Indexes/Question Dashboard|Question Dashboard]]
-- [[60_Claude/60_Indexes/Field OS/AI Field OS|AI Field OS]]
-- [[60_Claude/60_Indexes/Field OS/Systems Field OS|Systems Field OS]]
-- [[60_Claude/60_Indexes/Field OS/Algorithms Field OS|Algorithms Field OS]]
-- [[60_Claude/60_Indexes/Field OS/Career Field OS|Career Field OS]]
-- [[60_Claude/60_Indexes/Field OS/Trading Field OS|Trading Field OS]]
+- [[Capability Dashboard|Capability Dashboard]]
+- [[Proof Dashboard|Proof Dashboard]]
+- [[Question Dashboard|Question Dashboard]]
+- [[AI Field OS|AI Field OS]]
+- [[Systems Field OS|Systems Field OS]]
+- [[Algorithms Field OS|Algorithms Field OS]]
+- [[Career Field OS|Career Field OS]]
+- [[Trading Field OS|Trading Field OS]]
 ## Knowledge Enrichment
-- [[60_Claude/60_Indexes/Knowledge Enrichment Dashboard|Knowledge Enrichment Dashboard]]
+- [[Knowledge Enrichment Dashboard|Knowledge Enrichment Dashboard]]
 - [[40_Resources/Obsidian/Jarvis Enrichment Engine|Jarvis Enrichment Engine]]
 - [[30_Order/Templates/Capability/Jarvis Enrichment Template|Jarvis Enrichment Template]]
 

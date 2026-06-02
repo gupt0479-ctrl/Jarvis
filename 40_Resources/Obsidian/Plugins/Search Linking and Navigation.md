@@ -12,7 +12,7 @@ notes:
   - "[[AI_CONTEXT]]"
   - "[[HUMAN_WRITING]]"
   - "[[40_Resources/Obsidian/Vault Operating System]]"
-  - "[[60_Claude/7_AI_Information/Plugins]]"
+  - "[[60_Claude/07_AI_Information/Plugins]]"
   - "[[00 Plugin Reference Index]]"
 ---
 # Search Linking and Navigation
@@ -63,24 +63,7 @@ Current Hover Editor settings:
 Writing implication: the first paragraph under a heading should say the mechanism or decision, not warm-up prose. A hover preview should let the reader decide whether to open the note.
 
 ## Omnisearch
-
-Current settings:
-
-- Cache enabled.
-- Fuzziness: `1`.
-- PDF indexing: disabled.
-- Office indexing: disabled.
-- Image indexing: disabled.
-- AI image indexing: disabled.
-- HTTP API: disabled.
-- Filename weight: `10`.
-- Directory weight: `7`.
-- H1/H2/H3 weights: `6`, `5`, `4`.
-- Excerpts and highlighting: enabled.
-
-Use Omnisearch for broad vault retrieval. Do not assume attachments, PDFs, images, or Office files are indexed.
-
-Needs verification: whether to add Text Extractor and enable richer indexing.
+Omnisearch has its own deep reference now: [[Omnisearch and Retrieval]]. Short version: fuzzy ranked full-text search, weights filenames and headings highest, indexes Markdown only (PDF/Office/image indexing all off). Use it for broad human retrieval; do not assume any attachment is searchable. The Text Extractor decision and full settings live in that doc.
 
 ## Quick Switcher and Recent Files
 
@@ -141,6 +124,15 @@ When an agent cannot find a note:
 4. Check relevant dashboards.
 5. Create a new note only after naming why it is not a duplicate.
 
+## Integration Map
+- **Hover Editor ← first lines:** the `300ms` hover preview shows a note's opening. So the rule "the first line under a heading states the mechanism, not warm-up prose" is a Hover Editor optimization, not a style preference — a good first line lets the reader decide without opening the note.
+- **Hover Editor → Omnisearch:** both reward the same thing — precise headings and a useful first paragraph. Omnisearch ranks them; Hover Editor displays them. See [[Omnisearch and Retrieval]].
+- **File Explorer++ → navigation landmarks:** pinned dashboards/boards are the human entry points; agents should read [[00_Dashboard]] and the session log instead of relying on Recent Files, which is weak session context.
+## Gold-Standard Example
+[[10_Areas/UMN/Previous Classes/CSCI/CSCI 4041/Concepts/Algorithms/HeapSort|HeapSort]] previews well on hover because its first lines state the mechanism, and it ranks well in Omnisearch because its headings name specific things. Contrast a note whose first heading is "Overview" followed by warm-up prose — it previews as noise and ranks for nothing.
+## Verified Open State
+- Should source-summary folders (`60_Claude/10_Source_Summaries/`) be pinned in File Explorer++ for quick navigation, as the audit suggested? — *human layout preference; needs user choice*
+- Is the `Alt+C` Calendar hotkey live, or a leftover from an uninstalled Calendar plugin? — *unresolved across inventory*
 ## Sources
 
 - [Obsidian Help - Backlinks](https://help.obsidian.md/plugins)

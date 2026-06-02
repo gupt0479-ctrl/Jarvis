@@ -8,8 +8,8 @@ related_progress:
   - "[[Compound Progress Framework]]"
   - "[[Career Strategy]]"
   - "[[Arc (Learning Tracker)]]"
-  - "[[20_Progress/UROP/BOOM Systems Engineering Bullet]]"
-  - "[[Observability-First ML Pipeline Brief]]"
+  - "[[20_Progress/Projects/UROP/BOOM Systems Engineering Bullet]]"
+  - "[[60_Claude/35_Outputs/Observability-First ML Pipeline Brief]]"
   - "[[Portfolio]]"
 tags:
   - "#progress"

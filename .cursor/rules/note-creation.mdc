@@ -1,0 +1,50 @@
+---
+description: Concrete formatting and structure rules applied whenever a Markdown note is in context.
+globs: **/*.md
+alwaysApply: false
+---
+
+# Note Creation Rules
+
+Applies when editing any `.md` note in the vault. Pair with `vault-behavior.mdc` (placement/safety) and `human-writing.mdc` (voice).
+
+## Frontmatter
+
+Open every note with YAML using only canonical fields (see `vault-behavior.mdc`). One instance of each key. Verify `notes:` wikilinks exist before writing them. Zero blank lines between the closing `---` and the `#` title.
+
+## Blank lines (check every save)
+
+- Zero between heading and first content line.
+- Zero between consecutive list items.
+- Zero between consecutive sections.
+- One only after a callout/blockquote before prose.
+- `---` only as the frontmatter terminator — never as a body divider.
+
+## Formatting markers (they carry SR cloze meaning)
+
+- `==highlight==` → exactly **one per major `##` section**: the single most important definitional claim. Becomes an SR cloze in `#cards` notes. Do not scatter.
+- `**bold**` → named concepts/entities on first use, category labels, key contrast words. In `#cards` sections every bold term becomes a cloze, so bold only what should be tested.
+- `*label:*` → sub-category intro labels (`*Mechanism:*`, `*Failure mode:*`). Not a cloze.
+- Numbered items with sub-content: `1. **Title**` then **tab-indented** sub-lines (not spaces).
+
+## Plugin syntax at creation time
+
+- **Math:** `$...$` inline, `$$...$$` display, for any notation. Explain the equation in prose.
+- **Tasks:** `## Open Questions` uses `- [ ]` (`- [/]` in progress, `- [x]` done, `- [-]` cancelled). Dates/priority in Tasks emoji format, not inline fields.
+- **Flashcards:** source/PDF/class notes end with `## Flashcards` tagged `#cards/[track]`. Single-line `question::answer`; multiline `question` / `?` / `answer`. 3–5 minimum, after the concept is explained.
+- **Dataview:** put queryable facts in frontmatter, not prose; do not hand-maintain a list Dataview should generate.
+- **Excalidraw/Canvas:** embed with `![[Name.excalidraw]]` / `[[Name.canvas]]`; always keep a text anchor near any visual.
+
+## Template matching (note created outside Obsidian skips Templater — apply by hand)
+
+| Folder | Template intent |
+|---|---|
+| `60_Claude/10_Source_Summaries/` | `Clipping Distill Template` — `## Full Content`, `## Open Questions` (tasks), `## Flashcards` |
+| `10_Areas/UMN/` week notes | `Week Template` — incl. `## Lecture-to-textbook synthesis` |
+| concept notes | `Concept Template` — one-line answer, mechanism, failure modes, evidence |
+| `40_Resources/` / `20_Distilled_Notes/` | `For Evergreen` body structure |
+| `20_Progress/` | `For Progress` — goal, current state, `next:`, log |
+
+## Source-note structure order (Vault Rules Part 9)
+
+Frontmatter → `# Title` → `**Source:** / **Ingested:** / **Pages:**` → `## Source` → `## Key Claims` → `## Full Content` (### using the source's exact section titles) → `## Why It Matters` → `## Links Into The Vault` → `## Open Questions` (tasks) → `## Flashcards`.

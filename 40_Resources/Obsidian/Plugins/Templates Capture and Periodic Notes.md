@@ -12,7 +12,7 @@ notes:
   - "[[AI_CONTEXT]]"
   - "[[HUMAN_WRITING]]"
   - "[[40_Resources/Obsidian/Vault Operating System]]"
-  - "[[60_Claude/7_AI_Information/Plugins]]"
+  - "[[60_Claude/07_AI_Information/Plugins]]"
   - "[[00 Plugin Reference Index]]"
 ---
 # Templates Capture and Periodic Notes
@@ -54,31 +54,8 @@ When an agent writes files through the filesystem, Obsidian may not run Template
 
 Do not leave a note without frontmatter because the file was created outside Obsidian.
 
-## QuickAdd State
-
-Observed state:
-
-- Plugin installed and lazy-loaded.
-- Hotkey `Alt+Q` runs QuickAdd.
-- `choices` count is `0`.
-- Online features are disabled.
-- Selection-as-capture-value is enabled.
-- AI provider configuration exists, but secrets must not be exposed.
-
-QuickAdd is one of the highest-value unused plugins because it can turn folder rules into a fast menu.
-
-Proposed choices after approval:
-
-| Choice | Destination | Template behavior |
-|---|---|---|
-| Inbox capture | `60_Claude/00_Inbox` | Quick thought with minimal metadata and a review prompt. |
-| Source clipping | `60_Claude/05_Clippings` | Raw source container; do not rewrite content. |
-| Project note | `20_Progress/Projects` or active project folder | Progress template and `next:` prompt. |
-| Concept note | `40_Resources` or `60_Claude/20_Distilled_Notes` | Evergreen/concept metadata and related notes. |
-| Daily review | `60_Claude/50_Reviews/Daily` | Periodic Notes template. |
-| Flashcard candidate | current note or inbox | Adds a review prompt, not a finished card bank. |
-
-Do not configure these choices during documentation work.
+## QuickAdd
+QuickAdd has its own deep reference now: [[QuickAdd Capture Menu]]. Short version: installed, lazy-loaded, `Alt+Q` bound, but `choices` is empty, so the capture menu does nothing. It is the highest-value unused plugin because it turns the routing table into a one-keystroke menu. Proposed choices and the full integration with Templater live in that doc. Do not configure choices during documentation work — it edits `data.json`.
 
 ## Periodic Notes Review Flow
 
@@ -95,7 +72,7 @@ Review notes should pull from [[00_Dashboard]], recent session log entries, open
 
 ## Capture Destination Rules
 
-Use [[60_Claude/7_AI_Information/Agent Operating Guide]] as the full folder map. The short rule:
+Use [[Agent Operating Guide]] as the full folder map. The short rule:
 
 - Raw or imported material -> `60_Claude/05_Clippings`.
 - AI output awaiting review -> `60_Claude/00_Inbox`.
@@ -128,6 +105,18 @@ When creating a note:
 
 The template gets the note into the right shape. [[HUMAN_WRITING]] decides whether the prose is worth keeping.
 
+## Integration Map
+- **Templater → frontmatter schema:** the folder template fires on note creation inside Obsidian and stamps canonical fields. This is the mechanism that keeps [[Dataview and Dashboards]] queries reliable — a note created outside Obsidian skips Templater, so the agent must apply the same fields by hand.
+- **Templater ↔ QuickAdd:** a QuickAdd Template choice points at a `30_Order/Templates/` file; QuickAdd places the note and Templater fills it. They must agree on the destination folder. See [[QuickAdd Capture Menu]].
+- **Periodic Notes → reviews:** Periodic Notes creates dated review notes from the Headway templates into `60_Claude/50_Reviews/`. The review pulls from [[00_Dashboard]], the session log tail, and open tasks — it is a read-of-state, not a new data source.
+- **Templater bug surface:** `60_Claude/30_Source_Summaries` appears in the folder-template map, but the live source-summary path is `60_Claude/10_Source_Summaries`. A template bound to the dead path never fires.
+## Gold-Standard Example
+- *Templater output:* [[10_Areas/UMN/Previous Classes/Minor/MGMT 3001/Week - 9|Week - 9]] is what the `Week Template` folder template should produce — class frontmatter, the right section skeleton, ready for content.
+- *Periodic Notes output:* [[60_Claude/50_Reviews/Weekly Synthesis/Weekly Synthesis — 2026-W22|Weekly Synthesis — 2026-W22]] is a real review note in the configured folder.
+## Verified Open State
+- The folder map lists `60_Claude/30_Source_Summaries`; the live path is `10_Source_Summaries`. Which folders actually have a Templater template bound, and should the map be repointed? — *path drift; confirm in Templater settings*
+- Should `60_Claude/07_AI_Information` get its own folder template? — *unresolved; raised in the gaps register*
+- Several `Metadata/For *` templates are frontmatter-only shells (`For Evergreen`, `For Progress`) — they need bodies before they teach anything. — *addressed in the template-enrichment work, tracked separately*
 ## Sources
 
 - [Templater docs](https://silentvoid13.github.io/Templater/)
@@ -136,4 +125,4 @@ The template gets the note into the right shape. [[HUMAN_WRITING]] decides wheth
 - [QuickAdd Macro choice](https://quickadd.obsidian.guide/docs/Choices/MacroChoice/)
 - [Periodic Notes README](https://github.com/liamcain/obsidian-periodic-notes)
 - [[40_Resources/Obsidian/Vault Operating System]]
-- [[60_Claude/7_AI_Information/Agent Operating Guide]]
+- [[Agent Operating Guide]]

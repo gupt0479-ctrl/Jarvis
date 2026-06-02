@@ -12,7 +12,7 @@ notes:
   - "[[AI_CONTEXT]]"
   - "[[HUMAN_WRITING]]"
   - "[[40_Resources/Obsidian/Vault Operating System]]"
-  - "[[60_Claude/7_AI_Information/Plugins]]"
+  - "[[60_Claude/07_AI_Information/Plugins]]"
   - "[[00 Plugin Reference Index]]"
 ---
 # Appearance Code Math and Reading Experience
@@ -170,6 +170,15 @@ Avoid:
 
 The final test is still [[HUMAN_WRITING]]: the note should contain mechanism, contrast, examples, or decisions.
 
+## Integration Map
+- **Latex Suite → SR cloze interaction:** math written as `$...$` is safe in a `#cards` section, but wrapping a term in `**bold**` *inside* a card to "emphasize" it creates an unwanted cloze. Keep emphasis in math notation, not bold, inside card answers. See [[Spaced Repetition and Learning Loops]].
+- **Code Styler → fenced blocks:** language-tagged fences (` ```dataview `, ` ```tasks `, ` ```yaml `) are what make Dataview/Tasks blocks executable and readable. An unlabeled fence loses both styling and, for query languages, execution.
+- **Appearance → semantic Markdown:** `headerspace.css` handles heading spacing, which is *why* the vault's zero-blank-line rule works — blank lines added "for breathing room" are redundant with the CSS and count as errors. The styling layer enables the formatting rule.
+## Gold-Standard Example
+[[10_Areas/UMN/Previous Classes/CSCI/CSCI 4041/Concepts/Algorithms/HeapSort|HeapSort]] is the model for math + code in one note: inline `$O(n)$` vs `$O(n \log n)$` distinctions explained in prose, with the mechanism stated rather than the formula left to stand alone. Contrast the anti-pattern — spelling out "n log n" in words when the symbol is clearer, or pasting a full source file into an evergreen note.
+## Verified Open State
+- Which Latex Suite snippets are active, and should any custom ones be documented as vault conventions (e.g. preferred notation for probability/expectation)? — *unverified; snippet config not yet read*
+- Does `myedits.css` change anything semantically relevant, or is it purely cosmetic? — *needs verification before relying on its effects*
 ## Sources
 
 - [Obsidian Help - Appearance](https://obsidian.md/help/appearance)

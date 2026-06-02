@@ -7,7 +7,7 @@ tags:
   - evergreen
   - synthesis
 concepts:
-  - "[[20_Progress/UROP/Learning/Kafka Redis and Workers]]"
+  - "[[Kafka Redis and Workers]]"
   - "[[40_Resources/CS/AI/MCPs]]"
 tracks:
   - systems

@@ -21,6 +21,9 @@ Invoke this agent when:
 
 Before scanning or editing, read:
 
+- `60_Claude/07_AI_Information/Vault Map.md`
+- `AGENTS.md` (the Write Contract you are enforcing)
+- `40_Resources/Obsidian/Jarvis Vault Architecture.md`
 - `AI_CONTEXT.md`
 - `HUMAN_WRITING.md`
 - `40_Resources/Obsidian/Vault Operating System.md`
@@ -33,12 +36,12 @@ Before scanning, search for the most recent note tagged `ops-health` (by `create
 
 Read structure across all folders:
 
-- `00_Inbox/` — Unprocessed items
-- `20_Progress/` — Active projects (check for stalled)
-- `40_Resources/` — Reference knowledge (check for gaps)
-- `60_Claude/` — Claude layer (full lint from `/lint-claude-layer`)
-- `10_UMN/` — Course material
-- `50_Archive/` — Historical (check for stale links)
+- `10_Areas/` — Identity hubs + coursework (check hubs link out; do not bloat)
+- `20_Progress/` — Active projects (check for stalled, missing `next:`)
+- `40_Resources/` — Reference knowledge (check for gaps, uncurated bulk dumps)
+- `60_Claude/` — AI workshop (full lint; flag mature `20_Distilled_Notes` ready to promote)
+- `60_Claude/00_Inbox/` — Unprocessed items
+- `50_Archive/` — **Never read.** Excluded by the Write Contract; skip entirely.
 
 ### 2. Check Categories
 
@@ -65,6 +68,13 @@ Read structure across all folders:
 - Projects unchanged for 30+ days
 - Projects with `status: seed` that should be archived
 
+**Write Contract enforcement (per AGENTS.md):**
+- Any file at the vault root that is not one of the four contract files (`00_Dashboard.md`, `AGENTS.md`, `CLAUDE.md`, `HUMAN_WRITING.md`) — flag to move
+- Anything in `30_Order/` that is not a template, workflow, or tool — flag as misfiled
+- Any `10_Areas/` file that looks like active project work — belongs in `20_Progress/`
+- Bulk AI distillations sitting in `40_Resources/` without backlinks — flag the curation breach
+- Mature `60_Claude/20_Distilled_Notes/` concepts (`status: tree`, reused) — flag for promotion per [[Promotion]]
+
 ### 3. Create Curator Report
 
 Create `60_Claude/50_Reviews/Vault Curator Report - YYYY-MM-DD.md`:
@@ -78,7 +88,7 @@ tags:
   - lint
   - vault-health
 notes:
-  - "[[60_Claude Board]]"
+  - "[[Claude Board]]"
   - "[[CLAUDE.md]]"
 ---
 

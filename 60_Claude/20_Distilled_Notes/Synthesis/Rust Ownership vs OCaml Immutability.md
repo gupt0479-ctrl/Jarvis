@@ -7,7 +7,7 @@ tags:
   - evergreen
   - synthesis
 concepts:
-  - "[[20_Progress/UROP/Learning/Rust Patterns in BOOM]]"
+  - "[[Rust Patterns in BOOM]]"
   - "[[60_Claude/20_Distilled_Notes/OCaml Pattern Matching]]"
 tracks:
   - systems

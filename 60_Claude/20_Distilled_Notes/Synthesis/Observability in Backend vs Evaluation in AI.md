@@ -7,7 +7,7 @@ tags:
   - evergreen
   - synthesis
 concepts:
-  - "[[20_Progress/UROP/Learning/Observability and Tracing]]"
+  - "[[Observability and Tracing]]"
   - "[[40_Resources/CS/AI/AI Workflow]]"
 tracks:
   - systems

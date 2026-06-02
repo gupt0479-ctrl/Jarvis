@@ -1,30 +1,27 @@
 ---
 type: concept
-course:
 status: sprout
-mastery (1/10): 0
-created:
-topics: []
-related:
-  - "[[40_Resources/CS/Links|Links]]"
+created: <% tp.date.now("YYYY-MM-DD") %>
+updated: <% tp.date.now("YYYY-MM-DD") %>
+course:
+track:  # ai | systems | algorithms | career | trading | general
+mastery_level: 0  # 0–10; replaces the old invalid "mastery (1/10)" key
+prerequisites: []  # "[[Concept this depends on]]"
+used_in: []  # "[[Course/project where this concept appears]]"
+evidence: []  # "[[Note proving you can use it]]"
+tags:
+  - concept
+related: []
 ---
-# 
-## MOC
-- [[W__ L__ - ...]]
-- [[HW__ - ...]]
-## Definition
-- 
-## Resources
-- 
-### How to use them
-1. 
-2. 
-## 
-
-## Common mistakes
-- 
-## Mini-test (answer without looking)
-- [ ] Flashcards
-- [ ] 
-## Flashcards (best 3–8)
-
+# <% tp.file.title %>
+## One-Line Answer
+== ==
+## Mechanism
+## Contrast / What It Is Not
+## Failure Modes / Misconceptions
+> [!WARNING]
+>
+## Evidence From This Vault
+- [[ ]]
+## Flashcards
+#cards/[track]

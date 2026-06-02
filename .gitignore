@@ -11,7 +11,7 @@
 .claude/settings.json
 .claude/settings.local.json
 .kiro/settings/
-
+.mcp.json
 
 # Copilot vector index (large, regenerated)
 .obsidian/copilot-index-*.json
@@ -23,3 +23,17 @@ desktop.ini
 
 # Large binary blobs (keep images tracked but ignore temp)
 *.tmp
+
+# Local secrets (MCP tokens, API keys) — never commit
+.env
+.env.local
+.claude/.env.local
+
+# Jarvis memory registry (generated, regenerable)
+30_Order/System/jarvis-memory/*.sqlite
+30_Order/System/jarvis-memory/*.sqlite-wal
+30_Order/System/jarvis-memory/*.sqlite-shm
+
+# Python caches
+__pycache__/
+*.pyc

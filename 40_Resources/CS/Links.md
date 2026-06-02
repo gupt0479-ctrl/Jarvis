@@ -53,9 +53,9 @@ notes:
 - [Subquadratic](https://subq.ai/) (soon)
 - 
 ### Tools
-- [Skills](https://skills.sh/) → [[60_Claude/30_Source_Summaries/Vault Web Ingestion/Skills|source note]]
+- [Skills](https://skills.sh/) → [[60_Claude/10_Source_Summaries/Web Ingestion/Skills|source note]]
 - [Search Github for API Keys](https://gist.github.com/win3zz/0a1c70589fcbea64dba4588b93095855#gistcomment-5903810)
-- [Free LLM API Sources](https://github.com/cheahjs/free-llm-api-resources?tab=readme-ov-file#free-providers) → [[60_Claude/30_Source_Summaries/Vault Web Ingestion/Free LLM API Sources (github.com)|source note]]
+- [Free LLM API Sources](https://github.com/cheahjs/free-llm-api-resources?tab=readme-ov-file#free-providers) → [[Free LLM API Sources (github.com)|source note]]
 - [Free OpenAI Keys](https://github.com/dan1471/FREE-openai-api-keys)
 - Free llm models - [Openrouter](https://openrouter.ai/)
 - Sell your product: [Whop](https://whop.com/discover/)

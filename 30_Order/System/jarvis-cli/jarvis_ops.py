@@ -18,14 +18,16 @@ from pathlib import Path
 from typing import Iterable
 
 
-TODAY = dt.date(2026, 4, 24)
+TODAY = dt.date.today()
 DATE_FIELDS = {"created", "updated", "reviewed", "last_drilled", "next_drill"}
 REPORT_DIR = Path("60_Claude/50_Reviews/Ops Reports")
-SESSION_LOG = Path("60_Claude/10_Session_Logs/log.md")
+SESSION_LOG = Path("60_Claude/07_AI_Information/Session Logs/log.md")
 CONTEXT_FILES = [
-    Path("AI_CONTEXT.md"),
+    Path("60_Claude/07_AI_Information/Vault Map.md"),
+    Path("AGENTS.md"),
+    Path("60_Claude/07_AI_Information/AI_CONTEXT.md"),
     Path("00_Dashboard.md"),
-    Path("40_Resources/Obsidian/Vault Operating System.md"),
+    Path("40_Resources/Obsidian/Jarvis Vault Architecture.md"),
 ]
 MOJIBAKE_PATTERNS = [
     "â€”",
@@ -60,7 +62,7 @@ ENRICHMENT_HEADINGS = [
     "Understanding Proof",
 ]
 ENRICHMENT_FOLDERS = (
-    "10_UMN/",
+    "10_Areas/",
     "20_Progress/",
     "40_Resources/",
     "60_Claude/20_Distilled_Notes/",
@@ -107,7 +109,9 @@ def main(argv: list[str] | None = None) -> int:
     files = load_markdown_files(root, include_tools=args.include_tools)
     ctx = build_audit_context(root, files)
 
-    if args.command == "health":
+    if args.command == "status":
+        print_status(root, ctx)
+    elif args.command == "health":
         print_health(ctx, args.limit)
     elif args.command == "context":
         print_context_pack(root, ctx, args.limit)
@@ -145,7 +149,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--limit", type=int, default=25, help="Rows to show per section.")
     parser.add_argument(
         "command",
-        choices=["health", "context", "projects", "links", "dates", "encoding", "enrich-candidates", "report"],
+        choices=["status", "health", "context", "projects", "links", "dates", "encoding", "enrich-candidates", "report"],
     )
     return parser
 
@@ -159,7 +163,7 @@ def resolve_vault_root(explicit: Path | None) -> Path | None:
 
     for candidate in candidates:
         path = candidate.resolve()
-        if (path / "AI_CONTEXT.md").exists() and (path / ".obsidian").exists():
+        if (path / "00_Dashboard.md").exists() and (path / ".obsidian").exists():
             return path
     return None
 
@@ -530,6 +534,27 @@ def is_placeholder_target(target: str) -> bool:
     return False
 
 
+def print_status(root: Path, ctx: dict[str, object]) -> None:
+    files = typed_list(ctx["files"], MarkdownFile)
+    projects = typed_list(ctx["projects"], ProjectInfo)
+    active = [row for row in projects if row.status != "archived"]
+    missing_next = [row for row in active if not row.next_action]
+    registry_db = root / "30_Order/System/jarvis-memory/registry.sqlite"
+
+    print("# Jarvis Status")
+    print()
+    print(f"- Date: {TODAY.isoformat()}")
+    print(f"- Markdown files: {len(files)}")
+    print(f"- With frontmatter: {len(typed_list(ctx['with_frontmatter'], MarkdownFile))}")
+    print(f"- Missing type / status: {len(typed_list(ctx['missing_type'], MarkdownFile))} / {len(typed_list(ctx['missing_status'], MarkdownFile))}")
+    print(f"- Active projects: {len(active)} ({len(missing_next)} missing `next`)")
+    print(f"- Enrichment candidates: {len(ctx['enrichment_candidates'])}")
+    print(f"- Broken / ambiguous wikilinks: {len(ctx['broken_links'])} / {len(ctx['ambiguous_links'])}")
+    print(f"- Future-dated fields: {len(ctx['future_dates'])}")
+    registry_state = "built" if registry_db.exists() else "not built (run: python 30_Order/System/jarvis-memory/registry.py index)"
+    print(f"- Memory registry: {registry_state}")
+
+
 def print_health(ctx: dict[str, object], limit: int) -> None:
     files = typed_list(ctx["files"], MarkdownFile)
     projects = typed_list(ctx["projects"], ProjectInfo)
@@ -673,7 +698,7 @@ def write_report(root: Path, ctx: dict[str, object], limit: int) -> Path:
         "  - vault-health",
         "notes:",
         "  - \"[[00_Dashboard]]\"",
-        "  - \"[[60_Claude/60_Indexes/Vault Health Dashboard]]\"",
+        "  - \"[[60_Claude/44_Indexes/Vault Health Dashboard]]\"",
         "---",
         "",
         f"# Jarvis Ops Report - {TODAY.isoformat()}",

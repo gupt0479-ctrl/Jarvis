@@ -1,155 +1,131 @@
 # ingest-clipping
 
-**Description:** Read one or more items from `60_Claude/05_Clippings/` and turn them into durable notes in `60_Claude/`.
+**Description:** Ingest any source — PDF, image, web link, markdown file — into a structured summary in `60_Claude/10_Source_Summaries/`.
 
-**Usage:** `/ingest-clipping "filename.md"` or `/ingest-clipping` (prompts for file)
+**Usage:**
+- `/ingest-clipping "PDFs/filename.pdf"` — PDF in 05_Clippings/PDFs/
+- `/ingest-clipping "Web/filename.md"` — web clip in 05_Clippings/Web/
+- `/ingest-clipping "https://example.com"` — live URL
+- `/ingest-clipping` — list available clippings and ask
 
 ---
 
-## Instructions
+## Source Type Routing
 
-When this skill is invoked:
+| Input | Read method | Output subfolder |
+|-------|-------------|-----------------|
+| `.pdf` in `05_Clippings/PDFs/` | Python pypdf via Bash | `10_Source_Summaries/PDF Ingestion/` |
+| `.png/.jpg/.jpeg/.webp` | `Read` tool (multimodal) | `10_Source_Summaries/PDF Ingestion/` |
+| `http://` or `https://` URL | `WebFetch` tool | `10_Source_Summaries/Web Ingestion/` |
+| `.md` in `05_Clippings/Web/` | `Read` tool | `10_Source_Summaries/Web Ingestion/` |
+| `.md` in `05_Clippings/Videos/` | `Read` tool | `10_Source_Summaries/Video Ingestion/` |
+| `.md` in `05_Clippings/AI Conversations/` | `Read` tool | `10_Source_Summaries/Web Ingestion/` |
 
-### 1. Read the Source
+If no path given, list `60_Claude/05_Clippings/` subfolders and ask.
 
-- Open the specified file from `60_Claude/05_Clippings/`
-- If no file specified, list available clippings and ask user to choose
-- Read the full content including frontmatter
+---
 
-### 2. Extract Key Information
+## Step 1 — Read the Source
 
-Extract and organize:
+### PDFs
+Extract with Python. `pypdf` is installed on this system:
+```bash
+python -c "
+import pypdf, sys
+sys.stdout.reconfigure(encoding='utf-8')
+reader = pypdf.PdfReader(r'FULL_WINDOWS_PATH')
+print(f'Total pages: {len(reader.pages)}')
+for i, page in enumerate(reader.pages):
+    print(f'\n=== Page {i+1} ===')
+    print(page.extract_text())
+"
+```
+For PDFs over 30 pages, batch: `reader.pages[:20]`, then `reader.pages[20:40]`. If the output is blank or garbled binary, the PDF is image-based (scanned) — tell the user, OCR is needed.
 
-- **Title** — From frontmatter or first heading
-- **Source URL** — From frontmatter `source:` field
-- **Author** — If available
-- **Key claims** — Main arguments or findings (3-8 bullets)
-- **Entities** — People, organizations, products, tools mentioned
-- **Concepts** — Ideas that deserve their own notes
-- **Quotes** — Notable passages worth preserving verbatim
-- **Actions** — Things the user might want to do (follow up, research, build)
+### Images
+Use the `Read` tool. Claude is multimodal — it will see the image. Extract all visible text, labels, numbers, annotations, and URLs.
 
-### 3. Create Summary Note
+### Web URLs
+Use `WebFetch` with `format: "markdown"`. If paywalled, tell the user and ask for pasted content.
 
-Create a new note in `60_Claude/30_Source_Summaries/`:
+### Markdown clips
+Use `Read` on the file in `05_Clippings/`. Never modify the raw file.
 
-```markdown
+---
+
+## Step 2 — Extract Content
+
+**The goal: every line in the source should appear in the note in some form.** After ingestion, the user should never need to open the original PDF again.
+
+- Map the document structure first: list every heading and subheading before writing.
+- Preserve the source's own section order and headings exactly.
+- Reproduce all numbered steps, frameworks, checklists, and lists in full — do not compress them.
+- Do not summarize away detail. If the source has 6 steps, write all 6. If it has 5 project types, write all 5 with every sub-bullet.
+- Every named concept, framework, term, tool, company, or person gets captured.
+- Every "interview value", "key skill", warning, or emphasis in the source becomes a callout.
+
+---
+
+## Step 3 — Write the Summary Note
+
+Filename: `[Descriptive Title] ([type]).md` in the routed subfolder.
+
+> **Read `30_Order/Standards/Source Summary Standard.md` before writing the note body.** It is the single source of truth for what goes under each heading, how dense each section is, which plugin syntax applies (highlights, bold, italics, callouts, math), and the flashcard rules and failure modes. Do not duplicate those content rules here.
+
+Frontmatter skeleton (no duplicate keys; verify every `notes:` wikilink exists with Grep first):
+```yaml
 ---
 type: input
-input_kind: source-summary
 status: sprout
 created: YYYY-MM-DD
-source_url: [original URL]
-source_note: "[[60_Claude/05_Clippings/Original File]]"
-related_progress: []
+updated: YYYY-MM-DD
 tags:
-  - input
-  - source-summary
-next: "[[Next Action]]"
+  - summary
+notes:
+  - "[[Confirmed Existing Note]]"
+source_url: 60_Claude/05_Clippings/PDFs/Filename.pdf
+source_note: "[[Filename.pdf]]"
+input_kind: pdf
+track: <ai|systems|algorithms|career|trading|general>
 ---
-
-# [Title] — Summary
-
-**Source:** [Original clipping link]  
-**Ingested:** YYYY-MM-DD
-
-## Key Takeaways
-
-- [Takeaway 1]
-- [Takeaway 2]
-- [Takeaway 3]
-
-## Main Claims
-
-> [Notable quote or claim]
-
-## Entities Mentioned
-
-- Entity 1 — brief description
-- Entity 2 — brief description
-
-## Concepts to Explore
-
-- [[Concept 1]] — why it matters
-- [[Concept 2]] — connection to this source
-
-## Actions
-
-- [ ] [Action item 1]
-- [ ] [Action item 2]
-
-## Related Notes
-
-- [[Related Note 1]]
-- [[Related Note 2]]
-
----
-
-*Generated by Claude Code ingestion workflow*
 ```
+`source_note` is the filename with extension, no path. `track` sets the flashcard deck (`track: trading` → `#cards/trading`).
 
-### 4. Update Related Notes
+---
 
-For each entity or concept identified:
+## Step 4 — Log the Session
 
-- **If note exists:** Add a backlink and brief mention under a `## Mentions` or `## Sources` heading
-- **If note doesn't exist:** Create a stub in `60_Claude/20_Distilled_Notes/` or `40_Resources/` with:
-  ```markdown
-  ---
-  type: concept
-  status: seed
-  created: YYYY-MM-DD
-  tags:
-    - concept
-  notes:
-    - "[[Source Summary Note]]"
-  ---
-  
-  # [Concept Name]
-  
-  ## Definition
-  
-  [Brief definition from source]
-  
-  ## Sources
-  
-  - [[60_Claude/30_Source_Summaries/Source Summary]]
-  ```
+Append to `60_Claude/07_AI_Information/Session Logs/log.md`:
 
-### 5. Update Index
-
-Append to `60_Claude/60_Indexes/Claude Layer Index.md`:
-
-- Add entry under "Source Summaries" table
-- Add entry under "Distilled Notes" table for any new concept pages
-
-### 6. Log the Session
-
-Append to `60_Claude/10_Session_Logs/log.md`:
-
-```markdown
+```
 ## [YYYY-MM-DD] ingest | [Source Title]
 
-- Created: [[60_Claude/30_Source_Summaries/Summary Note]]
-- Updated: [[Entity 1]], [[Entity 2]]
-- Created stubs: [[New Concept]]
-- Actions: [count]
+- Source: `60_Claude/05_Clippings/[path]` ([type])
+- Created: [[60_Claude/10_Source_Summaries/[Subfolder]/Note Name]]
+- Pages: [X]
+- Promotion candidates: [any claims worth distilling]
 ```
-
-### 7. Present Results to User
-
-Show the user:
-
-1. Link to the created summary
-2. List of notes updated or created
-3. Any questions or ambiguities encountered
-4. Suggested next steps (e.g., "Review the summary and file actions")
 
 ---
 
-## Safety Constraints
+## Step 5 — Present Results
 
-- **Never modify** files in `60_Claude/05_Clippings/` — they are immutable sources
-- **Search before creating** — Use MCP search to check if entity/concept notes already exist
-- **Respect existing structure** — If a concept fits better in `40_Resources/CS/`, put it there
-- **Ask before major rewrites** — If a source contradicts existing notes, flag it for user review
+Tell the user:
+1. Link to the created summary.
+2. Page count processed.
+3. Any blank pages (scanned PDFs).
+4. Promotion candidates — ask before creating distilled notes.
+
+---
+
+## Before Saving
+
+Run the Done Conditions in `30_Order/Standards/Source Summary Standard.md` and the 16-point quality gate in `60_Claude/07_AI_Information/Vault Rules — Complete AI Ruleset.md` Part 12. Do not save until both pass.
+
+---
+
+## Safety Rules
+
+- Never modify `60_Claude/05_Clippings/` — read-only raw sources.
+- Search before creating — extend an existing summary if one already exists.
+- Route correctly — PDFs → `PDF Ingestion/`, web → `Web Ingestion/`, video → `Video Ingestion/`.

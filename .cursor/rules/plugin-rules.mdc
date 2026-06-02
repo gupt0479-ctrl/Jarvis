@@ -1,0 +1,40 @@
+---
+description: When to use each Obsidian plugin in Jarvis and the exact syntax. Load on every chat.
+alwaysApply: true
+---
+
+# Plugin Rules
+
+Compact decision layer. Deep references: `40_Resources/Obsidian/Plugins/` (one doc per plugin or theme; start at `00 Plugin Reference Index`).
+
+## Decision table
+
+| Use this | When | Syntax |
+|---|---|---|
+| **Dataview** | A list should stay current from frontmatter/tags/links | ` ```dataview ` query; query notes, not actions |
+| **Tasks** | A real action with due/scheduled/recurrence/priority | `- [ ] action 📅 2026-06-01`; `- [/]`, `- [x]`, `- [-]` |
+| **`next:` field** | The note has one current move (not many) | `next: "[[Next note]]"` or a short action string |
+| **Kanban** | Work moves through stages (lanes) | A `kanban-plugin` board; cards link to notes, not duplicate them |
+| **Spaced Repetition** | A distilled concept worth recalling | `## Flashcards` + `#cards/[track]`; only after distillation |
+| **LaTeX Suite** | Any mathematical notation | `$E[X]$` inline, `$$...$$` display; explain in prose |
+| **Excalidraw** | Shapes/arrows/flows/annotations | `![[Name.excalidraw]]` with a text anchor nearby |
+| **Canvas** | Laying out existing notes spatially | note cards (not text-only) in a `.canvas`; link from a note |
+| **Templater** | Creating a note inside Obsidian | folder template fires automatically; match its frontmatter by hand if writing externally |
+| **QuickAdd** | One-keystroke capture | currently 0 choices configured; do not add without approval |
+| **Omnisearch** | Human full-text retrieval | Markdown only — PDFs are not indexed (summarize first) |
+
+## Spaced Repetition cloze trap (critical)
+
+`**bold**` and `==highlight==` create automatic SR clozes in `#cards`-tagged sections. So in card sections, bold/highlight **only** the term you want hidden in review — not every noun. Outside `#cards` sections, bold is safe for named concepts.
+
+> Note: the SR `data.json` has two conflicting config layers (`#cards` vs `#flashcards`, bold-cloze on vs off). The vault assumes `#cards/[track]` + bold-on; if cards are not appearing, verify the effective layer in Settings → Spaced Repetition.
+
+## Security and Git
+
+- Never call Local REST API or run Copilot autonomous writes without explicit approval. Prefer filesystem edits.
+- Never copy credentials from any plugin `data.json` into a note.
+- Obsidian Git auto-pushes every ~5 min and the tree is often dirty from other tools. Do not commit, and never stage unrelated files.
+
+## Hard rule
+
+Plugin syntax is used only where it makes the note work better (retrieval, review, tracking, visual understanding). Decorative use is an error — especially SR markers, which create review noise.

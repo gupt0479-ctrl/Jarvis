@@ -1,34 +1,42 @@
 {
   "mcpServers": {
     "obsidian": {
-      "type": "stdio",
-      "command": "cmd",
-      "args": [
-        "/c",
-        "npx",
-        "-y",
-        "obsidian-mcp-server"
-      ],
+      "command": "uvx",
+      "args": ["mcp-obsidian"],
       "env": {
-        "OBSIDIAN_BASE_URL": "http://127.0.0.1:27123"
+        "OBSIDIAN_API_KEY": "${OBSIDIAN_API_KEY}",
+        "OBSIDIAN_HOST": "${OBSIDIAN_HOST:-127.0.0.1}",
+        "OBSIDIAN_PORT": "${OBSIDIAN_PORT:-27124}"
       }
     },
-    "context7": {
-      "type": "http",
-      "url": "https://mcp.context7.com/mcp"
-    },
-    "playwright": {
-      "type": "stdio",
+    "filesystem": {
       "command": "npx",
       "args": [
         "-y",
-        "@playwright/mcp@latest"
-      ],
-      "env": {}
+        "@modelcontextprotocol/server-filesystem",
+        "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis"
+      ]
     },
-    "openaiDeveloperDocs": {
-      "type": "http",
-      "url": "https://developers.openai.com/mcp"
+    "git": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-git",
+        "--repository",
+        "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis"
+      ]
+    },
+    "fetch": {
+      "command": "uvx",
+      "args": ["mcp-server-fetch"]
+    },
+    "jarvis-memory": {
+      "command": "python",
+      "args": [
+        "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\30_Order\\System\\jarvis-memory\\server.py"
+      ],
+      "env": {
+        "JARVIS_VAULT_ROOT": "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis"
+      }
     }
   }
 }

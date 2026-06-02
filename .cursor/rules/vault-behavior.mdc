@@ -1,0 +1,56 @@
+---
+description: Behavioral rules for every action in the Jarvis vault — pre-flight, placement, frontmatter, quality gate, safety, session close.
+alwaysApply: true
+---
+
+# Vault Behavior
+
+These govern every write action. Full version: `60_Claude/07_AI_Information/Vault Rules — Complete AI Ruleset.md`.
+
+## Pre-flight (before creating/editing any note)
+
+1. Decide if the note should exist at all — apply the Use Case Test in `60_Claude/07_AI_Information/Why We Write Notes.md`. If it fails all five tests, it stays raw in `05_Clippings/`.
+2. Read 3–5 existing notes in the same category/domain before writing a new one. Real notes are the ground truth; the MGMT 3001 week notes are the gold standard.
+3. `Grep`/`Glob` for an existing canonical note before creating one. Extend over duplicate.
+4. If the destination is unclear, write to `60_Claude/00_Inbox/`.
+
+## Placement
+
+Use the routing table in `workspace-context.mdc` / `AGENTS.md`. Every note belongs to exactly one folder. Never invent a folder. Never write at the vault root.
+
+## Frontmatter schema (use only these fields)
+
+- `type`: `input` | `evergreen` | `concept` | `project` | `thought` | `brainstorm` | `class` | `plan` | `review` | `dashboard` | `index` | `output`
+- `status`: `seed` | `sprout` | `tree` | `active` | `paused` | `complete` | `archived`
+- `created` / `updated`: `YYYY-MM-DD` (update `updated:` only on meaningful change)
+- `tags`, `notes` (wikilinks to existing files), `next` (one concrete next move)
+- source notes also: `source_note: "[[Filename.pdf]]"` (filename + extension, no path), `source_url`, `input_kind` (`pdf`|`web`|`video`|`image`|`conversation`), `track` (`ai`|`systems`|`algorithms`|`career`|`trading`|`general`)
+
+Rules: **no duplicate keys** (YAML silently keeps the last). **Every `notes:` wikilink must point to a file that exists** — `Grep` first; unverified stubs go in the body labeled `(to create)`, never in frontmatter. Do not add `source_status` unless a workflow requires it.
+
+## Quality gate (compact — full 16-point list in Vault Rules Part 12)
+
+Before saving: no duplicate frontmatter keys; every `notes:` link verified; no `---` in the body; no blank line between heading and content; no blank lines between list items/sections; one `==highlight==` anchor per major section; `**bold**` on named concepts; `*label:*` on sub-group intros; callouts for warnings/key facts; tab-indented (not space) sub-content under numbered items; `$...$` for any math; `## Open Questions` as `- [ ]` tasks; `## Flashcards #cards/[track]` on source/PDF notes (3–5 cards, mechanisms not labels); re-reading the note replaces opening the source.
+
+## Safety (never without explicit instruction)
+
+- Create a file/folder at the vault root.
+- Read or write `50_Archive/`; modify `60_Claude/05_Clippings/` after capture.
+- Edit `.obsidian/`, `.cursor/`, `.claude/`, `.kiro/`, `.git/` settings or any plugin `data.json`.
+- Copy API keys, tokens, or `data.json` secret values into notes.
+- Run Git commit/push/pull, or stage unrelated files (the worktree is often dirty from other tools).
+- Restructure `status: tree` notes, or delete/move notes — propose first.
+
+## Session close
+
+After meaningful vault changes, append to `60_Claude/07_AI_Information/Session Logs/log.md`:
+
+```
+## [YYYY-MM-DD] [operation] | [title]
+- What changed
+- Why it matters
+- Open questions
+- Next action
+```
+
+Update `updated:` on any note that changed meaningfully. Do not commit.

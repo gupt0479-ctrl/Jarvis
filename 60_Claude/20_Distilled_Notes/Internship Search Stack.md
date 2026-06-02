@@ -5,12 +5,12 @@ created: 2026-04-23
 tags:
   - evergreen
 notes:
-  - "[[60_Claude/30_Source_Summaries/Vault Web Ingestion/Career Services Administration University of Minnesota]]"
-  - "[[60_Claude/30_Source_Summaries/Vault Web Ingestion/Handshake (umn.joinhandshake.com)]]"
-  - "[[60_Claude/30_Source_Summaries/Vault Web Ingestion/Job simulations (theforage.com)]]"
-  - "[[60_Claude/30_Source_Summaries/Vault Web Ingestion/Extern]]"
-  - "[[60_Claude/30_Source_Summaries/Vault Web Ingestion/Wellfound]]"
-  - "[[60_Claude/30_Source_Summaries/Vault Web Ingestion/SciTechsperience (scitechmn.org)]]"
+  - "[[Career Services Administration University of Minnesota]]"
+  - "[[Handshake (umn.joinhandshake.com)]]"
+  - "[[Job simulations (theforage.com)]]"
+  - "[[Extern]]"
+  - "[[Wellfound]]"
+  - "[[SciTechsperience (scitechmn.org)]]"
 ---
 # Internship Search Stack
 
@@ -29,13 +29,13 @@ This note is the user's saved internship pipeline. It is a stack, not a list: ca
 - Forage for project-style practice.
 
 ## Source notes
-- [[60_Claude/30_Source_Summaries/Vault Web Ingestion/Career Services Administration University of Minnesota]]
-- [[60_Claude/30_Source_Summaries/Vault Web Ingestion/Handshake (umn.joinhandshake.com)]]
-- [[60_Claude/30_Source_Summaries/Vault Web Ingestion/60268 (umn.joinhandshake.com)]]
-- [[60_Claude/30_Source_Summaries/Vault Web Ingestion/Job simulations (theforage.com)]]
-- [[60_Claude/30_Source_Summaries/Vault Web Ingestion/Extern]]
-- [[60_Claude/30_Source_Summaries/Vault Web Ingestion/2026 Software Engineer Internships Faang Plus Links Resume Templates (extern.com)]]
-- [[60_Claude/30_Source_Summaries/Vault Web Ingestion/Wellfound]]
-- [[60_Claude/30_Source_Summaries/Vault Web Ingestion/SciTechsperience (scitechmn.org)]]
-- [[60_Claude/30_Source_Summaries/Vault Web Ingestion/Maroon and Gold Network (maroonandgoldnetwork.umnalumni.org)]]
-- [[60_Claude/30_Source_Summaries/Vault Web Ingestion/Migrate Mate (migratemate.co)]]
+- [[Career Services Administration University of Minnesota]]
+- [[Handshake (umn.joinhandshake.com)]]
+- [[60268 (umn.joinhandshake.com)]]
+- [[Job simulations (theforage.com)]]
+- [[Extern]]
+- [[2026 Software Engineer Internships Faang Plus Links Resume Templates (extern.com)]]
+- [[Wellfound]]
+- [[SciTechsperience (scitechmn.org)]]
+- [[Maroon and Gold Network (maroonandgoldnetwork.umnalumni.org)]]
+- [[Migrate Mate (migratemate.co)]]

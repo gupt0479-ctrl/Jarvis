@@ -9,7 +9,7 @@ tags:
 notes:
   - "[[00_Dashboard]]"
   - "[[40_Resources/Obsidian/Jarvis Enrichment Engine]]"
-  - "[[60_Claude/60_Indexes/Knowledge Enrichment Dashboard]]"
+  - "[[Knowledge Enrichment Dashboard]]"
 ---
 # Jarvis Enrichment Phase 1 - 2026-04-24
 
@@ -22,7 +22,7 @@ The main shift: Jarvis is no longer only producing content in `60_Claude`. It no
 ## Built
 
 - [[40_Resources/Obsidian/Jarvis Enrichment Engine]]
-- [[60_Claude/60_Indexes/Knowledge Enrichment Dashboard]]
+- [[Knowledge Enrichment Dashboard]]
 - [[30_Order/Templates/Capability/Jarvis Enrichment Template]]
 - `60_Claude/60_Indexes/Bases/Knowledge Enrichment Registry.base`
 - `enrich-candidates` command in `30_Order/System/jarvis-cli/jarvis_ops.py`

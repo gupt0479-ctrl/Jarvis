@@ -2,7 +2,7 @@
 type: evergreen
 status: tree
 created: 2025-07-18
-updated: 2025-07-18
+updated: 2026-05-28
 tags:
   - index
   - capability
@@ -36,3 +36,10 @@ Weekly reviews surface these so they don't silently accumulate.
 ## Template
 
 Use [[Weekly Synthesis Template]] to generate new review notes. The template includes Dataview queries for overdue drills and unresolved questions so the review is partially auto-populated.
+
+## Review History
+
+| Week | Note | Theme |
+|------|------|-------|
+| 2026-W17 | [[Weekly Synthesis — 2026-W17]] | Capability Engine seed — 24 notes enriched across 5 tracks |
+| 2026-W22 | [[Weekly Synthesis — 2026-W22]] | Claude Pro workflow wired in; three-month spine 30% complete, 4 weeks behind |

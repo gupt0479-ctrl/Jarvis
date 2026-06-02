@@ -11,23 +11,20 @@ tags:
   - research-engine
   - roadmap
 notes:
-  - "[[20_Progress/Projects/Jarvis]]"
+  - "[[Jarvis]]"
   - "[[00_Dashboard]]"
   - "[[AI_CONTEXT]]"
   - "[[40_Resources/Obsidian/Vault Operating System]]"
   - "[[40_Resources/Obsidian/Jarvis Enrichment Engine]]"
   - "[[40_Resources/Capability/Capability Engine Guide]]"
   - "[[40_Resources/CS/AI/MCPs]]"
-  - "[[60_Claude/60_Indexes/Knowledge Enrichment Dashboard]]"
-  - "[[60_Claude/60_Indexes/Capability Dashboard]]"
+  - "[[Knowledge Enrichment Dashboard]]"
+  - "[[Capability Dashboard]]"
 next: Build Week 1 registry hardening and conversation capture spine.
 ---
 # Jarvis Three-Month Research Engine Master Plan
-
 ## One-Line Mission
-
 Build Jarvis into my private AI research engine: a vault-native system that all my AI tools can read through Obsidian/MCP, that captures my future LLM conversations, strengthens my existing notes, and answers questions from my own knowledge with evidence.
-
 ## What Jarvis Is Supposed To Become
 
 Jarvis is not a notes folder with AI sprinkled on top.
@@ -121,7 +118,7 @@ Jarvis already has:
 - [[00_Dashboard]] as control panel
 - [[40_Resources/Obsidian/Vault Operating System]] as schema contract
 - [[40_Resources/Obsidian/Jarvis Enrichment Engine]] as enrichment workflow
-- [[60_Claude/60_Indexes/Knowledge Enrichment Dashboard]] as enrichment queue
+- [[Knowledge Enrichment Dashboard]] as enrichment queue
 - [[40_Resources/Capability/Capability Engine Guide]] as mastery/drill/output system
 - `30_Order/System/jarvis-cli/` as deterministic local CLI
 - `.claude/skills/` and `.claude/agents/` as Claude Code operations layer
@@ -373,7 +370,7 @@ Turn Jarvis into a visible standalone project with a clear build control plane.
 
 ### Build
 
-1. Create/maintain [[20_Progress/Projects/Jarvis]] as the project hub.
+1. Create/maintain [[Jarvis]] as the project hub.
 2. Treat this file as the canonical three-month roadmap.
 3. Extend `jarvis_ops.py` into a stable CLI surface.
 4. Create `30_Order/System/jarvis-memory/`.

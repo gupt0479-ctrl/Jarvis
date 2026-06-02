@@ -126,5 +126,5 @@ If the answer is no, the enrichment is not ready.
 
 ## Dashboard
 
-Use [[60_Claude/60_Indexes/Knowledge Enrichment Dashboard]] to find weak nodes, recent enrichments, missing source anchors, and concepts with no evidence.
+Use [[Knowledge Enrichment Dashboard]] to find weak nodes, recent enrichments, missing source anchors, and concepts with no evidence.
 

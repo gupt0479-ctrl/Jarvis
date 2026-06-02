@@ -8,7 +8,7 @@ area:
   - "[[UMN Board]]"
   - "[[Weekly Board]]"
   - "[[BIOL Board]]"
-  - "[[10_Areas/UMN/Classes/Previous Classes/Minor/MGMT 3001/MGMT 3001 Board]]"
+  - "[[10_Areas/UMN/Previous Classes/Minor/MGMT 3001/MGMT 3001 Board]]"
   - "[[CSCI 4041 Board]]"
   - "[[CSCI 2041 Board]]"
   - "[[MUS Board]]"
@@ -77,7 +77,7 @@ next: "[[UMN Board]]"
 			- *Quiz 2*: 3/3, Chaps, 24-26
 			- *Quiz 3*: 3/31, Chaps, 27-29
 			- *Quiz 4*: 4/21, Chaps, 30-31
-	3. *Textbook*: [Fundamentals of Physics (11th Edition)](https://education.wiley.com/ng-course-dashboard/index.html#/course-resources) by Halliday, Resnick, and Walker. → [[60_Claude/30_Source_Summaries/Vault Web Ingestion/Fundamentals of Physics (11th Edition) (education.wiley.com)|source note]]
+	3. *Textbook*: [Fundamentals of Physics (11th Edition)](https://education.wiley.com/ng-course-dashboard/index.html#/course-resources) by Halliday, Resnick, and Walker. → [[Fundamentals of Physics (11th Edition) (education.wiley.com)|source note]]
 	4. *Homework*: Every week, 10 homework problems will be assigned.  These should be completed by the due date (primarily on Mondays) provided with the assignment.
 	5. *Grading*:
 		1. Homework: 10%

@@ -1,212 +1,143 @@
 # research-distiller
 
-**Type:** Subagent  
-**Purpose:** Turn source material (Clippings) into durable, well-linked notes with citations.
+**Type:** Subagent
+**Purpose:** Deep ingestion of source material — PDFs, images, web links, transcripts — into durable, well-linked notes with near-complete content capture and full vault-style formatting.
 
 ---
 
 ## When to Use
 
-Invoke this agent when:
-
-- You have one or more sources in `60_Claude/05_Clippings/` to process
-- You want deep distillation rather than quick summary
-- The source is complex (research paper, long article, technical doc)
-- You want entity extraction, concept mapping, and cross-referencing
+Use this agent (not `/ingest-clipping`) when:
+- The source is a long PDF or technical document needing section-by-section extraction.
+- Multiple sources should be ingested and cross-referenced in one pass.
+- You want existing vault notes searched and connected after ingestion.
 
 ---
 
-## Operating Instructions
+## Pre-Flight
 
-Before distilling, read:
+Before doing anything, read:
+1. `60_Claude/07_AI_Information/AI_CONTEXT.md`
+2. `HUMAN_WRITING.md`
+3. `30_Order/Workflows/Capture to Summary.md`
+4. `30_Order/Standards/Source Summary Standard.md` — the content standard for the note body
+5. `30_Order/Templates/Capability/Clipping Distill Template.md`
 
-- `AI_CONTEXT.md`
-- `HUMAN_WRITING.md`
-- `40_Resources/Obsidian/Vault Operating System.md`
+---
 
-### 1. Intake
+## Source Type Routing
 
-Ask the user:
+| Source | Location | Read Method | Output Folder |
+|--------|----------|-------------|---------------|
+| PDF | `60_Claude/05_Clippings/PDFs/` | Python pypdf via Bash | `60_Claude/10_Source_Summaries/PDF Ingestion/` |
+| Image | `60_Claude/05_Clippings/PDFs/` | `Read` tool (multimodal) | `60_Claude/10_Source_Summaries/PDF Ingestion/` |
+| Web clip | `60_Claude/05_Clippings/Web/` | `Read` tool | `60_Claude/10_Source_Summaries/Web Ingestion/` |
+| Live URL | passed by user | `WebFetch` tool | `60_Claude/10_Source_Summaries/Web Ingestion/` |
+| Video transcript | `60_Claude/05_Clippings/Videos/` | `Read` tool | `60_Claude/10_Source_Summaries/Video Ingestion/` |
+| AI conversation | `60_Claude/05_Clippings/AI Conversations/` | `Read` tool | `60_Claude/10_Source_Summaries/Web Ingestion/` |
 
-- "Which source(s) should I process?"
-- "How deep should I go? (quick summary / standard distillation / deep analysis)"
-- "Any specific focus areas or questions to answer?"
+---
 
-### 2. Read and Annotate
+## Step 1 — Read the Full Source
 
-For each source:
+### PDFs
 
-- Read the full content
-- Mark key passages, claims, data points
-- Identify entities (people, orgs, products, tools)
-- Identify concepts (ideas that deserve notes)
-- Note any contradictions with existing vault knowledge
-- Extract actionable items
+```bash
+python -c "
+import pypdf, sys
+sys.stdout.reconfigure(encoding='utf-8')
+reader = pypdf.PdfReader(r'FULL_WINDOWS_PATH')
+print(f'Total pages: {len(reader.pages)}')
+for i, page in enumerate(reader.pages):
+    print(f'\n=== Page {i+1} ===')
+    print(page.extract_text())
+"
+```
 
-### 3. Search Existing Knowledge
+For PDFs over 30 pages, batch in groups of 20: `reader.pages[:20]`, then `reader.pages[20:40]`.
+First pass: map every heading and subheading across all pages before writing anything.
+If output is mostly blank, the PDF is image-based (scanned) — tell the user.
 
-Before writing:
+### Images
+Use `Read` (multimodal). Extract all visible text first. Describe diagrams with enough detail to be usable without the original.
 
-- Search `40_Resources/` for existing concept notes
-- Search `60_Claude/` for related distillations
-- Search `20_Progress/` for relevant projects
-- Check `60_Claude/05_Clippings/` for related sources already ingested
+### Web / Markdown
+Use `Read` on the file. Never modify the raw file.
 
-### 4. Create Distillation Package
+### Web URLs
+Use `WebFetch` with `format: "markdown"`. If paywalled, ask the user to paste the content.
 
-Produce:
+---
 
-**A. Source Summary** (`60_Claude/30_Source_Summaries/`)
+## Step 2 — Content Extraction Checklist
 
-```markdown
+The goal: every line in the source appears in the note in some form. After ingestion, the user should not need to open the original again.
+
+- [ ] Every section heading verbatim
+- [ ] Every claim, instruction, and recommendation
+- [ ] Every numbered step list or framework — reproduced in full, not compressed
+- [ ] Every definition and technical term
+- [ ] Every sub-bullet under every numbered item
+- [ ] Every named entity: tools, firms, people, products, URLs
+- [ ] Every "interview value", "key skill", emphasis, warning, or callout in the original
+- [ ] Every table with its data
+
+---
+
+## Step 3 — Write the Note
+
+File location: `60_Claude/10_Source_Summaries/[Subfolder]/[Descriptive Title] ([type]).md`
+
+> **Read `30_Order/Standards/Source Summary Standard.md` before writing the note body.** It is the single source of truth for the heading-by-heading content, density, formatting markers (highlights, bold, italics, callouts), math notation, and flashcards. Do not duplicate those rules here.
+
+Frontmatter skeleton (never duplicate a key; verify every `notes:` wikilink exists):
+```yaml
 ---
 type: input
-input_kind: source-summary
 status: sprout
 created: YYYY-MM-DD
-source_url: [URL]
-source_note: "[[60_Claude/05_Clippings/Original]]"
+updated: YYYY-MM-DD
 tags:
-  - input
-  - source-summary
+  - summary
 notes:
-  - "[[Entity 1]]"
-  - "[[Entity 2]]"
-  - "[[Concept 1]]"
+  - "[[Confirmed Existing Note]]"
+source_url: 60_Claude/05_Clippings/PDFs/Filename.pdf
+source_note: "[[Filename.pdf]]"
+input_kind: pdf
+track: <ai|systems|algorithms|career|trading|general>
 ---
-
-# [Title] — Distillation
-
-**Source:** [[60_Claude/05_Clippings/Original File]]  
-**Distilled:** YYYY-MM-DD  
-**Reading time:** X min
-
-## Executive Summary
-
-[2-3 sentence essence]
-
-## Key Claims
-
-1. [Claim 1] — [brief support]
-2. [Claim 2] — [brief support]
-3. [Claim 3] — [brief support]
-
-## Notable Quotes
-
-> [Quote 1]
-
-> [Quote 2]
-
-## Entities
-
-| Entity | Type | Relevance |
-|--------|------|-----------|
-| [Name] | [person/org/tool] | [why it matters] |
-
-## Concepts
-
-- [[Concept 1]] — [connection]
-- [[Concept 2]] — [connection]
-
-## Contradictions / Tensions
-
-- [Claim in this source] vs [[Existing Note]] — [nature of tension]
-
-## Actions
-
-- [ ] [Action 1]
-- [ ] [Action 2]
-
-## Related Notes
-
-- [[Related 1]]
-- [[Related 2]]
-
----
-
-*Distilled by research-distiller agent*
 ```
+`source_note` is the filename with extension, no path. `track` sets the flashcard deck.
 
-**B. Entity Pages** (create or update)
+---
 
-For each significant entity:
+## Step 4 — Cross-Reference Existing Notes
 
-- If note exists: Add mention under `## Mentions` or update relevant section
-- If note doesn't exist: Create stub in appropriate location with basic info
+After writing the summary, Grep for entities and concept terms from the source in the vault. Add confirmed-existing wikilinks to `## Links Into The Vault`. Do not modify matched notes unless the user asks.
 
-**C. Concept Pages** (create or update)
+---
 
-For each concept that deserves its own note:
+## Step 5 — Promotion Candidates
 
-- Create in `60_Claude/20_Distilled_Notes/` or `40_Resources/CS/`
-- Include definition, explanation, examples, connections
-- Link back to source summary
+List any claims worth promoting to `60_Claude/20_Distilled_Notes/`. Do not create them automatically — present the list and ask.
 
-### 5. Update Indexes
+---
 
-- Append to `60_Claude/60_Indexes/Claude Layer Index.md`
-- Update relevant MOC (Map of Content) notes if they exist
+## Step 6 — Log Work
 
-### 6. Log Work
+Append to `60_Claude/07_AI_Information/Session Logs/log.md`:
 
-Append to `60_Claude/10_Session_Logs/log.md`:
-
-```markdown
+```
 ## [YYYY-MM-DD] distill | [Source Title]
 
-**Depth:** [quick/standard/deep]  
-**Output:**
-- Summary: [[60_Claude/30_Source_Summaries/...]]
-- Entity pages updated: [[X]], [[Y]]
-- Concept pages created: [[A]], [[B]]
-- Cross-references added: [count]
+**Type:** [pdf/web/image/video]
+**Output:** [[60_Claude/10_Source_Summaries/[Subfolder]/Note Name]]
+**Pages:** X
+**Promotion candidates:** [titles]
 ```
 
-### 7. Present Results
-
-Show the user:
-
-1. **Summary of work** — What was created/updated
-2. **Key insights** — The 3-5 most important takeaways
-3. **Tensions flagged** — Any contradictions with existing knowledge
-4. **Suggested next steps** — What to review, what actions to take
-5. **Graph view preview** — Describe how this connects to existing notes
-
 ---
 
-## Quality Standards
+## Before Saving
 
-- **Citations** — Every claim traceable to source
-- **Links** — Every new note has 2+ backlinks
-- **Human-readable** — Written for browsing, not just machine parsing
-- **Actionable** — Clear next steps or open questions
-- **Non-duplicate** — Search before creating; merge if overlap exists
-- **Shared-context first** — follow `AI_CONTEXT.md` and update the session log for continuity
-
----
-
-## Special Handling
-
-### For Research Papers
-
-- Extract methodology, sample size, limitations
-- Note funding sources / conflicts of interest
-- Distinguish findings from speculation
-
-### For News Articles
-
-- Separate reporting from commentary
-- Note publication date and potential staleness
-- Identify primary sources cited
-
-### For Technical Docs
-
-- Extract API signatures, parameters, return values
-- Note version compatibility
-- Create usage examples
-
-### For Videos / Transcripts
-
-- Identify timestamps for key moments
-- Extract speaker credentials
-- Note production date and context
+Run the Done Conditions in `30_Order/Standards/Source Summary Standard.md` and the 16-point quality gate in `60_Claude/07_AI_Information/Vault Rules — Complete AI Ruleset.md` Part 12. Do not save until both pass.

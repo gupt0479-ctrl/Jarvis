@@ -6,7 +6,7 @@ updated: 2026-04-27
 tags:
   - concept
 notes:
-  - "[[10_Areas/Trading/Links]]"
+  - "[[20_Progress/Projects/CS/TradingView/Links]]"
   - "[[Reddit]]"
 track:
   - trading
@@ -14,7 +14,7 @@ prerequisites:
   - "[[60_Claude/20_Distilled_Notes/Index Fund Investing]]"
 used_in: []
 evidence:
-  - "[[60_Claude/45_Outputs/AI Market Analyzer Project Brief]]"
+  - "[[AI Market Analyzer Project Brief]]"
 difficulty: 2
 mastery_level: novice
 drill_interval: 14
@@ -24,7 +24,7 @@ next_drill: 2026-05-09
 
 # Trading Tools and Platforms
 
-> Distilled from [[10_Areas/Trading/Links]] and market research
+> Distilled from [[20_Progress/Projects/CS/TradingView/Links]] and market research
 
 ## Deep Dive
 
@@ -62,7 +62,7 @@ The Reddit discussion on Bloomberg terminal vs retail software highlights the ga
 
 ### Source Anchors
 
-- [[10_Areas/Trading/Links]] — curated tool links
+- [[20_Progress/Projects/CS/TradingView/Links]] — curated tool links
 - [[Reddit]] — community discussion on tools and platforms
 
 ## Diagnostic Questions

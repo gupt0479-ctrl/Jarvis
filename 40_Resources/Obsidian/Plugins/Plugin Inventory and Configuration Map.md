@@ -12,7 +12,7 @@ notes:
   - "[[AI_CONTEXT]]"
   - "[[HUMAN_WRITING]]"
   - "[[40_Resources/Obsidian/Vault Operating System]]"
-  - "[[60_Claude/7_AI_Information/Plugins]]"
+  - "[[60_Claude/07_AI_Information/Plugins]]"
   - "[[00 Plugin Reference Index]]"
 ---
 # Plugin Inventory and Configuration Map
@@ -62,6 +62,7 @@ Do not assume a plugin folder means active behavior. Jarvis has three plugin sta
 | Web viewer | disabled | No current in-vault browser workflow. |
 
 ## Community Plugins
+Deep per-plugin references: [[QuickAdd Capture Menu]], [[Excalidraw Diagrams and Annotation]], [[Canvas Spatial Maps]], [[Omnisearch and Retrieval]], [[Spaced Repetition and Learning Loops]]. Grouped references cover the rest — see [[00 Plugin Reference Index]]. Note: the Spaced Repetition `data.json` holds two conflicting config layers (`#cards` vs `#flashcards`, bold-cloze on vs off); confirm the effective layer in the Obsidian UI.
 
 | Plugin | ID / folder | Version | Directly enabled? | Lazy-loaded? | Main use in Jarvis | Config inspected? | Needs verification? |
 |---|---|---:|---:|---:|---|---:|---|

@@ -5,13 +5,13 @@ created: 2026-04-23
 tags:
   - evergreen
 notes:
-  - "[[60_Claude/30_Source_Summaries/Vault Web Ingestion/WiFi Printing IT@UMN The people behind the technology]]"
-  - "[[60_Claude/30_Source_Summaries/Vault Web Ingestion/Academic advising (advisingblog.cse.umn.edu)]]"
-  - "[[60_Claude/30_Source_Summaries/Vault Web Ingestion/Undergraduate Guide (cse.umn.edu)]]"
-  - "[[60_Claude/30_Source_Summaries/Vault Web Ingestion/Career Services Administration University of Minnesota]]"
-  - "[[60_Claude/30_Source_Summaries/Vault Web Ingestion/Student Engagement Office for Student Affairs (osa.umn.edu)]]"
-  - "[[60_Claude/30_Source_Summaries/Vault Web Ingestion/Study Abroad finances (umabroad.umn.edu)]]"
-  - "[[60_Claude/30_Source_Summaries/Vault Web Ingestion/Urop (ugresearch.umn.edu)]]"
+  - "[[WiFi Printing IT@UMN The people behind the technology]]"
+  - "[[Academic advising (advisingblog.cse.umn.edu)]]"
+  - "[[Undergraduate Guide (cse.umn.edu)]]"
+  - "[[Career Services Administration University of Minnesota]]"
+  - "[[Student Engagement Office for Student Affairs (osa.umn.edu)]]"
+  - "[[Study Abroad finances (umabroad.umn.edu)]]"
+  - "[[Urop (ugresearch.umn.edu)]]"
 ---
 # UMN Student Infrastructure
 
@@ -29,12 +29,12 @@ This cluster is the user's working map for practical UMN operations. The saved l
 - Expansion paths: study abroad and UROP.
 
 ## Source notes
-- [[60_Claude/30_Source_Summaries/Vault Web Ingestion/WiFi Printing IT@UMN The people behind the technology]]
-- [[60_Claude/30_Source_Summaries/Vault Web Ingestion/Academic advising (advisingblog.cse.umn.edu)]]
-- [[60_Claude/30_Source_Summaries/Vault Web Ingestion/Undergraduate Guide (cse.umn.edu)]]
-- [[60_Claude/30_Source_Summaries/Vault Web Ingestion/Career Services Administration University of Minnesota]]
-- [[60_Claude/30_Source_Summaries/Vault Web Ingestion/Student Engagement Office for Student Affairs (osa.umn.edu)]]
-- [[60_Claude/30_Source_Summaries/Vault Web Ingestion/Study Abroad finances (umabroad.umn.edu)]]
-- [[60_Claude/30_Source_Summaries/Vault Web Ingestion/Study abroad scholarships (umabroad.umn.edu)]]
-- [[60_Claude/30_Source_Summaries/Vault Web Ingestion/Urop (ugresearch.umn.edu)]]
-- [[60_Claude/30_Source_Summaries/Vault Web Ingestion/Bs Application (cse.umn.edu)]]
+- [[WiFi Printing IT@UMN The people behind the technology]]
+- [[Academic advising (advisingblog.cse.umn.edu)]]
+- [[Undergraduate Guide (cse.umn.edu)]]
+- [[Career Services Administration University of Minnesota]]
+- [[Student Engagement Office for Student Affairs (osa.umn.edu)]]
+- [[Study Abroad finances (umabroad.umn.edu)]]
+- [[Study abroad scholarships (umabroad.umn.edu)]]
+- [[Urop (ugresearch.umn.edu)]]
+- [[Bs Application (cse.umn.edu)]]

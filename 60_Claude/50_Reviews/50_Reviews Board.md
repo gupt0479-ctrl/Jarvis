@@ -6,7 +6,7 @@ created: 2026-04-08
 tags:
   - evergreen
 notes:
-  - "[[60_Claude Board]]"
+  - "[[Claude Board]]"
 ---
 
 # Reviews
