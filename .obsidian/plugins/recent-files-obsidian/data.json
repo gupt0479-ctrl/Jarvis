@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Where teams and agents work together",
+      "path": "60_Claude/05_Clippings/Web/Where teams and agents work together.md"
+    },
+    {
       "basename": "Naive - Quickstart",
       "path": "60_Claude/05_Clippings/Web/Naive - Quickstart.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "README",
       "path": "60_Claude/07_AI_Information/AI Conversations/README.md"
-    },
-    {
-      "basename": "AI_CONTEXT",
-      "path": "60_Claude/07_AI_Information/AI_CONTEXT.md"
     }
   ],
   "omittedPaths": [],
