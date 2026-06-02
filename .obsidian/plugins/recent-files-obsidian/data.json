@@ -1,6 +1,22 @@
 {
   "recentFiles": [
     {
+      "basename": "Naive - Quickstart",
+      "path": "60_Claude/05_Clippings/Web/Naive - Quickstart.md"
+    },
+    {
+      "basename": "All-in-One Data Privacy Compliance Solution for Websites & Apps",
+      "path": "60_Claude/05_Clippings/Web/All-in-One Data Privacy Compliance Solution for Websites & Apps.md"
+    },
+    {
+      "basename": "Compliance Solutions for Websites, Apps and Organizations",
+      "path": "60_Claude/05_Clippings/Web/Compliance Solutions for Websites, Apps and Organizations.md"
+    },
+    {
+      "basename": "App Privacy Policy Generator",
+      "path": "60_Claude/05_Clippings/Web/App Privacy Policy Generator.md"
+    },
+    {
       "basename": "Agent Operating Guide",
       "path": "60_Claude/07_AI_Information/Agent Operating Guide.md"
     },
@@ -183,18 +199,6 @@
     {
       "basename": "AI_CONTEXT",
       "path": "60_Claude/07_AI_Information/AI_CONTEXT.md"
-    },
-    {
-      "basename": "Random",
-      "path": "40_Resources/Random.md"
-    },
-    {
-      "basename": "HUMAN_WRITING",
-      "path": "HUMAN_WRITING.md"
-    },
-    {
-      "basename": "Vault-Audit-2026-05-29",
-      "path": "60_Claude/40_Project_Briefs/Vault-Audit-2026-05-29.md"
     }
   ],
   "omittedPaths": [],
