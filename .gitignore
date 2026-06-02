@@ -4,6 +4,11 @@
 .obsidian/cache
 .trash/
 
+# Volatile Obsidian state (churns constantly, inflates every commit)
+.obsidian/graph.json
+.obsidian/workspaces.json
+.obsidian/plugins/*/*.bak
+
 # Plugin data with API keys / secrets
 .obsidian/plugins/copilot/data.json
 .obsidian/plugins/quickadd/data.json
