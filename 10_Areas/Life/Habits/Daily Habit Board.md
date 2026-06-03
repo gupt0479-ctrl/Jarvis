@@ -25,15 +25,19 @@ tags:
 ---
 ## Daily Habits
 
-- [ ] Habit placeholder 1
+- [ ] physical — gym or calisthenics MVP (20 pushups/20 squats/5 min stretch)
 
-- [ ] Habit placeholder 2
+- [ ] leetcode-5 — ≥5 problems, topic logged ([[05 - LeetCode & CSCI 4041]])
 
-- [ ] Habit placeholder 3
+- [ ] csci2033 — 30–45 min LA subtopic + output ([[06 - ML Fundamentals (2033 + 2230)]])
 
-- [ ] Habit placeholder 4
+- [ ] course-step — MATH 2230 board next OR HIST admin step ([[04 - Summer Courses Ops]])
 
-- [ ] Habit placeholder 5
+- [ ] review-note — 5-min end-of-day note / closeday
+
+## Keystone (routine, not a checkbox to skip)
+
+- [ ] no-smoking before planning + breakfast + first task ([[08 - Anti-Drift Rules]])
 
 ## Done Today
 
