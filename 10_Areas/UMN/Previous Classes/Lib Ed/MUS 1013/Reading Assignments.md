@@ -107,10 +107,3 @@ This week shifted my view on psychedelia. Now, sound changes define it - structu
 ## Post-submit reflection
 - What failed first?
 - What pattern repeats?
-## Linked source notes
-- Grove / Pharoah Sanders → [[Omo 9781561592630 E 1002276439 (www-oxfordmusiconline-com.ezp3.lib.umn.edu)]]
-- Grove / Bob Dylan → [[Omo 9781561592630 E 0000008456 (oxfordmusiconline.com)]]
-- JSTOR / Bob Dylan: How the Songs Work → [[J.Ctv1453m5s (doi.org)]]
-- Library of Congress / Bob Dylan photo archive → [[2016717920 (loc.gov)]]
-- Music Periodicals Database / review citation → [[1677206210 (proquest.com)]]
-- Wikipedia / Electric Dylan controversy → [[Electric Dylan Controversy (en.wikipedia.org)]]

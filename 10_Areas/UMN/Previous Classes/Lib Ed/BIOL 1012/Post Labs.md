@@ -68,6 +68,3 @@ Conclusion: Brains in people stand out mostly by size, not structure. Just like 
 5. Privacy & data integrity (supports non-maleficence + justice)
 	- From time to time, we gather just what’s necessary - then strip away personal details before sharing anything. Results appear strictly as summaries across groups, never tied to individuals.
 	- One person's stress score won’t be shared - findings help spot trends instead of tagging individuals.
-## Linked source notes
-- Trier Social Stress Test DOI → [[000119004 (doi.org)]]
-- StatPearls stress physiology background → [[Nbk541120 (ncbi.nlm.nih.gov)]]

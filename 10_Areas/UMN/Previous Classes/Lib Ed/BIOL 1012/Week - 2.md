@@ -20,7 +20,7 @@ next: []
 - [[Concept - ...]]
 - [[Concept - ...]]
 ## Examples worth keeping
-- [4 Ethical Pillars Overview](https://docs.google.com/presentation/d/1A4F7ELP9tkGzByLSHbo_w33xDWx6UDDSCaJ86_cLU6o/edit?slide=id.g8faf138d94_0_246#slide=id.g8faf138d94_0_246) → [[4 Ethical Pillars Overview (docs.google.com)|source note]]
+- [4 Ethical Pillars Overview](https://docs.google.com/presentation/d/1A4F7ELP9tkGzByLSHbo_w33xDWx6UDDSCaJ86_cLU6o/edit?slide=id.g8faf138d94_0_246#slide=id.g8faf138d94_0_246)
 - 
 # Textbook (1.6-1.13)
 1. **Text 1.8-1.13**: Lab 3, Reading Quiz 1B, Manipulating Neurotransmitters (CP 1.6), The Brain and Fallibility of Memories (CP 1.7).

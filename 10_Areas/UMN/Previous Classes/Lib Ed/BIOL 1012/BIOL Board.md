@@ -79,7 +79,5 @@ SORT created ASC
 
 ### Links
 - *All Lecture recordings*: [Posted Here](https://docs.google.com/document/d/1_XId4SHEGFNUwzE4F-BWlI4oB7gKBaSLyPNRT2uKmBE/edit?tab=t.0#heading=h.uk6jrnhcgmcr)
-  - [[Edit (docs.google.com)|source note]]
 - *All Lecture Slides*: [Posted here](https://drive.google.com/drive/folders/1NDNsln6-0QBGEP_0dhayrnyKoSKf_iHH)
-  - [[1Ndnsln6 0Qbgep 0Dhayrnykoskf Ihh (drive.google.com)|source note]]
 - 

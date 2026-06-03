@@ -12,7 +12,7 @@ related:
 ---
 # Textbook
 ## Resources
-- [Solutions](https://sites.math.rutgers.edu/~ajl213/CLRS/CLRS.html) → [[OP Link (sites.math.rutgers.edu)|source note]]
+- [Solutions](https://sites.math.rutgers.edu/~ajl213/CLRS/CLRS.html)
 
 ## Common mistakes
 - Treating chapter summaries as replacements for lecture notebooks instead of complements

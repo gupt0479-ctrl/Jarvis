@@ -31,8 +31,8 @@ related:
 ## Resources
 > [!NOTE] Main reference is the textbook
 ### Links
-- [Manual](https://ocaml.org/manual/5.4/index.html) → [[Index (ocaml.org)|source note]]
-- [Official Website OCaml Tour](https://ocaml.org/docs/tour-of-ocaml) → [[Official Website OCaml Tour|source note]]
+- [Manual](https://ocaml.org/manual/5.4/index.html)
+- [Official Website OCaml Tour](https://ocaml.org/docs/tour-of-ocaml)
 ### Notebooklm 
 1. Prompt: 
 ```

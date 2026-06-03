@@ -29,7 +29,7 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/Links.md",
+        "pattern": "10_Areas/UMN/Links.md",
         "patternType": "STRICT"
       },
       {

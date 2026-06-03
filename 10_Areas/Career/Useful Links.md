@@ -10,20 +10,20 @@ notes:
   - "[[Portfolio]]"
 ---
 ## Internship Resources
-- Internship Resources - [Resources for finding internships](https://cse.umn.edu/college/career/jobs-and-internships) -> [[Resources for finding internships (cse.umn.edu)|source note]]
-- [Handshake](http://umn.joinhandshake.com/) is the University of Minnesota's job and internship database. -> [[Handshake (umn.joinhandshake.com)|source note]]
+- Internship Resources - [Resources for finding internships](https://cse.umn.edu/college/career/jobs-and-internships)
+- [Handshake](http://umn.joinhandshake.com/) is the University of Minnesota's job and internship database.
 	- [Event](https://umn.joinhandshake.com/stu/career_fairs/60268)
 - [LinkedIn](http://www.linkedin.com/) is an employment-oriented service to build and engage with a professional network.
 - [Indeed](http://www.indeed.com/) is the largest employment-related search engine. **FOR JOBS**
 - [Simply Hired](http://www.simplyhired.com/) is an online employment and recruitment advertising network/job board. **FOR JOBS**
 - [Zip Recruiter](https://www.ziprecruiter.com/college-jobs) is an online job board. Like *Handshake*
-- [SciTechsperience](https://scitechmn.org/) connects students in STEM fields to internships in the state of Minnesota. -> [[SciTechsperience (scitechmn.org)|source note]]
-- [Maroon and Gold Network](https://maroonandgoldnetwork.umnalumni.org/hub/minnesota/home-v3) - Great place to find projects and connect with UMN alumni. -> [[Maroon and Gold Network (maroonandgoldnetwork.umnalumni.org)|source note]]
-- Forage - [Job simulations](https://www.theforage.com/simulations/blackbird/software-engineering-4mt9) -> [[Job simulations (theforage.com)|source note]]
-- [Extern](https://www.extern.com/externships) -  Externships -> [[Extern|source note]]
+- [SciTechsperience](https://scitechmn.org/) connects students in STEM fields to internships in the state of Minnesota.
+- [Maroon and Gold Network](https://maroonandgoldnetwork.umnalumni.org/hub/minnesota/home-v3) - Great place to find projects and connect with UMN alumni.
+- Forage - [Job simulations](https://www.theforage.com/simulations/blackbird/software-engineering-4mt9)
+- [Extern](https://www.extern.com/externships) -  Externships
 	- [A post](https://www.extern.com/post/2026-software-engineer-internships-faang-plus-links-resume-templates)
-- [Wellfound](https://wellfound.com/jobs/home) - Job search and internship search. -> [[Wellfound|source note]]
-- [Migrate Mate](https://migratemate.co/) -> [[Migrate Mate (migratemate.co)|source note]]
+- [Wellfound](https://wellfound.com/jobs/home) - Job search and internship search.
+- [Migrate Mate](https://migratemate.co/)
 - ScholarHunt - [Summer Programs & Conferences Worldwide](https://scholarhunt-1.preview.emergentagent.com/?mcp_token=eyJwaWQiOjIzMzg2ODQsInNpZCI6MTk0ODExMjcxMCwiYXgiOiI0OGNmZDMyNWEyMDk0YWQyYmVkMGFmY2Y3NmI5MDM3NCIsInRzIjoxNzc4NjgzNDE2LCJleHAiOjE3ODExMDI2MTZ9.iJEbbnld9DfIiBzFZfEu4V9NnYi5-cOXEMg3Jdbq4rg&fbclid=PAVERFWARxbWxleHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAafX-fZmZuyr_unyAZ-078P36t6v1CDDES_QzF984BDylebvJZkNJ4WNfi41eA_aem_L6qb1yboTOnucqgWmHGleg)
 - 
 ## Entrepreneurship Resources

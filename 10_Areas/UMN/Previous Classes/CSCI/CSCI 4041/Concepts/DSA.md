@@ -36,16 +36,14 @@ related:
 - The week numbering below matches the vault week files directly.
 - Spring break is kept as a separate schedule marker and does not offset the vault week numbering.
 ## Resources
-1. ==The textbook solutions==: [OP Link](https://sites.math.rutgers.edu/~ajl213/CLRS/CLRS.html) → [[OP Link (sites.math.rutgers.edu)|source note]]
+1. ==The textbook solutions==: [OP Link](https://sites.math.rutgers.edu/~ajl213/CLRS/CLRS.html)
 2. Supplementary Book for the project: The art of computing 3rd edition.
 3. Puru Links:
    - DSA: https://drive.google.com/drive/folders/1hQwxDwuz5Kw4sdEnxmcsK1Ynpgf11s4N
-   - [[1Hqwxdwuz5kw4sdenxmcsk1ynpgf11s4n (drive.google.com)|drive folder 1 source note]]
    - DAA: https://drive.google.com/drive/folders/1CtWO-3T0OzMwvKPWEk2ihqME2NJuK4qR
-   - [[1Ctwo 3T0ozmwvkpwek2ihqme2njuk4qr (drive.google.com)|drive folder 2 source note]]
-4. [Miniconda Help](https://docs.conda.io/projects/conda/en/latest/user-guide/index.html) → [[Miniconda Help (docs.conda.io)|source note]]
-5. Entire coursework available: [Introduction to Algorithms](https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/) → [[Introduction to Algorithms (ocw.mit.edu)|source note]]
-6. Another [Coursework](https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/) → [[Coursework (ocw.mit.edu)|source note]]
+4. [Miniconda Help](https://docs.conda.io/projects/conda/en/latest/user-guide/index.html)
+5. Entire coursework available: [Introduction to Algorithms](https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/)
+6. Another [Coursework](https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/)
 ## How to use them
 1. Read the linked textbook chapter notes before or after lecture.
 2. Use the weekly note as the main study sheet.

@@ -1,6 +1,42 @@
 {
   "recentFiles": [
     {
+      "basename": "CSCI 2041 Note Production Plan",
+      "path": "10_Areas/UMN/Previous Classes/CSCI/CSCI 2041/CSCI 2041 Note Production Plan.md"
+    },
+    {
+      "basename": "All pdfs for books (en.wikipedia.org)",
+      "path": "60_Claude/10_Source_Summaries/Web Ingestion/All pdfs for books (en.wikipedia.org).md"
+    },
+    {
+      "basename": "Claude Code with Obsidian (notion.so)",
+      "path": "60_Claude/10_Source_Summaries/Web Ingestion/Claude Code with Obsidian (notion.so).md"
+    },
+    {
+      "basename": "Code crafters(learning) Rust (app.codecrafters.io)",
+      "path": "60_Claude/10_Source_Summaries/Web Ingestion/Code crafters(learning) Rust (app.codecrafters.io).md"
+    },
+    {
+      "basename": "Chatgpt Gemini Claude Grok 2D99464bdbf98168a9f5f8b1a198b108 (tathastu-rh.notion.site)",
+      "path": "60_Claude/10_Source_Summaries/Web Ingestion/Chatgpt Gemini Claude Grok 2D99464bdbf98168a9f5f8b1a198b108 (tathastu-rh.notion.site).md"
+    },
+    {
+      "basename": "Projects Applications - Solvearn",
+      "path": "60_Claude/10_Source_Summaries/Web Ingestion/Projects Applications - Solvearn.md"
+    },
+    {
+      "basename": "Useful Links",
+      "path": "10_Areas/Career/Useful Links.md"
+    },
+    {
+      "basename": "Links",
+      "path": "10_Areas/UMN/Links.md"
+    },
+    {
+      "basename": "CSCI 3923 Board",
+      "path": "10_Areas/UMN/Previous Classes/CSCI/CSCI 3923/CSCI 3923 Board.md"
+    },
+    {
       "basename": "Summer Courses",
       "path": "20_Progress/Degree/Summer Courses.md"
     },
@@ -43,162 +79,6 @@
     {
       "basename": "Where teams and agents work together",
       "path": "60_Claude/05_Clippings/Web/Where teams and agents work together.md"
-    },
-    {
-      "basename": "Naive - Quickstart",
-      "path": "60_Claude/05_Clippings/Web/Naive - Quickstart.md"
-    },
-    {
-      "basename": "All-in-One Data Privacy Compliance Solution for Websites & Apps",
-      "path": "60_Claude/05_Clippings/Web/All-in-One Data Privacy Compliance Solution for Websites & Apps.md"
-    },
-    {
-      "basename": "Compliance Solutions for Websites, Apps and Organizations",
-      "path": "60_Claude/05_Clippings/Web/Compliance Solutions for Websites, Apps and Organizations.md"
-    },
-    {
-      "basename": "App Privacy Policy Generator",
-      "path": "60_Claude/05_Clippings/Web/App Privacy Policy Generator.md"
-    },
-    {
-      "basename": "Agent Operating Guide",
-      "path": "60_Claude/07_AI_Information/Agent Operating Guide.md"
-    },
-    {
-      "basename": "For Everything",
-      "path": "30_Order/Templates/Frontmatter/For Everything.md"
-    },
-    {
-      "basename": "For Brainstorm",
-      "path": "30_Order/Templates/Frontmatter/For Brainstorm.md"
-    },
-    {
-      "basename": "For Classes",
-      "path": "30_Order/Templates/Frontmatter/For Classes.md"
-    },
-    {
-      "basename": "For Evergreen",
-      "path": "30_Order/Templates/Frontmatter/For Evergreen.md"
-    },
-    {
-      "basename": "For Thoughts",
-      "path": "30_Order/Templates/Frontmatter/For Thoughts.md"
-    },
-    {
-      "basename": "For Progress",
-      "path": "30_Order/Templates/Frontmatter/For Progress.md"
-    },
-    {
-      "basename": "For Inputs",
-      "path": "30_Order/Templates/Frontmatter/For Inputs.md"
-    },
-    {
-      "basename": "Homework Template",
-      "path": "30_Order/Templates/Classes/Homework Template.md"
-    },
-    {
-      "basename": "Class Board Template",
-      "path": "30_Order/Templates/Classes/Class Board Template.md"
-    },
-    {
-      "basename": "Synthesis Template",
-      "path": "30_Order/Templates/Capability/Synthesis Template.md"
-    },
-    {
-      "basename": "Output Template",
-      "path": "30_Order/Templates/Capability/Output Template.md"
-    },
-    {
-      "basename": "Question Bank Template",
-      "path": "30_Order/Templates/Capability/Question Bank Template.md"
-    },
-    {
-      "basename": "Jarvis Enrichment Template",
-      "path": "30_Order/Templates/Capability/Jarvis Enrichment Template.md"
-    },
-    {
-      "basename": "Field OS Template",
-      "path": "30_Order/Templates/Capability/Field OS Template.md"
-    },
-    {
-      "basename": "Depth Ladder Template",
-      "path": "30_Order/Templates/Capability/Depth Ladder Template.md"
-    },
-    {
-      "basename": "Deep Dive Template",
-      "path": "30_Order/Templates/Capability/Deep Dive Template.md"
-    },
-    {
-      "basename": "Clipping Distill Template",
-      "path": "30_Order/Templates/Capability/Clipping Distill Template.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "30_Order/Templates/MOC.md"
-    },
-    {
-      "basename": "Vault Rules — Complete AI Ruleset",
-      "path": "60_Claude/07_AI_Information/Vault Rules — Complete AI Ruleset.md"
-    },
-    {
-      "basename": "Why We Write Notes",
-      "path": "60_Claude/07_AI_Information/Why We Write Notes.md"
-    },
-    {
-      "basename": "Note Writing System — Audit and Roadmap (2026-05-31)",
-      "path": "60_Claude/07_AI_Information/AI Conversations/Note Writing System — Audit and Roadmap (2026-05-31).md"
-    },
-    {
-      "basename": "Cursor Project Brief — Vault OS Upgrade",
-      "path": "60_Claude/07_AI_Information/AI Conversations/Cursor Project Brief — Vault OS Upgrade.md"
-    },
-    {
-      "basename": "Conflict and Negotiation",
-      "path": "10_Areas/UMN/Previous Classes/Minor/MGMT 3001/Concepts/Conflict and Negotiation.md"
-    },
-    {
-      "basename": "MGMT 3001 Master Summary",
-      "path": "10_Areas/UMN/Previous Classes/Minor/MGMT 3001/MGMT 3001 Master Summary.md"
-    },
-    {
-      "basename": "Week - 1",
-      "path": "10_Areas/UMN/Previous Classes/Minor/MGMT 3001/Week - 1.md"
-    },
-    {
-      "basename": "Quant Foundations (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Quant Foundations (PDF).md"
-    },
-    {
-      "basename": "README",
-      "path": "30_Order/System/jarvis-cli/README.md"
-    },
-    {
-      "basename": "Making Break Meaningful 1",
-      "path": "10_Areas/Notes/PDFs/Making Break Meaningful 1.pdf"
-    },
-    {
-      "basename": "Ultimate Guide to Winning Hackathons",
-      "path": "60_Claude/05_Clippings/PDFs/Ultimate Guide to Winning Hackathons.pdf"
-    },
-    {
-      "basename": "Student discounts",
-      "path": "60_Claude/05_Clippings/PDFs/Student discounts.pdf"
-    },
-    {
-      "basename": "Jarvis Vault Architecture",
-      "path": "40_Resources/Obsidian/Jarvis Vault Architecture.md"
-    },
-    {
-      "basename": "Hackathons",
-      "path": "10_Areas/Career/Internships/Hackathons.md"
-    },
-    {
-      "basename": "Git & GitHub Guide",
-      "path": "10_Areas/Notes/PDFs/Git & GitHub Guide.pdf"
-    },
-    {
-      "basename": "Guitar",
-      "path": "20_Progress/Projects/Extra/Guitar.md"
     }
   ],
   "omittedPaths": [],

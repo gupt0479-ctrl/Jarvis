@@ -23,7 +23,6 @@ SORT created ASC
 ## Resources
 ### Links
 - [University Center for Writing](https://cla.umn.edu/center-for-writing/undergraduate-writers)
-  - [[University Center for Writing (cla.umn.edu)|source note]]
 
 ### Textbook
 1. 

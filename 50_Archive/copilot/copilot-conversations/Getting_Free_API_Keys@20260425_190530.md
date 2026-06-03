@@ -36,11 +36,11 @@ What I *can* do is point to options in your notes for getting “free” access 
 
 - Use APIs that require **no authentication** (Auth = “No”) from the public API list. Your note explicitly suggests: “Pick an API that says **Auth = No (no key needed)**.” [^1]
 - If an API requires `apiKey` or `OAuth`, the approach in your note is to “choose a provider and follow their documentation/signup flow” to obtain a legitimate key. [^1]
-- Your [[10_Areas/Links]] note includes resources like **“Free LLM API Sources”** and **OpenRouter** as a place to access free LLM models (i.e., alternatives to needing a specific provider key). [^2]
+- Your [[10_Areas/UMN/Links]] note includes resources like **“Free LLM API Sources”** and **OpenRouter** as a place to access free LLM models (i.e., alternatives to needing a specific provider key). [^2]
 
 If you tell me what you’re trying to build (e.g., “I need a chat model API with a free tier”), I can help you pick an option from the links you’ve saved and outline a legit setup path.
 
 #### Sources
 [^1]: [[Getting_Free_API_Keys@20260425_190530]]
-[^2]: [[10_Areas/Links]]
+[^2]: [[10_Areas/UMN/Links]]
 [Timestamp: 2026/04/25 19:07:31]
