@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Internal AI Stack — Zero-Cost Enterprise Proposal</title>
+<style>
+  :root {
+    --navy:    #0D1B2A;
+    --blue:    #1B4F72;
+    --teal:    #0E9AA7;
+    --ice:     #A8DADC;
+    --white:   #FFFFFF;
+    --offwhite:#F0F4F8;
+    --gray:    #8899A8;
+    --green:   #27AE60;
+    --amber:   #F39C12;
+    --red:     #E74C3C;
+    --dark:    #07111A;
+    --purple:  #5B7FD4;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+    gap: 16px;
+  }
+  .slide {
+    width: 960px;
+    height: 540px;
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.7);
+    flex-shrink: 0;
+  }
+  .footer {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 32px;
+    background: var(--dark);
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    font-size: 9px;
+    color: var(--gray);
+    font-style: italic;
+    justify-content: space-between;
+  }
+  .footer .slide-num { color: var(--teal); font-weight: bold; font-style: normal; }
+  .header-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 56px;
+    background: var(--dark);
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    justify-content: space-between;
+  }
+  .header-label { font-size: 10px; font-weight: 700; color: var(--teal); letter-spacing: 5px; }
+  .header-title { font-size: 18px; font-weight: 700; color: var(--white); }
+  .teal-bar-left {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 6px;
+    background: var(--teal);
+  }
+  .card {
+    background: var(--blue);
+    border-radius: 3px;
+    position: absolute;
+    overflow: hidden;
+  }
+  .card-top-accent {
+    height: 5px;
+    width: 100%;
+    position: absolute;
+    top: 0; left: 0;
+  }
+  .card-left-accent {
+    width: 6px;
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+  }
+  .dark-box {
+    background: var(--dark);
+    border-radius: 2px;
+    position: absolute;
+  }
+  .navy-row {
+    background: var(--navy);
+    border-radius: 2px;
+    position: absolute;
+  }
+
+  /* ── NAV ── */
+  #nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 960px;
+  }
+  #nav button {
+    background: var(--blue);
+    border: 1px solid var(--teal);
+    color: var(--ice);
+    padding: 6px 14px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 11px;
+    font-family: inherit;
+    transition: background 0.15s;
+  }
+  #nav button:hover { background: var(--teal); color: var(--navy); }
+  #nav button.active { background: var(--teal); color: var(--navy); font-weight: 700; }
+
+  /* ── SLIDE CONTENT HELPERS ── */
+  .abs { position: absolute; }
+  .mono { font-family: 'Consolas', 'Courier New', monospace; }
+  .tag {
+    display: inline-block;
+    background: var(--teal);
+    color: var(--navy);
+    font-size: 8.5px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 2px;
+    letter-spacing: 2px;
+  }
+  .tag.green { background: var(--green); }
+  .tag.red { background: var(--red); }
+  .tag.amber { background: var(--amber); }
+</style>
+</head>
+<body>
+
+<!-- ════ SLIDE 1 — TITLE ════ -->
+<div class="slide" id="s1">
+  <!-- Left accent bar -->
+  <div style="position:absolute;left:0;top:0;bottom:0;width:14px;background:var(--teal);"></div>
+  <!-- Right panel -->
+  <div style="position:absolute;right:0;top:0;bottom:0;width:320px;background:var(--blue);"></div>
+  <div style="position:absolute;right:320px;top:0;bottom:0;width:5px;background:var(--teal);"></div>
+
+  <!-- Main headline -->
+  <div style="position:absolute;left:30px;top:60px;width:580px;">
+    <div style="font-size:11px;font-weight:700;color:var(--teal);letter-spacing:6px;margin-bottom:8px;">YOUR INTERNAL</div>
+    <div style="font-size:72px;font-weight:900;color:var(--white);line-height:1;margin-bottom:18px;">AI STACK</div>
+    <div style="font-size:16px;color:var(--ice);line-height:1.5;">Zero Subscriptions. Zero Token Limits.<br>Full Enterprise Power.</div>
+  </div>
+
+  <!-- Right panel pillars -->
+  <div style="position:absolute;right:16px;top:50px;width:288px;">
+    <div style="font-size:10px;font-weight:700;color:var(--teal);letter-spacing:4px;text-align:center;margin-bottom:12px;">THE BLUEPRINT</div>
+    <div id="pillars"></div>
+  </div>
+
+  <div class="footer">
+    <span>Confidential · Internal AI Infrastructure Proposal</span>
+    <span class="slide-num">1</span>
+  </div>
+</div>
+
+<!-- ════ SLIDE 2 — THE PROBLEM ════ -->
+<div class="slide" id="s2">
+  <div class="header-bar">
+    <span class="header-label">THE PROBLEM</span>
+    <span class="header-title">What's Costing You Right Now</span>
+  </div>
+
+  <!-- 3 problem cards -->
+  <div id="problem-cards" style="position:absolute;top:72px;left:0;right:0;display:flex;gap:14px;padding:0 18px;"></div>
+
+  <!-- Bottom callout -->
+  <div style="position:absolute;bottom:38px;left:18px;right:18px;background:var(--dark);border-radius:3px;padding:16px 18px 16px 24px;border-left:6px solid var(--teal);">
+    <div style="font-size:13px;font-weight:700;color:var(--teal);margin-bottom:6px;">The Real Cost</div>
+    <div style="font-size:11.5px;color:var(--ice);line-height:1.55;">
+      At 15 employees on Copilot Enterprise: <span style="font-weight:700;color:var(--amber);">$285/month = $3,420/year</span> — before overages, parallel project context blowouts, and productivity loss from constantly hitting token walls mid-task.
+      <span style="font-weight:700;color:var(--white);"> You already own a GPU and a server. You are paying for nothing you couldn't run yourself.</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Zero-Cost AI Stack · Internal Proposal</span>
+    <span class="slide-num">2</span>
+  </div>
+</div>
+
+<!-- ════ SLIDE 3 — BIG TECH BLUEPRINT ════ -->
+<div class="slide" id="s3">
+  <div class="header-bar">
+    <span class="header-label">THE BLUEPRINT</span>
+    <span class="header-title">How FAANG Runs AI at Near-Zero Cost</span>
+  </div>
+
+  <div style="position:absolute;top:68px;left:18px;right:18px;font-size:12.5px;font-style:italic;color:var(--ice);">
+    The fundamental shift: they don't buy subscriptions. <strong style="color:var(--white);">They own the compute.</strong>
+  </div>
+
+  <div id="bigtech-cards" style="position:absolute;top:100px;left:18px;right:18px;display:flex;flex-direction:column;gap:10px;"></div>
+
+  <div style="position:absolute;bottom:40px;left:18px;right:18px;font-size:9.5px;color:var(--gray);font-style:italic;">
+    Key insight: the tooling is already open-source because these companies built it and gave it away. We mimick the workflow, not the scale.
+  </div>
+
+  <div class="footer">
+    <span>Zero-Cost AI Stack · Internal Proposal</span>
+    <span class="slide-num">3</span>
+  </div>
+</div>
+
+<!-- ════ SLIDE 4 — ARCHITECTURE ════ -->
+<div class="slide" id="s4">
+  <div class="header-bar">
+    <span class="header-label">THE ARCHITECTURE</span>
+    <span class="header-title">Your Stack, End to End</span>
+  </div>
+
+  <div id="arch-layers" style="position:absolute;top:68px;left:10px;right:10px;display:flex;gap:10px;height:396px;"></div>
+
+  <div style="position:absolute;bottom:38px;left:10px;right:10px;background:rgba(0,0,0,0.4);border-radius:2px;padding:5px 12px;text-align:center;">
+    <span style="font-size:8.5px;color:var(--gray);">OPTIONAL PER-LAPTOP FALLBACK: AirLLM (70B on 4GB GPU) · llama.cpp · Ollama local — for offline or overflow use</span>
+  </div>
+
+  <div class="footer">
+    <span>Zero-Cost AI Stack · Internal Proposal</span>
+    <span class="slide-num">4</span>
+  </div>
+</div>
+
+<!-- ════ SLIDE 5 — llmfit ════ -->
+<div class="slide" id="s5">
+  <div class="header-bar">
+    <span class="header-label">STEP 1</span>
+    <span class="header-title">Find the Right Model for Your GPU — llmfit</span>
+  </div>
+
+  <div style="position:absolute;top:68px;left:10px;right:10px;display:flex;gap:12px;height:434px;">
+    <!-- Left: features -->
+    <div style="background:var(--blue);border-radius:3px;flex:1;padding:14px 16px;border-top:5px solid var(--teal);overflow:hidden;">
+      <div style="font-size:12px;font-weight:700;color:var(--teal);margin-bottom:12px;">llmfit — hardware-aware model selection</div>
+      <div id="llmfit-feats"></div>
+    </div>
+    <!-- Right: usage + model table -->
+    <div style="width:340px;display:flex;flex-direction:column;gap:12px;">
+      <div style="background:var(--dark);border-radius:3px;padding:14px 16px;flex:1;">
+        <div style="font-size:11px;color:var(--ice);margin-bottom:8px;">On the server GPU, run:</div>
+        <div class="mono" style="font-size:13px;color:var(--teal);margin-bottom:8px;">llmfit --memory=&lt;VRAM&gt;G</div>
+        <div class="mono" style="font-size:10px;color:var(--gray);line-height:1.7;"># It will tell you exactly:<br># - Which model fits your VRAM<br># - Best quantization (Q4, Q8...)<br># - Expected tok/s for your GPU</div>
+      </div>
+      <div style="background:var(--blue);border-radius:3px;padding:14px 16px;flex:1.2;border-top:5px solid var(--amber);">
+        <div style="font-size:12px;font-weight:700;color:var(--teal);margin-bottom:10px;">Expected Model Fit by VRAM</div>
+        <div id="model-table"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Zero-Cost AI Stack · Internal Proposal</span>
+    <span class="slide-num">5</span>
+  </div>
+</div>
+
+<!-- ════ SLIDE 6 — INFERENCE SERVER ════ -->
+<div class="slide" id="s6">
+  <div class="header-bar">
+    <span class="header-label">STEP 2</span>
+    <span class="header-title">Run the Inference Server on the Office GPU</span>
+  </div>
+
+  <div style="position:absolute;top:68px;left:10px;right:10px;display:flex;gap:12px;height:436px;">
+    <!-- Ollama -->
+    <div style="background:var(--blue);border-radius:3px;flex:1;padding:14px 16px;border-top:5px solid var(--green);overflow:hidden;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <span class="tag green">RECOMMENDED</span>
+        <span style="font-size:18px;font-weight:700;color:var(--white);">Ollama</span>
+      </div>
+      <div style="font-size:11px;color:var(--ice);margin-bottom:12px;">Dead-simple to install. Start serving a 70B model in under 10 minutes.</div>
+      <div id="ollama-steps"></div>
+    </div>
+    <!-- vLLM -->
+    <div style="background:var(--blue);border-radius:3px;flex:1;padding:14px 16px;border-top:5px solid var(--purple);overflow:hidden;">
+      <div style="font-size:18px;font-weight:700;color:var(--white);margin-bottom:8px;">vLLM</div>
+      <div style="font-size:11px;color:var(--ice);margin-bottom:12px;line-height:1.4;">Production-grade. 2–4× throughput via PagedAttention. OpenAI-compatible. Handles concurrent requests from your entire team.</div>
+      <div id="vllm-feats"></div>
+      <div style="margin-top:12px;font-size:9.5px;color:var(--gray);font-style:italic;">Start with Ollama. Migrate to vLLM when concurrent users exceed ~5.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Zero-Cost AI Stack · Internal Proposal</span>
+    <span class="slide-num">6</span>
+  </div>
+</div>
+
+<!-- ════ SLIDE 7 — GATEWAY ════ -->
+<div class="slide" id="s7">
+  <div class="header-bar">
+    <span class="header-label">STEP 3</span>
+    <span class="header-title">The Gateway — LiteLLM + Open WebUI</span>
+  </div>
+
+  <div style="position:absolute;top:68px;left:10px;right:10px;display:flex;gap:12px;height:436px;">
+    <!-- LiteLLM -->
+    <div style="background:var(--blue);border-radius:3px;flex:1;padding:14px 16px;border-top:5px solid var(--teal);overflow:hidden;">
+      <div style="font-size:13px;font-weight:700;color:var(--teal);margin-bottom:6px;">LiteLLM Proxy (API Gateway)</div>
+      <div style="font-size:11px;color:var(--ice);margin-bottom:12px;line-height:1.4;">The control plane between your team and the model server. Every employee gets their own API key.</div>
+      <div id="litellm-feats"></div>
+    </div>
+    <!-- Open WebUI -->
+    <div style="background:var(--blue);border-radius:3px;flex:1;padding:14px 16px;border-top:5px solid var(--purple);overflow:hidden;">
+      <div style="font-size:13px;font-weight:700;color:#CADCFC;margin-bottom:6px;">Open WebUI (Frontend)</div>
+      <div style="font-size:11px;color:var(--ice);margin-bottom:12px;line-height:1.4;">A full ChatGPT-like interface your whole team uses in their browser. Zero installation on employee laptops.</div>
+      <div id="webui-feats"></div>
+      <div style="margin-top:14px;background:var(--navy);border-radius:2px;padding:8px 10px;">
+        <span class="mono" style="font-size:10px;color:var(--teal);">docker compose up -d</span>
+        <span style="font-size:10px;color:var(--gray);margin-left:8px;"># deploys both in minutes</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Zero-Cost AI Stack · Internal Proposal</span>
+    <span class="slide-num">7</span>
+  </div>
+</div>
+
+<!-- ════ SLIDE 8 — RAG + DIFY ════ -->
+<div class="slide" id="s8">
+  <div class="header-bar">
+    <span class="header-label">STEP 4</span>
+    <span class="header-title">Solving the Token Limit Problem — RAG &amp; Dify</span>
+  </div>
+
+  <!-- Callout -->
+  <div style="position:absolute;top:68px;left:10px;right:10px;background:var(--dark);border-radius:3px;padding:10px 14px 10px 20px;border-left:6px solid var(--amber);">
+    <div style="font-size:11.5px;font-weight:700;color:var(--amber);margin-bottom:4px;">Why token limits kill parallel projects:</div>
+    <div style="font-size:11px;color:var(--ice);">Developers dump entire codebases into context instead of retrieving only what's relevant. RAG fixes this permanently.</div>
+  </div>
+
+  <div style="position:absolute;top:148px;left:10px;right:10px;display:flex;gap:12px;height:344px;">
+    <!-- Bad approach -->
+    <div style="background:var(--blue);border-radius:3px;flex:1;padding:14px 16px;border-top:5px solid var(--red);overflow:hidden;">
+      <div style="font-size:13px;font-weight:700;color:var(--red);margin-bottom:12px;">❌ Without RAG (Current)</div>
+      <div id="bad-steps"></div>
+    </div>
+    <!-- Good approach -->
+    <div style="background:var(--blue);border-radius:3px;flex:1;padding:14px 16px;border-top:5px solid var(--green);overflow:hidden;">
+      <div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:12px;">✅ With Dify + RAG</div>
+      <div id="good-steps"></div>
+      <div style="margin-top:10px;font-size:9px;color:var(--gray);font-style:italic;">Dify: self-hosted, Docker-deployable, 143K GitHub stars. Free forever on self-hosted.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Zero-Cost AI Stack · Internal Proposal</span>
+    <span class="slide-num">8</span>
+  </div>
+</div>
+
+<!-- ════ SLIDE 9 — AirLLM ════ -->
+<div class="slide" id="s9">
+  <div class="header-bar">
+    <span class="header-label">BONUS TOOL</span>
+    <span class="header-title">AirLLM — Run 70B Models on 4GB GPU VRAM</span>
+  </div>
+
+  <div style="position:absolute;top:68px;left:10px;right:10px;display:flex;gap:12px;height:200px;">
+    <!-- Big stat -->
+    <div style="background:var(--blue);border-radius:3px;width:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-left:6px solid var(--teal);">
+      <div style="font-size:80px;font-weight:900;color:var(--teal);line-height:1;">70B</div>
+      <div style="font-size:13px;color:var(--white);font-weight:700;text-align:center;padding:0 8px;">params on 4 GB VRAM</div>
+      <div style="font-size:10px;color:var(--gray);font-style:italic;margin-top:4px;">No quantization required</div>
+    </div>
+    <!-- How it works -->
+    <div style="background:var(--blue);border-radius:3px;flex:1;padding:14px 18px;border-top:5px solid var(--teal);">
+      <div style="font-size:13px;font-weight:700;color:var(--teal);margin-bottom:10px;">How AirLLM Works</div>
+      <div style="font-size:11.5px;color:var(--ice);line-height:1.6;">
+        Instead of loading the entire model into VRAM, AirLLM streams one transformer layer at a time from disk through the GPU.
+        Each layer fits in a few hundred MB. After computing, it's evicted and the next layer loads.
+        Your disk becomes extended GPU memory — at the cost of slower inference speed.
+      </div>
+    </div>
+  </div>
+
+  <!-- Server vs Laptop -->
+  <div style="position:absolute;top:284px;left:10px;right:10px;background:var(--dark);border-radius:3px;padding:16px 20px 16px 26px;border-left:7px solid var(--amber);">
+    <div style="font-size:13px;font-weight:700;color:var(--amber);margin-bottom:8px;">Does AirLLM work on your server GPU?</div>
+    <div style="font-size:11.5px;line-height:1.6;">
+      <span style="font-weight:700;color:var(--green);">YES</span><span style="color:var(--ice);"> — AirLLM works on any GPU, not just laptops. It's a PyPI package. Install on the server, point it at a model on disk, and any GPU with as little as 4GB VRAM can serve 70B inference.</span><br>
+      <span style="font-weight:700;color:var(--amber);">Trade-off:</span> <span style="color:var(--gray);">Layer-by-layer loading is slower than fully VRAM-resident inference (vLLM/Ollama). Best used for single-user deep tasks or when your server GPU has limited VRAM. For multi-user concurrent serving, pair with Ollama/vLLM.</span>
+    </div>
+  </div>
+
+  <!-- Three use cases -->
+  <div style="position:absolute;bottom:40px;left:10px;right:10px;display:flex;gap:10px;">
+    <div style="background:var(--blue);border-radius:3px;flex:1;padding:10px 14px;border-top:4px solid var(--teal);">
+      <div style="font-size:10px;font-weight:700;color:var(--teal);margin-bottom:4px;">USE CASE 1</div>
+      <div style="font-size:10px;color:var(--ice);">Server has &lt;8GB VRAM but you need a 70B model → AirLLM bridges the gap</div>
+    </div>
+    <div style="background:var(--blue);border-radius:3px;flex:1;padding:10px 14px;border-top:4px solid var(--purple);">
+      <div style="font-size:10px;font-weight:700;color:var(--purple);margin-bottom:4px;">USE CASE 2</div>
+      <div style="font-size:10px;color:var(--ice);">Offline laptop work — engineer away from office, no server access</div>
+    </div>
+    <div style="background:var(--blue);border-radius:3px;flex:1;padding:10px 14px;border-top:4px solid var(--amber);">
+      <div style="font-size:10px;font-weight:700;color:var(--amber);margin-bottom:4px;">USE CASE 3</div>
+      <div style="font-size:10px;color:var(--ice);">Server GPU is busy — laptop GPU picks up overflow for single deep tasks</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Zero-Cost AI Stack · Internal Proposal</span>
+    <span class="slide-num">9</span>
+  </div>
+</div>
+
+<!-- ════ SLIDE 10 — ROLLOUT ════ -->
+<div class="slide" id="s10">
+  <div class="header-bar">
+    <span class="header-label">EXECUTION</span>
+    <span class="header-title">4-Phase Rollout — First Results in 48 Hours</span>
+  </div>
+
+  <div id="rollout-phases" style="position:absolute;top:68px;left:10px;right:10px;display:flex;gap:10px;height:450px;"></div>
+
+  <div class="footer">
+    <span>Zero-Cost AI Stack · Internal Proposal</span>
+    <span class="slide-num">10</span>
+  </div>
+</div>
+
+<!-- ════ SLIDE 11 — COST ════ -->
+<div class="slide" id="s11">
+  <div class="header-bar">
+    <span class="header-label">THE NUMBERS</span>
+    <span class="header-title">Cost Comparison: Subscriptions vs Self-Hosted</span>
+  </div>
+
+  <div style="position:absolute;top:68px;left:10px;right:10px;display:flex;gap:12px;height:438px;">
+    <!-- Subscription costs -->
+    <div style="background:var(--blue);border-radius:3px;flex:1;padding:14px 16px;border-top:5px solid var(--red);overflow:hidden;">
+      <div style="font-size:13px;font-weight:700;color:var(--red);margin-bottom:12px;">Subscription Model (Current)</div>
+      <div id="sub-costs"></div>
+      <div style="margin-top:12px;font-size:9.5px;color:var(--gray);font-style:italic;">Scales linearly — every new hire costs more.</div>
+    </div>
+    <!-- Self-hosted costs -->
+    <div style="background:var(--blue);border-radius:3px;flex:1;padding:14px 16px;border-top:5px solid var(--green);overflow:hidden;">
+      <div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:12px;">Self-Hosted Stack (Proposed)</div>
+      <div id="sh-costs"></div>
+      <div style="margin-top:12px;font-size:9.5px;color:var(--green);font-style:italic;">Scales to unlimited users. No per-seat cost ever.</div>
+
+      <!-- Savings callout -->
+      <div style="margin-top:14px;background:var(--navy);border-radius:3px;padding:10px 14px;border-left:5px solid var(--green);">
+        <div style="font-size:22px;font-weight:900;color:var(--green);">$3,480–$11,760</div>
+        <div style="font-size:11px;color:var(--ice);">saved per year (10–20 employees)</div>
+        <div style="font-size:9px;color:var(--gray);margin-top:4px;">Break-even: immediate. Ongoing cost: ~$30/mo electricity.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Zero-Cost AI Stack · Internal Proposal</span>
+    <span class="slide-num">11</span>
+  </div>
+</div>
+
+<!-- ════ SLIDE 12 — CTA ════ -->
+<div class="slide" id="s12">
+  <div style="position:absolute;inset:0;background:var(--dark);"></div>
+  <div style="position:absolute;left:0;top:0;bottom:0;width:16px;background:var(--teal);"></div>
+  <div style="position:absolute;left:0;top:0;right:0;height:10px;background:var(--teal);"></div>
+
+  <div style="position:absolute;left:30px;top:40px;right:20px;">
+    <div style="font-size:10px;font-weight:700;color:var(--teal);letter-spacing:6px;margin-bottom:10px;">THE DECISION</div>
+    <div style="font-size:38px;font-weight:900;color:var(--white);margin-bottom:14px;line-height:1.1;">Keep Paying —<br>or Own Your Stack</div>
+    <div style="font-size:15px;color:var(--ice);line-height:1.5;margin-bottom:30px;">You have the hardware. You have the people. The tools are free.<br>The only thing missing is 48 hours to set it up.</div>
+
+    <div id="cta-actions"></div>
+
+    <div style="margin-top:20px;font-size:8.5px;color:var(--gray);">
+      All tools referenced are open source · llmfit · AirLLM · Ollama · vLLM · LiteLLM · Open WebUI · Dify · Unsloth
+    </div>
+  </div>
+</div>
+
+<!-- ════ NAV ════ -->
+<div id="nav">
+  <button onclick="scrollTo('s1')" class="active">1 · Title</button>
+  <button onclick="scrollTo('s2')">2 · Problem</button>
+  <button onclick="scrollTo('s3')">3 · Big Tech</button>
+  <button onclick="scrollTo('s4')">4 · Architecture</button>
+  <button onclick="scrollTo('s5')">5 · llmfit</button>
+  <button onclick="scrollTo('s6')">6 · Server</button>
+  <button onclick="scrollTo('s7')">7 · Gateway</button>
+  <button onclick="scrollTo('s8')">8 · RAG</button>
+  <button onclick="scrollTo('s9')">9 · AirLLM</button>
+  <button onclick="scrollTo('s10')">10 · Rollout</button>
+  <button onclick="scrollTo('s11')">11 · Cost</button>
+  <button onclick="scrollTo('s12')">12 · CTA</button>
+</div>
+
+<script>
+function scrollTo(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'center' });
+  document.querySelectorAll('#nav button').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+// ── SLIDE 1: Pillars ──────────────────────────────────────────────────────
+const pillars = ["Centralized GPU Server","Open-Source Models","Smart LLM Gateway","RAG for Token Control","Per-Laptop Fallback"];
+const pillarsEl = document.getElementById('pillars');
+pillars.forEach(p => {
+  pillarsEl.innerHTML += `<div style="background:var(--navy);border-radius:2px;padding:9px 12px 9px 18px;margin-bottom:8px;border-left:5px solid var(--teal);font-size:11px;font-weight:700;color:var(--white);">${p}</div>`;
+});
+
+// ── SLIDE 2: Problem cards ─────────────────────────────────────────────────
+const problems = [
+  { stat: "$19+", label: "Per employee / month", sub: "GitHub Copilot Enterprise", color: "var(--red)" },
+  { stat: "∞", label: "Token limits hit constantly", sub: "Parallel projects = compounded waste", color: "var(--amber)" },
+  { stat: "0%", label: "Data privacy guarantee", sub: "Your code lives on third-party servers", color: "var(--amber)" },
+];
+const pcEl = document.getElementById('problem-cards');
+problems.forEach(p => {
+  pcEl.innerHTML += `<div style="background:var(--blue);border-radius:3px;flex:1;border-top:5px solid ${p.color};padding:16px;text-align:center;">
+    <div style="font-size:52px;font-weight:900;color:${p.color};line-height:1;">${p.stat}</div>
+    <div style="font-size:12px;font-weight:700;color:var(--white);margin:8px 0 4px;">${p.label}</div>
+    <div style="font-size:10px;color:var(--gray);">${p.sub}</div>
+  </div>`;
+});
+
+// ── SLIDE 3: Big Tech ──────────────────────────────────────────────────────
+const bigtech = [
+  { company: "Meta", color: "var(--teal)", body: "Open-source Llama models on internal GPU clusters, served via vLLM. Every engineer gets a code assistant backed by their own hardware — no per-seat fee." },
+  { company: "Google", color: "var(--purple)", body: "llm-d (open source) — Kubernetes-native distributed vLLM for enterprise-scale inference. Contributed vLLM to the open-source community. Uses TPUs internally but the open stack is GPU-ready." },
+  { company: "The Standard Stack", color: "var(--green)", body: "vLLM server (open source, Apache 2.0) → LiteLLM API gateway (per-team keys + budgets) → Open WebUI (ChatGPT-like frontend). All free. Runs on any Linux GPU box. Used by thousands of companies worldwide." },
+];
+const btEl = document.getElementById('bigtech-cards');
+bigtech.forEach(b => {
+  btEl.innerHTML += `<div style="background:var(--blue);border-radius:3px;padding:12px 16px 12px 22px;border-left:7px solid ${b.color};">
+    <span style="font-size:13px;font-weight:700;color:${b.color};">${b.company} &nbsp;</span>
+    <span style="font-size:11.5px;color:var(--ice);">${b.body}</span>
+  </div>`;
+});
+
+// ── SLIDE 4: Architecture ─────────────────────────────────────────────────
+const layers = [
+  { label: "LAYER 1 — EMPLOYEE", color: "var(--gray)", items: ["Laptop Browser → Open WebUI","IDE Plugin → OpenAI-compatible API","CLI / Scripts → Direct API calls","AirLLM (offline fallback)"] },
+  { label: "LAYER 2 — GATEWAY", color: "var(--purple)", items: ["LiteLLM Proxy","Per-user API keys + budgets","Model routing by task complexity","Usage dashboards + cost tracking"] },
+  { label: "LAYER 3 — SERVER GPU", color: "var(--teal)", items: ["vLLM or Ollama (serving engine)","Llama 3.3 70B / Qwen2.5 72B","OpenAI-compatible REST API","Continuous batching (PagedAttn)","Dify (RAG knowledge base)"] },
+];
+const archEl = document.getElementById('arch-layers');
+layers.forEach((l, i) => {
+  const flex = i === 2 ? 1.5 : 1;
+  archEl.innerHTML += `<div style="background:var(--blue);border-radius:3px;flex:${flex};padding:14px 12px;border-top:5px solid ${l.color};overflow:hidden;">
+    <div style="font-size:9.5px;font-weight:700;color:${l.color};letter-spacing:2px;margin-bottom:12px;">${l.label}</div>
+    ${l.items.map(it => `<div style="background:var(--navy);border-radius:2px;padding:8px 10px;margin-bottom:8px;font-size:10.5px;color:var(--ice);">${it}</div>`).join('')}
+  </div>`;
+});
+
+// ── SLIDE 5: llmfit ───────────────────────────────────────────────────────
+const llmfitFeats = [
+  "Detects your GPU VRAM, RAM, CPU cores automatically",
+  "Scores hundreds of models across Quality, Speed, Fit, Context",
+  "Tells you the best quantization (Q4, Q8) that fits in VRAM",
+  "Shows estimated tokens/sec on YOUR hardware",
+  "Supports Ollama, vLLM, llama.cpp, LM Studio backends",
+  "llmfit serve → REST API for cluster scheduling",
+  "Community leaderboard — real tok/s from real users",
+];
+const lfEl = document.getElementById('llmfit-feats');
+llmfitFeats.forEach(f => {
+  lfEl.innerHTML += `<div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:7px;">
+    <div style="width:18px;height:18px;min-width:18px;background:var(--teal);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--navy);">✓</div>
+    <div style="font-size:10.5px;color:var(--ice);line-height:1.4;">${f}</div>
+  </div>`;
+});
+const modelRows = [
+  { vram: "8 GB VRAM", model: "Llama 3.1 8B (Q8) or Qwen2.5 14B (Q4)" },
+  { vram: "16 GB VRAM", model: "Llama 3.3 70B (Q4) — code + reasoning" },
+  { vram: "24+ GB VRAM", model: "Llama 3.3 70B (Q6) or DeepSeek-R1 32B" },
+  { vram: "48+ GB VRAM", model: "Full 70B Q8 or DeepSeek-V3 70B" },
+];
+const mtEl = document.getElementById('model-table');
+modelRows.forEach(r => {
+  mtEl.innerHTML += `<div style="display:flex;align-items:center;gap:8px;margin-bottom:7px;">
+    <span style="font-size:10px;font-weight:700;color:var(--amber);min-width:80px;">${r.vram}</span>
+    <span style="font-size:10px;color:var(--ice);">→ ${r.model}</span>
+  </div>`;
+});
+
+// ── SLIDE 6: Ollama ────────────────────────────────────────────────────────
+const ollamaSteps = [
+  { cmd: "curl -fsSL https://ollama.com/install.sh | sh", desc: "Install on Linux server" },
+  { cmd: "ollama pull llama3.3:70b-instruct-q4_K_M", desc: "Download model once" },
+  { cmd: "OLLAMA_HOST=0.0.0.0 ollama serve", desc: "Expose to office network (port 11434)" },
+  { cmd: "# Employees set OLLAMA_HOST=http://server-ip:11434", desc: "Zero install on laptops" },
+];
+const osEl = document.getElementById('ollama-steps');
+ollamaSteps.forEach(s => {
+  osEl.innerHTML += `<div style="background:var(--navy);border-radius:2px;padding:8px 10px;margin-bottom:8px;">
+    <div class="mono" style="font-size:9.5px;color:var(--teal);margin-bottom:3px;">${s.cmd}</div>
+    <div style="font-size:9px;color:var(--gray);">${s.desc}</div>
+  </div>`;
+});
+const vllmFeats = [
+  "PagedAttention: 50%+ memory reduction, 2–4× throughput",
+  "OpenAI /v1/chat/completions — drop-in replacement",
+  "Multi-user concurrent batching built-in",
+  "Supports Llama, Qwen, Mistral, DeepSeek, Gemma",
+  "74.9K GitHub stars — backed by Meta, Google, NVIDIA",
+];
+const vfEl = document.getElementById('vllm-feats');
+vllmFeats.forEach(f => {
+  vfEl.innerHTML += `<div style="display:flex;gap:8px;margin-bottom:8px;align-items:flex-start;">
+    <div style="width:16px;height:16px;min-width:16px;background:var(--purple);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--white);">→</div>
+    <div style="font-size:10.5px;color:var(--ice);">${f}</div>
+  </div>`;
+});
+
+// ── SLIDE 7: LiteLLM + WebUI ───────────────────────────────────────────────
+const litellmFeats = [
+  { title: "Per-user API keys", desc: "Each employee authenticates separately" },
+  { title: "Budget enforcement", desc: "$X/month cap per person or team" },
+  { title: "Model routing", desc: "Cheap model for chat, strong for code" },
+  { title: "Usage dashboard", desc: "See who used what, when, at what cost" },
+  { title: "OpenAI-compatible", desc: "Works with VS Code, Cursor, any IDE" },
+  { title: "100+ provider support", desc: "Fallback to cloud API if needed" },
+];
+const lfEl2 = document.getElementById('litellm-feats');
+litellmFeats.forEach(f => {
+  lfEl2.innerHTML += `<div style="background:var(--navy);border-radius:2px;padding:8px 10px;margin-bottom:7px;font-size:10.5px;">
+    <span style="color:var(--teal);font-weight:700;">${f.title}: </span>
+    <span style="color:var(--ice);">${f.desc}</span>
+  </div>`;
+});
+const webUIFeats = [
+  "Chat history, conversation management",
+  "Multi-model access from one interface",
+  "File/document uploads (PDF, code files)",
+  "Voice input/output support",
+  "Admin controls per-user model access",
+  "Works on any device — browser only, no install",
+  "No training data sent anywhere — 100% private",
+];
+const wfEl = document.getElementById('webui-feats');
+webUIFeats.forEach(f => {
+  wfEl.innerHTML += `<div style="display:flex;gap:8px;margin-bottom:7px;align-items:flex-start;">
+    <div style="width:16px;height:16px;min-width:16px;background:var(--purple);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--white);">✓</div>
+    <div style="font-size:10.5px;color:var(--ice);">${f}</div>
+  </div>`;
+});
+
+// ── SLIDE 8: RAG ──────────────────────────────────────────────────────────
+const badSteps = [
+  "User pastes entire codebase into chat",
+  "50,000+ tokens consumed per query",
+  "Context window hits limit mid-project",
+  "Model \"forgets\" earlier context",
+  "Team hits monthly token cap",
+  "Work stops. Subscription upgraded.",
+];
+const bsEl = document.getElementById('bad-steps');
+badSteps.forEach((s, i) => {
+  bsEl.innerHTML += `<div style="background:var(--navy);border-radius:2px;padding:8px 10px;margin-bottom:6px;font-size:11px;color:${i >= 4 ? 'var(--red)' : 'var(--ice)'};">${s}</div>`;
+});
+const goodSteps = [
+  "Codebase indexed into vector DB once",
+  "Query retrieves only 3–5 relevant chunks",
+  "500–2,000 tokens per query vs 50,000",
+  "Context window never fills up",
+  "25× fewer tokens consumed",
+  "Unlimited parallel projects. Zero overages.",
+];
+const gsEl = document.getElementById('good-steps');
+goodSteps.forEach((s, i) => {
+  gsEl.innerHTML += `<div style="background:var(--navy);border-radius:2px;padding:8px 10px;margin-bottom:6px;font-size:11px;color:${i === 5 ? 'var(--green)' : 'var(--ice)'};">${s}</div>`;
+});
+
+// ── SLIDE 10: Rollout ─────────────────────────────────────────────────────
+const phases = [
+  { phase:"1", timeline:"Day 1–2", title:"Server + Model", color:"var(--teal)", steps:["Run llmfit on server GPU to identify best model","Install Ollama, pull recommended model","Test: one employee connects remotely","Confirm inference works end-to-end"] },
+  { phase:"2", timeline:"Week 1", title:"Gateway + Frontend", color:"var(--purple)", steps:["Deploy LiteLLM proxy with Docker","Create API keys for all employees","Deploy Open WebUI (ChatGPT-like UI)","Connect IDE plugins to gateway"] },
+  { phase:"3", timeline:"Week 2–3", title:"RAG for Projects", color:"var(--amber)", steps:["Deploy Dify with Docker","Index active project codebases","Set up Dify workflows for common tasks","Token usage drops 10–25× per query"] },
+  { phase:"4", timeline:"Month 2", title:"Optimize & Scale", color:"var(--green)", steps:["Migrate to vLLM if concurrent users grow","Tune model selection based on usage data","AirLLM as laptop fallback for offline","Cancel Copilot Enterprise subscription"] },
+];
+const rpEl = document.getElementById('rollout-phases');
+phases.forEach(p => {
+  rpEl.innerHTML += `<div style="background:var(--blue);border-radius:3px;flex:1;padding:14px 12px;border-top:5px solid ${p.color};overflow:hidden;">
+    <div style="width:36px;height:36px;border-radius:50%;background:${p.color};display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:var(--navy);margin:0 auto 6px;">${p.phase}</div>
+    <div style="font-size:10px;font-weight:700;color:${p.color};text-align:center;margin-bottom:4px;">${p.timeline}</div>
+    <div style="font-size:12px;font-weight:700;color:var(--white);text-align:center;margin-bottom:12px;">${p.title}</div>
+    ${p.steps.map(s => `<div style="background:var(--navy);border-radius:2px;padding:7px 9px;margin-bottom:6px;font-size:9.5px;color:var(--ice);line-height:1.4;">${s}</div>`).join('')}
+  </div>`;
+});
+
+// ── SLIDE 11: Cost ─────────────────────────────────────────────────────────
+const subCosts = [
+  { item: "Copilot Enterprise (10 users)", cost: "$190/mo" },
+  { item: "Copilot Enterprise (20 users)", cost: "$380/mo" },
+  { item: "API overages (parallel projects)", cost: "$100–400/mo" },
+  { item: "Context window upgrades", cost: "$50–200/mo" },
+  { item: "Annual total (10 users)", cost: "$3,480–$7,080", bold: true },
+  { item: "Annual total (20 users)", cost: "$5,760–$11,760", bold: true },
+];
+const scEl = document.getElementById('sub-costs');
+subCosts.forEach(c => {
+  scEl.innerHTML += `<div style="display:flex;justify-content:space-between;align-items:center;background:var(--navy);border-radius:2px;padding:8px 10px;margin-bottom:7px;font-size:11px;">
+    <span style="color:var(--ice);">${c.item}</span>
+    <span style="color:var(--red);font-weight:${c.bold ? '700' : '400'};font-size:${c.bold ? '12' : '11'}px;">${c.cost}</span>
+  </div>`;
+});
+const shCosts = [
+  { item: "Ollama (inference server)", cost: "$0" },
+  { item: "vLLM (production serving)", cost: "$0" },
+  { item: "LiteLLM (API gateway)", cost: "$0" },
+  { item: "Open WebUI (chat frontend)", cost: "$0" },
+  { item: "Dify (RAG + workflows)", cost: "$0" },
+  { item: "Model (Llama/Qwen/DeepSeek)", cost: "$0" },
+  { item: "Electricity (server GPU)", cost: "~$30/mo" },
+  { item: "One-time setup (~16 hrs)", cost: "one-time" },
+];
+const shEl = document.getElementById('sh-costs');
+shCosts.forEach(c => {
+  shEl.innerHTML += `<div style="display:flex;justify-content:space-between;align-items:center;background:var(--navy);border-radius:2px;padding:7px 10px;margin-bottom:6px;font-size:11px;">
+    <span style="color:var(--ice);">${c.item}</span>
+    <span style="color:${c.cost === '$0' ? 'var(--green)' : 'var(--amber)'};font-weight:700;">${c.cost}</span>
+  </div>`;
+});
+
+// ── SLIDE 12: CTA ─────────────────────────────────────────────────────────
+const actions = [
+  { num: "01", action: "Run llmfit on the server GPU", detail: "Find out which model fits. Takes 5 minutes." },
+  { num: "02", action: "Deploy Ollama + Open WebUI", detail: "Give the whole team a working AI workspace in under 2 hours." },
+  { num: "03", action: "Index one project with Dify", detail: "Kill the token limit problem on your most active project this week." },
+];
+const ctaEl = document.getElementById('cta-actions');
+actions.forEach(a => {
+  ctaEl.innerHTML += `<div style="display:flex;align-items:center;gap:16px;background:var(--blue);border-radius:3px;padding:12px 16px;margin-bottom:10px;border-left:6px solid var(--teal);">
+    <div style="font-size:22px;font-weight:900;color:var(--teal);min-width:36px;">${a.num}</div>
+    <div>
+      <div style="font-size:13px;font-weight:700;color:var(--white);">${a.action}</div>
+      <div style="font-size:11px;color:var(--gray);margin-top:3px;">${a.detail}</div>
+    </div>
+  </div>`;
+});
+</script>
+</body>
+</html>
