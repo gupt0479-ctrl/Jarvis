@@ -7,16 +7,11 @@ tags:
   - plan
   - summer
   - moc
-notes:
-  - "[[Summer Grind]]"
-  - "[[01 - Daily Operating System]]"
-  - "[[02 - Weekly Operating System]]"
-  - "[[03 - Monthly & Phase Map]]"
-  - "[[04 - Summer Courses Ops]]"
-  - "[[05 - LeetCode & CSCI 4041]]"
-  - "[[06 - ML Fundamentals (2033 + 2230)]]"
-  - "[[07 - Projects & Hackathons Queue]]"
-  - "[[08 - Anti-Drift Rules]]"
+notes: '["[[Summer Grind]]","[[01 - Daily Operating System]]","[[02 - Weekly
+  Operating System]]","[[03 - Monthly & Phase Map]]","[[04 - Summer Courses
+  Ops]]","[[05 - LeetCode & CSCI 4041]]","[[05a - LeetCode Tracker]]","[[06 - ML
+  Fundamentals (2033 + 2230)]]","[[06a - ML Fundamentals Progress]]","[[07 -
+  Projects & Hackathons Queue]]","[[08 - Anti-Drift Rules]]"]'
 next: "[[01 - Daily Operating System]]"
 ---
 
