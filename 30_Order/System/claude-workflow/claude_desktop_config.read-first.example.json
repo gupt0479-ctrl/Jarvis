@@ -1,15 +1,26 @@
 {
+  "_comment": "Claude Desktop: use mcp-remote stdio bridge (type:http is rejected). Claude Code WSL: use type:http in ~/.mcp.json.",
   "mcpServers": {
-    "obsidian-jarvis": {
+    "jarvis-desktop-example": {
       "command": "cmd",
       "args": [
         "/c",
         "npx",
         "-y",
-        "obsidian-mcp-server"
+        "mcp-remote",
+        "http://127.0.0.1:27123/mcp/",
+        "--header",
+        "Authorization:${JARVIS_AUTH}"
       ],
       "env": {
-        "OBSIDIAN_BASE_URL": "http://127.0.0.1:27123"
+        "JARVIS_AUTH": "Bearer YOUR_OBSIDIAN_KEY"
+      }
+    },
+    "jarvis-claude-code-example": {
+      "type": "http",
+      "url": "http://127.0.0.1:27123/mcp/",
+      "headers": {
+        "Authorization": "Bearer YOUR_OBSIDIAN_KEY"
       }
     }
   }
