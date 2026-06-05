@@ -234,7 +234,7 @@ When adding work to Jarvis:
 ## Gold-Standard Example
 - *Tasks:* [[10_Areas/UMN/Previous Classes/Minor/MGMT 3001/Week - 9|Week - 9]] uses `- [ ]` under `## Takeaways (questions to resolve)` for real open questions rather than prose — the pattern the ingestion workflow requires.
 - *Kanban:* [[10_Areas/Life/Habits/Habit Tracker Board|Habit Tracker Board]] is a real lane-based board (stage movement is the point), not a task dump.
-- *next-driven project:* [[20_Progress/Projects/UROP/BOOM Board|BOOM Board]] keeps context in the note and surfaces one current move.
+- *next-driven project:* [[BOOM Board|BOOM Board]] keeps context in the note and surfaces one current move.
 ## Verified Open State
 - Preferred priority scale for coursework vs projects (which of `🔺/⏫/🔼/🔽/⏬` maps to what)? — *unresolved; pick a convention before scaling Tasks usage*
 - Canonical lane names for future project boards (the doc offers four templates; none is yet declared the default)? — *needs user choice*
