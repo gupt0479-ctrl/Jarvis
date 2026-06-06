@@ -367,6 +367,13 @@
         "type": "FILES",
         "pattern": "10_Areas/Summer Grind.md",
         "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "20_Progress/Degree/HIST 1103/HIST 1103 Board.md",
+        "patternType": "STRICT"
       }
     ],
     "frontMatter": [

@@ -23,6 +23,17 @@ Contemporary World History (post-WWII to present). Online, Summer 2026 at Anoka 
 - [[HIST 1103 - Assignments and Discussions]] — how the 13 assignments + practice work, the discussion board, and all due dates
 - [[HIST 1103 - Exams]] — midterm and final rules
 - [[HIST 1103 - Schedule]] — week-by-week reading and what is due
+## Assignment pre-submit checklist
+
+> [!danger] Before every assignment submit
+> - [ ] 400+ words (quote excluded)
+> - [ ] Posted to Discussion tab as text (no file attachment)
+> - [ ] File uploaded to correct Assignments dropbox
+> - [ ] Textbook quote with page number included
+> - [ ] Question for classmate is the last line
+> - [ ] Turnitin ≤ 15% (check after upload)
+> - [ ] Classmate reply posted by Sunday 11:30 PM
+
 ## Fast facts
 | Item | Detail |
 |---|---|
@@ -34,6 +45,8 @@ Contemporary World History (post-WWII to present). Online, Summer 2026 at Anoka 
 | Final due | Thu Jul 2, 11:30 PM (no late finals) |
 | Turnitin cap | 15% similarity on everything |
 | AI policy | Any AI use beyond grammar = plagiarism = instant course failure |
+| Quote rule | Every assignment needs 1 textbook quote **with page number** — not optional |
+| End question | Every assignment must end with a question for a classmate — not optional |
 ## Instructor contact
 - Email: Bruce.Homann@anokaramsey.edu
 - Google Voice (call or text): 763-250-1129 — if no answer, call back from the same number in 5 minutes
@@ -42,6 +55,24 @@ Contemporary World History (post-WWII to present). Online, Summer 2026 at Anoka 
 - Office hours: Tues & Thurs 2-4 PM online (Zoom), and by appointment
 - In-course messaging: the envelope icon (top right of D2L) to "page" him
 # MOC
+## Assignment status
+| # | Due | Submitted | Q at end | Quote + pg# | Classmate reply |
+|---|---|---|---|---|---|
+| Practice | Sat Jun 6 | ⚠️ posted late (no Q, no quote) | ❌ added after | ❌ missing | — |
+| 1 | Sat Jun 6 | | | | |
+| 2 | Sat Jun 6 | | | | |
+| 3 | Sat Jun 6 | | | | |
+| 4 | Sat Jun 13 | | | | |
+| 5 | Sat Jun 13 | | | | |
+| 6 | Sat Jun 13 | | | | |
+| 7 | Sat Jun 13 | | | | |
+| 8 | Sat Jun 20 | | | | |
+| 9 | Sat Jun 27 | | | | |
+| 10 | Sat Jun 27 | | | | |
+| 11 | Sat Jun 27 | | | | |
+| 12 | Sat Jun 27 | | | | |
+| 13 | Thu Jul 3 | | | | |
+
 ## Weekly notes
 - (to create as the course runs)
 ## Concept notes

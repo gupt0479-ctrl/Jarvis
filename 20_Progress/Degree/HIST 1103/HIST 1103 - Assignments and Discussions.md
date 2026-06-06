@@ -16,6 +16,18 @@ notes:
 next: "Post Practice + Asn 1-3 to discussion AND dropbox by Sat Jun 6, 11:30pm"
 ---
 # HIST 1103 — Assignments and Discussions
+
+> [!danger] RUN THIS BEFORE EVERY SUBMIT — NO EXCEPTIONS
+> Missing any single item = **zero credit**. No partial credit. No second chances.
+>
+> - [ ] **400+ words** (textbook quote does NOT count toward this)
+> - [ ] Posted as text in the **Discussion tab** (no attachment)
+> - [ ] File uploaded to the **correct Assignments tab dropbox**
+> - [ ] Contains a **textbook quote with its page number** — e.g. "..." (Jones, p. 47)
+> - [ ] Last line of the post is a **question for a classmate** about the topic
+> - [ ] **Turnitin score 15% or less** (check immediately after dropbox upload)
+> - [ ] **Classmate reply** posted in the discussion by **Sunday 11:30 PM**
+
 Assignments and participation are **20% of the grade**. Every assignment lives in two places at once: a **post in the Discussions tab** and an **uploaded file in the Assignments tab dropbox**. Both are required, every time. This note merges the syllabus rules with the live D2L discussion-board and dropbox instructions.
 ## The basic loop for each assignment
 1. The instructor posts the question(s) in the Discussions tab under "Weekly Assignments."
@@ -51,8 +63,8 @@ Assignments and participation are **20% of the grade**. Every assignment lives i
 - Turnitin on dropbox submissions: max **15%**.
 - The end-of-assignment question must be relevant to your answer and the topic.
 - Replies to a student's question: aim for about **100 words**, but there is no real minimum.
-- Use **data and details** to prove your points — you are convincing the reader, so facts matter. Do **not** pad with filler like "On page 43, Jones says blah blah blah."
-- Include **one quote** from the textbook in your answer (it does not need to be long, but one is required).
+- Use **data and details** to prove your points — you are convincing the reader, so facts matter. The textbook quote (with page number) is required, but it must support your argument — do not treat it as a throwaway sentence that exists only to check a box. Weave it into your point naturally.
+- Include **one quote with its page number** from the textbook — criterion 7, hard requirement. Format: "..." (Jones, p. X). The quote does not count toward your 400-word minimum. **The page number is required** — this is not optional.
 - All parts must be done for credit; there is no partial credit.
 - Want individual feedback? Email the instructor, drop by his online Zoom office hours, or use the in-course messaging envelope icon.
 ## How to post an assignment (step by step from the syllabus)
