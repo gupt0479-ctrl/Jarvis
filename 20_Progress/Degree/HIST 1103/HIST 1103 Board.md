@@ -14,7 +14,8 @@ notes:
   - "[[HIST 1103 - Exams]]"
   - "[[HIST 1103 - Schedule]]"
   - "[[Summer Courses]]"
-next: "Post Practice Assignment + Assignments 1-3 (due Sat Jun 6, 11:30pm)"
+next: "Post Assignments 1-3 to discussion + upload .docx to dropbox if not done — due Sat Jun 6 11:30pm"
+updated: 2026-06-06
 ---
 # HIST 1103 Board
 Contemporary World History (post-WWII to present). Online, Summer 2026 at Anoka Ramsey CC. A full 16-week course compressed into about 4 weeks, so the pace and workload are heavy. Instructor: **Dr. Bruce R. Homann**.
@@ -23,6 +24,7 @@ Contemporary World History (post-WWII to present). Online, Summer 2026 at Anoka 
 - [[HIST 1103 - Assignments and Discussions]] — how the 13 assignments + practice work, the discussion board, and all due dates
 - [[HIST 1103 - Exams]] — midterm and final rules
 - [[HIST 1103 - Schedule]] — week-by-week reading and what is due
+- [[HIST 1103 - Completed Assignments]] — notes on every completed assignment: topic, argument, textbook quote used, lessons learned
 ## Assignment pre-submit checklist
 
 > [!danger] Before every assignment submit
@@ -58,10 +60,10 @@ Contemporary World History (post-WWII to present). Online, Summer 2026 at Anoka 
 ## Assignment status
 | # | Due | Submitted | Q at end | Quote + pg# | Classmate reply |
 |---|---|---|---|---|---|
-| Practice | Sat Jun 6 | ⚠️ posted late (no Q, no quote) | ❌ added after | ❌ missing | — |
-| 1 | Sat Jun 6 | | | | |
-| 2 | Sat Jun 6 | | | | |
-| 3 | Sat Jun 6 | | | | |
+| Practice | Sat Jun 6 | ⚠️ posted (no Q, no quote in discussion) | ❌ added as reply | ❌ missing from discussion | — |
+| 1 | Sat Jun 6 | ✅ .docx ready | ✅ | ✅ Jones p.13 | ⬜ Sun Jun 7 |
+| 2 | Sat Jun 6 | ✅ .docx ready | ✅ | ✅ Jones p.38 | ⬜ Sun Jun 7 |
+| 3 | Sat Jun 6 | ✅ .docx ready | ✅ | ✅ Jones p.68 | ⬜ Sun Jun 7 |
 | 4 | Sat Jun 13 | | | | |
 | 5 | Sat Jun 13 | | | | |
 | 6 | Sat Jun 13 | | | | |
@@ -74,6 +76,6 @@ Contemporary World History (post-WWII to present). Online, Summer 2026 at Anoka 
 | 13 | Thu Jul 3 | | | | |
 
 ## Weekly notes
-- (to create as the course runs)
+- Week 1 (Jun 1–6): Practice + Assignments 1, 2, 3 completed. See [[HIST 1103 - Completed Assignments]].
 ## Concept notes
 - (to create from textbook reading)
