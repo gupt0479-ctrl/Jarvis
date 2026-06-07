@@ -17,7 +17,8 @@ related:
   - "[[Source Summary Standard]]"
 ---
 # Human Writing Standard
-This file is the writing contract for Jarvis. Any AI tool editing notes in this vault should read and follow it before drafting or rewriting Markdown.
+This file is the writing contract for Jarvis — it owns one job: *how prose must sound*. For *why we write notes this way and what Jarvis is for*, see [[Jarvis OS — North Star]]; for *where each note goes*, see [[40_Resources/Obsidian/Jarvis Vault Architecture]]. This file does not restate either.
+Any AI tool editing notes in this vault should read and follow it before drafting or rewriting Markdown.
 ## Voice here, structure in 30_Order
 This file governs how prose should *sound*. It is one half of the writing standard. The other half — how a note is *shaped, filed, and which template it uses* — lives in `30_Order/`: read its `Templates/` and `Workflows/` before writing. For where each note type belongs, see [[40_Resources/Obsidian/Jarvis Vault Architecture]]. Voice without structure produces tidy notes in the wrong place; structure without voice produces slop in the right place. You need both.
 ## Objective

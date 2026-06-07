@@ -17,6 +17,7 @@ This vault is an AI-assisted second brain built in Obsidian. Treat it as a knowl
 
 ## Priority Files
 
+- Read [[Jarvis OS — North Star]] for *why Jarvis exists, why it underperforms, and the target state*. It is the strategy spine; this file owns only the write contract and routing pointers. Do not duplicate its philosophy here.
 - Read [[60_Claude/07_AI_Information/Vault Map]] first — the five-minute orientation for any agent.
 - Read [[40_Resources/Obsidian/Jarvis Vault Architecture]] for where every note goes (the placement source of truth).
 - Read `30_Order/` before writing any note — its `Workflows/` and `Templates/` are the structural half of [[HUMAN_WRITING]].

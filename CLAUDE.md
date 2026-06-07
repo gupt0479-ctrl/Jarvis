@@ -18,7 +18,8 @@ related_progress:
   - "[[HUMAN_WRITING]]"
 ---
 # CLAUDE.md — Vault Operating Contract
-This vault is a personal knowledge system powered by Claude Code. The assistant reads, writes, and maintains notes directly in Obsidian. Shared vault context lives in:
+This vault is a personal knowledge system powered by Claude Code. The assistant reads, writes, and maintains notes directly in Obsidian. For *why Jarvis exists, why it underperforms today, and the target state*, read [[Jarvis OS — North Star]] — the strategy spine. This file owns only Claude-specific workflow (skills, commands, session protocol); it should not restate the system philosophy or the routing tables that live in the North Star and [[40_Resources/Obsidian/Jarvis Vault Architecture]]. Shared vault context lives in:
+- [[Jarvis OS — North Star]]
 - [[AI_CONTEXT]]
 - [[AGENTS]]
 - [[HUMAN_WRITING]]
