@@ -1,11 +1,13 @@
 ---
-type: evergreen
+type: ai
 status: sprout
 created: 2026-04-03
 updated: 2026-05-26
 tags:
   - evergreen
-notes:
+  - "#ai"
+  - "#ai-infrastructure"
+related_progress:
   - "[[AI_CONTEXT]]"
   - "[[AI Workflow]]"
   - "[[40_Resources/Obsidian/Claude Pro Workflow]]"

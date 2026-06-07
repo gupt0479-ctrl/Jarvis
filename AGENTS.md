@@ -1,3 +1,16 @@
+---
+type: ai
+status: sprout
+created: 2026-03-19
+updated: 2026-06-07
+tags:
+  - "#ai"
+  - "#evergreen"
+  - "#ai-infrastructure"
+related:
+  - "[[CLAUDE]]"
+  - "[[HUMAN_WRITING]]"
+---
 # Jarvis Agent Guide
 
 This vault is an AI-assisted second brain built in Obsidian. Treat it as a knowledge system first and a file tree second.

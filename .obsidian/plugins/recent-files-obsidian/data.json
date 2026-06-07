@@ -1,8 +1,60 @@
 {
   "recentFiles": [
     {
-      "basename": "CRUX Demo Transcript",
-      "path": "CRUX Demo Transcript.md"
+      "basename": "00_Dashboard",
+      "path": "00_Dashboard.md"
+    },
+    {
+      "basename": "Habit Tracker Board",
+      "path": "10_Areas/Life/Habits/Habit Tracker Board.md"
+    },
+    {
+      "basename": "Habit Scorecard Board",
+      "path": "10_Areas/Life/Habits/Habit Scorecard Board.md"
+    },
+    {
+      "basename": "Habit Experiments Board",
+      "path": "10_Areas/Life/Habits/Habit Experiments Board.md"
+    },
+    {
+      "basename": "Daily Habit Board",
+      "path": "10_Areas/Life/Habits/Daily Habit Board.md"
+    },
+    {
+      "basename": "Personality",
+      "path": "10_Areas/Life/Truths of Life/Personality.md"
+    },
+    {
+      "basename": "Identities",
+      "path": "10_Areas/Life/Truths of Life/Identities.md"
+    },
+    {
+      "basename": "CLAUDE",
+      "path": "CLAUDE.md"
+    },
+    {
+      "basename": "HUMAN_WRITING",
+      "path": "HUMAN_WRITING.md"
+    },
+    {
+      "basename": "AGENTS",
+      "path": "AGENTS.md"
+    },
+    {
+      "basename": "For AI",
+      "path": "30_Order/Templates/Frontmatter/For AI.md"
+    },
+    {
+      "basename": "For Inputs",
+      "path": "30_Order/Templates/Frontmatter/For Inputs.md"
+    },
+    {
+      "basename": "For Brainstorm",
+      "path": "30_Order/Templates/Frontmatter/For Brainstorm.md"
+    },
+    {
+      "basename": "DNA_Partner_Briefing.docx",
+      "path": "20_Progress/Projects/CS/Gym App/DNA_Partner_Briefing.docx.pdf"
     },
     {
       "basename": "Vibe Coding Hackathon",
@@ -147,10 +199,6 @@
     {
       "basename": "Maverick AI Resource Hub 1",
       "path": "60_Claude/05_Clippings/Web/Maverick AI Resource Hub 1.md"
-    },
-    {
-      "basename": "Where teams and agents work together",
-      "path": "60_Claude/05_Clippings/Web/Where teams and agents work together.md"
     }
   ],
   "omittedPaths": [],
