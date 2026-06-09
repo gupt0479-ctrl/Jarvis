@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "AGENTS",
+      "path": "AGENTS.md"
+    },
+    {
+      "basename": "Portfolio",
+      "path": "20_Progress/Projects/CS/Portfolio/Portfolio.md"
+    },
+    {
       "basename": "01 - Config Pack (copy-paste ready)",
       "path": "20_Progress/Projects/CS/Portfolio/portfolio-frontend-kit/01 - Config Pack (copy-paste ready).md"
     },
@@ -75,10 +83,6 @@
     {
       "basename": "HUMAN_WRITING",
       "path": "HUMAN_WRITING.md"
-    },
-    {
-      "basename": "AGENTS",
-      "path": "AGENTS.md"
     },
     {
       "basename": "For AI",
@@ -195,10 +199,6 @@
     {
       "basename": "CSCI 3923 Board",
       "path": "10_Areas/UMN/Previous Classes/CSCI/CSCI 3923/CSCI 3923 Board.md"
-    },
-    {
-      "basename": "Summer Courses",
-      "path": "20_Progress/Degree/Summer Courses.md"
     }
   ],
   "omittedPaths": [],
