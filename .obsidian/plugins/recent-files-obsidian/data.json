@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "01 - Config Pack (copy-paste ready)",
+      "path": "20_Progress/Projects/CS/Portfolio/portfolio-frontend-kit/01 - Config Pack (copy-paste ready).md"
+    },
+    {
+      "basename": "00 - AI Setup — Index & Integration Guide",
+      "path": "20_Progress/Projects/CS/Portfolio/portfolio-frontend-kit/00 - AI Setup — Index & Integration Guide.md"
+    },
+    {
+      "basename": "Clippings board",
+      "path": "60_Claude/05_Clippings/Clippings board.md"
+    },
+    {
       "basename": "How to Build an AI-Powered Prediction Market Trading Bot Using Claude Skills",
       "path": "60_Claude/05_Clippings/PDFs/How to Build an AI-Powered Prediction Market Trading Bot Using Claude Skills.pdf"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "Summer Courses",
       "path": "20_Progress/Degree/Summer Courses.md"
-    },
-    {
-      "basename": "The Output Audit",
-      "path": "60_Claude/05_Clippings/Web/The Output Audit.md"
-    },
-    {
-      "basename": "The Hidden Operating System Behind Every Income Ceiling",
-      "path": "60_Claude/05_Clippings/Web/The Hidden Operating System Behind Every Income Ceiling.md"
-    },
-    {
-      "basename": "Magic Fretboard",
-      "path": "60_Claude/05_Clippings/Web/Magic Fretboard.md"
     }
   ],
   "omittedPaths": [],
