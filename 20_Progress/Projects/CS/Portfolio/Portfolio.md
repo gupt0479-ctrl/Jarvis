@@ -83,6 +83,19 @@ Example minimal model:
 - **Education:** school, degree, start/end, bullets
 - **Skills:** name, category, level
 - **SiteSettings (singleton):** site title, SEO description, og image, nav links
+### Sanity fixes
+Here is a detailed analysis of what exactly does sanity not render on my portfolio:
+1. Hero & About: a. Availability status : Available for hire , Open to opportunities , Not looking. b. Years Of Experience : 2 , Stats : Small KPI chips (e.g., “10+ projects”): Side Quests : 3, Client Satisfaction : 100% , Years Experience : 2+ , Technologies Mastered : 30+. a. and b. are the things that are not ebing rendered. The image pasted is below about me which is not in sanity(probably hardcoded).
+2. Experience: Employment Type, Description : Long-form responsibilities and impact, Achievements : Quantifiable outcomes (numbers preferred), Company Logo, Company Website. Order works. Error message shown in image.
+3. Projects: Slug(no idea what that is), Tagline : Short one-liner. Enitrely broken actually.
+4. Skills: Couldn't figure out what was broken. Seems like everything is. The graph is not there anymore. The skills division is also different than what is currectly there.
+5. Education: Description, Achievements - (not needed), Logo(needed)
+6. Certifications: Issue Date : 2022-11-10 (wrote as month and year - works perfectly), Expiry Date (Leave blank if certification doesn't expire ): 2025-11-10 , Credential ID (Certificate ID or badge number ): TF-DEV-24680-2022 , Credential URL (Link to verify the certification ): https://tensorflow.org/certificate , Badge/Logo : Upload certification badge or logo(not needed)
+7. Achievements: Issuer, Date(as year - perfect), Url(not sure)
+8. Blog/What I read: Github(hardcoded but works), Slug(do not know what that is), Tags(not needed), Published At(perfect the way it is)
+9. Footer & contact: Not there on sanity(works i guess)
+10. Site Settings: Not rendered anywhere, what does it even do?
+Can you figure out what exactly is not being rendered?
 ### UI Enhancement
 You are working on a portfolio combined with ai project. I am haflway across the project when i decided to change up the entire ai part of the website. The ui right now is basic and could be improved by a lot. I have provided you with images from the localhost currently being run and what the website looks like. You have access to all the codes and directory markdown files. Analyze each and every single thing about this website.
 
