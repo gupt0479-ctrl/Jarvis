@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Portfolio",
+      "path": "20_Progress/Projects/CS/Portfolio/Portfolio.md"
+    },
+    {
       "basename": "05 - Per-Phase Build Prompts",
       "path": "20_Progress/Projects/CS/Portfolio/claude-code setup/05 - Per-Phase Build Prompts.md"
     },
@@ -59,10 +63,6 @@
     {
       "basename": "01 - Layered Architecture",
       "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/01 - Layered Architecture.md"
-    },
-    {
-      "basename": "Portfolio",
-      "path": "20_Progress/Projects/CS/Portfolio/Portfolio.md"
     },
     {
       "basename": "AGENTS",

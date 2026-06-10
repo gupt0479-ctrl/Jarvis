@@ -45,7 +45,7 @@ Use eval-runner. Install promptfoo, scaffold eval/ with the deterministic cases 
 Read NB/03 - Context Engine, Grounding & Personas.md fully.
 Use ai-engineer for the four in-repo persona system prompts (recruiter, friend, weirdo, ceo) + the output safety guard, and frontend-builder for the sidebar sections, suggested chips (click→drop→send), and the author-written copy-paste power-prompts for recruiter and ceo (paste detects persona marker and locks it). Add the persona warmth judge council to the eval suite. Run /eval — persona cases (same facts, different voice; weirdo stays in guardrail) and warmth floors must pass. Report (closes premortem 6).
 ```
-## Phase 5 — Tools + generative UI
+## Phase 5 — Tools + generative UI - here
 ```
 Read NB/06 - Tool System & Generative UI.md fully.
 Use ai-engineer for the closed tool set (navigate, showProject, showExperience, lookupFact, getResume, contact) with enums built from Sanity, schema validation, and fail-safe-to-text; use frontend-builder for the evidence-card components fed by validated results, rendered via the Vercel AI SDK (layer 3 only). Run /eval — tool-correctness and fail-safe cases must pass. Report (closes premortem 3).
