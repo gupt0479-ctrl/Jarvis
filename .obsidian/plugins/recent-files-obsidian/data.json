@@ -1,20 +1,60 @@
 {
   "recentFiles": [
     {
-      "basename": "Portfolio",
-      "path": "20_Progress/Projects/CS/Portfolio/Portfolio.md"
+      "basename": "AI Market Analyzer - AI Engine Architecture",
+      "path": "20_Progress/Projects/CS/TradingView/AI Market Analyzer - AI Engine Architecture.md"
+    },
+    {
+      "basename": "AI Market Analyzer - Data Sources",
+      "path": "20_Progress/Projects/CS/TradingView/AI Market Analyzer - Data Sources.md"
+    },
+    {
+      "basename": "AI Market Analyzer - Strategy Engine",
+      "path": "20_Progress/Projects/CS/TradingView/AI Market Analyzer - Strategy Engine.md"
+    },
+    {
+      "basename": "AI Market Analyzer - Product Spec",
+      "path": "20_Progress/Projects/CS/TradingView/AI Market Analyzer - Product Spec.md"
+    },
+    {
+      "basename": "Reddit",
+      "path": "20_Progress/Projects/CS/TradingView/Reddit.md"
+    },
+    {
+      "basename": "Links",
+      "path": "20_Progress/Projects/CS/TradingView/Links.md"
+    },
+    {
+      "basename": "Trading with Ai",
+      "path": "20_Progress/Projects/CS/TradingView/Trading with Ai.md"
+    },
+    {
+      "basename": "Trading Tools and Platforms",
+      "path": "20_Progress/Projects/CS/TradingView/Trading Tools and Platforms.md"
+    },
+    {
+      "basename": "Trading",
+      "path": "20_Progress/Projects/CS/TradingView/Trading.md"
+    },
+    {
+      "basename": "RESEARCH",
+      "path": "20_Progress/Projects/CS/TradingView/RESEARCH.md"
     },
     {
       "basename": "05 - Per-Phase Build Prompts",
       "path": "20_Progress/Projects/CS/Portfolio/claude-code setup/05 - Per-Phase Build Prompts.md"
     },
     {
-      "basename": "04 - Eval Harness — promptfoo",
-      "path": "20_Progress/Projects/CS/Portfolio/claude-code setup/04 - Eval Harness — promptfoo.md"
-    },
-    {
       "basename": "03 - Commands and Hooks",
       "path": "20_Progress/Projects/CS/Portfolio/claude-code setup/03 - Commands and Hooks.md"
+    },
+    {
+      "basename": "Portfolio",
+      "path": "20_Progress/Projects/CS/Portfolio/Portfolio.md"
+    },
+    {
+      "basename": "04 - Eval Harness — promptfoo",
+      "path": "20_Progress/Projects/CS/Portfolio/claude-code setup/04 - Eval Harness — promptfoo.md"
     },
     {
       "basename": "02 - Subagents",
@@ -159,46 +199,6 @@
     {
       "basename": "DNA_Partner_Briefing.docx",
       "path": "20_Progress/Projects/CS/Gym App/DNA_Partner_Briefing.docx.pdf"
-    },
-    {
-      "basename": "Vibe Coding Hackathon",
-      "path": "20_Progress/Projects/CS/Hackathons/Vibe Coding Hackathon.md"
-    },
-    {
-      "basename": "The Agent-Ready Roadmap",
-      "path": "60_Claude/05_Clippings/Web/The Agent-Ready Roadmap.md"
-    },
-    {
-      "basename": "Talking Points AIIS",
-      "path": "20_Progress/Projects/CS/Hackathons/Talking Points AIIS.md"
-    },
-    {
-      "basename": "HIST 1103 Board",
-      "path": "20_Progress/Degree/HIST 1103/HIST 1103 Board.md"
-    },
-    {
-      "basename": "HIST 1103 - Syllabus",
-      "path": "20_Progress/Degree/HIST 1103/Documents/HIST 1103 - Syllabus.pdf"
-    },
-    {
-      "basename": "HIST 1103 - Contemporary World History Since 1945(Jeffrey)",
-      "path": "20_Progress/Degree/HIST 1103/Documents/HIST 1103 - Contemporary World History Since 1945(Jeffrey).pdf"
-    },
-    {
-      "basename": "Data or Specimens Only Research",
-      "path": "20_Progress/Projects/Research/Healthcare/Courses/MIT Intro/Data or Specimens Only Research.md"
-    },
-    {
-      "basename": "Vault-Audit-2026-05-29",
-      "path": "60_Claude/40_Project_Briefs/Vault-Audit-2026-05-29.md"
-    },
-    {
-      "basename": "Claude Optimization Master Setup",
-      "path": "60_Claude/40_Project_Briefs/Claude Optimization Master Setup.md"
-    },
-    {
-      "basename": "Architecture & Setup Runbook — 24GB Hybrid Stack",
-      "path": "10_Areas/Life/Plans/Zero-Cost AI Stack/Architecture & Setup Runbook — 24GB Hybrid Stack.md"
     }
   ],
   "omittedPaths": [],
