@@ -1,6 +1,42 @@
 {
   "recentFiles": [
     {
+      "basename": "08 - Build Phases & Milestones",
+      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/08 - Build Phases & Milestones.md"
+    },
+    {
+      "basename": "07 - Evaluation & Observability",
+      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/07 - Evaluation & Observability.md"
+    },
+    {
+      "basename": "06 - Tool System & Generative UI",
+      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/06 - Tool System & Generative UI.md"
+    },
+    {
+      "basename": "05 - Model Layer, Rate Limiting & Abuse",
+      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/05 - Model Layer, Rate Limiting & Abuse.md"
+    },
+    {
+      "basename": "04 - Orby Integration",
+      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/04 - Orby Integration.md"
+    },
+    {
+      "basename": "00 - Nextgen Chatbot — Build Plan",
+      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/00 - Nextgen Chatbot — Build Plan.md"
+    },
+    {
+      "basename": "03 - Context Engine, Grounding & Personas",
+      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/03 - Context Engine, Grounding & Personas.md"
+    },
+    {
+      "basename": "02 - Premortem & Failure Defenses",
+      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/02 - Premortem & Failure Defenses.md"
+    },
+    {
+      "basename": "01 - Layered Architecture",
+      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/01 - Layered Architecture.md"
+    },
+    {
       "basename": "Portfolio",
       "path": "20_Progress/Projects/CS/Portfolio/Portfolio.md"
     },
@@ -163,42 +199,6 @@
     {
       "basename": "Summer Grind",
       "path": "10_Areas/Summer Grind.md"
-    },
-    {
-      "basename": "CSCI 2041 Note Production Plan",
-      "path": "10_Areas/UMN/Previous Classes/CSCI/CSCI 2041/CSCI 2041 Note Production Plan.md"
-    },
-    {
-      "basename": "All pdfs for books (en.wikipedia.org)",
-      "path": "60_Claude/10_Source_Summaries/Web Ingestion/All pdfs for books (en.wikipedia.org).md"
-    },
-    {
-      "basename": "Claude Code with Obsidian (notion.so)",
-      "path": "60_Claude/10_Source_Summaries/Web Ingestion/Claude Code with Obsidian (notion.so).md"
-    },
-    {
-      "basename": "Code crafters(learning) Rust (app.codecrafters.io)",
-      "path": "60_Claude/10_Source_Summaries/Web Ingestion/Code crafters(learning) Rust (app.codecrafters.io).md"
-    },
-    {
-      "basename": "Chatgpt Gemini Claude Grok 2D99464bdbf98168a9f5f8b1a198b108 (tathastu-rh.notion.site)",
-      "path": "60_Claude/10_Source_Summaries/Web Ingestion/Chatgpt Gemini Claude Grok 2D99464bdbf98168a9f5f8b1a198b108 (tathastu-rh.notion.site).md"
-    },
-    {
-      "basename": "Projects Applications - Solvearn",
-      "path": "60_Claude/10_Source_Summaries/Web Ingestion/Projects Applications - Solvearn.md"
-    },
-    {
-      "basename": "Useful Links",
-      "path": "10_Areas/Career/Useful Links.md"
-    },
-    {
-      "basename": "Links",
-      "path": "10_Areas/UMN/Links.md"
-    },
-    {
-      "basename": "CSCI 3923 Board",
-      "path": "10_Areas/UMN/Previous Classes/CSCI/CSCI 3923/CSCI 3923 Board.md"
     }
   ],
   "omittedPaths": [],

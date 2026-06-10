@@ -117,7 +117,6 @@ You are working on a portfolio as a front end engineer. The ui right now is basi
 
 10. Footer is the uggliest thing i have seen in my entire life. I want you to remove the center context written and change it to something less cringe and short. Right next to those workds should be back on top with the button. The year should appear on the right most side with something else cool next to it. On the left most side should be an emoji for a programmer.
 ## Experience
-
 Files: `ExperienceSection.tsx`, `ExperienceCard.tsx`, `CometCard`.
 
 The current timeline rail is close but misaligned and cards feel too huge/transparent.
@@ -322,40 +321,7 @@ Required layout:
 ## AI / Portfolio Lab
 
 Files to replace or add around `SidebarToggle`, `AppSidebar`, `chat/*`.
-
 This is the most important part of the portfolio. It should not be a paid chatbot.
-
-Required:
-
-- Remove OpenAI ChatKit UI and all user-facing chatbot language.
-- Replace “Chat with Anant” / “AI Twin” with “Portfolio Lab” or “AI Lab.”
-- Keep a bottom-right floating launcher button.
-- Tooltip can say: `Ask the lab, not my sleep schedule.`
-- The AI panel can be sidebar or hover board.
-- It should feel like an interactive command center, not a chat box.
-
-Portfolio Lab features:
-
-- Modes:
-  - Recruiter: role-fit proof packs, skills, experience evidence.
-  - Builder: project breakdowns, architecture notes.
-  - Research: AI/data systems timeline and learning trajectory.
-  - Skeptic: claim checker with source/evidence cards.
-- Suggested chips/questions.
-- Static/local deterministic answers for v1.
-- Evidence cards that link to sections.
-- Mini skill/project graph.
-- “Generate proof pack” button that creates a client-side text summary.
-- No paid API calls for visitor usage.
-- If the current ChatKit package remains installed temporarily, it should not be used in the visible UI.
-
-## Floating Dock / Bottom UI
-
-There is a bottom-left floating `N` style dock/button in screenshots. Do not leave it random.
-
-- Either integrate it into the design as a small command/dock button, or remove/hide it if it has no purpose.
-- Bottom-right AI launcher must be visually dominant but not obnoxious.
-- Ensure dock, AI launcher, and footer do not overlap on mobile.
 
 ## Data and Content
 
@@ -376,71 +342,9 @@ Use real Anant content already present in Sanity/Data:
 Do not use Alex Morgan or fake Lovable data.
 
 ## Accessibility and Responsiveness
-
 - All interactive controls need accessible names.
 - Keyboard nav must work for carousel, AI Lab, close buttons, and nav.
 - Respect reduced motion.
 - No text overlap at mobile, 1280px desktop, or wide desktop.
 - Maintain readable contrast over the background.
 - Avoid layout shifts on hover.
-
-## Verification
-
-After implementation:
-
-- Run `pnpm typecheck`.
-- Run `pnpm build`.
-- Search and remove old visible copy:
-  - `AI Twin`
-  - `Chat with Anant`
-  - `ChatKit`
-  - `Alex Morgan`
-- Test:
-  - Hero layout.
-  - About telemetry.
-  - Experience timeline alignment.
-  - Projects carousel transitions.
-  - Skills graph hover/filter.
-  - Education organic flowchart.
-  - Certifications cards.
-  - Achievements ledger.
-  - Blog cards.
-  - Contact copy/buttons/socials.
-  - Footer layout.
-  - AI Lab open/close and static interactions.
-  - Mobile and desktop.
-
-```
-## Data
-### BOOM
-1. *Data Pipeline Portfolio Bullet*
-	- Portfolio Bullet: **Data Pipeline & Storage Design (MongoDB + Kafka)**: Designed and worked with a document-oriented storage layer for astronomical alert data, where query patterns drove schema decisions rather than code structure. Implemented filter evaluation on enriched records using cross-match data, derived quantities, and classifier outputs — demonstrating that post-enrichment filtering is significantly more powerful than raw-data filtering. 
-		**Stack**: MongoDB, Kafka, Rust (serde/BSON), Docker 
-2. *Quantified Impact*
-	- Worked with 5+ entity types (alerts, objects, images, filters, catalogs) in a document database
-	- Filter versioning enabled reproducible scientific results across pipeline changes
-	- Architecture pattern transfers directly to feature stores and ML experiment tracking
-## Git
-- `git config` - Configure Git
-- `git init` - Initialize Git repository
-- `git status` - Check the status of a Git repository
-- `git add` - Track files
-- `git commit` - Commit tracked files
-- `git push` - Upload files
-- `git pull` - Download files
-### Repository: Project
-```bash
-echo "# projects" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/gupta-builds/projects.git
-git push -u origin main
-```
-…or push an existing repository from the command line:
-```bash
-git remote add origin https://github.com/gupta-builds/projects.git
-git branch -M main
-git push -u origin main
-```
