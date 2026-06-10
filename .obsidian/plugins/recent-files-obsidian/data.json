@@ -1,6 +1,30 @@
 {
   "recentFiles": [
     {
+      "basename": "05 - Per-Phase Build Prompts",
+      "path": "20_Progress/Projects/CS/Portfolio/claude-code setup/05 - Per-Phase Build Prompts.md"
+    },
+    {
+      "basename": "04 - Eval Harness — promptfoo",
+      "path": "20_Progress/Projects/CS/Portfolio/claude-code setup/04 - Eval Harness — promptfoo.md"
+    },
+    {
+      "basename": "03 - Commands and Hooks",
+      "path": "20_Progress/Projects/CS/Portfolio/claude-code setup/03 - Commands and Hooks.md"
+    },
+    {
+      "basename": "02 - Subagents",
+      "path": "20_Progress/Projects/CS/Portfolio/claude-code setup/02 - Subagents.md"
+    },
+    {
+      "basename": "00 - Claude Code Build Kit — Index",
+      "path": "20_Progress/Projects/CS/Portfolio/claude-code setup/00 - Claude Code Build Kit — Index.md"
+    },
+    {
+      "basename": "01 - MCP Servers and the .mcp.json Fix",
+      "path": "20_Progress/Projects/CS/Portfolio/claude-code setup/01 - MCP Servers and the .mcp.json Fix.md"
+    },
+    {
       "basename": "08 - Build Phases & Milestones",
       "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/08 - Build Phases & Milestones.md"
     },
@@ -175,30 +199,6 @@
     {
       "basename": "Architecture & Setup Runbook — 24GB Hybrid Stack",
       "path": "10_Areas/Life/Plans/Zero-Cost AI Stack/Architecture & Setup Runbook — 24GB Hybrid Stack.md"
-    },
-    {
-      "basename": "Research Dossier — Internal LLM Inference at Near-Zero Cost",
-      "path": "10_Areas/Life/Plans/Zero-Cost AI Stack/Research Dossier — Internal LLM Inference at Near-Zero Cost.md"
-    },
-    {
-      "basename": "Transcript - Introduction to Course",
-      "path": "20_Progress/Degree/MATH 2230/Documents/Transcript - Introduction to Course.md"
-    },
-    {
-      "basename": "05 - LeetCode & CSCI 4041",
-      "path": "10_Areas/Life/Plans/05 - LeetCode & CSCI 4041.md"
-    },
-    {
-      "basename": "00 - CoWork Prompt — Summer OS",
-      "path": "10_Areas/Life/Plans/00 - CoWork Prompt — Summer OS.md"
-    },
-    {
-      "basename": "Repos",
-      "path": "40_Resources/CS/Repos.md"
-    },
-    {
-      "basename": "Summer Grind",
-      "path": "10_Areas/Summer Grind.md"
     }
   ],
   "omittedPaths": [],
