@@ -17,3 +17,7 @@
 ## Initial Contact with Obsidian Copilot
 **Time:** 2026-06-11 00:14
 **Summary:** User initiates contact with Obsidian Copilot, an AI assistant for their vault. After an initial error, the assistant introduces itself and outlines its capabilities, including answering questions about notes, searching the vault, helping with writing and organization, and assisting with portfolio and project management.
+
+## Trading App Strategy: Validation Before Automation
+**Time:** 2026-06-11 00:31
+**Summary:** User seeks to build a personal trading app combining AI market analysis with prediction market trading via Kronos API. After detailed analysis, the recommendation is to prioritize building the AI Market Analyzer (research + manual paper trading) over immediate automation, completing a 12-week MVP followed by 4-week validation before integrating Kronos. Key insight: profitability is uncertain, so the strategy should focus on rigorous research methodology and honest backtesting rather than premature automation.

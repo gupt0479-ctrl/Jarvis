@@ -71,6 +71,9 @@
       },
       "obsidian-git": {
         "startupType": "short"
+      },
+      "lean-terminal": {
+        "startupType": "short"
       }
     }
   }
