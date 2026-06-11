@@ -381,6 +381,20 @@
         "type": "FILES",
         "pattern": "20_Progress/Projects/CS/TradingView/Links.md",
         "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "10_Areas/Life/Plans/Plans Board.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "10_Areas/Life/Enumerate/Enumerate Board.md",
+        "patternType": "STRICT"
       }
     ],
     "frontMatter": [

@@ -5,20 +5,20 @@
   "daily": {
     "enabled": true,
     "format": "YYYY-MM-DD",
-    "folder": "60_Claude/50_Reviews/Daily",
-    "template": "30_Order/Templates/Headway Templates/Better Today.md"
+    "folder": "10_Areas/Life/Enumerate/Daily",
+    "template": "30_Order/Templates/Enumerate/Better Today.md"
   },
   "weekly": {
     "enabled": true,
     "format": "YYYY-[W]ww",
-    "folder": "60_Claude/50_Reviews/Weekly",
-    "template": "30_Order/Templates/Headway Templates/Better Week.md"
+    "folder": "10_Areas/Life/Enumerate/Weekly",
+    "template": "30_Order/Templates/Enumerate/Better Weekly.md"
   },
   "monthly": {
     "enabled": true,
     "format": "YYYY-MM",
-    "folder": "60_Claude/50_Reviews/Monthly",
-    "template": "30_Order/Templates/Headway Templates/Better Month.md"
+    "folder": "10_Areas/Life/Enumerate/Monthly",
+    "template": "30_Order/Templates/Enumerate/Better Month.md"
   },
   "quarterly": {
     "format": "",
@@ -26,6 +26,8 @@
     "folder": ""
   },
   "yearly": {
-    "enabled": false
+    "enabled": true,
+    "folder": "10_Areas/Life/Enumerate/Yearly",
+    "template": "30_Order/Templates/Enumerate/Better Year.md"
   }
 }

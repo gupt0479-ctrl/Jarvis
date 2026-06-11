@@ -1,6 +1,38 @@
 {
   "recentFiles": [
     {
+      "basename": "Better Today",
+      "path": "30_Order/Templates/Enumerate/Better Today.md"
+    },
+    {
+      "basename": "Better Year",
+      "path": "30_Order/Templates/Enumerate/Better Year.md"
+    },
+    {
+      "basename": "Better Weekly",
+      "path": "30_Order/Templates/Enumerate/Better Weekly.md"
+    },
+    {
+      "basename": "Better Month",
+      "path": "30_Order/Templates/Enumerate/Better Month.md"
+    },
+    {
+      "basename": "2026-06-11",
+      "path": "10_Areas/Life/Enumerate/Daily/2026-06-11.md"
+    },
+    {
+      "basename": "Enumerate Board",
+      "path": "10_Areas/Life/Enumerate/Enumerate Board.md"
+    },
+    {
+      "basename": "Plans Board",
+      "path": "10_Areas/Life/Plans/Plans Board.md"
+    },
+    {
+      "basename": "For Thoughts",
+      "path": "30_Order/Templates/Frontmatter/For Thoughts.md"
+    },
+    {
       "basename": "AI Market Analyzer - AI Engine Architecture",
       "path": "20_Progress/Projects/CS/TradingView/AI Market Analyzer - AI Engine Architecture.md"
     },
@@ -167,38 +199,6 @@
     {
       "basename": "Daily Habit Board",
       "path": "10_Areas/Life/Habits/Daily Habit Board.md"
-    },
-    {
-      "basename": "Personality",
-      "path": "10_Areas/Life/Truths of Life/Personality.md"
-    },
-    {
-      "basename": "Identities",
-      "path": "10_Areas/Life/Truths of Life/Identities.md"
-    },
-    {
-      "basename": "CLAUDE",
-      "path": "CLAUDE.md"
-    },
-    {
-      "basename": "HUMAN_WRITING",
-      "path": "HUMAN_WRITING.md"
-    },
-    {
-      "basename": "For AI",
-      "path": "30_Order/Templates/Frontmatter/For AI.md"
-    },
-    {
-      "basename": "For Inputs",
-      "path": "30_Order/Templates/Frontmatter/For Inputs.md"
-    },
-    {
-      "basename": "For Brainstorm",
-      "path": "30_Order/Templates/Frontmatter/For Brainstorm.md"
-    },
-    {
-      "basename": "DNA_Partner_Briefing.docx",
-      "path": "20_Progress/Projects/CS/Gym App/DNA_Partner_Briefing.docx.pdf"
     }
   ],
   "omittedPaths": [],
