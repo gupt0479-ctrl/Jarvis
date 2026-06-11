@@ -1,6 +1,8 @@
+---
+name: distilling-note
+description: Converts messy notes, conversation outputs, or raw captures into clean Obsidian-ready evergreen notes.
+---
 # distill-note
-
-**Description:** Convert messy notes, conversation outputs, or raw captures into clean Obsidian-ready evergreen notes.
 
 **Usage:** `/distill-note` (prompts for input) or provide note content directly
 

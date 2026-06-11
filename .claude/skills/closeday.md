@@ -1,6 +1,8 @@
+---
+name: closing-day
+description: Verifies today's plan was completed and writes the scorecard into the same daily note.
+---
 # closeday
-
-**Description:** Verify today's plan was completed and write the scorecard into the same daily note.
 
 **Usage:** `/closeday`
 

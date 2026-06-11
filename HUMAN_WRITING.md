@@ -138,14 +138,10 @@ When cleaning AI slop from an existing note:
 6. add one contrast or misconception if the concept is easy to confuse
 7. leave the note shorter or denser than before
 ## Vault Formatting Rules
-These rules apply to all Markdown written in this vault. Voice rules above are about what you say; these rules are about how it sits on the page.
-**Blank lines:**
-- Zero blank lines between `---` (frontmatter close) and the `#` title
-- Zero blank lines between any heading and its first content line
-- Zero blank lines between consecutive list items or consecutive sections
-- One blank line is permitted: after a callout (`> [!X]`) or blockquote (`> `) before a following paragraph of prose
-- The vault's `headerspace.css` snippet handles visual spacing. Extra blank lines are not style — they are noise.
-**Formatting markers** (==highlight==, `**`, `*`) carry SR cloze meaning — see [[Jarvis Writing and Formatting]] for the full pattern before using them.
+The complete formatting spec — blank lines, markers (==, **, *), frontmatter rules, quality gate, source note structure, safety rules — lives in [[Jarvis Writing and Formatting]]. Read it before writing any Markdown in this vault.
+
+One-line summary: `headerspace.css` handles visual spacing; extra blank lines are errors, not style. Formatting markers (==highlight==, `**bold**`, `*italic:*`) carry SR cloze meaning — use deliberately.
+
 ## Final Check Before Saving
 Ask:
 1. Does this note contain actual information, or just smooth wording?

@@ -28,19 +28,7 @@ This vault is an AI-assisted second brain built in Obsidian. Treat it as a knowl
 - Read [[HUMAN_WRITING]] before drafting or rewriting prose.
 
 ## Folder Roles
-
-Jarvis is six layers. Each folder answers one question; every note belongs to exactly one.
-
-- `10_Areas/` — **Identity.** Canonical truth per domain (Career, Trading, Life, UMN). Lean, link-dense hubs that point out to active work and reference. Patch by heading; never add top-level files without explicit instruction. Holds `Excalidraw/` (visual layer).
-- `20_Progress/` — **Execution.** Everything actively in motion, each with a `next:`. AI writes project notes here, drawn from briefs and distilled notes.
-- `30_Order/` — **Rules and machinery.** Templates, the per-folder writing `Workflows/`, and CLI tooling. **Read this before writing any note.** Read-only unless the task is building a template, workflow, or tool.
-- `40_Resources/` — **Reference hub.** Curated guides, concepts, links — the lookup shelf the work depends on. Add single backlinked entries; never bulk-dump AI output here.
-- `50_Archive/` — **Dead.** Never read, never write.
-- `60_Claude/` — **AI workshop.** Where any AI captures, drafts, distills, and coordinates. Knowledge is promoted out to the layers above; only machinery stays.
-
-`60_Claude/` subfolders: `00_Inbox/` (default landing zone), `05_Clippings/` (raw, read-only after capture), `07_AI_Information/` (agent map + memory; holds `AI_CONTEXT.md` and `Session Logs/log.md`), `10_Source_Summaries/`, `20_Distilled_Notes/`, `35_Outputs/`, `40_Project_Briefs/`, `44_Indexes/`, `50_Reviews/`.
-
-Full per-folder definitions: [[40_Resources/Obsidian/Jarvis Vault Architecture]].
+Full folder definitions: [[40_Resources/Obsidian/Jarvis Vault Architecture]].
 
 ## Write Contract
 
@@ -83,21 +71,14 @@ Every agent follows this, regardless of which tool is driving. Full version: [[4
 - `.obsidian/`, `.claude/`, `.cursor/`, `.kiro/`, `.codex`, `.git/` — settings and tooling only, never notes.
 
 ## Working Rules
-
 - Search before creating a note. Prefer extending an existing canonical note over making duplicates.
-- Preserve frontmatter and use the vault schema fields consistently.
+- Preserve frontmatter and use the vault schema fields consistently. Update `updated:` when a note changes meaningfully.
 - Prefer Obsidian wikilinks for internal references.
-- Update `updated:` when a note changes meaningfully.
 - Use `next:` on project, plan, and active progress notes when a concrete next step exists.
-- For continuity, read `AI_CONTEXT.md`, `00_Dashboard.md`, and `60_Claude/07_AI_Information/Session Logs/log.md` before making assumptions about current state.
-- Keep raw capture separate from distillation:
-  - raw or imported material -> `60_Claude/05_Clippings`
-  - source-grounded summary -> `60_Claude/10_Source_Summaries`
-  - durable concept synthesis -> `60_Claude/20_Distilled_Notes`
-- Do not modify `60_Claude/05_Clippings` unless the user explicitly asks.
-- Treat `50_Archive/` as historical reference unless the task is archival cleanup.
-- Do not write AI slop. Follow `HUMAN_WRITING.md`: cut filler, prefer mechanism and contrast, use real examples from this vault, and leave notes denser and more human than before.
+- For continuity, read `AI_CONTEXT.md`, `00_Dashboard.md`, and `Session Logs/log.md` before making assumptions about current state.
+- Do not write AI slop. Follow [[HUMAN_WRITING]]: cut filler, prefer mechanism and contrast, use real examples from this vault, leave notes denser and more human than before.
 - After meaningful vault changes, append a concise continuity entry to `60_Claude/07_AI_Information/Session Logs/log.md`.
+- Formatting rules (blank lines, markers, frontmatter, quality gate, safety): [[Jarvis Writing and Formatting]].
 
 ## Retrieval Rules
 

@@ -20,7 +20,7 @@ related:
   - "[[Jarvis Three-Month Research Engine Master Plan]]"
   - "[[Jarvis Multi-Agent PKM Plan]]"
   - "[[Note Writing System — Audit and Roadmap (2026-05-31)]]"
-next: Execute Move 1 — collapse the instruction layer per the file audit in Part 4.
+next: Execute Move 2 — finish the templates per the 2026-05-31 audit list.
 ---
 # Jarvis OS — North Star
 This is the single authority for what Jarvis is, why it underperforms today, and exactly how to fix it. It does one job no other file does: it ends the "every file claims to be the authority" problem by being the one file that owns strategy, diagnosis, and the build standard. Everything else points here for the *why* and the *target*, and keeps only its one narrow job.

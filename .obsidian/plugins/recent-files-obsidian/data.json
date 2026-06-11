@@ -1,6 +1,38 @@
 {
   "recentFiles": [
     {
+      "basename": "For Progress",
+      "path": "30_Order/Templates/Frontmatter/For Progress.md"
+    },
+    {
+      "basename": "For Thoughts",
+      "path": "30_Order/Templates/Frontmatter/For Thoughts.md"
+    },
+    {
+      "basename": "For Inputs",
+      "path": "30_Order/Templates/Frontmatter/For Inputs.md"
+    },
+    {
+      "basename": "For Evergreen",
+      "path": "30_Order/Templates/Frontmatter/For Evergreen.md"
+    },
+    {
+      "basename": "For AI",
+      "path": "30_Order/Templates/Frontmatter/For AI.md"
+    },
+    {
+      "basename": "For Everything",
+      "path": "30_Order/Templates/Frontmatter/For Everything.md"
+    },
+    {
+      "basename": "For Brainstorm",
+      "path": "30_Order/Templates/Frontmatter/For Brainstorm.md"
+    },
+    {
+      "basename": "North Star Convergence — Change Report 2026-06-11",
+      "path": "60_Claude/50_Reviews/North Star Convergence — Change Report 2026-06-11.md"
+    },
+    {
       "basename": "05 - Per-Phase Build Prompts",
       "path": "20_Progress/Projects/CS/Portfolio/claude-code setup/05 - Per-Phase Build Prompts.md"
     },
@@ -55,10 +87,6 @@
     {
       "basename": "Plans Board",
       "path": "10_Areas/Life/Plans/Plans Board.md"
-    },
-    {
-      "basename": "For Thoughts",
-      "path": "30_Order/Templates/Frontmatter/For Thoughts.md"
     },
     {
       "basename": "Reddit",
@@ -171,34 +199,6 @@
     {
       "basename": "Jarvis OS — North Star",
       "path": "60_Claude/07_AI_Information/Jarvis OS — North Star.md"
-    },
-    {
-      "basename": "Jarvis Multi-Agent PKM Plan",
-      "path": "60_Claude/40_Project_Briefs/Jarvis Multi-Agent PKM Plan.md"
-    },
-    {
-      "basename": "Jarvis Three-Month Research Engine Master Plan",
-      "path": "60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan.md"
-    },
-    {
-      "basename": "00_Dashboard",
-      "path": "00_Dashboard.md"
-    },
-    {
-      "basename": "Capability Dashboard",
-      "path": "60_Claude/44_Indexes/Capability Dashboard.md"
-    },
-    {
-      "basename": "Habit Tracker Board",
-      "path": "10_Areas/Life/Habits/Habit Tracker Board.md"
-    },
-    {
-      "basename": "Habit Scorecard Board",
-      "path": "10_Areas/Life/Habits/Habit Scorecard Board.md"
-    },
-    {
-      "basename": "Habit Experiments Board",
-      "path": "10_Areas/Life/Habits/Habit Experiments Board.md"
     }
   ],
   "omittedPaths": [],

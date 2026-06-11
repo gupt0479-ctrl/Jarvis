@@ -1,6 +1,8 @@
+---
+name: reviewing-weekly
+description: Full weekly vault review aligned with the Jarvis Three-Month Research Engine Master Plan; tracks what was built, what's overdue, what needs linking, and what next week should prioritize.
+---
 # weekly-review
-
-**Description:** Full weekly vault review aligned with the Jarvis Three-Month Research Engine Master Plan. Tracks what was built, what's overdue, what needs linking, and what the next week should prioritize.
 
 **Usage:** `/weekly-review` or invoked automatically by the Cowork weekly scheduled task.
 

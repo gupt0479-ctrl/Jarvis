@@ -1,6 +1,8 @@
+---
+name: linting-claude-layer
+description: Health-checks the 60_Claude/ layer for messiness, duplication, staleness, and weak links.
+---
 # lint-claude-layer
-
-**Description:** Health-check the `60_Claude/` layer for messiness, duplication, staleness, and weak links.
 
 **Usage:** `/lint-claude-layer`
 

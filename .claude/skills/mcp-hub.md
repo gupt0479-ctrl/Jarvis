@@ -1,11 +1,10 @@
+---
+name: managing-mcp-hub
+description: Defines which files to send to each external AI tool as context and keeps those files current; the vault's external-agent contract.
+---
 # mcp-hub
 
-**Description:** Defines which files to send to each external AI tool as context, and how to keep those files current. The vault's external-agent contract.
-
 **Usage:** `/mcp-hub` for menu. `/mcp-hub list-tools` to list configured tools. `/mcp-hub context-pack {tool}` to print or write a context pack for that tool. `/mcp-hub sync` to refresh stale wrapper files.
-
-> Save to: `D:\Users\_Anant\10_Areas\Documents\Jarvis\.claude\skills\mcp-hub.md`
-> Cowork blocked the direct write to `.claude/`; copy from this scratchpad into the vault path above.
 
 ---
 

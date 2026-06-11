@@ -1,7 +1,8 @@
+---
+name: research-distiller
+description: Performs deep ingestion of source material — PDFs, images, web links, transcripts — into durable, well-linked notes with near-complete content capture and full vault-style formatting.
+---
 # research-distiller
-
-**Type:** Subagent
-**Purpose:** Deep ingestion of source material — PDFs, images, web links, transcripts — into durable, well-linked notes with near-complete content capture and full vault-style formatting.
 
 ---
 

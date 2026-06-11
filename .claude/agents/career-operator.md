@@ -1,7 +1,8 @@
+---
+name: career-operator
+description: Handles internship, career, portfolio, and mentorship related notes and action planning.
+---
 # career-operator
-
-**Type:** Subagent  
-**Purpose:** Handle internship, career, portfolio, and mentorship related notes.
 
 ---
 

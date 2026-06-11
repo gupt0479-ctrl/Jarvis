@@ -1,10 +1,8 @@
+---
+name: learning-agent
+description: Drives the read-internalize-test-apply loop; drills concepts via spaced repetition, enriches weak notes from courses and clippings, and produces proof artifacts that demonstrate understanding.
+---
 # learning-agent
-
-**Type:** Subagent
-**Purpose:** Drive the read → internalize → test → apply loop. Drill concepts via spaced repetition, enrich weak notes from courses and clippings, and produce proof artifacts that prove understanding.
-
-> Save to: `D:\Users\_Anant\10_Areas\Documents\Jarvis\.claude\agents\learning-agent.md`
-> Cowork blocked the direct write to `.claude/`; copy from this scratchpad into the vault path above.
 
 ---
 

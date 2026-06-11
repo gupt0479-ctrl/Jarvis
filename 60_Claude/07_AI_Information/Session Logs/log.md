@@ -832,3 +832,27 @@ Configured the Claude Code layer so Claude is the operating surface for the vaul
 - **Deep vault read:** catalogued the real disease — 4 files each claim authority (Vault Rules / Vault Operating System / Jarvis Vault Architecture / AGENTS), 4 conflicting cold-start read orders, same rules (blank lines, frontmatter, formatting markers, plugin integration, routing) restated across 5–7 files. Also found: skills use `**Description:**` prose not real frontmatter; `jarvis-memory` MCP server already exists (jarvis_status/search/reindex + full schema) but isn't wired this session — so "no MCP tools for Jarvis" is false.
 - **Rewrote `Jarvis OS — North Star.md`** (now ~150 lines, the authority file): Part 1 diagnosis-with-evidence, Part 2 why-too-much-content (no deletion discipline), Part 3 every problem→solution, **Part 4 full per-file audit table (keep/merge/cut/fix verdict for all ~13 instruction files)**, Part 5 build standard (skill dir structure, subagent, hook lifecycle, MCP growth path), Part 6 token economics + tiered loading table, Part 7 strict going-forward rules (one-fact-one-home, no-new-file-without-deleting, grill-before-build, surgical edits, done=verified), Part 8 3-month target, Part 9 convergence build order (4 moves), Part 10 read-stack collapse.
 - **Next (Move 1):** execute the Part 4 audit — shrink AGENTS/CLAUDE, merge formatting docs into one spec, merge orientation into one file + live-state manifest. Then Move 2 templates, Move 3 dashboard, Move 4 wire jarvis-memory + 2 scheduled tasks.
+
+## [2026-06-11] convergence | North Star — Full Five-Phase Execution
+
+- Report: [[60_Claude/50_Reviews/North Star Convergence — Change Report 2026-06-11]]
+- Worklog: [[60_Claude/07_AI_Information/Session Logs/Convergence Worklog 2026-06-11]]
+
+**Phase 1 (Move 1 — Instruction collapse):**
+- JWF promoted to single formatting authority; Content Density Standard, Source Note Format Rules, Quality Gate, Safety Rules migrated in from Vault Rules
+- Vault Rules stripped from ~550 to ~50 lines; Agent Operating Guide reduced to redirect; AI_CONTEXT deduplicated; AGENTS.md, CLAUDE.md, Vault OS, HUMAN_WRITING all trimmed to pointers
+
+**Phase 2 (Move 2 — Templates):**
+- Deep Dive Template: Templater date syntax bug fixed (`{{date}}` → `<% tp.date.now() %>`); descriptions + examples added to all 13 sections
+- For Evergreen, For Progress, Textbook Template, Week Template, Clipping Distill Template: descriptions and example content added under every heading; gold-standard links to MGMT 3001 Week - 4
+
+**Phase 3 (Move 3 — Dashboard):**
+- 00_Dashboard.md restructured: Today → In Motion → Triage → Decay → Classes → Navigation → Vault Health; all 13 Dataview queries preserved; three link sections collapsed to inline navigation block
+
+**Phase 4 (Parts 5.1–5.2 — Skill/agent YAML):**
+- 12 skills converted from `**Description:**` prose headers to `name:`/`description:` YAML frontmatter
+- 4 agents converted from `**Type:**`/`**Purpose:**` to YAML frontmatter; stale scratchpad notes removed from mcp-hub + learning-agent
+- ops.md split: ops.md ~230 lines (dispatch + examples), ops-reference.md ~280 lines (engine specs)
+
+**Files touched:** 17 vault notes, 17 tool-layer files, 1 new skill created (ops-reference.md)
+**Scope boundary held:** no MCP verb wiring, no semantic index, no new automation, no Archive/Clippings/obsidian writes

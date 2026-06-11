@@ -1,6 +1,8 @@
+---
+name: starting-day
+description: Fills today's periodic note with a concrete work plan pulled from the summer OS, session history, and habit board.
+---
 # startday
-
-**Description:** Fill today's periodic note with a concrete work plan pulled from the summer OS, session history, and habit board.
 
 **Usage:** `/startday`
 

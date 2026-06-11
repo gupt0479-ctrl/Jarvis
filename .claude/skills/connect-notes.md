@@ -1,6 +1,8 @@
+---
+name: connecting-notes
+description: Finds relationships between topics, projects, or notes; suggests backlinks and connections.
+---
 # connect-notes
-
-**Description:** Find relationships between topics, projects, or notes; suggest backlinks and connections.
 
 **Usage:** `/connect-notes` (prompts for notes) or `/connect-notes "Note 1" "Note 2"`
 

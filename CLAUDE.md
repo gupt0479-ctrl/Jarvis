@@ -25,20 +25,7 @@ This vault is a personal knowledge system powered by Claude Code. The assistant 
 - [[HUMAN_WRITING]]
 Do not duplicate shared workspace rules here unless they are Claude-specific.
 ## Folder Roles
-
-| Folder                    | Purpose                                                  | Claude Behavior                                                          |
-| ------------------------- | ------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `10_Areas/`               | Identity layer; canonical source-of-truth per domain    | Read for context; patch by heading only; no new top-level files without explicit instruction |
-| `20_Progress/`            | Active execution layer; in-progress projects, career, mentorship, research | Write concrete project notes drawn from `60_Claude/40_Project_Briefs/` and `20_Distilled_Notes/` |
-| `30_Order/`               | System layer; templates, workflows, CLI tools           | Read-only unless the task is building a new template                    |
-| `40_Resources/`           | Stable reference knowledge, concepts, plugin docs       | Add entries; always backlink to the relevant `10_Areas/` area           |
-| `50_Archive/`             | Dead-letter office                                       | Never read, never write; excluded from context unless explicitly told  |
-| `60_Claude/`              | AI operating layer                                       | All AI writes originate here. See routing table                         |
-| `60_Claude/05_Clippings/` | Raw source material (articles, clips, imports)          | Read-only input; never modify                                           |
-| `Excalidraw/`             | Visual layer; diagrams organized by area or project     | Add diagrams; link from the notes they support                          |
-| `.claude/`                | Skills, agents, settings                                | Full write access for tooling                                           |
-
-The full note routing table lives in `AGENTS.md` under `## Note Routing`.
+Full folder definitions: [[40_Resources/Obsidian/Jarvis Vault Architecture]]. Routing table for note placement: [[AGENTS.md]].
 
 ## Core Rules
 
@@ -78,29 +65,10 @@ next: "[[Next Action]]"  # optional
 - `thought` / `brainstorm` — Inbox-style captures (`00_Inbox/`)
 
 ### Output Destinations
-
-| Output Type | Destination |
-|-------------|-------------|
-| Session summaries | `60_Claude/07_AI_Information/Session Logs/log.md` |
-| Source summaries | `60_Claude/10_Source_Summaries/` |
-| Evergreen knowledge | `60_Claude/20_Distilled_Notes/` |
-| Output artifacts | `60_Claude/35_Outputs/` (with `source_concepts:`) |
-| Project briefs | `60_Claude/40_Project_Briefs/` |
-| Daily/weekly reviews | `60_Claude/50_Reviews/` |
-| Indexes | `60_Claude/44_Indexes/` |
+See the routing table in [[AGENTS.md]] → Write Contract → "Where does this note go?".
 
 ### Ingestion Workflow (05_Clippings → 60_Claude)
-
-1. User adds source to `60_Claude/05_Clippings/`
-2. Run `/ingest-clipping "filename.md"` or ask Claude to process it
-3. Claude:
-   - Reads the source
-   - Extracts key claims, entities, concepts, quotes, actions
-   - Creates summary in `60_Claude/10_Source_Summaries/`
-   - Updates/creates entity pages where relevant
-   - Adds backlinks to related notes
-   - Appends to `60_Claude/07_AI_Information/Session Logs/log.md`
-4. User reviews in Obsidian, files or adjusts as needed
+Use the `/ingest-clipping` skill (`.claude/skills/ingest-clipping.md`). The full step-by-step workflow lives there.
 
 ### Query Behavior
 

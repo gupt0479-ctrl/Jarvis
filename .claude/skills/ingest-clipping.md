@@ -1,6 +1,8 @@
+---
+name: ingesting-clipping
+description: Ingests any source — PDF, image, web link, or markdown file — into a structured summary in 60_Claude/10_Source_Summaries/.
+---
 # ingest-clipping
-
-**Description:** Ingest any source — PDF, image, web link, markdown file — into a structured summary in `60_Claude/10_Source_Summaries/`.
 
 **Usage:**
 - `/ingest-clipping "PDFs/filename.pdf"` — PDF in 05_Clippings/PDFs/

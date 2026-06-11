@@ -20,16 +20,14 @@ If you are an AI tool working in Jarvis, start here. This is the five-minute ori
 Jarvis is a personal knowledge operating system in Obsidian. Anant uses it to learn, build, and run his life. It is a knowledge system first and a file tree second: live dashboards, metadata, backlinks, source layers, and AI-generated synthesis. Work with that system, not around it.
 
 ## Read order on a cold start
-
-1. **This file** — orientation.
-2. [[Vault Rules — Complete AI Ruleset]] — the governing specification for all AI behavior. Read before writing a single character.
-3. [[40_Resources/Obsidian/Jarvis Vault Architecture]] — where every note goes (placement source of truth).
-4. `30_Order/Workflows/` — how to write each note type (read [[00_Workflows Index]]).
-5. [[HUMAN_WRITING]] — how prose must sound; [[Jarvis Writing and Formatting]] for Obsidian formatting.
-6. [[AI_CONTEXT]] — the manifest of live context sources.
-7. [[00_Dashboard]] and `60_Claude/07_AI_Information/Session Logs/log.md` — what is happening right now.
-
-For the full runbook (session checklist, plugin choices, stop conditions), read [[Agent Operating Guide]].
+1. **This file** — five-minute orientation.
+2. [[Jarvis OS — North Star]] — strategy, diagnosis, and build standard. The single authority for *why* Jarvis exists and *what* it is building toward.
+3. [[AGENTS.md]] — Write Contract and routing table. Read before creating any file.
+4. [[40_Resources/Obsidian/Jarvis Vault Architecture]] — where every note goes (placement source of truth).
+5. `30_Order/Workflows/` — how to write each note type (read [[00_Workflows Index]]).
+6. [[HUMAN_WRITING]] — how prose must sound; [[Jarvis Writing and Formatting]] for Obsidian formatting.
+7. [[AI_CONTEXT]] — the manifest of live context sources.
+8. [[00_Dashboard]] and `60_Claude/07_AI_Information/Session Logs/log.md` — what is happening right now.
 
 ## The six layers
 
@@ -69,6 +67,24 @@ The core motion: **knowledge is born in `60_Claude`, matures, and is promoted ou
 ## What this folder (07_AI_Information) is
 
 The AI operating and memory layer — how agents read this vault and what has happened before. The **map** (this file, [[Agent Operating Guide]], [[AI_CONTEXT]], [[Jarvis Writing and Formatting]], [[60_Claude/07_AI_Information/Plugins]]) and the **memory** (`Session Logs/log.md`, `AI Conversations/`). It points at `30_Order` for the writing rules; it does not duplicate them. Rules live in `30_Order`; orientation and history live here.
+
+## Workflow Chooser
+
+Use the smallest workflow that fits the job.
+
+**Use Dataview when** a list should stay current from frontmatter metadata — dashboards querying active projects, missing next actions, stale notes, or task queues. Do not use for one-off explanations.
+
+**Use Tasks when** there is a concrete action that should appear in task queries, with a due date, scheduled date, priority, or completion state. Write action tasks, not vague intentions.
+
+**Use Kanban when** the work has lanes or stages — habit tracking, project triage, execution status. Use notes for knowledge; use boards for flow.
+
+**Use Excalidraw when** the concept is easier as a map, graph, feedback loop, or system diagram. Always keep searchable text near visual work — future agents need text to find things.
+
+**Use Spaced Repetition when** the concept is already understood and the card tests one atomic idea. Do not make flashcards from raw source before distillation.
+
+**Use Templater when** creating notes in folders with configured folder templates. If writing outside Obsidian, manually follow the same template fields.
+
+**Stop and ask before:** restructuring stable system docs, modifying `.obsidian` settings, changing template schemas, editing raw clippings, deleting or moving notes, exposing plugin secrets, converting task formats vault-wide.
 
 ## Never do this
 

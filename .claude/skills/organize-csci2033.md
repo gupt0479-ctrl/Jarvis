@@ -1,6 +1,8 @@
+---
+name: organizing-csci2033
+description: Merges and refines CSCI 2033 linear algebra notes into durable evergreen concept notes while preserving existing weekly writing.
+---
 # organize-csci2033
-
-**Description:** Merge and refine CSCI 2033 linear algebra notes into durable evergreen concept notes, while preserving existing weekly writing.
 
 **Usage:** `/organize-csci2033`
 

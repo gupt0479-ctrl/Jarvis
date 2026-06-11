@@ -1,7 +1,8 @@
+---
+name: vault-curator
+description: Keeps notes linked, deduplicated, and well-structured; runs lint passes and maintenance.
+---
 # vault-curator
-
-**Type:** Subagent  
-**Purpose:** Keep notes linked, deduplicated, and well-structured. Runs lint passes and maintenance.
 
 ---
 

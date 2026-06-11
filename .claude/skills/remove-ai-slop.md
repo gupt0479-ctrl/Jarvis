@@ -1,6 +1,8 @@
+---
+name: removing-ai-slop
+description: Rewrites notes so they stop sounding AI-generated while preserving facts, links, and the user's actual meaning.
+---
 # remove-ai-slop
-
-**Description:** Rewrite notes so they stop sounding AI-generated while preserving facts, links, and the user's actual meaning.
 
 **Usage:** `/remove-ai-slop "path/to/note.md"` or `/remove-ai-slop` and then provide one or more note paths
 

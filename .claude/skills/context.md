@@ -1,6 +1,8 @@
+---
+name: getting-context
+description: Summarizes current state from relevant vault areas — projects, inbox, progress notes, and recent activity.
+---
 # context
-
-**Description:** Summarize current state from relevant vault areas — projects, inbox, progress notes, and recent activity.
 
 **Usage:** `/context` or "What's my current context?"
 

@@ -1,6 +1,8 @@
+---
+name: tracing-topic
+description: Traces an idea or topic across the vault — surfaces all mentions, connections, and gaps.
+---
 # trace-topic
-
-**Description:** Trace an idea/topic across the vault — surface all mentions, connections, and gaps.
 
 **Usage:** `/trace-topic "topic name"`
 
