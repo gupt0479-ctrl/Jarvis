@@ -50,12 +50,12 @@ Use ai-engineer for the four in-repo persona system prompts (recruiter, friend, 
 Read NB/06 - Tool System & Generative UI.md fully.
 Use ai-engineer for the closed tool set (navigate, showProject, showExperience, lookupFact, getResume, contact) with enums built from Sanity, schema validation, and fail-safe-to-text; use frontend-builder for the evidence-card components fed by validated results, rendered via the Vercel AI SDK (layer 3 only). Run /eval — tool-correctness and fail-safe cases must pass. Report (closes premortem 3).
 ```
-## Phase 6 — Router + degraded mode - here
+## Phase 6 — Router + degraded mode
 ```
 Read NB/05 - Model Layer, Rate Limiting & Abuse.md (router + degraded sections).
 Use ai-engineer. Add the Groq fallback behind the router and the degraded mode that serves persona pre-written answers + deterministic navigation when all free quotas are exhausted. Run /typecheck and /eval. Verify: forcing Gemini to fail routes to Groq; forcing both to fail still yields a working degraded Orby, not an error. Report (closes premortem 2).
 ```
-## Phase 7 — Wire Orby
+## Phase 7 — Wire Orby - here
 ```
 Read NB/04 - Orby Integration.md fully.
 Use frontend-builder. Implement the deterministic pipeline: on a navigate decision Orby returns to the portfolio-button home, the page scrolls to the Sanity nav link, and on arrival Orby pops the per-request creative message (generated in the same model turn, persona-voiced, grounded, output-guarded, length-capped). Keep this fully separate from the existing scroll popups. Respect prefers-reduced-motion; one navigation per turn; malformed call → text only, no visual. Run /eval and an e2e smoke test. Report (closes premortem 4).
