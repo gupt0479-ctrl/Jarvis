@@ -1,6 +1,30 @@
 {
   "recentFiles": [
     {
+      "basename": "Portfolio",
+      "path": "20_Progress/Projects/CS/Portfolio/Portfolio.md"
+    },
+    {
+      "basename": "AI Market Analyzer - Strategy Engine",
+      "path": "20_Progress/Projects/CS/TradingView/AI Market Analyzer - Strategy Engine.md"
+    },
+    {
+      "basename": "05 - Per-Phase Build Prompts",
+      "path": "20_Progress/Projects/CS/Portfolio/claude-code setup/05 - Per-Phase Build Prompts.md"
+    },
+    {
+      "basename": "AGENTS",
+      "path": "AGENTS.md"
+    },
+    {
+      "basename": "CLAUDE",
+      "path": "CLAUDE.md"
+    },
+    {
+      "basename": "HUMAN_WRITING",
+      "path": "HUMAN_WRITING.md"
+    },
+    {
       "basename": "For Progress",
       "path": "30_Order/Templates/Frontmatter/For Progress.md"
     },
@@ -31,18 +55,6 @@
     {
       "basename": "North Star Convergence — Change Report 2026-06-11",
       "path": "60_Claude/50_Reviews/North Star Convergence — Change Report 2026-06-11.md"
-    },
-    {
-      "basename": "05 - Per-Phase Build Prompts",
-      "path": "20_Progress/Projects/CS/Portfolio/claude-code setup/05 - Per-Phase Build Prompts.md"
-    },
-    {
-      "basename": "Portfolio",
-      "path": "20_Progress/Projects/CS/Portfolio/Portfolio.md"
-    },
-    {
-      "basename": "AI Market Analyzer - Strategy Engine",
-      "path": "20_Progress/Projects/CS/TradingView/AI Market Analyzer - Strategy Engine.md"
     },
     {
       "basename": "AI Market Analyzer - Product Spec",
@@ -169,10 +181,6 @@
       "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/01 - Layered Architecture.md"
     },
     {
-      "basename": "AGENTS",
-      "path": "AGENTS.md"
-    },
-    {
       "basename": "01 - Config Pack (copy-paste ready)",
       "path": "20_Progress/Projects/CS/Portfolio/portfolio-frontend-kit/01 - Config Pack (copy-paste ready).md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "BASWE__15_AI_Engineering_Projects_Guide.docx",
       "path": "60_Claude/05_Clippings/PDFs/BASWE__15_AI_Engineering_Projects_Guide.docx.pdf"
-    },
-    {
-      "basename": "probability-and-statistics-for-engineering",
-      "path": "20_Progress/Degree/MATH 2230/Documents/probability-and-statistics-for-engineering.pdf"
-    },
-    {
-      "basename": "Jarvis OS — North Star",
-      "path": "60_Claude/07_AI_Information/Jarvis OS — North Star.md"
     }
   ],
   "omittedPaths": [],
