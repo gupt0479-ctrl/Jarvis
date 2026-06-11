@@ -159,4 +159,4 @@ Apply fixes incrementally with user approval.
 
 ### 5. Log the Session
 
-Append to `60_Claude/10_Session_Logs/log.md`
+Append to `60_Claude/07_AI_Information/Session Logs/log.md`

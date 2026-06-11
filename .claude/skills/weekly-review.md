@@ -11,7 +11,7 @@
 Before touching anything else, read these files in order:
 
 1. `60_Claude/7_AI_Information/AI_CONTEXT.md`
-2. `60_Claude/10_Session_Logs/log.md` — tail: last 100 lines
+2. `60_Claude/07_AI_Information/Session Logs/log.md` — tail: last 100 lines
 3. `00_Dashboard.md`
 4. `60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan.md` — sections: "Three-Month Build Map" and "The Weekly Operating Rhythm"
 5. The most recent weekly synthesis: `60_Claude/50_Reviews/Weekly Synthesis/` — list directory, read the latest file
@@ -39,40 +39,33 @@ For each group, note: what was created vs. what was updated, and whether the wor
 
 ---
 
-## Step 2: Three-Month Plan Milestone Audit
+## Step 2: Summer Execution Audit
 
-The master plan lives at: `60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan.md`
+Check four execution tracks against the targets in `10_Areas/Life/Plans/`.
 
-For this section, compare what was actually built this week against the expected deliverables for the current phase. Use the build map below as reference — do not re-read the full plan every time, just cross-check the relevant current phase.
+Do not re-read all plan files — use these specific checks:
 
-### Month 1 — Build The Spine (Weeks 1–4, ~April 24 – May 22)
+### LeetCode
+- Read `10_Areas/Life/Plans/05a - LeetCode Tracker.md` — find this week's total
+- Target: ≥35 problems/week
+- Flag if < 35: how far behind, which days had zero
 
-| Week | Goal | Key Deliverables | Done? |
-|------|------|-----------------|-------|
-| W1 | Project hub + registry hardening | `20_Progress/Projects/Jarvis.md` as hub; `jarvis status` command; registry schema documented | Check |
-| W2 | Conversation capture spine | `60_Claude/05_Clippings/AI Conversations/`; `60_Claude/30_Source_Summaries/AI Conversations/`; import command; 3 test conversations | Check |
-| W3 | Context pack builder | `jarvis context-pack` command; packs for Codex, Claude, Kiro, Cursor, web | Check |
-| W4 | Index V1 + Enrichment factory V1 | `jarvis index`; `jarvis note-profile`; 25 notes enriched with `enrichment_status: enriched` | Check |
+### Courses
+- Read `10_Areas/Life/Plans/04 - Summer Courses Ops.md` — deadline table
+- Did any deadline pass this week? If so, what was it and was it met?
+- Read `10_Areas/Life/Plans/06a - ML Fundamentals Progress.md` — how many units completed vs. planned?
 
-### Month 2 — Build The Brain (Weeks 5–8, ~May 22 – June 19)
+### Projects
+- Check `20_Progress/` — any project notes modified in the past 7 days?
+- From `10_Areas/Life/Plans/07 - Projects & Hackathons Queue.md` — did any flagship project advance?
+- What shipped this week? (code pushed, document finalized, demo done — concrete artifacts only)
 
-| Week | Goal | Key Deliverables | Done? |
-|------|------|-----------------|-------|
-| W5 | Semantic search + chunk index | `jarvis semantic-search`; 30-query benchmark pass at 80%+ | Check |
-| W6 | Knowledge graph V1 | `jarvis graph build`; graph dashboards for orphans, prerequisites, evidence | Check |
-| W7 | Ask Jarvis V1 | `jarvis ask`; 75-question benchmark; answer includes citations + uncertainty | Check |
-| W8 | Tutor + drill + learning paths | `jarvis teach`; `jarvis quiz`; `jarvis learning-path`; 20 concept paths | Check |
+### Career Pipeline
+- Any LeetCode company-tagged problems this week? (track from 05a)
+- Any applications submitted, outreach sent, or interviews scheduled?
+- Check if `20_Progress/` has any career-related notes touched this week
 
-### Month 3 — Build The Research Engine (Weeks 9–12, ~June 19 – July 17)
-
-| Week | Goal | Key Deliverables | Done? |
-|------|------|-----------------|-------|
-| W9 | Source ingestion + research feed | `jarvis ingest-source`; 30 clippings processed | Check |
-| W10 | Research brief generator | `jarvis research`; 5 research briefs created | Check |
-| W11 | Truthfulness + validation layer | `jarvis validate-answer`; confidence labels; 30 trick questions | Check |
-| W12 | Daily OS + demo | Morning/evening loops; full demo passable | Check |
-
-For each milestone, check whether the deliverable exists in the vault or CLI. Mark: ✅ done, ⚠️ partial, ❌ not started. Flag anything more than one week behind as a blocker.
+For each track mark: ✅ on target, ⚠️ partial, ❌ missed. One line per track explaining the verdict.
 
 ---
 
@@ -109,7 +102,7 @@ Check four things:
 
 ## Step 5: Session Log Summary
 
-Extract from `60_Claude/10_Session_Logs/log.md` all entries from the past 7 days.
+Extract from `60_Claude/07_AI_Information/Session Logs/log.md` all entries from the past 7 days.
 
 Summarize:
 - Sessions run: how many, what types (build/enrich/distill/review/setup/audit)
@@ -122,7 +115,9 @@ Summarize:
 
 ## Step 6: Write the Review Note
 
-Create `60_Claude/50_Reviews/Weekly Synthesis/Weekly Synthesis — YYYY-WXX.md` using this template:
+Create `60_Claude/50_Reviews/Weekly Synthesis/Weekly Synthesis — YYYY-WXX.md` using this template.
+
+After creating it, also patch the weekly periodic note at `10_Areas/Life/Enumerate/Weekly/YYYY-Www.md` (where `YYYY-Www` matches the ISO week, e.g. `2026-W24`). If the note doesn't exist, create it using `30_Order/Templates/Enumerate/Better Weekly.md`. Patch its `> [!NOTE] Summary:` callout with a one-sentence summary of the week, and fill the Goals and Fixes sections with the top items from the synthesis note. Keep it brief — the weekly periodic note is a quick-glance record, not a duplicate of the full synthesis.
 
 ```markdown
 ---
@@ -186,7 +181,7 @@ Read `60_Claude/50_Reviews/Weekly Synthesis/Weekly Synthesis Index.md`. Add the 
 
 ## Step 8: Log the Session
 
-Append to `60_Claude/10_Session_Logs/log.md`:
+Append to `60_Claude/07_AI_Information/Session Logs/log.md`:
 
 ```
 ## [YYYY-MM-DD] review | Weekly Synthesis YYYY-WXX

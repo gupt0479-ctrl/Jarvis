@@ -122,7 +122,7 @@ At the end of each working session:
 
 ### Daily Operations Cadence
 
-Run `/ops morning-start` to open the day: gathers context, builds a plan, runs a health check, and surfaces the top triage items and overdue drills. Work through the day normally. Run `/ops evening-close` to wrap up: creates the closeday summary, runs a capability audit, and logs the health delta. See `.claude/skills/ops.md` for all operations and cost profiles.
+Run `/startday` to open the day: reads your plans, loads session history, and fills today's periodic note at `10_Areas/Life/Enumerate/Daily/`. Work through the day. Run `/closeday` to close: verifies completions and writes the scorecard into the same note. Run `/ops health-check` for vault maintenance (not daily planning). See `.claude/skills/ops.md` for vault health operations.
 
 ## Available Skills
 
@@ -134,7 +134,7 @@ When a user invokes a skill command, read the corresponding file from `.claude/s
 | Distill note | `/distill-note` | `.claude/skills/distill-note.md` |
 | Remove AI slop | `/remove-ai-slop` | `.claude/skills/remove-ai-slop.md` |
 | Get context | `/context` | `.claude/skills/context.md` |
-| Today plan | `/today` | `.claude/skills/today.md` |
+| Start day | `/startday` | `.claude/skills/startday.md` |
 | Trace topic | `/trace-topic "topic"` | `.claude/skills/trace-topic.md` |
 | Connect notes | `/connect-notes` | `.claude/skills/connect-notes.md` |
 | End of day | `/closeday` | `.claude/skills/closeday.md` |

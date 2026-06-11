@@ -31,7 +31,7 @@ The skill is read-mostly. It writes only when explicitly told to (`/mcp-hub sync
 5. `40_Resources/Obsidian/Claude Pro Workflow.md`
 6. `40_Resources/Obsidian/MCP-Hub-Index.md` — the single-page external orientation note.
 7. `00_Dashboard.md`
-8. Tail of `60_Claude/10_Session_Logs/log.md` — last 30 lines.
+8. Tail of `60_Claude/07_AI_Information/Session Logs/log.md` — last 30 lines.
 
 ---
 

@@ -8,21 +8,45 @@ tags:
   - "#journal"
 next:
 ---
-# Did you get better today? 
+# Did you get better today?
 > [!NOTE] Summary:
 
 ## Morning Plan
-*Goal*: You get to do.
-1. 
+*Goal*:
 
-### 80
+### 80 — The One Thing
 > I will [BEHAVIOR] at [TIME] in [LOCATION].
 - [ ] 
-### 20
+
+### 20 — Supporting Work
 - [ ] 
-## Productivity 
+- [ ] 
+- [ ] 
 
+**Do NOT do today:** MCP/tool setup, new agents, repo triage, AI platform comparison
 
-| Meals | 3L of Water(4-5) |
-| ----- | ---------------- |
-|       |                  |
+## Summer OS Checklist
+
+| Win      | Target             | Done |
+| -------- | ------------------ | ---- |
+| Physical | gym or MVP workout |      |
+| Project  | shipped something  | [  ] |
+| Career   | LC or application  | [  ] |
+| Cleanup  | inbox/admin        | [  ] |
+| Review   | closeday           | [  ] |
+
+## Academic Stack
+
+| Track     | Target    | Topic | Done |
+|-----------|-----------|-------|------|
+| LeetCode  | ≥5        |       | [ ]  |
+| CSCI 4041 | 25-45 min |       | [ ]  |
+| CSCI 2033 | 30-45 min |       | [ ]  |
+| MATH 2230 |           |       | [ ]  |
+| HIST 1103 | N/A       |       | [ ]  |
+
+## Productivity
+
+| Meals | Water (3L target) |
+|-------|-------------------|
+|       |                   |

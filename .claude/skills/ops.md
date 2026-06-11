@@ -2,7 +2,7 @@
 
 **Description:** Daily vault operations dispatcher — health checks, triage, capability audits, cadence management. Orchestrates existing skills into coherent workflows without duplicating their logic.
 
-**Usage:** `/ops [operation]` where operation is one of: `morning-start`, `health-check`, `triage`, `ingest-batch`, `capability-audit`, `evening-close`, `full-cycle`. Invoke `/ops` alone for a time-aware suggestion.
+**Usage:** `/ops [operation]` where operation is one of: `health-check`, `capability-audit`, `triage`, `ingest-batch`, `full-cycle`. For daily planning use `/startday` (morning) and `/closeday` (evening). Invoke `/ops` alone for a time-aware suggestion.
 
 ---
 
@@ -12,7 +12,7 @@
 
 1. Read `AI_CONTEXT.md` for the shared cross-tool manifest.
 2. Read `HUMAN_WRITING.md` — all prose output follows that standard. No filler, no AI slop, concrete and compressed.
-3. Read the 5 most recent entries from `60_Claude/10_Session_Logs/log.md` for carryover context.
+3. Read the 5 most recent entries from `60_Claude/07_AI_Information/Session Logs/log.md` for carryover context.
 4. If the session log does not exist, create it with frontmatter (`type: log`, `created: YYYY-MM-DD`) before appending.
 
 ### 2. Operation Menu
@@ -21,13 +21,13 @@ When `/ops` is invoked, present the available operations:
 
 | Operation | Cost | What it does |
 |-----------|------|-------------|
-| `morning-start` | Standard | `/context` + `/today` + health-check + top triage + top drills |
+| `morning-start` | **Deprecated** | Use `/startday` instead — fills your periodic daily note directly |
 | `health-check` | Lightweight | CLI baseline + MCP spot-checks → Ops Report |
 | `capability-audit` | Lightweight | MCP search for track/drill/evidence fields → capability section |
 | `triage` | Standard | Present queue, route fixes to existing skills |
 | `ingest-batch` | Heavyweight | List clippings, user selects, sequential `/ingest-clipping` |
-| `evening-close` | Standard | `/closeday` + capability audit summary + session log |
-| `full-cycle` | Heavyweight | morning-start + evening-close bookends |
+| `evening-close` | **Deprecated** | Use `/closeday` instead — appends scorecard to the same daily note |
+| `full-cycle` | Heavyweight | `/startday` + `/closeday` bookends |
 
 **Cost labels explained:**
 - **Lightweight** — CLI summaries, Dataview-style counts, short report sections. Minimal MCP reads. Prefer paths and counts over full note bodies.
@@ -37,24 +37,17 @@ When `/ops` is invoked, present the available operations:
 ### 3. Time-of-Day Detection
 
 When `/ops` is invoked without a subcommand:
-- **Before noon:** Suggest `morning-start` — "It's morning. Run `morning-start` to get today's briefing?"
-- **After noon:** Suggest `evening-close` — "It's afternoon. Run `evening-close` to wrap up the day?"
-- Always let the user override with any operation.
+- **Before noon:** Suggest `/startday` — "It's morning. Run `/startday` to fill today's plan in your periodic note."
+- **After noon:** Suggest `/closeday` — "It's afternoon. Run `/closeday` to score the day."
+- Always let the user override with any `/ops` operation.
 
 ### 4. Operation Dispatch
 
-#### `morning-start` (Standard)
+#### `morning-start` (Deprecated)
 
-1. Run `/context` to gather current vault state.
-2. Run `/today` to build the day's plan.
-3. Run the Health Check (see §Health Check Engine below).
-4. Run the Capability Audit (see §Capability Audit below).
-5. Extract top 3 triage items and top 3 overdue drills.
-6. Produce a Morning Briefing note at `60_Claude/50_Reviews/Morning Briefing - YYYY-MM-DD.md`:
-   - Frontmatter: `type: plan`, `status: active`, `created: YYYY-MM-DD`, tags: `plan`, `daily`, `ops`
-   - Sections: Today's Plan, Vault Health Summary, Top 3 Triage Items, Top 3 Overdue Drills
-   - Link to previous day's closeday note via wikilink for continuity chain.
-7. Append session log entry.
+> **Use `/startday` instead.** It fills your periodic note at `10_Areas/Life/Enumerate/Daily/YYYY-MM-DD.md` with the plan from your summer OS files, reads session history, and surfaces carryover. `/ops morning-start` no longer runs the day plan.
+
+If you want vault health data alongside your start: run `/startday` then `/ops health-check`.
 
 #### `health-check` (Lightweight)
 
@@ -86,7 +79,7 @@ When `/ops` is invoked without a subcommand:
 #### `ingest-batch` (Heavyweight)
 
 1. List all files in `60_Claude/05_Clippings/`.
-2. Skip files that already have a corresponding source summary (check `60_Claude/30_Source_Summaries/` for matching `source_note` links).
+2. Skip files that already have a corresponding source summary (check `60_Claude/10_Source_Summaries/` for matching `source_note` links).
 3. Present the list to the user. Let them select which to process and choose depth per clipping: quick summary, standard distillation, or deep analysis.
 4. Process selected clippings sequentially via `/ingest-clipping`.
 5. Stop after a user-configurable batch limit (default: 5) to protect context budget.
@@ -94,21 +87,15 @@ When `/ops` is invoked without a subcommand:
 7. Route produced summaries through existing promotion logic: source summary first, then concept/project/output only when the idea is reusable.
 8. Append session log entry.
 
-#### `evening-close` (Standard)
+#### `evening-close` (Deprecated)
 
-1. Run `/closeday` to create the day's closeday note.
-2. Run the Capability Audit (see §Capability Audit below).
-3. Append an "Evening Close" section to the day's Closeday note (do not create a separate file):
-   - Capability audit summary
-   - Triage items completed vs remaining (compare against morning briefing if one exists)
-   - One-line vault health delta from morning
-4. Append session log entry.
+> **Use `/closeday` instead.** It writes the Summer Ops Scorecard and day status directly into the same periodic note that `/startday` filled. No separate file is created.
 
 #### `full-cycle` (Heavyweight)
 
-1. Run `morning-start`.
-2. Inform the user: "Work session open. Re-invoke `/ops full-cycle` or `/ops evening-close` when ready to close."
-3. On re-invocation, run `evening-close`.
+1. Invoke `/startday` to fill today's periodic note.
+2. Inform the user: "Work session open. Re-invoke `/ops full-cycle` or `/closeday` when ready to close."
+3. On re-invocation, invoke `/closeday`.
 
 
 ### 5. CLI Integration
@@ -148,7 +135,7 @@ When an Obsidian MCP tool call fails:
 ### 7. Error Handling
 
 If any sub-skill or sub-operation fails during a composite workflow:
-1. Log the error to `60_Claude/10_Session_Logs/log.md` with the operation name and error description.
+1. Log the error to `60_Claude/07_AI_Information/Session Logs/log.md` with the operation name and error description.
 2. Skip the failed step.
 3. Continue with remaining operations.
 4. Include a "Skipped Steps" note in the final output so the user knows what was missed.
@@ -160,9 +147,9 @@ This skill orchestrates existing skills by name. It does not duplicate their log
 
 | Skill | When ops invokes it |
 |-------|-------------------|
-| `/context` | morning-start (vault state gathering) |
-| `/today` | morning-start (day plan) |
-| `/closeday` | evening-close (daily summary) |
+| `/context` | triage (vault state gathering) |
+| `/startday` | full-cycle (day plan — replaces morning-start) |
+| `/closeday` | full-cycle (daily close — replaces evening-close) |
 | `/ingest-clipping` | ingest-batch (per-clipping processing) |
 | `/connect-notes` | triage (broken link fixes, missing concepts) |
 | `/lint-claude-layer` | triage (Claude layer issues) |
@@ -497,7 +484,7 @@ notes:
 
 **Sections:**
 
-1. **Today's Plan** — Pulled from `/today` output.
+1. **Today's Plan** — Pulled from `/startday` output.
 2. **Vault Health Summary** — Condensed from the health check: summary table only, no per-dimension detail unless something is critical.
 3. **Top 3 Triage Items** — Highest-priority items from the triage queue with routing suggestions.
 4. **Top 3 Overdue Drills** — From the capability audit, each with note title, track, and days overdue.
@@ -535,7 +522,7 @@ Surface the most recent of each report type so they're findable without searchin
 |-------------|-----------------|
 | Ops Report | `60_Claude/50_Reviews/Ops Health - YYYY-MM-DD.md` |
 | Morning Briefing | `60_Claude/50_Reviews/Morning Briefing - YYYY-MM-DD.md` |
-| Evening Close | Appended section in `60_Claude/50_Reviews/Closeday - YYYY-MM-DD.md` |
+| Evening Close | Appended section in `10_Areas/Life/Enumerate/Daily/YYYY-MM-DD.md` (same as daily note) |
 | CLI Report | `60_Claude/50_Reviews/Ops Reports/` (latest by date) |
 
 The dashboard integration (§Dashboard Integration in `60_Claude/60_Indexes/`) uses Dataview queries against the `ops-health`, `plan`, and `daily` tags to surface these automatically. No manual registry file needed.
@@ -552,7 +539,7 @@ The dashboard integration (§Dashboard Integration in `60_Claude/60_Indexes/`) u
 
 ## Session Log
 
-Every ops operation appends a structured entry to `60_Claude/10_Session_Logs/log.md` on completion. This is the primary continuity mechanism between sessions.
+Every ops operation appends a structured entry to `60_Claude/07_AI_Information/Session Logs/log.md` on completion. This is the primary continuity mechanism between sessions.
 
 ### Log Entry Format
 
@@ -575,15 +562,15 @@ Adapt bullets per operation — omit lines that don't apply. A `capability-audit
 - Use the heading convention `## [YYYY-MM-DD] ops | [operation-name]` followed by bullet points.
 - Every operation appends exactly one entry on completion, even if the operation partially failed (note what was skipped).
 
-### Morning-Start Context Reading
+### Session Context Reading
 
-- `morning-start` reads the 5 most recent session log entries before producing the briefing.
+- `/startday` reads the 10 most recent session log entries (5 in depth, 5 headline-only) before producing the day plan.
 - Extract carryover items: unfinished triage, recent changes, open questions, skipped steps from prior runs.
-- Include relevant carryover in the Morning Briefing under a "Carryover" subsection when items exist.
+- Include relevant carryover in the daily periodic note under a "Carryover" subsection when items exist.
 
 ### Session Log Creation
 
-If `60_Claude/10_Session_Logs/log.md` does not exist, create it with this frontmatter before appending:
+If `60_Claude/07_AI_Information/Session Logs/log.md` does not exist, create it with this frontmatter before appending:
 
 ```yaml
 ---
@@ -617,7 +604,7 @@ When `--include-tools` or equivalent is invoked, or when the user explicitly ask
 
 ### No Mutation During Normal Ops
 
-Do not mutate `.kiro/specs/` during normal daily ops (`health-check`, `morning-start`, `evening-close`, `triage`). Only modify spec files when the user explicitly asks to update a Kiro plan. When the user asks to improve a Kiro plan, add content to the relevant spec and preserve existing text unless explicitly told to refactor.
+Do not mutate `.kiro/specs/` during normal daily ops (`health-check`, `triage`, `capability-audit`). Only modify spec files when the user explicitly asks to update a Kiro plan. When the user asks to improve a Kiro plan, add content to the relevant spec and preserve existing text unless explicitly told to refactor.
 
 ### Implementation Handoff
 
@@ -674,19 +661,19 @@ These paths are off-limits during normal operations:
 
 | Operation | Cost | Token Budget | Primary Tools |
 |-----------|------|-------------|---------------|
-| `morning-start` | Standard | Moderate | CLI health + context, MCP reads for triage/drills, `/context`, `/today` |
+| `morning-start` | Deprecated | — | Use `/startday` instead |
 | `health-check` | Lightweight | Low | CLI baseline (health, links, dates, encoding), MCP spot-checks |
 | `capability-audit` | Lightweight | Low | MCP `global_search` with targeted queries |
 | `triage` | Standard | Moderate | Health check results + MCP reads for routing |
 | `ingest-batch` | Heavyweight | High | Sequential `/ingest-clipping` calls, MCP reads/writes per clipping |
-| `evening-close` | Standard | Moderate | `/closeday`, MCP for capability audit, session log append |
-| `full-cycle` | Heavyweight | High | morning-start + evening-close combined |
+| `evening-close` | Deprecated | — | Use `/closeday` instead |
+| `full-cycle` | Heavyweight | High | `/startday` + `/closeday` bookends |
 
 **Budget guidance:**
 - Lightweight ops read CLI output and do ≤5 MCP calls. Safe for constrained sessions.
 - Standard ops read live context files plus triage-referenced notes. ~10-20 MCP calls typical.
 - Heavyweight ops process multiple notes sequentially. Reserve for dedicated sessions with budget headroom.
-- When budget is tight, prefer `health-check` over `morning-start`, and `capability-audit` over `full-cycle`.
+- When budget is tight, prefer `health-check` over `full-cycle`, and `capability-audit` over `triage`.
 
 ---
 
@@ -698,17 +685,17 @@ These paths are off-limits during normal operations:
 ```
 Runs CLI baseline scan + MCP spot-checks. Produces an Ops Report at `60_Claude/50_Reviews/Ops Health - YYYY-MM-DD.md`. Lightweight — good for a fast vault pulse.
 
-### Morning startup
+### Start the day (use this, not /ops morning-start)
 ```
-/ops morning-start
+/startday
 ```
-Gathers context, builds today's plan, runs health check, surfaces top triage items and overdue drills. Produces a Morning Briefing note. Standard cost — the recommended daily opener.
+Fills your periodic note at `10_Areas/Life/Enumerate/Daily/YYYY-MM-DD.md` with today's plan: loads summer OS plans, reads 10 sessions of history, surfaces carryover, fills the Summer OS Checklist and Academic Stack.
 
-### End of day
+### Close the day (use this, not /ops evening-close)
 ```
-/ops evening-close
+/closeday
 ```
-Creates the closeday summary, runs capability audit, appends evening close section with health delta and triage status. Standard cost — the recommended daily closer.
+Writes the Summer Ops Scorecard and day status into the same daily note. GREEN/RED verdict, friction fix if RED, preview for tomorrow.
 
 ### Process clippings backlog
 ```
@@ -732,10 +719,10 @@ Searches for tracked concepts, overdue drills, evidence gaps, stalled outputs. L
 ```
 /ops full-cycle
 ```
-Runs morning-start, then waits. Re-invoke to run evening-close. Heavyweight — covers the complete daily cadence.
+Invokes `/startday`, then waits. Re-invoke to run `/closeday`. Heavyweight — covers the complete daily cadence.
 
 ### No subcommand (time-aware)
 ```
 /ops
 ```
-Before noon → suggests `morning-start`. After noon → suggests `evening-close`. Always lets you pick any operation instead.
+Before noon → suggests `/startday`. After noon → suggests `/closeday`. Always lets you pick any `/ops` operation instead.

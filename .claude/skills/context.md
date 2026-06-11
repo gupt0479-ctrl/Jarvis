@@ -28,7 +28,7 @@ Read the following to build a picture of current state:
 - Note any upcoming exams or assignments mentioned
 
 **Recent Claude Activity (`60_Claude/`):**
-- Read last 5 entries from `60_Claude/10_Session_Logs/log.md`
+- Read last 5 entries from `60_Claude/07_AI_Information/Session Logs/log.md`
 - Check what's been worked on recently
 
 **Recent Clippings (`60_Claude/05_Clippings/`):**

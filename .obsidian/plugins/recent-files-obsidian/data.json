@@ -1,6 +1,34 @@
 {
   "recentFiles": [
     {
+      "basename": "AI Market Analyzer - Strategy Engine",
+      "path": "20_Progress/Projects/CS/TradingView/AI Market Analyzer - Strategy Engine.md"
+    },
+    {
+      "basename": "AI Market Analyzer - Product Spec",
+      "path": "20_Progress/Projects/CS/TradingView/AI Market Analyzer - Product Spec.md"
+    },
+    {
+      "basename": "AI Market Analyzer - Data Sources",
+      "path": "20_Progress/Projects/CS/TradingView/AI Market Analyzer - Data Sources.md"
+    },
+    {
+      "basename": "AI Market Analyzer - AI Engine Architecture",
+      "path": "20_Progress/Projects/CS/TradingView/AI Market Analyzer - AI Engine Architecture.md"
+    },
+    {
+      "basename": "AI Market Analyzer - 4 Month Build Plan",
+      "path": "20_Progress/Projects/CS/TradingView/AI Market Analyzer - 4 Month Build Plan.md"
+    },
+    {
+      "basename": "05 - Per-Phase Build Prompts",
+      "path": "20_Progress/Projects/CS/Portfolio/claude-code setup/05 - Per-Phase Build Prompts.md"
+    },
+    {
+      "basename": "Portfolio",
+      "path": "20_Progress/Projects/CS/Portfolio/Portfolio.md"
+    },
+    {
       "basename": "Better Today",
       "path": "30_Order/Templates/Enumerate/Better Today.md"
     },
@@ -31,30 +59,6 @@
     {
       "basename": "For Thoughts",
       "path": "30_Order/Templates/Frontmatter/For Thoughts.md"
-    },
-    {
-      "basename": "AI Market Analyzer - AI Engine Architecture",
-      "path": "20_Progress/Projects/CS/TradingView/AI Market Analyzer - AI Engine Architecture.md"
-    },
-    {
-      "basename": "Portfolio",
-      "path": "20_Progress/Projects/CS/Portfolio/Portfolio.md"
-    },
-    {
-      "basename": "05 - Per-Phase Build Prompts",
-      "path": "20_Progress/Projects/CS/Portfolio/claude-code setup/05 - Per-Phase Build Prompts.md"
-    },
-    {
-      "basename": "AI Market Analyzer - Data Sources",
-      "path": "20_Progress/Projects/CS/TradingView/AI Market Analyzer - Data Sources.md"
-    },
-    {
-      "basename": "AI Market Analyzer - Strategy Engine",
-      "path": "20_Progress/Projects/CS/TradingView/AI Market Analyzer - Strategy Engine.md"
-    },
-    {
-      "basename": "AI Market Analyzer - Product Spec",
-      "path": "20_Progress/Projects/CS/TradingView/AI Market Analyzer - Product Spec.md"
     },
     {
       "basename": "Reddit",
@@ -195,10 +199,6 @@
     {
       "basename": "Habit Experiments Board",
       "path": "10_Areas/Life/Habits/Habit Experiments Board.md"
-    },
-    {
-      "basename": "Daily Habit Board",
-      "path": "10_Areas/Life/Habits/Daily Habit Board.md"
     }
   ],
   "omittedPaths": [],
