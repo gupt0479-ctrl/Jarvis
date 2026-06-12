@@ -1,6 +1,22 @@
 {
   "recentFiles": [
     {
+      "basename": "BUILD-STATUS",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/BUILD-STATUS.md"
+    },
+    {
+      "basename": "13 - Dark Mode Toggle",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/13 - Dark Mode Toggle.md"
+    },
+    {
+      "basename": "Portfolio",
+      "path": "20_Progress/Projects/CS/Portfolio/Portfolio.md"
+    },
+    {
+      "basename": "03 - Per-Phase Build Prompts",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-code-setup/03 - Per-Phase Build Prompts.md"
+    },
+    {
       "basename": "HIST 1103 - Assignments and Discussions",
       "path": "20_Progress/Degree/HIST 1103/HIST 1103 - Assignments and Discussions.md"
     },
@@ -21,16 +37,8 @@
       "path": "20_Progress/Degree/MATH 2230/Syllabus/MATH 2230 - Assignments Quizzes and Tests.md"
     },
     {
-      "basename": "03 - Per-Phase Build Prompts",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-code-setup/03 - Per-Phase Build Prompts.md"
-    },
-    {
       "basename": "10 - Codebase Reality & Confusion Clearance",
       "path": "20_Progress/Projects/CS/Portfolio/frontend/10 - Codebase Reality & Confusion Clearance.md"
-    },
-    {
-      "basename": "Portfolio",
-      "path": "20_Progress/Projects/CS/Portfolio/Portfolio.md"
     },
     {
       "basename": "09 - Orby UI Fixes",
@@ -191,14 +199,6 @@
     {
       "basename": "05 - Model Layer, Rate Limiting & Abuse",
       "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/05 - Model Layer, Rate Limiting & Abuse.md"
-    },
-    {
-      "basename": "04 - Orby Integration",
-      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/04 - Orby Integration.md"
-    },
-    {
-      "basename": "00 - Nextgen Chatbot — Build Plan",
-      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/00 - Nextgen Chatbot — Build Plan.md"
     }
   ],
   "omittedPaths": [],
