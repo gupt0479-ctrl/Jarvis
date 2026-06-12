@@ -856,3 +856,15 @@ Configured the Claude Code layer so Claude is the operating surface for the vaul
 
 **Files touched:** 17 vault notes, 17 tool-layer files, 1 new skill created (ops-reference.md)
 **Scope boundary held:** no MCP verb wiring, no semantic index, no new automation, no Archive/Clippings/obsidian writes
+
+
+## 2026-06-12 — Frontend Overhaul Build Kit (Cowork)
+Built the master setup plan for the portfolio **frontend** rebuild, mirroring the proven chatbot kit structure (design folder + build-kit folder). New folder `20_Progress/Projects/CS/Portfolio/frontend/`.
+
+- **Design folder (10 notes):** spine (`00`), the two unifying primitives — `01 Motion System & Comet Cards` (useSpaceFloat / CometCard / SpaceRail) and `02 Sanity as Single Source of Truth` (skill as a referenced doc, no-hardcode contract) — then per-section specs `03`–`08` (Experience, Projects carousel, Skills graph, Education flowchart, Certs/Achievements, Blog/Contact/Footer), plus `09 Sanity Content Spec`.
+- **Collapsed the 24-item brief** in `Portfolio.md` into two theses: one motion language + one data source. Resolved the open Contact question ("frame not fill" glass frame + localized text scrim).
+- **Real content pulled from vault** for the Sanity spec: OpsPilot, Resq, SafeReach, the nextgen AI portfolio agent, Jarvis OS, Arc — professional tagline/description/skills each. Filler removed. repoUrls to be resolved via github MCP; broken liveUrls hidden.
+- **Build-kit folder (4 notes):** index, subagents (reuse three-artist/frontend-builder/sanity-schema), commands/hooks **+ the flagged CSP header for `next.config.ts`** (the open item from the chatbot build, now Phase 7), and 8 per-phase copy-paste prompts (Phase 0 Sanity-SoT → Phase 1 primitives → 2–6 sections → 7 CSP/ship).
+- **Out of scope per user:** Hero/About/terminal (Kiro-done), Orby (next prompt), light mode.
+
+Next: run Phase 0 from `frontend/claude-code-setup/03 - Per-Phase Build Prompts.md` in WSL.

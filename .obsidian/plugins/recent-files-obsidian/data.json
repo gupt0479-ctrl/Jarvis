@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "05 - Per-Phase Build Prompts",
-      "path": "20_Progress/Projects/CS/Portfolio/claude-code setup/05 - Per-Phase Build Prompts.md"
-    },
-    {
       "basename": "Portfolio",
       "path": "20_Progress/Projects/CS/Portfolio/Portfolio.md"
+    },
+    {
+      "basename": "09 - Orby UI Fixes",
+      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/09 - Orby UI Fixes.md"
+    },
+    {
+      "basename": "07 - Evaluation & Observability",
+      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/07 - Evaluation & Observability.md"
+    },
+    {
+      "basename": "05 - Per-Phase Build Prompts",
+      "path": "20_Progress/Projects/CS/Portfolio/claude-code setup/05 - Per-Phase Build Prompts.md"
     },
     {
       "basename": "AI Market Analyzer - Strategy Engine",
@@ -149,10 +157,6 @@
       "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/08 - Build Phases & Milestones.md"
     },
     {
-      "basename": "07 - Evaluation & Observability",
-      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/07 - Evaluation & Observability.md"
-    },
-    {
       "basename": "06 - Tool System & Generative UI",
       "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/06 - Tool System & Generative UI.md"
     },
@@ -179,26 +183,6 @@
     {
       "basename": "01 - Layered Architecture",
       "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/01 - Layered Architecture.md"
-    },
-    {
-      "basename": "01 - Config Pack (copy-paste ready)",
-      "path": "20_Progress/Projects/CS/Portfolio/portfolio-frontend-kit/01 - Config Pack (copy-paste ready).md"
-    },
-    {
-      "basename": "00 - AI Setup — Index & Integration Guide",
-      "path": "20_Progress/Projects/CS/Portfolio/portfolio-frontend-kit/00 - AI Setup — Index & Integration Guide.md"
-    },
-    {
-      "basename": "Clippings board",
-      "path": "60_Claude/05_Clippings/Clippings board.md"
-    },
-    {
-      "basename": "How to Build an AI-Powered Prediction Market Trading Bot Using Claude Skills",
-      "path": "60_Claude/05_Clippings/PDFs/How to Build an AI-Powered Prediction Market Trading Bot Using Claude Skills.pdf"
-    },
-    {
-      "basename": "BASWE__15_AI_Engineering_Projects_Guide.docx",
-      "path": "60_Claude/05_Clippings/PDFs/BASWE__15_AI_Engineering_Projects_Guide.docx.pdf"
     }
   ],
   "omittedPaths": [],
