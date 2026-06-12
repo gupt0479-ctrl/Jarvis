@@ -1,6 +1,26 @@
 {
   "recentFiles": [
     {
+      "basename": "HIST 1103 - Assignments and Discussions",
+      "path": "20_Progress/Degree/HIST 1103/HIST 1103 - Assignments and Discussions.md"
+    },
+    {
+      "basename": "MATH 2230 Board",
+      "path": "20_Progress/Degree/MATH 2230/MATH 2230 Board.md"
+    },
+    {
+      "basename": "MATH 2230 - Syllabus",
+      "path": "20_Progress/Degree/MATH 2230/Syllabus/MATH 2230 - Syllabus.md"
+    },
+    {
+      "basename": "MATH 2230 - Calendar",
+      "path": "20_Progress/Degree/MATH 2230/Syllabus/MATH 2230 - Calendar.md"
+    },
+    {
+      "basename": "MATH 2230 - Assignments Quizzes and Tests",
+      "path": "20_Progress/Degree/MATH 2230/Syllabus/MATH 2230 - Assignments Quizzes and Tests.md"
+    },
+    {
       "basename": "03 - Per-Phase Build Prompts",
       "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-code-setup/03 - Per-Phase Build Prompts.md"
     },
@@ -179,18 +199,6 @@
     {
       "basename": "00 - Nextgen Chatbot — Build Plan",
       "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/00 - Nextgen Chatbot — Build Plan.md"
-    },
-    {
-      "basename": "03 - Context Engine, Grounding & Personas",
-      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/03 - Context Engine, Grounding & Personas.md"
-    },
-    {
-      "basename": "02 - Premortem & Failure Defenses",
-      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/02 - Premortem & Failure Defenses.md"
-    },
-    {
-      "basename": "01 - Layered Architecture",
-      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/01 - Layered Architecture.md"
     }
   ],
   "omittedPaths": [],

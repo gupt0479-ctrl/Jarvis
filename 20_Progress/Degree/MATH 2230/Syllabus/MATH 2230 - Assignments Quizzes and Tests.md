@@ -86,12 +86,13 @@ The complete WebAssign list for Section 01, Summer 2026, exactly as shown in Web
 | Quiz 15 | Quiz | Thu Jul 23, 8:58 AM | 32 |
 ## Tests (from the calendar, 60% of grade)
 These are **not** in the WebAssign homework list above; they are proctored on D2L. No book/notes allowed; the instructor provides formula notes. Bring your graphing calculator.
-| Test | Date | Covers |
-|---|---|---|
-| Test 1 | Mon 6/15 | Ch 1 – 3.3 |
-| Test 2 | Mon 6/29 | Ch 3.4 – 6 |
-| Test 3 | Mon 7/13 | Ch 7 – 8, 10.1 |
-| Test 4 | Thu 7/23 | Ch 9, 12, 14 |
+
+| Test                  | Date     | Covers                                                        |
+| --------------------- | -------- | ------------------------------------------------------------- |
+| Test 1                | Mon 6/15 | Ch 1 – 3.3                                                    |
+| Test 2                | Mon 6/29 | Ch 3.4 – 6                                                    |
+| Test 3                | Mon 7/13 | Ch 7 – 8, 10.1                                                |
+| Test 4                | Thu 7/23 | Ch 9, 12, 14                                                  |
 | Final Exam (optional) | Fri 7/24 | replaces your lowest test score (unless lower than all tests) |
 ## Devore book resources (9th edition)
 Listed under "Book Resources" for *Devore :: Prob and Stats for Eng and the Sci – 9e*. These are software/technology guides and support tools available with the text:

@@ -99,7 +99,7 @@ By the end of the course a successful student can:
 - Done in **WebAssign**, computer-graded.
 - Made of problems (or slight variations) from the assigned homework.
 - Typically due before **midnight on Thursday or Sunday**; exact dates on WebAssign and the calendar.
-- You may submit each quiz up to **2 times**; the **most recent** submission counts. On the second try you only need to redo the parts you got wrong.
+- ==You may submit each quiz up to **2 times**; the **most recent** submission counts. On the second try you only need to redo the parts you got wrong.==
 - **Late quizzes are not accepted**, but your **lowest quiz score is dropped** at the end of the semester — so missing one will not sink you (do not miss more than one).
 - You may use your textbook and notes, but you may **not** work with others on quizzes.
 ## Tests (60% of grade)

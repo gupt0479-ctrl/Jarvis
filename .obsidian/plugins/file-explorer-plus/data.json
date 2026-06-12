@@ -395,6 +395,13 @@
         "type": "FILES",
         "pattern": "10_Areas/Life/Enumerate/Enumerate Board.md",
         "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "20_Progress/Degree/MATH 2230/MATH 2230 Board.md",
+        "patternType": "STRICT"
       }
     ],
     "frontMatter": [

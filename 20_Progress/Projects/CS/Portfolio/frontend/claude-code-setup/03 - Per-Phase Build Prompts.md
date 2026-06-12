@@ -60,7 +60,7 @@ Read FE/10 (the relevant Part 5 section) + the section's design note, then build
 Use frontend-builder (+ three-artist for the Skills graph, the projects tether, and the education pulse). Run pnpm typecheck after each. Report per section.
 ```
 
-## Phase 5 — Orby friction fixes
+## Phase 5 — Orby friction fixes - here
 ```
 Read FE/12 - Orby Friction Fixes.md fully.
 Use frontend-builder. Do NOT touch OrbyCanvas.tsx. Fix OrbySpeechCloud right/left edge clamping (clamp cloud X into the viewport in the position logic). Now that section heights are final, recalibrate the section-comment scroll thresholds in useOrbyState.ts for projects/blog/contact. Verify no distracting Orby overlap on 375px mobile. Run pnpm typecheck. Report.
