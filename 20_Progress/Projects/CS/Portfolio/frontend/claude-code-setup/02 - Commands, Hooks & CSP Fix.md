@@ -12,6 +12,8 @@ notes:
   - "[[00 - Frontend Build Kit — Index]]"
 ---
 # Commands, Hooks & CSP Fix
+> **Reconciled to [[10 - Codebase Reality & Confusion Clearance]].** Per note 10, `next.config.ts` **already has** HSTS, X-Content-Type-Options, X-Frame-Options, Referrer-Policy, and Permissions-Policy — **only CSP is missing.** Add CSP in **report-only mode first** (`Content-Security-Policy-Report-Only`), verify zero violations across every section, then switch to enforcing. This is **Phase 6** (last), not Phase 7. `pnpm` only — never npm/yarn. Anant runs `/deploy`, not Claude Code.
+
 Reuse the chatbot kit's command/hook setup; the only mandatory new work is the **CSP header**, the open item flagged from the last build ("CSP header in `next.config.ts`" — never shipped).
 
 ## Commands (reuse, add nothing required)

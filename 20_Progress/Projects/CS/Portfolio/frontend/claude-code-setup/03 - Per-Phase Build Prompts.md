@@ -10,60 +10,67 @@ tags:
   - prompts
 notes:
   - "[[00 - Frontend Build Kit — Index]]"
+  - "[[10 - Codebase Reality & Confusion Clearance]]"
 ---
 # Per-Phase Build Prompts
-Copy-paste prompts for Claude Code (Sonnet 4.8), one per phase. Run each in its own session: `/clear`, paste, let it implement + `/typecheck` + visual check, review the diff, commit, `/clear`, next.
+> **Reconciled to [[10 - Codebase Reality & Confusion Clearance]]** (2026-06-12). Phase order corrected; field names fixed (githubUrl, technologies[]/skills[], percentage); no renames; CSP report-only first.
 
-Path prefix (set once, mentally):
-`FE = /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/CS/Portfolio/frontend`
+Copy-paste prompts for Claude Code (Sonnet 4.8). Run each in its own session: `/clear`, paste, let it implement + `/typecheck` + visual check, review the diff, **stop (you commit — Cowork/Claude Code must not commit or deploy)**, `/clear`, next.
 
-## Phase 0 — Sanity as source of truth
+Path prefix: `FE = /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/CS/Portfolio/frontend`
+
+**Every phase starts by reading `FE/10 - Codebase Reality & Confusion Clearance.md` (it has the exact file paths + field names) plus the named design note(s).**
+
+## Phase 0 — Real content + 2 small schema touches
 ```
-Read FE/02 - Sanity as Single Source of Truth.md and FE/09 - Sanity Content Spec.md fully.
-Use sanity-schema. Refactor skills into a first-class `skill` document type (name, slug, category ref, color, level, familiarity, blurb) and a `skillCategory` type, and convert experience/project/certification skill fields from inline strings to arrays of references to `skill`. Wire the fields flagged as not rendering (employmentType, description, achievements, logos, credentialUrl, slug, tagline). Build typed GROQ query modules that dereference skills[]->{name,color,slug}. Then push the real content from note 09: the skillCategory + skill registries, and the real projects (OpsPilot, Resq, SafeReach, AI Portfolio Agent, Jarvis, Arc) — remove all filler/Lovable data. Resolve each project repoUrl against my GitHub via the github MCP; leave liveUrl empty where undeployed. Do NOT invent certifications — flag note 09 §6 for me. Run /typecheck. Confirm no skill string is hardcoded anywhere and every section reads from Sanity. Report.
+Read FE/10 - Codebase Reality & Confusion Clearance.md (Parts 1, 7, 8), FE/02 - Sanity as Single Source of Truth.md, and FE/09 - Sanity Content Spec.md fully.
+Use sanity-schema. DO NOT rename technologies[]→skills[] and DO NOT add a color field — the schema is already correct. Make only two schema touches: add a long `summary` field to the project type, and add `logo` to EDUCATION_QUERY's projection. Then: delete the fake certifications (AWS SA-Pro, GCP PCA, CKA, TensorFlow, MongoDB) in Sanity; push the real skill registry (name, category enum, proficiency, percentage, tone — no color), the real projects (OpsPilot, Resq, SafeReach, AI Portfolio Agent, Jarvis, Arc) with summary + technologies[] refs + githubUrl resolved via mcp__github__search_repositories (leave liveUrl empty where undeployed, never invent), and the real experience entries. Run pnpm typegen then pnpm typecheck. Confirm no skill string is hardcoded and every section reads Sanity. Report; flag any unresolved githubUrl and ask which certs are real.
 ```
 
-## Phase 1 — Motion primitives (build before any section)
+## Phase 1 — Motion primitives
 ```
 Read FE/01 - Motion System & Comet Cards.md fully.
-Use three-artist (or motion-systems). Build the three reusable primitives: useSpaceFloat (bounded zero-gravity drift, per-instance random phase, transform-only, hover does NOT stop it), CometCard (standardise the existing one: pointer tilt with tiltStrength prop, sheen, glow, NO vertical jump on hover), and SpaceRail (smooth gradient stroke, evenly-glowing dots, scroll-progress fill, slow breathing wiggle). Handle prefers-reduced-motion inside the primitives only. Use one shared rAF ticker or Framer Motion's batched scheduler. No layout-affecting animation. Run /typecheck and /performance. Report frame budget against the existing background sphere.
+Use three-artist. Build ONE new primitive: useSpaceFloat (bounded zero-gravity drift, per-instance random phase, transform-only, hover does NOT stop it, prefers-reduced-motion returns static). Do NOT rebuild CometCard — it exists at src/components/ui/comet-card.tsx with 4 variants (default/dark/subtle/ghost) and rotateDepth/translateDepth props; just confirm it's the single hover surface. Extract the existing Experience timeline rail into a shared SpaceRail (smooth gradient, even dot glow, scroll-progress fill, slow breathing wiggle) so Achievements can reuse it. Use one shared rAF ticker or Framer's batched scheduler; no layout-affecting animation. Run pnpm typecheck and /performance. Report frame budget against ObsidianBackground.
 ```
 
-## Phase 2 — Experience
+## Phase 2 — Header theme pill (10 min)
 ```
-Read FE/03 - Experience Section.md fully (and re-skim FE/01 for the primitives).
-Use frontend-builder. Rebuild the timeline with SpaceRail (smooth, breathing, scroll fill, dots aligned to titles). Cards: CometCard with reduced tilt + small useSpaceFloat, no hover-drop. Render employmentType next to location, wire the Sanity description (hidden by default), recolor achievements to the theme (kill the green), use the shared SkillChip (color+name only). Add the subtle bottom-right drop-down toggle that reveals the compact description on click without layout shift; card keeps drifting while expanded; single-open. Run /typecheck. Report.
-```
-
-## Phase 3 — Projects carousel
-```
-Read FE/04 - Projects Carousel.md fully.
-Use frontend-builder (+ three-artist for the tether transition). Centre the header. Build the three-card space carousel: centre card large/dark/readable with CometCard(reduced)+useSpaceFloat bounded to padding; side cards translucent, drifting in their own padding, NO comet until centred, keep drifting on hover. Arrows vertically centred beside the card. On left/right: chosen card glides to centre (gains comet), old centre glides out (loses comet), with a subtle tether/string-pull background cue. Glowing orbit pagination dots, keep counter. Hover reveals the real Sanity summary + floating Source/View-Live buttons (hide View-Live when liveUrl empty) without ballooning the card. Keyboard + swipe work. Run /typecheck. Report.
+Read FE/13 - Dark Mode Toggle.md fully.
+In src/components/HeaderScrolling.tsx, convert the decorative "Dark" <div> to a real <button> using useTheme() from next-themes, with onClick a documented no-op (light mode not yet designed), aria-label "Color theme — dark mode active (light mode coming soon)", and cursor-default. Do NOT build a light palette. Run pnpm typecheck. Report.
 ```
 
-## Phase 4 — Skills capability graph
+## Phase 3 — ObsidianBackground enhancement
 ```
-Read FE/05 - Skills Capability Graph.md fully.
-Use three-artist for the graph + effects, frontend-builder for layout. Two columns: stock-chart multi-line graph (left) from skillCategory familiarity over a 2021→2026 X-axis, Y = "Familiarity / Applied Depth" (never "Mastery"/"Expert" as the headline), per-category colored lines with distinct shapes, hover highlight + dim others + tooltip. Right: category buttons (the ONLY skills elements with useSpaceFloat+CometCard), each with its signature interaction (AI pulse, Backend cursor blink, Frontend shimmer, DevOps deploy-dots, Data tick-bars, Soft-skills wave); click reveals the category description + updates graph + an Insight panel; defaultOpen category shows on load. Listed skills compact, level shown only on hover, with one of 7 distinct per-skill effects cycled by index (build an effects[0..6] registry). Reduced-motion degrades effects. Run /typecheck and /performance. Report.
-```
-
-## Phase 5 — Education flowchart
-```
-Read FE/06 - Education Flowchart.md fully.
-Use three-artist. Centre the header. Render three floating organic blobs parameterised by a formedness value: middle school = most deformed amoeba, high school = partly formed, college = near-perfect glowing circle; mask each school logo to its stage's perimeter. Off-axis flowchart layout: middle right, high left, college near-centre, each wobbling (useSpaceFloat) with its card (CometCard) moving as one. Dotted connectors stretch/return with the wobble; a glowing pulse travels UPWARD looping middle→high then high→college. Reduced-motion: static dotted lines with gentle opacity breathe. Content unchanged from Sanity. Mobile stacks vertically. Run /typecheck. Report.
+Read FE/11 - ObsidianBackground Enhancement.md fully.
+Use three-artist. Do NOT touch the physics in ObsidianBackgroundCanvas.tsx. Add @react-three/postprocessing if absent (pnpm add). Wrap the scene in EffectComposer; add Bloom (luminanceThreshold 0.18, smoothing 0.9, intensity 0.35) and switch planet+ring PointsMaterial to additiveBlending (drop base opacity to ~0.30–0.35). Optionally add subtle ChromaticAberration and a slow HSL hue drift on COL_PLANET. Keep dpr at 1.25; gate effects OFF on mobile/reduced-motion (skipEffects). Run /performance; verify ≥~50fps on mid-range mobile, no blow-out. Report.
 ```
 
-## Phase 6 — Certifications, Achievements, Blog, Contact, Footer
+## Phase 4 — Section rebuilds (in order; one section per session is fine)
 ```
-Read FE/07 - Certifications & Achievements.md and FE/08 - Blog, Contact & Footer.md fully.
-Use frontend-builder. Certifications: centre header, compact comet cards, SkillChip(color+name) from cert.skills refs, credential action is an out-link (credentialUrl) only, no invented certs. Achievements: ledger style with SpaceRail OUTSIDE the box (same as Experience), years tight to titles, theme-matched, low-bulk. Blog: GitHub card keeps wobble + bottom-lift + solid bg with CometCard polish; small resource cards get CometCard + more translucent bg; all from Sanity. Contact: "frame not fill" — open glass frame (thin luminous border + outer glow, transparent interior so the background sphere shows through) with a localized radial backdrop-blur scrim ONLY behind the email/buttons/socials; keep existing buttons + social pop-out. Footer: glyph (</>) far-left, "© 2026 Anant Gupta · building in public" far-right, centred back-to-top with CometCard, readable text, compact height, subtle top border, translucent bg. Run /typecheck. Report.
+Read FE/10 (the relevant Part 5 section) + the section's design note, then build:
+- Experience  → FE/03 - Experience Section.md  (render the Portable Text description behind a subtle bottom-right expand toggle; recolor achievements off green; add useSpaceFloat + breathing rail; header already centered)
+- Projects    → FE/04 - Projects Carousel.md   (center the header in PortfolioContent.tsx; enhance the Framer slider — center comet+float, side drift no-comet keep-on-hover, tether transition, orbit dots; reveal summary + Source(githubUrl)/View-Live(only if liveUrl) on hover, capped height)
+- Skills      → FE/05 - Skills Capability Graph.md (ADD the stock-chart graph from percentage on the working pill grid — do not remove it; labelled Familiarity axis, per-category lines, hover highlight + tooltip + insight panel; category pills get float+comet; skill pills compact, proficiency on hover, 7 distinct cycled effects)
+- Education   → FE/06 - Education Flowchart.md  (center the header; blobs already exist; mask logos to stage; off-axis layout; upward looping living-pulse connector)
+- Certifications → FE/07 (delete fakes already done in Phase 0; center description; shared chips; out-link only)
+- Achievements   → FE/07 (add kicker + centered h2; move the rail OUTSIDE the box via shared SpaceRail; years tight to titles)
+- Blog        → FE/08 (read BlogFeed.tsx archive-TODO first; GitHub card keeps wobble+bottom-lift+solid bg with comet polish; small cards comet + translucent)
+- Contact     → FE/08 (read ContactPanel.tsx first; "frame not fill" glass frame + localized text scrim)
+- Footer      → FE/08 (compact: </> far-left, year/phrase far-right, centered comet back-to-top, readable text, translucent bg, subtle top border)
+Use frontend-builder (+ three-artist for the Skills graph, the projects tether, and the education pulse). Run pnpm typecheck after each. Report per section.
 ```
 
-## Phase 7 — CSP, security headers, polish & ship
+## Phase 5 — Orby friction fixes
+```
+Read FE/12 - Orby Friction Fixes.md fully.
+Use frontend-builder. Do NOT touch OrbyCanvas.tsx. Fix OrbySpeechCloud right/left edge clamping (clamp cloud X into the viewport in the position logic). Now that section heights are final, recalibrate the section-comment scroll thresholds in useOrbyState.ts for projects/blog/contact. Verify no distracting Orby overlap on 375px mobile. Run pnpm typecheck. Report.
+```
+
+## Phase 6 — CSP header
 ```
 Read FE/claude-code-setup/02 - Commands, Hooks & CSP Fix.md fully.
-Use security-reviewer. Add the Content-Security-Policy + security headers to next.config.ts per the note. Then verify NOTHING broke: three.js/background sphere renders, Sanity images (cdn.sanity.io) load, Orby's /api/chat + model/Upstash calls succeed, zero CSP violations in console across every section. Drop 'unsafe-eval' in production if the stack allows; document if not. Run /typecheck, /performance, and the chatbot kit's /security-review. Do an accessibility pass: every carousel arrow / drop-down toggle / category button / back-to-top has an accessible name and is keyboard-operable; no text overlap at mobile/1280px/wide; reduced-motion respected everywhere. Confirm headers on the deployed .dev URL. Then /deploy. Report the final checklist.
+Use security-reviewer. next.config.ts already has HSTS, X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy — only CSP is missing. Add Content-Security-Policy in REPORT-ONLY mode first (Content-Security-Policy-Report-Only) and verify zero violations across every section: ObsidianBackground/three.js renders, cdn.sanity.io images load, Orby's /api/chat + model/Upstash calls succeed. Then switch to enforcing CSP; drop 'unsafe-eval' in production if the stack allows. Do an a11y pass (accessible names + keyboard for carousel arrows, expand toggles, category buttons, back-to-top; no text overlap at mobile/1280/wide; reduced-motion respected). Run pnpm typecheck, /performance, /security-review. Report. Do NOT deploy — Anant deploys.
 ```
 
-## Note on ordering
-Phase 0 (Sanity) and Phase 1 (primitives) are prerequisites for everything — do not reorder them. Phases 2–6 are independent section work and can be reordered or parallelised across sessions if you want. Phase 7 must be last (CSP verification needs the finished page).
+## Ordering rules
+Phase 0 (content+schema) and Phase 1 (primitives) are prerequisites — never reorder. Phases 2–4 sections are independent and can be parallelised across sessions. Phase 5 needs final section heights; Phase 6 is last (CSP verification needs the finished page).

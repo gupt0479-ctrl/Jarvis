@@ -11,6 +11,7 @@ related_progress:
   - "[[Portfolio]]"
   - "[[00 - Nextgen Chatbot — Build Plan]]"
 notes:
+  - "[[10 - Codebase Reality & Confusion Clearance]]"
   - "[[01 - Motion System & Comet Cards]]"
   - "[[02 - Sanity as Single Source of Truth]]"
   - "[[03 - Experience Section]]"
@@ -20,50 +21,51 @@ notes:
   - "[[07 - Certifications & Achievements]]"
   - "[[08 - Blog, Contact & Footer]]"
   - "[[09 - Sanity Content Spec]]"
-next: "Run Phase 0 (Sanity-as-SoT) from the build kit: [[00 - Frontend Build Kit — Index]]."
+  - "[[11 - ObsidianBackground Enhancement]]"
+  - "[[12 - Orby Friction Fixes]]"
+  - "[[13 - Dark Mode Toggle]]"
+next: "Phase 0 — real content + the two small schema touches (summary, education logo). See [[03 - Per-Phase Build Prompts]]."
 ---
 # Frontend Overhaul — Build Plan
-This is the spine note for the portfolio's **visual/frontend** rebuild. It is the sibling of [[00 - Nextgen Chatbot — Build Plan]] (which owns the AI agent) — same two-machine model, same "design in the vault, build in WSL with Claude Code" discipline. This note owns *what we are changing and why*; each section's *how* lives in its own note, linked below. The raw, unstructured brief lives in `[[Portfolio]]` under "UI Enhancement" (sections 1–24); these notes are the **structured, decided** version of it. The notes are the source of truth — Claude Code reads them, it does not re-derive them.
+Spine note for the portfolio's **frontend** rebuild. Sibling of [[00 - Nextgen Chatbot — Build Plan]] (the AI agent) — same two-machine model, same "design in the vault, build in WSL" discipline. This note owns *what we are changing and why*; each section's *how* is its own note. The raw brief is `[[Portfolio]]` → "UI Enhancement" (items 1–24); these notes are the **decided** form.
 
-## Goal
-Turn a section-by-section "good idea, rough execution" portfolio into one coherent, premium, **space-physics** interface where every surface is driven by Sanity. Done looks like: every card floats and drifts in its own padding, every interactive card uses one shared comet-card primitive, every skill chip across the entire site renders the *same* colour and name pulled from one Sanity `skill` registry, and a recruiter can read every section cleanly with no fake data, no hardcoded content, and no green-on-dark eyesores.
+> **READ FIRST: [[10 - Codebase Reality & Confusion Clearance]].** Claude Code (Sonnet 4.6) verified every claim against the live repo. It is the **codebase source of truth** and it corrected several assumptions the original notes made. Notes 01–09 have been reconciled to it (2026-06-12). When a note and note 10 disagree, **note 10 wins** — it read the actual files.
 
-## The two theses that make everything else fall out
-Almost every item in the brief is an instance of one of these two ideas. Build the two primitives first and most sections become assembly, not invention.
+## The two theses (unchanged, but mechanism corrected by note 10)
+1. **One motion language.** "In space / wiggles in its padding / comet-card" = **one new `useSpaceFloat` hook** + the **already-existing `CometCard`** (4 variants: default/dark/subtle/ghost) + **one extracted `SpaceRail`**. Not nine animations. See [[01 - Motion System & Comet Cards]].
+2. **One data source.** Everything renders from Sanity. But the schema is **already rich and mostly correct** — `skill` has `category`/`proficiency`/`percentage`/`tone`, colour is **derived from `category`** (no `color` field, do not add one), there is **no `skillCategory` doc**, and the reference fields are **`technologies[]`** (experience/project) vs **`skills[]`** (certification) — *do not rename them*. See [[02 - Sanity as Single Source of Truth]]. Real content in [[09 - Sanity Content Spec]].
 
-1. **One motion language.** "Appears to be in space / wiggles in its own padding / comet-card on hover" is repeated for Experience, Projects, Skills categories, Education shapes, Certifications, Blog, Contact, the back-to-top button. That is not nine animations — it is **one** `useSpaceFloat` drift primitive + **one** `CometCard` wrapper, parameterised (drift radius, tilt strength, glow). Defined once in [[01 - Motion System & Comet Cards]], reused everywhere. Respect `prefers-reduced-motion` in the primitive, not in nine places.
+## Scope of this rebuild (updated with note 10's three added topics)
+In scope: Experience, Projects carousel, Skills graph, Education flowchart, Certifications, Achievements, Blog, Contact, Footer, the motion + Sanity layers, **plus** the three components note 10 documented — [[11 - ObsidianBackground Enhancement]] (Bloom/additive/chromatic polish), [[13 - Dark Mode Toggle]] (make the dead pill a real dark-only button), and [[12 - Orby Friction Fixes]] (speech-cloud clamp, scroll recal, mobile overlap). Plus the flagged **CSP header in `next.config.ts`** (see [[02 - Commands, Hooks & CSP Fix]]).
 
-2. **One data source.** "Everything on the card should render from Sanity," "skills must not be hardcoded," "colour + name come from the Sanity Skills section," "these are dummy/filler, write real content." That is one rule: **Sanity is the single source of truth, and `skill` is a first-class referenced document, not a string.** Defined in [[02 - Sanity as Single Source of Truth]]; the actual real content to load is [[09 - Sanity Content Spec]].
+Out of scope (per Anant + note 10): Hero / About / floating terminal (done by Kiro — do not touch); **light mode** palette (deferred — the toggle becomes a dark-only button only); Orby's 3D model / persona voice / chat-nav pipeline (the `nextgen-chatbot/` folder owns Orby's brain); the chatbot layer (`src/app/api/`, `src/lib/chat-*`).
 
-Everything else is per-section styling on top of those two.
+## Hard "do not" list (from note 10 Part 8)
+No git commits, no Vercel/remote pushes (Anant owns both). **pnpm only** (no npm/yarn). No `tailwind.config.ts` (Tailwind v4 is CSS-first — tokens in `globals.css`). Never hand-edit `src/sanity/types/index.ts` (run `pnpm typegen`). Don't rename `technologies[]`→`skills[]`. Don't re-add `color` to `skill`. Don't touch `OrbyCanvas.tsx`, `src/app/api/`, or `src/lib/chat-*`. Don't create `src/pages/` (App Router). Biome is the only linter/formatter. Invent no GitHub/live/credential URLs — leave empty and flag.
 
-## Scope of this rebuild
-In scope: Experience, Projects carousel, Skills capability graph + category/skill interactions, Education flowchart, Certifications, Achievements, Blog ("What I read or do"), Contact card, Footer, and the cross-cutting motion + Sanity layers. Plus the one flagged open item from the chatbot build — **the CSP header in `next.config.ts`** — carried into this kit so it actually ships (see [[02 - Commands, Hooks & CSP Fix]]).
+## Corrected phase order (mirrors note 10 Part 7)
+The original phase order had errors. Use this:
+- **Phase 0 — Real content + 2 small schema touches.** Delete fake certs; push real projects/experience/skills ([[09 - Sanity Content Spec]]) with `githubUrl` resolved via `mcp__github__search_repositories`; **add `summary` to project** and **`logo` to `EDUCATION_QUERY`**; `pnpm typegen` → `pnpm typecheck`. No renames.
+- **Phase 1 — Motion primitives.** Build `useSpaceFloat`; confirm `CometCard` (4 variants) is the single hover surface; extract `SpaceRail`. Unblocks every section.
+- **Phase 2 — Header theme pill (10 min).** [[13 - Dark Mode Toggle]] — `<div>`→`<button>` + `useTheme()`, dark-only.
+- **Phase 3 — ObsidianBackground.** [[11 - ObsidianBackground Enhancement]] — postprocessing via `three-artist`; perf-guard mobile.
+- **Phase 4 — Section rebuilds:** Experience (render Portable Text `description` + expand) → Projects (centre header, `summary`, enhance Framer slider) → Skills (add the capability graph on the working pill grid + 7 effects) → Education (centre header, blobs already done, living pulse) → Certifications (delete fakes, out-links) → Achievements (kicker + rail outside box) → Blog (read `BlogFeed` TODO first) → Contact (frame-not-fill; read `ContactPanel` first) → Footer (compact, translucent).
+- **Phase 5 — Orby friction.** [[12 - Orby Friction Fixes]] — after heights settle.
+- **Phase 6 — CSP header.** Add CSP to `next.config.ts` (it already has HSTS/X-CTO/X-Frame/Referrer/Permissions — only CSP missing); run **report-only first**. See [[02 - Commands, Hooks & CSP Fix]].
 
-Out of scope, by the user's instruction:
-- **Hero + About + floating terminal** — already fixed by Kiro and loved. Do not touch unless a concrete bug or dead code is found. (Brief items 1–3.)
-- **Orby** — its own future prompt; lives in the chatbot plan, not here.
-- **Light mode / dark-mode toggle** — undesigned; explicitly deferred. The toggle stays but light mode is a no-op task for later.
-
-## Two-machine rule (carried over)
-The portfolio repo is in WSL; build it there with Claude Code (`cd repo` → `claude`). This Windows vault is the playbook. Claude Code reads these notes by direct file read at `/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/CS/Portfolio/frontend/` (preferred, zero network) or via the jarvis MCP (fallback). Do not edit repo files from Cowork. Same rule as the chatbot kit.
+## Two-machine rule
+Repo in WSL (`/home/anant_gupta/projects/hub/portfolio/`, `Chatbot` branch merging to `main` before a `frontend` branch). Build there (`cd repo` → `claude`); this vault is the playbook. Claude Code reads notes by direct file read at `/mnt/d/.../frontend/` (preferred) or jarvis MCP (fallback). Don't edit repo files from Cowork.
 
 ## Note index
-- [[01 - Motion System & Comet Cards]] — the shared `useSpaceFloat` drift + `CometCard` tilt/glow primitive, the timeline rail, reduced-motion. Build first.
-- [[02 - Sanity as Single Source of Truth]] — the data contract: `skill` as a referenced doc, what each section must read from Sanity, the no-hardcode rule.
-- [[03 - Experience Section]] — timeline rail in space, employment-type chip placement, click-to-expand description, subtle drop-down affordance, Sanity skill chips.
-- [[04 - Projects Carousel]] — centred header, three-card space carousel, comet-card only on the centre card, tether-pull transition, hover detail.
-- [[05 - Skills Capability Graph]] — the stock-chart multi-trajectory graph (left) + category buttons and per-skill effects (right), the 7 unique skill effects.
-- [[06 - Education Flowchart]] — amoeba→circle morph shapes, the living-pulse connector, off-axis flowchart layout.
-- [[07 - Certifications & Achievements]] — centred header, Sanity skill chips, out-links only; Achievements as a separated experience-style timeline.
-- [[08 - Blog, Contact & Footer]] — comet cards + translucency for Blog, the "frame not fill" Contact card, the compact translucent footer.
-- [[09 - Sanity Content Spec]] — the real Anant content (projects, skills registry, experience, certs) to push to Sanity. Nothing fake.
+- [[10 - Codebase Reality & Confusion Clearance]] — **the codebase source of truth; read first.**
+- [[01 - Motion System & Comet Cards]] · [[02 - Sanity as Single Source of Truth]] · [[03 - Experience Section]] · [[04 - Projects Carousel]] · [[05 - Skills Capability Graph]] · [[06 - Education Flowchart]] · [[07 - Certifications & Achievements]] · [[08 - Blog, Contact & Footer]] · [[09 - Sanity Content Spec]] · [[11 - ObsidianBackground Enhancement]] · [[12 - Orby Friction Fixes]] · [[13 - Dark Mode Toggle]].
+- Build kit (how Claude Code executes): [[00 - Frontend Build Kit — Index]].
 
 ## Current State
-Planning. No code. Brief in `[[Portfolio]]` is the raw input; these notes are the decided form. Build kit in the sibling folder `claude-code-setup/`: [[00 - Frontend Build Kit — Index]].
+Planning, reconciled to verified codebase reality. No code. Build kit in `claude-code-setup/`.
 
 ## Next Action
-Phase 0 — establish Sanity as source of truth (the `skill` registry + real content) per [[02 - Sanity as Single Source of Truth]] and [[09 - Sanity Content Spec]], because every visual section depends on it. Then build [[01 - Motion System & Comet Cards]] before any section. See [[03 - Per-Phase Build Prompts]].
+Phase 0 from [[03 - Per-Phase Build Prompts]].
 
 ## Log
-- **2026-06-12:** Spun up the frontend overhaul kit mirroring the chatbot kit's structure. Collapsed the 24-item brief into two primitives (motion + Sanity) plus per-section notes. Carried the flagged CSP-header item into this kit. Pulled real project content (OpsPilot, Resq, SafeReach) from the vault for the Sanity spec.
+- **2026-06-12:** Built the kit, then reconciled all notes to [[10 - Codebase Reality & Confusion Clearance]] (Claude Code's verified codebase read). Corrected the Sanity model (no skillCategory/color; technologies[] vs skills[]; githubUrl; percentage/proficiency), reframed Skills/Education as augmentations not rescues, fixed phase order, added the three missing-component notes (background, Orby fixes, dark mode), and decisions: enhance the Framer carousel (not R3F), add a `summary` field to project.

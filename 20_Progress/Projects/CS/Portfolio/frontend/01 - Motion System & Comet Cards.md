@@ -9,8 +9,11 @@ tags:
   - motion
 notes:
   - "[[00 - Frontend Overhaul — Build Plan]]"
+  - "[[10 - Codebase Reality & Confusion Clearance]]"
 ---
 # Motion System & Comet Cards
+> **Reconciled to [[10 - Codebase Reality & Confusion Clearance]].** `CometCard` already exists at `src/components/ui/comet-card.tsx` with **4 variants** — `default`, `dark`, `subtle`, `ghost` (the `ghost` variant was added on the `Chatbot` branch: no background class, no card shadow, tilt capped at 6°). So the only genuinely-new primitive to build is **`useSpaceFloat`**; `CometCard` is *standardise + reuse* (already applied across Experience/Certs/Achievements), and `SpaceRail` is *extract the existing Experience rail treatment so Achievements can share it*.
+
 This is the **build-first** note. Almost every visual ask in the brief — "appears to be in space," "wiggles in its own padding," "comet-card effect," "lifts at the bottom on hover" — resolves to two reusable primitives plus one timeline component. Build these, get them feeling right once, then every section consumes them. Do not re-implement floating/tilt per section; that is how nine slightly-different janky animations happen.
 
 ## Primitive 1 — `useSpaceFloat` (the drift)
@@ -22,9 +25,10 @@ A hook that gives an element continuous, gentle, *bounded* zero-gravity drift in
 - **Reduced motion:** if `prefers-reduced-motion`, the hook returns a static transform. One check, here, covers the whole site.
 
 ## Primitive 2 — `CometCard` (the hover surface)
-A wrapper that gives a card the premium pointer-tracking tilt + light-sweep + glow that the brief keeps calling "comet card." This already exists in the repo as `CometCard`; standardise it and make it the single hover surface.
+A wrapper that gives a card the premium pointer-tracking tilt + light-sweep + glow that the brief keeps calling "comet card." **It already exists** at `src/components/ui/comet-card.tsx` with 4 variants (`default`, `dark`, `subtle`, `ghost`) and props `rotateDepth`/`translateDepth`. Do not rebuild it — reuse it as the single hover surface and only extend if a section needs a tilt it can't express.
 
-- **Tilt:** pointer position → rotateX/rotateY, with `tiltStrength` prop. **Reduce tilt for large cards** (Experience, centre Project) so they don't lurch; full tilt for small chips/buttons.
+- **Variants in use:** Experience/Certifications use `variant="dark"`; Achievements uses `variant="subtle"`. Use `ghost` for chip-level surfaces that shouldn't carry a card background.
+- **Tilt:** pointer position → rotateX/rotateY, tuned via `rotateDepth`/`translateDepth`. **Reduce depth for large cards** (Experience `rotateDepth=3 translateDepth=5` is the existing baseline); fuller tilt for small chips/buttons.
 - **Sheen:** a radial highlight that follows the cursor across the surface; a soft border glow on hover.
 - **No vertical jump:** the old behaviour where "all cards move down on hover" is removed. Cards must not translate on hover now that they are already drifting — hover changes tilt/glow/elevation-shadow only, never position. (Brief item 7/Hover.)
 - **Composition:** `CometCard` and `useSpaceFloat` compose — the float owns the base transform, the comet tilt is applied on an inner layer so the two transforms don't fight. Decide one ownership rule (float on outer wrapper, tilt on inner content) and keep it consistent.

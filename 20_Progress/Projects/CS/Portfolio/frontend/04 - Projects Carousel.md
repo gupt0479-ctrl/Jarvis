@@ -11,40 +11,31 @@ notes:
   - "[[00 - Frontend Overhaul — Build Plan]]"
   - "[[01 - Motion System & Comet Cards]]"
   - "[[09 - Sanity Content Spec]]"
+  - "[[10 - Codebase Reality & Confusion Clearance]]"
 ---
 # Projects Carousel
-Files: `ProjectsSlider.tsx`. Kicker: `// build log`. This is called out as the single ugliest, weakest section — rebuild it.
+> **Reconciled to [[10 - Codebase Reality & Confusion Clearance]].** Header lives in `src/components/PortfolioContent.tsx`; slider in `src/components/three/ProjectsSlider.tsx`. Kicker `// build log`.
 
-## Header (brief item 4)
-Move the header **to centre**, like every other section. Today it's left-aligned with `// build log` above it; centre both the kicker, the "Projects" title, and the description. Match the centred pattern used by Skills/Education/Certifications/Contact.
+## Corrections from note 10
+- **The section header is in `PortfolioContent.tsx`, not `ProjectsSlider.tsx`, and it is left-aligned** → centre it (kicker + h2 + description), matching the other sections. This part of the first draft was right.
+- **The slider is a clean Framer-Motion 3-card slider, not R3F.** It is not broken. Center card = `cosmic-card`, `cursor-default`, interactive; flanking cards = `cosmic-card--dark`, `pointer-events-none`, dimmed. Each card: `coverImage` (h-40), title, `tagline`, tech tags (≤4), `ViewLiveButton` (uses `useIridescentEffect`) + `SourceButton` when URLs present. Nav = ChevronLeft/Right with `AnimatePresence`. Ordered `order asc, title asc`.
+- **Field name is `githubUrl`, not `repoUrl`.** Live URL is `liveUrl`.
+- **There is no long description field today** → we are **adding `summary`** to the project schema (decision 2026-06-12) for the hover detail.
 
-## The three-card space carousel (brief items 4, 7)
-A centre card flanked by a left and right peek card.
-- **Centre card:** large, dark, readable, *premium before hover*. Gets `CometCard` (reduced tilt) **and** `useSpaceFloat` bounded to its padding — it wanders gently, zero-gravity, never leaving its box.
-- **Side cards:** translucent (keep it), each drifting in its **own** padding via `useSpaceFloat`. They do **not** get the comet effect — comet is exclusive to whichever card is centred. Keep them not-too-close / not cramped, clearly separated from the centre.
-- **Arrows:** vertically centred beside the main card, not overlapping it. Accessible names; keyboard arrows + swipe still work.
+## Decision: enhance Framer Motion, do NOT rebuild in R3F (2026-06-12)
+Keep the working DOM/Framer slider and layer the space feel on top. Lower effort/risk, no extra GPU cost on top of the background sim. The "in space / no gravity / tether-pull" look is achievable with DOM transforms + `useSpaceFloat` + Framer.
 
-## The transition (brief items 4, 7)
-On clicking left/right:
-- The chosen side card **glides to centre** with a smooth transition; the old centre card glides out to the opposite side.
-- The incoming card **gains** the comet effect as it lands centre; the outgoing card **loses** it.
-- Side cards keep their current opacity while wandering — don't flash them opaque.
-- **Tether / string-pull:** add a subtle interactive background cue — a particle trail or an elastic "string" that appears to pull the incoming card toward centre on click. Keep it subtle; respect reduced-motion.
-- Pagination dots below, styled as glowing orbit dots (keep the `1 / 6` counter).
-
-## Hover behaviour (brief items 7, 10) — depends on Sanity content first
-The old "all cards move down on hover" is gone (handled globally in [[01 - Motion System & Comet Cards]]). New behaviour:
-- The centre card is never empty before hover — it already shows title, tagline, tech chips, and a small inner "case note" box (a metric / system note).
-- On hover it reveals **a detailed summary** (the Sanity `description`) and, below it, the drop-down with **Source (GitHub)** and **View Live** buttons as floating buttons.
-- Side cards keep wandering while hovered — they do not freeze even when more content shows.
-- The expanded card must **not** become extremely large; cap its height and scroll internally if needed.
-
-## Content + links (brief items 5, 8) — see [[09 - Sanity Content Spec]]
-- All filler/"Alex Morgan"/Lovable data is replaced with **real Anant projects** written professionally: OpsPilot, Resq, SafeReach, the nextgen AI portfolio agent, the Jarvis vault system, etc.
-- Live demos are mostly broken/undeployed by the user's own account — **do not chase live links.** Each project's `liveUrl` may be empty; when empty, hide "View Live" and let Orby's existing "site may be down, check GitHub" line stand. **`repoUrl` always points to the correct GitHub repo.**
-- Skill chips: shared `<SkillChip>` (colour + name only) from `project.skills[]→ref`. Nothing hardcoded.
+## What to build
+1. **Centre the header** in `PortfolioContent.tsx`.
+2. **Schema:** add `summary` (long text or Portable Text) to `project`; add it to `PROJECTS_QUERY`; `pnpm typegen` → `pnpm typecheck`. Populate from [[09 - Sanity Content Spec]].
+3. **Space motion (from [[01 - Motion System & Comet Cards]]):**
+   - Centre card: `CometCard` (reduced tilt) + `useSpaceFloat` bounded to its padding — premium before hover, wandering, never leaving its box.
+   - Side cards: keep translucent + `pointer-events-none` look, each drifting in its own padding via `useSpaceFloat`. **No comet until centred.** Keep drifting even on hover.
+   - On left/right: chosen card glides to centre (gains comet), old centre glides out (loses comet), with a subtle **tether/string-pull** background cue (particle trail or elastic line). Respect reduced-motion.
+   - Pagination: glowing orbit dots; keep the `1 / 6` counter; arrows vertically centred beside the card, not overlapping.
+4. **Hover detail:** centre card is never empty (title, tagline, tech chips, small inner "case note" box). On hover, reveal the Sanity **`summary`** plus floating **Source** (always, `githubUrl`) and **View Live** (only when `liveUrl` non-empty) buttons. Cap the expanded height — never balloon; scroll internally if needed. Side cards keep wandering while hovered.
+5. **Content + links (from [[09 - Sanity Content Spec]]):** replace all filler with real projects (OpsPilot, Resq, SafeReach, AI Portfolio Agent, Jarvis, Arc). Resolve `githubUrl` via `mcp__github__search_repositories`; leave `liveUrl` empty where undeployed (View Live hides; Orby's "site may be down, check GitHub" line covers it). Chips = shared category-coloured chips from `technologies[]` refs.
 
 ## Done conditions
-- Header centred; three-card space carousel with bounded drift; comet only on centre; smooth tether transition; glowing orbit dots.
-- Hover reveals real summary + Source/Live floating buttons without ballooning; side cards keep drifting.
-- Every field (title, tagline, summary, chips, repoUrl) from Sanity; real content loaded; broken live links not surfaced.
+- Header centred; `summary` field added + queried + populated; real content; `githubUrl` resolved; empty `liveUrl` hides View Live.
+- Framer slider enhanced: centre comet+float, side drift (no comet, keep on hover), tether transition, orbit dots, capped hover detail.

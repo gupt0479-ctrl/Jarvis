@@ -9,51 +9,58 @@ tags:
   - sanity
 notes:
   - "[[00 - Frontend Overhaul — Build Plan]]"
+  - "[[10 - Codebase Reality & Confusion Clearance]]"
   - "[[09 - Sanity Content Spec]]"
 ---
 # Sanity as Single Source of Truth
-The second thesis of the rebuild. The brief says, in many places and many ways, the same thing: **nothing on a card may be hardcoded; everything renders from Sanity; the same skill must look identical everywhere.** This note is the data contract that makes that true. The actual content to load lives in [[09 - Sanity Content Spec]]; this note is the *schema + rule*, that note is the *data*.
+> **Reconciled to [[10 - Codebase Reality & Confusion Clearance]] (2026-06-12).** The first draft of this note assumed a greenfield schema and was wrong in several places. The live schema is **richer than assumed** and mostly correct already. This note now describes the *actual* schema and the *real* gaps. Read note 10 Part 1 alongside this.
 
-## The core move: `skill` is a referenced document, not a string
-Today, skills are strings typed into each section, so the same skill ("Python") shows up in different colours in Experience vs Projects vs Skills, and "is not even close to what is on the Sanity backend." Fix the cause, not each symptom.
+The thesis still holds: **nothing visible may be hardcoded; everything renders from Sanity; the same skill looks identical everywhere.** What changed is the *mechanism* — it is already largely built. Our job is to close specific gaps, not rebuild the data model.
 
-- Create/confirm a single `skill` document type: `{ name, slug, category (ref → skillCategory), color, level (beginner|intermediate|advanced), familiarity (0–100 for the graph), blurb }`. **`color` is defined once, here.**
-- Every other document that mentions a skill holds an **array of references to `skill`**, never inline strings: `experience.skills[] → ref(skill)`, `project.skills[] → ref(skill)`, `certification.skills[] → ref(skill)`.
-- Every chip component across the site is the same `<SkillChip skill={ref}>` that renders **only `color` + `name`** (the brief's exact requirement, stated for Experience, Projects, and Certifications). Change a skill's colour once in Sanity → it changes everywhere. This is the whole point.
+## The skill model that actually exists (do not "fix" it)
+`skill` document (`src/sanity/schemaTypes/skill.ts`) already has: `name`, `category` (string enum), `proficiency` (beginner/intermediate/advanced/expert), `percentage` (0–100), `yearsOfExperience`, `tone` (neutral/accent/highlight/muted).
 
-## `skillCategory` drives the graph and the category buttons
-- `skillCategory`: `{ name, slug, color, description, order, defaultOpen (bool) }`. The categories are the lines on the capability graph and the floating buttons beside it ([[05 - Skills Capability Graph]]).
-- The category whose `defaultOpen` is true renders first; the rest are user-selectable. (Brief item 9: "on automatic the most high-level skill category renders.")
-- The category `description` is the text that appears **only when its button is clicked** (brief item 10).
+- **There is no `skillCategory` document — and we must not create one.** Categories are a string enum on `skill`. The client groups by category in `SkillsSectionClient.tsx`. Creating a doc type would force a migration + typegen + query rewrites for zero UI gain.
+- **There is no `color` field — and we must not add one back.** It was deliberately removed (comment at skill.ts line 90). **Colour is derived at render time from `category`** via `CATEGORY_COLORS` (in `SkillsSectionClient.tsx` and `ExperienceCard.tsx`). That derivation map *is* the single source of skill colour. Uniformity across the site = every chip calling the same `getCategoryColor(category)`.
+- **`percentage` is the "familiarity/level" the first draft wanted to add.** Don't add `familiarity`/`level` — use `percentage`. The capability graph ([[05 - Skills Capability Graph]]) reads `percentage` + `proficiency` (both already fetched, not yet rendered).
+- `blurb` is the one field that genuinely doesn't exist; add it only if a section needs short skill copy. Not required this sprint.
 
-## What every section must read from Sanity (no hardcode audit)
-This is the checklist Claude Code verifies per section — if any of these is hardcoded today, it's a bug to fix.
+Category enum values (real): `frontend, backend, ai-ml, devops, database, mobile, cloud, testing, design, tools, soft-skills, other`.
 
-| Section | Must come from Sanity |
-|---|---|
-| Experience | role, company, **employmentType**, location, dates, **description** (long form), achievements, `skills[]→ref`, companyLogo, companyUrl, order |
-| Projects | title, slug, tagline, **description/summary**, `skills[]→ref`, repoUrl, liveUrl, category, featured, order |
-| Skills | the `skill` registry + `skillCategory` registry — names, colours, levels, familiarity, descriptions |
-| Education | school, degree, field, dates, gpa, logo, description, stage (middle/high/college) |
-| Certifications | title, issuer, issueDate, expiryDate, credentialId, credentialUrl, `skills[]→ref`, issuerBadge |
-| Achievements | year, title, type, issuer, one-line description, optional url |
-| Blog | the GitHub pinned card + each resource card (category, title, excerpt, date, readTime, url) |
-| Contact / Footer | email, location, social links, footer phrase — pull from `profile`/`siteSettings`, not literals |
+## The reference-field reality: `technologies[]` vs `skills[]`
+The first draft said `skills[]→ref(skill)` uniformly. **Wrong.** The actual split, and we keep it as-is:
 
-## Fields flagged as not rendering (fix list, from `[[Portfolio]]` Sanity-fixes section)
-Carry these specific breakages into the build so they're closed, not rediscovered:
-- **Experience:** `employmentType` (render next to location), `description` (currently not rendered at all), `achievements`, `companyLogo`, `companyUrl`.
-- **Projects:** `slug` (also the chatbot's closed-enum needs it — keep clean slugs), `tagline`; "entirely broken" → rebuild the read query.
-- **Skills:** the whole division differs from Sanity; rebuild against the `skill`/`skillCategory` registry. The graph stopped rendering — see [[05 - Skills Capability Graph]].
-- **Education:** `description`, `logo` (needed).
-- **Certifications:** `issueDate`, `expiryDate`, `credentialId`, `credentialUrl` (the out-link), badge optional.
-- **Achievements:** `issuer`, `date` (year), `url`.
+| Schema | Skill/tech field | GROQ |
+|---|---|---|
+| `experience` | **`technologies[]`** → refs `skill` | `technologies[]->{ _id, name, category, proficiency }` |
+| `project` | **`technologies[]`** → refs `skill` | `technologies[]->{ _id, name, category }` |
+| `certification` | **`skills[]`** → refs `skill` | `skills[]->{ _id, name, category }` |
 
-## GROQ + typing discipline
-- One typed query module per section (`lib/sanity.queries.ts`), each dereferencing `skills[]->{name,color,slug}` so chips never need a second fetch.
-- Generate types from the Sanity schema; the section components consume typed data, no `any`.
-- **Live reads**, not a build-time snapshot, so content edits show without a redeploy (consistent with the chatbot plan's grounding approach).
-- If a referenced field is missing, render nothing for it gracefully — never a hardcoded fallback string.
+**Do not rename `technologies[]` to `skills[]`.** It would break every working query and require a data migration for no benefit. The shared `<SkillChip>` reads `{name, category}` and colours via `getCategoryColor(category)` — same chip everywhere, fed by whichever field name the parent type uses.
 
-## Phase ordering consequence
-Because every visual section depends on this contract, **Sanity-as-SoT is Phase 0** of the build. Schema first, real content loaded ([[09 - Sanity Content Spec]]), then the motion primitives, then sections. Building a pretty Experience card against hardcoded skills would just have to be torn out.
+## Other real field names (the first draft got several wrong)
+| Concept | Wrong (old notes) | **Correct (live schema)** |
+|---|---|---|
+| Project GitHub URL | `repoUrl` | **`githubUrl`** |
+| Project live URL | — | `liveUrl` |
+| Project featured | `featured` bool only | `visibility` enum (`featured`/`standard`) + legacy `featured` bool, both normalized in query |
+| Project long copy | `description` | **none today → add `summary`** (decision 2026-06-12; see [[04 - Projects Carousel]]) |
+| Experience company URL | `companyUrl` | **`companyWebsite`** |
+| Experience long copy | string `description` | **Portable Text `description`** (blocks) |
+| Education stage | Sanity `stage` field | **none — UI assigns by sort index** in `EducationFlowchart.tsx` |
+
+## The genuine "not rendering / missing" gaps (the real fix list)
+These are verified against the components, not assumed:
+1. **Experience Portable Text `description` is fetched but never rendered** by `ExperienceCard.tsx`. Primary content gap — wire a `<PortableText>` block behind the click-to-expand ([[03 - Experience Section]]).
+2. **`EDUCATION_QUERY` does not project `logo`** even though `FlowchartItem` expects it. Add `logo` to the query ([[06 - Education Flowchart]]).
+3. **Project has no long-form field.** Add `summary` to the schema + `PROJECTS_QUERY`, run `pnpm typegen` ([[04 - Projects Carousel]]).
+4. **Skills `percentage`/`tone` fetched but unrendered** — they feed the capability graph, not a bug ([[05 - Skills Capability Graph]]).
+5. **Fake certifications exist in Sanity** (AWS SA-Pro, GCP PCA, CKA, …). Delete them in Studio; section returns `null` when empty ([[07 - Certifications & Achievements]]).
+
+## Typing & query discipline (from note 10)
+- All shared queries in `src/sanity/lib/queries.ts` use `defineQuery()` so `pnpm typegen` extracts types. Some sections (Achievements, Certifications, Blog, Contact) keep their own inline queries beside the component — fine, as long as they use `defineQuery()`.
+- After any schema change: `pnpm typegen` → `pnpm typecheck`. **Never hand-edit `src/sanity/types/index.ts`.**
+- Live reads (already the pattern). Missing fields render nothing gracefully — never a hardcoded fallback string.
+
+## Phase ordering consequence (updated)
+Because the schema is already mostly right, **Phase 0 is mostly content + two small schema touches** (add `summary`, add `logo` to the education query), not a model rebuild. See the corrected phase order in [[00 - Frontend Overhaul — Build Plan]] (mirrors note 10 Part 7).

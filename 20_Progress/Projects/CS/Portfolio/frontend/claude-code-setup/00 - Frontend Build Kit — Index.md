@@ -18,6 +18,8 @@ notes:
 next: "Run Phase 0 (Sanity-as-SoT) from [[03 - Per-Phase Build Prompts]] after confirming the .claude agents exist."
 ---
 # Frontend Build Kit — Index
+> **Reconciled to [[10 - Codebase Reality & Confusion Clearance]].** Phase order is now **7 phases (0–6)** per note 10 Part 7 (not 8). Every phase prompt reads note 10 first for exact file paths + field names. CSP is Phase 6 (report-only first); `next.config.ts` already has the other security headers.
+
 The operating kit that lets Claude Code (Sonnet 4.8) build the frontend overhaul from the design notes in `frontend/`, one phase per prompt, at minimum tokens. The design is the source of truth; this folder is *how the executor uses it*. Direct sibling of the chatbot's [[00 - Claude Code Build Kit — Index]] — same model, same discipline. Reuse what that kit already set up; this kit only adds what the visual rebuild needs.
 
 ## The model: design in the vault, build in WSL
@@ -25,12 +27,12 @@ The portfolio repo is in WSL; build it there (`cd repo` → `claude`). The plan 
 1. **Direct file read (preferred, zero network).** D: is mounted in WSL at `/mnt/d/`, so the notes are at `/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/CS/Portfolio/frontend/`. Read the one phase note you need.
 2. **jarvis MCP (fallback).** Works, but mind the WSL→Windows localhost gotcha documented in the chatbot kit's [[01 - MCP Servers and the .mcp.json Fix]].
 
-## How the build runs: 8 phases, one prompt each
+## How the build runs: 7 phases (0–6), one prompt each
 One phase per session, clean context. The copy-paste prompts are in [[03 - Per-Phase Build Prompts]]. The loop every phase:
 1. `/clear` for a clean context window.
-2. Paste the phase prompt. It names the *one or two* design notes to read — never all ten.
-3. Claude Code reads only those, delegates to the right subagent, implements, runs `/typecheck` + visual check.
-4. Commit the phase. Next.
+2. Paste the phase prompt. It names note 10 + the *one or two* design notes to read — never all of them.
+3. Claude Code reads only those, delegates to the right subagent, implements, runs `pnpm typecheck` + visual check.
+4. **Anant commits** (Cowork/Claude Code must not commit or deploy). Next.
 
 ## Token strategy (same as the chatbot kit)
 - **One phase, one clean context.** `/clear` between phases.
@@ -44,7 +46,7 @@ The repo already has agents `frontend-builder, sanity-schema, security-reviewer,
 - **Subagents:** lean on `three-artist` (motion/three.js primitives), `frontend-builder` (section assembly), `sanity-schema` (the `skill`/`skillCategory` refactor). One optional new agent `motion-systems` if you want the comet/float primitives owned separately. Details in [[01 - Subagents & Existing .claude]].
 - **Commands:** reuse `/sanity-push`, `/typecheck`, `/performance`, `/deploy`. Add nothing mandatory.
 - **Hooks + the CSP fix:** keep Biome-on-edit and the typecheck Stop hook; **add the CSP header in `next.config.ts`** — the one open item flagged from the chatbot build that never shipped. Full config in [[02 - Commands, Hooks & CSP Fix]]. This is non-optional this round.
-- **MCP servers:** `sanity` (for the content push) and the github MCP (to resolve real `repoUrl`s) must be live at the repo root `.mcp.json`. Reuse the chatbot kit's fix.
+- **MCP servers:** `sanity` (for the content push) and the github MCP (to resolve real `githubUrl`s) must be live at the repo root `.mcp.json`. Reuse the chatbot kit's fix.
 
 ## Kit contents
 - [[01 - Subagents & Existing .claude]] — which agent builds what; the one optional new agent.

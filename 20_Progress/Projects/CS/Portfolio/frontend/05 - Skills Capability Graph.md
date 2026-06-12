@@ -10,57 +10,38 @@ tags:
 notes:
   - "[[00 - Frontend Overhaul — Build Plan]]"
   - "[[01 - Motion System & Comet Cards]]"
-  - "[[02 - Sanity as Single Source of Truth]]"
+  - "[[10 - Codebase Reality & Confusion Clearance]]"
 ---
 # Skills Capability Graph
-Files: `SkillsSection.tsx`, `SkillsSectionClient.tsx`. Kicker: `// capability matrix`. The current bar chart is broken (doesn't render) and the buttons are dead. This is the most interaction-heavy section.
+> **Reconciled to [[10 - Codebase Reality & Confusion Clearance]].** Files: `src/components/sections/SkillsSection.tsx`, `SkillsSectionClient.tsx`. Kicker `// capability matrix`.
 
-## Layout: graph left, skills right (brief items 8, 9)
-Two-column. **Left: the trajectory graph. Right: the category buttons + the listed skills** for the selected category. On load, the category with `defaultOpen` renders (the highest-level one); the user picks others from the right.
+## Correction from note 10 — the section is NOT broken
+The first draft said "broken, doesn't render, dead buttons." **Wrong.** The 3D sphere was *deliberately* removed (Phase H, Option 2) in favour of a working, sophisticated 2D pill grid. What exists today:
+- Summary bar (skill count + category count); category chips coloured per category.
+- Category filter pills with **unique per-category hover micro-interactions already implemented**: `frontend`→shimmer sweep, `backend`→blinking cursor `_`, `ai-ml`→pulse-glow, `devops`/`tools`→three deploy dots, `database`→sparkline bars, `soft-skills`→lift. **Keep and enhance these; they are the brief's "each category does something unique."**
+- Skill pills grouped by category with heading + description; hover = `perspective(600px) translateY(-2px) scale(1.02)` + iridescent shimmer.
+- **`percentage`, `proficiency`, `tone` are fetched but not yet rendered** — they are exactly the data the capability graph needs.
 
-## The graph (brief item 8) — stock-chart trajectories
-Replace the bar chart with an eye-pleasing, stock-market-style **multi-line** chart.
-- One line per `skillCategory` (AI/ML, Backend, Data Systems, Frontend, DevOps/Tools, Soft Skills…), each in its Sanity `color`.
-- Lines are **not** identical curves — each has its own ups and downs, trending upward overall; intermediate/beginner categories visibly still climbing. Drive shape from each category's skills' `familiarity` values over a learning timeline.
-- **Axes labelled.** X = learning progression (`2021 → 2026`). Y = `Familiarity / Applied Depth` — **not "mastery,"** and avoid "Expert" as the headline claim (honesty; consistent with chatbot grounding ethos).
-- **Hover a line:** highlight it, dim the others, tooltip with category + current direction + related skills.
-- Render with a charting lib already acceptable in the stack (Recharts is already used in OpsPilot/Resq; reuse it) or lightweight SVG. Make it aesthetic: soft gradients under lines, glowing endpoints.
+So this section is an **augmentation on a working base, not a rescue.**
 
-## Category buttons (brief items 9, 10) — float + comet
-The category buttons are the **only** skills elements that get `useSpaceFloat` + `CometCard` (wiggle in space, comet on hover). Each:
-- On hover: enhanced effect (today's hover is weak — make it pop).
-- On click: becomes active → its graph line highlights, the insight panel updates, and its **description** (from Sanity, `skillCategory.description`) appears. Description shows **only when clicked**, not by default.
-- Add an **Insight panel** that updates with the selection, e.g. "Currently trending toward: AI / data systems and retrieval workflows."
+## What to build (the target the brief asks for)
+### 1. The stock-chart capability graph (new, left column)
+Add a multi-line "trajectory" graph beside the existing pill UI (graph left, categories + skills right).
+- One line per category, coloured from `CATEGORY_COLORS` (see [[09 - Sanity Content Spec]] §1). Shape each line from its skills' `percentage` values across a learning timeline.
+- Lines have distinct, non-identical curves trending upward; intermediate/beginner categories visibly still climbing.
+- **Axes labelled.** X = progression `2021 → 2026`. Y = `Familiarity / Applied Depth` — **never "Mastery"/"Expert" as the headline** (honesty). 
+- Hover a line → highlight it, dim others, tooltip (category + direction + related skills).
+- Reuse **Recharts** (already a dependency) or lightweight SVG. Soft gradient fills under lines, glowing endpoints.
+- Add an **Insight panel** that updates with the selected category, e.g. "Currently trending toward: AI / data systems and retrieval workflows."
 
-### Per-category unique interaction (independent of the 7 skill effects)
-Each category has its own signature micro-interaction on hover/active — these are separate from and not counted against the skill effects:
-- **AI/ML:** pulse / glow.
-- **Backend:** terminal cursor blink.
-- **Frontend:** shimmer sweep.
-- **DevOps/Tools:** deployment dots / trail.
-- **Data Systems:** animated tick bars.
-- **Soft Skills:** subtle bounce / wave.
+### 2. Category buttons → add float + comet (right column)
+The category pills are the **only** skills elements that get `useSpaceFloat` + `CometCard` (wiggle in space, comet on hover). On click: that category becomes active → its graph line highlights, its description shows (only on click), the insight panel updates, and the default-open category renders on load. Keep their existing signature micro-interactions (above) and make them pop more.
 
-## Listed skills (brief item 10) — compact, mastery on hover
-Under the active category's description come its skills.
-- The skill boxes today take too much space — **shrink them** to fit the section; tune sizes until compact.
-- Each skill renders name (+ its `color`). The **level** (beginner/intermediate/advanced) appears **only on hover**, together with that skill's effect.
-- Chips are the same shared `<SkillChip>` colour/name used site-wide — this section is the *registry* those chips read from.
-
-## The 7 skill effects (brief item 11) — the unique factor
-Every individual skill has a hover effect, and there are **exactly 7 distinct effects** cycled across the skills (skill N uses effect `N mod 7`). These are independent of the category interactions and of each other. Make them genuinely distinct and memorable — think, don't phone it in. Candidate set (pick/refine 7):
-1. **Magnetic ripple** — concentric rings emanate from the cursor on the chip.
-2. **Glitch/scan** — brief RGB-split scanline pass across the label.
-3. **Constellation** — tiny stars connect across the chip with thin lines.
-4. **Liquid fill** — the chip's `color` floods in from bottom like a gauge to the level.
-5. **Orbit dot** — a small particle orbits the chip once.
-6. **Typewriter** — the name retypes with a blinking cursor.
-7. **Depth tilt + parallax shadow** — chip lifts with a long soft comet shadow.
-
-Implement as a small registry `effects[0..6]`, each a self-contained component/hook, assigned by index. Reduced-motion → all degrade to a simple opacity/colour change.
+### 3. Listed skills — compact + the 7 effects
+- The skill pills take too much space → shrink to fit. Level (`proficiency`) shows **only on hover** alongside the skill's effect.
+- **7 distinct per-skill effects** cycled by index (`effects[N mod 7]`), independent of the category interactions and of each other. Build an `effects[0..6]` registry; the current iridescent shimmer can be **one** of the seven. Candidate set (refine to 7): magnetic ripple, glitch/scan, constellation lines, liquid `percentage` fill, orbit dot, typewriter name, depth-tilt + comet shadow. Reduced-motion → all degrade to a simple opacity/colour change.
 
 ## Done conditions
-- Graph renders, labelled axes (Familiarity, not Mastery), per-category lines with distinct shapes, hover highlight + tooltip.
-- Categories float + comet, click reveals description + updates graph + insight panel; default category opens on load.
-- Skill boxes compact; level + per-skill effect on hover; 7 distinct effects cycled; categories have their own 6 signature interactions.
-- Everything from the Sanity `skill` / `skillCategory` registry — concrete, no hardcode.
+- Stock-chart graph added (labelled Familiarity axis, per-category lines from `percentage`, hover highlight + tooltip + insight panel) without removing the working pill grid.
+- Category pills float + comet, click reveals description + updates graph/insight, default category opens; existing per-category effects kept + enhanced.
+- Skill pills compact; `proficiency` on hover; 7 distinct cycled effects (existing shimmer = one of them).

@@ -868,3 +868,15 @@ Built the master setup plan for the portfolio **frontend** rebuild, mirroring th
 - **Out of scope per user:** Hero/About/terminal (Kiro-done), Orby (next prompt), light mode.
 
 Next: run Phase 0 from `frontend/claude-code-setup/03 - Per-Phase Build Prompts.md` in WSL.
+
+
+## 2026-06-12 — Frontend Kit reconciled to codebase reality (Cowork)
+Claude Code (Sonnet 4.6) wrote `frontend/10 - Codebase Reality & Confusion Clearance.md` — a verified read of the live repo. Treated it as codebase source of truth and reconciled the whole kit to it.
+
+- **Corrected the data model across notes 02 + 09:** no `skillCategory` doc (category is a string enum), no `color` field (derived from category via CATEGORY_COLORS), reference fields are `technologies[]` (experience/project) vs `skills[]` (certification) — no renames, `githubUrl` not `repoUrl`, `percentage`/`proficiency`/`tone` not color/familiarity/level.
+- **Reframed notes 03/05/06 from "broken→rebuild" to "working→augment":** experience header already centered (real gap = Portable Text description not rendered); skills section not broken (2D pill grid + per-category effects exist; stock-chart graph is the target add); education blobs already implemented (real gap = `logo` missing from EDUCATION_QUERY).
+- **Two decisions (asked Anant):** enhance the Framer-Motion carousel rather than rebuild in R3F; add a `summary` field to the project schema for hover detail.
+- **Created 3 missing-component notes:** `11 - ObsidianBackground Enhancement` (Bloom/additive/chromatic/hue, perf-guarded), `12 - Orby Friction Fixes` (speech-cloud clamp, scroll recal, mobile overlap — model out of scope), `13 - Dark Mode Toggle` (dead pill → real dark-only button; light mode deferred).
+- **Rewrote phase order to note 10 Part 7** in spine `00` + build-kit `00`/`02`/`03`: 7 phases (0 content+2 schema touches → 1 primitives → 2 theme pill → 3 background → 4 sections → 5 Orby → 6 CSP report-only). Enforced the "do not" list (pnpm only, no commits/deploys by the agent, no type-file edits, no renames).
+
+Folder `frontend/` now holds 13 design notes + `claude-code-setup/` (4). All reconciled and internally consistent. Next: run Phase 0 in WSL.
