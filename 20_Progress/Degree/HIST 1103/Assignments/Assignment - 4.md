@@ -45,8 +45,24 @@ Dr. Homann
 - **Before writing:** Read [[Assignments Board]] → Assignment 4 section for full approach notes and claimed countries table
 
 ## My Response
+Vietnam and Cambodia Claimed
 
-**Subject: Vietnam and Cambodia CLAIMED**
+During the 1800s, France took hold of Vietnam. Following World War II, independence emerged when Ho Chi Minh made it official in 1945. Yet freedom faced resistance - French forces fought to regain power but were defeated at Dien Bien Phu by 1954. After that loss, a dividing line formed along the seventeenth parallel. In the north, led by Ho Chi Minh, ties strengthened with both the Soviet Union and China. Meanwhile, far south, alignment shifted toward the United States instead. Back then, in the early Sixties, America jumped into Vietnam because leaders feared one fall would pull down others nearby. By 1968, over 500,000 American troops were deployed. Then on April 30, 1975, North Vietnamese forces captured Saigon. Vietnam reunified in 1976 as the Socialist Republic of Vietnam under communist control.
+
+Things still fell apart after reunification. Years of conflict left deep scars across the land. Control stayed tight under a central plan - officials called most shots, personal enterprise barely breathed - prices jumped nearly sevenfold each year before the 1980s ended. Come 1986, leaders within the Communist Party pushed Doi Moi, which translates to "making new." Outside capital got openings, family-run shops gained space, markets started mixing with state operations. Results followed. Into the 2000s, Vietnam emerged as a key seller of electronics and fabric across Southeast Asia. Though power stayed firmly in party hands, economic movement grew looser - success mattered more than strict belief. Darkness deepened in Cambodia. As the Vietnam conflict crossed into its borders, American warplanes pounded villages from 1969 to 1973, chasing enemy routes through jungle paths. Into that void stepped the Khmer Rouge, an extreme Marxist group. By April 1975 they seized Phnom Penh, riding turmoil straight to victory; Saigon had collapsed only days before.
+
+One morning, cities stood empty. Pol Pot had spoken. His vision arrived fast - a clean slate called "Year Zero," meant to wipe out the past. Without warning, people fled urban life for fields and farms. Cash vanished overnight, gone like smoke. Classrooms locked up, books left behind. Teachers, scholars, city dwellers - all suspect. So too Buddhists, Vietnamese speakers, former officials. Jones sums it bluntly: between 1975 and 1979, around 1.5 to 2 million souls lost their lives. Out of 8.5 million, that number hits hard. Starvation carved bodies thin. Executions followed orders without trial. One in every four persons erased - close to unthinkable. Few events match such speed and depth of loss.
+
+Come December 1978, Vietnam moved in, shutting down the Khmer Rouge and setting up the People's Republic of Kampuchea. Years followed with Vietnamese forces present while fighting dragged on inside the country. Peace finally took shape in 1991 through UN efforts. By 1993, elections arrived under watchful international eyes - the nation’s first true shot at democracy. Victory went to the Cambodian People's Party, a lead they've kept without letting go, slowly narrowing political space along the way. Starting from much alike - once French-held, wrecked by conflict, blocked from steady growth. The two nations moved apart fast. One turned toward careful changes in how money flows, slowly putting things back together. The other drowned in killing fields and internal battles for well over a decade before quiet settled in.
+
+Do you think the US bombing campaigns in Cambodia between 1969 and 1973 bear direct responsibility for creating the conditions that allowed the Khmer Rouge to seize power? 
+
+
+
+
+Vietnam and Cambodia CLAIMED
+
+
 
 France colonized Vietnam in the nineteenth century, and after World War II, Ho Chi Minh declared independence in 1945. Full independence didn't come easily — France tried to take back control, lost at Dien Bien Phu in 1954, and the country was split at the seventeenth parallel. North Vietnam under Ho Chi Minh aligned with the Soviet Union and China. South Vietnam aligned with the United States.
 

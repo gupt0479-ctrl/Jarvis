@@ -65,6 +65,31 @@ Dr. Homann
 - **Before writing:** Read [[Assignments Board]] → Assignment 6 section for full recommended choices and approach
 
 ## My Response
+Part 1: Two Core Issues
+
+Looking at things through Arab eyes, displacement matters most - not faith. When the 1948 conflict erupted, vast numbers of Palestinians were driven from where they lived. Jones documents the scale: "In total, about 750,000 Palestinian Arabs became refugees from the war in 1948, creating one of the largest and longest-standing refugee problems in the world" (Jones, p. 161). Yet after seventy-five years, generations descended from those displaced remain housed in temporary settlements throughout Gaza, the West Bank, Lebanon, and Jordan. Instead of vague offers, Arab leaders insist on two clear steps - acknowledging the Right of Return while ending settlement expansion.
+Security defines Israel’s stance, along with recognition of its existence. Right after proclaiming statehood on May 14, 1948, forces from Egypt, Syria, Jordan, Lebanon, and Iraq launched an assault. Attacks followed once more in 1967 and then again in 1973. In Gaza, Hamas holds power and openly demands that Israel cease to exist. Survival shapes it - alongside the need for secure boundaries - a nation surrounded by persistent danger since 1948.
+
+Part 2: The Six-Day War (1967)
+
+Water sparked what came next. Back in 1967, Syria began rerouting the Jordan River. Aiming to use its flow for farming but Israel struck the works from the air. By May that year, Egypt’s leader Nasser moved 130,000 soldiers into the Sinai, pulled out the UN force left there after 1956, while drawing closer to both Jordan and Syria. Within just three hours, most of Egypt’s warplanes lay wrecked on runways. By day six, Israeli forces held the Sinai and Gaza - taken from Egypt - as well as the West Bank, which came under their authority after Jordan's withdrawal. The Golan Heights fell to Israel following Syrian retreat, along with complete oversight of Jerusalem. 
+Back then, in late 1967, the United Nations adopted a resolution meant to clarify territorial demands after conflict. Withdrawal by Israeli forces from captured land was one condition laid out clearly. Agreement failed to take hold on both ends. Each attempt at settlement circled back to these lands again and again.
+
+Part 3: Oslo Accords (1993)
+
+That September in 1993, on the lawn of the White House, leaders from Israel, Palestine, and the United States stood together under gray skies. Yitzhak Rabin, then prime minister of Israel, extended a hand though reluctantly - to Yasser Arafat, chairman of the PLO. Recognition flowed both ways: one state acknowledged another’s existence, while the other gained political legitimacy at last. An interim blueprint called the Oslo Accords outlined this shift, though core disputes remained untouched. What emerged was not peace itself, but a fragile framework meant to lead toward it. The moment carried weight - not because conflict ended, but because signatures appeared where none had before.
+Things unraveled fast. Even as talks continued, construction in the West Bank marched on, showing little intent to pull back. That November, a radicalized student shot Rabin dead - mirroring what happened to Sadat years earlier following his peace push. At Camp David two decades later, under Clinton, negotiations broke down because Arafat would not accept terms allowing Israel dominance over much of the territory while saying nothing about displaced Palestinians returning. By 2006, Hamas took power through elections in Gaza, creating a political divide. Because of this separation, shared representation faded into impossibility. Three decades have passed without resolution.
+
+Part 4: Four Contemporary Events
+
+Arab Spring 2011 - Destabilizing events followed the Arab Spring of 2011. While protests removed leaders in Egypt and Libya, they left behind fragile governance structures. In Egypt, military rule returned under Sisi - harsher compared to Mubarak’s era. The Syrian uprising turned into a brutal war, claiming countless lives. With regional stability eroding, nations once able to mediate between Israelis and Palestinians lost influence.
+Rising in 2014, ISIS stirred widespread instability. By June that year, Abu Bakr al-Baghdadi proclaimed a self-declared caliphate spanning areas of Iraq and Syria. As a result, American military priorities pivoted sharply to confront the group. This shift offered Israel broader grounds for regional military actions.
+Abraham Accords 2020 - partially stabilizing. Normalized ties between Israel and four nations - UAE, Bahrain, Morocco, Sudan - marked a shift unseen since Jordan’s 1994 agreement. For the first time in decades, new diplomatic channels opened across borders long closed. Yet one crucial issue stayed untouched: the future of Palestine. Silence on this front sparked anger among many Palestinian voices. Critics within the Arab world called it a betrayal rather than progress.
+Hamas October 7 attack, 2023 - massively destabilizing. Around 1,200 Israeli lives were lost that day, with another 250 taken captive. In reply, Israel’s armed forces struck back, resulting in massive civilian deaths across Palestine and widespread destruction of buildings and services in Gaza. By 2024, Iran had sent rockets straight into Israeli territory. A truce took effect early in 2025 - yet violations emerged quickly, with airstrikes still documented across regions. Hopes for separate Israeli and Palestinian states now seem further away than they have been since the Oslo talks ended.
+
+Is the two-state outcome now unworkable because of how settlements have grown across the West Bank - or could it return, given enough determination from Israelis and Palestinians alike? 
+
+
 
 **Part 1: Two Core Issues**
 
@@ -130,3 +155,4 @@ When you have finished, please go to the "Questions and Other Info" forum and th
 Good luck!  Let me know if you have questions.  This is a long assignment, so be prepared to go well over the word count minimum.
 
 Dr. Homann
+## My Reply

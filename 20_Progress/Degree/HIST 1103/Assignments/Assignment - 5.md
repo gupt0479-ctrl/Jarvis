@@ -46,8 +46,20 @@ Dr. Homann
 - **Before writing:** Read [[Assignments Board]] → Assignment 5 section for full approach notes
 
 ## My Response
+Iran CLAIMED
 
-**Subject: Iran CLAIMED**
+A nation perched atop vast oil reserves often faces upheaval - this truth unfolded clearly within Iran across the 1900s. Iran in the twentieth century is a case study in what happens when a country sits on oil and tries to control it. Though leaders aimed to claim ownership, outside forces pushed back. Since profits sparked internal conflict, stability faded over decades. When nationalization efforts rose, resistance followed from global players. As control shifted hands, political tides turned unpredictably. Through each phase, oil remained both prize and burden. 
+
+During the early 1950s, Mohammad Mossadegh served as Iran’s democratically chosen leader. By 1951, he moved to take control of the Anglo-Iranian Oil Company - known then as AIOC - that had long profited from Iranian resources while leaving little financial return within the country itself. This act sparked strong anger in Britain. Come August 1953, covert collaboration between British agents and the CIA launched what became known as Operation Ajax, aimed at removing Mossadegh from office and reinstating Mohammad Reza Pahlavi as ruler. Later came Kermit Roosevelt, tasked by the CIA to lead covert actions during what became known as Operation Ajax.  Power shifted away from elected representatives toward royal authority backed by foreign interests. Mossadegh faced detention without trial, living out his years confined at home. Control over oil resources moved back into Western hands through behind-the-scenes influence. What unfolded was less about ideals, more about securing access - external force reshaping a nation’s path.
+
+For two decades after, power rested firmly with the Shah, sustained through American financial aid and military support. Resistance, however, began to grow despite the outward stability. Beginning in the 1960s, he launched what was called the White Revolution - reforms aimed at rapid modernization that unsettled clerical leaders, weakened powerful landowners, while weakening long-standing social structures. Repression followed dissent closely; SAVAK, established in 1957 with hands-on help from the CIA, cracked down harshly on critics. Come 1979, opposition to the Shah included leftist groups, religious leaders, and business owners. Returning from exile that year, after fifteen years abroad - Khomeini arrived in Tehran in February. The new government took shape quickly, fueled less by outside influence than by homegrown anger. Decades of political crackdowns under the monarchy opened space for change. Resentment toward American involvement only deepened public unrest.
+
+The third wave came from Saddam Hussein's Iraq. September 1980 marked his move into Iran. Believing the revolution had left Tehran vulnerable, he aimed at dominating the Shatt al-Arab route. Lasting nearly a decade, the conflict claimed around half a million lives across both nations. Backed by the United States, Iraq received intelligence data, advanced weaponry knowledge, because Washington shielded Baghdad diplomatically during attacks involving poison gas. Oil links each of these events together. Profits from AIOC sparked the 1953 coup. American support for the Shah aimed to secure access to Iranian oil supplies. During the Iran-Iraq War, Saddam saw an opening to damage another major oil producer - Washington looked away. Decades of outside meddling, beginning with Operation Ajax, shaped the rise of today’s Islamic Republic. That legacy still runs deep.
+
+What do you think? If the CIA had not toppled Mossadegh in 1953, is it possible Iran might have developed as a functioning secular democracy instead of eventually becoming the Islamic Republic?
+
+
+Iran CLAIMED
 
 Iran in the twentieth century is a case study in what happens when a country sits on oil and tries to control it.
 
