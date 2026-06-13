@@ -1,12 +1,32 @@
 {
   "recentFiles": [
     {
-      "basename": "Assignments Board",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignments Board.md"
-    },
-    {
       "basename": "03 - Per-Phase Build Prompts",
       "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-code-setup/03 - Per-Phase Build Prompts.md"
+    },
+    {
+      "basename": "Chapter - 2",
+      "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 2.md"
+    },
+    {
+      "basename": "Chapter - 3",
+      "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 3.md"
+    },
+    {
+      "basename": "Homework Board",
+      "path": "20_Progress/Degree/MATH 2230/Homework/Homework Board.md"
+    },
+    {
+      "basename": "Git & GitHub",
+      "path": "40_Resources/CS/Concepts/Git & GitHub.md"
+    },
+    {
+      "basename": "Cheat Sheet's & Notes",
+      "path": "40_Resources/CS/Concepts/Cheat Sheet's & Notes.md"
+    },
+    {
+      "basename": "Assignments Board",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignments Board.md"
     },
     {
       "basename": "02 - Commands, Hooks & CSP Fix",
@@ -179,26 +199,6 @@
     {
       "basename": "Better Month",
       "path": "30_Order/Templates/Enumerate/Better Month.md"
-    },
-    {
-      "basename": "2026-06-11",
-      "path": "10_Areas/Life/Enumerate/Daily/2026-06-11.md"
-    },
-    {
-      "basename": "Enumerate Board",
-      "path": "10_Areas/Life/Enumerate/Enumerate Board.md"
-    },
-    {
-      "basename": "Plans Board",
-      "path": "10_Areas/Life/Plans/Plans Board.md"
-    },
-    {
-      "basename": "Reddit",
-      "path": "20_Progress/Projects/CS/TradingView/Reddit.md"
-    },
-    {
-      "basename": "Links",
-      "path": "20_Progress/Projects/CS/TradingView/Links.md"
     }
   ],
   "omittedPaths": [],

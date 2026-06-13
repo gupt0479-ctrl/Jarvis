@@ -92,7 +92,7 @@ ACCEPTANCE: one category-button row with counts, no coloured pills row, no "All"
 Run pnpm typecheck and /performance. Report.
 ```
 
-## R5 — Education (R3F)
+## R5 — Education (R3F) - here
 ```
 `FE = /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/CS/Portfolio/frontend`. Read FE/06 - Education Flowchart.md fully. File: EducationFlowchart.tsx (R3F + drei Float + MeshDistortMaterial; BLOB_VARIANTS/COLORS/SIZES).
 1) Equalize OPACITY (and size) across all three blobs — deformation must be the ONLY visible difference.

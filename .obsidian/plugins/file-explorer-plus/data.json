@@ -409,6 +409,13 @@
         "type": "FILES",
         "pattern": "20_Progress/Degree/HIST 1103/Assignments/Assignments Board.md",
         "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "20_Progress/Degree/MATH 2230/Homework/Homework Board.md",
+        "patternType": "STRICT"
       }
     ],
     "frontMatter": [
