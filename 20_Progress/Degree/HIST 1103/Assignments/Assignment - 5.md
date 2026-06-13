@@ -45,6 +45,22 @@ Dr. Homann
 - **Length:** ~500 words, 3 clear examples
 - **Before writing:** Read [[Assignments Board]] → Assignment 5 section for full approach notes
 
+## My Response
+
+**Subject: Iran CLAIMED**
+
+Iran in the twentieth century is a case study in what happens when a country sits on oil and tries to control it.
+
+In the early 1950s, Iran had a democratically elected Prime Minister named Mohammad Mossadegh. In 1951, he nationalized the Anglo-Iranian Oil Company — AIOC — which had been extracting Iranian oil for decades while the Iranian government received a fraction of the profits. Britain was furious. The Eisenhower administration agreed to help. In August 1953, the CIA and British intelligence ran Operation Ajax to overthrow Mossadegh and restore power to the Shah, Mohammad Reza Pahlavi. As Jones describes it, "The key CIA point man in 'Operation Ajax' was Kermit Roosevelt, grandson of former US President Teddy Roosevelt. The mission was to oust Mosaddegh and increase the power of the Shah vis-à-vis the troublesome Iranian Parliament" (Jones, p. 120). Mossadegh was arrested and spent the rest of his life under house arrest. Iran's oil returned to Western control. Democracy was sacrificed for oil — pure external imperialist pressure.
+
+The Shah governed Iran for the next twenty-six years, backed by US money and weapons. But his rule generated its own backlash. He imposed the White Revolution in the 1960s — a set of modernization reforms that alienated religious conservatives, threatened landlords, and sidelined traditional institutions. His secret police, SAVAK — formed in 1957 with direct CIA assistance — brutally suppressed any opposition. By 1979, a broad coalition of secular leftists, merchants, and clergy had turned against the Shah. Ayatollah Khomeini, exiled since 1964, returned to Tehran in February 1979. Within months, the Islamic Republic replaced the monarchy. This was internal fundamentalist pressure — but it drew its power from the Shah's own repression and from popular rage at decades of US interference.
+
+The third wave came from Saddam Hussein's Iraq. In September 1980, Saddam invaded Iran. He saw post-revolution Iran as weakened and wanted control over the Shatt al-Arab waterway. The war lasted eight years and killed an estimated 500,000 people on both sides. The US backed Iraq — providing Saddam with intelligence, weapons technology, and diplomatic cover, even as Iraq used chemical weapons. This is the Baathist external pressure the prompt asks about: a neighboring Baathist regime actively trying to crush post-revolutionary Iran, with US support.
+
+All three pressures connect to the same thing — oil. The 1953 coup was about AIOC's profits. The Shah's US backing was about keeping Iranian oil in friendly hands. The Iran-Iraq War gave Saddam a chance to weaken a rival oil state, and the US let it happen. The Islamic Republic that governs Iran today is a direct product of all that accumulated foreign interference, starting with Operation Ajax in 1953.
+
+What do you think — if the CIA had not toppled Mossadegh in 1953, is it possible Iran might have developed as a functioning secular democracy instead of eventually becoming the Islamic Republic?
+
 ## Student's reply
 - [ ] Read the student's reply here and draft a response
 - [ ] Iraq has been claimed by 2 people already.
@@ -99,3 +115,7 @@ Sources:
 [Iraq 20 years after the invasion: How life is better and worse | CBC News](https://www.cbc.ca/news/world/iraq-invasion-1.6782346) 
 
 [Our Relationship - U.S. Embassy & Consulate in Iraq](https://iq.usembassy.gov/our-relationship/)
+
+### My Reply
+
+Your Iraq post covers a lot of ground, and there's one piece worth adding about the Iran-Iraq War you mentioned: during those eight years (1980–1988), the US actively backed Saddam Hussein. The Reagan administration removed Iraq from the State Sponsors of Terrorism list in 1982, which cleared the way for arms sales and intelligence sharing. The US even provided battlefield targeting data that Saddam later used to direct chemical weapons attacks against Iranian forces. So when the US turned against Saddam in 1991, it was partly unwinding a relationship it had built. Oil was the constant — backing Iraq kept revolutionary Iran contained; defending Kuwait kept Gulf oil flows stable.

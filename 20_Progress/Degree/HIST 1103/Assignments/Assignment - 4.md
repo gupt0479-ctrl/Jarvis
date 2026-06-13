@@ -44,6 +44,26 @@ Dr. Homann
 - **Length:** Professor explicitly said longer than 400 words. Target 600–700.
 - **Before writing:** Read [[Assignments Board]] → Assignment 4 section for full approach notes and claimed countries table
 
+## My Response
+
+**Subject: Vietnam and Cambodia CLAIMED**
+
+France colonized Vietnam in the nineteenth century, and after World War II, Ho Chi Minh declared independence in 1945. Full independence didn't come easily — France tried to take back control, lost at Dien Bien Phu in 1954, and the country was split at the seventeenth parallel. North Vietnam under Ho Chi Minh aligned with the Soviet Union and China. South Vietnam aligned with the United States.
+
+The US entered in earnest in the early 1960s under the domino theory — the belief that a communist Vietnam meant communist Southeast Asia. By 1968, over 500,000 American troops were deployed. Then on April 30, 1975, North Vietnamese forces captured Saigon. Vietnam reunified in 1976 as the Socialist Republic of Vietnam under communist control.
+
+Reunification didn't fix the economy. A decade of war had wrecked the country. The government ran a rigid planned economy — state control over everything, little room for private activity — and inflation hit roughly 700% annually by the mid-1980s. In 1986, the Communist Party launched Doi Moi, meaning "renovation." The party invited foreign investors, allowed private businesses, and introduced market mechanisms alongside the state sector. It paid off. By the 2000s, Vietnam had become one of Southeast Asia's major exporters of electronics and textiles. The party kept its grip on politics but let the economy breathe — a model built around practical results, not ideological purity.
+
+Cambodia's story went darker. The Vietnam War spilled across the border — the US bombed Cambodia heavily between 1969 and 1973, targeting North Vietnamese supply lines. That destabilized the country and helped the Khmer Rouge, a radical communist movement, rise to power in April 1975 — just weeks after Saigon fell.
+
+Pol Pot, the Khmer Rouge leader, announced "Year Zero" — a forced reset to a purely agrarian society. He evacuated cities within days. Money was abolished. Schools closed. Intellectuals, ethnic minorities, and anyone associated with the old government were executed or sent to labor camps. Jones puts the scale plainly: "In Pol Pot's four-year reign an estimated 1.5–2mn Cambodians died out of a total population of 8.5mn (many because of starvation, many executed by the Khmer Rouge)" (Jones, p. 105). That is roughly one in four Cambodians dead in under four years — one of the worst per-capita genocides in modern history.
+
+Vietnam invaded in December 1978 and ended the Khmer Rouge regime, installing the People's Republic of Kampuchea. Cambodia spent the next decade under Vietnamese occupation and ongoing civil conflict. The UN brokered peace in 1991. In 1993, UN-supervised elections were held — Cambodia's first real attempt at democratic governance. The Cambodian People's Party emerged dominant and has held power ever since, though its grip on politics has grown increasingly authoritarian.
+
+Both countries started from similar conditions — former French colonies, devastated by war, cut off from normal development. Vietnam rebuilt through controlled economic reform. Cambodia spent fifteen years in genocide and civil war before reaching anything resembling stability. The paths couldn't have been more different.
+
+Do you think the US bombing campaigns in Cambodia between 1969 and 1973 bear direct responsibility for creating the conditions that allowed the Khmer Rouge to seize power?
+
 ## Student's reply
 - [ ] Read the student's reply here and draft a response
 
@@ -66,3 +86,7 @@ A second major event for Indonesia was the rise of Suharto after 1965. After an 
 Overall, Vietnam and Indonesia both show that becoming a modern nation after colonialism was not simple. Vietnam’s path included war and economic reform, while Indonesia’s path included Sukarno’s leadership, Suharto’s dictatorship, and later democracy. Both countries changed a lot by 2020, but they had to go through violence, instability, and rebuilding first.
 
 My question: Do you think economic growth or political freedom is more important when a country is trying to become stable after colonialism?
+
+### My Reply
+
+Economic growth first — that's my position. Political freedom matters, but a starving country can't sustain it. Vietnam is the clearest example: Doi Moi in 1986 rebuilt a shattered economy without any meaningful political liberalization, and that foundation made everything else possible. Cambodia got UN-supervised elections in 1993 before its economy was stable, and the Cambodian People's Party has been consolidating authoritarian control ever since — democracy without economic grounding didn't hold. I'm from India, which gained political independence in 1947 but struggled economically for decades afterward. Growth creates the middle class that eventually demands political rights. The sequence matters.

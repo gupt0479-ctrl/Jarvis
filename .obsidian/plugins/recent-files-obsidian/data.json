@@ -1,8 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "Quiz - 4",
+      "path": "20_Progress/Degree/MATH 2230/Quiz/Quiz - 4.md"
+    },
+    {
       "basename": "03 - Per-Phase Build Prompts",
       "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-code-setup/03 - Per-Phase Build Prompts.md"
+    },
+    {
+      "basename": "Assignment - 5",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 5.md"
     },
     {
       "basename": "Chapter - 2",
@@ -59,10 +67,6 @@
     {
       "basename": "Assignment - 6",
       "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 6.md"
-    },
-    {
-      "basename": "Assignment - 5",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 5.md"
     },
     {
       "basename": "Assignment - 4",
@@ -195,10 +199,6 @@
     {
       "basename": "Better Weekly",
       "path": "30_Order/Templates/Enumerate/Better Weekly.md"
-    },
-    {
-      "basename": "Better Month",
-      "path": "30_Order/Templates/Enumerate/Better Month.md"
     }
   ],
   "omittedPaths": [],

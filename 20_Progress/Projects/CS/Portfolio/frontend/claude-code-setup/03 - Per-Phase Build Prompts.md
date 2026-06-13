@@ -92,7 +92,7 @@ ACCEPTANCE: one category-button row with counts, no coloured pills row, no "All"
 Run pnpm typecheck and /performance. Report.
 ```
 
-## R5 — Education (R3F) - here
+## R5 — Education (R3F)
 ```
 `FE = /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/CS/Portfolio/frontend`. Read FE/06 - Education Flowchart.md fully. File: EducationFlowchart.tsx (R3F + drei Float + MeshDistortMaterial; BLOB_VARIANTS/COLORS/SIZES).
 1) Equalize OPACITY (and size) across all three blobs — deformation must be the ONLY visible difference.
@@ -134,7 +134,7 @@ ACCEPTANCE: blog header centered + subtle motion + GitHub bottom-lift; smaller c
 Run pnpm typecheck. Report.
 ```
 
-## R8 — Orby frictions + a11y + (optional) CSP — final gate
+## R8 — Orby frictions + a11y + (optional) CSP — final gate - here
 ```
 `FE = /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/CS/Portfolio/frontend`. Read FE/12 - Orby Friction Fixes.md and FE/claude-code-setup/02 - Commands, Hooks & CSP Fix.md fully.
 Orby (do NOT touch OrbyCanvas.tsx): clamp OrbySpeechCloud X into the viewport so it never clips at Orby's far-right home; recalibrate the section-comment scroll thresholds in useOrbyState.ts now that heights/spacing changed in R0–R7; check 375px mobile overlap.
