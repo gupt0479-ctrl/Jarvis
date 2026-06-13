@@ -880,3 +880,26 @@ Claude Code (Sonnet 4.6) wrote `frontend/10 - Codebase Reality & Confusion Clear
 - **Rewrote phase order to note 10 Part 7** in spine `00` + build-kit `00`/`02`/`03`: 7 phases (0 content+2 schema touches → 1 primitives → 2 theme pill → 3 background → 4 sections → 5 Orby → 6 CSP report-only). Enforced the "do not" list (pnpm only, no commits/deploys by the agent, no type-file edits, no renames).
 
 Folder `frontend/` now holds 13 design notes + `claude-code-setup/` (4). All reconciled and internally consistent. Next: run Phase 0 in WSL.
+
+
+## 2026-06-13 — Frontend refinement pass (Cowork)
+Anant ran all build prompts; the build largely shipped (screenshots confirm capability graph, R3F education blobs, R3F projects carousel, achievements rail, centered headers, summaries). Claude Code's BUILD-STATUS "nothing built" table was wrong. Used the graphify codebase map (`Portfolio/INDEX`, `/architecture`, `/components`, `/data`) as ground truth and reframed the whole kit as a **refinement pass**.
+
+- **Two codebase corrections from graphify:** Projects carousel is **R3F** (drei `Float` + `@react-spring/web`), Education flowchart is **R3F** (`MeshDistortMaterial` + `Float`) — earlier notes wrongly said Framer Motion. Updated notes 04, 06, prompts.
+- **Schema decision (asked Anant):** ADD a per-skill `color` preset field to Sanity (reverses note 10's "no color" rule) — drives the dot everywhere except the Skills section. Also: remove `project.visibility`, make `coverImage` optional, add `project.summary`, add `logo` to EDUCATION_QUERY. Updated 02 + 09.
+- **New note 14 — Global Fixes:** dark-mode pill must be static (remove drift); kill the `.section-backdrop::before` blank block + unify section padding to one token; Achievements subsection = smaller header + minimal gap.
+- **Rewrote section notes 03–08** as refinement fix-lists per BUILD-STATUS `## UI Fixes` 1–14: experience (type-chip by location, achievements off gold, click-to-open description, comet down, Sanity dot colours); projects (comet down, side cards decoupled from centre hover, remove case-note → summary only, ≤4 skills); skills (remove count box + All button, same-line layout, divergent lines, unique mobile/soft-skills/testing effects, 7 fixed-size skill effects, no dot here); education (equal opacity, deformation gradient via distort, off-axis, single upward pulse); certs+achievements (comet down, out-links, one transparent subtle comet for all three); blog/contact/footer (centre blog header, GitHub bottom-lift not comet, smaller contact card, edge-aligned compact footer).
+- **Rewrote `claude-code-setup/03` as R0–R8 refinement prompts**; updated spine 00 + build-kit index; corrected BUILD-STATUS's stale table with a banner (kept the UI Fixes list).
+
+Folder now: 15 design notes (00–14) + BUILD-STATUS + claude-code-setup (4), all reconciled to the live codebase + the new UI-fix backlog. Next: run R0 in WSL.
+
+
+## 2026-06-13 (2) — Frontend final refinement pass, ship-today (Cowork)
+Sanity verified working (GitHub link resolves, fake certs removed, one real cert renders). Made the refinement prompts airtight for a single final build + same-day deploy.
+
+- **Two new specifics baked in:** (a) Experience employment-type chip currently renders by the title — move it to the location row (note 03 + R2 explicit). (b) Skills has TWO category rows — delete the coloured count-pills row, fold counts onto the real filter buttons, remove "All", keep the count caption without breaking graph/skills alignment, no gap under the header (note 05 + R4 rewritten).
+- **Rewrote `claude-code-setup/03`** as R0–R8 with explicit ACCEPTANCE criteria per phase; every BUILD-STATUS UI Fix 1–14 + the two global fixes mapped to a phase. Agent stops at green-light; Anant deploys.
+- **New `claude-code-setup/04 — Prerequisites & Deploy Checklist`:** packages to confirm (@portabletext/react for the experience description; drei/react-spring/recharts already present), typegen-after-schema, per-phase verification, final pre-deploy checklist, and CSP-can-follow-deploy guidance so it never blocks launch. Wired into the build-kit index.
+- Coverage check: R0 (header static + spacing), R1 (schema: color/summary/coverImage-optional/visibility-removed/logo + content), R2 Experience, R3 Projects, R4 Skills, R5 Education, R6 Certs+Achievements, R7 Blog/Contact/Footer, R8 Orby+a11y+optional CSP → green-light → deploy.
+
+Folder is final: notes 00–14 + BUILD-STATUS + claude-code-setup (00–04). Next: run R0 in WSL, work through R8, then deploy.

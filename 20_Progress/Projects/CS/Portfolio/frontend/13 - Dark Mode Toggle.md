@@ -43,6 +43,9 @@ const { theme } = useTheme()
 
 **Acceptable alternative:** leave it a `<div>` but add `role="status"` + `aria-label="Color theme: dark"` so it's a correct status indicator. Either is minutes of work.
 
+## Must also be STATIC (2026-06-13)
+The pill currently **drifts/wobbles** in the header — a `useSpaceFloat`/continuous-drift was applied. **Remove it.** A header control must not wander. Hover-lift is fine; idle motion is not. Full detail in [[14 - Global Fixes — Header & Section Spacing]] §1.
+
 ## Done conditions
-- The header theme pill is semantically correct (button-with-aria, or status-div-with-aria), keyboard-reachable.
+- The header theme pill is semantically correct (button-with-aria, or status-div-with-aria), keyboard-reachable, and **does not drift** (static in the header).
 - No light-mode palette work; `setTheme('light')` left as a documented future hook.

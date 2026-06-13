@@ -15,10 +15,11 @@ notes:
   - "[[01 - Subagents & Existing .claude]]"
   - "[[02 - Commands, Hooks & CSP Fix]]"
   - "[[03 - Per-Phase Build Prompts]]"
-next: "Run Phase 0 (Sanity-as-SoT) from [[03 - Per-Phase Build Prompts]] after confirming the .claude agents exist."
+  - "[[04 - Refinement Prerequisites & Deploy Checklist]]"
+next: "Final refinement pass — read [[04 - Refinement Prerequisites & Deploy Checklist]], then run R0 from [[03 - Per-Phase Build Prompts]]. Ship after R8 green."
 ---
 # Frontend Build Kit — Index
-> **Reconciled to [[10 - Codebase Reality & Confusion Clearance]].** Phase order is now **7 phases (0–6)** per note 10 Part 7 (not 8). Every phase prompt reads note 10 first for exact file paths + field names. CSP is Phase 6 (report-only first); `next.config.ts` already has the other security headers.
+> **REFINEMENT PASS 2026-06-13.** The original build ran; the prompts are now the **R-phases (R0–R8)** in [[03 - Per-Phase Build Prompts]] — targeted fixes from `[[BUILD-STATUS]]` `## UI Fixes`, not a rebuild. Read note 10 + the graphify map (`../INDEX`, `../components`, `../data`) for exact paths. Key corrections: Projects & Education are **R3F** (drei `Float` / `MeshDistortMaterial`); **`skill.color` is added**; CSP stays last (R8, report-only first).
 
 The operating kit that lets Claude Code (Sonnet 4.8) build the frontend overhaul from the design notes in `frontend/`, one phase per prompt, at minimum tokens. The design is the source of truth; this folder is *how the executor uses it*. Direct sibling of the chatbot's [[00 - Claude Code Build Kit — Index]] — same model, same discipline. Reuse what that kit already set up; this kit only adds what the visual rebuild needs.
 
@@ -27,7 +28,7 @@ The portfolio repo is in WSL; build it there (`cd repo` → `claude`). The plan 
 1. **Direct file read (preferred, zero network).** D: is mounted in WSL at `/mnt/d/`, so the notes are at `/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/CS/Portfolio/frontend/`. Read the one phase note you need.
 2. **jarvis MCP (fallback).** Works, but mind the WSL→Windows localhost gotcha documented in the chatbot kit's [[01 - MCP Servers and the .mcp.json Fix]].
 
-## How the build runs: 7 phases (0–6), one prompt each
+## How the build runs: refinement R-phases (R0–R8), one prompt each
 One phase per session, clean context. The copy-paste prompts are in [[03 - Per-Phase Build Prompts]]. The loop every phase:
 1. `/clear` for a clean context window.
 2. Paste the phase prompt. It names note 10 + the *one or two* design notes to read — never all of them.
@@ -51,7 +52,8 @@ The repo already has agents `frontend-builder, sanity-schema, security-reviewer,
 ## Kit contents
 - [[01 - Subagents & Existing .claude]] — which agent builds what; the one optional new agent.
 - [[02 - Commands, Hooks & CSP Fix]] — reused commands, hook config, and the flagged CSP header for `next.config.ts`.
-- [[03 - Per-Phase Build Prompts]] — the eight copy-paste prompts.
+- [[03 - Per-Phase Build Prompts]] — the R0–R8 refinement prompts (ship-today pass).
+- [[04 - Refinement Prerequisites & Deploy Checklist]] — packages, typegen, per-phase verification, and the final pre-deploy checklist.
 
 ## Current State
 Kit drafted alongside the design notes. Needs user: confirm `.claude` agents exist, confirm `sanity` + `github` MCPs render at repo root, decide which certifications are real ([[09 - Sanity Content Spec]] §6), then run Phase 0.

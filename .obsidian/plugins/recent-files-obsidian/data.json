@@ -1,12 +1,60 @@
 {
   "recentFiles": [
     {
-      "basename": "Portfolio",
-      "path": "20_Progress/Projects/CS/Portfolio/Portfolio.md"
+      "basename": "Assignments Board",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignments Board.md"
+    },
+    {
+      "basename": "03 - Per-Phase Build Prompts",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-code-setup/03 - Per-Phase Build Prompts.md"
+    },
+    {
+      "basename": "02 - Commands, Hooks & CSP Fix",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-code-setup/02 - Commands, Hooks & CSP Fix.md"
+    },
+    {
+      "basename": "01 - Subagents & Existing .claude",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-code-setup/01 - Subagents & Existing .claude.md"
+    },
+    {
+      "basename": "00 - Frontend Build Kit — Index",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-code-setup/00 - Frontend Build Kit — Index.md"
+    },
+    {
+      "basename": "04 - Refinement Prerequisites & Deploy Checklist",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-code-setup/04 - Refinement Prerequisites & Deploy Checklist.md"
     },
     {
       "basename": "BUILD-STATUS",
       "path": "20_Progress/Projects/CS/Portfolio/frontend/BUILD-STATUS.md"
+    },
+    {
+      "basename": "Assignment - 7",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 7.md"
+    },
+    {
+      "basename": "Assignment - 8",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 8.md"
+    },
+    {
+      "basename": "Assignment - 6",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 6.md"
+    },
+    {
+      "basename": "Assignment - 5",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 5.md"
+    },
+    {
+      "basename": "Assignment - 4",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 4.md"
+    },
+    {
+      "basename": "HIST 1103 Board",
+      "path": "20_Progress/Degree/HIST 1103/HIST 1103 Board.md"
+    },
+    {
+      "basename": "Portfolio",
+      "path": "20_Progress/Projects/CS/Portfolio/Portfolio.md"
     },
     {
       "basename": "2026-06-13",
@@ -14,11 +62,7 @@
     },
     {
       "basename": "HIST 1103 - Assignments and Discussions",
-      "path": "20_Progress/Degree/HIST 1103/HIST 1103 - Assignments and Discussions.md"
-    },
-    {
-      "basename": "03 - Per-Phase Build Prompts",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-code-setup/03 - Per-Phase Build Prompts.md"
+      "path": "20_Progress/Degree/HIST 1103/Syllabus/HIST 1103 - Assignments and Discussions.md"
     },
     {
       "basename": "13 - Dark Mode Toggle",
@@ -155,50 +199,6 @@
     {
       "basename": "Links",
       "path": "20_Progress/Projects/CS/TradingView/Links.md"
-    },
-    {
-      "basename": "Trading with Ai",
-      "path": "20_Progress/Projects/CS/TradingView/Trading with Ai.md"
-    },
-    {
-      "basename": "Trading Tools and Platforms",
-      "path": "20_Progress/Projects/CS/TradingView/Trading Tools and Platforms.md"
-    },
-    {
-      "basename": "Trading",
-      "path": "20_Progress/Projects/CS/TradingView/Trading.md"
-    },
-    {
-      "basename": "RESEARCH",
-      "path": "20_Progress/Projects/CS/TradingView/RESEARCH.md"
-    },
-    {
-      "basename": "03 - Commands and Hooks",
-      "path": "20_Progress/Projects/CS/Portfolio/claude-code setup/03 - Commands and Hooks.md"
-    },
-    {
-      "basename": "04 - Eval Harness — promptfoo",
-      "path": "20_Progress/Projects/CS/Portfolio/claude-code setup/04 - Eval Harness — promptfoo.md"
-    },
-    {
-      "basename": "02 - Subagents",
-      "path": "20_Progress/Projects/CS/Portfolio/claude-code setup/02 - Subagents.md"
-    },
-    {
-      "basename": "00 - Claude Code Build Kit — Index",
-      "path": "20_Progress/Projects/CS/Portfolio/claude-code setup/00 - Claude Code Build Kit — Index.md"
-    },
-    {
-      "basename": "01 - MCP Servers and the .mcp.json Fix",
-      "path": "20_Progress/Projects/CS/Portfolio/claude-code setup/01 - MCP Servers and the .mcp.json Fix.md"
-    },
-    {
-      "basename": "08 - Build Phases & Milestones",
-      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/08 - Build Phases & Milestones.md"
-    },
-    {
-      "basename": "06 - Tool System & Generative UI",
-      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/06 - Tool System & Generative UI.md"
     }
   ],
   "omittedPaths": [],

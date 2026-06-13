@@ -14,8 +14,7 @@ notes:
   - "[[HIST 1103 - Exams]]"
   - "[[HIST 1103 - Schedule]]"
   - "[[Summer Courses]]"
-next: "Post Assignments 1-3 to discussion + upload .docx to dropbox if not done — due Sat Jun 6 11:30pm"
-updated: 2026-06-06
+next: Post Assignments 1-3 to discussion + upload .docx to dropbox if not done — due Sat Jun 6 11:30pm
 ---
 # HIST 1103 Board
 Contemporary World History (post-WWII to present). Online, Summer 2026 at Anoka Ramsey CC. A full 16-week course compressed into about 4 weeks, so the pace and workload are heavy. Instructor: **Dr. Bruce R. Homann**.

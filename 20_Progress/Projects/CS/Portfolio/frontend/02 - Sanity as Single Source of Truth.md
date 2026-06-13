@@ -21,11 +21,21 @@ The thesis still holds: **nothing visible may be hardcoded; everything renders f
 `skill` document (`src/sanity/schemaTypes/skill.ts`) already has: `name`, `category` (string enum), `proficiency` (beginner/intermediate/advanced/expert), `percentage` (0–100), `yearsOfExperience`, `tone` (neutral/accent/highlight/muted).
 
 - **There is no `skillCategory` document — and we must not create one.** Categories are a string enum on `skill`. The client groups by category in `SkillsSectionClient.tsx`. Creating a doc type would force a migration + typegen + query rewrites for zero UI gain.
-- **There is no `color` field — and we must not add one back.** It was deliberately removed (comment at skill.ts line 90). **Colour is derived at render time from `category`** via `CATEGORY_COLORS` (in `SkillsSectionClient.tsx` and `ExperienceCard.tsx`). That derivation map *is* the single source of skill colour. Uniformity across the site = every chip calling the same `getCategoryColor(category)`.
+- **`color` field — REVERSED 2026-06-13: now ADD it.** Earlier this note said "do not add `color` back." The user has decided per-skill colour must be Sanity-controlled (the dot next to each skill across the site). **Add a `color` field to the `skill` schema as a preset palette** (a `string` enum of on-theme presets, not a free colour picker, so nothing goes off-theme): `violet, cyan, emerald, sky, pink, amber, orange, slate`, each mapping to a hex in one place. The dot/chip uses `skill.color` everywhere it appears; **fall back to the `category`-derived `CATEGORY_COLORS` when `color` is unset.** Keep `CATEGORY_COLORS` for the graph lines. See [[05 - Skills Capability Graph]] for where it does and doesn't render.
+- **`tone` (neutral/accent/highlight/muted)** currently does nothing visible. Either retire it or keep it only for badge weight — it is **not** the colour source; the new `color` field is. (User explicitly noted tone "does not do anything.")
 - **`percentage` is the "familiarity/level" the first draft wanted to add.** Don't add `familiarity`/`level` — use `percentage`. The capability graph ([[05 - Skills Capability Graph]]) reads `percentage` + `proficiency` (both already fetched, not yet rendered).
 - `blurb` is the one field that genuinely doesn't exist; add it only if a section needs short skill copy. Not required this sprint.
 
 Category enum values (real): `frontend, backend, ai-ml, devops, database, mobile, cloud, testing, design, tools, soft-skills, other`.
+
+## Schema changes for the refinement pass (2026-06-13) — the full list
+The build largely ran; these are the only schema edits left. Each is followed by `pnpm typegen` → `pnpm typecheck`.
+1. **`skill.color`** — add the preset-palette `color` field (above). Drives the dot everywhere except the Skills section.
+2. **`project.summary`** — add the long-form field (decision 2026-06-12) for the carousel hover detail.
+3. **`project.coverImage`** — remove the `required` validation (make optional).
+4. **`project.visibility`** — remove the enum entirely; rely on `featured` + `order`.
+5. **`EDUCATION_QUERY`** — add `logo` to the projection (query-only, no schema change).
+No renames, no `skillCategory` doc, no `familiarity`/`level`/`blurb`.
 
 ## The reference-field reality: `technologies[]` vs `skills[]`
 The first draft said `skills[]→ref(skill)` uniformly. **Wrong.** The actual split, and we keep it as-is:
@@ -45,6 +55,8 @@ The first draft said `skills[]→ref(skill)` uniformly. **Wrong.** The actual sp
 | Project live URL | — | `liveUrl` |
 | Project featured | `featured` bool only | `visibility` enum (`featured`/`standard`) + legacy `featured` bool, both normalized in query |
 | Project long copy | `description` | **none today → add `summary`** (decision 2026-06-12; see [[04 - Projects Carousel]]) |
+| Project cover image | required | **make OPTIONAL (2026-06-13)** — drop the required validation so projects publish without one |
+| Project `visibility` enum | keep | **REMOVE (2026-06-13)** — it only painted a star; rely on the `featured` bool + `order`. Drop `visibility` from schema + the PROJECTS_QUERY normalization |
 | Experience company URL | `companyUrl` | **`companyWebsite`** |
 | Experience long copy | string `description` | **Portable Text `description`** (blocks) |
 | Education stage | Sanity `stage` field | **none — UI assigns by sort index** in `EducationFlowchart.tsx` |

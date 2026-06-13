@@ -2,46 +2,42 @@
 type: concept
 status: sprout
 created: 2026-06-12
-updated: 2026-06-12
+updated: 2026-06-13
 tags:
   - portfolio
   - frontend
   - skills
 notes:
   - "[[00 - Frontend Overhaul — Build Plan]]"
-  - "[[01 - Motion System & Comet Cards]]"
+  - "[[02 - Sanity as Single Source of Truth]]"
   - "[[10 - Codebase Reality & Confusion Clearance]]"
+  - "[[BUILD-STATUS]]"
 ---
 # Skills Capability Graph
-> **Reconciled to [[10 - Codebase Reality & Confusion Clearance]].** Files: `src/components/sections/SkillsSection.tsx`, `SkillsSectionClient.tsx`. Kicker `// capability matrix`.
+> **Refinement pass (2026-06-13).** The graph + category pills + skill grid are built and rendering (`sections/SkillsSection.tsx`, `SkillsSectionClient.tsx`, Recharts via shadcn `ChartContainer`). The capability graph looks good. This note is the **fix list** for layout, line shape, effects, and data flow.
 
-## Correction from note 10 — the section is NOT broken
-The first draft said "broken, doesn't render, dead buttons." **Wrong.** The 3D sphere was *deliberately* removed (Phase H, Option 2) in favour of a working, sophisticated 2D pill grid. What exists today:
-- Summary bar (skill count + category count); category chips coloured per category.
-- Category filter pills with **unique per-category hover micro-interactions already implemented**: `frontend`→shimmer sweep, `backend`→blinking cursor `_`, `ai-ml`→pulse-glow, `devops`/`tools`→three deploy dots, `database`→sparkline bars, `soft-skills`→lift. **Keep and enhance these; they are the brief's "each category does something unique."**
-- Skill pills grouped by category with heading + description; hover = `perspective(600px) translateY(-2px) scale(1.02)` + iridescent shimmer.
-- **`percentage`, `proficiency`, `tone` are fetched but not yet rendered** — they are exactly the data the capability graph needs.
+## Layout fixes (BUILD-STATUS UI Fix #5 + Anant's 2026-06-13 note)
+There are currently **two** category rows stacked above the content: a coloured **count-pills row** (`Ai Ml 7 · Backend 8 · Cloud 3 …`, with dots) AND the interactive **filter-buttons row** (`All · Ai Ml · Backend …`, no counts). Plus a `56 skills across 10 categories` caption over the sphere. Collapse this:
+1. **Delete the coloured count-pills row entirely.** Remove that whole block.
+2. **Fold the counts onto the real category filter buttons.** Each interactive category button shows its count inline (e.g. `Ai Ml 7`, `Backend 8`) — the number that used to live on the deleted coloured pills now lives on the actual button for that category. One row of category buttons, each with its count.
+3. **Remove the "All" button entirely.** No "All" filter — the default-open (highest) category renders on load; the user switches between specific categories.
+4. **Keep the `N skills across M categories` caption** but small and placed so it does **not** add vertical space or break alignment (tuck it just above the category-buttons row).
+5. **Perfect alignment + no header gap.** After removing the count-pills row, the **graph (left)** and the **category-buttons + skill list (right)** must align cleanly on one row, and there must be **no extra empty space between the section header ("Skills & Expertise" + description) and this content**. Tighten the top padding so the content sits directly under the header.
 
-So this section is an **augmentation on a working base, not a rescue.**
+## Graph fixes
+5. **Make the trajectories diverge.** Right now every category line follows nearly the same curve. Each category's line must have a **distinct shape** — different inflection points, slopes, and plateaus — even between two "advanced" categories. Drive each line from its own skills' `percentage` values over the 2021→2026 timeline; add per-category jitter/offset so no two lines are parallel. Keep axes labelled (X = year, Y = Familiarity / Applied Depth, never "Mastery").
 
-## What to build (the target the brief asks for)
-### 1. The stock-chart capability graph (new, left column)
-Add a multi-line "trajectory" graph beside the existing pill UI (graph left, categories + skills right).
-- One line per category, coloured from `CATEGORY_COLORS` (see [[09 - Sanity Content Spec]] §1). Shape each line from its skills' `percentage` values across a learning timeline.
-- Lines have distinct, non-identical curves trending upward; intermediate/beginner categories visibly still climbing.
-- **Axes labelled.** X = progression `2021 → 2026`. Y = `Familiarity / Applied Depth` — **never "Mastery"/"Expert" as the headline** (honesty). 
-- Hover a line → highlight it, dim others, tooltip (category + direction + related skills).
-- Reuse **Recharts** (already a dependency) or lightweight SVG. Soft gradient fills under lines, glowing endpoints.
-- Add an **Insight panel** that updates with the selected category, e.g. "Currently trending toward: AI / data systems and retrieval workflows."
+## Category & skill interaction fixes (BUILD-STATUS UI Fix #6)
+6. **Category-first data model, not "all skills" dump.** Don't render every skill as one long flat list. Structure: **categories first**, the highest-level category auto-open on load, the rest selectable; the chosen category then reveals its skills. (This matches the user's "systematic approach — categories, then skills under each.")
+7. **Unique effect for every category pill.** `mobile`, `soft-skills`, and `testing` currently share the same hover effect — give each its own. Every category pill has a distinct signature interaction (the existing `frontend` shimmer / `backend` cursor / `ai-ml` pulse / `devops` deploy-dots / `database` sparkline / `soft-skills` lift stay; add unique ones for `mobile`, `testing`, and any other sharing duplicates). Category pills keep `useSpaceFloat` + `CometCard`.
+8. **7 distinct per-skill effects, fixed-size boxes.** Each category has ~5–10 skills; cycle **7 distinct hover effects** across them (3 may repeat within a category — the goal is 7 effects total across the system). Independent of the category effects. **Critical: the skill box must NOT resize or change shape on hover** — fixed dimensions; only the effect + the proficiency level appear on hover. (Today boxes grow on hover — stop that.)
+9. **Colour does NOT render in the Skills section.** The new `skill.color` dot shows everywhere else (Experience/Projects/Certs) but **not here** — in the Skills section only the hover effect + skill level show. (Per the user.)
 
-### 2. Category buttons → add float + comet (right column)
-The category pills are the **only** skills elements that get `useSpaceFloat` + `CometCard` (wiggle in space, comet on hover). On click: that category becomes active → its graph line highlights, its description shows (only on click), the insight panel updates, and the default-open category renders on load. Keep their existing signature micro-interactions (above) and make them pop more.
-
-### 3. Listed skills — compact + the 7 effects
-- The skill pills take too much space → shrink to fit. Level (`proficiency`) shows **only on hover** alongside the skill's effect.
-- **7 distinct per-skill effects** cycled by index (`effects[N mod 7]`), independent of the category interactions and of each other. Build an `effects[0..6]` registry; the current iridescent shimmer can be **one** of the seven. Candidate set (refine to 7): magnetic ripple, glitch/scan, constellation lines, liquid `percentage` fill, orbit dot, typewriter name, depth-tilt + comet shadow. Reduced-motion → all degrade to a simple opacity/colour change.
+## Data (Phase 0)
+- Skills come from the `skill` registry; the new `skill.color` field is added in Sanity ([[02 - Sanity as Single Source of Truth]]) and used for dots site-wide except here. Graph line colours stay from `CATEGORY_COLORS`.
 
 ## Done conditions
-- Stock-chart graph added (labelled Familiarity axis, per-category lines from `percentage`, hover highlight + tooltip + insight panel) without removing the working pill grid.
-- Category pills float + comet, click reveals description + updates graph/insight, default category opens; existing per-category effects kept + enhanced.
-- Skill pills compact; `proficiency` on hover; 7 distinct cycled effects (existing shimmer = one of them).
+- Coloured count-pills row deleted; counts now shown inline on each category filter button; no "All" button; `N skills across M categories` kept as a small caption that adds no height.
+- Graph (left) and category-buttons + skills (right) align on one row; **no empty gap between the section header and the content.**
+- Trajectories visibly diverge per category.
+- Category-first reveal; every category pill has a unique effect (no shared mobile/soft-skills/testing); 7 distinct per-skill effects; skill boxes fixed-size on hover (effect + level only); no colour dot in this section.

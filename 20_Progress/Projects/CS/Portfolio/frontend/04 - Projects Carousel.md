@@ -2,40 +2,34 @@
 type: concept
 status: sprout
 created: 2026-06-12
-updated: 2026-06-12
+updated: 2026-06-13
 tags:
   - portfolio
   - frontend
   - projects
 notes:
   - "[[00 - Frontend Overhaul — Build Plan]]"
-  - "[[01 - Motion System & Comet Cards]]"
   - "[[09 - Sanity Content Spec]]"
   - "[[10 - Codebase Reality & Confusion Clearance]]"
+  - "[[BUILD-STATUS]]"
 ---
 # Projects Carousel
-> **Reconciled to [[10 - Codebase Reality & Confusion Clearance]].** Header lives in `src/components/PortfolioContent.tsx`; slider in `src/components/three/ProjectsSlider.tsx`. Kicker `// build log`.
+> **Refinement pass (2026-06-13).** Built and rendering. **Correction to earlier notes: the carousel is now R3F, not Framer Motion.** Per the graphify map, `three/ProjectsSlider.tsx` is a 3D carousel inside an R3F `<Canvas>`, using **`Float` from `@react-three/drei`** for the gentle drift and **`@react-spring/web` elastic spring** for card physics. Header lives in `PortfolioContent.tsx`. The fixes below apply to that R3F implementation.
 
-## Corrections from note 10
-- **The section header is in `PortfolioContent.tsx`, not `ProjectsSlider.tsx`, and it is left-aligned** → centre it (kicker + h2 + description), matching the other sections. This part of the first draft was right.
-- **The slider is a clean Framer-Motion 3-card slider, not R3F.** It is not broken. Center card = `cosmic-card`, `cursor-default`, interactive; flanking cards = `cosmic-card--dark`, `pointer-events-none`, dimmed. Each card: `coverImage` (h-40), title, `tagline`, tech tags (≤4), `ViewLiveButton` (uses `useIridescentEffect`) + `SourceButton` when URLs present. Nav = ChevronLeft/Right with `AnimatePresence`. Ordered `order asc, title asc`.
-- **Field name is `githubUrl`, not `repoUrl`.** Live URL is `liveUrl`.
-- **There is no long description field today** → we are **adding `summary`** to the project schema (decision 2026-06-12) for the hover detail.
+## Fixes (from BUILD-STATUS UI Fixes #3–4)
+1. **Dial the centre-card comet DOWN.** The centre project's comet/tilt is too strong. Keep the same hover *intent* but reduce the magnitude (lower tilt + lighter `Float` amplitude). 
+2. **Bound the drift to the card's padding.** The `Float` wander must stay within the card's own area — reduce `floatIntensity`/`rotationIntensity`/`speed` and the position range so it never drifts into neighbours.
+3. **Side cards independent of the centre's hover.** Right now hovering the centre card makes the left/right cards move down with it. The side cards must be **decoupled from the centre hover** — they keep their own gentle `Float` wander and their current translucent opacity, unaffected by what the centre does. Comet only when a side card becomes the centre (already correct).
+4. **Remove the "case note" box.** Show **only the project `summary`** in that inner box — nothing else. Keep the truncation (the summary cut-off is good; it got too long otherwise). Apply to every project uniformly.
+5. **Cap skills at 4.** Render **no more than 4** `technologies[]` chips per project. Dots use `skill.color` ([[02 - Sanity as Single Source of Truth]]).
+6. **Schema (Phase 0, [[09 - Sanity Content Spec]]):** `coverImage` is now **optional** (remove required); the `visibility` enum is **removed** (use `featured` + `order`). `summary` is the hover field; `githubUrl` is the source link; hide View-Live when `liveUrl` empty.
 
-## Decision: enhance Framer Motion, do NOT rebuild in R3F (2026-06-12)
-Keep the working DOM/Framer slider and layer the space feel on top. Lower effort/risk, no extra GPU cost on top of the background sim. The "in space / no gravity / tether-pull" look is achievable with DOM transforms + `useSpaceFloat` + Framer.
-
-## What to build
-1. **Centre the header** in `PortfolioContent.tsx`.
-2. **Schema:** add `summary` (long text or Portable Text) to `project`; add it to `PROJECTS_QUERY`; `pnpm typegen` → `pnpm typecheck`. Populate from [[09 - Sanity Content Spec]].
-3. **Space motion (from [[01 - Motion System & Comet Cards]]):**
-   - Centre card: `CometCard` (reduced tilt) + `useSpaceFloat` bounded to its padding — premium before hover, wandering, never leaving its box.
-   - Side cards: keep translucent + `pointer-events-none` look, each drifting in its own padding via `useSpaceFloat`. **No comet until centred.** Keep drifting even on hover.
-   - On left/right: chosen card glides to centre (gains comet), old centre glides out (loses comet), with a subtle **tether/string-pull** background cue (particle trail or elastic line). Respect reduced-motion.
-   - Pagination: glowing orbit dots; keep the `1 / 6` counter; arrows vertically centred beside the card, not overlapping.
-4. **Hover detail:** centre card is never empty (title, tagline, tech chips, small inner "case note" box). On hover, reveal the Sanity **`summary`** plus floating **Source** (always, `githubUrl`) and **View Live** (only when `liveUrl` non-empty) buttons. Cap the expanded height — never balloon; scroll internally if needed. Side cards keep wandering while hovered.
-5. **Content + links (from [[09 - Sanity Content Spec]]):** replace all filler with real projects (OpsPilot, Resq, SafeReach, AI Portfolio Agent, Jarvis, Arc). Resolve `githubUrl` via `mcp__github__search_repositories`; leave `liveUrl` empty where undeployed (View Live hides; Orby's "site may be down, check GitHub" line covers it). Chips = shared category-coloured chips from `technologies[]` refs.
+## Already correct — do NOT redo / keep as-is
+- 3-card R3F carousel renders; nav works; centre card prominent, side cards translucent and dimmed.
+- Side cards stay at their current opacity while wandering (correct).
+- Side cards get comet only when centred (correct).
+- `useIridescentEffect` shimmer on the View-Live pill — keep.
+- Header centering (if already centered in the screenshots, leave it; the brief's centre requirement is satisfied).
 
 ## Done conditions
-- Header centred; `summary` field added + queried + populated; real content; `githubUrl` resolved; empty `liveUrl` hides View Live.
-- Framer slider enhanced: centre comet+float, side drift (no comet, keep on hover), tether transition, orbit dots, capped hover detail.
+- Centre comet reduced and `Float` bounded to padding; side cards keep wandering and are **not** dragged by the centre's hover; case-note box gone (summary only, truncated); ≤4 skill chips with Sanity-coloured dots; `coverImage` optional; `visibility` removed.

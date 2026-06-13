@@ -2,7 +2,7 @@
 type: concept
 status: sprout
 created: 2026-06-12
-updated: 2026-06-12
+updated: 2026-06-13
 tags:
   - portfolio
   - frontend
@@ -11,26 +11,22 @@ notes:
   - "[[00 - Frontend Overhaul — Build Plan]]"
   - "[[01 - Motion System & Comet Cards]]"
   - "[[10 - Codebase Reality & Confusion Clearance]]"
+  - "[[BUILD-STATUS]]"
 ---
 # Experience Section
-> **Reconciled to [[10 - Codebase Reality & Confusion Clearance]].** Files: `src/components/sections/ExperienceSection.tsx`, `src/components/cards/ExperienceCard.tsx`. Kicker `// trajectory`.
+> **Refinement pass (2026-06-13).** The section is built and rendering from Sanity. Files: `sections/ExperienceSection.tsx`, `cards/ExperienceCard.tsx` (`CometCard variant="dark"`, `getCategoryColor()`, `CATEGORY_COLORS`, `EMPLOYMENT_LABELS`). Kicker `// trajectory`, header already centered. This note is now the **fix list**, not a rebuild.
 
-## Corrections from note 10 (what the first draft got wrong)
-- **Header is already `text-center`.** No change needed. (First draft said left-aligned — wrong.)
-- **employmentType chip already renders** as an orbit-chip; location already renders with a MapPin icon. Keep.
-- **`responsibilities[]` (≤3, prefixed `→`) and `achievements[]` (≤2, ★) already render.** Tech chips (`technologies[]`→skill refs, ≤4) already colour per category via `getCategoryColor()` — **this is the uniform colour system; keep it.**
-- Card already uses `CometCard variant="dark"` with `rotateDepth={3} translateDepth={5}` and a hover sweeping-light effect.
+## Fixes (from BUILD-STATUS UI Fixes #1–2)
+1. **Move the employment-type chip to the location row.** It **currently renders next to the position title** (the "Contract" pill beside "Research Assistant") — move it so it sits **beside the location** (the MapPin row, next to "Minneapolis, MN, USA"). Same `EMPLOYMENT_LABELS` + chip styling, just relocated. The title row keeps only the title; the type chip lives with the location.
+2. **Recolour achievements off gold/green.** The achievement `★` lines currently render in **yellow/gold** (confirmed in the live screenshot) — a hardcoded-looking status colour. Change to a **theme tone — blue/violet/cyan** drawn from the design tokens, matching the card. They must read as part of the card, not a traffic-light status.
+3. **Description only on click + subtle "more" affordance.** The Portable Text `description` currently renders **always-open** below the chips — it must be **hidden by default** and revealed on click. Put a **very subtle "more" toggle at the bottom-right** of each card (low-opacity, gains presence on card hover; accessible name). Clicking the card OR the toggle opens a **small** dropdown with the description — it must **not** take the full screen. Compact, single-open, no sibling layout shift; the card keeps its gentle drift while open.
+4. **Dial the comet DOWN.** The card tilts/moves too much on hover. Reduce `CometCard` tilt depth (e.g. lower `rotateDepth`/`translateDepth`, or use a gentler variant). Keep the hover feel, just less swing.
+5. **Per-skill dot colour from Sanity.** The dot next to each skill chip must come from the new `skill.color` field ([[02 - Sanity as Single Source of Truth]]), not a hardcode and not only the category colour. Everything on the card stays Sanity-rendered. Fall back to category colour when `color` unset.
 
-## The one real content gap
-**The Portable Text `description` is fetched by `EXPERIENCE_QUERY` but never rendered by `ExperienceCard.tsx`.** There is no `<PortableText>` in the card. This is the primary fix.
-
-## What to actually build
-1. **Render the description behind a click-to-expand drop-down.** Add a `<PortableText>` block (use `@portabletext/react`) that is collapsed by default and revealed by a **very subtle toggle at the bottom-right** of the card (a small chevron that gains opacity/glow on card hover; accessible name "Show details"). Expansion is compact — not full-screen — and animates height without shifting siblings (reserve space / grid-rows). Single-open across cards is cleaner. Card keeps drifting while expanded.
-2. **Recolour achievements off green.** They're currently emerald `★` lines, which read as cheap. Map them to the theme accent / a muted highlight token from `globals.css`, not raw green.
-3. **Motion polish (from [[01 - Motion System & Comet Cards]]):** add a small `useSpaceFloat` to each card (it already has CometCard tilt — compose float on the outer wrapper, tilt inner). Make the timeline rail breathe: the rail is currently static gradient `divs` with violet box-shadow dots — give it a slow sine wiggle and a scroll-progress fill so it's eye-pleasing while scrolling, dots staying pinned to card title rows. (Reuse the rail approach noted for Achievements in [[07 - Certifications & Achievements]] so both sections share one rail treatment.)
-4. **No hover-drop.** Cards already drift; hover changes tilt/glow only, never position.
+## Already correct — do NOT redo
+- Header centered; logo, position, company link, location, date range, `responsibilities[]` (≤3), `technologies[]` chips (≤4) all render.
+- The Portable Text `description` IS fetched — the only missing piece was rendering it (fix #3).
+- `useSpaceFloat`/rail breathing from the motion pass — keep if applied; just ensure the card drift is subtle and hover doesn't add a big jump.
 
 ## Done conditions
-- Portable Text `description` renders via a subtle bottom-right expand toggle, compact, shift-free, keyboard-operable.
-- Achievements recoloured to theme (no green); chips stay category-coloured (already uniform).
-- Cards float + comet (no hover-drop); rail breathes with scroll fill; header untouched (already centered).
+- Type chip beside location; achievements in a blue/violet/cyan theme tone; description hidden until click via a subtle bottom-right "more"; small dropdown, no full-screen; comet swing reduced; skill dots use `skill.color` from Sanity.
