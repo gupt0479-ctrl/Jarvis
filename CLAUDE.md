@@ -68,7 +68,7 @@ next: "[[Next Action]]"  # optional
 See the routing table in [[AGENTS.md]] → Write Contract → "Where does this note go?".
 
 ### Ingestion Workflow (05_Clippings → 60_Claude)
-Use the `/ingest-clipping` skill (`.claude/skills/ingest-clipping.md`). The full step-by-step workflow lives there.
+Use `/ingest-clipping "filename.md"`. The full step-by-step workflow lives in `.claude/skills/ingest-clipping.md`.
 
 ### Query Behavior
 
@@ -94,10 +94,10 @@ Run `/startday` to open the day: reads your plans, loads session history, and fi
 
 ## Available Skills
 
-When a user invokes a skill command, read the corresponding file from `.claude/skills/` and follow its instructions.
+Skills are registered as slash commands via `.claude/commands/`. Type the command and the harness executes it — no prompt needed. Skill logic lives in `.claude/skills/` (edit there, not in commands).
 
-| Skill | Command | File |
-|-------|---------|------|
+| Skill | Command | Logic file |
+|-------|---------|------------|
 | Ingest clipping | `/ingest-clipping "filename.md"` | `.claude/skills/ingest-clipping.md` |
 | Distill note | `/distill-note` | `.claude/skills/distill-note.md` |
 | Remove AI slop | `/remove-ai-slop` | `.claude/skills/remove-ai-slop.md` |

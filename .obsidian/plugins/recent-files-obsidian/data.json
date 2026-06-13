@@ -9,16 +9,20 @@
       "path": "20_Progress/Projects/CS/Portfolio/frontend/BUILD-STATUS.md"
     },
     {
+      "basename": "2026-06-13",
+      "path": "10_Areas/Life/Enumerate/Daily/2026-06-13.md"
+    },
+    {
+      "basename": "HIST 1103 - Assignments and Discussions",
+      "path": "20_Progress/Degree/HIST 1103/HIST 1103 - Assignments and Discussions.md"
+    },
+    {
       "basename": "03 - Per-Phase Build Prompts",
       "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-code-setup/03 - Per-Phase Build Prompts.md"
     },
     {
       "basename": "13 - Dark Mode Toggle",
       "path": "20_Progress/Projects/CS/Portfolio/frontend/13 - Dark Mode Toggle.md"
-    },
-    {
-      "basename": "HIST 1103 - Assignments and Discussions",
-      "path": "20_Progress/Degree/HIST 1103/HIST 1103 - Assignments and Discussions.md"
     },
     {
       "basename": "MATH 2230 Board",
@@ -195,10 +199,6 @@
     {
       "basename": "06 - Tool System & Generative UI",
       "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/06 - Tool System & Generative UI.md"
-    },
-    {
-      "basename": "05 - Model Layer, Rate Limiting & Abuse",
-      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/05 - Model Layer, Rate Limiting & Abuse.md"
     }
   ],
   "omittedPaths": [],
