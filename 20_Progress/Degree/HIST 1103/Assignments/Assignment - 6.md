@@ -64,6 +64,38 @@ Dr. Homann
 - **Extra credit opportunity:** Post a question in the Questions subforum — free point
 - **Before writing:** Read [[Assignments Board]] → Assignment 6 section for full recommended choices and approach
 
+## My Response
+
+**Part 1: Two Core Issues**
+
+From the Arab perspective, the central issue is displacement — not religion. The 1948 War forced hundreds of thousands of Palestinians out of their homes. Jones documents the scale: "In total, about 750,000 Palestinian Arabs became refugees from the war in 1948, creating one of the largest and longest-standing refugee problems in the world" (Jones, p. 161). Most left expecting to return within weeks. Three-quarters of a century later, their descendants still live in refugee camps across Gaza, the West Bank, Lebanon, and Jordan. On top of that, Israeli settlements in the West Bank — now home to over 700,000 Israeli settlers — keep expanding on land Palestinians see as the core of any future state. The Arab demand is concrete: recognition of the Right of Return and a halt to settlements.
+
+From the Israeli perspective, the core issue is security and the right to exist. Hours after declaring independence on May 14, 1948, Israel was attacked by five Arab states: Egypt, Syria, Jordan, Lebanon, and Iraq. It was attacked again in 1967 and 1973. Without controlling the West Bank, Israel is about nine miles wide at its narrowest point — essentially indefensible. Hamas, which controls Gaza, explicitly calls for Israel's destruction. The Israeli argument isn't primarily about religion. It's about defensible borders and the survival of a state that has faced existential threats since its founding.
+
+**Part 2: The Six-Day War (1967)**
+
+The immediate trigger was water. In 1967 Syria tried to divert the Jordan River for irrigation — Israel bombed the project to stop it. Egypt's Nasser then massed 130,000 troops in the Sinai Peninsula in May 1967, expelled the UN peacekeeping contingent stationed there since 1956, and aligned with Jordan and Syria against Israel. Whether Arab forces were actually preparing to strike is debated, but Israel launched a preemptive attack. In the first three hours, Israel destroyed roughly 80% of Egypt's Air Force. In six days, Israel had seized the Sinai Peninsula and Gaza Strip from Egypt, the West Bank from Jordan, the Golan Heights from Syria, and full control of Jerusalem. Nations involved: Israel against Egypt, Syria, and Jordan (Iraq also sent forces to assist Jordan).
+
+In November 1967 the UN passed Resolution 242 — Israel to withdraw from occupied territories; Arab states to recognize Israel's right to exist. Neither side accepted. The occupied territories became the central sticking point in every peace negotiation that followed.
+
+**Part 3: Oslo Accords (1993)**
+
+In September 1993, Israeli Prime Minister Yitzhak Rabin, PLO Chairman Yasser Arafat, and President Bill Clinton signed the Oslo Accords in Washington. Goals: the PLO formally recognized Israel's right to exist; Israel recognized the PLO as the legitimate representative of the Palestinian people; Palestinians received limited self-rule (the Palestinian Authority) in parts of the West Bank and Gaza. Final status issues — Jerusalem, Right of Return, permanent borders — were deferred to later negotiations. A declaration of principles was signed.
+
+It fell apart quickly. Israeli settlements in the West Bank kept expanding, a visible signal that no real territorial withdrawal was coming. In November 1995, an extremist Israeli student assassinated Rabin — the same fate as Egypt's Sadat after Camp David in 1981. Clinton's 2000 Camp David talks collapsed when Arafat rejected a deal that left Israel controlling large swaths of the West Bank and left the Right of Return entirely unaddressed. Then in 2006 Hamas won Palestinian legislative elections in Gaza, splitting Palestinian territories politically between Fatah in the West Bank and Hamas in Gaza — making a unified Palestinian negotiating partner structurally impossible. No serious peace agreement has emerged since Oslo, over thirty years ago.
+
+**Part 4: Four Contemporary Events**
+
+*Arab Spring 2011 — destabilizing.* Uprisings toppled rulers in Egypt and Libya but created dangerous power vacuums. Egypt ended up with a military dictatorship under Sisi more repressive than Mubarak's; Libya descended into civil war. Syria's civil war killed hundreds of thousands. These shifts weakened moderate Arab states that might have served as brokers in Israeli-Palestinian talks.
+
+*Rise of ISIS 2014 — destabilizing.* Abu Bakr al-Baghdadi declared a caliphate across parts of Iraq and Syria in June 2014. US military attention shifted hard toward ISIS for several years. International focus moved away from the Israeli-Palestinian conflict and gave Israel additional justification for military operations in the region.
+
+*Abraham Accords 2020 — partially stabilizing.* The UAE, Bahrain, Morocco, and Sudan normalized relations with Israel — the first such deals since Jordan's 1994 peace treaty. This expanded Israel's regional acceptance and created space for economic cooperation. However, these agreements bypassed the Palestinian question entirely. Many Palestinians and Arab critics viewed them as abandonment.
+
+*Hamas October 7 attack, 2023 — massively destabilizing.* Hamas killed approximately 1,200 Israelis and seized 250 hostages. Israel's military response killed tens of thousands of Palestinian civilians and flattened much of Gaza's infrastructure. Hezbollah attacked from Lebanon; Iran fired missiles directly at Israel in 2024. A ceasefire was signed in January 2025 but has not fully held and bombing has reportedly continued. Any realistic path to a two-state solution looks more remote now than at any point since Oslo.
+
+Do you think Israeli settlement expansion in the West Bank has made a two-state solution structurally impossible — or do you think it's still reversible if political will exists on both sides?
+
 ## Student's reply
 - [ ] Read the student's reply here and draft a response
 
