@@ -66,3 +66,8 @@ Run pnpm typecheck. Report. Do not deploy.
 ```
 ## Order
 Get the keys (Azure deployment + Cerebras + Groq + Mistral) → V1 (router/tier/cache/caps) → V2 (Orby end-to-end + recruiter default + health). After V2 reports green, the next pass covers performance, README, deployment/CSP, clean GitHub, Sanity polish, readability, write-ups, and publishing.
+
+## Replies from claude code
+Still to do before deploy:
+- Remove the three debug console.log calls: catalog.debug in chat-context.ts, router.debug in model-router.ts, and the startup no-key logs (those are fine to keep actually — they fire once per cold start).
+- The skills section still logged 93821 chars because Groq's daily budget was already exhausted when that test ran — the clean() stripping of invisible chars wasn't exercised yet. That will need re-verification when the budget resets.
