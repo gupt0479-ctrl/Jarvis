@@ -5,6 +5,22 @@
       "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-code-setup/03 - Per-Phase Build Prompts.md"
     },
     {
+      "basename": "02 - Premortem & Failure Defenses",
+      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/02 - Premortem & Failure Defenses.md"
+    },
+    {
+      "basename": "01 - Layered Architecture",
+      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/01 - Layered Architecture.md"
+    },
+    {
+      "basename": "00 - Nextgen Chatbot — Build Plan",
+      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/00 - Nextgen Chatbot — Build Plan.md"
+    },
+    {
+      "basename": "08 - Build Phases & Milestones",
+      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/08 - Build Phases & Milestones.md"
+    },
+    {
       "basename": "05 - Model Layer, Rate Limiting & Abuse",
       "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/05 - Model Layer, Rate Limiting & Abuse.md"
     },
@@ -183,22 +199,6 @@
     {
       "basename": "For Progress",
       "path": "30_Order/Templates/Frontmatter/For Progress.md"
-    },
-    {
-      "basename": "For Thoughts",
-      "path": "30_Order/Templates/Frontmatter/For Thoughts.md"
-    },
-    {
-      "basename": "For Inputs",
-      "path": "30_Order/Templates/Frontmatter/For Inputs.md"
-    },
-    {
-      "basename": "For Evergreen",
-      "path": "30_Order/Templates/Frontmatter/For Evergreen.md"
-    },
-    {
-      "basename": "For AI",
-      "path": "30_Order/Templates/Frontmatter/For AI.md"
     }
   ],
   "omittedPaths": [],
