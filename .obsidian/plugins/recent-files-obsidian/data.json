@@ -1,6 +1,50 @@
 {
   "recentFiles": [
     {
+      "basename": "05 - Model Layer, Rate Limiting & Abuse",
+      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/05 - Model Layer, Rate Limiting & Abuse.md"
+    },
+    {
+      "basename": "03 - Per-Phase Build Prompts",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-code-setup/03 - Per-Phase Build Prompts.md"
+    },
+    {
+      "basename": "2026-06-14",
+      "path": "10_Areas/Life/Enumerate/Daily/2026-06-14.md"
+    },
+    {
+      "basename": "09 - Sanity Content Spec",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/09 - Sanity Content Spec.md"
+    },
+    {
+      "basename": "11 - ObsidianBackground Enhancement",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/11 - ObsidianBackground Enhancement.md"
+    },
+    {
+      "basename": "14 - Global Fixes — Header & Section Spacing",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/14 - Global Fixes — Header & Section Spacing.md"
+    },
+    {
+      "basename": "13 - Dark Mode Toggle",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/13 - Dark Mode Toggle.md"
+    },
+    {
+      "basename": "12 - Orby Friction Fixes",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/12 - Orby Friction Fixes.md"
+    },
+    {
+      "basename": "00 - Frontend Overhaul — Build Plan",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/00 - Frontend Overhaul — Build Plan.md"
+    },
+    {
+      "basename": "06 - Education Flowchart",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/06 - Education Flowchart.md"
+    },
+    {
+      "basename": "05 - Skills Capability Graph",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/05 - Skills Capability Graph.md"
+    },
+    {
       "basename": "Quiz - 1",
       "path": "20_Progress/Degree/HIST 1103/Assignments/Quiz - 1.md"
     },
@@ -19,10 +63,6 @@
     {
       "basename": "Assignment - 4",
       "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 4.md"
-    },
-    {
-      "basename": "03 - Per-Phase Build Prompts",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-code-setup/03 - Per-Phase Build Prompts.md"
     },
     {
       "basename": "Quiz - 4",
@@ -93,10 +133,6 @@
       "path": "20_Progress/Degree/HIST 1103/Syllabus/HIST 1103 - Assignments and Discussions.md"
     },
     {
-      "basename": "13 - Dark Mode Toggle",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/13 - Dark Mode Toggle.md"
-    },
-    {
       "basename": "MATH 2230 Board",
       "path": "20_Progress/Degree/MATH 2230/MATH 2230 Board.md"
     },
@@ -163,42 +199,6 @@
     {
       "basename": "For AI",
       "path": "30_Order/Templates/Frontmatter/For AI.md"
-    },
-    {
-      "basename": "For Everything",
-      "path": "30_Order/Templates/Frontmatter/For Everything.md"
-    },
-    {
-      "basename": "For Brainstorm",
-      "path": "30_Order/Templates/Frontmatter/For Brainstorm.md"
-    },
-    {
-      "basename": "North Star Convergence — Change Report 2026-06-11",
-      "path": "60_Claude/50_Reviews/North Star Convergence — Change Report 2026-06-11.md"
-    },
-    {
-      "basename": "AI Market Analyzer - Product Spec",
-      "path": "20_Progress/Projects/CS/TradingView/AI Market Analyzer - Product Spec.md"
-    },
-    {
-      "basename": "AI Market Analyzer - Data Sources",
-      "path": "20_Progress/Projects/CS/TradingView/AI Market Analyzer - Data Sources.md"
-    },
-    {
-      "basename": "AI Market Analyzer - AI Engine Architecture",
-      "path": "20_Progress/Projects/CS/TradingView/AI Market Analyzer - AI Engine Architecture.md"
-    },
-    {
-      "basename": "AI Market Analyzer - 4 Month Build Plan",
-      "path": "20_Progress/Projects/CS/TradingView/AI Market Analyzer - 4 Month Build Plan.md"
-    },
-    {
-      "basename": "Better Today",
-      "path": "30_Order/Templates/Enumerate/Better Today.md"
-    },
-    {
-      "basename": "Better Year",
-      "path": "30_Order/Templates/Enumerate/Better Year.md"
     }
   ],
   "omittedPaths": [],
