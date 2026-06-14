@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Quiz - 1",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Quiz - 1.md"
+    },
+    {
       "basename": "Assignment - 7",
       "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 7.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Better Year",
       "path": "30_Order/Templates/Enumerate/Better Year.md"
-    },
-    {
-      "basename": "Better Weekly",
-      "path": "30_Order/Templates/Enumerate/Better Weekly.md"
     }
   ],
   "omittedPaths": [],
