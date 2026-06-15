@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "2026-06-15",
+      "path": "10_Areas/Life/Enumerate/Daily/2026-06-15.md"
+    },
+    {
+      "basename": "Quiz - 3",
+      "path": "20_Progress/Degree/MATH 2230/Quiz/Quiz - 3.md"
+    },
+    {
       "basename": "03 - Per-Phase Build Prompts",
       "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-code-setup/03 - Per-Phase Build Prompts.md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "CLAUDE",
       "path": "CLAUDE.md"
-    },
-    {
-      "basename": "HUMAN_WRITING",
-      "path": "HUMAN_WRITING.md"
-    },
-    {
-      "basename": "For Progress",
-      "path": "30_Order/Templates/Frontmatter/For Progress.md"
     }
   ],
   "omittedPaths": [],
