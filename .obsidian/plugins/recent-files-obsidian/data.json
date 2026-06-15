@@ -1,6 +1,42 @@
 {
   "recentFiles": [
     {
+      "basename": "phase-3-chatbot-resilience",
+      "path": "20_Progress/Projects/CS/Portfolio/security/phase-3-chatbot-resilience.md"
+    },
+    {
+      "basename": "phase-2-sanity-lockdown",
+      "path": "20_Progress/Projects/CS/Portfolio/security/phase-2-sanity-lockdown.md"
+    },
+    {
+      "basename": "phase-1-auth-clerk",
+      "path": "20_Progress/Projects/CS/Portfolio/security/phase-1-auth-clerk.md"
+    },
+    {
+      "basename": "phase-4-deployment-hardening",
+      "path": "20_Progress/Projects/CS/Portfolio/security/phase-4-deployment-hardening.md"
+    },
+    {
+      "basename": "phase-5-monitoring",
+      "path": "20_Progress/Projects/CS/Portfolio/security/phase-5-monitoring.md"
+    },
+    {
+      "basename": "16 - Orby Enhancement + Codebase Audit",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/16 - Orby Enhancement + Codebase Audit.md"
+    },
+    {
+      "basename": "09 - Orby Fixes",
+      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/09 - Orby Fixes.md"
+    },
+    {
+      "basename": "08 - Build Phases & Milestones",
+      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/08 - Build Phases & Milestones.md"
+    },
+    {
+      "basename": "05 - Model Layer, Rate Limiting & Abuse",
+      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/05 - Model Layer, Rate Limiting & Abuse.md"
+    },
+    {
       "basename": "2026-06-15",
       "path": "10_Areas/Life/Enumerate/Daily/2026-06-15.md"
     },
@@ -23,14 +59,6 @@
     {
       "basename": "00 - Nextgen Chatbot — Build Plan",
       "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/00 - Nextgen Chatbot — Build Plan.md"
-    },
-    {
-      "basename": "08 - Build Phases & Milestones",
-      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/08 - Build Phases & Milestones.md"
-    },
-    {
-      "basename": "05 - Model Layer, Rate Limiting & Abuse",
-      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/05 - Model Layer, Rate Limiting & Abuse.md"
     },
     {
       "basename": "2026-06-14",
@@ -171,34 +199,6 @@
     {
       "basename": "MATH 2230 - Assignments Quizzes and Tests",
       "path": "20_Progress/Degree/MATH 2230/Syllabus/MATH 2230 - Assignments Quizzes and Tests.md"
-    },
-    {
-      "basename": "10 - Codebase Reality & Confusion Clearance",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/10 - Codebase Reality & Confusion Clearance.md"
-    },
-    {
-      "basename": "09 - Orby UI Fixes",
-      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/09 - Orby UI Fixes.md"
-    },
-    {
-      "basename": "07 - Evaluation & Observability",
-      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/07 - Evaluation & Observability.md"
-    },
-    {
-      "basename": "05 - Per-Phase Build Prompts",
-      "path": "20_Progress/Projects/CS/Portfolio/claude-code setup/05 - Per-Phase Build Prompts.md"
-    },
-    {
-      "basename": "AI Market Analyzer - Strategy Engine",
-      "path": "20_Progress/Projects/CS/TradingView/AI Market Analyzer - Strategy Engine.md"
-    },
-    {
-      "basename": "AGENTS",
-      "path": "AGENTS.md"
-    },
-    {
-      "basename": "CLAUDE",
-      "path": "CLAUDE.md"
     }
   ],
   "omittedPaths": [],

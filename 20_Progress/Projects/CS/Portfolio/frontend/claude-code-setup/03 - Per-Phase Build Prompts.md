@@ -11,7 +11,7 @@ tags:
 notes:
   - "[[00 - Frontend Build Kit — Index]]"
   - "[[05 - Model Layer, Rate Limiting & Abuse]]"
-  - "[[09 - Orby UI Fixes]]"
+  - "[[09 - Orby Fixes]]"
   - "[[BUILD-STATUS]]"
 ---
 # Per-Phase Build Prompts — Verification & Hardening Pass (V-phase)
