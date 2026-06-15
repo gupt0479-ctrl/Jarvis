@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "manual-actions",
+      "path": "20_Progress/Projects/CS/Portfolio/security/manual-actions.md"
+    },
+    {
+      "basename": "README",
+      "path": "20_Progress/Projects/CS/Portfolio/security/README.md"
+    },
+    {
+      "basename": "03 - Per-Phase Build Prompts",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-code-setup/03 - Per-Phase Build Prompts.md"
+    },
+    {
       "basename": "Practice Quiz",
       "path": "20_Progress/Degree/MATH 2230/Quiz/Practice Quiz.md"
     },
@@ -47,10 +59,6 @@
     {
       "basename": "2026-06-15",
       "path": "10_Areas/Life/Enumerate/Daily/2026-06-15.md"
-    },
-    {
-      "basename": "03 - Per-Phase Build Prompts",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-code-setup/03 - Per-Phase Build Prompts.md"
     },
     {
       "basename": "02 - Premortem & Failure Defenses",
@@ -191,14 +199,6 @@
     {
       "basename": "MATH 2230 - Syllabus",
       "path": "20_Progress/Degree/MATH 2230/Syllabus/MATH 2230 - Syllabus.md"
-    },
-    {
-      "basename": "MATH 2230 - Calendar",
-      "path": "20_Progress/Degree/MATH 2230/Syllabus/MATH 2230 - Calendar.md"
-    },
-    {
-      "basename": "MATH 2230 - Assignments Quizzes and Tests",
-      "path": "20_Progress/Degree/MATH 2230/Syllabus/MATH 2230 - Assignments Quizzes and Tests.md"
     }
   ],
   "omittedPaths": [],
