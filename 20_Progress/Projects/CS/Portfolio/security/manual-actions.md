@@ -232,3 +232,127 @@ After the production deployment is live:
 | Post-deploy browser QA | **You** (5D) |
 | Fix /api/health Clerk issue | Claude Code (P5-A) |
 | Create /api/health and /api/error-report | Claude Code (P5-B, P5-C) |
+| Configure Cloudflare DNS for anantgupta.dev | **You** (6A) |
+| Add custom domain in Vercel | **You** (6B) |
+| Set SSL mode to Full (strict) | **You** (6C) |
+| Add WAF rules in Cloudflare | **You** (6D) |
+| Configure Sanity revalidate webhook | **You** (6E) |
+| Update UptimeRobot monitors to anantgupta.dev | **You** (6F) |
+| Add Turnstile env vars to Vercel | **You** (6G) |
+| Set up Turnstile + siteverify Worker | Claude Code (P6-A) |
+| Update origin allowlist + site URL | Claude Code (P6-B) |
+| Update CSP for Turnstile domains | Claude Code (P6-D) |
+
+---
+
+## Phase 6 — Cloudflare + Custom Domain {#phase-6}
+
+> Context: [[cloudflare-strategy]] has the full architecture decisions. These are the manual steps you do in dashboards.
+
+### 6A — Configure Cloudflare DNS
+
+URL: `https://dash.cloudflare.com` → select your account → **anantgupta.dev** → **DNS** → **Records**
+
+1. Delete any existing A/CNAME records for `@` and `www` that point elsewhere
+2. First, get your Vercel CNAME target: Vercel dashboard → your project → **Settings** → **Domains** → **Add Domain** → type `anantgupta.dev` → Vercel will show you the CNAME value (e.g. `cname.vercel-dns.com`)
+3. Add these DNS records in Cloudflare:
+
+| Type | Name | Content | Proxy status |
+|------|------|---------|-------------|
+| CNAME | `@` (or blank) | `cname.vercel-dns.com` | **Proxied** (orange cloud ✅) |
+| CNAME | `www` | `cname.vercel-dns.com` | **Proxied** (orange cloud ✅) |
+
+4. Click **Save** for each record
+
+> The orange cloud (Proxied) is essential — it routes traffic through Cloudflare's WAF and DDoS protection. Gray cloud (DNS only) bypasses all of that.
+
+### 6B — Add custom domain in Vercel
+
+URL: `https://vercel.com` → your project → **Settings** → **Domains**
+
+1. Click **Add Domain**
+2. Add `anantgupta.dev` → Vercel detects Cloudflare and guides you through verification
+3. Add `www.anantgupta.dev` → set it to redirect to `anantgupta.dev` (or the other way — be consistent)
+4. Wait for Vercel to show both domains as **Valid Configuration** (green checkmark)
+5. This can take up to 10 minutes for DNS propagation
+
+### 6C — Set Cloudflare SSL to Full (strict)
+
+URL: `https://dash.cloudflare.com` → **anantgupta.dev** → **SSL/TLS** → **Overview**
+
+1. Set encryption mode to **Full (strict)**
+   - **Full** = Cloudflare encrypts to origin but doesn't verify the cert (vulnerable to MITM)
+   - **Full (strict)** = Cloudflare verifies Vercel's cert is valid (Vercel auto-issues one) ✅
+   - Never use **Flexible** — that sends traffic from Cloudflare to Vercel unencrypted
+2. Go to **Edge Certificates** → enable **Always Use HTTPS** (on)
+3. Go to **Edge Certificates** → enable **HTTP Strict Transport Security (HSTS)** with:
+   - Max Age: 6 months (or 1 year if you're confident)
+   - Include subdomains: on
+   - Preload: on (only if you're sure you'll keep HTTPS forever)
+
+### 6D — Add WAF rules
+
+URL: `https://dash.cloudflare.com` → **anantgupta.dev** → **Security** → **WAF**
+
+**Custom Rules tab → Create Rule:**
+
+Rule 1 — Block scanner tools:
+- Name: `Block known scanners`
+- Expression: `(http.user_agent contains "sqlmap") or (http.user_agent contains "nikto") or (http.user_agent contains "nuclei") or (http.user_agent contains "zgrab") or (http.user_agent contains "masscan")`
+- Action: **Block**
+- Click **Deploy**
+
+Rule 2 — Block empty User-Agent on API routes:
+- Name: `Block empty UA on API`
+- Expression: `(starts_with(http.request.uri.path, "/api/")) and (http.user_agent eq "")`
+- Action: **Block**
+- Click **Deploy**
+
+**Rate Limiting Rules tab → Create Rule:**
+
+Rule 3 — Rate limit the chatbot:
+- Name: `Chat API rate limit`
+- Expression: `http.request.uri.path eq "/api/chat"`
+- Rate: `20` requests per `60` seconds, per IP
+- Action: **Block** for 60 seconds
+- Click **Deploy**
+
+### 6E — Configure Sanity revalidate webhook
+
+First, run Claude Code prompt **P6-C** to find the exact revalidate route path in the codebase.
+
+URL: `https://www.sanity.io/manage` → your project → **API** → **Webhooks** → **Create webhook**
+
+- Name: `Portfolio revalidate`
+- URL: `https://anantgupta.dev/<path-from-P6-C>` (e.g. `https://anantgupta.dev/api/revalidate`)
+- Dataset: your dataset (e.g. `production`)
+- Trigger on: **Create**, **Update**, **Delete** (check all three)
+- Filter: leave empty (triggers for all document types)
+- Projection: leave empty
+- HTTP method: **POST**
+- HTTP Headers: add `Authorization` → `Bearer <your SANITY_REVALIDATE_SECRET value>`
+- Click **Save**
+
+To test: publish any document in Sanity Studio and check that the portfolio page updates within a few seconds.
+
+### 6F — Update UptimeRobot monitors
+
+URL: `https://uptimerobot.com` → your monitors
+
+Update both monitors set up in Phase 5:
+1. Change URL from `https://your-portfolio.vercel.app` → `https://anantgupta.dev`
+2. Change URL from `https://your-portfolio.vercel.app/api/health` → `https://anantgupta.dev/api/health`
+
+Also update Sanity CORS (from [[manual-actions#2b]]) to add `https://anantgupta.dev` and `https://www.anantgupta.dev` as allowed origins.
+
+### 6G — Add Turnstile env vars to Vercel
+
+After Claude Code runs **P6-A** (Turnstile Spin), it will output two values:
+- `NEXT_PUBLIC_TURNSTILE_SITE_KEY` — the public site key (safe for browser)
+- `TURNSTILE_SECRET_KEY` — the secret key for server-side verification
+
+Add both to Vercel dashboard → **Settings** → **Environment Variables**:
+- `NEXT_PUBLIC_TURNSTILE_SITE_KEY` → Production + Preview + Development
+- `TURNSTILE_SECRET_KEY` → Production only (server-only secret)
+
+Then redeploy by pushing any commit or triggering a manual redeploy in Vercel.
