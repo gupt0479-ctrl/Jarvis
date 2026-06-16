@@ -1,8 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "claude-code-prompts",
+      "path": "20_Progress/Projects/CS/Portfolio/security/claude-code-prompts.md"
+    },
+    {
       "basename": "manual-actions",
       "path": "20_Progress/Projects/CS/Portfolio/security/manual-actions.md"
+    },
+    {
+      "basename": "2026-06-16",
+      "path": "10_Areas/Life/Enumerate/Daily/2026-06-16.md"
     },
     {
       "basename": "README",
@@ -191,14 +199,6 @@
     {
       "basename": "HIST 1103 - Assignments and Discussions",
       "path": "20_Progress/Degree/HIST 1103/Syllabus/HIST 1103 - Assignments and Discussions.md"
-    },
-    {
-      "basename": "MATH 2230 Board",
-      "path": "20_Progress/Degree/MATH 2230/MATH 2230 Board.md"
-    },
-    {
-      "basename": "MATH 2230 - Syllabus",
-      "path": "20_Progress/Degree/MATH 2230/Syllabus/MATH 2230 - Syllabus.md"
     }
   ],
   "omittedPaths": [],
