@@ -245,3 +245,63 @@ Run these and report each HTTP status code:
 6. curl -s https://DOMAIN/api/health
 Expected: 200, (headers present), 302, 401, 403, {"status":"ok"}
 ```
+
+---
+
+## Phase 6 — Cloudflare: Turnstile + CSP update {#phase-6}
+
+> Run these AFTER the domain is live on anantgupta.dev. Manual DNS/WAF steps are in [[manual-actions#phase-6]].
+
+**P6-A — Add Turnstile to the chatbot using Cloudflare Spin**
+```
+Set up Cloudflare Turnstile in this project end to end. Follow the Turnstile Spin skill at https://developers.cloudflare.com/turnstile/spin/
+
+Context for this project:
+- Framework: Next.js 16 App Router (not Pages Router)
+- The Turnstile widget should be placed in the sidebar component that contains the Orby chatbot — NOT on the homepage, NOT on /studio
+- The widget should be invisible mode (no visible CAPTCHA puzzle for real users)
+- Server-side verification should happen inside src/app/api/chat-token/route.ts, BEFORE the HMAC cookie is issued
+- The siteverify Worker should be deployed to my Cloudflare account
+- Add NEXT_PUBLIC_TURNSTILE_SITE_KEY to .env.local (value comes from Cloudflare dashboard after widget creation)
+- Add TURNSTILE_SECRET_KEY to .env.local (server-only, for siteverify calls)
+- Do NOT put TURNSTILE_SECRET_KEY as NEXT_PUBLIC_
+
+After setup:
+1. Show me the widget placement in the sidebar component
+2. Show me the modified /api/chat-token route with Turnstile verification added
+3. Confirm the siteverify Worker URL is stored as an env var, not hardcoded
+```
+
+**P6-B — Update origin allowlist for anantgupta.dev**
+```
+Find the isAllowedOrigin function in the chat route. Update NEXT_PUBLIC_SITE_URL in .env.local to 'https://anantgupta.dev'. Also update the Vercel env var NEXT_PUBLIC_SITE_URL to 'https://anantgupta.dev'. Verify the allowlist correctly accepts requests from anantgupta.dev and rejects everything else.
+```
+
+**P6-C — Update Sanity CORS and revalidate webhook URL**
+```
+The production domain is now anantgupta.dev. Find the Sanity revalidate route in the codebase:
+  grep -rn "revalidate\|SANITY_REVALIDATE_SECRET" src/ --include="*.ts" --include="*.tsx"
+Show me the exact path of the revalidate API route (e.g. /api/revalidate or /api/sanity/revalidate). I need this URL to configure the Sanity webhook in the dashboard: https://anantgupta.dev/<that-path>
+```
+
+**P6-D — Update Turnstile in CSP**
+```
+Open next.config.ts. The Content-Security-Policy header needs two Turnstile domains added:
+1. In script-src: add https://challenges.cloudflare.com
+2. In frame-src: add https://challenges.cloudflare.com (Turnstile renders in an iframe)
+3. In connect-src: add https://challenges.cloudflare.com
+
+After adding, run pnpm dev and confirm no CSP violations in the browser console when the chatbot sidebar is opened. Then run pnpm build to confirm no type errors.
+```
+
+**P6-E — Final smoke test with custom domain**
+```
+[Run after anantgupta.dev is pointing to Vercel and Turnstile is deployed]
+Run these checks and report results:
+1. curl -s -o /dev/null -w "%{http_code}" https://anantgupta.dev — expect 200
+2. curl -s -o /dev/null -w "%{http_code}" https://www.anantgupta.dev — expect 301 (redirect to apex) or 200
+3. curl -I https://anantgupta.dev | grep -i "strict-transport" — expect HSTS header present
+4. curl -s -o /dev/null -w "%{http_code}" https://anantgupta.dev/api/health — expect 200
+5. curl -s -o /dev/null -w "%{http_code}" -X POST https://anantgupta.dev/api/chat -H "Origin: https://evil.com" -d '{}' — expect 403
+Also open https://anantgupta.dev in a browser and confirm the Cloudflare Ray-ID header is present (DevTools → Network → any request → response headers). This confirms traffic is going through Cloudflare's proxy, not bypassing it.
+```
