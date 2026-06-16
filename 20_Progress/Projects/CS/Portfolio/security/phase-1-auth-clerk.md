@@ -1,8 +1,12 @@
 ---
 type: project
-status: sprout
+status: completed
 created: 2026-06-15
-tags: [portfolio, security, clerk, auth]
+tags:
+  - portfolio
+  - security
+  - clerk
+  - auth
 ---
 
 # Phase 1 — Authentication & Clerk Fix

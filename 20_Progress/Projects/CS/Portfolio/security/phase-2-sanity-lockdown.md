@@ -1,8 +1,12 @@
 ---
 type: project
-status: sprout
+status: in-progress
 created: 2026-06-15
-tags: [portfolio, security, sanity, backend]
+tags:
+  - portfolio
+  - security
+  - sanity
+  - backend
 ---
 
 # Phase 2 — Sanity Backend Lockdown
@@ -129,9 +133,11 @@ Add to `.env.local` and to Vercel env vars. Confirm `next.config.ts` or the reva
 
 ## Acceptance criteria
 
-- [ ] `SANITY_API_TOKEN` confirmed as **Viewer** role in Sanity dashboard
-- [ ] Open redirect in draft-mode endpoint patched (relative paths only)
-- [ ] Zero mutation calls in Next.js server code (grep clean)
-- [ ] Sanity CORS list contains only known origins, no wildcards
-- [ ] `SANITY_REVALIDATE_SECRET` present in `.env.local` and Vercel env vars
-- [ ] `/studio` redirects without content flash for unauthenticated requests
+- [x] Open redirect in draft-mode endpoint patched (relative paths only) — `src/app/api/draft-mode/enable/route.ts`
+- [x] Zero mutation calls in Next.js server code (grep clean) — only `Map.delete()` in space-float-ticker.ts
+- [x] `SANITY_REVALIDATE_SECRET` present in `.env.local` — confirm it's also in Vercel env vars (manual)
+- [x] `/studio` redirects without content flash — `auth.protect()` is first logic in layout
+- [x] CSP `connect-src` covers `https://*.sanity.io` and `https://*.api.sanity.io` for Live SSE
+- [ ] `SANITY_API_TOKEN` confirmed as **Viewer** role in Sanity dashboard (MANUAL — sanity.io/manage → API → Tokens)
+- [ ] Sanity CORS list contains only known origins, no wildcards (MANUAL — sanity.io/manage → API → CORS Origins)
+- [ ] `SANITY_REVALIDATE_SECRET` added to Vercel env vars (MANUAL)
