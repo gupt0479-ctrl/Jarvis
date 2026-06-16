@@ -5,6 +5,30 @@
       "path": "20_Progress/Projects/CS/Portfolio/security/claude-code-prompts.md"
     },
     {
+      "basename": "Chapter - 3",
+      "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 3.md"
+    },
+    {
+      "basename": "Quiz - 5",
+      "path": "20_Progress/Degree/MATH 2230/Quiz/Quiz - 5.md"
+    },
+    {
+      "basename": "Quiz - 4",
+      "path": "20_Progress/Degree/MATH 2230/Quiz/Quiz - 4.md"
+    },
+    {
+      "basename": "Big Assignment - 1",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 1.md"
+    },
+    {
+      "basename": "Assignment - 5",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 5.md"
+    },
+    {
+      "basename": "Quiz - 1",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Quiz - 1.md"
+    },
+    {
       "basename": "manual-actions",
       "path": "20_Progress/Projects/CS/Portfolio/security/manual-actions.md"
     },
@@ -23,10 +47,6 @@
     {
       "basename": "Practice Quiz",
       "path": "20_Progress/Degree/MATH 2230/Quiz/Practice Quiz.md"
-    },
-    {
-      "basename": "Quiz - 4",
-      "path": "20_Progress/Degree/MATH 2230/Quiz/Quiz - 4.md"
     },
     {
       "basename": "phase-3-chatbot-resilience",
@@ -117,10 +137,6 @@
       "path": "20_Progress/Projects/CS/Portfolio/frontend/05 - Skills Capability Graph.md"
     },
     {
-      "basename": "Quiz - 1",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Quiz - 1.md"
-    },
-    {
       "basename": "Assignment - 7",
       "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 7.md"
     },
@@ -129,20 +145,12 @@
       "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 6.md"
     },
     {
-      "basename": "Assignment - 5",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 5.md"
-    },
-    {
       "basename": "Assignment - 4",
       "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 4.md"
     },
     {
       "basename": "Chapter - 2",
       "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 2.md"
-    },
-    {
-      "basename": "Chapter - 3",
-      "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 3.md"
     },
     {
       "basename": "Homework Board",
@@ -191,14 +199,6 @@
     {
       "basename": "Portfolio",
       "path": "20_Progress/Projects/CS/Portfolio/Portfolio.md"
-    },
-    {
-      "basename": "2026-06-13",
-      "path": "10_Areas/Life/Enumerate/Daily/2026-06-13.md"
-    },
-    {
-      "basename": "HIST 1103 - Assignments and Discussions",
-      "path": "20_Progress/Degree/HIST 1103/Syllabus/HIST 1103 - Assignments and Discussions.md"
     }
   ],
   "omittedPaths": [],
