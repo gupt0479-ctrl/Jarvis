@@ -1,6 +1,30 @@
 {
   "recentFiles": [
     {
+      "basename": "Links",
+      "path": "40_Resources/CS/Links.md"
+    },
+    {
+      "basename": "Random",
+      "path": "40_Resources/Random.md"
+    },
+    {
+      "basename": "Useful Links",
+      "path": "10_Areas/Career/Useful Links.md"
+    },
+    {
+      "basename": "2026-06-16",
+      "path": "10_Areas/Life/Enumerate/Daily/2026-06-16.md"
+    },
+    {
+      "basename": "00_Dashboard",
+      "path": "00_Dashboard.md"
+    },
+    {
+      "basename": "god-nodes",
+      "path": "20_Progress/Projects/CS/Portfolio/god-nodes.md"
+    },
+    {
       "basename": "claude-code-prompts",
       "path": "20_Progress/Projects/CS/Portfolio/security/claude-code-prompts.md"
     },
@@ -31,10 +55,6 @@
     {
       "basename": "manual-actions",
       "path": "20_Progress/Projects/CS/Portfolio/security/manual-actions.md"
-    },
-    {
-      "basename": "2026-06-16",
-      "path": "10_Areas/Life/Enumerate/Daily/2026-06-16.md"
     },
     {
       "basename": "README",
@@ -179,26 +199,6 @@
     {
       "basename": "00 - Frontend Build Kit — Index",
       "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-code-setup/00 - Frontend Build Kit — Index.md"
-    },
-    {
-      "basename": "04 - Refinement Prerequisites & Deploy Checklist",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-code-setup/04 - Refinement Prerequisites & Deploy Checklist.md"
-    },
-    {
-      "basename": "BUILD-STATUS",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/BUILD-STATUS.md"
-    },
-    {
-      "basename": "Assignment - 8",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 8.md"
-    },
-    {
-      "basename": "HIST 1103 Board",
-      "path": "20_Progress/Degree/HIST 1103/HIST 1103 Board.md"
-    },
-    {
-      "basename": "Portfolio",
-      "path": "20_Progress/Projects/CS/Portfolio/Portfolio.md"
     }
   ],
   "omittedPaths": [],

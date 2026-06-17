@@ -13,12 +13,8 @@ notes:
 ## In General
 1. [All pdfs for books](https://en.wikipedia.org/wiki/Anna%27s_Archive)
 2. [Website to Learn Anything?](https://learn-anything.xyz/)
-3. [Zapier](https://zapier.com/app/home?conversationId=a82a1ddd-6290-43fc-9f8b-3bc4583193f5)
-4. [Battery Report](file:///C:/Users/Anant%20Gupta/battery-report.html): **IMPORTANT**
-5. [Prof AI](https://prof.ai/login)
-6. [Web Archive](https://web.archive.org/) for everything
-7. [AI Analysis of the websites](https://www.similarweb.com/)
-8. 
+3. [Battery Report](file:///C:/Users/Anant%20Gupta/battery-report.html): **IMPORTANT**
+4. [Web Archive](https://web.archive.org/) for everything 
 ## AI
 - [AI Search: *For any AI*](https://free.theresanaiforthat.com/ )
 - [AI Journaling Deeper](https://app.myentries.ai/journal)
@@ -27,8 +23,7 @@ notes:
 - [AI Watermark Detector](https://www.gptwatermark.com/)
 - [AI Web application creation](https://flatlogic.com/generator?utm_source=sp_auto_dm&utm_referrer=sp_auto_dm)
 - [Deploy AI Agents](https://pipedream.com/string)
-- [GitHub Profile ReadMe Maker](https://gprm.itsvg.in/)
-- [Groq: *API creation*](https://console.groq.com/home)
+
 - [Research AI: Anara](https://anara.com/anantgupta21?checkDevice=true)
 - [Research Assistant AI](https://jenni.ai/)
 - [Help Study AI: You Learn](https://app.youlearn.ai/)

@@ -11,26 +11,18 @@ notes:
 ---
 # Applications to use
 ## Useful tools
-[Spring boot](https://spring.io/projects/spring-boot) 
-[Free API keys and models](https://openrouter.ai/models?q=free+)
-[Google AI Studio](https://aistudio.google.com/): Build the entire app
-[Google Stitch](https://stitch.withgoogle.com/): Use to figure out UI
-[Groq: *API creation*](https://console.groq.com/home)
-[Full Stack Walkthrough](https://fullstackopen.com/en/)
-[React Components Page](https://reactbits.dev/)
-[Mobile app AI UI](https://rork.com/): Iphone
-[GitHub Profile ReadMe Maker](https://gprm.itsvg.in/)
-- [Protocol Resources](https://realrobertgutierrez.notion.site/Protocol-Resources-3244cd7debe880d4aecbfa3577bbdce2)
-- [Added RAM and GPUs](https://www.runpod.io/)
-- [Free API keys](https://unsecuredapikeys.com/) - ==Really useful==
+- [Spring boot](https://spring.io/projects/spring-boot)
 - [Build with NVIDEA](https://build.nvidia.com/?mcp_token=eyJwaWQiOjQyODkzMjAsInNpZCI6OTI3NDE1Mjg2LCJheCI6IjJmMzZhMmIzMGI0NDgzNTA4NGIzNjllNmYxMmJmZTUzIiwidHMiOjE3NzY5ODYzMTEsImV4cCI6MTc3OTQwNTUxMX0.Ud5tT2PBwi4XZeIUu6daUM845f6GelAh9ncQt8YLlRg&fbclid=PAVERFWARXiBtleHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAacF_O-nyVzrc60NsToc1vyVg1O6u3634x1TixF1ijEHxXSjQnon69NzG82bTA_aem_BpwfnSdsg_-eeN-Y4VbmPg)
-- [Explain command line commands](https://explainshell.com/)
-- [Windsurf](https://windsurf.com/?utm_source=sp_auto_dm&fbclid=PAVERFWARm6o9leHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAadOy62Fw_OP6q5NG3H-2AvkDmyOC91fRpo8zgwg2Ut8IjRGt9AraZF3rmhz6g_aem__J6DlX1k7gFRfguFzVakoQ)
-- [Visa data agent](https://h1bagent.pages.dev/?fbclid=PAVERFWARrVFlleHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAafNwbpggBeyJLklqoAdHyyssyNbySp2teYoc7L7yHWEpjW9PAIgLBkUjhYsnA_aem_iPK8kUJXR6bx0gj977oAIA)
+- [explainshell](https://explainshell.com/) - Explain command line commands
+- [Visa data agent](https://h1bagent.pages.dev/?fbclid=PAVERFWARrVFlleHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAafNwbpggBeyJLklqoAdHyyssyNbySp2teYoc7L7yHWEpjW9PAIgLBkUjhYsnA_aem_iPK8kUJXR6bx0gj977oAIA) - H1B
 - [Omi](https://www.omi.me/) - Installed on phone(works with obsidian)
-- [The Output Audit](https://outputaudit.netlify.app/) - Journal
-- 
 ## AI
+### Tools
+- [Mobile app AI UI](https://rork.com/): Iphone
+- [GitHub Profile ReadMe Maker](https://gprm.itsvg.in/)
+- [Added RAM and GPUs](https://www.runpod.io/)
+- [Devin](https://devin.ai/cloud) - Upgraded version of cursor(IDE)
+- 
 ### Guides
 - [Claude Code with Obsidian](https://www.notion.so/How-to-Build-Your-Second-Brain-with-Claude-Code-Obsidian-3263674dbe00810a9e5ef035619b8da1) → 
 - [Matt Poccock - AI Engineer](https://www.aihero.dev/): Website
@@ -47,11 +39,17 @@ notes:
 	- brokering commodities - [discussion](https://www.reddit.com/r/Commodities/comments/1r7e5qy/what_real_impact_is_ai_having_in_the_commodities/)
 - [Learn Harness Engineering](https://walkinglabs.github.io/learn-harness-engineering/en/?fbclid=PAVERFWAR6o85leHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAaeHIvKETFWeF4wV4XlzWEpHcfT1xnPIIsFWBNHDmw-U5VdS1faJTWLtPzqZeA_aem_BMJcvpk3W2G-1x4yiLBTTw)
 - [Launch Playbook Framework](https://miro.com/app/board/uXjVHYP_62Y=/?share_link_id=245564001485&fbclid=PAVERFWAR6xe5leHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAafeP3jqzFZquVLQoQjF2IdLeuNv_ZBaH2ReBnyPJHy4Ewts8pmth6cmhZjoMQ_aem_Z22QCeYVzutOhU1WBPrdXA) - Very detailed (imp), built on [miro](https://miro.com/ai/flows/?irclickid=z9zTk-1h-xyZWZ6QAt3wfXaJUkuRkhX9HQ4dRg0&utm_source=Test%20partner%20account%20miro&utm_medium=cpa&utm_campaign=&utm_affiliate_network=impact&utm_custom=nivedan_rathi_aiao_in&irgwc=1&afsrc=1)
-- 
+- [Prof AI](https://prof.ai/login) - Learn AI with AI
+- [Protocol Resources](https://realrobertgutierrez.notion.site/Protocol-Resources-3244cd7debe880d4aecbfa3577bbdce2)
+### Full stack
+- [Full Stack Walkthrough](https://fullstackopen.com/en/)
+#### Frontend
+- [Google Stitch](https://stitch.withgoogle.com/): Use to figure out UI
+- [React Components Page](https://reactbits.dev/)
 - 
 ### Models
 - [Subquadratic](https://subq.ai/) (soon)
-- 
+- [Free Models](https://openrouter.ai/models?q=free+) - Openrouter
 ### Tools
 - [Skills](https://skills.sh/)
 - [Search Github for API Keys](https://gist.github.com/win3zz/0a1c70589fcbea64dba4588b93095855#gistcomment-5903810)
@@ -118,13 +116,3 @@ StatQuest with Josh Starmer — https://youtube.com/@statquest
 ### Competetions
 1. Coding Competitions - HackerRank, Codeforces, and Topcoder
 2. Bug Bounty Programs -  Bugcrowd and HackerOne
-## Keys
-1. Openrouter: Jan - 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
-2. OpenAI: 
-3. Anthropic:
-4. GROQ:
-5. Sanity:
-6. Google AI Studio:
-7. Supabse PW:
-	- OpsPilot DB: BuildingRealSolutions@v0
-	- 
