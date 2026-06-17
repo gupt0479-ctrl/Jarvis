@@ -1,6 +1,22 @@
 {
   "recentFiles": [
     {
+      "basename": "Big Assignment - 1(Human)",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 1(Human).md"
+    },
+    {
+      "basename": "Big Assignment - 1",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 1.md"
+    },
+    {
+      "basename": "Quiz - 5",
+      "path": "20_Progress/Degree/MATH 2230/Quiz/Quiz - 5.md"
+    },
+    {
+      "basename": "Chapter - 3",
+      "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 3.md"
+    },
+    {
       "basename": "the new coding interview, 5 resources id actually study",
       "path": "60_Claude/05_Clippings/Web/the new coding interview, 5 resources id actually study.md"
     },
@@ -157,20 +173,8 @@
       "path": "20_Progress/Projects/CS/Portfolio/security/claude-code-prompts.md"
     },
     {
-      "basename": "Chapter - 3",
-      "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 3.md"
-    },
-    {
-      "basename": "Quiz - 5",
-      "path": "20_Progress/Degree/MATH 2230/Quiz/Quiz - 5.md"
-    },
-    {
       "basename": "Quiz - 4",
       "path": "20_Progress/Degree/MATH 2230/Quiz/Quiz - 4.md"
-    },
-    {
-      "basename": "Big Assignment - 1",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 1.md"
     },
     {
       "basename": "Assignment - 5",
@@ -195,10 +199,6 @@
     {
       "basename": "Practice Quiz",
       "path": "20_Progress/Degree/MATH 2230/Quiz/Practice Quiz.md"
-    },
-    {
-      "basename": "phase-3-chatbot-resilience",
-      "path": "20_Progress/Projects/CS/Portfolio/security/phase-3-chatbot-resilience.md"
     }
   ],
   "omittedPaths": [],
