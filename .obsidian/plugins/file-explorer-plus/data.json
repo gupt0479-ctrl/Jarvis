@@ -344,7 +344,7 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "60_Claude/07_AI_Information/AI Conversations/README.md",
+        "pattern": "60_Claude/07_AI_Information/AI Conversation - Summaries/README.md",
         "patternType": "STRICT"
       },
       {
@@ -415,6 +415,13 @@
         "active": true,
         "type": "FILES",
         "pattern": "20_Progress/Degree/MATH 2230/Homework/Homework Board.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "40_Resources/CS/Concepts/Concepts Board.md",
         "patternType": "STRICT"
       }
     ],
