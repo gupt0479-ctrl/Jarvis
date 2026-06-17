@@ -8,7 +8,7 @@ tags:
   - ai-conversations
   - readme
 notes:
-  - "[[60_Claude/07_AI_Information/AI Conversations/README]]"
+  - "[[60_Claude/07_AI_Information/AI Conversation - Summaries/README]]"
   - "[[60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan]]"
 ---
 # AI Conversations — Raw Archive

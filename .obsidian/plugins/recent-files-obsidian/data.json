@@ -1,12 +1,140 @@
 {
   "recentFiles": [
     {
+      "basename": "the new coding interview, 5 resources id actually study",
+      "path": "60_Claude/05_Clippings/Web/the new coding interview, 5 resources id actually study.md"
+    },
+    {
+      "basename": "the underclassmen internship list, before u age out",
+      "path": "60_Claude/05_Clippings/Web/the underclassmen internship list, before u age out.md"
+    },
+    {
+      "basename": "The 2027 Internship Calendar (Prediction) when everything actually drops",
+      "path": "60_Claude/05_Clippings/Web/The 2027 Internship Calendar (Prediction) when everything actually drops.md"
+    },
+    {
+      "basename": "the permanent archive of winning hackathon projects",
+      "path": "60_Claude/05_Clippings/Web/the permanent archive of winning hackathon projects.md"
+    },
+    {
       "basename": "Links",
       "path": "40_Resources/CS/Links.md"
     },
     {
+      "basename": "fintech early programs that actually pay, not sm bs unpaid internship lmao",
+      "path": "60_Claude/05_Clippings/Web/fintech early programs that actually pay, not sm bs unpaid internship lmao.md"
+    },
+    {
+      "basename": "4 Ways to Make Money With the Hermes Agent",
+      "path": "60_Claude/05_Clippings/Web/4 Ways to Make Money With the Hermes Agent.md"
+    },
+    {
+      "basename": "Where teams and agents work together 1",
+      "path": "60_Claude/05_Clippings/Web/Where teams and agents work together 1.md"
+    },
+    {
+      "basename": "AI Engineering from Scratch",
+      "path": "60_Claude/05_Clippings/Web/AI Engineering from Scratch.md"
+    },
+    {
+      "basename": "Automate Your AI Second Brain",
+      "path": "60_Claude/05_Clippings/Web/Automate Your AI Second Brain.md"
+    },
+    {
+      "basename": "Vault Enrichment Prompt",
+      "path": "60_Claude/35_Outputs/Vault Enrichment Prompt.md"
+    },
+    {
+      "basename": "AI Engineer Roadmap",
+      "path": "60_Claude/05_Clippings/Web/AI Engineer Roadmap.md"
+    },
+    {
+      "basename": "Output Index",
+      "path": "60_Claude/35_Outputs/Output Index.md"
+    },
+    {
+      "basename": "Kafka Pipelines vs Agent Tool Orchestration",
+      "path": "60_Claude/20_Distilled_Notes/Synthesis/Kafka Pipelines vs Agent Tool Orchestration.md"
+    },
+    {
+      "basename": "Synthesis Index",
+      "path": "60_Claude/20_Distilled_Notes/Synthesis/Synthesis Index.md"
+    },
+    {
+      "basename": "Quant Foundations (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Quant Foundations (PDF).md"
+    },
+    {
+      "basename": "GitHub Stars — How Anant Uses Each Repo",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/GitHub Stars — How Anant Uses Each Repo.md"
+    },
+    {
+      "basename": "Repos-Deep-Analysis",
+      "path": "60_Claude/10_Source_Summaries/Repos-Deep-Analysis.md"
+    },
+    {
+      "basename": "README",
+      "path": "60_Claude/05_Clippings/AI Conversations/README.md"
+    },
+    {
+      "basename": "README",
+      "path": "60_Claude/07_AI_Information/AI Conversation - Summaries/README.md"
+    },
+    {
+      "basename": "Clippings board",
+      "path": "60_Claude/05_Clippings/Clippings board.md"
+    },
+    {
+      "basename": "Inbox Board",
+      "path": "60_Claude/00_Inbox/Inbox Board.md"
+    },
+    {
+      "basename": "Claude Board",
+      "path": "60_Claude/Claude Board.md"
+    },
+    {
+      "basename": "Second Brain",
+      "path": "40_Resources/Obsidian/Second Brain.md"
+    },
+    {
+      "basename": "Concepts Board",
+      "path": "40_Resources/CS/Concepts/Concepts Board.md"
+    },
+    {
+      "basename": "New Laptop Setup",
+      "path": "40_Resources/CS/Concepts/New Laptop Setup.md"
+    },
+    {
+      "basename": "Ubuntu - WSL",
+      "path": "40_Resources/CS/Concepts/Ubuntu - WSL.md"
+    },
+    {
+      "basename": "Terminal",
+      "path": "40_Resources/CS/Concepts/Terminal.md"
+    },
+    {
+      "basename": "Kafka Pipeline Architecture Story",
+      "path": "40_Resources/CS/Concepts/Kafka Pipeline Architecture Story.md"
+    },
+    {
+      "basename": "Cheat Sheet's & Notes",
+      "path": "40_Resources/CS/Concepts/Cheat Sheet's & Notes.md"
+    },
+    {
       "basename": "Random",
       "path": "40_Resources/Random.md"
+    },
+    {
+      "basename": "Track Definitions",
+      "path": "40_Resources/Capability/Track Definitions.md"
+    },
+    {
+      "basename": "Gen AI Meeting",
+      "path": "40_Resources/CS/AI/Gen AI Meeting.md"
+    },
+    {
+      "basename": "Repos",
+      "path": "40_Resources/CS/Repos.md"
     },
     {
       "basename": "Useful Links",
@@ -71,134 +199,6 @@
     {
       "basename": "phase-3-chatbot-resilience",
       "path": "20_Progress/Projects/CS/Portfolio/security/phase-3-chatbot-resilience.md"
-    },
-    {
-      "basename": "phase-2-sanity-lockdown",
-      "path": "20_Progress/Projects/CS/Portfolio/security/phase-2-sanity-lockdown.md"
-    },
-    {
-      "basename": "phase-1-auth-clerk",
-      "path": "20_Progress/Projects/CS/Portfolio/security/phase-1-auth-clerk.md"
-    },
-    {
-      "basename": "phase-4-deployment-hardening",
-      "path": "20_Progress/Projects/CS/Portfolio/security/phase-4-deployment-hardening.md"
-    },
-    {
-      "basename": "phase-5-monitoring",
-      "path": "20_Progress/Projects/CS/Portfolio/security/phase-5-monitoring.md"
-    },
-    {
-      "basename": "16 - Orby Enhancement + Codebase Audit",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/16 - Orby Enhancement + Codebase Audit.md"
-    },
-    {
-      "basename": "09 - Orby Fixes",
-      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/09 - Orby Fixes.md"
-    },
-    {
-      "basename": "08 - Build Phases & Milestones",
-      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/08 - Build Phases & Milestones.md"
-    },
-    {
-      "basename": "05 - Model Layer, Rate Limiting & Abuse",
-      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/05 - Model Layer, Rate Limiting & Abuse.md"
-    },
-    {
-      "basename": "2026-06-15",
-      "path": "10_Areas/Life/Enumerate/Daily/2026-06-15.md"
-    },
-    {
-      "basename": "02 - Premortem & Failure Defenses",
-      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/02 - Premortem & Failure Defenses.md"
-    },
-    {
-      "basename": "01 - Layered Architecture",
-      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/01 - Layered Architecture.md"
-    },
-    {
-      "basename": "00 - Nextgen Chatbot — Build Plan",
-      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/00 - Nextgen Chatbot — Build Plan.md"
-    },
-    {
-      "basename": "2026-06-14",
-      "path": "10_Areas/Life/Enumerate/Daily/2026-06-14.md"
-    },
-    {
-      "basename": "09 - Sanity Content Spec",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/09 - Sanity Content Spec.md"
-    },
-    {
-      "basename": "11 - ObsidianBackground Enhancement",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/11 - ObsidianBackground Enhancement.md"
-    },
-    {
-      "basename": "14 - Global Fixes — Header & Section Spacing",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/14 - Global Fixes — Header & Section Spacing.md"
-    },
-    {
-      "basename": "13 - Dark Mode Toggle",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/13 - Dark Mode Toggle.md"
-    },
-    {
-      "basename": "12 - Orby Friction Fixes",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/12 - Orby Friction Fixes.md"
-    },
-    {
-      "basename": "00 - Frontend Overhaul — Build Plan",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/00 - Frontend Overhaul — Build Plan.md"
-    },
-    {
-      "basename": "06 - Education Flowchart",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/06 - Education Flowchart.md"
-    },
-    {
-      "basename": "05 - Skills Capability Graph",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/05 - Skills Capability Graph.md"
-    },
-    {
-      "basename": "Assignment - 7",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 7.md"
-    },
-    {
-      "basename": "Assignment - 6",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 6.md"
-    },
-    {
-      "basename": "Assignment - 4",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 4.md"
-    },
-    {
-      "basename": "Chapter - 2",
-      "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 2.md"
-    },
-    {
-      "basename": "Homework Board",
-      "path": "20_Progress/Degree/MATH 2230/Homework/Homework Board.md"
-    },
-    {
-      "basename": "Git & GitHub",
-      "path": "40_Resources/CS/Concepts/Git & GitHub.md"
-    },
-    {
-      "basename": "Cheat Sheet's & Notes",
-      "path": "40_Resources/CS/Concepts/Cheat Sheet's & Notes.md"
-    },
-    {
-      "basename": "Assignments Board",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignments Board.md"
-    },
-    {
-      "basename": "02 - Commands, Hooks & CSP Fix",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-code-setup/02 - Commands, Hooks & CSP Fix.md"
-    },
-    {
-      "basename": "01 - Subagents & Existing .claude",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-code-setup/01 - Subagents & Existing .claude.md"
-    },
-    {
-      "basename": "00 - Frontend Build Kit — Index",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-code-setup/00 - Frontend Build Kit — Index.md"
     }
   ],
   "omittedPaths": [],

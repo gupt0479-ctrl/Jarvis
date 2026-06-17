@@ -18,7 +18,7 @@ Distilled, human-useful summaries of LLM conversations. The raw transcripts live
 
 ## Rules
 
-- One distilled summary per raw conversation.
+- One distilled summary per raw conversation(Only from a meaningful conversation).
 - Every summary cites its raw source via `source_note:` frontmatter.
 - Summaries are short and decision-focused. They are not transcripts in a different format.
 

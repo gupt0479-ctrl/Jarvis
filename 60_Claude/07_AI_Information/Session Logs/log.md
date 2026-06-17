@@ -626,7 +626,7 @@ Full vault audit done in Cowork session. Read the spine (CLAUDE.md, AGENTS.md, H
 - [[60_Claude/40_Project_Briefs/Vault-Audit-2026-05-29]] — spine health, instruction-file table with quality scores, conflicts/contradictions list, missing files list, 3-month roadmap (May 29 → Sept 1, with monthly themes Foundation/MCP Hub → Brain → Research Engine), MCP hub gap analysis per external tool. Includes orientation message at top for future cold-start Claude.
 - [[40_Resources/Obsidian/MCP-Hub-Index]] — single-page orientation note for any external agent. Folder map, naming conventions, what NOT to touch, how to navigate, what the vault is building toward Sept 1.
 - [[60_Claude/05_Clippings/AI Conversations/README]] — raw conversation archive folder, immutable, frontmatter schema. **Unblocks Master Plan Week 2 deliverable (5+ weeks overdue).**
-- [[60_Claude/07_AI_Information/AI Conversations/README]] — distilled conversation summary folder with workflow + summary shape.
+- [[60_Claude/07_AI_Information/AI Conversation - Summaries/README]] — distilled conversation summary folder with workflow + summary shape.
 - `learning-agent.md` (in session outputs scratchpad) — read→drill→update→suggest loop agent with full Capability Engine integration. **Cowork sandbox blocked direct write to `.claude/agents/`; manual copy required.** Target path: `D:\Users\_Anant\10_Areas\Documents\Jarvis\.claude\agents\learning-agent.md`.
 - `mcp-hub.md` (in session outputs scratchpad) — skill that defines tool registry, context pack format, and `sync` / `list-tools` / `context-pack` / `verify` operations. **Cowork sandbox blocked direct write to `.claude/skills/`; manual copy required.** Target path: `D:\Users\_Anant\10_Areas\Documents\Jarvis\.claude\skills\mcp-hub.md`.
 

@@ -15,28 +15,6 @@ notes:
 2. [Website to Learn Anything?](https://learn-anything.xyz/)
 3. [Battery Report](file:///C:/Users/Anant%20Gupta/battery-report.html): **IMPORTANT**
 4. [Web Archive](https://web.archive.org/) for everything 
-## AI
-- [AI Search: *For any AI*](https://free.theresanaiforthat.com/ )
-- [AI Journaling Deeper](https://app.myentries.ai/journal)
-- [Humanize AI text](https://cleverhumanizer.ai/): [Reddit post](https://www.reddit.com/r/DataRecoveryHelp/comments/1l7aj60/humanize_ai/)
-- [Humanize AI text](https://ahrefs.com/writing-tools/ai-humanizer): *better*
-- [AI Watermark Detector](https://www.gptwatermark.com/)
-- [AI Web application creation](https://flatlogic.com/generator?utm_source=sp_auto_dm&utm_referrer=sp_auto_dm)
-- [Deploy AI Agents](https://pipedream.com/string)
-
-- [Research AI: Anara](https://anara.com/anantgupta21?checkDevice=true)
-- [Research Assistant AI](https://jenni.ai/)
-- [Help Study AI: You Learn](https://app.youlearn.ai/)
-- [Agent Minimax](https://agent.minimax.io/): OpenClaw
-- [Learn to Hack Anything](https://pentestgpt.com/)
-- To Learn: [AI Starter Kit](https://flicker-celestite-7b6.notion.site/AI-STARTER-KIT-2026-2f4d180d8c8081e5bb17e2027f7d0cf6)
-- 
-### Prompting
-- [Github: *System Prompts and models for all AI tools*](https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools)
-- [Prompt Library: *Guide*](https://tathastu-rh.notion.site/prompt-library-ruben-hassid)
-	- [Specific](https://tathastu-rh.notion.site/chatgpt-gemini-claude-grok-2d99464bdbf98168a9f5f8b1a198b108)
-- [Prompt Generator(Decent)](https://docsbot.ai/tools/prompt/chatgpt-prompt-generator)
-- [Prompt Maker(More Options)](https://promptweaver.me/)
 ## For me 
 - Portfolio to learn about human body: [Huberman Lab](https://www.hubermanlab.com/)
 - Cool af portfolio: [Bruno-simon](https://bruno-simon.com/)

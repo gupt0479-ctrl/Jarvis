@@ -8,11 +8,21 @@ notes:
   - "[[Random]]"
 ---
 # Data view
+## AI Conversations
 ```dataview
 TABLE title, description, source
 FROM "60_Claude/05_Clippings"
 WHERE type != "evergreen"
 SORT created ASC
 ```
-## MOC
-[[EX Program Recommendations]]
+## PDFs
+
+## Videos
+
+## Web
+
+# Where to Go?
+> [!IMPORTANT] Interlinks of all web clippings done and where they have landed.
+> - If been deleted not written here.
+
+1. 

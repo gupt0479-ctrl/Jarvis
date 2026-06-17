@@ -33,9 +33,5 @@ related:
 2. 
 3. 
 ## Common mistakes
-- 
-## Mini-test (answer without looking)
-- [ ] Flashcards
-- [ ] 
 ## Flashcards (best 3–8)
 
