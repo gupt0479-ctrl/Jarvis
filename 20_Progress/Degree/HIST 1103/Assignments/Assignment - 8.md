@@ -23,7 +23,29 @@ next:
 8.  When writing your answer, be sure to include one quote from your textbook in your answer. 
 It does not need to be long, but one quote is required. All parts must be completed for credit.  There is no partial credit.  Determining credit is simple.  If you followed all the requirements in this list, you have credit.  If you did not, you don't.
 ## The Prompt
-- 
+## [Assignment 8](https://anokaramsey.learn.minnstate.edu/d2l/le/7250038/discussions/threads/62096713/View "Assignment 8")
+
+Contains unread posts
+
+Bruce Homann posted Jun 16, 2026 1:55 PM
+
+![This thread is pinned](https://s.brightspace.com/lib/bsi/2026.5.298/images/tier1/pin-filled.svg "This thread is pinned")
+
+This week we have West Africa and Sudan (and South Sudan).  This assignment has 3 parts. As the region long benefited from the slave trade, it was certainly going to suffer some instability when the slave trade fell apart, and indeed it did.  20th and 21st century West Africa is a much different place now than it was in the 19th century.
+
+First, choose one of the countries listed below and discuss at least two issues it has had moving into the contemporary world.  CLAIM your country like we have before by Thursday and post by Saturday.  No more than 5 people can work on a single country.
+
+Second, look at Sudan and South Sudan, list two of the issues that region has had interfering with stability and discuss them briefly. 
+
+Lastly, compare your region in West Africa with Sudan/South Sudan, and discuss at least one difference and one similarity.
+
+Ghana
+
+Nigeria
+
+Liberia
+
+Sierra Leone
 ## Action items
 - [ ] Write the discussion section needed to submit here in this header
 
