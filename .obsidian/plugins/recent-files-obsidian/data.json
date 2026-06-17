@@ -1,16 +1,24 @@
 {
   "recentFiles": [
     {
+      "basename": "Problems with Portfolio Lab",
+      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/Problems with Portfolio Lab.md"
+    },
+    {
+      "basename": "08 - Build Phases & Milestones",
+      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/08 - Build Phases & Milestones.md"
+    },
+    {
+      "basename": "Big Assignment - 1",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 1.md"
+    },
+    {
       "basename": "Assignment - 8",
       "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 8.md"
     },
     {
       "basename": "Repos",
       "path": "40_Resources/CS/Repos.md"
-    },
-    {
-      "basename": "Big Assignment - 1",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 1.md"
     },
     {
       "basename": "Quiz - 5",
@@ -191,14 +199,6 @@
     {
       "basename": "README",
       "path": "20_Progress/Projects/CS/Portfolio/security/README.md"
-    },
-    {
-      "basename": "03 - Per-Phase Build Prompts",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-code-setup/03 - Per-Phase Build Prompts.md"
-    },
-    {
-      "basename": "Practice Quiz",
-      "path": "20_Progress/Degree/MATH 2230/Quiz/Practice Quiz.md"
     }
   ],
   "omittedPaths": [],
