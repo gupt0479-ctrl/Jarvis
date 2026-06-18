@@ -1,6 +1,30 @@
 {
   "recentFiles": [
     {
+      "basename": "Summer Grind",
+      "path": "10_Areas/Summer Grind.md"
+    },
+    {
+      "basename": "00 - CoWork Prompt — Summer OS",
+      "path": "10_Areas/Life/Plans/00 - CoWork Prompt — Summer OS.md"
+    },
+    {
+      "basename": "00 - Summer Plans Index",
+      "path": "10_Areas/Life/Plans/00 - Summer Plans Index.md"
+    },
+    {
+      "basename": "Plans Board",
+      "path": "10_Areas/Life/Plans/Plans Board.md"
+    },
+    {
+      "basename": "Summer Courses",
+      "path": "20_Progress/Degree/Summer Courses.md"
+    },
+    {
+      "basename": "Links",
+      "path": "40_Resources/CS/Links.md"
+    },
+    {
       "basename": "Big Assignment - 1",
       "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 1.md"
     },
@@ -47,10 +71,6 @@
     {
       "basename": "the permanent archive of winning hackathon projects",
       "path": "60_Claude/05_Clippings/Web/the permanent archive of winning hackathon projects.md"
-    },
-    {
-      "basename": "Links",
-      "path": "40_Resources/CS/Links.md"
     },
     {
       "basename": "fintech early programs that actually pay, not sm bs unpaid internship lmao",
@@ -179,26 +199,6 @@
     {
       "basename": "god-nodes",
       "path": "20_Progress/Projects/CS/Portfolio/god-nodes.md"
-    },
-    {
-      "basename": "claude-code-prompts",
-      "path": "20_Progress/Projects/CS/Portfolio/security/claude-code-prompts.md"
-    },
-    {
-      "basename": "Quiz - 4",
-      "path": "20_Progress/Degree/MATH 2230/Quiz/Quiz - 4.md"
-    },
-    {
-      "basename": "Assignment - 5",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 5.md"
-    },
-    {
-      "basename": "Quiz - 1",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Quiz - 1.md"
-    },
-    {
-      "basename": "manual-actions",
-      "path": "20_Progress/Projects/CS/Portfolio/security/manual-actions.md"
     }
   ],
   "omittedPaths": [],
