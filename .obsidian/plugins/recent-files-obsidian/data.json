@@ -1,16 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "Big Assignment - 1",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 1.md"
+    },
+    {
+      "basename": "Big Assignment - 1(Human Version)",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 1(Human Version).md"
+    },
+    {
       "basename": "Problems with Portfolio Lab",
       "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/Problems with Portfolio Lab.md"
     },
     {
       "basename": "08 - Build Phases & Milestones",
       "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/08 - Build Phases & Milestones.md"
-    },
-    {
-      "basename": "Big Assignment - 1",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 1.md"
     },
     {
       "basename": "Assignment - 8",
@@ -195,10 +199,6 @@
     {
       "basename": "manual-actions",
       "path": "20_Progress/Projects/CS/Portfolio/security/manual-actions.md"
-    },
-    {
-      "basename": "README",
-      "path": "20_Progress/Projects/CS/Portfolio/security/README.md"
     }
   ],
   "omittedPaths": [],
