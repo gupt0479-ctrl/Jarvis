@@ -17,7 +17,7 @@ notes:
   - "[[40_Resources/Obsidian/Vault Operating System]]"
   - "[[40_Resources/Obsidian/Jarvis Enrichment Engine]]"
   - "[[40_Resources/Capability/Capability Engine Guide]]"
-  - "[[40_Resources/CS/AI/MCPs]]"
+  - "[[MCPs]]"
   - "[[Knowledge Enrichment Dashboard]]"
   - "[[Capability Dashboard]]"
 next: Build Week 1 registry hardening and conversation capture spine.

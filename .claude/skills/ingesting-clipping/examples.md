@@ -61,6 +61,27 @@ track: ai
 ---
 ```
 
+## GitHub repo
+
+```yaml
+---
+type: input
+status: sprout
+created: 2026-06-20
+updated: 2026-06-20
+tags:
+  - summary
+  - github
+notes:
+  - "[[Confirmed Existing Note]]"
+source_url: https://github.com/owner/repo
+source_note: "[[Repo Landing Page Clip.md]]"
+input_kind: github
+track: ai
+---
+```
+`source_note` points at the web clip that discovered the repo (if one exists) — the repo itself has no single filename to wikilink, so `source_url` carries the canonical reference. Omit `source_note` if the repo was found directly via `gh api`/search with no clip.
+
 ## Markdown clip
 
 ```yaml

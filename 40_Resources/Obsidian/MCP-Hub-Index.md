@@ -15,7 +15,7 @@ notes:
   - "[[AI_CONTEXT]]"
   - "[[00_Dashboard]]"
   - "[[40_Resources/Obsidian/Vault Operating System]]"
-  - "[[40_Resources/Obsidian/Claude Pro Workflow]]"
+  - "[[Claude Pro Workflow]]"
   - "[[60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan]]"
   - "[[60_Claude/40_Project_Briefs/Vault-Audit-2026-05-29]]"
 ---

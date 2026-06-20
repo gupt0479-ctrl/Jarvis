@@ -12,7 +12,7 @@ output_kind: project-brief
 source_concepts:
   - "[[60_Claude/20_Distilled_Notes/AI-Assisted Trading]]"
   - "[[60_Claude/20_Distilled_Notes/Trading Tools and Platforms]]"
-  - "[[40_Resources/CS/AI/AI Workflow]]"
+  - "[[AI Workflow]]"
 ---
 
 # AI Market Analyzer Project Brief

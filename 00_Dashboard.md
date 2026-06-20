@@ -11,7 +11,7 @@ notes:
   - "[[AGENTS.md]]"
   - "[[30_Order/Templates/MOC]]"
   - "[[40_Resources/Obsidian/Vault Operating System]]"
-  - "[[40_Resources/Obsidian/Claude Pro Workflow]]"
+  - "[[Claude Pro Workflow]]"
   - "[[Vault Health Dashboard]]"
   - "[[Knowledge Enrichment Dashboard]]"
   - "[[40_Resources/Obsidian/Jarvis Enrichment Engine]]"
@@ -121,7 +121,7 @@ LIMIT 10
 
 ## Navigation
 
-**Vault system:** [[CLAUDE.md]] · [[AGENTS.md]] · [[40_Resources/Obsidian/Vault Operating System]] · [[40_Resources/Obsidian/Claude Pro Workflow]] · [[Claude Layer Index]] · [[30_Order/Templates/MOC]]
+**Vault system:** [[CLAUDE.md]] · [[AGENTS.md]] · [[40_Resources/Obsidian/Vault Operating System]] · [[Claude Pro Workflow]] · [[Claude Layer Index]] · [[30_Order/Templates/MOC]]
 
 **Capability Engine:** [[Capability Dashboard]] · [[Proof Dashboard]] · [[Question Dashboard]] · [[AI Field OS]] · [[Systems Field OS]] · [[Algorithms Field OS]] · [[Career Field OS]] · [[Trading Field OS]]
 

@@ -36,6 +36,7 @@ Before doing anything, read:
 | Live URL | passed by user | `WebFetch` tool | `60_Claude/10_Source_Summaries/Web Ingestion/` |
 | Video transcript | `60_Claude/05_Clippings/Videos/` | `Read` tool | `60_Claude/10_Source_Summaries/Video Ingestion/` |
 | AI conversation | `60_Claude/05_Clippings/AI Conversations/` | `Read` tool | `60_Claude/10_Source_Summaries/Web Ingestion/` |
+| GitHub repo | `github.com/<owner>/<repo>` (live, or discovered via a web clip) | `gh api` / GitHub MCP tools — README + file tree, never the rendered page | `60_Claude/10_Source_Summaries/Github Ingestion/` |
 
 ---
 
@@ -72,6 +73,19 @@ WebFetch https://r.jina.ai/https://example.com/the-article
 ```
 
 **Fallback — direct `WebFetch`.** If the Jina-prefixed fetch is paywalled, blocked, or returns nothing useful, call `WebFetch` on the bare URL with `format: "markdown"`. If both fail, ask the user to paste the content.
+
+**Empty-embed clips.** Google Sheets / Notion / Airtable embeds often clip down to a bare `<iframe>` with no real content. Don't summarize the shell — retry the live URL with `WebFetch`, or tell the user it needs a manual export.
+
+### GitHub repos
+**Never treat a repo as a webpage.** The README states what a tool claims; the file tree and source files show what it does. Primary path is `gh api` (already installed on this machine) or the GitHub MCP tools — no clone needed for most repos:
+
+```bash
+gh api repos/<owner>/<repo> --jq '{description,stargazers_count,forks_count,pushed_at,license:.license.name}'
+gh api repos/<owner>/<repo>/git/trees/main?recursive=true --jq '.tree[] | select(.type=="blob") | .path'
+gh api repos/<owner>/<repo>/contents/<path> --jq '.content' | base64 -d
+```
+
+For reference-only repos (awesome-lists, bookmarked-for-later entries in `40_Resources/CS/Repos.md`), metadata + README is enough. For adoption candidates (tools you're about to install or wire into `.claude/`), also pull the 2-4 files that actually matter (entrypoint, skill/agent definition, config schema) via the `contents` call — report what they actually say, not the README's summary of them. Only `git clone` to a scratch path outside the vault if you need to run the code or grep across many files; delete it after — `60_Claude/05_Clippings/` is markdown-only.
 
 ---
 
@@ -120,6 +134,8 @@ track: <ai|systems|algorithms|career|trading|general>
 ## Step 4 — Cross-Reference Existing Notes
 
 After writing the summary, Grep for entities and concept terms from the source in the vault. Add confirmed-existing wikilinks to `## Links Into The Vault`. Do not modify matched notes unless the user asks.
+
+If the source is a tool, repo, or technique, also check `40_Resources/CS/AI/` (`Toolkit/`, `Workflows/`, `Gen AI/`, `Prompts/`, `Token Optimization/`) for a matching list note. Link to it if found; if not, name the proposed addition in Step 5 instead of writing it — `40_Resources` promotion is curated, not automatic.
 
 ---
 

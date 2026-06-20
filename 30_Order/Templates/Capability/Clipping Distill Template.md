@@ -6,7 +6,7 @@ updated: <% tp.date.now("YYYY-MM-DD") %>
 tags:
   - summary
 notes: []
-input_kind:  # pdf | web | video | image | conversation
+input_kind:  # pdf | web | video | image | conversation | github
 track:  # ai | systems | algorithms | career | trading | general
 source_note:  # "[[Filename.pdf]]" — filename + extension, no folder path
 source_url:

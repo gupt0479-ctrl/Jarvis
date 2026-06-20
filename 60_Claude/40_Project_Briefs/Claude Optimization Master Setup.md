@@ -11,8 +11,8 @@ tags:
 notes:
   - "[[CLAUDE.md]]"
   - "[[AI_CONTEXT]]"
-  - "[[40_Resources/Obsidian/Claude Pro Workflow]]"
-  - "[[40_Resources/CS/AI/Skills/Github Skills]]"
+  - "[[Claude Pro Workflow]]"
+  - "[[Github Skills]]"
   - "[[60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan]]"
 ---
 # Claude Optimization Master Setup

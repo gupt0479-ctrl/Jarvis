@@ -472,7 +472,7 @@ Expanded the 12 stable plugin reference notes under `40_Resources/Obsidian/Plugi
 Implemented the Claude Pro + Jarvis workflow setup for a strict-budget summer AI workflow.
 
 **Created:**
-- [[40_Resources/Obsidian/Claude Pro Workflow]]
+- [[Claude Pro Workflow]]
 - `30_Order/System/claude-workflow/README.md`
 - `30_Order/System/claude-workflow/hooks/jarvis-session-continuity.ps1`
 - `30_Order/System/claude-workflow/claude_desktop_config.read-first.example.json`
@@ -922,3 +922,34 @@ Folder is final: notes 00–14 + BUILD-STATUS + claude-code-setup (00–04). Nex
 - Updated research-distiller.md: routing table PDF Read-Method cell → `extract_pdf.py` (pypdf → multimodal fallback); Web URLs step → Jina Reader primary (`https://r.jina.ai/` prefix) + direct WebFetch fallback.
 - Deletion was enabled for the Jarvis folder this session, so both files were actually removed (not stubbed): `__deltest.tmp` and the `ingest-clipping.md` redirect stub. The flat ingest-clipping skill is now fully gone; only `ingesting-clipping/` remains.
 - Verified: 45_Outputs → zero matches; r.jina.ai → present in research-distiller; both junk files GONE; ingesting-clipping/ directory intact.
+
+
+## [2026-06-20] research | token optimization — limits, Obsidian, Cowork
+
+- Researched (web + Anthropic help center) how Claude usage limits work in 2026: NOT a fixed message count — token/compute budget weighted by model, conversation length, effort, and loaded tools. Dual 5-hour rolling window + weekly cap (since Aug 2025); all surfaces (chat, Code, Cowork) share one pool. Key driver: every message re-sends full conversation history.
+- Extended `40_Resources/Obsidian/Claude Pro Workflow.md` (the canonical rate-limit note per North Star) rather than creating a new top-level note: added "How the Limits Actually Work (2026)", "Cowork Discipline", and a paste-ready "Token-Discipline Block". Fixed two dead paths in that note (7_AI_Information→07, 10_Session_Logs→07_AI_Information/Session Logs).
+- Audit delivered in chat: biggest levers = (1) Opus→Sonnet default in Cowork, (2) one chat per task, (3) trim connected MCP connectors (deferred-tool loading already mitigates upfront cost).
+- Note: bash mount showed a stale line count; Read tool confirmed the file is correct and complete (158 lines).
+
+## [2026-06-20] system + ingest | GitHub repo ingestion formalized + live test
+
+Audited the web-clipping ingestion pipeline (`05_Clippings/Web/`, 29 raw clips) and the `ingesting-clipping` skill/`research-distiller` agent against the user's ask: interlink web/repo ingestion to `40_Resources/`, and ingest GitHub repos "like an actual human developer" rather than scraping the rendered page.
+
+**Gap found:** neither the skill nor the agent had a GitHub-repo row in their Source Type Routing tables, despite `Github Ingestion/` already being a documented output folder (Vault Architecture, Capture to Summary). The ~35 existing notes in `10_Source_Summaries/Github Ingestion/{Claude Starred,AI Starred}/` were produced ad hoc from README scrapes, not a repeatable method, and predate the current Source Summary Standard (missing `input_kind`/`track`/`source_note`). Also found: web clips of GitHub pages (e.g. `A collective list of free APIs.md`) just duplicate the README; and JS-embed clips (e.g. `V1 Recently Funded Startups.md`, a Google Sheets iframe) capture empty with no fallback defined.
+
+**Patched (additive, no renumbering of existing content):**
+- `ingesting-clipping/SKILL.md` — added GitHub-repo row to routing table; safety-rules line on never scraping a repo's rendered page as a substitute for reading it.
+- `ingesting-clipping/reference.md` — new §6 "GitHub repository extraction" (gh api primary path, two depths: reference-only vs. adoption-candidate, scratch-clone-and-delete for cases needing full grep); added the empty-iframe/JS-embed failure mode to §5; renumbered quality gate to §7.
+- `ingesting-clipping/examples.md` — added GitHub frontmatter skeleton.
+- `research-distiller.md` — mirrored the routing row, the `gh api` method, and the empty-embed fallback; Step 4 now also checks `40_Resources/CS/AI/{Toolkit,Workflows,Gen AI,Prompts,Token Optimization}/` for a tool's existing home before proposing a new one.
+- `30_Order/Standards/Source Summary Standard.md` — `input_kind` enum gained `github`; Links Into The Vault section now names the 40_Resources interlink check (propose, don't bulk-write).
+- `Clipping Distill Template.md` — `input_kind` comment updated to match.
+
+**Live test (proves the patched method, not just the docs):** ingested `aiwithremy/claude-skills-llm-council` two ways at once — the existing web clip (README) plus a live `gh api` pull of the actual `SKILL.md` (the file the README only describes). Found a real discrepancy this surfaces that README-only ingestion would have missed: the landing-page clip claims Path B "saves an HTML report," but the live `SKILL.md` explicitly forbids generating files and mandates chat-only output. Created:
+- [[60_Claude/10_Source_Summaries/Github Ingestion/LLM Council (github)]] — Tier-2 note, built from the live file fetch.
+- [[60_Claude/10_Source_Summaries/Web Ingestion/Claude Council — Path A Prompt (web)]] — discovery-record note from the Notion landing-page clip, cross-linked to the repo note.
+- Both link to `[[40_Resources/CS/AI/Toolkit/Github Skills]]`; a one-line addition there (matching its existing table) is proposed, not written — promotion stays curated.
+
+**Tools confirmed already present, nothing new installed:** `gh` 2.89.0, `git` 2.52.0, Python 3.13.5 + `pypdf` 6.10.2, GitHub MCP tools (`get_file_contents` resolves both files and directories), `WebFetch`. No new MCP server or package needed for either tier of GitHub ingestion.
+
+**Open / left for the user:** the ~89 remaining un-ingested repos from `40_Resources/CS/Repos.md` (AI section ~21 left, Building/Projects/Jobs/Learning/Cybersecurity sections have zero per-repo notes yet); whether to scale the patched method across all 29 web clips now or in batches; the 6 sample iframe/broken clips that need the empty-embed fallback applied; whether to actually propose-and-apply the `40_Resources/CS/AI/Toolkit/Github Skills.md` addition for LLM Council.
