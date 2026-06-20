@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "Jarvis MCP and REST API Setup",
+      "path": "40_Resources/CS/Concepts/New Laptop/Jarvis MCP and REST API Setup.md"
+    },
+    {
+      "basename": "New Laptop Setup",
+      "path": "40_Resources/CS/Concepts/New Laptop/New Laptop Setup.md"
+    },
+    {
+      "basename": "Ubuntu - WSL",
+      "path": "40_Resources/CS/Concepts/New Laptop/Ubuntu - WSL.md"
+    },
+    {
       "basename": "Summer Grind",
       "path": "10_Areas/Summer Grind.md"
     },
@@ -153,14 +165,6 @@
       "path": "40_Resources/CS/Concepts/Concepts Board.md"
     },
     {
-      "basename": "New Laptop Setup",
-      "path": "40_Resources/CS/Concepts/New Laptop Setup.md"
-    },
-    {
-      "basename": "Ubuntu - WSL",
-      "path": "40_Resources/CS/Concepts/Ubuntu - WSL.md"
-    },
-    {
       "basename": "Terminal",
       "path": "40_Resources/CS/Concepts/Terminal.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "00_Dashboard",
       "path": "00_Dashboard.md"
-    },
-    {
-      "basename": "god-nodes",
-      "path": "20_Progress/Projects/CS/Portfolio/god-nodes.md"
     }
   ],
   "omittedPaths": [],

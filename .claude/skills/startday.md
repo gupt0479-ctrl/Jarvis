@@ -22,6 +22,7 @@ Locate `10_Areas/Life/Enumerate/Daily/YYYY-MM-DD.md` where YYYY-MM-DD is today's
 
 - If it exists: proceed to Step 1.
 - If it doesn't exist: create it using the content of `30_Order/Templates/Enumerate/Better Today.md` as the body (copy frontmatter and structure verbatim, then continue to Step 1).
+- If that template file does not exist either: create the daily note with minimal frontmatter (`type: daily`, `created: YYYY-MM-DD`, `status: sprout`) and continue. Do not stop the skill over a missing template.
 
 Never create it anywhere else. `60_Claude/50_Reviews/` is not the target.
 
@@ -110,9 +111,9 @@ Fill Topic column for each row:
 - [ ] [item] — from session [date]
 ```
 
-**Do NOT do today** — add as the last item under Morning Plan:
+**Anti-Drift** — add as the last line under Morning Plan. Read `10_Areas/Life/Plans/08 - Anti-Drift Rules.md` → the `## The "Do NOT do today" list` section and copy today's specific exclusions in. Keep the rules in that one file; do not hardcode them here.
 ```
-**Do NOT do today:** MCP/tool setup, new agents, repo triage, AI platform comparison (Anti-Drift Rules)
+**Do NOT do today:** [today's exclusions from 08 - Anti-Drift Rules]
 ```
 
 **Under `## Productivity`:**
@@ -149,7 +150,7 @@ Academic minimums:
 [Deadline alert if any]
 [Carryover if any]
 
-Note has been updated at: 10_Areas/Life/Enumerate/Daily/[date].md
+Note updated: [[10_Areas/Life/Enumerate/Daily/YYYY-MM-DD]]
 ```
 
 ---

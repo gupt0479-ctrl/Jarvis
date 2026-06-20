@@ -103,7 +103,7 @@ Queries Capability Engine state through MCP. Lightweight — keep MCP calls mini
 | `obsidian_global_search` for `track:` | Find all tracked concepts |
 | `obsidian_global_search` for `next_drill:` | Find drill-scheduled notes |
 | `obsidian_global_search` for `type: output` | Find output notes |
-| `obsidian_list_notes` in `60_Claude/60_Indexes/Field OS/` | Question bank state |
+| `obsidian_list_notes` in `60_Claude/44_Indexes/Field OS/` | Question bank state |
 
 ### Audit Checks
 

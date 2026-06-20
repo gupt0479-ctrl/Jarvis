@@ -21,11 +21,11 @@ Read the following to build a picture of current state:
 - Extract `status:`, `deadline:`, `next:` from frontmatter
 - Note any stalled projects (no `next` action)
 
-**Inbox (`00_Inbox/`):**
-- Check `00_Inbox/Inbox Board.md` for Dataview results
+**Inbox (`60_Claude/00_Inbox/`):**
+- Check `60_Claude/00_Inbox/Inbox Board.md` for Dataview results
 - Identify unprocessed thoughts and brainstorms
 
-**Current Studies (`10_UMN/`):**
+**Current Studies (`10_Areas/UMN/`):**
 - List active course boards
 - Note any upcoming exams or assignments mentioned
 
@@ -55,7 +55,7 @@ Create a response structured as:
 - [X unprocessed thoughts]
 - [Y unprocessed brainstorms]
 
-### Current Courses (10_UMN/)
+### Current Courses (10_Areas/UMN/)
 
 - [Course 1] — [any upcoming deadlines]
 - [Course 2] — [any upcoming deadlines]
@@ -88,7 +88,7 @@ Create a response structured as:
 
 Suggest relevant next steps:
 
-- "Run `/today` to build a realistic plan"
+- "Run `/startday` to build a realistic plan"
 - "Run `/ingest-clipping` to process pending sources"
 - "Run `/weekly-review` to reflect on recent progress"
 
