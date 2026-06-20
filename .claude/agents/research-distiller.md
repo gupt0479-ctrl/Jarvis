@@ -30,7 +30,7 @@ Before doing anything, read:
 
 | Source | Location | Read Method | Output Folder |
 |--------|----------|-------------|---------------|
-| PDF | `60_Claude/05_Clippings/PDFs/` | Python pypdf via Bash | `60_Claude/10_Source_Summaries/PDF Ingestion/` |
+| PDF | `60_Claude/05_Clippings/PDFs/` | `extract_pdf.py` (pypdf → multimodal fallback) | `60_Claude/10_Source_Summaries/PDF Ingestion/` |
 | Image | `60_Claude/05_Clippings/PDFs/` | `Read` tool (multimodal) | `60_Claude/10_Source_Summaries/PDF Ingestion/` |
 | Web clip | `60_Claude/05_Clippings/Web/` | `Read` tool | `60_Claude/10_Source_Summaries/Web Ingestion/` |
 | Live URL | passed by user | `WebFetch` tool | `60_Claude/10_Source_Summaries/Web Ingestion/` |
@@ -43,21 +43,20 @@ Before doing anything, read:
 
 ### PDFs
 
+Run `scripts/extract_pdf.py` from the `ingesting-clipping` skill:
+
 ```bash
-python -c "
-import pypdf, sys
-sys.stdout.reconfigure(encoding='utf-8')
-reader = pypdf.PdfReader(r'FULL_WINDOWS_PATH')
-print(f'Total pages: {len(reader.pages)}')
-for i, page in enumerate(reader.pages):
-    print(f'\n=== Page {i+1} ===')
-    print(page.extract_text())
-"
+cd "D:\Users\_Anant\10_Areas\Documents\Jarvis\.claude\skills\ingesting-clipping"
+python scripts\extract_pdf.py "FULL_WINDOWS_PATH_TO_PDF"
 ```
 
-For PDFs over 30 pages, batch in groups of 20: `reader.pages[:20]`, then `reader.pages[20:40]`.
-First pass: map every heading and subheading across all pages before writing anything.
-If output is mostly blank, the PDF is image-based (scanned) — tell the user.
+Read the exit code. **If exit code is 2 (sparse output), the PDF is scanned/image-based — do not use the pypdf text.** Switch to the multimodal `Read` tool:
+
+- Pass the PDF file path to `Read`. Claude reads each page as an image.
+- Extract all visible text, table data, annotations, and diagram labels from what you see.
+- Do not skip pages — if a page is genuinely blank, note it explicitly.
+
+First pass always maps every heading and subheading across all pages before writing anything. For PDFs over 30 pages: the pypdf path handles all pages in one run, so batch your *writing* in 20-page chunks; on the multimodal `Read` path, read 5 pages at a time and write notes for that batch before reading the next.
 
 ### Images
 Use `Read` (multimodal). Extract all visible text first. Describe diagrams with enough detail to be usable without the original.
@@ -66,7 +65,13 @@ Use `Read` (multimodal). Extract all visible text first. Describe diagrams with 
 Use `Read` on the file. Never modify the raw file.
 
 ### Web URLs
-Use `WebFetch` with `format: "markdown"`. If paywalled, ask the user to paste the content.
+**Primary — Jina Reader + `WebFetch`.** For article/blog/doc URLs, prefix the URL with `https://r.jina.ai/` before calling `WebFetch` — Jina Reader returns clean markdown with boilerplate stripped:
+
+```
+WebFetch https://r.jina.ai/https://example.com/the-article
+```
+
+**Fallback — direct `WebFetch`.** If the Jina-prefixed fetch is paywalled, blocked, or returns nothing useful, call `WebFetch` on the bare URL with `format: "markdown"`. If both fail, ask the user to paste the content.
 
 ---
 

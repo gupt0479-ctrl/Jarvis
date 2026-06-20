@@ -12,7 +12,7 @@ description: Full weekly vault review aligned with the Jarvis Three-Month Resear
 
 Before touching anything else, read these files in order:
 
-1. `60_Claude/7_AI_Information/AI_CONTEXT.md`
+1. `60_Claude/07_AI_Information/AI_CONTEXT.md`
 2. `60_Claude/07_AI_Information/Session Logs/log.md` — tail: last 100 lines
 3. `00_Dashboard.md`
 4. `60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan.md` — sections: "Three-Month Build Map" and "The Weekly Operating Rhythm"

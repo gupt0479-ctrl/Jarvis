@@ -24,12 +24,12 @@ Do not invoke for: pure note cleanup (use `vault-curator`), AI slop rewrites (us
 
 1. `AGENTS.md`
 2. `HUMAN_WRITING.md`
-3. `60_Claude/7_AI_Information/AI_CONTEXT.md`
+3. `60_Claude/07_AI_Information/AI_CONTEXT.md`
 4. `40_Resources/Obsidian/Vault Operating System.md` — for the Capability Engine field schema (`track`, `mastery_level`, `mastery_score`, `last_drilled`, `next_drill`, `drill_interval`, `prerequisites`, `used_in`, `evidence`, `enrichment_status`, `enrichment_level`).
 5. `40_Resources/Obsidian/Jarvis Enrichment Engine.md` — for the enrichment workflow.
 6. `30_Order/Templates/Capability/Jarvis Enrichment Template.md` — for the enrichment section shape.
 7. `30_Order/Templates/Capability/Question Bank Template.md` — for drill question shape.
-8. The target Field OS board for the concept's track: `60_Claude/60_Indexes/Field OS/{AI|Systems|Algorithms|Career|Trading} Field OS.md`.
+8. The target Field OS board for the concept's track: `60_Claude/44_Indexes/Field OS/{AI|Systems|Algorithms|Career|Trading} Field OS.md`.
 
 Then read the concept note itself.
 
@@ -95,7 +95,7 @@ Present the proposed updates as a diff and wait for approval. Then patch the not
 Surface, in order of priority:
 
 1. **Concept gap:** any prerequisite from the note's `prerequisites:` field that has no concept note yet, or one with `mastery_level: novice`.
-2. **Evidence gap:** if `evidence:` is empty, suggest a proof artifact to build (interview story, portfolio bullet, project bullet, reusable prompt). Route to `60_Claude/45_Outputs/`.
+2. **Evidence gap:** if `evidence:` is empty, suggest a proof artifact to build (interview story, portfolio bullet, project bullet, reusable prompt). Route to `60_Claude/35_Outputs/`.
 3. **Track gap:** if the concept's track has fewer than 3 open questions in its Field OS Question Bank, suggest one.
 4. **Drill chain:** the next overdue drill in the same track (from `next_drill` field), or the next prerequisite for an upcoming course week.
 

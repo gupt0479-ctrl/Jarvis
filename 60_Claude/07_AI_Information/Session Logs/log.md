@@ -903,3 +903,22 @@ Sanity verified working (GitHub link resolves, fake certs removed, one real cert
 - Coverage check: R0 (header static + spacing), R1 (schema: color/summary/coverImage-optional/visibility-removed/logo + content), R2 Experience, R3 Projects, R4 Skills, R5 Education, R6 Certs+Achievements, R7 Blog/Contact/Footer, R8 Orby+a11y+optional CSP → green-light → deploy.
 
 Folder is final: notes 00–14 + BUILD-STATUS + claude-code-setup (00–04). Next: run R0 in WSL, work through R8, then deploy.
+
+
+## [2026-06-20] skill-repair | .claude/ layer fix
+
+- Fixed broken paths (12 sites, verified by grep) in: learning-agent.md (×2: 07_AI_Information, 44_Indexes/Field OS), career-operator.md (Session Logs path), vault-curator.md (10_Areas/UMN), context.md (×4: 10_Areas/UMN, 60_Claude/00_Inbox, /today→/startday), mcp-hub.md (×2: 07_AI_Information), ops-reference.md (44_Indexes/Field OS), trace-topic.md (10_Areas/UMN), weekly-review.md (07_AI_Information).
+- Corrections vs. the source prompt (verified against the live vault): `Field OS` lives under `44_Indexes/Field OS/` — preserved the subfolder rather than collapsing to `44_Indexes/`; weekly-review.md had no Field OS path (prompt was wrong); anti-drift list lives in `08 - Anti-Drift Rules.md`, not file 01.
+- Restructured `ingest-clipping.md` → `ingesting-clipping/` directory per North Star Part 5.1: SKILL.md (entry/routing) + reference.md (ToC; pypdf→multimodal Read fallback in §2; Jina Reader prefix in §4) + examples.md (per-source frontmatter) + scripts/extract_pdf.py.
+- extract_pdf.py: pypdf primary; exits 2 when avg <200 chars/page → caller falls back to multimodal Read (replaces the old "OCR needed" dead end). Verified: exit 0 on real text PDF, exit 2 on blank/scanned PDF.
+- Updated research-distiller.md PDF block to call the script + multimodal fallback. Updated SessionStart hook read order (Vault Map → North Star). Patched startday.md: template fallback, dynamic anti-drift pointer to file 08, wikilink for daily-note path. Updated commands/ingest-clipping.md to point at the directory.
+- Old flat `ingest-clipping.md`: workspace mount blocks deletion and the delete permission was declined, so it was converted to a redirect stub pointing at the new directory. Safe to delete manually.
+- Not touched (out of scope): vault notes, jarvis-memory wiring, .obsidian/.cursor/.kiro.
+
+
+## [2026-06-20] skill-repair | .claude/ layer — final fixes
+
+- Fixed `60_Claude/45_Outputs/` → `60_Claude/35_Outputs/` in learning-agent.md (Phase 4, Evidence gap).
+- Updated research-distiller.md: routing table PDF Read-Method cell → `extract_pdf.py` (pypdf → multimodal fallback); Web URLs step → Jina Reader primary (`https://r.jina.ai/` prefix) + direct WebFetch fallback.
+- Deletion was enabled for the Jarvis folder this session, so both files were actually removed (not stubbed): `__deltest.tmp` and the `ingest-clipping.md` redirect stub. The flat ingest-clipping skill is now fully gone; only `ingesting-clipping/` remains.
+- Verified: 45_Outputs → zero matches; r.jina.ai → present in research-distiller; both junk files GONE; ingesting-clipping/ directory intact.

@@ -26,7 +26,7 @@ The skill is read-mostly. It writes only when explicitly told to (`/mcp-hub sync
 1. `AGENTS.md`
 2. `CLAUDE.md`
 3. `HUMAN_WRITING.md`
-4. `60_Claude/7_AI_Information/AI_CONTEXT.md`
+4. `60_Claude/07_AI_Information/AI_CONTEXT.md`
 5. `40_Resources/Obsidian/Claude Pro Workflow.md`
 6. `40_Resources/Obsidian/MCP-Hub-Index.md` — the single-page external orientation note.
 7. `00_Dashboard.md`
@@ -113,7 +113,7 @@ Tool-specific overrides:
 Verify every wrapper file's references against the actual vault. Checks performed:
 
 1. Does each path in each wrapper resolve to an existing file?
-2. Does `[[AI_CONTEXT]]` in the wrapper resolve to `60_Claude/7_AI_Information/AI_CONTEXT.md` (the only file by that name)?
+2. Does `[[AI_CONTEXT]]` in the wrapper resolve to `60_Claude/07_AI_Information/AI_CONTEXT.md` (the only file by that name)?
 3. Does each wrapper's "read these files" list match the current canonical spine in `AI_CONTEXT.md`?
 4. Are there files in `AI_CONTEXT.md`'s canonical sources list that the wrappers don't include? Or vice versa?
 

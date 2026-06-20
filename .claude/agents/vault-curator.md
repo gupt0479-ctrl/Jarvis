@@ -103,7 +103,7 @@ notes:
 | 20_Progress | ✅ | Y stalled |
 | 40_Resources | ✅ | Z gaps |
 | 60_Claude | ⚠️ | See lint report |
-| 10_UMN | ✅ | — |
+| 10_Areas/UMN | ✅ | — |
 
 ## Broken Links
 
