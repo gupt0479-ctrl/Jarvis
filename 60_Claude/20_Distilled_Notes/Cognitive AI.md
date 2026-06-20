@@ -7,7 +7,7 @@ tags:
   - ai
 notes:
   - "[[60_Claude/30_Source_Summaries/Kairo — Know What's Coming - Summary]]"
-  - "[[40_Resources/CS/AI/AI Workflow]]"
+  - "[[AI Workflow]]"
 ---
 
 # Cognitive AI

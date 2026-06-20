@@ -10,7 +10,7 @@ tags:
 related_progress:
   - "[[AI_CONTEXT]]"
   - "[[AI Workflow]]"
-  - "[[40_Resources/Obsidian/Claude Pro Workflow]]"
+  - "[[Claude Pro Workflow]]"
   - "[[40_Resources/CS/Links|Links]]"
   - "[[Claude Code]]"
   - "[[MCPs]]"
@@ -37,7 +37,7 @@ Full folder definitions: [[40_Resources/Obsidian/Jarvis Vault Architecture]]. Ro
 4. **Respect maturity** — Notes with `status: tree` are stable; propose changes before modifying.
 5. **Read `HUMAN_WRITING.md` and `30_Order/` before writing** — `HUMAN_WRITING` governs voice; `30_Order/Templates/` and `30_Order/Workflows/` govern how each note type is shaped and filed. See [[40_Resources/Obsidian/Jarvis Vault Architecture]] for where each note goes.
 6. **Use `60_Claude/07_AI_Information/AI_CONTEXT.md` for continuity** — read the manifest, dashboard, and session log before assuming current project state. The wikilink `[[AI_CONTEXT]]` resolves to the same file.
-7. **Use context packs, not vault dumps** — follow [[40_Resources/Obsidian/Claude Pro Workflow]]: read the manifest, dashboard, session log tail, and task-specific notes instead of scanning the whole vault.
+7. **Use context packs, not vault dumps** — follow [[Claude Pro Workflow]]: read the manifest, dashboard, session log tail, and task-specific notes instead of scanning the whole vault.
 
 ### Note Creation Conventions
 

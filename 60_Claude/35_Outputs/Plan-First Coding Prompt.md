@@ -9,7 +9,7 @@ track:
   - ai
 output_kind: reusable-prompt
 source_concepts:
-  - "[[40_Resources/CS/AI/AI Workflow]]"
+  - "[[AI Workflow]]"
   - "[[40_Resources/CS/AI/Cursor AI]]"
 ---
 

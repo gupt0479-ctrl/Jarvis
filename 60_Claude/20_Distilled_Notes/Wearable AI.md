@@ -9,7 +9,7 @@ tags:
 notes:
   - "[[60_Claude/30_Source_Summaries/Kairo — Know What's Coming - Summary]]"
   - "[[Cognitive AI]]"
-  - "[[40_Resources/CS/AI/AI Workflow]]"
+  - "[[AI Workflow]]"
 ---
 
 # Wearable AI

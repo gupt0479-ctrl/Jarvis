@@ -17,7 +17,7 @@ notes:
   - "[[AI_CONTEXT]]"
   - "[[00_Dashboard]]"
   - "[[40_Resources/Obsidian/Vault Operating System]]"
-  - "[[40_Resources/Obsidian/Claude Pro Workflow]]"
+  - "[[Claude Pro Workflow]]"
   - "[[60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan]]"
   - "[[60_Claude/40_Project_Briefs/Claude Optimization Master Setup]]"
   - "[[60_Claude/50_Reviews/Weekly Synthesis/Weekly Synthesis — 2026-W22]]"
@@ -31,7 +31,7 @@ next: Create conversation capture folders, then patch AGENTS.md and CLAUDE.md pe
 >
 > This audit is the orientation pack for any future Claude session working on the Jarvis vault meta-system. Read it before touching anything else.
 >
-> Phase order: (1) read the spine pack — `AGENTS.md`, `HUMAN_WRITING.md`, `60_Claude/7_AI_Information/AI_CONTEXT.md`, `00_Dashboard.md`, last 100 lines of `60_Claude/10_Session_Logs/log.md`, [[40_Resources/Obsidian/Vault Operating System]], [[40_Resources/Obsidian/Claude Pro Workflow]]. (2) read this audit. (3) read [[60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan|the Master Plan]] and [[60_Claude/40_Project_Briefs/Claude Optimization Master Setup|the Claude Optimization brief]] for execution context. Then act.
+> Phase order: (1) read the spine pack — `AGENTS.md`, `HUMAN_WRITING.md`, `60_Claude/7_AI_Information/AI_CONTEXT.md`, `00_Dashboard.md`, last 100 lines of `60_Claude/10_Session_Logs/log.md`, [[40_Resources/Obsidian/Vault Operating System]], [[Claude Pro Workflow]]. (2) read this audit. (3) read [[60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan|the Master Plan]] and [[60_Claude/40_Project_Briefs/Claude Optimization Master Setup|the Claude Optimization brief]] for execution context. Then act.
 >
 > Anchor dates: Master Plan runs 2026-04-24 → 2026-07-17. This audit's horizon runs 2026-05-29 → 2026-09-01. The first month of this audit overlaps with Master Plan Month 2; the third month extends past the Master Plan and into hardening + integration.
 >

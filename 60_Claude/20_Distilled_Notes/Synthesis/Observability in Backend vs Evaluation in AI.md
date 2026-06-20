@@ -8,7 +8,7 @@ tags:
   - synthesis
 concepts:
   - "[[Observability and Tracing]]"
-  - "[[40_Resources/CS/AI/AI Workflow]]"
+  - "[[AI Workflow]]"
 tracks:
   - systems
   - ai

@@ -22,7 +22,7 @@ This is the content standard for any `input` note created from a single source (
 - `research-distiller` agent and `ingest-clipping` skill point here for the note body.
 ## Per-Heading Standard
 ### Frontmatter
-`type: input`, `status: sprout`, `created`/`updated` as `YYYY-MM-DD`, `tags: [summary]`. Set `input_kind` to the real source kind (`pdf | web | video | image | conversation`) and `track` to the subject domain (`ai | systems | algorithms | career | trading | general`) — the `track` value becomes the flashcard deck. For source notes set `source_note: "[[Filename.pdf]]"` using the filename **with extension and no folder path**, and `source_url` to the path or live link. Every `notes:` wikilink must point to a file that already exists — Grep first.
+`type: input`, `status: sprout`, `created`/`updated` as `YYYY-MM-DD`, `tags: [summary]`. Set `input_kind` to the real source kind (`pdf | web | video | image | conversation | github`) and `track` to the subject domain (`ai | systems | algorithms | career | trading | general`) — the `track` value becomes the flashcard deck. For source notes set `source_note: "[[Filename.pdf]]"` using the filename **with extension and no folder path**, and `source_url` to the path or live link. Every `notes:` wikilink must point to a file that already exists — Grep first.
 > [!WARNING]
 > Duplicate `notes:` keys (YAML silently keeps the last), a `source_note` written as a full path or without the extension, or a `track` that does not match the deck you tag in Flashcards. The Quant Foundations note uses `source_note: "[[Quant Foundations.pdf]]"` and `track: trading` feeding `#cards/trading`.
 ### Title and Source Lines
@@ -54,6 +54,7 @@ The connection to active vault work — a named project, course, or concept — 
 ### Links Into The Vault
 Verified wikilinks only — Grep each before writing. Stubs that do not yet exist go **here**, labeled `(to create)`, never in frontmatter.
 *Density:* link the source clipping and every existing concept/project the source touches.
+*Tools and techniques:* if the source is a tool, repo, or reusable technique, check whether a matching list note in `40_Resources/CS/AI/` (`Toolkit/`, `Workflows/`, `Gen AI/`, `Prompts/`, `Token Optimization/`) already covers the category. Link to it if it exists. If it doesn't and the source is genuinely reusable (not a one-off), name the proposed addition in the agent's Step 5 results — propose, do not write; `40_Resources` promotion stays curated per [[40_Resources/Obsidian/Jarvis Vault Architecture]].
 > [!WARNING]
 > Wikilinking firm names or book titles that have no vault note. Quant Foundations links only `[[Stocks Trading AI Hub]]` (confirmed) and lists uncreated targets as questions, not as fake links.
 ### Open Questions

@@ -9,8 +9,8 @@ track:
   - ai
 output_kind: reusable-prompt
 source_concepts:
-  - "[[40_Resources/CS/AI/MCPs]]"
-  - "[[40_Resources/CS/AI/AI Workflow]]"
+  - "[[MCPs]]"
+  - "[[AI Workflow]]"
 ---
 
 # Vault Enrichment Prompt

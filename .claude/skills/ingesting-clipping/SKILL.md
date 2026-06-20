@@ -21,6 +21,7 @@ Turn one raw source into one complete summary note. After ingestion the user sho
 | `.pdf` in `05_Clippings/PDFs/` | `scripts/extract_pdf.py` (pypdf → multimodal fallback) | `10_Source_Summaries/PDF Ingestion/` |
 | `.png/.jpg/.jpeg/.webp` | `Read` tool (multimodal) | `10_Source_Summaries/PDF Ingestion/` |
 | `http://` or `https://` URL | `WebFetch` (Jina-prefixed; see reference §4) | `10_Source_Summaries/Web Ingestion/` |
+| `github.com/<owner>/<repo>` URL or clip | `gh api` / GitHub MCP tools — README + file tree, never the rendered page (reference §6) | `10_Source_Summaries/Github Ingestion/` |
 | `.md` in `05_Clippings/Web/` | `Read` tool | `10_Source_Summaries/Web Ingestion/` |
 | `.md` in `05_Clippings/Videos/` | `Read` tool | `10_Source_Summaries/Video Ingestion/` |
 | `.md` in `05_Clippings/AI Conversations/` | `Read` tool | `10_Source_Summaries/Web Ingestion/` |
@@ -31,7 +32,7 @@ If no path is given, list `60_Claude/05_Clippings/` subfolders and ask.
 
 ## Step 1 — Read the source
 
-Pick the method for the source type and read the whole thing. **Each method has a failure mode and a fallback — read `reference.md` §2–§5 before extracting; do not improvise.** The one rule that matters most: a sparse or scanned PDF is not a dead end. `scripts/extract_pdf.py` exits with code `2` when text extraction is too thin; when that happens, pass the PDF path to the multimodal `Read` tool and read the pages as images (reference §2).
+Pick the method for the source type and read the whole thing. **Each method has a failure mode and a fallback — read `reference.md` §2–§6 before extracting; do not improvise.** The one rule that matters most: a sparse or scanned PDF is not a dead end. `scripts/extract_pdf.py` exits with code `2` when text extraction is too thin; when that happens, pass the PDF path to the multimodal `Read` tool and read the pages as images (reference §2). The other common dead end: a `.md` clip whose body is just an empty `<iframe>` (Google Sheets, Notion, Airtable embeds clip empty) — that is a fallback case too, not a source with no content (reference §5).
 
 ## Step 2 — Extract content
 
@@ -72,7 +73,8 @@ Run the Done Conditions in `30_Order/Standards/Source Summary Standard.md` and t
 
 - Never modify `60_Claude/05_Clippings/` — read-only raw sources.
 - Search before creating — extend an existing summary if one already exists.
-- Route correctly — PDFs → `PDF Ingestion/`, web → `Web Ingestion/`, video → `Video Ingestion/`.
+- Route correctly — PDFs → `PDF Ingestion/`, web → `Web Ingestion/`, video → `Video Ingestion/`, GitHub repos → `Github Ingestion/`.
+- Never scrape a GitHub repo's rendered page as a substitute for reading the repo. A README capture (web clip or Jina/WebFetch) only proves what the repo claims; `gh api` / GitHub MCP tools against the actual files prove what it does.
 
 ---
 

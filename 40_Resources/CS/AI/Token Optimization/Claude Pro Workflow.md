@@ -2,7 +2,7 @@
 type: evergreen
 status: sprout
 created: 2026-05-26
-updated: 2026-05-26
+updated: 2026-06-20
 tags:
   - evergreen
   - claude
@@ -31,6 +31,19 @@ Claude Pro works best here when Claude Code is the workbench, Claude Desktop is 
 - Jarvis should not be scanned as a whole vault by default.
 - Local Obsidian MCP is a desktop/laptop workflow. Mobile should not be expected to read localhost tools.
 
+## How the Limits Actually Work (2026)
+
+The weekly limit is not a message count. Anthropic's interface talks in "messages," but the real unit is tokens of compute, weighted by model, conversation length, effort level, and which tools are loaded. The same question can cost several times more on Opus with a long history than on Sonnet in a fresh chat.
+
+Two windows stack:
+
+- A **5-hour rolling window** — starts on your first prompt, not on a clock hour. Rough community sizing: ~44k tokens on Pro, ~88k on Max 5x, ~220k on Max 20x.
+- A **weekly cap** (added Aug 2025) that counts only the time Claude is actively processing or reasoning.
+
+The cost driver most people miss: every new message re-sends the entire conversation as input. Message 201 costs as much input as messages 1–200 combined. The usual way to burn the week is one long session, not the number of questions — it is the accumulated context dragged along each turn.
+
+Usage limit and context window are different things. The 200k context window ends a single conversation when full; usage limits stop you across all conversations. They interact: with code execution on, Claude auto-summarizes a long chat to keep going, and that summarization itself spends usage. If you are near a limit inside a long chat, starting a new one is cheaper than continuing.
+
 ## Surface Roles
 
 | Surface | Use For | Do Not Use For |
@@ -46,9 +59,9 @@ Claude should start with a small context pack:
 
 1. `AGENTS.md`
 2. `HUMAN_WRITING.md`
-3. `60_Claude/7_AI_Information/AI_CONTEXT.md`
+3. `60_Claude/07_AI_Information/AI_CONTEXT.md`
 4. `00_Dashboard.md`
-5. the tail of `60_Claude/10_Session_Logs/log.md`
+5. the tail of `60_Claude/07_AI_Information/Session Logs/log.md`
 6. task-specific notes only after the task is clear
 
 Do not ask Claude to read the whole vault. If a broad search is needed, ask for a targeted search query first.
@@ -56,7 +69,7 @@ Do not ask Claude to read the whole vault. If a broad search is needed, ask for 
 ## Claude Code Prompt
 
 ```text
-Use the Jarvis context pack. Read AGENTS.md, HUMAN_WRITING.md, 60_Claude/7_AI_Information/AI_CONTEXT.md, 00_Dashboard.md, and the recent tail of 60_Claude/10_Session_Logs/log.md. Then read only the project or course notes needed for this task. Do not scan the whole vault unless I explicitly ask.
+Use the Jarvis context pack. Read AGENTS.md, HUMAN_WRITING.md, 60_Claude/07_AI_Information/AI_CONTEXT.md, 00_Dashboard.md, and the recent tail of 60_Claude/07_AI_Information/Session Logs/log.md. Then read only the project or course notes needed for this task. Do not scan the whole vault unless I explicitly ask.
 ```
 
 ## Desktop Prompt
@@ -81,6 +94,31 @@ Capture this as a quick Jarvis note idea. Keep it short, extract decisions and n
 - In Claude Code, inspect `/context` when a session feels heavy.
 - Disable unused Desktop tools/connectors for chats that do not need them.
 
+## Cowork Discipline
+
+Cowork shares the same usage pool as Code and chat, but it front-loads cost: every session reads the connected folder, global instructions, and skills before you ask anything. The setup is the lever.
+
+- Keep `CLAUDE.md` and project instructions lean — they load every session, so every extra paragraph is a recurring tax.
+- Don't keep 50 files in the connected folder when 3 are relevant. Fetch-don't-dump still applies.
+- Use plain chat (Haiku or Sonnet) for thinking; open Cowork only when you know what you want built.
+- For recurring work — digests, reviews, briefings — use the `/schedule` plugin instead of one ever-growing session.
+- This environment defers MCP tool definitions and loads them on demand via tool search, instead of loading every connector's schema upfront. Keep it that way: with this many connectors attached, upfront loading would spend roughly a third of the window before the first message.
+
+## Token-Discipline Block (paste into project instructions)
+
+Drop this into `CLAUDE.md` or a project's instructions to make frugal behavior the default:
+
+```text
+Token discipline:
+- One task per conversation. Tell me to /clear or open a new chat when the task changes.
+- Default to Sonnet; escalate to Opus only for hard planning or stuck debugging; use Haiku for quick lookups.
+- Fetch, don't dump: read the context pack (AGENTS, AI_CONTEXT, dashboard, log tail) + only task-specific notes. Never scan the whole vault unless I explicitly ask.
+- Prefer targeted grep/search over broad reads; prefer note names and paths over pasted file bodies.
+- Keep extended thinking off and effort low for routine edits.
+- Run /compact proactively around 250–300k tokens, not after the warning.
+- Disable connectors not needed for the current task.
+```
+
 ## MCP Rules
 
 - MCP should answer "where is the right context?" before it answers "what is everything?"
@@ -99,7 +137,7 @@ Current intended hooks:
 - `SessionStart`: remind Claude Code of the Jarvis context-pack policy when launched inside this vault.
 - `SessionEnd`: write compact local activity metadata to the user's private Claude directory, not to the vault session log.
 
-Human session summaries still belong in `60_Claude/10_Session_Logs/log.md` after meaningful vault work.
+Human session summaries still belong in `60_Claude/07_AI_Information/Session Logs/log.md` after meaningful vault work.
 
 ## Failure Modes
 
