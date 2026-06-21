@@ -21,6 +21,7 @@ The common theme is the same as [[Software Fundamentals Matter More Than Ever Wi
 | [VoltAgent/awesome-agent-skills](https://github.com/VoltAgent/awesome-agent-skills) | Curated directory / awesome list | 1000+ advertised skills | Finding targeted skills by category, tool, or vendor | Yes, but only as a search library. |
 | [garrytan/gstack](https://github.com/garrytan/gstack) | Opinionated product-building workflow stack | README describes 23 tools; docs/listings expose roughly 28+ skills plus extra CLIs | Product framing, eng review, QA, release discipline, safety guardrails | Use selectively, not wholesale. |
 | [github/spec-kit](https://github.com/github/spec-kit) | Spec-driven development toolkit | About 9 core/optional commands, plus phases and templates | Turning vague ideas into specs, plans, task lists, and implementation structure | Use for larger features and new projects. |
+| [aiwithremy/claude-skills-llm-council](https://github.com/aiwithremy/claude-skills-llm-council) | Single-purpose decision pressure-test skill | 1 skill — 5 sub-agent advisor personas + anonymized peer review + chairman synthesis | Pressure-testing a genuinely high-stakes, ambiguous decision (pivot, pricing, which repo to actually adopt) before acting on it | Yes — install for the next real fork-in-the-road decision. See [[60_Claude/10_Source_Summaries/Github Ingestion/LLM Council (github)]]. |
 
 ## 1. Matt Pocock — Skills for Real Engineers
 

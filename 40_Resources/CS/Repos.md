@@ -53,14 +53,14 @@ AI agents, frameworks, models, and LLM tooling.
 - [hermes-agent](https://github.com/NousResearch/hermes-agent) — 171K-star Nous Research coding agent with ACP/MCP/Claude Code support; the most-starred agent on GitHub right now
 - [opencode](https://github.com/anomalyco/opencode) — 166K-star open source coding agent; terminal-first, multi-model, actively developed alternative to Claude Code
 - [browser-use](https://github.com/browser-use/browser-use) — 96K-star Python library making websites accessible for AI agents via Playwright; the standard for browser automation
-- [goose](https://github.com/aaif-goose/goose) — 46K-star open source extensible AI agent (Rust); install/execute/edit/test with any LLM; ACP + MCP native
+- [[goose (github)|goose]] — 50K-star open source extensible AI agent (Rust); install/execute/edit/test with any LLM; ACP + MCP native; moved from `block/goose` to the Linux Foundation's Agentic AI Foundation
 - [PageIndex](https://github.com/VectifyAI/PageIndex) — 32K-star vectorless reasoning-based RAG (no embeddings); document index using LLM reasoning chains
 - [multica](https://github.com/multica-ai/multica) — 34K-star open-source managed agents platform: assign tasks, track progress, compound skills; TypeScript
 - [MiroFish](https://github.com/666ghj/MiroFish) — 63K-star swarm intelligence engine for prediction; financial forecasting + social prediction + knowledge graphs; Python
 - [TradingAgents](https://github.com/TauricResearch/TradingAgents) — 80K-star multi-agent LLM financial trading framework: analyst/researcher/trader/risk manager agents; [paper](https://arxiv.org/pdf/2412.20138)
 - [openhuman](https://github.com/tinyhumansai/openhuman) — 29K-star personal AI super intelligence; private, simple, Rust/GPL; tinyhumans.ai
 - [agentscope](https://github.com/agentscope-ai/agentscope) — 25K-star build and run agents you can see and trust; MCP-native, multi-modal, multi-agent; Alibaba-backed
-- [promptfoo](https://github.com/promptfoo/promptfoo) — test prompts, agents, RAGs; red teaming + vulnerability scanning; used by OpenAI and Anthropic internally
+- [[promptfoo (github)|promptfoo]] — test prompts, agents, RAGs; red teaming + vulnerability scanning; used by OpenAI and Anthropic internally; now part of OpenAI (still MIT-licensed, open source)
 - [jan](https://github.com/janhq/jan) — 42K-star fully offline ChatGPT alternative; runs 100% locally on your hardware; Tauri + LlamaCPP
 - [dify](https://github.com/langgenius/dify) *(also in Claude)* — 143K-star production-ready agentic workflow platform; Docker deployment; team-scale LLM app builder
 - [ai-engineering-hub](https://github.com/patchy631/ai-engineering-hub) — 35K-star in-depth tutorials on LLMs, RAGs, real-world agents (Jupyter notebooks); Daily Dose of DS
@@ -84,10 +84,10 @@ AI agents, frameworks, models, and LLM tooling.
 
 Tools and starters for actually building things.
 
-- [pocketbase](https://github.com/pocketbase/pocketbase) — 58K-star open source realtime backend in one Go binary: auth, SQLite DB, file storage, realtime subscriptions
-- [n8n-workflows](https://github.com/Zie619/n8n-workflows) — 5K+ n8n automation workflow templates scraped from the official community site
+- [[pocketbase (github)|pocketbase]] — 59K-star open source realtime backend in one Go binary: auth, SQLite DB, file storage, realtime subscriptions; pre-v1.0.0, no compat guarantee yet
+- [[n8n-workflows (github)|n8n-workflows]] — 4,343+ n8n automation workflow templates scraped from the official community site; README's AI-BOM banner claims hardcoded keys found in this exact set — audit before importing
 - [public-apis](https://github.com/public-apis/public-apis) — 437K-star collective list of free APIs organized by category; first stop when a project needs external data
-- [tradingview-mcp](https://github.com/tradesdontlie/tradingview-mcp) — MCP server connecting Claude Code to TradingView Desktop for AI-assisted chart analysis
+- [[tradingview-mcp (github)|tradingview-mcp]] — MCP server connecting Claude Code to TradingView Desktop for AI-assisted chart analysis via Chrome DevTools Protocol; requires active TradingView subscription
 - [react-three-fiber](https://github.com/pmndrs/react-three-fiber) — 30K-star React renderer for Three.js; declarative 3D in React with full Three.js access
 - [semantic-search-nextjs-pinecone-langchain-chatgpt](https://github.com/dabit3/semantic-search-nextjs-pinecone-langchain-chatgpt) — starter: embed text → Pinecone, semantic search with GPT3 + LangChain in Next.js UI
 - [ai-weekend-builds](https://github.com/kju4q/ai-weekend-builds) — weekend AI project starters using Anthropic API; Python/Node with READMEs and starter code
@@ -153,7 +153,7 @@ Security tooling and research.
 - [bumblebee](https://github.com/perplexityai/bumblebee) — read-only developer endpoint scanner from Perplexity: checks on-disk packages/extensions for known supply-chain compromises; Go
 - [keyhacks](https://github.com/streaak/keyhacks) — quick ways to verify if leaked API keys from bug bounty programs are valid; reference for bug bounty + key auditing
 - [cai](https://github.com/aliasrobotics/cai) — Cybersecurity AI framework: AI-powered pentesting and security research; Python + multi-agent; from Alias Robotics
-- [promptfoo](https://github.com/promptfoo/promptfoo) *(also in AI)* — red teaming and vulnerability scanning specifically for LLM/agent systems; used by Anthropic
+- [[promptfoo (github)|promptfoo]] *(also in AI)* — red teaming and vulnerability scanning specifically for LLM/agent systems; used by Anthropic
 
 ---
 
