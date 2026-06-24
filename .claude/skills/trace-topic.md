@@ -24,7 +24,7 @@ Search locations:
 - `60_Claude/` — Distilled knowledge
 - `40_Resources/` — Reference material
 - `20_Progress/` — Active projects
-- `10_Areas/UMN/` — Course material
+- `40_Resources/UMN/Previous Classes/` — past coursework reference; `10_Areas/UMN/` — current-term board/syllabus only
 - `50_Archive/` — Historical context
 - `60_Claude/05_Clippings/` — Raw sources
 

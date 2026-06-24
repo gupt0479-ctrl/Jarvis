@@ -26,7 +26,8 @@ Read the following to build a picture of current state:
 - Identify unprocessed thoughts and brainstorms
 
 **Current Studies (`10_Areas/UMN/`):**
-- List active course boards
+- List active course boards and the current-term syllabus
+- Past coursework (lecture/concept notes) now lives under `40_Resources/UMN/Previous Classes/` — check there for course content, not in `10_Areas/UMN/`
 - Note any upcoming exams or assignments mentioned
 
 **Recent Claude Activity (`60_Claude/`):**
@@ -124,7 +125,7 @@ Suggest relevant next steps:
 ### Current Courses
 
 - [[CSCI 2041]] — No deadlines noted
-- [[MGMT 3001]] — No deadlines noted
+- [[CSCI 4041]] — No deadlines noted
 - [[MUS 1013]] — Week 1 covered
 
 ### Recent Claude Activity

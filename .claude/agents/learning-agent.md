@@ -95,7 +95,7 @@ Present the proposed updates as a diff and wait for approval. Then patch the not
 Surface, in order of priority:
 
 1. **Concept gap:** any prerequisite from the note's `prerequisites:` field that has no concept note yet, or one with `mastery_level: novice`.
-2. **Evidence gap:** if `evidence:` is empty, suggest a proof artifact to build (interview story, portfolio bullet, project bullet, reusable prompt). Route to `60_Claude/35_Outputs/`.
+2. **Evidence gap:** if `evidence:` is empty, suggest a proof artifact to build (interview story, portfolio bullet, project bullet, reusable prompt). `60_Claude/35_Outputs/` was removed (2026-06) and not replaced — file the artifact in `60_Claude/00_Inbox/` until a new home is defined; do not invent a folder.
 3. **Track gap:** if the concept's track has fewer than 3 open questions in its Field OS Question Bank, suggest one.
 4. **Drill chain:** the next overdue drill in the same track (from `next_drill` field), or the next prerequisite for an upcoming course week.
 
@@ -178,7 +178,7 @@ Append a session log entry:
 
 ## Integration With Existing System
 
-- Reads the same Capability Engine fields written by Master Plan Phase 2-4 enrichment work (see [[60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan]]).
+- Reads the same Capability Engine fields written by Master Plan Phase 2-4 enrichment work (see [[20_Progress/Projects/AI Second Brain/Jarvis Three-Month Research Engine Master Plan]] — moved out of `60_Claude/40_Project_Briefs/` once it became the live execution plan).
 - Composes with `/ops capability-audit` — the audit surfaces overdue drills, this agent acts on them.
 - Composes with `vault-curator` — the curator flags duplicate concepts; this agent picks the enriched one to drill.
 - Composes with `research-distiller` — the distiller produces source summaries; this agent turns the surfaced concepts into drillable knowledge.

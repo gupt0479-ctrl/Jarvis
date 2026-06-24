@@ -25,7 +25,7 @@ Before scanning or editing, read:
 - `60_Claude/07_AI_Information/Vault Map.md`
 - `AGENTS.md` (the Write Contract you are enforcing)
 - `40_Resources/Obsidian/Jarvis Vault Architecture.md`
-- `AI_CONTEXT.md`
+- `60_Claude/07_AI_Information/AI_CONTEXT.md`
 - `HUMAN_WRITING.md`
 - `40_Resources/Obsidian/Vault Operating System.md`
 
@@ -37,9 +37,10 @@ Before scanning, search for the most recent note tagged `ops-health` (by `create
 
 Read structure across all folders:
 
-- `10_Areas/` — Identity hubs + coursework (check hubs link out; do not bloat)
+- `10_Areas/` — Identity hubs + current-term coursework (check hubs link out; do not bloat)
 - `20_Progress/` — Active projects (check for stalled, missing `next:`)
-- `40_Resources/` — Reference knowledge (check for gaps, uncurated bulk dumps)
+- `30_Order/` — Templates, Standards, Workflows, System tooling (flag anything that isn't one of those four — it's misfiled)
+- `40_Resources/` — Reference knowledge, including past-course material under `40_Resources/UMN/` (check for gaps, uncurated bulk dumps)
 - `60_Claude/` — AI workshop (full lint; flag mature `20_Distilled_Notes` ready to promote)
 - `60_Claude/00_Inbox/` — Unprocessed items
 - `50_Archive/` — **Never read.** Excluded by the Write Contract; skip entirely.
@@ -78,7 +79,7 @@ Read structure across all folders:
 
 ### 3. Create Curator Report
 
-Create `60_Claude/50_Reviews/Vault Curator Report - YYYY-MM-DD.md`:
+Create `60_Claude/30_Reviews/Vault Curator Report - YYYY-MM-DD.md`:
 
 ```markdown
 ---
@@ -103,7 +104,7 @@ notes:
 | 20_Progress | ✅ | Y stalled |
 | 40_Resources | ✅ | Z gaps |
 | 60_Claude | ⚠️ | See lint report |
-| 10_Areas/UMN | ✅ | — |
+| 10_Areas | ✅ | — |
 
 ## Broken Links
 

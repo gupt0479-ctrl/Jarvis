@@ -111,8 +111,8 @@ The template gets the note into the right shape. [[HUMAN_WRITING]] decides wheth
 - **Periodic Notes → reviews:** Periodic Notes creates dated review notes from the Headway templates into `60_Claude/50_Reviews/`. The review pulls from [[00_Dashboard]], the session log tail, and open tasks — it is a read-of-state, not a new data source.
 - **Templater bug surface:** `60_Claude/30_Source_Summaries` appears in the folder-template map, but the live source-summary path is `60_Claude/10_Source_Summaries`. A template bound to the dead path never fires.
 ## Gold-Standard Example
-- *Templater output:* [[10_Areas/UMN/Previous Classes/Minor/MGMT 3001/Week - 9|Week - 9]] is what the `Week Template` folder template should produce — class frontmatter, the right section skeleton, ready for content.
-- *Periodic Notes output:* [[60_Claude/50_Reviews/Weekly Synthesis/Weekly Synthesis — 2026-W22|Weekly Synthesis — 2026-W22]] is a real review note in the configured folder.
+- *Templater output:* [[40_Resources/UMN/Previous Classes/Minor/MGMT 3001/Week - 9|Week - 9]] is what the `Week Template` folder template should produce — class frontmatter, the right section skeleton, ready for content.
+- *Periodic Notes output:* [[Weekly Synthesis — 2026-W22|Weekly Synthesis — 2026-W22]] is a real review note in the configured folder.
 ## Verified Open State
 - The folder map lists `60_Claude/30_Source_Summaries`; the live path is `10_Source_Summaries`. Which folders actually have a Templater template bound, and should the map be repointed? — *path drift; confirm in Templater settings*
 - Should `60_Claude/07_AI_Information` get its own folder template? — *unresolved; raised in the gaps register*

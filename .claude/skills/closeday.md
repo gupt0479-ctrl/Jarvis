@@ -115,7 +115,7 @@ Append to `60_Claude/07_AI_Information/Session Logs/log.md`:
 
 ## Constraints
 
-- Never create `60_Claude/50_Reviews/Closeday - YYYY-MM-DD.md`. The daily note is the record.
+- Never create `60_Claude/30_Reviews/Closeday - YYYY-MM-DD.md`. The daily note is the record.
 - Never modify the Morning Plan section — only append below it.
 - If scorecard already exists in the note (closeday was already run), ask the user before overwriting: "Scorecard already exists for today. Overwrite?"
 - Be honest about what you can and can't verify. Don't fake checkmarks.

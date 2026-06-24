@@ -15,6 +15,7 @@ notes:
 2. [Website to Learn Anything?](https://learn-anything.xyz/)
 3. [Battery Report](file:///C:/Users/Anant%20Gupta/battery-report.html): **IMPORTANT**
 4. [Web Archive](https://web.archive.org/) for everything 
+5. Mini money(==WORKS==) - [insta](https://www.minimoney.guide/)
 ## For me 
 - Portfolio to learn about human body: [Huberman Lab](https://www.hubermanlab.com/)
 - Cool af portfolio: [Bruno-simon](https://bruno-simon.com/)

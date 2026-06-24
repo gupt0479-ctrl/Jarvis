@@ -106,9 +106,14 @@ Create `skills/<name>.md` or `agents/<name>.md`. Open with: which canonical docs
 
 ## Alignment backlog
 
-The infrastructure above is current. These existing helper docs still carry pre-reorg folder paths and should be aligned to the new structure and workflows (low risk, high tidiness). Tracked so it isn't forgotten:
+**2026-06-24 reorg pass.** The vault moved again: `60_Claude/50_Reviews/` → `60_Claude/30_Reviews/` (rename, contents intact), `60_Claude/35_Outputs/` was deleted outright (not replaced — anything that used to route there now falls back to `60_Claude/00_Inbox/` per the Write Contract's "unsure → Inbox" rule), `40_Resources/CS/AI/` flattened files moved into `Toolkit/`, `Workflows/`, `Gen AI/`, `Prompts/`, `Token Optimization/` subfolders, UMN coursework split (`10_Areas/UMN/` now holds only the current-term board/syllabus; past course material moved to `40_Resources/UMN/Previous Classes/`), `30_Order/Standards/` and `30_Order/Workflows/` are now populated (previously documented as missing), and `Claude Pro Workflow.md` moved from `40_Resources/Obsidian/` to `40_Resources/CS/AI/Token Optimization/`. Every `agents/` and `skills/` file was re-read against the current tree and patched in this pass — paths above should now resolve.
 
-- `agents/`: `research-distiller.md`, `career-operator.md`, `anti-slop-editor.md`, `learning-agent.md` (vault-curator is already aligned).
-- `skills/`: `distill-note.md`, `context.md`, `today.md`, `closeday.md`, `weekly-review.md`, `lint-claude-layer.md`, `trace-topic.md`, `connect-notes.md`, `ops.md`, `organize-csci2033.md`, `mcp-hub.md` (ingest-clipping is already aligned).
+**Known good, not touched:** `ingesting-clipping/` skill directory, `research-distiller.md`, `anti-slop-editor.md`, `connect-notes.md`, `remove-ai-slop.md`, `rules/human-writing.md`, `commands/*.md` (thin pointers, no embedded paths).
 
-Each just needs dead paths updated (`10_UMN`→`10_Areas/UMN`, `30_Source_Summaries`→`10_Source_Summaries`, `45_Outputs`→`35_Outputs`, `60_Indexes`→`44_Indexes`, `10_Session_Logs`→`07_AI_Information/Session Logs`, `7_AI_Information`→`07_AI_Information`) and a pointer to the matching workflow.
+**Still open — out of scope for the 2026-06-24 pass, deliberately:**
+- `40_Resources/Obsidian/Jarvis Vault Architecture.md` and `60_Claude/07_AI_Information/Vault Map.md` (the actual folder-role authorities) still describe the pre-reorg structure — `35_Outputs` as live, `50_Reviews` not `30_Reviews`, all UMN coursework under `10_Areas/UMN`. This file intentionally does not re-describe folder roles (see the "single source of truth" note above), so it was not the place to fix that — the architecture note itself needs the rewrite.
+- `60_Claude/07_AI_Information/Jarvis OS — North Star.md` Part 3.3 cites the MGMT 3001 week notes as the template gold-standard. The vault owner says those notes were ungraded AI output dumped during the course, not a standard to build toward — this claim needs revisiting, not propagated further.
+- `60_Claude/30_Reviews/50_Reviews Board.md` still carries its pre-rename filename (vault content, not `.claude/` — flagged here, not changed here).
+- Where a removed `35_Outputs/`-routed artifact should actually land long-term is undecided. Current fallback is `00_Inbox/`; this is a stopgap, not a redesign.
+
+These four are the explicit subject of the vault owner's planned follow-up conversation about redefining what each folder is for — don't pre-empt it by rewriting the architecture note from this backlog.

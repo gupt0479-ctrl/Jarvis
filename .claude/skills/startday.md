@@ -24,7 +24,7 @@ Locate `10_Areas/Life/Enumerate/Daily/YYYY-MM-DD.md` where YYYY-MM-DD is today's
 - If it doesn't exist: create it using the content of `30_Order/Templates/Enumerate/Better Today.md` as the body (copy frontmatter and structure verbatim, then continue to Step 1).
 - If that template file does not exist either: create the daily note with minimal frontmatter (`type: daily`, `created: YYYY-MM-DD`, `status: sprout`) and continue. Do not stop the skill over a missing template.
 
-Never create it anywhere else. `60_Claude/50_Reviews/` is not the target.
+Never create it anywhere else. `60_Claude/30_Reviews/` is not the target.
 
 ---
 
@@ -157,7 +157,7 @@ Note updated: [[10_Areas/Life/Enumerate/Daily/YYYY-MM-DD]]
 
 ## Constraints
 
-- Never create notes in `60_Claude/50_Reviews/` for the daily plan.
+- Never create notes in `60_Claude/30_Reviews/` for the daily plan.
 - Never duplicate the plan files' content into the note — fill placeholders, don't paste whole documents.
 - Keep the note patchable — `/closeday` will append an End of Day section later, so leave space.
 - If today's note already has a filled Morning Plan (startday was already run), confirm with the user before overwriting.

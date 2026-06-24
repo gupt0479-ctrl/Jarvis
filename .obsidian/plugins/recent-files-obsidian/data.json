@@ -1,6 +1,134 @@
 {
   "recentFiles": [
     {
+      "basename": "Jarvis Three-Month Research Engine Master Plan",
+      "path": "20_Progress/Projects/AI Second Brain/Jarvis Three-Month Research Engine Master Plan.md"
+    },
+    {
+      "basename": "Jarvis Multi-Agent PKM Plan",
+      "path": "20_Progress/Projects/AI Second Brain/Jarvis Multi-Agent PKM Plan.md"
+    },
+    {
+      "basename": "Claude Optimization Master Setup",
+      "path": "40_Resources/CS/AI/Token Optimization/Claude Optimization Master Setup.md"
+    },
+    {
+      "basename": "My AI Twin",
+      "path": "20_Progress/Projects/AI Second Brain/My AI Twin.md"
+    },
+    {
+      "basename": "AI Learning Across Vaults",
+      "path": "20_Progress/Projects/AI Second Brain/AI Learning Across Vaults.md"
+    },
+    {
+      "basename": "Jarvis",
+      "path": "20_Progress/Projects/AI Second Brain/Jarvis.md"
+    },
+    {
+      "basename": "Mentorship Board",
+      "path": "20_Progress/Mentorship Program/Mentorship Board.md"
+    },
+    {
+      "basename": "Companies giving OPT & CPT",
+      "path": "20_Progress/Internship/Companies giving OPT & CPT.md"
+    },
+    {
+      "basename": "Random",
+      "path": "40_Resources/Random.md"
+    },
+    {
+      "basename": "Summer Courses",
+      "path": "20_Progress/Degree/Summer Courses.md"
+    },
+    {
+      "basename": "Track Definitions",
+      "path": "40_Resources/Capability/Track Definitions.md"
+    },
+    {
+      "basename": "Second Brain",
+      "path": "40_Resources/Obsidian/Second Brain.md"
+    },
+    {
+      "basename": "Gen AI Meeting",
+      "path": "40_Resources/CS/AI/Gen AI Meeting.md"
+    },
+    {
+      "basename": "Repos",
+      "path": "40_Resources/CS/Repos.md"
+    },
+    {
+      "basename": "Kafka Pipeline Architecture Story",
+      "path": "40_Resources/CS/Concepts/Kafka Pipeline Architecture Story.md"
+    },
+    {
+      "basename": "Links",
+      "path": "40_Resources/CS/Links.md"
+    },
+    {
+      "basename": "The AI Hub",
+      "path": "20_Progress/Projects/AI Use/The AI Hub.md"
+    },
+    {
+      "basename": "LLM Council (github)",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/LLM Council (github).md"
+    },
+    {
+      "basename": "Summer Grind",
+      "path": "10_Areas/Summer Grind.md"
+    },
+    {
+      "basename": "Fall'26 Syllabus",
+      "path": "10_Areas/UMN/Fall'26 Syllabus.md"
+    },
+    {
+      "basename": "Research Dossier — Internal LLM Inference at Near-Zero Cost",
+      "path": "10_Areas/Life/Plans/Zero-Cost AI Stack/Research Dossier — Internal LLM Inference at Near-Zero Cost.md"
+    },
+    {
+      "basename": "Architecture & Setup Runbook — 24GB Hybrid Stack",
+      "path": "10_Areas/Life/Plans/Zero-Cost AI Stack/Architecture & Setup Runbook — 24GB Hybrid Stack.md"
+    },
+    {
+      "basename": "Links & Interlinks",
+      "path": "10_Areas/Career/Internships/Links & Interlinks.md"
+    },
+    {
+      "basename": "Useful Links",
+      "path": "10_Areas/Career/Useful Links.md"
+    },
+    {
+      "basename": "AI Applying",
+      "path": "20_Progress/Internship/Applying/AI Applying.md"
+    },
+    {
+      "basename": "Career Fair '25 & '26",
+      "path": "20_Progress/Internship/Career Fair '25 & '26.md"
+    },
+    {
+      "basename": "Interview Questions",
+      "path": "20_Progress/Internship/Interviews/Interview Questions.md"
+    },
+    {
+      "basename": "Tracker",
+      "path": "10_Areas/Career/Internships/Tracker.md"
+    },
+    {
+      "basename": "ECC",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/ECC.md"
+    },
+    {
+      "basename": "browser-use",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/AI Starred/browser-use.md"
+    },
+    {
+      "basename": "TradingAgents",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/AI Starred/TradingAgents.md"
+    },
+    {
+      "basename": "GitHub Stars — How Anant Uses Each Repo",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/GitHub Stars — How Anant Uses Each Repo.md"
+    },
+    {
       "basename": "Assignment - 8",
       "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 8.md"
     },
@@ -18,19 +146,19 @@
     },
     {
       "basename": "Gen AI Roadmap",
-      "path": "40_Resources/CS/AI/Gen AI/Gen AI Roadmap.md"
+      "path": "20_Progress/Projects/AI Use/Gen AI/Gen AI Roadmap.md"
     },
     {
       "basename": "Gen AI Day - 2",
-      "path": "40_Resources/CS/AI/Gen AI/Gen AI Day - 2.md"
+      "path": "20_Progress/Projects/AI Use/Gen AI/Gen AI Day - 2.md"
     },
     {
       "basename": "Gen AI Day - 1",
-      "path": "40_Resources/CS/AI/Gen AI/Gen AI Day - 1.md"
+      "path": "20_Progress/Projects/AI Use/Gen AI/Gen AI Day - 1.md"
     },
     {
       "basename": "Cursor AI",
-      "path": "40_Resources/CS/AI/Cursor AI.md"
+      "path": "20_Progress/Projects/AI Use/Cursor AI.md"
     },
     {
       "basename": "Claude Code",
@@ -61,144 +189,16 @@
       "path": "40_Resources/CS/Concepts/New Laptop/Ubuntu - WSL.md"
     },
     {
-      "basename": "Summer Grind",
-      "path": "10_Areas/Summer Grind.md"
-    },
-    {
       "basename": "00 - CoWork Prompt — Summer OS",
-      "path": "10_Areas/Life/Plans/00 - CoWork Prompt — Summer OS.md"
+      "path": "10_Areas/Life/Plans/Summer/00 - CoWork Prompt — Summer OS.md"
     },
     {
       "basename": "00 - Summer Plans Index",
-      "path": "10_Areas/Life/Plans/00 - Summer Plans Index.md"
+      "path": "10_Areas/Life/Plans/Summer/00 - Summer Plans Index.md"
     },
     {
       "basename": "Plans Board",
       "path": "10_Areas/Life/Plans/Plans Board.md"
-    },
-    {
-      "basename": "Summer Courses",
-      "path": "20_Progress/Degree/Summer Courses.md"
-    },
-    {
-      "basename": "Links",
-      "path": "40_Resources/CS/Links.md"
-    },
-    {
-      "basename": "Big Assignment - 1",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 1.md"
-    },
-    {
-      "basename": "Big Assignment - 1(Human Version)",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 1(Human Version).md"
-    },
-    {
-      "basename": "Problems with Portfolio Lab",
-      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/Problems with Portfolio Lab.md"
-    },
-    {
-      "basename": "08 - Build Phases & Milestones",
-      "path": "20_Progress/Projects/CS/Portfolio/nextgen-chatbot/08 - Build Phases & Milestones.md"
-    },
-    {
-      "basename": "Repos",
-      "path": "40_Resources/CS/Repos.md"
-    },
-    {
-      "basename": "Quiz - 5",
-      "path": "20_Progress/Degree/MATH 2230/Quiz/Quiz - 5.md"
-    },
-    {
-      "basename": "Chapter - 3",
-      "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 3.md"
-    },
-    {
-      "basename": "the new coding interview, 5 resources id actually study",
-      "path": "60_Claude/05_Clippings/Web/the new coding interview, 5 resources id actually study.md"
-    },
-    {
-      "basename": "the underclassmen internship list, before u age out",
-      "path": "60_Claude/05_Clippings/Web/the underclassmen internship list, before u age out.md"
-    },
-    {
-      "basename": "The 2027 Internship Calendar (Prediction) when everything actually drops",
-      "path": "60_Claude/05_Clippings/Web/The 2027 Internship Calendar (Prediction) when everything actually drops.md"
-    },
-    {
-      "basename": "the permanent archive of winning hackathon projects",
-      "path": "60_Claude/05_Clippings/Web/the permanent archive of winning hackathon projects.md"
-    },
-    {
-      "basename": "fintech early programs that actually pay, not sm bs unpaid internship lmao",
-      "path": "60_Claude/05_Clippings/Web/fintech early programs that actually pay, not sm bs unpaid internship lmao.md"
-    },
-    {
-      "basename": "Where teams and agents work together 1",
-      "path": "60_Claude/05_Clippings/Web/Where teams and agents work together 1.md"
-    },
-    {
-      "basename": "AI Engineering from Scratch",
-      "path": "60_Claude/05_Clippings/Web/AI Engineering from Scratch.md"
-    },
-    {
-      "basename": "Automate Your AI Second Brain",
-      "path": "60_Claude/05_Clippings/Web/Automate Your AI Second Brain.md"
-    },
-    {
-      "basename": "Vault Enrichment Prompt",
-      "path": "60_Claude/35_Outputs/Vault Enrichment Prompt.md"
-    },
-    {
-      "basename": "AI Engineer Roadmap",
-      "path": "60_Claude/05_Clippings/Web/AI Engineer Roadmap.md"
-    },
-    {
-      "basename": "Output Index",
-      "path": "60_Claude/35_Outputs/Output Index.md"
-    },
-    {
-      "basename": "Kafka Pipelines vs Agent Tool Orchestration",
-      "path": "60_Claude/20_Distilled_Notes/Synthesis/Kafka Pipelines vs Agent Tool Orchestration.md"
-    },
-    {
-      "basename": "Synthesis Index",
-      "path": "60_Claude/20_Distilled_Notes/Synthesis/Synthesis Index.md"
-    },
-    {
-      "basename": "Quant Foundations (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Quant Foundations (PDF).md"
-    },
-    {
-      "basename": "GitHub Stars — How Anant Uses Each Repo",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/GitHub Stars — How Anant Uses Each Repo.md"
-    },
-    {
-      "basename": "Repos-Deep-Analysis",
-      "path": "60_Claude/10_Source_Summaries/Repos-Deep-Analysis.md"
-    },
-    {
-      "basename": "README",
-      "path": "60_Claude/05_Clippings/AI Conversations/README.md"
-    },
-    {
-      "basename": "README",
-      "path": "60_Claude/07_AI_Information/AI Conversation - Summaries/README.md"
-    },
-    {
-      "basename": "Clippings board",
-      "path": "60_Claude/05_Clippings/Clippings board.md"
-    },
-    {
-      "basename": "Inbox Board",
-      "path": "60_Claude/00_Inbox/Inbox Board.md"
-    },
-    {
-      "basename": "Claude Board",
-      "path": "60_Claude/Claude Board.md"
-    },
-    {
-      "basename": "Second Brain",
-      "path": "40_Resources/Obsidian/Second Brain.md"
     }
   ],
   "omittedPaths": [],

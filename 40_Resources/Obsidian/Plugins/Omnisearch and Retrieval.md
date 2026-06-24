@@ -46,7 +46,7 @@ Read from `.obsidian/plugins/omnisearch/data.json` (welcome `1.21.0`):
 - **Vague headings:** a note titled with generic headings ranks poorly and effectively hides behind better-named notes.
 - **Assuming attachments are indexed:** leads to false "no such note" conclusions.
 ## Gold-Standard Example
-The retrieval target Omnisearch should surface is a well-headed source summary or course note — e.g. [[10_Areas/UMN/Previous Classes/Minor/MGMT 3001/Week - 4|Week - 4]], whose precise H1 and section headings (`## Lecture-to-textbook synthesis`, `## Examples worth keeping`) are exactly the high-weight fields Omnisearch ranks on. Contrast: a PDF in `60_Claude/05_Clippings/PDFs/` returns nothing until it is summarized.
+The retrieval target Omnisearch should surface is a well-headed source summary or course note — e.g. [[40_Resources/UMN/Previous Classes/Minor/MGMT 3001/Week - 4|Week - 4]], whose precise H1 and section headings (`## Lecture-to-textbook synthesis`, `## Examples worth keeping`) are exactly the high-weight fields Omnisearch ranks on. Contrast: a PDF in `60_Claude/05_Clippings/PDFs/` returns nothing until it is summarized.
 ## Verified Open State
 - Should PDF/image/Office indexing be enabled, accepting the Text Extractor dependency and its disk/privacy cost? — *needs user decision; the central question for this plugin*
 - If yes, is Text Extractor acceptable given the AI-image-indexing privacy implications? — *contingent on the above*

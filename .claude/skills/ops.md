@@ -12,7 +12,7 @@ description: Daily vault operations dispatcher — health checks, triage, capabi
 
 ### 1. Before Any Operation
 
-1. Read `AI_CONTEXT.md` for the shared cross-tool manifest.
+1. Read `60_Claude/07_AI_Information/AI_CONTEXT.md` for the shared cross-tool manifest.
 2. Read `HUMAN_WRITING.md` — all prose output follows that standard. No filler, no AI slop, concrete and compressed.
 3. Read the 5 most recent entries from `60_Claude/07_AI_Information/Session Logs/log.md` for carryover context.
 4. If the session log does not exist, create it with frontmatter (`type: log`, `created: YYYY-MM-DD`) before appending.
@@ -167,7 +167,7 @@ This skill orchestrates existing skills by name. It does not duplicate their log
 ```
 /ops health-check
 ```
-Runs CLI baseline scan + MCP spot-checks. Produces an Ops Report at `60_Claude/50_Reviews/Ops Health - YYYY-MM-DD.md`. Lightweight — good for a fast vault pulse.
+Runs CLI baseline scan + MCP spot-checks. Produces an Ops Report at `60_Claude/30_Reviews/Ops Health - YYYY-MM-DD.md`. Lightweight — good for a fast vault pulse.
 
 ### Start the day (use this, not /ops morning-start)
 ```
@@ -197,7 +197,7 @@ Presents the prioritized triage queue from the latest health check. Select items
 ```
 /ops capability-audit
 ```
-Searches for tracked concepts, overdue drills, evidence gaps, stalled outputs. Lightweight — quick check on learning system state.
+Searches for tracked concepts, overdue drills, evidence gaps. Lightweight — quick check on learning system state.
 
 ### Full day cycle
 ```

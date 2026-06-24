@@ -16,7 +16,7 @@ notes:
   - "[[Knowledge Enrichment Dashboard]]"
   - "[[40_Resources/Obsidian/Jarvis Enrichment Engine]]"
   - "[[Jarvis]]"
-  - "[[60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan]]"
+  - "[[Jarvis Three-Month Research Engine Master Plan]]"
 ---
 # Jarvis — Daily Execution Surface
 
@@ -125,7 +125,7 @@ LIMIT 10
 
 **Capability Engine:** [[Capability Dashboard]] · [[Proof Dashboard]] · [[Question Dashboard]] · [[AI Field OS]] · [[Systems Field OS]] · [[Algorithms Field OS]] · [[Career Field OS]] · [[Trading Field OS]]
 
-**Knowledge:** [[Knowledge Enrichment Dashboard]] · [[40_Resources/Obsidian/Jarvis Enrichment Engine]] · [[Vault Health Dashboard]] · [[Jarvis]] · [[60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan]]
+**Knowledge:** [[Knowledge Enrichment Dashboard]] · [[40_Resources/Obsidian/Jarvis Enrichment Engine]] · [[Vault Health Dashboard]] · [[Jarvis]] · [[Jarvis Three-Month Research Engine Master Plan]]
 
 ## Vault Health
 

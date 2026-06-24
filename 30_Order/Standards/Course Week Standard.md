@@ -86,5 +86,5 @@ Optional but present in the gold notes: `### Leadership link`, `### Entrepreneur
 - `- [ ]` Tasks for takeaways; 3–5+ `#cards/[course]` cards.
 - Passes all 16 points of [[Vault Rules — Complete AI Ruleset]] Part 12.
 ## Gold Standard Example
-- [[10_Areas/UMN/Previous Classes/Minor/MGMT 3001/Week - 9|Week - 9]] — power and influence; the cleanest synthesis section.
-- [[10_Areas/UMN/Previous Classes/Minor/MGMT 3001/Week - 4|Week - 4]] — corporate strategy; the strongest "textbook additions easy to miss" and domain-link sections.
+- [[40_Resources/UMN/Previous Classes/Minor/MGMT 3001/Week - 9|Week - 9]] — power and influence; the cleanest synthesis section.
+- [[40_Resources/UMN/Previous Classes/Minor/MGMT 3001/Week - 4|Week - 4]] — corporate strategy; the strongest "textbook additions easy to miss" and domain-link sections.

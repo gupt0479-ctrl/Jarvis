@@ -10,7 +10,7 @@ next:
 ---
 # <% tp.file.title %>
 
-*Gold standard: see [[10_Areas/UMN/Previous Classes/Minor/MGMT 3001/Week - 4]] for a mature vault note in this style.*
+*Gold standard: see [[40_Resources/UMN/Previous Classes/Minor/MGMT 3001/Week - 4]] for a mature vault note in this style.*
 
 ## Core Claim
 

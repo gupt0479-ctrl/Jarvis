@@ -64,7 +64,7 @@ Format syntax available in any choice: `{{DATE}}`, `{{VALUE}}` (selection), `{{F
 - **AI capture before plain capture:** wiring `ai.*` macros first mixes raw source and model output in one note, breaking the raw-vs-distilled separation the vault depends on.
 - **Capture that skips frontmatter:** a note with no `type:`/`status:` is invisible to every Dataview dashboard.
 ## Gold-Standard Example
-None exists yet — `choices` is empty, so there is no real QuickAdd workflow in this vault to point at. The closest correct artifacts are the destinations a choice should produce: a filed source summary like the MGMT 3001 week notes ([[10_Areas/UMN/Previous Classes/Minor/MGMT 3001/Week - 9|Week - 9]]) and the routing table in [[AGENTS]]. Treat building the first Inbox capture as the action that creates this example.
+None exists yet — `choices` is empty, so there is no real QuickAdd workflow in this vault to point at. The closest correct artifacts are the destinations a choice should produce: a filed source summary like the MGMT 3001 week notes ([[40_Resources/UMN/Previous Classes/Minor/MGMT 3001/Week - 9|Week - 9]]) and the routing table in [[AGENTS]]. Treat building the first Inbox capture as the action that creates this example.
 ## Verified Open State
 - Should QuickAdd be configured with the six choices above? (User decision; requires editing `data.json`.) — *unresolved, needs user approval*
 - Which template file should each Template choice bind to once the `30_Order/Templates/` files are rewritten? — *answerable after templates are finalized*

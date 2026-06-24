@@ -130,7 +130,7 @@ Created a shared context manifest and rewired project instruction entrypoints so
 Created a project brief for turning Jarvis into a multi-agent second-brain system without flooding the vault with raw AI output.
 
 **Created:**
-- [[60_Claude/40_Project_Briefs/Jarvis Multi-Agent PKM Plan]]
+- [[Jarvis Multi-Agent PKM Plan]]
 
 **Key decisions:**
 - use a normalized conversation registry plus raw archive plus distilled summaries
@@ -206,7 +206,7 @@ Implemented the first read-only Jarvis operations CLI under `30_Order/System/jar
 - `30_Order/System/jarvis-cli/jarvis_ops.py`
 - `30_Order/System/jarvis-cli/jarvis.ps1`
 - `30_Order/System/jarvis-cli/README.md`
-- [[60_Claude/50_Reviews/Ops Reports/Jarvis Ops Report - 2026-04-24 20260424-170132]]
+- [[Jarvis Ops Report - 2026-04-24 20260424-170132]]
 
 **Verified commands:**
 - `health`
@@ -228,7 +228,7 @@ Started the next phase of Jarvis: vault-wide enrichment of existing human-writte
 - [[Knowledge Enrichment Dashboard]]
 - [[30_Order/Templates/Capability/Jarvis Enrichment Template]]
 - `60_Claude/60_Indexes/Bases/Knowledge Enrichment Registry.base`
-- [[60_Claude/50_Reviews/Jarvis Enrichment Phase 1 - 2026-04-24]]
+- [[Jarvis Enrichment Phase 1 - 2026-04-24]]
 
 **Updated:**
 - `30_Order/System/jarvis-cli/jarvis_ops.py` with `enrich-candidates`
@@ -249,7 +249,7 @@ Created a Jarvis-specific master plan that treats Jarvis as its own standalone p
 
 **Created:**
 - [[Jarvis]]
-- [[60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan]]
+- [[Jarvis Three-Month Research Engine Master Plan]]
 
 **Updated:**
 - [[00_Dashboard]] now links the Jarvis project hub and master roadmap.
@@ -361,19 +361,19 @@ Created a lightweight Obsidian Kanban habit area under `10_Areas/Life/habits`.
 
 ## [2026-05-08] source map | CSCI 2041 notes
 
-Updated [[CSCI 2041 Note Production Plan]] as a source map only. Mapped lecture transcripts, professor note folders, labs, projects, practice files, and Hickey textbook sections to likely weeks from [[10_Areas/UMN/Previous Classes/CSCI/CSCI 4041/Week - 6]] through final review. Did not modify [[10_Areas/UMN/Previous Classes/Lib Ed/MUS 1013/Week - 1]] through [[10_Areas/UMN/Previous Classes/Lib Ed/BIOL 1012/Week - 5]].
+Updated [[CSCI 2041 Note Production Plan]] as a source map only. Mapped lecture transcripts, professor note folders, labs, projects, practice files, and Hickey textbook sections to likely weeks from [[20_Progress/Degree/CSCI 4041/Week - 6]] through final review. Did not modify [[40_Resources/UMN/Previous Classes/Lib Ed/MUS 1013/Week - 1]] through [[40_Resources/UMN/Previous Classes/Lib Ed/BIOL 1012/Week - 5]].
 
-**Direction:** start note production at [[10_Areas/UMN/Previous Classes/CSCI/CSCI 4041/Week - 6]] using the plan's source rows, and verify the marked transcript/date uncertainties before drafting.
+**Direction:** start note production at [[20_Progress/Degree/CSCI 4041/Week - 6]] using the plan's source rows, and verify the marked transcript/date uncertainties before drafting.
 
 ## [2026-05-08] rewrite | CSCI 2041 production contract
 
-Rewrote [[CSCI 2041 Note Production Plan]] into a stricter note-production contract. Added source-of-truth rules that limit factual claims to the local CSCI 2041 source folder, a very detailed content standard, concept-note primacy, exact source coverage requirements, a professor-note page ledger, week-by-week production details from [[10_Areas/UMN/Previous Classes/CSCI/CSCI 4041/Week - 6]] through final review, and stronger lab/project/concept backlink rules.
+Rewrote [[CSCI 2041 Note Production Plan]] into a stricter note-production contract. Added source-of-truth rules that limit factual claims to the local CSCI 2041 source folder, a very detailed content standard, concept-note primacy, exact source coverage requirements, a professor-note page ledger, week-by-week production details from [[20_Progress/Degree/CSCI 4041/Week - 6]] through final review, and stronger lab/project/concept backlink rules.
 
 **Direction:** future CSCI 2041 note creation should treat concept notes as the durable source-of-truth layer and read every listed source file/page before drafting.
 
 ## [2026-05-08] build | CSCI 2041 Week 6-15 archive notes
 
-Created weekly notes [[10_Areas/UMN/Previous Classes/CSCI/CSCI 4041/Week - 6]] through [[Week - 15]] under `50_Archive/UMN/Classes/CSCI 2041`, plus [[CSCI 2041 Board]] in that archive folder. Notes synthesize the source-map transcripts, professor note folders, labs/projects/practice files, and Hickey textbook anchors. [[10_Areas/UMN/Previous Classes/Lib Ed/MUS 1013/Week - 1]] through [[10_Areas/UMN/Previous Classes/Lib Ed/BIOL 1012/Week - 5]] were not edited.
+Created weekly notes [[20_Progress/Degree/CSCI 4041/Week - 6]] through [[Week - 15]] under `50_Archive/UMN/Classes/CSCI 2041`, plus [[CSCI 2041 Board]] in that archive folder. Notes synthesize the source-map transcripts, professor note folders, labs/projects/practice files, and Hickey textbook anchors. [[40_Resources/UMN/Previous Classes/Lib Ed/MUS 1013/Week - 1]] through [[40_Resources/UMN/Previous Classes/Lib Ed/BIOL 1012/Week - 5]] were not edited.
 
 **Direction:** next pass should create the linked concept/lab/project notes, then strengthen backlinks from weekly notes to concrete concept headings.
 
@@ -381,7 +381,7 @@ Created weekly notes [[10_Areas/UMN/Previous Classes/CSCI/CSCI 4041/Week - 6]] t
 
 Created 24 source-grounded concept notes under `50_Archive/UMN/Classes/CSCI 2041/Concepts` for the Week 6 onward material: streams, laziness, memoization, mutation, modules, ADTs, higher-order functions, recursion patterns, Project 1 expression solving, Lisp representation, scanner/parser/printer/evaluator architecture, environments/closures, primitives/special forms, REPL integration, continuations, if-normalized tautology checking, macros, association lists, and error boundaries.
 
-**Updated:** [[CSCI 2041 Board]] now links the concept layer. [[10_Areas/UMN/Previous Classes/CSCI/CSCI 4041/Week - 6]] through [[Week - 15]] now point at the actual concept note names for the created OCaml concepts. [[10_Areas/UMN/Previous Classes/Lib Ed/MUS 1013/Week - 1]] through [[10_Areas/UMN/Previous Classes/Lib Ed/BIOL 1012/Week - 5]] were not edited.
+**Updated:** [[CSCI 2041 Board]] now links the concept layer. [[20_Progress/Degree/CSCI 4041/Week - 6]] through [[Week - 15]] now point at the actual concept note names for the created OCaml concepts. [[40_Resources/UMN/Previous Classes/Lib Ed/MUS 1013/Week - 1]] through [[40_Resources/UMN/Previous Classes/Lib Ed/BIOL 1012/Week - 5]] were not edited.
 
 **Direction:** create lab and project notes next, then add more precise backlinks from concepts into lab/project notes once those files exist.
 
@@ -405,19 +405,19 @@ Added lightweight lab sections for Lab 1 through Lab 12 in the live `10_Areas/De
 
 ## [2026-05-11] update | CSCI 2041 Week 1-5 final polish
 
-Improved [[10_Areas/UMN/Previous Classes/Lib Ed/MUS 1013/Week - 1]] through [[10_Areas/UMN/Previous Classes/Lib Ed/BIOL 1012/Week - 5]] in the live `10_Areas/Degree/UMN/Classes/CSCI 2041` folder. Filled empty or placeholder weekly sections with concrete skills, textbook anchors, concept links, representative examples, takeaways, and flashcards. Kept the existing lecture bodies intact and strengthened lab connections for Lab 1 through Lab 4. Also updated [[CSCI 2041 Board]] so the Weekly Notes index includes Week 1 through Week 15.
+Improved [[40_Resources/UMN/Previous Classes/Lib Ed/MUS 1013/Week - 1]] through [[40_Resources/UMN/Previous Classes/Lib Ed/BIOL 1012/Week - 5]] in the live `10_Areas/Degree/UMN/Classes/CSCI 2041` folder. Filled empty or placeholder weekly sections with concrete skills, textbook anchors, concept links, representative examples, takeaways, and flashcards. Kept the existing lecture bodies intact and strengthened lab connections for Lab 1 through Lab 4. Also updated [[CSCI 2041 Board]] so the Weekly Notes index includes Week 1 through Week 15.
 
 **Audit notes:** remaining cleanup targets are concept-level: [[OCaml - Polymorphism]] and [[OCaml - Tautology Problems]] are still template shells; [[OCaml]] contains leftover MOC/template bullets; several concept notes still link to non-existent standalone lab notes like `[[Lab - 8 Association Module]]` even though labs currently live as weekly anchors.
 
 ## [2026-05-11] update | CSCI 2041 Week 5 lecture spine
 
-Reworked the [[10_Areas/UMN/Previous Classes/Lib Ed/BIOL 1012/Week - 5]] lecture section without deleting the existing lecture notes. Added a lecture map, source/concept anchors, a cleaned code spine for reduce, CPS, tautology checking, and Lab 4 permutations, plus a short "what to retain" guide before the detailed Feb 16/18/20 notes.
+Reworked the [[40_Resources/UMN/Previous Classes/Lib Ed/BIOL 1012/Week - 5]] lecture section without deleting the existing lecture notes. Added a lecture map, source/concept anchors, a cleaned code spine for reduce, CPS, tautology checking, and Lab 4 permutations, plus a short "what to retain" guide before the detailed Feb 16/18/20 notes.
 
 **Direction:** next refinement pass should consolidate the concept layer into a smaller canonical set, keeping source-grounded material from the existing concept notes while replacing standalone lab-note links with weekly lab anchors.
 
 ## [2026-05-12] update | CSCI 2041 weekly lecture source spines
 
-Enhanced the live `10_Areas/Degree/UMN/Classes/CSCI 2041` weekly notes with explicit source-grounded lecture maps. Added new lecture-map sections to [[10_Areas/UMN/Previous Classes/Lib Ed/MUS 1013/Week - 1]] through [[10_Areas/UMN/Previous Classes/CSCI/CSCI 4041/Week - 4]] and [[10_Areas/UMN/Previous Classes/CSCI/CSCI 4041/Week - 6]] through [[Week - 15]], preserving the existing lecture bodies; [[10_Areas/UMN/Previous Classes/Lib Ed/BIOL 1012/Week - 5]] already had the fuller lecture spine from the prior pass. The maps connect transcript numbers/dates, professor-note folders, labs/projects/practice files, and the core mechanism for each week. Also expanded the dated lecture headings in [[10_Areas/UMN/Previous Classes/CSCI/CSCI 4041/Week - 6]] through [[Week - 15]] with professor-transcript details about announcements, source-file mechanics, control-flow invariants, and final-exam distinctions.
+Enhanced the live `10_Areas/Degree/UMN/Classes/CSCI 2041` weekly notes with explicit source-grounded lecture maps. Added new lecture-map sections to [[40_Resources/UMN/Previous Classes/Lib Ed/MUS 1013/Week - 1]] through [[20_Progress/Degree/CSCI 4041/Week - 4]] and [[20_Progress/Degree/CSCI 4041/Week - 6]] through [[Week - 15]], preserving the existing lecture bodies; [[40_Resources/UMN/Previous Classes/Lib Ed/BIOL 1012/Week - 5]] already had the fuller lecture spine from the prior pass. The maps connect transcript numbers/dates, professor-note folders, labs/projects/practice files, and the core mechanism for each week. Also expanded the dated lecture headings in [[20_Progress/Degree/CSCI 4041/Week - 6]] through [[Week - 15]] with professor-transcript details about announcements, source-file mechanics, control-flow invariants, and final-exam distinctions.
 
 **Verification:** all weekly notes now show `updated: 2026-05-12` and each has a `### Week N lecture map` heading in the `## Lecture` section. No writes were made to the old `50_Archive` CSCI 2041 path.
 
@@ -514,7 +514,7 @@ Full vault audit + external link analysis. Read all AI workflow docs, context fi
 - The vault infrastructure is solid; the gap is execution
 
 **Created:**
-- [[60_Claude/40_Project_Briefs/Claude Optimization Master Setup]]
+- [[Claude Optimization Master Setup]]
 
 **Next:** Install mattpocock/skills, create conversation capture folders, run `/ops morning-start` habitually.
 
@@ -537,7 +537,7 @@ Full vault audit + external link analysis. Read all AI workflow docs, context fi
 - Infrastructure is solid; gap is consistent execution
 
 **Created:**
-- [[60_Claude/40_Project_Briefs/Claude Optimization Master Setup]]
+- [[Claude Optimization Master Setup]]
 
 **Next:** Install mattpocock/skills, create conversation capture folders, run `/ops morning-start` every session.
 
@@ -547,11 +547,11 @@ Built the full weekly review infrastructure for Jarvis.
 
 **Created:**
 - `.claude/skills/weekly-review.md` — replaced the shallow original with a three-month-plan-aware version; includes pre-flight reads, milestone audit table for all 12 weeks, enrichment health checks, orphan/link scanning, session log analysis, exact output format with HUMAN_WRITING rules, and execution notes for future cold-start Claude
-- [[60_Claude/50_Reviews/Weekly Synthesis/Weekly Synthesis — 2026-W22]] — first plan-aware review; documents the W22 infrastructure wins and quantifies the 4-week build spine gap
+- [[Weekly Synthesis — 2026-W22]] — first plan-aware review; documents the W22 infrastructure wins and quantifies the 4-week build spine gap
 - Cowork scheduled task `jarvis-weekly-review` — runs every Monday at 9:00 AM; prompt is fully self-contained with orientation steps and vault safety rules
 
 **Updated:**
-- [[60_Claude/50_Reviews/Weekly Synthesis/Weekly Synthesis Index]] — added Review History table
+- [[Weekly Synthesis Index]] — added Review History table
 
 **Key findings surfaced in W22 review:**
 - Three-month spine is ~30% complete; conversation capture folders (Week 2 deliverable) still don't exist after 5 weeks
@@ -835,7 +835,7 @@ Configured the Claude Code layer so Claude is the operating surface for the vaul
 
 ## [2026-06-11] convergence | North Star — Full Five-Phase Execution
 
-- Report: [[60_Claude/50_Reviews/North Star Convergence — Change Report 2026-06-11]]
+- Report: [[North Star Convergence — Change Report 2026-06-11]]
 - Worklog: [[60_Claude/07_AI_Information/Session Logs/Convergence Worklog 2026-06-11]]
 
 **Phase 1 (Move 1 — Instruction collapse):**

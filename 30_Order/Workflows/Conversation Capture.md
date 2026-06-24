@@ -10,7 +10,7 @@ tags:
 notes:
   - "[[00_Workflows Index]]"
   - "[[40_Resources/Obsidian/Jarvis Vault Architecture]]"
-  - "[[60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan]]"
+  - "[[Jarvis Three-Month Research Engine Master Plan]]"
 ---
 # Conversation Capture
 

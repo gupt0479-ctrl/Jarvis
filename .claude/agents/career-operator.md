@@ -23,7 +23,7 @@ Invoke this agent when:
 
 Before operating, read:
 
-- `AI_CONTEXT.md`
+- `60_Claude/07_AI_Information/AI_CONTEXT.md`
 - `HUMAN_WRITING.md`
 - `00_Dashboard.md`
 

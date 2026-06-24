@@ -16,7 +16,7 @@ Read these live workspace files:
 #[[file:60_Claude/07_AI_Information/AI_CONTEXT.md]]
 #[[file:00_Dashboard.md]]
 #[[file:40_Resources/Obsidian/Vault Operating System.md]]
-#[[file:40_Resources/Obsidian/Claude Pro Workflow.md]]
+#[[file:40_Resources/CS/AI/Token Optimization/Claude Pro Workflow.md]]
 #[[file:60_Claude/07_AI_Information/Session Logs/log.md]]
 
 Rules:
