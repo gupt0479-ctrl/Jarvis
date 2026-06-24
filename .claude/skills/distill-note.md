@@ -14,7 +14,7 @@ When this skill is invoked:
 
 Before drafting, read:
 
-- `AI_CONTEXT.md`
+- `60_Claude/07_AI_Information/AI_CONTEXT.md`
 - `HUMAN_WRITING.md`
 - `40_Resources/Obsidian/Vault Operating System.md`
 
@@ -50,7 +50,7 @@ Use MCP search to find:
 Place in appropriate location:
 - `60_Claude/20_Distilled_Notes/` — General evergreen knowledge
 - `40_Resources/CS/` — CS-specific concepts
-- `40_Resources/CS/AI/` — AI/ML topics
+- `40_Resources/CS/AI/` — AI/ML topics, filed into the matching subfolder (`Toolkit/`, `Workflows/`, `Gen AI/`, `Prompts/`, `Token Optimization/`) rather than the flat folder
 - `20_Progress/` — If tied to active project
 
 Use frontmatter template:

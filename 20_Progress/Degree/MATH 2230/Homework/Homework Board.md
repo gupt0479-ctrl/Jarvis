@@ -34,5 +34,5 @@ next:
 | 3.2 | Probability Distributions for Discrete RVs | Jun 15, 2026 | ⬜ Todo |
 
 ## Homework Files
-- [[Chapter - 2]] — Chapter 2 problems
-- [[Chapter - 3]] — Chapter 3 problems (Sections 3.1 & 3.2)
+- [[20_Progress/Degree/MATH 2230/Homework/Chapter - 2]] — Chapter 2 problems
+- [[20_Progress/Degree/MATH 2230/Homework/Chapter - 3]] — Chapter 3 problems (Sections 3.1 & 3.2)

@@ -9,7 +9,7 @@ tags:
   - readme
 notes:
   - "[[60_Claude/05_Clippings/AI Conversations/README]]"
-  - "[[60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan]]"
+  - "[[Jarvis Three-Month Research Engine Master Plan]]"
 ---
 
 # AI Conversations — Distilled Summaries
@@ -97,5 +97,5 @@ Use the distillation template from the Master Plan:
 ## Related
 
 - [[60_Claude/05_Clippings/AI Conversations/README]] — raw archive rules.
-- [[60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan]] — defines the full workstream and the registry schema.
+- [[Jarvis Three-Month Research Engine Master Plan]] — defines the full workstream and the registry schema.
 - [[60_Claude/40_Project_Briefs/Vault-Audit-2026-05-29]] — Phase 4 / Month 1 deliverable.

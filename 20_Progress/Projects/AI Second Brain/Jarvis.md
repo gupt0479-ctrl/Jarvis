@@ -14,7 +14,7 @@ notes:
   - "[[AI_CONTEXT]]"
   - "[[40_Resources/Obsidian/Vault Operating System]]"
   - "[[40_Resources/Obsidian/Jarvis Enrichment Engine]]"
-  - "[[60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan]]"
+  - "[[Jarvis Three-Month Research Engine Master Plan]]"
   - "[[Knowledge Enrichment Dashboard]]"
   - "[[Capability Dashboard]]"
 next: Build Week 1 registry hardening and conversation capture spine from the master plan.
@@ -37,7 +37,7 @@ The goal is not to make more AI notes. The goal is to make the vault think bette
 
 ## Canonical Plan
 
-- [[60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan]]
+- [[Jarvis Three-Month Research Engine Master Plan]]
 
 ## Control Surfaces
 

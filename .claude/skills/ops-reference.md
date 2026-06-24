@@ -102,7 +102,6 @@ Queries Capability Engine state through MCP. Lightweight — keep MCP calls mini
 |-------|---------|
 | `obsidian_global_search` for `track:` | Find all tracked concepts |
 | `obsidian_global_search` for `next_drill:` | Find drill-scheduled notes |
-| `obsidian_global_search` for `type: output` | Find output notes |
 | `obsidian_list_notes` in `60_Claude/44_Indexes/Field OS/` | Question bank state |
 
 ### Audit Checks
@@ -111,8 +110,9 @@ Queries Capability Engine state through MCP. Lightweight — keep MCP calls mini
 2. **Mastery distribution** — Count by `mastery_level`: novice, familiar, proficient, expert.
 3. **Overdue drills** — Notes where `next_drill` < today. Sort by days overdue descending.
 4. **Evidence gaps** — Notes with `track` set but `evidence` field empty or missing.
-5. **Stalled outputs** — Notes in `60_Claude/45_Outputs/` with `type: output` and `status: seed` where `created` is older than 14 days.
-6. **Underseeded question banks** — For each track, flag if fewer than 3 open questions in its Field OS board.
+5. **Underseeded question banks** — For each track, flag if fewer than 3 open questions in its Field OS board.
+
+`60_Claude/35_Outputs/` was removed (2026-06) and not replaced, so there is no "stalled outputs" dimension right now — skip it rather than scanning a folder that no longer exists.
 
 ### Capability Health Section Format
 
@@ -130,14 +130,6 @@ Queries Capability Engine state through MCP. Lightweight — keep MCP calls mini
 | Note | Track |
 |------|-------|
 | [[Note Title]] | track-name |
-```
-
-**Stalled outputs:**
-```markdown
-### Stalled Outputs
-| Note | Status | Age (days) |
-|------|--------|-----------|
-| [[Output Title]] | seed | 21 |
 ```
 
 **Underseeded question banks:**
@@ -227,7 +219,7 @@ Produces three report types: Ops Report, Morning Briefing, and Evening Close. Al
 
 ### Ops Report
 
-**File:** `60_Claude/50_Reviews/Ops Health - YYYY-MM-DD.md`
+**File:** `60_Claude/30_Reviews/Ops Health - YYYY-MM-DD.md`
 
 **Frontmatter:**
 ```yaml
@@ -239,7 +231,7 @@ tags:
   - review
   - ops-health
 notes:
-  - "[[60_Claude/50_Reviews/Ops Reports/latest CLI report]]"
+  - "[[60_Claude/30_Reviews/Ops Reports/latest CLI report]]"
 cli_used: true/false
 scan_dimensions: 7
 critical_count: N
@@ -255,7 +247,7 @@ carry_forward_count: N
 4. Date Consistency — future-dated fields; distinguish impossible history from scheduled future work.
 5. Inbox/Clippings Backlog — counts. Flag when either exceeds 10.
 6. Project Health — active projects missing `next:` or not modified in 30+ days.
-7. Capability Engine Health — drill queue, evidence gaps, stalled outputs, underseeded question banks.
+7. Capability Engine Health — drill queue, evidence gaps, underseeded question banks.
 8. Encoding Integrity — mojibake hits ranked by folder sensitivity.
 9. Triage Queue — prioritized action list.
 10. Comparison — only when a prior Ops Report exists.
@@ -271,7 +263,7 @@ carry_forward_count: N
 
 ### Morning Briefing
 
-**File:** `60_Claude/50_Reviews/Morning Briefing - YYYY-MM-DD.md`
+**File:** `60_Claude/30_Reviews/Morning Briefing - YYYY-MM-DD.md`
 
 **Sections:**
 1. Today's Plan — from `/startday` output.

@@ -50,7 +50,7 @@ Read all files in `60_Claude/`:
 
 ### 3. Create Lint Report
 
-Create/update `60_Claude/50_Reviews/Lint Report - YYYY-MM-DD.md`:
+Create/update `60_Claude/30_Reviews/Lint Report - YYYY-MM-DD.md`:
 
 ```markdown
 ---
@@ -61,7 +61,7 @@ tags:
   - lint
   - health-check
 notes:
-  - "[[60_Claude Board]]"
+  - "[[Claude Board]]"
 ---
 
 # Lint Report — 60_Claude Health Check

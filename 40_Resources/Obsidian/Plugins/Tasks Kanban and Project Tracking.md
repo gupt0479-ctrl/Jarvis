@@ -232,7 +232,7 @@ When adding work to Jarvis:
 - **Kanban → notes:** a Kanban card that represents durable work should link to the project note where the real tasks and context live (`[[BOOM Board]]`), not duplicate them. Kanban tracks *stage*; the note tracks *substance*.
 - **Tasks → Open Questions:** source-summary and course notes put unresolved items under `## Open Questions` as `- [ ]`, not prose — so they become trackable and queryable. This is why Vault Rules Part 8 mandates Tasks format there.
 ## Gold-Standard Example
-- *Tasks:* [[10_Areas/UMN/Previous Classes/Minor/MGMT 3001/Week - 9|Week - 9]] uses `- [ ]` under `## Takeaways (questions to resolve)` for real open questions rather than prose — the pattern the ingestion workflow requires.
+- *Tasks:* [[40_Resources/UMN/Previous Classes/Minor/MGMT 3001/Week - 9|Week - 9]] uses `- [ ]` under `## Takeaways (questions to resolve)` for real open questions rather than prose — the pattern the ingestion workflow requires.
 - *Kanban:* [[10_Areas/Life/Habits/Habit Tracker Board|Habit Tracker Board]] is a real lane-based board (stage movement is the point), not a task dump.
 - *next-driven project:* [[BOOM Board|BOOM Board]] keeps context in the note and surfaces one current move.
 ## Verified Open State

@@ -24,10 +24,12 @@ When this skill is invoked:
 
 Work only in:
 
-- `50_Archive/Previous Classes/CSCI 2033/Concepts/` (final evergreen outputs)
-- `50_Archive/Previous Classes/CSCI 2033/Concepts_old/` (human-edited source)
-- `50_Archive/Previous Classes/CSCI 2033/Concepts_new/` (Claude-generated source)
-- `50_Archive/Previous Classes/CSCI 2033/Week - *.md` (weekly timeline notes)
+- `20_Progress/Degree/CSCI 2033/Concepts/` (final evergreen outputs)
+- `20_Progress/Degree/CSCI 2033/Concepts_old/` (human-edited source)
+- `20_Progress/Degree/CSCI 2033/Concepts_new/` (Claude-generated source)
+- `20_Progress/Degree/CSCI 2033/Week - *.md` (weekly timeline notes)
+
+CSCI 2033 lives under `20_Progress/Degree/`, not `50_Archive/` — it is active coursework, not archived. `50_Archive/` is never read or written by any agent.
 
 Treat folder roles as:
 
@@ -97,7 +99,7 @@ Frontmatter rules for `Concepts/` files:
 - Ensure `type: concept`
 - Keep `status` (or set `status: sprout` if absent)
 - Keep existing metadata; add missing keys instead of removing any
-- Follow the metadata template from the folder `Classes/Concept Template` inside the 30_Order/Templates folder.
+- Follow the metadata template from `30_Order/Templates/Classes/Concept Template` (or `30_Order/Standards/Concept Standard.md` if present) for the field set.
 
 Conflict resolution:
 

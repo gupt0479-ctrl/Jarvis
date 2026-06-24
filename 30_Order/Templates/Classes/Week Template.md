@@ -13,7 +13,7 @@ next: []
 ---
 # <% tp.file.title %>
 
-*Gold standard: [[10_Areas/UMN/Previous Classes/Minor/MGMT 3001/Week - 4]] — read it before filling this template.*
+*Gold standard: [[40_Resources/UMN/Previous Classes/Minor/MGMT 3001/Week - 4]] — read it before filling this template.*
 
 ## What you must be able to do
 

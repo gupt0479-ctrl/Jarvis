@@ -9,7 +9,7 @@ tags:
   - readme
 notes:
   - "[[60_Claude/07_AI_Information/AI Conversation - Summaries/README]]"
-  - "[[60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan]]"
+  - "[[Jarvis Three-Month Research Engine Master Plan]]"
 ---
 # AI Conversations — Raw Archive
 This folder is the raw archive for exported LLM conversation transcripts (Claude Code, Claude web, Codex, Cursor, Kiro, ChatGPT, Ollama, future tools).
@@ -46,6 +46,6 @@ tags:
 3. Distilled summary lands in `60_Claude/30_Source_Summaries/AI Conversations/` with provenance back here.
 4. Promotion to durable knowledge is a separate manual step.
 ## Related
-- [[60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan]] — defines the conversation memory workstream.
-- [[60_Claude/40_Project_Briefs/Jarvis Multi-Agent PKM Plan]] — earlier design for the conversation registry schema.
+- [[Jarvis Three-Month Research Engine Master Plan]] — defines the conversation memory workstream.
+- [[Jarvis Multi-Agent PKM Plan]] — earlier design for the conversation registry schema.
 - [[60_Claude/40_Project_Briefs/Vault-Audit-2026-05-29]] — flags this folder's prior absence as the highest-impact Month 1 fix.

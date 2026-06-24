@@ -129,7 +129,7 @@ When an agent cannot find a note:
 - **Hover Editor → Omnisearch:** both reward the same thing — precise headings and a useful first paragraph. Omnisearch ranks them; Hover Editor displays them. See [[Omnisearch and Retrieval]].
 - **File Explorer++ → navigation landmarks:** pinned dashboards/boards are the human entry points; agents should read [[00_Dashboard]] and the session log instead of relying on Recent Files, which is weak session context.
 ## Gold-Standard Example
-[[10_Areas/UMN/Previous Classes/CSCI/CSCI 4041/Concepts/Algorithms/HeapSort|HeapSort]] previews well on hover because its first lines state the mechanism, and it ranks well in Omnisearch because its headings name specific things. Contrast a note whose first heading is "Overview" followed by warm-up prose — it previews as noise and ranks for nothing.
+[[HeapSort|HeapSort]] previews well on hover because its first lines state the mechanism, and it ranks well in Omnisearch because its headings name specific things. Contrast a note whose first heading is "Overview" followed by warm-up prose — it previews as noise and ranks for nothing.
 ## Verified Open State
 - Should source-summary folders (`60_Claude/10_Source_Summaries/`) be pinned in File Explorer++ for quick navigation, as the audit suggested? — *human layout preference; needs user choice*
 - Is the `Alt+C` Calendar hotkey live, or a leftover from an uninstalled Calendar plugin? — *unresolved across inventory*

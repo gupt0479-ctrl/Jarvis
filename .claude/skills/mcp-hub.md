@@ -27,7 +27,7 @@ The skill is read-mostly. It writes only when explicitly told to (`/mcp-hub sync
 2. `CLAUDE.md`
 3. `HUMAN_WRITING.md`
 4. `60_Claude/07_AI_Information/AI_CONTEXT.md`
-5. `40_Resources/Obsidian/Claude Pro Workflow.md`
+5. `40_Resources/CS/AI/Token Optimization/Claude Pro Workflow.md`
 6. `40_Resources/Obsidian/MCP-Hub-Index.md` — the single-page external orientation note.
 7. `00_Dashboard.md`
 8. Tail of `60_Claude/07_AI_Information/Session Logs/log.md` — last 30 lines.
@@ -40,15 +40,15 @@ The canonical map of external tools and their required context files. When a too
 
 | Tool | Wrapper File | Spine Files Required | Live State Files | Project Context | Writes Back? |
 |------|--------------|----------------------|------------------|-----------------|--------------|
-| Claude Code CLI | `CLAUDE.md` (auto-loaded) | AGENTS.md, HUMAN_WRITING.md, AI_CONTEXT.md | 00_Dashboard.md, session log tail | task-specific notes only | Yes — vault edits, skills, agents |
+| Claude Code CLI | `CLAUDE.md` (auto-loaded) | AGENTS.md, HUMAN_WRITING.md, `60_Claude/07_AI_Information/AI_CONTEXT.md` | 00_Dashboard.md, session log tail | task-specific notes only | Yes — vault edits, skills, agents |
 | Cowork (this) | Project instructions + CLAUDE.md | Same as Claude Code | Same | task-specific | Yes — vault edits |
-| Cursor | `.cursor/rules/workspace-context.mdc` | AGENTS.md, HUMAN_WRITING.md, AI_CONTEXT.md | 00_Dashboard.md | repo-level `AGENTS.md` if present | Yes — repo edits via Cursor |
-| Kiro | `.kiro/steering/workspace-context.md` | AGENTS.md, HUMAN_WRITING.md, AI_CONTEXT.md | 00_Dashboard.md, session log tail | spec folder under `.kiro/specs/` | Yes — specs only |
-| Codex | `AGENTS.md` (auto-loaded) | HUMAN_WRITING.md, AI_CONTEXT.md | 00_Dashboard.md | active project note | Yes — scripts, repo edits |
+| Cursor | `.cursor/rules/workspace-context.mdc` | AGENTS.md, HUMAN_WRITING.md, `60_Claude/07_AI_Information/AI_CONTEXT.md` | 00_Dashboard.md | repo-level `AGENTS.md` if present | Yes — repo edits via Cursor |
+| Kiro | `.kiro/steering/workspace-context.md` | AGENTS.md, HUMAN_WRITING.md, `60_Claude/07_AI_Information/AI_CONTEXT.md` | 00_Dashboard.md, session log tail | spec folder under `.kiro/specs/` | Yes — specs only |
+| Codex | `AGENTS.md` (auto-loaded) | HUMAN_WRITING.md, `60_Claude/07_AI_Information/AI_CONTEXT.md` | 00_Dashboard.md | active project note | Yes — scripts, repo edits |
 | Claude Desktop | Project knowledge upload | Same as Claude Code | Same | task-specific | Read-first (per Claude Pro Workflow) |
 | Claude mobile | None — capture only | Quick reference to AGENTS rules | None | None | No — capture only |
 | Claude web / ChatGPT | Project knowledge upload | Compressed spine + MCP-Hub-Index | 00_Dashboard summary | hand-picked notes | No — distillation happens in Cowork/Code |
-| External agent (new) | `40_Resources/Obsidian/MCP-Hub-Index.md` | AGENTS.md, HUMAN_WRITING.md, AI_CONTEXT.md | 00_Dashboard, session log | depends | Depends on agent capability |
+| External agent (new) | `40_Resources/Obsidian/MCP-Hub-Index.md` | AGENTS.md, HUMAN_WRITING.md, `60_Claude/07_AI_Information/AI_CONTEXT.md` | 00_Dashboard, session log | depends | Depends on agent capability |
 
 ---
 
@@ -97,7 +97,7 @@ Print the tool registry table. For each tool, verify the wrapper file exists. Ma
 
 ### `/mcp-hub context-pack {tool}`
 
-Build and print the context pack for the named tool. By default, print to chat. With `--write`, save to `60_Claude/45_Outputs/Context Packs/Context Pack — {tool} — YYYY-MM-DD.md`.
+Build and print the context pack for the named tool. By default, print to chat. With `--write`, save to `60_Claude/00_Inbox/Context Packs/Context Pack — {tool} — YYYY-MM-DD.md` — `60_Claude/35_Outputs/` was removed (2026-06) and not replaced, so there is no dedicated deliverables folder right now; Inbox is the unsure-where-it-goes destination per the Write Contract.
 
 Tool-specific overrides:
 

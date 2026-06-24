@@ -29,7 +29,7 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/UMN/Links.md",
+        "pattern": "40_Resources/UMN/Links.md",
         "patternType": "STRICT"
       },
       {
@@ -71,14 +71,14 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/UMN/Previous Classes/CSCI/CSCI 2033/CSCI 2033 Board.md",
+        "pattern": "20_Progress/Degree/CSCI 2033/CSCI 2033 Board.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/UMN/Previous Classes/CSCI/CSCI 2021/CSCI 2021 Board.md",
+        "pattern": "40_Resources/UMN/Previous Classes/CSCI/CSCI 2021/CSCI 2021 Board.md",
         "patternType": "STRICT"
       },
       {
@@ -113,49 +113,49 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/UMN/Previous Classes/CSCI/CSCI 2011/CSCI 2011 Board.md",
+        "pattern": "40_Resources/UMN/Previous Classes/CSCI/CSCI 2011/CSCI 2011 Board.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/UMN/Previous Classes/CSCI/CSCI 4041/CSCI 4041 Board.md",
+        "pattern": "20_Progress/Degree/CSCI 4041/CSCI 4041 Board.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/UMN/Previous Classes/CSCI/CSCI 2041/CSCI 2041 Board.md",
+        "pattern": "40_Resources/UMN/Previous Classes/CSCI/CSCI 2041/CSCI 2041 Board.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/UMN/Previous Classes/Weekly Board.md",
+        "pattern": "40_Resources/UMN/Previous Classes/Weekly Board.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/UMN/Previous Classes/Minor/MGMT 3001/MGMT 3001 Board.md",
+        "pattern": "40_Resources/UMN/Previous Classes/Minor/MGMT 3001/MGMT 3001 Board.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/UMN/Previous Classes/Lib Ed/MUS 1013/MUS Board.md",
+        "pattern": "40_Resources/UMN/Previous Classes/Lib Ed/MUS 1013/MUS Board.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/UMN/Previous Classes/CSCI/CSCI 3923/CSCI 3923 Board.md",
+        "pattern": "40_Resources/UMN/Previous Classes/CSCI/CSCI 3923/CSCI 3923 Board.md",
         "patternType": "STRICT"
       },
       {
@@ -169,14 +169,14 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/UMN/Previous Classes/CSCI/CSCI 4041/Concepts/DSA.md",
+        "pattern": "20_Progress/Degree/CSCI 4041/Concepts/DSA.md",
         "patternType": "STRICT"
       },
       {
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/UMN/Previous Classes/CSCI/CSCI 2041/Concepts/OCaml.md",
+        "pattern": "40_Resources/UMN/Previous Classes/CSCI/CSCI 2041/Concepts/OCaml.md",
         "patternType": "STRICT"
       },
       {
@@ -197,7 +197,7 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/UMN/Previous Classes/CSCI/CSCI 2033/Concepts/Python.md",
+        "pattern": "20_Progress/Degree/CSCI 2033/Concepts/Python.md",
         "patternType": "STRICT"
       },
       {
@@ -281,14 +281,7 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "60_Claude/35_Outputs/Output Index.md",
-        "patternType": "STRICT"
-      },
-      {
-        "name": "",
-        "active": true,
-        "type": "FILES",
-        "pattern": "60_Claude/50_Reviews/50_Reviews Board.md",
+        "pattern": "60_Claude/30_Reviews/50_Reviews Board.md",
         "patternType": "STRICT"
       },
       {
@@ -351,7 +344,7 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/UMN/Previous Classes/Lib Ed/BIOL 1012/BIOL Board.md",
+        "pattern": "40_Resources/UMN/Previous Classes/Lib Ed/BIOL 1012/BIOL Board.md",
         "patternType": "STRICT"
       },
       {
@@ -422,6 +415,27 @@
         "active": true,
         "type": "FILES",
         "pattern": "40_Resources/CS/Concepts/Concepts Board.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "20_Progress/Internship/Companies giving OPT & CPT.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "10_Areas/Career/Internships/Links & Interlinks.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "20_Progress/Projects/AI Use/The AI Hub.md",
         "patternType": "STRICT"
       }
     ],

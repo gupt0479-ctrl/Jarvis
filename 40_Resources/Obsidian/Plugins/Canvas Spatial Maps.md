@@ -51,7 +51,7 @@ If the same information is better as a Dataview list or a short table, skip the 
 - **Static duplication of a query:** a hand-arranged Canvas of "active projects" goes stale the moment a project changes; a Dataview board would not.
 - **Canvas instead of a note:** a spatial map with no accompanying text note has no searchable entry point.
 ## Gold-Standard Example
-None exists — there is no `.canvas` file in the vault, which confirms the audit's "Canvas: zero usage." There is honestly nothing real to point at. The first candidate is a single-course concept map (e.g. the MGMT 3001 concept notes laid out with prerequisite arrows) linked from [[10_Areas/UMN/Previous Classes/Minor/MGMT 3001/MGMT 3001 Board|the MGMT 3001 Board]]. Do not invent a `.canvas` reference that does not exist.
+None exists — there is no `.canvas` file in the vault, which confirms the audit's "Canvas: zero usage." There is honestly nothing real to point at. The first candidate is a single-course concept map (e.g. the MGMT 3001 concept notes laid out with prerequisite arrows) linked from [[40_Resources/UMN/Previous Classes/Minor/MGMT 3001/MGMT 3001 Board|the MGMT 3001 Board]]. Do not invent a `.canvas` reference that does not exist.
 ## Verified Open State
 - Is Canvas deliberately unused, or just never started? — *unverified; no `.canvas` files exist, but the plugin is enabled*
 - Would one course concept-map Canvas be worth building as the seed example, or does the graph view already cover this need? — *open question for the user*

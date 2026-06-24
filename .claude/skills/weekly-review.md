@@ -15,8 +15,8 @@ Before touching anything else, read these files in order:
 1. `60_Claude/07_AI_Information/AI_CONTEXT.md`
 2. `60_Claude/07_AI_Information/Session Logs/log.md` — tail: last 100 lines
 3. `00_Dashboard.md`
-4. `60_Claude/40_Project_Briefs/Jarvis Three-Month Research Engine Master Plan.md` — sections: "Three-Month Build Map" and "The Weekly Operating Rhythm"
-5. The most recent weekly synthesis: `60_Claude/50_Reviews/Weekly Synthesis/` — list directory, read the latest file
+4. `20_Progress/Projects/AI Second Brain/Jarvis Three-Month Research Engine Master Plan.md` — sections: "Three-Month Build Map" and "The Weekly Operating Rhythm" (moved out of `60_Claude/40_Project_Briefs/` once it became the live execution plan)
+5. The most recent weekly synthesis: `60_Claude/30_Reviews/Weekly Synthesis/` — list directory, read the latest file
 
 Determine the current ISO week number from today's date. Format: `YYYY-WXX`.
 
@@ -35,7 +35,7 @@ Group what you find by area:
 - **Coursework** (`10_Areas/`): course notes, concept notes, lab/project notes
 - **Projects + Career** (`20_Progress/`): project notes, career notes, UROP progress
 - **Resources** (`40_Resources/`): enriched concept notes, reference material
-- **Claude layer** (`60_Claude/`): distillations, summaries, project briefs, outputs, reviews
+- **Claude layer** (`60_Claude/`): distillations, summaries, project briefs, reviews
 
 For each group, note: what was created vs. what was updated, and whether the work has a clear `next:` or outcome.
 
@@ -117,7 +117,7 @@ Summarize:
 
 ## Step 6: Write the Review Note
 
-Create `60_Claude/50_Reviews/Weekly Synthesis/Weekly Synthesis — YYYY-WXX.md` using this template.
+Create `60_Claude/30_Reviews/Weekly Synthesis/Weekly Synthesis — YYYY-WXX.md` using this template.
 
 After creating it, also patch the weekly periodic note at `10_Areas/Life/Enumerate/Weekly/YYYY-Www.md` (where `YYYY-Www` matches the ISO week, e.g. `2026-W24`). If the note doesn't exist, create it using `30_Order/Templates/Enumerate/Better Weekly.md`. Patch its `> [!NOTE] Summary:` callout with a one-sentence summary of the week, and fill the Goals and Fixes sections with the top items from the synthesis note. Keep it brief — the weekly periodic note is a quick-glance record, not a duplicate of the full synthesis.
 
@@ -131,7 +131,7 @@ tags:
   - review
   - weekly
 notes:
-  - "[[60_Claude/50_Reviews/Weekly Synthesis/Weekly Synthesis Index]]"
+  - "[[60_Claude/30_Reviews/Weekly Synthesis/Weekly Synthesis Index]]"
 ---
 
 # Weekly Synthesis — YYYY-WXX
@@ -177,7 +177,7 @@ notes:
 
 ## Step 7: Update the Weekly Synthesis Index
 
-Read `60_Claude/50_Reviews/Weekly Synthesis/Weekly Synthesis Index.md`. Add the new review to the index table.
+Read `60_Claude/30_Reviews/Weekly Synthesis/Weekly Synthesis Index.md`. Add the new review to the index table.
 
 ---
 
@@ -198,7 +198,7 @@ Append to `60_Claude/07_AI_Information/Session Logs/log.md`:
 - This skill is called by a Cowork scheduled task every Monday morning. You start cold with no prior context. The pre-flight reads are not optional.
 - The three-month plan started April 24, 2026. Use that anchor to calculate which phase and week you're in.
 - The master plan's "Weekly Operating Rhythm" section defines the expected weekly cadence. Compare actual vault activity against it honestly.
-- If conversation capture folders (`60_Claude/05_Clippings/AI Conversations/` and `60_Claude/30_Source_Summaries/AI Conversations/`) don't exist yet, flag this every week until they're created. This is the most critical missing piece of the build spine.
-- If it's the last week of a month, also check whether a monthly review note belongs in `60_Claude/50_Reviews/`.
+- If conversation capture folders (`60_Claude/05_Clippings/AI Conversations/` and `60_Claude/10_Source_Summaries/AI Conversations/`) don't exist yet, flag this every week until they're created. This is the most critical missing piece of the build spine.
+- If it's the last week of a month, also check whether a monthly review note belongs in `60_Claude/30_Reviews/Monthly/`.
 - Do not modify raw clippings, archive notes, `.obsidian/`, `.claude/`, `.kiro/`, or `.cursor/` directories.
 - Prefer patching existing notes (vault_patch by heading) over full rewrites.
