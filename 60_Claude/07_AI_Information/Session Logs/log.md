@@ -976,3 +976,27 @@ Audited the web-clipping ingestion pipeline (`05_Clippings/Web/`, 29 raw clips) 
 **Not updated (flagged, not touched):** `Repos-Deep-Analysis.md` and `GitHub Stars — How Anant Uses Each Repo.md` still carry the pre-acquisition/pre-move framing for promptfoo and goose — these are prior-session narrative docs, left alone rather than rewritten in this pass.
 
 **Next:** ~84 repos and 26 web clips remain. Method is now validated twice (Tier-2 deep + Tier-1 reference, plus two distinct failure-mode fallbacks) — ready to scale to the full backlog on the next go-ahead.
+
+---
+
+## 2026-06-25 — TradingView Research Completion
+
+**Task:** Complete the three-area research pass for the TradingView project initiated in the prior session.
+
+**Correction logged:** Prior session incorrectly identified Kronos as "Amazon's Chronos." Corrected in Research note — Kronos (shiyu-coder/arXiv 2508.02739) is a separate Tsinghua University model, financial-specific, accepted at AAAI 2026.
+
+**Files written:**
+- `20_Progress/Projects/CS/TradingView/Research - Systematic Equity Strategy Edge (2026-06-25).md`
+- `20_Progress/Projects/CS/TradingView/Research - Kronos Foundation Model Deep Dive (2026-06-25).md`
+- `20_Progress/Projects/CS/TradingView/Research - Trading Fundamentals Gap Fill (2026-06-25).md`
+
+**Key findings:**
+1. **Strategy edge gap:** Current strategy modules (trend following, mean reversion, quality, valuation) are contextual checks, not factors with documented evidence. Cross-sectional 12-1 month momentum (Jegadeesh-Titman), QMJ quality composite, FCF yield, and low-volatility are the academically supported signals missing from the current engine. RSI/Bollinger stay as descriptive context only — not as action drivers.
+2. **Kronos:** NOT Amazon Chronos. Decoder-only transformer + specialized OHLCV tokenizer. Trained on 12B K-lines from 45 exchanges. Kronos-small (24.7M params, 512-bar context) is the right V1 choice. Must validate RankIC on our specific universe before using as evidence input. Input: pandas OHLCV DataFrame; output: forecasted OHLCV DataFrame with sample_count paths for uncertainty.
+3. **Fundamentals gaps closed:** Alpha/beta, systematic vs idiosyncratic risk, risk-on/risk-off regimes, Sharpe/Sortino/Calmar (thresholds documented), walk-forward validation (2-4yr optimize / 3-6mo OOS), Deflated Sharpe Ratio, Kelly/half-Kelly position sizing, Fama-French free data.
+
+**Next immediate tasks (not yet started):**
+- Revise `AI Market Analyzer - Strategy Engine.md` to add `momentum_score` (12-1 month), `safety_score` (realized volatility inverse), `quality_fcf_score` (FCF-weighted)
+- Run Kronos validation pass on V1 universe historical data (once dev environment is accessible in WSL)
+- Complete Kiro tasks 7.2-7.4 (DataQualityAuditor property tests)
+- Complete Kiro tasks 9-13 (evidence.py, benchmark.py, polygon.py, cli.py)
