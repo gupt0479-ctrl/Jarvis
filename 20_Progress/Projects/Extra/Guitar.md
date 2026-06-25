@@ -17,6 +17,8 @@ next: "[[Random]]"
 [Reddit](https://www.reddit.com/r/guitarlessons/comments/1gsbwva/what_is_a_good_online_guitar_course/)
 [Youtube detailed playlist](https://youtube.com/playlist?list=PLJwa8GA7pXCWAnIeTQyw_mvy1L7ryxxPH&si=c3Xapabecs468xEI)
 [Justin Guitar](https://www.justinguitar.com/users/anantgupta21/dashboard)
+[Magic Fretboard(USEFUL)](https://magicfretboard_listen.ar.io/)
+
 # Justin Guitar
 ## Grade 1
 1. Module 0: Basics of Guitar:

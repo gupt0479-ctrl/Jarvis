@@ -50,6 +50,10 @@ notes:
 - [Learn Harness Engineering](https://walkinglabs.github.io/learn-harness-engineering/en/?fbclid=PAVERFWAR6o85leHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAaeHIvKETFWeF4wV4XlzWEpHcfT1xnPIIsFWBNHDmw-U5VdS1faJTWLtPzqZeA_aem_BMJcvpk3W2G-1x4yiLBTTw)
 - [Launch Playbook Framework](https://miro.com/app/board/uXjVHYP_62Y=/?share_link_id=245564001485&fbclid=PAVERFWAR6xe5leHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAafeP3jqzFZquVLQoQjF2IdLeuNv_ZBaH2ReBnyPJHy4Ewts8pmth6cmhZjoMQ_aem_Z22QCeYVzutOhU1WBPrdXA) - Very detailed (imp), built on [miro](https://miro.com/ai/flows/?irclickid=z9zTk-1h-xyZWZ6QAt3wfXaJUkuRkhX9HQ4dRg0&utm_source=Test%20partner%20account%20miro&utm_medium=cpa&utm_campaign=&utm_affiliate_network=impact&utm_custom=nivedan_rathi_aiao_in&irgwc=1&afsrc=1)
 - [Prof AI](https://prof.ai/login) - Learn AI with AI
+- [Developer Roadmaps](https://roadmap.sh/)
+	- [AI Engineer](https://roadmap.sh/ai-engineer?utm_source=sp_auto_dm)
+- AI Engineering from Scratch - [Entire Guide](https://aiengineeringfromscratch.com/)
+- 
 
 #### Notion
 - [Claude Code with Obsidian](https://www.notion.so/How-to-Build-Your-Second-Brain-with-Claude-Code-Obsidian-3263674dbe00810a9e5ef035619b8da1) → Updated with latest repos

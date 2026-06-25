@@ -1,8 +1,96 @@
 {
   "recentFiles": [
     {
+      "basename": "Maverick AI Resource Hub",
+      "path": "60_Claude/05_Clippings/Web/Maverick AI Resource Hub.md"
+    },
+    {
+      "basename": "Random",
+      "path": "40_Resources/Random.md"
+    },
+    {
+      "basename": "Guitar",
+      "path": "20_Progress/Projects/Extra/Guitar.md"
+    },
+    {
+      "basename": "Magic Fretboard",
+      "path": "60_Claude/05_Clippings/Web/Magic Fretboard.md"
+    },
+    {
+      "basename": "Gurwinder  Substack",
+      "path": "60_Claude/05_Clippings/Web/Gurwinder  Substack.md"
+    },
+    {
+      "basename": "Links",
+      "path": "40_Resources/CS/Links.md"
+    },
+    {
+      "basename": "Second Brain",
+      "path": "40_Resources/Obsidian/Second Brain.md"
+    },
+    {
+      "basename": "The AI Hub",
+      "path": "20_Progress/Projects/AI Use/The AI Hub.md"
+    },
+    {
+      "basename": "fintech early programs that actually pay, not sm bs unpaid internship lmao",
+      "path": "60_Claude/05_Clippings/Web/fintech early programs that actually pay, not sm bs unpaid internship lmao.md"
+    },
+    {
+      "basename": "Compliance Solutions for Websites, Apps and Organizations",
+      "path": "60_Claude/05_Clippings/Web/Security/Compliance Solutions for Websites, Apps and Organizations.md"
+    },
+    {
+      "basename": "00 Overview",
+      "path": "60_Claude/40_Project_Briefs/TradingView/00 Overview.md"
+    },
+    {
+      "basename": "Claude Council",
+      "path": "60_Claude/05_Clippings/Web/Claude Council.md"
+    },
+    {
+      "basename": "Automate Your AI Second Brain",
+      "path": "60_Claude/05_Clippings/Web/Automate Your AI Second Brain.md"
+    },
+    {
+      "basename": "App Privacy Policy Generator",
+      "path": "60_Claude/05_Clippings/Web/Security/App Privacy Policy Generator.md"
+    },
+    {
+      "basename": "All-in-One Data Privacy Compliance Solution for Websites & Apps",
+      "path": "60_Claude/05_Clippings/Web/Security/All-in-One Data Privacy Compliance Solution for Websites & Apps.md"
+    },
+    {
+      "basename": "AI Engineering from Scratch",
+      "path": "60_Claude/05_Clippings/Web/AI Engineering from Scratch.md"
+    },
+    {
+      "basename": "AI Engineer Roadmap",
+      "path": "60_Claude/05_Clippings/Web/AI Engineer Roadmap.md"
+    },
+    {
+      "basename": "AI Agents for Sales & GTM Teams",
+      "path": "60_Claude/05_Clippings/Web/AI Agents for Sales & GTM Teams.md"
+    },
+    {
+      "basename": "4 Ways to Make Money With the Hermes Agent",
+      "path": "60_Claude/05_Clippings/Web/4 Ways to Make Money With the Hermes Agent.md"
+    },
+    {
       "basename": "Jarvis Three-Month Research Engine Master Plan",
       "path": "20_Progress/Projects/AI Second Brain/Jarvis Three-Month Research Engine Master Plan.md"
+    },
+    {
+      "basename": "Companies giving OPT & CPT",
+      "path": "20_Progress/Internship/Companies giving OPT & CPT.md"
+    },
+    {
+      "basename": "LLM Council (github)",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/LLM Council (github).md"
+    },
+    {
+      "basename": "Repos",
+      "path": "40_Resources/CS/Repos.md"
     },
     {
       "basename": "Jarvis Multi-Agent PKM Plan",
@@ -29,14 +117,6 @@
       "path": "20_Progress/Mentorship Program/Mentorship Board.md"
     },
     {
-      "basename": "Companies giving OPT & CPT",
-      "path": "20_Progress/Internship/Companies giving OPT & CPT.md"
-    },
-    {
-      "basename": "Random",
-      "path": "40_Resources/Random.md"
-    },
-    {
       "basename": "Summer Courses",
       "path": "20_Progress/Degree/Summer Courses.md"
     },
@@ -45,32 +125,12 @@
       "path": "40_Resources/Capability/Track Definitions.md"
     },
     {
-      "basename": "Second Brain",
-      "path": "40_Resources/Obsidian/Second Brain.md"
-    },
-    {
       "basename": "Gen AI Meeting",
       "path": "40_Resources/CS/AI/Gen AI Meeting.md"
     },
     {
-      "basename": "Repos",
-      "path": "40_Resources/CS/Repos.md"
-    },
-    {
       "basename": "Kafka Pipeline Architecture Story",
       "path": "40_Resources/CS/Concepts/Kafka Pipeline Architecture Story.md"
-    },
-    {
-      "basename": "Links",
-      "path": "40_Resources/CS/Links.md"
-    },
-    {
-      "basename": "The AI Hub",
-      "path": "20_Progress/Projects/AI Use/The AI Hub.md"
-    },
-    {
-      "basename": "LLM Council (github)",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/LLM Council (github).md"
     },
     {
       "basename": "Summer Grind",
@@ -133,72 +193,12 @@
       "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 8.md"
     },
     {
-      "basename": "4 Ways to Make Money With the Hermes Agent",
-      "path": "60_Claude/05_Clippings/Web/4 Ways to Make Money With the Hermes Agent.md"
-    },
-    {
       "basename": "V1 Recently Funded Startups",
       "path": "60_Claude/05_Clippings/Web/V1 Recently Funded Startups.md"
     },
     {
       "basename": "MCPs",
       "path": "40_Resources/CS/AI/Toolkit/MCPs.md"
-    },
-    {
-      "basename": "Gen AI Roadmap",
-      "path": "20_Progress/Projects/AI Use/Gen AI/Gen AI Roadmap.md"
-    },
-    {
-      "basename": "Gen AI Day - 2",
-      "path": "20_Progress/Projects/AI Use/Gen AI/Gen AI Day - 2.md"
-    },
-    {
-      "basename": "Gen AI Day - 1",
-      "path": "20_Progress/Projects/AI Use/Gen AI/Gen AI Day - 1.md"
-    },
-    {
-      "basename": "Cursor AI",
-      "path": "20_Progress/Projects/AI Use/Cursor AI.md"
-    },
-    {
-      "basename": "Claude Code",
-      "path": "40_Resources/CS/AI/Toolkit/Claude Code.md"
-    },
-    {
-      "basename": "Claude Pro Workflow",
-      "path": "40_Resources/CS/AI/Token Optimization/Claude Pro Workflow.md"
-    },
-    {
-      "basename": "Jarvis OS — North Star",
-      "path": "60_Claude/07_AI_Information/Jarvis OS — North Star.md"
-    },
-    {
-      "basename": "Jarvis Enrichment Engine",
-      "path": "40_Resources/Obsidian/Jarvis Enrichment Engine.md"
-    },
-    {
-      "basename": "Jarvis MCP and REST API Setup",
-      "path": "40_Resources/CS/Concepts/New Laptop/Jarvis MCP and REST API Setup.md"
-    },
-    {
-      "basename": "New Laptop Setup",
-      "path": "40_Resources/CS/Concepts/New Laptop/New Laptop Setup.md"
-    },
-    {
-      "basename": "Ubuntu - WSL",
-      "path": "40_Resources/CS/Concepts/New Laptop/Ubuntu - WSL.md"
-    },
-    {
-      "basename": "00 - CoWork Prompt — Summer OS",
-      "path": "10_Areas/Life/Plans/Summer/00 - CoWork Prompt — Summer OS.md"
-    },
-    {
-      "basename": "00 - Summer Plans Index",
-      "path": "10_Areas/Life/Plans/Summer/00 - Summer Plans Index.md"
-    },
-    {
-      "basename": "Plans Board",
-      "path": "10_Areas/Life/Plans/Plans Board.md"
     }
   ],
   "omittedPaths": [],
