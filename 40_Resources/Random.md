@@ -17,7 +17,8 @@ notes:
 4. [Web Archive](https://web.archive.org/) for everything 
 5. Mini money(==WORKS==) - [insta](https://www.minimoney.guide/)
 6. [Magic Fretboard - Guitar](https://magicfretboard_listen.ar.io/)
-7. 
+7. Hall of hacks - [Hackathons](https://hallofhackss.com/feed)
+8. 
 ## For me 
 - Portfolio to learn about human body: [Huberman Lab](https://www.hubermanlab.com/)
 - Cool af portfolio: [Bruno-simon](https://bruno-simon.com/)

@@ -17,6 +17,9 @@ notes:
 - [No Guardrails AI](https://infinetai.org/chat)
 ### Articles
 - [Jarvis Build](https://dev.to/aws/build-your-own-ai-butler-a-scheduled-agent-that-runs-itself-3dmk) - AI Bulter
+- [The Hidden Operating System Behind Every Income Ceiling](https://dustinbweiss.substack.com/p/the-hidden-operating-system-behind?r=6hkeel&utm_campaign=post-expanded-share&utm_medium=web&mcp_token=eyJwaWQiOjIwOTUwODUsInNpZCI6MTk3NTk2ODIyMCwiYXgiOiIzYTUxYzkwNWE4OWIzMTk1NDY2MjcwYTI3MjFlMzgxNyIsInRzIjoxNzc5OTQzMjU5LCJleHAiOjE3ODIzNjI0NTl9.-BcIOArloGK2GZKd-9CusXT_FD9DiofE-etWv8JgIH0&triedRedirect=true&fbclid=PAVERFWASEpq5leHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAaf-7WrEqbz1dwrLlbeZNNu8_TPLLfKE_8WNoMVFI-F6fL9oFlpBii6tde7QRQ_aem_n4lZa7ytS8bwiWesyDZPCg)
+- [The Output Audit](https://dustinbweiss.substack.com/p/the-output-audit?r=6hkeel&utm_campaign=post-expanded-share&utm_medium=web&mcp_token=eyJwaWQiOjIwOTUwODUsInNpZCI6MTk3NTk2ODIyMCwiYXgiOiJiNDQ1Y2NhZDE4MDY5ZGU2ZmJiYTRiNTMwMzQ3OTUyNSIsInRzIjoxNzc5OTQzMjA5LCJleHAiOjE3ODIzNjI0MDl9.wzPmN29Sd_9823MGsTN51oYG655UKRy5Ne8ycRv5zjM&triedRedirect=true&fbclid=PAVERFWASEpqFleHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAacW8E9iqnH73yBH9eAKFmlqwufhhvL12r8OfF06xytmHDMpIh4SqH2tBhNi2w_aem_3YSOd2dFTEDbUaec87worw)
+- 
 ## AI
 ### Tools
 - [Mobile app AI UI](https://rork.com/): Iphone
@@ -36,6 +39,7 @@ notes:
 - [Audio Transcriber](https://riverside.com/tools/audio-transcriber)
 - [Napkin](https://www.napkin.ai/) - Visuals from text
 - [Oddpool](https://www.oddpool.com/) - The search engine for prediction markets
+- [Naive](https://usenaive.ai/) - Unified Agent Infrastructure ([docs](https://usenaive.ai/docs/getting-started/quickstart))
 ### Guides
 #### Resource
 - [Matt Poccock - AI Engineer](https://www.aihero.dev/): Website
@@ -43,6 +47,9 @@ notes:
 - [zachdoesAI](https://zachdoesai.com/) 
 	- [Hermes Agent Setup Guide](https://zachdoesai.com/guides/hermes-agent-setup-guide?fbclid=PAVERFWAR0DCZleHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAaffRyFWkSeeIZocTgW7L5L3-UKX68ZDRJJ8UrDAoFHgCFQJWtRd4Alo1Gh2tg_aem_22HxCnwB83HzDc0kVbgR_w)
 	- [The Autonomous AI Roadmap](https://zachdoesai.com/guides/autonomous-ai-roadmap?fbclid=PAVERFWAR56EdleHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAaesKdoXhLpAr1FVgvcGV2aRhW00pK2s_aD02vVn5OSog2DBFLt5nbcy5A76Mw_aem_v6QfZ7Seo-ttAgeGKhVaQQ)
+	- [4 Ways to Make Money With the Hermes Agent](https://zachdoesai.com/guides/hermes-money-playbook)
+	- [The Agent-Ready Roadmap](https://zachdoesai.com/guides/agent-ready?utm_source=sp_auto_dm&fbclid=PAVERFWASQ6x9leHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAadrt1m7C6YBDUj5bJTnq5hvGwiBkaQ5oPAfkG2ZV-y3ZH_y2yOVxzaKOJZkSQ_aem_UUGAamrEQa6rpJHLBiA8rA)
+	- 
 - [Algorithmic Trading](https://www.sentivue.net/developers?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAdGRleAR52-VleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAaeL5I0VfuRWskEyT9EYd4jArXGZafTv35KBrQuZF1pmpepbkI6_OZk9-BK1oA_aem_FXqgdSNsonxYZRS5_nwjhw) - Testing(Early Access)
 - [Kronos](https://shiyu-coder.github.io/Kronos-demo/) - Prediction model
 	- [Kronos-base](https://huggingface.co/NeoQuasar/Kronos-base) - HuggingFace
@@ -53,7 +60,11 @@ notes:
 - [Developer Roadmaps](https://roadmap.sh/)
 	- [AI Engineer](https://roadmap.sh/ai-engineer?utm_source=sp_auto_dm)
 - AI Engineering from Scratch - [Entire Guide](https://aiengineeringfromscratch.com/)
-- 
+- [Maverick's Resources](https://mavgpt.ai/)
+	- Claude Secret Codes: [100 Prompt Shortcuts](https://mavgpt.ai/resources/claude-secret-codes?mcp_token=eyJwaWQiOjI5OTM1MzIsInNpZCI6MzE2NDA5MDY3LCJheCI6ImNlNzQ1ZGM1OGEwMjMxOGEwZGYyYzNhYjA0NzZiYzdjIiwidHMiOjE3NzQ4ODY1NjYsImV4cCI6MTc3NzMwNTc2Nn0.0vlQq8gsX7QCoR5I9uSbKbun8xiUAAfiYpw3tbYIeNg&fbclid=PAVERFWAQ3ff1leHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAadfRJ4HAVJkVq-L0RW7RuNTQlbuuCH6-u2PGgCDN6FOIuxUgGB7rZ4AzIa2Qg_aem_POWtGoql3QatpqbSjv1uQg) - [[Maverick's 100 prompt shortcuts.pdf]]
+	- [The AI Resume & Job Search Guide](https://mavgpt.ai/resources/ai-resume-job-search-guide) - [[Maverick's AI Resume & Job Search.pdf]]
+	- [All of Maverick's Viral Prompts](https://mavgpt.ai/resources/viral-prompts) - [[Maverick's Viral Prompts.pdf]]
+	- 
 
 #### Notion
 - [Claude Code with Obsidian](https://www.notion.so/How-to-Build-Your-Second-Brain-with-Claude-Code-Obsidian-3263674dbe00810a9e5ef035619b8da1) → Updated with latest repos
@@ -61,7 +72,9 @@ notes:
 - [Protocol Resources](https://realrobertgutierrez.notion.site/Protocol-Resources-3244cd7debe880d4aecbfa3577bbdce2)
 - To Learn: [AI Starter Kit](https://flicker-celestite-7b6.notion.site/AI-STARTER-KIT-2026-2f4d180d8c8081e5bb17e2027f7d0cf6)
 - [How To Cut Your AI Bill 95% (Without Quitting Claude)](https://flicker-celestite-7b6.notion.site/How-To-Cut-Your-AI-Bill-95-Without-Quitting-Claude-360d180d8c8081eea82af01899ddbe37) - Useful but could be better
-
+- [The 2027 Internship Calendar (Prediction) when everything actually drops](https://burly-handstand-0dc.notion.site/The-2027-Internship-Calendar-Prediction-when-everything-actually-drops-37be3f8633848182be9ae0cd005e175a) - by @moonking.mp4
+- [the new coding interview, 5 resources id actually study](https://burly-handstand-0dc.notion.site/the-new-coding-interview-5-resources-id-actually-study-380e3f86338481b89157f4fc2dd5fc17)
+- 
 ### Models
 - [Subquadratic](https://subq.ai/) (soon)
 - [Free Models](https://openrouter.ai/models?q=free+) - Openrouter
