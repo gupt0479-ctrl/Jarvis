@@ -14,69 +14,85 @@ Organized by GitHub list. Each section mirrors the star list on [gupta-builds's 
 ## Claude (28)
 
 Claude Code tooling, memory systems, agent infrastructure. All entries have individual notes.
+### MCPs
+
+### Skills, Agents, Hooks & Scripts
+
+### Context, Prompts and Templates
+
+### Others
+
 
 - [[ECC|ECC]] — agent harness for Claude Code: skills, instincts, persistent memory, and a security layer in a single install
-- [[gstack|gstack]] — 13 cognitive-mode skills (founder review, eng review, paranoid QA) plus a Playwright browser for Claude Code
-- [[mattpocock-skills|Skills (mattpocock)]] — 18 skills targeting the four main agent failure modes: misalignment, verbosity, broken feedback loops, entropy
-- [[agent-skills-addyosmani|Agent Skills (Addy Osmani)]] — 23 skills covering the full SDLC, each with rationalizations tables and evidence requirements
-- [[obsidian-mind|Obsidian Mind]] — Obsidian vault template built for agents: 5 lifecycle hooks, 18 slash commands, 9 subagents, QMD semantic search
+- [[gstack|gstack]] — 13 cognitive-mode skills (founder review, eng review, paranoid QA) plus a Playwright browser for Claude Code (*GOOD*)
+- [[mattpocock-skills|Skills (mattpocock)]] — 18 skills targeting the four main agent failure modes: misalignment, verbosity, broken feedback loops, entropy. (*EXTREMELY USEFUL - Copy skills*)
+- [[agent-skills-addyosmani|Agent Skills (Addy Osmani)]] — 23 skills covering the full SDLC, each with rationalizations tables and evidence requirements. (*NEEDS TO MIMICKED*)
+- [[obsidian-mind|Obsidian Mind]] — Obsidian vault template built for agents: 5 lifecycle hooks, 18 slash commands, 9 subagents, QMD semantic search. (*WORKFLOW NEEDS GO BE STUDIED AND MIMICKED*)
 - [[cpr-compress-preserve-resume|CPR — Compress, Preserve, Resume]] — three slash commands (/preserve, /compress, /resume) for session lifecycle and ~55% token cost reduction on restart
-- [[memsearch|memsearch (Zilliz)]] — auto-captures every Claude Code session to markdown, indexes with ONNX embeddings + Milvus, exposes /memory-recall
+- [[memsearch|memsearch (Zilliz)]] — auto-captures every Claude Code session to markdown, indexes with ONNX embeddings + Milvus, exposes /memory-recall (*Better option? HOW REALISTIC TO USE?*)
 - [[context-sync|Context Sync]] — local SQLite MCP memory layer with `remember`/`recall` tools and git coupling analysis
-- [[claude-context|Claude Context (Zilliz)]] — MCP server that indexes a codebase into Milvus for semantic code search; claims ~40% token reduction
-- [[graphify|Graphify]] — Claude Code skill that builds a NetworkX knowledge graph from any folder and exports an Obsidian vault
-- [[spec-kit|Spec Kit (GitHub)]] — GitHub's spec-driven development CLI: constitution → specify → clarify → plan → tasks → implement
-- [[beads|Beads (bd)]] — Dolt-backed CLI issue tracker with atomic task claiming and dependency graphs for multi-agent coordination
-- [[claude-code-templates|Claude Code Templates]] — npm CLI to browse and install 100+ Claude Code agents, MCPs, hooks, and skills interactively
-- [[ruflo|Ruflo (formerly claude-flow)]] — multi-agent orchestration with Q-Learning routing, 60+ specialized agents, and swarm coordination
-- [[awesome-mcp-servers|Awesome MCP Servers]] — canonical community index of MCP servers by category; check before building any new integration from scratch
-- [[awesome-agent-skills|Awesome Agent Skills]] — 630+ agent skills index from official dev teams (Anthropic, Vercel, Stripe, Supabase, etc.)
-- [[claude-code-best-practice|Claude Code Best Practice]] — 55K-star best practices collection with agents/commands/skills; reference read, not infrastructure
+- [[claude-context|Claude Context (Zilliz)]] — MCP server that indexes a codebase into Milvus for semantic code search; claims ~40% token reduction. (*WORTH USING? OVER USE OF CONTEXT?*)
+- [[graphify|Graphify]] — Claude Code skill that builds a NetworkX knowledge graph from any folder and exports an Obsidian vault (*USING, UNDERSTAND BETTER*)
+- [[spec-kit|Spec Kit (GitHub)]] — GitHub's spec-driven development CLI: constitution → specify → clarify → plan → tasks → implement. (*WORTH TRYING?*) Sounds like kiro
+- [[beads|Beads (bd)]] — Dolt-backed CLI issue tracker with atomic task claiming and dependency graphs for multi-agent coordination (*HOW DIFFERENT FROM GRAPHIFY?* **USEFUL?**)
+- [[claude-code-templates|Claude Code Templates]] — npm CLI to browse and install 100+ Claude Code agents, MCPs, hooks, and skills interactively (*IS IT USEFUL?*) - [Website](https://aitmpl.com/)
+- [[ruflo|Ruflo (formerly claude-flow)]] — multi-agent orchestration with Q-Learning routing, 60+ specialized agents, and swarm coordination (*HOW TO USE? USEFUL*)
+- [[awesome-mcp-servers|Awesome MCP Servers]] — canonical community index of MCP servers by category; check before building any new integration from scratch. (*NEEDS TO BE USED*)
+- [[claude-code-best-practice|Claude Code Best Practice]] — 55K-star best practices collection with agents/commands/skills; reference read, not infrastructure *REALLY GOOD*
 - [[system-prompts-and-models-of-ai-tools|system-prompts-and-models-of-ai-tools]] — extracted system prompts from Claude Code, Cursor, Devin, Manus, Replit; useful for CLAUDE.md and skill writing
 - [[anthropics-financial-services|Claude for Financial Services (Anthropic)]] — official IB/equity research/KYC agents with Bloomberg, FactSet, S&P Global MCP connectors
 - [[free-claude-code|Free Claude Code]] — proxy server that reroutes Claude Code API calls to NVIDIA NIM, OpenRouter, or local models
-- [[vibe-kanban|Vibe Kanban]] — sunsetting kanban board for parallel agent workflows in isolated worktrees; watch for a successor
-- [[dify|Dify]] — self-hosted LLM app platform for teams building products; full Docker deployment, not solo agentic tooling
+- [[dify|Dify]] — self-hosted LLM app platform for teams building products; full Docker deployment, not solo agentic tooling (*USEFUL?*)
 - [[Scrapegraph-ai|ScrapeGraph AI]] — LLM-powered web scraping via natural language description; no Claude integration path
-- [[Scrapling|Scrapling]] — resilient Python scraper that tracks elements across DOM changes; useful data pipeline utility
-- [[unsloth|Unsloth]] — fine-tuning acceleration for local open models; orthogonal to Claude Code stack but useful for ML pipeline work
-- [[jcode|jcode]] — Rust coding agent harness with 6,660 stars; can't evaluate (README empty at time of review)
-- [[yt-dlp|yt-dlp]] — feature-rich CLI audio/video downloader for 1,800+ sites; useful utility
+- [[Scrapling|Scrapling]] — resilient Python scraper that tracks elements across DOM changes; useful data pipeline utility. (*BEST SCRAPPER? COMPLICATED*) - alternative? or worth learning?
+- [[unsloth|Unsloth]] — fine-tuning acceleration for local open models; orthogonal to Claude Code stack but useful for ML pipeline work. (*GOOD BUT FOR WHAT?* for my local models?) - moved to ai group starred. 
+- [[jcode|jcode]] — Rust coding agent harness with 6,660 stars; can't evaluate (README empty at time of review) - Complex but claims to be extremely better than claude code. Does this run for local models? Useful with airllm?
+- [[yt-dlp|yt-dlp]] — feature-rich CLI audio/video downloader for 1,800+ sites; useful utility. For youtube videos? What for? (*USEFUL?*)
 - [[agency-agents|Agency Agents (msitarzewski)]] — 105K-star complete AI agency in your .claude: frontend wizard, Reddit ninja, whimsy injector, reality checker
-
+- [Financial Services](https://github.com/anthropics/financial-services) - Useful for tradingview? how exactly better than the other resoruces?
+- [Trading view mcp](https://github.com/tradesdontlie/tradingview-mcp) & [polymarket mcp](https://github.com/caiovicentino/polymarket-mcp-server) - Worth installing? for the tradingview product?
+- [Andrej karpathy skills](https://github.com/multica-ai/andrej-karpathy-skills) - extremely useful, needs to be mimicked. 
+- [Auto research](https://github.com/karpathy/autoresearch) - by karpathy needs to be used. Unless there is something better above
+- [last30 day](https://github.com/mvanhorn/last30days-skill) - Searches search engine for the latest information
+- [gbrain](https://github.com/garrytan/gbrain) - research and implement a better form for my second brain. 
+- [CL4R1T4S](https://github.com/elder-plinius/CL4R1T4S) - Best resource for making the most out of guard railed models. 
+- [Agency agents](https://github.com/msitarzewski/agency-agents) - Really useful. how to use? why?
+- 
 ---
 
 ## AI (27)
 
 AI agents, frameworks, models, and LLM tooling.
 
-- [hermes-agent](https://github.com/NousResearch/hermes-agent) — 171K-star Nous Research coding agent with ACP/MCP/Claude Code support; the most-starred agent on GitHub right now
-- [opencode](https://github.com/anomalyco/opencode) — 166K-star open source coding agent; terminal-first, multi-model, actively developed alternative to Claude Code
-- [browser-use](https://github.com/browser-use/browser-use) — 96K-star Python library making websites accessible for AI agents via Playwright; the standard for browser automation
-- [[goose (github)|goose]] — 50K-star open source extensible AI agent (Rust); install/execute/edit/test with any LLM; ACP + MCP native; moved from `block/goose` to the Linux Foundation's Agentic AI Foundation
+- [hermes-agent](https://github.com/NousResearch/hermes-agent) — 171K-star Nous Research coding agent with ACP/MCP/Claude Code support; the most-starred agent on GitHub right now. (How to use? New to hermes and need an entire setup guide)
+- [opencode](https://github.com/anomalyco/opencode) — 166K-star open source coding agent; terminal-first, multi-model, actively developed alternative to Claude Code. (HOW Useful if i hit claude limits? How useful with local models?)
+- [browser-use](https://github.com/browser-use/browser-use) — 96K-star Python library making websites accessible for AI agents via Playwright; the standard for browser automation. (*USEFUL, how much?*)
+- [[goose (github)|goose]] — 50K-star open source extensible AI agent (Rust); install/execute/edit/test with any LLM; ACP + MCP native; moved from `block/goose` to the Linux Foundation's Agentic AI Foundation. (*Confused to what exactly is this useful for? is this exactly like claude app?*)
 - [PageIndex](https://github.com/VectifyAI/PageIndex) — 32K-star vectorless reasoning-based RAG (no embeddings); document index using LLM reasoning chains
-- [multica](https://github.com/multica-ai/multica) — 34K-star open-source managed agents platform: assign tasks, track progress, compound skills; TypeScript
-- [MiroFish](https://github.com/666ghj/MiroFish) — 63K-star swarm intelligence engine for prediction; financial forecasting + social prediction + knowledge graphs; Python
+- [multica](https://github.com/multica-ai/multica) — 34K-star open-source managed agents platform: assign tasks, track progress, compound skills; TypeScript. (Useful to distribute tasks? How many agents can be realisticly used for my uses?)
+- [MiroFish](https://github.com/666ghj/MiroFish) — 63K-star swarm intelligence engine for prediction; financial forecasting + social prediction + knowledge graphs; Python. Very useful but how can I use it for my cases? Can be useful for prediction markets and stocks in tradingview?
 - [TradingAgents](https://github.com/TauricResearch/TradingAgents) — 80K-star multi-agent LLM financial trading framework: analyst/researcher/trader/risk manager agents; [paper](https://arxiv.org/pdf/2412.20138)
-- [openhuman](https://github.com/tinyhumansai/openhuman) — 29K-star personal AI super intelligence; private, simple, Rust/GPL; tinyhumans.ai
-- [agentscope](https://github.com/agentscope-ai/agentscope) — 25K-star build and run agents you can see and trust; MCP-native, multi-modal, multi-agent; Alibaba-backed
+- [openhuman](https://github.com/tinyhumansai/openhuman) — 29K-star personal AI super intelligence; private, simple, Rust/GPL; tinyhumans.ai. Honestly find it better than jan because it has the obsidian like memory system. Is this going to be my personal assistant now? Compare it to all other resources for assistants,
+- [agentscope](https://github.com/agentscope-ai/agentscope) — 25K-star build and run agents you can see and trust; MCP-native, multi-modal, multi-agent; Alibaba-backed. (*USEFUL?*)
 - [[promptfoo (github)|promptfoo]] — test prompts, agents, RAGs; red teaming + vulnerability scanning; used by OpenAI and Anthropic internally; now part of OpenAI (still MIT-licensed, open source)
 - [jan](https://github.com/janhq/jan) — 42K-star fully offline ChatGPT alternative; runs 100% locally on your hardware; Tauri + LlamaCPP
 - [dify](https://github.com/langgenius/dify) *(also in Claude)* — 143K-star production-ready agentic workflow platform; Docker deployment; team-scale LLM app builder
 - [ai-engineering-hub](https://github.com/patchy631/ai-engineering-hub) — 35K-star in-depth tutorials on LLMs, RAGs, real-world agents (Jupyter notebooks); Daily Dose of DS
-- [applied-ml](https://github.com/eugeneyan/applied-ml) — 29K-star papers + tech blogs from companies sharing ML/data science in production; by Eugene Yan
-- [Kronos](https://github.com/shiyu-coder/Kronos) — 27K-star foundation model for financial markets language; time series + NLP; Python
-- [ASI-Evolve](https://github.com/GAIR-NLP/ASI-Evolve) — GAIR-NLP research on ASI-level task evolution for training superhuman agents; Python
-- [dots.ocr](https://github.com/rednote-hilab/dots.ocr) — multilingual document layout parsing in a single VLM; from RedNote (Xiaohongshu) research
-- [whichllm](https://github.com/Andyyyy64/whichllm) — CLI: find the local LLM that actually runs on your hardware; ranked by real benchmarks, not parameter count
+- [applied-ml](https://github.com/eugeneyan/applied-ml) — 29K-star papers + tech blogs from companies sharing ML/data science in production; by Eugene Yan. (*GOLD*)
+- [Kronos](https://github.com/shiyu-coder/Kronos) — 27K-star foundation model for financial markets language; time series + NLP; Python. (Tradingview: Going to be used but is there anything better out there yet?)
+- [ASI-Evolve](https://github.com/GAIR-NLP/ASI-Evolve) — GAIR-NLP research on ASI-level task evolution for training superhuman agents; Python. (Best for research? Anything better?)
+- [dots.ocr](https://github.com/rednote-hilab/dots.ocr) — multilingual document layout parsing in a single VLM; from RedNote (Xiaohongshu) research. (Useful for reading pdfs and images? Especially inside jarvis? any better alternative?)
+- [whichllm](https://github.com/Andyyyy64/whichllm) — CLI: find the local LLM that actually runs on your hardware; ranked by real benchmarks, not parameter count (Replaced by llmfit)
 - [llmfit](https://github.com/AlexsJones/llmfit) — hundreds of models/providers, one command to find what fits your hardware; Rust, GGUF/MLX support
-- [airllm](https://github.com/lyogavin/airllm) — run 70B LLMs on a single 4GB GPU via layer-by-layer streaming; no quantization required
+- [airllm](https://github.com/lyogavin/airllm) — run 70B LLMs on a single 4GB GPU via layer-by-layer streaming; no quantization required. (*USEFUL FOR RUNNING LOCAL MODELS?*)
 - [free-llm-api-resources](https://github.com/cheahjs/free-llm-api-resources) — curated and updated list of free LLM inference endpoints accessible via API
-- [mike](https://github.com/willchen96/mike) — open source AI legal platform; TypeScript + AGPL-3.0
+- [mike](https://github.com/willchen96/mike) — open source AI legal platform; TypeScript + AGPL-3.0. (*Anything better?*)
 - [unsloth](https://github.com/unslothai/unsloth) *(also in Claude)* — 65K-star fine-tuning acceleration for local open models (Gemma 4, Qwen3, DeepSeek); web UI included
 - [GodMode](https://github.com/smol-ai/GodMode) — side-by-side ChatGPT/Claude/Bard/Bing in one Electron window; I use this as a quick comparison tool
 - [jarvis (ethanplusai)](https://github.com/ethanplusai/jarvis) — voice-first AI assistant for macOS inspired by MCU; Claude + Three.js + Whisper
 - [llm-zoomcamp](https://github.com/DataTalksClub/llm-zoomcamp) — free 10-week course: build AI Q&A systems over a knowledge base; RAG end-to-end
+- [gst-core](https://github.com/open-gsd/gsd-core): Very useful? but how exactly are we going to work with the other installations?
+- 
 
 ---
 

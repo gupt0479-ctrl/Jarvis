@@ -1,8 +1,64 @@
 {
   "recentFiles": [
     {
-      "basename": "V1 Recently Funded Startups",
-      "path": "60_Claude/05_Clippings/Web/V1 Recently Funded Startups.md"
+      "basename": "Assignment - 9",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 9.md"
+    },
+    {
+      "basename": "Assignment - 10",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 10.md"
+    },
+    {
+      "basename": "Assignment - 8",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 8.md"
+    },
+    {
+      "basename": "Assignment - 11",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 11.md"
+    },
+    {
+      "basename": "Assignment - 12",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 12.md"
+    },
+    {
+      "basename": "Assignment - 13",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 13.md"
+    },
+    {
+      "basename": "Where teams and agents work together 1",
+      "path": "60_Claude/05_Clippings/Web/Where teams and agents work together 1.md"
+    },
+    {
+      "basename": "Links",
+      "path": "40_Resources/CS/Links.md"
+    },
+    {
+      "basename": "Repos",
+      "path": "40_Resources/CS/Repos.md"
+    },
+    {
+      "basename": "Random",
+      "path": "40_Resources/Random.md"
+    },
+    {
+      "basename": "Second Brain",
+      "path": "40_Resources/Obsidian/Second Brain.md"
+    },
+    {
+      "basename": "The AI Hub",
+      "path": "20_Progress/Projects/AI Use/The AI Hub.md"
+    },
+    {
+      "basename": "promptfoo (github)",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/AI Starred/promptfoo (github).md"
+    },
+    {
+      "basename": "jcode",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/jcode.md"
+    },
+    {
+      "basename": "Where teams and agents work together",
+      "path": "60_Claude/05_Clippings/Web/Where teams and agents work together.md"
     },
     {
       "basename": "the underclassmen internship list, before u age out",
@@ -11,18 +67,6 @@
     {
       "basename": "the permanent archive of winning hackathon projects",
       "path": "60_Claude/05_Clippings/Web/the permanent archive of winning hackathon projects.md"
-    },
-    {
-      "basename": "Links",
-      "path": "40_Resources/CS/Links.md"
-    },
-    {
-      "basename": "The AI Hub",
-      "path": "20_Progress/Projects/AI Use/The AI Hub.md"
-    },
-    {
-      "basename": "Random",
-      "path": "40_Resources/Random.md"
     },
     {
       "basename": "The Output Audit",
@@ -71,10 +115,6 @@
     {
       "basename": "Gurwinder  Substack",
       "path": "60_Claude/05_Clippings/Web/Gurwinder  Substack.md"
-    },
-    {
-      "basename": "Second Brain",
-      "path": "40_Resources/Obsidian/Second Brain.md"
     },
     {
       "basename": "fintech early programs that actually pay, not sm bs unpaid internship lmao",
@@ -133,10 +173,6 @@
       "path": "60_Claude/10_Source_Summaries/Github Ingestion/LLM Council (github).md"
     },
     {
-      "basename": "Repos",
-      "path": "40_Resources/CS/Repos.md"
-    },
-    {
       "basename": "Jarvis Multi-Agent PKM Plan",
       "path": "20_Progress/Projects/AI Second Brain/Jarvis Multi-Agent PKM Plan.md"
     },
@@ -163,42 +199,6 @@
     {
       "basename": "Summer Courses",
       "path": "20_Progress/Degree/Summer Courses.md"
-    },
-    {
-      "basename": "Track Definitions",
-      "path": "40_Resources/Capability/Track Definitions.md"
-    },
-    {
-      "basename": "Gen AI Meeting",
-      "path": "40_Resources/CS/AI/Gen AI Meeting.md"
-    },
-    {
-      "basename": "Kafka Pipeline Architecture Story",
-      "path": "40_Resources/CS/Concepts/Kafka Pipeline Architecture Story.md"
-    },
-    {
-      "basename": "Summer Grind",
-      "path": "10_Areas/Summer Grind.md"
-    },
-    {
-      "basename": "Fall'26 Syllabus",
-      "path": "10_Areas/UMN/Fall'26 Syllabus.md"
-    },
-    {
-      "basename": "Research Dossier — Internal LLM Inference at Near-Zero Cost",
-      "path": "10_Areas/Life/Plans/Zero-Cost AI Stack/Research Dossier — Internal LLM Inference at Near-Zero Cost.md"
-    },
-    {
-      "basename": "Architecture & Setup Runbook — 24GB Hybrid Stack",
-      "path": "10_Areas/Life/Plans/Zero-Cost AI Stack/Architecture & Setup Runbook — 24GB Hybrid Stack.md"
-    },
-    {
-      "basename": "Links & Interlinks",
-      "path": "10_Areas/Career/Internships/Links & Interlinks.md"
-    },
-    {
-      "basename": "Useful Links",
-      "path": "10_Areas/Career/Useful Links.md"
     }
   ],
   "omittedPaths": [],

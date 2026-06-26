@@ -15,6 +15,7 @@ notes:
 - [Visa data agent](https://h1bagent.pages.dev/?fbclid=PAVERFWARrVFlleHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAafNwbpggBeyJLklqoAdHyyssyNbySp2teYoc7L7yHWEpjW9PAIgLBkUjhYsnA_aem_iPK8kUJXR6bx0gj977oAIA) - H1B
 - [Omi](https://www.omi.me/) - Installed on phone(works with obsidian)
 - [No Guardrails AI](https://infinetai.org/chat)
+- [Recently funded startups](https://docs.google.com/spreadsheets/d/1w11kuIGWOVATOad5acQqVWSzELF25xCyP6j3yoBiEUc/htmlview?utm_source=sp_auto_dm#gid=0) - excel
 ### Articles
 - [Jarvis Build](https://dev.to/aws/build-your-own-ai-butler-a-scheduled-agent-that-runs-itself-3dmk) - AI Bulter
 - [The Hidden Operating System Behind Every Income Ceiling](https://dustinbweiss.substack.com/p/the-hidden-operating-system-behind?r=6hkeel&utm_campaign=post-expanded-share&utm_medium=web&mcp_token=eyJwaWQiOjIwOTUwODUsInNpZCI6MTk3NTk2ODIyMCwiYXgiOiIzYTUxYzkwNWE4OWIzMTk1NDY2MjcwYTI3MjFlMzgxNyIsInRzIjoxNzc5OTQzMjU5LCJleHAiOjE3ODIzNjI0NTl9.-BcIOArloGK2GZKd-9CusXT_FD9DiofE-etWv8JgIH0&triedRedirect=true&fbclid=PAVERFWASEpq5leHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAaf-7WrEqbz1dwrLlbeZNNu8_TPLLfKE_8WNoMVFI-F6fL9oFlpBii6tde7QRQ_aem_n4lZa7ytS8bwiWesyDZPCg)
@@ -74,7 +75,8 @@ notes:
 - [How To Cut Your AI Bill 95% (Without Quitting Claude)](https://flicker-celestite-7b6.notion.site/How-To-Cut-Your-AI-Bill-95-Without-Quitting-Claude-360d180d8c8081eea82af01899ddbe37) - Useful but could be better
 - [The 2027 Internship Calendar (Prediction) when everything actually drops](https://burly-handstand-0dc.notion.site/The-2027-Internship-Calendar-Prediction-when-everything-actually-drops-37be3f8633848182be9ae0cd005e175a) - by @moonking.mp4
 - [the new coding interview, 5 resources id actually study](https://burly-handstand-0dc.notion.site/the-new-coding-interview-5-resources-id-actually-study-380e3f86338481b89157f4fc2dd5fc17)
-- 
+- [GitOps Resources!](https://app.notion.com/p/GitOps-Resources-4ddfc6987d028207b022813b67b30ca9)
+- [Guide to Building Agents](https://app.notion.com/p/vardymov/Guide-to-Building-Agents-37e6d4f3a294801fb1e2d507d84e6ca2)
 ### Models
 - [Subquadratic](https://subq.ai/) (soon)
 - [Free Models](https://openrouter.ai/models?q=free+) - Openrouter
