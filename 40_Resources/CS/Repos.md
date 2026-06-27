@@ -11,13 +11,9 @@ notes: null
 ---
 # GitHub Stars Index
 Organized by GitHub list. Each section mirrors the star list on [gupta-builds's profile](https://github.com/gupta-builds?tab=stars).
-
 ## Claude (23)
-
 Claude Code tooling, memory, agent infrastructure.
-
 ### Skills & Agents
-
 - [ECC](https://github.com/affaan-m/ECC) — agent harness for Claude Code: skills, instincts, persistent memory, and a security layer in a single install
 - [gstack](https://github.com/garrytan/gstack) — 13 cognitive-mode skills (founder review, eng review, paranoid QA) plus a Playwright browser for Claude Code (*GOOD*)
 - [Skills (mattpocock)](https://github.com/mattpocock/skills) — 18 skills targeting the four main agent failure modes: misalignment, verbosity, broken feedback loops, entropy. (*EXTREMELY USEFUL - Copy skills*)

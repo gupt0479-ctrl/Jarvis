@@ -1,6 +1,26 @@
 {
   "recentFiles": [
     {
+      "basename": "Repos",
+      "path": "40_Resources/CS/Repos.md"
+    },
+    {
+      "basename": "Assignment - 9",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 9.md"
+    },
+    {
+      "basename": "Big Assignment - 1(Human Version)",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 1(Human Version).md"
+    },
+    {
+      "basename": "Assignment - 10",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 10.md"
+    },
+    {
+      "basename": "Assignment - 11",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 11.md"
+    },
+    {
       "basename": "Assignment - 12",
       "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 12.md"
     },
@@ -11,14 +31,6 @@
     {
       "basename": "Links",
       "path": "40_Resources/CS/Links.md"
-    },
-    {
-      "basename": "Assignment - 9",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 9.md"
-    },
-    {
-      "basename": "Repos",
-      "path": "40_Resources/CS/Repos.md"
     },
     {
       "basename": "Quiz - 9",
@@ -55,14 +67,6 @@
     {
       "basename": "Chapter - 3",
       "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 3.md"
-    },
-    {
-      "basename": "Assignment - 11",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 11.md"
-    },
-    {
-      "basename": "Assignment - 10",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 10.md"
     },
     {
       "basename": "Assignment - 8",
@@ -195,10 +199,6 @@
     {
       "basename": "AI Agents for Sales & GTM Teams",
       "path": "60_Claude/05_Clippings/Web/AI Agents for Sales & GTM Teams.md"
-    },
-    {
-      "basename": "4 Ways to Make Money With the Hermes Agent",
-      "path": "60_Claude/05_Clippings/Web/4 Ways to Make Money With the Hermes Agent.md"
     }
   ],
   "omittedPaths": [],

@@ -78,31 +78,26 @@ Tabor, N. "Mau Mau Rebellion." Encyclopedia Britannica, March 29, 2026. [https:
 
 Britannica Editors. "Rwanda genocide of 1994." Encyclopedia Britannica, May 18, 2026. [https://www.britannica.com/event/Rwanda-genocide-of-1994.](https://www.britannica.com/event/Rwanda-genocide-of-1994)
 ### My reply to the response 
-- 
+Your detail on the Belgian nose-measurement system captures how manufactured the Hutu-Tutsi divide actually was. One critical gap in the Rwanda account: UN Force Commander Roméo Dallaire sent a fax to UN headquarters in January 1994 — three months before the genocide — warning specifically of weapon stockpiles and a coordinated extermination plan. He was ordered to stand down and not raid the caches. When the killing began in April, UN troops on the ground were forbidden from intervening. It was the RPF under Paul Kagame that ended the genocide by capturing Kigali on July 4 — not any international force. The international failure to act despite explicit advance warning is the sharpest angle this story has.
 
 
 ## My Response
+Somalia
 
-**Somalia**
+At around 19.4 million people by 2025, Somalia occupies the easternmost point of Africa. Though many nations on the continent show high ethnic diversity, this one does not - eighty-five percent identify as Somali, nearly all followers of Sunni Islam. Power splits along kinship lines instead; six primary clan groups branch into smaller factions, where loyalty often clashes with rivals over influence.
 
-Somalia sits at the tip of the Horn of Africa, population roughly 19.4 million as of 2025. Unlike most African states, it's ethnically homogeneous — 85% Somali, 98% Sunni Muslim. Its divisions are clan-based: six major clan-families each subdivided into competing sub-clans fighting for political power.
+Power in Somalia began shifting dramatically when Muhammad Siad Barre took control through a military takeover in October 1969. The constitution was set aside shortly after, along with any legal space for political groups to operate. Instead came the Supreme Revolutionary Council - his new center of authority. At first, tribal divisions were something he publicly opposed, especially during the early years of rule. Yet everything changed once defeat struck in the 1977–78 conflict with Ethiopia over Ogaden. From that point on, loyalty based on clan identity became central to how power was maintained. His earlier stance faded fast under pressure. Decades later, unrest still traces back to those choices.
 
-Muhammad Siad Barre is the single biggest driver of Somalia's long-term discontent. He seized power in a military coup in October 1969, suspended the constitution, banned political parties, and installed the Supreme Revolutionary Council. For the first decade he preached against tribalism. After losing the 1977–78 Ogaden War to Ethiopia, he used tribalism as his governing tool.
+Well into 1986, Barre began using the Red Berets - drawn strictly from his Marehan sub-clan - to target competing clans. Come late 1988, roughly 5,000 Isaaq individuals had been killed by these forces, while water sources were deliberately contaminated and pasturelands set ablaze. That very year, Amnesty International ranked his government as one of the planet’s harshest dictatorships. After the United Somali Congress removed Barre in January 1991, no working government was left behind. Power shifted quickly into the hands of clan-based armed groups. Fighting claimed over fifty thousand lives by 1992, while hunger took three times that number. International forces stepped in under a UN mandate. In October 1993, gunfire struck down eighteen American soldiers in Mogadishu. That loss prompted President Clinton to pull troops out.
 
-By 1986, Barre had deployed the Red Berets — recruited from his own Marehan sub-clan — against rival clans. By end of 1988, they had killed an estimated 5,000 Isaaq, poisoned water wells, and burned grazing grounds. Amnesty International named his regime among the world's most repressive that same year.
+As Jones writes, "The legacy of clan-based conflict, colonialism, and the Cold War have left Somalia a very divided and torn nation - a failed state - despite the fact that it began over sixty years ago as an independent country with a potentially promising future" (Jones, p. 232). Life expectancy in 2020 was 56.5 years. Al-Shabaab killed 350 people in a single 2017 truck bombing in Mogadishu. The vacuum Barre created has never been filled.
 
-When the United Somali Congress ousted Barre in January 1991, no functional state remained. Clan militias filled the vacuum. By 1992, more than 50,000 Somalis had died in fighting and 300,000 more from starvation. The UN intervened. Eighteen US Marines died in Mogadishu in October 1993. Clinton withdrew.
+Democratic Republic of Congo
 
-As Jones writes, "The legacy of clan-based conflict, colonialism, and the Cold War have left Somalia a very divided and torn nation — a failed state — despite the fact that it began over sixty years ago as an independent country with a potentially promising future" (Jones, p. 232). Life expectancy in 2020 was 56.5 years. Al-Shabaab killed 350 people in a single 2017 truck bombing in Mogadishu. The vacuum Barre created has never been filled.
+Home to roughly 100 million residents, the Democratic Republic of Congo spans a vast area within central Africa. Beneath its surface lies mineral reserves valued near $24 trillion - cobalt, copper, uranium, and coltan among them. Since the late twentieth century, internal conflict has claimed up to six million lives. Despite such immense resources, widespread suffering continues across regions.
 
-**Democratic Republic of Congo**
+Mobutu Sese Seko sits at the heart of it. Seizing control during a 1960 military takeover, he held authority for more than thirty years - renaming the nation Zaire and adopting a title that spoke of unstoppable triumph and blazing force. Backed by the United States as a bulwark against communism, his regime thrived internationally despite internal decay. Come 1989, external debts were abandoned after widespread theft drained national resources. His fall came halfway through 1997 when insurgents drove him out; escape led to Morocco, where he lived in vast wealth while behind him crumbled any trace of structured defense, governance, or public systems. Years after the conflict began, soldiers from seven nearby nations became involved. In 2001, violence ended the life of Laurent Kabila, Mobutu's successor. The unrest in eastern Kivu persists without clear resolution. By 2024, around 100 independent armed groups remained active within national borders. That same year, displacement struck 358,000 people from their homes.
 
-The DRC is the largest country in sub-Saharan Africa — population around 100 million, sitting on an estimated $24 trillion in mineral wealth: cobalt, copper, uranium, coltan. As many as 6 million people have died in its civil wars since the mid-1990s.
-
-The root cause is Mobutu Sese Seko. He took power in a 1960 coup and ruled for over three decades, renaming the country Zaire and himself "The all-powerful warrior who, because of his endurance and inflexible will to win, will go from conquest to conquest, leaving fire in his wake." The US backed him as an anti-communist ally. By 1989, Zaire had defaulted on its international debt largely due to government embezzlement. When rebel forces ousted him in mid-1997, Mobutu fled to Morocco as one of the world's wealthiest men, leaving behind no functional army, administration, or institutions.
-
-The civil war that followed drew in troops from seven neighboring countries. Laurent Kabila, who replaced Mobutu, was assassinated in 2001. Fighting in the eastern Kivu region has never fully stopped. As of 2024, roughly 100 non-state armed militias operate in the country, and 358,000 Congolese were displaced that year alone.
-
-Three decades of Mobutu left the state with nothing to govern with. Every crisis since is a direct consequence.
+After thirty years under Mobutu, the country had no functioning institutions left. Because of that void, each emergency traces back to his rule. 
 
 What do you think matters more for long-term stability: removing a bad leader, or building institutions capable of surviving after he's gone?
