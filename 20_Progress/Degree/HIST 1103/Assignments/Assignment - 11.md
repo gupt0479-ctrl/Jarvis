@@ -57,3 +57,29 @@ _Argentina’s Dirty War and the Transition to Democracy – Association for Dip
 
 _Why Is Argentina’s Economy in Such a Mess?_, 2023, www.economist.com/films/2023/09/07/why-is-argentinas-economy-in-such-a-mess.
 ### My reply to the response 
+
+## My Response
+
+**Chile**
+
+Chile's two biggest problems from 1950 to 2020 were Pinochet's military dictatorship and the structural economic inequality his neoliberal policies embedded into the country even as they generated growth.
+
+**Problem 1: Pinochet's Coup and Systematic State Terror (1973–1990)**
+
+Salvador Allende won the 1970 presidential election with 36.2% of the vote as the leader of Popular Unity, a socialist coalition. He nationalized Chile's copper mines in 1971, creating the state company CODELCO, and began restructuring the economy through democratic means. The Nixon administration and the CIA worked actively to destabilize his government — funding opposition media and coordinating with Chilean military officers.
+
+On September 11, 1973, General Augusto Pinochet launched the coup. Military aircraft bombed the La Moneda presidential palace. Allende died inside. Pinochet dissolved Congress, banned political parties, and imposed a nationwide curfew immediately.
+
+In 1974, Pinochet created the DINA (Dirección de Inteligencia Nacional) secret police under director Manuel Contreras. The DINA ran clandestine detention centers — most infamously Villa Grimaldi in Santiago — where thousands were tortured, murdered, or made to disappear. Jones writes that the coup "brought an end to Chile's democratic tradition and initiated a brutal military dictatorship that saw approximately 3,000 Chileans killed or disappeared and tens of thousands more tortured over seventeen years of authoritarian rule" (Jones, p. 279). In 1976, DINA agents detonated a car bomb in Washington DC, killing Orlando Letelier — Allende's former foreign minister — demonstrating the regime's willingness to assassinate opponents internationally.
+
+Pinochet's rule ended only after he lost a 1988 yes/no plebiscite — 55% voted "No." Patricio Aylwin took office in March 1990 as Chile's first democratic president in 17 years. His government established the Rettig Commission in 1991, which confirmed 3,065 victims of political violence and documented the official record of the dictatorship's crimes.
+
+**Problem 2: Chicago Boys Shock Therapy and Persistent Inequality**
+
+Pinochet's second lasting damage was structural. Beginning in 1975, he handed economic policy to Chilean economists trained at the University of Chicago under Milton Friedman. These "Chicago Boys" — including Sergio de Castro and Ernesto Fontaine — implemented radical free-market reforms: privatization of over 400 state enterprises, elimination of price controls, removal of tariffs, and deep cuts to government spending.
+
+The immediate impact was severe. GDP fell 12.9% in 1975. Unemployment hit 18.7%. Then came recovery — GDP grew 7.1% annually from 1977 to 1981, generating the label the "Chilean economic miracle." A banking crisis in 1982–1983 interrupted the growth, but by the 1990s Chile had the most stable economy in Latin America.
+
+The problem was distribution. Chile's Gini coefficient rose from 0.46 in 1973 to 0.57 by 1989. By the 2010s, the wealthiest 1% of Chileans earned approximately 33% of national income — among the highest concentrations in the OECD despite Chile being the region's wealthiest country. In October 2019, protests exploded nationwide after a 30-peso metro fare increase. Millions took to the streets in what Chileans called the estallido social — the social explosion. The depth of the anger reflected five decades of growth that never reached the bottom half.
+
+**Question for classmates:** Chile's military dictatorship produced both one of Latin America's worst human rights records and its most stable modern economy — do you think those two outcomes can be evaluated independently, or does the method of achieving economic growth permanently taint the result?

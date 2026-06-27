@@ -73,3 +73,29 @@ The political tensions of the Cold War had a significant impact on both Cuba and
 
 Question to the classmates: Do you believe that foreign intervention exacerbated the conflict?
 ### My reply to the response 
+
+## My Response
+
+Nicaragua and Haiti
+
+**Nicaragua — Most Disruptive Decade: the 1980s**
+
+Nicaragua's most disruptive postwar decade was the 1980s. It opened with a revolution and closed with civil war, destroyed infrastructure, and 13,000% annual inflation.
+
+On July 19, 1979, the Sandinista National Liberation Front (FSLN) overthrew dictator Anastasio Somoza Debayle, ending 43 years of Somoza family rule. Somoza fled to Paraguay, where he was assassinated in 1980. The US, alarmed by a socialist government in Central America, responded by organizing and funding a counterrevolutionary guerrilla army — the Contras. As Jones notes, the Reagan administration's covert support for the Contras "resulted in approximately 30,000 Nicaraguan deaths and economic damage estimated at $2.5 billion, while the covert funding mechanism — illegal arms sales to Iran — triggered the Iran-Contra scandal that engulfed the Reagan White House" (Jones, p. 312). By 1990, when Daniel Ortega's Sandinistas lost the presidential election to Violeta Chamorro, the country had been at war for a decade.
+
+*Anastasio Somoza Debayle* made the revolution inevitable. His family had ruled Nicaragua since 1936. His misappropriation of international earthquake aid after the 1972 Managua disaster — which killed 10,000 people — destroyed his credibility with the middle class. His National Guard's massacres during the 1978 uprising and the assassination of journalist Pedro Joaquín Chamorro that same year unified the opposition. Without Somoza's brutality, the FSLN had no mass movement.
+
+*Daniel Ortega* transformed the FSLN from guerrilla movement into governing party. As coordinator of the Junta of National Reconstruction after 1979 and elected president in November 1984 with 67% of the vote, he directed the Sandinista war effort against the Contras. His government implemented literacy campaigns, land reform, and free healthcare — but also military conscription and press restrictions that handed the US propaganda. The 1990 election loss was a peaceful transfer of power that formally ended the Contra War.
+
+**Haiti — Most Disruptive Decade: the 1990s**
+
+Haiti's most disruptive postwar decade was the 1990s — when the country swung from its first free election to military coup to US military occupation and back to elected government in less than four years.
+
+In December 1990, Jean-Bertrand Aristide won Haiti's first genuinely free presidential election with 67.5% of the vote. On September 30, 1991, General Raoul Cédras launched a military coup that forced Aristide into exile. The military junta that followed killed an estimated 5,000 Haitians, drove 300,000 into internal displacement, and prompted 67,000 people to attempt the sea crossing to Florida. An international trade embargo cut Haiti's GDP by 30%. In October 1994, the Clinton administration deployed 21,000 US troops in Operation Uphold Democracy. Cédras resigned to exile in Panama. Aristide was reinstated, served out his term, and transferred power peacefully to René Préval in February 1996.
+
+*Jean-Bertrand Aristide*, a Catholic priest and liberation theologian, had no party machine — only mass popular support. His 1990 landslide threatened the economic and military elites who had dominated Haiti for generations, which is why the coup came so quickly. His restoration via US troops in 1994 came with conditions: acceptance of IMF structural adjustment and political compromise. He won re-election in 2000 under disputed conditions that restarted cycles of instability into the next decade.
+
+*General Raoul Cédras* was the military's instrument of counterrevolution. As commander of the Haitian Armed Forces, he organized the September 1991 coup and ran the three-year junta with the paramilitary FRAPH (Front for the Advancement and Progress of Haiti) as its enforcement arm. Political killings, disappearances, and gang violence became systematic tools of suppression under his rule. His resignation in September 1994 came only after the Clinton administration had landed troops and made the alternative clear.
+
+**Question for classmates:** Nicaragua's democratic progress was reversed by US-funded external pressure while Haiti's was reversed by an internal military coup — which do you think is harder for a country to recover from?

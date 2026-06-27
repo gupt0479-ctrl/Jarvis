@@ -66,3 +66,29 @@ Overall, both Zimbabwe and South Africa show how colonialism and legalized racia
 
 **Question for classmates:** Do you think Zimbabwe’s land redistribution could have succeeded if it had been carried out gradually and legally, or was conflict unavoidable because of the colonial history of land ownership?
 ### My reply to the response 
+
+## My Response
+
+Zimbabwe's most important driver of economic collapse was not land redistribution but the government's decision to print money to cover unsustainable spending — a choice that triggered the second-worst hyperinflation in recorded history.
+
+The collapse has a specific start date. On November 14, 1997, Mugabe announced unbudgeted payments to 50,000 war veterans: a Z$50,000 lump sum each plus Z$2,000 in monthly pensions. The government had no reserves. It printed the money. The Zimbabwe dollar lost 75% of its value that day — a moment Zimbabweans call "Black Friday." Then in 1998, Zimbabwe committed troops to the DRC war at a cost of roughly $1 million per day, again funded by the printing press.
+
+By November 2008, Zimbabwe's monthly inflation rate hit 79.6 billion percent. The government issued a Z$100 trillion banknote that couldn't buy a bus ticket. Formal employment, which stood at 66% of the workforce in 1980, had fallen to 6% by 2007. In April 2009, Zimbabwe abandoned its own currency entirely, adopting the US dollar and South African rand.
+
+Money printing erased savings, collapsed wages, and destroyed investment at once. No economy rebuilds when its currency is worthless. Land reform failed to produce food, but hyperinflation made the entire price system nonfunctional.
+
+**South Africa: How Apartheid Was Built**
+
+Apartheid was constructed through two legislative pillars: legal racial classification and forced geographic separation.
+
+The first was the Population Registration Act of 1950. Every South African received a legal race label — white, Coloured, Indian, or Bantu. That label then determined where a person could live, work, study, travel, and receive services. Race became administrative infrastructure, not just social prejudice.
+
+The second was the Group Areas Act of 1950, backed by the pass law system. The Group Areas Act divided towns and cities into racially exclusive zones, forcibly relocating hundreds of thousands of Black, Coloured, and Indian South Africans from areas they had lived in for generations. Pass laws required Black South Africans to carry passbooks showing permission to be in any given place. Absence of a passbook meant arrest. Together, these two mechanisms gave the state total legal control over where nonwhite South Africans could exist.
+
+**The Impact That Remains**
+
+Apartheid ended legally in 1994, but its economic structure outlasted it. "Thirty years after the end of Apartheid the legacy of that era still defines many of the issues and challenges facing South Africa," as Jones notes (Jones, p. 256). Black poverty stands at roughly 64% versus white poverty at around 1%. That gap reflects 46 years of legally denied education, land ownership, and capital accumulation. The Truth and Reconciliation Commission, chaired by Archbishop Desmond Tutu from 1996 to 2002, built a framework for truth and conditional amnesty but could not redistribute the economic advantage apartheid had concentrated. Debates over land reform remain unresolved today.
+
+When law systematically strips a majority from wealth for nearly five decades, changing the law does not change the balance sheet.
+
+**Question for classmates:** Zimbabwe's hyperinflation and South Africa's apartheid were both driven by government decisions that benefited one group at enormous cost to another — do you think economic policy can ever fully repair that kind of structural damage, or does inequality become self-perpetuating once it is locked in long enough?

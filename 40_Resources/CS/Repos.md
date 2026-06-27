@@ -51,7 +51,24 @@ Claude Code tooling, memory systems, agent infrastructure. All entries have indi
 - [[agency-agents|Agency Agents (msitarzewski)]] — 105K-star complete AI agency in your .claude: frontend wizard, Reddit ninja, whimsy injector, reality checker
 - [Financial Services](https://github.com/anthropics/financial-services) - Useful for tradingview? how exactly better than the other resoruces?
 - [Trading view mcp](https://github.com/tradesdontlie/tradingview-mcp) & [polymarket mcp](https://github.com/caiovicentino/polymarket-mcp-server) - Worth installing? for the tradingview product?
+	- 45-tool MCP for claude desktop via polymarket's CLOB API. setup (~10 min):
+		1. git clone the repo
+		2. cd polymarket-mcp-server && ./quickstart.sh
+		3. start in DEMO mode (no wallet, read-only)
+		4. full mode needs a polygon wallet and is not available to US persons under polymarket's ToS
+	- demo .env: `MAX_ORDER_SIZE_USD=50`, `MAX_TOTAL_EXPOSURE_USD=200`, `REQUIRE_CONFIRMATION_ABOVE_USD=25`
+	- heads up: v0.1.0 experimental. engineering 
+	- demo only - stay in demo if you're in the US. not financial advice, not legal advice.
 - [Andrej karpathy skills](https://github.com/multica-ai/andrej-karpathy-skills) - extremely useful, needs to be mimicked. 
+	- one curl command installs the file: `curl -o CLAUDE.md https://raw.githubusercontent.com/forrestchang/andrej-karpathy-skills/main/CLAUDE.md`
+	- drop it in your project root and claude code reads it automatically at every session start. 4 principles: don't assume (surface tradeoffs), keep it simple, surgical changes only, goal-driven execution
+	- setup (2 min):
+		1. git clone or just run the curl above
+		2. drop CLAUDE.md in your project root
+		3. open claude code in that directory - it reads it automatically
+		4. for global use: add to your home directory
+	- the thing to get right: add project-specific rules below the karpathy principles - the file is designed to be merged with your own conventions
+	- heads up: clean tool, no controversies. only install from the official repos to avoid malicious forks.
 - [Auto research](https://github.com/karpathy/autoresearch) - by karpathy needs to be used. Unless there is something better above
 - [last30 day](https://github.com/mvanhorn/last30days-skill) - Searches search engine for the latest information
 - [gbrain](https://github.com/garrytan/gbrain) - research and implement a better form for my second brain. 

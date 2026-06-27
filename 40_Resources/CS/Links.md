@@ -16,6 +16,13 @@ notes:
 - [Omi](https://www.omi.me/) - Installed on phone(works with obsidian)
 - [No Guardrails AI](https://infinetai.org/chat)
 - [Recently funded startups](https://docs.google.com/spreadsheets/d/1w11kuIGWOVATOad5acQqVWSzELF25xCyP6j3yoBiEUc/htmlview?utm_source=sp_auto_dm#gid=0) - excel
+- [Kickbacks](https://kickbacks.ai/) - get paid to use claude code
+	1. Create an account
+	2. Install the VS Code extension
+	3. Sign in from VS Code
+	4. Open Claude Code (official or with Ollama) or Codex CLI in VSCode
+	Once you reach $10 in earnings, add your payout method at: payment and follow steps.
+- Alternative for the above: 
 ### Articles
 - [Jarvis Build](https://dev.to/aws/build-your-own-ai-butler-a-scheduled-agent-that-runs-itself-3dmk) - AI Bulter
 - [The Hidden Operating System Behind Every Income Ceiling](https://dustinbweiss.substack.com/p/the-hidden-operating-system-behind?r=6hkeel&utm_campaign=post-expanded-share&utm_medium=web&mcp_token=eyJwaWQiOjIwOTUwODUsInNpZCI6MTk3NTk2ODIyMCwiYXgiOiIzYTUxYzkwNWE4OWIzMTk1NDY2MjcwYTI3MjFlMzgxNyIsInRzIjoxNzc5OTQzMjU5LCJleHAiOjE3ODIzNjI0NTl9.-BcIOArloGK2GZKd-9CusXT_FD9DiofE-etWv8JgIH0&triedRedirect=true&fbclid=PAVERFWASEpq5leHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAaf-7WrEqbz1dwrLlbeZNNu8_TPLLfKE_8WNoMVFI-F6fL9oFlpBii6tde7QRQ_aem_n4lZa7ytS8bwiWesyDZPCg)
@@ -149,6 +156,9 @@ notes:
 - [Sentdex](https://youtube.com/sentdex)
 - [3Blue1Brown](https://youtube.com/3blue1brown)
 - [StatQuest with Josh Starmer](https://youtube.com/@statquest)
+- [Stanford CS230 | Autumn 2025 | Lecture 8: Agents, Prompts, and RAG](https://www.youtube.com/watch?v=k1njvbBmfsw)
+- [IBM Is RAG still needed? Choosing the best approach for LLMs](https://www.youtube.com/watch?v=UabBYexBD4k&pp=ygUUaW4gZGVwdGggcmFnIGxlY3R1cmU%3D)
+- [IBM GraphRAG vs. Traditional RAG: Higher Accuracy & Insight with LLM](https://youtu.be/Aw7iQjKAX2k?si=YOlKwVXLvEe2-g2k)
 ## Leetcode & Neetcode
 **NeetCode’s structured roadmap**, working through the NeetCode 75 to solidify my fundamentals.
 ### Links
