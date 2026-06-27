@@ -79,3 +79,30 @@ Tabor, N. "Mau Mau Rebellion." Encyclopedia Britannica, March 29, 2026. [https:
 Britannica Editors. "Rwanda genocide of 1994." Encyclopedia Britannica, May 18, 2026. [https://www.britannica.com/event/Rwanda-genocide-of-1994.](https://www.britannica.com/event/Rwanda-genocide-of-1994)
 ### My reply to the response 
 - 
+
+
+## My Response
+
+**Somalia**
+
+Somalia sits at the tip of the Horn of Africa, population roughly 19.4 million as of 2025. Unlike most African states, it's ethnically homogeneous — 85% Somali, 98% Sunni Muslim. Its divisions are clan-based: six major clan-families each subdivided into competing sub-clans fighting for political power.
+
+Muhammad Siad Barre is the single biggest driver of Somalia's long-term discontent. He seized power in a military coup in October 1969, suspended the constitution, banned political parties, and installed the Supreme Revolutionary Council. For the first decade he preached against tribalism. After losing the 1977–78 Ogaden War to Ethiopia, he used tribalism as his governing tool.
+
+By 1986, Barre had deployed the Red Berets — recruited from his own Marehan sub-clan — against rival clans. By end of 1988, they had killed an estimated 5,000 Isaaq, poisoned water wells, and burned grazing grounds. Amnesty International named his regime among the world's most repressive that same year.
+
+When the United Somali Congress ousted Barre in January 1991, no functional state remained. Clan militias filled the vacuum. By 1992, more than 50,000 Somalis had died in fighting and 300,000 more from starvation. The UN intervened. Eighteen US Marines died in Mogadishu in October 1993. Clinton withdrew.
+
+As Jones writes, "The legacy of clan-based conflict, colonialism, and the Cold War have left Somalia a very divided and torn nation — a failed state — despite the fact that it began over sixty years ago as an independent country with a potentially promising future" (Jones, p. 232). Life expectancy in 2020 was 56.5 years. Al-Shabaab killed 350 people in a single 2017 truck bombing in Mogadishu. The vacuum Barre created has never been filled.
+
+**Democratic Republic of Congo**
+
+The DRC is the largest country in sub-Saharan Africa — population around 100 million, sitting on an estimated $24 trillion in mineral wealth: cobalt, copper, uranium, coltan. As many as 6 million people have died in its civil wars since the mid-1990s.
+
+The root cause is Mobutu Sese Seko. He took power in a 1960 coup and ruled for over three decades, renaming the country Zaire and himself "The all-powerful warrior who, because of his endurance and inflexible will to win, will go from conquest to conquest, leaving fire in his wake." The US backed him as an anti-communist ally. By 1989, Zaire had defaulted on its international debt largely due to government embezzlement. When rebel forces ousted him in mid-1997, Mobutu fled to Morocco as one of the world's wealthiest men, leaving behind no functional army, administration, or institutions.
+
+The civil war that followed drew in troops from seven neighboring countries. Laurent Kabila, who replaced Mobutu, was assassinated in 2001. Fighting in the eastern Kivu region has never fully stopped. As of 2024, roughly 100 non-state armed militias operate in the country, and 358,000 Congolese were displaced that year alone.
+
+Three decades of Mobutu left the state with nothing to govern with. Every crisis since is a direct consequence.
+
+What do you think matters more for long-term stability: removing a bad leader, or building institutions capable of surviving after he's gone?
