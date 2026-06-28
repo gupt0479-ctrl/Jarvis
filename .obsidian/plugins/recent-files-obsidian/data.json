@@ -1,16 +1,32 @@
 {
   "recentFiles": [
     {
-      "basename": "Repos",
-      "path": "40_Resources/CS/Repos.md"
+      "basename": "Big Assignment - 2",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 2.md"
+    },
+    {
+      "basename": "Quiz - 2",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Quiz - 2.md"
+    },
+    {
+      "basename": "Quiz - 1",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Quiz - 1.md"
+    },
+    {
+      "basename": "Assignment - 13",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 13.md"
     },
     {
       "basename": "Assignment - 9",
       "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 9.md"
     },
     {
-      "basename": "Big Assignment - 1(Human Version)",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 1(Human Version).md"
+      "basename": "Big Assignment - 1",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 1.md"
+    },
+    {
+      "basename": "Repos",
+      "path": "40_Resources/CS/Repos.md"
     },
     {
       "basename": "Assignment - 10",
@@ -71,10 +87,6 @@
     {
       "basename": "Assignment - 8",
       "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 8.md"
-    },
-    {
-      "basename": "Assignment - 13",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 13.md"
     },
     {
       "basename": "Where teams and agents work together 1",
@@ -187,18 +199,6 @@
     {
       "basename": "All-in-One Data Privacy Compliance Solution for Websites & Apps",
       "path": "60_Claude/05_Clippings/Web/Security/All-in-One Data Privacy Compliance Solution for Websites & Apps.md"
-    },
-    {
-      "basename": "AI Engineering from Scratch",
-      "path": "60_Claude/05_Clippings/Web/AI Engineering from Scratch.md"
-    },
-    {
-      "basename": "AI Engineer Roadmap",
-      "path": "60_Claude/05_Clippings/Web/AI Engineer Roadmap.md"
-    },
-    {
-      "basename": "AI Agents for Sales & GTM Teams",
-      "path": "60_Claude/05_Clippings/Web/AI Agents for Sales & GTM Teams.md"
     }
   ],
   "omittedPaths": [],

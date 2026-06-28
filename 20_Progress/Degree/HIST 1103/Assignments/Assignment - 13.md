@@ -23,7 +23,19 @@ next:
 8.  When writing your answer, be sure to include one quote from your textbook in your answer. 
 It does not need to be long, but one quote is required. All parts must be completed for credit.  There is no partial credit.  Determining credit is simple.  If you followed all the requirements in this list, you have credit.  If you did not, you don't.
 ## The Prompt
-- 
+- Hello everyone!  This is our last assignment before the final, and it's a douzy!
+
+Think about the world since 1950 up through today.  Our topic is terrorism.  If we define terrorism as the following:
+
+1. 1. The use of violence or the threat of violence, especially against civilians, in the pursuit of political goals.
+2. 2. The act of terrorizing, or state of being terrorized; a mode of government by terror or intimidation.
+3. 3. The practice of coercing governments to accede to political demands by committing violence on civilian targets; any similar use of violence to achieve goals.
+
+Find one instance of terrorism throughout the world during the time frame of the course.  Describe the event in detail.  
+
+Your question to answer is: what were the reactions to this event?  How did this event effect the response to terrorism world wide down to today.  Be specific and show plenty of detail!
+
+Dr. Homann
 ## Action items
 - [ ] Write the discussion section needed to submit here in this header
 ### Written Assignment (My reply)
