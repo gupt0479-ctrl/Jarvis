@@ -12,6 +12,7 @@ notes:
   - "[[40_Resources/CS/Repos]]"
 ---
 # Ruflo (formerly claude-flow)
+> [!DECISION] Self learning improving system that needs to be installed globally. More like mimic how these are being self improved and distributing work to so many agents. Worth installing globally or only in a repo? How to distribute work and self improve my set of skills, agents, etc.? [CONFUSED TO INTEGRATE WITH WHAT]
 
 **What it is:** A multi-agent orchestration framework that wraps Claude Code with a routing layer, swarm coordination, 60+ specialized agents, and a self-learning memory system — installed as `npx ruflo@latest` or via a bash script.
 

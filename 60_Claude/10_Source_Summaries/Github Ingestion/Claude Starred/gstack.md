@@ -12,6 +12,7 @@ notes:
   - "[[40_Resources/CS/Repos]]"
 ---
 # gstack
+> [!DECISION] Copy the `/browse`, `/review`, `/plan...` skills. Analyze how the browse can be used with firecrawl(scrappers), what's the benefit of letting claude use a chromium?
 
 **What it is:** Thirteen opinionated Claude Code workflow skills that give you explicit "cognitive modes" — founder review, engineering review, design audit, paranoid code review, release execution, QA with a live browser, and post-ship documentation — each as a slash command.
 

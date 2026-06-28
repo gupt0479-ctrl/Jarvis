@@ -20,7 +20,7 @@ source_url: https://growthxclub.notion.site/Claude-Council-3633578dc3f080d7b787e
 
 ## Source
 
-A **GrowthX Club** Notion page packaging "The Council" (also called LLM Council) as a two-path install: a copy-paste prompt for any chat interface, or the full Claude Code skill. It is the discovery record for [[LLM Council (github)]] — the page that surfaces the tool, not the tool itself.
+A **GrowthX Club** Notion page packaging "The Council" (also called LLM Council) as a two-path install: a copy-paste prompt for any chat interface, or the full Claude Code skill. It is the discovery record for [[LLM Council skills]] — the page that surfaces the tool, not the tool itself.
 
 ## Key Claims
 
@@ -50,7 +50,7 @@ The full copy-paste prompt defines an "LLM Council Facilitator" role with five f
 For repeat use: paste a one-line prompt telling Claude to fetch `SKILL.md` from `aiwithremy/claude-skills-llm-council` and install it. The page claims the installed version runs 5 **parallel** sub-agents (vs. Path A's sequential single-context run), true anonymization between rounds, and produces "an HTML report saved to your workspace" in about 4 minutes.
 
 > [!WARNING]
-> This HTML-report claim does not match the actual `SKILL.md` — see [[LLM Council (github)]] § Open Questions. The live skill explicitly forbids generating files and mandates chat-only output.
+> This HTML-report claim does not match the actual `SKILL.md` — see [[LLM Council skills]] § Open Questions. The live skill explicitly forbids generating files and mandates chat-only output.
 
 ### When to use the Council (either path)
 Use for high-stakes decisions with genuine uncertainty — pricing, hiring, launches, pivots, big partnerships. Don't use for factual lookups, pure creation tasks ("write me an email"), or validation-seeking on a decision already made.
@@ -63,12 +63,12 @@ Original concept: **Andrej Karpathy** (`karpathy/llm-council`, multi-model). Pro
 
 ## Why It Matters
 
-This page is the human-readable discovery layer; [[LLM Council (github)]] is the verified artifact. Keeping them as two linked notes instead of one merged note is itself the answer to "how do clippings relate to the vault" for tool-discovery content: the landing page captures *why and where you found it* (lineage, framing, the contrast between paths), the repo note captures *what it actually does* — and the discrepancy between the two (the HTML-report claim) only surfaces because both got ingested instead of trusting one summary.
+This page is the human-readable discovery layer; [[LLM Council skills]] is the verified artifact. Keeping them as two linked notes instead of one merged note is itself the answer to "how do clippings relate to the vault" for tool-discovery content: the landing page captures *why and where you found it* (lineage, framing, the contrast between paths), the repo note captures *what it actually does* — and the discrepancy between the two (the HTML-report claim) only surfaces because both got ingested instead of trusting one summary.
 
 ## Links Into The Vault
 
 - [[40_Resources/CS/AI/Toolkit/Github Skills]] — confirmed; existing list of Claude Code skill repos this entry belongs alongside.
-- [[LLM Council (github)]] — the verified-against-source companion note.
+- [[LLM Council skills]] — the verified-against-source companion note.
 - [[Claude Council.md]] — the raw clip this note replaces.
 
 ## Open Questions

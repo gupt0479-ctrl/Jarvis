@@ -11,6 +11,7 @@ notes:
   - "[[40_Resources/CS/Repos]]"
 ---
 # Skills (mattpocock)
+> [!DECISION] `/grill-with-docs` and the entire setup for starting a new feature needs to mimicked. `/tdd` relevant skills need to be implemented. Set up globally so each and every repo uses it. 
 
 **What it is:** A set of 18 composable Claude Code skills by Matt Pocock (TypeScript educator, 60K newsletter subscribers) that address the four main failure modes of AI coding agents: misalignment, verbosity, broken feedback loops, and entropy-driven complexity.
 
@@ -28,6 +29,6 @@ npx skills@latest add mattpocock/skills
 /improve-codebase-architecture  # weekly codebase health check
 ```
 
-**Failure modes / limitations:** The skills reference GitHub/Linear issue trackers by default — local file mode is supported but less tested. `/tdd` adds significant overhead to every feature (it insists on writing a failing test first); useful for production code, overkill for exploration. The `CONTEXT.md` requires discipline to maintain: if you don't update it when terminology drifts, agents start misusing the shared language.
+**Failure modes / limitations:** The skills reference GitHub/Linear issue trackers by default — local file mode is supported but less tested. `/tdd` adds significant overhead to every feature (it insists on writing a failing test first); useful for production code, ==overkill for exploration==. The `CONTEXT.md` requires discipline to maintain: if you don't update it when terminology drifts, agents start misusing the shared language.
 
 **Verdict:** Install and run `/setup-matt-pocock-skills` on every new project. Use `/grill-with-docs` before starting any feature where the requirements aren't completely clear — which is most features.

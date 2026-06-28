@@ -11,6 +11,7 @@ notes:
   - "[[40_Resources/CS/Repos]]"
 ---
 # Agent Skills (Addy Osmani)
+> [!DECISION] Compliments [[gstack]], [[mattpocock-skills]] by providing a more structured build pattern. 7 entry point commands need to be mimicked to personal use, need to see the `context-engineering` and match it with other context monitoring systems.
 
 **What it is:** 23 structured Claude Code skills by Addy Osmani (Google Chrome DevRel lead) covering the full development lifecycle — define, plan, build, verify, review, ship — each as a slash command that activates automatically based on what you're doing.
 

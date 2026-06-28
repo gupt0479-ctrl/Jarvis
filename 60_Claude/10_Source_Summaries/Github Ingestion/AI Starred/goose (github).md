@@ -48,4 +48,4 @@ ACP + MCP native means goose can sit alongside Claude Code on the same MCP serve
 ## Related
 
 - [[40_Resources/CS/Repos]] (AI section)
-- [[LLM Council (github)]] — a different kind of multi-agent pattern (peer-review/debate vs. autonomous execution)
+- [[LLM Council skills]] — a different kind of multi-agent pattern (peer-review/debate vs. autonomous execution)

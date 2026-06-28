@@ -14,18 +14,16 @@ Organized by GitHub list. Each section mirrors the star list on [gupta-builds's 
 ## Claude (23)
 Claude Code tooling, memory, agent infrastructure.
 ### Skills & Agents
-- [ECC](https://github.com/affaan-m/ECC) — agent harness for Claude Code: skills, instincts, persistent memory, and a security layer in a single install
-- [gstack](https://github.com/garrytan/gstack) — 13 cognitive-mode skills (founder review, eng review, paranoid QA) plus a Playwright browser for Claude Code (*GOOD*)
-- [Skills (mattpocock)](https://github.com/mattpocock/skills) — 18 skills targeting the four main agent failure modes: misalignment, verbosity, broken feedback loops, entropy. (*EXTREMELY USEFUL - Copy skills*)
-- [Agent Skills (Addy Osmani)](https://github.com/addyosmani/agent-skills) — 23 skills covering the full SDLC, each with rationalizations tables and evidence requirements. (*NEEDS TO BE MIMICKED*)
-- [Ruflo](https://github.com/ruvnet/ruflo) — multi-agent orchestration with Q-Learning routing, 60+ specialized agents, and swarm coordination (*HOW TO USE? USEFUL*)
-- [Agency Agents](https://github.com/msitarzewski/agency-agents) — 105K-star complete AI agency in your .claude: frontend wizard, Reddit ninja, whimsy injector, reality checker
-- [Andrej Karpathy Skills](https://github.com/multica-ai/andrej-karpathy-skills) — CLAUDE.md drop-in with 4 Karpathy principles: don't assume, keep it simple, surgical changes, goal-driven. (*EXTREMELY USEFUL - needs to be mimicked*)
-- [Claude Skills LLM Council](https://github.com/aiwithremy/claude-skills-llm-council) — skill that runs 5 expert advisors on a question and synthesizes a verdict. Use for hard decisions.
-- [Last 30 Days Skill](https://github.com/mvanhorn/last30days-skill) — Claude Code skill that searches for information from the last 30 days
-
+- [ECC](https://github.com/affaan-m/ECC) — agent harness for Claude Code: skills, instincts, persistent memory, and a security layer in a single install (*FORK*)
+- [gstack](https://github.com/garrytan/gstack) — 13 cognitive-mode skills (founder review, eng review, paranoid QA) plus a Playwright browser for Claude Code (*COPY*)
+- [Skills (mattpocock)](https://github.com/mattpocock/skills) — 18 skills targeting the four main agent failure modes: misalignment, verbosity, broken feedback loops, entropy. (*COPY: GLOBALLY*)
+- [Agent Skills (Addy Osmani)](https://github.com/addyosmani/agent-skills) — 23 skills covering the full SDLC, each with rationalizations tables and evidence requirements. (*COPY 1/2: BUILD OVER*)
+- [Ruflo](https://github.com/ruvnet/ruflo) — multi-agent orchestration with Q-Learning routing, 60+ specialized agents, and swarm coordination (*COPY BUT HOW? SELF IMPROVING*)
+- [Agency Agents](https://github.com/msitarzewski/agency-agents) — 105K-star complete AI agency in your .claude: frontend wizard, Reddit ninja, whimsy injector, reality checker - ==not written==
+- [Andrej Karpathy Skills](https://github.com/multica-ai/andrej-karpathy-skills) — CLAUDE.md drop-in with 4 Karpathy principles: don't assume, keep it simple, surgical changes, goal-driven. (*COPY: GLOBALLY*) - ==no detail written==
+- [Claude Skills LLM Council](https://github.com/aiwithremy/claude-skills-llm-council) — [Original Karpathy Repo](https://github.com/karpathy/llm-council): skill that runs 5 expert advisors on a question and synthesizes a verdict. Use for hard decisions. Multiple resources listed in vault. (*COPY (CUSTOMIZE 1/2): GLOBALLY*)
+- [Last 30 Days Skill](https://github.com/mvanhorn/last30days-skill) — Claude Code skill that searches for information from the last 30 days. (*COPY GLOBALLY*) - ==no detail written==
 ### MCPs & CLI Tools
-
 - [Awesome MCP Servers](https://github.com/punkpeye/awesome-mcp-servers) — canonical community index of MCP servers by category; check before building any new integration from scratch. (*NEEDS TO BE USED*)
 - [Claude Code Templates](https://github.com/davila7/claude-code-templates) — npm CLI to browse and install 100+ Claude Code agents, MCPs, hooks, and skills interactively (*IS IT USEFUL?*) · [website](https://aitmpl.com/)
 - [Spec Kit](https://github.com/github/spec-kit) — GitHub's spec-driven development CLI: constitution → specify → clarify → plan → tasks → implement. (*WORTH TRYING?*)

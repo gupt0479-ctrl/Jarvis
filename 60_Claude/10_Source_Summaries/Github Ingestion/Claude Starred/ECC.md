@@ -12,6 +12,7 @@ notes:
   - "[[40_Resources/CS/Repos]]"
 ---
 # ECC
+> [!DECISION] Fork repo, install and copy primarily the security layer. The harness needs to be mimicked into jarvis. Skills, agents, etc. need to be compared with other repos. [REPO'S THAT ARE SIMILAR]
 
 **What it is:** A multi-component agent harness for Claude Code and other coding agents that adds skills, "instincts" (automatic behaviors), persistent memory, and security hardening in a single installable layer.
 

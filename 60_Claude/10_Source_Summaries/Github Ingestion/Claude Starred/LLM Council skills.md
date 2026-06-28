@@ -14,6 +14,7 @@ source_note: "[[aiwithremyclaude-skills-llm-council LLM Council — a Claude Cod
 source_url: https://github.com/aiwithremy/claude-skills-llm-council
 ---
 # LLM Council — Summary
+> [!DECISION] The council was copied from [karpathy's repo](https://github.com/karpathy/llm-council), needs to mimicked (slightly modified) and implemented globally. 
 
 **Source:** `https://github.com/aiwithremy/claude-skills-llm-council`
 **Ingested:** 2026-06-20
