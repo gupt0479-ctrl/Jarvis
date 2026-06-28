@@ -81,7 +81,7 @@ Log every problem in [[05a - LeetCode Tracker]] the same day: `count, topics, pr
 
 Primary targets: **Google, Amazon, Meta** (rotate one per week). Source repos (reference only, no setup):
 
-- `leetcode-companywise-interview-questions` (snehasishroy) — company-wise tagged questions as of May 2026, Java solutions. **Use:** look up the week's company tag, sort by frequency, do the top N. (From [[00_GitHub Stars — How Anant Uses Each Repo]].)
+- `leetcode-companywise-interview-questions` (snehasishroy) — company-wise tagged questions as of May 2026, Java solutions. **Use:** look up the week's company tag, sort by frequency, do the top N. (From [[How Anant Uses Each Repo]].)
 - `interview-company-wise-problems` — second company-tagged set; cross-reference.
 - Both catalogued in [[Repos]] under the Jobs list.
 

@@ -449,7 +449,7 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "60_Claude/10_Source_Summaries/Github Ingestion/00_GitHub Stars — How Anant Uses Each Repo.md",
+        "pattern": "60_Claude/10_Source_Summaries/Github Ingestion/How Anant Uses Each Repo.md",
         "patternType": "STRICT"
       }
     ],
