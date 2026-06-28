@@ -64,7 +64,7 @@ AI agents, frameworks, models, and LLM tooling.
 - [Promptfoo](https://github.com/promptfoo/promptfoo) — test prompts, agents, RAGs; red teaming + vulnerability scanning; used by OpenAI and Anthropic internally; now part of OpenAI (still MIT-licensed, open source)
 - [OpenHuman](https://github.com/tinyhumansai/openhuman) — 29K-star personal AI super intelligence; private, simple, Rust/GPL; tinyhumans.ai. Honestly find it better than jan because it has the obsidian like memory system. Is this going to be my personal assistant now? Compare it to all other resources for assistants. *(also in: Projects)*
 - [Odysseus](https://github.com/pewdiepie-archdaemon/odysseus) — self-hosted AI workspace: chat, agents, deep research, documents, email, notes, calendar, local models; AGPL-3.0; Docker setup
-- [Paperclip](https://github.com/paperclipai/paperclip) — multi-agent company orchestration: org charts, budgets, governance, task tracking for 20+ simultaneous agents; Node.js, self-hosted
+- [Paperclip](https://github.com/paperclipai/paperclip) — multi-agent company orchestration: org charts, budgets, governance, task tracking for 20+ simultaneous agents; Node.js, self-hosted *not useful*
 - [Hiring Agent](https://github.com/interviewstreet/hiring-agent) — AI agent for automated technical interview workflows from HackerRank *(also in: Jobs)*
 - [MiroFish](https://github.com/666ghj/MiroFish) — 63K-star swarm intelligence engine for prediction; financial forecasting + social prediction + knowledge graphs; Python. Very useful but how can I use it for my cases? Can be useful for prediction markets and stocks in tradingview?
 
@@ -80,7 +80,7 @@ AI agents, frameworks, models, and LLM tooling.
 - [Applied ML](https://github.com/eugeneyan/applied-ml) — 29K-star papers + tech blogs from companies sharing ML/data science in production; by Eugene Yan. (*GOLD*) *(also in: Projects)*
 - [ASI-Evolve](https://github.com/GAIR-NLP/ASI-Evolve) — GAIR-NLP research on ASI-level task evolution for training superhuman agents; Python. (Best for research? Anything better?)
 - [dots.ocr](https://github.com/rednote-hilab/dots.ocr) — multilingual document layout parsing in a single VLM; from RedNote (Xiaohongshu) research. (Useful for reading pdfs and images? Especially inside jarvis? any better alternative?)
-- [Mike](https://github.com/willchen96/mike) — open source AI legal platform; TypeScript + AGPL-3.0. (*Anything better?*)
+- [Mike](https://github.com/willchen96/mike) — open source AI legal platform; TypeScript + AGPL-3.0. (*Anything better?*) *not useful*
 - [GSD Core](https://github.com/open-gsd/gsd-core) — meta-prompting + context engineering system for Claude Code. Very useful? but how exactly are we going to work with the other installations?
 - [Autoresearch](https://github.com/karpathy/autoresearch) — Karpathy's automated research agent; by karpathy needs to be used. Unless there is something better above *(also in: Building)*
 - [LLM Council](https://github.com/karpathy/llm-council) — Karpathy's research: ensemble multiple LLM judges for evaluation; Python
@@ -101,10 +101,10 @@ AI agents, frameworks, models, and LLM tooling.
 
 Web development and fullstack tools.
 
-- [React Three Fiber](https://github.com/pmndrs/react-three-fiber) — 30K-star React renderer for Three.js; declarative 3D in React with full Three.js access
+- [React Three Fiber](https://github.com/pmndrs/react-three-fiber) — 30K-star React renderer for Three.js; declarative 3D in React with full Three.js access *not useful*
 - [Pocketbase](https://github.com/pocketbase/pocketbase) — 59K-star open source realtime backend in one Go binary: auth, SQLite DB, file storage, realtime subscriptions; pre-v1.0.0, no compat guarantee yet
 - [Bumblebee](https://github.com/perplexityai/bumblebee) — read-only developer endpoint scanner from Perplexity: checks on-disk packages/extensions for known supply-chain compromises; Go
-- [Modern JS Cheatsheet](https://github.com/mbeaudru/modern-js-cheatsheet) — comprehensive modern JavaScript reference; ES6+ concepts with examples
+- [Modern JS Cheatsheet](https://github.com/mbeaudru/modern-js-cheatsheet) — comprehensive modern JavaScript reference; ES6+ concepts with examples *not useful*
 
 ---
 
@@ -119,9 +119,9 @@ Tools and starters for actually building things.
 - [PageIndex](https://github.com/VectifyAI/PageIndex) — 32K-star vectorless reasoning-based RAG (no embeddings); document index using LLM reasoning chains
 - [Obsidian Dashboard](https://github.com/handrovermeulen/Obsidian-Dashboard) — community Obsidian vault dashboard template with statistics and navigation
 - [GitNexus](https://github.com/abhigyanpatwari/GitNexus) — (to be evaluated)
-- [Pretext](https://github.com/chenglou/pretext) — (to be evaluated)
+- [Pretext](https://github.com/chenglou/pretext) — (to be evaluated) *not useful*
 - [Autoresearch](https://github.com/karpathy/autoresearch) — Karpathy's automated research agent *(also in: AI)*
-- [Ghostty Blackhole](https://github.com/s0xDk/ghostty-blackhole) — Ghostty terminal emulator configuration and theme collection
+- [Ghostty Blackhole](https://github.com/s0xDk/ghostty-blackhole) — Ghostty terminal emulator configuration and theme collection *not useful*
 
 ---
 
@@ -150,9 +150,9 @@ Courses, zoomcamps, and structured learning paths.
 - [AI Dev Tools Zoomcamp](https://github.com/DataTalksClub/ai-dev-tools-zoomcamp) — free course: use Claude Code, MCP, and coding agents effectively
 - [System Design Primer](https://github.com/donnemartin/system-design-primer) — 350K-star: learn how to design large-scale systems; interview prep + Anki flashcards *(also in: Jobs)*
 - [Project Based Learning](https://github.com/practical-tutorials/project-based-learning) — 266K-star curated tutorials for building real projects in every major language
-- [ProjectLearn](https://github.com/Xtremilicious/projectlearn-project-based-learning) — web app frontend for browsing project tutorials by technology and category
+- [ProjectLearn](https://github.com/Xtremilicious/projectlearn-project-based-learning) — web app frontend for browsing project tutorials by technology and category *not useful*
 - [freeCodeCamp](https://github.com/freeCodeCamp/freeCodeCamp) — 445K-star open-source curriculum: math, CS, data structures, ML; full certifications available free
-- [Free Programming Books](https://github.com/EbookFoundation/free-programming-books) — 389K-star index of freely available programming books in all languages; CC-BY-4.0
+- [Free Programming Books](https://github.com/EbookFoundation/free-programming-books) — 389K-star index of freely available programming books in all languages; CC-BY-4.0 *not useful*
 - [AI Engineering Hub](https://github.com/patchy631/ai-engineering-hub) — 35K-star in-depth tutorials on LLMs, RAGs, real-world agents (Jupyter notebooks); Daily Dose of DS
 - [LeetCode Company-wise](https://github.com/snehasishroy/leetcode-companywise-interview-questions) — company-wise LeetCode questions as of May 2026; Java solutions
 - [Prompt Engineering Tutorial](https://github.com/anthropics/prompt-eng-interactive-tutorial) — Anthropic's official interactive prompt engineering course; hands-on exercises with solutions
@@ -168,8 +168,8 @@ Project ideas, inspiration, and curated resources.
 - [Build Your Own X](https://github.com/codecrafters-io/build-your-own-x) — 506K-star: master programming by recreating technologies from scratch (DB, OS, browser, shell, etc.)
 - [App Ideas](https://github.com/florinpop17/app-ideas) — 94K-star app ideas organized by difficulty: Newbie / Intermediate / Advanced tiers with specs
 - [500 AI/ML Projects](https://github.com/ashishpatel26/500-AI-Machine-learning-Deep-learning-Computer-vision-NLP-Projects-with-code) — 500 AI/ML/CV/NLP project ideas with code; organized by domain
-- [Semantic Search Starter](https://github.com/dabit3/semantic-search-nextjs-pinecone-langchain-chatgpt) — embed text → Pinecone, semantic search with GPT3 + LangChain in Next.js UI
-- [Jarvis](https://github.com/ethanplusai/jarvis) — voice-first AI assistant for macOS inspired by MCU; Claude + Three.js + Whisper
+- [Semantic Search Starter](https://github.com/dabit3/semantic-search-nextjs-pinecone-langchain-chatgpt) — embed text → Pinecone, semantic search with GPT3 + LangChain in Next.js UI *not useful*
+- [Jarvis](https://github.com/ethanplusai/jarvis) — voice-first AI assistant for macOS inspired by MCU; Claude + Three.js + Whisper *not useful*
 - [TradingAgents](https://github.com/TauricResearch/TradingAgents) — 80K-star multi-agent LLM financial trading framework: analyst/researcher/trader/risk manager agents *(also in: Building)*
 - [AI Weekend Builds](https://github.com/kju4q/ai-weekend-builds) — weekend AI project starters using Anthropic API; Python/Node with READMEs and starter code
 - [OpenHuman](https://github.com/tinyhumansai/openhuman) — 29K-star personal AI super intelligence; private, simple, Rust/GPL *(also in: AI)*

@@ -437,6 +437,20 @@
         "type": "FILES",
         "pattern": "20_Progress/Projects/AI Use/The AI Hub.md",
         "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "60_Claude/10_Source_Summaries/Github Ingestion/Useful Repos - Shortlist.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "60_Claude/10_Source_Summaries/Github Ingestion/00_GitHub Stars — How Anant Uses Each Repo.md",
+        "patternType": "STRICT"
       }
     ],
     "frontMatter": [

@@ -81,7 +81,7 @@ Log every problem in [[05a - LeetCode Tracker]] the same day: `count, topics, pr
 
 Primary targets: **Google, Amazon, Meta** (rotate one per week). Source repos (reference only, no setup):
 
-- `leetcode-companywise-interview-questions` (snehasishroy) — company-wise tagged questions as of May 2026, Java solutions. **Use:** look up the week's company tag, sort by frequency, do the top N. (From [[GitHub Stars — How Anant Uses Each Repo]].)
+- `leetcode-companywise-interview-questions` (snehasishroy) — company-wise tagged questions as of May 2026, Java solutions. **Use:** look up the week's company tag, sort by frequency, do the top N. (From [[00_GitHub Stars — How Anant Uses Each Repo]].)
 - `interview-company-wise-problems` — second company-tagged set; cross-reference.
 - Both catalogued in [[Repos]] under the Jobs list.
 
@@ -115,12 +115,14 @@ Mirrors [[DSA]] `## LeetCode / Weekly Plan` (the vault week numbering is authori
 Re-implementation milestones, not just notes. Done = working code + tests + one interview bullet.
 
 ### AVL midterm (chosen)
+
 - Source: `10_Areas/UMN/Previous Classes/CSCI/CSCI 4041/Midterm Project/AVL Tree Project.md` (alternatives: Red Black Tree, Multiway Search Tree — not chosen).
 - Do: re-implement AVL insert/delete with rotations; **invariant tests** (height-balance check after every op); trace one rebalance by hand.
 - Evidence: code path + test log + 1 interview-story bullet ("balanced BST under adversarial insert order").
 - Concept tie-in: [[AVL Trees]], rotations from Week 6–7.
 
 ### Maze final (chosen)
+
 - Source: `10_Areas/UMN/Previous Classes/CSCI/CSCI 4041/Final Project/Maze Project.md` + `Maze Project Details.md` (alternatives: Network Flow, Heuristic Pathfinding — not chosen).
 - Do: BFS/DFS solve + shortest path; connect to spanning-tree generation.
 - Evidence: demo screenshot/gif + test log + README line + 1 bullet ("graph search on a generated grid").

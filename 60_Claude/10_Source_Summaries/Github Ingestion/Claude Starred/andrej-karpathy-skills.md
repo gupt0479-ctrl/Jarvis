@@ -13,7 +13,7 @@ notes:
 # Andrej Karpathy Skills
 
 **GitHub:** [multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills)
-
+### Installation
 extremely useful, needs to be mimicked.
 
 - one curl command installs the file: `curl -o CLAUDE.md https://raw.githubusercontent.com/forrestchang/andrej-karpathy-skills/main/CLAUDE.md`

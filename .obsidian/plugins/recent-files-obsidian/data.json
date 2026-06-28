@@ -1,12 +1,60 @@
 {
   "recentFiles": [
     {
-      "basename": "Big Assignment - 2",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 2.md"
+      "basename": "Answers",
+      "path": "20_Progress/Degree/MATH 2230/Homework/Answers.md"
+    },
+    {
+      "basename": "00_GitHub Stars — How Anant Uses Each Repo",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/00_GitHub Stars — How Anant Uses Each Repo.md"
+    },
+    {
+      "basename": "Repos",
+      "path": "40_Resources/CS/Repos.md"
+    },
+    {
+      "basename": "Useful Repos - Shortlist",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Useful Repos - Shortlist.md"
+    },
+    {
+      "basename": "andrej-karpathy-skills",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/andrej-karpathy-skills.md"
+    },
+    {
+      "basename": "Quiz - 8",
+      "path": "20_Progress/Degree/MATH 2230/Quiz/Quiz - 8.md"
+    },
+    {
+      "basename": "Chapter - 6",
+      "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 6.md"
+    },
+    {
+      "basename": "Chapter - 5",
+      "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 5.md"
+    },
+    {
+      "basename": "anthropics-financial-services",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/anthropics-financial-services.md"
+    },
+    {
+      "basename": "agent-skills-addyosmani",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/agent-skills-addyosmani.md"
+    },
+    {
+      "basename": "Chapter - 4",
+      "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 4.md"
     },
     {
       "basename": "Quiz - 2",
       "path": "20_Progress/Degree/HIST 1103/Assignments/Quiz - 2.md"
+    },
+    {
+      "basename": "Big Assignment - 2",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 2.md"
+    },
+    {
+      "basename": "Big Assignment - 1",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 1.md"
     },
     {
       "basename": "Quiz - 1",
@@ -21,14 +69,6 @@
       "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 9.md"
     },
     {
-      "basename": "Big Assignment - 1",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 1.md"
-    },
-    {
-      "basename": "Repos",
-      "path": "40_Resources/CS/Repos.md"
-    },
-    {
       "basename": "Assignment - 10",
       "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 10.md"
     },
@@ -39,10 +79,6 @@
     {
       "basename": "Assignment - 12",
       "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 12.md"
-    },
-    {
-      "basename": "Answers",
-      "path": "20_Progress/Degree/MATH 2230/Homework/Answers.md"
     },
     {
       "basename": "Links",
@@ -57,24 +93,8 @@
       "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 7.md"
     },
     {
-      "basename": "Quiz - 8",
-      "path": "20_Progress/Degree/MATH 2230/Quiz/Quiz - 8.md"
-    },
-    {
       "basename": "Quiz - 5",
       "path": "20_Progress/Degree/MATH 2230/Quiz/Quiz - 5.md"
-    },
-    {
-      "basename": "Chapter - 6",
-      "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 6.md"
-    },
-    {
-      "basename": "Chapter - 5",
-      "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 5.md"
-    },
-    {
-      "basename": "Chapter - 4",
-      "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 4.md"
     },
     {
       "basename": "Chapter - 2",
@@ -179,26 +199,6 @@
     {
       "basename": "Compliance Solutions for Websites, Apps and Organizations",
       "path": "60_Claude/05_Clippings/Web/Security/Compliance Solutions for Websites, Apps and Organizations.md"
-    },
-    {
-      "basename": "00 Overview",
-      "path": "60_Claude/40_Project_Briefs/TradingView/00 Overview.md"
-    },
-    {
-      "basename": "Claude Council",
-      "path": "60_Claude/05_Clippings/Web/Claude Council.md"
-    },
-    {
-      "basename": "Automate Your AI Second Brain",
-      "path": "60_Claude/05_Clippings/Web/Automate Your AI Second Brain.md"
-    },
-    {
-      "basename": "App Privacy Policy Generator",
-      "path": "60_Claude/05_Clippings/Web/Security/App Privacy Policy Generator.md"
-    },
-    {
-      "basename": "All-in-One Data Privacy Compliance Solution for Websites & Apps",
-      "path": "60_Claude/05_Clippings/Web/Security/All-in-One Data Privacy Compliance Solution for Websites & Apps.md"
     }
   ],
   "omittedPaths": [],
