@@ -1,16 +1,76 @@
 {
   "recentFiles": [
     {
+      "basename": "dify",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/dify.md"
+    },
+    {
+      "basename": "Repos",
+      "path": "40_Resources/CS/Repos.md"
+    },
+    {
+      "basename": "last30days-skill",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/last30days-skill.md"
+    },
+    {
+      "basename": "system-prompts-and-models-of-ai-tools",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/system-prompts-and-models-of-ai-tools.md"
+    },
+    {
+      "basename": "claude-code-best-practice",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/claude-code-best-practice.md"
+    },
+    {
+      "basename": "CL4R1T4S",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/CL4R1T4S.md"
+    },
+    {
+      "basename": "claude-context",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/claude-context.md"
+    },
+    {
+      "basename": "graphify",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/graphify.md"
+    },
+    {
+      "basename": "gstack",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/gstack.md"
+    },
+    {
+      "basename": "polymarket-mcp-server",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/polymarket-mcp-server.md"
+    },
+    {
+      "basename": "free-claude-code",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/free-claude-code.md"
+    },
+    {
+      "basename": "tradingview-mcp (github)",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/tradingview-mcp (github).md"
+    },
+    {
+      "basename": "tradingview-mcp - AI-assisted TradingView chart analysis",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/tradingview-mcp - AI-assisted TradingView chart analysis.md"
+    },
+    {
+      "basename": "beads",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/beads.md"
+    },
+    {
+      "basename": "spec-kit",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/spec-kit.md"
+    },
+    {
+      "basename": "claude-code-templates",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/claude-code-templates.md"
+    },
+    {
       "basename": "awesome-mcp-servers",
       "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/awesome-mcp-servers.md"
     },
     {
       "basename": "LLM Council skills",
       "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/LLM Council skills.md"
-    },
-    {
-      "basename": "Repos",
-      "path": "40_Resources/CS/Repos.md"
     },
     {
       "basename": "Claude Council — Path A Prompt (web)",
@@ -35,10 +95,6 @@
     {
       "basename": "mattpocock-skills",
       "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/mattpocock-skills.md"
-    },
-    {
-      "basename": "gstack",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/gstack.md"
     },
     {
       "basename": "ECC",
@@ -143,62 +199,6 @@
     {
       "basename": "Assignment - 8",
       "path": "20_Progress/Degree/HIST 1103/Assignments/Assignment - 8.md"
-    },
-    {
-      "basename": "Where teams and agents work together 1",
-      "path": "60_Claude/05_Clippings/Web/Where teams and agents work together 1.md"
-    },
-    {
-      "basename": "Random",
-      "path": "40_Resources/Random.md"
-    },
-    {
-      "basename": "Second Brain",
-      "path": "40_Resources/Obsidian/Second Brain.md"
-    },
-    {
-      "basename": "The AI Hub",
-      "path": "20_Progress/Projects/AI Use/The AI Hub.md"
-    },
-    {
-      "basename": "promptfoo (github)",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/AI Starred/promptfoo (github).md"
-    },
-    {
-      "basename": "jcode",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/jcode.md"
-    },
-    {
-      "basename": "Where teams and agents work together",
-      "path": "60_Claude/05_Clippings/Web/Where teams and agents work together.md"
-    },
-    {
-      "basename": "the underclassmen internship list, before u age out",
-      "path": "60_Claude/05_Clippings/Web/the underclassmen internship list, before u age out.md"
-    },
-    {
-      "basename": "the permanent archive of winning hackathon projects",
-      "path": "60_Claude/05_Clippings/Web/the permanent archive of winning hackathon projects.md"
-    },
-    {
-      "basename": "The Output Audit",
-      "path": "60_Claude/05_Clippings/Web/The Output Audit.md"
-    },
-    {
-      "basename": "the new coding interview, 5 resources id actually study",
-      "path": "60_Claude/05_Clippings/Web/the new coding interview, 5 resources id actually study.md"
-    },
-    {
-      "basename": "The Hidden Operating System Behind Every Income Ceiling",
-      "path": "60_Claude/05_Clippings/Web/The Hidden Operating System Behind Every Income Ceiling.md"
-    },
-    {
-      "basename": "The Agent-Ready Roadmap",
-      "path": "60_Claude/05_Clippings/Web/The Agent-Ready Roadmap.md"
-    },
-    {
-      "basename": "The 2027 Internship Calendar (Prediction) when everything actually drops",
-      "path": "60_Claude/05_Clippings/Web/The 2027 Internship Calendar (Prediction) when everything actually drops.md"
     }
   ],
   "omittedPaths": [],

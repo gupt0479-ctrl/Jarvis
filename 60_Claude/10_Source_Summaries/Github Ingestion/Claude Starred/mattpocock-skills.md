@@ -12,6 +12,7 @@ notes:
 ---
 # Skills (mattpocock)
 > [!DECISION] `/grill-with-docs` and the entire setup for starting a new feature needs to mimicked. `/tdd` relevant skills need to be implemented. Set up globally so each and every repo uses it. 
+> **Answer:** Global install: `cp -r skills/* ~/.claude/skills/`. `/grill-with-docs` — runs the test suite with the library's official docs active so Claude gets corrected when it hallucinates an API signature. Works for any library that has docs (Python packages, npm modules). `/tdd` — write the failing test first → run it → implement until it passes → run again. For Python: pytest. For the trading project: write a test asserting the signal output format before implementing the signal logic. Set up both globally — they're low overhead and prevent the most common wasted coding cycles (wrong API, implement before testing).
 
 **What it is:** A set of 18 composable Claude Code skills by Matt Pocock (TypeScript educator, 60K newsletter subscribers) that address the four main failure modes of AI coding agents: misalignment, verbosity, broken feedback loops, and entropy-driven complexity.
 

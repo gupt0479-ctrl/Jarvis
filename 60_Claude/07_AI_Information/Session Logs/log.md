@@ -1000,3 +1000,20 @@ Audited the web-clipping ingestion pipeline (`05_Clippings/Web/`, 29 raw clips) 
 - Run Kronos validation pass on V1 universe historical data (once dev environment is accessible in WSL)
 - Complete Kiro tasks 7.2-7.4 (DataQualityAuditor property tests)
 - Complete Kiro tasks 9-13 (evidence.py, benchmark.py, polygon.py, cli.py)
+
+## 2026-06-28 — GitHub Ingestion Complete
+
+**Completed:** Full ingestion of all 92 starred repos from `40_Resources/CS/Repos.md`.
+
+**Repos marked not useful (10 total):** jarvis (ethanplusai), react-three-fiber, semantic-search-nextjs-pinecone-langchain-chatgpt, Ghostty Blackhole, ProjectLearn, modern-js-cheatsheet, free-programming-books, Paperclip, Mike, Pretext.
+
+**Notes created this session (15):**
+- Projects Starred: build-your-own-x, app-ideas, 500-ai-ml-projects, public-apis, devops-projects-notharshha, devops-projects-techiescamp
+- Learning Starred: freeCodeCamp, project-based-learning
+- Building Starred: openbb
+- AI Starred: agentscope, free-llm-api-resources, llmfit, jan, odysseus
+- Claude Starred: last30days-skill
+
+**Total notes in `60_Claude/10_Source_Summaries/Github Ingestion/`:** ~95 across 6 subfolders (Security, Jobs, Learning, Building, Projects, AI/Claude Starred).
+
+**Open questions:** Odysseus (pewdiepie-archdaemon) has a minimal description — revisit if it turns out to be a substantial tool.

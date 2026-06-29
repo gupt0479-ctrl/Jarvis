@@ -10,6 +10,8 @@ tags:
   - "clippings"
 ---
 ## TradingView MCP Bridge
+> [!DECISION] TradingView is a paid platform online and I do not have a subscription model for it. I want to use this platform but rely more on the free plan. How can this mcp help me earn money based on my TradingView project(the one i am building)? 
+> **Answer:** The MCP connects to **TradingView Desktop** (the downloadable app), not the paid web platform — the Desktop app has a free tier that supports chart analysis, basic Pine Script, and community indicators. The MCP reads chart data from whatever charts are open in the app via Chrome DevTools Protocol, so no paid API subscription is needed. For the trading project: the MCP gives Claude programmatic access to TradingView's charting engine to (a) analyze patterns on open charts, (b) generate/modify Pine Script indicators, (c) read indicator values for signal generation. Revenue path: use the MCP to build and backtest signals locally → validate edge on paper trading → if signals are profitable, publish indicators to TradingView community (paid scripts) or route signals into Polymarket positions. The free plan gets you started; upgrade only if signals prove out and you need live data feeds.
 
 Personal AI assistant for your TradingView Desktop charts. Connects Claude Code to your locally running TradingView app via Chrome DevTools Protocol for AI-assisted chart analysis, Pine Script development, and workflow automation.
 

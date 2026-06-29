@@ -11,6 +11,8 @@ notes:
   - "[[40_Resources/CS/Repos]]"
 ---
 # Spec Kit (GitHub)
+> [!DECISION] Kiro workflow needs to be implemented as skills. Use this repo exactly as stated as a cli. Do we need an api key to get this working? Needs to be installed globally. How exactly do we use this for every project? [CONFUSED ON USAGE]
+> **Answer:** No API key needed — Spec Kit is a local scaffolding CLI, not an AI service. It creates workflow files; Claude Code fills them in during the session. Install globally: `uv tool install specify-cli --from git+https://github.com/github/spec-kit.git`. Per-project usage: `specify init my-project --ai claude` creates `.specify/` with templates + slash commands. Workflow: `/speckit.constitution` (project principles) → `/speckit.specify` (what to build, no tech stack yet) → `/speckit.clarify` (resolve ambiguities) → `/speckit.plan` (tech stack) → `/speckit.tasks` (atomic task list) → `/speckit.implement`. The Kiro-style connection: Kiro's "steering rules" = Spec Kit's constitution. Use for every new feature that's more than a day of work — the `/speckit.clarify` step alone prevents most "built the wrong thing" incidents. Don't use for quick bug fixes.
 
 **What it is:** A Python CLI (`specify init`) from GitHub that scaffolds a Spec-Driven Development workflow for Claude Code — enforcing constitution → specify → clarify → plan → tasks → implement as a sequence of slash commands before any code is written.
 

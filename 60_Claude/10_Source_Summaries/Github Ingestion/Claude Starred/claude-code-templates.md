@@ -11,6 +11,9 @@ notes:
   - "[[40_Resources/CS/Repos]]"
 ---
 # Claude Code Templates
+> [!DECISION] Nice ui interface but need the same thing for all agents(not only claude code). Need a dashbaord ui for any and all agents running on my laptop.
+> **Answer:** For a cross-agent dashboard: **(1) AgentScope web_ui** (in `examples/web_ui`) — FastAPI backend + pnpm frontend, shows multiple agents as a team with task planning and permission controls. Closest to "dashboard for all agents." **(2) Obsidian Dashboard** (already in vault notes) — the Jarvis-specific command center using headless `claude -p`. **(3) Jan** — aggregates local model inference across models in one UI. **(4) OpenCode** — terminal dashboard for multi-model coding agent. Best path: build the Obsidian Dashboard first (directly applicable to Jarvis), then evaluate AgentScope's web_ui when you need to manage multiple trading agents simultaneously.
+> 
 
 **What it is:** An npm CLI (`npx claude-code-templates`) that browses and installs a catalog of 100+ agents, commands, MCPs, settings, hooks, and skills for Claude Code from an interactive terminal or web dashboard at aitmpl.com.
 

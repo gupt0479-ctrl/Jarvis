@@ -10,6 +10,8 @@ notes:
   - "[[40_Resources/CS/Repos]]"
 ---
 # Dify
+> [!DECISION] Could be used later on when building llms for other people. 
+> **Answer:** Correct framing. Dify is marked *not useful* now because it's team/product-oriented, not solo agentic tooling. When building LLM-powered products for clients or for the internship portfolio, Dify's visual workflow canvas + multi-model routing is valuable — it's essentially a no-code backend for LLM apps. Revisit when: (a) building something for someone other than yourself, or (b) need a production-grade API wrapper around multiple models without writing routing code. Keep the note but don't install now.
 
 **What it is:** A self-hosted or cloud LLM app development platform with a visual workflow canvas, RAG pipelines, agent capabilities, prompt IDE, and observability — think "LLM middleware" that abstracts over 100+ model providers.
 

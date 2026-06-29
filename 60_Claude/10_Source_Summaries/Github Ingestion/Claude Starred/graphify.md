@@ -11,6 +11,8 @@ notes:
   - "[[40_Resources/CS/Repos]]"
 ---
 # Graphify
+> [!DECISION] Already being used but the failuers/limitations are on point in this file. It is not saving me tokens(maybe not used correctly), could be a better option for my ai to read through context like an actual brain. Needs a better way so that ai actually remembers what is in the project. Could be used to make much better notes inside jarvis still. Claude code does not read through the entire graphify folder either if pasted inside this vault, just a few files. Is this really the best way to save context and make ai remember details? Need a better alternative that could also use graphify.
+> **Answer:** Token savings only work if the `graph.json` is referenced explicitly — Claude doesn't auto-load it. Fix: add `graph.json` to CLAUDE.md context rules so it gets loaded every session. The "Claude only reads a few files" issue is the real problem: graphify outputs a graph but Claude still navigates it like a file system. Better stack: graphify to build the initial graph → `memsearch` to auto-capture every session into searchable markdown → `claude-context` (Milvus MCP) to enable semantic search over the captured sessions. These three together = graphify's structure + memsearch's auto-capture + claude-context's semantic retrieval. Graphify alone is insufficient; it needs the other two for actual memory.
 
 **What it is:** A Claude Code skill (`/graphify`) that reads a folder of files — code, PDFs, markdown, images, screenshots — extracts concepts and relationships using Claude's vision and tree-sitter AST parsing, and outputs a NetworkX knowledge graph with an interactive HTML viewer and an Obsidian vault export.
 

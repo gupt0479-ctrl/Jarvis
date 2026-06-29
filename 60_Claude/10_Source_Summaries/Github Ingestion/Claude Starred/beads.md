@@ -12,6 +12,8 @@ notes:
   - "[[40_Resources/CS/Repos]]"
 ---
 # Beads (bd)
+> [!DECISION] What exactly is the use for this tracking system? How is it any different than graphify? We could just write tests for this to take place. Is this only useful inside jarvis?
+> **Answer:** Beads ≠ Graphify. Graphify maps *knowledge* (what things are and how they connect). Beads tracks *work* (tasks, dependencies, who claimed what). Graphify = knowledge graph. Beads = GitHub Issues embedded in the repo, with SQL-backed dependency tracking so multiple AI agents can atomically claim tasks without collisions. For solo Jarvis use with one Claude session at a time: not needed — Claude Code's built-in TaskCreate/TaskUpdate covers it. Beads only matters if you run 3+ parallel agents on the same project simultaneously that need to coordinate. Not currently needed.
 
 **What it is:** A CLI issue tracker (`bd`) backed by Dolt (a git-versioned SQL database) that gives AI agents a dependency-aware task graph with hash-based IDs, atomic claiming, and persistent memory — as an alternative to markdown TODO lists.
 

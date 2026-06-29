@@ -24,26 +24,22 @@ Claude Code tooling, memory, agent infrastructure.
 - [Claude Skills LLM Council](https://github.com/aiwithremy/claude-skills-llm-council) — [Original Karpathy Repo](https://github.com/karpathy/llm-council): skill that runs 5 expert advisors on a question and synthesizes a verdict. Use for hard decisions. Multiple resources listed in vault. (*COPY (CUSTOMIZE 1/2): GLOBALLY*)
 - [Last 30 Days Skill](https://github.com/mvanhorn/last30days-skill) — Claude Code skill that searches for information from the last 30 days. (*COPY GLOBALLY*) - ==no detail written==
 ### MCPs & CLI Tools
-- [Awesome MCP Servers](https://github.com/punkpeye/awesome-mcp-servers) — canonical community index of MCP servers by category; check before building any new integration from scratch. (*NEEDS TO BE USED*)
-- [Claude Code Templates](https://github.com/davila7/claude-code-templates) — npm CLI to browse and install 100+ Claude Code agents, MCPs, hooks, and skills interactively (*IS IT USEFUL?*) · [website](https://aitmpl.com/)
-- [Spec Kit](https://github.com/github/spec-kit) — GitHub's spec-driven development CLI: constitution → specify → clarify → plan → tasks → implement. (*WORTH TRYING?*)
-- [Beads](https://github.com/gastownhall/beads) — Dolt-backed CLI issue tracker with atomic task claiming and dependency graphs for multi-agent coordination (*HOW DIFFERENT FROM GRAPHIFY?* **USEFUL?**)
-- [TradingView MCP](https://github.com/tradesdontlie/tradingview-mcp) — MCP server connecting Claude Code to TradingView Desktop for AI-assisted chart analysis via Chrome DevTools Protocol; requires active TradingView subscription
-- [Polymarket MCP](https://github.com/caiovicentino/polymarket-mcp-server) — 45-tool MCP for Claude Desktop via Polymarket's CLOB API; demo mode read-only; full mode requires polygon wallet and unavailable to US persons under ToS. Worth installing? for the tradingview product?
-- [Free Claude Code](https://github.com/Alishahryar1/free-claude-code) — proxy server that reroutes Claude Code API calls to NVIDIA NIM, OpenRouter, or local models
-
+- [Awesome MCP Servers](https://github.com/punkpeye/awesome-mcp-servers) — canonical community index of MCP servers by category; check before building any new integration from scratch. (*MATERIAL*)
+- [Claude Code Templates](https://github.com/davila7/claude-code-templates) — npm CLI to browse and install 100+ Claude Code agents, MCPs, hooks, and skills interactively (*not useful*) · [website](https://aitmpl.com/)
+- [Spec Kit](https://github.com/github/spec-kit) — GitHub's spec-driven development CLI: constitution → specify → clarify → plan → tasks → implement. (*INSTALL: GLOBALLY*)
+- [Beads](https://github.com/gastownhall/beads) — Dolt-backed CLI issue tracker with atomic task claiming and dependency graphs for multi-agent coordination (*HOW DIFFERENT FROM GRAPHIFY?* **USEFUL?** - ==not sure==)
+- [TradingView MCP](https://github.com/tradesdontlie/tradingview-mcp) — MCP server connecting Claude Code to TradingView Desktop for AI-assisted chart analysis via Chrome DevTools Protocol; requires active TradingView subscription (*INSTALL, FREE?*)
+- [Polymarket MCP](https://github.com/caiovicentino/polymarket-mcp-server) — 45-tool MCP for Claude Desktop via Polymarket's CLOB API; demo mode read-only; full mode requires polygon wallet and unavailable to US persons under ToS. Worth installing? for the tradingview product? (*INSTALL, HOW TO USE ON LAPTOP?*) - ==not written==
+- [Free Claude Code](https://github.com/Alishahryar1/free-claude-code) — proxy server that reroutes Claude Code API calls to NVIDIA NIM, OpenRouter, or local models (*NEED AN ON & OFF BUTTON* **OR** *AN ALTERNATIVE*)
 ### Memory & Context
-
-- [Graphify](https://github.com/safishamsi/graphify) — Claude Code skill that builds a NetworkX knowledge graph from any folder and exports an Obsidian vault (*USING, UNDERSTAND BETTER*)
-- [Claude Context](https://github.com/zilliztech/claude-context) — MCP server that indexes a codebase into Milvus for semantic code search; claims ~40% token reduction. (*WORTH USING? OVER USE OF CONTEXT?*)
-- [CL4R1T4S](https://github.com/elder-plinius/CL4R1T4S) — Best resource for making the most out of guard railed models.
-
+- [Graphify](https://github.com/safishamsi/graphify) — Claude Code skill that builds a NetworkX knowledge graph from any folder and exports an Obsidian vault (*USING, UNDERSTAND BETTER*) - ==detailed commands and usage needs to be written==
+- [Claude Context](https://github.com/zilliztech/claude-context) — MCP server that indexes a codebase into Milvus for semantic code search; claims ~40% token reduction. (*INSTALL: GLOBALLY, OVER USE OF CONTEXT?*)
+- [CL4R1T4S](https://github.com/elder-plinius/CL4R1T4S) — Best resource for making the most out of guard railed models. - ==not written==
 ### Other
-
-- [Claude Code Best Practice](https://github.com/shanraisshan/claude-code-best-practice) — 55K-star best practices collection with agents/commands/skills; reference read, not infrastructure *REALLY GOOD*
-- [System Prompts Collection](https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools) — extracted system prompts from Claude Code, Cursor, Devin, Manus, Replit; useful for CLAUDE.md and skill writing
-- [Claude for Financial Services](https://github.com/anthropics/financial-services) — official IB/equity research/KYC agents with Bloomberg, FactSet, S&P Global MCP connectors. Useful for tradingview? how exactly better than the other resources?
-- [Dify](https://github.com/langgenius/dify) — self-hosted LLM app platform for teams building products; full Docker deployment, not solo agentic tooling (*USEFUL?*)
+- [Claude Code Best Practice](https://github.com/shanraisshan/claude-code-best-practice) — 55K-star best practices collection with agents/commands/skills; reference read, not infrastructure (*REALLY GOOD FOR LEARNING*)
+- [System Prompts Collection](https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools) — extracted system prompts from Claude Code, Cursor, Devin, Manus, Replit; useful for CLAUDE.md and skill writing (*MATERIAL*)
+- [Claude for Financial Services](https://github.com/anthropics/financial-services) — official IB/equity research/KYC agents with Bloomberg, FactSet, S&P Global MCP connectors. Useful for tradingview? how exactly better than the other resources? (*INSTALL FOR TRADINGVIEW*) - ==no detail written==
+- [Dify](https://github.com/langgenius/dify) — self-hosted LLM app platform for teams building products; full Docker deployment, not solo agentic tooling (*not useful*) - ==move to ai==
 
 ---
 

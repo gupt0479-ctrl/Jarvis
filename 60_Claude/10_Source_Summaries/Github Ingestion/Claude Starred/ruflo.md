@@ -13,6 +13,7 @@ notes:
 ---
 # Ruflo (formerly claude-flow)
 > [!DECISION] Self learning improving system that needs to be installed globally. More like mimic how these are being self improved and distributing work to so many agents. Worth installing globally or only in a repo? How to distribute work and self improve my set of skills, agents, etc.? [CONFUSED TO INTEGRATE WITH WHAT]
+> **Answer:** Install globally (`npx ruflo@latest` → `~/.ruflo/`). Extract two pieces only: **(1) Q-Learning router** — learns which agent handles which task type best based on past outcomes. **(2) Self-improvement loop** — agents append learnings to their own skill files after each session. Don't install all 60+ agents. Start with 5 focused agents: trading analyst, code reviewer, vault curator, research distiller, security auditor. Layer Ruflo's router on top of mattpocock + gstack + ECC security. Integration order: get the skill stack working first → add Ruflo's router as the dispatch layer on top.
 
 **What it is:** A multi-agent orchestration framework that wraps Claude Code with a routing layer, swarm coordination, 60+ specialized agents, and a self-learning memory system — installed as `npx ruflo@latest` or via a bash script.
 

@@ -15,6 +15,7 @@ source_url: https://github.com/aiwithremy/claude-skills-llm-council
 ---
 # LLM Council — Summary
 > [!DECISION] The council was copied from [karpathy's repo](https://github.com/karpathy/llm-council), needs to mimicked (slightly modified) and implemented globally. 
+> **Answer:** Implementation: copy the skill to `~/.claude/skills/llm-council.md` for global access. Customization: change the 5 default expert personas to match your domains — suggested: trading analyst, CS theorist, systems engineer, ML practitioner, pragmatic builder. The `/llm-council "question"` pattern is then available in every project. Use it for: architecture decisions (which agent framework?), risk assessment (is this trade signal robust?), hard debugging (why is this async pipeline deadlocking?). Don't use it for routine coding tasks — overhead is only worth it for decisions that are hard to reverse.
 
 **Source:** `https://github.com/aiwithremy/claude-skills-llm-council`
 **Ingested:** 2026-06-20

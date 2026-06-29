@@ -12,6 +12,7 @@ notes:
 ---
 # Awesome MCP Servers
 > [!DECISION] Needs to be studied, copied a few. Can be used with the [awesome-agent-skills](https://github.com/VoltAgent/awesome-agent-skills) for searching mcps. Always check this repo before building a mcp. 
+> **Answer:** `awesome-agent-skills` (VoltAgent) is a NEW repo not yet in Repos.md — add it. Workflow: before building any MCP, search awesome-mcp-servers first. If nothing fits, search awesome-agent-skills for a skill wrapper. If still nothing, build it. Concrete installs to prioritize from awesome-mcp-servers: Firecrawl (already installed), GitHub MCP (already installed), filesystem MCP, memory/knowledge graph MCPs. The decision to always check here first is correct — most common integrations already exist.
 
 **What it is:** The canonical community-maintained index of MCP (Model Context Protocol) servers — the go-to reference for finding servers that connect Claude to external tools, APIs, and data sources.
 

@@ -12,6 +12,7 @@ notes:
 ---
 # Agent Skills (Addy Osmani)
 > [!DECISION] Compliments [[gstack]], [[mattpocock-skills]] by providing a more structured build pattern. 7 entry point commands need to be mimicked to personal use, need to see the `context-engineering` and match it with other context monitoring systems.
+> **Answer:** The 7 entry points (define → plan → build → verify → review → iterate → ship) are the SDLC skeleton. Match them to other context systems: **`context-engineering`** (the `/define` stage) pairs with spec-kit's constitution → specify pipeline — both front-load requirement clarity before any code. For context *monitoring*: claude-context (Milvus semantic search) tracks what's in the codebase; memsearch auto-captures sessions; graphify maps structure. These three together are the context system stack. Priority: implement the `/define` + `/plan` stages from addyosmani, then use spec-kit for larger features, graphify+memsearch for ongoing context recall.
 
 **What it is:** 23 structured Claude Code skills by Addy Osmani (Google Chrome DevRel lead) covering the full development lifecycle — define, plan, build, verify, review, ship — each as a slash command that activates automatically based on what you're doing.
 

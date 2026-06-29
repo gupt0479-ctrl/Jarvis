@@ -13,6 +13,7 @@ notes:
 ---
 # ECC
 > [!DECISION] Fork repo, install and copy primarily the security layer. The harness needs to be mimicked into jarvis. Skills, agents, etc. need to be compared with other repos. [REPO'S THAT ARE SIMILAR]
+> **Answer:** Similar harness repos (ordered by overlap): gstack (cognitive modes), mattpocock-skills (TDD + feedback loops), ruflo (self-improving swarm), agent-skills-addyosmani (full SDLC pipeline). ECC's unique piece none of the others have: **security layer** — allowlist/denylist for tool invocations. In Claude Code terms this maps directly to *hooks* (pre/post tool-call scripts that can block dangerous operations). Action: extract ECC's security layer → translate to Claude Code hooks in CLAUDE.md. Don't install ECC wholesale. ECC instincts ≈ hooks, ECC skills ≈ slash commands — use mattpocock for skills, ECC only for the security harness.
 
 **What it is:** A multi-component agent harness for Claude Code and other coding agents that adds skills, "instincts" (automatic behaviors), persistent memory, and security hardening in a single installable layer.
 
