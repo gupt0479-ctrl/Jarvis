@@ -1,6 +1,26 @@
 {
   "recentFiles": [
     {
+      "basename": "2026-06",
+      "path": "10_Areas/Life/Enumerate/Monthly/2026-06.md"
+    },
+    {
+      "basename": "2026-06-16",
+      "path": "10_Areas/Life/Enumerate/Daily/2026-06-16.md"
+    },
+    {
+      "basename": "2026-07-01",
+      "path": "10_Areas/Life/Enumerate/Daily/2026-07-01.md"
+    },
+    {
+      "basename": "2026",
+      "path": "10_Areas/Life/Enumerate/Yearly/2026.md"
+    },
+    {
+      "basename": "2026-W27",
+      "path": "10_Areas/Life/Enumerate/Weekly/2026-W27.md"
+    },
+    {
       "basename": "Big Assignment - 2",
       "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 2.md"
     },
@@ -179,26 +199,6 @@
     {
       "basename": "Answers",
       "path": "20_Progress/Degree/MATH 2230/Homework/Answers.md"
-    },
-    {
-      "basename": "Useful Repos - Shortlist",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Useful Repos - Shortlist.md"
-    },
-    {
-      "basename": "Quiz - 8",
-      "path": "20_Progress/Degree/MATH 2230/Quiz/Quiz - 8.md"
-    },
-    {
-      "basename": "Chapter - 6",
-      "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 6.md"
-    },
-    {
-      "basename": "Chapter - 5",
-      "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 5.md"
-    },
-    {
-      "basename": "anthropics-financial-services",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/anthropics-financial-services.md"
     }
   ],
   "omittedPaths": [],
