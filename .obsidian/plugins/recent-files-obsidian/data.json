@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "Big Assignment - 2",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 2.md"
+    },
+    {
+      "basename": "AI Agents for Sales & GTM Teams",
+      "path": "60_Claude/05_Clippings/Web/AI Agents for Sales & GTM Teams.md"
+    },
+    {
+      "basename": "Random",
+      "path": "40_Resources/Random.md"
+    },
+    {
       "basename": "Workbooks_AI Mastermind - Links",
       "path": "60_Claude/05_Clippings/PDFs/Workbooks_AI Mastermind - Links.pdf"
     },
@@ -21,10 +33,6 @@
       "path": "60_Claude/05_Clippings/PDFs/Find profitable startup ideas using reddit.pdf"
     },
     {
-      "basename": "Random",
-      "path": "40_Resources/Random.md"
-    },
-    {
       "basename": "Clone Setup Guide (June 2026)",
       "path": "60_Claude/05_Clippings/PDFs/Clone Setup Guide (June 2026).pdf"
     },
@@ -39,10 +47,6 @@
     {
       "basename": "Hivemind",
       "path": "20_Progress/Projects/CS/CasualOps/Hivemind.md"
-    },
-    {
-      "basename": "Big Assignment - 2",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 2.md"
     },
     {
       "basename": "dify",
@@ -195,10 +199,6 @@
     {
       "basename": "anthropics-financial-services",
       "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/anthropics-financial-services.md"
-    },
-    {
-      "basename": "Chapter - 4",
-      "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 4.md"
     }
   ],
   "omittedPaths": [],
