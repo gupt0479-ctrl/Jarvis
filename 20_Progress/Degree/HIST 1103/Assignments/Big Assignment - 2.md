@@ -53,9 +53,9 @@ You must have a bibliography of your sources
 You should use footnotes, or parenthetical citations.  A rough target is from 2 to 4 footnotes per page.    
 Your turnitin score should be no higher than 15%  
 Please be sure to separate and label each question.  
-Use paragraphs to start new ideas or points within your questions.  Paragraphs per page should run between 2 and 4, but again this is just a rough target.  Your experience may differ.  
+Use paragraphs to start new ideas or points within your questions.  Paragraphs per page should run between 2 and 4, but again this is just a rough target. Your experience may differ.  
 You may use single space or double space line spacing.  
-Acceptable submission formats are .pdf, .doc, .docx, and .rtf.  
+Acceptable submission formats are .pdf, .doc, .docx, and .rtf.
 Proofread your work before submitting it.  
 Use Chicago Manual of Style for bibliography and footnotes.  MLA is also ok in a pinch, but I prefer Chicago.  
 Please visit the writing lab on campus (in the tutoring center) for help with grammar, footnotes or bibliographies  
