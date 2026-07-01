@@ -1,12 +1,36 @@
 {
   "recentFiles": [
     {
-      "basename": "Big Assignment - 2",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 2.md"
+      "basename": "Prompt-2-Add-Agents-And-MCP",
+      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/Prompt-2-Add-Agents-And-MCP.md"
+    },
+    {
+      "basename": "Token Efficiency Notes",
+      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/Token Efficiency Notes.md"
+    },
+    {
+      "basename": "Prompt-1-Fix-Hooks-And-CLAUDE-MD",
+      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/Prompt-1-Fix-Hooks-And-CLAUDE-MD.md"
+    },
+    {
+      "basename": "Memory Layer Implementation Prompt",
+      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/ran/Memory Layer Implementation Prompt.md"
+    },
+    {
+      "basename": "HiveMind Claude Setup Prompt",
+      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/ran/HiveMind Claude Setup Prompt.md"
     },
     {
       "basename": "INDEX",
       "path": "20_Progress/Projects/CS/CasualOps/INDEX.md"
+    },
+    {
+      "basename": "Repos",
+      "path": "40_Resources/CS/Repos.md"
+    },
+    {
+      "basename": "Big Assignment - 2",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 2.md"
     },
     {
       "basename": "GRAPH_REPORT",
@@ -63,14 +87,6 @@
     {
       "basename": "_Index",
       "path": "60_Claude/40_Project_Briefs/CausalOps/_Index.md"
-    },
-    {
-      "basename": "Memory Layer Implementation Prompt",
-      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/Memory Layer Implementation Prompt.md"
-    },
-    {
-      "basename": "Token Efficiency Notes",
-      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/Token Efficiency Notes.md"
     },
     {
       "basename": "Hivemind",
@@ -157,10 +173,6 @@
       "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 7.md"
     },
     {
-      "basename": "Repos",
-      "path": "40_Resources/CS/Repos.md"
-    },
-    {
       "basename": "last30days-skill",
       "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/last30days-skill.md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "gstack",
       "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/gstack.md"
-    },
-    {
-      "basename": "polymarket-mcp-server",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/polymarket-mcp-server.md"
-    },
-    {
-      "basename": "free-claude-code",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/free-claude-code.md"
-    },
-    {
-      "basename": "tradingview-mcp (github)",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/tradingview-mcp (github).md"
     }
   ],
   "omittedPaths": [],
