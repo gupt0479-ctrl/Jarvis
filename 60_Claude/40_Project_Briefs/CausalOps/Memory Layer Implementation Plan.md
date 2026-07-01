@@ -405,43 +405,88 @@ async def memory_write_node(state: GraphState) -> dict:
 
 ### 5.6 `src/memory/mcp_server.py`
 
-**Responsibility:** FastMCP instance exposing 4 tools. Mounted into the FastAPI app at `/mcp`.
+**Responsibility:** Standalone MCP server exposing 4 tools. Runs as its own process — NOT mounted inside FastAPI. `api.py` is not modified.
+
+> **Updated constraint (2026-07-01):** Do not embed this server in the FastAPI app. Build it as a first-class standalone MCP server that can run on stdio (Claude Desktop) or SSE (docker/HTTP). This is architecturally cleaner and avoids process-sharing overhead.
 
 **Implementation:**
 ```python
+from __future__ import annotations
 from fastmcp import FastMCP
 from memory.store import SupabaseMemoryStore
 
-mcp = FastMCP("hivemind-memory")
+mcp = FastMCP(
+    "hivemind-memory",
+    instructions=(
+        "HiveMind persistent memory server. "
+        "Use search_similar_incidents to retrieve context before starting a run. "
+        "Use write_run_to_memory after DoWhy completes."
+    ),
+)
 
-@mcp.tool
+@mcp.tool()
 def search_similar_incidents(description: str, k: int = 5) -> list[dict]:
     """Search for past HiveMind runs similar to the given incident description.
     Returns ranked results with similarity score, temporal weight, causal graph summary."""
     store = SupabaseMemoryStore()
     return store.search_similar_runs(description, k=k)
 
-@mcp.tool
+@mcp.tool()
 def get_entity_relationships(entity_value: str, entity_type: str) -> list[dict]:
     """Get all known relationships for an entity (asset, technique, cve, graph_node).
     Returns edges with source, relationship type, target, and source run ID."""
     store = SupabaseMemoryStore()
     return store.get_entity_relationships(entity_value, entity_type)
 
-@mcp.tool
+@mcp.tool()
 def get_asset_timeline(asset_id: str, since_days: int = 90) -> list[dict]:
     """Get chronological event timeline for an asset over the past N days.
-    Returns edges ordered by observed_at."""
+    Returns edges ordered by created_at."""
     store = SupabaseMemoryStore()
     return store.get_asset_timeline(asset_id, since_days=since_days)
 
-@mcp.tool
+@mcp.tool()
 def write_run_to_memory(run_artifact: dict) -> dict:
     """Store a completed HiveMind run in the memory layer.
     Embeds task description, indexes entities, and builds knowledge graph edges.
     Returns {"run_id": str, "entities_indexed": int}."""
     store = SupabaseMemoryStore()
     return store.write_run(run_artifact)
+
+if __name__ == "__main__":
+    import os
+    transport = os.getenv("MCP_TRANSPORT", "stdio")
+    mcp.run(transport=transport)  # type: ignore[arg-type]
+```
+
+**Running the server:**
+```bash
+# stdio transport (Claude Desktop / Claude Code MCP config):
+cd src && python -m memory.mcp_server
+
+# SSE/HTTP on port 8001 (docker, HTTP clients):
+cd src && MCP_TRANSPORT=sse MCP_PORT=8001 python -m memory.mcp_server
+
+# Dev mode with MCP Inspector:
+mcp dev src/memory/mcp_server.py
+```
+
+**Claude Code MCP config (`.mcp.json` at repo root):**
+```json
+{
+  "mcpServers": {
+    "hivemind-memory": {
+      "command": "python",
+      "args": ["-m", "memory.mcp_server"],
+      "cwd": "src",
+      "env": {
+        "SUPABASE_URL": "${SUPABASE_URL}",
+        "SUPABASE_SERVICE_ROLE_KEY": "${SUPABASE_SERVICE_ROLE_KEY}",
+        "AZURE_OPENAI_EMBEDDING_DEPLOYMENT": "${AZURE_OPENAI_EMBEDDING_DEPLOYMENT}"
+      }
+    }
+  }
+}
 ```
 
 ---
@@ -522,33 +567,33 @@ Move `run_id` generation to the top of `run_hivemind()` (before the `graph` call
 
 ### 6.5 `src/api.py`
 
-Three changes:
-1. Import `mcp` and `mcp_app` from `memory.mcp_server`
-2. Change the `app = FastAPI(...)` constructor to pass `lifespan=mcp_app.lifespan` (required by FastMCP for session manager initialization)
-3. Add `app.mount("/mcp", mcp_app)` after middleware setup
-
-Specific code change for lifespan (since the existing app has no lifespan):
-```python
-mcp_app = mcp.http_app(path="/")
-app = FastAPI(
-    title="HiveMind API",
-    version="0.2.0",
-    description="...",
-    lifespan=mcp_app.lifespan,   # <- new
-)
-app.add_middleware(CORSMiddleware, ...)
-app.mount("/mcp", mcp_app)
-```
-
-**Note on CORS:** FastMCP's docs warn against top-level `CORSMiddleware` with OAuth-protected MCP servers. We are NOT using OAuth on the MCP server (it is internal), so this is safe.
+> **No changes needed.** The MCP server is now a standalone process. `api.py` is NOT modified as part of the memory layer. Do not add any MCP mounting code here.
 
 ### 6.6 `docker-compose.yml`
 
-Add three env vars to the `api` service under `environment`:
+Add a new `mcp` service (do NOT add env vars to the `api` service for memory — the api container does not use Supabase directly):
+
 ```yaml
-SUPABASE_URL: ${SUPABASE_URL}
-SUPABASE_SERVICE_ROLE_KEY: ${SUPABASE_SERVICE_ROLE_KEY}
-AZURE_OPENAI_EMBEDDING_DEPLOYMENT: ${AZURE_OPENAI_EMBEDDING_DEPLOYMENT}
+mcp:
+  build: .
+  command: python -m memory.mcp_server
+  environment:
+    MCP_TRANSPORT: sse
+    MCP_PORT: "8001"
+    SUPABASE_URL: ${SUPABASE_URL}
+    SUPABASE_SERVICE_ROLE_KEY: ${SUPABASE_SERVICE_ROLE_KEY}
+    AZURE_OPENAI_ENDPOINT: ${AZURE_OPENAI_ENDPOINT}
+    AZURE_OPENAI_API_KEY: ${AZURE_OPENAI_API_KEY}
+    AZURE_OPENAI_EMBEDDING_DEPLOYMENT: ${AZURE_OPENAI_EMBEDDING_DEPLOYMENT}
+    AZURE_OPENAI_API_VERSION: ${AZURE_OPENAI_API_VERSION}
+  ports:
+    - "8001:8001"
+  volumes:
+    - ./data:/app/data
+  depends_on:
+    api:
+      condition: service_healthy
+  restart: unless-stopped
 ```
 
 ### 6.7 `app/src/integrations/supabase/types.ts`
@@ -602,11 +647,76 @@ Execute in this order. Each step is independently testable before moving forward
 | 12 | Modify `src/engine.py` | `run_id` added to initial_state |
 | 13 | Modify `src/graph.py` | Build graph — no errors |
 | 14 | Modify `src/agents.py` | Grand orchestrator accepts memory_context |
-| 15 | Create `src/memory/mcp_server.py` | Import without error |
-| 16 | Modify `src/api.py` | `uvicorn api:app --reload` — check `/mcp` responds |
-| 17 | Full integration test | POST `/run` with demo evidence, check Supabase for memory row, POST `/run` again and verify memory_context appears in orchestrator |
-| 18 | Regenerate Supabase TypeScript types | `npx supabase gen types...` |
-| 19 | Docker build | `docker-compose up --build` |
+| 15 | Create `src/memory/mcp_server.py` | `python -m memory.mcp_server` → starts on stdio without error |
+| 16 | Run MCP server standalone | `MCP_TRANSPORT=sse MCP_PORT=8001 python -m memory.mcp_server` → `curl http://localhost:8001/` responds |
+| 17 | Run unit tests | `pytest tests/memory/test_extractor.py tests/memory/test_mcp_tools.py -v` all pass |
+| 18 | Run integration tests | `pytest tests/memory/test_store.py tests/memory/test_nodes.py -v` — needs real `.env` credentials |
+| 19 | Full end-to-end test | POST `/run` with demo evidence, check Supabase dashboard for memory row, POST `/run` again and verify `memory_context` appears in orchestrator |
+| 20 | Regenerate Supabase TypeScript types | `npx supabase gen types...` |
+| 21 | Docker build | `docker-compose up --build` — all 5 services start including new `mcp` service |
+
+---
+
+## 8.5 Tests to Write
+
+Tests are part of the memory layer scope — MCP testing counts as integration testing for this task.
+
+### Unit Tests (no credentials needed)
+
+**`tests/memory/test_extractor.py`**
+```python
+# Fixture: minimal run artifact dict with evidence_records + causal_graph
+# Test extract_entities() returns expected (type, value) tuples:
+#   - asset_id → ("asset", ...)
+#   - technique_id matching T\d{4} → ("technique", ...)
+#   - cve_id matching CVE-\d{4}-\d+ → ("cve", ...)
+#   - graph node ids → ("graph_node", ...)
+# Test build_edges() returns 5-tuples for each causal graph edge
+# Test deduplication: duplicate (type, value) pairs appear once
+```
+
+**`tests/memory/test_mcp_tools.py`**
+```python
+# Import mcp_server tool functions directly (no protocol overhead)
+# Mock SupabaseMemoryStore using unittest.mock.patch
+# Test each tool function: correct method called, return value passed through
+# Test: search_similar_incidents calls store.search_similar_runs with correct args
+# Test: write_run_to_memory calls store.write_run and returns its result
+```
+
+### Integration Tests (requires real .env credentials)
+
+**`tests/memory/test_store.py`**
+```python
+# Uses real Supabase project + real Azure embedding API
+# Skip automatically if SUPABASE_SERVICE_ROLE_KEY not set (pytest.mark.skipif)
+# Test write_run(): inserts row into memory_runs, returns entities_indexed > 0
+# Test search_similar_runs(): returns list, each item has expected keys
+# Test get_entity_relationships(): valid entity type+value returns edges list
+# Test get_asset_timeline(): returns chronological list
+# Cleanup: delete test rows in teardown (use unique run_id prefix "test-")
+```
+
+**`tests/memory/test_nodes.py`**
+```python
+# Async tests using asyncio.run or pytest-asyncio
+# Skip if credentials absent
+# Test memory_retrieve_node: passes a GraphState dict, returns {"memory_context": [...]}
+# Test memory_retrieve_node with missing creds: returns {"memory_context": []} (graceful degrade)
+# Test memory_write_node: passes a complete GraphState, verifies Supabase write
+```
+
+### Running
+```bash
+# Unit tests only (no credentials):
+pytest tests/memory/test_extractor.py tests/memory/test_mcp_tools.py -v
+
+# Integration tests (need .env):
+pytest tests/memory/ -v
+
+# Single test file:
+pytest tests/memory/test_store.py::test_write_run -v
+```
 
 ---
 
@@ -624,8 +734,13 @@ IVFFlat requires a training phase on existing data and degrades in recall as the
 ### Why exponential temporal decay?
 Cyber adversaries change TTPs. A FIN7 campaign from 6 months ago may use completely different infrastructure today. Using raw cosine similarity without decay would anchor the orchestrator to old incidents even when their operational details are outdated. The 30-day half-life is a tunable parameter (`decay_lambda` in the SQL function) — adjust it based on observed adversary dwell time in your environment.
 
-### Why mount MCP in FastAPI rather than standalone?
-The user chose "Embedded in FastAPI." This keeps the deployment to a single Docker service. The MCP server is available at `http://localhost:8000/mcp` via HTTP/SSE. Any MCP-compatible client (including Claude Code) can connect to it. The tradeoff is that it shares the same process as the API; a high-traffic MCP query could add latency to `/run` calls. At the expected usage volume for a SOC tool, this is acceptable.
+### Why standalone MCP server rather than embedded in FastAPI?
+The original design mounted FastMCP inside FastAPI via `app.mount("/mcp", mcp_app)`. This was changed. Reasons:
+- **Process isolation:** An embedding call that blocks the event loop cannot affect API `/run` latency.
+- **Independent scaling:** The MCP server can be restarted or scaled without touching the API container.
+- **Cleaner protocol boundary:** The MCP server is a first-class service. It communicates via the MCP protocol (stdio or SSE), not as an HTTP sub-path of the application API.
+- **Claude Desktop / Claude Code compatibility:** stdio transport is the native MCP integration mechanism. A FastAPI-mounted server requires HTTP/SSE transport and additional setup.
+The tradeoff is one more Docker service. At this scale that is a non-issue.
 
 ### Why `source_type: "memory"` not needed?
 Memory retrieval results are injected into the orchestrator prompt as text context, not as `EvidenceRecord` objects. This keeps the memory layer cleanly separate from the evidence pipeline. Evidence records are factual observations; memory context is inference guidance. Mixing them would corrupt the evidence gates.
@@ -655,4 +770,5 @@ These are hard project rules derived directly from the codebase design:
 
 ---
 
-*Note created: 2026-05-30. Status: awaiting Azure embedding deployment + Supabase service role key before implementation begins.*
+*Note created: 2026-05-30. Updated: 2026-07-01 — MCP server changed to standalone (not FastAPI-mounted); tests added to scope.*  
+*Status: awaiting Azure embedding deployment + Supabase service role key before implementation begins.*

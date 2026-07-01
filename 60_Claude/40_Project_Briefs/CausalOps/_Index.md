@@ -77,6 +77,20 @@ CausalOps (internally named **HiveMind**) is an evidence-backed causal reasoning
 
 ---
 
+## Claude Code Prompts
+
+- [[Memory Layer Implementation Prompt]] — Ready-to-paste implementation prompt for Sonnet 4.6
+- [[Token Efficiency Notes]] — How to run Claude Code sessions efficiently on this project
+
+---
+
+## Graphify
+
+- [[What Graphify Does]] — What the tool is, the pipeline it runs, commands to use it
+- [[How Notes Were Actually Written]] — Honest account: graphify was not used; notes were hand-written
+
+---
+
 ## Key Invariants (Never Break These)
 
 1. **LLMs never generate estimator rows.** `source_type: "synthetic"` records are skipped by the compiler.

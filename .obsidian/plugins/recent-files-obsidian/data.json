@@ -1,12 +1,80 @@
 {
   "recentFiles": [
     {
+      "basename": "Big Assignment - 2",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 2.md"
+    },
+    {
+      "basename": "INDEX",
+      "path": "20_Progress/Projects/CS/CasualOps/INDEX.md"
+    },
+    {
+      "basename": "GRAPH_REPORT",
+      "path": "20_Progress/Projects/CS/CasualOps/GRAPH_REPORT.md"
+    },
+    {
+      "basename": "00-design",
+      "path": "20_Progress/Projects/CS/CasualOps/memory-layer/00-design.md"
+    },
+    {
+      "basename": "04-reasoning",
+      "path": "20_Progress/Projects/CS/CasualOps/causal-engine/04-reasoning.md"
+    },
+    {
+      "basename": "03-estimation",
+      "path": "20_Progress/Projects/CS/CasualOps/causal-engine/03-estimation.md"
+    },
+    {
+      "basename": "02-evidence",
+      "path": "20_Progress/Projects/CS/CasualOps/causal-engine/02-evidence.md"
+    },
+    {
+      "basename": "01-discovery",
+      "path": "20_Progress/Projects/CS/CasualOps/causal-engine/01-discovery.md"
+    },
+    {
+      "basename": "00-overview",
+      "path": "20_Progress/Projects/CS/CasualOps/causal-engine/00-overview.md"
+    },
+    {
+      "basename": "03-evaluator",
+      "path": "20_Progress/Projects/CS/CasualOps/agents/03-evaluator.md"
+    },
+    {
+      "basename": "02-evolution",
+      "path": "20_Progress/Projects/CS/CasualOps/agents/02-evolution.md"
+    },
+    {
+      "basename": "01-orchestrator",
+      "path": "20_Progress/Projects/CS/CasualOps/agents/01-orchestrator.md"
+    },
+    {
+      "basename": "00-agent-hierarchy",
+      "path": "20_Progress/Projects/CS/CasualOps/agents/00-agent-hierarchy.md"
+    },
+    {
       "basename": "Memory Layer Implementation Plan",
-      "path": "20_Progress/Projects/CS/CasualOps/Memory Layer Implementation Plan.md"
+      "path": "60_Claude/40_Project_Briefs/CausalOps/Memory Layer Implementation Plan.md"
+    },
+    {
+      "basename": "Memory Layer",
+      "path": "60_Claude/40_Project_Briefs/CausalOps/Memory Layer.md"
+    },
+    {
+      "basename": "_Index",
+      "path": "60_Claude/40_Project_Briefs/CausalOps/_Index.md"
+    },
+    {
+      "basename": "Memory Layer Implementation Prompt",
+      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/Memory Layer Implementation Prompt.md"
+    },
+    {
+      "basename": "Token Efficiency Notes",
+      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/Token Efficiency Notes.md"
     },
     {
       "basename": "Hivemind",
-      "path": "20_Progress/Projects/CS/CasualOps/Hivemind.md"
+      "path": "60_Claude/40_Project_Briefs/CausalOps/Hivemind.md"
     },
     {
       "basename": "Second Brain",
@@ -31,10 +99,6 @@
     {
       "basename": "2026-W27",
       "path": "10_Areas/Life/Enumerate/Weekly/2026-W27.md"
-    },
-    {
-      "basename": "Big Assignment - 2",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 2.md"
     },
     {
       "basename": "AI Agents for Sales & GTM Teams",
@@ -135,70 +199,6 @@
     {
       "basename": "tradingview-mcp (github)",
       "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/tradingview-mcp (github).md"
-    },
-    {
-      "basename": "tradingview-mcp - AI-assisted TradingView chart analysis",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/tradingview-mcp - AI-assisted TradingView chart analysis.md"
-    },
-    {
-      "basename": "beads",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/beads.md"
-    },
-    {
-      "basename": "spec-kit",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/spec-kit.md"
-    },
-    {
-      "basename": "claude-code-templates",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/claude-code-templates.md"
-    },
-    {
-      "basename": "awesome-mcp-servers",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/awesome-mcp-servers.md"
-    },
-    {
-      "basename": "LLM Council skills",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/LLM Council skills.md"
-    },
-    {
-      "basename": "Claude Council — Path A Prompt (web)",
-      "path": "60_Claude/10_Source_Summaries/Web Ingestion/Claude Council — Path A Prompt (web).md"
-    },
-    {
-      "basename": "andrej-karpathy-skills",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/andrej-karpathy-skills.md"
-    },
-    {
-      "basename": "agency-agents",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/agency-agents.md"
-    },
-    {
-      "basename": "ruflo",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/ruflo.md"
-    },
-    {
-      "basename": "agent-skills-addyosmani",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/agent-skills-addyosmani.md"
-    },
-    {
-      "basename": "mattpocock-skills",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/mattpocock-skills.md"
-    },
-    {
-      "basename": "ECC",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/ECC.md"
-    },
-    {
-      "basename": "pocketbase (github)",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Projects Starred/pocketbase (github).md"
-    },
-    {
-      "basename": "How Anant Uses Each Repo",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/How Anant Uses Each Repo.md"
-    },
-    {
-      "basename": "Quiz - 9",
-      "path": "20_Progress/Degree/MATH 2230/Quiz/Quiz - 9.md"
     }
   ],
   "omittedPaths": [],
