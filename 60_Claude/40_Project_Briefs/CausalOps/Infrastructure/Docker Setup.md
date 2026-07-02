@@ -1,4 +1,4 @@
----
+﻿---
 tags: [causalops, docker, infrastructure, deployment, redpanda]
 ---
 
@@ -42,8 +42,8 @@ healthcheck: rpk cluster health  # api and worker depend on this
 command: uvicorn api:app --host 0.0.0.0 --port 8000
 env:
   KAFKA_BOOTSTRAP: redpanda:9092
-  HIVEMIND_ENABLE_SPAWN_WORKER: "0"   # coordinator only, no spawn consumer
-  HIVEMIND_ALLOWED_ORIGINS: http://localhost:8080
+  CAUSALOPS_ENABLE_SPAWN_WORKER: "0"   # coordinator only, no spawn consumer
+  CAUSALOPS_ALLOWED_ORIGINS: http://localhost:8080
 volumes: ./data:/app/data            # shared SQLite + artifacts
 depends_on: redpanda (healthy)
 healthcheck: curl -f http://localhost:8000/health
@@ -54,9 +54,9 @@ healthcheck: curl -f http://localhost:8000/health
 command: python -m worker
 env:
   KAFKA_BOOTSTRAP: redpanda:9092
-  HIVEMIND_ENABLE_SPAWN_WORKER: "1"   # runs spawn consumer
-  HIVEMIND_SPAWN_MAX_RETRIES: "2"
-  HIVEMIND_SPAWN_RETRY_BACKOFF_MS: "1000"
+  CAUSALOPS_ENABLE_SPAWN_WORKER: "1"   # runs spawn consumer
+  CAUSALOPS_SPAWN_MAX_RETRIES: "2"
+  CAUSALOPS_SPAWN_RETRY_BACKOFF_MS: "1000"
 volumes: ./data:/app/data
 depends_on: redpanda (healthy) + api (healthy)
 restart: unless-stopped
@@ -83,7 +83,7 @@ SQLite journal mode is set to `DELETE` (not WAL) because WAL shared-memory is un
 ```bash
 # Backend only — spawns in-process worker
 cd src
-HIVEMIND_ENABLE_SPAWN_WORKER=1 uvicorn api:app --reload --host 0.0.0.0 --port 8000
+CAUSALOPS_ENABLE_SPAWN_WORKER=1 uvicorn api:app --reload --host 0.0.0.0 --port 8000
 
 # Without Kafka (no spawn worker either, no SSE):
 cd src

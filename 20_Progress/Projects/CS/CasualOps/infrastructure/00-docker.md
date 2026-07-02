@@ -1,6 +1,6 @@
 # Docker Setup
 
-HiveMind runs as a 4-service compose stack (5 with the planned mcp service). All Python services share a single `./data/` bind-mount volume for SQLite and run artifacts.
+CausalOps runs as a 4-service compose stack (5 with the planned mcp service). All Python services share a single `./data/` bind-mount volume for SQLite and run artifacts.
 
 ## Services
 
@@ -30,8 +30,8 @@ ports: "8000:8000"
 env_file: .env
 environment:
   KAFKA_BOOTSTRAP: redpanda:9092
-  HIVEMIND_ENABLE_SPAWN_WORKER: "0"   # coordinator only
-  HIVEMIND_ALLOWED_ORIGINS: http://localhost:8080,http://127.0.0.1:8080
+  CAUSALOPS_ENABLE_SPAWN_WORKER: "0"   # coordinator only
+  CAUSALOPS_ALLOWED_ORIGINS: http://localhost:8080,http://127.0.0.1:8080
 volumes: ./data:/app/data
 depends_on: redpanda (healthy)
 healthcheck: curl -f http://localhost:8000/health
@@ -42,9 +42,9 @@ healthcheck: curl -f http://localhost:8000/health
 command: sh -c "cd src && python -m worker"
 environment:
   KAFKA_BOOTSTRAP: redpanda:9092
-  HIVEMIND_ENABLE_SPAWN_WORKER: "1"
-  HIVEMIND_SPAWN_MAX_RETRIES: "2"
-  HIVEMIND_SPAWN_RETRY_BACKOFF_MS: "1000"
+  CAUSALOPS_ENABLE_SPAWN_WORKER: "1"
+  CAUSALOPS_SPAWN_MAX_RETRIES: "2"
+  CAUSALOPS_SPAWN_RETRY_BACKOFF_MS: "1000"
 volumes: ./data:/app/data
 depends_on: redpanda (healthy) + api (healthy)
 restart: unless-stopped
@@ -111,7 +111,7 @@ cd src
 uvicorn api:app --reload --host 0.0.0.0 --port 8000
 
 # With in-process worker:
-HIVEMIND_ENABLE_SPAWN_WORKER=1 uvicorn api:app --reload
+CAUSALOPS_ENABLE_SPAWN_WORKER=1 uvicorn api:app --reload
 ```
 
 ## Related Notes

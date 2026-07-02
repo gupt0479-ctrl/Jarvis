@@ -1,4 +1,4 @@
----
+﻿---
 tags: [causalops, coordinator, phase2, async, architecture]
 ---
 
@@ -18,6 +18,7 @@ The original LangGraph graph ran everything in a single async call. Phase 2b rep
 async def execute_run(task_description, evidence_records, run_id, correlation_id):
     record = run_store.create_run(...)          # SQLite row created
     
+    await _run_memory_retrieve(record, store)   # Phase: memory_retrieve (async, try/except swallows)
     await _run_orchestrator(record, store)       # Phase: orchestrator
     await _run_parent_evolution(record, store)   # Phase: parent_evolution
     await _dispatch_parents(record, store)       # Phase: parents (Kafka + barrier)
@@ -25,8 +26,8 @@ async def execute_run(task_description, evidence_records, run_id, correlation_id
     await _run_child_evolution(record, store)    # Phase: child_evolution
     await _dispatch_children(record, store)      # Phase: children (Kafka + barrier)
     await _run_evaluator(record, store)          # Phase: evaluator
-    await _run_causal_loop(record, store)        # Phase: causal_synthesis + estimator (loop)
-    await _run_reasoner(record, store)           # Phase: reasoning
+    await _run_causal_loop(record, store)        # Phase: causal_loop (synthesis + dowhy, retries)
+    await _run_reasoner(record, store)           # Phase: reasoner
     
     if not kafka_enabled():
         _backfill_5d_graph(record)              # Build KG from record state (no-Kafka path)
@@ -36,10 +37,14 @@ async def execute_run(task_description, evidence_records, run_id, correlation_id
     if not kafka_enabled():
         _ingest_policy_optimization(record)     # Push RL report into KG
     
+    await _run_memory_write(record, store)       # Phase: memory_write (async, try/except swallows)
+    
     record.status = "completed"
     run_store.save(record)
     return record.to_graph_state()
 ```
+
+**Memory phase rules:** `_run_memory_retrieve` and `_run_memory_write` are awaited directly (no `asyncio.to_thread`). Both wrapped in `try/except` that logs and swallows — Supabase outage must never fail a run.
 
 ## Phase Details
 
@@ -95,14 +100,14 @@ This bridge lets the same node functions (originally designed for LangGraph) wor
 
 | Container | Env | Behavior |
 |-----------|-----|----------|
-| `api` | `HIVEMIND_ENABLE_SPAWN_WORKER=0` | Publishes spawn tasks, does NOT consume them |
-| `worker` | `HIVEMIND_ENABLE_SPAWN_WORKER=1` | Consumes spawn tasks, runs agents |
+| `api` | `CAUSALOPS_ENABLE_SPAWN_WORKER=0` | Publishes spawn tasks, does NOT consume them |
+| `worker` | `CAUSALOPS_ENABLE_SPAWN_WORKER=1` | Consumes spawn tasks, runs agents |
 
-For single-process local dev: set `HIVEMIND_ENABLE_SPAWN_WORKER=1` on the api service — the lifespan creates an in-process spawn worker task.
+For single-process local dev: set `CAUSALOPS_ENABLE_SPAWN_WORKER=1` on the api service — the lifespan creates an in-process spawn worker task.
 
 ## DLQ and Retry
 
-`HIVEMIND_SPAWN_MAX_RETRIES=2` (default). Failed agent tasks are retried with `HIVEMIND_SPAWN_RETRY_BACKOFF_MS=1000` delay. After max retries, the task goes to `hivemind.dlq`.
+`CAUSALOPS_SPAWN_MAX_RETRIES=2` (default). Failed agent tasks are retried with `CAUSALOPS_SPAWN_RETRY_BACKOFF_MS=1000` delay. After max retries, the task goes to `hivemind.dlq`.
 
 ## Related Notes
 

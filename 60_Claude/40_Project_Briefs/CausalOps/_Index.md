@@ -1,13 +1,13 @@
----
-tags: [causalops, hivemind, index, soc, causal-reasoning]
-aliases: [HiveMind, CausalOps Index]
+﻿---
+tags: [causalops, index, soc, causal-reasoning]
+aliases: [CausalOps, CausalOps Index]
 ---
 
-# CausalOps (HiveMind) — Master Index
+# CausalOps — Master Index
 
 > **Core promise:** The LLM proposes hypotheses. Evidence decides whether an ATE is allowed to exist.
 
-CausalOps (internally named **HiveMind**) is an evidence-backed causal reasoning engine for cyber SOC operations. It turns a messy incident prompt into a structured investigation, proposes a causal DAG, compiles real SIEM/CVE/incident evidence, and only estimates intervention impact when statistical quality gates pass. If evidence is too weak, the ATE is withheld — by design.
+CausalOps is an evidence-backed causal reasoning engine for cyber SOC operations. It turns a messy incident prompt into a structured investigation, proposes a causal DAG, compiles real SIEM/CVE/incident evidence, and only estimates intervention impact when statistical quality gates pass. If evidence is too weak, the ATE is withheld — by design.
 
 **Tech stack:** Python 3.12, FastAPI, LangGraph, Pydantic v2, DoWhy, statsmodels, Redpanda (Kafka), SQLite, React/TanStack/Vite.
 
@@ -17,7 +17,7 @@ CausalOps (internally named **HiveMind**) is an evidence-backed causal reasoning
 
 ## Architecture
 
-- [[System Overview]] — What HiveMind is, how the layers fit together
+- [[System Overview]] — What CausalOps is, how the layers fit together
 - [[LangGraph Pipeline]] — Original LangGraph graph topology (reference)
 - [[Coordinator Execution Model]] — Phase 2b coordinator replacing `graph.ainvoke`
 - [[GraphState Contract]] — The master TypedDict shared across all nodes
@@ -39,7 +39,7 @@ CausalOps (internally named **HiveMind**) is an evidence-backed causal reasoning
 | [[estimators]] | DoWhy + statsmodels (DO NOT TOUCH) |
 | [[evidence_adapters]] | Sentinel/CVE/incident normalizers |
 | [[benchmarking]] | Deterministic tier scoring |
-| [[engine]] | `run_hivemind()` + artifact persistence |
+| [[engine]] | `run_causalops()` + artifact persistence |
 | [[api]] | FastAPI routes |
 | [[reasoning]] | Anomaly detection + zone pressure + recommendations |
 | [[policy_learning]] | KG-grounded RL, Q-values, meta-learning |
@@ -65,9 +65,10 @@ CausalOps (internally named **HiveMind**) is an evidence-backed causal reasoning
 
 ---
 
-## Memory Layer (Planned)
+## Memory Layer (Complete — pending SQL migration + integration tests)
 
-- [[Memory Layer]] — Design doc: vector store, KG, temporal index, MCP, agents
+- [[Memory Layer]] — Current status and component overview
+- [[Memory Layer Implementation Plan]] — Full schema SQL, implementation history, ADRs
 
 ---
 

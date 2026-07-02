@@ -1,10 +1,10 @@
 # Pipeline Overview
 
-HiveMind converts an incident prompt into a guarded causal estimate through 10 sequential stages. The key claim: LLM proposes causal hypotheses, deterministic code decides whether a statistical effect is allowed to exist.
+CausalOps converts an incident prompt into a guarded causal estimate through 10 sequential stages. The key claim: LLM proposes causal hypotheses, deterministic code decides whether a statistical effect is allowed to exist.
 
 ## The Three Hard Boundaries
 
-These constraints define what HiveMind is. Violating any of them removes the epistemic value.
+These constraints define what CausalOps is. Violating any of them removes the epistemic value.
 
 **Boundary 1 — LLM → Evidence.** Agent output is hypothesis context. Evidence enters only through `EvidenceRecord` objects from real SIEM/CVE/incident exports. The compiler skips any record with `source_type: "synthetic"`. An LLM cannot inject rows.
 

@@ -1,4 +1,4 @@
----
+﻿---
 tags: [causalops, knowledge-graph, spatiotemporal, sqlite, 5d]
 aliases: [graph_5d.py, graph_5d_stream.py]
 ---
@@ -67,7 +67,7 @@ ingest_policy_optimization(conn, run_id, policy_optimization_report)
 
 This adds policy shards, Q-values, and Stackelberg responses as graph nodes/edges for future traversal.
 
-## env: HIVEMIND_GRAPH_DB_PATH
+## env: CAUSALOPS_GRAPH_DB_PATH
 Override the graph DB path (used in tests to point at an in-memory or temp DB).
 
 ## Related Notes

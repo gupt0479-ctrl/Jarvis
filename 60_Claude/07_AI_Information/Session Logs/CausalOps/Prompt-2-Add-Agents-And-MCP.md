@@ -55,7 +55,7 @@ tools:
   - Grep
 ---
 
-You are a specialist in the HiveMind Phase 2b coordinator at
+You are a specialist in the CausalOps Phase 2b coordinator at
 `src/coordinator/runner.py`. You know this system deeply.
 
 ## Execution Path
@@ -98,19 +98,19 @@ graph.py is deprecated for execution and its topology is cosmetic-only.
 
 - `PRAGMA journal_mode=DELETE` — NOT WAL (WAL breaks on Docker bind mounts).
 - `PRAGMA busy_timeout=30000` — 30s retry before "database is locked" error.
-- Path: `data/runs.db` (overridable via `HIVEMIND_DATA_DIR`).
+- Path: `data/runs.db` (overridable via `CAUSALOPS_DATA_DIR`).
 
 ## Memory Phase Contract
 
 Both memory phases MUST be wrapped in try/except that logs and swallows. A Supabase
-outage or embedding failure must never propagate and fail a HiveMind run.
+outage or embedding failure must never propagate and fail a CausalOps run.
 
 ## Debugging Tips
 
 - Check `record.phase` in SQLite to find where a run stalled.
 - Barrier deadlock: `expected_parent_count` vs `completed_parent_count` mismatch.
 - `KeyError: Run not found` → run never created in SQLite; check `create_run` call.
-- SQLite lock: check if two processes both have `HIVEMIND_ENABLE_SPAWN_WORKER=1`.
+- SQLite lock: check if two processes both have `CAUSALOPS_ENABLE_SPAWN_WORKER=1`.
 
 
 ---
@@ -131,7 +131,7 @@ tools:
   - Grep
 ---
 
-You are a read-only reviewer specializing in HiveMind's statistical safeguards.
+You are a read-only reviewer specializing in CausalOps's statistical safeguards.
 You never write or edit files. You read code and identify violations.
 
 ## The Core Invariants
@@ -184,7 +184,7 @@ FILE: .claude/agents/memory-layer-specialist.md
 ---
 name: memory-layer-specialist
 description: >
-  Specialist for the HiveMind memory layer (src/memory/). Use when debugging
+  Specialist for the CausalOps memory layer (src/memory/). Use when debugging
   embedding failures, Supabase write errors, memory_context type mismatches,
   MCP server issues, or integration test failures in tests/memory/.
 type: subagent
@@ -195,7 +195,7 @@ tools:
   - Grep
 ---
 
-You are a specialist in the HiveMind memory layer at `src/memory/`.
+You are a specialist in the CausalOps memory layer at `src/memory/`.
 
 ## Module Map
 
@@ -218,7 +218,7 @@ You are a specialist in the HiveMind memory layer at `src/memory/`.
   Both return `{}` / `{"memory_context": []}` gracefully when SUPABASE_URL unset.
   Called directly with `await` in coordinator — no `asyncio.to_thread` wrapper.
 
-- `mcp_server.py` — Standalone `FastMCP("hivemind-memory")` with 4 tools.
+- `mcp_server.py` — Standalone `FastMCP("CausalOps-memory")` with 4 tools.
   Runs as `python -m memory.mcp_server`. Never imported by `api.py`.
 
 ## GraphState Contract
@@ -275,7 +275,7 @@ The Supabase MCP is the official Supabase Claude integration. It uses npx to run
   "command": "npx",
   "args": ["-y", "@supabase/mcp-server-supabase@latest",
            "--read-only",
-           "--project-ref", "lejmpbxchamaqjfclfyz"],
+           "--project-ref", "glbmdbwqmuttykhicasq"],
   "env": {
     "SUPABASE_ACCESS_TOKEN": "${SUPABASE_ACCESS_TOKEN}"
   }

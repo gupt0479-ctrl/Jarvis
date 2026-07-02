@@ -4,7 +4,7 @@ The causal pipeline enforces a strict authorship separation: LLMs design the hyp
 
 ## The Epistemic Problem Being Solved
 
-When an LLM both proposes the causal story *and* provides the supporting data, you cannot distinguish real causal effects from confident hallucination. HiveMind solves this by separating authorship by law, not by convention.
+When an LLM both proposes the causal story *and* provides the supporting data, you cannot distinguish real causal effects from confident hallucination. CausalOps solves this by separating authorship by law, not by convention.
 
 | Who authors it | What it can produce | What it cannot produce |
 |----------------|---------------------|------------------------|

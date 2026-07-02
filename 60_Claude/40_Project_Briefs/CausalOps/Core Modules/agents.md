@@ -1,4 +1,4 @@
----
+﻿---
 tags: [causalops, agents, langgraph, llm, orchestrator]
 aliases: [agents.py]
 ---
@@ -20,7 +20,7 @@ LLM is Gemini via `src/llm.py`. Uses `with_structured_output()` for typed extrac
 
 **Produces:** `list[AgentConfig]` — 2-3 parent investigation tracks
 
-**Prompt role:** "You are the Grand Orchestrator for HiveMind SOC operations. Decompose the incident into 2-3 distinct investigatory vectors such as geopolitical context, network forensics, identity risk, supply-chain exposure, or insider threat."
+**Prompt role:** "You are the Grand Orchestrator for CausalOps SOC operations. Decompose the incident into 2-3 distinct investigatory vectors such as geopolitical context, network forensics, identity risk, supply-chain exposure, or insider threat."
 
 **Output model:**
 ```python

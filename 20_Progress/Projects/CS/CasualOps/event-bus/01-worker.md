@@ -4,12 +4,12 @@ The worker container (`src/worker/`) is a Kafka consumer that runs agent tasks d
 
 ## Two-Container Split
 
-| Container | `KAFKA_BOOTSTRAP` | `HIVEMIND_ENABLE_SPAWN_WORKER` | Role |
+| Container | `KAFKA_BOOTSTRAP` | `CAUSALOPS_ENABLE_SPAWN_WORKER` | Role |
 |-----------|------------------|-------------------------------|------|
 | `api` | `redpanda:9092` | `"0"` | Publishes spawn tasks, runs coordinator phases, exposes HTTP |
 | `worker` | `redpanda:9092` | `"1"` | Consumes spawn tasks, runs parent/child agent nodes |
 
-For single-process local dev: set `HIVEMIND_ENABLE_SPAWN_WORKER=1` on the api service — the FastAPI lifespan starts an in-process worker as an asyncio background task.
+For single-process local dev: set `CAUSALOPS_ENABLE_SPAWN_WORKER=1` on the api service — the FastAPI lifespan starts an in-process worker as an asyncio background task.
 
 ## What the Worker Does
 
@@ -25,8 +25,8 @@ For single-process local dev: set `HIVEMIND_ENABLE_SPAWN_WORKER=1` on the api se
 ## Retry Backoff
 
 ```python
-HIVEMIND_SPAWN_MAX_RETRIES = 2      # default retry count
-HIVEMIND_SPAWN_RETRY_BACKOFF_MS = 1000  # delay between retries
+CAUSALOPS_SPAWN_MAX_RETRIES = 2      # default retry count
+CAUSALOPS_SPAWN_RETRY_BACKOFF_MS = 1000  # delay between retries
 ```
 
 After max retries, the task is published to `hivemind.dlq`. The run continues with whatever completions it has — a single failed child doesn't block the barrier if `_fallback_memo()` was used.
@@ -58,9 +58,9 @@ worker:
   command: sh -c "cd src && python -m worker"
   environment:
     KAFKA_BOOTSTRAP: redpanda:9092
-    HIVEMIND_ENABLE_SPAWN_WORKER: "1"
-    HIVEMIND_SPAWN_MAX_RETRIES: "2"
-    HIVEMIND_SPAWN_RETRY_BACKOFF_MS: "1000"
+    CAUSALOPS_ENABLE_SPAWN_WORKER: "1"
+    CAUSALOPS_SPAWN_MAX_RETRIES: "2"
+    CAUSALOPS_SPAWN_RETRY_BACKOFF_MS: "1000"
   volumes:
     - ./data:/app/data    # shared with api — same runs.db and graph_5d.db
   depends_on:

@@ -77,12 +77,12 @@ Breaks when: refuters passed, or ATE was withheld (`method == "withheld:data_qua
 
 ## Two-Container Architecture
 
-| Container | `HIVEMIND_ENABLE_SPAWN_WORKER` | Behavior |
+| Container | `CAUSALOPS_ENABLE_SPAWN_WORKER` | Behavior |
 |-----------|-------------------------------|----------|
 | `api` | `"0"` | Publishes spawn tasks, does NOT consume them |
 | `worker` | `"1"` | Consumes spawn tasks, runs agents, writes results to SQLite |
 
-For single-process local dev: set `HIVEMIND_ENABLE_SPAWN_WORKER=1` on the api service — lifespan creates an in-process spawn worker.
+For single-process local dev: set `CAUSALOPS_ENABLE_SPAWN_WORKER=1` on the api service — lifespan creates an in-process spawn worker.
 
 ## RunRecord ↔ GraphState Bridge
 
@@ -118,7 +118,7 @@ Both api and worker containers write to the same `./data/runs.db` via a bind mou
 
 ## DLQ and Retry
 
-`HIVEMIND_SPAWN_MAX_RETRIES=2` (default). Failed agent tasks retry with `HIVEMIND_SPAWN_RETRY_BACKOFF_MS=1000` delay. After max retries → `hivemind.dlq`.
+`CAUSALOPS_SPAWN_MAX_RETRIES=2` (default). Failed agent tasks retry with `CAUSALOPS_SPAWN_RETRY_BACKOFF_MS=1000` delay. After max retries → `hivemind.dlq`.
 
 ## Related Notes
 

@@ -1,6 +1,6 @@
 # Memory Layer Design
 
-The memory layer adds persistent cross-run awareness to HiveMind. Without it, every `run_hivemind()` call starts from zero — past runs exist as JSON files in `data/` but nothing reads them. Implementation lives in `src/memory/`.
+The memory layer adds persistent cross-run awareness to CausalOps. Without it, every `run_causalops()` call starts from zero — past runs exist as JSON files in `data/` but nothing reads them. Implementation lives in `src/memory/`.
 
 ## What Is Being Built
 

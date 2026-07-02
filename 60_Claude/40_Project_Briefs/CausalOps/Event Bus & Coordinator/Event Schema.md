@@ -1,10 +1,10 @@
----
+﻿---
 tags: [causalops, events, schema, kafka, envelopes]
 ---
 
 # Event Schema
 
-`src/bus/events.py` defines the canonical Kafka message schema for all HiveMind events.
+`src/bus/events.py` defines the canonical Kafka message schema for all CausalOps events.
 
 ## EventEnvelope
 

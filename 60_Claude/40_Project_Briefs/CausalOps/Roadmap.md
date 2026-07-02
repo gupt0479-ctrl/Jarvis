@@ -26,19 +26,24 @@ tags: [causalops, roadmap, status, future]
 | Docker Compose full stack (api + worker + redpanda + frontend) | ✅ Done | `docker-compose.yml` |
 | Deterministic smoke test (`/demo/estimate`) | ✅ Done | `demo_fixtures.py` |
 
-## Immediate Priority: Memory Layer
+## Memory Layer — Complete (pending SQL migration + integration tests)
 
-| Component | Status | Blocker |
-|-----------|--------|---------|
-| `memory/embedder.py` | ❌ Waiting | Azure embedding deployment needed |
-| `memory/extractor.py` | ❌ Waiting | Credentials needed |
-| `memory/store.py` | ❌ Waiting | `SUPABASE_SERVICE_ROLE_KEY` needed |
-| `memory/nodes.py` | ❌ Waiting | Above |
-| `memory/mcp_server.py` | ❌ Waiting | Above |
-| Supabase schema migration | ❌ Waiting | Tables: `memory_runs`, `memory_entities`, `memory_entity_edges` |
-| LangGraph topology update | ❌ Waiting | After implementation |
+| Component | Status | Notes |
+|-----------|--------|-------|
+| `memory/embedder.py` | ✅ Done | Azure text-embedding-3-small, sync, 3-attempt backoff |
+| `memory/extractor.py` | ✅ Done | Deterministic entity extraction, no LLM |
+| `memory/store.py` | ✅ Done | SupabaseMemoryStore, 4 methods |
+| `memory/nodes.py` | ✅ Done | memory_retrieve_node + memory_write_node (async) |
+| `memory/mcp_server.py` | ✅ Done | Standalone FastMCP, port 8001, 4 tools |
+| Coordinator phases wired | ✅ Done | memory_retrieve before orchestrator, memory_write after policy_learning |
+| RunRecord serialization | ✅ Done | memory_context field added to schema + store |
+| agents.py memory injection | ✅ Done | _format_memory_context() in orchestrator prompt |
+| 10 unit tests (no creds) | ✅ Done | test_extractor.py + test_mcp_tools.py |
+| Supabase project provisioned | ✅ Done | glbmdbwqmuttykhicasq |
+| SQL migration | ⏳ Pending | Run on project glbmdbwqmuttykhicasq (SQL in [[Memory Layer Implementation Plan]]) |
+| Integration tests | ⏳ Pending | Requires SUPABASE_SERVICE_ROLE_KEY + Azure embedding in .env |
 
-→ See [[Memory Layer]] for full design doc.
+→ See [[Memory Layer]] for current design and status.
 
 ## Near-Term Roadmap (from README)
 

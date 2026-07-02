@@ -1,4 +1,4 @@
----
+﻿---
 tags: [causalops, coordinator, runner, async, phases]
 aliases: [coordinator/runner.py]
 ---
@@ -9,7 +9,7 @@ aliases: [coordinator/runner.py]
 
 ## execute_run() — Top-Level Async Entry Point
 
-Called from `engine.run_hivemind()`:
+Called from `engine.run_CausalOps()`:
 ```python
 final_state = await execute_run(
     task_description=...,
@@ -73,7 +73,7 @@ run_store.save(record)
 raise
 ```
 
-The run is marked failed in SQLite and the exception propagates to `engine.run_hivemind()`, which publishes a `RUN_FAILED` event.
+The run is marked failed in SQLite and the exception propagates to `engine.run_CausalOps()`, which publishes a `RUN_FAILED` event.
 
 ## RunStore.set_phase()
 

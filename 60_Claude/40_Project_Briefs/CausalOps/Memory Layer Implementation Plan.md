@@ -1,18 +1,21 @@
----
-tags: [hivemind, project, active, memory-layer, implementation]
+﻿---
+tags: [causalops, project, memory-layer, implementation, complete]
 created: 2026-05-30
-status: awaiting-credentials
+updated: 2026-07-02
+status: complete
 ---
 
-# HiveMind — Persistent Semantic Memory and Retrieval Layer
+# CausalOps — Persistent Semantic Memory and Retrieval Layer
 
-> **Task:** Implement the "Persistent Semantic Memory and Retrieval Layer" from the HiveMind roadmap: a hybrid long-term memory architecture combining vector retrieval, graph traversal, and temporal indexing so agents maintain persistent contextual awareness across runs.
+> **Implementation status:** Complete. All src/memory/ files written, coordinator phases wired, RunRecord serialization updated, agents.py memory_context injection done, 10 unit tests passing. Supabase project provisioned (glbmdbwqmuttykhicasq). Pending: (1) run SQL migration on Supabase, (2) run integration tests.
+
+This is the implementation record for the Persistent Semantic Memory and Retrieval Layer — a hybrid long-term memory architecture combining vector retrieval, graph traversal, and temporal indexing so agents maintain persistent contextual awareness across runs.
 
 ---
 
 ## 1. What We Are Building (Plain English)
 
-Right now every `run_hivemind()` call starts from zero. Past runs are saved as JSON files in `data/` but nothing reads them. There is no way for the orchestrator to say "this looks like the FIN7 campaign from three weeks ago." There is no entity memory. There is no timeline.
+Right now every `run_CausalOps()` call starts from zero. Past runs are saved as JSON files in `data/` but nothing reads them. There is no way for the orchestrator to say "this looks like the FIN7 campaign from three weeks ago." There is no entity memory. There is no timeline.
 
 We are adding:
 
@@ -45,11 +48,11 @@ These are hard blockers. Nothing can proceed without them.
 
 ### 2.2 Get the Supabase Service Role Key
 
-**Where:** [https://supabase.com/dashboard/project/lejmpbxchamaqjfclfyz/settings/api](https://supabase.com/dashboard/project/lejmpbxchamaqjfclfyz/settings/api)
+**Where:** [https://supabase.com/dashboard/project/glbmdbwqmuttykhicasq/settings/api](https://supabase.com/dashboard/project/glbmdbwqmuttykhicasq/settings/api)
 
 **Steps:**
 1. Log in to Supabase dashboard
-2. Select project `lejmpbxchamaqjfclfyz`
+2. Select project `glbmdbwqmuttykhicasq`
 3. Go to **Project Settings** → **API**
 4. Copy the `service_role` key (NOT the `anon` / `public` key — that one has RLS restrictions and can't write)
 5. Keep it secret — this key bypasses Row Level Security
@@ -68,7 +71,7 @@ AZURE_OPENAI_DEPLOYMENT=gpt-4o
 AZURE_OPENAI_API_VERSION=2024-08-01-preview
 
 # New — add after getting credentials
-SUPABASE_URL=https://lejmpbxchamaqjfclfyz.supabase.co
+SUPABASE_URL=https://glbmdbwqmuttykhicasq.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=eyJ...your-service-role-key...
 AZURE_OPENAI_EMBEDDING_DEPLOYMENT=text-embedding-3-small
 ```
@@ -228,7 +231,7 @@ After running the SQL above, regenerate the TypeScript types so the frontend sta
 
 ```bash
 npx supabase gen types typescript \
-  --project-id lejmpbxchamaqjfclfyz \
+  --project-id glbmdbwqmuttykhicasq \
   --schema public \
   > app/src/integrations/supabase/types.ts
 ```
@@ -416,9 +419,9 @@ from fastmcp import FastMCP
 from memory.store import SupabaseMemoryStore
 
 mcp = FastMCP(
-    "hivemind-memory",
+    "CausalOps-memory",
     instructions=(
-        "HiveMind persistent memory server. "
+        "CausalOps persistent memory server. "
         "Use search_similar_incidents to retrieve context before starting a run. "
         "Use write_run_to_memory after DoWhy completes."
     ),
@@ -426,7 +429,7 @@ mcp = FastMCP(
 
 @mcp.tool()
 def search_similar_incidents(description: str, k: int = 5) -> list[dict]:
-    """Search for past HiveMind runs similar to the given incident description.
+    """Search for past CausalOps runs similar to the given incident description.
     Returns ranked results with similarity score, temporal weight, causal graph summary."""
     store = SupabaseMemoryStore()
     return store.search_similar_runs(description, k=k)
@@ -447,7 +450,7 @@ def get_asset_timeline(asset_id: str, since_days: int = 90) -> list[dict]:
 
 @mcp.tool()
 def write_run_to_memory(run_artifact: dict) -> dict:
-    """Store a completed HiveMind run in the memory layer.
+    """Store a completed CausalOps run in the memory layer.
     Embeds task description, indexes entities, and builds knowledge graph edges.
     Returns {"run_id": str, "entities_indexed": int}."""
     store = SupabaseMemoryStore()
@@ -475,7 +478,7 @@ mcp dev src/memory/mcp_server.py
 ```json
 {
   "mcpServers": {
-    "hivemind-memory": {
+    "CausalOps-memory": {
       "command": "python",
       "args": ["-m", "memory.mcp_server"],
       "cwd": "src",
@@ -563,7 +566,7 @@ initial_state = {
 }
 ```
 
-Move `run_id` generation to the top of `run_hivemind()` (before the `graph` call). The rest of `engine.py` is unchanged.
+Move `run_id` generation to the top of `run_CausalOps()` (before the `graph` call). The rest of `engine.py` is unchanged.
 
 ### 6.5 `src/api.py`
 
@@ -605,7 +608,7 @@ After running the SQL migration, regenerate this file via the Supabase CLI. Do n
 ## 7. New `.env.example` File (Create at Repo Root)
 
 ```dotenv
-# HiveMind environment variables — copy to .env and fill in values
+# CausalOps environment variables — copy to .env and fill in values
 # Never commit .env to git
 
 # Azure OpenAI (chat)
@@ -618,11 +621,11 @@ AZURE_OPENAI_API_VERSION=2024-08-01-preview
 AZURE_OPENAI_EMBEDDING_DEPLOYMENT=text-embedding-3-small
 
 # Supabase (backend only — never expose service_role key to frontend)
-SUPABASE_URL=https://lejmpbxchamaqjfclfyz.supabase.co
+SUPABASE_URL=https://glbmdbwqmuttykhicasq.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
 
 # CORS
-HIVEMIND_ALLOWED_ORIGINS=http://localhost:8080,http://127.0.0.1:8080
+CAUSALOPS_ALLOWED_ORIGINS=http://localhost:8080,http://127.0.0.1:8080
 ```
 
 ---
@@ -726,7 +729,7 @@ pytest tests/memory/test_store.py::test_write_run -v
 LangChain's memory stores (e.g. `ConversationBufferMemory`) are in-session only and don't persist across process restarts. LangGraph's built-in `Store` API is cross-thread but in-memory by default and requires a custom persistence backend. Building directly on Supabase + pgvector gives us: the same infra already connected to the frontend, proper vector search with the `<=>` operator, a real Postgres knowledge graph with FK constraints, and no additional managed services.
 
 ### Why Supabase over Pinecone/Weaviate?
-The Supabase project ID `lejmpbxchamaqjfclfyz` is already in the repo. The frontend is already wired to it. Adding pgvector to an existing Postgres database is a one-line extension enable. Pinecone/Weaviate would add a new managed service, new credentials, and new operational overhead with no benefit at our scale.
+The Supabase project ID `glbmdbwqmuttykhicasq` is already in the repo. The frontend is already wired to it. Adding pgvector to an existing Postgres database is a one-line extension enable. Pinecone/Weaviate would add a new managed service, new credentials, and new operational overhead with no benefit at our scale.
 
 ### Why HNSW over IVFFlat?
 IVFFlat requires a training phase on existing data and degrades in recall as the dataset grows past the training distribution. HNSW builds a navigable graph at insert time, has no training phase, and performs comparably or better at small-to-medium scale. For a SOC memory store that grows incrementally with each run, HNSW is the correct choice.

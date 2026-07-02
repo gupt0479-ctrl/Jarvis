@@ -14,7 +14,7 @@ AZURE_OPENAI_API_KEY=...
 AZURE_OPENAI_EMBEDDING_DEPLOYMENT=text-embedding-3-small
 ```
 
-> **Note:** The old project ID `lejmpbxchamaqjfclfyz` does not exist under the account. A new Supabase project must be created first (via Supabase MCP or dashboard) before any URL or keys are known.
+> **Note:** The old project ID `glbmdbwqmuttykhicasq` does not exist under the account. A new Supabase project must be created first (via Supabase MCP or dashboard) before any URL or keys are known.
 
 The Supabase tables (`memory_runs`, `memory_entities`, `memory_entity_edges`) also need to be provisioned via migration (see [[memory-layer/00-design|Memory Layer Design]]) before `store.py` can write.
 

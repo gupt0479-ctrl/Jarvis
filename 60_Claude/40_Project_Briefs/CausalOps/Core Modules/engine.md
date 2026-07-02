@@ -1,4 +1,4 @@
----
+﻿---
 tags: [causalops, engine, orchestration, artifact]
 aliases: [engine.py]
 ---
@@ -7,10 +7,10 @@ aliases: [engine.py]
 
 `src/engine.py` is the backend boundary used by the HTTP API and legacy Streamlit demo. It runs the Phase 2 coordinator workflow, composes a frontend-friendly artifact, emits deterministic tier metrics, and persists the full run record.
 
-## run_hivemind() — Main Entry Point
+## run_CausalOps() — Main Entry Point
 
 ```python
-async def run_hivemind(
+async def run_CausalOps(
     task_description: str,
     evidence_records: list[dict[str, Any]] | None = None,
     run_id: str | None = None,
@@ -91,7 +91,7 @@ with artifact_path.open("w") as handle:
     json.dump(artifact, handle, indent=2)
 ```
 
-`DATA_DIR` defaults to `./data/` (configurable via `HIVEMIND_DATA_DIR`). Artifacts are plain JSON — the frontend fetches them at `GET /run/{run_id}`.
+`DATA_DIR` defaults to `./data/` (configurable via `CAUSALOPS_DATA_DIR`). Artifacts are plain JSON — the frontend fetches them at `GET /run/{run_id}`.
 
 ## load_run_artifact()
 
@@ -113,7 +113,7 @@ def new_run_id() -> str:
 
 ## Related Notes
 
-- [[api]] — Calls run_hivemind() from POST /run and /run/sync
+- [[api]] — Calls run_CausalOps() from POST /run and /run/sync
 - [[Coordinator Execution Model]] — What execute_run() does internally
 - [[benchmarking]] — score_agent_tiers() called here to build agent_tier_metrics
 - [[demo_fixtures]] — resolve_run_evidence() and is_demo_evidence() from here

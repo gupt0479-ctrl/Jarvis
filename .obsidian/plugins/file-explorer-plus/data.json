@@ -288,13 +288,6 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "60_Claude/40_Project_Briefs/CausalOps/Hivemind.md",
-        "patternType": "STRICT"
-      },
-      {
-        "name": "",
-        "active": true,
-        "type": "FILES",
         "pattern": "20_Progress/Projects/AI Second Brain/Jarvis.md",
         "patternType": "STRICT"
       },
@@ -450,6 +443,13 @@
         "active": true,
         "type": "FILES",
         "pattern": "60_Claude/10_Source_Summaries/Github Ingestion/How Anant Uses Each Repo.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "60_Claude/40_Project_Briefs/TradingView/00 Overview.md",
         "patternType": "STRICT"
       }
     ],

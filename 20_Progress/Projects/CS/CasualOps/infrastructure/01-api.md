@@ -1,6 +1,6 @@
 # API Reference
 
-`src/api.py` — FastAPI HTTP surface for HiveMind, version `0.2.0`. Base URL: `http://localhost:8000`.
+`src/api.py` — FastAPI HTTP surface for CausalOps, version `0.2.0`. Base URL: `http://localhost:8000`.
 
 ## Health & Meta
 
@@ -69,13 +69,13 @@ GET  /run/{run_id}/reasoning          → reasoning_report (anomalies + recommen
 
 ## Startup / Lifespan
 
-On startup: starts Kafka producer; if `HIVEMIND_ENABLE_SPAWN_WORKER=1`, starts in-process spawn worker.
+On startup: starts Kafka producer; if `CAUSALOPS_ENABLE_SPAWN_WORKER=1`, starts in-process spawn worker.
 On shutdown: stops spawn worker, stops Kafka producer.
 
 ## CORS
 
 ```python
-HIVEMIND_ALLOWED_ORIGINS  # comma-separated; default: localhost:8080
+CAUSALOPS_ALLOWED_ORIGINS  # comma-separated; default: localhost:8080
 ```
 
 ## Request Models

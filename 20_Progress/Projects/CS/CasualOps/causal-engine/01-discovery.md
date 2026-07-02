@@ -32,8 +32,8 @@ Each hypothesized edge gets a verdict:
 ## Key Constants
 
 ```python
-DEFAULT_ALPHA = 0.1              # p-value threshold (env: HIVEMIND_DISCOVERY_ALPHA)
-MIN_ROWS_FOR_DISCOVERY = 30      # skip discovery if fewer rows (env: HIVEMIND_DISCOVERY_MIN_ROWS)
+DEFAULT_ALPHA = 0.1              # p-value threshold (env: CAUSALOPS_DISCOVERY_ALPHA)
+MIN_ROWS_FOR_DISCOVERY = 30      # skip discovery if fewer rows (env: CAUSALOPS_DISCOVERY_MIN_ROWS)
 ```
 
 If fewer than 30 rows: all edges marked `compatible` (insufficient data to test). Discovery doesn't run.

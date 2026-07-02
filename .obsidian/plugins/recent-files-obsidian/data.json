@@ -1,40 +1,92 @@
 {
   "recentFiles": [
     {
-      "basename": "Big Assignment - 2",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 2.md"
+      "basename": "00 Overview",
+      "path": "60_Claude/40_Project_Briefs/TradingView/00 Overview.md"
     },
     {
-      "basename": "Prompt-2-Add-Agents-And-MCP",
-      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/Prompt-2-Add-Agents-And-MCP.md"
+      "basename": "Vault-Audit-2026-05-29",
+      "path": "60_Claude/40_Project_Briefs/Vault-Audit-2026-05-29.md"
+    },
+    {
+      "basename": "GRAPH_REPORT",
+      "path": "60_Claude/40_Project_Briefs/TradingView/GRAPH_REPORT.md"
+    },
+    {
+      "basename": "2026 Research Baseline (FinGPTFinRobotFINRASEC)",
+      "path": "60_Claude/40_Project_Briefs/TradingView/Communities/2026 Research Baseline (FinGPTFinRobotFINRASEC).md"
+    },
+    {
+      "basename": "Adjusted Close Positivity Rule",
+      "path": "60_Claude/40_Project_Briefs/TradingView/Communities/Adjusted Close Positivity Rule.md"
+    },
+    {
+      "basename": "Adjustment Policy Mapping Tests",
+      "path": "60_Claude/40_Project_Briefs/TradingView/Communities/Adjustment Policy Mapping Tests.md"
+    },
+    {
+      "basename": "_valid_record_kwargs()",
+      "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/_valid_record_kwargs().md"
+    },
+    {
+      "basename": "_parse_adjustment_policy()",
+      "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/_parse_adjustment_policy().md"
+    },
+    {
+      "basename": "_make_record()_1",
+      "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/_make_record()_1.md"
+    },
+    {
+      "basename": "_detect_payload_format()",
+      "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/_detect_payload_format().md"
+    },
+    {
+      "basename": "_create_provider_instance()",
+      "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/_create_provider_instance().md"
+    },
+    {
+      "basename": "__init__.py_2",
+      "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/__init__.py_2.md"
+    },
+    {
+      "basename": "PriceAdjustment",
+      "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/PriceAdjustment.md"
     },
     {
       "basename": "Token Efficiency Notes",
       "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/Token Efficiency Notes.md"
     },
     {
-      "basename": "Prompt-1-Fix-Hooks-And-CLAUDE-MD",
-      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/Prompt-1-Fix-Hooks-And-CLAUDE-MD.md"
-    },
-    {
-      "basename": "Memory Layer Implementation Prompt",
-      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/ran/Memory Layer Implementation Prompt.md"
-    },
-    {
-      "basename": "HiveMind Claude Setup Prompt",
-      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/ran/HiveMind Claude Setup Prompt.md"
-    },
-    {
-      "basename": "INDEX",
-      "path": "20_Progress/Projects/CS/CasualOps/INDEX.md"
-    },
-    {
       "basename": "Repos",
       "path": "40_Resources/CS/Repos.md"
     },
     {
-      "basename": "GRAPH_REPORT",
-      "path": "20_Progress/Projects/CS/CasualOps/GRAPH_REPORT.md"
+      "basename": "Links",
+      "path": "40_Resources/CS/Links.md"
+    },
+    {
+      "basename": "dify",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/dify.md"
+    },
+    {
+      "basename": "Random",
+      "path": "40_Resources/Random.md"
+    },
+    {
+      "basename": "Second Brain",
+      "path": "40_Resources/Obsidian/Second Brain.md"
+    },
+    {
+      "basename": "Memory Layer Implementation Plan",
+      "path": "60_Claude/40_Project_Briefs/CausalOps/Memory Layer Implementation Plan.md"
+    },
+    {
+      "basename": "2026-06",
+      "path": "10_Areas/Life/Enumerate/Monthly/2026-06.md"
+    },
+    {
+      "basename": "Big Assignment - 2",
+      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 2.md"
     },
     {
       "basename": "00-design",
@@ -77,28 +129,12 @@
       "path": "20_Progress/Projects/CS/CasualOps/agents/00-agent-hierarchy.md"
     },
     {
-      "basename": "Memory Layer Implementation Plan",
-      "path": "60_Claude/40_Project_Briefs/CausalOps/Memory Layer Implementation Plan.md"
-    },
-    {
       "basename": "Memory Layer",
       "path": "60_Claude/40_Project_Briefs/CausalOps/Memory Layer.md"
     },
     {
       "basename": "_Index",
       "path": "60_Claude/40_Project_Briefs/CausalOps/_Index.md"
-    },
-    {
-      "basename": "Hivemind",
-      "path": "60_Claude/40_Project_Briefs/CausalOps/Hivemind.md"
-    },
-    {
-      "basename": "Second Brain",
-      "path": "40_Resources/Obsidian/Second Brain.md"
-    },
-    {
-      "basename": "2026-06",
-      "path": "10_Areas/Life/Enumerate/Monthly/2026-06.md"
     },
     {
       "basename": "2026-06-16",
@@ -121,10 +157,6 @@
       "path": "60_Claude/05_Clippings/Web/AI Agents for Sales & GTM Teams.md"
     },
     {
-      "basename": "Random",
-      "path": "40_Resources/Random.md"
-    },
-    {
       "basename": "Workbooks_AI Mastermind - Links",
       "path": "60_Claude/05_Clippings/PDFs/Workbooks_AI Mastermind - Links.pdf"
     },
@@ -139,66 +171,6 @@
     {
       "basename": "How to Build an AI-Powered Prediction Market Trading Bot Using Claude Skills",
       "path": "60_Claude/05_Clippings/PDFs/How to Build an AI-Powered Prediction Market Trading Bot Using Claude Skills.pdf"
-    },
-    {
-      "basename": "Find profitable startup ideas using reddit",
-      "path": "60_Claude/05_Clippings/PDFs/Find profitable startup ideas using reddit.pdf"
-    },
-    {
-      "basename": "Clone Setup Guide (June 2026)",
-      "path": "60_Claude/05_Clippings/PDFs/Clone Setup Guide (June 2026).pdf"
-    },
-    {
-      "basename": "Links",
-      "path": "40_Resources/CS/Links.md"
-    },
-    {
-      "basename": "dify",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/dify.md"
-    },
-    {
-      "basename": "Practice Quiz - 2",
-      "path": "20_Progress/Degree/MATH 2230/Quiz/Practice Quiz - 2.md"
-    },
-    {
-      "basename": "Practice Quiz",
-      "path": "20_Progress/Degree/MATH 2230/Quiz/Practice Quiz.md"
-    },
-    {
-      "basename": "Quiz - 4",
-      "path": "20_Progress/Degree/MATH 2230/Quiz/Quiz - 4.md"
-    },
-    {
-      "basename": "Chapter - 7",
-      "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 7.md"
-    },
-    {
-      "basename": "last30days-skill",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/last30days-skill.md"
-    },
-    {
-      "basename": "system-prompts-and-models-of-ai-tools",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/system-prompts-and-models-of-ai-tools.md"
-    },
-    {
-      "basename": "claude-code-best-practice",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/claude-code-best-practice.md"
-    },
-    {
-      "basename": "CL4R1T4S",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/CL4R1T4S.md"
-    },
-    {
-      "basename": "claude-context",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/claude-context.md"
-    },
-    {
-      "basename": "graphify",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/graphify.md"
-    },
-    {
-      "basename": "gstack",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/gstack.md"
     }
   ],
   "omittedPaths": [],

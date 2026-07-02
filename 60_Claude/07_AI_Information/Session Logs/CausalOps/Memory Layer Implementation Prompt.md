@@ -14,7 +14,7 @@ model: claude-sonnet-4-6
 ## Prompt
 
 ```
-You are implementing the Persistent Semantic Memory and Retrieval Layer for the HiveMind
+You are implementing the Persistent Semantic Memory and Retrieval Layer for the CausalOps
 causal reasoning engine. Read the following notes IN FULL before writing a single line of code:
 
 1. /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/CS/CasualOps/Memory Layer Implementation Plan.md

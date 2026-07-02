@@ -1,11 +1,11 @@
----
+﻿---
 tags: [causalops, api, fastapi, endpoints, http]
 aliases: [api.py]
 ---
 
 # api.py — FastAPI HTTP Interface
 
-`src/api.py` is the HTTP surface for HiveMind. Version: `0.2.0`. It exposes two execution paths (agentic and deterministic), an SSE telemetry stream, normalizer endpoints, and a 5D graph ingestion endpoint.
+`src/api.py` is the HTTP surface for CausalOps. Version: `0.2.0`. It exposes two execution paths (agentic and deterministic), an SSE telemetry stream, normalizer endpoints, and a 5D graph ingestion endpoint.
 
 ## Startup / Lifespan
 
@@ -13,13 +13,13 @@ On startup: starts Kafka producer, optionally starts in-process spawn worker.
 On shutdown: stops spawn worker task, stops Kafka producer.
 
 ```python
-HIVEMIND_ENABLE_SPAWN_WORKER  # "1" → in-process worker; "0" → expect separate worker container
+CAUSALOPS_ENABLE_SPAWN_WORKER  # "1" → in-process worker; "0" → expect separate worker container
 ```
 
 ## CORS
 
 ```python
-HIVEMIND_ALLOWED_ORIGINS  # comma-separated origins; default: localhost:8080
+CAUSALOPS_ALLOWED_ORIGINS  # comma-separated origins; default: localhost:8080
 ```
 
 ## Endpoints
@@ -36,7 +36,7 @@ Returns `{"status": "ok"}`. Used by Docker healthcheck.
 Request:  { "task_description": "...", "run_id": "...", "evidence_records": [...] }
 Response: { "run_id": "run-...", "status": "queued" }
 ```
-Runs `run_hivemind()` as a background task. Client should poll `GET /run/{run_id}` or stream `GET /run/{run_id}/events`.
+Runs `run_CausalOps()` as a background task. Client should poll `GET /run/{run_id}` or stream `GET /run/{run_id}/events`.
 
 **Idempotency:** If the run_id already exists with status "queued" or "running", returns 409.
 
@@ -114,7 +114,7 @@ class NormalizeRequest(BaseModel):
 
 ## Related Notes
 
-- [[engine]] — run_hivemind() called by /run and /run/sync
+- [[engine]] — run_CausalOps() called by /run and /run/sync
 - [[estimators]] — estimate_causal_effect() called by /estimate
 - [[dataset_compiler]] — compile_evidence_dataset() called by /estimate
 - [[evidence_adapters]] — normalize_* functions called by /normalize/*

@@ -1,4 +1,4 @@
----
+﻿---
 tags: [causalops, reasoning, anomaly, recommendations, statistics]
 aliases: [reasoning.py]
 ---
@@ -13,7 +13,7 @@ aliases: [reasoning.py]
 An asset whose adverse outcome was improbable given its treatment group is flagged.
 
 ```
-Threshold: HIVEMIND_ANOMALY_THRESHOLD (default: 0.15)
+Threshold: CAUSALOPS_ANOMALY_THRESHOLD (default: 0.15)
 ```
 
 For each evidence record where the outcome is adverse and the outcome probability (given treatment group average) deviates by more than the threshold, the record is flagged as an anomaly.
@@ -44,8 +44,8 @@ The reasoning report is stored in `RunRecord.reasoning_report` and exposed at `G
 ## Key Constants
 
 ```python
-ANOMALY_THRESHOLD = float(os.getenv("HIVEMIND_ANOMALY_THRESHOLD", "0.15"))
-MAX_LISTED_TARGETS = int(os.getenv("HIVEMIND_REASONING_MAX_TARGETS", "10"))
+ANOMALY_THRESHOLD = float(os.getenv("CAUSALOPS_ANOMALY_THRESHOLD", "0.15"))
+MAX_LISTED_TARGETS = int(os.getenv("CAUSALOPS_REASONING_MAX_TARGETS", "10"))
 ```
 
 ## Integration with 5D KG

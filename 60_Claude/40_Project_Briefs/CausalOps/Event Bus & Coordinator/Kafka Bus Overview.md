@@ -1,10 +1,10 @@
----
+﻿---
 tags: [causalops, kafka, redpanda, event-bus, messaging]
 ---
 
 # Kafka Bus Overview
 
-HiveMind uses Redpanda (Kafka-compatible) as its event bus. The bus decouples the coordinator (api container) from the spawn workers, enables live SSE telemetry streaming, and provides the event log that feeds the 5D spatiotemporal KG.
+CausalOps uses Redpanda (Kafka-compatible) as its event bus. The bus decouples the coordinator (api container) from the spawn workers, enables live SSE telemetry streaming, and provides the event log that feeds the 5D spatiotemporal KG.
 
 ## Topics
 

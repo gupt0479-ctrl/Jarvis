@@ -1,4 +1,4 @@
----
+﻿---
 tags: [causalops, api, endpoints, curl, reference]
 ---
 
@@ -13,7 +13,7 @@ GET /health
 # → {"status": "ok"}
 
 GET /
-# → {"message": "Welcome to the HiveMind API", "docs_url": "/docs", ...}
+# → {"message": "Welcome to the CausalOps API", "docs_url": "/docs", ...}
 ```
 
 ## Full Agentic Run

@@ -13,7 +13,7 @@ Input from GraphState: `task_description`, `run_id`, `memory_context` (planned).
 
 ## Prompt Role
 
-> "You are the Grand Orchestrator for HiveMind SOC operations. Decompose the incident into 2-3 distinct investigatory vectors such as geopolitical context, network forensics, identity risk, supply-chain exposure, or insider threat."
+> "You are the Grand Orchestrator for CausalOps SOC operations. Decompose the incident into 2-3 distinct investigatory vectors such as geopolitical context, network forensics, identity risk, supply-chain exposure, or insider threat."
 
 Structured output via `llm.with_structured_output(ParentConfigsOutput)`:
 

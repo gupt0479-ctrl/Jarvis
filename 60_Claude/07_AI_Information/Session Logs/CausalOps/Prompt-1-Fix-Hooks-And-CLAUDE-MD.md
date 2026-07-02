@@ -88,8 +88,8 @@ SUPABASE_URL=https://<new-project-ref>.supabase.co
 SUPABASE_PUBLISHABLE_KEY=
 SUPABASE_SERVICE_ROLE_KEY=             # REQUIRED for all Python backend writes (RLS)
 
-# HiveMind runtime
-HIVEMIND_ENABLE_SPAWN_WORKER=0         # "1" → in-process spawn worker (api container only)
+# CausalOps runtime
+CAUSALOPS_ENABLE_SPAWN_WORKER=0         # "1" → in-process spawn worker (api container only)
 KAFKA_BOOTSTRAP=localhost:19092        # only needed outside compose
 ```
 

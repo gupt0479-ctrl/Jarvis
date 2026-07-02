@@ -1,6 +1,6 @@
 # Agent Hierarchy
 
-HiveMind uses three tiers of LLM agents. Each tier narrows scope: the orchestrator decomposes the incident, parents decompose into sub-problems, children solve one sub-problem each and produce the DecisionMemos that feed the causal pipeline.
+CausalOps uses three tiers of LLM agents. Each tier narrows scope: the orchestrator decomposes the incident, parents decompose into sub-problems, children solve one sub-problem each and produce the DecisionMemos that feed the causal pipeline.
 
 ## Three Tiers
 

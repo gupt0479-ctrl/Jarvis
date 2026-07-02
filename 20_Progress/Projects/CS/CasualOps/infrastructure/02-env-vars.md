@@ -1,6 +1,6 @@
 # Environment Variables
 
-All env vars for the HiveMind stack. Secrets are marked. Never-commit list at the bottom.
+All env vars for the CausalOps stack. Secrets are marked. Never-commit list at the bottom.
 
 ## LLM (Required)
 
@@ -20,35 +20,35 @@ Used by: `src/llm.py` → all agent nodes (orchestrator, parents, children, eval
 KAFKA_BOOTSTRAP=localhost:19092
 ```
 
-## HiveMind Runtime
+## CausalOps Runtime
 
 ```env
-HIVEMIND_ENABLE_SPAWN_WORKER=0  # "1" → in-process spawn worker (api container)
-HIVEMIND_SPAWN_MAX_RETRIES=2    # retry count before DLQ
-HIVEMIND_SPAWN_RETRY_BACKOFF_MS=1000
-HIVEMIND_DATA_DIR=              # override data/ directory (default: repo-root/data/)
-HIVEMIND_ALLOWED_ORIGINS=http://localhost:8080  # CORS origins (comma-separated)
+CAUSALOPS_ENABLE_SPAWN_WORKER=0  # "1" → in-process spawn worker (api container)
+CAUSALOPS_SPAWN_MAX_RETRIES=2    # retry count before DLQ
+CAUSALOPS_SPAWN_RETRY_BACKOFF_MS=1000
+CAUSALOPS_DATA_DIR=              # override data/ directory (default: repo-root/data/)
+CAUSALOPS_ALLOWED_ORIGINS=http://localhost:8080  # CORS origins (comma-separated)
 ```
 
 ## Causal Pipeline Tuning
 
 ```env
-HIVEMIND_ANOMALY_THRESHOLD=0.15     # reasoning: p(outcome | treatment_group) deviation threshold
-HIVEMIND_REASONING_MAX_TARGETS=10   # max assets listed in recommendations
-HIVEMIND_DISCOVERY_ALPHA=0.1        # causal discovery: p-value threshold for independence tests
-HIVEMIND_DISCOVERY_MIN_ROWS=30      # skip discovery if fewer rows (all edges marked "compatible")
+CAUSALOPS_ANOMALY_THRESHOLD=0.15     # reasoning: p(outcome | treatment_group) deviation threshold
+CAUSALOPS_REASONING_MAX_TARGETS=10   # max assets listed in recommendations
+CAUSALOPS_DISCOVERY_ALPHA=0.1        # causal discovery: p-value threshold for independence tests
+CAUSALOPS_DISCOVERY_MIN_ROWS=30      # skip discovery if fewer rows (all edges marked "compatible")
 ```
 
 ## Supabase (Memory Layer)
 
 ```env
 # Client-side (VITE_ prefix = safe in browser)
-VITE_SUPABASE_URL=https://lejmpbxchamaqjfclfyz.supabase.co
+VITE_SUPABASE_URL=https://glbmdbwqmuttykhicasq.supabase.co
 VITE_SUPABASE_PUBLISHABLE_KEY=...       # anon/public key
-VITE_SUPABASE_PROJECT_ID=lejmpbxchamaqjfclfyz
+VITE_SUPABASE_PROJECT_ID=glbmdbwqmuttykhicasq
 
 # Server-side (secrets)
-SUPABASE_URL=https://lejmpbxchamaqjfclfyz.supabase.co
+SUPABASE_URL=https://glbmdbwqmuttykhicasq.supabase.co
 SUPABASE_PUBLISHABLE_KEY=...            # anon key (auth middleware only)
 SUPABASE_SERVICE_ROLE_KEY=...           # REQUIRED for Python backend writes (RLS)
 ```
@@ -68,7 +68,7 @@ AZURE_OPENAI_EMBEDDING_DEPLOYMENT=text-embedding-3-small
 ## Graph DB Override (Tests)
 
 ```env
-HIVEMIND_GRAPH_DB_PATH=     # override path to graph_5d.db (used in tests)
+CAUSALOPS_GRAPH_DB_PATH=     # override path to graph_5d.db (used in tests)
 ```
 
 ## MCP Server

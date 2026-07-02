@@ -1,4 +1,4 @@
----
+﻿---
 tags: [causalops, philosophy, design, epistemics]
 ---
 
@@ -8,13 +8,13 @@ tags: [causalops, philosophy, design, epistemics]
 
 > "The LLM proposes hypotheses. Evidence decides whether an ATE is allowed to exist."
 
-Most agent demos stop at a confident narrative. HiveMind is built to survive the engineering objection: **"Where did the data come from?"**
+Most agent demos stop at a confident narrative. CausalOps is built to survive the engineering objection: **"Where did the data come from?"**
 
 ## The Epistemic Crisis It Solves
 
 LLM agents have a failure mode: they generate plausible narratives that are internally consistent but empirically unfounded. When an LLM both proposes the causal story *and* provides the supporting data, you cannot distinguish real causal effects from confident hallucination.
 
-HiveMind solves this by enforcing strict authorship separation:
+CausalOps solves this by enforcing strict authorship separation:
 
 | Who authors it | What it can produce | What it cannot produce |
 |---------------|---------------------|------------------------|

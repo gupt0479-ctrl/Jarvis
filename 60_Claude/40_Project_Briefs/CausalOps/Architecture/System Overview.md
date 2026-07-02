@@ -1,4 +1,4 @@
----
+﻿---
 tags: [causalops, architecture, overview]
 ---
 
@@ -6,7 +6,7 @@ tags: [causalops, architecture, overview]
 
 ## What It Is
 
-HiveMind is a cyber SOC decision system that turns an incident prompt into a structured investigation and a **guarded causal estimate**. The key differentiator is not "the agent is confident" — it is that the agent can explain what evidence would be needed, compile that evidence, and **withhold statistical claims when data is too weak**.
+CausalOps is a cyber SOC decision system that turns an incident prompt into a structured investigation and a **guarded causal estimate**. The key differentiator is not "the agent is confident" — it is that the agent can explain what evidence would be needed, compile that evidence, and **withhold statistical claims when data is too weak**.
 
 ## Pipeline Layers
 

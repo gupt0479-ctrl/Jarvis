@@ -9,7 +9,7 @@
 An asset is flagged when its adverse outcome is improbable given its treatment group:
 
 ```python
-ANOMALY_THRESHOLD = float(os.getenv("HIVEMIND_ANOMALY_THRESHOLD", "0.15"))
+ANOMALY_THRESHOLD = float(os.getenv("CAUSALOPS_ANOMALY_THRESHOLD", "0.15"))
 # Default: 0.15 deviation from treatment-group mean
 ```
 
@@ -37,8 +37,8 @@ def reasoning_node(state: dict[str, Any]) -> dict[str, Any]:
 ## Key Constants
 
 ```python
-ANOMALY_THRESHOLD = float(os.getenv("HIVEMIND_ANOMALY_THRESHOLD", "0.15"))
-MAX_LISTED_TARGETS = int(os.getenv("HIVEMIND_REASONING_MAX_TARGETS", "10"))
+ANOMALY_THRESHOLD = float(os.getenv("CAUSALOPS_ANOMALY_THRESHOLD", "0.15"))
+MAX_LISTED_TARGETS = int(os.getenv("CAUSALOPS_REASONING_MAX_TARGETS", "10"))
 ```
 
 ## 5D KG Integration

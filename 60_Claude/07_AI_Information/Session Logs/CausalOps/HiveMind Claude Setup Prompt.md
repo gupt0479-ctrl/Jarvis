@@ -5,7 +5,7 @@ task: claude-code-project-setup
 model: claude-sonnet-4-6
 ---
 
-# Prompt — HiveMind Claude Code Project Setup
+# Prompt — CausalOps Claude Code Project Setup
 
 > Paste this verbatim into a new Claude Code session at `/home/anant_gupta/projects/hub/CausalOps/`.
 > This session does NOT implement features. It configures Claude Code for the project and writes missing tests.
@@ -47,7 +47,7 @@ The existing CLAUDE.md is stale in these specific ways. Fix each one precisely:
    phases wired, RunRecord serialization updated, graph.py topology updated (cosmetic),
    agents.py memory_context injection done, requirements.txt and docker-compose.yml updated.
    PENDING: Supabase project provisioning (new project in org rfpztvjpxxutefsgdemv — the
-   project ID lejmpbxchamaqjfclfyz referenced below does not exist yet), and
+   project ID glbmdbwqmuttykhicasq referenced below does not exist yet), and
    tests/memory/ test suite."
 
 2. In component 4 (MCP Server), replace "FastMCP instance mounted at /mcp on the FastAPI
@@ -114,8 +114,8 @@ The existing CLAUDE.md is stale in these specific ways. Fix each one precisely:
    SUPABASE_PUBLISHABLE_KEY=
    SUPABASE_SERVICE_ROLE_KEY=             # REQUIRED for Python backend writes (RLS)
 
-   # HiveMind runtime
-   HIVEMIND_ENABLE_SPAWN_WORKER=0         # "1" → in-process spawn worker (api container only)
+   # CausalOps runtime
+   CAUSALOPS_ENABLE_SPAWN_WORKER=0         # "1" → in-process spawn worker (api container only)
    ```
 
    Remove the old `AZURE_OPENAI_DEPLOYMENT=gpt-4o` line entirely — Azure is never the chat LLM.
