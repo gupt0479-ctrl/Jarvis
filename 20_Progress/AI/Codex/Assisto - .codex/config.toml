@@ -1,0 +1,8 @@
+# Repo-local Codex configuration for Assisto_website.
+# No credentials, bearer tokens, model overrides, sandbox overrides, or global MCPs are stored here.
+
+[mcp_servers.supabase]
+url = "https://mcp.supabase.com/mcp"
+
+# GitHub access is available through the installed GitHub app/plugin in Codex, not through
+# a discovered repo-local Codex MCP entry. Keep GitHub writes explicitly user-scoped.

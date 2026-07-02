@@ -50,7 +50,7 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/UMN/UMN Board.md",
+        "pattern": "20_Progress/UMN/UMN Board.md",
         "patternType": "STRICT"
       },
       {

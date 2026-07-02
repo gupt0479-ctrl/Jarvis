@@ -1,52 +1,60 @@
 {
   "recentFiles": [
     {
-      "basename": "00 Overview",
-      "path": "60_Claude/40_Project_Briefs/TradingView/00 Overview.md"
+      "basename": "Cursor Project Brief — Vault OS Upgrade",
+      "path": "60_Claude/07_AI_Information/AI Conversation - Summaries/Cursor Project Brief — Vault OS Upgrade.md"
     },
     {
-      "basename": "Vault-Audit-2026-05-29",
-      "path": "60_Claude/40_Project_Briefs/Vault-Audit-2026-05-29.md"
+      "basename": "2026-06",
+      "path": "10_Areas/Life/Enumerate/Monthly/2026-06.md"
     },
     {
-      "basename": "GRAPH_REPORT",
-      "path": "60_Claude/40_Project_Briefs/TradingView/GRAPH_REPORT.md"
-    },
-    {
-      "basename": "2026 Research Baseline (FinGPTFinRobotFINRASEC)",
-      "path": "60_Claude/40_Project_Briefs/TradingView/Communities/2026 Research Baseline (FinGPTFinRobotFINRASEC).md"
-    },
-    {
-      "basename": "Adjusted Close Positivity Rule",
-      "path": "60_Claude/40_Project_Briefs/TradingView/Communities/Adjusted Close Positivity Rule.md"
-    },
-    {
-      "basename": "Adjustment Policy Mapping Tests",
-      "path": "60_Claude/40_Project_Briefs/TradingView/Communities/Adjustment Policy Mapping Tests.md"
-    },
-    {
-      "basename": "_valid_record_kwargs()",
-      "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/_valid_record_kwargs().md"
-    },
-    {
-      "basename": "_parse_adjustment_policy()",
-      "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/_parse_adjustment_policy().md"
-    },
-    {
-      "basename": "_make_record()_1",
-      "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/_make_record()_1.md"
-    },
-    {
-      "basename": "_detect_payload_format()",
-      "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/_detect_payload_format().md"
+      "basename": "__init__.py_2",
+      "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/__init__.py_2.md"
     },
     {
       "basename": "_create_provider_instance()",
       "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/_create_provider_instance().md"
     },
     {
-      "basename": "__init__.py_2",
-      "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/__init__.py_2.md"
+      "basename": "_detect_payload_format()",
+      "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/_detect_payload_format().md"
+    },
+    {
+      "basename": "_make_record()_1",
+      "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/_make_record()_1.md"
+    },
+    {
+      "basename": "_parse_adjustment_policy()",
+      "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/_parse_adjustment_policy().md"
+    },
+    {
+      "basename": "_valid_record_kwargs()",
+      "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/_valid_record_kwargs().md"
+    },
+    {
+      "basename": "Adjustment Policy Mapping Tests",
+      "path": "60_Claude/40_Project_Briefs/TradingView/Communities/Adjustment Policy Mapping Tests.md"
+    },
+    {
+      "basename": "Adjusted Close Positivity Rule",
+      "path": "60_Claude/40_Project_Briefs/TradingView/Communities/Adjusted Close Positivity Rule.md"
+    },
+    {
+      "basename": "2026 Research Baseline (FinGPTFinRobotFINRASEC)",
+      "path": "60_Claude/40_Project_Briefs/TradingView/Communities/2026 Research Baseline (FinGPTFinRobotFINRASEC).md"
+    },
+    {
+      "basename": "00 Overview",
+      "path": "60_Claude/40_Project_Briefs/TradingView/00 Overview.md"
+    },
+    {
+      "basename": "GRAPH_REPORT",
+      "path": "60_Claude/40_Project_Briefs/TradingView/GRAPH_REPORT.md"
+    },
+    {
+      "basename": "Vault-Audit-2026-05-29",
+      "path": "60_Claude/40_Project_Briefs/Vault-Audit-2026-05-29.md"
     },
     {
       "basename": "PriceAdjustment",
@@ -81,52 +89,8 @@
       "path": "60_Claude/40_Project_Briefs/CausalOps/Memory Layer Implementation Plan.md"
     },
     {
-      "basename": "2026-06",
-      "path": "10_Areas/Life/Enumerate/Monthly/2026-06.md"
-    },
-    {
       "basename": "Big Assignment - 2",
       "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 2.md"
-    },
-    {
-      "basename": "00-design",
-      "path": "20_Progress/Projects/CS/CasualOps/memory-layer/00-design.md"
-    },
-    {
-      "basename": "04-reasoning",
-      "path": "20_Progress/Projects/CS/CasualOps/causal-engine/04-reasoning.md"
-    },
-    {
-      "basename": "03-estimation",
-      "path": "20_Progress/Projects/CS/CasualOps/causal-engine/03-estimation.md"
-    },
-    {
-      "basename": "02-evidence",
-      "path": "20_Progress/Projects/CS/CasualOps/causal-engine/02-evidence.md"
-    },
-    {
-      "basename": "01-discovery",
-      "path": "20_Progress/Projects/CS/CasualOps/causal-engine/01-discovery.md"
-    },
-    {
-      "basename": "00-overview",
-      "path": "20_Progress/Projects/CS/CasualOps/causal-engine/00-overview.md"
-    },
-    {
-      "basename": "03-evaluator",
-      "path": "20_Progress/Projects/CS/CasualOps/agents/03-evaluator.md"
-    },
-    {
-      "basename": "02-evolution",
-      "path": "20_Progress/Projects/CS/CasualOps/agents/02-evolution.md"
-    },
-    {
-      "basename": "01-orchestrator",
-      "path": "20_Progress/Projects/CS/CasualOps/agents/01-orchestrator.md"
-    },
-    {
-      "basename": "00-agent-hierarchy",
-      "path": "20_Progress/Projects/CS/CasualOps/agents/00-agent-hierarchy.md"
     },
     {
       "basename": "Memory Layer",

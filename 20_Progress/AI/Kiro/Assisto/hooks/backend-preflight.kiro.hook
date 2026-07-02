@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "Backend Preflight Check",
+  "description": "Before executing any spec task for Assisto-Spend backend, verify: (1) local migrations status, (2) current backend gate phase, (3) whether the task's prerequisites are met, (4) no protected files will be touched. Report any stop conditions before proceeding.",
+  "version": "1",
+  "when": {
+    "type": "preTaskExecution"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Before starting this task, verify the Assisto-Spend backend preflight checklist:\n1. What is the current backend gate phase? Check docs/assisto-spend/11-implementation-phases.md\n2. Are local supabase/migrations/ present? If absent and task requires schema work, STOP.\n3. Are task prerequisites (from .kiro/specs/assisto-spend-backend/tasks.md) completed?\n4. Will this task touch any protected files (src/app/page.js, src/app/layout.js, src/app/globals.css, existing src/components/**, public/**, package.json, .env values)?\n5. Does this task require Supabase mutation? If yes, confirm explicit user approval exists.\nReport any stop conditions and do not proceed if blockers exist."
+  }
+}

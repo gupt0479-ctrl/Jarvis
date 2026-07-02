@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__jarvis__vault_list",
+      "Bash(Get-ChildItem -Path \"D:\\\\Users\\\\_Anant\\\\10_Areas\\\\Documents\\\\Jarvis\" -Force)",
+      "Bash(Select-Object Name, PSIsContainer)",
+      "mcp__filesystem__read_text_file",
+      "mcp__jarvis__vault_read",
+      "mcp__jarvis-fs__read_file",
+      "mcp__jarvis__vault_patch",
+      "mcp__jarvis__vault_get_document_map",
+      "mcp__jarvis-fs__list_directory",
+      "mcp__jarvis__vault_write"
+    ]
+  },
+  "enableAllProjectMcpServers": true
+}

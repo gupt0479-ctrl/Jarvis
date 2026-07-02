@@ -1,0 +1,40 @@
+{
+  "enabledMcpjsonServers": [
+    "jarvis",
+    "the-plan",
+    "jarvis-fs",
+    "the-plan-fs",
+    "github",
+    "hivemind-memory",
+    "supabase"
+  ],
+  "enableAllProjectMcpServers": true,
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /home/anant_gupta/projects/hub/CausalOps/.claude/hooks/guard-sacred-files.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /home/anant_gupta/projects/hub/CausalOps/.claude/hooks/lint-on-edit.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash /home/anant_gupta/projects/hub/CausalOps/.claude/hooks/test-memory-on-edit.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

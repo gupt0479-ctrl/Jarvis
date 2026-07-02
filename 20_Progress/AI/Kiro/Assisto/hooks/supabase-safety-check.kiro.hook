@@ -1,0 +1,21 @@
+{
+  "enabled": true,
+  "name": "Supabase Mutation Safety",
+  "description": "Before any Supabase MCP tool that could mutate data (apply_migration, execute_sql, deploy_edge_function), verify explicit user approval exists for this exact mutation. Block if migration source-of-truth drift is unresolved or if the action is destructive.",
+  "version": "1",
+  "when": {
+    "type": "preToolUse",
+    "toolTypes": [
+      ".*apply_migration.*",
+      ".*execute_sql.*",
+      ".*deploy_edge_function.*",
+      ".*create_branch.*",
+      ".*merge_branch.*",
+      ".*reset_branch.*"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "SUPABASE MUTATION SAFETY CHECK: You are about to use a Supabase tool that can mutate data or schema. Before proceeding, verify ALL of the following:\n1. Does the user's current prompt EXPLICITLY approve this exact mutation? (Not implied, not assumed)\n2. Is local/remote migration drift resolved? (Check if supabase/migrations/ exists locally)\n3. Is this a destructive operation (DROP, DELETE, TRUNCATE, reset)? If yes, DENY unless user explicitly confirmed destruction.\n4. Will this expose any secrets, storage keys, or private data?\n5. Is this within the currently approved backend phase?\nIf ANY check fails, DO NOT proceed with the tool call. Report the blocker to the user."
+  }
+}

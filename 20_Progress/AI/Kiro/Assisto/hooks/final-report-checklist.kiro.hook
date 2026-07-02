@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "Final Report Checklist",
+  "description": "After completing a spec task, generate the required final report covering: files changed, scope completed, validation results, security/audit notes, Supabase/migration notes, stop conditions, deferred items, and next recommended prompt.",
+  "version": "1",
+  "when": {
+    "type": "postTaskExecution"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Generate the Assisto-Spend final report for this completed task. Include ALL of the following sections:\n1. **Files inspected** — list all files read during this task\n2. **Files changed** — list all files created or modified\n3. **Scope completed** — what was accomplished relative to the task definition\n4. **Validation commands and results** — what was run to verify (npm run build, etc.)\n5. **MCPs used** — which MCP tools were called and for what purpose\n6. **Security/audit notes** — any security-relevant decisions or verifications\n7. **Supabase/migration notes** — current state of migrations, schema, drift\n8. **Stop conditions encountered or cleared** — any blockers hit or resolved\n9. **Deferred items** — what was intentionally left for later\n10. **Recommended next prompt** — exact prompt for the next task/phase"
+  }
+}
