@@ -21,6 +21,7 @@ CS student at UMN, summer 2026. Physical timeline: **Dubai (18 May → 19 Jun) �
 The honest self-diagnosis, straight from the phase map: infrastructure got built (Jarvis, MCPs, skills) but execution stalled — "time went to tool-tinkering, not the projects." Everything below is structured against that specific failure mode, which is why [[08 - Anti-Drift Rules]] bans MCP setup, agent authoring, and stack comparison from daily ops entirely.
 ## The day, compressed
 Five wins, each with an MVP so a low-energy day still counts ([[01 - Daily Operating System]]):
+
 | Win | Full | MVP |
 | --- | --- | --- |
 | Physical | Gym 5×/week | 20 pushups + 20 squats + 5 min stretch |

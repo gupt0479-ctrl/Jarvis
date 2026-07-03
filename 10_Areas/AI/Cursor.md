@@ -36,15 +36,16 @@ These duplicate content whose authority lives in the vault ([[Jarvis OS — Nort
 - Divides labor with Claude Code (WSL) which ran the R0–R8 refinement phases, and with Codex which carries the migrated `/deploy`-style gates.
 ## SafeReach — the reference hook architecture
 SafeReach has the most complete Cursor hook lifecycle of any project; treat it as the template:
-| Hook event | Script | Purpose |
-| --- | --- | --- |
-| sessionStart | `safereach-context-bootstrap.js` | Load project canon before anything runs |
-| beforeSubmitPrompt | `safereach-prompt-context-gate.js` | Block prompts that skip required context |
-| beforeReadFile | `safereach-read-context-audit.js` | Audit what the agent reads |
-| postToolUse (Write/Edit/ApplyPatch) | `safereach-edit-review.js` | Review every edit after it lands |
-| beforeShellExecution | `safereach-shell-safety.js` | Gate dangerous commands |
-| stop | `safereach-stop-reminder.js` | End-of-turn checklist |
-| subagent boundary | `safereach-subagent-boundary.js` | Keep subagents inside their lane |
+
+| Hook event                          | Script                             | Purpose                                  |
+| ----------------------------------- | ---------------------------------- | ---------------------------------------- |
+| sessionStart                        | `safereach-context-bootstrap.js`   | Load project canon before anything runs  |
+| beforeSubmitPrompt                  | `safereach-prompt-context-gate.js` | Block prompts that skip required context |
+| beforeReadFile                      | `safereach-read-context-audit.js`  | Audit what the agent reads               |
+| postToolUse (Write/Edit/ApplyPatch) | `safereach-edit-review.js`         | Review every edit after it lands         |
+| beforeShellExecution                | `safereach-shell-safety.js`        | Gate dangerous commands                  |
+| stop                                | `safereach-stop-reminder.js`       | End-of-turn checklist                    |
+| subagent boundary                   | `safereach-subagent-boundary.js`   | Keep subagents inside their lane         |
 All run with `failClosed: false` and 5s timeouts — advisory guardrails, not hard blocks. Skills (8): accessibility-reviewer, agent-boundary-reviewer, context-lock, demo-guardian, deploy-readiness, life-safety-guardrails, refactor-agent, ui-specialist. `integrations/kiro-cursor-contract.md` + `agent-coordination.schema.json` define how Cursor and Kiro hand off on the same repo — the only written cross-tool contract in any project so far.
 ## OpsPilot
 Just a `settings.json`. The real OpsPilot setup lives in its `.claude/` canon (playbooks, checklists) and Kiro/Codex skills — Cursor is a thin client there.
