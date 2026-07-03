@@ -1,0 +1,6 @@
+{"sessionId":"3327cb","location":"proxy.ts:proxy","message":"proxy invoked","data":{"argsLength":2,"hasEvent":true,"eventType":"object","path":"/"},"timestamp":1772947682996}
+{"sessionId":"3327cb","location":"proxy.ts:after clerk","message":"clerk returned","data":{"hasResult":true,"resultType":"object"},"timestamp":1772947683461}
+{"sessionId":"3327cb","location":"proxy.ts:proxy","message":"proxy invoked","data":{"argsLength":2,"hasEvent":true,"eventType":"object","path":"/"},"timestamp":1772947683796}
+{"sessionId":"3327cb","location":"proxy.ts:after clerk","message":"clerk returned","data":{"hasResult":true,"resultType":"object"},"timestamp":1772947683821}
+{"sessionId":"3327cb","location":"proxy.ts:proxy","message":"proxy invoked","data":{"argsLength":2,"hasEvent":true,"eventType":"object","path":"/"},"timestamp":1772947683852}
+{"sessionId":"3327cb","location":"proxy.ts:after clerk","message":"clerk returned","data":{"hasResult":true,"resultType":"object"},"timestamp":1772947683858}

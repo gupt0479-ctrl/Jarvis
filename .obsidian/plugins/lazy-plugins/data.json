@@ -74,6 +74,12 @@
       },
       "lean-terminal": {
         "startupType": "short"
+      },
+      "homepage": {
+        "startupType": "short"
+      },
+      "obsidian-meta-bind-plugin": {
+        "startupType": "short"
       }
     }
   }

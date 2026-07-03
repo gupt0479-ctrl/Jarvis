@@ -1,0 +1,41 @@
+{
+  "mcpServers": {
+    "sanity": {
+      "url": "https://mcp.sanity.io",
+      "type": "http",
+      "autoApprove": []
+    },
+    "clerk": {
+      "url": "https://mcp.clerk.com/mcp",
+      "autoApprove": [
+        "clerk_sdk_snippet",
+        "list_clerk_sdk_snippets"
+      ]
+    },
+    "cloudflare": {
+      "url": "https://mcp.cloudflare.com/mcp",
+      "type": "http",
+      "autoApprove": []
+    },
+    "cloudflare-docs": {
+      "url": "https://docs.mcp.cloudflare.com/mcp",
+      "type": "http",
+      "autoApprove": []
+    },
+    "cloudflare-bindings": {
+      "url": "https://bindings.mcp.cloudflare.com/mcp",
+      "type": "http",
+      "autoApprove": []
+    },
+    "cloudflare-builds": {
+      "url": "https://builds.mcp.cloudflare.com/mcp",
+      "type": "http",
+      "autoApprove": []
+    },
+    "cloudflare-observability": {
+      "url": "https://observability.mcp.cloudflare.com/mcp",
+      "type": "http",
+      "autoApprove": []
+    }
+  }
+}
