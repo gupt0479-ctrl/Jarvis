@@ -1,4 +1,7 @@
 ---
+type: project
+status: sprout
+created: 2026-07-01
 tags: [causalops, evolution, genetic-algorithm, policy, ea]
 aliases: [evolution.py]
 ---

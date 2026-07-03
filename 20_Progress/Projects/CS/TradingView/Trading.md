@@ -1,3 +1,11 @@
+---
+type: project
+status: active
+created: 2026-05-26
+tags:
+  - project
+  - trading
+---
 awesome here's everything
 
 repo: https://github.com/TauricResearch/TradingAgents

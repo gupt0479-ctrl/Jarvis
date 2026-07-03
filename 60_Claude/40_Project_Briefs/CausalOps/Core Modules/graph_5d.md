@@ -1,3 +1,11 @@
+---
+type: project
+status: sprout
+created: 2026-07-01
+tags:
+  - brief
+  - causalops
+---
 ﻿---
 tags: [causalops, knowledge-graph, spatiotemporal, sqlite, 5d]
 aliases: [graph_5d.py, graph_5d_stream.py]

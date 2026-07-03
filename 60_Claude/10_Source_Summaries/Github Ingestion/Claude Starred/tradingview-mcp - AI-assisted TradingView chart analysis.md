@@ -1,4 +1,6 @@
 ---
+type: input
+status: sprout
 title: "tradesdontlie/tradingview-mcp: AI-assisted TradingView chart analysis — connect Claude Code to your TradingView Desktop for personal workflow automation"
 source: "https://github.com/tradesdontlie/tradingview-mcp?fbclid=PAVERFWAREGVBleHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAaeTm_ilHE5sZ6tEXlwqtktX-tN89YKu9HK2kK1sNDHj7xPjt-5R1EjTUrzN5A_aem_OvOps_YdhoT4d9_fqOSB_w"
 author:

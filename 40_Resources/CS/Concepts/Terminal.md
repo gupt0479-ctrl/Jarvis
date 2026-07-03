@@ -1,3 +1,10 @@
+---
+type: evergreen
+status: sprout
+created: 2026-05-26
+tags:
+  - cs
+---
 
 # insta
 experience for beginners and power users alike in 2026.

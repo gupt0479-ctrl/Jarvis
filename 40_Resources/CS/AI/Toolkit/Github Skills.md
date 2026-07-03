@@ -1,3 +1,10 @@
+---
+type: evergreen
+status: sprout
+created: 2026-06-21
+tags:
+  - cs
+---
 # Github Skills
 
 ## Why This Note Exists

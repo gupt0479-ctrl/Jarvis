@@ -1,6 +1,22 @@
 ---
 name: research-distiller
-description: Performs deep ingestion of source material — PDFs, images, web links, transcripts — into durable, well-linked notes with near-complete content capture and full vault-style formatting.
+description: >
+  Use proactively for deep ingestion of source material — PDFs, images, web
+  links, transcripts, AI conversations, GitHub repos — into durable, well-linked
+  source summaries with near-complete content capture. MUST BE USED for long
+  PDFs needing section-by-section extraction, multi-source ingestion passes, and
+  any batch clipping work beyond a single /ingest-clipping. Outputs to
+  60_Claude/10_Source_Summaries/ per the Source Summary Standard, then
+  cross-references existing vault notes.
+tools:
+  - Read
+  - Glob
+  - Grep
+  - Edit
+  - Write
+  - Bash
+  - WebFetch
+model: claude-sonnet-4-6
 ---
 # research-distiller
 

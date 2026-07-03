@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "00_Dashboard",
+      "path": "00_Dashboard.md"
+    },
+    {
+      "basename": "AGENTS",
+      "path": "AGENTS.md"
+    },
+    {
+      "basename": "Claude Board",
+      "path": "60_Claude/Claude Board.md"
+    },
+    {
       "basename": "Cursor Project Brief — Vault OS Upgrade",
       "path": "60_Claude/07_AI_Information/AI Conversation - Summaries/Cursor Project Brief — Vault OS Upgrade.md"
     },

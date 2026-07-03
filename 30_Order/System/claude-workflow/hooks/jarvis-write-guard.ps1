@@ -3,10 +3,12 @@ param()
 # PreToolUse write guard for the Jarvis vault.
 # Enforces the Write Contract negative constraints from AGENTS.md:
 #   - never create files at the vault root (only the four contract files may live there)
-#   - never write into 50_Archive/
-#   - never write notes into .obsidian/
-# Allows everything else. Fails open (exit 0) on any parsing problem so it can
-# never block legitimate work by accident.
+#   - never write into 50_Archive/, 60_Claude/05_Clippings/ (raw sources are read-only)
+#   - never write notes into .obsidian/, .cursor/, .kiro/, .git/
+# An allowlist of daily-operations paths (daily notes, plans, templates, skills,
+# agents, dashboard, session log, Claude OS) is checked before any denial so the
+# /startday-/closeday loop can never be blocked. Fails open (exit 0) on any
+# parsing problem so it can never block legitimate work by accident.
 
 $ErrorActionPreference = "Stop"
 
@@ -43,12 +45,41 @@ function Deny([string]$reason) {
     exit 0
 }
 
+# --- Allowlist: daily-operations paths, checked before any denial ---
+$allowPrefixes = @(
+    "10_areas\life\enumerate\daily\",
+    "10_areas\life\plans\",
+    "30_order\templates\",
+    ".claude\skills\",
+    ".claude\agents\"
+)
+$allowExact = @(
+    "00_dashboard.md",
+    "60_claude\07_ai_information\session logs\log.md",
+    "60_claude\07_ai_information\claude os.md"
+)
+foreach ($prefix in $allowPrefixes) {
+    if ($relLower.StartsWith($prefix)) { exit 0 }
+}
+if ($allowExact -contains $relLower) { exit 0 }
+
+# --- Denials ---
 if ($relLower.StartsWith("50_archive\")) {
     Deny "Write Contract: 50_Archive is never written. See AGENTS.md and the Vault Map."
 }
 
 if ($relLower.StartsWith(".obsidian\")) {
     Deny "Write Contract: .obsidian holds settings, never notes. See AGENTS.md."
+}
+
+if ($relLower.StartsWith("60_claude\05_clippings\")) {
+    Deny "Write Contract: 60_Claude/05_Clippings is read-only after capture. Summaries go to 60_Claude/10_Source_Summaries/. See AGENTS.md."
+}
+
+foreach ($toolDir in @(".cursor\", ".kiro\", ".git\")) {
+    if ($relLower.StartsWith($toolDir)) {
+        Deny "Write Contract: $toolDir holds tooling config, never notes. See AGENTS.md."
+    }
 }
 
 # Root-level path (no backslash in the relative path) => sits directly at vault root.

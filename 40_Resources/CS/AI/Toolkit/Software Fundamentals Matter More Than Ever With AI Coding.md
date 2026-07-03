@@ -1,3 +1,10 @@
+---
+type: evergreen
+status: sprout
+created: 2026-05-26
+tags:
+  - cs
+---
 # Software Fundamentals Matter More Than Ever With AI Coding
 
 Related: [[AI Coding]], [[Software Engineering]], [[Test-Driven Development]], [[Domain-Driven Design]], [[Code Architecture]], [[Prompt Engineering]]

@@ -1,4 +1,7 @@
 ---
+type: project
+status: sprout
+created: 2026-07-01
 tags: [causalops, demo, fixtures, smoke-test, siem]
 aliases: [demo_fixtures.py]
 ---

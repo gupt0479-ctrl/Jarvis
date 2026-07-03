@@ -1,4 +1,6 @@
 ---
+type: input
+status: sprout
 title: "VectifyAI/PageIndex: 📑 PageIndex: Document Index for Vectorless, Reasoning-based RAG"
 source: "https://github.com/VectifyAI/PageIndex?utm_source=sp_auto_dm&utm_referrer=sp_auto_dm&fbclid=PAVERFWAQ5O_VleHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAae3ZLaKSi3wejVX2JSdc84Wh4hENLEbaCAFX4zyDBT6m3om2G66hthvu1_Zog_aem_9T-4Jo0RkUBV-Td5LsHn3g"
 author:

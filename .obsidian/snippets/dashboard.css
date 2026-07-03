@@ -1,0 +1,97 @@
+﻿/* ============================================================
+   Jarvis Dashboard — card layout, stat tiles, grid
+   Works with AnuPpuccin (dark) + Meta Bind + Dataview
+   ============================================================ */
+
+/* ── Two-column page layout ── */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+/* ── Section card ── */
+.card {
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+
+.card-accent { border-left: 3px solid var(--color-green); }
+.card-warning { border-left: 3px solid var(--color-yellow); }
+
+/* ── Section label (small caps above heading) ── */
+.section-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-green);
+  margin-bottom: 4px;
+}
+
+/* ── Current focus headline ── */
+.focus-headline {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-green);
+  line-height: 1.25;
+  margin: 4px 0 8px 0;
+}
+
+/* ── Stat tile grid ── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.stat-tile {
+  background: var(--background-primary-alt);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+
+.stat-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-normal);
+  line-height: 1;
+}
+
+.stat-delta { font-size: 0.7rem; margin-top: 3px; }
+.stat-delta.positive { color: var(--color-green); }
+.stat-delta.negative { color: var(--color-red); }
+.stat-delta.neutral  { color: var(--text-muted); }
+
+/* ── Daily driver checkbox rows ── */
+.driver-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--background-modifier-border);
+  font-size: 0.875rem;
+}
+.driver-row:last-child { border-bottom: none; }
+.driver-row.done { text-decoration: line-through; color: var(--text-muted); }
+
+/* ── Callout override for focus block ── */
+.callout[data-callout="focus"] {
+  background: color-mix(in srgb, var(--color-green) 8%, var(--background-secondary));
+  border-color: var(--color-green);
+}
+.callout[data-callout="focus"] .callout-title { color: var(--color-green); }

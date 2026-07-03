@@ -1,4 +1,7 @@
 ---
+type: project
+status: sprout
+created: 2026-07-02
 tags: [causalops, environment, config, secrets, env]
 ---
 

@@ -2,11 +2,16 @@
 type: thought
 thought_kind: reflection
 status: seed
+created: <% tp.date.now("YYYY-MM-DD") %>
 related_progress:
 tags:
   - thought
   - "#journal"
 next:
+lc_count: 0
+study_today: 0
+wins_done: 0
+habits_done: []
 ---
 # Did you get better today?
 > [!NOTE] Summary:
@@ -46,6 +51,9 @@ next:
 | HIST 1103 | N/A       |       | [ ]  |
 
 ## Productivity
+**LeetCode today:** `INPUT[number:lc_count]`
+**Study hours:** `INPUT[number:study_today]`
+**Wins hit:** `INPUT[number:wins_done]` / 5
 
 | Meals | Water (3L target) |
 |-------|-------------------|

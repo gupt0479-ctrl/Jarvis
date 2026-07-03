@@ -16,6 +16,7 @@ notes:
   - "[[CSCI 4041 Board]]"
   - "[[DSA]]"
   - "[[Repos]]"
+  - "[[Tracker]]"
 next: "[[06 - ML Fundamentals (2033 + 2230)]]"
 ---
 

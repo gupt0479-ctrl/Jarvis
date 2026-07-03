@@ -1,6 +1,19 @@
 ---
 name: career-operator
-description: Handles internship, career, portfolio, and mentorship related notes and action planning.
+description: >
+  Use proactively for internship applications, resume and cover-letter updates,
+  portfolio project briefs, and mentorship meeting prep. MUST BE USED when
+  creating career briefs in 60_Claude/40_Project_Briefs/ or updating application
+  tracking under 10_Areas/Career/ and 20_Progress/. Reads the vault's career
+  notes first and produces action-oriented output — every brief carries concrete
+  next steps, deadlines, and links to real projects and skills.
+tools:
+  - Read
+  - Glob
+  - Grep
+  - Edit
+  - Write
+model: claude-sonnet-4-6
 ---
 # career-operator
 

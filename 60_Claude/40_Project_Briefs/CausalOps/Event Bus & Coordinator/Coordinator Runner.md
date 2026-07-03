@@ -1,3 +1,11 @@
+---
+type: project
+status: sprout
+created: 2026-07-01
+tags:
+  - brief
+  - causalops
+---
 ﻿---
 tags: [causalops, coordinator, runner, async, phases]
 aliases: [coordinator/runner.py]

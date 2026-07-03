@@ -16,6 +16,7 @@ notes:
   - "[[ML_Foundations]]"
   - "[[CSCI 2033 Board]]"
   - "[[MATH 2230 Board]]"
+  - "[[Stocks Trading AI Hub]]"
   - "[[04 - Summer Courses Ops]]"
   - "[[03 - Monthly & Phase Map]]"
 next: "[[06a - ML Fundamentals Progress]]"

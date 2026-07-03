@@ -1,4 +1,7 @@
 ---
+type: project
+status: sprout
+created: 2026-07-01
 tags: [causalops, estimators, dowhy, statsmodels, ate, DO-NOT-TOUCH]
 aliases: [estimators.py]
 ---

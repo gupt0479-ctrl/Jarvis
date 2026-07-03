@@ -1,4 +1,7 @@
 ---
+type: evergreen
+status: sprout
+created: 2026-07-01
 tags: [graphify, meta, session-log]
 ---
 

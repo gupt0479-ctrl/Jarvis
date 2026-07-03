@@ -13,6 +13,8 @@ source_concepts:
   - "[[AI-Assisted Trading]]"
   - "[[20_Progress/Projects/CS/TradingView/Trading Tools and Platforms]]"
   - "[[AI Workflow]]"
+notes:
+  - "[[06 - ML Fundamentals (2033 + 2230)]]"
 ---
 # AI Market Analyzer Project Brief
 ## Problem

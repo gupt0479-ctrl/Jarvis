@@ -1,3 +1,11 @@
+---
+type: project
+status: sprout
+created: 2026-07-01
+tags:
+  - brief
+  - causalops
+---
 ﻿---
 tags: [causalops, rl, policy, meta-learning, q-values, stackelberg]
 aliases: [policy_learning.py]

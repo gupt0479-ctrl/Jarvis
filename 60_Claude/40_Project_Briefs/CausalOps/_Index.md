@@ -1,3 +1,11 @@
+---
+type: project
+status: sprout
+created: 2026-07-02
+tags:
+  - brief
+  - causalops
+---
 ﻿---
 tags: [causalops, index, soc, causal-reasoning]
 aliases: [CausalOps, CausalOps Index]

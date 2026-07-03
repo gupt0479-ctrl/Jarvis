@@ -1,170 +1,95 @@
 ---
-type: evergreen
+type: dashboard
 status: tree
 created: 2026-04-23
-updated: 2026-06-11
+updated: 2026-07-03
 tags:
-  - evergreen
   - dashboard
+  - daily
+today_focus: ""
+today_80: ""
+today_20: ""
+lc_today: 0
+study_today: 0
+wins_done: 0
 notes:
   - "[[CLAUDE.md]]"
   - "[[AGENTS.md]]"
-  - "[[30_Order/Templates/MOC]]"
-  - "[[40_Resources/Obsidian/Vault Operating System]]"
-  - "[[Claude Pro Workflow]]"
-  - "[[Vault Health Dashboard]]"
-  - "[[Knowledge Enrichment Dashboard]]"
-  - "[[40_Resources/Obsidian/Jarvis Enrichment Engine]]"
-  - "[[Jarvis]]"
-  - "[[Jarvis Three-Month Research Engine Master Plan]]"
+  - "[[Jarvis OS — North Star]]"
 ---
-# Jarvis — Daily Execution Surface
+# Jarvis — `$= moment().format("dddd, D MMMM YYYY")`
+> [!focus] Today's Focus
+> **Focus:** `INPUT[text:today_focus]`
+> **80 — the one thing:** `INPUT[text:today_80]`
+> **20 — supporting:** `INPUT[text:today_20]`
+> *Patched by `/startday`, cleared by `/closeday`.*
 
-## Today
+> [!summary] Today's Numbers
+> **LeetCode:** `INPUT[number:lc_today]` · **Wins:** `INPUT[number:wins_done]` / 5 · **Study hours:** `INPUT[number:study_today]`
 
-**Focus:**
-
+## This Week
+```dataviewjs
+const folder = '"10_Areas/Life/Enumerate/Daily"';
+const pages = dv.pages(folder).where(p => {
+  if (!p.file.day) return false;
+  const today = dv.date("today");
+  const monday = today.minus({days: today.weekday - 1});
+  return p.file.day >= monday && p.file.day <= today;
+});
+const lcTotal = pages.map(p => p.lc_count || 0).reduce((a,b) => a+b, 0);
+const studyTotal = pages.map(p => p.study_today || 0).reduce((a,b) => a+b, 0);
+const winsTotal = pages.map(p => p.wins_done || 0).reduce((a,b) => a+b, 0);
+const clippings = dv.pages('"60_Claude/10_Source_Summaries"')
+  .where(p => p.file.ctime >= dv.date("today").minus({days: dv.date("today").weekday - 1})).length;
+dv.paragraph(`LC this week: **${lcTotal}/35** · Study: **${studyTotal}h** · Wins: **${winsTotal}** · Clippings ingested: **${clippings}**`);
+```
+## Today's Priorities
 ```dataview
 TASK
-WHERE due = date(today) AND !completed
-SORT due ASC
+FROM "10_Areas/Life/Enumerate/Daily"
+WHERE file.day = date(today) AND !completed
+LIMIT 8
 ```
-
-## In Motion
-
-### Active Projects
-
+## Active Projects
 ```dataview
 TABLE status, deadline, next, file.mtime AS "Updated"
 FROM "20_Progress"
-WHERE type = "project" AND status != "archived"
-SORT deadline ASC, file.mtime DESC
-LIMIT 12
+WHERE type = "project" AND status != "archived" AND status != "complete"
+SORT deadline ASC
+LIMIT 10
 ```
+## Daily Drivers
+> [!todo] Habits
+> - [ ] Gym (or MVP workout)
+> - [ ] LeetCode ≥5
+> - [ ] CSCI 2033 (30–45 min)
+> - [ ] Course step (4041 / 2230 / 1103)
+> - [ ] Review — run `/closeday`
 
-### Open Tasks
-
+## Internship Pipeline
 ```dataview
-TASK
-FROM "20_Progress" OR "10_UMN/_Homework"
-WHERE !completed
-SORT due ASC
-LIMIT 15
-```
-
-## Triage
-
-### AI Staging Queue
-
-```dataview
-TABLE type, status, next, file.mtime AS "Updated"
-FROM "60_Claude/00_Inbox"
-WHERE file.name != "00_Inbox Board"
+TABLE status, next, file.mtime AS "Updated"
+FROM "10_Areas/Career/Internships"
 SORT file.mtime DESC
-LIMIT 12
+LIMIT 5
 ```
-
-### Raw Clippings To Distill
-
+## Clippings Triage
 ```dataview
 TABLE file.ctime AS "Captured"
 FROM "60_Claude/05_Clippings"
 SORT file.ctime DESC
-LIMIT 12
-```
-
-## Decay
-
-### Projects Missing a Next Action
-
-```dataview
-TABLE status, deadline, file.mtime AS "Updated"
-FROM "20_Progress"
-WHERE type = "project" AND status != "archived" AND !next
-SORT file.mtime DESC
-LIMIT 10
-```
-
-### Flashcard Review Queue
-
-```dataview
-LIST
-FROM #cards
-WHERE !contains(file.folder, "30_Order/Templates")
-SORT file.mtime DESC
-LIMIT 10
-```
-
-## Classes
-
-### Active Classes
-
-```dataview
-TABLE WITHOUT ID
-  file.link AS "Class",
-  length(file.inlinks) AS "Notes"
-FROM "10_UMN"
-WHERE contains(file.name, "Board")
-SORT file.name ASC
-```
-
-### Knowledge Enrichment Queue
-
-```dataview
-TABLE type, status, track, enrichment_status, file.mtime AS "Updated"
-FROM "10_UMN" OR "20_Progress" OR "40_Resources" OR "60_Claude/20_Distilled_Notes"
-WHERE (type = "concept" OR type = "evergreen" OR type = "project")
-AND (!enrichment_status OR enrichment_status != "enriched")
-SORT file.mtime ASC
-LIMIT 10
-```
-
-## Navigation
-
-**Vault system:** [[CLAUDE.md]] · [[AGENTS.md]] · [[40_Resources/Obsidian/Vault Operating System]] · [[Claude Pro Workflow]] · [[Claude Layer Index]] · [[30_Order/Templates/MOC]]
-
-**Capability Engine:** [[Capability Dashboard]] · [[Proof Dashboard]] · [[Question Dashboard]] · [[AI Field OS]] · [[Systems Field OS]] · [[Algorithms Field OS]] · [[Career Field OS]] · [[Trading Field OS]]
-
-**Knowledge:** [[Knowledge Enrichment Dashboard]] · [[40_Resources/Obsidian/Jarvis Enrichment Engine]] · [[Vault Health Dashboard]] · [[Jarvis]] · [[Jarvis Three-Month Research Engine Master Plan]]
-
-## Vault Health
-
-### Recent Claude Outputs
-
-```dataview
-TABLE created, status, type, file.folder AS Folder
-FROM "60_Claude"
-WHERE !contains(file.folder, "60_Claude/60_Indexes")
-SORT file.mtime DESC
 LIMIT 8
 ```
-
-### Recent Reviews
-
-```dataview
-TABLE file.folder AS Folder, file.ctime AS "Created"
-FROM "60_Claude/50_Reviews"
-WHERE file.name != "50_Reviews Board"
-SORT file.ctime DESC
-LIMIT 8
-```
-
-### Orphan Durable Notes
-
-```dataview
-TABLE file.folder AS Folder, status, file.mtime AS "Updated"
-FROM "40_Resources" OR "60_Claude/20_Distilled_Notes"
-WHERE length(file.inlinks) = 0
-SORT file.mtime DESC
-LIMIT 12
-```
-
-### Metadata Cleanup Queue
-
+## Vault Health — Metadata Cleanup
 ```dataview
 TABLE file.folder AS Folder, file.mtime AS "Updated"
-FROM "10_UMN" OR "20_Progress" OR "40_Resources" OR "60_Claude"
+FROM "10_Areas" OR "20_Progress" OR "40_Resources" OR "60_Claude"
 WHERE !type OR !status
 SORT file.mtime DESC
-LIMIT 12
+LIMIT 10
 ```
+## Navigation
+**System:** [[CLAUDE.md]] · [[AGENTS.md]] · [[Jarvis OS — North Star]] · [[AI_CONTEXT]] · [[HUMAN_WRITING]] · [[40_Resources/Obsidian/Jarvis Vault Architecture|Vault Architecture]] · [[Claude Pro Workflow]]
+**Claude OS:** [[Claude OS]] · [[20_Progress/AI/Claude OS Dashboard|Claude OS Dashboard]] · [[10_Areas/Excalidraw/Claude OS Map|Claude OS Map]]
+**AI platforms:** [[10_Areas/AI/Claude Code|Claude Code]] · [[10_Areas/AI/Cursor|Cursor]] · [[10_Areas/AI/Kiro|Kiro]] · [[10_Areas/AI/Codex|Codex]]
+**Life:** [[Life OS]] · [[10_Areas/Life/Tracking/Health Tracker|Health Tracker]] · [[10_Areas/Life/Tracking/Finance Tracker|Finance Tracker]] · [[10_Areas/Life/Plans/01 - Daily Operating System|Daily OS]]

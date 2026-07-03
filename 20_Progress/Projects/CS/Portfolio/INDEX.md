@@ -1,4 +1,6 @@
 ---
+type: index
+status: sprout
 tags: [portfolio, codebase-map, MOC]
 created: 2026-06-12
 ---

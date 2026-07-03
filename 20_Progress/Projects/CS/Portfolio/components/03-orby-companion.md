@@ -1,4 +1,7 @@
 ---
+type: concept
+status: sprout
+created: 2026-06-12
 tags: [portfolio, components, orby, 3D, animation]
 ---
 

@@ -1,4 +1,7 @@
 ---
+type: project
+status: sprout
+created: 2026-07-01
 tags: [causalops, evidence, compiler, dataframe, statistics, DO-NOT-TOUCH]
 aliases: [dataset_compiler.py]
 ---

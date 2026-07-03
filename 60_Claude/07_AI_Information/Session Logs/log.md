@@ -1017,3 +1017,34 @@ Audited the web-clipping ingestion pipeline (`05_Clippings/Web/`, 29 raw clips) 
 **Total notes in `60_Claude/10_Source_Summaries/Github Ingestion/`:** ~95 across 6 subfolders (Security, Jobs, Learning, Building, Projects, AI/Claude Starred).
 
 **Open questions:** Odysseus (pewdiepie-archdaemon) has a minimal description — revisit if it turns out to be a substantial tool.
+
+## [2026-07-03] fable-p1 | Dashboards + skills wired for daily use
+
+- Write guard (`30_Order/System/claude-workflow/hooks/jarvis-write-guard.ps1`): added daily-ops allowlist (Daily/, Plans/, Templates/, .claude/skills+agents, 00_Dashboard.md, session log, Claude OS.md) checked before denials; added denials for 60_Claude/05_Clippings/, .cursor/, .kiro/, .git/. Verified with 14 piped payloads — all pass.
+- `00_Dashboard.md`: full replace. Meta Bind bind targets (today_focus/today_80/today_20, lc_today/wins_done/study_today), weekly-totals DataviewJS over daily-note frontmatter, priorities/projects/internships/clippings/metadata queries, navigation row. All dead `10_UMN` queries gone.
+- `30_Order/Templates/Enumerate/Better Today.md`: added created + lc_count/study_today/wins_done/habits_done frontmatter and Meta Bind inputs under ## Productivity.
+- `/startday` → `.claude/skills/startday/` (SKILL.md + reference.md); new Step 3b patches dashboard focus fields. `/closeday` → `.claude/skills/closeday/` with auto-gather, one 5-question block, frontmatter metrics write, dashboard reset (incl. today_20). Both `.claude/commands/` pointers updated; old flat files deleted.
+- All 5 agents (`.claude/agents/`): descriptions rewritten to "Use proactively… MUST BE USED…" pattern, `tools:` allowlists + `model: claude-sonnet-4-6` added.
+- Homepage plugin verified: managed by lazy-plugins (short), config already opens 00_Dashboard on startup — no change needed.
+- Why it matters: the daily loop (/startday → Meta Bind inputs → /closeday) now writes queryable metrics the dashboard actually renders.
+- Open: dashboard's navigation wikilinks to 10_Areas/AI/ guides, Life OS, and trackers resolve once P2/P3 create them.
+- Next: P2 — platform guides + Claude OS registry expansion.
+
+## [2026-07-03] fable-p2 | Claude OS: platform guides, registry, MCP verified
+
+- Created `10_Areas/AI/` guides: `Claude Code.md`, `Cursor.md`, `Kiro.md`, `Codex.md` — operational per-platform guides built from the `20_Progress/AI/` dumps (projects, components, when-to-use-which, gap lists).
+- jarvis-memory MCP verified live: server connects, `jarvis_reindex` built the index (8,124 notes), `jarvis_status` + `jarvis_search` return correct results. Semantic search (chunks/embeddings) remains the next build.
+- `Claude OS.md` expanded: real static tables replace the dead Dataview blocks; second-brain-claudekit overlap/gap analysis (11+10 commands fetched live from GitHub — gaps: /emerge, /challenge, /schedule, CPR /preserve pattern); everything-claude-code triage (~240 skills → 8 High, ~15 Medium, rest Low; path corrected to WSL Home); known-gaps checklist updated.
+- Created `20_Progress/AI/Claude OS Dashboard.md` (operational: inventory, health checks, open actions) and `10_Areas/Excalidraw/Claude OS Map.md` (text canvas blueprint — no hand-authored .excalidraw JSON).
+- Why it matters: the whole agentic estate is now catalogued in one registry + one dashboard, with verified (not assumed) component status.
+- Discovered: everything-claude-code lives in WSL Home, not Windows Home; Claude Code Portfolio/TradingView and Cursor DNA App/Trading View dump folders are empty — re-export needed.
+- Next: P3 — frontmatter pass, Life OS + trackers, UMN cross-links.
+
+## [2026-07-03] fable-p3 | Frontmatter pass, Life OS, cross-links
+
+- Frontmatter pass: 77 notes got minimum type/status (+created from file ctime, +domain tag where absent) — Portfolio design docs (30, as concept/sprout to keep the dashboard's Active Projects query clean), CausalOps briefs (~32), Inbox/Resources/Areas strays. Excluded: 20_Progress/AI dumps (config snapshots, not notes), 60_Claude/00_Inbox/copilot/ (plugin data), 40_Project_Briefs/TradingView (read-only), kanban/excalidraw files, 50_Archive, 05_Clippings.
+- Created `10_Areas/Life/Life OS.md` + `10_Areas/Life/Tracking/{Health Tracker, Finance Tracker, Relationship Log}.md`. Life OS marks unknown baselines as unknown (weight, monthly spend, mentor names) instead of inventing them; each tracker's job is converting one unknown into a trend line.
+- Finance conflict resolved per user rule: Life/Finance/ has content → Tracking/Finance Tracker.md created and cross-linked both ways with Bank Accounts + Stocks. FLAG: `10_Areas/Career/Finance/` holds byte-identical copies of the same two notes — unfinished move, needs a user decision (delete Career copies or Life copies).
+- Cross-links (concrete only): 05 - LeetCode & CSCI 4041 ⇄ Career/Internships/Tracker; 06 - ML Fundamentals ⇄ Trading/Stocks Trading AI Hub.
+- CORRECTION found: current-term course notes do NOT live in `10_Areas/UMN/` (folder doesn't exist) — CSCI/MATH learning runs through `10_Areas/Life/Plans/Summer/05+06`; past courses in `40_Resources/UMN/`. Also fixed: startday skill's plan paths were `Plans/01 - …` but files live in `Plans/Summer/` — corrected in the new SKILL.md + reference.md.
+- Next: P4 — clipping ingestion (9 high-signal PDFs first).

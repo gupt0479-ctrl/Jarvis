@@ -1,3 +1,11 @@
+---
+type: project
+status: active
+created: 2026-05-26
+tags:
+  - project
+  - trading
+---
 # Personal AI Trading Desk Research And Product Blueprint
 
 ## WSL Preflight Note
