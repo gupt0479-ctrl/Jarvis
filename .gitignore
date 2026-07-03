@@ -52,5 +52,8 @@ mcp.env
 **/.kiro/settings/
 # AI tool internal state (sessions, history, creds) — never commit
 20_Progress/AI/Claude Code/.claude/
+20_Progress/AI/Claude Code/WSL Home/
 20_Progress/AI/Cursor/.cursor/
+20_Progress/AI/Cursor/WSL Home/
 20_Progress/AI/Kiro/.kiro/
+20_Progress/AI/Kiro/WSL Home/
