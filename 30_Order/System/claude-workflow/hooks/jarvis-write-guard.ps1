@@ -56,7 +56,8 @@ $allowPrefixes = @(
 $allowExact = @(
     "00_dashboard.md",
     "60_claude\07_ai_information\session logs\log.md",
-    "60_claude\07_ai_information\claude os.md"
+    "60_claude\07_ai_information\claude os.md",
+    "60_claude\05_clippings\clippings board.md"
 )
 foreach ($prefix in $allowPrefixes) {
     if ($relLower.StartsWith($prefix)) { exit 0 }

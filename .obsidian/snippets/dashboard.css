@@ -51,10 +51,14 @@
 }
 
 .stat-tile {
-  background: var(--background-primary-alt);
-  border: 1px solid var(--background-modifier-border);
-  border-radius: 6px;
-  padding: 10px 12px;
+  background: #1e2130;
+  border: 1px solid #2e3250;
+  border-radius: 8px;
+  padding: 12px 14px;
+  transition: border-color 0.15s;
+}
+.stat-tile:hover {
+  border-color: #4a5080;
 }
 
 .stat-label {
@@ -95,3 +99,63 @@
   border-color: var(--color-green);
 }
 .callout[data-callout="focus"] .callout-title { color: var(--color-green); }
+
+/* ── Progress bar (Daily Drivers completion) ── */
+.progress-wrap { margin: 6px 0 14px; }
+.progress-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+.progress-bar-bg {
+  background: var(--background-modifier-border);
+  border-radius: 4px;
+  height: 7px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  background: var(--color-green);
+  height: 100%;
+  border-radius: 4px;
+}
+
+/* ── Multi-column tweaks (Multi-Column Markdown plugin) ── */
+.columnParent { gap: 20px !important; }
+.columnParent .columnContent { padding: 0 4px; }
+
+/* ── Stat tile color states ── */
+.stat-tile.green .stat-value { color: var(--color-green); }
+.stat-tile.red .stat-value   { color: var(--color-red); }
+.stat-tile.yellow .stat-value { color: var(--color-yellow); }
+
+/* ── Callout overrides ── */
+.callout[data-callout="summary"] {
+  background: var(--background-secondary);
+  border-color: var(--background-modifier-border);
+}
+
+
+/* ── Enhanced focus callout — larger text, clear panel ── */
+.callout[data-callout="focus"] .callout-content {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+.callout[data-callout="focus"] .callout-title-inner {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ── Strong section headers inside dashboard columns ── */
+.columnContent h2 {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-top: 18px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #2e3250;
+  padding-bottom: 4px;
+}
+.columnContent h2:first-child { margin-top: 0; }

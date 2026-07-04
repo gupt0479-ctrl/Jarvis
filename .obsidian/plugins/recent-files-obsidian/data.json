@@ -1,6 +1,34 @@
 {
   "recentFiles": [
     {
+      "basename": "Claude OS Dashboard",
+      "path": "20_Progress/AI/Claude OS Dashboard.md"
+    },
+    {
+      "basename": "00_Dashboard",
+      "path": "00_Dashboard.md"
+    },
+    {
+      "basename": "README",
+      "path": "20_Progress/AI/Claude Code/WSL Home/skills/cloudflare/references/email-workers/README.md"
+    },
+    {
+      "basename": "log",
+      "path": "60_Claude/07_AI_Information/Session Logs/log.md"
+    },
+    {
+      "basename": "Cursor",
+      "path": "10_Areas/AI/Cursor.md"
+    },
+    {
+      "basename": "Codex",
+      "path": "10_Areas/AI/Codex.md"
+    },
+    {
+      "basename": "Claude Code",
+      "path": "10_Areas/AI/Claude Code.md"
+    },
+    {
       "basename": "Quant Foundations (PDF)",
       "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Quant Foundations (PDF).md"
     },
@@ -35,22 +63,6 @@
     {
       "basename": "Kiro",
       "path": "10_Areas/AI/Kiro.md"
-    },
-    {
-      "basename": "Cursor",
-      "path": "10_Areas/AI/Cursor.md"
-    },
-    {
-      "basename": "Codex",
-      "path": "10_Areas/AI/Codex.md"
-    },
-    {
-      "basename": "Claude Code",
-      "path": "10_Areas/AI/Claude Code.md"
-    },
-    {
-      "basename": "00_Dashboard",
-      "path": "00_Dashboard.md"
     },
     {
       "basename": "AGENTS",
@@ -187,14 +199,6 @@
     {
       "basename": "Quant Foundations",
       "path": "60_Claude/05_Clippings/PDFs/Quant Foundations.pdf"
-    },
-    {
-      "basename": "Linkedin Searches",
-      "path": "60_Claude/05_Clippings/PDFs/Linkedin Searches.pdf"
-    },
-    {
-      "basename": "How to Build an AI-Powered Prediction Market Trading Bot Using Claude Skills",
-      "path": "60_Claude/05_Clippings/PDFs/How to Build an AI-Powered Prediction Market Trading Bot Using Claude Skills.pdf"
     }
   ],
   "omittedPaths": [],
