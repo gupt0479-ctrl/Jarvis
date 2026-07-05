@@ -44,12 +44,13 @@ Starting advantages of a SWE: architecture, version control, testing, deployment
 - AI-first companies (OpenAI, Meta, Google): **$440K–$893K** total comp for senior ML/research
 - **90% of companies** created new AI positions, most still report shortages
 *Salary ladder:*
-| Level | Median | 10th–90th | Notes |
-| --- | --- | --- | --- |
-| Junior (0–2y) | $150,000 | $85K–$244K | competitive with senior SWE |
-| Mid (3–5y) | $193,000 | $128K–$265K | sweet spot — highest volume |
-| Senior (5y+) | $240,000 | $150K–$312K+ | top 4% of US earners |
-| Staff/Principal | $280K–$312K+ | up to $450K+ TC | FAANG + AI-first |
+
+| Level           | Median       | 10th–90th       | Notes                       |
+| --------------- | ------------ | --------------- | --------------------------- |
+| Junior (0–2y)   | $150,000     | $85K–$244K      | competitive with senior SWE |
+| Mid (3–5y)      | $193,000     | $128K–$265K     | sweet spot — highest volume |
+| Senior (5y+)    | $240,000     | $150K–$312K+    | top 4% of US earners        |
+| Staff/Principal | $280K–$312K+ | up to $450K+ TC | FAANG + AI-first            |
 *Industries:* Technology 46% (foundation models, search, recsys, dev tools) · Financial services 14% (trading algorithms, fraud, risk) · IT consulting 11% · Healthcare 8% · Manufacturing/auto 6%.
 > [!WARNING] Generalists are losing ground: 75%+ of listings seek domain experts; specialists command 30–50% more; agents/autonomous-systems specialists see $175K–$250K base. Engineers plateau by staying API-level generalists.
 ### Section 2: Roles, Paths & What Employers Actually Want
@@ -61,16 +62,17 @@ Starting advantages of a SWE: architecture, version control, testing, deployment
 3. **Path C — MLOps / AI Infrastructure**: closest to DevOps/SRE, specialized on the ML lifecycle — training pipelines, model registries, data versioning, drift monitoring, A/B infra. **The single most undervalued specialization in 2026** — companies can't ship without it, few specialize in it.
 	*Skills:* Kubeflow, Airflow, MLflow, DVC, Seldon, Prometheus, cloud ML platforms. *Median:* $175K–$220K, bottleneck premium.
 *What postings actually screen for (10,000+ postings):*
-| Skill | % of postings | Meaning |
-| --- | --- | --- |
-| Python (advanced) | 94% | NumPy, Pandas, vectorized ops, production code |
-| ML frameworks (PyTorch/TF) | 78% | training, fine-tuning, custom layers |
-| Cloud (AWS/GCP/Azure) | 71% | SageMaker/Vertex/AzureML — not just S3 |
-| MLOps tools | 63% | MLflow, Airflow, Kubeflow, experiment tracking |
-| LLMs / GenAI | 58% | RAG, fine-tuning, prompt engineering, evaluation |
-| SQL + data engineering | 52% | Spark, dbt, feature stores |
-| ML system design | 48% | distributed training, latency, serving |
-| Docker / Kubernetes | 44% | model serving, scaling |
+
+| Skill                      | % of postings | Meaning                                          |
+| -------------------------- | ------------- | ------------------------------------------------ |
+| Python (advanced)          | 94%           | NumPy, Pandas, vectorized ops, production code   |
+| ML frameworks (PyTorch/TF) | 78%           | training, fine-tuning, custom layers             |
+| Cloud (AWS/GCP/Azure)      | 71%           | SageMaker/Vertex/AzureML — not just S3           |
+| MLOps tools                | 63%           | MLflow, Airflow, Kubeflow, experiment tracking   |
+| LLMs / GenAI               | 58%           | RAG, fine-tuning, prompt engineering, evaluation |
+| SQL + data engineering     | 52%           | Spark, dbt, feature stores                       |
+| ML system design           | 48%           | distributed training, latency, serving           |
+| Docker / Kubernetes        | 44%           | model serving, scaling                           |
 ### Section 3: The Step-by-Step Pivot Roadmap (9–12 months)
 ==Do not skip phases — the compounding effect of layering skills is what creates interview-ready candidates.==
 1. **Step 1 — Audit & choose your path** (weeks 1–2, 5–10h): pull 10–15 real job descriptions; three-column gap spreadsheet (have / partial / don't have). Decision framework: backend/infra → MLOps; API/product → AI Engineer; loves math/models → MLE. Write a positioning statement; set a 9–12-month timeline — under 6 months produces under-prepared candidates.

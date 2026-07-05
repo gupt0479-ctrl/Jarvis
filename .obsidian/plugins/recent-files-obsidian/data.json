@@ -1,6 +1,54 @@
 {
   "recentFiles": [
     {
+      "basename": "How to Pivot into an AI-ML Engineering Role in 2026 (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/How to Pivot into an AI-ML Engineering Role in 2026 (PDF).md"
+    },
+    {
+      "basename": "GitNexus Codebase Map (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/GitNexus Codebase Map (PDF).md"
+    },
+    {
+      "basename": "Generative AI Mastermind Pre-Reads (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Generative AI Mastermind Pre-Reads (PDF).md"
+    },
+    {
+      "basename": "Free Claude Code Skill Libraries (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Free Claude Code Skill Libraries (PDF).md"
+    },
+    {
+      "basename": "Find Startup Ideas with Reddit & AI (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Find Startup Ideas with Reddit & AI (PDF).md"
+    },
+    {
+      "basename": "DeepThinksFinance AI Portfolio Optimizer (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/DeepThinksFinance AI Portfolio Optimizer (PDF).md"
+    },
+    {
+      "basename": "DeepThinksFinance Master Quant Prompt Guide v2 (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/DeepThinksFinance Master Quant Prompt Guide v2 (PDF).md"
+    },
+    {
+      "basename": "CodeRabbit CLI Code Review (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/CodeRabbit CLI Code Review (PDF).md"
+    },
+    {
+      "basename": "Clone — Distill a 70B into a 3B (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Clone — Distill a 70B into a 3B (PDF).md"
+    },
+    {
+      "basename": "Claude Code Status Bar (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Claude Code Status Bar (PDF).md"
+    },
+    {
+      "basename": "BASWE 15 AI Engineering Projects That Land Jobs (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/BASWE 15 AI Engineering Projects That Land Jobs (PDF).md"
+    },
+    {
+      "basename": "AI Prediction Market Trading Bot (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/AI Prediction Market Trading Bot (PDF).md"
+    },
+    {
       "basename": "AI Mastermind Workbook Links (PDF)",
       "path": "60_Claude/10_Source_Summaries/PDF Ingestion/AI Mastermind Workbook Links (PDF).md"
     },
@@ -149,56 +197,8 @@
       "path": "60_Claude/10_Source_Summaries/PDF Ingestion/MIT Quant Bible (PDF).md"
     },
     {
-      "basename": "DeepThinksFinance Master Quant Prompt Guide v2 (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/DeepThinksFinance Master Quant Prompt Guide v2 (PDF).md"
-    },
-    {
-      "basename": "DeepThinksFinance AI Portfolio Optimizer (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/DeepThinksFinance AI Portfolio Optimizer (PDF).md"
-    },
-    {
-      "basename": "BASWE 15 AI Engineering Projects That Land Jobs (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/BASWE 15 AI Engineering Projects That Land Jobs (PDF).md"
-    },
-    {
-      "basename": "AI Prediction Market Trading Bot (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/AI Prediction Market Trading Bot (PDF).md"
-    },
-    {
       "basename": "AGENTS",
       "path": "AGENTS.md"
-    },
-    {
-      "basename": "Claude Board",
-      "path": "60_Claude/Claude Board.md"
-    },
-    {
-      "basename": "Cursor Project Brief — Vault OS Upgrade",
-      "path": "60_Claude/07_AI_Information/AI Conversation - Summaries/Cursor Project Brief — Vault OS Upgrade.md"
-    },
-    {
-      "basename": "2026-06",
-      "path": "10_Areas/Life/Enumerate/Monthly/2026-06.md"
-    },
-    {
-      "basename": "__init__.py_2",
-      "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/__init__.py_2.md"
-    },
-    {
-      "basename": "_create_provider_instance()",
-      "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/_create_provider_instance().md"
-    },
-    {
-      "basename": "_detect_payload_format()",
-      "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/_detect_payload_format().md"
-    },
-    {
-      "basename": "_make_record()_1",
-      "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/_make_record()_1.md"
-    },
-    {
-      "basename": "_parse_adjustment_policy()",
-      "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/_parse_adjustment_policy().md"
     }
   ],
   "omittedPaths": [],

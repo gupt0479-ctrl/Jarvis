@@ -53,11 +53,12 @@ Implementation: seeded RNG (`default_rng(seed=42)`), draw `(10000, n_assets)` un
 ==Monte Carlo gives the visual; scipy's SLSQP gives the mathematically exact Max-Sharpe and Min-Vol weights.==
 `optimize_max_sharpe`: minimize negative Sharpe, equality constraint $\sum w = 1$, **bounds 1%–40% per asset**, equal-weight start, `maxiter=1000, ftol=1e-9`. `optimize_min_volatility`: same constraints minimizing $\sqrt{w^\top \Sigma w}$.
 *Risk-profile constraint table:*
-| Profile | Max single position | Target | Typical Sharpe |
-| --- | --- | --- | --- |
-| Conservative | 25% | Min volatility | 0.4–0.8 |
-| Moderate | 35% | Max Sharpe | 0.8–1.2 |
-| Aggressive | 50% | Max return | 1.0–1.8 |
+
+| Profile      | Max single position | Target         | Typical Sharpe |
+| ------------ | ------------------- | -------------- | -------------- |
+| Conservative | 25%                 | Min volatility | 0.4–0.8        |
+| Moderate     | 35%                 | Max Sharpe     | 0.8–1.2        |
+| Aggressive   | 50%                 | Max return     | 1.0–1.8        |
 ### 07 FastAPI Routes & Endpoints
 ==The /api/optimize endpoint is the whole pipeline in four steps: fetch data → compute statistics → run Monte Carlo → package the two optimal allocations.==
 `make_allocation(idx)` returns weights (rounded 4dp), dollar allocation per ticker (weight × investment amount), annual return %, annual vol %, Sharpe (3dp). Response also carries all 10,000 simulation points (returns/vols/sharpes arrays for the chart) and per-ticker individual stats. Errors surface as HTTP 500 with detail.
