@@ -1,12 +1,44 @@
 {
   "recentFiles": [
     {
-      "basename": "00_Dashboard",
-      "path": "00_Dashboard.md"
+      "basename": "AI Mastermind Workbook Links (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/AI Mastermind Workbook Links (PDF).md"
+    },
+    {
+      "basename": "AI Generalist Roadmap — Outskill (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/AI Generalist Roadmap — Outskill (PDF).md"
+    },
+    {
+      "basename": "20 Free AI Certifications (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/20 Free AI Certifications (PDF).md"
+    },
+    {
+      "basename": "5 Best Claude Code MCPs (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/5 Best Claude Code MCPs (PDF).md"
+    },
+    {
+      "basename": "Video Ingestion Implementation",
+      "path": "60_Claude/20_Distilled_Notes/Video Ingestion Implementation.md"
+    },
+    {
+      "basename": "GitHub Ingestion Implementation",
+      "path": "60_Claude/20_Distilled_Notes/GitHub Ingestion Implementation.md"
+    },
+    {
+      "basename": "Web Ingestion Implementation",
+      "path": "60_Claude/20_Distilled_Notes/Web Ingestion Implementation.md"
+    },
+    {
+      "basename": "PDF's Ingestion Implementation",
+      "path": "60_Claude/20_Distilled_Notes/PDF's Ingestion Implementation.md"
     },
     {
       "basename": "user_setup",
       "path": "60_Claude/05_Clippings/AI Conversations/Windows/Claude Code/_raw_jsonl/C--Users-Anant-Gupta/memory/user_setup.md"
+    },
+    {
+      "basename": "00_Dashboard",
+      "path": "00_Dashboard.md"
     },
     {
       "basename": "log",
@@ -167,38 +199,6 @@
     {
       "basename": "_parse_adjustment_policy()",
       "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/_parse_adjustment_policy().md"
-    },
-    {
-      "basename": "_valid_record_kwargs()",
-      "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/_valid_record_kwargs().md"
-    },
-    {
-      "basename": "Adjustment Policy Mapping Tests",
-      "path": "60_Claude/40_Project_Briefs/TradingView/Communities/Adjustment Policy Mapping Tests.md"
-    },
-    {
-      "basename": "Adjusted Close Positivity Rule",
-      "path": "60_Claude/40_Project_Briefs/TradingView/Communities/Adjusted Close Positivity Rule.md"
-    },
-    {
-      "basename": "2026 Research Baseline (FinGPTFinRobotFINRASEC)",
-      "path": "60_Claude/40_Project_Briefs/TradingView/Communities/2026 Research Baseline (FinGPTFinRobotFINRASEC).md"
-    },
-    {
-      "basename": "00 Overview",
-      "path": "60_Claude/40_Project_Briefs/TradingView/00 Overview.md"
-    },
-    {
-      "basename": "GRAPH_REPORT",
-      "path": "60_Claude/40_Project_Briefs/TradingView/GRAPH_REPORT.md"
-    },
-    {
-      "basename": "Vault-Audit-2026-05-29",
-      "path": "60_Claude/40_Project_Briefs/Vault-Audit-2026-05-29.md"
-    },
-    {
-      "basename": "Token Efficiency Notes",
-      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/Token Efficiency Notes.md"
     }
   ],
   "omittedPaths": [],
