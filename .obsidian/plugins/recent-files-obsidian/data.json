@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "00_Dashboard",
+      "path": "00_Dashboard.md"
+    },
+    {
+      "basename": "user_setup",
+      "path": "60_Claude/05_Clippings/AI Conversations/Windows/Claude Code/_raw_jsonl/C--Users-Anant-Gupta/memory/user_setup.md"
+    },
+    {
       "basename": "log",
       "path": "60_Claude/07_AI_Information/Session Logs/log.md"
     },
@@ -63,10 +71,6 @@
     {
       "basename": "2026-07-05",
       "path": "10_Areas/Life/Enumerate/Daily/2026-07-05.md"
-    },
-    {
-      "basename": "00_Dashboard",
-      "path": "00_Dashboard.md"
     },
     {
       "basename": "Claude OS Map",
@@ -195,10 +199,6 @@
     {
       "basename": "Token Efficiency Notes",
       "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/Token Efficiency Notes.md"
-    },
-    {
-      "basename": "Repos",
-      "path": "40_Resources/CS/Repos.md"
     }
   ],
   "omittedPaths": [],

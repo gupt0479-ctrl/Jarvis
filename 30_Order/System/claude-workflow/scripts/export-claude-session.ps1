@@ -2,8 +2,13 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$TranscriptPath,
 
-    [Parameter(Mandatory = $true)]
-    [string]$OutputPath,
+    # Exactly one of OutputPath / OutputDir must be given. OutputPath is exact
+    # (used by attended callers, e.g. the skill, that already picked a title).
+    # OutputDir is for unattended callers (the SessionEnd hook) - the script
+    # derives "MM-DD Claude Code - {slug}.md" itself from the first human
+    # message and handles name collisions.
+    [string]$OutputPath = "",
+    [string]$OutputDir = "",
 
     [string]$SessionId = "",
     [string]$Project = "",
@@ -11,7 +16,20 @@ param(
     [string]$Title = ""
 )
 
+if (-not $OutputPath -and -not $OutputDir) {
+    Write-Error "Pass either -OutputPath or -OutputDir."
+    exit 1
+}
+
 $ErrorActionPreference = "Stop"
+
+# Cowork transcripts nest under paths well past Windows' 260-char MAX_PATH
+# (observed up to ~440 chars) - Test-Path/Get-Content silently fail to find
+# them without the \\?\ long-path prefix. Apply it whenever needed so this
+# script works regardless of whether the caller remembered to.
+if ($TranscriptPath.Length -ge 250 -and -not $TranscriptPath.StartsWith('\\?\')) {
+    $TranscriptPath = "\\?\$TranscriptPath"
+}
 
 if (-not (Test-Path -LiteralPath $TranscriptPath)) {
     Write-Error "Transcript not found: $TranscriptPath"
@@ -116,7 +134,43 @@ $created = $createdDate.ToString("yyyy-MM-dd")
 $startedAt = if ($firstTimestamp) { ([datetime]$firstTimestamp).ToString("yyyy-MM-ddTHH:mm:ss") } else { "" }
 $endedAt = if ($lastTimestamp) { ([datetime]$lastTimestamp).ToString("yyyy-MM-ddTHH:mm:ss") } else { "" }
 $projectLabel = if ($Project) { $Project } else { "Unknown" }
-$titleLabel = if ($Title) { $Title } else { "Claude Code session $created" }
+
+function New-SlugFromText {
+    param([string]$Text)
+    if (-not $Text) { return "" }
+    # First line/sentence only, strip filename-illegal chars, collapse whitespace, cap length.
+    $firstLine = ($Text -split "`n")[0]
+    $firstLine = ($firstLine -split '(?<=[.!?])\s')[0]
+    $clean = $firstLine -replace '[<>:"/\\|?*`]', ''
+    $clean = $clean -replace '\s+', ' '
+    $clean = $clean.Trim()
+    if ($clean.Length -gt 60) {
+        $truncated = $clean.Substring(0, 60)
+        $lastSpace = $truncated.LastIndexOf(' ')
+        if ($lastSpace -gt 20) { $truncated = $truncated.Substring(0, $lastSpace) }
+        $clean = $truncated.Trim()
+    }
+    return $clean
+}
+
+$firstUserTurn = $turns | Where-Object { $_.role -eq 'user' } | Select-Object -First 1
+$autoSlug = if ($firstUserTurn) { New-SlugFromText $firstUserTurn.text } else { "" }
+if (-not $autoSlug) { $autoSlug = "Session $($createdDate.ToString('HHmmss'))" }
+
+$titleLabel = if ($Title) { $Title } else { $autoSlug }
+
+if (-not $OutputPath) {
+    $mmdd = $createdDate.ToString("MM-dd")
+    $appLabel = if ($Project -eq "Cowork") { "Cowork" } else { "Claude Code" }
+    $baseName = "$mmdd $appLabel - $autoSlug"
+    $candidate = Join-Path $OutputDir "$baseName.md"
+    $n = 2
+    while (Test-Path -LiteralPath $candidate) {
+        $candidate = Join-Path $OutputDir "$baseName-$n.md"
+        $n++
+    }
+    $OutputPath = $candidate
+}
 
 # Schema per 60_Claude/05_Clippings/AI Conversations/README.md - do not
 # rename these keys without updating that README too.
@@ -168,3 +222,4 @@ if (-not (Test-Path -LiteralPath $outDir)) {
 
 Set-Content -LiteralPath $OutputPath -Value $sb.ToString() -Encoding UTF8
 Write-Output "Wrote $OutputPath ($($turns.Count) turns)"
+Write-Output "WROTE_PATH:$OutputPath"

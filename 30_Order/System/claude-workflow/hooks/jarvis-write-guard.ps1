@@ -57,7 +57,8 @@ $allowExact = @(
     "00_dashboard.md",
     "60_claude\07_ai_information\session logs\log.md",
     "60_claude\07_ai_information\claude os.md",
-    "60_claude\05_clippings\clippings board.md"
+    "60_claude\05_clippings\clippings board.md",
+    "60_claude\05_clippings\ai conversations\readme.md"
 )
 foreach ($prefix in $allowPrefixes) {
     if ($relLower.StartsWith($prefix)) { exit 0 }
@@ -85,7 +86,7 @@ foreach ($toolDir in @(".cursor\", ".kiro\", ".git\")) {
 
 # Root-level path (no backslash in the relative path) => sits directly at vault root.
 if ($rel -notmatch '\\') {
-    $allowedRoot = @("00_dashboard.md", "agents.md", "claude.md", "human_writing.md")
+    $allowedRoot = @("00_dashboard.md", "agents.md", "claude.md", "human_writing.md", ".gitignore")
     if ($allowedRoot -notcontains $relLower) {
         Deny "Write Contract golden rule #1: never create files at the vault root. If unsure where this belongs, write it to 60_Claude/00_Inbox/. See AGENTS.md."
     }

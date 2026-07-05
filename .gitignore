@@ -55,6 +55,10 @@ mcp.env
 20_Progress/AI/Cursor/.cursor_windows/
 20_Progress/AI/Kiro/.kiro_wsl/
 20_Progress/AI/Kiro/.kiro_windows/
+# Raw JSONL mirror junctions under AI Conversations — unredacted transcripts, never commit
+60_Claude/05_Clippings/AI Conversations/**/_raw_jsonl/
+# Cursor Tier 0 on-demand raw composer dumps — unredacted, never commit
+60_Claude/05_Clippings/AI Conversations/**/_raw_composer/
 
 # Excalidraw MCP local install (npm package, regenerable)
 30_Order/System/excalidraw-mcp/node_modules/

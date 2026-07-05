@@ -4,6 +4,14 @@ Append-only record of Claude sessions. Format: `## [YYYY-MM-DD] action | Title`
 
 ---
 
+## [2026-07-05] import | First Cursor conversation archive production run (4 composers)
+- Raw notes: `60_Claude/05_Clippings/AI Conversations/Windows/Cursor/` (3) + `WSL/Cursor/` (1)
+- Summaries: `60_Claude/07_AI_Information/AI Conversation - Summaries/2026-07-05-cursor-*` and `2026-05-28-cursor-*`, `2026-06-04-cursor-*`
+- Index: `30_Order/System/cursor-workflow/exported-cursor-composers.json` (4 IDs)
+- WSL skill mirrored to `~/.cursor/skills/export-cursor-session/SKILL.md`; WSL SQLite read hits disk I/O while Cursor holds lock — documented in skill
+- Redaction skim: clean; workspaceId token redacted in WSL export; no hand-redactions needed
+- Promotion: none yet
+
 ## [2026-07-04] rebuild | Jarvis OS Dashboard canvas — interactive, 1600px, no card scroll
 - Files edited: `10_Areas/AI/Jarvis OS Dashboard.canvas` (full replace)
 - What now works: canvas widened to 1600px so all 10 panels fit at 100% zoom without internal scrollbars; TODAY'S FOCUS and TODAY'S NUMBERS panels now use Meta Bind `INPUT[]` fields bound to `00_Dashboard`'s frontmatter (`INPUT[text:00_Dashboard#today_focus]` etc.) so the user can type directly into the canvas instead of opening `00_Dashboard.md`; TODAY'S PRIORITIES keeps the existing Dataview `TASK` query (interactive checkboxes, unverified — see gap below); DAILY DRIVERS keeps the progress-bar DataviewJS plus a static (non-interactive) 5-habit checklist, since habits are tracked as a `habits_done` frontmatter array, not as real task list items in the daily note — confirmed by reading `10_Areas/Life/Enumerate/Daily/2026-07-01.md`.
