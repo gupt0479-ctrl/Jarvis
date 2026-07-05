@@ -1,5 +1,9 @@
 ---
 description: Distill the current or specified note into a durable evergreen note.
+setup_status: current
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Jarvis/Setup]]"
 ---
 The target note or topic (if specified): $ARGUMENTS
 

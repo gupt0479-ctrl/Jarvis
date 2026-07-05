@@ -1,3 +1,10 @@
+---
+setup_status: current
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Jarvis/Setup]]"
+---
+
 # ingesting-clipping — Examples
 
 Gold-standard frontmatter skeletons, one per source type. These show what a *good* finished note's header looks like — not how to produce it (that's SKILL.md + reference.md). `source_note` is the filename with extension, no path. `track` sets the flashcard deck (`track: trading` → `#cards/trading`). Verify every `notes:` wikilink exists before saving.

@@ -1,0 +1,269 @@
+---
+description: Cosmic portfolio design system and Three.js/R3F rules. Active for all UI component, section, and animation work.
+globs:
+  - "src/components/**/*.tsx"
+  - "src/app/globals.css"
+  - "src/app/layout.tsx"
+  - "src/app/(portfolio)/**"
+alwaysApply: false
+---
+
+# Cosmic Portfolio — Design System & R3F Rules
+
+**Identity:** floating command center in space. Dark translucent cards. Violet/cyan accents. Everything floats. Never flat, never white, never raw THREE.js outside R3F.
+
+---
+
+## Color Tokens (never deviate)
+
+| Name | Value |
+|------|-------|
+| Space black | `#090A12` / `rgba(9, 10, 18, 1)` |
+| Card low | `rgba(9, 10, 18, 0.72)` |
+| Card high | `rgba(14, 16, 28, 0.82)` |
+| Card border | `rgba(167, 139, 250, 0.22)` |
+| Card border hover | `rgba(167, 139, 250, 0.45)` |
+| Violet accent | `#7C3AED` / `#A78BFA` |
+| Cyan accent | `#06B6D4` / `#67E8F9` |
+| Green signal | `#10B981` |
+| Amber | `#F59E0B` |
+| Red signal | `#EF4444` |
+
+---
+
+## CSS Design System — `src/app/globals.css`
+
+### `.cosmic-card` (the base card)
+```css
+.cosmic-card {
+  background: rgba(9, 10, 18, 0.78);
+  border: 1px solid rgba(167, 139, 250, 0.22);
+  box-shadow:
+    0 0 0 1px rgba(167, 139, 250, 0.08) inset,
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    0 0 24px rgba(124, 58, 237, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  transform: translateY(-2px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.cosmic-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(167, 139, 250, 0.45);
+  box-shadow:
+    0 0 0 1px rgba(167, 139, 250, 0.15) inset,
+    0 16px 48px rgba(0, 0, 0, 0.7),
+    0 0 40px rgba(124, 58, 237, 0.12);
+}
+```
+
+### `.float-btn` (every button)
+```css
+.float-btn {
+  transform: translateY(-1px);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(167, 139, 250, 0.2);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.float-btn:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(167, 139, 250, 0.45),
+    0 0 16px rgba(124, 58, 237, 0.15);
+}
+.float-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(167, 139, 250, 0.15);
+}
+```
+
+### `.section-kicker` (section labels)
+```css
+.section-kicker {
+  font-family: ui-monospace, monospace;
+  font-size: 0.75rem;
+  color: rgba(103, 232, 249, 0.65);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+```
+
+Section kicker text by section:
+
+| Section | Kicker |
+|---------|--------|
+| Hero | `// hi, I'm` |
+| About | `// scan report` |
+| Experience | `// trajectory` |
+| Projects | `// build log` |
+| Skills | `// capability matrix` |
+| Education | `// origins` |
+| Certifications | `// credentials` |
+| Blog / Contact | `// uplink` |
+
+---
+
+## CometCard — `src/components/ui/comet-card.tsx`
+
+```tsx
+<CometCard variant="default">  // max tilt 15°, opacity 0.78 — standard
+<CometCard variant="dark">     // max tilt 8°, opacity 0.88 — large content cards
+<CometCard variant="subtle">   // minimal border, reduced glow
+```
+
+- Always respect `prefers-reduced-motion` → disable tilt
+- Always `cn()` from `src/lib/utils.ts` for conditional classes
+
+---
+
+## Framer Motion Patterns
+
+```tsx
+// Section entry — apply to every section wrapper
+<motion.section
+  initial={{ opacity: 0, y: 24 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, margin: '-80px' }}
+  transition={{ duration: 0.5, ease: 'easeOut' }}
+>
+
+// Stagger container + item
+const container = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }
+const item = { hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }
+
+// Floating button
+<motion.button
+  className="float-btn"
+  whileHover={{ y: -2 }}
+  whileTap={{ y: 1 }}
+  transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+>
+```
+
+---
+
+## React Three Fiber (R3F) — `src/components/three/`
+
+### Non-negotiable rules
+
+1. **R3F only.** No `new THREE.WebGLRenderer()`, `new THREE.Scene()` outside Canvas.
+2. **Dynamic import — always:**
+   ```tsx
+   const ObsidianBackground = dynamic(
+     () => import('@/components/three/ObsidianBackground'),
+     { ssr: false }
+   )
+   ```
+3. **Never create objects inside `useFrame` — mutate refs only.**
+4. **Performance guards at component top:**
+   ```tsx
+   const prefersReduced = typeof window !== 'undefined'
+     && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+   const count = isMobile ? 800 : prefersReduced ? 0 : 2000
+   ```
+5. **Canvas settings:** `dpr={[1, 2]} performance={{ min: 0.5 }}`
+6. **ObsidianBackground canvas:** `position: fixed`, `z-index: 0`, `pointer-events: none`
+7. **`useMemo` for all geometries and position arrays.**
+
+### Float pattern
+```tsx
+import { Float } from '@react-three/drei'
+<Float speed={1.2} rotationIntensity={0.3} floatIntensity={0.5} floatingRange={[-0.05, 0.05]}>
+  {/* mesh */}
+</Float>
+```
+
+Context tuning:
+- Hero sphere: `speed={0.6}`, `floatIntensity={0.3}`
+- Project cards: `speed={1.2}`, `floatIntensity={0.5}`
+- Education blobs: `speed={0.8}`, `floatIntensity={0.4}`
+
+### Particle sphere (standard recipe)
+```tsx
+const positions = useMemo(() => {
+  const pos = new Float32Array(count * 3)
+  for (let i = 0; i < count; i++) {
+    const theta = Math.random() * Math.PI * 2
+    const phi = Math.acos(2 * Math.random() - 1)
+    const r = radius + (Math.random() - 0.5) * 0.3
+    pos[i * 3]     = r * Math.sin(phi) * Math.cos(theta)
+    pos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta)
+    pos[i * 3 + 2] = r * Math.cos(phi)
+  }
+  return pos
+}, [count, radius])
+```
+
+### Elastic slider tether
+```tsx
+import { useSpring, animated } from '@react-spring/web'
+const [springs, api] = useSpring(() => ({
+  x: 0,
+  config: { tension: 180, friction: 24, mass: 1 }
+}))
+// Trigger: api.start({ x: direction * cardWidth * -1 })
+// Wrap:    <animated.div style={{ x: springs.x }}>
+```
+
+### Glowing timeline rail
+```css
+.timeline-rail {
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, rgba(167, 139, 250, 0.6) 10%, rgba(103, 232, 249, 0.4) 50%, rgba(167, 139, 250, 0.6) 90%, transparent);
+  box-shadow: 0 0 8px rgba(167, 139, 250, 0.3);
+}
+.timeline-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: #A78BFA;
+  box-shadow: 0 0 12px rgba(167, 139, 250, 0.6), 0 0 4px rgba(167, 139, 250, 0.9);
+}
+```
+
+### Organic education blob
+```css
+.edu-blob {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation: morph 6s ease-in-out infinite;
+  background: rgba(30, 27, 75, 0.7);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.15);
+}
+@keyframes morph {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25%       { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  50%       { border-radius: 50% 60% 30% 60% / 30% 40% 70% 60%; }
+  75%       { border-radius: 40% 60% 50% 30% / 60% 30% 60% 40%; }
+}
+/* Middle school: animation-duration: 4s | College: animation-duration: 10s */
+```
+
+---
+
+## File Map
+
+| Component | Path |
+|-----------|------|
+| Space background | `src/components/three/ObsidianBackground.tsx` |
+| 3D project carousel | `src/components/three/ProjectsSlider.tsx` |
+| 3D hover card | `src/components/ui/comet-card.tsx` |
+| Design system CSS | `src/app/globals.css` |
+| Portfolio Lab | `src/components/lab/PortfolioLab.tsx` |
+| Sections | `src/components/sections/` |
+| Class merge util | `src/lib/utils.ts` → `cn()` |
+
+---
+
+## Hard Constraints
+
+- No `tailwind.config.ts` — Tailwind v4 is CSS-first
+- No solid white / opaque cards — translucent always
+- No fully transparent cards — backdrop-filter always present
+- No raw `THREE.Scene` / `THREE.WebGLRenderer` outside R3F
+- No `new THREE.*` objects inside `useFrame`
+- No chatbot / AI Twin / ChatKit UI in any component
+- Always `-webkit-backdrop-filter` paired with `backdrop-filter`
+- Always `cn()` for conditional class merging

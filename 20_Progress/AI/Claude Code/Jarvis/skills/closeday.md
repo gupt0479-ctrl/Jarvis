@@ -1,6 +1,10 @@
 ---
 name: closing-day
 description: Verifies today's plan was completed and writes the scorecard into the same daily note.
+setup_status: stale
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Jarvis/Setup]]"
 ---
 # closeday
 

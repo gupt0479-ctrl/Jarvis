@@ -1,5 +1,9 @@
 ---
-description: Ingest a clipping file from 60_Claude/05_Clippings/ into the vault. Usage: /ingest-clipping "filename.md"
+description: "Ingest a clipping file from 60_Claude/05_Clippings/ into the vault. Usage: /ingest-clipping \"filename.md\""
+setup_status: current
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Jarvis/Setup]]"
 ---
 The target clipping is: $ARGUMENTS
 

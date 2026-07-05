@@ -1,3 +1,10 @@
+---
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/OpsPilot/Setup]]"
+---
+
 # Decision Log
 
 Append short entries here when the project learns something important. Keep it factual and concrete.

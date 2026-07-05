@@ -1,12 +1,76 @@
 {
   "recentFiles": [
     {
-      "basename": "Claude OS Dashboard",
-      "path": "20_Progress/AI/Claude OS Dashboard.md"
+      "basename": "Setup",
+      "path": "20_Progress/AI/Claude Code/Portfolio/Setup.md"
+    },
+    {
+      "basename": "Setup",
+      "path": "20_Progress/AI/Claude Code/The Plan/Setup.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "20_Progress/AI/Claude Code/MOC.md"
+    },
+    {
+      "basename": "Setup",
+      "path": "20_Progress/AI/Claude Code/OpsPilot/Setup.md"
+    },
+    {
+      "basename": "Setup",
+      "path": "20_Progress/AI/Claude Code/Jarvis/Setup.md"
+    },
+    {
+      "basename": "Setup",
+      "path": "20_Progress/AI/Claude Code/Github ReadMe/Setup.md"
+    },
+    {
+      "basename": "Setup",
+      "path": "20_Progress/AI/Claude Code/CausalOps/Setup.md"
+    },
+    {
+      "basename": "2026-07-05",
+      "path": "10_Areas/Life/Enumerate/Daily/2026-07-05.md"
     },
     {
       "basename": "00_Dashboard",
       "path": "00_Dashboard.md"
+    },
+    {
+      "basename": "Claude OS Map",
+      "path": "10_Areas/Excalidraw/Claude OS Map.excalidraw"
+    },
+    {
+      "basename": "Life OS",
+      "path": "10_Areas/Life/Life OS.md"
+    },
+    {
+      "basename": "Claude OS Dashboard",
+      "path": "20_Progress/AI/Claude OS Dashboard.canvas"
+    },
+    {
+      "basename": "Claude OS Dashboard",
+      "path": "20_Progress/AI/Claude OS Dashboard.md"
+    },
+    {
+      "basename": "Jarvis OS Dashboard",
+      "path": "10_Areas/Jarvis OS Dashboard.canvas"
+    },
+    {
+      "basename": "Claude Code",
+      "path": "10_Areas/AI/Claude Code.md"
+    },
+    {
+      "basename": "Codex",
+      "path": "10_Areas/AI/Codex.md"
+    },
+    {
+      "basename": "Cursor",
+      "path": "10_Areas/AI/Cursor.md"
+    },
+    {
+      "basename": "Kiro",
+      "path": "10_Areas/AI/Kiro.md"
     },
     {
       "basename": "README",
@@ -15,18 +79,6 @@
     {
       "basename": "log",
       "path": "60_Claude/07_AI_Information/Session Logs/log.md"
-    },
-    {
-      "basename": "Cursor",
-      "path": "10_Areas/AI/Cursor.md"
-    },
-    {
-      "basename": "Codex",
-      "path": "10_Areas/AI/Codex.md"
-    },
-    {
-      "basename": "Claude Code",
-      "path": "10_Areas/AI/Claude Code.md"
     },
     {
       "basename": "Quant Foundations (PDF)",
@@ -51,18 +103,6 @@
     {
       "basename": "AI Prediction Market Trading Bot (PDF)",
       "path": "60_Claude/10_Source_Summaries/PDF Ingestion/AI Prediction Market Trading Bot (PDF).md"
-    },
-    {
-      "basename": "Life OS",
-      "path": "10_Areas/Life/Life OS.md"
-    },
-    {
-      "basename": "Claude OS Map",
-      "path": "10_Areas/Excalidraw/Claude OS Map.md"
-    },
-    {
-      "basename": "Kiro",
-      "path": "10_Areas/AI/Kiro.md"
     },
     {
       "basename": "AGENTS",
@@ -155,50 +195,6 @@
     {
       "basename": "Second Brain",
       "path": "40_Resources/Obsidian/Second Brain.md"
-    },
-    {
-      "basename": "Memory Layer Implementation Plan",
-      "path": "60_Claude/40_Project_Briefs/CausalOps/Memory Layer Implementation Plan.md"
-    },
-    {
-      "basename": "Big Assignment - 2",
-      "path": "20_Progress/Degree/HIST 1103/Assignments/Big Assignment - 2.md"
-    },
-    {
-      "basename": "Memory Layer",
-      "path": "60_Claude/40_Project_Briefs/CausalOps/Memory Layer.md"
-    },
-    {
-      "basename": "_Index",
-      "path": "60_Claude/40_Project_Briefs/CausalOps/_Index.md"
-    },
-    {
-      "basename": "2026-06-16",
-      "path": "10_Areas/Life/Enumerate/Daily/2026-06-16.md"
-    },
-    {
-      "basename": "2026-07-01",
-      "path": "10_Areas/Life/Enumerate/Daily/2026-07-01.md"
-    },
-    {
-      "basename": "2026",
-      "path": "10_Areas/Life/Enumerate/Yearly/2026.md"
-    },
-    {
-      "basename": "2026-W27",
-      "path": "10_Areas/Life/Enumerate/Weekly/2026-W27.md"
-    },
-    {
-      "basename": "AI Agents for Sales & GTM Teams",
-      "path": "60_Claude/05_Clippings/Web/AI Agents for Sales & GTM Teams.md"
-    },
-    {
-      "basename": "Workbooks_AI Mastermind - Links",
-      "path": "60_Claude/05_Clippings/PDFs/Workbooks_AI Mastermind - Links.pdf"
-    },
-    {
-      "basename": "Quant Foundations",
-      "path": "60_Claude/05_Clippings/PDFs/Quant Foundations.pdf"
     }
   ],
   "omittedPaths": [],

@@ -1,3 +1,10 @@
+---
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/OpsPilot/Setup]]"
+---
+
 # Integrations And Webhooks Playbook
 
 Use for connector state, webhook routes, MCP ingress, or external payload normalization.

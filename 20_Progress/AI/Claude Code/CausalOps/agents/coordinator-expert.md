@@ -10,6 +10,10 @@ tools:
   - Read
   - Bash
   - Grep
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/CausalOps/Setup]]"
 ---
 
 You are a specialist in the HiveMind Phase 2b coordinator at

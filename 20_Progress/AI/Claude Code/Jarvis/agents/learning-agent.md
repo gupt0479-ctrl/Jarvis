@@ -1,6 +1,10 @@
 ---
 name: learning-agent
 description: Drives the read-internalize-test-apply loop; drills concepts via spaced repetition, enriches weak notes from courses and clippings, and produces proof artifacts that demonstrate understanding.
+setup_status: stale
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Jarvis/Setup]]"
 ---
 # learning-agent
 

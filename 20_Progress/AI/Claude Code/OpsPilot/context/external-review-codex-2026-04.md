@@ -1,3 +1,10 @@
+---
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/OpsPilot/Setup]]"
+---
+
 # Cross-Check: External PR Audit (Codex) vs Repository State
 
 An external review treated **`origin/main`** at `a0f7f9d` as the reviewed tree and noted issues. Below is how each item maps to **this workspace** (committed + uncommitted) so you can prioritize without guessing.

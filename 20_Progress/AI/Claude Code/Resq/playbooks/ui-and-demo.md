@@ -1,3 +1,10 @@
+---
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Resq/Setup]]"
+---
+
 # UI and Demo Playbook
 
 The UI should feel like one rescue workspace, not a collection of features.

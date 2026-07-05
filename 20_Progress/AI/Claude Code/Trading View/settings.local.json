@@ -1,0 +1,9 @@
+{
+  "enabledMcpjsonServers": [
+    "jarvis",
+    "the-plan",
+    "jarvis-fs",
+    "the-plan-fs",
+    "github"
+  ]
+}

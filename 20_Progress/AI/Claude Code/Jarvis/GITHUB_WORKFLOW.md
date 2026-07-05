@@ -1,3 +1,10 @@
+---
+setup_status: current
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Jarvis/Setup]]"
+---
+
 # Git & GitHub Workflow
 
 How this vault uses git. Read this before running any `git switch`, `git checkout`, or branch command in this folder.

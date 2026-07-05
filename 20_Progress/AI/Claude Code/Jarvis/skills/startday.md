@@ -1,6 +1,10 @@
 ---
 name: starting-day
 description: Fills today's periodic note with a concrete work plan pulled from the summer OS, session history, and habit board.
+setup_status: stale
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Jarvis/Setup]]"
 ---
 # startday
 

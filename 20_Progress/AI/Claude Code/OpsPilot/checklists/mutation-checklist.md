@@ -1,3 +1,10 @@
+---
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/OpsPilot/Setup]]"
+---
+
 # Mutation Checklist
 
 Run this after changing any route, service, webhook, or SQL path that mutates business state.

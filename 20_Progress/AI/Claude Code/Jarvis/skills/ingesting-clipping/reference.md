@@ -1,3 +1,10 @@
+---
+setup_status: current
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Jarvis/Setup]]"
+---
+
 # ingesting-clipping — Reference
 
 Deep detail loaded only when a source type needs it. SKILL.md is the entry point.

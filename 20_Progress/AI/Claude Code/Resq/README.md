@@ -1,3 +1,10 @@
+---
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Resq/Setup]]"
+---
+
 # Resq Canonical Agent Docs
 
 This folder is the **only canonical agent-facing source of truth** for the hackathon build.

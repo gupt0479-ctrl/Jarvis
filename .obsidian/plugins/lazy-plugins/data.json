@@ -80,6 +80,9 @@
       },
       "obsidian-meta-bind-plugin": {
         "startupType": "short"
+      },
+      "multi-column-markdown": {
+        "startupType": "short"
       }
     }
   }

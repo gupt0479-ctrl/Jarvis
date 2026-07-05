@@ -1,3 +1,10 @@
+---
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/OpsPilot/Setup]]"
+---
+
 # 6-Hour Status
 
 Updated: 2026-04-14

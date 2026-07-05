@@ -1,6 +1,10 @@
 ---
 name: connecting-notes
 description: Finds relationships between topics, projects, or notes; suggests backlinks and connections.
+setup_status: current
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Jarvis/Setup]]"
 ---
 # connect-notes
 

@@ -1,3 +1,10 @@
+---
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Resq/Setup]]"
+---
+
 # Collections Action Implementation Status
 
 ## Completed (Phases 1-4)

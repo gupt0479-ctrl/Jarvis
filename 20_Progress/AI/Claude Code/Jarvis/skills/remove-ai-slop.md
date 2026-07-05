@@ -1,6 +1,10 @@
 ---
 name: removing-ai-slop
 description: Rewrites notes so they stop sounding AI-generated while preserving facts, links, and the user's actual meaning.
+setup_status: current
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Jarvis/Setup]]"
 ---
 # remove-ai-slop
 

@@ -1,6 +1,10 @@
 ---
 name: ingesting-clipping
 description: Ingests any source — PDF, image, web link, or markdown clip — into a structured summary in 60_Claude/10_Source_Summaries/. Use for /ingest-clipping.
+setup_status: current
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Jarvis/Setup]]"
 ---
 # ingesting-clipping
 

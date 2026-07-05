@@ -1,0 +1,11 @@
+{
+  "name": "jarvis-excalidraw-mcp",
+  "private": true,
+  "description": "Local install of mcp-excalidraw-server, wired into Jarvis as a project MCP server.",
+  "scripts": {
+    "canvas": "node node_modules/mcp-excalidraw-server/dist/server.js"
+  },
+  "dependencies": {
+    "mcp-excalidraw-server": "^1.0.7"
+  }
+}

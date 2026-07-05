@@ -1,6 +1,10 @@
 ---
 name: running-ops
 description: Daily vault operations dispatcher — health checks, triage, capability audits, cadence management; orchestrates existing skills into coherent workflows.
+setup_status: current
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Jarvis/Setup]]"
 ---
 # ops
 

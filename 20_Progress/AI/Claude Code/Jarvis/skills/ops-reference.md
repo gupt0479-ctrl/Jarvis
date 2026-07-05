@@ -1,6 +1,10 @@
 ---
 name: ops-reference
 description: Detailed engine specifications for the /ops skill — Health Check Engine, Capability Audit, Triage Queue, Report Generator, Session Log, Tool Layer Awareness, Safety Constraints, and Cost Profiles.
+setup_status: current
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Jarvis/Setup]]"
 ---
 # ops-reference
 

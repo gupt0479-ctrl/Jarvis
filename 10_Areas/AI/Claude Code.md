@@ -73,9 +73,12 @@ The obsidian server needs the Local REST API plugin running (it is, `startupType
 - Windows home additionally carries `addy-agent-skills` and `claude-plugins-official` marketplaces plus ~30 firecrawl skills
 The failure mode here is width: three marketplaces installed, near-zero adopted into actual workflows. Installing a skill is capture; adopting it means a command you actually type in a real session. Evaluate before enabling more.
 ## Connections
-- Obsidian: Local REST API plugin + obsidian MCP; homepage plugin auto-opens [[00_Dashboard]] on vault start
+- Obsidian: Local REST API plugin + obsidian MCP; homepage plugin auto-opens [[10_Areas/AI/Jarvis OS Dashboard|Jarvis OS Dashboard]] canvas on vault start
 - GitHub: `gh` CLI 2.89 + GitHub MCP tools; used live for repo ingestion (92 starred repos ingested via `gh api`, see 2026-06-28 log)
 - Python: 3.13.5 with `pypdf` for PDF extraction; `30_Order/System/jarvis-cli` (8 read-only health commands) and `jarvis-memory` (SQLite registry)
+- Excalidraw: `excalidraw` MCP (`30_Order/System/excalidraw-mcp/`) drives the live diagram canvas; this setup is mapped below
+
+![[Claude OS Map.excalidraw]]
 ## Gaps
 1. Nothing runs on a schedule. Hooks fire on events, but the morning context assembly and evening close (North Star Move 4) still require a human to type `/startday` and `/closeday`. This is the single biggest gap between "PKM" and "OS".
 2. jarvis-memory is a skeleton — keyword search over a registry, no `chunks` populated, no semantic search. The whole token-economy design (North Star Part 6) waits on this.

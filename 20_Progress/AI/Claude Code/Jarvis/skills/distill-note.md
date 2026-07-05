@@ -1,6 +1,10 @@
 ---
 name: distilling-note
 description: Converts messy notes, conversation outputs, or raw captures into clean Obsidian-ready evergreen notes.
+setup_status: current
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Jarvis/Setup]]"
 ---
 # distill-note
 

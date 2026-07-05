@@ -1,6 +1,10 @@
 ---
 name: getting-context
 description: Summarizes current state from relevant vault areas — projects, inbox, progress notes, and recent activity.
+setup_status: current
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Jarvis/Setup]]"
 ---
 # context
 

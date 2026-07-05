@@ -1,3 +1,10 @@
+---
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Resq/Setup]]"
+---
+
 # TinyFish and Agent Playbook
 
 This is the canonical guide for TinyFish-backed behavior in Resq.

@@ -1,6 +1,10 @@
 ---
 name: tag-month
 description: Creates a YYYY-MM checkpoint tag for any completed month that doesn't already have one, pointing at that month's last real commit. Manual-only — never self-triggers.
+setup_status: current
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Jarvis/Setup]]"
 ---
 # tag-month
 

@@ -1,3 +1,10 @@
+---
+setup_status: current
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Jarvis/Setup]]"
+---
+
 # .claude — Jarvis tooling layer
 
 This folder makes Claude Code the source of truth for operating the Jarvis vault. It wires the rules (the Write Contract and workflows), the tools (MCP servers), the automation (hooks), and the helpers (skills, agents) into one coherent system. The design goal is additive: every new MCP server, skill, agent, hook, or Python tool slots into a named place with a documented pattern, so adding more never forces a restructure.

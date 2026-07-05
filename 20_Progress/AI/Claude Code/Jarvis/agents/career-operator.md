@@ -1,6 +1,10 @@
 ---
 name: career-operator
 description: Handles internship, career, portfolio, and mentorship related notes and action planning.
+setup_status: stale
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Jarvis/Setup]]"
 ---
 # career-operator
 

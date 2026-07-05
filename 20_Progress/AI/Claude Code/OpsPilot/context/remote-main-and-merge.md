@@ -1,3 +1,10 @@
+---
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/OpsPilot/Setup]]"
+---
+
 # Remote `main` vs This Checkout
 
 Use this before pulling, rebasing, or opening a PR so you know what will collide and what is safe to merge.

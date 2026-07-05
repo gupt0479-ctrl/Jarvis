@@ -22,6 +22,7 @@ CS student at UMN, summer 2026. Physical timeline: **Dubai (18 May → 19 Jun) �
 The honest self-diagnosis, straight from the phase map: infrastructure got built (Jarvis, MCPs, skills) but execution stalled — *"time went to tool-tinkering, not the projects."* Nothing has been shipped on the flagship projects since 17 May, and every tracker in the plan folder still reads mastery 0 / no rows logged. That is not a knowledge gap — the vault proves the reverse (a working MCP server, 13 skills, 5 agents). It is a convergence-and-execution gap. Everything below is structured against that one failure mode, which is why [[08 - Anti-Drift Rules]] bans MCP setup, agent authoring, and stack comparison from daily ops entirely, and why the [[The Output Audit (web)]] "is this effort actually compounding?" check is worth running monthly.
 ## The day, compressed
 Five wins, each with an MVP so a low-energy day still counts ([[01 - Daily Operating System]]):
+
 | Win | Full version | MVP (still counts) | Done when |
 | --- | --- | --- | --- |
 | **Physical** | Gym session (5×/week) | 20 pushups + 20 squats + 5 min stretch | Logged in [[Daily Habit Board]] |

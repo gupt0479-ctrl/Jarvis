@@ -1,6 +1,10 @@
 ---
 name: vault-curator
 description: Keeps notes linked, deduplicated, and well-structured; runs lint passes and maintenance.
+setup_status: stale
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Jarvis/Setup]]"
 ---
 # vault-curator
 

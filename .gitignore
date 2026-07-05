@@ -47,13 +47,15 @@ __pycache__/
 .credentials.json
 mcp.env
 *.env.local
-20_Progress/AI/Claude Code/Windows Home/
-20_Progress/AI/Cursor/Windows Home/
 **/.kiro/settings/
 # AI tool internal state (sessions, history, creds) — never commit
-20_Progress/AI/Claude Code/.claude/
-20_Progress/AI/Claude Code/WSL Home/
-20_Progress/AI/Cursor/.cursor/
-20_Progress/AI/Cursor/WSL Home/
-20_Progress/AI/Kiro/.kiro/
-20_Progress/AI/Kiro/WSL Home/
+20_Progress/AI/Claude Code/.claude_wsl/
+20_Progress/AI/Claude Code/.claude_windows/
+20_Progress/AI/Cursor/.cursor_wsl/
+20_Progress/AI/Cursor/.cursor_windows/
+20_Progress/AI/Kiro/.kiro_wsl/
+20_Progress/AI/Kiro/.kiro_windows/
+
+# Excalidraw MCP local install (npm package, regenerable)
+30_Order/System/excalidraw-mcp/node_modules/
+30_Order/System/excalidraw-mcp/*.log

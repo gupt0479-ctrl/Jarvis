@@ -8,9 +8,9 @@ tags:
   - daily
 cssclasses:
   - dashboard
-today_focus: ""
-today_80: ""
-today_20: ""
+today_focus: "Sunday close-out: weekly review, deadline scan, Week 6 flagship pick"
+today_80: "Run /weekly-review — 7 questions + deadline scan + Week 6 flagship pick"
+today_20: "LeetCode 5 (AVL/BST), CSCI 2033 Unit 7, physical win, MATH 2230 board check"
 lc_today: 0
 study_today: 0
 wins_done: 0

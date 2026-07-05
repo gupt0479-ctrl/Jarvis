@@ -1,3 +1,10 @@
+---
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/OpsPilot/Setup]]"
+---
+
 # UI And Read Models Playbook
 
 Use for dashboard pages, KPI cards, list pages, or replacing mocks with live data.

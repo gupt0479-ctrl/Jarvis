@@ -1,5 +1,9 @@
 ---
 description: Find and surface missing wikilinks between related vault notes.
+setup_status: current
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Jarvis/Setup]]"
 ---
 The target notes or context (if specified): $ARGUMENTS
 

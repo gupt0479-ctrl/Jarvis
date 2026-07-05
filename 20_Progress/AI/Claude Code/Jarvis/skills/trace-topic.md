@@ -1,6 +1,10 @@
 ---
 name: tracing-topic
 description: Traces an idea or topic across the vault — surfaces all mentions, connections, and gaps.
+setup_status: current
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Jarvis/Setup]]"
 ---
 # trace-topic
 

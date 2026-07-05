@@ -1,6 +1,10 @@
 ---
 name: reviewing-weekly
 description: Full weekly vault review aligned with the Jarvis Three-Month Research Engine Master Plan; tracks what was built, what's overdue, what needs linking, and what next week should prioritize.
+setup_status: current
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Jarvis/Setup]]"
 ---
 # weekly-review
 

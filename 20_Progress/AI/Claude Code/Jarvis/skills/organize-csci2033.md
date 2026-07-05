@@ -1,6 +1,10 @@
 ---
 name: organizing-csci2033
 description: Merges and refines CSCI 2033 linear algebra notes into durable evergreen concept notes while preserving existing weekly writing.
+setup_status: current
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Jarvis/Setup]]"
 ---
 # organize-csci2033
 

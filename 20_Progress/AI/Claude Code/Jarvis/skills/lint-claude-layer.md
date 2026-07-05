@@ -1,6 +1,10 @@
 ---
 name: linting-claude-layer
 description: Health-checks the 60_Claude/ layer for messiness, duplication, staleness, and weak links.
+setup_status: current
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Jarvis/Setup]]"
 ---
 # lint-claude-layer
 

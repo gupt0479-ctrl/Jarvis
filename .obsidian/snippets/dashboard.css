@@ -159,3 +159,21 @@
   padding-bottom: 4px;
 }
 .columnContent h2:first-child { margin-top: 0; }
+
+/* ── Canvas: remove dotted grid, set solid dark background ── */
+.canvas-background {
+  background-color: #0f1117 !important;
+  background-image: none !important;
+}
+.canvas-wrapper {
+  background: #0f1117 !important;
+}
+/* Hide canvas zoom/reset controls */
+.canvas-controls {
+  display: none !important;
+}
+/* Tighten canvas node card borders */
+.canvas-node-content-blocker,
+.canvas-node:not(.is-focused):not(.is-selected) .canvas-node-container {
+  border-color: #252838 !important;
+}

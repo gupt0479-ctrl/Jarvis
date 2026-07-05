@@ -1,3 +1,10 @@
+---
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/OpsPilot/Setup]]"
+---
+
 # AI Features Playbook
 
 Use for AI summaries, review analysis, recovery drafting, or prompt changes.

@@ -1,6 +1,10 @@
 ---
 name: managing-mcp-hub
 description: Defines which files to send to each external AI tool as context and keeps those files current; the vault's external-agent contract.
+setup_status: current
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/Jarvis/Setup]]"
 ---
 # mcp-hub
 

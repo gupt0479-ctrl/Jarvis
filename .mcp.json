@@ -2,7 +2,9 @@
   "mcpServers": {
     "obsidian": {
       "command": "uvx",
-      "args": ["mcp-obsidian"],
+      "args": [
+        "mcp-obsidian"
+      ],
       "env": {
         "OBSIDIAN_API_KEY": "${OBSIDIAN_API_KEY}",
         "OBSIDIAN_HOST": "${OBSIDIAN_HOST:-127.0.0.1}",
@@ -27,7 +29,9 @@
     },
     "fetch": {
       "command": "uvx",
-      "args": ["mcp-server-fetch"]
+      "args": [
+        "mcp-server-fetch"
+      ]
     },
     "jarvis-memory": {
       "command": "python",
@@ -36,6 +40,16 @@
       ],
       "env": {
         "JARVIS_VAULT_ROOT": "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis"
+      }
+    },
+    "excalidraw": {
+      "command": "node",
+      "args": [
+        "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\30_Order\\System\\excalidraw-mcp\\node_modules\\mcp-excalidraw-server\\dist\\index.js"
+      ],
+      "env": {
+        "EXPRESS_SERVER_URL": "http://127.0.0.1:3000",
+        "ENABLE_CANVAS_SYNC": "true"
       }
     }
   }

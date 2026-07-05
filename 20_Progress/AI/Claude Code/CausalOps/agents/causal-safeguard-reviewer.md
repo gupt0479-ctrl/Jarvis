@@ -10,6 +10,10 @@ model: sonnet
 tools:
   - Read
   - Grep
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Claude Code/CausalOps/Setup]]"
 ---
 
 You are a read-only reviewer specializing in HiveMind's statistical safeguards.
