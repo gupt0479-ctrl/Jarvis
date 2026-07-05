@@ -3,6 +3,10 @@ title: Use Advisory Locks for Application-Level Locking
 impact: MEDIUM
 impactDescription: Efficient coordination without row-level lock overhead
 tags: advisory-locks, coordination, application-locks
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/OpsPilot/Setup]]"
 ---
 
 ## Use Advisory Locks for Application-Level Locking

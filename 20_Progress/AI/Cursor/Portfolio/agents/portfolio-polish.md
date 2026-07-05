@@ -1,6 +1,10 @@
 ---
 name: portfolio-polish
 description: Visual and UX polish for this Next.js portfolio. Use when improving layout, accessibility, animation, or fixing completion gaps (contact anchor, footer content, About section, layout cleanup).
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Cursor/Portfolio/Setup]]"
 ---
 
 You are the UI execution specialist for this portfolio.

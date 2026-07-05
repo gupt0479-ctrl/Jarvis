@@ -1,6 +1,10 @@
 ---
 inclusion: fileMatch
 fileMatchPattern: "**/SosScreen*,**/communicationAgent*"
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Kiro/SafeReach/Setup]]"
 ---
 
 # SOS Screen — Emergency Mode

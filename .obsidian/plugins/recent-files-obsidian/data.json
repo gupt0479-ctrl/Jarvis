@@ -1,6 +1,38 @@
 {
   "recentFiles": [
     {
+      "basename": "log",
+      "path": "60_Claude/07_AI_Information/Session Logs/log.md"
+    },
+    {
+      "basename": "VectifyAIPageIndex 📑 PageIndex Document Index for Vectorless, Reasoning-based RAG",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/AI Starred/VectifyAIPageIndex 📑 PageIndex Document Index for Vectorless, Reasoning-based RAG.md"
+    },
+    {
+      "basename": "Translate to Chinese",
+      "path": "60_Claude/00_Inbox/copilot/copilot-custom-prompts/Translate to Chinese.md"
+    },
+    {
+      "basename": "PriceAdjustment",
+      "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/PriceAdjustment.md"
+    },
+    {
+      "basename": "Duplicate PK Upsert Behavior",
+      "path": "60_Claude/40_Project_Briefs/TradingView/Communities/Duplicate PK Upsert Behavior.md"
+    },
+    {
+      "basename": "README",
+      "path": "30_Order/System/excalidraw-mcp/node_modules/jose/README.md"
+    },
+    {
+      "basename": "README",
+      "path": "30_Order/System/excalidraw-mcp/node_modules/es-errors/README.md"
+    },
+    {
+      "basename": "Life OS",
+      "path": "10_Areas/Life/Life OS.md"
+    },
+    {
       "basename": "Setup",
       "path": "20_Progress/AI/Claude Code/Portfolio/Setup.md"
     },
@@ -41,10 +73,6 @@
       "path": "10_Areas/Excalidraw/Claude OS Map.excalidraw"
     },
     {
-      "basename": "Life OS",
-      "path": "10_Areas/Life/Life OS.md"
-    },
-    {
       "basename": "Claude OS Dashboard",
       "path": "20_Progress/AI/Claude OS Dashboard.canvas"
     },
@@ -75,10 +103,6 @@
     {
       "basename": "README",
       "path": "20_Progress/AI/Claude Code/WSL Home/skills/cloudflare/references/email-workers/README.md"
-    },
-    {
-      "basename": "log",
-      "path": "60_Claude/07_AI_Information/Session Logs/log.md"
     },
     {
       "basename": "Quant Foundations (PDF)",
@@ -169,32 +193,12 @@
       "path": "60_Claude/40_Project_Briefs/Vault-Audit-2026-05-29.md"
     },
     {
-      "basename": "PriceAdjustment",
-      "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/PriceAdjustment.md"
-    },
-    {
       "basename": "Token Efficiency Notes",
       "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/Token Efficiency Notes.md"
     },
     {
       "basename": "Repos",
       "path": "40_Resources/CS/Repos.md"
-    },
-    {
-      "basename": "Links",
-      "path": "40_Resources/CS/Links.md"
-    },
-    {
-      "basename": "dify",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Starred/dify.md"
-    },
-    {
-      "basename": "Random",
-      "path": "40_Resources/Random.md"
-    },
-    {
-      "basename": "Second Brain",
-      "path": "40_Resources/Obsidian/Second Brain.md"
     }
   ],
   "omittedPaths": [],

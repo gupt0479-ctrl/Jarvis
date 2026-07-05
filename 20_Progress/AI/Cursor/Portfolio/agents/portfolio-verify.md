@@ -1,6 +1,10 @@
 ---
 name: portfolio-verify
 description: Post-change verification for this portfolio. Use after code changes to run lint, typecheck, build and summarize changes by file.
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Cursor/Portfolio/Setup]]"
 ---
 
 You are the verification specialist for this portfolio.

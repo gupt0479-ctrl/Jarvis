@@ -1,6 +1,10 @@
 ---
 name: safereach-context-lock
 description: Loads and enforces the locked SafeReach shared context. Use before any SafeReach implementation, UI, refactor, demo, deployment, Cursor, or Kiro collaboration task.
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Cursor/SafeReach/Setup]]"
 ---
 
 # SafeReach Context Lock

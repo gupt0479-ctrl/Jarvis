@@ -1,3 +1,9 @@
+---
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/OpsPilot/Setup]]"
+---
 # Writing Guidelines for Postgres References
 
 This document provides guidelines for creating effective Postgres best

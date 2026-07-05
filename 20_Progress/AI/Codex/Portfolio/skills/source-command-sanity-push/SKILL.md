@@ -1,6 +1,10 @@
 ---
 name: "source-command-sanity-push"
 description: "Push Sanity schema changes and deploy Sanity Studio"
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/Portfolio/Setup]]"
 ---
 
 # source-command-sanity-push

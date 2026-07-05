@@ -1,6 +1,10 @@
 ---
 name: assisto-spend-backend
 description: Use when working on Assisto-Spend Supabase, migrations, auth, workflow, audit, storage, OCR, seed data, reports, server reads, server writes, or backend implementation.
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/Assisto - .agents/Setup]]"
 ---
 
 # Assisto-Spend Backend

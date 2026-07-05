@@ -3,6 +3,10 @@ title: Optimize RLS Policies for Performance
 impact: HIGH
 impactDescription: 5-10x faster RLS queries with proper patterns
 tags: rls, performance, security, optimization
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/OpsPilot/Setup]]"
 ---
 
 ## Optimize RLS Policies for Performance

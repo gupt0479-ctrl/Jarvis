@@ -1,5 +1,9 @@
 ---
 inclusion: auto
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Kiro/Assisto/Setup]]"
 ---
 
 # Assisto-Spend Product Scope

@@ -1,3 +1,9 @@
+---
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/Assisto - .agents/Setup]]"
+---
 # Backend Phase 0 Freeze Checklist
 
 Goal: preserve and understand current remote backend truth through read-only inspection. Do not implement product code.

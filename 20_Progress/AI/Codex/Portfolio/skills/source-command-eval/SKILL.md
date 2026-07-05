@@ -1,6 +1,10 @@
 ---
 name: "source-command-eval"
 description: "Run the promptfoo eval suite (grounding, tools, refusal, injection, fail-safe, persona warmth) and report pass/fail."
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/Portfolio/Setup]]"
 ---
 
 # source-command-eval

@@ -1,6 +1,10 @@
 ---
 name: safereach-agent-boundary-reviewer
 description: Enforces the Cursor and Kiro division of labor for SafeReach. Use when coordinating agents, delegating work, reviewing handoffs, or deciding whether a task belongs to Cursor or Kiro.
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Cursor/SafeReach/Setup]]"
 ---
 
 # SafeReach Agent Boundary Reviewer

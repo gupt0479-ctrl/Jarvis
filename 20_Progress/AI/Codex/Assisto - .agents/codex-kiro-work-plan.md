@@ -1,3 +1,9 @@
+---
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/Assisto - .agents/Setup]]"
+---
 # Codex And Kiro Work Plan
 
 This file defines the working split for Assisto-Spend while two agents are active.

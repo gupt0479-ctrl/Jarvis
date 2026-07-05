@@ -1,3 +1,9 @@
+---
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Kiro/Resq/Setup]]"
+---
 > **Historical Note:** This spec was written during the OpsPilot → Resq transition. References to "OpsPilot" are historical.
 
 # Implementation Plan: Loading Screen Catchphrases

@@ -1,6 +1,10 @@
 ---
 name: portfolio-ui-polish
 description: Guides UI, layout, and animation for this portfolio. Use when changing styling, sections, 3D background, sidebar, or accessibility.
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Cursor/Portfolio/Setup]]"
 ---
 
 # Portfolio UI and polish

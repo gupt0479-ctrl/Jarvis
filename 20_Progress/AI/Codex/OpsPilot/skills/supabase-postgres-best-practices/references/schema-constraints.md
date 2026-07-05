@@ -3,6 +3,10 @@ title: Add Constraints Safely in Migrations
 impact: HIGH
 impactDescription: Prevents migration failures and enables idempotent schema changes
 tags: constraints, migrations, schema, alter-table
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/OpsPilot/Setup]]"
 ---
 
 ## Add Constraints Safely in Migrations

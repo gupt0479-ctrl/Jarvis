@@ -1,6 +1,10 @@
 ---
 name: portfolio-completion
 description: Checklist and wiring for finishing this portfolio. Use when completing the site, adding missing sections, or fixing known gaps.
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Cursor/Portfolio/Setup]]"
 ---
 
 # Portfolio completion

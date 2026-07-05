@@ -3,6 +3,10 @@ title: Apply Principle of Least Privilege
 impact: MEDIUM
 impactDescription: Reduced attack surface, better audit trail
 tags: privileges, security, roles, permissions
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/OpsPilot/Setup]]"
 ---
 
 ## Apply Principle of Least Privilege

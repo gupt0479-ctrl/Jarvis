@@ -1,6 +1,10 @@
 ---
 name: assisto-spend-security
 description: Use when working on Assisto-Spend authorization, RLS, service role, storage, signed URLs, CSV exports, audit, secrets, private evidence, AI/OCR safety, or financial workflow controls.
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/Assisto - .agents/Setup]]"
 ---
 
 # Assisto-Spend Security

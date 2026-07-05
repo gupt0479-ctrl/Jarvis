@@ -1,3 +1,9 @@
+---
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Cursor/CausalOps/Setup]]"
+---
 # Cursor workflow for HiveMind
 
 Project-level agent configuration lives under `.cursor/`. Global MCP servers

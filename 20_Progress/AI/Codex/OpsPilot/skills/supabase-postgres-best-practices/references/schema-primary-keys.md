@@ -3,6 +3,10 @@ title: Select Optimal Primary Key Strategy
 impact: HIGH
 impactDescription: Better index locality, reduced fragmentation
 tags: primary-key, identity, uuid, serial, schema
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/OpsPilot/Setup]]"
 ---
 
 ## Select Optimal Primary Key Strategy

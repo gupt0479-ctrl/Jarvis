@@ -1,6 +1,10 @@
 ---
 name: portfolio-content-cms
 description: Guides content and CMS changes for this portfolio. Use when editing Sanity schemas, queries, types, or content-driven components (profile, projects, experience, skills, navigation, footer).
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Cursor/Portfolio/Setup]]"
 ---
 
 # Portfolio content and CMS

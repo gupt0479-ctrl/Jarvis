@@ -3,6 +3,10 @@ title: Clear, Action-Oriented Title (e.g., "Use Partial Indexes for Filtered Que
 impact: MEDIUM
 impactDescription: 5-20x query speedup for filtered queries
 tags: indexes, query-optimization, performance
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/OpsPilot/Setup]]"
 ---
 
 ## [Rule Title]

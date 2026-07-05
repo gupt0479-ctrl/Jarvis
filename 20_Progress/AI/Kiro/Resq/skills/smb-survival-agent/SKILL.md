@@ -1,6 +1,10 @@
 ---
 name: smb-survival-agent
-description: Build and operate the Resq product: an autonomous SMB survival agent focused on collections, financing scout, and vendor or insurance optimization.
+description: "Build and operate the Resq product: an autonomous SMB survival agent focused on collections, financing scout, and vendor or insurance optimization."
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Kiro/Resq/Setup]]"
 ---
 
 # SMB Survival Agent Skill

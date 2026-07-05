@@ -13,7 +13,10 @@ notes:
   - "[[Claude OS]]"
   - "[[10_Areas/AI/Claude Code|Claude Code]]"
   - "[[20_Progress/AI/Claude Code/MOC]]"
-next: "Claude Code Portfolio + Trading View re-exported 2026-07-05; still need Cursor DNA App + Trading View re-exported, then run the same Setup.md/MOC.md/frontmatter pass on Cursor, Kiro, Codex"
+  - "[[20_Progress/AI/Cursor/MOC]]"
+  - "[[20_Progress/AI/Kiro/MOC]]"
+  - "[[20_Progress/AI/Codex/MOC]]"
+next: "Setup.md/MOC.md/frontmatter pass complete on all 4 platforms (2026-07-05); still need Cursor DNA App + Trading View re-exported (empty dumps)"
 ---
 # Claude OS — Operational Registry
 *Last verified: `$= moment().format("YYYY-MM-DD")`*
@@ -49,12 +52,13 @@ Shadow: off
 | Platform | Projects | Live components | Dead/empty |
 | --- | --- | --- | --- |
 | **Claude Code** | Jarvis, CausalOps, Resq, OpsPilot, Portfolio, Trading View, .claude_windows, .claude_wsl | 14 Jarvis commands, 5 agents, 2 hooks, 5 MCP servers; CausalOps 3 agents + 4 commands + 3 hooks; Portfolio 7 agents + 10 commands; Trading View 2 agents + 2 skills | Github ReadMe (settings only) |
-| **Cursor** | Jarvis (rules ×5), CausalOps, Portfolio, SafeReach, OpsPilot | SafeReach: 7 lifecycle hooks + 8 skills (reference architecture) | DNA App, Trading View folders empty |
-| **Kiro** | Assisto, Resq, Portfolio, SafeReach, TradingView, OpsPilot, Jarvis (stub) | Resq agent JSON + 4 hook sets; Assisto 5 steering + 3 hooks + spec | Jarvis .kiro has no agent |
-| **Codex** | Assisto, Portfolio, OpsPilot, Resq | Assisto .agents/ + config.toml; Portfolio 9 source-command-* skills | No usage signal recorded |
+| **Cursor** | Jarvis (rules ×5, current), CausalOps, Portfolio, SafeReach, OpsPilot | SafeReach: 7 lifecycle hooks + 8 skills (richest multi-agent handoff architecture seen); Jarvis mcp.json + all 5 rules byte-identical to live `.cursor/` | DNA App, Trading View folders empty |
+| **Kiro** | Jarvis (current, 0 drift), Assisto, OpsPilot (dead — 2 broken symlinks only), Portfolio, Resq (48 files, largest single folder), SafeReach, The Plan, TradingView | Resq agent JSON + 7 hooks + 8 spec folders; SafeReach shares locked PRD/deployment-guide context with its Cursor dump; The Plan mirrors Jarvis's own specs (diverged, expected) | OpsPilot has no real config, only dangling symlinks to Codex's Assisto skills |
+| **Codex** | Assisto (.agents + .codex), OpsPilot, Portfolio, Resq | Assisto .agents/ + config.toml; Portfolio 9 source-command-* skills; OpsPilot + Resq both carry the vendored `supabase`/`supabase-postgres-best-practices` skill packages | No usage signal recorded; light-touch pass only, no deep gap analysis |
 === end-column ===
 ## Open Actions
 - [x] Re-export empty dumps: Claude Code {Portfolio, Trading View} — done 2026-07-05
+- [x] Setup.md/MOC.md/frontmatter pass on Cursor, Kiro, Codex — done 2026-07-05
 - [ ] Re-export empty dumps: Cursor {DNA App, Trading View}
 - [ ] Adopt /emerge and /challenge (gap table in [[Claude OS]] — now confirmed by 3 sources)
 - [ ] Trial the 8 High-relevance everything-claude-code skills; uninstall the Low bulk
@@ -63,13 +67,13 @@ Shadow: off
 - [ ] Wire scheduled morning context assembly + evening close (Move 4)
 === end-multi-column
 ## Setup Coverage
-`Claude Code/` is fully mapped: every project folder has a `Setup.md` inventorying its files, rolled up in [[20_Progress/AI/Claude Code/MOC]]. Cursor, Kiro, and Codex don't have this yet — pending follow-up round.
+All four platforms are fully mapped: every project folder has a `Setup.md` inventorying its files, rolled up in each platform's MOC. Cursor and Kiro got full-rigor treatment (live-vs-dump diffing where a live equivalent exists); Codex got a light-touch pass (frontmatter + Files list + Inventory table only, no gap analysis).
 | Platform | Setup.md coverage | MOC.md |
 | --- | --- | --- |
 | **Claude Code** | 8 of 8 project folders | [[20_Progress/AI/Claude Code/MOC\|MOC]] |
-| **Cursor** | none yet | pending |
-| **Kiro** | none yet | pending |
-| **Codex** | none yet | pending |
+| **Cursor** | 7 of 7 project folders | [[20_Progress/AI/Cursor/MOC\|MOC]] |
+| **Kiro** | 8 of 8 project folders | [[20_Progress/AI/Kiro/MOC\|MOC]] |
+| **Codex** | 5 of 5 project folders (light touch) | [[20_Progress/AI/Codex/MOC\|MOC]] |
 ## Recently Changed Setup Files
 ```dataview
 TABLE file.folder AS Folder, file.mtime AS "Modified"

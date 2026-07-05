@@ -4,6 +4,10 @@ description: "Use when doing ANY task involving Supabase. Triggers: Supabase pro
 metadata:
   author: supabase
   version: "0.1.0"
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/Resq/Setup]]"
 ---
 
 # Supabase

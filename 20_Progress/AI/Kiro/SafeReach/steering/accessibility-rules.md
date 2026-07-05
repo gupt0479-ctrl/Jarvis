@@ -1,6 +1,10 @@
 ---
 inclusion: fileMatch
 fileMatchPattern: "**/*.tsx"
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Kiro/SafeReach/Setup]]"
 ---
 
 # SafeReach Accessibility Rules

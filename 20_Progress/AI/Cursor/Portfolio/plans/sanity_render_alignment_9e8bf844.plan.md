@@ -36,6 +36,10 @@ todos:
     content: Run typegen/typecheck/test/build + section-by-section visual QA
     status: pending
 isProject: false
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Cursor/Portfolio/Setup]]"
 ---
 
 # Sanity ↔ Website Render Alignment — Precise Audit

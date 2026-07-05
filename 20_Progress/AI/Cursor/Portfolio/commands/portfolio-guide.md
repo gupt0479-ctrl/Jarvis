@@ -1,3 +1,9 @@
+---
+setup_status: draft
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Cursor/Portfolio/Setup]]"
+---
   # Portfolio Development Guide with ECC
 
   ## Your Project

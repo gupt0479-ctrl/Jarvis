@@ -1,6 +1,10 @@
 ---
 name: assisto-spend-docs
 description: Use when editing Assisto-Spend docs, planning files, PRD, AGENTS.md, .agent context, prompts, hooks, or agent instructions.
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/Assisto - .agents/Setup]]"
 ---
 
 # Assisto-Spend Docs

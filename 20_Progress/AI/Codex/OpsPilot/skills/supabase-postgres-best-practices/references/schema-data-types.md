@@ -3,6 +3,10 @@ title: Choose Appropriate Data Types
 impact: HIGH
 impactDescription: 50% storage reduction, faster comparisons
 tags: data-types, schema, storage, performance
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/OpsPilot/Setup]]"
 ---
 
 ## Choose Appropriate Data Types

@@ -1,3 +1,9 @@
+---
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Cursor/SafeReach/Setup]]"
+---
 # Cursor-Kiro SafeReach Contract
 
 ## Purpose

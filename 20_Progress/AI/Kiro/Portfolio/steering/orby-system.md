@@ -1,6 +1,10 @@
 ---
 inclusion: fileMatch
 fileMatchPattern: "src/components/orby/**,src/components/lab/**,src/lib/chat*,src/lib/model-router*,src/lib/personas*,src/lib/fixed-prompts*,src/app/api/chat/**"
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Kiro/Portfolio/Setup]]"
 ---
 
 # Orby System — Architecture & Constraints

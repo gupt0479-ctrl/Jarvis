@@ -3,6 +3,10 @@ title: Configure Idle Connection Timeouts
 impact: HIGH
 impactDescription: Reclaim 30-50% of connection slots from idle clients
 tags: connections, timeout, idle, resource-management
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/OpsPilot/Setup]]"
 ---
 
 ## Configure Idle Connection Timeouts

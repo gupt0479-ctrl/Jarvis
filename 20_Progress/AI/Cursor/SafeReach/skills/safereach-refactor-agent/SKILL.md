@@ -1,6 +1,10 @@
 ---
 name: safereach-refactor-agent
 description: Performs targeted SafeReach React and TypeScript refactors while preserving behavior, app modes, routes, data contracts, and the browser-only architecture.
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Cursor/SafeReach/Setup]]"
 ---
 
 # SafeReach Refactor Agent

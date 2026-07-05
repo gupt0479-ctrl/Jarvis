@@ -1,6 +1,10 @@
 ---
 name: "source-command-typecheck"
 description: "Sync Sanity types then run TypeScript strict check — reach zero errors"
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/Portfolio/Setup]]"
 ---
 
 # source-command-typecheck

@@ -1,6 +1,10 @@
 ---
 name: safereach-life-safety-guardrails
 description: Guards SafeReach life-safety behavior. Use when work touches matching constraints, disaster state, emergency SMS, NWS or emPOWER assumptions, shelter status, transport, or SOS behavior.
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Cursor/SafeReach/Setup]]"
 ---
 
 # SafeReach Life-Safety Guardrails

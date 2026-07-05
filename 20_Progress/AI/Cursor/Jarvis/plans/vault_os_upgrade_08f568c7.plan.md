@@ -24,6 +24,10 @@ todos:
     content: "Phase 4: Rewrite Clipping Distill, Week, Concept, For Evergreen, For Progress, Textbook templates; run 16-point gate; log"
     status: pending
 isProject: false
+setup_status: stale
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Cursor/Jarvis/Setup]]"
 ---
 
 # Vault OS Upgrade — Execution Plan

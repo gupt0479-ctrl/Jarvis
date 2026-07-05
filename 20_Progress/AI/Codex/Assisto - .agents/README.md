@@ -1,3 +1,9 @@
+---
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/Assisto - .agents/Setup]]"
+---
 # Assisto Agent Context
 
 This folder is compact operational memory for Codex and other agents. It does not replace the canonical Assisto-Spend docs.

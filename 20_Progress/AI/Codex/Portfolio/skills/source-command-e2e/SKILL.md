@@ -1,6 +1,10 @@
 ---
 name: "source-command-e2e"
 description: "Generate and run Playwright end-to-end tests for portfolio flows, capture screenshots"
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/Portfolio/Setup]]"
 ---
 
 # source-command-e2e

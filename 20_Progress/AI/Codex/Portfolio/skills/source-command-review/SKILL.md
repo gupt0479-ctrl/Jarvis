@@ -1,6 +1,10 @@
 ---
 name: "source-command-review"
 description: "Full code review — ECC quality scan + project-specific checks + security gate"
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/Portfolio/Setup]]"
 ---
 
 # source-command-review

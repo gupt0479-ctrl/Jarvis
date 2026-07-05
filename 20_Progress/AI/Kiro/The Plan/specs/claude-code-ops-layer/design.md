@@ -1,3 +1,9 @@
+---
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Kiro/The Plan/Setup]]"
+---
 # Design Document: Claude Code Operations Layer
 
 ## Overview

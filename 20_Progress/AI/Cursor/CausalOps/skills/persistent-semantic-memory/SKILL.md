@@ -1,6 +1,10 @@
 ---
 name: persistent-semantic-memory
 description: Use when researching, designing, or implementing HiveMind's persistent semantic memory and retrieval layer, including vector retrieval, graph traversal, temporal indexing, run memory, provenance, and future MCP memory tools.
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Cursor/CausalOps/Setup]]"
 ---
 
 # Persistent Semantic Memory Skill

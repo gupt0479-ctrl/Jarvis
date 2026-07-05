@@ -3,6 +3,10 @@ title: Use Connection Pooling for All Applications
 impact: CRITICAL
 impactDescription: Handle 10-100x more concurrent users
 tags: connection-pooling, pgbouncer, performance, scalability
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/OpsPilot/Setup]]"
 ---
 
 ## Use Connection Pooling for All Applications

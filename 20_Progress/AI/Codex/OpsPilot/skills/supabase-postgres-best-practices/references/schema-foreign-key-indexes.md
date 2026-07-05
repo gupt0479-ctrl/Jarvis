@@ -3,6 +3,10 @@ title: Index Foreign Key Columns
 impact: HIGH
 impactDescription: 10-100x faster JOINs and CASCADE operations
 tags: foreign-key, indexes, joins, schema
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/OpsPilot/Setup]]"
 ---
 
 ## Index Foreign Key Columns

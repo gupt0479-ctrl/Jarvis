@@ -3,6 +3,10 @@ title: Add Indexes on WHERE and JOIN Columns
 impact: CRITICAL
 impactDescription: 100-1000x faster queries on large tables
 tags: indexes, performance, sequential-scan, query-optimization
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/OpsPilot/Setup]]"
 ---
 
 ## Add Indexes on WHERE and JOIN Columns

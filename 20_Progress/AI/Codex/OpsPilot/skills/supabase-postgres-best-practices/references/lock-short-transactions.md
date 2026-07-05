@@ -3,6 +3,10 @@ title: Keep Transactions Short to Reduce Lock Contention
 impact: MEDIUM-HIGH
 impactDescription: 3-5x throughput improvement, fewer deadlocks
 tags: transactions, locking, contention, performance
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/OpsPilot/Setup]]"
 ---
 
 ## Keep Transactions Short to Reduce Lock Contention

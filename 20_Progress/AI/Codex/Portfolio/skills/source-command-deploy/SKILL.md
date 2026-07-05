@@ -1,6 +1,10 @@
 ---
 name: "source-command-deploy"
 description: "Full pre-deploy quality gate + security review + Vercel production push"
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/Portfolio/Setup]]"
 ---
 
 # source-command-deploy

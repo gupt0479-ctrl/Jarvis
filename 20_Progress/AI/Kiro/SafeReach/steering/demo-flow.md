@@ -1,6 +1,10 @@
 ---
 inclusion: fileMatch
 fileMatchPattern: "**/DemoContext*,**/DemoStrip*,**/Index.tsx,**/MapScreen*,**/ShelterScreen*,**/SosScreen*"
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Kiro/SafeReach/Setup]]"
 ---
 
 # SafeReach Demo Flow — State Transitions

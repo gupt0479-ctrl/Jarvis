@@ -1,6 +1,10 @@
 ---
 name: hivemind-project
 description: Use when working in the HiveMind repo, reviewing its architecture, editing backend or frontend code, interpreting Kiro plans, or making changes that must preserve the evidence-backed causal reasoning guardrails.
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Cursor/CausalOps/Setup]]"
 ---
 
 # HiveMind Project Skill

@@ -3,6 +3,10 @@ title: Maintain Table Statistics with VACUUM and ANALYZE
 impact: MEDIUM
 impactDescription: 2-10x better query plans with accurate statistics
 tags: vacuum, analyze, statistics, maintenance, autovacuum
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/OpsPilot/Setup]]"
 ---
 
 ## Maintain Table Statistics with VACUUM and ANALYZE

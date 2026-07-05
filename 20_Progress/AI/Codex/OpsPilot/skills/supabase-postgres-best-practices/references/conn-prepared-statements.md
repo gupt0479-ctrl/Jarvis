@@ -3,6 +3,10 @@ title: Use Prepared Statements Correctly with Pooling
 impact: HIGH
 impactDescription: Avoid prepared statement conflicts in pooled environments
 tags: prepared-statements, connection-pooling, transaction-mode
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/OpsPilot/Setup]]"
 ---
 
 ## Use Prepared Statements Correctly with Pooling

@@ -1,6 +1,10 @@
 ---
 name: safereach-accessibility-reviewer
 description: Reviews SafeReach UI changes for crisis-accessibility requirements. Use when editing interactive controls, visual states, emergency alerts, forms, navigation, map panels, or SOS flows.
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Cursor/SafeReach/Setup]]"
 ---
 
 # SafeReach Accessibility Reviewer

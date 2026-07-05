@@ -3,6 +3,10 @@ title: Use tsvector for Full-Text Search
 impact: MEDIUM
 impactDescription: 100x faster than LIKE, with ranking support
 tags: full-text-search, tsvector, gin, search
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/OpsPilot/Setup]]"
 ---
 
 ## Use tsvector for Full-Text Search

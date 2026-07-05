@@ -1,6 +1,10 @@
 ---
 name: safereach-ui-specialist
 description: Applies SafeReach UI requirements for React components, styling, accessibility, and demo screens. Use when editing SafeReach TSX, Tailwind, layout, navigation, map, shelter, SOS, or profile UI.
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Cursor/SafeReach/Setup]]"
 ---
 
 # SafeReach UI Specialist

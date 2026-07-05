@@ -3,6 +3,10 @@ title: Prevent Deadlocks with Consistent Lock Ordering
 impact: MEDIUM-HIGH
 impactDescription: Eliminate deadlock errors, improve reliability
 tags: deadlocks, locking, transactions, ordering
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/OpsPilot/Setup]]"
 ---
 
 ## Prevent Deadlocks with Consistent Lock Ordering

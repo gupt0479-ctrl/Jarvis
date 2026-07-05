@@ -3,6 +3,10 @@ title: Choose the Right Index Type for Your Data
 impact: HIGH
 impactDescription: 10-100x improvement with correct index type
 tags: indexes, btree, gin, gist, brin, hash, index-types
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/OpsPilot/Setup]]"
 ---
 
 ## Choose the Right Index Type for Your Data

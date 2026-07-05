@@ -1,6 +1,10 @@
 ---
 inclusion: fileMatch
 fileMatchPattern: "**/tinyfish/**"
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Kiro/Resq/Setup]]"
 ---
 
 # Kiro Mirror: TinyFish Patterns

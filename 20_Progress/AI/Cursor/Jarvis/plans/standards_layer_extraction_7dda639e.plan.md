@@ -24,6 +24,10 @@ todos:
     content: Append a session-log entry; run read-only verification grep checks.
     status: completed
 isProject: false
+setup_status: current
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Cursor/Jarvis/Setup]]"
 ---
 
 # Standards Layer Extraction

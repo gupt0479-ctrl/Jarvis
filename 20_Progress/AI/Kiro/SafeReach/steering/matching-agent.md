@@ -1,6 +1,10 @@
 ---
 inclusion: fileMatch
 fileMatchPattern: "**/matchingAgent*,**/communicationAgent*,**/demo.ts"
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Kiro/SafeReach/Setup]]"
 ---
 
 # Agent Architecture — Matching & Communication

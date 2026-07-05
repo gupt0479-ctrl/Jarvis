@@ -3,6 +3,10 @@ title: Set Appropriate Connection Limits
 impact: CRITICAL
 impactDescription: Prevent database crashes and memory exhaustion
 tags: connections, max-connections, limits, stability
+setup_status: static
+updated: 2026-07-05
+notes:
+  - "[[20_Progress/AI/Codex/OpsPilot/Setup]]"
 ---
 
 ## Set Appropriate Connection Limits
