@@ -111,7 +111,7 @@ Skills are registered as slash commands via `.claude/commands/`. Type the comman
 | Daily vault ops | `/ops [operation]` | `.claude/skills/ops.md` |
 | Organize CSCI 2033 | `/organize-csci2033` | `.claude/skills/organize-csci2033.md` |
 | Excalidraw diagram | `/excalidraw-diagram` | `.claude/skills/excalidraw-diagram.md` |
-| Export AI session | `/export-ai-session` | `.claude/skills/export-ai-session.md` |
+| Export AI session | `/export-ai-session` | **global** — `~/.claude/skills/export-ai-session/SKILL.md` (not project-local; writes into this vault regardless of invoking cwd) |
 
 ## Available Agents
 

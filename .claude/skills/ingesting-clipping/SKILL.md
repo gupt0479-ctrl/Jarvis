@@ -24,7 +24,7 @@ Turn one raw source into one complete summary note. After ingestion the user sho
 | `github.com/<owner>/<repo>` URL or clip | `gh api` / GitHub MCP tools — README + file tree, never the rendered page (reference §6) | `10_Source_Summaries/Github Ingestion/` |
 | `.md` in `05_Clippings/Web/` | `Read` tool | `10_Source_Summaries/Web Ingestion/` |
 | `.md` in `05_Clippings/Videos/` | `Read` tool | `10_Source_Summaries/Video Ingestion/` |
-| `.md` in `05_Clippings/AI Conversations/` | `Read` tool | `10_Source_Summaries/Web Ingestion/` |
+| `.md` in `05_Clippings/AI Conversations/` | Not handled here — use `/export-ai-session` (Claude Code) or follow `30_Order/Workflows/Conversation Capture.md` by hand. Output goes to `60_Claude/07_AI_Information/AI Conversation - Summaries/` with its own decision-focused template, not this skill's generic Source Summary Standard. |
 
 If no path is given, list `60_Claude/05_Clippings/` subfolders and ask.
 

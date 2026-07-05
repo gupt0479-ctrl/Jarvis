@@ -7,7 +7,8 @@ param(
 
     [string]$SessionId = "",
     [string]$Project = "",
-    [string]$Cwd = ""
+    [string]$Cwd = "",
+    [string]$Title = ""
 )
 
 $ErrorActionPreference = "Stop"
@@ -110,23 +111,33 @@ function Redact-Secrets {
 
 $sb = New-Object System.Text.StringBuilder
 
-$created = if ($firstTimestamp) { ([datetime]$firstTimestamp).ToString("yyyy-MM-dd") } else { (Get-Date).ToString("yyyy-MM-dd") }
+$createdDate = if ($firstTimestamp) { ([datetime]$firstTimestamp) } else { (Get-Date) }
+$created = $createdDate.ToString("yyyy-MM-dd")
+$startedAt = if ($firstTimestamp) { ([datetime]$firstTimestamp).ToString("yyyy-MM-ddTHH:mm:ss") } else { "" }
+$endedAt = if ($lastTimestamp) { ([datetime]$lastTimestamp).ToString("yyyy-MM-ddTHH:mm:ss") } else { "" }
 $projectLabel = if ($Project) { $Project } else { "Unknown" }
+$titleLabel = if ($Title) { $Title } else { "Claude Code session $created" }
 
+# Schema per 60_Claude/05_Clippings/AI Conversations/README.md - do not
+# rename these keys without updating that README too.
 [void]$sb.AppendLine("---")
 [void]$sb.AppendLine("type: input")
-[void]$sb.AppendLine("status: seed")
-[void]$sb.AppendLine("created: $created")
+[void]$sb.AppendLine("input_kind: ai-conversation")
+[void]$sb.AppendLine("source_app: claude-code")
+[void]$sb.AppendLine("title: `"$titleLabel`"")
+[void]$sb.AppendLine("started_at: $startedAt")
+[void]$sb.AppendLine("ended_at: $endedAt")
+[void]$sb.AppendLine("project: $projectLabel")
+[void]$sb.AppendLine("status: raw")
+[void]$sb.AppendLine("session_id: $SessionId")
+if ($Cwd) { [void]$sb.AppendLine("cwd: '$Cwd'") }
 [void]$sb.AppendLine("tags:")
+[void]$sb.AppendLine("  - input")
 [void]$sb.AppendLine("  - ai-conversation")
 [void]$sb.AppendLine("  - claude-code")
-[void]$sb.AppendLine("session_id: $SessionId")
-[void]$sb.AppendLine("project: $projectLabel")
-if ($Cwd) { [void]$sb.AppendLine("cwd: '$Cwd'") }
-[void]$sb.AppendLine("notes: []")
 [void]$sb.AppendLine("---")
 [void]$sb.AppendLine("")
-[void]$sb.AppendLine("# $projectLabel - Claude Code session ($created)")
+[void]$sb.AppendLine("# $titleLabel")
 [void]$sb.AppendLine("")
 
 foreach ($turn in $turns) {
