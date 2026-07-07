@@ -1,6 +1,34 @@
 {
   "recentFiles": [
     {
+      "basename": "2026",
+      "path": "10_Areas/Life/Enumerate/Yearly/2026.md"
+    },
+    {
+      "basename": "Resolutions'26",
+      "path": "10_Areas/Life/Enumerate/Yearly/Resolutions'26.md"
+    },
+    {
+      "basename": "2026-07-05",
+      "path": "10_Areas/Life/Enumerate/Daily/2026-07-05.md"
+    },
+    {
+      "basename": "2026-06-16",
+      "path": "10_Areas/Life/Enumerate/Daily/2026-06-16.md"
+    },
+    {
+      "basename": "2026-06-15",
+      "path": "10_Areas/Life/Enumerate/Daily/2026-06-15.md"
+    },
+    {
+      "basename": "2026-06-14",
+      "path": "10_Areas/Life/Enumerate/Daily/2026-06-14.md"
+    },
+    {
+      "basename": "2026-06-13",
+      "path": "10_Areas/Life/Enumerate/Daily/2026-06-13.md"
+    },
+    {
       "basename": "How to Pivot into an AI-ML Engineering Role in 2026 (PDF)",
       "path": "60_Claude/10_Source_Summaries/PDF Ingestion/How to Pivot into an AI-ML Engineering Role in 2026 (PDF).md"
     },
@@ -149,10 +177,6 @@
       "path": "20_Progress/AI/Claude Code/CausalOps/Setup.md"
     },
     {
-      "basename": "2026-07-05",
-      "path": "10_Areas/Life/Enumerate/Daily/2026-07-05.md"
-    },
-    {
       "basename": "Claude OS Map",
       "path": "10_Areas/Excalidraw/Claude OS Map.excalidraw"
     },
@@ -175,30 +199,6 @@
     {
       "basename": "Codex",
       "path": "10_Areas/AI/Codex.md"
-    },
-    {
-      "basename": "Cursor",
-      "path": "10_Areas/AI/Cursor.md"
-    },
-    {
-      "basename": "Kiro",
-      "path": "10_Areas/AI/Kiro.md"
-    },
-    {
-      "basename": "README",
-      "path": "20_Progress/AI/Claude Code/WSL Home/skills/cloudflare/references/email-workers/README.md"
-    },
-    {
-      "basename": "Quant Foundations (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Quant Foundations (PDF).md"
-    },
-    {
-      "basename": "MIT Quant Bible (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/MIT Quant Bible (PDF).md"
-    },
-    {
-      "basename": "AGENTS",
-      "path": "AGENTS.md"
     }
   ],
   "omittedPaths": [],
