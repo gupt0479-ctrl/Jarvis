@@ -34,7 +34,6 @@ habits_done: []
 
 | Win      | Target             | Done |
 | -------- | ------------------ | ---- |
-| Physical | gym or MVP workout |      |
 | Project  | shipped something  | [  ] |
 | Career   | LC or application  | [  ] |
 | Cleanup  | inbox/admin        | [  ] |
@@ -53,7 +52,7 @@ habits_done: []
 ## Productivity
 **LeetCode today:** `INPUT[number:lc_count]`
 **Study hours:** `INPUT[number:study_today]`
-**Wins hit:** `INPUT[number:wins_done]` / 5
+**Wins hit:** `INPUT[number:wins_done]` / 4
 
 | Meals | Water (3L target) |
 |-------|-------------------|

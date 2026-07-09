@@ -42,6 +42,8 @@ Every agent follows this, regardless of which tool is driving. Full version: [[4
 4. **Search before creating.** Extend an existing canonical note instead of duplicating.
 5. **Preserve frontmatter and wikilinks. Patch by heading.**
 
+6. **No personal-life content in Jarvis.** Jarvis is the execution/technical workshop — course work, projects, career mechanics, business/project income. Health, personal finance, relationships, reflective/confessional journaling, and identity-as-a-person content live in The Plan (`00_Live/`). `10_Areas/Life/Truths of Life/` is the one exception, and it's scoped narrowly to builder-identity evidence (what the work says about me as an engineer), never personal reflection — see the scope rule in that folder's notes.
+
 ### Where does this note go?
 
 | If the note is… | Write it to… | Standards doc to read first |

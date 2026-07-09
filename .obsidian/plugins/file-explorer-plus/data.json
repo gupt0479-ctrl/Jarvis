@@ -218,13 +218,6 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/Life/Habits/Daily Habit Board.md",
-        "patternType": "STRICT"
-      },
-      {
-        "name": "",
-        "active": true,
-        "type": "FILES",
         "pattern": "40_Resources/CS/Repos.md",
         "patternType": "STRICT"
       },

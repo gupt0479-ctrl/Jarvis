@@ -102,6 +102,17 @@ Check four things:
 
 ---
 
+## Step 4.5: Promotion Scan
+
+Simplified replacement for the old 6-check promotion gate — manual-promote-on-request plus this weekly safety net.
+
+1. Search Jarvis for notes with `status: tree` that were created or modified in the past 7 days (reuse Step 1's activity scan; filter by frontmatter status).
+2. For each candidate, apply a short 3-line bar: (a) source-grounded — points at real evidence, not invented claims; (b) stable — not a raw transcript, clipping, or dashboard/index file; (c) useful outside Jarvis — would change a decision or preserve reusable knowledge in The Plan.
+3. List survivors under a new "Promotion Candidates" section in this week's synthesis note (Step 6) — one line each: note path, one-sentence reason.
+4. Do not write into The Plan automatically. Promotion means Anant (or a session with `the-plan` MCP access) reviews the list, writes a grounded summary into The Plan, and logs a row in `60_Jarvis/40_Promoted_Notes/Promoted From Jarvis Index.md`. This step only surfaces candidates.
+
+---
+
 ## Step 5: Session Log Summary
 
 Extract from `60_Claude/07_AI_Information/Session Logs/log.md` all entries from the past 7 days.
@@ -161,6 +172,10 @@ notes:
 ## Cleanup Candidates
 
 [2–4 notes that should be deleted, merged, or archived. Must state the specific reason — duplicate, stale, superseded, orphan that nobody will ever read.]
+
+## Promotion Candidates
+
+[From Step 4.5 — status:tree notes from this week that pass the 3-line bar (grounded, stable, useful outside Jarvis). One line each: note path + one-sentence reason. "None this week" is a valid, honest answer.]
 
 ## Next Week Priorities
 

@@ -1119,3 +1119,28 @@ All four priority blocks from the Fable execution prompt are done. Summary:
 - **Standout for the user:** the three internship clips (Fintech/Underclassmen/2027 Calendar) are the most actionable career material yet — but they all hinge on **Anant's grad year, which the vault doesn't record.** If he's a rising junior for 2027: freshman/sophomore programs (Two Sigma First-Year, Jane Street FTTP, Microsoft Explore, Google ASDI) have aged out; still-open = Citadel Launch (2nd-yr, $4,300–4,800/wk), MLH Fellowship + NASA OSTEM (any year), HRT (grad-2028 sophomore role), Capital One rising-junior, Bloomberg. Banks are already closed for 2027; near-term focus = quant + big-tech early programs (Aug–Oct 2026 windows). **Record grad year in Life OS/Tracker to make these filterable.**
 - **Verification limit:** dashboard DataviewJS/Multi-Column render can't be visually confirmed from here — verified syntactically (reduce form, plugin-enabled, CSS classes present); needs one visual check in Obsidian.
 - Next: user decisions still open — grad year; Career/Finance vs Life/Finance duplicate; empty AI dump re-exports; adopt /emerge + /challenge; wire the scheduled loop + jarvis-memory semantic search (the two biggest North Star gaps).
+
+## [2026-07-07] cleanup | Jarvis/Plan boundary — Plans folder, Truths of Life, dashboard, skills
+
+Continuation of the same-day vault-differentiation work. Anant had finished his own live-edit pass (Life OS, trackers, old Habits/Books content already moved to The Plan's `00_Live/`). This session's scope: scrub remaining personal bleed from `10_Areas/Life/Plans/`, `10_Areas/Summer Grind.md`, `00_Dashboard.md`, and the daily-note skills; set up the builder-identity `Truths of Life` folder; recreate a scoped `Career/Finance`; give The Plan's `60_Jarvis` a place to receive future migrations.
+
+**Targeted keyword sweep** (drugs, mental-health terms, friend names, financial specifics) across `60_Claude/07_AI_Information/`, `60_Claude/30_Reviews/`, and `10_Areas/Life/Plans/` found nothing rising to the redaction bar — only mild habit-gate mentions ("no smoking before first task") and file-provenance references. That folder tree was already clean; no session-log history was rewritten.
+
+**Changes made:**
+- `30_Order/Templates/Enumerate/Better Today.md` — 5-wins table trimmed to 4 (Physical/gym removed), wins-hit denominator now /4.
+- `10_Areas/Life/Plans/Summer/01 - Daily Operating System.md` — full rewrite: 4 wins, day-shape table, checklist copy block, done-definition all updated to match.
+- `10_Areas/Summer Grind.md` — "Systems" intro, Dubai P0 week-1 checklist, and Weekly Review System questions trimmed to drop the physical/gym win line. Re-Birth/Projects/Internship subtree was accidentally wiped by a heading-replace patch that doesn't respect nested children — caught immediately via a document-map check, restored verbatim from the pre-edit read, verified byte-for-byte before moving on.
+- Deleted `10_Areas/Life/Plans/Summer/09 - Skill Patches (today + closeday).md` — stale, referenced skill filenames (`today.md`) that no longer exist.
+- `00_Dashboard.md` — removed the Gym habit line, replaced the dead `**Life:**` footer (linked to already-deleted Life OS/Health/Finance trackers) with a live Daily OS link, fixed `today_20` frontmatter text.
+- `10_Areas/Life/Truths of Life/Identities.md` + `Personality.md` — were empty stubs (never written). Scaffolded both with a builder-identity-only scope rule and weekly/monthly/yearly update cadence, per Anant's decision. No content fabricated.
+- Created `10_Areas/Career/Finance/Finance Scope.md` — scoped to business/project income only (TradingView, freelancing), explicitly not personal banking. Empty until real income exists.
+- Deleted `10_Areas/Life/Books/Atomic Habits.md` + `Essentialism.md` — confirmed The Plan's `00_Live/Books/` copies are the fuller, current versions (41KB vs. 32KB for Atomic Habits); Jarvis's were stale duplicates.
+- `.claude/skills/startday/reference.md` — fixed the Physical-win example and the dead "Daily Habit Board" reference (points at the current `10_Areas/Life/Habits/` folder generically now, since the specific filename has changed before).
+- `.claude/skills/closeday/reference.md` — scorecard row "5 Wins" → "4 Wins".
+- `.claude/skills/weekly-review.md` — added Step 4.5 (Promotion Scan): surfaces `status: tree` candidates from the past 7 days against a 3-line bar, lists them in the synthesis note's new "Promotion Candidates" section. Does not write into The Plan automatically — promotion still requires a review + a logged row in `Promoted From Jarvis Index`.
+- `AGENTS.md` and `CLAUDE.md` — appended a "no personal-life content in Jarvis" rule with the Truths of Life carve-out, pointing at each other.
+- The Plan: created `60_Jarvis/70_AI_Information/README.md` and `60_Jarvis/80_Session_Logs/README.md` (mirroring Jarvis's structure) as receiving folders for future migrations. Both currently empty/documented-only since the sweep found nothing to move yet.
+
+**Still open:** the `10_Areas/` folder overall hasn't been redesigned yet — Anant flagged that its structure needs a concrete "what am I doing / did / going to do" anchor now that Life content is gone. Not addressed this session; needs a proposal + decision next.
+
+**Next:** propose a `10_Areas` structure/anchor-file design; once Anant confirms, revisit The Plan side properly (build its `.claude/skills/startday`/`closeday` from scratch, rewrite its stale `CLAUDE.md`/`AGENTS.md`/`AI_CONTEXT.md`) in a dedicated session.

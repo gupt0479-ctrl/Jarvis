@@ -21,9 +21,10 @@ tags:
 
 ## Daily
 
-- [ ] Daily habit placeholder
-- [ ] Daily habit placeholder
-- [ ] Daily habit placeholder
+- [ ] leetcode-5 — ≥5 problems, topic logged ([[05 - LeetCode & CSCI 4041]])
+- [ ] csci2033 — 30–45 min LA subtopic + output ([[06 - ML Fundamentals (2033 + 2230)]])
+- [ ] course-step — MATH 2230 board next OR HIST admin step ([[04 - Summer Courses Ops]])
+- [ ] review-note — 5-min end-of-day note / closeday
 
 ## Weekly
 

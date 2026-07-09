@@ -8,9 +8,9 @@ tags:
   - daily
 cssclasses:
   - dashboard
-today_focus: "Sunday close-out: weekly review, deadline scan, Week 6 flagship pick"
-today_80: "Run /weekly-review — 7 questions + deadline scan + Week 6 flagship pick"
-today_20: "LeetCode 5 (AVL/BST), CSCI 2033 Unit 7, physical win, MATH 2230 board check"
+today_focus: "Thursday build/study: land CSCI 2033 Unit 1 (carried over, 0/14) + hold LC/4041 floor + MATH Test 3 prep"
+today_80: "CSCI 2033 Unit 1 — Vectors, Linear Functions, Regression Model (carried over)"
+today_20: "LeetCode 5 (AVL/Red-Black, Meta), CSCI 4041 review, MATH 2230 WebAssign toward Test 3, inbox zero"
 lc_today: 0
 study_today: 0
 wins_done: 0
@@ -110,7 +110,6 @@ wrap.innerHTML = `
 `;
 ```
 > [!todo] Habits — check off in today's note
-> - [ ] Gym (or MVP workout)
 > - [ ] LeetCode ≥5
 > - [ ] CSCI 2033 (30–45 min)
 > - [ ] Course step (4041 / 2230 / 1103)
@@ -143,4 +142,18 @@ LIMIT 8
 **System:** [[CLAUDE.md]] · [[AGENTS.md]] · [[Jarvis OS — North Star]] · [[AI_CONTEXT]] · [[HUMAN_WRITING]]
 **Claude OS:** [[Claude OS]] · [[20_Progress/AI/Claude OS Dashboard|Claude OS Dashboard]] · [[10_Areas/Excalidraw/Claude OS Map|OS Map]]
 **AI:** [[10_Areas/AI/Claude Code|Claude Code]] · [[10_Areas/AI/Cursor|Cursor]] · [[10_Areas/AI/Kiro|Kiro]] · [[10_Areas/AI/Codex|Codex]]
-**Life:** [[Life OS]] · [[10_Areas/Life/Tracking/Health Tracker|Health]] · [[10_Areas/Life/Tracking/Finance Tracker|Finance]] · [[10_Areas/Life/Plans/Summer/01 - Daily Operating System|Daily OS]]
+**Daily OS:** [[10_Areas/Life/Plans/Summer/01 - Daily Operating System|Daily Operating System]] · personal, health, and finance tracking live in The Plan, not here
+
+## 10_Areas Overview
+
+What each area is for, and where it stands right now. This is an area-level field, not a daily one — don't touch it from `/startday` or `/closeday`; update it when an area's purpose or state materially changes.
+
+| Area | Purpose | Current state |
+|------|---------|----------------|
+| [[10_Areas/Career/Engineer Edge Roadmap\|Career]] | Internship pipeline, freelancing, business-income tracking (`Career/Finance/`, scoped to project/business money only — no personal finance here) | Internship tracker + freelancing offer not yet defined; Finance folder empty until real income lands |
+| [[10_Areas/Trading/Stocks Trading AI Hub\|Trading]] | TradingView project — treated as an engineering/evaluation build, not a promise to beat the market | Flagship candidate for the Bangalore ship loop; not started yet |
+| [[10_Areas/AI/Claude Code\|AI]] | Reference notes for the AI tools actually in use (Claude Code, Cursor, Kiro, Codex) | Stable reference, low-churn |
+| [[10_Areas/Life/Plans/Summer/01 - Daily Operating System\|Life]] | Execution only: Enumerate daily/weekly/monthly notes, Summer OS plans, operational habit boards, builder-identity Truths of Life. No personal-life content — that lives in The Plan. | Active — this is what `/startday` and `/closeday` read every day |
+| Notes | Raw course-era captures (F'25, Files, PDFs) awaiting distillation or archive | Not actively worked — candidate for a cleanup pass |
+
+Full folder definitions: [[40_Resources/Obsidian/Jarvis Vault Architecture]]. The Plan holds the personal-life equivalent of this table on its own dashboard.

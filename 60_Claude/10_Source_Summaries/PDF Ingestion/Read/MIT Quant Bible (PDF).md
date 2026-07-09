@@ -15,9 +15,139 @@ input_kind: pdf
 track: trading
 ---
 # MIT Quant Bible — Summary
+
 **Source:** `60_Claude/05_Clippings/PDFs/MIT QUANT BIBLE pdf.pdf`
 **Ingested:** 2026-07-03
 **Pages:** 51
+
+---
+
+## **TradingView Project Usefulness Assessment**
+
+### **Headline: 40% Directly Useful | 35% Duplicate Coursework | 25% Interview Prep Only**
+
+**For TradingView build:** This PDF is ==**moderately useful but not critical**== for building the core trading bot. The **market-making section is gold**; regression/econometrics sections overlap heavily with your CSCI 2033/MATH 2230 coursework.
+
+### **Priority by Use Case**
+
+| Section | TradingView Relevance | Time Investment | ROI | Action |
+|---------|---|---|---|---|
+| **6: Market Making** | ⭐⭐⭐ HIGH | 6–8 hours | Very High | **Must master for TradingView bid/ask logic** |
+| **4: Regression & Econometrics** | ⭐⭐ MEDIUM | 8–10 hours | Medium | **Skim; most covered in CSCI 2033** |
+| **2–3: Probability & Statistics** | ⭐⭐ MEDIUM | 6–8 hours | Medium | **Reference only; already learning in MATH 2230** |
+| **5: Case Studies (Data Science)** | ⭐⭐ MEDIUM | 4–6 hours | Medium | **Data preprocessing + feature engineering patterns** |
+| **7: Question Bank** | ⭐ LOW | Varies | Low | **Skip unless prepping for quant internship interviews** |
+
+### **Direct TradingView Applications**
+
+**1. Market Making (Section 6) — ESSENTIAL for TradingView**
+- **Three-determinant quote method:** Your trading bot needs to quote bid/ask spreads
+  - Theoretical value (your model prediction)
+  - Last traded price (market reference)
+  - Current position (inventory management)
+- **Skewing quotes for position management:** If your bot is long, widen ask to liquidate
+- **Riskless PNL from triangulation:** Monitor opponent/market moves to refine predictions
+- **Real application:** When TradingView bot sees a price move, adjust bid/ask spacing dynamically
+
+**2. Regression & Signal Extraction (Section 4) — USEFUL but overlaps coursework**
+- **Ridge/Lasso for feature selection:** Which market signals actually predict next move?
+  - Ridge: keep all signals, shrink weights (assumes most signals matter slightly)
+  - Lasso: zero out weak signals (assume only 5–10 signals actually matter)
+- **Bias-variance tradeoff:** Simple model (linear) vs. complex (kNN) — which generalizes better on live market data?
+- **Econometrics OVB:** When you include a market signal (e.g., volume), are you missing a confounding variable (e.g., news event)?
+
+**3. Probability Theory (Section 2) — FOUNDATION for all trading decisions**
+- **Bayes' theorem:** Update your model's probability of "up move" given new data
+- **Expectation & linearity:** Calculate expected PNL over many trades (not just one)
+- **Variance:** How confident are you in each prediction? Use to size positions (Kelly Criterion)
+- **Base-rate neglect:** Don't over-anchor on recent moves; consider historical priors
+
+**4. Case Studies (Section 5) — PATTERN RECOGNITION for feature engineering**
+- Two Sigma CitiBikes: how to handle cyclical variables (time-of-day, seasonality)
+- Two Sigma housing: when to log-transform variables (price, volume often lognormal)
+- Pattern: **preprocess aggressively before modeling**
+
+### **What You Already Have (Skip These Sections)**
+
+| Topic | Covered In | Why Skip MIT Bible |
+|---|---|---|
+| Probability fundamentals | MATH 2230 | Exact same material; Bible is just a reference |
+| Linear algebra + vectors | CSCI 2033 | Overlaps 80%; only new thing is econometrics frame |
+| Regression formulas | CSCI 2033 + Elements of Statistical Learning | Bible cites ESL; use that source instead |
+| Bayesian inference | STAT coursework | Already learning; Bible is shallow here |
+
+### **What's Worth Mastering (Market Making)**
+
+Section 6 is unique and ==**not in your coursework**==:
+- Three-determinant quoting method (theoretical value + last trade + position)
+- How to widen spreads when uncertain (confidence intervals)
+- Position management (skewing quotes toward flat)
+- Trading game method (generate value estimates from data, quote defensively, adapt post-trade)
+- Triangulation insight (last trades reveal counterparty's fair value → riskless PNL)
+
+**This is directly applicable to TradingView:** Your bot needs to decide whether to buy/sell at each moment, and market-making thinking teaches you how to quote risk defensively.
+
+---
+
+### **Should an AI Agent Master This PDF?**
+
+**Answer: Partially. Use for specific sections, not the whole thing.**
+
+**YES — AI agent should master:**
+- Section 6 (Market Making): Patterns for bid/ask logic, position sizing, spread widening
+- Section 4.6 (Econometrics OVB): Causal inference for feature interpretation (why does a signal work?)
+- Section 5 (Case Studies): Feature engineering preprocessing patterns
+
+**NO — AI agent can skip:**
+- Sections 2–3 (Probability/Stats): You're learning this live in MATH 2230; don't duplicate
+- Section 4 (Regression): Overlaps CSCI 2033 heavily; cite ESL instead
+- Section 7 (Question Bank): Interview prep, not implementation
+
+**Hybrid approach:**
+- Use MIT Bible as a **reference** for market-making concepts
+- Use **ESL** (Elements of Statistical Learning) for regression deep-dives
+- Use **coursework** (MATH 2230, CSCI 2033) for probability/stats/linear algebra
+- Use **TradingAgents paper** + [[trading-bot five-stage architecture]] for end-to-end pipeline
+
+---
+
+### **Time Budget vs. ROI**
+
+| Learning Path | Total Time | For TradingView? | Why? |
+|---|---|---|---|
+| **Full MIT Bible (all sections)** | 25–30 hours | No | 50% overlap with coursework |
+| **Market Making only (Section 6)** | 6–8 hours | YES ⭐⭐⭐ | Unique + directly applicable |
+| **Regression + Econ (Sections 4–5)** | 10–12 hours | Partially ⭐⭐ | Use as reference, not primary source |
+| **Probability/Stats (Sections 2–3)** | 6–8 hours | Skip | Learn in MATH 2230 instead |
+
+**Recommendation:** 
+- **Week 1:** Deep-dive on Section 6 (Market Making) — 6–8 hours = **high ROI**
+- **Ongoing:** Reference Sections 4–5 for feature engineering + OVB patterns
+- **Skip:** Sections 2–3 (coursework handles); Section 7 (not implementation-focused)
+- **Total investment:** ~8–10 hours for TradingView (not 25–30)
+
+---
+
+### **How to Use This PDF for TradingView**
+
+**For the trading bot's five-stage pipeline:**
+1. **Scan stage:** No major contribution from Bible
+2. **Research stage:** Use econometrics (Section 4.6) for causal inference on signals
+3. **Predict stage:** Use probability (Section 2) for Bayesian updating; regression (Section 4) for signal weighting
+4. **Risk stage:** Use market-making (Section 6) for position sizing + spread widening
+5. **Compound stage:** Use market-making (Section 6) to triangulate learnings from each trade
+
+---
+
+### **Verdict: Extract, Don't Master Wholesale**
+
+This PDF is most useful as a **reference + pattern library**, not a full curriculum. Your actual learning path:
+1. **Primary:** MATH 2230 + CSCI 2033 (coursework)
+2. **Secondary:** TradingAgents paper + Five-stage architecture (project-specific)
+3. **Reference:** MIT Bible for market-making concepts + econometrics OVB + feature engineering patterns
+4. **Deep dives:** ESL for regression theory; Natenberg for options (if needed later)
+
+**AI Agent Recommendation:** Have the agent master Section 6 (market making) and reference Sections 4–5 for design decisions. Skip the rest for now.
 ## Source
 A quant-finance interview-prep guide from the **MIT Sloan Business Club** (contributors: Evan Vogelbaum, Ravi Raghavan, Guang Cui, Kyri Chen, Brian). It maps MIT coursework to the quant pipeline and covers probability, statistics, data-science/regression (built on *Elements of Statistical Learning*), econometrics (built on *Mostly Harmless Econometrics*), quant-research case studies, market-making theory, and a firm-by-firm brainteaser bank. This note captures the structure, all core formulas, and the market-making method in full; the exhaustive per-firm question list stays in the PDF as the drill source.
 ## Key Claims

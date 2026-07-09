@@ -14,7 +14,7 @@ Fill `> [!NOTE] Summary:` with one line: today's headline objective.
 
 **Under `## Morning Plan`:**
 
-Set `*Goal*:` to the primary objective — derived from 01 (5 wins) + 02 (day-of-week focus).
+Set `*Goal*:` to the primary objective — derived from 01 (4 wins) + 02 (day-of-week focus).
 
 **Under `### 80 — The One Thing`:**
 
@@ -35,7 +35,7 @@ Set `*Goal*:` to the primary objective — derived from 01 (5 wins) + 02 (day-of
 
 **Under `## Summer OS Checklist`:**
 
-Fill the Win column with today's specific target per win (from 01 OS). Example: Physical = "upper body + 15 min cardio", not just "gym".
+Fill the Win column with today's specific target per win (from 01 OS). Example: Project = "ship the auth endpoint", not just "work on project".
 
 **Under `## Academic Stack`:**
 
@@ -61,7 +61,7 @@ Fill the Topic column per row:
 
 **Under `## Productivity`:**
 
-The template already carries the Meta Bind inputs (`lc_count`, `study_today`, `wins_done`) — do not duplicate them. Add habit checkboxes from the Daily Habit Board (active habits only) below the Meals/Water table as separate checkboxes.
+The template already carries the Meta Bind inputs (`lc_count`, `study_today`, `wins_done`) — do not duplicate them. Add habit checkboxes from the active board in `10_Areas/Life/Habits/` (check the folder for the current board — don't hardcode a filename, it has changed before) below the Meals/Water table as separate checkboxes. Personal/health habits (gym, etc.) are tracked in The Plan, not here.
 
 ## §2 Step 4 output template
 

@@ -73,11 +73,60 @@ Starting advantages of a SWE: architecture, version control, testing, deployment
 | SQL + data engineering     | 52%           | Spark, dbt, feature stores                       |
 | ML system design           | 48%           | distributed training, latency, serving           |
 | Docker / Kubernetes        | 44%           | model serving, scaling                           |
+### Section 2.5: The Three Paths Deep-Dive
+
+==Each path requires a distinct learning focus and portfolio type. Choosing incorrectly wastes 3–6 months.==
+
+**Path A — Machine Learning Engineer (MLE)** 
+Focus: ==Training, deploying, and scaling models in production environments.==
+- Core responsibilities: feature engineering, model architecture decisions, training optimization, inference latency reduction, A/B testing
+- ML-specific skills needed: PyTorch/TensorFlow (production), Spark, feature stores (Feast), model serving (Seldon/KServe), distributed training, hyperparameter optimization
+- Timeline to hire-ready: 12–14 months (math foundation + deep learning + systems knowledge required)
+- Interview weight: **Coding 30%** (medium-hard LeetCode, some ML-flavored), **ML system design 35%**, **Theory 20%**, **Portfolio 15%**
+- Companies hiring: Netflix (personalization at scale), Meta (ads ranking), Airbnb (search), Uber (surge pricing), finance (fraud, trading), healthcare ML
+- Salary progression: $187.5K mid-level → $240K+ senior → $350K+ staff
+- Career ceiling: Model Architecture Lead, ML Research Engineer
+- Red flag in postings: "Deep RL required", "Must have published papers" — skip unless you want research
+
+**Path B — AI Engineer (Applied AI / GenAI)** ⭐ **LARGEST OPENING VOLUME IN 2026**
+Focus: ==Integration layer — turning foundation models and open-source tools into user-facing applications.==
+- Core responsibilities: RAG pipeline design, prompt engineering at scale, fine-tuning decisions (LoRA vs. full), agent orchestration, evaluation frameworks, cost optimization
+- ML-specific skills needed: LangChain, LlamaIndex, vector DBs (Pinecone, Weaviate, Qdrant), OpenAI/Anthropic APIs, HuggingFace ecosystem, evals (RAGAS, prompt-based), multi-agent frameworks
+- Timeline to hire-ready: 9–11 months (lighter math requirement, faster portfolio)
+- Interview weight: **Coding 20%** (LeetCode-**Medium** only, often API-integration focused), **ML system design 35%**, **LLM-specific knowledge 25%**, **Portfolio 20%**
+- Companies hiring: startups (YC-backed GenAI), enterprise software adding AI layers, product companies, consulting firms pivoting to AI
+- Salary progression: $206K mid-level → $250K+ senior → $300K+ staff + bonus
+- Career ceiling: AI Product Lead, GenAI Platform Architect, VP of AI
+- Green flags in postings: "RAG systems", "agent architectures", "evaluation frameworks" — these mean seriousness
+
+**Path C — MLOps / AI Infrastructure** ⭐ **MOST UNDERVALUED, HIGHEST BOTTLENECK PREMIUM**
+Focus: ==The hidden backbone — making training, deployment, and monitoring work at scale.==
+- Core responsibilities: training pipeline orchestration, model registry/versioning, experiment tracking infrastructure, drift detection and auto-retraining, model monitoring (Evidently AI), cost control, reproducibility
+- ML-specific skills needed: Kubeflow, Airflow, MLflow, DVC, Seldon/KServe, Prometheus+Grafana, Kubernetes (deep), cloud ML platforms (SageMaker/Vertex), CI/CD for ML
+- Timeline to hire-ready: 10–12 months (DevOps background accelerates)
+- Interview weight: **System design 40%**, **Coding 25%** (Python infrastructure), **Infrastructure knowledge 25%**, **Portfolio 10%**
+- Companies hiring: AI-first companies, incumbent tech (Meta, Google, Amazon), finance, any company shipping >2 models/year
+- Salary progression: $175K–$220K mid-level (bottleneck premium) → $250K+ senior → $350K+ staff
+- Career ceiling: ML Infrastructure Lead, ML Platform VP, Chief ML Officer (infrastructure side)
+- Red flag avoided: MLOps roles at companies with <3 models in production (role will become IC tasks, not infrastructure)
+
 ### Section 3: The Step-by-Step Pivot Roadmap (9–12 months)
 ==Do not skip phases — the compounding effect of layering skills is what creates interview-ready candidates.==
 1. **Step 1 — Audit & choose your path** (weeks 1–2, 5–10h): pull 10–15 real job descriptions; three-column gap spreadsheet (have / partial / don't have). Decision framework: backend/infra → MLOps; API/product → AI Engineer; loves math/models → MLE. Write a positioning statement; set a 9–12-month timeline — under 6 months produces under-prepared candidates.
 2. **Step 2 — Mathematical foundation** (months 1–2, 6–8h/wk): linear algebra (matrices, eigenvalues, SVD → weights, embeddings, PCA); focused calculus (partials, chain rule, gradients → backprop conceptually); probability/stats (Bayes, distributions, hypothesis testing, MLE estimation). **NOT needed:** real analysis, topology, measure theory.
-	*Resources:* 3Blue1Brown Essence of Linear Algebra → MIT 18.06 (Strang) → Khan Academy gaps → Mathematics for ML (Coursera) → StatQuest.
+	*Detailed Math Roadmap:*
+	- **Linear algebra** (3–4 weeks): matrices (shape, multiplication, transpose), rank, eigenvalues/eigenvectors (why PCA), SVD (embeddings), systems of equations (optimization constraints)
+	- **Calculus** (2–3 weeks): partial derivatives (gradients), chain rule (backprop), Jacobians, integrals (probability foundations)
+	- **Probability & Statistics** (3–4 weeks): distributions (Gaussian, Poisson, Bernoulli), Bayes rule, hypothesis testing, MLE, confidence intervals, empirical risk minimization
+	- **What to skip:** real analysis, topology, measure theory — research-level only
+	
+	*Recommended progression by learning style:*
+	- **Visual learner:** 3Blue1Brown Essence of Linear Algebra (3h) → 3Blue1Brown Calculus series (4h) → StatQuest Bayes' Theorem (2h)
+	- **Textbook learner:** Mathematics for Machine Learning (Coursera) → MIT 18.06 Linear Algebra (Strang, 35×50min on OCW) → Khan Academy probability
+	- **Fast-track (undergrad math):** Khan Academy selective review → focus on intuition (gradient descent, backprop, attention)
+	- **Gaps filler:** StatQuest "Statistics Fundamentals" series clarifies any stuck concepts
+	
+	*Validation checkpoint:* By end of month 2, explain (don't derive): why backprop works · gradient descent minima · PCA dimension reduction · confusion matrix interpretation · cross-validation overfitting prevention
 3. **Step 3 — Core ML stack** (months 2–5, 8–10h/wk), three phases:
 	*3A Fundamentals:* regression, trees/forests/boosting, SVMs; evaluation (CV, confusion matrices, AUC-ROC, precision-recall); feature engineering; overfitting (L1/L2, dropout, bias-variance). Resources: Andrew Ng ML Specialization, fast.ai, Google MLCC, Kaggle Learn, scikit-learn user guide.
 	*3B Deep learning:* forward/backprop, activations, losses; CNNs (ResNet, EfficientNet); RNNs/LSTMs/**Transformers — non-negotiable, from scratch, not just the API**. Resources: Ng DL Specialization, fast.ai Part 2, **Karpathy Zero to Hero** ("the single best transformer course available"), Illustrated Transformer, PyTorch tutorials.
@@ -98,6 +147,86 @@ Starting advantages of a SWE: architecture, version control, testing, deployment
 5. **The GenAI title bubble** — Prompt Engineer postings +135.8% in 2025, many superficial; 2028's valuable engineers evaluate/fine-tune/monitor models
 6. **$200K vs $350K** — the ceiling differentiator is architecting AI systems with measurable business outcomes and building organizational capability, not raw coding
 7. **SWE experience is premium, not a compromise** — companies learned that data scientists who can't write maintainable, low-latency, reliable code create expensive debt
+### Detailed Path-Specific Roadmaps
+
+**For Path A (MLE) — 12–14 Month Timeline:**
+- Months 1–2: Step 2 (math) + Step 3A (fundamentals)
+- Months 3–5: Step 3B (deep learning, focus CNNs + RNNs)
+- Months 4–6: Step 4 (MLOps, focus training pipelines + model serving)
+- Months 6–8: Step 5 (portfolio: real-time recommendation system + retraining dashboard)
+- Months 7–9: Step 6 (interview prep: ML system design focus)
+- Months 9–12: Step 7 (job search)
+- **Portfolio proof:** end-to-end recsys (feature computation → model training → Redis serving → A/B testing dashboard)
+
+**For Path B (AI Engineer) — 9–11 Month Timeline (FASTEST):**
+- Months 1–2: Step 2 (math, lighter depth okay) + Step 3A (fundamentals)
+- Months 2–4: Step 3C (LLMs/GenAI focused, RAG + fine-tuning primary)
+- Months 4–6: Step 4 (MLOps, focus experiment tracking + evaluation)
+- Months 5–7: Step 5 (portfolio: production RAG + agent + fine-tuning proof)
+- Months 7–9: Step 6 (interview prep: system design + LLM-specific questions)
+- Months 9–11: Step 7 (job search)
+- **Portfolio proof:** RAG system (corpus ingestion → embedding → retrieval) + multi-step agent (tool use + reasoning)
+
+**For Path C (MLOps) — 10–12 Month Timeline:**
+- Months 1–2: Step 2 (math, minimal depth) + Step 3A (fundamentals)
+- Months 2–4: Step 3B (deep learning, focus serving/latency concepts)
+- Months 4–7: Step 4 (MLOps, deep: Airflow + MLflow + DVC + monitoring)
+- Months 6–8: Step 5 (portfolio: complete ML platform with auto-retraining)
+- Months 8–10: Step 6 (interview prep: system design + infrastructure questions)
+- Months 10–12: Step 7 (job search)
+- **Portfolio proof:** Airflow pipeline (data ingestion → training → registry) + drift detection + auto-retraining trigger
+
+### Detailed Interview Preparation (Step 6 Deep-Dive)
+
+==ML system design is 35% of interview weight — worth over-preparing.==
+
+**ML System Design Interview Format (60–90 minutes):**
+1. **Problem clarification (10 min):** Ask: scale (DAU, QPS), latency SLA, accuracy target, model lifetime, cost budget
+2. **Feature engineering (10 min):** What signals matter, how to compute, online vs batch, feature store
+3. **Model selection (10 min):** Why this model class, training strategy, hyperparameter tuning approach
+4. **Training infra (10 min):** Batch vs online training, compute needs, data versioning, experiment tracking
+5. **Serving architecture (15 min):** Online inference latency budget, caching strategy, fallback behavior, A/B infrastructure
+6. **Monitoring & degradation (10 min):** What metrics break first, how to detect drift, retraining trigger, alerting
+
+**Most common prompts:**
+- Design a recommendation system for 10M users
+- Build fraud detection for 1M transactions/day
+- Predict video watch time for YouTube/TikTok
+- Price optimization for e-commerce
+- Personalization system for Spotify/Netflix
+- Search ranking for Google/Bing
+
+**Resources:**
+- **Chip Huyen's ML System Design** (definitive guide, free on educative.io)
+- **Grokking the Machine Learning Interview** (47 problems, deep explanations)
+- **InterviewBit ML track** (curated questions with solutions)
+- **Meta/Google/Amazon engineer interviews** (YouTube, watch 10+ real interviews)
+- **Papers With Code** (read 3 papers on your system focus — recommendation, ranking, prediction)
+
+### Detailed Job Search Strategy (Step 7 Deep-Dive)
+
+==Referrals convert 5–10× better than cold applications — make it the default.==
+
+**Target companies:** Series B–D + growing mid-size (Databricks, Hugging Face, Modal, Twelve Labs, etc) over FAANG initially
+- Series A: too early, uncertain roles
+- Series B–D: hiring aggressively, clear role scope, $200K+ budget  
+- Late-stage: more rigid, credential-focused
+
+**Titles to apply for:** ML Engineer, AI Engineer, Applied ML Engineer, ML Platform Engineer, Machine Learning Engineer II (not MLE I)
+
+**Networking that actually works:**
+1. **Before reach-out:** Read their GitHub, comment substantively on a repo issue or discussion
+2. **Technical blog:** Write one blog post per portfolio project (explain the problem + solution + metrics)
+3. **Open-source:** Contribute docs/code to HuggingFace, LangChain, or MLOps.community
+4. **Meetups:** Attend MLOps.community, Weights & Biases, Hugging Face virtual meetups
+
+**Negotiation anchors:**
+- Median mid-level AI engineer: **$193,000** base (don't anchor to SWE salary)
+- AI-first startups often: **$250K+** total comp
+- **Red line: below $160K with 3+ SWE + portfolio is below market**
+- Leverage competing offers (3–5 simultaneous applications)
+- Position as "building organizational AI capabilities" for $250K+ reach
+
 ### Final Word: What This Actually Takes
 ==A single deployed, well-documented project does more for your career than 10 completed courses.==
 > [!TIP] The honest truths: 3–4 months of invisible progress is normal and necessary; finishers beat course-hoppers (one resource per topic, finished); depth beats breadth; apply before you feel ready — the market won't wait.

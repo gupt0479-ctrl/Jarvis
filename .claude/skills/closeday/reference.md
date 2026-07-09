@@ -20,7 +20,7 @@ Append to `10_Areas/Life/Enumerate/Daily/YYYY-MM-DD.md`, below the Morning Plan:
 | CSCI 2033 | 30-45 min| [ ]        |
 | MATH 2230 | board    | [ ]        |
 | HIST 1103 | step/N/A | [ ]        |
-| 5 Wins    | 5/5      | [ ]        |
+| 4 Wins    | 4/4      | [ ]        |
 
 **Day Status: GREEN** (or **RED**)
 
@@ -57,7 +57,7 @@ Append to `60_Claude/07_AI_Information/Session Logs/log.md`:
 - Status: GREEN / RED
 - LeetCode: N problems (topic) — lc_count: N
 - Study: N hours — study_today: N
-- Wins: N/5 — wins_done: N
+- Wins: N/4 — wins_done: N
 - Habits: [list from habits_done]
 - Open carryover: [any unclosed items rolling to tomorrow]
 - Tomorrow: [top priority]

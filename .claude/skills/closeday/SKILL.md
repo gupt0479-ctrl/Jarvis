@@ -35,8 +35,8 @@ Read, in this order:
 > Closing the day — quick check:
 > 1. LeetCode today: how many problems? (target ≥5)
 > 2. Study hours today: total focused study time? (e.g., 2.5)
-> 3. Which 5-wins did you hit? (Physical / Project / Career / Cleanup / Review)
-> 4. Habits done? (gym, lc-5, csci2033, course-step, review)
+> 3. Which wins did you hit? (Project / Career / Cleanup / Review)
+> 4. Habits done? (leetcode-5, csci2033, course-step, review-note)
 > 5. Anything to add, blocked, or carried forward?
 
 Accept free text. Missing answers → leave the field at its current value and mark the scorecard row "(unverified)".
@@ -48,7 +48,7 @@ Update these keys in today's note (they exist from the template; never add dupli
 ```yaml
 lc_count: <number>
 study_today: <hours>
-wins_done: <count 0-5>
+wins_done: <count 0-4>
 habits_done: [<list>]
 ```
 

@@ -30,12 +30,12 @@ Read these six files. No other reads. No vault dump.
 
 | File | What to extract |
 |------|-----------------|
-| `10_Areas/Life/Plans/Summer/01 - Daily Operating System.md` | 5 wins + MVP variants + academic minimums |
+| `10_Areas/Life/Plans/Summer/01 - Daily Operating System.md` | 4 wins + MVP variants + academic minimums |
 | `10_Areas/Life/Plans/Summer/02 - Weekly Operating System.md` | Today's day-of-week focus |
 | `10_Areas/Life/Plans/Summer/04 - Summer Courses Ops.md` | Deadlines within 7 days |
 | `10_Areas/Life/Plans/Summer/05 - LeetCode & CSCI 4041.md` + `05a - LeetCode Tracker.md` | Today's LC topic; solved count vs ≥35/week |
 | `10_Areas/Life/Plans/Summer/06 - ML Fundamentals (2033 + 2230).md` + `06a - ML Fundamentals Progress.md` | Today's CSCI 2033 subtopic |
-| `10_Areas/Life/Habits/Daily Habit Board.md` | Active daily habits |
+| `10_Areas/Life/Habits/` — find the file with a `## Daily` heading (currently `Habit Tracker Board.md`; don't hardcode the name, it has changed before) | Active daily habits |
 
 If any file is missing, note it in the output and continue.
 

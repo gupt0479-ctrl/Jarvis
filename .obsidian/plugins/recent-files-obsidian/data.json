@@ -1,36 +1,104 @@
 {
   "recentFiles": [
     {
-      "basename": "2026",
-      "path": "10_Areas/Life/Enumerate/Yearly/2026.md"
+      "basename": "2027 Internship Calendar (web)",
+      "path": "60_Claude/10_Source_Summaries/Web Ingestion/2027 Internship Calendar (web).md"
     },
     {
-      "basename": "Resolutions'26",
-      "path": "10_Areas/Life/Enumerate/Yearly/Resolutions'26.md"
+      "basename": "4 Ways to Make Money with the Hermes Agent (web)",
+      "path": "60_Claude/10_Source_Summaries/Web Ingestion/4 Ways to Make Money with the Hermes Agent (web).md"
     },
     {
-      "basename": "2026-07-05",
-      "path": "10_Areas/Life/Enumerate/Daily/2026-07-05.md"
+      "basename": "Web Ingestion Implementation",
+      "path": "60_Claude/20_Distilled_Notes/Web Ingestion Implementation.md"
     },
     {
-      "basename": "2026-06-16",
-      "path": "10_Areas/Life/Enumerate/Daily/2026-06-16.md"
+      "basename": "05 - MCP Protocol Bridge Integration Test and Final Housekeeping",
+      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/05 - MCP Protocol Bridge Integration Test and Final Housekeeping.md"
     },
     {
-      "basename": "2026-06-15",
-      "path": "10_Areas/Life/Enumerate/Daily/2026-06-15.md"
+      "basename": "02 - Close Documentation and Schema Drift",
+      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/ran/02 - Close Documentation and Schema Drift.md"
     },
     {
-      "basename": "2026-06-14",
-      "path": "10_Areas/Life/Enumerate/Daily/2026-06-14.md"
+      "basename": "04 - Optional Batch Entity Upserts",
+      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/ran/04 - Optional Batch Entity Upserts.md"
     },
     {
-      "basename": "2026-06-13",
-      "path": "10_Areas/Life/Enumerate/Daily/2026-06-13.md"
+      "basename": "03 - End-to-End Memory Verification and Integration Gate",
+      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/ran/03 - End-to-End Memory Verification and Integration Gate.md"
+    },
+    {
+      "basename": "Fintech Early Programs That Pay — HRT, Capital One, Bloomberg (web)",
+      "path": "60_Claude/10_Source_Summaries/Web Ingestion/Fintech Early Programs That Pay — HRT, Capital One, Bloomberg (web).md"
+    },
+    {
+      "basename": "PDF's Ingestion Implementation",
+      "path": "60_Claude/20_Distilled_Notes/PDF's Ingestion Implementation.md"
+    },
+    {
+      "basename": "Ultimate Guide to Winning Hackathons (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Ultimate Guide to Winning Hackathons (PDF).md"
+    },
+    {
+      "basename": "TRIBE v2 — Foundation Model for In-Silico Neuroscience (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/TRIBE v2 — Foundation Model for In-Silico Neuroscience (PDF).md"
+    },
+    {
+      "basename": "Student Travel Discounts List (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Student Travel Discounts List (PDF).md"
+    },
+    {
+      "basename": "Quant Foundations (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Quant Foundations (PDF).md"
+    },
+    {
+      "basename": "Outreach Automation Manual (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Outreach Automation Manual (PDF).md"
+    },
+    {
+      "basename": "Obsidian + Claude Code Codebook — 12 Commands (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Obsidian + Claude Code Codebook — 12 Commands (PDF).md"
+    },
+    {
+      "basename": "MIT Quant Bible (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/MIT Quant Bible (PDF).md"
+    },
+    {
+      "basename": "MavGPT AI Resume & Job Search Guide (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/MavGPT AI Resume & Job Search Guide (PDF).md"
+    },
+    {
+      "basename": "Maverick Prompt Shortcuts & Viral Prompts (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Maverick Prompt Shortcuts & Viral Prompts (PDF).md"
+    },
+    {
+      "basename": "Repos",
+      "path": "40_Resources/CS/Repos.md"
+    },
+    {
+      "basename": "How Anant Uses Each Repo",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/How Anant Uses Each Repo.md"
+    },
+    {
+      "basename": "Useful Repos - Shortlist",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Useful Repos - Shortlist.md"
+    },
+    {
+      "basename": "LinkedIn Search URL Cheatsheet (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/LinkedIn Search URL Cheatsheet (PDF).md"
+    },
+    {
+      "basename": "Junior Year Extracurriculars List (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Junior Year Extracurriculars List (PDF).md"
     },
     {
       "basename": "How to Pivot into an AI-ML Engineering Role in 2026 (PDF)",
       "path": "60_Claude/10_Source_Summaries/PDF Ingestion/How to Pivot into an AI-ML Engineering Role in 2026 (PDF).md"
+    },
+    {
+      "basename": "01 - Fix MCP Server Deployment and Housekeeping",
+      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/ran/01 - Fix MCP Server Deployment and Housekeeping.md"
     },
     {
       "basename": "GitNexus Codebase Map (PDF)",
@@ -49,156 +117,88 @@
       "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Find Startup Ideas with Reddit & AI (PDF).md"
     },
     {
-      "basename": "DeepThinksFinance AI Portfolio Optimizer (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/DeepThinksFinance AI Portfolio Optimizer (PDF).md"
-    },
-    {
       "basename": "DeepThinksFinance Master Quant Prompt Guide v2 (PDF)",
       "path": "60_Claude/10_Source_Summaries/PDF Ingestion/DeepThinksFinance Master Quant Prompt Guide v2 (PDF).md"
     },
     {
-      "basename": "CodeRabbit CLI Code Review (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/CodeRabbit CLI Code Review (PDF).md"
+      "basename": "00 - Memory Layer Completion — Index",
+      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/ran/00 - Memory Layer Completion — Index.md"
     },
     {
-      "basename": "Clone — Distill a 70B into a 3B (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Clone — Distill a 70B into a 3B (PDF).md"
+      "basename": "2026-07-08",
+      "path": "10_Areas/Life/Enumerate/Daily/2026-07-08.md"
     },
     {
-      "basename": "Claude Code Status Bar (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Claude Code Status Bar (PDF).md"
+      "basename": "Output Pipeline",
+      "path": "60_Claude/44_Indexes/Bases/Output Pipeline.base"
     },
     {
-      "basename": "BASWE 15 AI Engineering Projects That Land Jobs (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/BASWE 15 AI Engineering Projects That Land Jobs (PDF).md"
+      "basename": "Winter Break",
+      "path": "20_Progress/Mentorship Program/Winter Break.md"
     },
     {
-      "basename": "AI Prediction Market Trading Bot (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/AI Prediction Market Trading Bot (PDF).md"
-    },
-    {
-      "basename": "AI Mastermind Workbook Links (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/AI Mastermind Workbook Links (PDF).md"
-    },
-    {
-      "basename": "AI Generalist Roadmap — Outskill (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/AI Generalist Roadmap — Outskill (PDF).md"
-    },
-    {
-      "basename": "20 Free AI Certifications (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/20 Free AI Certifications (PDF).md"
-    },
-    {
-      "basename": "5 Best Claude Code MCPs (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/5 Best Claude Code MCPs (PDF).md"
-    },
-    {
-      "basename": "Video Ingestion Implementation",
-      "path": "60_Claude/20_Distilled_Notes/Video Ingestion Implementation.md"
-    },
-    {
-      "basename": "GitHub Ingestion Implementation",
-      "path": "60_Claude/20_Distilled_Notes/GitHub Ingestion Implementation.md"
-    },
-    {
-      "basename": "Web Ingestion Implementation",
-      "path": "60_Claude/20_Distilled_Notes/Web Ingestion Implementation.md"
-    },
-    {
-      "basename": "PDF's Ingestion Implementation",
-      "path": "60_Claude/20_Distilled_Notes/PDF's Ingestion Implementation.md"
-    },
-    {
-      "basename": "user_setup",
-      "path": "60_Claude/05_Clippings/AI Conversations/Windows/Claude Code/_raw_jsonl/C--Users-Anant-Gupta/memory/user_setup.md"
-    },
-    {
-      "basename": "00_Dashboard",
-      "path": "00_Dashboard.md"
+      "basename": "Question Triage",
+      "path": "60_Claude/44_Indexes/Bases/Question Triage.base"
     },
     {
       "basename": "log",
       "path": "60_Claude/07_AI_Information/Session Logs/log.md"
     },
     {
-      "basename": "VectifyAIPageIndex 📑 PageIndex Document Index for Vectorless, Reasoning-based RAG",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/AI Starred/VectifyAIPageIndex 📑 PageIndex Document Index for Vectorless, Reasoning-based RAG.md"
+      "basename": "Knowledge Enrichment Registry",
+      "path": "60_Claude/44_Indexes/Bases/Knowledge Enrichment Registry.base"
     },
     {
-      "basename": "Translate to Chinese",
-      "path": "60_Claude/00_Inbox/copilot/copilot-custom-prompts/Translate to Chinese.md"
+      "basename": "Ops Reports",
+      "path": "60_Claude/44_Indexes/Bases/Ops Reports.base"
     },
     {
-      "basename": "PriceAdjustment",
-      "path": "60_Claude/40_Project_Briefs/TradingView/Nodes/PriceAdjustment.md"
+      "basename": "Capability Registry",
+      "path": "60_Claude/44_Indexes/Bases/Capability Registry.base"
     },
     {
-      "basename": "Duplicate PK Upsert Behavior",
-      "path": "60_Claude/40_Project_Briefs/TradingView/Communities/Duplicate PK Upsert Behavior.md"
+      "basename": "Links",
+      "path": "40_Resources/UMN/Links.md"
     },
     {
-      "basename": "README",
-      "path": "30_Order/System/excalidraw-mcp/node_modules/jose/README.md"
-    },
-    {
-      "basename": "README",
-      "path": "30_Order/System/excalidraw-mcp/node_modules/es-errors/README.md"
-    },
-    {
-      "basename": "Life OS",
-      "path": "10_Areas/Life/Life OS.md"
-    },
-    {
-      "basename": "Setup",
-      "path": "20_Progress/AI/Claude Code/Portfolio/Setup.md"
-    },
-    {
-      "basename": "Setup",
-      "path": "20_Progress/AI/Claude Code/The Plan/Setup.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "20_Progress/AI/Claude Code/MOC.md"
-    },
-    {
-      "basename": "Setup",
-      "path": "20_Progress/AI/Claude Code/OpsPilot/Setup.md"
-    },
-    {
-      "basename": "Setup",
-      "path": "20_Progress/AI/Claude Code/Jarvis/Setup.md"
-    },
-    {
-      "basename": "Setup",
-      "path": "20_Progress/AI/Claude Code/Github ReadMe/Setup.md"
-    },
-    {
-      "basename": "Setup",
-      "path": "20_Progress/AI/Claude Code/CausalOps/Setup.md"
-    },
-    {
-      "basename": "Claude OS Map",
-      "path": "10_Areas/Excalidraw/Claude OS Map.excalidraw"
+      "basename": "Summer Grind",
+      "path": "10_Areas/Summer Grind.md"
     },
     {
       "basename": "Claude OS Dashboard",
       "path": "20_Progress/AI/Claude OS Dashboard.canvas"
     },
     {
-      "basename": "Claude OS Dashboard",
-      "path": "20_Progress/AI/Claude OS Dashboard.md"
-    },
-    {
       "basename": "Jarvis OS Dashboard",
       "path": "10_Areas/Jarvis OS Dashboard.canvas"
     },
     {
-      "basename": "Claude Code",
-      "path": "10_Areas/AI/Claude Code.md"
+      "basename": "Identities",
+      "path": "10_Areas/Life/Truths of Life/Identities.md"
     },
     {
-      "basename": "Codex",
-      "path": "10_Areas/AI/Codex.md"
+      "basename": "Personality",
+      "path": "10_Areas/Life/Truths of Life/Personality.md"
+    },
+    {
+      "basename": "Habits Stacking",
+      "path": "10_Areas/Life/Habits/Habits Stacking.md"
+    },
+    {
+      "basename": "Habits Scorecard",
+      "path": "10_Areas/Life/Tracking/Habits Scorecard.md"
+    },
+    {
+      "basename": "2026",
+      "path": "10_Areas/Life/Enumerate/Yearly/2026.md"
+    },
+    {
+      "basename": "Resolutions'26",
+      "path": "10_Areas/Life/Enumerate/Yearly/Resolutions'26.md"
+    },
+    {
+      "basename": "2026-07-05",
+      "path": "10_Areas/Life/Enumerate/Daily/2026-07-05.md"
     }
   ],
   "omittedPaths": [],
