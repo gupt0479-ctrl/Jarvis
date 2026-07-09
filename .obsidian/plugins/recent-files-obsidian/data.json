@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "Hall of Hacks — Winning Hackathon Archive (web)",
+      "path": "60_Claude/10_Source_Summaries/Web Ingestion/Hall of Hacks — Winning Hackathon Archive (web).md"
+    },
+    {
+      "basename": "Hall of Hacks — Winning Hackathon Patterns Analysis",
+      "path": "60_Claude/20_Distilled_Notes/Hall of Hacks — Winning Hackathon Patterns Analysis.md"
+    },
+    {
       "basename": "2027 Internship Calendar (web)",
       "path": "60_Claude/10_Source_Summaries/Web Ingestion/2027 Internship Calendar (web).md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "2026",
       "path": "10_Areas/Life/Enumerate/Yearly/2026.md"
-    },
-    {
-      "basename": "Resolutions'26",
-      "path": "10_Areas/Life/Enumerate/Yearly/Resolutions'26.md"
-    },
-    {
-      "basename": "2026-07-05",
-      "path": "10_Areas/Life/Enumerate/Daily/2026-07-05.md"
     }
   ],
   "omittedPaths": [],
