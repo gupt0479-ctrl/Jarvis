@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "2026-07-10",
+      "path": "10_Areas/Life/Enumerate/Daily/2026-07-10.md"
+    },
+    {
       "basename": "Trading Resources Integration — TradingView Architecture Roadmap",
       "path": "60_Claude/20_Distilled_Notes/Trading Resources Integration — TradingView Architecture Roadmap.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Links",
       "path": "40_Resources/UMN/Links.md"
-    },
-    {
-      "basename": "Summer Grind",
-      "path": "10_Areas/Summer Grind.md"
     }
   ],
   "omittedPaths": [],
