@@ -23,19 +23,19 @@ next: "Fable 5: read this list in order, then execute Year-Ahead Base contract"
 Give Fable 5 a two-minute path into the year-ahead base without re-deriving the alignment pass.
 
 ## Read order
-1. [[Session Findings — Cursor Alignment Pass (2026-07-10)]] — every Q&A, ambition raise, how we avoid the student-toy failure, confidence gate
-2. [[Year-Ahead Base — Fable 5 Architecture Contract]] — in-scope build, out-of-scope Cursor leftovers, Definition of Done
-3. [[Math-First Map — Existing Code to Factor Brain]] — do not pollute ingestion modules; package layout; math inventory; leftover ordered list
-4. [[Postmortem - Stocks-ETFs First, Prediction Markets Second]] — sequencing + failure modes (zero PM code now)
-5. [[AI Market Analyzer - Strategy Engine]] — factor modules + score packet shape
-6. [[Research - Systematic Equity Strategy Edge (2026-06-25)]] — why factors beat checklist folklore
-7. [[Research - Kronos Foundation Model Deep Dive (2026-06-25)]] — deferral / RankIC gate only
-8. [[RESEARCH]] — product thesis, autonomy ladder, journal contracts (patched 2026-07-10)
-
-*Optional context:* [[Trading Resources Integration — TradingView Architecture Roadmap]] — borrow process ideas; **ignore** any pressure to build Polymarket/Kalshi in this phase.
+1. [[Session Findings — Post Base (2026-07-11)]] — **current SoT**
+2. [[Session Findings — Cursor Alignment Pass (2026-07-10)]] — settled law Q&A
+3. [[Year-Ahead Base — Fable 5 Architecture Contract]] — base modules
+4. [[Phase 2 — Strategy Pack Landed (2026-07-11)]] — what Fable already shipped
+5. [[History Depth Blocker — Massive Starter Required]] — clear before Phase 2b
+6. [[Phase 2b — Promotion Study (Draft)]] — hardest next one-shot
+7. [[Math-First Map — Existing Code to Factor Brain]]
+8. [[Postmortem - Stocks-ETFs First, Prediction Markets Second]]
+9. [[Research - Kronos Foundation Model Deep Dive (2026-06-25)]] — reserved only
+10. [[RESEARCH]] — product thesis (some sections outdated vs Post-Base)
 
 ## Repo
 `/home/anant_gupta/projects/hub/tradingview` — `src/research_data/`, `config/`, `.kiro/specs/data-ingestion-foundation/`, `CLAUDE.md`. Mirror architecture into `Docs/YEAR_AHEAD_BASE.md`.
 
 ## Next Action
-Execute [[Year-Ahead Base — Fable 5 Architecture Contract]] end-to-end.
+Clear [[History Depth Blocker — Massive Starter Required]], then execute [[Phase 2b — Promotion Study (Draft)]] (Fable 5 one-shot after deepen). Cursor owns Massive upgrade + `scripts/deepen_history.py`.

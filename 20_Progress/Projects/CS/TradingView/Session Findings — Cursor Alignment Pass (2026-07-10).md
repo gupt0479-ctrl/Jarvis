@@ -19,7 +19,8 @@ tags:
 track:
   - trading
   - ai
-next: "Hand Fable 5 the year-ahead base prompt; Cursor finishes .kiro plumbing next"
+next: '"Hand Fable 5 Phase 2b only after Massive Starter deepen; see [[Session
+  Findings — Post Base (2026-07-11)]]"'
 ---
 # Session Findings — Cursor Alignment Pass (2026-07-10)
 

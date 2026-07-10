@@ -1,6 +1,6 @@
 ---
 type: project
-status: sprout
+status: archived
 created: 2026-04-26
 updated: 2026-04-26
 deadline: 2026-08-31
@@ -22,19 +22,10 @@ next: "Week 1: set up Python repo, data source keys, and local asset database"
 # AI Market Analyzer - 4 Month Build Plan
 
 ## Goal
+> [!warning] Outdated (archived 2026-07-11)
+> Superseded by [[Session Findings — Post Base (2026-07-11)]] and Phase 2 notes. Historical context only — not the current build plan.
 
-By August 31, 2026, build a personal AI market analyzer that I can actually use weekly to track investments, research US stocks/ETFs, run strategy checks, and generate evidence-based AI recommendations.
-
-The project should produce:
-
-- Working Python analysis engine.
-- Local database.
-- Watchlist and portfolio tracker.
-- Strategy scoring system.
-- Backtests.
-- AI evidence cards.
-- Streamlit dashboard.
-- Portfolio-ready README and demo.
+## Goal
 
 ## Month 1 - Data Foundation
 
