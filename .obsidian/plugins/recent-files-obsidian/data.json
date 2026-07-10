@@ -1,24 +1,56 @@
 {
   "recentFiles": [
     {
-      "basename": "Hall of Hacks — Winning Hackathon Archive (web)",
-      "path": "60_Claude/10_Source_Summaries/Web Ingestion/Hall of Hacks — Winning Hackathon Archive (web).md"
+      "basename": "Trading Resources Integration — TradingView Architecture Roadmap",
+      "path": "60_Claude/20_Distilled_Notes/Trading Resources Integration — TradingView Architecture Roadmap.md"
     },
     {
-      "basename": "Hall of Hacks — Winning Hackathon Patterns Analysis",
-      "path": "60_Claude/20_Distilled_Notes/Hall of Hacks — Winning Hackathon Patterns Analysis.md"
+      "basename": "The Output Audit (web)",
+      "path": "60_Claude/10_Source_Summaries/Web Ingestion/The Output Audit (web).md"
+    },
+    {
+      "basename": "Underclassmen Internship List (web)",
+      "path": "60_Claude/10_Source_Summaries/Web Ingestion/Underclassmen Internship List (web).md"
+    },
+    {
+      "basename": "The New Coding Interview — 5 Resources (web)",
+      "path": "60_Claude/10_Source_Summaries/Web Ingestion/The New Coding Interview — 5 Resources (web).md"
+    },
+    {
+      "basename": "Relevance AI — AI Agents for Sales & GTM (web)",
+      "path": "60_Claude/10_Source_Summaries/Web Ingestion/Relevance AI — AI Agents for Sales & GTM (web).md"
+    },
+    {
+      "basename": "Fintech Early Programs That Pay — HRT, Capital One, Bloomberg (web)",
+      "path": "60_Claude/10_Source_Summaries/Web Ingestion/Fintech Early Programs That Pay — HRT, Capital One, Bloomberg (web).md"
     },
     {
       "basename": "2027 Internship Calendar (web)",
       "path": "60_Claude/10_Source_Summaries/Web Ingestion/2027 Internship Calendar (web).md"
     },
     {
+      "basename": "The 2027 Internship Calendar (Prediction) when everything actually drops",
+      "path": "60_Claude/05_Clippings/Web/The 2027 Internship Calendar (Prediction) when everything actually drops.md"
+    },
+    {
       "basename": "4 Ways to Make Money with the Hermes Agent (web)",
       "path": "60_Claude/10_Source_Summaries/Web Ingestion/4 Ways to Make Money with the Hermes Agent (web).md"
     },
     {
+      "basename": "Hall of Hacks — Winning Hackathon Archive (web)",
+      "path": "60_Claude/10_Source_Summaries/Web Ingestion/Hall of Hacks — Winning Hackathon Archive (web).md"
+    },
+    {
       "basename": "Web Ingestion Implementation",
       "path": "60_Claude/20_Distilled_Notes/Web Ingestion Implementation.md"
+    },
+    {
+      "basename": "The Agent-Ready Roadmap (web)",
+      "path": "60_Claude/10_Source_Summaries/Web Ingestion/The Agent-Ready Roadmap (web).md"
+    },
+    {
+      "basename": "Hall of Hacks — Winning Hackathon Patterns Analysis",
+      "path": "60_Claude/20_Distilled_Notes/Hall of Hacks — Winning Hackathon Patterns Analysis.md"
     },
     {
       "basename": "05 - MCP Protocol Bridge Integration Test and Final Housekeeping",
@@ -35,10 +67,6 @@
     {
       "basename": "03 - End-to-End Memory Verification and Integration Gate",
       "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/ran/03 - End-to-End Memory Verification and Integration Gate.md"
-    },
-    {
-      "basename": "Fintech Early Programs That Pay — HRT, Capital One, Bloomberg (web)",
-      "path": "60_Claude/10_Source_Summaries/Web Ingestion/Fintech Early Programs That Pay — HRT, Capital One, Bloomberg (web).md"
     },
     {
       "basename": "PDF's Ingestion Implementation",
@@ -171,34 +199,6 @@
     {
       "basename": "Summer Grind",
       "path": "10_Areas/Summer Grind.md"
-    },
-    {
-      "basename": "Claude OS Dashboard",
-      "path": "20_Progress/AI/Claude OS Dashboard.canvas"
-    },
-    {
-      "basename": "Jarvis OS Dashboard",
-      "path": "10_Areas/Jarvis OS Dashboard.canvas"
-    },
-    {
-      "basename": "Identities",
-      "path": "10_Areas/Life/Truths of Life/Identities.md"
-    },
-    {
-      "basename": "Personality",
-      "path": "10_Areas/Life/Truths of Life/Personality.md"
-    },
-    {
-      "basename": "Habits Stacking",
-      "path": "10_Areas/Life/Habits/Habits Stacking.md"
-    },
-    {
-      "basename": "Habits Scorecard",
-      "path": "10_Areas/Life/Tracking/Habits Scorecard.md"
-    },
-    {
-      "basename": "2026",
-      "path": "10_Areas/Life/Enumerate/Yearly/2026.md"
     }
   ],
   "omittedPaths": [],

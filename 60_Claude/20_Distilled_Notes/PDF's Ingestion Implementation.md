@@ -7,7 +7,9 @@ tags:
   - ingestion
   - mcp
   - claude-code
+  - web-research
 notes:
+  - "[[Hall of Hacks — Winning Hackathon Patterns Analysis]]"
   - "[[60_Claude/10_Source_Summaries/PDF Ingestion/5 Best Claude Code MCPs (PDF)]]"
   - "[[60_Claude/10_Source_Summaries/PDF Ingestion/Claude Code Free with Ollama (PDF)]]"
   - "[[60_Claude/10_Source_Summaries/PDF Ingestion/Claude Code Status Bar (PDF)]]"
@@ -16,9 +18,134 @@ notes:
   - "[[GitHub Ingestion Implementation]]"
 ---
 
-# PDF Ingestion Implementation
+# PDF + Web Ingestion Implementation
 
-Extract actionable requirements from PDF source summaries to guide Claude Code MCP setup, tool configuration, and vault integration.
+Extract actionable requirements from PDF + web source summaries to guide Claude Code MCP setup, tool configuration, vault integration, and structured project workflows.
+
+---
+
+## META: Resource Classification & Workflow Selection
+
+**Problem:** 100+ sources captured across PDFs and web ingestions. Not all deserve equal energy. Some are reference archives (keep as knowledge); others are action triggers (become active projects).
+
+**Solution:** Classify each source by [[04 - Decisioning Matrix]] before investing in distilled notes or implementation.
+
+### Classification Matrix (Apply to Each Source)
+
+| Classification | Definition | What to Do | Examples |
+|---|---|---|---|
+| **Action** | Directly feeds current project; blocks without implementation | Distill → prioritize in sprint | [[Hall of Hacks — Winning Hackathon Patterns Analysis]] (hackathon track), [[Ultimate Guide to Winning Hackathons (PDF)]] (portfolio building) |
+| **Scaffold** | Provides architecture/templates for a project; nice-to-have | Distill → reference during build | MIT Quant Bible (trading bot market-making), BASWE 15 AI Projects (portfolio structure) |
+| **Signal** | Indicates market demand or trend; informs project selection | Light summary → file in research folder | [[2027 Internship Calendar]], [[Fintech Early Programs]] (career timing signals) |
+| **Reference** | Authoritative but not time-sensitive; deep-dive only if stuck | Keep as clipped file; cite by name | [[Awesome MCP Servers]], [[System Prompts Collection]] |
+| **Archive** | Historical/context but low immediate value | Skip or skim once | Coaching essays, case studies from 2024 |
+
+### Workflow Selection (Based on Classification)
+
+**Action sources** → Run: **Web Ingestion Implementation Workflow** (below)
+**Scaffold sources** → Run: **Scaffold Extraction Workflow** (below)
+**Signal sources** → Run: **Trend Synthesis Workflow** (minimal; 30 min)
+**Reference/Archive** → Skip distilled notes; file in vault with one-line summary
+
+---
+
+## WEB INGESTION IMPLEMENTATION WORKFLOW
+
+**For sources classified as "Action" or "Scaffold"**
+
+### Step 1: Read + Analyze
+- **Input:** Raw clipping (60_Claude/05_Clippings/Web/*.md) or source URL
+- **Output:** Structured analysis (4 questions answered in 15 min)
+
+**Questions to answer:**
+1. **What is the core claim or pattern?** (1 sentence that could be a headline)
+2. **What actionable step emerges from this source?** (What would you do differently if you believed this?)
+3. **How does this fit into current projects?** (Career? Trading? Jarvis? Portfolio? Timing?)
+4. **What decision does this resolve or unblock?** (If any)
+
+### Step 2: Distill + File
+- **Output file:** `60_Claude/20_Distilled_Notes/[Source_Name]_Distilled.md` (or integrate into existing track note)
+- **Requirements:**
+  - Key claims extracted + validated (with web research if needed)
+  - Actionable next steps (not just info dump)
+  - Links to related vault notes
+  - Open questions for implementation
+
+**Quality gate:** Would someone unfamiliar with this source be able to act on it from your distilled note? If no, add more specificity.
+
+### Step 3: Integrate + Schedule
+- Link distilled note into track implementation note (Career, Trading, Jarvis, etc.)
+- Add to task list with priority + timeline
+- Set calendar reminder if time-sensitive (hackathon deadlines, internship application windows)
+
+---
+
+## STRUCTURED PRODUCT ANALYSIS WORKFLOW
+
+**For analyzing winning hackathon projects or other categorized products**
+
+### Use Case
+You have 20+ winning hackathon projects (or competing products in a category). You want to **extract patterns** (tech stack, team size, scope, impact narrative) instead of reading each project page individually.
+
+### Workflow (2–3 hours per 20 projects)
+
+**Phase 1: Data Collection (45 min)**
+- **Input:** Project links (from Hall of Hacks or similar archive)
+- **Task:** Extract for each project:
+  - Project name, hackathon, prize
+  - Problem statement (1 sentence)
+  - Tech stack (frontend, backend, integrations, deployment)
+  - Team size + visible roles
+  - Key feature (what does it do in 30 sec?)
+  - Deployed? (GitHub link, demo URL, Loom video available?)
+- **Output:** CSV or Markdown table with 20 rows
+
+**Tool:** Firecrawl or Claude to scrape project pages (if links available); manual entry if links are dead
+
+**Phase 2: Pattern Extraction (60 min)**
+- **Input:** Data table from Phase 1
+- **Task:** Identify clusters across projects
+  - **Tech stack patterns:** React + Python dominant? Next.js + Supabase? etc.
+  - **Team size distribution:** Mode? (Most projects are 2–3 person? 4–5? Solo?)
+  - **Scope patterns:** Single-feature MVP or feature-rich? AI/ML or fullstack?
+  - **Integration patterns:** Which APIs appear most? (OpenAI? Stripe? Twilio?)
+  - **Impact narratives:** How do winners quantify value? (Time saved? Cost reduced? Users gained?)
+- **Output:** 1–2 page synthesis (5–10 key findings)
+
+**Tool:** Claude or manual pivot-table analysis (group by stack, count frequencies)
+
+**Phase 3: Actionable Translation (45 min)**
+- **Input:** Pattern synthesis from Phase 2
+- **Task:** Map findings to your next project
+  - What tech stack appears in 60%+ of winners? Adopt it.
+  - What team size is most common? Plan for that.
+  - What's the most common impact narrative? Calibrate yours to match.
+  - What integration appears in winners for your category? Pre-prep it.
+- **Output:** Checkl list for your next hackathon (tech choice, team size target, scope guard-rails, integration to pre-prep)
+
+---
+
+## SCHEDULED WORKFLOWS (Recurring)
+
+### Weekly: Signal Synthesis (30 min every Friday)
+- **Input:** Week's new web ingestions (career signals, market trends, internship postings)
+- **Task:** One-sentence synthesis per ingestion → check which are time-sensitive → add calendar reminders
+- **Output:** Updated [[04 - Decisioning Matrix]] with new signals
+- **Owner:** `/weekly-review` skill (add signal synthesis step)
+
+### Monthly: Pattern Audit (2 hours first Monday of month)
+- **Input:** All distilled notes created in the past month
+- **Task:** Identify convergence — what patterns appear across 3+ sources?
+- **Output:** Cross-source insight document (e.g., "AI/LLM is 40–50% of hackathons AND 30% of job postings → double-prioritize AI projects")
+- **Owner:** `/monthly-audit` skill (new — build this)
+
+### Quarterly: Resource Classification Review (3 hours)
+- **Input:** Full `60_Claude/05_Clippings/Web/` and `60_Claude/10_Source_Summaries/Web Ingestion/` folders
+- **Task:** Re-classify sources per the matrix above; move Action → completed projects; Archive → reference-only
+- **Output:** Updated inventory with decision timestamps
+- **Owner:** `/quarterly-review` skill (new — build this)
+
+---
 
 ---
 
@@ -319,13 +446,18 @@ Without one, you fail:
 
 ---
 
-## TRADING BOT TRACK: MIT Quant Bible × TradingView Project Assessment
+## TRADING BOT TRACK: Integrated Analysis (All Trading Resources)
 
-**Source:** [[MIT Quant Bible (PDF)]] | **Project Context:** [[Stocks Trading AI Hub]] + [[trading-bot five-stage architecture]]
+**Sources:** 
+- [[AI Prediction Market Trading Bot (PDF)]] — Five-stage architecture (crucial)
+- [[MIT Quant Bible (PDF)]] — Market making, regression, econometrics
+- [[Quant Foundations (PDF)]] — Probability toolkit, Python projects
+- [[DeepThinksFinance AI Portfolio Optimizer (PDF)]] — MPT + Claude-as-analyst
+- **Distilled Integration:** [[Trading Resources Integration — TradingView Architecture Roadmap]]
 
-### **Headline: 40% Directly Useful | 35% Duplicate Coursework | 25% Interview Prep**
+### **Headline: Complete Stack Defined | 3-Layer Architecture | 12-Week Roadmap**
 
-==This PDF is **moderately useful but not critical** for TradingView build. The market-making section is gold; regression/econometrics sections overlap heavily with CSCI 2033/MATH 2230.==
+==All trading resources **directly integrate into TradingView** via a three-layer model: (1) Pipeline (scan/research/predict/risk/compound from bot PDF), (2) Strategy Engine (market making + portfolio optimization from MIT Bible + DeepThinksFinance), (3) Foundation (probability + Python projects from Quant Foundations). See distilled note for concrete code patterns and 12-week implementation.==
 
 ### **Quick Assessment Table**
 
@@ -2261,13 +2393,18 @@ This is a **backtest, not live trading** — expect live results to be messier.
 
 ---
 
-## HACKATHON TRACK: Ultimate Guide to Winning Hackathons (The Research Beginning)
+## HACKATHON TRACK: Ultimate Guide to Winning Hackathons + Web Research Integration
 
-**Source:** [[Ultimate Guide to Winning Hackathons (PDF)]] | **Status:** PDF ingestion complete; web ingestion + full implementation TBD
+**Sources:** 
+- [[Ultimate Guide to Winning Hackathons (PDF)]]
+- [[Hall of Hacks — Winning Hackathon Patterns Analysis]] (web research, 2026-07-08)
+- [[the permanent archive of winning hackathon projects.md]] (clipping)
 
-### **Headline: Winning Hackathons is 70% Planning + Presentation, 30% Code | One Win = 2–3 Months Portfolio Signal**
+**Status:** PDF ingestion complete + web research complete ✅; Vault structure & implementation workflows TBD
 
-==Hackathons compress portfolio building from weeks into 24 hours + add judge validation. The guide reveals: validate your idea with judges first (saves 8 hours), deploy MVP in 5 hours, spend 5+ hours rehearsing. AI tools scaffold UI; your leverage is on clear value quantification, demo reliability, and presentation alignment with rubric. Outcome: Judge-validated project beats 3 months of solo building. Portfolio value: directly applicable to [[How to Pivot into an AI-ML Engineering Role in 2026 (PDF)]] (projects = 20% of interview weight).==
+### **Headline: Winning Hackathons is 70% Planning + Presentation, 30% Code | One Win = 2–3 Months Portfolio Signal | Real Pattern Data: AI/LLM Tools Win, Boring Tech Wins, Judge Selection Beats Project Quality**
+
+==Hackathons compress portfolio building from weeks into 24 hours + add judge validation. PDF guide teaches: validate your idea with judges first (saves 8 hours), deploy MVP in 5 hours, spend 5+ hours rehearsing. Web research validates this tactically AND reveals new meta-patterns: hackathon selection is 20% of winning probability; AI/LLM projects are 40–50% of winners; team size 2–4 is optimal; boring tech (React + Python) beats trendy tech. Outcome: Judge-validated project beats 3 months of solo building. Portfolio value: directly applicable to [[How to Pivot into an AI-ML Engineering Role in 2026 (PDF)]] (projects = 20% of interview weight).==
 
 ---
 
@@ -2275,111 +2412,239 @@ This is a **backtest, not live trading** — expect live results to be messier.
 
 **From [[How to Pivot into an AI-ML Engineering Role in 2026 (PDF)]], portfolio projects are 20% of interview weight at mid-level.**
 
-| Portfolio Signal | Effort | Timeline | Interview Weight | Credibility |
-|---|---|---|---|---|
-| Solo project | 50–100 hours | 3–6 months | 20% | Self-reported |
-| **Hackathon win** | **24 hours** | **1–2 weeks** | **25%** | **Judge-validated** |
-| Multiple hackathon wins | 48–72 hours | 2–3 months | 30% | Pattern of execution |
+| Portfolio Signal | Effort | Timeline | Interview Weight | Credibility | Edge |
+|---|---|---|---|---|---|
+| Solo project | 50–100 hours | 3–6 months | 20% | Self-reported | None |
+| **Hackathon win** | **24 hours** | **1–2 weeks** | **25%** | **Judge-validated** | **+5% via judges** |
+| Multiple wins | 48–72 hours | 2–3 months | 30% | Pattern of execution | **+10% via pattern** |
 
-**Asymmetry:** Hackathons are FASTER + MORE CREDIBLE than solo projects.
+**Real-world validation from Hall of Hacks:** Winning projects like FaceTimeOS, Shepherd, and Longshot got there via **judge-aligned scoping** + **live demos** + **quantified impact**, not innovative tech. The tech stack (React + Python, Next.js + Supabase) is boring and repeatable.
 
 ---
 
-### **Part 2: Pre-Hackathon Prep (48 Hours Before) — Highest ROI**
+### **Part 2: The Meta-Pattern (From Web Research)**
+
+**Six concrete patterns from 2024–2025 winning projects (50+ analyzed):**
+
+1. **Problem clarity trumps complexity** — "Debugging LLM prompts takes 2h; we cut it to 5 min" beats vague "AI tool"
+2. **Demo >> Slides** — Live demo working = 30–50% score bump vs. slides alone
+3. **Team size 2–4 is sweet spot** — Each person owns clear feature; judges see professional division
+4. **Boring tech wins; trendy tech loses** — React + Python + FastAPI + Supabase (known by judges) beats Rust/Elixir/custom
+5. **Hackathon selection is 20% of winning probability** — HackHarvard (prestigious judges) with B-tier project beats low-prestige hackathon with A-tier project
+6. **AI/LLM projects are 40–50% of winners** — Lowest barrier to entry right now; judges love it
+
+**Key insight:** Judges are busy; they want proof you understand *their* rubric, not proof you're a genius engineer.
+
+---
+
+### **Part 3: Pre-Hackathon Prep (48 Hours Before) — Highest ROI**
 
 **Time:** 4–5 hours | **Impact:** 30% competitive advantage
+
+#### **Step 0: Hackathon Selection (NEW — Before applying)**
+1. **Prioritize by judge credibility:** HackHarvard / Hack the North / YCombinator > specialized (Lablab.ai, Hugging Face) > local university > online
+2. **Research judges:** Are they from companies/VCs you care about? Will they know your tech stack?
+3. **Match to your strengths:** If you're building an AI project, enter Lablab.ai (easier to win, high credibility for AI); if fullstack, HackHarvard (harder, but prestigious)
+4. **Timeline:** 3 months out for major hackathons; 2–4 weeks for specialized/online
 
 #### **Step 1: Track Selection (1 hour)**
 1. List every sponsor + track + prize + judging rubric
 2. Rank by: (Your skill match %) × (rubric weights you fit)
-3. Prepare 3 ideas for top 2 tracks
+3. **NEW:** Research past winners in that track (Hall of Hacks archive)
+4. Prepare 3 ideas for top 2 tracks, calibrated to what that track won last year
 
-**Example:** AI/ML track (Innovation 40% / Impact 40%) scores 9.2 for you; AWS (Integration 30%) scores 8.5.
+**Example:** AI/ML track (Innovation 40% / Impact 40%) — past winner was LLM chatbot with quantified user-time savings. Score your 3 ideas against that pattern.
 
 #### **Step 2: Judge Booth Validation (30 min, 18h before)**
 - Find the judge scoring your track
-- Pitch your 3 ideas (30 sec each)
+- Pitch your 3 ideas (30 sec each); **listen for "oh that's cool" vs. "we see that every year"**
 - Build whichever idea they're most excited about (instant rubric fit)
 - **Outcome:** Judge now has stakes in your project; you know rubric priorities
 
 #### **Step 3: API Pre-Prep (2 hours)**
-- For each API: Read docs, write 3 Postman calls, create boilerplate code
+- For each API (OpenAI, Stripe, Twilio, Hugging Face model, etc.): Read docs, write 3 Postman calls, create boilerplate code
+- Test that API calls work from your machine (avoid late-night API auth failures)
 - **Time saved:** 90 min of debugging during hackathon
 
 #### **Step 4: Rubric-to-Slides Pre-Mapping (1 hour)**
 - If judging is Innovation 30% / Impact 30% / Tech 20% / Execution 20%
 - Pre-write one slide bullet per criterion (you'll be too tired during hackathon to frame this)
+- Map each slide to a rubric weight: "This demo proves Impact" / "This architecture proves Tech"
+
+#### **Step 5: Team Role Clarity (30 min, before kickoff)**
+- Assign explicit owners: Alice (backend/API), Bob (frontend/UI), Carol (demo/presentation)
+- Document: who owns which feature, what's the integration point, who's primary for debugging
+- **Why:** Judges notice team coordination; sloppy integration = red flag
 
 ---
 
-### **Part 3: The 24-Hour Build Workflow**
+### **Part 4: The 24-Hour Build Workflow**
 
 | Hour | Frontend | Backend | Product | AI |
 |---|---|---|---|---|
 | 0–2 | v0 scaffold test | API test | Confirm scope | Test 5 prompt variants |
 | 2–6 | Build real UI | Build API routes | Demo narration | Prompt iteration |
-| 6–10 | Polish demo flow | Deploy + connect | Scope decision | Fine-tune behavior |
+| 6–10 | Polish demo flow | Deploy + connect | Scope decision (cut features if needed) | Fine-tune behavior |
 | 10–12 | Rehearsal x5 | Stress test | Rehearsal x5 | Rehearsal |
-| 12–18 | Rest | Rest | Rest | Rest |
-| 18–24 | Final rehearsal | Final check | Final rehearsal | Final check |
+| 12–18 | REST (sleep 6h) | REST | REST | REST |
+| 18–24 | Final rehearsal (2x) | Final check | Final rehearsal (2x) | Final check |
 
-**Principle:** Parallel tracks, no blocking, deployed MVP by hour 6
+**Principle:** Parallel tracks, **no blocking**, deployed MVP by hour 6, **cut scope ruthlessly** if on track to miss.
+
+**Ruthless scoping rule:** 2 features done perfectly beats 5 features half-baked. Judge scores execution, not feature count.
 
 ---
 
-### **Part 4: The Four-Slide Rubric-Aligned Presentation**
+### **Part 5: The Four-Slide Rubric-Aligned Presentation**
 
 **Slide 1: Problem + Vision** → Demonstrates Innovation  
 **Slide 2: Live Demo (≤90 sec)** → Demonstrates Execution + Impact  
 **Slide 3: Tech & Architecture** → Demonstrates Technical Quality  
 **Slide 4: Call-to-Action** → Demonstrates Pitch Skills
 
-**Demo Script (90 sec timed):**
-- 0–10 sec: Hook (problem statement)
-- 10–30 sec: Live demo (3 clicks: auth, feature, result)
-- 30–70 sec: Explain (how, why, impact)
-- 70–85 sec: Quantified value ("Saves X hours/week")
-- 85–90 sec: Specific ask ("Looking for mentorship on [specific]")
+**Demo Script (90 sec timed — PRACTICE 10+ times):**
+- 0–10 sec: Hook (problem statement in 1 sentence: "Debugging LLM prompts takes 2 hours; we cut it to 5 minutes")
+- 10–30 sec: Live demo (3 clicks max: login, core feature, result)
+- 30–70 sec: Explain (how it works, why it matters, what makes it different)
+- 70–85 sec: **Quantified value** ("Saves X hours/week" or "Reduces cost by $Y" — **numbers stick**)
+- 85–90 sec: Specific ask ("Looking for mentorship on [specific technical problem]" or "Interested in building this to production")
+
+**Critical:** Have a **video backup** (Loom, 3–5 min) if live demo crashes. Crashes hurt; backup + confidence helps.
 
 ---
 
-### **Part 5: Why AI Makes You Unbeatable**
+### **Part 6: Why AI Makes You Unbeatable (+ Real Time Budget)**
 
-| Task | Hand-Coding | Claude + v0 | Saved |
-|---|---|---|---|
-| UI scaffold | 3 hours | 15 min | 2h 45m |
-| Backend API | 1.5 hours | 30 min | 1h 0m |
-| Prompt refinement | 1 hour | 20 min | 40m |
-| **Total** | **5.5 hours** | **1h 5m** | **4h 25m** |
+| Task | Hand-Coding | Claude + v0 | Saved | What to Do with Saved Time |
+|---|---|---|---|---|
+| UI scaffold | 3 hours | 15 min | 2h 45m | Polish UI flow + test on unfamiliar laptop |
+| Backend API | 1.5 hours | 30 min | 1h 0m | Edge-case handling + error messages |
+| Prompt refinement | 1 hour | 20 min | 40m | Test edge cases; prepare fallbacks |
+| Demo script | 1 hour | 20 min | 40m | Rehearse 10+ times; time yourself |
+| **Total** | **6.5 hours** | **1h 25m** | **5+ hours** | **Rehearsal + confidence + backup video** |
 
-**That 4+ hour advantage = Polish + rehearsal + backup video.**
+**That 5+ hour advantage = the difference between a nervous, untested demo and a polished, rehearsed, backed-up presentation.**
 
----
-
-### **Part 6: Post-Hackathon Portfolio Integration**
-
-**Win or not, document the project (1 week):**
-- [ ] Case study: Problem → Solution → Results
-- [ ] Loom walkthrough (2–3 min)
-- [ ] GitHub repo with README
-- [ ] LinkedIn post + email judges
-- [ ] Add to portfolio
-
-**Resume Use:**
-- Bad: "I built X over a weekend"
-- Good: "Won [hackathon] for X, validated by [judges]"
-- **The credibility source changes everything.**
+**Reality check:** The winners aren't the people who coded the fastest; they're the people who **demoed the best**. Use AI speed to buy time for rehearsal.
 
 ---
 
-### **Part 7: Next Research Phase (Web Ingestion + Implementation)**
+### **Part 7: Post-Hackathon Portfolio Integration (Win or Lose)**
 
-**TBD (This is the BEGINNING of hackathon research):**
-1. **Web ingestion:** Hall of Hacks winning projects archive (what actually wins? what's the pattern?)
-2. **Implementation guide:** Pre-event checklist, role templates, case study framework
-3. **Vault structure:** 10_Areas hackathon folder + 20_Progress per-hackathon project tracking
+**Document the project (1 week after):**
+- [ ] **Case study:** Problem → Solution → Results (quantified)
+- [ ] **Loom walkthrough** (2–3 min): show live demo + explain why it won/lost
+- [ ] **GitHub repo:** Clean README, boilerplate comments removed, deployment instructions
+- [ ] **Social proof:** LinkedIn post (tag hackathon + judges if they engaged); email judges thank-you + link to deployed project
+- [ ] **Add to portfolio website** or [[07 - Projects & Hackathons Queue]]
 
-**This section marks the research beginning; detailed roadmap will be added after web ingestion is complete.**
+**Resume integration (from Maverick Prompt 2A):**
+- ❌ Bad: "I built X over a weekend"
+- ✅ Good: "**Won [HackHarvard 2025]** for [X], validated by [judge credentials] | [quantified impact]"
+- **The judge credibility is 50% of the portfolio signal.**
+
+**Winning pattern (from research):**
+- Win → GitHub push + blog post + LinkedIn → 100–1K stars → recruiters notice → 2–3 calls
+- Loss but shipped → GitHub + blog with "lessons learned" → shows iteration → still valuable
+
+---
+
+### **Part 8: Top 3 Hackathons for Your Next 6 Months (Prioritized)**
+
+Based on [[Hall of Hacks — Winning Hackathon Patterns Analysis]]:
+
+1. **Lablab.ai AI Hackathons** (Monthly, Online) — **RECOMMENDED FIRST**
+   - Judge credibility: A (growing, industry AI engineers)
+   - Winning difficulty: Medium (50–150 teams vs. 400+ at HackHarvard)
+   - Time investment: 24h, no travel
+   - Why: Easiest to win; validates hackathon approach before premium events
+   - AI focus aligns with your career pivot
+   - **Action:** Register for next event (usually 2–4 weeks out); build LLM app + RAG system
+
+2. **HackHarvard 2025** (October, Boston) — **TIER 1 PRESTIGE**
+   - Judge credibility: S (Y Combinator, top VCs)
+   - Participant quality: Very High (300–400 teams)
+   - Winning difficulty: Very Hard
+   - Travel: Flight to Boston (~$250–300)
+   - Why: Highest portfolio value; winner gets investor interest + job inquiries
+   - **Action:** Register summer 2025; prepare 2–3 ideas in June; travel for demo day if close
+
+3. **YCombinator Startup School Hackathon** (If project has startup potential) — **S-TIER IF APPLICABLE**
+   - Judge credibility: S+ (YC partners directly)
+   - Winning difficulty: Extreme
+   - Why: Direct investor access; potential seed funding interest
+   - **Action:** Only if TradingView or another project is "startup-ready" (has clear market, defensible tech, scalable)
+
+**Strategy:** Do Lablab.ai first (gain confidence), then HackHarvard or YC if ready.
+
+---
+
+### **Part 9: Anti-Patterns to Avoid (From Research)**
+
+1. **Over-scoped MVP** — You build 30% of 5 features vs. 100% of 1 feature. Judges see "incomplete." **Cut ruthlessly.**
+2. **No live demo** — Judges see slides, imagine the worst. Live demo = proof. **Always demo live + have video backup.**
+3. **Vague problem statement** — "We made an AI tool" loses to "Debugging prompts takes 2h; we cut it to 5 min." **Quantify pain.**
+4. **Wrong tech for the judge** — Built in Rust at a startup hackathon where judges love React. **Research judges first.**
+5. **Tired presenter** — Last-minute coding = exhausted pitch. **Sleep 6+ hours; rehearse when fresh.**
+6. **Invisible team dynamics** — Judges notice sloppy handoffs. **Assign clear roles; integrate visibly during demo.**
+
+---
+
+### **Part 10: Vault Structure (New — To Build)**
+
+```
+10_Areas/
+  Projects & Hackathons/
+    07_Hackathon_Queue.md            (current)
+    Hackathon_Checklist.md           (pre-event: judge research, API prep, rubric map)
+    Hackathon_Postmortem_Template.md (win/lose: lessons learned, patterns)
+
+20_Progress/
+  [Hackathon_Name]_[Date]/
+    README.md (project overview + repo link)
+    Case_Study.md (problem → solution → results)
+    Lessons_Learned.md (what worked, what didn't)
+
+60_Claude/
+  20_Distilled_Notes/
+    Hall_of_Hacks_—_Winning_Patterns.md (THIS DOCUMENT)
+    Hackathon_Winning_Workflow.md (structured template for next entry)
+```
+
+---
+
+### **Part 11: Immediate Action (This Week)**
+
+**Task 1: Select Your First Hackathon** (1 hour)
+- [ ] Browse Lablab.ai upcoming events (next 2–4 weeks)
+- [ ] Pick one AI hackathon theme you're excited about
+- [ ] Register + add to calendar
+
+**Task 2: Scope 3 Hackathon Ideas** (2 hours)
+- [ ] For your chosen hackathon, brainstorm 3 project ideas
+- [ ] Map each to winning patterns: Clear problem? AI/LLM involved? 24h scope?
+- [ ] Validate with 1 person ("Would you use this?")
+
+**Task 3: API Prep** (2 hours)
+- [ ] Pick your core integration (OpenAI, Stripe, Twilio, Hugging Face)
+- [ ] Read docs; write 3 test API calls
+- [ ] Create minimal boilerplate in your preferred stack
+
+**Task 4: Create Hackathon Checklist** (1 hour)
+- [ ] Copy the pre-event checklist from Part 3 into a Markdown file
+- [ ] Customize to your hackathon's judge list + rubric
+- [ ] Set calendar reminders: T-7 days, T-2 days, T-6 hours
+
+**Total Time:** 6 hours | **Outcome:** Ready to ship 24-hour project with 70% confidence of placing.
+
+---
+
+### **Part 12: Integration with Other Tracks**
+
+- **Career track:** Hackathon wins feed into portfolio projects (25% of interview weight)
+- **AI/ML pivot:** 40–50% of hackathon winners are AI/LLM projects — low barrier to entry right now
+- **TradingView project:** Can be hackathon project (e.g., prediction market bot at Polymarket hackathon)
+- **Jarvis infrastructure:** Use existing Claude Code skills for rapid hackathon scaffolding
 
 ---
 
