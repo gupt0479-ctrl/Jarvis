@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Index Fund Investing",
+      "path": "60_Claude/20_Distilled_Notes/Index Fund Investing.md"
+    },
+    {
       "basename": "Claude Code Status Bar (PDF)",
       "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Read/Claude Code Status Bar (PDF).md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Ops Reports",
       "path": "60_Claude/44_Indexes/Bases/Ops Reports.base"
-    },
-    {
-      "basename": "Capability Registry",
-      "path": "60_Claude/44_Indexes/Bases/Capability Registry.base"
     }
   ],
   "omittedPaths": [],

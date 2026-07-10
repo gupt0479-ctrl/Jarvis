@@ -2,7 +2,7 @@
 type: decision-log
 status: active
 created: 2026-06-25
-updated: 2026-06-25
+updated: 2026-07-10
 related_progress:
   - "[[RESEARCH]]"
   - "[[AI Market Analyzer - Product Spec]]"
@@ -23,7 +23,6 @@ track:
 This note is the single source of truth for the sequencing decision made on 2026-06-25, after a two-session review: one pass by Claude (desktop/cowork session, with vault access) auditing drift across this project's notes and the `research_data` codebase, and a second pass (Claude Code, WSL session, with direct repo access) giving a critical second opinion focused on failure modes of merging stocks/ETFs and prediction markets into one product. Treat this as the decision record that future sessions should read before re-opening the "should we merge these" question.
 
 ## Verified Repo State (as of 2026-06-25, read directly from `/home/anant_gupta/projects/hub/tradingview`)
-
 Earlier notes in this vault (`RESEARCH.md`) were written from a Windows-side session that could not reach the WSL path and so could not verify the actual codebase. This section corrects that — verified directly against `.kiro/specs/data-ingestion-foundation/tasks.md` and the `src/research_data/` tree:
 
 - **Done (tasks 1–6):** project structure, config loading, Pydantic models (`OHLCVRecord`, `QualityStatus`, `PriceAdjustment`), DuckDB schema + storage layer, provider registry, CSV fixture provider, raw payload writer with hashing/redaction, normalizer, market calendar. All with property tests.
@@ -32,13 +31,14 @@ Earlier notes in this vault (`RESEARCH.md`) were written from a Windows-side ses
 - **Not started at all:** evidence packet builder (`evidence.py`), benchmark reporter (`benchmark.py`), Polygon provider (`polygon.py`), CLI (`cli.py`). No strategy engine, no agent layer, no journal, no UI exist anywhere in code.
 - **Net assessment:** roughly the bottom third of the stocks/ETFs vertical (data plumbing) is solid. The part that actually produces a trading decision — strategy engine, evidence cards, agent debate, paper-trade journal — is 0% built. Nothing for prediction markets exists in code, by design.
 
-## Decision
+**2026-07-10 re-check (Cursor alignment session):** same shape confirmed — `quality.py` + `read_api.py` present; still no `evidence.py` / `benchmark.py` / `polygon.py` / `cli.py`; strategy/brain/gates still absent. Session SoT: [[Session Findings — Cursor Alignment Pass (2026-07-10)]]. Year-ahead hard slice handed to Fable 5 per [[Year-Ahead Base — Fable 5 Architecture Contract]]; leftover `.kiro` plumbing stays Cursor-next, not Fable.
 
-1. **Build the stocks/ETFs vertical completely first.** Finish `.kiro` tasks 7–13, then build the strategy engine → evidence card → agent debate → staged paper trade → journal loop described in `[[RESEARCH]]`. This is the vertical with the architecture already laid out and ~partially built.
+## Decision
+1. **Build the stocks/ETFs vertical completely first.** Finish `.kiro` tasks 7–13 (Cursor owns easy leftovers), then build the strategy engine → evidence card → agent debate → staged paper trade → journal loop described in `[[RESEARCH]]`. Hard slice for 2026-07-10: brain + factor math + fundamentals + four-gate harness + paper contracts — see [[Year-Ahead Base — Fable 5 Architecture Contract]].
 2. **Prediction markets become a second, separate vertical later — not a parallel build from day one.** In the final product it should feel like a separate page/division of the same app (own nav, own data, own risk model), not a feature bolted into the stock engine.
-3. **Refinement on timing:** prediction-market analyzer build work starts once the stocks/ETFs strategy engine is finished and paper-trade testing is running. Paper testing is mostly observation/waiting time, not continuous active development, so it's reasonable to spend that calendar time building the second vertical — this is *not* the same as building both simultaneously from scratch, which is the failure mode we're explicitly avoiding (see below).
+3. **Refinement on timing (confirmed 2026-07-10):** **no vertical-2 code at all** until stocks/ETFs paper trading is online, being tested, and verified ready for real-use readiness. **Zero shared-core / PM schema placeholders** until then. Paper-testing downtime may fund vertical-2 *design reading* only — not PM tables in the stocks engine.
 4. **Residual risk to track, not ignore:** starting vertical 2's architecture before vertical 1's paper-trading loop has produced real feedback means the "shared core" (provenance pattern, evidence-packet contract, agent orchestration) gets generalized from theory, not from lived experience. Re-check the shared core's shape after the first few weeks of real paper-trade journal entries exist, and be willing to refactor it.
-5. **Current focus stays on stocks/ETFs research depth, not prediction markets.** Prediction markets and Kronos are noted and deferred, not forgotten — see the open research questions below.
+5. **Current focus stays on stocks/ETFs research depth, not prediction markets.** Prediction markets and Kronos are noted and deferred, not forgotten — Kronos is architecture-reserved only until RankIC validation (Session Findings).
 
 ## Why Sequencing, Not One Unified Engine
 
@@ -73,17 +73,20 @@ The instinct to build "one product" is right at the company/app level, wrong at 
 | 10 | False sense of completeness | A unified-looking app with both verticals half-built reads as "far along" when it's actually two unfinished things | Track and report vertical completion separately, not as one blended percentage |
 
 ## Open Research Questions (next phase)
+These stay in scope for research — several were closed or redirected in [[Session Findings — Cursor Alignment Pass (2026-07-10)]]:
 
-These stay in scope for the *next* research pass — see the companion prompt for the actual research task:
-
-1. What does a genuinely differentiated stocks/ETFs strategy edge look like, beyond the generic moving-average/RSI/valuation checks already drafted in `[[AI Market Analyzer - Strategy Engine]]`? The current strategy notes are a reasonable starting checklist, not yet a differentiated edge.
-2. What is Kronos (Amazon's zero-shot time-series forecasting model) actually capable of, and how would it plug into the stocks/ETFs strategy engine specifically — not prediction markets yet?
-3. What deeper trading/investing literature, models, or frameworks should inform the strategy engine before more code is written?
-4. Prediction markets and Kronos-for-event-odds stay parked in this note and in `[[RESEARCH]]`'s "defer" table — not forgotten, not actively researched yet.
+1. ~~What does a genuinely differentiated stocks/ETFs strategy edge look like?~~ → **Addressed:** factor stack (momentum 12-1, quality/FCF, safety/vol, valuation FCF-EV, ETF baseline) + four-gate promotion; TA demoted to context. See [[Research - Systematic Equity Strategy Edge (2026-06-25)]] and Strategy Engine.
+2. ~~What is Kronos actually capable of?~~ → **Researched** in [[Research - Kronos Foundation Model Deep Dive (2026-06-25)]]. **Build decision 2026-07-10:** reserved evidence slot only; no inference until RankIC validation on V1 universe.
+3. What deeper trading/investing literature should still feed the brain's citation layer before expanding the universe past 14 names?
+4. Prediction markets stay parked — **no code, no schema placeholders** until stocks paper readiness (confirmed 2026-07-10).
+5. **New:** in-app charting/indicator library choice after paper APIs exist.
+6. **New:** live LLM "propose spec" vs human-authored proposals stored in brain — decide after brain persistence lands.
 
 ## Related Notes
-
 - [[RESEARCH]] — full product blueprint, autonomy ladder, agent design, evidence/thesis/journal contracts
 - [[AI Market Analyzer - Product Spec]] — screens, non-goals, success criteria
 - [[AI Market Analyzer - Strategy Engine]] — current strategy module drafts
 - [[AI Market Analyzer - 4 Month Build Plan]] — build sequencing
+- [[Session Findings — Cursor Alignment Pass (2026-07-10)]] — 2026-07-09/10 Q&A SoT before Fable 5
+- [[Year-Ahead Base — Fable 5 Architecture Contract]] — hard-slice contract
+- [[Math-First Map — Existing Code to Factor Brain]] — keep ingestion clean under math-first

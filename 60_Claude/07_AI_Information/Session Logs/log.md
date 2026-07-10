@@ -1144,3 +1144,26 @@ Continuation of the same-day vault-differentiation work. Anant had finished his 
 **Still open:** the `10_Areas/` folder overall hasn't been redesigned yet — Anant flagged that its structure needs a concrete "what am I doing / did / going to do" anchor now that Life content is gone. Not addressed this session; needs a proposal + decision next.
 
 **Next:** propose a `10_Areas` structure/anchor-file design; once Anant confirms, revisit The Plan side properly (build its `.claude/skills/startday`/`closeday` from scratch, rewrite its stale `CLAUDE.md`/`AGENTS.md`/`AI_CONTEXT.md`) in a dedicated session.
+
+## [2026-07-10] tradingview | Cursor alignment pass → vault SoT + Fable 5 handoff
+
+Ask-mode research/alignment across TradingView vault + `research_data` repo, then Agent-mode note write so Fable 5 has a source of truth before the year-ahead base build.
+
+**Decisions locked (full Q&A in [[Session Findings — Cursor Alignment Pass (2026-07-10)]]):**
+- Personal edge only (portfolio may mention; software private; no auth/tenancy).
+- Zero Kalshi/Polymarket code/schema until stocks paper is live, tested, and real-use-ready; no shared-core placeholders.
+- App is research hub (strategies, brain, charts/indicators); TradingView.com later for real-trade record.
+- Fast-forward = historical replay journal + live paper UI jump-ahead; four gates OOS→Monte Carlo→walk-forward→deflated Sharpe before demo paper.
+- Brain = 1∩2: fixed factors promote/demote via journal/tests; AI proposes specs; human gates code; timed paper auto-entry after thesis pre-approve.
+- Elevated differentiator table (test-gated lab + journal; quant math first-class) — not a student toy.
+- Brain software module in parallel with ingestion data; Fable 5 hard slice; Cursor owns leftover `.kiro` plumbing.
+- Kronos reserved only (no inference until RankIC).
+- Fundamentals: minimal FMP + SEC in Fable handoff; `.env` has `POLYGON_API_KEY`, `FMP_API_KEY`, `SEC_USER_AGENT`.
+
+**Notes written/patched:**
+- Created: `Session Findings — Cursor Alignment Pass (2026-07-10).md`, `Year-Ahead Base — Fable 5 Architecture Contract.md`, `Math-First Map — Existing Code to Factor Brain.md`
+- Patched: Postmortem (repo drift, Decision, Open Questions, Related), RESEARCH (thesis, Barebone gaps, data sources, autonomy, no-money plan), Strategy Engine TODO
+
+**Next:** user sends Fable 5 prompt (refers to `20_Progress/Projects/CS/TradingView/`); after Fable lands base, Cursor finishes `.kiro` 7.2–13 leftovers.
+
+- Also created: `Fable 5 — Read Order (TradingView folder).md` (start here for Fable).

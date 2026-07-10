@@ -5,6 +5,7 @@ created: 2026-05-26
 tags:
   - project
   - trading
+updated: 2026-07-10
 ---
 # Personal AI Trading Desk Research And Product Blueprint
 
@@ -34,25 +35,26 @@ test -f /home/anant_gupta/projects/hub/tradingview/RESEARCH.md
 Do not overwrite the Linux file without reading it first.
 
 ## What Changed From The Earlier Plan
-
 The earlier plan centered too much on TradingView as the product reference. That is not the real target.
 
 The stronger target is a Barebone-like personal AI finance research desk, but with a more disciplined operating system for trading decisions:
 
 - Barebone-style AI financial research.
-- TradingView-style visual context where useful.
+- In-app charts/indicators for paper-phase research (TradingView.com later for real-trade record — updated 2026-07-10).
 - TradingAgents-style multi-agent debate.
 - Deterministic strategy and risk checks before AI synthesis.
+- Four-gate promotion before demo paper eligibility.
 - Paper-trade staging before any real execution.
-- A personal journal that records what the system believed, what I approved, what happened, and what I learned.
+- A personal journal/brain that records what the system believed, what I approved, what happened, and what I learned.
 
-The product is not being built for sale. It is a private tool for learning markets, improving research quality, and eventually testing whether AI agents can help make disciplined trades.
+The product is not being built for sale. It is a private tool for learning markets, improving research quality, and eventually testing whether AI agents can help make disciplined trades. **Confirmed 2026-07-10:** personal edge; portfolio mention OK; software private end-to-end. SoT: [[Session Findings — Cursor Alignment Pass (2026-07-10)]].
 
 ## Product Thesis
-
 Build a private AI trading operating system that helps me research US stocks and ETFs, generate evidence-backed trade theses, stage paper trades for my approval, and learn from every outcome.
 
-The app should bridge manual trading and future autonomy. V1 should not trade real money and should not autonomously place orders. It should let AI agents research, debate, score, and propose paper trades. I approve or reject every staged trade.
+**2026-07-10 confirmation:** personal edge only — single-user local desk; no auth/multi-tenancy; never sold. Portfolio may mention the project as engineering proof; the software itself is private. App is the research hub (strategies, brain, stock review, charts). TradingView.com is a later real-trade record surface, not the decision engine.
+
+The app should bridge manual trading and future autonomy. V1 should not trade real money and should not autonomously place orders. It should let AI agents research, debate, score, and propose paper trades. **Paper refinement (2026-07-10):** after I pre-approve a thesis, the paper engine may auto-enter at a computed time inside test windows. I approve or reject every staged thesis; fills inside an approved window are timed.
 
 The goal is not to create a magic prediction bot. The goal is to create a repeatable decision process:
 
@@ -60,12 +62,13 @@ The goal is not to create a magic prediction bot. The goal is to create a repeat
 market universe
 -> free trusted data
 -> deterministic strategy checks
+-> four-gate promotion (OOS, Monte Carlo, walk-forward, deflated Sharpe)
 -> multi-agent research debate
 -> risk manager review
--> paper trade proposal
--> human approval
+-> paper trade proposal / timed paper fill
+-> human approval of thesis
 -> journaled outcome
--> lessons fed back into future research
+-> lessons fed back into brain (promote/demote)
 ```
 
 ## Barebone Deep Dive
@@ -98,10 +101,23 @@ Barebone appears to compress financial research into a mobile-first AI experienc
 This is useful because a beginner does not yet know which sources to inspect, which metrics matter, or how to synthesize a large amount of market information quickly.
 
 ### Barebone Gaps To Solve Personally
-
 The opportunity is not to make a prettier Barebone clone. The opportunity is to build the version that is useful for one serious personal workflow.
 
-Gaps to solve:
+**Elevated gap table (canonical as of 2026-07-10 — see [[Session Findings — Cursor Alignment Pass (2026-07-10)]]):** lead with self-improving test-gated strategy lab + local journal; quant math first-class; proof over narrative. Barebone remains the UX reference (structured research, not raw chat).
+
+| Priority | Gap | Personal App Response |
+|---|---|---|
+| 1 | Research feed without promotion discipline | Four gates before demo paper: OOS → Monte Carlo → walk-forward → deflated Sharpe |
+| 2 | No owned local decision memory | Journal: theses, rejects, paper fills, lessons, citations |
+| 3 | Unclear deterministic vs AI | Python computes signals/tests/fills; AI proposes/explains only |
+| 4 | Weak audit trail | Evidence cards: source, timestamp, missing/stale; quality caps confidence |
+| 5 | Opaque/overfit backtests | Vs VOO; costs; drawdown; trade count; literature defaults |
+| 6 | No staged autonomy | Suggest → gate code → pre-approve thesis → timed paper auto-entry → real instructions later |
+| 7 | Charts/decisions split badly | **App first** for research/charts/indicators in paper phase; TradingView.com later for real-trade record |
+| 8 | Subscription/privacy / product pressure | Personal-only local desk; portfolio may mention; software never sold |
+| 9 | No control over agent roles | Explicit agent contracts when agents land |
+
+Older rows below are historical context from the first Barebone pass (still true, now subsumed by the table above):
 
 | Gap | Personal App Response |
 |---|---|
@@ -205,19 +221,18 @@ Start with a small universe that can be researched deeply:
 The broad ETF baseline is the default benchmark. Every individual stock idea must explain why it deserves attention over simply accumulating a broad ETF.
 
 ## Autonomy Ladder
-
 The product should be designed for future autonomy, but earn it slowly.
 
 | Level | Name | Behavior | Status |
 |---:|---|---|---|
 | 0 | Research only | Agents generate notes and evidence cards. | Supported as base layer. |
 | 1 | Evidence cards | App produces structured labels such as `WATCH` or `ACCUMULATE`. | Supported in V1. |
-| 2 | Approved paper trades | Agents stage paper trades; I approve or reject. | V1 target. |
+| 2 | Approved paper trades | Agents stage paper theses; I pre-approve; engine may timed-auto-enter inside test windows. | V1 target (refined 2026-07-10). |
 | 3 | Autonomous paper loop | Agents place paper trades without approval, with daily review. | Later, after journal evidence. |
-| 4 | Tiny supervised real-money trades | Very small real trades with manual approval. | Out of MVP. |
+| 4 | Tiny supervised real-money trades | Very small real trades with manual approval / app instructions. | Out of MVP. |
 | 5 | Autonomous real-money trading | Agent trades real money independently. | Explicit non-goal until long-term proof exists. |
 
-V1 target is Level 2.
+V1 target is Level 2 (thesis pre-approval + timed paper fills in approved windows).
 
 ## Strategy Philosophy
 
@@ -471,10 +486,9 @@ lesson:
 ```
 
 ## No-Money Testing Plan
-
 ### Phase 1: Historical Backtests
 
-Use Python and local data.
+Use Python and local data. Prefer the four-gate harness (OOS, Monte Carlo, walk-forward, deflated Sharpe) before treating any strategy as demo-eligible — see [[Year-Ahead Base — Fable 5 Architecture Contract]].
 
 Minimum metrics:
 
@@ -483,7 +497,7 @@ Minimum metrics:
 - Max drawdown.
 - Number of trades.
 - Win rate.
-- Sharpe estimate.
+- Sharpe estimate (and deflated Sharpe when multiple trials exist).
 - Transaction cost assumption.
 - Performance by market regime where possible.
 
@@ -496,9 +510,15 @@ Rules:
 - Show losing examples.
 - Compare every strategy to broad ETF accumulation.
 
-### Phase 2: Manual Paper Trading
+### Phase 2: Manual / Local Paper Trading
 
-Use TradingView Paper Trading or a local simulated journal to practice without real money.
+Local staged paper journal is primary. TradingView Paper Trading is optional later for real-broker familiarity — not the research hub.
+
+Support:
+
+- Accelerated historical replay that writes journal-as-if-time-passed (research verification).
+- Live paper book on calendar time with review jump-ahead.
+- Pre-approve thesis → timed auto-entry in test windows.
 
 The goal is not to prove profitability quickly. The goal is to test:
 
@@ -712,12 +732,12 @@ tradingview/
 ```
 
 ### Data Sources
-
 V1 should prioritize:
 
-- SEC EDGAR APIs for official filings and XBRL company facts.
-- Free end-of-day price data source for daily OHLCV.
-- TradingView widgets for visual charts only.
+- SEC EDGAR APIs for official filings and XBRL company facts (`SEC_USER_AGENT` required).
+- Free end-of-day price data (Polygon default in repo config; `POLYGON_API_KEY`).
+- FMP for fundamentals supporting quality/FCF scores (`FMP_API_KEY`).
+- **In-app charts/indicators for paper-phase decisions** (2026-07-10). TradingView.com / widgets are later for real-trade visual record — not the source of strategy math.
 - Manually maintained watchlist and portfolio.
 - Optional RSS/news later.
 - Optional Alpaca paper trading only after local paper journal works.

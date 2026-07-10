@@ -2,7 +2,7 @@
 type: concept
 status: sprout
 created: 2026-04-26
-updated: 2026-06-25
+updated: 2026-07-10
 related_progress:
   - "[[Trading with Ai]]"
   - "[[AI Market Analyzer - AI Engine Architecture]]"
@@ -434,7 +434,6 @@ Return only structured JSON matching the evidence card schema.
 ---
 
 ## TODO — Follow-Up Gaps (Next Pass)
-
 Three gaps identified in `[[Research - Trading Fundamentals Gap Fill (2026-06-25)]]` are not yet implemented. Flag them for the strategy engine revision that follows Kiro task completion:
 
 1. **RankIC tracking:** The strategy engine currently computes strategy scores but does not track how well those scores *rank* the 10 symbols by forward return. Cross-sectional ranking ability (RankIC) is the actual measure of whether the strategy adds value over equal-weight holding. Add a RankIC audit after enough paper-trade history accumulates (minimum: 6 months of monthly rankings + realized 1-month returns).
@@ -443,9 +442,9 @@ Three gaps identified in `[[Research - Trading Fundamentals Gap Fill (2026-06-25
 
 3. **Benchmark-relative tracking in paper journal:** Every paper position entry should record what VOO returned over the same holding period. Without this comparison, it is impossible to honestly evaluate whether the strategy earned alpha or just rode market returns. Add `voo_return_same_period` as a required field in the paper journal schema.
 
-**Also deferred:** Kronos model integration (`kronos_score`). Gated on the Phase A RankIC validation pass described in `[[Research - Kronos Foundation Model Deep Dive (2026-06-25)]]`. Do not add Kronos to the evidence packet until that validation confirms RankIC > 0.03 on the V1 universe.
+**Also deferred:** Kronos model integration (`kronos_score`). Gated on the Phase A RankIC validation pass described in `[[Research - Kronos Foundation Model Deep Dive (2026-06-25)]]`. Do not add Kronos to the evidence packet until that validation confirms RankIC > 0.03 on the V1 universe. **Confirmed 2026-07-10:** Fable 5 reserves schema/gates only — no inference ([[Session Findings — Cursor Alignment Pass (2026-07-10)]]).
 
----
+**Promotion wall (2026-07-10):** demo paper eligibility requires OOS → Monte Carlo → walk-forward → deflated Sharpe in order — see [[Year-Ahead Base — Fable 5 Architecture Contract]].
 
 ## What I Learn From This Project
 
