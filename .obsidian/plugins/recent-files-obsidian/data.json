@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Claude Code Status Bar (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Read/Claude Code Status Bar (PDF).md"
+    },
+    {
       "basename": "2026-07-10",
       "path": "10_Areas/Life/Enumerate/Daily/2026-07-10.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Capability Registry",
       "path": "60_Claude/44_Indexes/Bases/Capability Registry.base"
-    },
-    {
-      "basename": "Links",
-      "path": "40_Resources/UMN/Links.md"
     }
   ],
   "omittedPaths": [],

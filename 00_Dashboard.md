@@ -8,9 +8,11 @@ tags:
   - daily
 cssclasses:
   - dashboard
-today_focus: "Thursday build/study: land CSCI 2033 Unit 1 (carried over, 0/14) + hold LC/4041 floor + MATH Test 3 prep"
-today_80: "CSCI 2033 Unit 1 — Vectors, Linear Functions, Regression Model (carried over)"
-today_20: "LeetCode 5 (AVL/Red-Black, Meta), CSCI 4041 review, MATH 2230 WebAssign toward Test 3, inbox zero"
+today_focus: '"Friday: MATH 2230 Test 3 prep session 1 (3 days out, zero prep) +
+  land CSCI 2033 Unit 1 (0/14, carried 3rd day) + hold LC/4041 floor"'
+today_80: '"MATH 2230 Test 3 prep session 1 — Ch 7–8, 10.1"'
+today_20: '"LeetCode 5 (Sorting/Time Complexity, Google), CSCI 4041 review, CSCI
+  2033 Unit 1 (carried), inbox zero"'
 lc_today: 0
 study_today: 0
 wins_done: 0
