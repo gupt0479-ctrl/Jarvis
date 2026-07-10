@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "Trading Resources Integration — TradingView Architecture Roadmap",
+      "path": "60_Claude/20_Distilled_Notes/Trading Resources Integration — TradingView Architecture Roadmap.md"
+    },
+    {
+      "basename": "AI-Assisted Trading",
+      "path": "60_Claude/20_Distilled_Notes/AI-Assisted Trading.md"
+    },
+    {
+      "basename": "05 - MCP Protocol Bridge Integration Test and Final Housekeeping",
+      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/05 - MCP Protocol Bridge Integration Test and Final Housekeeping.md"
+    },
+    {
       "basename": "Index Fund Investing",
       "path": "60_Claude/20_Distilled_Notes/Index Fund Investing.md"
     },
@@ -11,10 +23,6 @@
     {
       "basename": "2026-07-10",
       "path": "10_Areas/Life/Enumerate/Daily/2026-07-10.md"
-    },
-    {
-      "basename": "Trading Resources Integration — TradingView Architecture Roadmap",
-      "path": "60_Claude/20_Distilled_Notes/Trading Resources Integration — TradingView Architecture Roadmap.md"
     },
     {
       "basename": "The Output Audit (web)",
@@ -63,10 +71,6 @@
     {
       "basename": "Hall of Hacks — Winning Hackathon Patterns Analysis",
       "path": "60_Claude/20_Distilled_Notes/Hall of Hacks — Winning Hackathon Patterns Analysis.md"
-    },
-    {
-      "basename": "05 - MCP Protocol Bridge Integration Test and Final Housekeeping",
-      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/05 - MCP Protocol Bridge Integration Test and Final Housekeeping.md"
     },
     {
       "basename": "02 - Close Documentation and Schema Drift",
@@ -195,10 +199,6 @@
     {
       "basename": "Knowledge Enrichment Registry",
       "path": "60_Claude/44_Indexes/Bases/Knowledge Enrichment Registry.base"
-    },
-    {
-      "basename": "Ops Reports",
-      "path": "60_Claude/44_Indexes/Bases/Ops Reports.base"
     }
   ],
   "omittedPaths": [],
