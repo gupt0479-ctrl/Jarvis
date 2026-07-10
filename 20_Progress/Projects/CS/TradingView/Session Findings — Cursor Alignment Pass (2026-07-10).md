@@ -147,7 +147,8 @@ Barebone remains the closest *UX reference* (structured research, not raw chat).
 **Confidence: ~95%.** Gate treated as passed for note-writing and Fable handoff.
 
 ## Open Questions
-- [ ] After Fable 5 lands the base: Cursor completes `.kiro` 7.2–13 leftovers (quality tests, evidence builder, benchmark, polygon/CLI as needed)
+- [x] Fable 5 year-ahead base landed AND Cursor completed `.kiro` 7.2–13 leftovers (2026-07-10; 420 offline tests green — see [[Year-Ahead Base — Fable 5 Architecture Contract]] Current State)
+- [ ] Live-data shakeout: run polygon/FMP/SEC clients with real keys, ingest the 14-symbol universe, first real replay study
 - [ ] RankIC validation pass before any Kronos inference
 - [ ] Re-check shared-core shape only after real paper-journal weeks exist (Postmortem residual risk) — still **no PM code** until paper readiness
 - [ ] In-app charting library choice (durable, navigable, not a widget junk drawer)

@@ -1167,3 +1167,5 @@ Ask-mode research/alignment across TradingView vault + `research_data` repo, the
 **Next:** user sends Fable 5 prompt (refers to `20_Progress/Projects/CS/TradingView/`); after Fable lands base, Cursor finishes `.kiro` 7.2–13 leftovers.
 
 - Also created: `Fable 5 — Read Order (TradingView folder).md` (start here for Fable).
+
+- 2026-07-10 — Fable 5 (resume): TradingView year-ahead base closed out. Verified 420 offline tests green; guardrail sweep clean (no execution language, no PM code, no Kronos inference, no secrets, `.env` ignored). Vault synced: Architecture Contract (Current State / Next Action / DoD), Math-First Map (slices A+B done), Session Findings (Open Questions). Repo docs: `Docs/YEAR_AHEAD_BASE.md` + `Docs/fable5_run_memory.md` updated. Next: live-data shakeout, replay studies, charting/agent layer.

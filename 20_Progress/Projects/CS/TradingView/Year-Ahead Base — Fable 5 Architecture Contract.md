@@ -28,10 +28,12 @@ next: "Fable 5 implements this contract; mirror into Docs/YEAR_AHEAD_BASE.md in-
 Ship the **year-ahead structural base** of the personal stocks/ETFs desk: real persistence, real formulas, real kill-tests, navigable modules — so later UI/agents/PM vertical sit on rock, not on student scaffolding.
 
 ## Current State
-- Ingestion foundation partial (`research_data`: models, config, storage, normalization, calendar, quality, read_api, csv_fixture).
-- No brain, factor engine, fundamentals path, four-gate harness, paper journal, or strategy UI in code yet.
-- Alignment decisions locked in [[Session Findings — Cursor Alignment Pass (2026-07-10)]].
-- `.env` prepared for `POLYGON_API_KEY`, `FMP_API_KEY`, `SEC_USER_AGENT` (never commit).
+- ==Base executed (2026-07-10)==: Fable 5 landed the hard slice; Cursor completed the `.kiro` ingestion plumbing (all 60 spec tasks checked). Full offline suite: **420 tests passing**.
+- In repo now: `brain/` (closed loop — citations, specs, human-gated approve, test runs, promote/demote, journal links), `factors/` (momentum 12-1, safety/vol, quality_fcf, valuation FCF/EV, ETF baseline vs VOO, TA context-only → `ScorePacket`), `fundamentals/` (FMP + SEC EDGAR parsers/clients/store, provenance on every field, offline fixtures), `gates/` (OOS → Monte Carlo → walk-forward → deflated Sharpe; costs, drawdown, trade count, vs-VOO; fail-closed on thin data), `paper/` (pre-approved theses, timed auto-entry in windows, replay journal-as-if-time-passed, live-book review jump-ahead hooks, `voo_return_same_period` required on exits), `kronos_reserved.py` (schema + USABLE/RankIC≥0.03 admission gates, zero inference).
+- Cursor's `.kiro` completions: `evidence.py`, `benchmark.py` (refuses execution language), `cli.py` (`init-db`, `ingest-prices`, `audit-prices`, `benchmark`), `providers/polygon.py`, quality/property tests, scope/security checks.
+- Universe expanded to 14 symbols; canonical letters-only `BRKB` stands for BRK.B (providers map their own punctuation).
+- Contract mirrored in-repo at `Docs/YEAR_AHEAD_BASE.md`; build lessons in `Docs/fable5_run_memory.md`.
+- `.env` (gitignored) holds `POLYGON_API_KEY`, `FMP_API_KEY`, `SEC_USER_AGENT`; `research_data.env.load_dotenv()` loads it without echoing values.
 
 ## What Fable 5 Builds (in scope)
 
@@ -113,17 +115,18 @@ Use existing `PriceReadAPI` / DuckDB / `csv_fixture`; implement live Polygon onl
 | Premature multi-asset | Stocks/ETFs only until paper proven |
 
 ## Definition of Done (Fable 5)
-- Vault notes under this folder updated to match what was built
-- `Docs/YEAR_AHEAD_BASE.md` exists and matches code
-- Brain loop persists and is tested
-- Factor(+fundamentals) path produces score packets on fixture and/or live data
-- Four gates runnable with pass/fail records
-- Paper-test contracts stored (even if UI thin)
-- Kronos reserved only
-- Honest report: what passed, what failed, Cursor leftovers, risks
+All met 2026-07-10 (verified against `pytest` output, 420 passing):
+- [x] Vault notes under this folder updated to match what was built
+- [x] `Docs/YEAR_AHEAD_BASE.md` exists and matches code
+- [x] Brain loop persists and is tested (incl. full closed-loop integration test `tests/test_closed_loop.py`)
+- [x] Factor(+fundamentals) path produces score packets on fixture data (live keys pending shakeout)
+- [x] Four gates runnable with pass/fail records (fail-closed, recorded in brain, never silent)
+- [x] Paper-test contracts stored (thesis gate, timed entry, replay + live modes; UI intentionally absent)
+- [x] Kronos reserved only (no inference imports — enforced by test)
+- [x] Honest report delivered: what passed, leftovers, risks
 
 ## Next Action
-Fable 5 executes this contract end-to-end; then Cursor finishes `.kiro` plumbing.
+Contract executed end-to-end (2026-07-10). Next phase (new handoff, not this contract): live-data shakeout with real keys (polygon prices, FMP/SEC fundamentals into the stores), first real replay studies on the 14-symbol universe, then charting/UI choice and the agent layer consuming `ScorePacket`s. Kronos stays reserved until a RankIC validation pass on this universe.
 
 ## Open Questions
 - [ ] Confirm charting library for in-app indicators after base APIs exist

@@ -82,21 +82,25 @@ Kronos: **schema reservation only** — see Session Findings.
 ## Still Left and Necessary (ordered)
 
 ### A — Fable 5 hard slice (now)
-1. Brain persistence + closed loop APIs + tests
-2. Factor scorers + score packets
-3. Minimal FMP/SEC fundamentals path
-4. Four-gate harness + eligibility flag
-5. Paper-test contracts (approve → timed entry; replay; live book hooks)
-6. Vault + `Docs/YEAR_AHEAD_BASE.md` architecture mirror
-7. Kronos reserved fields/docs only
+==Done 2026-07-10 (Fable 5).== All seven items landed with tests:
+1. [x] Brain persistence + closed-loop APIs (`brain/models|store|loop`) — human-gated approve/promote, gate-order enforcement
+2. [x] Factor scorers + `ScorePacket`s (`factors/`) — formulas, windows, INSUFFICIENT_DATA kill-paths
+3. [x] Minimal FMP/SEC fundamentals path (`fundamentals/`) — pure parsers, fail-closed live clients, DuckDB store
+4. [x] Four-gate harness + eligibility (`gates/`) — OOS/MC/WF/DSR, short-circuit, recorded to brain
+5. [x] Paper-test contracts (`paper/`) — approve → timed entry; replay journal-as-if-time-passed; live-book review hooks
+6. [x] Vault + `Docs/YEAR_AHEAD_BASE.md` mirror
+7. [x] Kronos reserved fields/docs only (`kronos_reserved.py`)
 
 ### B — Cursor next (plumbing, not the hard product problem)
-1. Quality tests 7.2–7.4
-2. `evidence.py` builder wiring `DataEvidencePacket` for downstream agents
-3. `benchmark.py` reporter
-4. Polygon provider completion + rate limits if not done in A
-5. CLI (`init-db`, `ingest-prices`, `audit-prices`, `benchmark`) + idempotence properties
-6. Scope/security checks (task 13)
+==Done 2026-07-10 (Cursor).== All `.kiro` data-ingestion-foundation tasks are checked (60/60):
+1. [x] Quality tests 7.2–7.4
+2. [x] `evidence.py` builder (`DataEvidencePacket` for downstream agents)
+3. [x] `benchmark.py` reporter (refuses execution language)
+4. [x] `providers/polygon.py` with rate limiting + retry/backoff
+5. [x] CLI (`init-db`, `ingest-prices`, `audit-prices`, `benchmark`) + property tests
+6. [x] Scope/security checks (task 13, `tests/test_security_scope.py`)
+
+Full offline suite after both slices: **420 tests passing**. Section C below remains the future queue.
 
 ### C — After base proves itself (not this handoff)
 1. Multi-agent debate layer consuming packets only
