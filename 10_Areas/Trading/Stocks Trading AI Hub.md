@@ -11,7 +11,7 @@ track:
 output_kind: project-brief
 source_concepts:
   - "[[AI-Assisted Trading]]"
-  - "[[20_Progress/Projects/CS/TradingView/Trading Tools and Platforms]]"
+  - "[[20_Progress/Projects/CS/TradingView/Research/Trading Tools and Platforms]]"
   - "[[AI Workflow]]"
 notes:
   - "[[06 - ML Fundamentals (2033 + 2230)]]"

@@ -228,6 +228,12 @@ transition={{ duration: 0.3, ease: "easeInOut" }}
 
 ---
 
+
+**Chat bubble text overflow (Gap 3, confirmed via code read — scoped separately from the textarea/cap work above):** `ChatThread.tsx`'s user-message bubble (`<div className="ml-auto max-w-[80%] rounded-xl px-3 py-2 ...">{msg.text}</div>`) has no `break-words`/`overflow-wrap` class, so a single long unbroken token (URL, long identifier, etc.) overflows the `max-w-[80%]` bound instead of wrapping. This is unrelated to the textarea growth/character-cap work above (that governs *input*; this governs *rendered message* overflow) and should be tracked as its own small CSS fix:
+- **Change:** add `break-words` (Tailwind) or equivalently `overflow-wrap: anywhere` to the bubble's className
+- **Scope:** single className addition, no state/logic change, no Sanity impact
+- **Risk:** low — purely additive CSS, does not alter existing wrapping behavior for normal text, only affects the edge case of unbroken long tokens
+
 ### Fix 5 — Experience Section Line Clamping
 
 **Component structure:** No new components. `ExperienceCard.tsx`'s `responsibilities`/`achievements` `<li>` text spans get a `line-clamp-2` (mobile) / `line-clamp-3` (desktop) Tailwind utility added to the `<span className="font-sans leading-relaxed">` wrapper.
@@ -327,6 +333,12 @@ Apply to the *top* padding of `EducationSection.tsx` and *bottom* padding of `Sk
 
 ---
 
+
+**`CategoryPill` audit (Gap 2 — distinct from `SkillPill` above, confirmed via code read):** `CategoryPill` (in `SkillsSectionClient.tsx`) is a separate, richer effect system from `SkillPill` — it layers 9+ per-category animation variants on top of a **continuous** `useSpaceFloat` idle-drift effect, whereas `SkillPill`'s 7 effects are hover-only and have no idle motion. The requirements doc's original "reduce hover-effect variety" language was written against `SkillPill` only and does not transfer directly to `CategoryPill`'s always-on drift. Recommend treating `CategoryPill` as its own reduction pass, not folded into the `SkillPill` clamp above:
+- Keep the `useSpaceFloat` idle drift (it is the category-level ambient motion the section relies on, not one of the "busy" hover effects being complained about)
+- Reduce the 9+ per-category hover/selection variants down to **2-3** using the same coherence criteria as `SkillPill` (favor smooth transform/opacity changes, drop multi-element choreography like constellation-dot bursts)
+- **Flag for design sign-off** alongside the `SkillPill` reduction — both are subjective calls, not measured bugs, and should be reviewed together since a user will encounter both pill types in the same section.
+
 ### Fix 8 — Orby, Dark Mode, Footer
 
 **Orby radio redesign:** `OrbyModel.tsx`'s radio `<div>` (currently `6×10px` gradient rectangle) gets a sibling `<div>` for the antenna — a thin `1×8px` element angled via `transform: rotate(15deg)`, positioned at the radio's top-right corner, with a small glowing dot at its tip (reuse the existing glow-via-`boxShadow` pattern already used throughout `OrbyModel.tsx`, e.g. `box-shadow: 0 0 4px rgba(139,92,246,0.5)`).
@@ -358,3 +370,20 @@ Repeat for `.cosmic-card--dark`, `.cosmic-card--subtle`, `.orbit-chip`, `.sectio
 **What could go wrong:**
 - Orby idle commentary firing too often could feel spammy — enforce a minimum cooldown between idle-triggered lines (e.g., 45s) independent of the rate-limit backend check, purely client-side, to avoid hammering the new endpoint on rapid scroll/click bursts.
 - Light mode risks breaking readability if any hardcoded `text-white/NN` Tailwind utility classes (used pervasively across every section component) aren't also given light-mode counterparts — this is the single biggest risk in Fix 8. A full audit of every `text-white/*` usage against the new light background is required before shipping; flagged explicitly in the tasks doc as its own task with a checklist, not folded silently into "add light tokens."
+
+
+---
+
+## Fix 7b — Education Deformity Sequencing & Bachelor's Highlight (confirmed gap)
+
+**Correction to earlier claim:** an earlier pass of this design doc characterized `EducationFlowchart.tsx` as "untouched." That was inaccurate. Verified via `grep_search`: the file already defines `DISTORT = [0, 0.42, 0.68]` (index 0 = Bachelor's/college = solid/undistorted, index 1 = high-school = 0.42 distort, index 2 = middle-school = 0.68 distort) and `BASE_POS` orders the blobs `[0]=college, [1]=high-school, [2]=middle-school`. So the *target* distort values already encode "Bachelor's should read as solid/highlighted" — what's missing is any **entrance sequencing**. The existing `TravellingDot` element loops continuously along the flowchart path, but it is not wired to the blob distort values in any way — there is no timed reveal, no stagger, and no scroll-triggered start.
+
+**Component structure:** No new component needed. `EducationFlowchart.tsx`'s blob meshes are pure R3F (`@react-three/drei` distorted-material meshes inside a `Canvas`), not DOM elements, so this cannot use a Framer Motion `whileInView` wrapper the way DOM-based sections do — it needs its own scroll-trigger mechanism.
+
+**Sequencing mechanism:**
+- Wrap the `Canvas` (or its parent DOM container) in an `IntersectionObserver`-based hook — check whether `EducationFlowchart.tsx`'s parent already sits inside a `whileInView`-capable motion wrapper at the section level; if the section wrapper's `viewport={{ once: true }}` fire can be threaded down as a prop/context flag, prefer that over adding a second observer. If no such wrapper reaches the Canvas boundary, add a lightweight `IntersectionObserver` directly (mirrors the `useSpaceFloat`-style hook pattern already used elsewhere for scroll-driven effects).
+- On trigger, drive each blob's live distort value toward its `DISTORT[i]` target via a `useFrame` lerp (same pattern as Fix 1's scatter-intro animation — mutate a ref per frame, never allocate `new THREE.*` inside `useFrame`), staggered by blob index so college resolves first, then high-school, then middle-school — reinforcing "Bachelor's is the highlighted/primary node" through order as well as final distort amount.
+- Before the trigger fires, blobs should start at a shared higher-distort "unresolved" state (e.g., all at `DISTORT[2]`'s value or higher) so the animation reads as a resolve-into-clarity sequence, not just a distort-amount tween.
+- Respect `prefers-reduced-motion`: skip the timed stagger and lerp entirely, snapping directly to each blob's final `DISTORT[i]` value with no animated transition — consistent with the project's existing reduced-motion posture for R3F scenes.
+
+**What could go wrong:** if the section-level `whileInView` flag and a new local `IntersectionObserver` both fire independently, they could produce a double-trigger or race condition. Decide on exactly one trigger source before implementation and confirm it against the actual parent wrapper markup, not assumed.

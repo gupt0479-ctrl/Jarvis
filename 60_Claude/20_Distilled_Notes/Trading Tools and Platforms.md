@@ -6,7 +6,7 @@ updated: 2026-04-27
 tags:
   - concept
 notes:
-  - "[[20_Progress/Projects/CS/TradingView/Links]]"
+  - "[[20_Progress/Projects/CS/TradingView/Research/Links]]"
   - "[[Reddit]]"
 track:
   - trading
@@ -24,7 +24,7 @@ next_drill: 2026-05-09
 
 # Trading Tools and Platforms
 
-> Distilled from [[20_Progress/Projects/CS/TradingView/Links]] and market research
+> Distilled from [[20_Progress/Projects/CS/TradingView/Research/Links]] and market research
 
 ## Deep Dive
 
@@ -62,7 +62,7 @@ The Reddit discussion on Bloomberg terminal vs retail software highlights the ga
 
 ### Source Anchors
 
-- [[20_Progress/Projects/CS/TradingView/Links]] — curated tool links
+- [[20_Progress/Projects/CS/TradingView/Research/Links]] — curated tool links
 - [[Reddit]] — community discussion on tools and platforms
 
 ## Diagnostic Questions

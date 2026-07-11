@@ -11,7 +11,7 @@ tags:
 source: graphify
 source_repo: gupta-builds/TradingView (setup branch)
 notes:
-  - "[[20_Progress/Projects/CS/TradingView/Trading with Ai]]"
+  - "[[Trading with Ai]]"
 ---
 
 # TradingView — graphify Knowledge Graph

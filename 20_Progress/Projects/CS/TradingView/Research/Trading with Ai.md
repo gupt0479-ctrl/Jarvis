@@ -5,7 +5,7 @@ created: 2026-04-26
 updated: 2026-04-26
 related_progress:
   - "[[Stocks Trading AI Hub]]"
-  - "[[20_Progress/Projects/CS/TradingView/Trading Tools and Platforms]]"
+  - "[[20_Progress/Projects/CS/TradingView/Research/Trading Tools and Platforms]]"
   - "[[AI Market Analyzer - Product Spec]]"
   - "[[AI Market Analyzer - Data Sources]]"
   - "[[AI Market Analyzer - AI Engine Architecture]]"
@@ -190,5 +190,5 @@ Build order:
 - [[AI Market Analyzer - AI Engine Architecture]]
 - [[AI Market Analyzer - Strategy Engine]]
 - [[AI Market Analyzer - 4 Month Build Plan]]
-- [[20_Progress/Projects/CS/TradingView/Trading Tools and Platforms]]
-- [[20_Progress/Projects/CS/TradingView/Links]]
+- [[20_Progress/Projects/CS/TradingView/Research/Trading Tools and Platforms]]
+- [[20_Progress/Projects/CS/TradingView/Research/Links]]

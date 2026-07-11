@@ -7,7 +7,7 @@ tags:
   - concept
 notes:
   - "[[Trading with Ai]]"
-  - "[[20_Progress/Projects/CS/TradingView/Links]]"
+  - "[[20_Progress/Projects/CS/TradingView/Research/Links]]"
 track:
   - trading
   - ai
@@ -68,7 +68,7 @@ The honest result: most simple models barely beat random on out-of-sample data. 
 ### Source Anchors
 
 - [[Trading with Ai]] — initial exploration notes
-- [[20_Progress/Projects/CS/TradingView/Links]] — Tradevisor AI and other AI trading tools
+- [[20_Progress/Projects/CS/TradingView/Research/Links]] — Tradevisor AI and other AI trading tools
 - Cross-reference with AI track: embeddings, data pipelines, model evaluation
 
 ## Diagnostic Questions
