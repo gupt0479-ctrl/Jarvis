@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "claude-prompt-ui-fixes-analysis",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-prompt-ui-fixes-analysis.md"
+    },
+    {
+      "basename": "UI Fixes",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/UI Fixes.md"
+    },
+    {
       "basename": "Trading Resources Integration — TradingView Architecture Roadmap",
       "path": "60_Claude/20_Distilled_Notes/Trading Resources Integration — TradingView Architecture Roadmap.md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "Question Triage",
       "path": "60_Claude/44_Indexes/Bases/Question Triage.base"
-    },
-    {
-      "basename": "log",
-      "path": "60_Claude/07_AI_Information/Session Logs/log.md"
-    },
-    {
-      "basename": "Knowledge Enrichment Registry",
-      "path": "60_Claude/44_Indexes/Bases/Knowledge Enrichment Registry.base"
     }
   ],
   "omittedPaths": [],
