@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
+      "basename": "frontend-ui-fixes-tasks",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/frontend-ui-fixes-tasks.md"
+    },
+    {
+      "basename": "claude-prompt-ui-fixes-audit-pass",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-prompt-ui-fixes-audit-pass.md"
+    },
+    {
       "basename": "claude-prompt-ui-fixes-analysis",
       "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-prompt-ui-fixes-analysis.md"
     },
     {
       "basename": "UI Fixes",
       "path": "20_Progress/Projects/CS/Portfolio/frontend/UI Fixes.md"
+    },
+    {
+      "basename": "frontend-ui-fixes-requirements",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/frontend-ui-fixes-requirements.md"
     },
     {
       "basename": "Trading Resources Integration — TradingView Architecture Roadmap",
@@ -187,18 +199,6 @@
     {
       "basename": "2026-07-08",
       "path": "10_Areas/Life/Enumerate/Daily/2026-07-08.md"
-    },
-    {
-      "basename": "Output Pipeline",
-      "path": "60_Claude/44_Indexes/Bases/Output Pipeline.base"
-    },
-    {
-      "basename": "Winter Break",
-      "path": "20_Progress/Mentorship Program/Winter Break.md"
-    },
-    {
-      "basename": "Question Triage",
-      "path": "60_Claude/44_Indexes/Bases/Question Triage.base"
     }
   ],
   "omittedPaths": [],

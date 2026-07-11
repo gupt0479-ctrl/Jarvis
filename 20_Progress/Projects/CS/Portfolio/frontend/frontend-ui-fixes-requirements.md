@@ -139,6 +139,8 @@ Expanded detail view must not push the whole page layout on mobile — recommend
 3. `<input>` elements support native cursor left/right arrow-key navigation by default; the reported "cursor movement not working" bug is likely a symptom of the current single-line `<input>` combined with some interaction elsewhere — **root cause unverified, flagged for direct reproduction before fix.**
 4. Neither `ChatThread.tsx` nor `PortfolioLab.tsx` enforces message length — arbitrarily long/gibberish input is sent as-is to `/api/chat`, consuming model-router quota (`src/lib/model-router.ts`) before Orby's canned fallback ever engages.
 
+5. **Confirmed gap (screenshot-verified):** `ChatThread.tsx`'s user-message bubble renders `{msg.text}` inside a plain `<div className="ml-auto max-w-[80%] rounded-xl px-3 py-2 ...">` with no `break-words`/`overflow-wrap` utility applied. An unbroken string with no spaces (e.g., the gibberish test string in the source brief) overflows the bubble's `max-w-[80%]` constraint horizontally instead of wrapping, producing a horizontal scrollbar in the chat thread panel — visible directly in both embedded screenshots accompanying the gibberish-test paragraph (see `Pasted image 20260711204507.png` and `Pasted image 20260711204540.png`). The assistant-message bubble (rendered via `ReactMarkdown`'s `p` component in `MARKDOWN_COMPONENTS`) also lacks an explicit wrap override in its own class list, but assistant replies are natural-language sentences with spaces, so the bug has not visibly triggered there in the screenshots — this is a difference in typical *content*, not a confirmed difference in CSS between the two bubble types.
+
 ### User Impact
 On mobile, users may be unable to comfortably compose messages; on all devices, users get no feedback about how much room they have before hitting a length constraint, and can send unbounded gibberish that the backend silently absorbs.
 
@@ -147,6 +149,8 @@ On mobile, users may be unable to comfortably compose messages; on all devices, 
 - Input control grows from 1 line up to a 3-line cap as the user types, matching the source brief's spec; beyond the cap, the box becomes internally scrollable instead of growing further.
 - A visible character/length indicator appears as the user approaches the cap.
 - Left/right arrow-key and click-to-position cursor movement is confirmed working in the shipped textarea component (default browser behavior for `<textarea>`; success criteria is "does not regress" once the component moves from `<input>` to a growable `<textarea>`).
+
+- Long unbroken strings (no whitespace to break on) wrap within the user-message bubble in `ChatThread.tsx`; no horizontal scrollbar appears in the chat thread panel regardless of input length (see `Pasted image 20260711204507.png`, `Pasted image 20260711204540.png`).
 
 ### Content Dependencies
 None — pure UI component change. `/api/chat` already accepts arbitrary-length `messages[].content` strings.
@@ -223,6 +227,8 @@ Auto-play should respect `prefers-reduced-motion` (currently not checked anywher
 2. `CATEGORY_SHAPES` defines each category's first-year value via `startFloor` (e.g., `frontend.startFloor = 18`) — several categories' *pattern-scaled* first-year value can exceed the "no skill above 35 at the starting point" ceiling the source brief specifies, once recalculated for a 2022 start.
 3. `SkillPill` implements 7 distinct hover effects selected by `effectIndex % 7` — the source brief calls these "laggy" and "not eye-pleasing." No expensive re-renders were found in the code (effects are CSS `transition`/`animation` driven) — this is a design-quality complaint about the chosen effects, not a measured performance bug.
 
+4. **Confirmed gap — category-chip effects are a separate, unaudited component.** The dictated transcript makes two distinct complaints: "very limited types of effects... on each and every single skill" (individual skill tags) and, separately, "the skill category UI effects almost seem to be laggy" (the filter chips labeled e.g. "Ai Ml 7", "Backend 8", "Cloud 6" sitting above the graph/grid). These are two different components in the code: individual skill tags are `SkillPill` (already audited above, 7 effects via `effectIndex % 7`); the category filter row is a separate `CategoryPill` component, also defined inline in `SkillsSectionClient.tsx`, rendered by `SkillsFilter`. `CategoryPill` has its own independent hover-effect system — a `k === "frontend"` shimmer sweep, `k === "mobile"` expanding ring overlay, `k === "backend"` blinking cursor, `k === "tools"` terminal-prompt blink, `k === "devops"` sequential deploy-dots, `k === "database"`/`"data-systems"` sparkline bars, `k === "testing"` sequential checkmarks, `k === "cloud"` floating micro-dots, `k === "academic"` an orbiting star dot, plus a `useSpaceFloat`-driven continuous ambient drift on every pill regardless of hover state. This is a materially larger and more varied effect system than `SkillPill`'s — 9+ distinct category-specific animations layered on top of continuous drift, versus `SkillPill`'s 7 effects with no continuous drift. Nothing in the current design.md distinguishes these two components; treating them as one paragraph would understate the scope of the "laggy" complaint, since the category row's continuous `useSpaceFloat` drift plus a hover-triggered animation running simultaneously is a more plausible source of a "laggy" feel than `SkillPill`'s effects alone.
+
 ### Problem Statement — Education / Certifications spacing
 The source brief calls out excess padding between Education and the sections immediately above/below it (per render order in `PortfolioContent.tsx`: Skills → Education → Certifications). Both sections use the shared `section-pad` utility (`padding-block: var(--section-pad-y)` = `5rem` both sides) with no section-specific override — the "too much gap" is a `--section-pad-y` tuning issue at these two boundaries specifically, not a structural layout bug.
 
@@ -233,6 +239,8 @@ The Skills section's core pitch — "watch capability grow over time" — is und
 - Graph X-axis reads either `2022–2026` (drop 2021, 5 points) or a forward-shifted `2022–2027` (6 points) — **flagged for clarification**, see Open Questions.
 - No category's first plotted year value exceeds 35 on the 0–100 Familiarity/Applied Depth axis.
 - Skill-pill and category-pill hover effects are visually cohesive and smooth, with variety reduced if that is what "cleaner" is confirmed to mean during design.
+
+- `CategoryPill`'s effect variety is reduced and its continuous ambient drift (`useSpaceFloat`) is reconsidered independently from `SkillPill`'s fix — do not assume the same "keep 3 of N" prescription applies identically to both components, since `CategoryPill`'s baseline (continuous drift + hover effect) is architecturally different from `SkillPill`'s (hover-only, no drift).
 
 ### Success Criteria — Education/Certifications spacing
 Vertical gap between Certifications and Education, and between Skills and Education, is visually tightened relative to current `5rem`/`5rem` — target value set in the design doc after a visual pass (likely a `--section-pad-y` override scoped to only these two boundaries, since global `section-pad` is used everywhere else).
@@ -291,6 +299,42 @@ Orby's AI commentary needs no new Sanity fields — it can be grounded via the e
 - Orby's AI commentary must remain `aria-hidden`, consistent with the entire existing Orby component tree.
 
 ---
+
+
+---
+
+## Fix Area 7b — Education Deformity Sequencing & Bachelor's Highlight (confirmed gap)
+
+**Components:** `src/components/EducationFlowchart.tsx`
+
+### Problem Statement
+The dictated transcript describes a specific, load-bearing requirement that no existing fix area covers: as the user lands on the Education section, the node "deformity" should trace a path — Middle School most deformed, High School in between, Bachelor's in Computer Science at 0 deformity (a solid sphere) — with the transition itself being animated and "UI-pleasing." The transcript also separately states Bachelor's is "not highlighted at all" and needs distinct color/background contrast.
+
+Verified against the live code: `EducationFlowchart.tsx` already defines `const DISTORT = [0, 0.42, 0.68] as const;`, indexed against `BASE_POS`'s own comment (`[0]=college, [1]=high-school, [2]=middle-school`, sorted descending by `startDate`). This means the *end-state* hierarchy the transcript describes already exists as static per-node values — Bachelor's (`idx 0`) is `distort: 0` (solid sphere), High School (`idx 1`) is `0.42`, Middle School (`idx 2`) is `0.68` (most deformed). `DISTORT_SPEED = [0, 2.0, 3.5]` similarly scales the *ongoing* distortion animation speed per node, not a one-time entrance sequence. `TravellingDot` (a separate glowing sphere) already loops continuously middle→high→college along `StretchingLine` connectors, but this is a decorative, infinitely-looping dot — it is not tied to the blobs' own distort values, and does not drive any transition in the blobs themselves. **There is no code that sequences the distort values themselves on section entry** — the blobs render at their final `DISTORT` values immediately on mount, with no scroll-into-view or on-mount transition from a shared starting deformity down to their individual targets. The earlier design.md claim that "`EducationFlowchart.tsx`'s scene is untouched by this fix pass" is incorrect now that this gap is confirmed — this file requires a targeted addition (not a rewrite).
+
+On the Bachelor's-highlight complaint: `BLOB_COLOR`/`BLOB_EMIT`/`BLOB_EMIT_I` already assign each node a distinct color (college: `#7c3aed`/`#a78bfa`/emissive intensity `2.0` — the *highest* emissive intensity of the three), which suggests some differentiation already exists in code, contradicting the transcript's "not highlighted at all" framing. This discrepancy is most plausibly explained by the *shape* difference being the dominant visual signal today — a perfect solid sphere (Bachelor's) can read as visually "flatter"/less eye-catching than a busier, more organic-looking deformed blob (Middle School), even with a higher emissive intensity, especially since deformity and emissive glow are visually competing signals rather than reinforcing ones. This is a plausible explanation grounded in the actual constants, not a confirmed root cause — flag as informed hypothesis, not fact, until visually verified against the actual rendered page.
+
+### User Impact
+Without a sequenced entrance animation, the Education section's core narrative device (an academic journey visualized as decreasing deformity) is invisible — a first-time viewer sees three static blobs with different levels of "wobbliness" but no visual story connecting them. Without a stronger highlight treatment, the Bachelor's node — the most important credential on the page — does not read as more significant than Middle School.
+
+### Success Criteria
+- On section entry (scroll-into-view, matching the `whileInView` convention used elsewhere in the codebase per the steering rules), each blob's `distort` value animates from a shared "high deformity" starting point down to its final target (`0` for Bachelor's, `0.42` for High School, `0.68` for Middle School) over a short, clean transition — not an instant snap to the final `DISTORT` array values.
+- The transition plays once per section visit (not on every frame, and not replaying on every scroll direction change) and is visually smooth ("UI-pleasing," per the transcript, meaning no popping/stuttering between deformity states).
+- Bachelor's in Computer Science receives an additional, distinct visual treatment beyond its already-differentiated `BLOB_COLOR`/`BLOB_EMIT_I` values — options include a background glow/halo behind the solid sphere, a stronger border/rim-light effect, or a size increase relative to the other two nodes — resolved during design, not fully specified by the transcript.
+- Existing behavior is preserved: `TravellingDot`'s continuous loop, `StretchingLine` connectors, logo clip-paths per node, and `EduCard` info panels are unaffected by this fix.
+
+### Content Dependencies
+None — this is a pure animation/visual-treatment fix on existing `DISTORT`/`BLOB_COLOR`/`BLOB_EMIT` constants and the `EduBlob` component's render logic. No Sanity schema or query changes.
+
+### Responsive Considerations
+`EducationFlowchart.tsx` already branches on `prefersReduced` (via `window.matchMedia("(prefers-reduced-motion: reduce)")`, checked once in the parent `EducationFlowchart` component and passed down as a prop) — the new entrance sequencing must skip directly to final `distort` values when `prefersReduced` is true, consistent with how `DISTORT_SPEED` already zeroes out (`speed={prefersReduced ? 0 : DISTORT_SPEED[idx]}`) under the same flag. No new breakpoint logic needed — the R3F `Canvas` here has no separate mobile/desktop point-count branching (unlike `ObsidianBackgroundCanvas.tsx`), so the sequencing timing does not need device-tiering.
+
+### Accessibility Notes
+Purely decorative 3D content, no ARIA impact. Must respect `prefers-reduced-motion` per the Responsive Considerations above — this is already the dominant accessibility mechanism for this component and the new sequencing must plug into the same existing flag rather than introduce a second one.
+
+### Behavioral Flow (Before → After)
+- **Before:** Education section scrolls into view → all three blobs are already at their final, static distort values → `TravellingDot` loops decoratively but disconnected from any blob-level story.
+- **After:** Education section scrolls into view → all three blobs briefly share a similarly high deformity → over a short, clean transition, each blob settles into its final distort value (Bachelor's fully resolving to a solid sphere) → Bachelor's carries an additional highlight treatment that reads clearly as the most significant node → `TravellingDot`'s existing loop continues unchanged, now reinforcing rather than contradicting the sequencing narrative.
 
 ## Open Questions (must resolve before design doc is finalized)
 
