@@ -17,7 +17,8 @@ tags:
 track:
   - trading
   - ai
-next: "Cursor: close F3 vault rearrange (this note), then G1 Cursor/Fable split, then write the Fable 5 implementer prompt"
+next: Paste Docs/FABLE5_PHASE3_AI_BRAIN_PROMPT.md into Fable 5; human opens PR
+  after green branch
 ---
 # Session Findings — AI Brain Hub (2026-07-12)
 ==This note is the current SoT for the AI-hub questionnaire (A1–F2). It does not supersede [[Session Findings — Post Base (2026-07-11)]] on ingestion/Phase 2b facts — it extends the loop with the self-improving AI harness design that Post Base explicitly deferred ("analyst/critic agents; UI/charting" listed there as not-yet-built).==
@@ -31,9 +32,9 @@ Before Block A closed, a real scope conflation surfaced and was resolved: the us
 ## Block A — Scope & Success Bar
 | ID | Decision | Key notes |
 |---|---|---|
-| **A1** | **D** — symbol `EvidenceCard` CLI + Analyst/Critic on the `demo_eligible` pack | Proposer deferred to V1.1; no PM vertical, no UI, in this phase |
+| **A1** | **D** — symbol `EvidenceCard` CLI + Analyst/Critic on the `demo_eligible` pack | Proposer deferred to V1.1; no PM vertical, no UI |
 | **A2** | **E (A+D)** — journal lesson → `Citation`, plus critic HOLD/DEMOTE suggestions | Human decides; no LLM proposer in V1 |
-| **A3** | **D** — offline goldens + one live holding card + critic HOLD/DEMOTE artifact | No proposal draft, no UI, no full watchlist digest. Live symbol leans **NVDA** (not yet formally confirmed) |
+| **A3** | **D** — offline Properties + one live holding card + critic HOLD/DEMOTE artifact | Live symbol **locked NVDA** (G2); ground truth in `Docs/PHASE2B_PROMOTION_STUDY_2026-07-11.md` |
 ## Block B — Packet Contracts
 *Mechanism:* the LLM may only ever see structured packets already computed by deterministic Python — never raw OHLCV, never Kronos, never anything it could use to invent a number.
 | ID | Decision | Key notes |
@@ -80,13 +81,16 @@ Executed alongside this note, per explicit instruction: plain folder names (no `
 - **Archive/** — resolved or superseded, kept for the audit trail, not deleted: `AI Market Analyzer - 4 Month Build Plan` (already `status: archived`), `History Depth Blocker — Massive Starter Required` (resolved — Tiingo replaced the Massive-upgrade plan), `Phase 2b — Promotion Study (Draft)` (superseded — the actual study ran and landed; see `Docs/PHASE2B_PROMOTION_STUDY_2026-07-11.md` in the repo)
 `Fable 5 — Read Order (TradingView folder)` stays at the folder root as the navigation index and has been rewritten to point here.
 ## Open Items
-- [ ] Confirm the A3/E2 live symbol (leaning NVDA; GOOGL/AAPL were the other candidates from the demo_eligible pack)
-- [ ] G1–G3 (Cursor vs Fable split, Fable one-shot scope, explicit non-goals) — not yet answered
-- [ ] Write the Fable 5 implementer prompt once G-series closes
-- [ ] Confirm current Gemini Flash model alias in Google's docs at implementation time (aliases get renamed/versioned)
+- [x] G1–G3 locked; Cursor G1-D prereqs landed (incl. D5 study-script cite wiring)
+- [x] Human verify: `pytest -q` → 483 passed; `analyze-symbol NVDA --quality missing` → INSUFFICIENT_DATA
+- [x] Full Q&A recap: [[Session Recap — AI Brain Hub Questionnaire (2026-07-12)]] + repo `Docs/SESSION_RECAP_AI_BRAIN_HUB_2026-07-12.md`
+- [x] Fable one-shot prompt: repo `Docs/FABLE5_PHASE3_AI_BRAIN_PROMPT.md` (Fable-5 prompting guide applied)
+- [ ] Fable: confirm current Gemini Flash alias at implement time; ship LLM seam + NVDA live smoke; leave green branch
+- [ ] Human opens PR (merge policy i)
 ## Related
+- [[Session Recap — AI Brain Hub Questionnaire (2026-07-12)]] — full Q&A transcript
 - [[Session Findings — Post Base (2026-07-11)]]
 - [[Postmortem - Stocks-ETFs First, Prediction Markets Second]]
 - [[Year-Ahead Base — Fable 5 Architecture Contract]]
 - [[Phase 2 — Strategy Pack Landed (2026-07-11)]]
-- Repo: `CLAUDE.md`, `Docs/YEAR_AHEAD_BASE.md`, `src/research_data/brain/`, `src/research_data/paper/`, `tests/test_security_scope.py`
+- Repo: `Docs/FABLE5_PHASE3_AI_BRAIN_PROMPT.md`, `Docs/PHASE3_AI_BRAIN_*.md`, `Docs/NORTH_STAR_DESK.md`, `src/research_data/{cards,agents}/`

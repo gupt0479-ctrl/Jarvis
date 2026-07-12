@@ -1,8 +1,8 @@
 ---
 type: project
-status: active
+status: '"archived"'
 created: 2026-07-11
-updated: 2026-07-11
+updated: '"2026-07-12"'
 related_progress:
   - "[[Session Findings — Post Base (2026-07-11)]]"
   - "[[Phase 2b — Promotion Study (Draft)]]"
@@ -13,9 +13,11 @@ tags:
 track:
   - trading
   - ai
-next: "Upgrade Massive Starter → run scripts/deepen_history.py --start-date 2021-01-01"
+next: Upgrade Massive Starter → run scripts/deepen_history.py --start-date 2021-01-01
 ---
 # History Depth Blocker — Massive Starter Required
+> [!NOTE] Resolved 2026-07-12
+> Tiingo replaced the Massive-upgrade plan this note argued for — the depth requirement was met via a different provider, not via Massive Starter. See [[Session Findings — AI Brain Hub (2026-07-12)]] and `Docs/PHASE2B_PROMOTION_STUDY_2026-07-11.md` in the repo. Kept for the audit trail, not deleted.
 
 ==Phase 2b cannot start until DuckDB has enough sessions for default walk-forward. Gate constants stay frozen.==
 

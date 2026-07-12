@@ -191,4 +191,4 @@ Build order:
 - [[AI Market Analyzer - Strategy Engine]]
 - [[AI Market Analyzer - 4 Month Build Plan]]
 - [[20_Progress/Projects/CS/TradingView/Research/Trading Tools and Platforms]]
-- [[20_Progress/Projects/CS/TradingView/Research/Links]]
+- [[20_Progress/Projects/CS/TradingView/Links]]

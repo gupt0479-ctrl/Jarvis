@@ -214,6 +214,61 @@ notes:
 
 ---
 
+
+---
+
+### Task 3.10 — Education deformity entrance sequencing (Fix 7b, confirmed gap)
+
+- **File(s):** `src/components/EducationFlowchart.tsx`
+- **Current code location:** `DISTORT`/`BASE_POS` constants and blob mesh render; `TravellingDot` element (currently disconnected from distort values)
+- **Change:** Add a scroll-triggered `useFrame` lerp that staggers each blob's live distort value toward its `DISTORT[i]` target (college → high-school → middle-school order), starting from a shared higher-distort "unresolved" state. Determine trigger source first (existing parent `whileInView` flag threaded down vs. new local `IntersectionObserver`) — do not add both. Skip stagger/lerp entirely under `prefers-reduced-motion`, snapping directly to final `DISTORT[i]` values.
+- **Dependencies:** None (independent of Fix 1's scatter-intro, though it follows the same `useFrame`-lerp pattern)
+- **Sanity changes:** None
+- **Testing:** Scroll Education section into view from below and confirm staggered resolve-into-clarity sequence; verify no double-trigger if both a section-level flag and a local observer are present; verify `prefers-reduced-motion` snaps immediately with no animated transition
+- **Estimated impact:** Education section only
+- **Rollback:** Remove the trigger hook and lerp logic; blobs revert to static `DISTORT[i]` values with no entrance animation
+
+---
+
+### Task 3.11 — Education blob trigger-source decision record
+
+- **File(s):** `src/components/EducationFlowchart.tsx` (and parent section wrapper, path TBD by investigation)
+- **Current code location:** N/A — investigation task
+- **Change:** Before implementing Task 3.10, confirm whether the Education section's parent already exposes a `whileInView`-capable flag that can reach the Canvas boundary, or whether a new local `IntersectionObserver` is required. Document the decision inline as a code comment in `EducationFlowchart.tsx`.
+- **Dependencies:** Blocks Task 3.10 (must resolve trigger source first)
+- **Sanity changes:** None
+- **Testing:** N/A — investigation/decision task
+- **Estimated impact:** None directly; de-risks Task 3.10
+- **Rollback:** N/A
+
+---
+
+### Task 3.12 — `CategoryPill` effect reduction (Fix 7, Gap 2 — separate from Task 3.8)
+
+- **File(s):** `src/components/sections/SkillsSectionClient.tsx`
+- **Current code location:** `CategoryPill` component's 9+ per-category hover/selection animation variants, layered on top of its continuous `useSpaceFloat` idle drift
+- **Change:** Reduce the 9+ hover/selection variants down to 2-3, using the same coherence criteria as Task 3.8's `SkillPill` reduction (favor smooth transform/opacity, drop multi-element choreography). Keep the `useSpaceFloat` idle drift as-is — it is ambient motion, not one of the effects being reduced. **Flag for design sign-off before implementing**, same as Task 3.8.
+- **Dependencies:** None directly, but should be reviewed alongside Task 3.8 (needs user confirmation first) since both pill types appear in the same section
+- **Sanity changes:** None
+- **Testing:** Visual check of category-pill hover/selection states against the reduced set; confirm idle drift still runs continuously and is unaffected
+- **Estimated impact:** Skills section category pills only
+- **Rollback:** Restore the original 9+ variant set
+
+---
+
+### Task 3.13 — Chat bubble text-wrap fix (Fix 4, Gap 3 — small/low-risk)
+
+- **File(s):** `src/components/lab/ChatThread.tsx`
+- **Current code location:** User-message bubble div: `<div className="ml-auto max-w-[80%] rounded-xl px-3 py-2 ...">{msg.text}</div>`
+- **Change:** Add `break-words` (or `overflow-wrap: anywhere` equivalent) to the bubble's className so unbroken long tokens wrap instead of overflowing the `max-w-[80%]` bound.
+- **Dependencies:** None. Note: flagged as a good candidate to bundle with Task 3.1/3.2 later since all three touch chat UI, but do not act on bundling now — keep as its own task per current scope.
+- **Sanity changes:** None
+- **Testing:** Paste a long unbroken string (URL or long identifier) into the chat input and confirm the rendered bubble wraps instead of overflowing
+- **Estimated impact:** Portfolio Lab chat thread only
+- **Rollback:** Remove the added class; reverts to current overflow behavior
+
+---
+
 ## Phase 4 — Orby & Global Features
 
 ### Task 4.1 — Orby radio prop redesign
@@ -361,8 +416,12 @@ Task 3.4 (auto-play) ─→ Task 3.5 (pause/reduced-motion)
 Task 3.6 (slug cleanup) — independent
 
 Task 3.7 (year range) — needs user confirmation first
-Task 3.8 (effect reduction) — needs user confirmation first
+Task 3.8 (effect reduction, SkillPill) — needs user confirmation first
 Task 3.9 (spacing) — independent
+
+Task 3.11 (Education trigger-source decision) ─→ Task 3.10 (Education deformity sequencing)
+Task 3.12 (CategoryPill effect reduction) — needs design sign-off, review alongside Task 3.8
+Task 3.13 (chat bubble text-wrap) — independent, low-risk (flagged as a future bundling candidate with 3.1/3.2, not acted on now)
 
 Task 4.3 (backend) ─→ Task 4.4 (frontend hook)
 Task 4.1, 4.2, 4.5 — independent, all touch OrbyModel.tsx/Orby.tsx (sequence to avoid merge conflicts)

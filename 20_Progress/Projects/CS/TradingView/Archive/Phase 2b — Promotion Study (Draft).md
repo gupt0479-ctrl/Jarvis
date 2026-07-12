@@ -1,8 +1,8 @@
 ---
 type: project
-status: sprout
+status: '"archived"'
 created: 2026-07-11
-updated: 2026-07-11
+updated: '"2026-07-12"'
 related_progress:
   - "[[Session Findings — Post Base (2026-07-11)]]"
   - "[[Phase 2 — Strategy Pack Landed (2026-07-11)]]"
@@ -14,9 +14,11 @@ tags:
 track:
   - trading
   - ai
-next: "Answer Phase 2b questionnaire → write final Fable one-shot prompt after deepen"
+next: Answer Phase 2b questionnaire → write final Fable one-shot prompt after deepen
 ---
 # Phase 2b — Promotion Study (Draft)
+> [!NOTE] Superseded 2026-07-12
+> This draft's plan ran and landed: 4/4 gates passed on real Tiingo history, `demo_eligible`. See `Docs/PHASE2B_PROMOTION_STUDY_2026-07-11.md` in the repo and [[Phase 2 — Strategy Pack Landed (2026-07-11)]]. Kept for the audit trail, not deleted.
 
 ==Hardest remaining desk-proof task. Do not run Fable until history depth is unblocked.==
 

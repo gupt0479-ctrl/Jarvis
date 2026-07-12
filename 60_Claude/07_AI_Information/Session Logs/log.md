@@ -1169,3 +1169,12 @@ Ask-mode research/alignment across TradingView vault + `research_data` repo, the
 - Also created: `Fable 5 — Read Order (TradingView folder).md` (start here for Fable).
 
 - 2026-07-10 — Fable 5 (resume): TradingView year-ahead base closed out. Verified 420 offline tests green; guardrail sweep clean (no execution language, no PM code, no Kronos inference, no secrets, `.env` ignored). Vault synced: Architecture Contract (Current State / Next Action / DoD), Math-First Map (slices A+B done), Session Findings (Open Questions). Repo docs: `Docs/YEAR_AHEAD_BASE.md` + `Docs/fable5_run_memory.md` updated. Next: live-data shakeout, replay studies, charting/agent layer.
+
+## [2026-07-12] restructure | TradingView AI Brain Hub questionnaire + vault rearrange
+- Created `20_Progress/Projects/CS/TradingView/Session Findings/Session Findings — AI Brain Hub (2026-07-12).md` — full decision log for the AI-hub questionnaire (A1–F2, ~20 decisions: card/critic packet contracts, agent topology, litellm provider strategy, citation ingest, StrategySpec proposal contract, offline/live eval harness, secrets/cost, calibration deferral, package layout)
+- Restructured `20_Progress/Projects/CS/TradingView/` from a flat ~23-note dump into five plain-named subfolders (no numeric prefixes, per explicit instruction): `Canon/`, `Session Findings/`, `Phases/`, `Research/`, `Archive/`. All moves, zero deletions.
+- Archived (not deleted) two now-resolved notes with `> [!NOTE]` supersede banners and `status: archived`: `History Depth Blocker — Massive Starter Required` (resolved via Tiingo, not the Massive upgrade it argued for) and `Phase 2b — Promotion Study (Draft)` (superseded — the study ran and landed, 4/4 gates, `demo_eligible`)
+- Rewrote `Fable 5 — Read Order (TradingView folder).md` to point at the new Session Findings note as current SoT and document the new folder map
+- Why it matters: the questionnaire session repeatedly caught real gaps between what Cursor's draft decisions assumed and what the actual `research_data` repo code does (DSR trial-counting scope, citation id stability, gate-constant wiring, packet redundancy, etc.) — this note is the durable record so the next Fable/Cursor session doesn't re-derive it
+- Open questions: G1–G3 (Cursor/Fable split) not yet answered; live smoke-test symbol (leaning NVDA) not formally confirmed
+- Next action: close G-series, then write the Fable 5 AI-hub implementer prompt
