@@ -1,6 +1,22 @@
 {
   "recentFiles": [
     {
+      "basename": "Fable 5 — Read Order (TradingView folder)",
+      "path": "20_Progress/Projects/CS/TradingView/Fable 5 — Read Order (TradingView folder).md"
+    },
+    {
+      "basename": "Session Findings — Cursor Alignment Pass (2026-07-10)",
+      "path": "20_Progress/Projects/CS/TradingView/Session Findings/Session Findings — Cursor Alignment Pass (2026-07-10).md"
+    },
+    {
+      "basename": "Session Findings — Post Base (2026-07-11)",
+      "path": "20_Progress/Projects/CS/TradingView/Session Findings/Session Findings — Post Base (2026-07-11).md"
+    },
+    {
+      "basename": "Session Recap — AI Brain Hub Questionnaire (2026-07-12)",
+      "path": "20_Progress/Projects/CS/TradingView/Session Findings/Session Recap — AI Brain Hub Questionnaire (2026-07-12).md"
+    },
+    {
       "basename": "frontend-ui-fixes-tasks",
       "path": "20_Progress/Projects/CS/Portfolio/frontend/frontend-ui-fixes-tasks.md"
     },
@@ -183,22 +199,6 @@
     {
       "basename": "Free Claude Code Skill Libraries (PDF)",
       "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Free Claude Code Skill Libraries (PDF).md"
-    },
-    {
-      "basename": "Find Startup Ideas with Reddit & AI (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Find Startup Ideas with Reddit & AI (PDF).md"
-    },
-    {
-      "basename": "DeepThinksFinance Master Quant Prompt Guide v2 (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/DeepThinksFinance Master Quant Prompt Guide v2 (PDF).md"
-    },
-    {
-      "basename": "00 - Memory Layer Completion — Index",
-      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/ran/00 - Memory Layer Completion — Index.md"
-    },
-    {
-      "basename": "2026-07-08",
-      "path": "10_Areas/Life/Enumerate/Daily/2026-07-08.md"
     }
   ],
   "omittedPaths": [],
