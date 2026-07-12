@@ -15,7 +15,8 @@ tags:
 track:
   - trading
   - ai
-next: "Paste repo Docs/FABLE5_PHASE3_AI_BRAIN_PROMPT.md into Fable 5; human opens PR after green branch"
+next: Human opens PR for feat/phase3-llm-seam; V1.1 proposer / DuckDB
+  evidence_cards stay parked
 ---
 # Session Recap — AI Brain Hub Questionnaire (2026-07-12)
 

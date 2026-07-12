@@ -84,9 +84,11 @@ Executed alongside this note, per explicit instruction: plain folder names (no `
 - [x] G1–G3 locked; Cursor G1-D prereqs landed (incl. D5 study-script cite wiring)
 - [x] Human verify: `pytest -q` → 483 passed; `analyze-symbol NVDA --quality missing` → INSUFFICIENT_DATA
 - [x] Full Q&A recap: [[Session Recap — AI Brain Hub Questionnaire (2026-07-12)]] + repo `Docs/SESSION_RECAP_AI_BRAIN_HUB_2026-07-12.md`
-- [x] Fable one-shot prompt: repo `Docs/FABLE5_PHASE3_AI_BRAIN_PROMPT.md` (Fable-5 prompting guide applied)
-- [ ] Fable: confirm current Gemini Flash alias at implement time; ship LLM seam + NVDA live smoke; leave green branch
-- [ ] Human opens PR (merge policy i)
+- [x] Fable one-shot prompt: repo `Docs/FABLE5_PHASE3_AI_BRAIN_PROMPT.md`
+- [x] Fable LLM seam + NVDA live smoke on `feat/phase3-llm-seam` (`25d5be8`); Gemini alias `gemini/gemini-3.5-flash`; offline 497 passed
+- [x] Cursor polish: `critique-spec` FactorEngine path; smoke vault mirror default; `--price-source tiingo` CLI default; docs sync
+- [ ] Human opens/merges PR for `feat/phase3-llm-seam` (merge policy i)
+- [ ] V1.1 parked: StrategySpec proposer; DuckDB `evidence_cards` (cards/store.py)
 ## Related
 - [[Session Recap — AI Brain Hub Questionnaire (2026-07-12)]] — full Q&A transcript
 - [[Session Findings — Post Base (2026-07-11)]]
