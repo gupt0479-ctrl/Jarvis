@@ -2,7 +2,7 @@
 type: decision-log
 status: active
 created: 2026-07-12
-updated: 2026-07-12
+updated: '"2026-07-12"'
 related_progress:
   - "[[Session Findings — Post Base (2026-07-11)]]"
   - "[[Year-Ahead Base — Fable 5 Architecture Contract]]"
@@ -17,8 +17,8 @@ tags:
 track:
   - trading
   - ai
-next: Paste Docs/FABLE5_PHASE3_AI_BRAIN_PROMPT.md into Fable 5; human opens PR
-  after green branch
+next: '"V1.1 parked (proposer, DuckDB evidence_cards); fix created_at provenance
+  gap; re-sync 60_Claude graphify vault mirror"'
 ---
 # Session Findings — AI Brain Hub (2026-07-12)
 ==This note is the current SoT for the AI-hub questionnaire (A1–F2). It does not supersede [[Session Findings — Post Base (2026-07-11)]] on ingestion/Phase 2b facts — it extends the loop with the self-improving AI harness design that Post Base explicitly deferred ("analyst/critic agents; UI/charting" listed there as not-yet-built).==
@@ -87,9 +87,12 @@ Executed alongside this note, per explicit instruction: plain folder names (no `
 - [x] Fable one-shot prompt: repo `Docs/FABLE5_PHASE3_AI_BRAIN_PROMPT.md`
 - [x] Fable LLM seam + NVDA live smoke on `feat/phase3-llm-seam` (`25d5be8`); Gemini alias `gemini/gemini-3.5-flash`; offline 497 passed
 - [x] Cursor polish: `critique-spec` FactorEngine path; smoke vault mirror default; `--price-source tiingo` CLI default; docs sync
-- [ ] Human opens/merges PR for `feat/phase3-llm-seam` (merge policy i)
+- [x] Human opened/merged PR for `feat/phase3-llm-seam` → `main`, merge commit `c754f00` (2026-07-12); re-verified 497 passed independently. As-built technical record: [[Phase 3 — AI Brain Hub Landed (2026-07-12)]]
 - [ ] V1.1 parked: StrategySpec proposer; DuckDB `evidence_cards` (cards/store.py)
+- [ ] `created_at` provenance gap found while auditing real live cards (`EvidenceCard`/`CriticReview.created_at` not server-stamped — a live critic review shows a hallucinated `2023-10-27` placeholder date); one-line fix, not yet applied — see [[Phase 3 — AI Brain Hub Landed (2026-07-12)]]
+- [ ] `60_Claude/40_Project_Briefs/TradingView` graphify vault mirror is stale — a bulk-copy attempt (~1,900 files via parallel background agents) hit the session usage limit mid-way and was abandoned; needs a smaller-batch re-sync from `graphify-out/jarvis_curated/` (repo-local copy is current: 141 communities / 1,747 nodes)
 ## Related
+- [[Phase 3 — AI Brain Hub Landed (2026-07-12)]] — as-built technical record (architecture, real artifacts, deviations)
 - [[Session Recap — AI Brain Hub Questionnaire (2026-07-12)]] — full Q&A transcript
 - [[Session Findings — Post Base (2026-07-11)]]
 - [[Postmortem - Stocks-ETFs First, Prediction Markets Second]]
