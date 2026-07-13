@@ -15,6 +15,8 @@ notes:
 ---
 # Claude Sonnet — UI Fixes Notes Audit & Patch Pass
 
+> **SUPERSEDED — historical record only.** This pass already ran; its 3 gaps and 6 open-question resolutions are folded into the current requirements/design/tasks docs. For actual implementation, use [[claude-prompt-ui-fixes-implementation]] (written for Sonnet 5).
+
 > **Mode**: Plan Mode, same session type as the first pass (requirements/design/tasks already exist — this is a PATCH pass, not a rewrite)
 > **Goal**: Close three confirmed gaps, resolve the 6 open questions, and add image-level traceability to the existing three docs without breaking their structure or renumbering existing tasks.
 

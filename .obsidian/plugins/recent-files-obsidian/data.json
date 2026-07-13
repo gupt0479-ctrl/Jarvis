@@ -1,6 +1,50 @@
 {
   "recentFiles": [
     {
+      "basename": "claude-prompt-ui-fixes-implementation",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-prompt-ui-fixes-implementation.md"
+    },
+    {
+      "basename": "claude-prompt-ui-fixes-analysis",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-prompt-ui-fixes-analysis.md"
+    },
+    {
+      "basename": "claude-prompt-ui-fixes-audit-pass",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-prompt-ui-fixes-audit-pass.md"
+    },
+    {
+      "basename": "claude-prompt-ui-fixes-pass-3",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-prompt-ui-fixes-pass-3.md"
+    },
+    {
+      "basename": "Winter Break",
+      "path": "20_Progress/Mentorship Program/Winter Break.md"
+    },
+    {
+      "basename": "Mentor Meeting - One-Pager",
+      "path": "20_Progress/Mentorship Program/Mentor Meeting - One-Pager.md"
+    },
+    {
+      "basename": "Mentor Meeting - Hackathons, Summer, and Networking",
+      "path": "20_Progress/Mentorship Program/Mentor Meeting - Hackathons, Summer, and Networking.md"
+    },
+    {
+      "basename": "Mentor Details",
+      "path": "20_Progress/Mentorship Program/Mentor Details.md"
+    },
+    {
+      "basename": "Elevator pitch",
+      "path": "20_Progress/Mentorship Program/Elevator pitch.md"
+    },
+    {
+      "basename": "Plan",
+      "path": "20_Progress/Mentorship Program/Plan.md"
+    },
+    {
+      "basename": "BUILD-STATUS",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/BUILD-STATUS.md"
+    },
+    {
       "basename": "Fable 5 — Read Order (TradingView folder)",
       "path": "20_Progress/Projects/CS/TradingView/Fable 5 — Read Order (TradingView folder).md"
     },
@@ -19,14 +63,6 @@
     {
       "basename": "frontend-ui-fixes-tasks",
       "path": "20_Progress/Projects/CS/Portfolio/frontend/frontend-ui-fixes-tasks.md"
-    },
-    {
-      "basename": "claude-prompt-ui-fixes-audit-pass",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-prompt-ui-fixes-audit-pass.md"
-    },
-    {
-      "basename": "claude-prompt-ui-fixes-analysis",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-prompt-ui-fixes-analysis.md"
     },
     {
       "basename": "UI Fixes",
@@ -163,42 +199,6 @@
     {
       "basename": "Repos",
       "path": "40_Resources/CS/Repos.md"
-    },
-    {
-      "basename": "How Anant Uses Each Repo",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/How Anant Uses Each Repo.md"
-    },
-    {
-      "basename": "Useful Repos - Shortlist",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Useful Repos - Shortlist.md"
-    },
-    {
-      "basename": "LinkedIn Search URL Cheatsheet (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/LinkedIn Search URL Cheatsheet (PDF).md"
-    },
-    {
-      "basename": "Junior Year Extracurriculars List (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Junior Year Extracurriculars List (PDF).md"
-    },
-    {
-      "basename": "How to Pivot into an AI-ML Engineering Role in 2026 (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/How to Pivot into an AI-ML Engineering Role in 2026 (PDF).md"
-    },
-    {
-      "basename": "01 - Fix MCP Server Deployment and Housekeeping",
-      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/ran/01 - Fix MCP Server Deployment and Housekeeping.md"
-    },
-    {
-      "basename": "GitNexus Codebase Map (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/GitNexus Codebase Map (PDF).md"
-    },
-    {
-      "basename": "Generative AI Mastermind Pre-Reads (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Generative AI Mastermind Pre-Reads (PDF).md"
-    },
-    {
-      "basename": "Free Claude Code Skill Libraries (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Free Claude Code Skill Libraries (PDF).md"
     }
   ],
   "omittedPaths": [],

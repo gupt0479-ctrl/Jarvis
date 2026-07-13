@@ -16,6 +16,8 @@ notes:
 ---
 # Claude Sonnet — UI Fixes Notes, Pass 3 (Deploy Sync + Orby Gaps)
 
+> **SUPERSEDED — historical record only.** This pass's 3 gaps (deploy-sync check, Orby walking, Orby ground-anchoring) have been folded into requirements/design/tasks directly (2026-07-13), skipping a separate doc-writing session since the verification work below was already done. For actual implementation, use [[claude-prompt-ui-fixes-implementation]] (Phase 0 = deploy-sync check, Phase 4 = Task 4.10 for walking/ground-anchoring).
+
 > **Mode**: Plan Mode, PATCH pass (third pass — do not rewrite, append/correct only)
 > **Context**: Pass 1 wrote the three docs from scratch. Pass 2 (Kiro) closed 3 confirmed gaps
 > (Education deformity sequencing, CategoryPill vs. SkillPill, chat bubble overflow) and resolved

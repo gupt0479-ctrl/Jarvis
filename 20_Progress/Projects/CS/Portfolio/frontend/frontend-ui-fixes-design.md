@@ -387,3 +387,15 @@ Repeat for `.cosmic-card--dark`, `.cosmic-card--subtle`, `.orbit-chip`, `.sectio
 - Respect `prefers-reduced-motion`: skip the timed stagger and lerp entirely, snapping directly to each blob's final `DISTORT[i]` value with no animated transition — consistent with the project's existing reduced-motion posture for R3F scenes.
 
 **What could go wrong:** if the section-level `whileInView` flag and a new local `IntersectionObserver` both fire independently, they could produce a double-trigger or race condition. Decide on exactly one trigger source before implementation and confirm it against the actual parent wrapper markup, not assumed.
+
+---
+
+## Fix Area 0 — Deployment Sync Verification (design)
+
+**Not a component change.** Check for `.vercel/`, `vercel.json`, or a GitHub Actions deploy workflow in the repo root. If Vercel CLI is available and authenticated, `vercel ls` / the dashboard shows the latest production deployment's commit SHA — compare directly against `git rev-parse HEAD` on the branch being worked from (per Pass 3's own verification: `gupta-builds/Portfolio`, branch `Chatbot`, HEAD `5f29675` at time of that pass — re-check this is still current, it will have moved). If no deploy tooling is available in-session, do not guess — record "unable to verify" and what credential/access would be needed.
+
+## Fix 8 (extension) — Orby Walking + Ground-Anchoring
+
+**Walking behavior:** `OrbyModel.tsx`'s legs are two static `<div>` elements near a `{/* Legs */}` comment — no rig, no skeleton, just flat shapes. A walk-cycle here means an alternating CSS `rotate`/`translateY` on each leg `<div>` (e.g. `animate={{ rotate: [0, 12, 0, -12, 0] }}` offset by phase between the two legs), gated to run only while `state === "roaming"` **and** horizontal velocity (already tracked in `Orby.tsx`'s RAF loop for positioning) exceeds a small threshold — walking should visually correlate with actual movement, not fire on a fixed timer like `radio-talk` does. Do not conflate this pose with `radio-talk`; the transcript lists them as separate, simultaneous desired behaviors.
+
+**Ground-anchoring:** `Orby.tsx`'s `roaming` case currently sets `targetY = rightY` unconditionally — a fixed hover height, never `bottomY`. Recommend a slow oscillation: `targetY = lerp(rightY, bottomY * 0.85, oscillate(t))` using the same amplitude/period pattern already used for `orbitRx`/`orbitRy` drift, so Orby periodically dips toward the ground during roaming rather than staying airborne the entire state. **Gaps 5 and 6 likely share one implementation** — the walking pose is most visually coherent when Orby is closer to `bottomY` (legs visible near the ground), so the ground-dip and the walk-cycle should probably trigger together rather than independently. Implement as one combined task; note this explicitly rather than silently merging.

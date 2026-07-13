@@ -38,6 +38,31 @@ The portfolio is functionally complete but eight areas fall short of a polished 
 
 ---
 
+## Fix Area 0 — Pre-Flight: Deployment Sync Verification
+
+**Components:** None (verification task, not a code change) — check `.vercel/`, `vercel.json`, or GitHub Actions workflow files for deploy config; compare local HEAD against the latest production deployment's commit SHA.
+
+### Problem Statement
+The dictated transcript's very first substantive sentence, before any UI fix is discussed: "This is from localhost. Everything that we have done on the localhost is deployed, and it's all in sync. Actually, if you could verify that, that would also be great." This is a direct, standalone verification request — not a UI fix. It does not appear in any fix area below (confirmed via full-text search for "deploy"/"sync"/"vercel"/"V0" across all three docs prior to this patch — zero matches).
+
+### User Impact
+If local and production are actually out of sync, every fix area below risks being implemented against the wrong baseline — file paths, component behavior, and "already works" claims could all be auditing stale code.
+
+### Success Criteria
+- One of three concrete findings is recorded, not assumed: (a) confirmed in sync as of `<commit SHA>` on `<date>`, (b) confirmed out of sync with the delta described, or (c) unable to verify — no deploy tooling/credentials available in-session, with what's needed to check it documented.
+- If out of sync: flagged as a **blocking prerequisite** for every other fix area — do not implement UI fixes against a stale local copy without flagging this first.
+
+### Content Dependencies
+None.
+
+### Responsive Considerations
+N/A — verification task.
+
+### Accessibility Notes
+N/A.
+
+---
+
 ## Fix Area 1 — Landing Hero & Background Particle System
 
 **Components:** `src/components/sections/HeroSection.tsx`, `HeroContent.tsx`, `ProfileImage.tsx`, `HeroTerminal.tsx`, `src/components/three/ObsidianBackgroundCanvas.tsx`
@@ -265,6 +290,8 @@ No change to existing `role="img"`/`aria-label` on the graph SVG regardless of t
 2. The wave animation exists (`pose === "wave"` triggers `rotate: [0, -25, 0, -25, 0]` on the right arm) but only reaches -25°, not a full arm-raise; the source brief wants a visible hand-lift to say hi.
 3. Orby's speech content is a fixed, hand-written copy bank (`INTRO_COPY`, `LAB_HINT_COPY`, `SECTION_COPY`, `GOODBYE_COPY` in `useOrbyState.ts`) plus model-generated `orbyMessage` strings that only arrive as a side effect of an active chat tool-call flow. There is currently **no standalone AI-generated commentary independent of an active chat turn** — i.e., Orby cannot "drop funny comments" on its own while a user scrolls/clicks without a chat message having been sent first. This is a new capability, not a bug fix.
 4. Orby's roaming state already does orbit + drift as it slides with scroll (`orbitRx`/`orbitRy` up to 22px on desktop) — the source brief's "all it does is slide/zoom" complaint suggests the *perceived* motion should be richer (more distinct action states — walking, radio-talking, idle-hover) rather than one continuous orbit-drift blend.
+5. **Confirmed gap — "walking around" is explicitly requested, entirely absent from the codebase.** The transcript lists three new Orby behaviors verbatim: "walking around," "talking on his radio," "dropping funny comments." The latter two are covered above (radio-talk pose, idle commentary); "walking around" has no corresponding code anywhere — `OrbyModel.tsx`'s leg elements are static `<div>`s with zero walk-cycle animation logic in the entire file.
+6. **Confirmed gap — ground-anchoring bug, verified in code.** The transcript states "Orby does not stick to the ground entirely, as stated earlier" (implying a previously-raised, unrecorded complaint being reiterated). Verified in `Orby.tsx`: the `roaming` state case sets `targetY = rightY` (a fixed hover height) and never references `bottomY` (ground level, computed by `computeBottomY()`) — Orby is airborne for the entire `roaming` state (i.e., whenever the user is mid-scroll), only touching `bottomY` during `intro`/`goodbye` states. This is distinct from Gap 5/complaint 4 above — pose variety vs. vertical position are separate axes and both can be true simultaneously.
 
 ### Problem Statement — Dark Mode
 `HeaderScrolling.tsx`'s theme button is fully inert: `onClick={() => { /* light mode not yet designed */ }}`, with `cursor-default` and an `aria-label` that literally states "light mode coming soon." `ThemeProvider.tsx` wraps `next-themes` with `defaultTheme="dark"` and `enableSystem` — the plumbing exists, but no light theme token set exists in `globals.css`; the cosmic design system classes (`.cosmic-card`, `.orbit-chip`, `.section-kicker`, etc.) are all hardcoded to dark RGBA values with no light-mode split.
@@ -280,6 +307,8 @@ Orby currently reads as a scroll-reactive prop rather than a "living" character,
 - Wave animation reaches a full arm-raise, easing adjusted to read as intentional greeting.
 - New AI-driven idle commentary capability: Orby can speak a short, model-generated line independent of an active chat send, triggered by scroll dwell time or click, reusing the existing model-router chain (`src/lib/model-router.ts`) — not a new provider integration, but a new server action/route generating one short line on demand.
 - Roaming state gets at least 2 additional distinguishable visual sub-states so movement doesn't read as one continuous slide.
+- A concrete, implementable definition of "walking" appropriate to Orby's actual construction (flat CSS-div illustration, not a rigged 3D model) — e.g., an alternating leg-lift animation synced to horizontal movement speed during `roaming`, distinct from both continuous orbit-drift and the `radio-talk` pose.
+- Orby's vertical position during `roaming` no longer stays fixed at `rightY` for the entire state — either a slow oscillation toward `bottomY` or a lower position correlated with the walking behavior (design decision, not resolved by the transcript, which states only the complaint).
 
 ### Success Criteria — Dark Mode
 The toggle becomes a real, working control. Given the source brief's framing ("should not exactly be white"), the deliverable is a genuine second theme (inverted-but-not-pure-white) wired through `next-themes`, not a no-op removed entirely. All cosmic design-system classes need light-mode counterparts, or an explicit light token layer.

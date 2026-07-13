@@ -16,6 +16,8 @@ tags:
   - portfolio
 ---
 # Mentor Meeting — Hackathons, Summer, and Networking
+> [!NOTE] Superseded
+> This was prep for the mid-April meeting. [[Mentor Meeting Playbook]] is the current source of truth for every meeting going forward. The "After the Meeting" checklist below was never filled in — no record exists of what Ahnaf actually said on Opspilot vs. Resq, so that comparison stays an open question rather than a settled outcome.
 ## Meeting Focus
 Three things I want from this conversation with [[Mentor Details|Ahnaf]]:
 1. Which hackathon project is the stronger portfolio artifact, and how should I frame it?

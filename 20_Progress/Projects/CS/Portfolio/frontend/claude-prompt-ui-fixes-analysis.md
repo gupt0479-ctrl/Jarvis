@@ -1,5 +1,7 @@
 # Claude Sonnet 3.5 — UI Fixes Analysis & Documentation Prompt
 
+> **SUPERSEDED — historical record only.** This pass already ran and produced the three docs it describes. For actual implementation, use [[claude-prompt-ui-fixes-implementation]] (written for Sonnet 5, skips this planning ceremony). Kept here as a record of how the requirements/design/tasks docs originated.
+
 > **Mode**: Plan Mode (Spec: Requirements → Design → Tasks)
 > **Output**: 3 interconnected note files in `/frontend/` directory
 > **Goal**: Deep codebase analysis → source-of-truth documentation → implementation-ready tasks

@@ -9,7 +9,9 @@ related:
   - "[[Resq]]"
 ---
 # Meeting One-Pager — Ahnaf
-Print this or keep it on screen. Full source of truth: [[Mentor Meeting - Hackathons, Summer, and Networking]].
+> [!NOTE] Superseded
+> This was the one-pager for the mid-April meeting. [[Mentor Meeting Playbook]] is the current source of truth going forward. The "1 Next Step" below (Resq vs. Opspilot as flagship) was never resolved on record — TradingView ended up becoming the actual flagship this summer, not either hackathon project.
+Print this or keep it on screen. Historical source: [[Mentor Meeting - Hackathons, Summer, and Networking]].
 ## 3 Goals
 1. Which project is the stronger portfolio artifact and how should I frame it?
 2. What should I focus on this summer if there is no internship?

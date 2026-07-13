@@ -16,6 +16,19 @@ notes:
 
 > Implementation-focused companion to [[frontend-ui-fixes-requirements]] and [[frontend-ui-fixes-design]]. Each task maps back to a Fix Area in the requirements doc. Run `pnpm typecheck` and `pnpm lint` after every phase; run `pnpm build` before considering a phase done.
 
+## Phase 0 — Pre-Flight
+
+### Task 0.1 — Verify localhost/production deployment sync
+- **File(s):** None (verification only) — check for `.vercel/`, `vercel.json`, GitHub Actions deploy workflow
+- **Change:** Compare local `git rev-parse HEAD` (on the branch being worked from) against the latest production deployment's commit SHA via Vercel CLI/dashboard if available. Record one of: in-sync (with SHA + date), out-of-sync (with the delta), or unable-to-verify (with what access is missing).
+- **Dependencies:** None — must run before any other phase
+- **Sanity changes:** None
+- **Testing:** N/A — this is the test
+- **Estimated impact:** Gates every other phase — if out of sync, flag as blocking and do not proceed on a stale baseline
+- **Rollback:** N/A
+
+---
+
 ## Phase 1 — Sanity Backend Prep
 
 ### Task 1.1 — Add `profile.aboutSummary` field
@@ -357,6 +370,17 @@ notes:
 
 ---
 
+### Task 4.10 — Orby walking pose + ground-anchoring (Gaps 5 & 6, combined)
+- **File(s):** `src/components/orby/OrbyModel.tsx` (leg-rendering JSX), `src/components/orby/Orby.tsx` (`roaming` case's `targetY` calculation)
+- **Change:** Add a `"walking"` pose to `OrbyModel.tsx` — alternating leg-lift animation (`rotate`/`translateY`, phase-offset between the two leg divs) gated to run only when horizontal velocity exceeds a threshold during `roaming`. In `Orby.tsx`, change `roaming`'s fixed `targetY = rightY` to a slow oscillation toward `bottomY` (e.g. `lerp(rightY, bottomY * 0.85, oscillate(t))`), matching the existing `orbitRx`/`orbitRy` amplitude pattern. Implemented as one combined task since the walking pose reads correctly only when Orby is closer to the ground.
+- **Dependencies:** Sequence after Task 4.5 (touches the same two files — `getPose()` cycling logic and leg JSX)
+- **Sanity changes:** None
+- **Testing:** Manual — scroll to trigger `roaming`, confirm Orby periodically dips toward ground level with a visible alternating-leg walk animation correlated with horizontal movement speed; confirm `radio-talk` pose (Task 4.5) still cycles independently and isn't overwritten
+- **Estimated impact:** Orby companion, all pages
+- **Rollback:** Revert `targetY` to unconditional `rightY`; remove the `"walking"` pose branch
+
+---
+
 ## Phase 5 — Polish & Testing
 
 ### Task 5.1 — Responsive testing pass (mobile/tablet/desktop)
@@ -404,6 +428,8 @@ notes:
 ## Task Dependency Summary
 
 ```
+Task 0.1 (deploy-sync check) — must run first; gates all phases if out of sync
+
 Phase 1 (Sanity) ──┬─→ Task 2.5 (About split) ─→ Task 2.6 (toggle) ─→ Task 2.7 (telemetry expand)
                     └─→ Task 2.7 (telemetry — needs summary field)
 
@@ -424,7 +450,7 @@ Task 3.12 (CategoryPill effect reduction) — needs design sign-off, review alon
 Task 3.13 (chat bubble text-wrap) — independent, low-risk (flagged as a future bundling candidate with 3.1/3.2, not acted on now)
 
 Task 4.3 (backend) ─→ Task 4.4 (frontend hook)
-Task 4.1, 4.2, 4.5 — independent, all touch OrbyModel.tsx/Orby.tsx (sequence to avoid merge conflicts)
+Task 4.1, 4.2, 4.5, 4.10 — all touch OrbyModel.tsx/Orby.tsx (sequence to avoid merge conflicts); 4.10 runs after 4.5
 Task 4.7 (light tokens) ─→ Task 4.6 (toggle wiring, can ship before 4.7 for dev/testing) ─→ Task 4.8 (text audit)
 Task 4.9 — independent
 

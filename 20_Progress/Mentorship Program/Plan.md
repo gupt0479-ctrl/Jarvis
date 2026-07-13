@@ -9,6 +9,7 @@ related_progress:
   - "[[Arc (Learning Tracker)]]"
   - "[[Winter Break]]"
   - "[[Portfolio]]"
+  - "[[Mentor Meeting Playbook]]"
 tags:
   - brainstorm
 next: "[[Winter Break]]"
@@ -64,122 +65,29 @@ Google doc link - [Detailed Goals](https://docs.google.com/document/d/1xu8pmUATj
 	- **What I shipped / What blocked me / What I’m deciding next** (one slide).
 	- **One Role Brief** (1 page) until you’ve covered: Frontend, Backend, Full-stack, DevOps, Data, Mobile.
 ## Summer
-- Together, identify three things you can do over the summer to explore different careers. Such as, informational interviews, job shadowing, and looking up companies on LinkedIn or Glassdoor.
-### Meeting #2 (Mid-April): Summer Strategy & Network Building
-**Preparation:**
-- Draft summer plan with 3 paths: internship / research project / startup validation
-- List 5 companies from [[Companies giving OPT & CPT]] you're targeting
-- Prepare 3 questions about Best Buy's tech stack (React/GraphQL/AWS)
-**Discussion framework:**
-- "I'm deciding between X, Y, Z for summer. Here's my decision matrix..." (use MoSCoW framework you referenced)
-- Practice elevator pitch (30-second version)
-- Ask: "What early career mistakes would you warn against?"
-**Action items:**
-- Get LinkedIn intro to Best Buy university recruiting team
-- Discuss OPT/CPT considerations for international students
-- Secure mock interview slot for late April
-#### Track 2: If No Internship → Research + Project Sprint
-**June: Deep Work on Learning Tracker**
-Follow your existing 5-sprint roadmap.
-- Sprint 1: Foundation (auth + DB schema) - Week 1
-- Sprint 2: Core MVP (browse + track) - Week 2
-- Sprint 3: RAG implementation - Week 3-4
-- Sprint 4: Deploy + 3D components - Week 5-6
-- Sprint 5: Polish + packaging - Week 7-8
-**July: BOOM UROP Extension**
-- Apply for UROP symposium in April (you noted this)
-- Continue tracing instrumentation work
-- Present at symposium → portfolio artifact
-- Turn PR work into technical blog post
-**August: Interview Prep + Applications**
-- 2 mock interviews with Ahnaf
-- Apply to 50+ Fall co-op positions
-- Build out portfolio site with 3 projects: Portfolio, Learning Tracker, BOOM observability work
-### Meeting Cadence for Summer
-**Every 2 weeks (6 sessions total):**
-- Format: 30-minute Zoom
-- Structure: Demo → Shipped/Blocked/Deciding → Ask
-- Bring: Updated "Role Brief" each time (cover 6 areas: Frontend, Backend, Full-stack, DevOps, Data, Mobile)
-**Sample agenda rotation:**
-1. Auth implementation decisions (Week 2)
-2. RAG architecture review (Week 4)  
-3. Deployment + CI/CD patterns (Week 6)
-4. Mock technical interview (Week 8)
-5. System design discussion (Week 10)
-6. Return offer / recruiting strategy (Week 12)
-## Networking Strategy (Parallel to Meetings)
-**April actions:**
-- Request intro to 2 Best Buy engineers (1 frontend, 1 backend)
-- Join Best Buy tech talks if they have external events
-- Connect with 5 UMN alumni at companies on your target list
-**May-August:**
-- 2 informational interviews per month (use template from [[LinkedIn Premium]])
-- Track in Obsidian: company, contact, insights, follow-up
-- Build "warm intro" pipeline for Fall recruiting
-## Decision Framework: What to Prioritize
-Use this hierarchy when time-boxing summer work:
-**Must-haves:**
-1. One shipped project (internship or Learning Tracker deployed)
-2. Portfolio live with 3 projects
-3. Resume updated with quantified impact
-4. 2 technical mock interviews completed
-**Should-haves:**
-5. Blog post about BOOM observability work
-6. 10 informational interviews logged
-7. GitHub contribution graph showing consistent commits
-**Could-haves:**
-8. Startup validation complete
-9. Open source contribution
-10. Technical talk at UMN CS club
-**Won't-haves (defer to Fall):**
-- Multi-platform mobile app
-- Monetization features
-- Complex notification systems
-## Metrics to Track
-Create a simple spreadsheet (link in Obsidian):
-
-| Week   | Code commits | Applications sent | Network contacts | Learning hours | Ahnaf meetings |
-| ------ | ------------ | ----------------- | ---------------- | -------------- | -------------- |
-| June 1 | 25           | 5                 | 2                | 15             | 1              |
-Review weekly. Adjust if any column is zero for 2 weeks straight.
-## April Prep Checklist
-**By April 5:**
-- [ ] Portfolio deployed (even if beta)
-- [ ] Learning Tracker repo public with README
-- [ ] Summer plan one-pager drafted
-- [ ] 3 questions for Ahnaf prepared
-- [ ] Elevator pitch practiced (record yourself)
-**By April 15:**
-- [ ] Mock interview scheduled
-- [ ] 5 target companies researched
-- [ ] LinkedIn connections sent to Best Buy engineers
-- [ ] UROP symposium application submitted
-**By April 30:**
-- [ ] Summer decision made (internship / project sprint / hybrid)
-- [ ] Next 3 months calendared with milestones
-- [ ] GitHub project board set up for summer work
-- [ ] Emergency fund / housing / logistics secured
-## Key Questions to Ask Ahnaf
-Rotate these across April meetings:
-**Technical:**
-- "How do you balance feature velocity vs. technical debt at scale?"
-- "What patterns have you seen break when traffic increases 10×?"
-- "How do you structure code reviews for junior engineers?"
-**Career:**
-- "What signals in a resume/portfolio get you to interview someone?"
-- "How should international students approach OPT timeline planning?"
-- "What's the difference between intern work and new grad expectations?"
-**Networking:**
-- "Can you intro me to someone in [team X] at Best Buy?"
-- "How do you evaluate startup vs. big tech early career?"
-- "What questions should I ask in informational interviews?"
-## Success Metrics for Mentorship Program
-By August 31, you should have:
-- [ ] 6 meaningful meetings with actionable takeaways
-- [ ] 2+ referrals or intros from mentor's network
-- [ ] 1 code review or technical deep-dive session
-- [ ] Portfolio artifact directly influenced by mentor feedback
-- [ ] Clear Fall recruiting strategy with warm leads
-### Connections
+This section covers only what earns a mentor's time: 4 focused goals, not the full execution grind. Daily/weekly work (LeetCode, courses, project builds) lives in [[Summer Grind]] and [[10_Areas/Life/Plans/Summer/00 - Summer Plans Index|the Summer Plans folder]] — Ahnaf never needs that layer, only the parts that need outside judgment. Full per-meeting scripts and the running log live in [[Mentor Meeting Playbook]].
+### The 4 Goals
+Not "help with my whole summer" — four specific things a mentor is actually useful for:
+1. **Relationship** — a connection with Ahnaf strong enough that he'd recommend me to other employers, and one that keeps going after the program's stated end around September 2026. Earned by demonstrating execution each meeting, not by asking directly — see [[Mentorship and Networking]] on why warm intros beat cold applications.
+2. **Project + build review** — professional feedback on the actual build setup, not demo praise, across [[Portfolio]], [[Stocks Trading AI Hub|TradingView]], [[CausalOps — Index|CausalOps]], the Jaideep Srivastava healthcare research thread, and the broader AI-agent build work running Jarvis/Claude Code. *Current honest state:* TradingView is the most built (year-ahead base live, 420 offline tests); CausalOps has its memory layer implemented, pending a SQL migration; Portfolio is still design-only with no live build.
+3. **Startup fundamentals** — no fixed idea yet. The ask is the real playbook: how a startup actually gets built and launched, and what the first concrete step looks like. Winter's version of this was "learn the playbook, no launch" ([[Plan#Winter|Winter]]); this is the next layer.
+4. **Professional image** — resume, interview prep, and online presence, feeding into the [[Internship Tracker — Dashboard|2027 internship pipeline]] (Wave 1 quant open now, Wave 2 big tech Jul–Oct 2026) and eventually into during-internship conduct once one lands.
+### Meeting Cadence
+Standing rhythm: **every other Monday**, 30 minutes, locked in starting the 2026-07-13 meeting. This replaces the ad-hoc few-times-a-month pattern with something both sides can hold to through the program's end and past it. If a real decision point comes up between meetings — a pivot, a deadline, a specific ask — add one short extra sync that week instead of waiting for the next standing slot.
+### Standing Meeting Format
+Every meeting: **Demo → Shipped/Blocked/Deciding → Ask**, the same shape as the original program framework under [[Plan#Things to talk about|Things to talk about]]. Bring one updated artifact — a screenshot, a README line, or one honest sentence on what broke — and rotate through the 4 goals above so no single goal gets skipped for months at a time.
+### 5-Month Roadmap (July → December 2026)
+- **July:** ship weekly on the TradingView flagship, close out CausalOps' integration tests. Wave 1 quant applications are open now (HRT, Citadel Launch).
+- **August:** Bangalore buffer/consolidation — make Portfolio and CausalOps presentable. Wave 2 big-tech windows open (Google ASDI, Microsoft Explore, LinkedIn First Play). First mock interview.
+- **September:** program's stated end. Treat this as the relationship-transition month, not a goodbye — this is where goal 1 either holds or doesn't.
+- **October:** Wave 2 deadlines close. Resume and portfolio need to already be interview-ready, not "getting there."
+- **November-December:** interview prep intensifies. Follow through on any warm intro Ahnaf makes, and report back what happened — that's what keeps a mentor relationship alive after the program ends.
+### Success Metrics
+By the program's end, this should be true:
+- [ ] Ahnaf can describe one real technical decision from each of the 4 project areas, not just names.
+- [ ] At least one warm introduction or explicit offer to recommend, followed up and reported back on.
+- [ ] Startup playbook understood well enough to answer "what's the first concrete step" without hedging.
+- [ ] Resume and portfolio reviewed directly by Ahnaf at least once, with changes made, not just discussed.
+- [ ] Cadence held through September without either side letting it lapse.
+### Resources
 1. Informational Interviews - [Link](https://youtu.be/Of9w5eLNBwA?si=BFmcNow-6J2dY9XE) Youtube video.
-2. Youtube saved playlists - 
