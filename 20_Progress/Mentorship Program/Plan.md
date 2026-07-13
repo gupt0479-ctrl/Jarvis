@@ -10,6 +10,7 @@ related_progress:
   - "[[Winter Break]]"
   - "[[Portfolio]]"
   - "[[Mentor Meeting Playbook]]"
+  - "[[Project Briefings — 2026-07-13]]"
 tags:
   - brainstorm
 next: "[[Winter Break]]"
@@ -69,7 +70,7 @@ This section covers only what earns a mentor's time: 4 focused goals, not the fu
 ### The 4 Goals
 Not "help with my whole summer" — four specific things a mentor is actually useful for:
 1. **Relationship** — a connection with Ahnaf strong enough that he'd recommend me to other employers, and one that keeps going after the program's stated end around September 2026. Earned by demonstrating execution each meeting, not by asking directly — see [[Mentorship and Networking]] on why warm intros beat cold applications.
-2. **Project + build review** — professional feedback on the actual build setup, not demo praise, across [[Portfolio]], [[Stocks Trading AI Hub|TradingView]], [[CausalOps — Index|CausalOps]], the Jaideep Srivastava healthcare research thread, and the broader AI-agent build work running Jarvis/Claude Code. *Current honest state:* TradingView is the most built (year-ahead base live, 420 offline tests); CausalOps has its memory layer implemented, pending a SQL migration; Portfolio is still design-only with no live build.
+2. **Project + build review** — professional feedback on the actual build setup, not demo praise. [[Portfolio]] is live at anantgupta.dev, with **Orby** (the AI agent behind it) as the real focus, not visual polish. [[Stocks Trading AI Hub|TradingView]] is framed as a personal quant side project, not a revenue play. [[CausalOps — Index|CausalOps]] has its memory layer implemented, pending a SQL migration. Concrete depth on all three: [[Project Briefings — 2026-07-13]].
 3. **Startup fundamentals** — no fixed idea yet. The ask is the real playbook: how a startup actually gets built and launched, and what the first concrete step looks like. Winter's version of this was "learn the playbook, no launch" ([[Plan#Winter|Winter]]); this is the next layer.
 4. **Professional image** — resume, interview prep, and online presence, feeding into the [[Internship Tracker — Dashboard|2027 internship pipeline]] (Wave 1 quant open now, Wave 2 big tech Jul–Oct 2026) and eventually into during-internship conduct once one lands.
 ### Meeting Cadence

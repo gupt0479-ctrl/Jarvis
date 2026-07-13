@@ -9,6 +9,7 @@ related:
   - "[[Mentor Meeting - Hackathons, Summer, and Networking]]"
   - "[[Mentor Meeting - One-Pager]]"
   - "[[Mentorship and Networking]]"
+  - "[[Project Briefings — 2026-07-13]]"
 tags:
   - mentorship
   - meeting-prep
@@ -16,19 +17,19 @@ next: "Fill in the Session Log entry after the 2026-07-13 call"
 ---
 # Mentor Meeting Playbook
 ## Why This Note Exists
-This is the standing source of truth for every Ahnaf meeting from here forward, not just tonight's. The **Playbook** sections below (4 Goals, Current Real State, Standing Format) stay stable across meetings. Each individual meeting gets its own dated entry under [[#Session Log]] — append, never overwrite. [[Mentor Meeting - Hackathons, Summer, and Networking]] and [[Mentor Meeting - One-Pager]] cover the April meeting and are now historical; this file is what to open before every future call.
+This is the standing source of truth for every Ahnaf meeting from here forward, not just tonight's. The **Playbook** sections below (4 Goals, Current Real State, Standing Format) stay stable across meetings. Each individual meeting gets its own dated entry under [[#Session Log]] — append, never overwrite. [[Mentor Meeting - Hackathons, Summer, and Networking]] and [[Mentor Meeting - One-Pager]] cover the April meeting and are now historical; this file is what to open before every future call. [[Project Briefings — 2026-07-13|Project Briefings]] holds the full, source-checked depth on Portfolio/Orby, TradingView, and CausalOps — read that before the call, not just the summary below.
 ## The 4 Goals — What This Mentorship Is Actually For
 Not "help with my whole summer." Four specific things a mentor is actually useful for:
 1. **Relationship** — a connection with Ahnaf strong enough that he'd recommend me to other employers, and one that keeps going after the program's stated end around September 2026. This is earned by showing up with real execution each meeting, not by asking for it directly. See [[Mentorship and Networking]] on why warm intros beat cold applications.
-2. **Project + build review** — professional feedback on the actual build setup, not demo praise, across [[Portfolio]], [[Stocks Trading AI Hub|TradingView]], [[CausalOps — Index|CausalOps]], the Jaideep Srivastava healthcare research thread, and the broader AI-agent build work running Jarvis/Claude Code.
+2. **Project + build review** — professional feedback on the actual build setup, not demo praise. Tonight's focus is narrower than "everything": [[Portfolio]] (live at anantgupta.dev) with **Orby specifically** as the centerpiece, [[Stocks Trading AI Hub|TradingView]] framed as a personal quant side project, and [[CausalOps — Index|CausalOps]]. See [[Project Briefings — 2026-07-13]] for the concrete detail on all three.
 3. **Startup fundamentals** — no fixed idea yet. The ask is the real playbook: how a startup actually gets built and launched, and what the first concrete step looks like. Winter's version of this was "learn the playbook, no launch" ([[Plan#Winter]]); this is the next layer.
 4. **Professional image** — resume, interview prep, and online presence, feeding into the [[Internship Tracker — Dashboard|2027 internship pipeline]] and eventually into during-internship conduct once one lands.
 ## Current Real State — Ground Truth, Not the Pitch
-Use this to answer follow-up questions honestly. Don't oversell.
-- **TradingView:** the most built of the four. Year-ahead base is live, 420 offline tests passing, guardrail sweep clean. Next is live-data shakeout and replay studies.
+Use this to answer follow-up questions honestly. Don't oversell. Full depth in [[Project Briefings — 2026-07-13]].
+- **Portfolio:** live at anantgupta.dev, verified today — real content across About, Experience, Projects, Skills, real certifications, achievements. A UI-fix backlog is in progress; mention it only if it ships before the call. Tonight's actual focus is **Orby** — both the visual 3D companion and the grounded AI agent behind the Portfolio Lab chat.
+- **TradingView:** framed as a personal quant side project, not a product — no monetization, learning stocks/ETFs. 497 offline tests passing, and a real LLM analyst/critic layer now produces live evidence-backed stock cards (verified against actual model runs, not just fixtures).
 - **CausalOps:** an evidence-backed causal reasoning engine for SOC incident response. Memory layer implementation is complete in code (10 unit tests passing), blocked on running the SQL migration and integration tests against a provisioned Supabase project.
-- **Portfolio:** still design-only. No live build exists. The original deadline (January 2026) already passed.
-- **Healthcare research (Jaideep Srivastava):** exploratory only. One conversation has covered the potential; nothing is scoped or started.
+- **Applied ML research (Jaideep Srivastava):** a real, ongoing UMN Research Assistant role since 2026-06-01 — pattern discovery in large-scale behavioral/observational datasets, reproducible ML pipelines. Not exploratory; it's live on the portfolio's Experience section same as BOOM.
 - **AI-agent build work:** the Jarvis/Claude Code layer — dashboards, skills, agents, an MCP-backed search index over 8,000+ notes. Real infrastructure, not a toy, but not a traditional portfolio artifact either.
 - **Internship:** none this summer, by design — this is the project-building track. The 2027-cycle application pipeline is tracked separately: Wave 1 (quant — HRT, Citadel Launch) is open now; Wave 2 (big tech — Google ASDI, Microsoft Explore, LinkedIn First Play) opens through October.
 ## Standing Meeting Format
@@ -38,11 +39,13 @@ Five parts. Read the scripted lines as a starting point, not a transcript to rec
 ### Part 1 — Frame (~1 min)
 "Thanks for making time tonight. I want to use this one a little differently than usual. We're getting close to the end of the formal program, and I don't want that to be the end of us talking. Tonight I've got four things: where my builds actually stand, how a startup gets started from nothing, my professional image heading into fall recruiting, and — honestly — whether we can lock in a rhythm that keeps this going past September."
 ### Part 2 — Project and Build Review (~8 min)
-"Since we last talked, TradingView moved the most — I've got a working base with 420 tests passing, past the point of being a toy. CausalOps is a causal-reasoning engine for SOC incident response; the memory layer is coded, I just need to run the migration and the integration tests. Portfolio is still just a design doc — I haven't built it yet. And I've started talking to a professor, Jaideep Srivastava, about healthcare research, but that's one conversation, nothing scoped."
+"I want to spend most of this on my portfolio, and specifically on Orby — the AI agent that lives in it, not the visual polish. The site is live at anantgupta.dev. Orby is a grounded, tool-using agent — it only answers from real content, refuses when it doesn't know, and can navigate you to a section with evidence cards instead of just walls of text. What I want your read on: is it actually pleasant to use, is it readable and accessible, and — the real question — is this how a professional AI engineer would actually build a next-gen chatbot, or am I missing something obvious? I've got a specific gap I found myself: my fallback between AI providers only triggers on a hard error, not on a 'technically succeeded but the tool call came back malformed' response, so my most reliable backup models never actually kick in. I want to know how you'd think about that kind of failure detection."
 
-"What I actually want from you here isn't 'good job' — it's where the build setup itself would raise an eyebrow in a real engineering review. Service boundaries, what you'd test that I haven't, whether this reads as a student project or something closer to production thinking."
+"Separately — TradingView is a personal side project, not something I'm trying to make money from. I'm using it to actually learn stocks and ETFs, and I've built an evidence-based scoring system with an AI layer that reviews its own confidence rather than just trusting itself. And CausalOps is a causal-reasoning engine I built for security incident investigation — the interesting part is it refuses to guess when the statistics are weak instead of forcing an answer. I don't know either of these as deeply as Orby yet, so I'd rather get your first reaction than pretend I have a polished pitch."
 
-Follow-up if he picks one project to go deep on: "Which one of these would you put in front of an engineering manager first, and why?"
+"If UI fixes on the portfolio are actually live by tonight, happy to get a quick reaction to those too — otherwise let's stay on Orby."
+
+Follow-up if he wants to go deeper on one: "Which one of these would you put in front of an engineering manager first, and why?"
 ### Part 3 — Startup Fundamentals (~7 min)
 "I don't have a startup idea locked in yet, and I'm not trying to force one. What I actually want is the playbook — how does a startup really get built and launched? Not the pitch-deck version, the actual sequence of decisions. What's the first concrete step someone in my position should be thinking about right now?"
 
