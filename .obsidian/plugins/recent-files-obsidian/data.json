@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "Practice Quiz - 3",
-      "path": "20_Progress/Degree/MATH 2230/Quiz/Practice Quiz - 3.md"
-    },
-    {
       "basename": "claude-prompt-ui-fixes-implementation",
       "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-prompt-ui-fixes-implementation.md"
+    },
+    {
+      "basename": "UI Fixes",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/UI Fixes.md"
+    },
+    {
+      "basename": "Practice Quiz - 3",
+      "path": "20_Progress/Degree/MATH 2230/Quiz/Practice Quiz - 3.md"
     },
     {
       "basename": "Practice Quiz - 2",
@@ -83,10 +87,6 @@
     {
       "basename": "frontend-ui-fixes-tasks",
       "path": "20_Progress/Projects/CS/Portfolio/frontend/frontend-ui-fixes-tasks.md"
-    },
-    {
-      "basename": "UI Fixes",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/UI Fixes.md"
     },
     {
       "basename": "frontend-ui-fixes-requirements",
