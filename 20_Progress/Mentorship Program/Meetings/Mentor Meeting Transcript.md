@@ -9,7 +9,7 @@ tags:
   - input
 next:
 ---
-# Transcript 
+# Transcript
 7-14-2026
 ## From Cluely
 ```

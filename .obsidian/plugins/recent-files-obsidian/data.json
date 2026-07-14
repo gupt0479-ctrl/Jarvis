@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "Practice Quiz - 3",
+      "path": "20_Progress/Degree/MATH 2230/Quiz/Practice Quiz - 3.md"
+    },
+    {
+      "basename": "claude-prompt-ui-fixes-implementation",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-prompt-ui-fixes-implementation.md"
+    },
+    {
+      "basename": "Practice Quiz - 2",
+      "path": "20_Progress/Degree/MATH 2230/Quiz/Practice Quiz - 2.md"
+    },
+    {
       "basename": "Mentor Meeting Transcript",
       "path": "20_Progress/Mentorship Program/Meetings/Mentor Meeting Transcript.md"
     },
@@ -15,10 +27,6 @@
     {
       "basename": "Winter Break",
       "path": "20_Progress/Mentorship Program/Winter Break.md"
-    },
-    {
-      "basename": "claude-prompt-ui-fixes-implementation",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-prompt-ui-fixes-implementation.md"
     },
     {
       "basename": "claude-prompt-ui-fixes-analysis",
@@ -191,14 +199,6 @@
     {
       "basename": "Outreach Automation Manual (PDF)",
       "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Outreach Automation Manual (PDF).md"
-    },
-    {
-      "basename": "Obsidian + Claude Code Codebook — 12 Commands (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Obsidian + Claude Code Codebook — 12 Commands (PDF).md"
-    },
-    {
-      "basename": "MIT Quant Bible (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/MIT Quant Bible (PDF).md"
     }
   ],
   "omittedPaths": [],
