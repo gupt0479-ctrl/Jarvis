@@ -11,7 +11,3 @@ tags:
 next: "[[Useful Links]]"
 ---
 # Pitch
-
-## Gmail
-![[Pasted image 20251106130243.png]]
-I WANT THAT

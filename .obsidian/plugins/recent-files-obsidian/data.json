@@ -1,8 +1,64 @@
 {
   "recentFiles": [
     {
-      "basename": "Mentor Meeting Playbook",
-      "path": "20_Progress/Mentorship Program/Meetings/Mentor Meeting Playbook.md"
+      "basename": "Tracker",
+      "path": "10_Areas/Career/Internships/Tracker/Tracker.md"
+    },
+    {
+      "basename": "2026-HRT-Sophomore",
+      "path": "10_Areas/Career/Internships/Programs/2026-HRT-Sophomore.md"
+    },
+    {
+      "basename": "Plan",
+      "path": "20_Progress/Mentorship Program/Plans/Plan.md"
+    },
+    {
+      "basename": "Internship - Dashboard",
+      "path": "10_Areas/Career/Internships/Tracker/Internship - Dashboard.md"
+    },
+    {
+      "basename": "Elevator pitch",
+      "path": "20_Progress/Mentorship Program/Elevator pitch.md"
+    },
+    {
+      "basename": "Pasted image 20251203100235",
+      "path": "10_Areas/Notes/Files/Pasted image 20251203100235.png"
+    },
+    {
+      "basename": "Mentor Meeting - Hackathons, Summer, and Networking",
+      "path": "20_Progress/Mentorship Program/Plans/Mentor Meeting - Hackathons, Summer, and Networking.md"
+    },
+    {
+      "basename": "Mentor Meeting - One-Pager",
+      "path": "20_Progress/Mentorship Program/Meetings/Mentor Meeting - One-Pager.md"
+    },
+    {
+      "basename": "Project Briefings - 2026-07-13",
+      "path": "20_Progress/Mentorship Program/Meetings/Project Briefings - 2026-07-13.md"
+    },
+    {
+      "basename": "Programs-to-Create",
+      "path": "10_Areas/Career/Internships/Programs/Programs-to-Create.md"
+    },
+    {
+      "basename": "README",
+      "path": "10_Areas/Career/Internships/README.md"
+    },
+    {
+      "basename": "Hackathons",
+      "path": "10_Areas/Career/Hackathon/Hackathons.md"
+    },
+    {
+      "basename": "Links & Interlinks",
+      "path": "10_Areas/Career/Internships/Links & Interlinks.md"
+    },
+    {
+      "basename": "Companies giving OPT & CPT",
+      "path": "20_Progress/Internship/Companies giving OPT & CPT.md"
+    },
+    {
+      "basename": "Links",
+      "path": "40_Resources/CS/Links.md"
     },
     {
       "basename": "claude-prompt-ui-fixes-implementation",
@@ -13,6 +69,14 @@
       "path": "20_Progress/Projects/CS/Portfolio/frontend/UI Fixes.md"
     },
     {
+      "basename": "Mentor Meeting Playbook",
+      "path": "20_Progress/Mentorship Program/Meetings/Mentor Meeting Playbook.md"
+    },
+    {
+      "basename": "Mentor Meeting Transcript",
+      "path": "20_Progress/Mentorship Program/Meetings/Mentor Meeting Transcript.md"
+    },
+    {
       "basename": "Practice Quiz - 3",
       "path": "20_Progress/Degree/MATH 2230/Quiz/Practice Quiz - 3.md"
     },
@@ -21,16 +85,8 @@
       "path": "20_Progress/Degree/MATH 2230/Quiz/Practice Quiz - 2.md"
     },
     {
-      "basename": "Mentor Meeting Transcript",
-      "path": "20_Progress/Mentorship Program/Meetings/Mentor Meeting Transcript.md"
-    },
-    {
-      "basename": "Project Briefings — 2026-07-13",
-      "path": "20_Progress/Mentorship Program/Meetings/Project Briefings — 2026-07-13.md"
-    },
-    {
       "basename": "Winter Break",
-      "path": "20_Progress/Mentorship Program/Winter Break.md"
+      "path": "10_Areas/Life/Plans/Winter Break.md"
     },
     {
       "basename": "claude-prompt-ui-fixes-analysis",
@@ -45,24 +101,8 @@
       "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-prompt-ui-fixes-pass-3.md"
     },
     {
-      "basename": "Mentor Meeting - One-Pager",
-      "path": "20_Progress/Mentorship Program/Mentor Meeting - One-Pager.md"
-    },
-    {
-      "basename": "Mentor Meeting - Hackathons, Summer, and Networking",
-      "path": "20_Progress/Mentorship Program/Mentor Meeting - Hackathons, Summer, and Networking.md"
-    },
-    {
       "basename": "Mentor Details",
       "path": "20_Progress/Mentorship Program/Mentor Details.md"
-    },
-    {
-      "basename": "Elevator pitch",
-      "path": "20_Progress/Mentorship Program/Elevator pitch.md"
-    },
-    {
-      "basename": "Plan",
-      "path": "20_Progress/Mentorship Program/Plan.md"
     },
     {
       "basename": "BUILD-STATUS",
@@ -159,46 +199,6 @@
     {
       "basename": "The Agent-Ready Roadmap (web)",
       "path": "60_Claude/10_Source_Summaries/Web Ingestion/The Agent-Ready Roadmap (web).md"
-    },
-    {
-      "basename": "Hall of Hacks — Winning Hackathon Patterns Analysis",
-      "path": "60_Claude/20_Distilled_Notes/Hall of Hacks — Winning Hackathon Patterns Analysis.md"
-    },
-    {
-      "basename": "02 - Close Documentation and Schema Drift",
-      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/ran/02 - Close Documentation and Schema Drift.md"
-    },
-    {
-      "basename": "04 - Optional Batch Entity Upserts",
-      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/ran/04 - Optional Batch Entity Upserts.md"
-    },
-    {
-      "basename": "03 - End-to-End Memory Verification and Integration Gate",
-      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/ran/03 - End-to-End Memory Verification and Integration Gate.md"
-    },
-    {
-      "basename": "PDF's Ingestion Implementation",
-      "path": "60_Claude/20_Distilled_Notes/PDF's Ingestion Implementation.md"
-    },
-    {
-      "basename": "Ultimate Guide to Winning Hackathons (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Ultimate Guide to Winning Hackathons (PDF).md"
-    },
-    {
-      "basename": "TRIBE v2 — Foundation Model for In-Silico Neuroscience (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/TRIBE v2 — Foundation Model for In-Silico Neuroscience (PDF).md"
-    },
-    {
-      "basename": "Student Travel Discounts List (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Student Travel Discounts List (PDF).md"
-    },
-    {
-      "basename": "Quant Foundations (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Quant Foundations (PDF).md"
-    },
-    {
-      "basename": "Outreach Automation Manual (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Outreach Automation Manual (PDF).md"
     }
   ],
   "omittedPaths": [],

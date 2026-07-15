@@ -9,23 +9,23 @@ related:
   - "[[Mentor Meeting - Hackathons, Summer, and Networking]]"
   - "[[Mentor Meeting - One-Pager]]"
   - "[[Mentorship and Networking]]"
-  - "[[Project Briefings — 2026-07-13]]"
+  - "[[Project Briefings - 2026-07-13]]"
 tags:
   - mentorship
   - meeting-prep
-next: "Fill in the Session Log entry after the 2026-07-13 call"
+next: Fill in the Session Log entry after the 2026-07-13 call
 ---
 # Mentor Meeting Playbook
 ## Why This Note Exists
-This is the standing source of truth for every Ahnaf meeting from here forward, not just tonight's. The **Playbook** sections below (4 Goals, Current Real State, Standing Format) stay stable across meetings. Each individual meeting gets its own dated entry under [[#Session Log]] — append, never overwrite. [[Mentor Meeting - Hackathons, Summer, and Networking]] and [[Mentor Meeting - One-Pager]] cover the April meeting and are now historical; this file is what to open before every future call. [[Project Briefings — 2026-07-13|Project Briefings]] holds the full, source-checked depth on Portfolio/Orby, TradingView, and CausalOps — read that before the call, not just the summary below.
+This is the standing source of truth for every Ahnaf meeting from here forward, not just tonight's. The **Playbook** sections below (4 Goals, Current Real State, Standing Format) stay stable across meetings. Each individual meeting gets its own dated entry under [[#Session Log]] — append, never overwrite. [[Mentor Meeting - Hackathons, Summer, and Networking]] and [[Mentor Meeting - One-Pager]] cover the April meeting and are now historical; this file is what to open before every future call. [[Project Briefings - 2026-07-13|Project Briefings]] holds the full, source-checked depth on Portfolio/Orby, TradingView, and CausalOps — read that before the call, not just the summary below.
 ## The 4 Goals — What This Mentorship Is Actually For
 Not "help with my whole summer." Four specific things a mentor is actually useful for:
 1. **Relationship** — a connection with Ahnaf strong enough that he'd recommend me to other employers, and one that keeps going after the program's stated end around September 2026. This is earned by showing up with real execution each meeting, not by asking for it directly. See [[Mentorship and Networking]] on why warm intros beat cold applications.
-2. **Project + build review** — professional feedback on the actual build setup, not demo praise. Tonight's focus is narrower than "everything": [[Portfolio]] (live at anantgupta.dev) with **Orby specifically** as the centerpiece, [[Stocks Trading AI Hub|TradingView]] framed as a personal quant side project, and [[CausalOps — Index|CausalOps]]. See [[Project Briefings — 2026-07-13]] for the concrete detail on all three.
+2. **Project + build review** — professional feedback on the actual build setup, not demo praise. Tonight's focus is narrower than "everything": [[Portfolio]] (live at anantgupta.dev) with **Orby specifically** as the centerpiece, [[Stocks Trading AI Hub|TradingView]] framed as a personal quant side project, and [[CausalOps — Index|CausalOps]]. See [[Project Briefings - 2026-07-13]] for the concrete detail on all three.
 3. **Startup fundamentals** — no fixed idea yet. The ask is the real playbook: how a startup actually gets built and launched, and what the first concrete step looks like. Winter's version of this was "learn the playbook, no launch" ([[Plan#Winter]]); this is the next layer.
-4. **Professional image** — resume, interview prep, and online presence, feeding into the [[Internship Tracker — Dashboard|2027 internship pipeline]] and eventually into during-internship conduct once one lands.
+4. **Professional image** — resume, interview prep, and online presence, feeding into the [[Internship - Dashboard|2027 internship pipeline]] and eventually into during-internship conduct once one lands.
 ## Current Real State — Ground Truth, Not the Pitch
-Use this to answer follow-up questions honestly. Don't oversell. Full depth in [[Project Briefings — 2026-07-13]].
+Use this to answer follow-up questions honestly. Don't oversell. Full depth in [[Project Briefings - 2026-07-13]].
 - **Portfolio:** live at anantgupta.dev, verified today — real content across About, Experience, Projects, Skills, real certifications, achievements. A UI-fix backlog is in progress; mention it only if it ships before the call. Tonight's actual focus is **Orby** — both the visual 3D companion and the grounded AI agent behind the Portfolio Lab chat.
 - **TradingView:** framed as a personal quant side project, not a product — no monetization, learning stocks/ETFs. 497 offline tests passing, and a real LLM analyst/critic layer now produces live evidence-backed stock cards (verified against actual model runs, not just fixtures).
 - **CausalOps:** an evidence-backed causal reasoning engine for SOC incident response. Memory layer implementation is complete in code (10 unit tests passing), blocked on running the SQL migration and integration tests against a provisioned Supabase project.
@@ -79,5 +79,12 @@ Questions to ask:
 - [ ] Schedule the next alternate-Monday slot on the calendar immediately, don't let it drift.
 ## Session Log
 Append one dated entry per meeting below. Do not overwrite prior entries.
-### 2026-07-13
-*Fill in after the call: what Ahnaf actually said on the project review, startup fundamentals, professional image, and the cadence ask. What the concrete next step was.*
+### 2026-07-14
+Meeting slipped a day from the planned 2026-07-13 slot. Full transcript: [[Mentor Meeting Transcript]]; full post-meeting action plan: [[Project Briefings - 2026-07-13]] (same file, repurposed after the call — read it, not this summary, for the real detail).
+- **Portfolio/Orby:** barely discussed directly — the meeting's real center of gravity was adx, not Orby. Only surfaced: deploy confirmed live, and a stated wish to make the site's blog a genuine ongoing writing output.
+- **TradingView / CausalOps:** TradingView wasn't discussed. CausalOps came up as a concrete example of solving the "agents not sharing memory" problem — directly informed the adx memory-layer proposal below.
+- **Startup fundamentals:** got a real, concrete first step — form an LLC (~$500-600, e.g. via ZenBusiness) then a US Bank business checking account, buildable now without investors or even a GitHub org. Anant's own framing: a 2-year runway, internship next year "100%," this year devoted to finding a problem statement and building.
+- **Professional image:** got concrete resources — "Cracking the Coding Interview" (gold standard, per Ahnaf) and the "System Design Interview" book; advice to spend 3-4 weeks in the Bay Area for in-person networking (hackathons/meetups beat LinkedIn cold outreach); local MN meetups named (JavaScript Minnesota, Open Source North, Minibar/Minidemo, data & analytics conferences).
+- **Cadence ask:** resolved to bi-weekly (alternate Mondays) — Ahnaf is heading into a busy Gemini/OpenAI launch window — revisit at the start of September when he's back in Minneapolis.
+- **The real unplanned outcome:** most of the meeting was Ahnaf asking Anant to review his own open-source project, **adx** (an Agent Development Kit for governing AI-coding-agent output — [ahnafyy/adx](https://github.com/ahnafyy/adx)), because Anant isn't a direct report and can give harsher feedback than his own team. Anant proposed adding a memory layer to adx's evidence bundles (citing the CausalOps memory-layer work as prior art); Ahnaf responded well and connected it to OpenHands as a comparable project. Deadline: feedback by 2026-07-19 (end of that week).
+- **Concrete next step:** work through adx package-by-package, then raise the memory-layer proposal as the first real issue. Between now and September, adx contribution is the primary currency of this relationship — ahead of the other 3 original goals, which stay secondary until fall.

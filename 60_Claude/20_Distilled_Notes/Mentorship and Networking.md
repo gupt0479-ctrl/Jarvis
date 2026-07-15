@@ -6,13 +6,13 @@ updated: 2026-04-27
 tags:
   - concept
 notes:
-  - "[[20_Progress/Mentorship Program/Plan]]"
+  - "[[Plan]]"
   - "[[20_Progress/Mentorship Program/Mentor Details]]"
 track:
   - career
 prerequisites: []
 used_in:
-  - "[[20_Progress/Mentorship Program/Plan]]"
+  - "[[Plan]]"
 evidence: []
 difficulty: 2
 mastery_level: novice
@@ -23,7 +23,7 @@ next_drill: 2026-05-09
 
 # Mentorship and Networking
 
-> Distilled from [[20_Progress/Mentorship Program/Plan]] and mentorship program materials
+> Distilled from [[Plan]] and mentorship program materials
 
 ## Deep Dive
 
@@ -63,7 +63,7 @@ The MoSCoW framework (Must-have, Should-have, Could-have, Won't-have) from the m
 
 ### Source Anchors
 
-- [[20_Progress/Mentorship Program/Plan]] — full mentorship plan with meeting frameworks
+- [[Plan]] — full mentorship plan with meeting frameworks
 - [[20_Progress/Mentorship Program/Mentor Details]] — mentor background
 - CSE Mentor Program guidelines — program structure and expectations
 
