@@ -5,8 +5,10 @@ status: active
 ---
 
 # 📋 Internship Programs — Ready-to-Create Files
+> [!WARNING]
+> Superseded field: every YAML block below still has `status:`/`date_applied:` style fields from the old single-tier tracker. Per [[30_Order/Workflows/Internship Pipeline]], strip those when you actually create a Program file — status now lives on a paired note in `20_Progress/Internship/Applying/`, created at the same time. Use [[Program Template]] and [[Applying Template]] together, not this file's raw YAML.
 
-**How to use this:** Copy each program below into a new `.md` file in `/Programs/` folder with the filename shown. Use `2026-HRT-Sophomore.md` as your template.
+**How to use this:** Treat each block below as a source of facts to copy into a real [[Program Template]] file in `/Programs/`, not a literal template — `2026-HRT-Sophomore.md` is the worked example of the new (trimmed) pattern.
 
 ---
 
@@ -515,10 +517,10 @@ tags:
 12. Bloomberg Engineering
 13. NASA OSTEM
 
-### Step 3: Update As You Apply
-- Change `status` from "Not Started" → "Applied" → "Interview" → "Offer/Rejected"
-- Fill in `date_applied` when you submit
-- Track interview dates and outcomes
+### Step 3: Create The Matching Applying Note
+- When you commit to a program, create its Applying note in `20_Progress/Internship/Applying/` from [[Applying Template]] in the same sitting
+- Status now lives there: `Researching` → `Applied` → `OA` → `Phone Screen` → `Onsite` → `Offer`/`Rejected`/`Withdrawn`
+- Link the two notes both ways (`applying_note` on the Program, `program` on the Applying note)
 
 ### Step 4: Run Dashboard Dataview Queries
 - The dashboard automatically pulls from all program files

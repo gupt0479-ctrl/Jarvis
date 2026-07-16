@@ -63,3 +63,8 @@ mcp.env
 # Excalidraw MCP local install (npm package, regenerable)
 30_Order/System/excalidraw-mcp/node_modules/
 30_Order/System/excalidraw-mcp/*.log
+
+# Internship personal/contact data — repo is public, never commit PII
+20_Progress/Internship/Resumes/
+10_Areas/Career/Internships/Contacts/*
+!10_Areas/Career/Internships/Contacts/Mimic.md

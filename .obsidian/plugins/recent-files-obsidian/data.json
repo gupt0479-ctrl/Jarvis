@@ -1,8 +1,56 @@
 {
   "recentFiles": [
     {
+      "basename": "Links & Interlinks",
+      "path": "10_Areas/Career/Internships/Links & Interlinks.md"
+    },
+    {
+      "basename": "Useful Links",
+      "path": "10_Areas/Career/Useful Links.md"
+    },
+    {
+      "basename": "Internship System — Build Log",
+      "path": "20_Progress/Internship/Building System/Internship System — Build Log.md"
+    },
+    {
       "basename": "Chapter - 9",
       "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 9.md"
+    },
+    {
+      "basename": "Mentorship and Networking",
+      "path": "60_Claude/20_Distilled_Notes/Mentorship and Networking.md"
+    },
+    {
+      "basename": "2026-07 Found",
+      "path": "10_Areas/Career/Internships/List/2026-07 Found.md"
+    },
+    {
+      "basename": "Tracker",
+      "path": "10_Areas/Career/Internships/Tracker/Tracker.md"
+    },
+    {
+      "basename": "2026-HRT-Sophomore",
+      "path": "20_Progress/Internship/Applying/2026-HRT-Sophomore.md"
+    },
+    {
+      "basename": "Mimic",
+      "path": "10_Areas/Career/Internships/Contacts/Mimic.md"
+    },
+    {
+      "basename": "_This Week",
+      "path": "20_Progress/Internship/Applying/_This Week.md"
+    },
+    {
+      "basename": "README",
+      "path": "20_Progress/Internship/Posts/README.md"
+    },
+    {
+      "basename": "Main Resume",
+      "path": "20_Progress/Internship/Resumes/Main Resume.md"
+    },
+    {
+      "basename": "Main Resume",
+      "path": "20_Progress/Internship/Resumes/Main Resume.pdf"
     },
     {
       "basename": "Chapter - 8",
@@ -13,24 +61,12 @@
       "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 7.md"
     },
     {
-      "basename": "Main Resume",
-      "path": "20_Progress/Internship/Resumes/Main Resume.pdf"
-    },
-    {
       "basename": "Quiz - 13",
       "path": "20_Progress/Degree/MATH 2230/Quiz/Quiz - 13.md"
     },
     {
       "basename": "Quiz - 9",
       "path": "20_Progress/Degree/MATH 2230/Quiz/Quiz - 9.md"
-    },
-    {
-      "basename": "Mimic",
-      "path": "10_Areas/Career/Internships/Contacts/Mimic.md"
-    },
-    {
-      "basename": "Tracker",
-      "path": "10_Areas/Career/Internships/Tracker/Tracker.md"
     },
     {
       "basename": "Internship - Dashboard",
@@ -75,10 +111,6 @@
     {
       "basename": "Hackathons",
       "path": "10_Areas/Career/Hackathon/Hackathons.md"
-    },
-    {
-      "basename": "Links & Interlinks",
-      "path": "10_Areas/Career/Internships/Links & Interlinks.md"
     },
     {
       "basename": "Companies giving OPT & CPT",
@@ -167,38 +199,6 @@
     {
       "basename": "AI-Assisted Trading",
       "path": "60_Claude/20_Distilled_Notes/AI-Assisted Trading.md"
-    },
-    {
-      "basename": "05 - MCP Protocol Bridge Integration Test and Final Housekeeping",
-      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/05 - MCP Protocol Bridge Integration Test and Final Housekeeping.md"
-    },
-    {
-      "basename": "Index Fund Investing",
-      "path": "60_Claude/20_Distilled_Notes/Index Fund Investing.md"
-    },
-    {
-      "basename": "Claude Code Status Bar (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Read/Claude Code Status Bar (PDF).md"
-    },
-    {
-      "basename": "2026-07-10",
-      "path": "10_Areas/Life/Enumerate/Daily/2026-07-10.md"
-    },
-    {
-      "basename": "The Output Audit (web)",
-      "path": "60_Claude/10_Source_Summaries/Web Ingestion/The Output Audit (web).md"
-    },
-    {
-      "basename": "Underclassmen Internship List (web)",
-      "path": "60_Claude/10_Source_Summaries/Web Ingestion/Underclassmen Internship List (web).md"
-    },
-    {
-      "basename": "The New Coding Interview — 5 Resources (web)",
-      "path": "60_Claude/10_Source_Summaries/Web Ingestion/The New Coding Interview — 5 Resources (web).md"
-    },
-    {
-      "basename": "Relevance AI — AI Agents for Sales & GTM (web)",
-      "path": "60_Claude/10_Source_Summaries/Web Ingestion/Relevance AI — AI Agents for Sales & GTM (web).md"
     }
   ],
   "omittedPaths": [],

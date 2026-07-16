@@ -10,6 +10,7 @@ notes:
   - "[[40_Resources/Obsidian/Jarvis Vault Architecture]]"
   - "[[HUMAN_WRITING]]"
   - "[[60_Claude/07_AI_Information/Agent Operating Guide]]"
+  - "[[Internship Pipeline]]"
 ---
 # Workflows Index
 
@@ -44,6 +45,7 @@ across all of it:  enrich existing notes in place  ·  capture AI conversations 
 | Build a reusable deliverable (story, bullet, prompt) with provenance | [[Output with Provenance]] |
 | Capture an LLM conversation so its decisions survive | [[Conversation Capture]] |
 | Strengthen an existing note without rewriting it | [[Enrichment]] |
+| Move an internship (or any application) from found to offer/rejected | [[Internship Pipeline]] |
 
 ## Rules every workflow shares
 

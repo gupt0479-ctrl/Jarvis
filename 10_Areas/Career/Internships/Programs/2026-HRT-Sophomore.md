@@ -18,11 +18,8 @@ benefits:
   - Perks
 application_url: https://www.hudsonrivertrading.com/student-opportunities/
 careers_page: https://www.hudsonrivertrading.com/careers/
-status: Not Started
-date_applied: 
-date_response: 
-interview_dates: 
-offer_status: 
+list_origin:
+applying_note: "[[20_Progress/Internship/Applying/2026-HRT-Sophomore]]"
 notes: |
   🚨 CRITICAL TRAPS:
   1. $25k signing bonus is for the GRAD HIRE (algorithm trader role), NOT this internship
@@ -193,28 +190,8 @@ tags:
 
 ---
 
-## 📊 Application Status
-
-| Stage | Status | Date |
-|---|---|---|
-| **Portal Opens** | ⏳ Pending | Aug 1, 2026 |
-| **Application Submitted** | ⏳ Pending | TBD |
-| **Phone Screen** | ⏳ Not Started | TBD |
-| **On-Site Interview** | ⏳ Not Started | TBD |
-| **Offer Decision** | ⏳ Not Started | TBD |
-
----
-
-## 📝 Application Notes
-
-```
-Date Submitted: [TBD]
-Responses Received: [TBD]
-Phone Screen Date: [TBD]
-On-Site Date: [TBD]
-Offer Decision: [TBD]
-Final Status: [TBD]
-```
+## Live Status
+Application status, dates, and next action live on the paired Applying note, not here — see [[20_Progress/Internship/Applying/2026-HRT-Sophomore]]. This note stays static; edit it only when a fact about the program itself changes.
 
 ---
 
