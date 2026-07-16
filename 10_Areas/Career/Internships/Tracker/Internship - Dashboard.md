@@ -13,11 +13,9 @@ tags:
 ---
 
 # 📊 Internship Tracker Dashboard — 2027 Cycle
-
 > **Latest Update:** July 9, 2026 | **Focus:** Wave 1 Quant (NOW) + Wave 2 Big Tech (Jul–Oct 2026)
 
 ---
-
 ## ⏰ Critical Timing
 
 | Wave | Opens | Closes | Focus | Status |
@@ -29,7 +27,6 @@ tags:
 **⚠️ KEY RULE:** Real deadlines are 2 weeks BEFORE posted deadlines. Apply in FIRST WEEK portal opens.
 
 ---
-
 ## 🎯 Applications Due in Next 30 Days
 
 ```dataview
@@ -45,9 +42,7 @@ SORT deadline_real ASC
 ```
 
 ---
-
 ## 📋 Application Status Overview
-
 ### 🟢 Not Started — Ready to Apply
 
 ```dataview
