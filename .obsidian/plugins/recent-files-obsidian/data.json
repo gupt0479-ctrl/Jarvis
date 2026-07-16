@@ -1,12 +1,40 @@
 {
   "recentFiles": [
     {
-      "basename": "Internship - Dashboard",
-      "path": "10_Areas/Career/Internships/Tracker/Internship - Dashboard.md"
+      "basename": "Chapter - 9",
+      "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 9.md"
+    },
+    {
+      "basename": "Chapter - 8",
+      "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 8.md"
+    },
+    {
+      "basename": "Chapter - 7",
+      "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 7.md"
+    },
+    {
+      "basename": "Main Resume",
+      "path": "20_Progress/Internship/Resumes/Main Resume.pdf"
+    },
+    {
+      "basename": "Quiz - 13",
+      "path": "20_Progress/Degree/MATH 2230/Quiz/Quiz - 13.md"
+    },
+    {
+      "basename": "Quiz - 9",
+      "path": "20_Progress/Degree/MATH 2230/Quiz/Quiz - 9.md"
+    },
+    {
+      "basename": "Mimic",
+      "path": "10_Areas/Career/Internships/Contacts/Mimic.md"
     },
     {
       "basename": "Tracker",
       "path": "10_Areas/Career/Internships/Tracker/Tracker.md"
+    },
+    {
+      "basename": "Internship - Dashboard",
+      "path": "10_Areas/Career/Internships/Tracker/Internship - Dashboard.md"
     },
     {
       "basename": "2026-HRT-Sophomore",
@@ -171,34 +199,6 @@
     {
       "basename": "Relevance AI — AI Agents for Sales & GTM (web)",
       "path": "60_Claude/10_Source_Summaries/Web Ingestion/Relevance AI — AI Agents for Sales & GTM (web).md"
-    },
-    {
-      "basename": "Fintech Early Programs That Pay — HRT, Capital One, Bloomberg (web)",
-      "path": "60_Claude/10_Source_Summaries/Web Ingestion/Fintech Early Programs That Pay — HRT, Capital One, Bloomberg (web).md"
-    },
-    {
-      "basename": "2027 Internship Calendar (web)",
-      "path": "60_Claude/10_Source_Summaries/Web Ingestion/2027 Internship Calendar (web).md"
-    },
-    {
-      "basename": "The 2027 Internship Calendar (Prediction) when everything actually drops",
-      "path": "60_Claude/05_Clippings/Web/The 2027 Internship Calendar (Prediction) when everything actually drops.md"
-    },
-    {
-      "basename": "4 Ways to Make Money with the Hermes Agent (web)",
-      "path": "60_Claude/10_Source_Summaries/Web Ingestion/4 Ways to Make Money with the Hermes Agent (web).md"
-    },
-    {
-      "basename": "Hall of Hacks — Winning Hackathon Archive (web)",
-      "path": "60_Claude/10_Source_Summaries/Web Ingestion/Hall of Hacks — Winning Hackathon Archive (web).md"
-    },
-    {
-      "basename": "Web Ingestion Implementation",
-      "path": "60_Claude/20_Distilled_Notes/Web Ingestion Implementation.md"
-    },
-    {
-      "basename": "The Agent-Ready Roadmap (web)",
-      "path": "60_Claude/10_Source_Summaries/Web Ingestion/The Agent-Ready Roadmap (web).md"
     }
   ],
   "omittedPaths": [],

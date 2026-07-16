@@ -93,7 +93,6 @@ SORT status DESC
 ```
 
 ---
-
 ## 💰 Sorted by Compensation (Highest First)
 
 ```dataview
@@ -110,7 +109,6 @@ SORT pay_per_week DESC
 ```
 
 ---
-
 ## 🌊 Wave 1 — Quant Programs (Highest Pay, Opens NOW)
 
 ```dataview
@@ -130,11 +128,9 @@ SORT deadline_real ASC
 - **Two Sigma First-Year** — $2,900/week (1st-year ONLY)
 - **Jane Street FTTP** — $2,500–$3,000/week (1st-year ONLY)
 - **Citadel Launch** — $4,300–$4,800/week (2nd-year)
-
 **Action:** Open applications now. First 2 weeks = best odds.
 
 ---
-
 ## 🌊 Wave 2 — Big Tech Programs (Opens Jul–Oct 2026)
 
 ```dataview
@@ -148,7 +144,6 @@ FROM "10_Areas/Career/Internships/Programs"
 WHERE program_type = "Big Tech" AND wave = "Wave 2"
 SORT opens_date ASC
 ```
-
 **Top Programs:**
 - **Google ASDI** — 1st/2nd-year, 12 weeks, opens late Sept (SHORT WINDOW)
 - **Microsoft Explore** — 1st/2nd-year, opens ~Aug
@@ -157,9 +152,7 @@ SORT opens_date ASC
 - **MLH Fellowship** — Any year, OPEN NOW rolling
 
 ---
-
 ## ✅ Programs You're Eligible For
-
 **Filter by your grad year (replace with YOUR year):**
 
 ```dataview
@@ -177,11 +170,8 @@ SORT deadline_real ASC
 ```
 
 ---
-
 ## 📊 Stats & Insights
-
 ### Application Funnel
-
 ```dataview
 TABLE WITHOUT ID
   rows.status as "Status",
@@ -189,11 +179,8 @@ TABLE WITHOUT ID
 FROM "10_Areas/Career/Internships/Programs"
 GROUP BY status
 ```
-
 ### Total Opportunities Tracked
-
 **Total Programs:** (auto-count below)
-
 ```dataview
 LIST
 FROM "10_Areas/Career/Internships/Programs"
@@ -201,34 +188,26 @@ LIMIT 1
 ```
 
 ---
-
 ## 🎯 This Week's Action Items
-
 **[ ] Friday — Weekly Deadline Check (30 min ritual)**
 - [ ] Update program statuses
 - [ ] Check which portals have opened
 - [ ] Apply to any newly-opened programs
 - [ ] Check on applications from 1 month ago (follow-up)
-
 **[ ] Set Calendar Reminders**
 - [ ] NVIDIA Ignite (watch late Aug)
 - [ ] Google ASDI (watch late Sept)
 - [ ] LinkedIn First Play (watch late Nov)
-
 **[ ] Reach Out to Recruiters**
 - Use [[LinkedIn Search URL Cheatsheet (PDF)]] to find recruiters at HRT/Jane Street/Two Sigma
 - Schedule warm outreach for next week
 
 ---
-
 ## 📚 Resources & Links
-
 **Master Reference:** [[Internship Tracking Dashboard — 2027 Calendar, Programs, & Application Pipeline]]
-
 **External Trackers:**
 - [2027 Internship Calendar (Notion)](https://burly-handstand-0dc.notion.site/The-2027-Internship-Calendar-Prediction-when-everything-actually-drops-37be3f8633848182be9ae0cd005e175a)
 - [Northwestern Fintech GitHub](https://github.com/northwesternfintech/2027QuantInternships)
-
 **Direct Program Links:**
 - [Hudson River Trading](https://www.hudsonrivertrading.com/student-opportunities/)
 - [Capital One Early Career](https://www.capitalonecareers.com/get-ahead-with-early-career-programs-for-students)
@@ -239,9 +218,7 @@ LIMIT 1
 - [NASA Internships](https://intern.nasa.gov/)
 
 ---
-
 ## 🗂️ Folder Structure
-
 ```
 10_Areas/
   Career/

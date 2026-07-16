@@ -4,7 +4,7 @@ status: archived
 created: 2025-12-04
 updated: 2025-12-13
 area:
-  - "[[Chapter - 9]]"
+  - "[[40_Resources/UMN/Previous Classes/CSCI/CSCI 2011/Chapter - 9]]"
   - "[[40_Resources/UMN/Previous Classes/CSCI/CSCI 2011/Chapter - 7]]"
   - "[[50_Archive/Previous Classes/CSCI/CSCI 2011/Chapter - 6]]"
   - "[[50_Archive/Previous Classes/CSCI/CSCI 2011/Chapter - 5]]"

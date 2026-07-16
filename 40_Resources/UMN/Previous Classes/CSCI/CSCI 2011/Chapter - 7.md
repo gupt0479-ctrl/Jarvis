@@ -12,7 +12,7 @@ tags:
   - "#Textbook"
   - "#Homework"
   - "#Discussion"
-next: "[[Chapter - 9]]"
+next: "[[40_Resources/UMN/Previous Classes/CSCI/CSCI 2011/Chapter - 9]]"
 ---
 # #Textbook Textbook & Videos
 ## 7.1
