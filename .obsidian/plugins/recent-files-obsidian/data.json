@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Summer Grind",
+      "path": "10_Areas/Summer Grind.md"
+    },
+    {
       "basename": "Quiz - 13",
       "path": "20_Progress/Degree/MATH 2230/Quiz/Quiz - 13.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Trading Resources Integration — TradingView Architecture Roadmap",
       "path": "60_Claude/20_Distilled_Notes/Trading Resources Integration — TradingView Architecture Roadmap.md"
-    },
-    {
-      "basename": "AI-Assisted Trading",
-      "path": "60_Claude/20_Distilled_Notes/AI-Assisted Trading.md"
     }
   ],
   "omittedPaths": [],
