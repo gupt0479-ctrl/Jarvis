@@ -4,6 +4,12 @@ Append-only record of Claude sessions. Format: `## [YYYY-MM-DD] action | Title`
 
 ---
 
+## [2026-07-18] cleanup | Dossiers folder audit — 110 of 137 deleted, root causes found
+- Audited every file in `10_Areas/Career/Internships/List/Dossiers/` against live upstream data (SimplifyJobs/JGCL listings.json fetched fresh, joined locally by stored UUID) rather than trusting stored frontmatter or visiting 137 pages individually.
+- Deleted 79 SimplifyJobs dossiers (76 the source itself now marks `active: false`, 3 grad-only/no Bachelor's eligibility), 11 of 13 JGCL dossiers (7 closed upstream, 4 wrong-cycle by filename), all 20 zapplyjobs dossiers (program/resource pages, not deadline-bearing postings — wrong fit for this folder, source removed from the pipeline per this session's decision). 27 genuinely valid dossiers remain.
+- Found and recorded five root causes in `20_Progress/Internship/Building System/Phases 1-3 Run.md`: no post-write liveness recheck, no `degrees` eligibility check, JGCL's real `target_year` data not reaching written frontmatter (confirmed via live cross-reference — a normalize/write bug, not a false match), no cross-source dedup, zapplyjobs structurally unfit as a source. None fixed in code yet — flagged as required follow-up so today's cleanup doesn't just recur.
+- Deadline extraction (the original ask) deferred to the 27 survivors only, pending user direction on sequencing against the pipeline fixes.
+
 ## [2026-07-17] review | Research-loop phases 1-2 build review before phase 3
 - Reviewed the WSL Claude Code session's phase 1-2 completion report (public repo `gupta-builds/internship-research-loop`, CI green, 48/48 tests, mutation-tested) against `20_Progress/Internship/Building System/Research Loop — Implementation Plan.md`, not taken on trust.
 - Re-verified three claimed facts directly against live data rather than relaying secondhand: SimplifyJobs' real category taxonomy (10 values, two eras per relevant category — plan's original `categories` list matched only 1 of 10, corrected), zapplyjobs' Year-column value (`All student`/`All Student`/`All Students`, three casings, not the plan's guessed literal string, corrected to a normalized match), and the JGCL listings.json path (re-fetched, returns 200 at the exact path this plan always specified — the build report's claim of a path mismatch didn't reproduce, flagged for the WSL session to confirm against its actual code rather than silently resolved either way).

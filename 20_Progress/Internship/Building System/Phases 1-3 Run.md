@@ -2,7 +2,7 @@
 type: project
 status: active
 created: 2026-07-17
-updated: 2026-07-17
+updated: 2026-07-18
 deadline:
 related_progress:
   - "[[20_Progress/Internship/Building System/Internship System — Build Log]]"
@@ -11,7 +11,7 @@ tags:
   - internship
   - automation
   - system-design
-next: "Watch for the first Sunday 23:00 UTC weekly rollup write into 10_Areas/Career/Internships/List/Run Log.md — that code path has never fired against real data yet. Otherwise let the hourly cron run unattended for a full week per the plan's build order before tightening cadence."
+next: "Check Run Log.md on Mon 2026-07-20 for the first real Sunday 23:00 UTC rollup; evaluate cadence tightening on/after 2026-07-24 (one week of clean runs since 2026-07-17 11:21 UTC). Layer 5 needs a FIRECRAWL_API_KEY before its first live run — it has never executed end-to-end."
 ---
 # Phases 1–3 Run
 ==Phases 1 through 3 of the internship research loop are complete and live: the automation runs hourly against the real `gupta-builds/Jarvis` vault, has written 137 real dossiers, and has completed six consecutive real runs (three manual, three scheduled) with zero duplicates and zero filed issues.== This note is the single build record across all three phases — what got built, what was verified correct, what broke during live verification and how it was fixed, and what is explicitly still missing. [[20_Progress/Internship/Building System/Research Loop — Implementation Plan]] is the forward spec this was built against; [[20_Progress/Internship/Building System/Internship System — Build Log]] is the folder-structure design this automation writes into. Read this note when picking the work back up — it should answer "what already exists" without reopening the repo.
@@ -109,5 +109,31 @@ The first `gh secret set JARVIS_PUSH_TOKEN` attempt (run with no `--body` flag a
 - [ ] Once a week of clean hourly runs has passed, decide whether to tighten cadence toward the sources' real ~30-minute update rate
 - [ ] Revisit `locations_allow` now that real `locations` data exists in dossiers written by actual live runs
 - [ ] Watch for whether the vault's own ~2-hour auto-commit cycle and this hourly cron ever actually collide on `origin/master` — the retry-once logic is tested against synthetic conflicts but hasn't yet hit a real one
+## Vault Cleanup And Root-Cause Findings (2026-07-18)
+Folder audit found 110 of 137 dossiers didn't belong — cross-referenced every stored ID against the live upstream JSON feeds (no webpage visits needed) rather than trusting local frontmatter. Deleted, not archived: 79 SimplifyJobs (76 marked `active: false` upstream, 3 grad-only with no Bachelor's eligibility), 11 of 13 JGCL (7 closed upstream, 4 wrong-cycle by their own filename), all 20 zapplyjobs (none are actual deadline-bearing postings — program/resource landing pages, structurally the wrong fit for this folder). 27 remain, all verified Summer 2027, active, Bachelor's-eligible.
+Root causes, not yet fixed in code — will recur without a pipeline change:
+1. No recheck after a dossier is written — a posting closing upstream is never noticed.
+2. `degrees` eligibility was never checked (same class of gap as the earlier `locations_allow` miss).
+3. JGCL's real `target_year` data (confirmed Junior-eligible on all 9 checked) never reaches the written dossier frontmatter — a normalize/write bug, not a false-positive match.
+4. No cross-source dedup — the same program can land as separate files from two sources (MLH Fellowship appeared via both zapplyjobs and JGCL).
+5. zapplyjobs should stop feeding this pipeline entirely per this session's decision.
 ## Phase 4 Scope Decision (2026-07-17)
 Reversed the plan's original "on-demand only" boundary for what counts as "finishing" this project — Layer 5 (company/contact enrichment) and Layer 6 (resume grader), previously scoped as separate future tools outside the automation, are now in scope to actually build. Trigger semantics are not reversed: Layer 5 stays promotion-triggered (a script run explicitly when a dossier is promoted through [[30_Order/Workflows/Internship Pipeline]]), not automatic on every dossier — this wasn't re-confirmed explicitly when the scope decision was made, flagged for the build prompt to state plainly rather than assume silently. PRD.md's own NEEDS WORK sections (Success Metrics, Risks) are explicitly a separate prompt, not folded into this one.
+## Phase 4 — Locations Filter, Enrichment, Resume Grader (2026-07-18)
+Built and verified 2026-07-18; everything below is from an evidence pass (fresh test runs, live dry-runs, real transcripts), not a build summary. ==Closes three of the five "What's Not Built" gaps: `locations_allow`, Layer 5 (built, not yet run live), Layer 6. The rollup and cadence gaps are time-gated, unchanged, with check dates below.== Test suite: **131/131 passing** (was 87 — +36 locations tests on verbatim live strings, +5 enrich, +3 grader). Shipped as commit `697c110` on master, pushed through `commit_and_push_with_retry()` — which did real work on the way out: rebased over `c31c51c`, that morning's automation commit, the exact two-writer race it was built for. CI (`test.yml`) green on the pushed commit.
+### `locations_allow` — built from live data, live on the loop
+Fetched both live `listings.json` feeds (14,900 + 112 entries, **1,216 distinct location strings**; zapplyjobs carries no location data at all) before writing any rule. `location_eligible()` in `core/filter.py`, enabled by `locations_allow: us_remote` in `profile.yaml`: a US signal always wins (state-code suffix tolerant of real dirt like `Carlsbad, Ca` / `Dallas. TX`; full state names checked *before* the foreign denylist so `New Mexico` survives its `mexico` token), an affirmative foreign token loses (`canada|can|uk|germany|india|…`, word-bounded), and everything ambiguous **passes** — `Multiple Locations`, `Virtual`, bare `Remote`, no data at all. Permissive by design: the denylist can't name every country, but a US signal is never falsely rejected.
+*Dry-run against all 137 real dossiers:* 20 have no locations data (pass as unrestricted); **exactly 13 would reject**, every one via an explicit `canada`/`uk` denylist token (Kroll, CIBC, DRW, RTX — Toronto/Montreal/Mississauga; 3× Motorola — Ontario/Remote in Canada; Confluent + Crowdstrike — Remote in UK; Voleon, Marshall Wace, IMC — London; Scottish Water — Edinburgh/Glasgow), zero rejected for merely lacking a US signal.
+*Decision on record:* the 13 existing non-US dossiers are **permanently grandfathered** — the filter is Layer 2, prospective only; nothing in the automation re-evaluates, edits, or deletes an existing dossier, and their uids stay in `seen_ids.json` so they can't be rewritten. They sit at `status: unreviewed` for manual archiving or ignoring.
+### Layer 5 — `enrich.py`: built and unit-tested, **never run live**
+Manual CLI run at Step 2 (Commit) of [[30_Order/Workflows/Internship Pipeline]] — deliberately **not** called from `run_pipeline.py`, never automatic on discovery-loop writes (the trigger design the scope decision flagged for explicit statement — stated, confirmed, built that way). Firecrawl scrape of company site/engineering blog (verbatim trimmed text, zero LLM calls), contacts from public sources only — GitHub org public members, blog author bylines, pattern-inferred `first.last@domain` validated against MX records via DNS-over-HTTPS (no new dependency; this machine has no `dig`). Appends a replaceable `## Enrichment` section to the dossier (re-runs replace, never duplicate). Hard line honored: no LinkedIn, no CAPTCHA bypass, no cookie injection, no stealth browser, no login walls.
+> [!WARNING]
+> No `FIRECRAWL_API_KEY` exists anywhere in this environment (env, shell configs, repo secrets all checked) — the full path has **never executed end-to-end** and is not claimed as done. The script fails fast with a clear message until a key is exported. The keyless halves *were* verified live 2026-07-18: GitHub org discovery resolved Confluent → `confluentinc` with 5 real public members, `mx_ok('confluent.io')` → True, garbage domain → False, inference produced `ansh.jain@confluent.io`.
+### Layer 6 — `grade_resume.py`: built, tested, run against a real JD
+Keyword-overlap scorer over Main Resume.md's `#skill/*`-tagged bullets — local, zero network, zero LLM, per the near-zero-cost design. Real transcript 2026-07-18: fetched the actual Anthropic Fellows Program JD (2,594 words, via the Greenhouse API, from a real dossier's URL) and graded the real bullet bank — top bullet scored 5 (the BOOM APIs/data-ingestion bullet), tag emphasis ranked `#skill/ai` 17 > `#skill/infra` 12 > `#skill/soft` 8, matching the JD's actual emphasis. Known ceiling, deliberate: naive token overlap counts generic words (`via`, `other`) as matches — the stopword list in `grade_resume.py` is the knob if it starts annoying.
+### Verified state after phase 4
+- Ingestion, filter (now including locations), dedup, write-gate: **built, tested, live** — hourly runs still green through 2026-07-18 (`a38aefc`, `5deddd4`)
+- Layer 5: built, unit-tested, **soft** — blocked on a Firecrawl key for its first real run
+- Layer 6: built, tested, verified against a real JD — local tool, "live" doesn't apply
+- Weekly rollup: **time-gated, not a gap** — first fires Sun 2026-07-19 23:00 UTC; check `Run Log.md` on Mon 2026-07-20
+- Cadence tightening: **time-gated, not a gap** — evaluable on/after 2026-07-24 (one week of clean runs since 2026-07-17 11:21 UTC)
