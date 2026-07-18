@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Phases 1-3 Run",
+      "path": "20_Progress/Internship/Building System/Phases 1-3 Run.md"
+    },
+    {
       "basename": "Summer Grind",
       "path": "10_Areas/Summer Grind.md"
     },
@@ -175,30 +179,6 @@
     {
       "basename": "Fable 5 — Read Order (TradingView folder)",
       "path": "20_Progress/Projects/CS/TradingView/Fable 5 — Read Order (TradingView folder).md"
-    },
-    {
-      "basename": "Session Findings — Cursor Alignment Pass (2026-07-10)",
-      "path": "20_Progress/Projects/CS/TradingView/Session Findings/Session Findings — Cursor Alignment Pass (2026-07-10).md"
-    },
-    {
-      "basename": "Session Findings — Post Base (2026-07-11)",
-      "path": "20_Progress/Projects/CS/TradingView/Session Findings/Session Findings — Post Base (2026-07-11).md"
-    },
-    {
-      "basename": "Session Recap — AI Brain Hub Questionnaire (2026-07-12)",
-      "path": "20_Progress/Projects/CS/TradingView/Session Findings/Session Recap — AI Brain Hub Questionnaire (2026-07-12).md"
-    },
-    {
-      "basename": "frontend-ui-fixes-tasks",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/frontend-ui-fixes-tasks.md"
-    },
-    {
-      "basename": "frontend-ui-fixes-requirements",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/frontend-ui-fixes-requirements.md"
-    },
-    {
-      "basename": "Trading Resources Integration — TradingView Architecture Roadmap",
-      "path": "60_Claude/20_Distilled_Notes/Trading Resources Integration — TradingView Architecture Roadmap.md"
     }
   ],
   "omittedPaths": [],

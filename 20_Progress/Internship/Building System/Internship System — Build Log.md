@@ -2,17 +2,18 @@
 type: project
 status: active
 created: 2026-07-16
-updated: 2026-07-16
-deadline:
-related_progress:
-  - "[[10_Areas/Career/Internships/Internships Hub]]"
-  - "[[30_Order/Workflows/Internship Pipeline]]"
-  - "[[Research Loop — Implementation Plan]]"
+updated: '"2026-07-17"'
+deadline: null
+related_progress: '["[[10_Areas/Career/Internships/Internships Hub]]",
+  "[[30_Order/Workflows/Internship Pipeline]]", "[[Research Loop —
+  Implementation Plan]]", "[[20_Progress/Internship/Building System/Phases 1-3
+  Run]]"]'
 tags:
   - internship
   - career
   - system-design
-next: "Promote the first real posting through the full pipeline end to end, then fix whatever breaks"
+next: Promote the first real posting through the full pipeline end to end, then
+  fix whatever breaks
 ---
 # Internship System — Build Log
 ==This is the session record for designing and building the internship application system spanning `10_Areas/Career/Internships/` and `20_Progress/Internship/` on 2026-07-16.== The workflow doc ([[30_Order/Workflows/Internship Pipeline]]) is the lean operating procedure; this note is the full design rationale — why each decision landed where it did, what the research actually said, and what was built versus deferred.
@@ -97,3 +98,4 @@ Organic pattern already established by `ABB Interview Prep.md` — no new templa
 ## Log
 - **2026-07-16:** Two rounds of research (tracking/CRM/AI-workflow patterns, then Hermes/Clay/Firecrawl-monitor comparison), two rounds of clarifying questions, then built the full structure described above.
 - **2026-07-16 (same day, follow-up):** Class-year correction (rising junior, not sophomore) — withdrew the HRT Applying worked example as no longer eligible. Found and fixed a real exposure gap: the vault's `Jarvis` GitHub repo is public with an auto-commit-and-push cycle; added `.gitignore` rules for `Resumes/` and `Contacts/` (except `Mimic.md`) and untracked the already-committed `Main Resume.pdf`. Verified the SimplifyJobs/Jose-Gael-Cruz-Lopez/zapplyjobs repos in detail against the corrected profile and wrote the full automation spec — see [[Research Loop — Implementation Plan]].
+- **2026-07-17:** Phases 1-3 of the research loop automation completed and verified live against the real `gupta-builds/Jarvis` repo — 137 dossiers written, dedup confirmed idempotent across repeated runs, hourly cron confirmed actually firing. Full build record across all three phases: [[20_Progress/Internship/Building System/Phases 1-3 Run]].

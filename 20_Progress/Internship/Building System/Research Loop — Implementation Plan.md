@@ -2,15 +2,17 @@
 type: project
 status: active
 created: 2026-07-16
-updated: 2026-07-16
-related_progress:
-  - "[[Internship System — Build Log]]"
-  - "[[30_Order/Workflows/Internship Pipeline]]"
+updated: '"2026-07-17"'
+related_progress: '["[[Internship System — Build Log]]",
+  "[[30_Order/Workflows/Internship Pipeline]]",
+  "[[20_Progress/Internship/Building System/Phases 1-3 Run]]"]'
 tags:
   - internship
   - automation
   - system-design
-next: "Hand the Repo Bootstrap Prompt (bottom of this note) to a Claude Code session in ~/projects/work/internship-research-loop"
+next: '"Phases 1-3 are live and verified — see [[20_Progress/Internship/Building
+  System/Phases 1-3 Run]] for the full build record. Next real checkpoint:
+  confirm the first Sunday 23:00 UTC weekly rollup fires correctly."'
 ---
 # Research Loop — Implementation Plan
 ==The technical spec for the 24/7 discovery automation, written so a fresh Claude Code session in a separate WSL repo can build it without re-deriving anything here.== [[Internship System — Build Log]] is the retrospective record of the folder redesign; this note is the forward spec for the loop that feeds it. Obsidian stays the source of truth throughout — the automation writes into it, never replaces it.
