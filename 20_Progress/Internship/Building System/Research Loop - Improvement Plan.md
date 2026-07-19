@@ -1,0 +1,55 @@
+---
+type: project
+status: active
+created: 2026-07-19
+updated: 2026-07-19
+related_progress:
+  - "[[20_Progress/Internship/Building System/Research Loop - Source of Truth]]"
+  - "[[20_Progress/Internship/Building System/Phases Run]]"
+  - "[[30_Order/Workflows/Internship Pipeline]]"
+tags:
+  - internship
+  - automation
+  - system-design
+next: "Do Priority 1 first — promote 3-5 of the 26 real dossiers by hand this week, before writing any more automation code."
+---
+# Research Loop — Improvement Plan
+==The honest account of what's actually broken or missing, verified directly against the live repo and the live vault on 2026-07-19, not carried from any prior session's summary. The independent audit that day confirmed the discovery pipeline's code is genuinely solid — but the loop was declared "closed" without a single dossier ever being promoted, without any source beyond two GitHub-curated lists, and with contact discovery and OPT detection real but shallow. This note orders the real gaps by leverage and gives each one a concrete next step, not just a diagnosis.== [[20_Progress/Internship/Building System/Research Loop - Source of Truth]] states what the system was supposed to become; this note states what's still standing between here and there.
+## The Real Verdict: Discovery Works, Nothing Downstream Does
+26 real, live, currently-open dossiers sit in `10_Areas/Career/Internships/List/Dossiers/` right now — checked against Summer 2027/Winter 2027 timing, US location, and OPT eligibility, most carrying real posting content. Precisely **zero** of them have been promoted through [[30_Order/Workflows/Internship Pipeline]]. `Tracker/Tracker.md`'s kanban has an empty card in every column. `Tracker/Internship - Dashboard.md`'s Pipeline tables are correctly built but show nothing, because `Programs/` and `Applying/` hold nothing but one withdrawn 2026-07-16 worked example. `Applying/_This Week.md` still reads "Nothing active yet... First real entry lands once the research loop or a manual find promotes something Junior-eligible" — written three days and 26 real matches ago, still true today. The bottleneck was never discovery. It's Step 2 ("Commit") onward in the Pipeline — 100% manual by design, and exercised zero times against real automation output. Calling this "closed" while that's true is why it feels like a waste of time: the thing that was supposed to change — applications going out — hasn't moved at all.
+## Priority 1 — Prove the promotion step works, on real data, this week
+Before writing one more line of automation: pick 3-5 of the 26 real dossiers (a mix worth stress-testing different shapes — e.g. Rippling, SIG, Optiver, Western Digital) and run Steps 2 through 5 of the Pipeline by hand, once, for real. Create the Programs + Applying notes, draft one real outreach message from `Contacts/Mimic.md`, tailor one resume cut. This is the single highest-leverage thing to do next — every claim about how well the Dashboard, the Kanban, or `enrich.py` work is untested speculation until real data has passed through them. If Step 2 turns out to be slow or annoying in practice, that's the actual next automation target, found by using the system instead of guessing what it needs.
+## Priority 2 — Stop relying on two curated lists for discovery
+### What's actually true about SimplifyJobs and JGCL
+SimplifyJobs is large (14,900+ live entries) and well-maintained, but every entry in it exists because a human noticed a posting and opened a PR — it's downstream of someone else's curation, with the lag and blind spots that implies (mid-size and niche companies that don't get PR'd in are invisible to this pipeline no matter how well the filter works). JGCL (112 entries, last real maintenance mid-2025) is small and thin enough that it barely moves the needle. Both were the right *starting* sources — machine-readable, no login wall, cheap — but "the two sources that happened to be easy to find first" is not the same as "comprehensive coverage," and nothing since Phase 1 has revisited that.
+### The better answer: poll ATS platforms directly, not career pages via Firecrawl
+Most companies' application pages are hosted on a small number of ATS platforms that expose **public, unauthenticated, structured JSON APIs** — not scraped HTML, not something Firecrawl needs to touch at all:
+- **Greenhouse:** `https://boards-api.greenhouse.io/v1/boards/<token>/jobs?content=true` — full JD text included in the response.
+- **Lever:** `https://api.lever.co/v0/postings/<token>?mode=json` — same.
+- **Ashby:** `https://api.ashbyhq.com/posting-api/job-board/<token>` — same.
+These are exactly the kind of source this pipeline already knows how to consume — structured JSON, no auth, matches the existing `Listing` dataclass / per-source `_matches_*` pattern in `core/filter.py` with zero architectural change, just new modules in `ingestion/`. This closes the real gap the two curated lists have (mid-size/niche companies that never get PR'd into SimplifyJobs) without adding a single Firecrawl call to the hourly discovery loop, and it's lower-latency than either curated list, since it's not waiting on a human to notice and PR the listing.
+### The seed list is nearly free to build
+Every dossier already written carries the posting's real `url` — several are already Greenhouse or Lever links (The Trade Desk's dossier already used the Greenhouse board API as a fallback for its content fetch, per the Phase 6 closing pass). A one-time pass over every `url` field across all 26 (and every future) dossier extracts the ATS platform + company token for free — no manual company list needed to start. Firecrawl's actual job here is a small, low-frequency **company-discovery** search (e.g. weekly, a handful of calls) to find companies not yet represented in any dossier, and as the fallback content-fetch path for the companies that run something non-standard (Workday, custom sites) — exactly its current role, just not stretched into "the primary hourly discovery mechanism," which it was never well-suited for.
+### Sequencing this
+1. Write a small script that greps every existing dossier's `url` for a Greenhouse/Lever/Ashby pattern and lists the tokens found — this alone tells you how many of the 26 are already on a pollable ATS, with zero new code risk.
+2. Add `ingestion/greenhouse.py` / `ingestion/lever.py` following the exact shape of `ingestion/sources.py`'s existing fetchers, feeding the same filter/dedup/write-gate pipeline untouched.
+3. Seed the token list from step 1, expand it manually with 10-20 known target companies, and only then consider a Firecrawl-based discovery-search step for growing the list further.
+## Priority 3 — Contact discovery and OPT detection are real, not fake, but shallower than "closed" implied
+### `enrich.py` (Layer 5)
+It genuinely does what it claims — Firecrawl-searches the company's official site and engineering blog, scrapes verbatim, pulls public GitHub org members, pattern-infers `first.last@domain` and validates the domain's MX record — and it has never run once against real data (confirmed: one git commit ever, zero `## Enrichment` sections across all 26 real dossiers). Its real limitation isn't that it's broken, it's that none of its contact sources reliably surface an actual recruiter or hiring manager — a blog byline or a random public GitHub org member is a research starting point, not a warm contact. That's a reasonable tool for "who do I even look up," not "who do I message" — worth using once (Priority 1) with that expectation set correctly, not oversold as solved.
+### OPT exclusion detection
+`OPT_EXCLUSION_RE` in `ingestion/posting_page.py` is a literal-phrase regex built from exactly one real example (Anduril's "U.S. Person status is required") plus the two other named signals from the Phase 6 decision. This is real, tested, and correctly permissive-by-default — but it is also exactly as strict as the handful of phrasings it was built from, and real job postings phrase citizenship/clearance requirements many different ways it has never been tested against. This is the accurate version of "the OPT rule is strict and not implemented correctly": it's not implemented *wrong*, it's implemented *narrow*, because it's regex matching standing in for judgment a design choice (no LLM in the unattended loop) deliberately keeps out of the hourly run. The fix isn't a smarter regex written from imagination — see Priority 4.
+## Priority 4 — Give the loop a real feedback mechanism, not just a test suite
+The existing "self-improving" design (a false-positive filter match gets caught, then becomes a permanent regression test) only works if a human actually notices a mismatch and reports it — nothing currently invites that. Concrete, minimal mechanism, consistent with every other design choice in this project (promotion-triggered, never automatic, never unattended):
+- Add a `rejection_reason` field a human fills in on a dossier or Applying note when a match turns out wrong during screening (bad OPT call, wrong location, irrelevant category, whatever).
+- A periodic review pass (weekly to start, whenever there's enough real data to be worth a session) reads every `rejection_reason` set since the last pass, looks for real patterns, and turns them into either a `profile.yaml` change or an `OPT_EXCLUSION_RE` addition — each landing as a permanent regression test, exactly like every fix so far in this project's history.
+- This is the actual mechanism that makes "learns from its mistakes" true instead of aspirational — it doesn't exist yet because nothing has been promoted or screened yet (Priority 1 again) to generate a single real rejection to learn from.
+## What "100x" Actually Means Here
+Stop measuring this system by dossiers written or tests passing — both can be perfect while the real goal, applications submitted, sits at zero, which is exactly what happened. The metrics that matter: applications submitted per week, and coverage (spot-checked periodically by manually auditing 15-20 target companies' real career pages against what the pipeline actually caught) — not raw source count or dossier volume.
+## Sequencing, In Order
+1. **This week:** Priority 1 — promote 3-5 real dossiers by hand, generate real friction data.
+2. **Next:** Priority 2 step 1 — the free ATS-token audit over existing dossier URLs, then the Greenhouse/Lever ingestion modules.
+3. **Then:** Priority 3 — use `enrich.py` once for real (part of Priority 1's promotion pass) and decide, from real output, whether it's worth investing further or leaving as a "starting point" tool.
+4. **Ongoing, once there's real data:** Priority 4 — wire the `rejection_reason` field and start the periodic review pass.
+## What Not To Touch Yet
+The discovery pipeline itself — ingestion, the profile filter, dedup, the write gate, the three hard criteria, the recheck/mass-deletion-brake hardening — is independently verified working as of the 2026-07-19 audit. None of that needs rebuilding; the entire gap identified here is downstream of discovery, not inside it.

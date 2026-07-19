@@ -61,8 +61,8 @@ When an outcome lands, update the Applying note's `status` to `Offer`, `Rejected
 - **Per application:** the full Step 2 through Step 5 sequence happens once, when you commit.
 ## Cheats
 `Cheats/` is where anything that actually worked gets written down — a tactic, a shortcut, a system, using [[Cheat Template]]. It grows only from real results, not speculation, and it is explicitly not being redesigned preemptively: the instruction behind this folder is to use it as-is until it produces a real blocker, then fix that blocker, not to polish it now.
-## Deferred: Automated Discovery
-The long-term goal is a 24/7 feed that watches the web for new postings and drops them into a Slack channel, which Claude then reads and turns into List rows automatically — using Firecrawl's monitor feature rather than a third-party platform, since Clay is enrichment (not discovery) and Hermes Agent needs a self-hosted always-on server for a single-purpose task. This is explicitly not built yet. The pipeline above works by hand first; automation gets wired into Step 1 once the manual version is proven.
+## Step 1 Is Now Automated — Steps 2+ Are Not
+Step 1 (Find) is live, not deferred: `gupta-builds/internship-research-loop` (GitHub Actions, hourly) writes directly into `List/Dossiers/`, superseding the Slack/Firecrawl-monitor design once planned here — see [[20_Progress/Internship/Building System/Research Loop - Source of Truth]] for what it actually does. **Steps 2 through 7 remain entirely manual by design** and, as of 2026-07-19, have never been exercised against real automated output — see [[20_Progress/Internship/Building System/Research Loop - Improvement Plan]] Priority 1. Don't treat automated Step 1 as evidence the rest of this pipeline works; it hasn't been run yet.
 ## Frontmatter Quick Reference
 | Note | Type | Lives in |
 | --- | --- | --- |
