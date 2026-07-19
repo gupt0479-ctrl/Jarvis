@@ -1,6 +1,22 @@
 {
   "recentFiles": [
     {
+      "basename": "Chapter - 12",
+      "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 12.md"
+    },
+    {
+      "basename": "Chapter - 10",
+      "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 10.md"
+    },
+    {
+      "basename": "Chapter - 8.4",
+      "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 8.4.md"
+    },
+    {
+      "basename": "Chapter - 8",
+      "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 8.md"
+    },
+    {
       "basename": "Internship - Dashboard",
       "path": "10_Areas/Career/Internships/Tracker/Internship - Dashboard.md"
     },
@@ -37,16 +53,8 @@
       "path": "10_Areas/Career/Internships/README.md"
     },
     {
-      "basename": "simplifyjobs-5b7bded6-d742-4cff-9d9e-5b4c88e6b56d",
-      "path": "10_Areas/Career/Internships/List/Dossiers/simplifyjobs-5b7bded6-d742-4cff-9d9e-5b4c88e6b56d.md"
-    },
-    {
       "basename": "simplifyjobs-3ae897a1-0ad7-410e-8882-d492c1f9e19a",
       "path": "10_Areas/Career/Internships/List/Dossiers/simplifyjobs-3ae897a1-0ad7-410e-8882-d492c1f9e19a.md"
-    },
-    {
-      "basename": "simplifyjobs-04c61af9-3fff-42ea-b8cb-7e2f17ca3778",
-      "path": "10_Areas/Career/Internships/List/Dossiers/simplifyjobs-04c61af9-3fff-42ea-b8cb-7e2f17ca3778.md"
     },
     {
       "basename": "simplifyjobs-74ebbab0-9a8d-4399-aec0-07e5ad5f7337",
@@ -75,10 +83,6 @@
     {
       "basename": "jose-gael-cruz-lopez-6afc8154-1b82-4f5e-af1c-8d5aaf3d2824",
       "path": "10_Areas/Career/Internships/List/Dossiers/jose-gael-cruz-lopez-6afc8154-1b82-4f5e-af1c-8d5aaf3d2824.md"
-    },
-    {
-      "basename": "zapplyjobs-f98d518e01506585",
-      "path": "10_Areas/Career/Internships/List/Dossiers/zapplyjobs-f98d518e01506585.md"
     },
     {
       "basename": "zapplyjobs-e7424e1dc28a9075",
@@ -141,10 +145,6 @@
       "path": "20_Progress/Internship/Resumes/Main Resume.pdf"
     },
     {
-      "basename": "Chapter - 8",
-      "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 8.md"
-    },
-    {
       "basename": "Chapter - 7",
       "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 7.md"
     },
@@ -191,14 +191,6 @@
     {
       "basename": "Companies giving OPT & CPT",
       "path": "20_Progress/Internship/Companies giving OPT & CPT.md"
-    },
-    {
-      "basename": "Links",
-      "path": "40_Resources/CS/Links.md"
-    },
-    {
-      "basename": "claude-prompt-ui-fixes-implementation",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-prompt-ui-fixes-implementation.md"
     }
   ],
   "omittedPaths": [],

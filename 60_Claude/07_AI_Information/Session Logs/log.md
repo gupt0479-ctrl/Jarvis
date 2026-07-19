@@ -4,6 +4,12 @@ Append-only record of Claude sessions. Format: `## [YYYY-MM-DD] action | Title`
 
 ---
 
+## [2026-07-18] plan | Three hard criteria + dossier content — closing prompt for the research loop
+- Verified the prior round's 5 root-cause fixes actually landed before building on top of them (didn't trust the commit message alone): `git log`/`git show --stat` on the WSL repo confirmed commit `7a84be1` real, `recheck.py` + `recheck.yml` exist, 148 tests. Vault dossier count independently re-checked: 28 (27 correct + 1 stray zapplyjobs entry from a timing gap before the source-removal deploy) — deleted the stray, back to 27.
+- Found `20_Progress/Internship/Companies giving OPT & CPT.md` is mislabeled — despite the name, it's a stale Oct 2025 FAANG-postings brainstorm with zero actual OPT/CPT content. Flagged so it doesn't get treated as a usable reference.
+- Recorded three new hard criteria (Summer 2027 or Dec 2026-Jan 2027, US-located, OPT-eligible) and the dossier-content requirement (no longer deliberately thin — real posting content via Firecrawl) as "Phase 6 Decision" in `Phases 1-3 Run.md`, including a permissive-by-default OPT design (citizenship/clearance/explicit-exclusion signals only, not a guessed allowlist — same pattern as `locations_allow`) and the clarification that OPT ≠ H-1B sponsorship.
+- Located a real "Fable 5 prompt" structural template already in this vault (`60_Claude/07_AI_Information/Fable Prompt — Dashboard and Ingestion Pass.md`, a different project) and used its shape (ORIENT FIRST / WHAT WAS DONE / numbered TASKS / HARD CONSTRAINTS / QUALITY GATE / SESSION END PROTOCOL) for the closing prompt rather than inventing a new format.
+
 ## [2026-07-18] cleanup | Dossiers folder audit — 110 of 137 deleted, root causes found
 - Audited every file in `10_Areas/Career/Internships/List/Dossiers/` against live upstream data (SimplifyJobs/JGCL listings.json fetched fresh, joined locally by stored UUID) rather than trusting stored frontmatter or visiting 137 pages individually.
 - Deleted 79 SimplifyJobs dossiers (76 the source itself now marks `active: false`, 3 grad-only/no Bachelor's eligibility), 11 of 13 JGCL dossiers (7 closed upstream, 4 wrong-cycle by filename), all 20 zapplyjobs dossiers (program/resource pages, not deadline-bearing postings — wrong fit for this folder, source removed from the pipeline per this session's decision). 27 genuinely valid dossiers remain.

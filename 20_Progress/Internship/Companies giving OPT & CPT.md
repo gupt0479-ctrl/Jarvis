@@ -1,72 +1,38 @@
 ---
-type: brainstorm
-status: sprout
+type: reference
+status: active
 created: 2025-10-30
+updated: 2026-07-18
 related_progress:
-  - "[[Plan]]"
-  - "[[Elevator pitch]]"
-  - "[[Interview Questions]]"
-  - "[[Useful Links]]"
+  - "[[20_Progress/Internship/Building System/Phases 1-3 Run]]"
+  - "[[30_Order/Workflows/Internship Pipeline]]"
 tags:
-  - brainstorm
-next: "[[Useful Links]]"
+  - internship
+  - opt
+  - reference
+next:
 ---
-## FAANG
-[NVIDEA - Career application](https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/userHome?redirect=%252Fen-US%252FNVIDIAExternalCareerSite%252FuserHome%253Fredirect%253D%252Fen-US%252FNVIDIAExternalCareerSite%252FuserHome)
-1. [NVIDEA](https://nvidia.eightfold.ai/careers/job/893384237047?domain=nvidia.com&hl=en) - Software Intern(good): 
-	- **Tools Infrastructure** – debugging tools, build systems, developer workflows
-	- **Systems Software** – Linux systems, backend services, OS-level tools
-	- **Cloud Software** – distributed systems, automation, storage infrastructure
-	- **Developer Tools** – CI/CD, tracing, analysis, performance tuning
-	Work involves building production-quality software used in NVIDIA’s GPU, AI, cloud, and developer toolchains. Interns contribute directly to system tools, infrastructure automation, debugging pipelines, and backend services.
-2. [NVIDEA](https://nvidia.eightfold.ai/careers/job/893384237067?domain=nvidia.com&hl=en) - Computer Architect(mid):
-	- Working on next-generation GPU/CPU architecture, memory systems, graphics pipelines, deep learning acceleration, and performance modeling. Interns focus on understanding how hardware and software interact at a low level, contributing to areas such as parallel programming, HPC, GPU acceleration, modeling, ray tracing, digital design, and computer organization.
-	- You do **not** have hardware design, digital systems, VLSI, Verilog, or CUDA experience.
-	- You also have not taken advanced architecture electives yet.
-3. [NVIDEA](https://nvidia.eightfold.ai/careers/job/893391912746?domain=nvidia.com&hl=en) - SONiC Software Design(no):
-	- This is a **full-time new grad position**, not an internship, working on the SONiC open-source network operating system used on NVIDIA networking switches. The job involves:
-		- Designing and integrating new SONiC networking features
-		- Working with switch management and high-performance networking
-		- Contributing to the SONiC release train
-		- Linux systems programming
-		- C++ + Python development
-		- Working in a fast dev/deployment environment and collaborating with open-source communities.
-4. [Notion](https://jobs.ashbyhq.com/notion/23ac2477-0008-4bed-b1c1-81f90a32e9e6?departmentId=0cfdffa6-6dca-4e61-908f-beb3cad762b3&employmentType=Intern) - Software intern(perfect): But for students graduating before July 2027 
-	- **Product Engineering** — building UI + core features in TypeScript/React
-	- **Backend / Infrastructure** — APIs, databases, distributed systems
-	- **Mobile** — Swift/Kotlin
-	- **Security / Platform** — reliability, tooling, performance
-5. [TikTok](https://lifeattiktok.com/search/7533125274016221448) - Backend Software Engineer Intern (TikTok-Social-Friend Interaction) ((Very good))
-6. [TikTok](https://lifeattiktok.com/search/7533094529978976520) - Software engineer (perfect)
-7. [TikTok](https://lifeattiktok.com/search/7532183663443839250) - QA engineer intern
-8. [TikTok](https://lifeattiktok.com/search/7533142168593664264) - QA Engineer intern(good)
-9. [TikTok](https://lifeattiktok.com/search/7533132837038819591) - Software Engineer(good)
-10. [TikTok](https://lifeattiktok.com/search/7527618943449909522) - Software Engineer(good)
-### Applied
-1. A few NVIDEA interns that i never heard back from: [the hub](https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/userHome)
-2. [Intuit](https://jobs.intuit.com/job/mountain-view/summer-2026-front-end-engineering-intern/27595/87369447104?cid=directBookmarked_directBookmarked): Reached out to the recruiter on linkedin as well
-3. 
-## Top companies
-These companies are currently hiring for Software Developers.
-1. Amazon
-2. Eliassen Group
-3. Capital One
-4. Lumen Technologies
-5. Insight Global
-6. Accenture
-7. Cognizant Technology Solutions
-8. JPMorgan Chase
-9. Deloitte
-10. Ford
-11. Apple
-12. The Judge Group
-13. GovCIO
-14. CVS Health
-15. Robert Half
-16. Genesis10
-17. Northrop Grumman
-18. Shi International Ltd
-19. Motion Recruitment
-20. Leidos
-## Resources
-[[Useful Links#Internship Resources | All Sources to apply internships]]
+# OPT/CPT Eligibility Registry
+==Rebuilt 2026-07-18 — the previous content (an October 2025 postings brainstorm) had no OPT/CPT information despite the filename; it was rebuilt per the Phase 6 decision, with the old Applied history preserved at the bottom.== This is the human-readable registry of OPT-eligibility verdicts for postings the research loop has checked. The machine cache the pipeline actually consults is `state/opt_cache.json` in `gupta-builds/internship-research-loop` — one verdict per posting uid, written automatically at discovery time.
+## The Semantics (from the Phase 6 decision)
+- **OPT is work authorization the F-1 student already holds** — it is not H-1B sponsorship. "No visa sponsorship" usually means no H-1B and is **not** an exclusion.
+- **Exclude only on an explicit negative signal:** a US-citizenship/US-person requirement, a security-clearance requirement, or an explicit "OPT/CPT not accepted" statement.
+- **Checked per posting, not per company** — verified 2026-07-18: Palantir's US Government internship and its Commercial internship differ on exactly this axis within one company.
+- A conditional "willingness to undergo a background investigation" (Palantir US Gov) is **not** a clearance requirement and does not exclude.
+## Verdicts From The 2026-07-18 Dossier Audit
+Every verdict below cites text actually read on the live posting page that day.
+| Company / Role | Verdict | Evidence |
+| --- | --- | --- |
+| **Anduril** — Software Engineer Intern | **Excluded** | "U.S. Person status is required as this position needs to access export controlled data." — stated qualification in the JD |
+| **Palantir** — FDSE Internship, US Government (Honolulu) | Eligible on OPT (removed for grad-year instead) | Only screen: "Willingness to undergo a US government background investigation, depending on US government project requirements" — conditional, not a clearance/citizenship requirement. Removed because "Must be planning on graduating in 2027" fails the Spring-2028 profile |
+| **Palantir** — Privacy & Civil Liberties SWE (NYC) | Eligible on OPT (removed for grad-year) | Same graduating-in-2027 requirement |
+| **Palantir** — FDSE Intern, Commercial (Chicago) | **Eligible** | "Must be graduating in December 2027 or Spring 2028" — fits profile; no citizenship/clearance text |
+| **CTGT** — SWE Intern (SF) | **Eligible** | Posting states "Will Sponsor" |
+| **Aquatic Capital** — SWE Intern (Chicago) | **Eligible** | Sponsorship asked as a question on the application, not excluded |
+| RTX, Northrop Grumman | Not re-checked | Already deleted before this audit (RTX was Canada-located; neither is in the current dossier set) |
+| 16 other survivors (SIG, Five Rings, Trade Desk, Walleye ×2, Ellipsis, Marshall Wace NYC, Grant Thornton, Marmon, IMC, Circleback, HRT, Optiver ×2, Pylon, SimonComputing, UNCF) | **Eligible** | No citizenship/clearance/no-OPT text found on any of their live posting pages (EEO "citizenship status" boilerplate deliberately not counted) |
+## How New Verdicts Arrive
+The hourly discovery loop fetches every new validated match's posting page once (Firecrawl), greps it for the exclusion signals above (`ingestion/posting_page.py`, `OPT_EXCLUSION_RE`), rejects on an explicit signal (logged as `opt_eligibility` in the run log), and caches the verdict by uid so a rejected posting is never re-fetched. Fail-open: if the page can't be fetched, the posting is treated as eligible and written with a thin dossier.
+## Legacy: Applied (from the pre-rebuild note, Oct 2025 era)
+1. A few NVIDIA interns that never replied: [the hub](https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/userHome)
+2. [Intuit](https://jobs.intuit.com/job/mountain-view/summer-2026-front-end-engineering-intern/27595/87369447104?cid=directBookmarked_directBookmarked) — also reached out to the recruiter on LinkedIn

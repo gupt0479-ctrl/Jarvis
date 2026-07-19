@@ -13,7 +13,7 @@ area:
   - "[[40_Resources/UMN/Previous Classes/CSCI/CSCI 2011/Chapter - 9]]"
   - "[[Material]]"
   - "[[50_Archive/Previous Classes/CSCI/CSCI 2011/Chapter - 3]]"
-  - "[[Chapter - 10]]"
+  - "[[40_Resources/UMN/Previous Classes/CSCI/CSCI 2011/Chapter - 10]]"
 tags:
   - "#class"
 next: "[[Finals]]"
