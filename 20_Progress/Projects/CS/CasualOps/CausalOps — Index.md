@@ -35,6 +35,8 @@ Remaining steps:
 - [[memory-layer]] — vector store, knowledge graph, temporal decay, MCP server, current status
 - [[infrastructure]] -- Docker setup, API endpoints, environment variables
 
+- [[Memory Layer Meeting Prep — 2026-07-20]] — meeting prep for PR #25 (Persistent Semantic Memory and Retrieval Layer), talking points + anticipated Q&A
+
 ## Key Invariants
 
 1. LLMs never generate estimator rows. `source_type: "synthetic"` records are skipped by the compiler.

@@ -10,8 +10,8 @@ tags:
 notes:
   - "[[30_Order/Workflows/Internship Pipeline]]"
   - "[[10_Areas/Career/Internships/README]]"
-  - "[[20_Progress/Internship/Building System/Internship System — Build Log]]"
-next: "Promote the first real posting from List to a Programs + Applying pair"
+  - "[[System - Build Log]]"
+next: Promote the first real posting from List to a Programs + Applying pair
 ---
 # Internships Hub
 ==This folder is reference: research on companies, people, and methods that stays true regardless of where any single application currently stands.== Live status, drafts, and prep live in `20_Progress/Internship/` instead — see [[30_Order/Workflows/Internship Pipeline]] for the full flow between the two.

@@ -1,6 +1,30 @@
 {
   "recentFiles": [
     {
+      "basename": "Phases Run",
+      "path": "20_Progress/Internship/Building System/Phases Run.md"
+    },
+    {
+      "basename": "System - Build Log",
+      "path": "20_Progress/Internship/Building System/System - Build Log.md"
+    },
+    {
+      "basename": "Research Loop - Implementation Plan",
+      "path": "20_Progress/Internship/Building System/Research Loop - Implementation Plan.md"
+    },
+    {
+      "basename": "Research Loop - Source of Truth",
+      "path": "20_Progress/Internship/Building System/Research Loop - Source of Truth.md"
+    },
+    {
+      "basename": "Memory Layer Meeting Prep — 2026-07-20",
+      "path": "20_Progress/Projects/CS/CasualOps/Meetings/Memory Layer Meeting Prep — 2026-07-20.md"
+    },
+    {
+      "basename": "05 - MCP Protocol Bridge Integration Test and Final Housekeeping",
+      "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/05 - MCP Protocol Bridge Integration Test and Final Housekeeping.md"
+    },
+    {
       "basename": "Chapter - 12",
       "path": "20_Progress/Degree/MATH 2230/Homework/Chapter - 12.md"
     },
@@ -93,10 +117,6 @@
       "path": "10_Areas/Career/Internships/List/Dossiers/zapplyjobs-e10f25762af73dde.md"
     },
     {
-      "basename": "Phases 1-3 Run",
-      "path": "20_Progress/Internship/Building System/Phases 1-3 Run.md"
-    },
-    {
       "basename": "Summer Grind",
       "path": "10_Areas/Summer Grind.md"
     },
@@ -111,10 +131,6 @@
     {
       "basename": "Useful Links",
       "path": "10_Areas/Career/Useful Links.md"
-    },
-    {
-      "basename": "Internship System — Build Log",
-      "path": "20_Progress/Internship/Building System/Internship System — Build Log.md"
     },
     {
       "basename": "Mentorship and Networking",
@@ -183,14 +199,6 @@
     {
       "basename": "Programs-to-Create",
       "path": "10_Areas/Career/Internships/Programs/Programs-to-Create.md"
-    },
-    {
-      "basename": "Hackathons",
-      "path": "10_Areas/Career/Hackathon/Hackathons.md"
-    },
-    {
-      "basename": "Companies giving OPT & CPT",
-      "path": "20_Progress/Internship/Companies giving OPT & CPT.md"
     }
   ],
   "omittedPaths": [],

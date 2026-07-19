@@ -21,4 +21,4 @@ Start at [[Internships Hub]] for what this domain covers and why it's split from
 | `Cheats/` | Proven tactics and methods | [[Cheat Template]] |
 | `Tracker/` | Dashboard (detailed) and Kanban (glance) | — |
 ## Rewritten 2026-07-16
-This README previously documented a one-time 2027-cycle setup guide (13 hardcoded programs, a single-tier tracker). That content is superseded by [[30_Order/Workflows/Internship Pipeline]], which splits static research (here) from live status (`20_Progress/Internship/Applying/`). The full session record of that redesign is in [[20_Progress/Internship/Building System/Internship System — Build Log]].
+This README previously documented a one-time 2027-cycle setup guide (13 hardcoded programs, a single-tier tracker). That content is superseded by [[30_Order/Workflows/Internship Pipeline]], which splits static research (here) from live status (`20_Progress/Internship/Applying/`). The full session record of that redesign is in [[System - Build Log]].

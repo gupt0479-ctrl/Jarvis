@@ -1,25 +1,26 @@
 ---
 type: project
-status: active
+status: tree
 created: 2026-07-16
-updated: '"2026-07-17"'
-related_progress: '["[[Internship System — Build Log]]",
-  "[[30_Order/Workflows/Internship Pipeline]]",
-  "[[20_Progress/Internship/Building System/Phases 1-3 Run]]"]'
+updated: 2026-07-19
+related_progress:
+  - "[[System - Build Log]]"
+  - "[[30_Order/Workflows/Internship Pipeline]]"
+  - "[[Phases Run]]"
+  - "[[Research Loop - Source of Truth]]"
 tags:
   - internship
   - automation
   - system-design
-next: '"Phases 1-3 are live and verified — see [[20_Progress/Internship/Building
-  System/Phases 1-3 Run]] for the full build record. Next real checkpoint:
-  confirm the first Sunday 23:00 UTC weekly rollup fires correctly."'
+next: Superseded as the live scope reference by [[20_Progress/Internship/Building System/Internship Research Loop — Source of Truth]] — this note stays as the original forward spec and Phase 1-2 review, unedited beyond this frontmatter fix.
 ---
 # Research Loop — Implementation Plan
-==The technical spec for the 24/7 discovery automation, written so a fresh Claude Code session in a separate WSL repo can build it without re-deriving anything here.== [[Internship System — Build Log]] is the retrospective record of the folder redesign; this note is the forward spec for the loop that feeds it. Obsidian stays the source of truth throughout — the automation writes into it, never replaces it.
+==The technical spec for the 24/7 discovery automation, written so a fresh Claude Code session in a separate WSL repo can build it without re-deriving anything here. As of 2026-07-19, [[Research Loop - Source of Truth]] is the current, consolidated statement of full scope across all six phases — read that first; this note is the historical spec and Phase 1-2 review it grew from.== [[System - Build Log]] is the retrospective record of the folder redesign; this note is the forward spec for the loop that feeds it. Obsidian stays the source of truth throughout — the automation writes into it, never replaces it.
 ## Correction Carried Into This Plan
 Class year corrected 2026-07-16: **rising junior**, expected grad Spring 2028 (consistent — a standard 4-year timeline from a Fall 2024 start, no contradiction with the resume). Filter targets Junior-eligible **and** any-year/unrestricted postings, not sophomore-scoped ones. The HRT Sophomore worked example built last session was withdrawn as no longer eligible — see its Log entry.
 ## Source Verdicts (Verified, Not Assumed)
 Every claim below was fetched live, not taken from the pasted Gemini/Sonnet transcript at face value — two of that transcript's claims were wrong (see Corrections below).
+
 | Source | Machine-readable? | 2027 coverage | Junior-eligible? | Verdict |
 | --- | --- | --- | --- | --- |
 | **SimplifyJobs/Summer2026-Internships** | Yes — `listings.json` on `dev` branch, live, ~30 min cadence | 278 of 14,940 entries are `terms: "Summer 2027"` today (~2%, growing as the cycle ramps) | No class-year field, general board | **Primary source.** Despite the "2026" name, it's the successor of Pitt CSC and already carries 2027 postings. |
@@ -95,7 +96,7 @@ Two tiers, matching "Obsidian is the source of truth, not a noise dump":
 - **Raw, per-run:** `logs/runs.jsonl` in the automation repo — one line per run: timestamp, per-source fetch count, filter-match count, new-vs-already-seen count, write-gate rejections with reasons, errors. Cheap, git-committed, never touches Obsidian.
 - **Rollup, weekly:** a short auto-generated note, `10_Areas/Career/Internships/List/Run Log.md`, appended (not rewritten) with one line per week: dossiers written, rejections by reason, any halted runs. This is the one piece of automation output meant for you to actually read.
 ## GitHub Actions Minutes
-Confirmed current limits: 2,000 free minutes/month on private repos (Free plan), **unlimited standard-runner minutes on public repos**. At an every-30-min cadence (48 runs/day), a private repo hits budget if any run averages over ~1.4 minutes (checkout + fetch + filter + write + push) — plausible to exceed given three sources. **Recommendation: make the automation repo public.** The code itself (HTTP polling + a profile filter stating "CS junior, SWE/AI interests") isn't sensitive — it's less revealing than the resume already on your portfolio — and public removes the minutes ceiling entirely rather than requiring cadence tuning to stay under it. The Jarvis vault repo (destination) is a separate concern, already handled via `.gitignore` — see [[Internship System — Build Log]].
+Confirmed current limits: 2,000 free minutes/month on private repos (Free plan), **unlimited standard-runner minutes on public repos**. At an every-30-min cadence (48 runs/day), a private repo hits budget if any run averages over ~1.4 minutes (checkout + fetch + filter + write + push) — plausible to exceed given three sources. **Recommendation: make the automation repo public.** The code itself (HTTP polling + a profile filter stating "CS junior, SWE/AI interests") isn't sensitive — it's less revealing than the resume already on your portfolio — and public removes the minutes ceiling entirely rather than requiring cadence tuning to stay under it. The Jarvis vault repo (destination) is a separate concern, already handled via `.gitignore` — see [[System - Build Log]].
 ## Deferred Module: Resume Grader
 `interviewstreet/hiring-agent`'s concept (score a resume against a JD) is worth a small local mimic, not the actual tool — it's an LLM-scoring product, not something to depend on. Scope: a keyword-overlap script (JD text in, `Resumes/Main Resume.md`'s tagged bullets out, ranked by tag match) that runs locally when tailoring a resume for a specific promoted program — a Layer 6 tool, not part of the discovery loop. Not built this phase; noted here so it isn't lost.
 ## Repo Structure
@@ -141,7 +142,7 @@ Phases 1 and 2 are done — public repo live, CI green, 48/48 tests passing, ver
 - **The JGCL listings.json path claim doesn't reproduce.** The build report said the path differs from this plan's assumption. Re-fetched directly just now: `https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json` returns `200`, default branch confirmed `main` — the exact path this plan always specified. Either the discrepancy was in the JSON's internal field structure (not the URL) or has since been fixed upstream. **Not silently resolved** — confirm `ingestion/sources.py`'s actual JGCL URL/parsing against this re-verified path before phase 3, since one of the two descriptions is stale and I'd rather know which than assume.
 ### Gaps Found In The Phase 3 Scope Itself (Not Yet Built, Must Be Before The Schedule Goes Live)
 - **Dependency pinning.** `requirements.txt` was unpinned through phase 2 — fine for active development, not acceptable for something meant to run unattended for months. An upstream library update breaking mid-cycle is a failure mode this plan's schema-drift check was designed to catch for *data*, not for *code dependencies* — a different risk, needs its own fix (pin exact versions before the first scheduled run).
-- **Push race condition, never addressed.** The Jarvis vault already has its own auto-commit-and-push cycle running locally every ~2 hours (see [[Internship System — Build Log]]). Phase 3's workflow will be a second, independent process pushing to the same `origin/master`. Neither this plan nor the phase 1-2 build has specified `git pull --rebase` before push or a retry-on-rejected-push loop — without it, the first real collision between the two processes either fails the run or, worse, force-overwrites something. Required for phase 3, not optional hardening.
+- **Push race condition, never addressed.** The Jarvis vault already has its own auto-commit-and-push cycle running locally every ~2 hours (see [[System - Build Log]]). Phase 3's workflow will be a second, independent process pushing to the same `origin/master`. Neither this plan nor the phase 1-2 build has specified `git pull --rebase` before push or a retry-on-rejected-push loop — without it, the first real collision between the two processes either fails the run or, worse, force-overwrites something. Required for phase 3, not optional hardening.
 - **State-update ordering, never specified.** `state/seen_ids.json` must only mark a `uid` as seen *after* a confirmed successful push to Jarvis — not before. If a run marks an item seen and then the push fails (network blip, the race condition above, anything), that dossier is silently gone forever: never in the vault, never retried, because dedup thinks it already landed. This plan's Layer 3 description didn't say this explicitly; it does now.
 - **Schema-drift check, auto-filed issue, and the two-tier run log are all still unbuilt.** These were specified in this plan as part of the scheduled-run design, but nothing in the phase 1-2 report mentions them — they're phase 3 deliverables, not already-done work. Calling this out so phase 3 doesn't get treated as "just wire the workflow file to already-existing pieces."
 ### Readiness Verdict

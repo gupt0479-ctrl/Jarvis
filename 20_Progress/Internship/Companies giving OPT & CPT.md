@@ -4,7 +4,7 @@ status: active
 created: 2025-10-30
 updated: 2026-07-18
 related_progress:
-  - "[[20_Progress/Internship/Building System/Phases 1-3 Run]]"
+  - "[[Phases Run]]"
   - "[[30_Order/Workflows/Internship Pipeline]]"
 tags:
   - internship
