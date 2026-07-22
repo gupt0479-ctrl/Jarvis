@@ -8,6 +8,7 @@ tags:
 notes:
   - "[[adx — MOC]]"
   - "[[adx — Source Claims]]"
+  - "[[adx — Recommended Fixes]]"
 source_url: https://github.com/ahnafyy/adx
 input_kind: github
 track: ai
@@ -95,10 +96,11 @@ Orphaned-export and dark-comment detection in `adx-sweep` use real AST parsing (
 Barrel files (>70% re-export lines) are correctly excluded from the FRR import-graph risk calculation, matching the docs' own stated exception ("barrel files scoring low TDS is expected, not a bug").
 The harness's maker/checker loop, oscillation detection, and ratchet integration in `packages/adx-core/src/harness.ts` match the documented behavior closely and are the most faithfully-implemented part of the whole system.
 ## Why It Matters
-This is the deliverable Ahnaf actually asked for: not "does the website read well" but "does the tool do what it says." The two false headline claims (import cycles, gate-score threshold) and the agency-ledger integrity gap are the three findings worth leading with in conversation — they're concrete, each traces to an exact file, and they cut at the product's actual thesis rather than at docs polish. Recommend raising the `signedBy` hardcoding and CI auto-approval-at-Level-6 behavior first: if the Agency Ladder can't reliably prove a human looked at a change, the governance pitch is undermined by the same failure mode it's marketed to prevent.
+This is the deliverable Ahnaf actually asked for: not "does the website read well" but "does the tool do what it says." Every finding above traces to an exact file and line, checked against the corresponding claim in [[adx — Source Claims]]. What to do about each finding — priority, whether it's a code fix or a docs fix, what's worth raising with Ahnaf first — is deliberately kept out of this note; that judgment lives entirely in [[adx — Recommended Fixes]] so this note stays a pure record of what the code actually does.
 ## Links Into The Vault
 - [[adx — Source Claims]] — the claims this note checks, captured faithfully from the website and README before this code review began
 - [[adx — MOC]] — the judgment-level synthesis; see its "Verification Against The Codebase" section for the condensed version of these findings
+- [[adx — Recommended Fixes]] — the actionable punch list built from every finding in this note
 - [[Mentor Details]] — the mentor whose project this is
 ## Open Questions
 - [ ] Is the agency-ledger integrity gap (hardcoded `signedBy`, CI auto-approval at Level 6) something Ahnaf already knows about, or a genuine blind spot worth raising directly?

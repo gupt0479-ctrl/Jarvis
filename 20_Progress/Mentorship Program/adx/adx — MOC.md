@@ -7,10 +7,11 @@ deadline:
 related_progress:
   - "[[adx — Source Claims]]"
   - "[[adx — Claims vs Implementation]]"
+  - "[[adx — Recommended Fixes]]"
   - "[[Mentor Details]]"
 tags:
   - "#progress"
-next: "Decide with Ahnaf which findings in [[adx — Claims vs Implementation]] are worth fixing before any external team adopts adx, starting with the agency-ledger integrity gap and the undocumented adx sweep --auto flag."
+next: "Share [[adx — Recommended Fixes]] with Ahnaf and get his read on priority before recommending any of it upstream."
 ---
 # adx — MOC (Agentic Developer Experience)
 =="adx" is meta-tooling — not an agent itself — that scores how "agent-ready" a codebase is, runs agent tasks inside an isolated harness, and gates every resulting diff behind a 3-layer check plus a mandatory human sign-off recorded on a 7-level Agency Ladder.==
@@ -33,18 +34,8 @@ No single competitor combines all three pillars — that combination, not any on
 - **Mutation testing tools** (Stryker, PIT) — adx's Layer 2 is a direct, narrower reuse of this established technique, repointed specifically at catching agent-written tautological tests
 - **`llms.txt` / `AGENTS.md`** — these are open conventions adx adopts and operationalizes, not things it invented; worth being precise about this with Ahnaf, since the README's phrasing could read as claiming more originality than it has
 The real open question — not a competitor gap, a positioning gap — is whether the three-pillar bundle earns its adoption friction against picking three best-of-breed point tools instead. Nothing in the docs argues this directly.
-## Documentation Gaps — My Read
-Full factual list lives in [[adx — Source Claims]] § Open Questions. Two are worth raising directly with Ahnaf because they're cheap, concrete, and independently verifiable:
-- **`adx ratchet` has no reference page.** It's named on the homepage and exposed as an MCP tool (`adx_ratchet`), but unlike every other command it has no usage/options page. Either ship the page or stop presenting it as a first-class command alongside audit/shape/sweep/init/run/maintain/gate.
-- **Evidence bundle rotation is a self-acknowledged unsolved gap** — the docs say so outright. This is the single highest-leverage thing to build next: BER carries 30% of the composite score and depends entirely on `.evidence/` staying committed and not spiraling in size.
-Everything else (taste-deficit scoring left unexplained, MCP tool schemas undocumented, the vscode extension having zero docs coverage, no stated rationale for the vital weights) is real but lower-urgency — it reads as "the docs haven't caught up to the product" rather than "the product has a hole."
-## What Would Make It Extremely Useful
-Ranked by leverage:
-1. Ship the bundle-rotation solution — the one gap adx admits to itself
-2. Publish the `adx ratchet` reference page — cheapest fix, highest advertised-vs-documented mismatch
-3. One real before/after case study repo (ADX score 40 → 85 across actual commits) — every command page currently shows only synthetic sample output; this is the biggest credibility gap for a skeptical adopter evaluating whether to install it
-4. State the weight-tuning rationale (30/25/30/15 vitals, 8% abstraction threshold) — even "these are opinionated defaults, not empirically derived" beats silence
-5. Resolve whether adx primarily wants to be a product, a framework, or a methodology — `adx-core`'s `createAgenticSystem()` is framework-shaped, the CLI is product-shaped, and the Agency Ladder is adoptable as pure methodology with zero tooling installed; the docs read as all three at once without ever picking one
+## Documentation Gaps — What Exists
+The factual list of gaps as observed in the docs themselves lives in [[adx — Source Claims]] § Open Questions (missing `adx ratchet` reference page, unexplained taste-deficit mechanism, undocumented MCP tool schemas, zero `adx-vscode` coverage, no stated rationale for the vital weights). Every one of those gaps, plus everything found by reading the actual code against those claims, is listed as an actionable item in [[adx — Recommended Fixes]] — that note is where prioritization and "what to build next" judgment lives, not here.
 ## Verification Against The Codebase
 Full line-level comparison lives in [[adx — Claims vs Implementation]] — every claim in [[adx — Source Claims]] checked directly against the actual package source (all 8 packages cloned and read, all 90 test cases counted, the single commit in the repo's history inspected). The website capture itself held up — nothing material was missed there. The gap is between what adx claims and what it does.
 Three findings change the read on this product:
@@ -61,3 +52,4 @@ This also resolves the earlier open question below about JS/TS-only scope: `harn
 Read the `adx-core` and `adx-gate` package source in the GitHub repo against the claims captured in [[adx — Source Claims]] and flag any place the implementation doesn't match what the docs promise.
 ## Log
 - **2026-07-22:** Read the full docs site (14 pages, verified against the live Astro sidebar config in the repo) and the GitHub README end to end; wrote [[adx — Source Claims]] and this MOC. Codebase not yet reviewed — that's the next session.
+- **2026-07-22:** Cloned and read the full repo (all 8 packages, 90 test cases, git history, self-dogfooded evidence); wrote [[adx — Claims vs Implementation]]. Extracted every recommendation and prioritization judgment out of this note and that one into a new dedicated note, [[adx — Recommended Fixes]], so this MOC and the two source-of-truth notes stay strictly factual.

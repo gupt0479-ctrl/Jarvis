@@ -8,6 +8,7 @@ tags:
 notes:
   - "[[adx — MOC]]"
   - "[[adx — Claims vs Implementation]]"
+  - "[[adx — Recommended Fixes]]"
   - "[[Mentor Details]]"
 source_url: https://ahnafyy.github.io/adx/
 input_kind: web
@@ -275,6 +276,7 @@ This note is the factual foundation for a mentorship deliverable: **Ahnaf** (men
 ## Links Into The Vault
 - [[adx — MOC]] — the analysis and judgment note built on top of this source capture
 - [[adx — Claims vs Implementation]] — every claim in this note checked directly against the actual package source in the GitHub repo; several do not hold up as stated (see that note for line-level evidence)
+- [[adx — Recommended Fixes]] — the actionable punch list built from the gaps below and from [[adx — Claims vs Implementation]]
 - [[Mentor Details]] — the mentor whose project this is
 ## Open Questions
 - [ ] No reference page exists for `adx ratchet` despite it being named on the homepage and exposed as an MCP tool (`adx_ratchet`) — every other command (audit/shape/sweep/init/run/maintain/gate) has a full page
