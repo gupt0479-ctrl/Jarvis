@@ -6,10 +6,11 @@ updated: 2026-07-22
 deadline:
 related_progress:
   - "[[adx — Source Claims]]"
+  - "[[adx — Claims vs Implementation]]"
   - "[[Mentor Details]]"
 tags:
   - "#progress"
-next: "Read the adx-core and adx-gate package source against the claims in [[adx — Source Claims]] and flag any mismatch before the next mentor conversation."
+next: "Decide with Ahnaf which findings in [[adx — Claims vs Implementation]] are worth fixing before any external team adopts adx, starting with the agency-ledger integrity gap and the undocumented adx sweep --auto flag."
 ---
 # adx — MOC (Agentic Developer Experience)
 =="adx" is meta-tooling — not an agent itself — that scores how "agent-ready" a codebase is, runs agent tasks inside an isolated harness, and gates every resulting diff behind a 3-layer check plus a mandatory human sign-off recorded on a 7-level Agency Ladder.==
@@ -44,11 +45,18 @@ Ranked by leverage:
 3. One real before/after case study repo (ADX score 40 → 85 across actual commits) — every command page currently shows only synthetic sample output; this is the biggest credibility gap for a skeptical adopter evaluating whether to install it
 4. State the weight-tuning rationale (30/25/30/15 vitals, 8% abstraction threshold) — even "these are opinionated defaults, not empirically derived" beats silence
 5. Resolve whether adx primarily wants to be a product, a framework, or a methodology — `adx-core`'s `createAgenticSystem()` is framework-shaped, the CLI is product-shaped, and the Agency Ladder is adoptable as pure methodology with zero tooling installed; the docs read as all three at once without ever picking one
+## Verification Against The Codebase
+Full line-level comparison lives in [[adx — Claims vs Implementation]] — every claim in [[adx — Source Claims]] checked directly against the actual package source (all 8 packages cloned and read, all 90 test cases counted, the single commit in the repo's history inspected). The website capture itself held up — nothing material was missed there. The gap is between what adx claims and what it does.
+Three findings change the read on this product:
+- **The core accountability claim doesn't survive contact with adx's own repository.** `.adx/state/adx-agency.json` — the "permanent record of human oversight" — has exactly one entry: Level 6 (Resolve), `"signedBy": "agent"`. Not a human. In CI mode `adx gate` auto-approves and stamps Level 6 with zero human input, and even in the interactive path `signedBy` is hardcoded to the literal string `'engineer'` — it never captures a real identity. The Agency Ladder exists specifically to catch this failure mode, and it shows up in the tool's own dogfooded history.
+- **Two headline claims are false as stated.** "Import cycles always score 0" — a cyclic file actually gets a flat +0.5 risk bonus, not a forced floor, so one small cycle in a large codebase barely moves the aggregate FRR score. "Gate score below 60 blocks merge" — blocking is actually driven by three unrelated boolean triggers (abstraction flagged, any tautological test, more than 3 drifted files), independent of the numeric gate score entirely.
+- **`adx sweep` has undocumented flags that delete code.** `--fix`, `--auto`, `--dry-run`, and `--comments` all exist and work — `--auto` batch-removes "orphaned" exports and dark comments across the repo with no confirmation prompt. None of the four appear anywhere on the docs site.
+This also resolves the earlier open question below about JS/TS-only scope: `harness.observe.tests` already accepts `pytest` and a free-form `custom` + `testCommand`, so cross-language test execution is real today, just undocumented — not a permanent limitation.
 ## Open Questions
 - [ ] Is adx meant to be adopted whole, or is the Agency Ladder useful standalone without any of the CLI tooling? Worth asking Ahnaf directly — it changes how a reviewer should frame the pitch
-- [ ] Are the vital weights (30/25/30/15) and the 8% abstraction threshold tuned against real repos, or reasonable-sounding defaults he chose?
-- [ ] Is JS/TS-only a permanent scope decision, or just "haven't gotten to other ecosystems yet"?
-- [ ] Has this run against a real team's repo yet, or is it still pre-adoption / solo-dogfooded? The badge on adx's own README scoring itself is the only usage evidence visible from outside the project
+- [ ] Are the vital weights (30/25/30/15), the gate-score weights (40/40/20, undocumented anywhere), and the 8% abstraction threshold tuned against real repos, or reasonable-sounding defaults he chose?
+- [ ] Is he aware the agency ledger's only entry is self-signed by "agent," and does he consider that a launch blocker or an acceptable artifact of solo dogfooding?
+- [ ] Is the docs-vs-code drift (config fields, undocumented sweep flags, no ratchet CLI command) a documentation backlog he already knows about, or news to him?
 ## Next Action
 Read the `adx-core` and `adx-gate` package source in the GitHub repo against the claims captured in [[adx — Source Claims]] and flag any place the implementation doesn't match what the docs promise.
 ## Log
