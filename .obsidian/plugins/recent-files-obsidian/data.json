@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "Tracker",
+      "path": "10_Areas/Career/Internships/Tracker/Tracker.md"
+    },
+    {
+      "basename": "Internship - Dashboard",
+      "path": "10_Areas/Career/Internships/Tracker/Internship - Dashboard.md"
+    },
+    {
       "basename": "HIST 1103 Board",
       "path": "20_Progress/Degree/HIST 1103/HIST 1103 Board.md"
     },
@@ -131,14 +139,6 @@
     {
       "basename": "05 - MCP Protocol Bridge Integration Test and Final Housekeeping",
       "path": "60_Claude/40_Project_Briefs/CausalOps/claude code/05 - MCP Protocol Bridge Integration Test and Final Housekeeping.md"
-    },
-    {
-      "basename": "Internship - Dashboard",
-      "path": "10_Areas/Career/Internships/Tracker/Internship - Dashboard.md"
-    },
-    {
-      "basename": "Tracker",
-      "path": "10_Areas/Career/Internships/Tracker/Tracker.md"
     },
     {
       "basename": "Jarvis OS Dashboard",
