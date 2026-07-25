@@ -16,7 +16,7 @@ High-level entry point for the audited link-ingestion batch. Use this instead of
 ## Main notes
 - [[60_Claude/40_Project_Briefs/Vault Web Ingestion Audit]]
 - [[60_Claude/20_Distilled_Notes/UMN Student Infrastructure]]
-- [[60_Claude/20_Distilled_Notes/Internship Search Stack]]
+- [[Internship Search Stack]]
 - [[60_Claude/20_Distilled_Notes/CSCI 2041 and 4041 Resource Map]]
 
 ## Source summaries

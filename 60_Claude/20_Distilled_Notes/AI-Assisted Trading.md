@@ -12,7 +12,7 @@ track:
   - trading
   - ai
 prerequisites:
-  - "[[60_Claude/20_Distilled_Notes/Index Fund Investing]]"
+  - "[[Index Fund Investing]]"
   - "[[60_Claude/20_Distilled_Notes/Trading Tools and Platforms]]"
 used_in: []
 evidence:

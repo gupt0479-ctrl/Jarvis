@@ -11,7 +11,7 @@ notes:
 track:
   - trading
 prerequisites:
-  - "[[60_Claude/20_Distilled_Notes/Index Fund Investing]]"
+  - "[[Index Fund Investing]]"
 used_in: []
 evidence:
   - "[[AI Market Analyzer Project Brief]]"
