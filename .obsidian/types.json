@@ -62,6 +62,7 @@
     "tracks": "multitext",
     "enrichment_status": "text",
     "enrichment_level": "text",
-    "source_status": "text"
+    "source_status": "text",
+    "date_posted": "date"
   }
 }

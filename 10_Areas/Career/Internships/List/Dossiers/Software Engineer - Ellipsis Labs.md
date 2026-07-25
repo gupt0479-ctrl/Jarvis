@@ -1,28 +1,28 @@
 ---
-uid: SimplifyJobs:4f45fa19-d12a-4b2b-804a-16e5c8cdc02d
 company: Ellipsis Labs
 title: Software Engineer
 url: https://jobs.ashbyhq.com/ellipsislabs/02136b22-35b1-4b3d-8bef-567c3380a849/application
 source: SimplifyJobs
-category: Software
 terms:
   - Summer 2027
 locations:
   - NYC
 target_year: []
 date_posted: 1774563646
-date_found: '2026-07-17'
+date_found: 2026-07-17
 matched_reason: Summer 2027, Software
 status: unreviewed
-promoted:
+next:
 tags:
   - internship
   - auto-discovered
 ---
-# Ellipsis Labs — Software Engineer
-Auto-discovered 2026-07-17 from SimplifyJobs. Enriched 2026-07-18 from the live posting — verbatim extraction, trimmed to the substantive sections; full text at the url above.
-## Posting (fetched 2026-07-18)
-# Software Engineer - 2027 Interns
+# Software Engineer
+Auto-discovered 2026-07-17 from SimplifyJobs. Enriched 2026-07-18 from the live posting — verbatim extraction, trimmed to the substantive sections; full text at the url above. - [Improve content written over here]
+
+> [!NOTE] Priority 2: [Reason]
+> - Posting (fetched 2026-07-18)
+# Application - 2027
 ## Location
 New York, New York
 ## Employment Type
@@ -40,6 +40,8 @@ Ellipsis Labs is seeking software engineering summer interns to join our team in
 - Own scoped projects end-to-end: problem definition → design → implementation → testing → deployment → monitoring
 - Collaborate with design and engineering to deliver fast, reliable, and secure experiences
 - Instrument and improve performance, reliability, and observability; write clear tests and documentation
+### Description
+[What the internship is about - scrape the text written on the internship for this]
 ### Qualifications
 **Required**
 - Hands-on experience building software (courses, personal projects, research, or internships) in one or more languages such as TypeScript/JavaScript, Python, Rust, Java, C/C++; you write clear, tested code
