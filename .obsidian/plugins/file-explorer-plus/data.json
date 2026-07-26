@@ -535,6 +535,13 @@
         "type": "FILES",
         "pattern": "10_Areas/Career/Internships/Tracker/Tracker.md",
         "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "10_Areas/Career/Internships/List/Dossiers/Dossiers MOC.md",
+        "patternType": "STRICT"
       }
     ],
     "frontMatter": [
