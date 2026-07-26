@@ -1,7 +1,6 @@
 ---
 company:
 program_type:
-eligible_classes: []
 grad_year:
 role_type: internship
 wave:

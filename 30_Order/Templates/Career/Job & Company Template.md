@@ -19,6 +19,8 @@ What this specific position actually involves, beyond what the Program note alre
 ## Contact's Contribution
 What the verified contact (linked above) has personally worked on or contributed at this company, per real sourced research — this is what turns a conversation from generic into specific.
 ## Interview Talking Points
-- [ ]
+- [ ] One real story connecting a project I've built to something this team actually does
+- [ ] One informed question that could only come from having done this research, not a generic "what's the culture like"
+- [ ] The honest answer to "why this company" that isn't just the mission statement read back to them
 ## What This Teaches Me
 What pursuing this specific role and company is revealing about what to actually look for next time — a running note, not a one-time reflection.

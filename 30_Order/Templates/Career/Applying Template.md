@@ -25,11 +25,11 @@ Where this application actually stands right now — funnel stage, what's blocki
 > [!NOTE]
 > A response rate under 10% signals a resume/targeting problem; responses without offers signal an interview-prep problem — use this split to diagnose, not just log status.
 ## Interlinks
-Most important things about this application from the previous notes and research acquired. 
+The handful of things about this application actually worth having on hand — pulled from the Program, Contacts, and Job & Company notes, not a full copy of any of them.
 ### Contact
-The information and a short brief of the meeting/conversation with the employee. 
+A short, real brief of the meeting/conversation with the employee — what was actually said, pulled from the Contact note's Conversation Log.
 ### Job Detail
-Most crucial things required for me to know about this application.
+The most crucial things I need to know about this specific application walking into a call — pulled from the Job & Company note once one exists.
 ## Next Action
 The single next physical action. Mirrors `next:` above.
 ## Open Questions

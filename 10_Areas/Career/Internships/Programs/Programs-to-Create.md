@@ -18,6 +18,13 @@ next: Build the promote-dossier skill per [[20_Progress/Internship/Building Syst
 2. You invoke the promotion skill (`gupta-builds/internship-research-loop`'s `.claude/skills/promote-dossier` once built — see [[Claude Code Prompts]] for the build spec). It asks two small things: which folder (`Serious/` or `Considering/`) and whether the dossier's auto-assigned priority/category still holds or needs a human override.
 3. The skill runs contact research (`enrich.py`, promotion-triggered, same as always) and shows you what it found before writing anything.
 4. On your explicit go-ahead, three notes get created together, cross-linked: the Program note (here), a Contacts/Each One note, and a Tracker/Each One note.
+## What Belongs In The Note — Section By Section
+- **Program Overview** — what the role actually is, who runs it, what makes it worth the hours to prepare for. Tie it explicitly to your resume and profile — how would this specific role actually help you, concretely, not "it's a good opportunity."
+- **Eligibility** — who can apply, year/major requirements, anything that disqualifies you before you even start.
+- **Company Information + Contact** — the key research points about the company: latest and most relatable real projects, what the company actually does, why it's related to you specifically. Write it so a conversation with this company would sound informed, not generic. The Contact sub-section is just interlinks to the real Contacts note — don't duplicate facts that already live there.
+- **Traps & Gotchas** — the thing most applicants get wrong about this specific program, stated plainly.
+- **Prep Checklist** — real, specific items drawn from what the actual posting asks for — never a bare empty checkbox left for later.
+- **Related Resources** — links to the dossier origin, the Contacts note, and (once it exists) the Job & Company note.
 ## Serious vs. Considering
 Identical template, identical research depth, in both folders. The only variable is preference/timing — pursuing this one now (`Serious/`) versus interested but not yet, or needs more thought first (`Considering/`). A thinner Considering note is a mistake, not a shortcut — fix it if you see one.
 ## Manual Finds

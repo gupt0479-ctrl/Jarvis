@@ -14,11 +14,11 @@ next:
 ---
 # <% tp.file.title %>
 ## Facts
-What you actually know about this person and why they're relevant to a specific program.
+What you actually know about this person and why they're relevant to *this specific* internship — not a generic bio. Every fact below needs a source; a fact with no source is a guess, not a fact.
 ### Contact
-- Email, linkedIn url and how found. Verified or not?
+- Email, LinkedIn URL, and how found — and is it verified, or an MX-validated guess? Say which.
 ### Relation
-How is this person related to the company? What is there role, where have they been mentioned? What about this person would add a personal touch to the conversation? How can this person help me get where I want to be?
+How is this person actually related to the company — what's their real role, where have they been mentioned publicly (blog, GitHub, a talk)? What about them would give the conversation a genuine personal touch instead of a cold-form message? Concretely, how could this specific person help move me toward the goal in [[10_Areas/Career/Engineer Edge Roadmap]] — not "they might be useful," but the actual mechanism.
 ## Current Draft
 ==The live, unsent message to this person right now.== Build it from [[Mimic]] and edit until it sounds like you, not the template.
 > [!IMPORTANT]

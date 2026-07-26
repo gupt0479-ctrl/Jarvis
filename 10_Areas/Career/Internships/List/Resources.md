@@ -26,8 +26,8 @@ A source isn't exhausted when its raw entry count is low — SimplifyJobs has 14
 | zshah101 | 2026-07-25 | 214 entries | Re-checked live, unchanged count from prior check | No | — |
 | Greenhouse (7 tokens) | 2026-07-25 | 7 verified-live company boards | Fixed seed list — ceiling is the token list, not the API | **Yes, structurally** — bounded by hand-verified tokens | Task F: verified-live token expansion (see Runs/Claude Code Prompts) |
 | Ashby (5 tokens) | 2026-07-25 | 5 verified-live company boards | Same structural ceiling as Greenhouse | **Yes, structurally** | Same — Task F |
-| freehire | 2026-07-25 (research only) | 4,270,639 postings, 187,542 companies | Not live yet — built, uncommitted | N/A until shipped | Next lever once shipped: none needed, it's the biggest single source |
-| artificialintelligencejobs.co | 2026-07-25 (research only) | 17,507 jobs, 184 explicit `Intern` | Not live yet — built, uncommitted | N/A until shipped | — |
+| freehire | 2026-07-26 | 4,270,639 postings, 187,542 companies | **Confirmed live** as of 2026-07-26 — not yet in `recheck.py`'s `FEEDS`, worth confirming why | No | Lever, if this ever thins out |
+| artificialintelligencejobs.co | 2026-07-26 | 17,507 jobs, 184 explicit `Intern` | **Confirmed live**, in `recheck.py`'s `FEEDS` | No | — |
 > [!IMPORTANT]
 > This table is hand-updated from real checks (`gh api`, live fetches, a `loop-verifier` run) — never estimated. If a number here hasn't been refreshed in over two weeks, treat it as stale, not current.
 ## Real Backlog Event (2026-07-25)

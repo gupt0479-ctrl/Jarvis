@@ -1,16 +1,128 @@
 {
   "recentFiles": [
     {
-      "basename": "System - Build Log",
-      "path": "20_Progress/Internship/Building System/System - Build Log.md"
+      "basename": "Research Loop - Resources",
+      "path": "20_Progress/Internship/Building System/Research Loop - Resources.md"
+    },
+    {
+      "basename": "Research Loop - Implementation Plan",
+      "path": "20_Progress/Internship/Building System/Research Loop - Implementation Plan.md"
+    },
+    {
+      "basename": "Research Loop - Improvement Plan",
+      "path": "20_Progress/Internship/Building System/Research Loop - Improvement Plan.md"
+    },
+    {
+      "basename": "Internship Research Loop — Full Pipeline",
+      "path": "20_Progress/Internship/Building System/Internship Research Loop — Full Pipeline.excalidraw"
+    },
+    {
+      "basename": "Claude Code Prompts",
+      "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
+    },
+    {
+      "basename": "Claude Council",
+      "path": "60_Claude/05_Clippings/Web/Claude Council.md"
+    },
+    {
+      "basename": "Claude OS Map",
+      "path": "10_Areas/Excalidraw/Claude OS Map.excalidraw"
+    },
+    {
+      "basename": "Application Tracker",
+      "path": "10_Areas/Career/Internships/Tracker/Application Tracker.md"
+    },
+    {
+      "basename": "Habit Tracker",
+      "path": "10_Areas/Career/Internships/Tracker/Habit Tracker.md"
+    },
+    {
+      "basename": "Trackings-to-Create",
+      "path": "10_Areas/Career/Internships/Tracker/Each One/Trackings-to-Create.md"
+    },
+    {
+      "basename": "Tracker",
+      "path": "10_Areas/Career/Internships/Tracker/Tracker.md"
+    },
+    {
+      "basename": "Contacts-to-Create",
+      "path": "10_Areas/Career/Internships/Contacts/Each One/Contacts-to-Create.md"
+    },
+    {
+      "basename": "Contacts MOC",
+      "path": "10_Areas/Career/Internships/Contacts/Contacts MOC.md"
+    },
+    {
+      "basename": "LinkedIn Premium",
+      "path": "10_Areas/Career/Internships/Cheats/LinkedIn Premium.md"
+    },
+    {
+      "basename": "Links & Interlinks",
+      "path": "10_Areas/Career/Internships/Links & Interlinks.md"
     },
     {
       "basename": "Resources",
       "path": "10_Areas/Career/Internships/List/Resources.md"
     },
     {
-      "basename": "Research Loop - Resources",
-      "path": "20_Progress/Internship/Building System/Research Loop - Resources.md"
+      "basename": "System - Build Log",
+      "path": "20_Progress/Internship/Building System/System - Build Log.md"
+    },
+    {
+      "basename": "Contact Template",
+      "path": "30_Order/Templates/Career/Contact Template.md"
+    },
+    {
+      "basename": "Program Template",
+      "path": "30_Order/Templates/Career/Program Template.md"
+    },
+    {
+      "basename": "Tracking Template",
+      "path": "30_Order/Templates/Career/Tracking Template.md"
+    },
+    {
+      "basename": "Applying Template",
+      "path": "30_Order/Templates/Career/Applying Template.md"
+    },
+    {
+      "basename": "Cheat Template",
+      "path": "30_Order/Templates/Career/Cheat Template.md"
+    },
+    {
+      "basename": "Applications-to-Create",
+      "path": "20_Progress/Internship/Applying/Applications-to-Create.md"
+    },
+    {
+      "basename": "Now",
+      "path": "20_Progress/Internship/Applying/Now.md"
+    },
+    {
+      "basename": "Source of Truth",
+      "path": "20_Progress/Internship/Building System/Source of Truth.md"
+    },
+    {
+      "basename": "Internship Pipeline",
+      "path": "30_Order/Workflows/Internship Pipeline.md"
+    },
+    {
+      "basename": "Enrichment",
+      "path": "30_Order/Workflows/Enrichment.md"
+    },
+    {
+      "basename": "Conversation Capture",
+      "path": "30_Order/Workflows/Conversation Capture.md"
+    },
+    {
+      "basename": "Capture to Summary",
+      "path": "30_Order/Workflows/Capture to Summary.md"
+    },
+    {
+      "basename": "Brief to Progress",
+      "path": "30_Order/Workflows/Brief to Progress.md"
+    },
+    {
+      "basename": "00_Workflows Index",
+      "path": "30_Order/Workflows/00_Workflows Index.md"
     },
     {
       "basename": "2026-07 Found",
@@ -21,24 +133,12 @@
       "path": "10_Areas/Career/Internships/Programs/Programs-to-Create.md"
     },
     {
-      "basename": "Internship Pipeline",
-      "path": "30_Order/Workflows/Internship Pipeline.md"
-    },
-    {
-      "basename": "Links & Interlinks",
-      "path": "10_Areas/Career/Internships/Links & Interlinks.md"
-    },
-    {
       "basename": "Internships Hub",
       "path": "10_Areas/Career/Internships/Internships Hub.md"
     },
     {
       "basename": "Dossiers MOC",
       "path": "10_Areas/Career/Internships/List/Dossiers MOC.md"
-    },
-    {
-      "basename": "Contacts MOC",
-      "path": "10_Areas/Career/Internships/Contacts/Contacts MOC.md"
     },
     {
       "basename": "Networking Strategies",
@@ -49,32 +149,8 @@
       "path": "60_Claude/20_Distilled_Notes/Sources - Plan/GitHub Ingestion Implementation.md"
     },
     {
-      "basename": "Claude Council",
-      "path": "60_Claude/05_Clippings/Web/Claude Council.md"
-    },
-    {
-      "basename": "Trackings-to-Create",
-      "path": "10_Areas/Career/Internships/Tracker/Each One/Trackings-to-Create.md"
-    },
-    {
       "basename": "Internship - Dashboard",
       "path": "10_Areas/Career/Internships/Tracker/Internship - Dashboard.md"
-    },
-    {
-      "basename": "Habit Tracker",
-      "path": "10_Areas/Career/Internships/Tracker/Habit Tracker.md"
-    },
-    {
-      "basename": "Application Tracker",
-      "path": "10_Areas/Career/Internships/Tracker/Application Tracker.md"
-    },
-    {
-      "basename": "Tracking Template",
-      "path": "30_Order/Templates/Career/Tracking Template.md"
-    },
-    {
-      "basename": "Contacts-to-Create",
-      "path": "10_Areas/Career/Internships/Contacts/Each One/Contacts-to-Create.md"
     },
     {
       "basename": "Programs MOC",
@@ -83,18 +159,6 @@
     {
       "basename": "Software Engineering Intern - Appian",
       "path": "10_Areas/Career/Internships/Tracker/Each One/Current/Software Engineering Intern - Appian.md"
-    },
-    {
-      "basename": "Tracker",
-      "path": "10_Areas/Career/Internships/Tracker/Tracker.md"
-    },
-    {
-      "basename": "Now",
-      "path": "20_Progress/Internship/Applying/Now.md"
-    },
-    {
-      "basename": "Applications-to-Create",
-      "path": "20_Progress/Internship/Applying/Applications-to-Create.md"
     },
     {
       "basename": "2026-HRT-Sophomore",
@@ -109,24 +173,8 @@
       "path": "10_Areas/Career/Internships/List/Dossiers/Dossiers-to-Create.md"
     },
     {
-      "basename": "Applying Template",
-      "path": "30_Order/Templates/Career/Applying Template.md"
-    },
-    {
-      "basename": "Program Template",
-      "path": "30_Order/Templates/Career/Program Template.md"
-    },
-    {
       "basename": "LinkedIn Post Template",
       "path": "30_Order/Templates/Career/LinkedIn Post Template.md"
-    },
-    {
-      "basename": "Contact Template",
-      "path": "30_Order/Templates/Career/Contact Template.md"
-    },
-    {
-      "basename": "Cheat Template",
-      "path": "30_Order/Templates/Career/Cheat Template.md"
     },
     {
       "basename": "Run Log",
@@ -135,18 +183,6 @@
     {
       "basename": "Phases Run",
       "path": "20_Progress/Internship/Building System/Runs/Phases Run.md"
-    },
-    {
-      "basename": "Research Loop - Implementation Plan",
-      "path": "20_Progress/Internship/Building System/Research Loop - Implementation Plan.md"
-    },
-    {
-      "basename": "Research Loop - Improvement Plan",
-      "path": "20_Progress/Internship/Building System/Research Loop - Improvement Plan.md"
-    },
-    {
-      "basename": "Source of Truth",
-      "path": "20_Progress/Internship/Building System/Source of Truth.md"
     },
     {
       "basename": "Research Loop - Phase 7 Coverage Expansion",
@@ -163,42 +199,6 @@
     {
       "basename": "simplifyjobs-3ae897a1-0ad7-410e-8882-d492c1f9e19a",
       "path": "10_Areas/Career/Internships/List/Dossiers/simplifyjobs-3ae897a1-0ad7-410e-8882-d492c1f9e19a.md"
-    },
-    {
-      "basename": "Practice Quiz - 4",
-      "path": "20_Progress/Degree/MATH 2230/Quiz/Practice Quiz - 4.md"
-    },
-    {
-      "basename": "HIST 1103 Board",
-      "path": "20_Progress/Degree/HIST 1103/HIST 1103 Board.md"
-    },
-    {
-      "basename": "HIST 1103 - Completed Assignments",
-      "path": "20_Progress/Degree/HIST 1103/Syllabus/HIST 1103 - Completed Assignments.md"
-    },
-    {
-      "basename": "HIST 1103 - Assignments and Discussions",
-      "path": "20_Progress/Degree/HIST 1103/Syllabus/HIST 1103 - Assignments and Discussions.md"
-    },
-    {
-      "basename": "HIST 1103 - Syllabus",
-      "path": "20_Progress/Degree/HIST 1103/Syllabus/HIST 1103 - Syllabus.md"
-    },
-    {
-      "basename": "HIST 1103 - Schedule",
-      "path": "20_Progress/Degree/HIST 1103/Syllabus/HIST 1103 - Schedule.md"
-    },
-    {
-      "basename": "Links",
-      "path": "40_Resources/UMN/Links.md"
-    },
-    {
-      "basename": "APAS",
-      "path": "40_Resources/UMN/The Plan/APAS.md"
-    },
-    {
-      "basename": "Community College",
-      "path": "40_Resources/UMN/The Plan/Community College.md"
     }
   ],
   "omittedPaths": [],

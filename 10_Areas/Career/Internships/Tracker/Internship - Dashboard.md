@@ -1,7 +1,7 @@
 ---
 created: 2026-07-09
-updated: 2026-07-16
-type: evergreen
+updated: 2026-07-26
+type: dashboard
 status: active
 tags:
   - internships
@@ -11,34 +11,68 @@ tags:
 notes:
   - "[[Internships Hub]]"
   - "[[30_Order/Workflows/Internship Pipeline]]"
+  - "[[Source of Truth]]"
 ---
-# 📊 Internship Tracker Dashboard
-Two kinds of query below, and they don't mix: **research** tables pull static facts from `Programs/` (comp, deadlines, eligibility — these don't change once written). **Pipeline** tables pull live status from `20_Progress/Internship/Applying/` (funnel stage, dates — these change every time you hear back). See [[30_Order/Workflows/Internship Pipeline]] for why they're split. The kanban glance view is [[Tracker]].
-## ⏰ Research — Upcoming Deadlines (Next 30 Days)
+# 📊 Internship Dashboard — The Whole Process
+==Not per-internship — this is the health of the entire loop, one screen.== For one specific internship's detail, go to its Tracker/Each One note. For the kanban glance, see [[Tracker]]. For the raw pipeline status doc, see [[Internships Hub]].
+## 🔎 Discovery — Dossier Pipeline Health
 ```dataview
-TABLE
-  company,
-  opens_date,
-  deadline_real as "Real Deadline",
-  pay_per_week as "Pay/Week",
-  eligible_classes as "Eligible"
-FROM "10_Areas/Career/Internships/Programs"
+TABLE WITHOUT ID
+  file.folder as "Priority Folder", length(rows) as "Count", "/ 50" as Limit
+FROM "10_Areas/Career/Internships/List/Dossiers"
+WHERE company AND file.folder != "10_Areas/Career/Internships/List/Dossiers"
+GROUP BY file.folder
+```
+> [!IMPORTANT]
+> Total cap is 201 across all four priority folders (50 each) — warning stages at 150, 170, 190, 200. If any single folder is closing in on 50, that's the one to screen down before the next push, not the others.
+## 🧭 Screening Backlog — Found, Not Yet Screened
+```dataview
+TABLE company, title, file.folder as "Priority"
+FROM "10_Areas/Career/Internships/List/Dossiers"
+WHERE company AND length(file.inlinks) = 0
+SORT date_found DESC
+LIMIT 15
+```
+## 🌊 Programs — Committed Research
+```dataview
+TABLE WITHOUT ID
+  "Serious" as Folder, length(rows) as Count
+FROM "10_Areas/Career/Internships/Programs/Serious"
+WHERE company
+GROUP BY true
+```
+```dataview
+TABLE WITHOUT ID
+  "Considering" as Folder, length(rows) as Count
+FROM "10_Areas/Career/Internships/Programs/Considering"
+WHERE company
+GROUP BY true
+```
+```dataview
+TABLE company, deadline_real as "Real Deadline", pay_per_week as "Pay/Week"
+FROM "10_Areas/Career/Internships/Programs/Serious" OR "10_Areas/Career/Internships/Programs/Considering"
 WHERE deadline_real <= date(today) + dur(30 days)
 SORT deadline_real ASC
 ```
-> [!WARNING]
-> Real deadlines run ahead of posted deadlines on most programs — apply in the first two weeks a portal opens, don't wait for the posted date.
-## 🔄 Pipeline — Live Status
+## 🔄 Applying — Live Status
 ```dataview
 TABLE WITHOUT ID
   file.link as "Application",
   company as "Company",
   status as "Stage",
-  date_applied as "Applied",
   next_deadline as "Next Deadline"
 FROM "20_Progress/Internship/Applying"
-WHERE status != "Rejected" AND status != "Withdrawn"
+WHERE status AND status != "Offer" AND status != "Rejected" AND status != "Withdrawn"
 SORT next_deadline ASC
+```
+### Funnel Counts
+```dataview
+TABLE WITHOUT ID
+  rows.status as "Status",
+  length(rows) as "Count"
+FROM "20_Progress/Internship/Applying"
+WHERE status
+GROUP BY status
 ```
 ### Offer / Rejected / Withdrawn
 ```dataview
@@ -50,44 +84,30 @@ FROM "20_Progress/Internship/Applying"
 WHERE status IN ("Offer", "Rejected", "Withdrawn")
 SORT date_response DESC
 ```
-### Funnel Counts
+## 👥 Contacts — Relationship State
 ```dataview
 TABLE WITHOUT ID
-  rows.status as "Status",
-  length(rows) as "Count"
-FROM "20_Progress/Internship/Applying"
-GROUP BY status
+  "Ongoing" as Folder, length(rows) as Count
+FROM "10_Areas/Career/Internships/Contacts/Each One/Ongoing"
+GROUP BY true
+```
+```dataview
+TABLE WITHOUT ID
+  "Come Back" as Folder, length(rows) as Count
+FROM "10_Areas/Career/Internships/Contacts/Each One/Come Back"
+GROUP BY true
 ```
 ## 💰 Research — Sorted By Compensation
 ```dataview
 TABLE
   company as "Company",
   program_type as "Type",
-  pay_per_week as "Pay/Week",
-  deadline_real as "Deadline"
-FROM "10_Areas/Career/Internships/Programs"
+  pay_per_week as "Pay/Week"
+FROM "10_Areas/Career/Internships/Programs/Serious" OR "10_Areas/Career/Internships/Programs/Considering"
 WHERE pay_per_week
 SORT pay_per_week DESC
 ```
-## 🌊 Research — By Wave
-```dataview
-TABLE
-  company,
-  eligible_classes,
-  opens_date,
-  deadline_real,
-  pay_per_week
-FROM "10_Areas/Career/Internships/Programs"
-WHERE wave
-SORT wave ASC, deadline_real ASC
-```
-## ✅ Research — Total Programs Tracked
-```dataview
-LIST
-FROM "10_Areas/Career/Internships/Programs"
-WHERE name
-```
 ## 🎯 This Week
-Work this from `20_Progress/Internship/Applying/_This Week.md`, not from here — this dashboard is for scanning, that note is for doing.
+Work this from [[_This Week]] and [[Now]], not from here — this dashboard is for scanning the whole system, those notes are for doing.
 ## 📚 External Resources
-See [[Links & Interlinks]] for job boards, career fair links, and mock-interview resources.
+See [[Links & Interlinks]] for job boards and career-fair links, [[20_Progress/Internship/Building System/Research Loop - Resources]] for the loop's own data sources.
