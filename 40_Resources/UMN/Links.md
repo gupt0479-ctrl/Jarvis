@@ -5,7 +5,7 @@ created: 2025-10-31
 tags:
   - evergreen
 notes:
-  - "[[Random]]"
+  - "[[40_Resources/Random]]"
 ---
 # UMN
 Printing - [WiFi Printing | IT@UMN | The people behind the technology](https://it.umn.edu/services-technologies/wifi-printing)

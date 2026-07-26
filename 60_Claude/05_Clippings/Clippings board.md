@@ -5,7 +5,7 @@ created: 2025-12-25
 tags:
   - evergreen
 notes:
-  - "[[Random]]"
+  - "[[40_Resources/Random]]"
 ---
 # Data view
 ## AI Conversations

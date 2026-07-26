@@ -7,7 +7,7 @@ tags:
   - evergreen
 related:
 notes:
-  - "[[Random]]"
+  - "[[40_Resources/Random]]"
 ---
 # Data view
 ## The Plan

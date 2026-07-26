@@ -130,3 +130,910 @@
 2026-07-25 19:03:05.130 [debug] Connecting to stdio transport...
 2026-07-25 19:03:05.132 [info] Excalidraw MCP server running on stdio
 2026-07-25 19:03:05.176 [info] Listing available tools
+2026-07-26 12:33:38.615 [info] Starting Excalidraw MCP server...
+2026-07-26 12:33:38.627 [debug] Connecting to stdio transport...
+2026-07-26 12:33:38.628 [info] Excalidraw MCP server running on stdio
+2026-07-26 12:33:38.708 [info] Listing available tools
+2026-07-26 20:04:34.362 [info] Handling tool call: read_diagram_guide
+2026-07-26 20:05:47.080 [info] Handling tool call: create_from_mermaid
+2026-07-26 20:05:47.094 [info] Creating Excalidraw elements from Mermaid diagram via MCP {"diagramLength":2967,"hasConfig":false}
+2026-07-26 20:05:47.126 [error] Error handling tool call: Failed to process Mermaid diagram: request to http://127.0.0.1:3000/api/elements/from-mermaid failed, reason: connect ECONNREFUSED 127.0.0.1:3000 {"error":{}}
+2026-07-26 20:07:35.547 [info] Handling tool call: create_from_mermaid
+2026-07-26 20:07:35.549 [info] Creating Excalidraw elements from Mermaid diagram via MCP {"diagramLength":2967,"hasConfig":false}
+2026-07-26 20:07:35.641 [info] Mermaid diagram sent to frontend for conversion {"success":true}
+2026-07-26 20:08:06.918 [info] Handling tool call: describe_scene
+2026-07-26 20:08:06.919 [info] Describing scene via MCP
+2026-07-26 20:10:05.687 [info] Handling tool call: batch_create_elements
+2026-07-26 20:10:05.709 [error] Error handling tool call: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      63,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      63,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      64,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      64,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      65,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      65,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      66,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      66,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      67,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      67,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      68,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      68,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      69,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      69,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      70,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      70,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      71,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      71,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      72,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      72,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      73,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      73,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      74,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      74,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      75,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      75,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      76,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      76,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      77,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      77,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      78,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      78,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      79,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      79,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      80,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      80,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      81,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      81,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      82,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      82,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      83,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      83,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      84,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      84,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      85,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      85,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      86,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      86,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      87,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      87,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      88,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      88,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      89,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      89,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      90,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      90,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      91,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      91,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      92,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      92,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      93,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      93,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      94,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      94,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      95,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      95,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      96,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      96,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      97,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      97,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      98,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      98,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      99,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      99,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      100,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      100,
+      "y"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      101,
+      "x"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "elements",
+      101,
+      "y"
+    ],
+    "message": "Required"
+  }
+] {"error":{"issues":[{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",63,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",63,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",64,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",64,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",65,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",65,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",66,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",66,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",67,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",67,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",68,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",68,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",69,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",69,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",70,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",70,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",71,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",71,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",72,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",72,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",73,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",73,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",74,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",74,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",75,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",75,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",76,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",76,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",77,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",77,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",78,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",78,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",79,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",79,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",80,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",80,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",81,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",81,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",82,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",82,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",83,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",83,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",84,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",84,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",85,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",85,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",86,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",86,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",87,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",87,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",88,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",88,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",89,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",89,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",90,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",90,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",91,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",91,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",92,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",92,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",93,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",93,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",94,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",94,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",95,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",95,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",96,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",96,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",97,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",97,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",98,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",98,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",99,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",99,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",100,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",100,"y"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",101,"x"],"message":"Required"},{"code":"invalid_type","expected":"number","received":"undefined","path":["elements",101,"y"],"message":"Required"}],"name":"ZodError"}}
+2026-07-26 20:10:42.054 [info] Handling tool call: batch_create_elements
+2026-07-26 20:10:42.057 [info] Batch creating elements via MCP {"count":39}
+2026-07-26 20:10:42.060 [debug] Syncing to canvas: batch_create {"url":"http://127.0.0.1:3000/api/elements/batch","data":[{"id":"a_src_g1","type":"arrow","x":0,"y":0,"strokeColor":"#1971c2","points":[[0,0],[100,0]],"start":{"id":"src"},"end":{"id":"g1"},"createdAt":"2026-07-26T14:40:42.058Z","updatedAt":"2026-07-26T14:40:42.058Z","version":1},{"id":"a_g1_g2","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"g1"},"end":{"id":"g2"},"createdAt":"2026-07-26T14:40:42.058Z","updatedAt":"2026-07-26T14:40:42.058Z","version":1,"label":{"text":"passes"}},{"id":"a_g2_g3","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"g2"},"end":{"id":"g3"},"createdAt":"2026-07-26T14:40:42.058Z","updatedAt":"2026-07-26T14:40:42.058Z","version":1,"label":{"text":"passes"}},{"id":"a_g3_g4","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"g3"},"end":{"id":"g4"},"createdAt":"2026-07-26T14:40:42.058Z","updatedAt":"2026-07-26T14:40:42.058Z","version":1,"label":{"text":"passes"}},{"id":"a_g4_cls","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"g4"},"end":{"id":"cls"},"createdAt":"2026-07-26T14:40:42.058Z","updatedAt":"2026-07-26T14:40:42.058Z","version":1,"label":{"text":"passes"}},{"id":"a_g1_rej","type":"arrow","x":0,"y":0,"strokeColor":"#e03131","points":[[0,0],[100,0]],"start":{"id":"g1"},"end":{"id":"rej1"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1,"label":{"text":"fails"}},{"id":"a_g2_rej","type":"arrow","x":0,"y":0,"strokeColor":"#e03131","points":[[0,0],[100,0]],"start":{"id":"g2"},"end":{"id":"rej1"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1,"label":{"text":"foreign signal"}},{"id":"a_g3_rej","type":"arrow","x":0,"y":0,"strokeColor":"#e03131","points":[[0,0],[100,0]],"start":{"id":"g3"},"end":{"id":"rej1"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1,"label":{"text":"citizenship/clearance"}},{"id":"a_g4_rej","type":"arrow","x":0,"y":0,"strokeColor":"#e03131","points":[[0,0],[100,0]],"start":{"id":"g4"},"end":{"id":"rej1"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1,"label":{"text":"non-software"}},{"id":"a_cls_b1","type":"arrow","x":0,"y":0,"strokeColor":"#0c8599","points":[[0,0],[100,0]],"start":{"id":"cls"},"end":{"id":"b1"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1,"label":{"text":"AI/ML signal"}},{"id":"a_cls_b2","type":"arrow","x":0,"y":0,"strokeColor":"#0c8599","points":[[0,0],[100,0]],"start":{"id":"cls"},"end":{"id":"b2"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1,"label":{"text":"Fullstack signal"}},{"id":"a_cls_b3","type":"arrow","x":0,"y":0,"strokeColor":"#0c8599","points":[[0,0],[100,0]],"start":{"id":"cls"},"end":{"id":"b3"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1,"label":{"text":"Finance/security signal"}},{"id":"a_cls_b4","type":"arrow","x":0,"y":0,"strokeColor":"#0c8599","points":[[0,0],[100,0]],"start":{"id":"cls"},"end":{"id":"b4"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1,"label":{"text":"no niche signal"}},{"id":"a_b1_scr","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"b1"},"end":{"id":"scr"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1},{"id":"a_b2_scr","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"b2"},"end":{"id":"scr"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1},{"id":"a_b3_scr","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"b3"},"end":{"id":"scr"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1},{"id":"a_b4_scr","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"b4"},"end":{"id":"scr"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1},{"id":"a_scr_rej2","type":"arrow","x":0,"y":0,"strokeColor":"#e03131","points":[[0,0],[100,0]],"start":{"id":"scr"},"end":{"id":"rej2"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1,"label":{"text":"fails"}},{"id":"a_scr_commit","type":"arrow","x":0,"y":0,"strokeColor":"#2f9e44","points":[[0,0],[100,0]],"start":{"id":"scr"},"end":{"id":"commit"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1,"label":{"text":"passes"}},{"id":"a_commit_prog","type":"arrow","x":0,"y":0,"strokeColor":"#9c36b5","points":[[0,0],[100,0]],"start":{"id":"commit"},"end":{"id":"prog"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1},{"id":"a_commit_cont","type":"arrow","x":0,"y":0,"strokeColor":"#9c36b5","points":[[0,0],[100,0]],"start":{"id":"commit"},"end":{"id":"cont"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1},{"id":"a_commit_trk","type":"arrow","x":0,"y":0,"strokeColor":"#9c36b5","points":[[0,0],[100,0]],"start":{"id":"commit"},"end":{"id":"trk"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1},{"id":"a_prog_reach","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"prog"},"end":{"id":"reach"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1},{"id":"a_prog_tail","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"prog"},"end":{"id":"tail"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1},{"id":"a_reach_dd","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"reach"},"end":{"id":"dd"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1},{"id":"a_tail_dd","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"tail"},"end":{"id":"dd"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1},{"id":"a_dd_reach","type":"arrow","x":0,"y":0,"strokeColor":"#868e96","points":[[0,0],[100,0]],"start":{"id":"dd"},"end":{"id":"reach"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1,"label":{"text":"not yet"}},{"id":"a_dd_jc","type":"arrow","x":0,"y":0,"strokeColor":"#2f9e44","points":[[0,0],[100,0]],"start":{"id":"dd"},"end":{"id":"jc"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1,"label":{"text":"ready"}},{"id":"a_jc_apply","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"jc"},"end":{"id":"apply"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1},{"id":"a_apply_tra","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"apply"},"end":{"id":"tra"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1},{"id":"a_apply_pre","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"apply"},"end":{"id":"pre"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1},{"id":"a_apply_apn","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"apply"},"end":{"id":"apn"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1},{"id":"a_pre_rej3","type":"arrow","x":0,"y":0,"strokeColor":"#e03131","points":[[0,0],[100,0]],"start":{"id":"pre"},"end":{"id":"rej3"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1,"label":{"text":"no Applying note"}},{"id":"a_tra_pp","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"tra"},"end":{"id":"pp"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1},{"id":"a_apn_pp","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"apn"},"end":{"id":"pp"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1},{"id":"a_pp_prep","type":"arrow","x":0,"y":0,"strokeColor":"#2f9e44","points":[[0,0],[100,0]],"start":{"id":"pp"},"end":{"id":"prep"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1,"label":{"text":"yes"}},{"id":"a_pp_out","type":"arrow","x":0,"y":0,"strokeColor":"#868e96","points":[[0,0],[100,0]],"start":{"id":"pp"},"end":{"id":"out"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1,"label":{"text":"not yet"}},{"id":"a_prep_out","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"prep"},"end":{"id":"out"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1},{"id":"a_out_close","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"out"},"end":{"id":"close"},"createdAt":"2026-07-26T14:40:42.059Z","updatedAt":"2026-07-26T14:40:42.059Z","version":1,"label":{"text":"offer/rejected/withdrawn"}}]}
+2026-07-26 20:10:42.082 [debug] Canvas sync successful: batch_create {"success":true,"elements":[{"id":"a_src_g1","type":"arrow","x":8,"y":0,"strokeColor":"#1971c2","points":[[0,0],[84,0]],"start":{"id":"src"},"end":{"id":"g1"},"createdAt":"2026-07-26T14:40:42.073Z","updatedAt":"2026-07-26T14:40:42.073Z","version":1},{"id":"a_g1_g2","type":"arrow","x":8,"y":0,"strokeColor":"#1e1e1e","label":{"text":"passes"},"points":[[0,0],[84,0]],"start":{"id":"g1"},"end":{"id":"g2"},"createdAt":"2026-07-26T14:40:42.074Z","updatedAt":"2026-07-26T14:40:42.074Z","version":1},{"id":"a_g2_g3","type":"arrow","x":8,"y":0,"strokeColor":"#1e1e1e","label":{"text":"passes"},"points":[[0,0],[84,0]],"start":{"id":"g2"},"end":{"id":"g3"},"createdAt":"2026-07-26T14:40:42.074Z","updatedAt":"2026-07-26T14:40:42.074Z","version":1},{"id":"a_g3_g4","type":"arrow","x":8,"y":0,"strokeColor":"#1e1e1e","label":{"text":"passes"},"points":[[0,0],[84,0]],"start":{"id":"g3"},"end":{"id":"g4"},"createdAt":"2026-07-26T14:40:42.074Z","updatedAt":"2026-07-26T14:40:42.074Z","version":1},{"id":"a_g4_cls","type":"arrow","x":8,"y":0,"strokeColor":"#1e1e1e","label":{"text":"passes"},"points":[[0,0],[84,0]],"start":{"id":"g4"},"end":{"id":"cls"},"createdAt":"2026-07-26T14:40:42.074Z","updatedAt":"2026-07-26T14:40:42.074Z","version":1},{"id":"a_g1_rej","type":"arrow","x":8,"y":0,"strokeColor":"#e03131","label":{"text":"fails"},"points":[[0,0],[84,0]],"start":{"id":"g1"},"end":{"id":"rej1"},"createdAt":"2026-07-26T14:40:42.074Z","updatedAt":"2026-07-26T14:40:42.074Z","version":1},{"id":"a_g2_rej","type":"arrow","x":8,"y":0,"strokeColor":"#e03131","label":{"text":"foreign signal"},"points":[[0,0],[84,0]],"start":{"id":"g2"},"end":{"id":"rej1"},"createdAt":"2026-07-26T14:40:42.075Z","updatedAt":"2026-07-26T14:40:42.075Z","version":1},{"id":"a_g3_rej","type":"arrow","x":8,"y":0,"strokeColor":"#e03131","label":{"text":"citizenship/clearance"},"points":[[0,0],[84,0]],"start":{"id":"g3"},"end":{"id":"rej1"},"createdAt":"2026-07-26T14:40:42.075Z","updatedAt":"2026-07-26T14:40:42.075Z","version":1},{"id":"a_g4_rej","type":"arrow","x":8,"y":0,"strokeColor":"#e03131","label":{"text":"non-software"},"points":[[0,0],[84,0]],"start":{"id":"g4"},"end":{"id":"rej1"},"createdAt":"2026-07-26T14:40:42.076Z","updatedAt":"2026-07-26T14:40:42.076Z","version":1},{"id":"a_cls_b1","type":"arrow","x":8,"y":0,"strokeColor":"#0c8599","label":{"text":"AI/ML signal"},"points":[[0,0],[84,0]],"start":{"id":"cls"},"end":{"id":"b1"},"createdAt":"2026-07-26T14:40:42.077Z","updatedAt":"2026-07-26T14:40:42.077Z","version":1},{"id":"a_cls_b2","type":"arrow","x":8,"y":0,"strokeColor":"#0c8599","label":{"text":"Fullstack signal"},"points":[[0,0],[84,0]],"start":{"id":"cls"},"end":{"id":"b2"},"createdAt":"2026-07-26T14:40:42.077Z","updatedAt":"2026-07-26T14:40:42.077Z","version":1},{"id":"a_cls_b3","type":"arrow","x":8,"y":0,"strokeColor":"#0c8599","label":{"text":"Finance/security signal"},"points":[[0,0],[84,0]],"start":{"id":"cls"},"end":{"id":"b3"},"createdAt":"2026-07-26T14:40:42.077Z","updatedAt":"2026-07-26T14:40:42.077Z","version":1},{"id":"a_cls_b4","type":"arrow","x":8,"y":0,"strokeColor":"#0c8599","label":{"text":"no niche signal"},"points":[[0,0],[84,0]],"start":{"id":"cls"},"end":{"id":"b4"},"createdAt":"2026-07-26T14:40:42.077Z","updatedAt":"2026-07-26T14:40:42.077Z","version":1},{"id":"a_b1_scr","type":"arrow","x":8,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[84,0]],"start":{"id":"b1"},"end":{"id":"scr"},"createdAt":"2026-07-26T14:40:42.077Z","updatedAt":"2026-07-26T14:40:42.077Z","version":1},{"id":"a_b2_scr","type":"arrow","x":8,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[84,0]],"start":{"id":"b2"},"end":{"id":"scr"},"createdAt":"2026-07-26T14:40:42.077Z","updatedAt":"2026-07-26T14:40:42.077Z","version":1},{"id":"a_b3_scr","type":"arrow","x":8,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[84,0]],"start":{"id":"b3"},"end":{"id":"scr"},"createdAt":"2026-07-26T14:40:42.077Z","updatedAt":"2026-07-26T14:40:42.077Z","version":1},{"id":"a_b4_scr","type":"arrow","x":8,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[84,0]],"start":{"id":"b4"},"end":{"id":"scr"},"createdAt":"2026-07-26T14:40:42.077Z","updatedAt":"2026-07-26T14:40:42.077Z","version":1},{"id":"a_scr_rej2","type":"arrow","x":8,"y":0,"strokeColor":"#e03131","label":{"text":"fails"},"points":[[0,0],[84,0]],"start":{"id":"scr"},"end":{"id":"rej2"},"createdAt":"2026-07-26T14:40:42.077Z","updatedAt":"2026-07-26T14:40:42.077Z","version":1},{"id":"a_scr_commit","type":"arrow","x":8,"y":0,"strokeColor":"#2f9e44","label":{"text":"passes"},"points":[[0,0],[84,0]],"start":{"id":"scr"},"end":{"id":"commit"},"createdAt":"2026-07-26T14:40:42.077Z","updatedAt":"2026-07-26T14:40:42.077Z","version":1},{"id":"a_commit_prog","type":"arrow","x":8,"y":0,"strokeColor":"#9c36b5","points":[[0,0],[84,0]],"start":{"id":"commit"},"end":{"id":"prog"},"createdAt":"2026-07-26T14:40:42.077Z","updatedAt":"2026-07-26T14:40:42.078Z","version":1},{"id":"a_commit_cont","type":"arrow","x":8,"y":0,"strokeColor":"#9c36b5","points":[[0,0],[84,0]],"start":{"id":"commit"},"end":{"id":"cont"},"createdAt":"2026-07-26T14:40:42.078Z","updatedAt":"2026-07-26T14:40:42.078Z","version":1},{"id":"a_commit_trk","type":"arrow","x":8,"y":0,"strokeColor":"#9c36b5","points":[[0,0],[84,0]],"start":{"id":"commit"},"end":{"id":"trk"},"createdAt":"2026-07-26T14:40:42.078Z","updatedAt":"2026-07-26T14:40:42.078Z","version":1},{"id":"a_prog_reach","type":"arrow","x":8,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[84,0]],"start":{"id":"prog"},"end":{"id":"reach"},"createdAt":"2026-07-26T14:40:42.078Z","updatedAt":"2026-07-26T14:40:42.078Z","version":1},{"id":"a_prog_tail","type":"arrow","x":8,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[84,0]],"start":{"id":"prog"},"end":{"id":"tail"},"createdAt":"2026-07-26T14:40:42.078Z","updatedAt":"2026-07-26T14:40:42.078Z","version":1},{"id":"a_reach_dd","type":"arrow","x":8,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[84,0]],"start":{"id":"reach"},"end":{"id":"dd"},"createdAt":"2026-07-26T14:40:42.078Z","updatedAt":"2026-07-26T14:40:42.078Z","version":1},{"id":"a_tail_dd","type":"arrow","x":8,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[84,0]],"start":{"id":"tail"},"end":{"id":"dd"},"createdAt":"2026-07-26T14:40:42.078Z","updatedAt":"2026-07-26T14:40:42.078Z","version":1},{"id":"a_dd_reach","type":"arrow","x":8,"y":0,"strokeColor":"#868e96","label":{"text":"not yet"},"points":[[0,0],[84,0]],"start":{"id":"dd"},"end":{"id":"reach"},"createdAt":"2026-07-26T14:40:42.078Z","updatedAt":"2026-07-26T14:40:42.078Z","version":1},{"id":"a_dd_jc","type":"arrow","x":8,"y":0,"strokeColor":"#2f9e44","label":{"text":"ready"},"points":[[0,0],[84,0]],"start":{"id":"dd"},"end":{"id":"jc"},"createdAt":"2026-07-26T14:40:42.078Z","updatedAt":"2026-07-26T14:40:42.078Z","version":1},{"id":"a_jc_apply","type":"arrow","x":8,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[84,0]],"start":{"id":"jc"},"end":{"id":"apply"},"createdAt":"2026-07-26T14:40:42.078Z","updatedAt":"2026-07-26T14:40:42.078Z","version":1},{"id":"a_apply_tra","type":"arrow","x":8,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[84,0]],"start":{"id":"apply"},"end":{"id":"tra"},"createdAt":"2026-07-26T14:40:42.078Z","updatedAt":"2026-07-26T14:40:42.078Z","version":1},{"id":"a_apply_pre","type":"arrow","x":8,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[84,0]],"start":{"id":"apply"},"end":{"id":"pre"},"createdAt":"2026-07-26T14:40:42.078Z","updatedAt":"2026-07-26T14:40:42.078Z","version":1},{"id":"a_apply_apn","type":"arrow","x":8,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[84,0]],"start":{"id":"apply"},"end":{"id":"apn"},"createdAt":"2026-07-26T14:40:42.078Z","updatedAt":"2026-07-26T14:40:42.078Z","version":1},{"id":"a_pre_rej3","type":"arrow","x":8,"y":0,"strokeColor":"#e03131","label":{"text":"no Applying note"},"points":[[0,0],[84,0]],"start":{"id":"pre"},"end":{"id":"rej3"},"createdAt":"2026-07-26T14:40:42.079Z","updatedAt":"2026-07-26T14:40:42.079Z","version":1},{"id":"a_tra_pp","type":"arrow","x":8,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[84,0]],"start":{"id":"tra"},"end":{"id":"pp"},"createdAt":"2026-07-26T14:40:42.079Z","updatedAt":"2026-07-26T14:40:42.079Z","version":1},{"id":"a_apn_pp","type":"arrow","x":8,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[84,0]],"start":{"id":"apn"},"end":{"id":"pp"},"createdAt":"2026-07-26T14:40:42.079Z","updatedAt":"2026-07-26T14:40:42.079Z","version":1},{"id":"a_pp_prep","type":"arrow","x":8,"y":0,"strokeColor":"#2f9e44","label":{"text":"yes"},"points":[[0,0],[84,0]],"start":{"id":"pp"},"end":{"id":"prep"},"createdAt":"2026-07-26T14:40:42.079Z","updatedAt":"2026-07-26T14:40:42.079Z","version":1},{"id":"a_pp_out","type":"arrow","x":8,"y":0,"strokeColor":"#868e96","label":{"text":"not yet"},"points":[[0,0],[84,0]],"start":{"id":"pp"},"end":{"id":"out"},"createdAt":"2026-07-26T14:40:42.079Z","updatedAt":"2026-07-26T14:40:42.079Z","version":1},{"id":"a_prep_out","type":"arrow","x":8,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[84,0]],"start":{"id":"prep"},"end":{"id":"out"},"createdAt":"2026-07-26T14:40:42.079Z","updatedAt":"2026-07-26T14:40:42.079Z","version":1},{"id":"a_out_close","type":"arrow","x":8,"y":0,"strokeColor":"#1e1e1e","label":{"text":"offer/rejected/withdrawn"},"points":[[0,0],[84,0]],"start":{"id":"out"},"end":{"id":"close"},"createdAt":"2026-07-26T14:40:42.079Z","updatedAt":"2026-07-26T14:40:42.079Z","version":1}],"count":39}
+2026-07-26 20:10:42.083 [info] Batch elements created via MCP and synced to canvas {"count":39,"synced":true}
+2026-07-26 20:11:03.298 [info] Handling tool call: describe_scene
+2026-07-26 20:11:03.300 [info] Describing scene via MCP
+2026-07-26 20:11:55.544 [info] Handling tool call: batch_create_elements
+2026-07-26 20:11:55.550 [info] Batch creating elements via MCP {"count":63}
+2026-07-26 20:11:55.555 [debug] Syncing to canvas: batch_create {"url":"http://127.0.0.1:3000/api/elements/batch","data":[{"id":"title","type":"text","x":60,"y":-60,"width":700,"height":40,"strokeColor":"#1e1e1e","text":"Internship Research Loop — Full Pipeline","fontSize":28,"createdAt":"2026-07-26T14:41:55.551Z","updatedAt":"2026-07-26T14:41:55.551Z","version":1},{"id":"src","type":"rectangle","x":60,"y":40,"width":560,"height":100,"backgroundColor":"#a5d8ff","strokeColor":"#1971c2","fontSize":16,"createdAt":"2026-07-26T14:41:55.551Z","updatedAt":"2026-07-26T14:41:55.551Z","version":1},{"id":"src_t","type":"text","x":75,"y":55,"width":530,"height":80,"strokeColor":"#1e1e1e","text":"8 Discovery Sources (automated, hourly):\nSimplifyJobs, JGCL, vanshb03, zshah101,\nGreenhouse, Ashby, Freehire, AIJobs","fontSize":15,"createdAt":"2026-07-26T14:41:55.551Z","updatedAt":"2026-07-26T14:41:55.551Z","version":1},{"id":"g1","type":"diamond","x":260,"y":210,"width":220,"height":110,"backgroundColor":"#ffd8a8","strokeColor":"#e8590c","fontSize":15,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"g1_t","type":"text","x":275,"y":240,"width":190,"height":60,"strokeColor":"#1e1e1e","text":"Gate 1: Timing\n(Summer/Winter 2027 high,\nSpring 2027 low-weight)","fontSize":13,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"g2","type":"diamond","x":260,"y":390,"width":220,"height":110,"backgroundColor":"#ffd8a8","strokeColor":"#e8590c","fontSize":15,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"g2_t","type":"text","x":285,"y":420,"width":170,"height":60,"strokeColor":"#1e1e1e","text":"Gate 2: US Location\n(permissive by default)","fontSize":13,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"g3","type":"diamond","x":260,"y":570,"width":220,"height":110,"backgroundColor":"#ffd8a8","strokeColor":"#e8590c","fontSize":15,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"g3_t","type":"text","x":280,"y":600,"width":180,"height":60,"strokeColor":"#1e1e1e","text":"Gate 3: OPT Eligible\n(explicit negative signal only)","fontSize":13,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"g4","type":"diamond","x":260,"y":750,"width":220,"height":110,"backgroundColor":"#ffd8a8","strokeColor":"#e8590c","fontSize":15,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"g4_t","type":"text","x":280,"y":780,"width":180,"height":60,"strokeColor":"#1e1e1e","text":"Gate 4: CS/Software\nRelevance","fontSize":13,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"rej1","type":"rectangle","x":620,"y":430,"width":200,"height":80,"backgroundColor":"#ffc9c9","strokeColor":"#e03131","fontSize":15,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"rej1_t","type":"text","x":640,"y":450,"width":160,"height":40,"strokeColor":"#1e1e1e","text":"Discarded\n(never written)","fontSize":14,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"cls","type":"diamond","x":230,"y":930,"width":280,"height":120,"backgroundColor":"#ffd8a8","strokeColor":"#e8590c","fontSize":16,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"cls_t","type":"text","x":270,"y":965,"width":200,"height":50,"strokeColor":"#1e1e1e","text":"Priority Classification\n(keyword-based, no LLM)","fontSize":14,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"b1","type":"rectangle","x":20,"y":1130,"width":170,"height":80,"backgroundColor":"#99e9f2","strokeColor":"#0c8599","fontSize":14,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"b1_t","type":"text","x":35,"y":1155,"width":140,"height":40,"strokeColor":"#1e1e1e","text":"Dossier:\n1 - AI & ML","fontSize":14,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"b2","type":"rectangle","x":210,"y":1130,"width":170,"height":80,"backgroundColor":"#99e9f2","strokeColor":"#0c8599","fontSize":14,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"b2_t","type":"text","x":225,"y":1155,"width":140,"height":40,"strokeColor":"#1e1e1e","text":"Dossier:\n2 - Fullstack","fontSize":14,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"b3","type":"rectangle","x":400,"y":1130,"width":170,"height":80,"backgroundColor":"#99e9f2","strokeColor":"#0c8599","fontSize":14,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"b3_t","type":"text","x":415,"y":1155,"width":140,"height":40,"strokeColor":"#1e1e1e","text":"Dossier:\n3 - CyS & Finance","fontSize":13,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"b4","type":"rectangle","x":590,"y":1130,"width":170,"height":80,"backgroundColor":"#99e9f2","strokeColor":"#0c8599","fontSize":14,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"b4_t","type":"text","x":630,"y":1155,"width":100,"height":40,"strokeColor":"#1e1e1e","text":"Dossier:\nOther","fontSize":14,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"scr","type":"diamond","x":250,"y":1260,"width":260,"height":120,"backgroundColor":"#b2f2bb","strokeColor":"#2f9e44","fontSize":16,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"scr_t","type":"text","x":280,"y":1295,"width":200,"height":50,"strokeColor":"#1e1e1e","text":"Screen: Fit Test\n(goal-push + personal fit)","fontSize":14,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"rej2","type":"rectangle","x":620,"y":1280,"width":220,"height":90,"backgroundColor":"#ffc9c9","strokeColor":"#e03131","fontSize":14,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"rej2_t","type":"text","x":635,"y":1300,"width":190,"height":50,"strokeColor":"#1e1e1e","text":"Fails fit test:\ndiscarded / stays a dossier","fontSize":13,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"commit","type":"rectangle","x":220,"y":1440,"width":340,"height":90,"backgroundColor":"#eebefa","strokeColor":"#9c36b5","fontSize":15,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"commit_t","type":"text","x":240,"y":1460,"width":300,"height":50,"strokeColor":"#1e1e1e","text":"Commit — /promote-dossier skill\n(manual consent required)","fontSize":14,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"prog","type":"rectangle","x":20,"y":1600,"width":230,"height":90,"backgroundColor":"#eebefa","strokeColor":"#9c36b5","fontSize":14,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"prog_t","type":"text","x":35,"y":1620,"width":200,"height":50,"strokeColor":"#1e1e1e","text":"Program note\n(Serious/ or Considering/)","fontSize":13,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"cont","type":"rectangle","x":280,"y":1600,"width":230,"height":90,"backgroundColor":"#eebefa","strokeColor":"#9c36b5","fontSize":14,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"cont_t","type":"text","x":300,"y":1625,"width":200,"height":50,"strokeColor":"#1e1e1e","text":"Contacts/Each One\nnote","fontSize":14,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"trk","type":"rectangle","x":540,"y":1600,"width":230,"height":90,"backgroundColor":"#eebefa","strokeColor":"#9c36b5","fontSize":14,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"trk_t","type":"text","x":555,"y":1620,"width":200,"height":50,"strokeColor":"#1e1e1e","text":"Tracker/Each One/\nCurrent note","fontSize":14,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"reach","type":"rectangle","x":60,"y":1760,"width":260,"height":90,"backgroundColor":"#b2f2bb","strokeColor":"#2f9e44","fontSize":14,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"reach_t","type":"text","x":80,"y":1780,"width":220,"height":50,"strokeColor":"#1e1e1e","text":"Reach Out\n(Ongoing / Come Back / Ended)","fontSize":13,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"tail","type":"rectangle","x":400,"y":1760,"width":260,"height":90,"backgroundColor":"#b2f2bb","strokeColor":"#2f9e44","fontSize":14,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"tail_t","type":"text","x":430,"y":1785,"width":200,"height":50,"strokeColor":"#1e1e1e","text":"Tailor\n(Resumes/Altered cut)","fontSize":14,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"dd","type":"diamond","x":250,"y":1920,"width":260,"height":120,"backgroundColor":"#b2f2bb","strokeColor":"#2f9e44","fontSize":16,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"dd_t","type":"text","x":300,"y":1960,"width":180,"height":50,"strokeColor":"#1e1e1e","text":"Ready to\nactually apply?","fontSize":14,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"jc","type":"rectangle","x":250,"y":2100,"width":260,"height":90,"backgroundColor":"#b2f2bb","strokeColor":"#2f9e44","fontSize":14,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"jc_t","type":"text","x":270,"y":2125,"width":220,"height":50,"strokeColor":"#1e1e1e","text":"Deep Dive: Job & Company\nnote (interview-prep grade)","fontSize":13,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"apply","type":"rectangle","x":270,"y":2250,"width":220,"height":80,"backgroundColor":"#b2f2bb","strokeColor":"#2f9e44","fontSize":16,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"apply_t","type":"text","x":330,"y":2280,"width":120,"height":30,"strokeColor":"#1e1e1e","text":"Apply: Submit","fontSize":15,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"tra","type":"rectangle","x":20,"y":2390,"width":220,"height":90,"backgroundColor":"#b2f2bb","strokeColor":"#2f9e44","fontSize":13,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"tra_t","type":"text","x":40,"y":2410,"width":190,"height":50,"strokeColor":"#1e1e1e","text":"Tracker note:\nCurrent/ → Applied/","fontSize":13,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"pre","type":"rectangle","x":280,"y":2390,"width":220,"height":90,"backgroundColor":"#b2f2bb","strokeColor":"#2f9e44","fontSize":13,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"pre_t","type":"text","x":295,"y":2405,"width":190,"height":60,"strokeColor":"#1e1e1e","text":"Program note moves to\nits own Ended/ subfolder","fontSize":13,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"apn","type":"rectangle","x":540,"y":2390,"width":230,"height":90,"backgroundColor":"#b2f2bb","strokeColor":"#2f9e44","fontSize":13,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"apn_t","type":"text","x":555,"y":2410,"width":200,"height":50,"strokeColor":"#1e1e1e","text":"Applying note created +\nApplying/Now.md entry","fontSize":13,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"rej3","type":"rectangle","x":260,"y":2540,"width":260,"height":80,"backgroundColor":"#ffc9c9","strokeColor":"#e03131","fontSize":13,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"rej3_t","type":"text","x":280,"y":2560,"width":220,"height":40,"strokeColor":"#1e1e1e","text":"No matching Applying note:\ndiscarded, never really applied","fontSize":12,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"pp","type":"diamond","x":250,"y":2660,"width":260,"height":120,"backgroundColor":"#b2f2bb","strokeColor":"#2f9e44","fontSize":15,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"pp_t","type":"text","x":290,"y":2700,"width":190,"height":50,"strokeColor":"#1e1e1e","text":"Screen or interview\nscheduled?","fontSize":14,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"prep","type":"rectangle","x":560,"y":2680,"width":230,"height":80,"backgroundColor":"#b2f2bb","strokeColor":"#2f9e44","fontSize":14,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"prep_t","type":"text","x":590,"y":2705,"width":180,"height":40,"strokeColor":"#1e1e1e","text":"Prep: Interviews/\nPrep note","fontSize":14,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"out","type":"diamond","x":250,"y":2820,"width":260,"height":120,"backgroundColor":"#b2f2bb","strokeColor":"#2f9e44","fontSize":15,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"out_t","type":"text","x":310,"y":2865,"width":150,"height":40,"strokeColor":"#1e1e1e","text":"Outcome\nlands","fontSize":15,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"close","type":"rectangle","x":250,"y":2990,"width":280,"height":90,"backgroundColor":"#b2f2bb","strokeColor":"#2f9e44","fontSize":15,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"close_t","type":"text","x":270,"y":3015,"width":240,"height":50,"strokeColor":"#1e1e1e","text":"Close: status set,\nTracker moves Applied/ → Result/","fontSize":13,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"legend","type":"rectangle","x":900,"y":40,"width":360,"height":380,"backgroundColor":"#e9ecef","strokeColor":"#868e96","fontSize":16,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1},{"id":"legend_t","type":"text","x":920,"y":55,"width":320,"height":350,"strokeColor":"#1e1e1e","text":"Legend\n\nBlue — fully automated (discovery)\nOrange — gate / decision point\nCyan — dossier, written by the loop\nPurple — tooling-assisted, manual consent\n(/promote-dossier skill)\nGreen — fully manual, no code involved\nRed — discarded, at any stage\n\nSee Internship Pipeline — Design\nRationale for the exact condition\nbehind every arrow.","fontSize":14,"createdAt":"2026-07-26T14:41:55.554Z","updatedAt":"2026-07-26T14:41:55.554Z","version":1}]}
+2026-07-26 20:11:55.585 [debug] Canvas sync successful: batch_create {"success":true,"elements":[{"id":"title","type":"text","x":60,"y":-60,"width":700,"height":40,"strokeColor":"#1e1e1e","text":"Internship Research Loop — Full Pipeline","fontSize":28,"createdAt":"2026-07-26T14:41:55.576Z","updatedAt":"2026-07-26T14:41:55.576Z","version":1},{"id":"src","type":"rectangle","x":60,"y":40,"width":560,"height":100,"backgroundColor":"#a5d8ff","strokeColor":"#1971c2","fontSize":16,"createdAt":"2026-07-26T14:41:55.576Z","updatedAt":"2026-07-26T14:41:55.576Z","version":1},{"id":"src_t","type":"text","x":75,"y":55,"width":530,"height":80,"strokeColor":"#1e1e1e","text":"8 Discovery Sources (automated, hourly):\nSimplifyJobs, JGCL, vanshb03, zshah101,\nGreenhouse, Ashby, Freehire, AIJobs","fontSize":15,"createdAt":"2026-07-26T14:41:55.576Z","updatedAt":"2026-07-26T14:41:55.576Z","version":1},{"id":"g1","type":"diamond","x":260,"y":210,"width":220,"height":110,"backgroundColor":"#ffd8a8","strokeColor":"#e8590c","fontSize":15,"createdAt":"2026-07-26T14:41:55.577Z","updatedAt":"2026-07-26T14:41:55.577Z","version":1},{"id":"g1_t","type":"text","x":275,"y":240,"width":190,"height":60,"strokeColor":"#1e1e1e","text":"Gate 1: Timing\n(Summer/Winter 2027 high,\nSpring 2027 low-weight)","fontSize":13,"createdAt":"2026-07-26T14:41:55.577Z","updatedAt":"2026-07-26T14:41:55.577Z","version":1},{"id":"g2","type":"diamond","x":260,"y":390,"width":220,"height":110,"backgroundColor":"#ffd8a8","strokeColor":"#e8590c","fontSize":15,"createdAt":"2026-07-26T14:41:55.577Z","updatedAt":"2026-07-26T14:41:55.577Z","version":1},{"id":"g2_t","type":"text","x":285,"y":420,"width":170,"height":60,"strokeColor":"#1e1e1e","text":"Gate 2: US Location\n(permissive by default)","fontSize":13,"createdAt":"2026-07-26T14:41:55.577Z","updatedAt":"2026-07-26T14:41:55.577Z","version":1},{"id":"g3","type":"diamond","x":260,"y":570,"width":220,"height":110,"backgroundColor":"#ffd8a8","strokeColor":"#e8590c","fontSize":15,"createdAt":"2026-07-26T14:41:55.577Z","updatedAt":"2026-07-26T14:41:55.577Z","version":1},{"id":"g3_t","type":"text","x":280,"y":600,"width":180,"height":60,"strokeColor":"#1e1e1e","text":"Gate 3: OPT Eligible\n(explicit negative signal only)","fontSize":13,"createdAt":"2026-07-26T14:41:55.577Z","updatedAt":"2026-07-26T14:41:55.577Z","version":1},{"id":"g4","type":"diamond","x":260,"y":750,"width":220,"height":110,"backgroundColor":"#ffd8a8","strokeColor":"#e8590c","fontSize":15,"createdAt":"2026-07-26T14:41:55.577Z","updatedAt":"2026-07-26T14:41:55.577Z","version":1},{"id":"g4_t","type":"text","x":280,"y":780,"width":180,"height":60,"strokeColor":"#1e1e1e","text":"Gate 4: CS/Software\nRelevance","fontSize":13,"createdAt":"2026-07-26T14:41:55.577Z","updatedAt":"2026-07-26T14:41:55.577Z","version":1},{"id":"rej1","type":"rectangle","x":620,"y":430,"width":200,"height":80,"backgroundColor":"#ffc9c9","strokeColor":"#e03131","fontSize":15,"createdAt":"2026-07-26T14:41:55.577Z","updatedAt":"2026-07-26T14:41:55.577Z","version":1},{"id":"rej1_t","type":"text","x":640,"y":450,"width":160,"height":40,"strokeColor":"#1e1e1e","text":"Discarded\n(never written)","fontSize":14,"createdAt":"2026-07-26T14:41:55.577Z","updatedAt":"2026-07-26T14:41:55.577Z","version":1},{"id":"cls","type":"diamond","x":230,"y":930,"width":280,"height":120,"backgroundColor":"#ffd8a8","strokeColor":"#e8590c","fontSize":16,"createdAt":"2026-07-26T14:41:55.577Z","updatedAt":"2026-07-26T14:41:55.577Z","version":1},{"id":"cls_t","type":"text","x":270,"y":965,"width":200,"height":50,"strokeColor":"#1e1e1e","text":"Priority Classification\n(keyword-based, no LLM)","fontSize":14,"createdAt":"2026-07-26T14:41:55.577Z","updatedAt":"2026-07-26T14:41:55.577Z","version":1},{"id":"b1","type":"rectangle","x":20,"y":1130,"width":170,"height":80,"backgroundColor":"#99e9f2","strokeColor":"#0c8599","fontSize":14,"createdAt":"2026-07-26T14:41:55.577Z","updatedAt":"2026-07-26T14:41:55.577Z","version":1},{"id":"b1_t","type":"text","x":35,"y":1155,"width":140,"height":40,"strokeColor":"#1e1e1e","text":"Dossier:\n1 - AI & ML","fontSize":14,"createdAt":"2026-07-26T14:41:55.577Z","updatedAt":"2026-07-26T14:41:55.577Z","version":1},{"id":"b2","type":"rectangle","x":210,"y":1130,"width":170,"height":80,"backgroundColor":"#99e9f2","strokeColor":"#0c8599","fontSize":14,"createdAt":"2026-07-26T14:41:55.577Z","updatedAt":"2026-07-26T14:41:55.577Z","version":1},{"id":"b2_t","type":"text","x":225,"y":1155,"width":140,"height":40,"strokeColor":"#1e1e1e","text":"Dossier:\n2 - Fullstack","fontSize":14,"createdAt":"2026-07-26T14:41:55.577Z","updatedAt":"2026-07-26T14:41:55.577Z","version":1},{"id":"b3","type":"rectangle","x":400,"y":1130,"width":170,"height":80,"backgroundColor":"#99e9f2","strokeColor":"#0c8599","fontSize":14,"createdAt":"2026-07-26T14:41:55.577Z","updatedAt":"2026-07-26T14:41:55.577Z","version":1},{"id":"b3_t","type":"text","x":415,"y":1155,"width":140,"height":40,"strokeColor":"#1e1e1e","text":"Dossier:\n3 - CyS & Finance","fontSize":13,"createdAt":"2026-07-26T14:41:55.577Z","updatedAt":"2026-07-26T14:41:55.577Z","version":1},{"id":"b4","type":"rectangle","x":590,"y":1130,"width":170,"height":80,"backgroundColor":"#99e9f2","strokeColor":"#0c8599","fontSize":14,"createdAt":"2026-07-26T14:41:55.577Z","updatedAt":"2026-07-26T14:41:55.577Z","version":1},{"id":"b4_t","type":"text","x":630,"y":1155,"width":100,"height":40,"strokeColor":"#1e1e1e","text":"Dossier:\nOther","fontSize":14,"createdAt":"2026-07-26T14:41:55.577Z","updatedAt":"2026-07-26T14:41:55.577Z","version":1},{"id":"scr","type":"diamond","x":250,"y":1260,"width":260,"height":120,"backgroundColor":"#b2f2bb","strokeColor":"#2f9e44","fontSize":16,"createdAt":"2026-07-26T14:41:55.578Z","updatedAt":"2026-07-26T14:41:55.578Z","version":1},{"id":"scr_t","type":"text","x":280,"y":1295,"width":200,"height":50,"strokeColor":"#1e1e1e","text":"Screen: Fit Test\n(goal-push + personal fit)","fontSize":14,"createdAt":"2026-07-26T14:41:55.578Z","updatedAt":"2026-07-26T14:41:55.578Z","version":1},{"id":"rej2","type":"rectangle","x":620,"y":1280,"width":220,"height":90,"backgroundColor":"#ffc9c9","strokeColor":"#e03131","fontSize":14,"createdAt":"2026-07-26T14:41:55.578Z","updatedAt":"2026-07-26T14:41:55.578Z","version":1},{"id":"rej2_t","type":"text","x":635,"y":1300,"width":190,"height":50,"strokeColor":"#1e1e1e","text":"Fails fit test:\ndiscarded / stays a dossier","fontSize":13,"createdAt":"2026-07-26T14:41:55.578Z","updatedAt":"2026-07-26T14:41:55.578Z","version":1},{"id":"commit","type":"rectangle","x":220,"y":1440,"width":340,"height":90,"backgroundColor":"#eebefa","strokeColor":"#9c36b5","fontSize":15,"createdAt":"2026-07-26T14:41:55.578Z","updatedAt":"2026-07-26T14:41:55.578Z","version":1},{"id":"commit_t","type":"text","x":240,"y":1460,"width":300,"height":50,"strokeColor":"#1e1e1e","text":"Commit — /promote-dossier skill\n(manual consent required)","fontSize":14,"createdAt":"2026-07-26T14:41:55.578Z","updatedAt":"2026-07-26T14:41:55.578Z","version":1},{"id":"prog","type":"rectangle","x":20,"y":1600,"width":230,"height":90,"backgroundColor":"#eebefa","strokeColor":"#9c36b5","fontSize":14,"createdAt":"2026-07-26T14:41:55.578Z","updatedAt":"2026-07-26T14:41:55.578Z","version":1},{"id":"prog_t","type":"text","x":35,"y":1620,"width":200,"height":50,"strokeColor":"#1e1e1e","text":"Program note\n(Serious/ or Considering/)","fontSize":13,"createdAt":"2026-07-26T14:41:55.578Z","updatedAt":"2026-07-26T14:41:55.578Z","version":1},{"id":"cont","type":"rectangle","x":280,"y":1600,"width":230,"height":90,"backgroundColor":"#eebefa","strokeColor":"#9c36b5","fontSize":14,"createdAt":"2026-07-26T14:41:55.578Z","updatedAt":"2026-07-26T14:41:55.578Z","version":1},{"id":"cont_t","type":"text","x":300,"y":1625,"width":200,"height":50,"strokeColor":"#1e1e1e","text":"Contacts/Each One\nnote","fontSize":14,"createdAt":"2026-07-26T14:41:55.578Z","updatedAt":"2026-07-26T14:41:55.578Z","version":1},{"id":"trk","type":"rectangle","x":540,"y":1600,"width":230,"height":90,"backgroundColor":"#eebefa","strokeColor":"#9c36b5","fontSize":14,"createdAt":"2026-07-26T14:41:55.578Z","updatedAt":"2026-07-26T14:41:55.578Z","version":1},{"id":"trk_t","type":"text","x":555,"y":1620,"width":200,"height":50,"strokeColor":"#1e1e1e","text":"Tracker/Each One/\nCurrent note","fontSize":14,"createdAt":"2026-07-26T14:41:55.578Z","updatedAt":"2026-07-26T14:41:55.578Z","version":1},{"id":"reach","type":"rectangle","x":60,"y":1760,"width":260,"height":90,"backgroundColor":"#b2f2bb","strokeColor":"#2f9e44","fontSize":14,"createdAt":"2026-07-26T14:41:55.578Z","updatedAt":"2026-07-26T14:41:55.578Z","version":1},{"id":"reach_t","type":"text","x":80,"y":1780,"width":220,"height":50,"strokeColor":"#1e1e1e","text":"Reach Out\n(Ongoing / Come Back / Ended)","fontSize":13,"createdAt":"2026-07-26T14:41:55.578Z","updatedAt":"2026-07-26T14:41:55.578Z","version":1},{"id":"tail","type":"rectangle","x":400,"y":1760,"width":260,"height":90,"backgroundColor":"#b2f2bb","strokeColor":"#2f9e44","fontSize":14,"createdAt":"2026-07-26T14:41:55.578Z","updatedAt":"2026-07-26T14:41:55.578Z","version":1},{"id":"tail_t","type":"text","x":430,"y":1785,"width":200,"height":50,"strokeColor":"#1e1e1e","text":"Tailor\n(Resumes/Altered cut)","fontSize":14,"createdAt":"2026-07-26T14:41:55.578Z","updatedAt":"2026-07-26T14:41:55.578Z","version":1},{"id":"dd","type":"diamond","x":250,"y":1920,"width":260,"height":120,"backgroundColor":"#b2f2bb","strokeColor":"#2f9e44","fontSize":16,"createdAt":"2026-07-26T14:41:55.578Z","updatedAt":"2026-07-26T14:41:55.578Z","version":1},{"id":"dd_t","type":"text","x":300,"y":1960,"width":180,"height":50,"strokeColor":"#1e1e1e","text":"Ready to\nactually apply?","fontSize":14,"createdAt":"2026-07-26T14:41:55.578Z","updatedAt":"2026-07-26T14:41:55.579Z","version":1},{"id":"jc","type":"rectangle","x":250,"y":2100,"width":260,"height":90,"backgroundColor":"#b2f2bb","strokeColor":"#2f9e44","fontSize":14,"createdAt":"2026-07-26T14:41:55.579Z","updatedAt":"2026-07-26T14:41:55.579Z","version":1},{"id":"jc_t","type":"text","x":270,"y":2125,"width":220,"height":50,"strokeColor":"#1e1e1e","text":"Deep Dive: Job & Company\nnote (interview-prep grade)","fontSize":13,"createdAt":"2026-07-26T14:41:55.579Z","updatedAt":"2026-07-26T14:41:55.579Z","version":1},{"id":"apply","type":"rectangle","x":270,"y":2250,"width":220,"height":80,"backgroundColor":"#b2f2bb","strokeColor":"#2f9e44","fontSize":16,"createdAt":"2026-07-26T14:41:55.579Z","updatedAt":"2026-07-26T14:41:55.579Z","version":1},{"id":"apply_t","type":"text","x":330,"y":2280,"width":120,"height":30,"strokeColor":"#1e1e1e","text":"Apply: Submit","fontSize":15,"createdAt":"2026-07-26T14:41:55.579Z","updatedAt":"2026-07-26T14:41:55.579Z","version":1},{"id":"tra","type":"rectangle","x":20,"y":2390,"width":220,"height":90,"backgroundColor":"#b2f2bb","strokeColor":"#2f9e44","fontSize":13,"createdAt":"2026-07-26T14:41:55.579Z","updatedAt":"2026-07-26T14:41:55.579Z","version":1},{"id":"tra_t","type":"text","x":40,"y":2410,"width":190,"height":50,"strokeColor":"#1e1e1e","text":"Tracker note:\nCurrent/ → Applied/","fontSize":13,"createdAt":"2026-07-26T14:41:55.579Z","updatedAt":"2026-07-26T14:41:55.579Z","version":1},{"id":"pre","type":"rectangle","x":280,"y":2390,"width":220,"height":90,"backgroundColor":"#b2f2bb","strokeColor":"#2f9e44","fontSize":13,"createdAt":"2026-07-26T14:41:55.579Z","updatedAt":"2026-07-26T14:41:55.579Z","version":1},{"id":"pre_t","type":"text","x":295,"y":2405,"width":190,"height":60,"strokeColor":"#1e1e1e","text":"Program note moves to\nits own Ended/ subfolder","fontSize":13,"createdAt":"2026-07-26T14:41:55.579Z","updatedAt":"2026-07-26T14:41:55.579Z","version":1},{"id":"apn","type":"rectangle","x":540,"y":2390,"width":230,"height":90,"backgroundColor":"#b2f2bb","strokeColor":"#2f9e44","fontSize":13,"createdAt":"2026-07-26T14:41:55.579Z","updatedAt":"2026-07-26T14:41:55.579Z","version":1},{"id":"apn_t","type":"text","x":555,"y":2410,"width":200,"height":50,"strokeColor":"#1e1e1e","text":"Applying note created +\nApplying/Now.md entry","fontSize":13,"createdAt":"2026-07-26T14:41:55.579Z","updatedAt":"2026-07-26T14:41:55.579Z","version":1},{"id":"rej3","type":"rectangle","x":260,"y":2540,"width":260,"height":80,"backgroundColor":"#ffc9c9","strokeColor":"#e03131","fontSize":13,"createdAt":"2026-07-26T14:41:55.579Z","updatedAt":"2026-07-26T14:41:55.579Z","version":1},{"id":"rej3_t","type":"text","x":280,"y":2560,"width":220,"height":40,"strokeColor":"#1e1e1e","text":"No matching Applying note:\ndiscarded, never really applied","fontSize":12,"createdAt":"2026-07-26T14:41:55.580Z","updatedAt":"2026-07-26T14:41:55.580Z","version":1},{"id":"pp","type":"diamond","x":250,"y":2660,"width":260,"height":120,"backgroundColor":"#b2f2bb","strokeColor":"#2f9e44","fontSize":15,"createdAt":"2026-07-26T14:41:55.580Z","updatedAt":"2026-07-26T14:41:55.580Z","version":1},{"id":"pp_t","type":"text","x":290,"y":2700,"width":190,"height":50,"strokeColor":"#1e1e1e","text":"Screen or interview\nscheduled?","fontSize":14,"createdAt":"2026-07-26T14:41:55.580Z","updatedAt":"2026-07-26T14:41:55.580Z","version":1},{"id":"prep","type":"rectangle","x":560,"y":2680,"width":230,"height":80,"backgroundColor":"#b2f2bb","strokeColor":"#2f9e44","fontSize":14,"createdAt":"2026-07-26T14:41:55.580Z","updatedAt":"2026-07-26T14:41:55.580Z","version":1},{"id":"prep_t","type":"text","x":590,"y":2705,"width":180,"height":40,"strokeColor":"#1e1e1e","text":"Prep: Interviews/\nPrep note","fontSize":14,"createdAt":"2026-07-26T14:41:55.580Z","updatedAt":"2026-07-26T14:41:55.580Z","version":1},{"id":"out","type":"diamond","x":250,"y":2820,"width":260,"height":120,"backgroundColor":"#b2f2bb","strokeColor":"#2f9e44","fontSize":15,"createdAt":"2026-07-26T14:41:55.580Z","updatedAt":"2026-07-26T14:41:55.580Z","version":1},{"id":"out_t","type":"text","x":310,"y":2865,"width":150,"height":40,"strokeColor":"#1e1e1e","text":"Outcome\nlands","fontSize":15,"createdAt":"2026-07-26T14:41:55.580Z","updatedAt":"2026-07-26T14:41:55.580Z","version":1},{"id":"close","type":"rectangle","x":250,"y":2990,"width":280,"height":90,"backgroundColor":"#b2f2bb","strokeColor":"#2f9e44","fontSize":15,"createdAt":"2026-07-26T14:41:55.580Z","updatedAt":"2026-07-26T14:41:55.580Z","version":1},{"id":"close_t","type":"text","x":270,"y":3015,"width":240,"height":50,"strokeColor":"#1e1e1e","text":"Close: status set,\nTracker moves Applied/ → Result/","fontSize":13,"createdAt":"2026-07-26T14:41:55.580Z","updatedAt":"2026-07-26T14:41:55.580Z","version":1},{"id":"legend","type":"rectangle","x":900,"y":40,"width":360,"height":380,"backgroundColor":"#e9ecef","strokeColor":"#868e96","fontSize":16,"createdAt":"2026-07-26T14:41:55.581Z","updatedAt":"2026-07-26T14:41:55.581Z","version":1},{"id":"legend_t","type":"text","x":920,"y":55,"width":320,"height":350,"strokeColor":"#1e1e1e","text":"Legend\n\nBlue — fully automated (discovery)\nOrange — gate / decision point\nCyan — dossier, written by the loop\nPurple — tooling-assisted, manual consent\n(/promote-dossier skill)\nGreen — fully manual, no code involved\nRed — discarded, at any stage\n\nSee Internship Pipeline — Design\nRationale for the exact condition\nbehind every arrow.","fontSize":14,"createdAt":"2026-07-26T14:41:55.581Z","updatedAt":"2026-07-26T14:41:55.581Z","version":1}],"count":63}
+2026-07-26 20:11:55.586 [info] Batch elements created via MCP and synced to canvas {"count":63,"synced":true}
+2026-07-26 20:12:13.299 [info] Handling tool call: describe_scene
+2026-07-26 20:12:13.299 [info] Describing scene via MCP
+2026-07-26 20:12:50.532 [info] Handling tool call: batch_create_elements
+2026-07-26 20:12:50.536 [info] Batch creating elements via MCP {"count":9}
+2026-07-26 20:12:50.536 [debug] Syncing to canvas: batch_create {"url":"http://127.0.0.1:3000/api/elements/batch","data":[{"id":"a_src_g1","type":"arrow","x":0,"y":0,"strokeColor":"#1971c2","points":[[0,0],[100,0]],"start":{"id":"src"},"end":{"id":"g1"},"createdAt":"2026-07-26T14:42:50.536Z","updatedAt":"2026-07-26T14:42:50.536Z","version":1},{"id":"a_g1_g2","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"g1"},"end":{"id":"g2"},"createdAt":"2026-07-26T14:42:50.536Z","updatedAt":"2026-07-26T14:42:50.536Z","version":1,"label":{"text":"passes"}},{"id":"a_g2_g3","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"g2"},"end":{"id":"g3"},"createdAt":"2026-07-26T14:42:50.536Z","updatedAt":"2026-07-26T14:42:50.536Z","version":1,"label":{"text":"passes"}},{"id":"a_g3_g4","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"g3"},"end":{"id":"g4"},"createdAt":"2026-07-26T14:42:50.536Z","updatedAt":"2026-07-26T14:42:50.536Z","version":1,"label":{"text":"passes"}},{"id":"a_g4_cls","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"g4"},"end":{"id":"cls"},"createdAt":"2026-07-26T14:42:50.536Z","updatedAt":"2026-07-26T14:42:50.536Z","version":1,"label":{"text":"passes"}},{"id":"a_g1_rej","type":"arrow","x":0,"y":0,"strokeColor":"#e03131","points":[[0,0],[100,0]],"start":{"id":"g1"},"end":{"id":"rej1"},"createdAt":"2026-07-26T14:42:50.536Z","updatedAt":"2026-07-26T14:42:50.536Z","version":1,"label":{"text":"fails"}},{"id":"a_g2_rej","type":"arrow","x":0,"y":0,"strokeColor":"#e03131","points":[[0,0],[100,0]],"start":{"id":"g2"},"end":{"id":"rej1"},"createdAt":"2026-07-26T14:42:50.536Z","updatedAt":"2026-07-26T14:42:50.536Z","version":1,"label":{"text":"foreign signal"}},{"id":"a_g3_rej","type":"arrow","x":0,"y":0,"strokeColor":"#e03131","points":[[0,0],[100,0]],"start":{"id":"g3"},"end":{"id":"rej1"},"createdAt":"2026-07-26T14:42:50.536Z","updatedAt":"2026-07-26T14:42:50.536Z","version":1,"label":{"text":"citizenship/clearance"}},{"id":"a_g4_rej","type":"arrow","x":0,"y":0,"strokeColor":"#e03131","points":[[0,0],[100,0]],"start":{"id":"g4"},"end":{"id":"rej1"},"createdAt":"2026-07-26T14:42:50.536Z","updatedAt":"2026-07-26T14:42:50.536Z","version":1,"label":{"text":"non-software"}}]}
+2026-07-26 20:12:50.546 [debug] Canvas sync successful: batch_create {"success":true,"elements":[{"id":"a_src_g1","type":"arrow","x":349.9231390923153,"y":147.88497803850612,"strokeColor":"#1971c2","points":[[0,0],[10.040939860482183,58.57214918614565]],"start":{"id":"src"},"end":{"id":"g1"},"createdAt":"2026-07-26T14:42:50.540Z","updatedAt":"2026-07-26T14:42:50.540Z","version":1},{"id":"a_g1_g2","type":"arrow","x":370,"y":328,"strokeColor":"#1e1e1e","label":{"text":"passes"},"points":[[0,0],[0,54]],"start":{"id":"g1"},"end":{"id":"g2"},"createdAt":"2026-07-26T14:42:50.540Z","updatedAt":"2026-07-26T14:42:50.540Z","version":1},{"id":"a_g2_g3","type":"arrow","x":370,"y":508,"strokeColor":"#1e1e1e","label":{"text":"passes"},"points":[[0,0],[0,54]],"start":{"id":"g2"},"end":{"id":"g3"},"createdAt":"2026-07-26T14:42:50.540Z","updatedAt":"2026-07-26T14:42:50.540Z","version":1},{"id":"a_g3_g4","type":"arrow","x":370,"y":688,"strokeColor":"#1e1e1e","label":{"text":"passes"},"points":[[0,0],[0,54]],"start":{"id":"g3"},"end":{"id":"g4"},"createdAt":"2026-07-26T14:42:50.541Z","updatedAt":"2026-07-26T14:42:50.541Z","version":1},{"id":"a_g4_cls","type":"arrow","x":370,"y":868,"strokeColor":"#1e1e1e","label":{"text":"passes"},"points":[[0,0],[0,54]],"start":{"id":"g4"},"end":{"id":"cls"},"createdAt":"2026-07-26T14:42:50.541Z","updatedAt":"2026-07-26T14:42:50.541Z","version":1},{"id":"a_g1_rej","type":"arrow","x":427.56096162571606,"y":298.7142775236337,"strokeColor":"#e03131","label":{"text":"fails"},"points":[[0,0],[217.24328855858056,127.24249758431154]],"start":{"id":"g1"},"end":{"id":"rej1"},"createdAt":"2026-07-26T14:42:50.541Z","updatedAt":"2026-07-26T14:42:50.541Z","version":1},{"id":"a_g2_rej","type":"arrow","x":474.2296695986459,"y":452.4449763999033,"strokeColor":"#e03131","label":{"text":"foreign signal"},"points":[[0,0],[137.79066080270826,9.842190057336268]],"start":{"id":"g2"},"end":{"id":"rej1"},"createdAt":"2026-07-26T14:42:50.541Z","updatedAt":"2026-07-26T14:42:50.541Z","version":1},{"id":"a_g3_rej","type":"arrow","x":435.6481284505058,"y":595.9272574004902,"strokeColor":"#e03131","label":{"text":"citizenship/clearance"},"points":[[0,0],[186.7144957871604,-82.68784813431387]],"start":{"id":"g3"},"end":{"id":"rej1"},"createdAt":"2026-07-26T14:42:50.541Z","updatedAt":"2026-07-26T14:42:50.541Z","version":1},{"id":"a_g4_rej","type":"arrow","x":413.52443953772166,"y":763.3408935853236,"strokeColor":"#e03131","label":{"text":"non-software"},"points":[[0,0],[258.905174187653,-247.80923815103927]],"start":{"id":"g4"},"end":{"id":"rej1"},"createdAt":"2026-07-26T14:42:50.541Z","updatedAt":"2026-07-26T14:42:50.541Z","version":1}],"count":9}
+2026-07-26 20:12:50.546 [info] Batch elements created via MCP and synced to canvas {"count":9,"synced":true}
+2026-07-26 20:13:14.969 [info] Handling tool call: batch_create_elements
+2026-07-26 20:13:14.971 [info] Batch creating elements via MCP {"count":15}
+2026-07-26 20:13:14.973 [debug] Syncing to canvas: batch_create {"url":"http://127.0.0.1:3000/api/elements/batch","data":[{"id":"a_cls_b1","type":"arrow","x":0,"y":0,"strokeColor":"#0c8599","points":[[0,0],[100,0]],"start":{"id":"cls"},"end":{"id":"b1"},"createdAt":"2026-07-26T14:43:14.971Z","updatedAt":"2026-07-26T14:43:14.971Z","version":1,"label":{"text":"AI/ML signal"}},{"id":"a_cls_b2","type":"arrow","x":0,"y":0,"strokeColor":"#0c8599","points":[[0,0],[100,0]],"start":{"id":"cls"},"end":{"id":"b2"},"createdAt":"2026-07-26T14:43:14.971Z","updatedAt":"2026-07-26T14:43:14.972Z","version":1,"label":{"text":"Fullstack signal"}},{"id":"a_cls_b3","type":"arrow","x":0,"y":0,"strokeColor":"#0c8599","points":[[0,0],[100,0]],"start":{"id":"cls"},"end":{"id":"b3"},"createdAt":"2026-07-26T14:43:14.972Z","updatedAt":"2026-07-26T14:43:14.972Z","version":1,"label":{"text":"Finance/security signal"}},{"id":"a_cls_b4","type":"arrow","x":0,"y":0,"strokeColor":"#0c8599","points":[[0,0],[100,0]],"start":{"id":"cls"},"end":{"id":"b4"},"createdAt":"2026-07-26T14:43:14.972Z","updatedAt":"2026-07-26T14:43:14.972Z","version":1,"label":{"text":"no niche signal"}},{"id":"a_b1_scr","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"b1"},"end":{"id":"scr"},"createdAt":"2026-07-26T14:43:14.972Z","updatedAt":"2026-07-26T14:43:14.972Z","version":1},{"id":"a_b2_scr","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"b2"},"end":{"id":"scr"},"createdAt":"2026-07-26T14:43:14.972Z","updatedAt":"2026-07-26T14:43:14.972Z","version":1},{"id":"a_b3_scr","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"b3"},"end":{"id":"scr"},"createdAt":"2026-07-26T14:43:14.972Z","updatedAt":"2026-07-26T14:43:14.972Z","version":1},{"id":"a_b4_scr","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"b4"},"end":{"id":"scr"},"createdAt":"2026-07-26T14:43:14.972Z","updatedAt":"2026-07-26T14:43:14.972Z","version":1},{"id":"a_scr_rej2","type":"arrow","x":0,"y":0,"strokeColor":"#e03131","points":[[0,0],[100,0]],"start":{"id":"scr"},"end":{"id":"rej2"},"createdAt":"2026-07-26T14:43:14.972Z","updatedAt":"2026-07-26T14:43:14.972Z","version":1,"label":{"text":"fails"}},{"id":"a_scr_commit","type":"arrow","x":0,"y":0,"strokeColor":"#2f9e44","points":[[0,0],[100,0]],"start":{"id":"scr"},"end":{"id":"commit"},"createdAt":"2026-07-26T14:43:14.972Z","updatedAt":"2026-07-26T14:43:14.972Z","version":1,"label":{"text":"passes"}},{"id":"a_commit_prog","type":"arrow","x":0,"y":0,"strokeColor":"#9c36b5","points":[[0,0],[100,0]],"start":{"id":"commit"},"end":{"id":"prog"},"createdAt":"2026-07-26T14:43:14.972Z","updatedAt":"2026-07-26T14:43:14.972Z","version":1},{"id":"a_commit_cont","type":"arrow","x":0,"y":0,"strokeColor":"#9c36b5","points":[[0,0],[100,0]],"start":{"id":"commit"},"end":{"id":"cont"},"createdAt":"2026-07-26T14:43:14.972Z","updatedAt":"2026-07-26T14:43:14.972Z","version":1},{"id":"a_commit_trk","type":"arrow","x":0,"y":0,"strokeColor":"#9c36b5","points":[[0,0],[100,0]],"start":{"id":"commit"},"end":{"id":"trk"},"createdAt":"2026-07-26T14:43:14.973Z","updatedAt":"2026-07-26T14:43:14.973Z","version":1},{"id":"a_prog_reach","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"prog"},"end":{"id":"reach"},"createdAt":"2026-07-26T14:43:14.973Z","updatedAt":"2026-07-26T14:43:14.973Z","version":1},{"id":"a_prog_tail","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"prog"},"end":{"id":"tail"},"createdAt":"2026-07-26T14:43:14.973Z","updatedAt":"2026-07-26T14:43:14.973Z","version":1}]}
+2026-07-26 20:13:14.987 [debug] Canvas sync successful: batch_create {"success":true,"elements":[{"id":"a_cls_b1","type":"arrow","x":309.221682528194,"y":1031.2833854525475,"strokeColor":"#0c8599","label":{"text":"AI/ML signal"},"points":[[0,0],[-138.7150601091049,94.22155026278824]],"start":{"id":"cls"},"end":{"id":"b1"},"createdAt":"2026-07-26T14:43:14.983Z","updatedAt":"2026-07-26T14:43:14.983Z","version":1},{"id":"a_cls_b2","type":"arrow","x":345.7109557109557,"y":1048.2937062937065,"strokeColor":"#0c8599","label":{"text":"Fullstack signal"},"points":[[0,0],[-30.967365967365936,74.32167832167806]],"start":{"id":"cls"},"end":{"id":"b2"},"createdAt":"2026-07-26T14:43:14.983Z","updatedAt":"2026-07-26T14:43:14.983Z","version":1},{"id":"a_cls_b3","type":"arrow","x":404.4005721607428,"y":1043.8443738168148,"strokeColor":"#0c8599","label":{"text":"Finance/security signal"},"points":[[0,0],[50.73675806688408,79.41405610468814]],"start":{"id":"cls"},"end":{"id":"b3"},"createdAt":"2026-07-26T14:43:14.983Z","updatedAt":"2026-07-26T14:43:14.983Z","version":1},{"id":"a_cls_b4","type":"arrow","x":435.7862114256957,"y":1028.8246493659842,"strokeColor":"#0c8599","label":{"text":"no niche signal"},"points":[[0,0],[164.5463510949687,97.10932195768669]],"start":{"id":"cls"},"end":{"id":"b4"},"createdAt":"2026-07-26T14:43:14.983Z","updatedAt":"2026-07-26T14:43:14.983Z","version":1},{"id":"a_b1_scr","type":"arrow","x":185.3564979166484,"y":1213.8308170454445,"strokeColor":"#1e1e1e","points":[[0,0],[128.0370041667032,69.83836590911096]],"start":{"id":"b1"},"end":{"id":"scr"},"createdAt":"2026-07-26T14:43:14.983Z","updatedAt":"2026-07-26T14:43:14.983Z","version":1},{"id":"a_b2_scr","type":"arrow","x":321.6107672425137,"y":1216.960177486789,"strokeColor":"#1e1e1e","points":[[0,0],[27.49391266944417,48.518669416665944]],"start":{"id":"b2"},"end":{"id":"scr"},"createdAt":"2026-07-26T14:43:14.983Z","updatedAt":"2026-07-26T14:43:14.983Z","version":1},{"id":"a_b3_scr","type":"arrow","x":452.4123012450934,"y":1216.5538553641522,"strokeColor":"#1e1e1e","points":[[0,0],[-36.08041644367512,51.54345206239327]],"start":{"id":"b3"},"end":{"id":"scr"},"createdAt":"2026-07-26T14:43:14.983Z","updatedAt":"2026-07-26T14:43:14.983Z","version":1},{"id":"a_b4_scr","type":"arrow","x":589.2022522916789,"y":1213.6259734110108,"strokeColor":"#1e1e1e","points":[[0,0],[-140.21633254034697,71.29644027475251]],"start":{"id":"b4"},"end":{"id":"scr"},"createdAt":"2026-07-26T14:43:14.983Z","updatedAt":"2026-07-26T14:43:14.983Z","version":1},{"id":"a_scr_rej2","type":"arrow","x":514.0961814889273,"y":1321.9156597355561,"strokeColor":"#e03131","label":{"text":"fails"},"points":[[0,0],[97.90463471267662,1.3986376387524615]],"start":{"id":"scr"},"end":{"id":"rej2"},"createdAt":"2026-07-26T14:43:14.983Z","updatedAt":"2026-07-26T14:43:14.983Z","version":1},{"id":"a_scr_commit","type":"arrow","x":384.0213754492015,"y":1386.352694911825,"strokeColor":"#2f9e44","label":{"text":"passes"},"points":[[0,0],[2.76739134031061,45.66195711512546]],"start":{"id":"scr"},"end":{"id":"commit"},"createdAt":"2026-07-26T14:43:14.983Z","updatedAt":"2026-07-26T14:43:14.983Z","version":1},{"id":"a_commit_prog","type":"arrow","x":311.50473884393483,"y":1534.2519285685114,"strokeColor":"#9c36b5","points":[[0,0],[-98.00947768786966,61.496142862977194]],"start":{"id":"commit"},"end":{"id":"prog"},"createdAt":"2026-07-26T14:43:14.983Z","updatedAt":"2026-07-26T14:43:14.983Z","version":1},{"id":"a_commit_cont","type":"arrow","x":391.65612801902176,"y":1537.9960966086967,"strokeColor":"#9c36b5","points":[[0,0],[1.6877439619564711,54.00780678260662]],"start":{"id":"commit"},"end":{"id":"cont"},"createdAt":"2026-07-26T14:43:14.983Z","updatedAt":"2026-07-26T14:43:14.983Z","version":1},{"id":"a_commit_trk","type":"arrow","x":471.3797655621994,"y":1534.1349527922714,"strokeColor":"#9c36b5","points":[[0,0],[102.24046887560121,61.73009441545719]],"start":{"id":"commit"},"end":{"id":"trk"},"createdAt":"2026-07-26T14:43:14.983Z","updatedAt":"2026-07-26T14:43:14.983Z","version":1},{"id":"a_prog_reach","type":"arrow","x":153.0693881480884,"y":1697.565492794439,"strokeColor":"#1e1e1e","points":[[0,0],[18.861223703823214,54.86901441112195]],"start":{"id":"prog"},"end":{"id":"reach"},"createdAt":"2026-07-26T14:43:14.983Z","updatedAt":"2026-07-26T14:43:14.983Z","version":1},{"id":"a_prog_tail","type":"arrow","x":253.50854705834084,"y":1693.0034620995812,"strokeColor":"#1e1e1e","points":[[0,0],[157.98290588331835,63.99307580083769]],"start":{"id":"prog"},"end":{"id":"tail"},"createdAt":"2026-07-26T14:43:14.984Z","updatedAt":"2026-07-26T14:43:14.984Z","version":1}],"count":15}
+2026-07-26 20:13:14.988 [info] Batch elements created via MCP and synced to canvas {"count":15,"synced":true}
+2026-07-26 20:13:36.973 [info] Handling tool call: batch_create_elements
+2026-07-26 20:13:36.974 [info] Batch creating elements via MCP {"count":15}
+2026-07-26 20:13:36.977 [debug] Syncing to canvas: batch_create {"url":"http://127.0.0.1:3000/api/elements/batch","data":[{"id":"a_reach_dd","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"reach"},"end":{"id":"dd"},"createdAt":"2026-07-26T14:43:36.974Z","updatedAt":"2026-07-26T14:43:36.976Z","version":1},{"id":"a_tail_dd","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"tail"},"end":{"id":"dd"},"createdAt":"2026-07-26T14:43:36.976Z","updatedAt":"2026-07-26T14:43:36.976Z","version":1},{"id":"a_dd_reach","type":"arrow","x":0,"y":0,"strokeColor":"#868e96","points":[[0,0],[100,0]],"start":{"id":"dd"},"end":{"id":"reach"},"createdAt":"2026-07-26T14:43:36.976Z","updatedAt":"2026-07-26T14:43:36.976Z","version":1,"label":{"text":"not yet"}},{"id":"a_dd_jc","type":"arrow","x":0,"y":0,"strokeColor":"#2f9e44","points":[[0,0],[100,0]],"start":{"id":"dd"},"end":{"id":"jc"},"createdAt":"2026-07-26T14:43:36.976Z","updatedAt":"2026-07-26T14:43:36.976Z","version":1,"label":{"text":"ready"}},{"id":"a_jc_apply","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"jc"},"end":{"id":"apply"},"createdAt":"2026-07-26T14:43:36.976Z","updatedAt":"2026-07-26T14:43:36.976Z","version":1},{"id":"a_apply_tra","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"apply"},"end":{"id":"tra"},"createdAt":"2026-07-26T14:43:36.976Z","updatedAt":"2026-07-26T14:43:36.976Z","version":1},{"id":"a_apply_pre","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"apply"},"end":{"id":"pre"},"createdAt":"2026-07-26T14:43:36.976Z","updatedAt":"2026-07-26T14:43:36.976Z","version":1},{"id":"a_apply_apn","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"apply"},"end":{"id":"apn"},"createdAt":"2026-07-26T14:43:36.976Z","updatedAt":"2026-07-26T14:43:36.976Z","version":1},{"id":"a_pre_rej3","type":"arrow","x":0,"y":0,"strokeColor":"#e03131","points":[[0,0],[100,0]],"start":{"id":"pre"},"end":{"id":"rej3"},"createdAt":"2026-07-26T14:43:36.976Z","updatedAt":"2026-07-26T14:43:36.976Z","version":1,"label":{"text":"no Applying note"}},{"id":"a_tra_pp","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"tra"},"end":{"id":"pp"},"createdAt":"2026-07-26T14:43:36.976Z","updatedAt":"2026-07-26T14:43:36.976Z","version":1},{"id":"a_apn_pp","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"apn"},"end":{"id":"pp"},"createdAt":"2026-07-26T14:43:36.976Z","updatedAt":"2026-07-26T14:43:36.976Z","version":1},{"id":"a_pp_prep","type":"arrow","x":0,"y":0,"strokeColor":"#2f9e44","points":[[0,0],[100,0]],"start":{"id":"pp"},"end":{"id":"prep"},"createdAt":"2026-07-26T14:43:36.976Z","updatedAt":"2026-07-26T14:43:36.976Z","version":1,"label":{"text":"yes"}},{"id":"a_pp_out","type":"arrow","x":0,"y":0,"strokeColor":"#868e96","points":[[0,0],[100,0]],"start":{"id":"pp"},"end":{"id":"out"},"createdAt":"2026-07-26T14:43:36.976Z","updatedAt":"2026-07-26T14:43:36.976Z","version":1,"label":{"text":"not yet"}},{"id":"a_prep_out","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"prep"},"end":{"id":"out"},"createdAt":"2026-07-26T14:43:36.976Z","updatedAt":"2026-07-26T14:43:36.976Z","version":1},{"id":"a_out_close","type":"arrow","x":0,"y":0,"strokeColor":"#1e1e1e","points":[[0,0],[100,0]],"start":{"id":"out"},"end":{"id":"close"},"createdAt":"2026-07-26T14:43:36.976Z","updatedAt":"2026-07-26T14:43:36.976Z","version":1,"label":{"text":"offer/rejected/withdrawn"}}]}
+2026-07-26 20:13:37.000 [debug] Canvas sync successful: batch_create {"success":true,"elements":[{"id":"a_reach_dd","type":"arrow","x":244.74150369841556,"y":1855.4198060380143,"strokeColor":"#1e1e1e","points":[[0,0],[85.97735654376709,79.18967050083825]],"start":{"id":"reach"},"end":{"id":"dd"},"createdAt":"2026-07-26T14:43:36.994Z","updatedAt":"2026-07-26T14:43:36.994Z","version":1},{"id":"a_tail_dd","type":"arrow","x":486.2222404409237,"y":1856.0740528189224,"strokeColor":"#1e1e1e","points":[[0,0],[-64.16551575248855,74.85976837790326]],"start":{"id":"tail"},"end":{"id":"dd"},"createdAt":"2026-07-26T14:43:36.994Z","updatedAt":"2026-07-26T14:43:36.994Z","version":1},{"id":"a_dd_reach","type":"arrow","x":330.71886024218264,"y":1934.6094765388525,"strokeColor":"#868e96","label":{"text":"not yet"},"points":[[0,0],[-85.97735654376709,-79.18967050083825]],"start":{"id":"dd"},"end":{"id":"reach"},"createdAt":"2026-07-26T14:43:36.994Z","updatedAt":"2026-07-26T14:43:36.994Z","version":1},{"id":"a_dd_jc","type":"arrow","x":380,"y":2048,"strokeColor":"#2f9e44","label":{"text":"ready"},"points":[[0,0],[0,44]],"start":{"id":"dd"},"end":{"id":"jc"},"createdAt":"2026-07-26T14:43:36.994Z","updatedAt":"2026-07-26T14:43:36.994Z","version":1},{"id":"a_jc_apply","type":"arrow","x":380,"y":2198,"strokeColor":"#1e1e1e","points":[[0,0],[0,44]],"start":{"id":"jc"},"end":{"id":"apply"},"createdAt":"2026-07-26T14:43:36.994Z","updatedAt":"2026-07-26T14:43:36.994Z","version":1},{"id":"a_apply_tra","type":"arrow","x":304.1142332445262,"y":2334.0137447181746,"strokeColor":"#1e1e1e","points":[[0,0],[-89.60777683388002,51.97251056365076]],"start":{"id":"apply"},"end":{"id":"tra"},"createdAt":"2026-07-26T14:43:36.994Z","updatedAt":"2026-07-26T14:43:36.994Z","version":1},{"id":"a_apply_pre","type":"arrow","x":383.30903742257817,"y":2337.981042627384,"strokeColor":"#1e1e1e","points":[[0,0],[3.0370975686367387,44.03791474523223]],"start":{"id":"apply"},"end":{"id":"pre"},"createdAt":"2026-07-26T14:43:36.994Z","updatedAt":"2026-07-26T14:43:36.994Z","version":1},{"id":"a_apply_apn","type":"arrow","x":462.9386217693996,"y":2333.7312732965925,"strokeColor":"#1e1e1e","points":[[0,0],[99.63999784051117,52.537453406815075]],"start":{"id":"apply"},"end":{"id":"apn"},"createdAt":"2026-07-26T14:43:36.994Z","updatedAt":"2026-07-26T14:43:36.994Z","version":1},{"id":"a_pre_rej3","type":"arrow","x":390,"y":2488,"strokeColor":"#e03131","label":{"text":"no Applying note"},"points":[[0,0],[0,44]],"start":{"id":"pre"},"end":{"id":"rej3"},"createdAt":"2026-07-26T14:43:36.994Z","updatedAt":"2026-07-26T14:43:36.994Z","version":1},{"id":"a_tra_pp","type":"arrow","x":174.7491867569914,"y":2486.0140729029704,"strokeColor":"#1e1e1e","points":[[0,0],[162.51133375129857,185.26292047647985]],"start":{"id":"tra"},"end":{"id":"pp"},"createdAt":"2026-07-26T14:43:36.994Z","updatedAt":"2026-07-26T14:43:36.994Z","version":1},{"id":"a_apn_pp","type":"arrow","x":606.0239939777563,"y":2485.7569516957797,"strokeColor":"#1e1e1e","points":[[0,0],[-180.4130181781279,186.97349156642395]],"start":{"id":"apn"},"end":{"id":"pp"},"createdAt":"2026-07-26T14:43:36.994Z","updatedAt":"2026-07-26T14:43:36.994Z","version":1},{"id":"a_pp_prep","type":"arrow","x":518,"y":2720,"strokeColor":"#2f9e44","label":{"text":"yes"},"points":[[0,0],[34,0]],"start":{"id":"pp"},"end":{"id":"prep"},"createdAt":"2026-07-26T14:43:36.994Z","updatedAt":"2026-07-26T14:43:36.994Z","version":1},{"id":"a_pp_out","type":"arrow","x":380,"y":2788,"strokeColor":"#868e96","label":{"text":"not yet"},"points":[[0,0],[0,24]],"start":{"id":"pp"},"end":{"id":"out"},"createdAt":"2026-07-26T14:43:36.994Z","updatedAt":"2026-07-26T14:43:36.994Z","version":1},{"id":"a_prep_out","type":"arrow","x":594.2177451544262,"y":2763.814104323023,"strokeColor":"#1e1e1e","points":[[0,0],[-147.4192565426186,79.95620693836963]],"start":{"id":"prep"},"end":{"id":"out"},"createdAt":"2026-07-26T14:43:36.994Z","updatedAt":"2026-07-26T14:43:36.994Z","version":1},{"id":"a_out_close","type":"arrow","x":384.27409436856203,"y":2946.2484627127114,"strokeColor":"#1e1e1e","label":{"text":"offer/rejected/withdrawn"},"points":[[0,0],[2.3076216010026656,35.76813481554109]],"start":{"id":"out"},"end":{"id":"close"},"createdAt":"2026-07-26T14:43:36.994Z","updatedAt":"2026-07-26T14:43:36.994Z","version":1}],"count":15}
+2026-07-26 20:13:37.000 [info] Batch elements created via MCP and synced to canvas {"count":15,"synced":true}
+2026-07-26 20:13:53.857 [info] Handling tool call: describe_scene
+2026-07-26 20:13:53.858 [info] Describing scene via MCP
+2026-07-26 20:14:12.121 [info] Handling tool call: export_scene
+2026-07-26 20:14:12.122 [info] Exporting scene via MCP

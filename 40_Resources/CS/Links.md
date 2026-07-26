@@ -6,7 +6,7 @@ tags:
   - evergreen
 notes:
   - "[[Useful Links]]"
-  - "[[Random]]"
+  - "[[40_Resources/Random]]"
   - "[[10_UMN/Links|Links]]"
 ---
 # Applications to use

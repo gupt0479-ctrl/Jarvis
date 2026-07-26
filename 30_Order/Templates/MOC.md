@@ -5,7 +5,7 @@ created: 2025-12-26
 tags:
   - evergreen
 notes:
-  - "[[Random]]"
+  - "[[40_Resources/Random]]"
 ---
 # Dashboards
 [[40_Resources/Obsidian/Data View's/Inbox Dashboard]]

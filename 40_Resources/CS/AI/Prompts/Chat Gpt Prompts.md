@@ -7,7 +7,7 @@ source_url: use gpt for obsidian
 related_progress: []
 tags:
   - input
-next: "[[Random]]"
+next: "[[40_Resources/Random]]"
 ---
 # How to prompt
 When people talk about “guard rails” for prompting, they usually mean practices that keep interactions with large language models reliable, consistent, and safe from drift, hallucination, or misinterpretation. Think of them as scaffolding for your conversations.

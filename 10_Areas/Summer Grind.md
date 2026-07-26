@@ -45,7 +45,7 @@ This summer is not a list of outcomes. [[Atomic Habits]] instead of motivation. 
 	*System*: Phone becomes a capture, communication, maps, photos, and reading device. It should not be the default dopamine machine.
 	- **Obvious:** put reading, calendar, tasks, camera, and notes on the first screen. Hide or friction-add procrastination apps.
 9. **Automations**: Zapier, gmail,
-	*System*: Automations are useful only when they remove repeated friction. Use [[AI Workflow#Automation Workflows (Make/Zapier/n8n)]], [[Random]], Gmail, Zapier, and future n8n/Make experiments.
+	*System*: Automations are useful only when they remove repeated friction. Use [[AI Workflow#Automation Workflows (Make/Zapier/n8n)]], [[40_Resources/Random]], Gmail, Zapier, and future n8n/Make experiments.
 #### Internship & Jobs
 *Identity*: I am a student engineer who creates proof, applies consistently, and explains work clearly. This connects [[Mentor Meeting - Hackathons, Summer, and Networking]], [[Companies giving OPT & CPT]], [[Interview Questions]], [[Elevator pitch]], [[Portfolio]], [[Freelancing]], and [[Useful Links]].
 1. **TA**: CSCI 4041, 2041, 1133,

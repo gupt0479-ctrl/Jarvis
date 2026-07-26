@@ -47,7 +47,7 @@ tags:
 ---
 # Software Engineering Intern, MS, Summer 2027
 Found 2026-07-26 via Freehire.
-> [!NOTE] AI/ML: matched on "Machine Learning".
+> [!NOTE] Fullstack: reclassified by hand 2026-07-26 — the live classifier's "Machine Learning" match came from an unrelated job title on a contaminated search-results page (Google's careers site returned a job-listing page instead of this posting's detail page; see the flagged content-extraction bug). No real AI/ML signal in the actual posting; filed as a general Google SWE intern role pending a clean re-fetch.
 ## Posting (fetched 2026-07-26)
 # job details
 _arrow\_back_ [Back to jobs search](https://www.google.com/about/careers/applications/jobs/results)

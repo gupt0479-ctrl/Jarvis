@@ -8,7 +8,7 @@ related_progress:
   - "[[Projects Board]]"
 tags:
   - input
-next: "[[Random]]"
+next: "[[40_Resources/Random]]"
 ---
 # The Basics
 ## Book

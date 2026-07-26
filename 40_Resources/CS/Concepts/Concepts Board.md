@@ -8,7 +8,7 @@ tags:
 notes:
   - "[[Repos]]"
   - "[[40_Resources/CS/Links|Links]]"
-next: "[[Random]]"
+next: "[[40_Resources/Random]]"
 ---
 # Concepts Board
 ## Core Claim
