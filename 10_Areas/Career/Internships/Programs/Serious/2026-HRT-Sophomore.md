@@ -197,7 +197,7 @@ Application status, dates, and next action live on the paired Applying note, not
 
 ## 🔗 Related Resources
 
-- [[Internship Tracking Dashboard — 2027 Calendar, Programs, & Application Pipeline]] — Master dashboard
+- [[10_Areas/Career/Internships/Tracker/Internship - Dashboard|Internship Tracker Dashboard]] — Master dashboard
 - [[MIT Quant Bible (PDF)]] — Probability & stats foundation
 - [[Quant Foundations (PDF)]] — Interview prep
 - [[How to Pivot into an AI-ML Engineering Role in 2026 (PDF)]] — Career path context

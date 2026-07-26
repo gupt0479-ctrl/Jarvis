@@ -1,6 +1,30 @@
 {
   "recentFiles": [
     {
+      "basename": "Phases Run",
+      "path": "20_Progress/Internship/Building System/Phases Run.md"
+    },
+    {
+      "basename": "Research Loop - Implementation Plan",
+      "path": "20_Progress/Internship/Building System/Research Loop - Implementation Plan.md"
+    },
+    {
+      "basename": "Research Loop - Improvement Plan",
+      "path": "20_Progress/Internship/Building System/Research Loop - Improvement Plan.md"
+    },
+    {
+      "basename": "Research Loop - Source of Truth",
+      "path": "20_Progress/Internship/Building System/Research Loop - Source of Truth.md"
+    },
+    {
+      "basename": "Research Loop - Phase 7 Coverage Expansion",
+      "path": "20_Progress/Internship/Building System/Research Loop - Phase 7 Coverage Expansion.md"
+    },
+    {
+      "basename": "System - Build Log",
+      "path": "20_Progress/Internship/Building System/System - Build Log.md"
+    },
+    {
       "basename": "Software Engineer - Ellipsis Labs",
       "path": "10_Areas/Career/Internships/List/Dossiers/Software Engineer - Ellipsis Labs.md"
     },
@@ -101,18 +125,6 @@
       "path": "60_Claude/05_Clippings/Web/Internships/2027 Software Engineering Internship, Uber Career Prep, San Francisco, United States.md"
     },
     {
-      "basename": "Research Loop - Implementation Plan",
-      "path": "20_Progress/Internship/Building System/Research Loop - Implementation Plan.md"
-    },
-    {
-      "basename": "Phases Run",
-      "path": "20_Progress/Internship/Building System/Phases Run.md"
-    },
-    {
-      "basename": "Research Loop - Improvement Plan",
-      "path": "20_Progress/Internship/Building System/Research Loop - Improvement Plan.md"
-    },
-    {
       "basename": "Practice Quiz - 3",
       "path": "20_Progress/Degree/MATH 2230/Quiz/Practice Quiz - 3.md"
     },
@@ -139,14 +151,6 @@
     {
       "basename": "Internship Pipeline",
       "path": "30_Order/Workflows/Internship Pipeline.md"
-    },
-    {
-      "basename": "Research Loop - Source of Truth",
-      "path": "20_Progress/Internship/Building System/Research Loop - Source of Truth.md"
-    },
-    {
-      "basename": "System - Build Log",
-      "path": "20_Progress/Internship/Building System/System - Build Log.md"
     },
     {
       "basename": "Memory Layer Meeting Prep — 2026-07-20",
@@ -195,10 +199,6 @@
     {
       "basename": "jose-gael-cruz-lopez-a5babccb-68a7-4773-95dc-188531f310c3",
       "path": "10_Areas/Career/Internships/List/Dossiers/jose-gael-cruz-lopez-a5babccb-68a7-4773-95dc-188531f310c3.md"
-    },
-    {
-      "basename": "jose-gael-cruz-lopez-85251e89-7a65-48a7-a587-aeac3d6594eb",
-      "path": "10_Areas/Career/Internships/List/Dossiers/jose-gael-cruz-lopez-85251e89-7a65-48a7-a587-aeac3d6594eb.md"
     }
   ],
   "omittedPaths": [],
