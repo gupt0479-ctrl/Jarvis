@@ -1,0 +1,60 @@
+---
+company: 'Optiver '
+title: FPGA Engineer Intern (Summer 2027 - Austin)
+url: https://www.optiver.com/join-us/jobs/8641352002/?gh_jid=8641352002
+source: Greenhouse
+terms: []
+locations:
+  - Austin, Texas, United States
+target_year: []
+date_posted: '2026-07-21'
+date_found: '2026-07-25'
+matched_reason: matched
+status: unreviewed
+next:
+tags:
+  - internship
+  - auto-discovered
+---
+# FPGA Engineer Intern (Summer 2027 - Austin)
+Found 2026-07-25 via Greenhouse.
+> [!NOTE] CyS & Finance: matched on "Optiver FPGA Engineer Intern (Austin)".
+## Posting (fetched 2026-07-25)
+# FPGA Engineer Intern (Summer 2027 - Austin)
+As an FPGA Engineer Intern, you’ll work side-by-side with your mentor and teammates to build real-world applications that power a global trading firm. Your projects will be scoped based on your team’s real needs — not hypothetical tasks — and your mentor will be fully invested in helping you build high-quality solutions designed to last. You’ll contribute to meaningful projects focusing on nanosecond response times, highly parallelized algorithms, and customized low-level networking.
+Optiver is building with cutting edge AI technology in the most competitive, data rich landscapes in the world: financial markets. That means no two days are the same, and every day brings new, exciting technical challenges to solve.
+This opportunity is also available in our Chicago office —
+**What you’ll do:**
+Our internship is designed for fast thinkers with a critical mindset and a drive to solve tough problems. You’ll experience what it’s like to be a full-time engineer at a leading trading firm – working on projects that blend cutting-edge FPGA technology with real-world trading strategies, directly contributing to the efficiency and performance of our trading systems. Mentored by Optiver engineers, our program gives you the opportunity to:
+- Accelerate network infrastructure and trading system components with high-speed hardware designs.
+- Research new low-latency techniques and platforms and identify opportunities for integration with our trading system.
+- Collaborate in a multidisciplinary team of traders, software developers, and infrastructure engineers.
+- Leverage the best hardware available or build in-house versions to ensure our FPGAs can interface with cutting-edge server hardware.
+**What you’ll get:**
+You’ll join a culture of collaboration and excellence, surrounded by curious thinkers and creative problem-solvers. Motivated by a passion for continuous improvement, you’ll thrive in a supportive, high-performing environment alongside talented colleagues, collectively tackling some of the toughest challenges in the financial markets.
+In addition, you’ll receive:
+- The opportunity to work alongside best-in-class professionals from over 40 different countries
+- A highly-competitive internship compensation package
+- Optiver-covered flights, living accommodations, and commuting stipends
+- Extensive office perks, including breakfast, lunch and snacks, regular social events, clubs, sporting leagues and more
+**Who you are:**
+- A student pursuing a bachelor’s, master’s, or PhD in Computer Engineering, Electrical Engineering, or another related field
+- On track to graduate between December 2027 to June 2028, with junior standing or higher
+- A student with strong engineering instincts and hands-on experience in digital design with FPGAs or ASICs
+- Experienced in writing hardware in VHDL, Verilog, or System Verilog
+- Passionate for writing clean code, well-architected systems, and continuous improvement
+- A collaborative teammate comfortable working with developers, traders and business teams
+**Who we are:**
+Optiver is a leading technology- and research-driven trading firm. Our teams of scientists, engineers, mathematicians, and traders work side by side to develop, test, and scale ideas that shape how we understand and trade global markets. Powered by a global platform built for rapid experimentation and iteration, we combine the scientific rigor of a research institution with the pace of a technology company.
+Our differences are our edge. Optiver does not discriminate on the basis of race, religion, color, sex, gender identity, sexual orientation, age, physical or mental disability, or other legally protected characteristics. Optiver is supportive of US immigration sponsorship for this role.
+**Optiver has a global application re-apply policy for our intern and graduate roles. If you have completed any portion of an online assessment or interviewed for an FPGA Engineer graduate or internship role at any Optiver location in the past 8 months, please note that you are not yet eligible to reapply. We welcome you to re-apply to after the 8-month cool off period.**
+## Open positions
+- ### [Software Engineer Intern (Summer 2027 - Austin)](https://www.optiver.com/join-us/jobs/technology/austin/software-engineer-intern-summer-2027-austin/)
+Austin
+Internship
+Technology
+Internship
+Technology
+[Explore all open roles\\
+\\
+Explore all open roles](https://www.optiver.com/join-us/jobs/?department=technology&location=austin&level=internship)

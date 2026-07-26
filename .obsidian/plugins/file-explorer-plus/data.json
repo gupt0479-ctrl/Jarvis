@@ -540,7 +540,70 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/Career/Internships/List/Dossiers/Dossiers MOC.md",
+        "pattern": "10_Areas/Career/Internships/List/Dossiers MOC.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "20_Progress/Internship/Applying/Now.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "20_Progress/Internship/Applying/Applications-to-Create.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "10_Areas/Career/Internships/Tracker/Each One/Trackings-to-Create.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "10_Areas/Career/Internships/Programs/Programs MOC.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "10_Areas/Career/Internships/Contacts/Each One/Contacts-to-Create.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "20_Progress/Internship/Building System/Source of Truth.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "10_Areas/Career/Internships/Contacts/Contacts MOC.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "10_Areas/Career/Internships/List/Resources.md",
         "patternType": "STRICT"
       }
     ],

@@ -1,0 +1,70 @@
+---
+company: Jane Street
+title: Hardware Engineer (FPGA/ASIC) Intern
+url: https://www.janestreet.com/join-jane-street/position/8624440002/
+source: vanshb03
+terms:
+  - Summer
+locations:
+  - New York, NY
+target_year: []
+date_posted: '2026-07-24'
+date_found: '2026-07-25'
+matched_reason: matched
+status: unreviewed
+next:
+tags:
+  - internship
+  - auto-discovered
+---
+# Hardware Engineer (FPGA/ASIC) Intern
+Found 2026-07-25 via vanshb03.
+> [!NOTE] CyS & Finance: matched on "Jane Street Hardware Engineer (FPGA/ASIC) Intern - OCaml/Hardcaml, Team: Software Engineering per posting".
+## Posting (fetched 2026-07-25)
+#### Hardware Engineer (FPGA/ASIC)  Internship, May-August
+LOCATION
+New York
+DEPARTMENT
+Technology
+TEAM
+Software Engineering
+Share this job
+### About the Position
+Our goal is to give you a real sense of what it's like to work at Jane Street full time while also providing a truly unparalleled educational experience. As an intern, you are paired with full-time employees who act as mentors, collaborating with you on real-world projects we actually need done.
+In this internship, you'll learn how we use tools to make programming faster, more pleasant, and more reliable. We apply these same principles to our hardware engineering work, and we're looking for people who are interested in using programming language technology to improve the process of designing, testing, and validating hardware designs. We use Hardcaml, an OCaml library for succinctly describing hardware in RTL. Hardcaml is tightly integrated into our development environment, so you'll also gain lots of exposure to the libraries and tools that are foundational to our internal systems. No previous knowledge of Hardcaml is required.
+The hardware team at Jane Street works on both FPGA and ASIC designs. Depending on your background and experience, we'll craft a project that gives you exposure to our shared Hardcaml tech stack, as well as targeting an FPGA or ASIC platform.
+During the program, you'll dive deep on one project, mentored closely by the full-time employees who helped design it. Some intern projects consider big-picture questions that we're still trying to figure out, while others involve building something new. Your mentors will help you gain a better understanding of the wide range of problems we solve every day. We expect interns to build hardware applications from concept to a working design; your projects will predominantly involve OCaml & Hardcaml, for both RTL design and testing/integration.
+If you’d like to learn more, you can read about [our interview process](https://www.janestreet.com/join-jane-street/interviewing/), [meet some of our newest hires](http://janestreet.com/gtku), or check out our [OCaml All The Way Down talk](https://www.janestreet.com/tech-talks/ocaml-all-the-way-down/) and [Programmable Hardware podcast](https://signalsandthreads.com/programmable-hardware/) episode. You can also learn more about Jane Street’s internship program here.
+### About You
+We don't expect you to have a background in finance, OCaml, functional programming, or any other specific field— we're looking for smart people who enjoy solving interesting problems. We're more interested in how you think and learn than what you currently know. You should be:
+- Comfortable with a software programming language
+- Experienced with a Hardware Description (or Construction) language (VHDL, Verilog, Chisel, Pymtl, or other), for both writing and testing hardware designs
+- Experienced working with FPGA or ASIC vendor tools - Vivado or Quartus for FPGAs, Genus or Innovus for ASICs
+- Experienced with building a working hardware project (either FPGA or ASIC) through an academic, professional, or personal project
+- Interested in learning how to use FPGAs or ASICs in the context of networking
+_If you're a recruiting agency and want to partner with us, please reach out to agency-partnerships@janestreet.com._
+Base salary is $300,000.
+Jane Street is an Equal Opportunity Employer
+Share this job
+##### Helpful Links
+[**web page**  **Technology at Jane Street** \\
+\\
+The work at Jane Street is technologically intense, and the systems we build play an essential role in everything we do.](https://www.janestreet.com/technology)
+\\
+**blog**  **Jane Street Blog** \\
+\\
+Musings from our engineers](https://blog.janestreet.com/)
+[**web page**  **Open Source** \\
+\\
+From committing patches to the Linux kernel to releasing our own projects, we’re always looking for ways to participate in the open source community.](https://github.com/janestreet)
+\\
+**podcast episode**  **An inside look at Jane Street's tech internship**](https://signalsandthreads.com/an-inside-look-at-jane-streets-tech-internship)
+[**tech talks**  **Tech Talks** \\
+\\
+A series of public tech talks, with speakers from Jane Street and the wider tech world.](https://www.janestreet.com/tech-talks)
+\\
+**GTKU**  **Get to Know Us: Rory talks Production Engineering**](https://www.janestreet.com/join-jane-street/get-to-know-us/rory)
+\\
+**GTKU**  **Get to Know Us: Brittany talks Software Engineering**](https://www.janestreet.com/join-jane-street/get-to-know-us/brittany)
+[**Our office in**  **New York**\\
+\\

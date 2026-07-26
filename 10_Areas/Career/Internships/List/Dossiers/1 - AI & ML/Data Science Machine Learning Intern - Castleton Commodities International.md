@@ -1,0 +1,63 @@
+---
+company: Castleton Commodities International
+title: Data Science Machine Learning Intern
+url: https://osv-cci.wd1.myworkdayjobs.com/en-US/CCICareers/job/Stamford-CT/Data-Science-Machine-Learning-Internship--Summer-2027-_R1344
+source: SimplifyJobs
+terms:
+  - Summer 2027
+locations:
+  - Houston, TX
+  - Stamford, CT
+target_year: []
+date_posted: '2026-07-21'
+date_found: '2026-07-22'
+matched_reason: Summer 2027, AI/ML/Data
+status: unreviewed
+next:
+tags:
+  - internship
+  - auto-discovered
+---
+# Data Science Machine Learning Intern
+Found 2026-07-22 via SimplifyJobs.
+> [!NOTE] AI/ML: matched on "Castleton Data Science Machine Learning Intern - explicit ML title".
+## Posting (fetched 2026-07-22)
+## Data Science Machine Learning Internship (Summer 2027)
+locationsStamford, CTHouston, TX
+time typeFull time
+posted onPosted Today
+job requisition idR1344
+**Application Deadline: September 1, 11:59pm EST**
+**Company Overview:**
+Castleton Commodities International is a leading global energy commodities merchant and infrastructure asset investor. As a trader, CCI deploys capital on a proprietary basis in the physical and financial commodity markets, providing the Company with market insights and access. As a strategic investor and developer, CCI leverages its market expertise, operations capabilities, and industry knowledge to invest in, and develop, select commodity infrastructure assets. Our strategically integrated platform has generated strong risk-adjusted returns for our investors since our formation.
+**Position Overview:**
+CCI is developing a leading-edge Data Science platform, as staying at the forefront of data management and analytics is essential to our investment strategy. We are looking for motivated and detail-oriented Machine Learning Interns with a strong interest in quantitative analysis, particularly time series forecasting to join our Global Data Science team in Stamford, CT, Houston, TX, or New York City offices.  Our Machine Learning Internship provides a unique opportunity to work with fundamental market data, generating insights that support our commercial trading business. You will be responsible for analyzing time series data related to market fundamentals in the Power, Natural Gas, and Oil sectors, helping to identify key supply and demand drivers. These insights will play a vital role in forecasting price movements and supporting risk management decisions.
+**Responsibilities:**
+- Apply mathematical and statistical knowledge to enhance existing machine learning applications and explore new solutions.
+- Work closely with Data Scientists, Analysts, and Traders to design, implement, and optimize machine learning models for time series forecasting, including ARIMA/SARIMA, gradient boosting methods (e.g., XGBoost), LSTM networks, and linear regression-based approaches.
+- Assist in designing and implementing end-to-end data ingestion processes, ensuring seamless data flow to investing teams.
+- Work with desk heads, traders, and analysts to understand current data architecture, investment processes, and functional requirements for data science analysis.
+- Contribute to identifying and back-testing new data sets, leveraging machine learning techniques to drive insights.
+- Conduct ad hoc research on emerging project topics, including energy fundamental data, analytics trends, and best practices in big data and artificial intelligence.
+**Qualifications:**
+- Currently pursuing a Bachelor's Degree or higher in Mathematics, Statistics, Physics, Computer Science or related technical field with a focus in Machine Learning.
+- Expected graduation date of Winter 2027 or Spring/Summer 2028.
+- Experience applying machine learning techniques such as regression, time series forecasting, deep learning, reinforcement learning, or predictive modeling to solve problems involving complex data patterns and market dynamics.
+- Strong programming experience in Python (preferred libraries: Pandas, NumPy, etc.)
+- Ability to communicate and interact with a wide range of users, from very technical to non-technical backgrounds.
+- Strong analytical skills with demonstrated attention to detail.
+### Similar Jobs (3)
+locations2 Locations
+time typeFull time
+posted onPosted Today
+locations2 Locations
+time typeFull time
+posted onPosted Today
+locations2 Locations
+time typeFull time
+posted onPosted Today
+### About Us
+Castleton Commodities International is a leading global energy commodities merchant and infrastructure asset investor. As a trader, CCI deploys capital on a proprietary basis in the physical and financial commodity markets, providing the Company with market insights and access. As a strategic investor and developer, CCI leverages its market expertise, operations capabilities, and industry knowledge to invest in, and develop, select commodity infrastructure assets. This fully integrated platform has generated strong risk-adjusted returns for our investors since our formation.
+Read More
+#### Follow Us
+- [LinkedIn](https://www.linkedin.com/company/castleton-commodities-international/ "LinkedIn")

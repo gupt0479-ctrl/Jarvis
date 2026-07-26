@@ -22,9 +22,9 @@ benefits:
   - Tuition reimbursement
 application_url: https://careers.appian.com/jobs/8041237-software-engineering-intern
 careers_page: https://careers.appian.com/students
-list_origin: "[[10_Areas/Career/Internships/List/Dossiers/vanshb03-22b1b26d-56bf-4146-aa1e-c48b088c33b2]]"
+list_origin: "[[10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineering Intern - Appian]]"
 applying_note:
-recruiter_contact: "[[10_Areas/Career/Internships/Contacts/Each One/Software Engineering Intern - Appian]]"
+recruiter_contact: "[[10_Areas/Career/Internships/Contacts/Each One/Ongoing/Software Engineering Intern - Appian]]"
 tags:
   - internship
   - program
@@ -45,4 +45,4 @@ Currently pursuing a Bachelor's or Master's degree in Computer Science or Comput
 - [ ] Have a portfolio project or prior technical internship ready to discuss — explicitly named as a Preferred Qualification
 - [ ] Practice explaining a technical decision in a design-discussion/code-review format — the posting lists "design discussions, stand-ups, and code reviews" as core day-to-day work
 ## Related Resources
-- [[10_Areas/Career/Internships/List/Dossiers/vanshb03-22b1b26d-56bf-4146-aa1e-c48b088c33b2]] (List/Dossiers origin)
+- [[10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineering Intern - Appian]] (List/Dossiers origin)

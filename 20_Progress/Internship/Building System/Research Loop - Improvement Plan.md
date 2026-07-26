@@ -4,8 +4,8 @@ status: active
 created: 2026-07-19
 updated: 2026-07-25
 related_progress:
-  - "[[20_Progress/Internship/Building System/Research Loop - Source of Truth]]"
-  - "[[20_Progress/Internship/Building System/Phases Run]]"
+  - "[[Source of Truth]]"
+  - "[[Phases Run]]"
   - "[[30_Order/Workflows/Internship Pipeline]]"
 tags:
   - internship
@@ -14,7 +14,7 @@ tags:
 next: "Decide the first-run backlog question below, then push and go live. After that: Priority 1 — promote 3-5 real dossiers by hand, unchanged since 2026-07-19, still not done."
 ---
 # Research Loop — Improvement Plan
-==The honest account of what's actually broken or missing. First written 2026-07-19 against the live repo and live vault; substantially updated 2026-07-25 after a live follow-up session that investigated real misses (a Google posting, four manually-clipped internships), checked real hit rates against Greenhouse/Lever/Ashby, and then built and tested four new ingestion sources plus a measured OPT-regex improvement. Priority 2 moved from "planned" to "built, tested, not yet pushed" in that session. Priority 1 has not moved — it is still the single most important thing not yet done.== [[20_Progress/Internship/Building System/Research Loop - Source of Truth]] states what the system was supposed to become; this note states what's still standing between here and there.
+==The honest account of what's actually broken or missing. First written 2026-07-19 against the live repo and live vault; substantially updated 2026-07-25 after a live follow-up session that investigated real misses (a Google posting, four manually-clipped internships), checked real hit rates against Greenhouse/Lever/Ashby, and then built and tested four new ingestion sources plus a measured OPT-regex improvement. Priority 2 moved from "planned" to "built, tested, not yet pushed" in that session. Priority 1 has not moved — it is still the single most important thing not yet done.== [[Source of Truth]] states what the system was supposed to become; this note states what's still standing between here and there.
 
 ## The Real Verdict: Discovery Works, Nothing Downstream Does
 25-29 real, live, currently-open dossiers have sat in `10_Areas/Career/Internships/List/Dossiers/` throughout this whole period (the exact count moves week to week as the recheck removes closed postings and new matches land — it was 26 on 2026-07-19, 25 on 2026-07-23 after a manual JGCL deletion, 29 by 2026-07-25). Precisely **zero** of them have ever been promoted through [[30_Order/Workflows/Internship Pipeline]]. `Tracker/Tracker.md`'s kanban has an empty card in every column. `Applying/_This Week.md` still reads "Nothing active yet." The bottleneck was never discovery, and this session made discovery meaningfully bigger and better without touching that fact even once. **Priority 1 is unchanged and still first.**

@@ -7,7 +7,7 @@ related_progress:
   - "[[System - Build Log]]"
   - "[[30_Order/Workflows/Internship Pipeline]]"
   - "[[Phases Run]]"
-  - "[[Research Loop - Source of Truth]]"
+  - "[[Source of Truth]]"
 tags:
   - internship
   - automation
@@ -15,7 +15,7 @@ tags:
 next: Superseded as the live scope reference by [[20_Progress/Internship/Building System/Internship Research Loop — Source of Truth]] — this note stays as the original forward spec and Phase 1-2 review, unedited beyond this frontmatter fix.
 ---
 # Research Loop — Implementation Plan
-==The technical spec for the 24/7 discovery automation, written so a fresh Claude Code session in a separate WSL repo can build it without re-deriving anything here. As of 2026-07-19, [[Research Loop - Source of Truth]] is the current, consolidated statement of full scope across all six phases — read that first; this note is the historical spec and Phase 1-2 review it grew from.== [[System - Build Log]] is the retrospective record of the folder redesign; this note is the forward spec for the loop that feeds it. Obsidian stays the source of truth throughout — the automation writes into it, never replaces it.
+==The technical spec for the 24/7 discovery automation, written so a fresh Claude Code session in a separate WSL repo can build it without re-deriving anything here. As of 2026-07-19, [[Source of Truth]] is the current, consolidated statement of full scope across all six phases — read that first; this note is the historical spec and Phase 1-2 review it grew from.== [[System - Build Log]] is the retrospective record of the folder redesign; this note is the forward spec for the loop that feeds it. Obsidian stays the source of truth throughout — the automation writes into it, never replaces it.
 ## Correction Carried Into This Plan
 Class year corrected 2026-07-16: **rising junior**, expected grad Spring 2028 (consistent — a standard 4-year timeline from a Fall 2024 start, no contradiction with the resume). Filter targets Junior-eligible **and** any-year/unrestricted postings, not sophomore-scoped ones. The HRT Sophomore worked example built last session was withdrawn as no longer eligible — see its Log entry.
 ## Source Verdicts (Verified, Not Assumed)

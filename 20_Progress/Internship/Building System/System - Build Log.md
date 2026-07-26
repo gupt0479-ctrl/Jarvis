@@ -2,100 +2,66 @@
 type: project
 status: active
 created: 2026-07-16
-updated: '"2026-07-17"'
-deadline: null
-related_progress: '["[[10_Areas/Career/Internships/Internships Hub]]",
-  "[[30_Order/Workflows/Internship Pipeline]]", "[[Research Loop —
-  Implementation Plan]]", "[[20_Progress/Internship/Building System/Phases 1-3
-  Run]]"]'
+updated: 2026-07-26
+related_progress:
+  - "[[Internships Hub]]"
+  - "[[30_Order/Workflows/Internship Pipeline]]"
+  - "[[Source of Truth]]"
+  - "[[20_Progress/Internship/Building System/Research Loop - Improvement Plan]]"
 tags:
   - internship
   - career
   - system-design
-next: Promote the first real posting through the full pipeline end to end, then
-  fix whatever breaks
+next: "Get Prompt 1-3's code (persona config, CS-relevance gate, priority classification, dossier template v2, contact-research widening, skills/agents) actually committed and pushed — none of it is live yet, see the 2026-07-26 entry."
 ---
 # Internship System — Build Log
-==This is the session record for designing and building the internship application system spanning `10_Areas/Career/Internships/` and `20_Progress/Internship/` on 2026-07-16.== The workflow doc ([[30_Order/Workflows/Internship Pipeline]]) is the lean operating procedure; this note is the full design rationale — why each decision landed where it did, what the research actually said, and what was built versus deferred.
-## Goal
-Build the full internship pipeline: company/employee research, HR/recruiter contacts, listings, application tracking, next steps, interview prep, pitches, cover letters, resume tailoring, LinkedIn/Handshake networking, and LinkedIn content from the portfolio blog. Split cleanly across `10_Areas` (reference, durable) and `20_Progress` (execution, live) rather than the single-tier setup that existed before this session.
-## Starting State
-Before this session: `10_Areas/Career/Internships/` had `Programs/` (one real note, HRT, with status fields baked into static research), `Tracker/` (a Dataview dashboard querying Programs' status field directly, plus an empty 4-lane Kanban), `Contacts/Mimic.md` (had the wrong "concept" template auto-applied — One-Line Answer/Mechanism/Flashcards structure meant for course concepts, not a message-template library), `Cheats/LinkedIn Premium.md` (one real cheat), and an empty `List/` folder. `20_Progress/Internship/` had legacy 2026-cycle notes (Career Fair, Companies OPT&CPT), an empty `AI Applying.md` stub, and two real interview-prep notes.
-## Research Findings
-### Tracking Funnel Structure
-Real data (careery.pro): **Applied → Response (10-15%) → Phone Screen (50% of responses) → Final Interview (50% of screens) → Offer (30-50% of finals)**. About 100 cold applications produces 1-2 offers. A response rate under 10% signals a resume/targeting problem; responses without offers signal an interview-prep problem — this diagnostic split is why the pipeline needs live status broken out by stage, not a single "Applied" bucket. CS/tech students typically need 100-300+ applications; other fields need far fewer because networking substitutes for volume.
-### Personal CRM Patterns
-Tools reviewed (Dex, Clay, Orvo, folk) converge on the same fields: last-contact date, relationship tags, a structured note per real conversation, and reconnection nudges. The named failure mode, repeated across sources: spreadsheet/Notion-as-CRM has no reminders, so people "stop updating after week two." This is why the Contact note ([[Contact Template]]) keeps a Conversation Log inline rather than relying on a separate tracker nobody revisits.
-### AI-Assisted Workflow Patterns
-The cleanest framing found (careery.pro): automate the mechanical parts (form-fill, tracking, listing alerts — cuts 15-20 minutes per application to 2-5) and keep human judgment for role fit, resume customization, networking, and interview prep. Don't automate the differentiators. This directly shaped the decision to keep all outreach drafting as human-reviewed, never auto-sent (see [[Mimic]]).
-### Resume/Cover Letter Tailoring
-An empirical account (Kaizen Conroy) improved response rate from under 5% to 30%+ by adjusting the **top third** of the resume per role rather than rewriting the whole document, keeping 2-3 base variants, and putting tech stack inline next to each project rather than in a separate skills list. This is the direct source for [[Main Resume.md]]'s tagged-bullet-bank design and the Tailoring Checklist on it.
-### LinkedIn "Maxing"
-Gap in the research: none of the search results surfaced concrete blog-to-post tactics or posting cadence. The only adjacent finding was LinkedIn job-change alerts used as a CRM reconnection trigger, not a growth tactic. This is why `Posts/` was built as a thin scaffold rather than a designed system — there's nothing solid to design against yet.
-### Cold Outreach and Anti-Patterns
-Concrete cadence signals: respond to recruiter replies within 24 hours (interview slots fill in batches), apply within 48 hours of a posting (odds drop sharply after), send interview thank-yous within 24 hours referencing something specific. Anti-patterns: volume without diagnosis (more applications doesn't fix a broken funnel — find which stage is actually broken first), referrals aren't automatically better (one account: 3 referred applications, zero interviews), ghost jobs and stale postings waste effort, and over-automated outreach on LinkedIn carries real platform risk (documented account restrictions from automated activity).
-### Research Automation Platforms (Hermes / Clay / Firecrawl)
-**Hermes Agent** (Nous Research) is a real, MIT-licensed, self-hosted autonomous agent with persistent cross-session memory and native Slack/Telegram/Discord integrations — a genuine conceptual fit, but it needs an always-on server, which is real ops overhead for one task. **Clay** is *enrichment*, not *discovery* — it fills in data on a list you already have; it does not sit and watch the web for new postings appearing, and its free tier (100 credits/month) is too thin for continuous polling anyway. **Firecrawl's own web-scale monitor** (already available in this vault as a skill) can watch search queries across the whole web for new matching content and push to a webhook, with a built-in AI judge filtering noise — this is the strongest free fit since it needs no new platform.
-> [!NOTE]
-> Recommended future architecture: Firecrawl monitor (Step 1, discovery) → Slack webhook → Claude reads the channel periodically and structures confirmed leads into `List/` (Step 2). Clay's free tier is reserved for occasional on-demand contact enrichment of companies that already cleared discovery, not continuous polling. This is documented as deferred — see Decisions below.
-## Decisions Made
-### Round 1
-- **Status ownership:** split. `Programs/` (10_Areas) holds only static research; a paired note per program in `Applying/` (20_Progress) holds live status. Reason given: matches the vault's own Areas/Progress split — a "durable" file that gets rewritten every week to update a status field defeats the purpose of Areas.
-- **List vs Programs:** List is the firehose (every posting found, low effort), Programs is committed (only created once you decide to seriously pursue something). A List row is promoted, not automatically mirrored.
-- **Contact drafts:** live inline in the Contact note itself, under a Current Draft section, built from `Mimic.md` templates. One file per person, not two.
-- **"Hermes":** clarified as Nous Research's Hermes Agent, evaluated above — not adopted this session, folded into the deferred-automation note in the workflow doc.
-### Round 2
-- **Automation timing:** build the folder structure first; wire the Firecrawl-monitor-to-Slack pipeline in later, once the manual system is proven.
-- **Resume system:** everything lives in `20_Progress/Internship/Resumes/` — no separate 10_Areas resume hub. `Main Resume.pdf` was already placed by the user before this session; `Main Resume.md` (the editable bullet bank) was built from reading that PDF.
-- **LinkedIn scope:** scoped under Internships for now (`20_Progress/Internship/Posts/`), not a broader personal-brand system.
-- **System scope:** generic pipeline, internships as current focus — frontmatter uses `role_type` and keeps `program_type`/`wave` optional rather than internship-hardcoded, so the same structure carries a full-time job search later without renaming folders.
-### From the follow-up message (List/Tracker/Workflow/Build-Log specifics)
-- List folder holds monthly capture logs (`YYYY-MM Found.md`), one table row per posting — link, requirements, one line on what it is. Confirmed as the pattern, not one file per posting.
-- `Tracker/Tracker.md` (the 4-lane Kanban) is kept, not retired — it's a second, faster glance view alongside the detailed Dataview dashboard, not redundant with it. Cards link to real Applying notes.
-- `30_Order/Workflows/Internship Pipeline.md` covers the full flow end to end, including how it's actually run (cadence, the deferred automation note).
-- This note exists specifically to hold more implementation detail and research rationale than the workflow doc carries.
-## What Was Built This Session
-### New folders and files
-- `10_Areas/Career/Internships/Internships Hub.md` — canonical domain hub (the vault had none for Career before this)
-- `10_Areas/Career/Internships/List/2026-07 Found.md` — first monthly capture log
-- `10_Areas/Career/Internships/README.md` — rewritten from the stale 2027-cycle setup guide
-- `30_Order/Templates/Career/` — six new templates: List Monthly Log, Program, Contact, Applying, Cheat, LinkedIn Post
-- `30_Order/Workflows/Internship Pipeline.md` — the operating procedure, added to `00_Workflows Index.md`
-- `20_Progress/Internship/Applying/_This Week.md` — the weekly-curated queue
-- `20_Progress/Internship/Applying/2026-HRT-Sophomore.md` — worked example of the live-status pattern
-- `20_Progress/Internship/Resumes/Main Resume.md` — bullet bank built from reading `Main Resume.pdf`
-- `20_Progress/Internship/Posts/README.md` — thin scaffold, no content yet
-### Edited in place
-- `10_Areas/Career/Internships/Programs/2026-HRT-Sophomore.md` — stripped status/date/interview/offer fields, added `list_origin` and `applying_note` links
-- `10_Areas/Career/Internships/Programs/Programs-to-Create.md` — flagged as superseded YAML (still has old status fields, meant as a fact source now, not a literal template)
-- `10_Areas/Career/Internships/Contacts/Mimic.md` — rebuilt entirely; was the wrong concept-note template, now a scenario-based message library (cold DM, recruiter follow-up, referral ask, thank-you, cross-link to the LinkedIn Premium cheat)
-- `10_Areas/Career/Internships/Tracker/Internship - Dashboard.md` — rewritten queries, split into Research (Programs) and Pipeline (Applying) sections since plain Dataview can't cleanly join two folders into one row
-- `10_Areas/Career/Internships/Tracker/Tracker.md` — populated the Interesting lane with the HRT program card
-- `20_Progress/Internship/Applying/AI Applying.md` — repurposed as a pointer to `_This Week.md` rather than deleted (kept for link continuity)
-## Note-Pattern Reference
-### List Monthly Log
-`type: input`, `input_kind: listing`. One file per month. Table columns: Company, Role, Link, Found, Requirements, What It Is, Promoted. A row's Promoted column becomes a wikilink once it graduates to a Program.
-### Program
-No `type:` field (pure structured reference data). Frontmatter: `name`, `company`, `program_type`, `eligible_classes`, `grad_year`, `role_type` (generic-scope field), `wave`, `opens_date`, `deadline_posted`, `deadline_real`, `pay_per_week`, `pay_currency`, `duration_weeks`, `benefits`, `application_url`, `careers_page`, `list_origin`, `applying_note`, `recruiter_contact`, `tags`. Body: Program Overview, Eligibility, Traps & Gotchas, Prep Checklist, Related Resources. No status field — that lives on the paired Applying note.
-### Contact
-`type: contact`. Frontmatter: `name`, `role`, `company`, `linkedin_url`, `email`, `how_found`, `relationship` (cold/warm/referral/alumni), `related_programs`, `last_contact_date`, `next`. Body: Facts, Current Draft, Conversation Log, Next Action.
-### Applying
-`type: project` (matches `20_Progress` convention, uses [[Project Standard]]). Frontmatter: `status` (Researching/Applied/OA/Phone Screen/Onsite/Offer/Rejected/Withdrawn), `program` (link back to the Program note), `company`, `date_applied`, `date_response`, `next_deadline`, `resume_version`, `cover_letter`, `contacts`, `interview_note`, `next`. Body: Goal, Current State, Next Action, Open Questions, Log — the standard Project Standard shape.
-### Cheat
-`type: evergreen`. No fixed body structure beyond What It Is, Why It Works, How To Use It, Failure Modes, Evidence — grows one note at a time from proven results, deliberately not over-designed.
-### Interview Prep
-Organic pattern already established by `ABB Interview Prep.md` — no new template forced onto it; new interview notes should follow that existing example (Job Description Analysis, Elevator Pitch, Talking Points, Questions to be Prepared for, Questions to Ask) rather than a generic template.
-## Explicitly Deferred
-- Firecrawl-monitor-to-Slack automated discovery pipeline — architecture recommended above, not built.
-- Migrating legacy `Career Fair '25 & '26.md` and `Companies giving OPT & CPT.md` into List/Programs/Contacts — kept as historical mining material, not restructured.
-- Cleaning every YAML block in `Programs-to-Create.md` individually — only the file-level banner was added; each block still needs its status fields stripped when actually turned into a real Program note.
-- A broader LinkedIn personal-brand content system beyond internship-scoped posts.
-- Actual tailored resume/cover-letter files in `Resumes/Tailored/` — no application has been made yet, so none exist.
-## Open Questions
-- [ ] When the HRT portal opens (Aug 1, 2026), run the full pipeline end to end on it and note anywhere the design breaks
-- [ ] Decide whether `recruiter_contact`/`phone`/`email` fields still on Program notes should be replaced with a link to a real Contacts note once one exists for that program
-- [ ] Revisit the Firecrawl-monitor-to-Slack automation once the manual pipeline has been used for at least one full application cycle
-## Log
-- **2026-07-16:** Two rounds of research (tracking/CRM/AI-workflow patterns, then Hermes/Clay/Firecrawl-monitor comparison), two rounds of clarifying questions, then built the full structure described above.
-- **2026-07-16 (same day, follow-up):** Class-year correction (rising junior, not sophomore) — withdrew the HRT Applying worked example as no longer eligible. Found and fixed a real exposure gap: the vault's `Jarvis` GitHub repo is public with an auto-commit-and-push cycle; added `.gitignore` rules for `Resumes/` and `Contacts/` (except `Mimic.md`) and untracked the already-committed `Main Resume.pdf`. Verified the SimplifyJobs/Jose-Gael-Cruz-Lopez/zapplyjobs repos in detail against the corrected profile and wrote the full automation spec — see [[Research Loop - Implementation Plan]].
-- **2026-07-17:** Phases 1-3 of the research loop automation completed and verified live against the real `gupta-builds/Jarvis` repo — 137 dossiers written, dedup confirmed idempotent across repeated runs, hourly cron confirmed actually firing. Full build record across all three phases: [[Phases Run]].
+==The full chronological record of every real build session on this system, vault side and codebase side, since 2026-07-16.== [[30_Order/Workflows/Internship Pipeline]] is the lean operating procedure; this note is why each decision landed where it did and exactly what shipped versus what's still sitting uncommitted somewhere. Read this note, in order, to pick the work back up without re-deriving anything — that's its only job.
+## 2026-07-16 — Original Design Session
+Built the initial Areas/Progress split from a single-tier system that existed before. Research behind the design: real funnel data (careery.pro — Applied → Response 10-15% → Phone Screen 50% of responses → Final 50% of screens → Offer 30-50% of finals), personal-CRM failure patterns (spreadsheets die because nobody revisits them — hence the Contact note's inline Conversation Log), resume-tailoring research (adjusting the top third per role beats full rewrites), and a deliberate decision to keep all outreach human-reviewed, never auto-sent.
+**Built:** `Internships Hub.md`, `List/2026-07 Found.md`, `README.md`, six templates in `30_Order/Templates/Career/` (List Monthly Log, Program, Contact, Applying, Cheat, LinkedIn Post), `30_Order/Workflows/Internship Pipeline.md`, `Applying/_This Week.md`, the HRT worked example, `Resumes/Main Resume.md`, `Posts/README.md`. Rebuilt `Contacts/Mimic.md` (had the wrong course-concept template applied). Rewrote `Tracker/Internship - Dashboard.md` to split Research (Programs) from Pipeline (Applying) — plain Dataview can't join two folders into one row.
+**Same day, follow-up:** Class-year correction (rising junior, not sophomore) withdrew the HRT worked example. Found and closed a real exposure gap — the vault's GitHub repo is public with an auto-commit cycle; added `.gitignore` for `Resumes/`/`Contacts/` and untracked the already-committed `Main Resume.pdf`.
+## 2026-07-17 — Phases 1-3: Discovery Automation Goes Live
+`gupta-builds/internship-research-loop` built and shipped: `ingestion/sources.py` + `normalize.py` (SimplifyJobs, Jose-Gael-Cruz-Lopez), `core/filter.py` (profile matching, no LLM), `core/identity.py` (`compute_uid()`), the four-check write gate, `core/git_ops.py` (push-retry-with-rebase against the vault's own auto-commit cycle), seen-state-only-after-confirmed-push ordering, schema-drift halt, two-tier run log. 137 dossiers written on the first live run; hourly cron confirmed actually firing, not just configured. Full evidence trail: [[Phases Run]] (now archived to `Runs/`).
+## 2026-07-18 — Phase 4-5: Enrichment, Grader, Root-Cause Hardening
+Layer 5 `enrich.py` (company/contact research, promotion-triggered only) and Layer 6 `grade_resume.py` (local keyword-overlap JD scorer) built. A manual 137→27 dossier cleanup found five real root causes, all fixed permanently: no post-write recheck (→ `recheck.py` + daily cron + mass-deletion brake), no `degrees_allow` gate, JGCL's `season` field never mapped (wrong-cycle listings slipped through), no cross-source dedup, zapplyjobs removed entirely (program/resource pages, not deadline-bearing postings).
+## 2026-07-18 — Phase 6: Three Hard Criteria, Real Content, Codified
+Final scope for the discovery half: dossiers stop being one-line stubs and carry the real posting's substantive content (Firecrawl, verbatim/structural, not summarized). Every survivor re-screened against exactly three criteria, permissive-by-default: **timing** (Summer 2027 or genuine Dec 2026-Jan 2027), **location** (US, ambiguous passes), **OPT eligibility** (excluded only on an explicit citizenship/clearance/no-OPT signal, checked per posting not per company). 167/167 tests. `[[Source of Truth]]` written the next day to state this as the closed scope statement.
+## 2026-07-19 — Independent Audit + The Real Gap
+A fresh session with no memory of the build verified the discovery pipeline honestly: code matched every claim, both bug fixes were real with regression tests, all three criteria genuinely enforced. **Same session then read the tracking layer directly and found the actual problem**: `Tracker/Tracker.md` empty in every column, `Applying/_This Week.md` still "nothing active," **zero of 26 real dossiers had ever been promoted**. This became Priority 1 of [[20_Progress/Internship/Building System/Research Loop - Improvement Plan]] and did not move for six days.
+## 2026-07-19 to 2026-07-23 — Phase 9: The Google Case
+User pushed back on the "closed" framing after noticing a real Google posting never reached the vault. Investigated directly against live feeds, not theorized: Google *was* on SimplifyJobs (8 entries), the one real Bachelor's/Summer-2027 candidate was `active: false` within roughly 60-120 seconds of being posted — SimplifyJobs' own bot resolves Google listings almost immediately. **Verdict: not a latency problem, not catchable by tighter polling.** A "write on first sight" fix was proposed and deliberately deferred — a dead-on-arrival dossier costs a review cycle without ever producing an application.
+## 2026-07-23 — Phase 10: Four Manual Finds, Checked Against Reality
+User independently found 4 real postings from friends. Western Digital: already caught, working as designed. Nuro and Uber: real confirmed misses (neither on SimplifyJobs/JGCL; Uber runs a fully in-house ATS). Deepgram: real miss of a different shape — SimplifyJobs had the posting but mis-tagged its term, silently dropping the Summer 2027 cohort. This directly motivated checking direct-ATS polling with real numbers instead of debating it further.
+## 2026-07-24 — Phase 11: Direct ATS Polling, Verified Before Building
+Every one of the then-22 companies in the vault's dossiers checked live against Greenhouse/Lever/Ashby public APIs first: 15/22 (68%) reachable (7 Greenhouse, 5 Ashby, 1 Lever), 7/22 on other ATS platforms entirely (genuinely unreachable this way), 1 honest unknown (HRT). **Built:** Greenhouse and Ashby ingestion modules (Lever deferred — one example didn't justify a fifth module). Caught and fixed a real bug: a strict `"Summer 2027"` string match would have silently rejected real postings that state the year with no season word (Marshall Wace, Ellipsis Labs) — made permissive, consistent with every other rule in this pipeline.
+## 2026-07-24 to 2026-07-25 — Phase 12: Two More Curated Sources
+Chasing the Nuro/Deepgram/Uber misses surfaced `vanshb03/Summer2027-Internships` (274 entries, verified live, distinct repo/owner from SimplifyJobs) and `zshah101/...Tech-Internships` (214 entries, a genuinely sophisticated project, carries a `sponsorship` field). Both built and shipped — `run_pipeline.py`'s source count went from 2 to 6. `speedyapply` and `sndsh404` researched and explicitly ruled out (no real accessible data file, same structural problem class as the removed zapplyjobs).
+## 2026-07-25 — Phase 13: OPT Regex, Measured Against Real Data
+All 22 of zshah101's real `citizens-only`-tagged postings Firecrawl-fetched and checked against the live regex as an actual test set: baseline 6/22 (27%) caught. A second real phrasing found (ITAR/export-control "U.S. Person" language at Saronic, Hermeus, Varda Space) — one new pattern added, validated against every existing non-signal fixture first, zero new false positives. **Result: 13/22 (59%)**, shipped with a regression test. Remaining 9 misses categorized honestly, not treated as one problem — several are structurally invisible to a page-content scrape (citizenship asked as an interactive form question on Workday, not stated in the page text).
+## 2026-07-25 — Phase 14: freehire and artificialintelligencejobs.co, Researched
+Two new sources found and verified live before recommending: **freehire** (MIT-licensed, 4.27M postings indexed, crawls Uber and Google directly — the exact gap Phase 11 confirmed unreachable via Greenhouse/Lever/Ashby) and **artificialintelligencejobs.co** (17,507 jobs, 184 with an explicit `level: "Intern"` field, AI-native company list). Code for both (`ingestion/freehire.py`, `fetch_ai_jobs`) built with real ground-truth verification — **built but never committed**, confirmed by a fresh 2026-07-25 session via `git log`/`git status`.
+## 2026-07-25 — Backlog Throttle, Confirmed Firing In Production
+The four-source addition produced a one-time backlog of 186 candidates, 171 clearing the write gate on a single dry run — a real spike against the Phase 6 sizing assumption. `MAX_NEW_WRITES_PER_RUN = 18` shipped, sorting by `date_posted` descending and deferring the rest (never marked seen, naturally re-offered next run, no separate backlog state needed). **Confirmed live in `logs/runs.jsonl`**, not just reviewed: the first scheduled run after shipping showed `written_count: 13`, `deferred_count: 166`.
+## 2026-07-25 — Verified Live State (Fresh Session, Direct Repo Access)
+A session with no memory of any of the above independently re-checked everything via `git log`, `git grep`, `git stash`, live `gh api`, and a direct vault read. Three real states identified, not two: **live** (committed+pushed — the original pipeline, six sources, improved OPT regex, the backlog throttle), **built-but-unshipped** (freehire/AI-jobs code, a `recheck.py` fix extending its `FEEDS` dict to the four newer sources — real code, real tests, zero commits), and **researched, not built** (Lever, speedyapply, sndsh404, Intern Dock). Real gap found: `recheck.py`'s committed `FEEDS` dict still only checks SimplifyJobs/JGCL — dossiers from the other four sources aren't being closure-checked by the daily recheck cron at all, right now. 204 tests pass on the pure committed state, 215 on the local working tree including unshipped work — both counts independently run. Full detail: [[20_Progress/Internship/Building System/Runs/Research Loop - Phase 7 Coverage Expansion]].
+## 2026-07-26 — Persona, CS-Relevance Gate, Priority Classification: Designed, Prompts Run, Nothing Committed
+A long design conversation (this session) worked out, in order: the candidate's real profile from `anantgupta.dev`/Main Resume.md/Engineer Edge Roadmap (systems-minded AI engineer, not generic SWE), a priority classification scheme (AI/ML, Fullstack, CyS & Finance, Other) replacing the old plan's vague "Priority 1/2/3" numbering, a fourth hard gate (CS/software relevance — reject non-software roles outright, adjacent fields like hardware/robotics/astrophysics pass only with real content evidence), the Programs/Serious vs Considering split (identical rigor, preference-only), and the promote-dossier skill design (manual consent, never silent).
+**Three prompts written** into `Runs/Claude Code Prompts.md` and run in separate Claude Code sessions against the repo:
+- **Prompt 1** (persona/timing config): reported 227/227 passing, Spring 2027 + `terms_weight` added, a real bug fixed in `_has_wrong_cycle_season` (Winter 2027 was silently unmatchable from JGCL/vanshb03 before the fix).
+- **Prompt 2** (CS-relevance gate, priority classification, dossier template v2, contact-research widening): reported 258/258 passing, `core/relevance.py` + `core/classify.py` built, `state/dossier_uids.json` manifest added (needed because dropping `uid` from frontmatter broke `recheck.py`'s lookup), the real Ashby content-extraction bug found and fixed (Ashby returns a bare 1099-char form vs. a full 4015-char posting at the base URL — fixed by stripping the suffix before fetch).
+- **Prompt 3** (skills/agents/settings for the repo): the `/promote-dossier` skill built and **run for real, end-to-end**, promoting Appian's Software Engineering Intern dossier — the first time Internship Pipeline Step 3 (Commit) has ever executed against real automated output, six days after Priority 1 was first raised. `contact-researcher` agent built and exercised live (found 4 real LinkedIn recruiter snippets, 1 blog byline for Appian). `loop-verifier` and `review-loop-change` built, not yet run.
+> [!IMPORTANT]
+> **None of Prompt 1, 2, or 3's work is on GitHub.** Verified directly against `gupta-builds/internship-research-loop`'s `master` branch the same day: `core/profile.yaml` still reads `terms: ["Summer 2027", "Winter 2027"]`, no `core/classify.py`, `core/relevance.py`, `.claude/`, or `CLAUDE.md` exist in the repo at all. All three sessions' real, tested work exists only in a local working tree somewhere. **The hourly automation is still running the pre-Prompt-1 code right now** — new dossiers arriving this hour are still flat-filed with the old frontmatter shape, not sorted into priority subfolders, because the committed code has never heard of `classify.py`. Reply prompts sent back to all three sessions instructing them to commit and push, in dependency order (1 → 2 → 3, each pulling the previous one's push first) — not yet confirmed done.
+## 2026-07-26 — Manual Dossier Reorganization (Vault-Side, One-Time)
+Since the classification code isn't live, the 117 dossiers that had already accumulated in the vault (flat, unsorted, old frontmatter) were reorganized by hand, applying the same rules Prompt 2's code was supposed to enforce — this was a one-time catch-up pass, not a substitute for shipping the code:
+- **25 discarded**: 18 failed the CS/software-relevance gate (risk/tax/sports-analyst roles, pure quant-research/trader/PM tracks), 7 were exact-URL cross-source duplicates (kept the richer copy).
+- **92 classified and moved**: `1 - AI & ML/` (30), `2 - Fullstack/` (17), `3 - CyS & Finance/` (41), `Other/` (4). Each renamed to `[Role] - [Company].md`, frontmatter fixed (`date_posted` epoch→ISO, `uid`/`category` dropped, `next:` added), header trimmed, intro rewritten, classification callout added with no numeric label.
+- Two real bugs caught during the reorg script's own dry-run, fixed before executing: a `yaml.safe_dump` call was inserting stray `...` document-end markers into every frontmatter field; the hand-edited Ellipsis Labs example's malformed callout would have silently dropped its real job-description content on move.
+- Cross-links fixed on the already-promoted Appian notes (Program, Contacts, Tracker) after their originating dossier moved.
+## 2026-07-26 — Folder Structure Expanded Further (User + Parallel Session Work)
+Independent of this conversation, the following structure was added and needs documenting, not re-deciding: `Contacts/Each One/Ongoing`, `Ended`, `Come Back` (three lifecycle states for a contact relationship); `Programs/Serious/Ended` and `Programs/Considering/Ended` (applied, awaiting the next step); `Programs/Job & Company/` (deeper, interview-prep-grade research, created when actually applying — filename `[Company] - [Position].md`, becomes a subfolder past 2 positions at one company); `Tracker/Each One/Current`, `Applied`, `Result`; `Applying/Now.md` and `Applying/Applied/`. Six empty `-to-Create.md` directive stubs appeared across these folders, awaiting real content.
+## Open, Prioritized
+1. **Get Prompt 1-3's code committed and pushed** — everything above from 2026-07-26 is fictional to production until this happens.
+2. **`recheck.py`'s `FEEDS` gap** — four of six sources aren't being closure-checked daily, right now.
+3. **Dossier count-limit spec** (201 cap, 50/folder, 10-per-push at roughly 3/3/3/1, warnings at 150/170/190/200) — designed this session, documented in [[20_Progress/Internship/Building System/Research Loop - Improvement Plan]] and [[10_Areas/Career/Internships/List/Dossiers/Dossiers-to-Create]], **not yet implemented in code**.
+4. Resume/cover-letter/interview-prep depth — foundation laid (templates exist), explicitly deferred as future work per this session's own scoping.

@@ -34,6 +34,16 @@ next:
 ## Career Fair
 1. [List of Employers](https://cse.umn.edu/studentnews/news/see-list-115-employers-attending-spring-2026-cse-career-fair?j=13846506&sfmc_sub=621816736&l=8408_HTML&u=281397458&mid=6325307&jb=1005)
 2. 
+## Research Loop Data Sources
+Links only — what actually feeds `gupta-builds/internship-research-loop`. See [[20_Progress/Internship/Building System/Research Loop - Resources]] for what each one provides.
+- [SimplifyJobs/Summer2026-Internships](https://github.com/SimplifyJobs/Summer2026-Internships)
+- [Jose-Gael-Cruz-Lopez/underclassmen-opportunities](https://github.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities)
+- [vanshb03/Summer2027-Internships](https://github.com/vanshb03/Summer2027-Internships)
+- [zshah101/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships](https://github.com/zshah101/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships)
+- [Greenhouse Job Board API](https://developers.greenhouse.io/job-board.html)
+- [Ashby Job Board API](https://developers.ashbyhq.com/reference/jobpostingapi)
+- [strelov1/freehire](https://github.com/strelov1/freehire) — built, not yet committed
+- [artificialintelligencejobs.co](https://artificialintelligencejobs.co/) — built, not yet committed
 ## Networking
 1. *Mock Interviews*: 
 	1. Gainlo.co: Mock interviewers from big companies - I used this and it helped me relax for the phone screen and on-site interview
