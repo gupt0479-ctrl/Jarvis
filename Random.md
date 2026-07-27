@@ -171,3 +171,31 @@ Based on your feedback, I'm picturing:
 **Is this directionally correct?**
 
 Once you clarify these questions, I can map out **each page** in detail with actual component layouts, data flows, and interactions.
+
+# Answer
+Summarized ai answer to the questions:
+
+Nav: research_data | Dashboard | Watchlist | Tests | Strategies | My Stocks | Brain-Journal | Bots-Hub | Settings. No other sections — every CLI command already maps onto one of these 8.
+
+Stack: Streamlit first, Python stays source of truth, reads DuckDB/existing read APIs directly (no separate REST layer for V1). TradingView chart via st.components.v1.html.
+
+Dashboard: Top 5 is a hybrid — a pinned favorites list (stable membership) with an urgency badge from confidence + non-HOLD action. Below it: ingest status per provider, human-steps-required counts (specs awaiting approval, theses awaiting pre-approval), paper P&L a cost/call tracking. Refresh = load + manual button only, no polling.                                        
+Watchlist: full 14-symbol table (Symbol | Company | Action | Confidence | Data  Quality | Last Reviewed | search — universe is fixed.Click → full-page navigation to /stock/{SYMBOL}, not a modal.                   
+Stock Detail page — all six confirmed: header, price chart (MA20/50/200, RSI-14,Bollinger, ATR — the only s), factor score panel(momentum/safety/quality/valuation, ranked 1–14), Evidence Card + Critic Review (critic visually subordinaence, never raise it),gate/spec status if a strategy targets it, paper position + journal if a thesis exists (tagged Replay vs L
+                                                                         Tests: one log row per speDSR inline), not perindividual gate. Click expands to the four numeric fields + journal entrypromote/demote decision. Fng — a fail is a correctoutcome, not an error.                                                   
+Strategies: filter chips (Proposed/Approved/Promoted/Demoted), sorted by recent gate activity so reove/promote/demote buttonslive here, human-gated only.                                             
+My Stocks: filterable by symbol/status, reuses the Stock Detail page for click-through rather than lay vs Live.
+
+Brain-Journal: view-only cnotes (DB wins on conflict — no inline frontmatter editing).
+
+Bots-Hub: status + manual triggers ("Run ingest now," "Run analyst on X") that call
+existing CLI functions dirc, and it cannotapprove/promote/demote anything.
+
+Cross-cutting, non-negotiable: action vocabulary is exactly WATCH/HOLD/ACCUMULATE/REDUever BUY/SELL), confidenceis always the post-cap value, every number must trace to a real ScorePacket/gate field, no auto-trading or th (single user).
+
+Good set of questions: Detailed human answers
+1. Watch list is not a part of dashboard. It's just all related item. On dashboard, that is going to be only top 5 stocks that I want to be well aware of. More to it will be an entire list of stocks that I'm interested in, and clicking on it will bring me the entire research and thought process of this talk. If the trading has been happening with that stock, then exactly what is going on with the stock. There should be a chart when clicking on the watch list, and then there's a chart for the specific stock.
+For tests, and showing the 4-gate promotion flow, and look like file-based pass and fail status. Exactly. By below it will be a log file that helps tests that have passed out of it, and click on it and bring a detailed log of why the task has failed. There should be a journal entry for each and every task that runs.
+For strategy, that should be a section that shows active and promoted specs. There should be an old test as well. Take the one that adjusts that. Right. Don't be can't be wrong. There should be a way that I could chronologically order the things that are actually being run. 
+
+2. 
