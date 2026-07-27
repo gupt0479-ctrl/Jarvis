@@ -1,8 +1,44 @@
 {
   "recentFiles": [
     {
+      "basename": "GitHub Ingestion Implementation",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/GitHub Ingestion Implementation.md"
+    },
+    {
+      "basename": "Hall of Hacks — Winning Hackathon Patterns Analysis",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Hall of Hacks — Winning Hackathon Patterns Analysis.md"
+    },
+    {
+      "basename": "Web Ingestion Implementation",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Web Ingestion Implementation.md"
+    },
+    {
+      "basename": "PDF's Ingestion Implementation",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/PDF's Ingestion Implementation.md"
+    },
+    {
+      "basename": "Links",
+      "path": "40_Resources/CS/Links.md"
+    },
+    {
+      "basename": "Companies giving OPT & CPT",
+      "path": "20_Progress/Internship/Companies giving OPT & CPT.md"
+    },
+    {
       "basename": "Ingestion Pipeline Audit — Clippings, Summaries & Implementation (2026-07-27)",
       "path": "60_Claude/20_Distilled_Notes/Ingestion Pipeline Audit — Clippings, Summaries & Implementation (2026-07-27).md"
+    },
+    {
+      "basename": "Execution",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Execution.md"
+    },
+    {
+      "basename": "MavGPT AI Resume & Job Search Guide (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/MavGPT AI Resume & Job Search Guide (PDF).md"
+    },
+    {
+      "basename": "Ultimate Guide to Winning Hackathons (PDF)",
+      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Ultimate Guide to Winning Hackathons (PDF).md"
     },
     {
       "basename": "Final Month Plan (Jul 28 - Sep 1)",
@@ -71,10 +107,6 @@
     {
       "basename": "Internship Search Stack",
       "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Internship Search Stack.md"
-    },
-    {
-      "basename": "Links",
-      "path": "40_Resources/CS/Links.md"
     },
     {
       "basename": "Repos",
@@ -167,14 +199,6 @@
     {
       "basename": "Cheat Template",
       "path": "30_Order/Templates/Career/Cheat Template.md"
-    },
-    {
-      "basename": "Applications-to-Create",
-      "path": "20_Progress/Internship/Applying/Applications-to-Create.md"
-    },
-    {
-      "basename": "Now",
-      "path": "20_Progress/Internship/Applying/Now.md"
     }
   ],
   "omittedPaths": [],

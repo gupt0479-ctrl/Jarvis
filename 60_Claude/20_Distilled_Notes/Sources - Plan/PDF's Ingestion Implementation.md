@@ -125,7 +125,7 @@ You have 20+ winning hackathon projects (or competing products in a category). Y
 
 ---
 
-## SCHEDULED WORKFLOWS (Recurring)
+## SCHEDULED WORKFLOWS (Recurring) - NEEDS TO HAPPEN
 
 ### Weekly: Signal Synthesis (30 min every Friday)
 - **Input:** Week's new web ingestions (career signals, market trends, internship postings)
@@ -149,7 +149,7 @@ You have 20+ winning hackathon projects (or competing products in a category). Y
 
 ---
 
-## MCP Setup & Installation
+## MCP Setup & Installation - NOTED
 
 **Source:** [[60_Claude/10_Source_Summaries/PDF Ingestion/5 Best Claude Code MCPs (PDF)]]
 
@@ -175,7 +175,7 @@ You have 20+ winning hackathon projects (or competing products in a category). Y
 
 ---
 
-## Claude Code Configuration
+## Claude Code Configuration - DONE
 
 **Source:** [[60_Claude/10_Source_Summaries/PDF Ingestion/Claude Code Status Bar (PDF)]]
 
@@ -190,7 +190,7 @@ You have 20+ winning hackathon projects (or competing products in a category). Y
 
 ---
 
-## Vault Integration & Skills
+## Vault Integration & Skills - REVIEW
 
 **Source:** [[60_Claude/10_Source_Summaries/PDF Ingestion/Obsidian + Claude Code Codebook — 12 Commands (PDF)]]
 
@@ -446,7 +446,7 @@ Without one, you fail:
 
 ---
 
-## TRADING BOT TRACK: Integrated Analysis (All Trading Resources)
+## TRADING BOT TRACK: Integrated Analysis (All Trading Resources) - ACTION
 
 **Sources:** 
 - [[AI Prediction Market Trading Bot (PDF)]] — Five-stage architecture (crucial)
@@ -628,7 +628,7 @@ A: **After.** Build a working trading bot first (Scan → Predict → Risk → C
 
 ---
 
-## JARVIS VAULT TRACK: Obsidian + Claude Code Codebook × GitHub Skills Assessment
+## JARVIS VAULT TRACK: Obsidian + Claude Code Codebook × GitHub Skills Assessment - COMPARE & BUILD
 
 **Source:** [[Obsidian + Claude Code Codebook — 12 Commands (PDF)]] | **Cross-Reference:** [[40_Resources/CS/Repos]] + [[Useful Repos - Shortlist]]
 
@@ -849,7 +849,7 @@ A: Minimal. Vin's commands are for vault automation, not code projects. The skil
 
 ---
 
-## OUTREACH TRACK: Professional Email Automation + Apify Enhancement Research
+## OUTREACH TRACK: Professional Email Automation + Apify Enhancement Research - BUILD
 
 **Source:** [[Outreach Automation Manual (PDF)]] | **Research:** Email discovery tools, professional outreach best practices (2026)
 
@@ -1168,7 +1168,7 @@ Step 8: Track metrics (response rate, reply rate, call rate)
 
 ---
 
-## FINANCE TRACK: Student Travel Discounts Deep-Dive (15–70% Savings Ecosystem)
+## FINANCE TRACK: Student Travel Discounts Deep-Dive (15–70% Savings Ecosystem) - MOVE
 
 **Source:** [[Student Travel Discounts List (PDF)]] | **Updated:** 2026-07-08
 
@@ -1478,7 +1478,7 @@ Per [[The Output Audit (web)]], cert-stacking can become busywork. The rule: **2
 
 ---
 
-## Portfolio Projects: Pick 1-2, Build Deep
+## Portfolio Projects: Pick 1-2, Build Deep - NOTED, CONSIDER
 
 **Source:** [[60_Claude/10_Source_Summaries/PDF Ingestion/BASWE 15 AI Engineering Projects That Land Jobs (PDF)]]
 
@@ -1517,7 +1517,7 @@ Every project needs:
 
 ---
 
-## Knowledge Gathering & Intelligence Automation System (10% of Work Needed)
+## Knowledge Gathering & Intelligence Automation System (10% of Work Needed) - BUILD
 
 **Source:** [[60_Claude/10_Source_Summaries/PDF Ingestion/Find Startup Ideas with Reddit & AI (PDF)]]
 
@@ -1684,7 +1684,7 @@ Once built, this feeds into [[Claude OS]] as:
 
 ---
 
-## Orby (Portfolio): Model Regression Detection for Eval
+## Orby (Portfolio): Model Regression Detection for Eval - BUILD
 
 **From BASWE 15 Project 1 — Implement for Portfolio**
 
@@ -1706,7 +1706,7 @@ This is the **eval gap backstop** for Orby's AI Lab agent.
 
 ---
 
-## Claude Code Skills & Repos: Implement vs. Knowledge Matrix
+## Claude Code Skills & Repos: Implement vs. Knowledge Matrix - REVIEW
 
 **Sources:**
 - [[60_Claude/10_Source_Summaries/PDF Ingestion/Free Claude Code Skill Libraries (PDF)]]
@@ -1841,7 +1841,7 @@ This session captured the framework. Next session should resolve the `(*HOW USEF
 
 ---
 
-## GitNexus: Codebase Map for Agent Safety
+## GitNexus: Codebase Map for Agent Safety - DROP
 
 **Source:** [[60_Claude/10_Source_Summaries/PDF Ingestion/GitNexus Codebase Map (PDF)]]
 
@@ -1903,7 +1903,7 @@ Do not make broad changes until you understand what the touched code connects to
 
 ---
 
-## Code Review & Eval Gap: Pre-Commit AI Backstop
+## Code Review & Eval Gap: Pre-Commit AI Backstop - BUILD
 
 **Source:** [[60_Claude/10_Source_Summaries/PDF Ingestion/CodeRabbit CLI Code Review (PDF)]]
 
@@ -1946,7 +1946,7 @@ Focus on free, reliable tools (Semgrep, deepeval, PyLint) instead of paying serv
 
 ---
 
-## Model Distillation: Distill 70B into 3B for Task-Specific Offline Inference
+## Model Distillation: Distill 70B into 3B for Task-Specific Offline Inference - BUILD
 
 **Source:** [[60_Claude/10_Source_Summaries/PDF Ingestion/Clone — Distill a 70B into a 3B (PDF)]]
 
@@ -2062,7 +2062,7 @@ Given your projects, **Option 1 (Trading-Specific Model)** seems highest-leverag
 
 ---
 
-## DeepThinksFinance: Competitive Analysis & Proof Testing (Not Primary Source)
+## DeepThinksFinance: Competitive Analysis & Proof Testing (Not Primary Source) - USEFUL?
 
 **Sources:** 
 - [[60_Claude/10_Source_Summaries/PDF Ingestion/DeepThinksFinance AI Portfolio Optimizer (PDF)]]
@@ -2187,7 +2187,7 @@ Given your projects, **Option 1 (Trading-Specific Model)** seems highest-leverag
 
 ---
 
-## Trading Bot Architecture: Five-Stage Pipeline
+## Trading Bot Architecture: Five-Stage Pipeline - USEFUL?
 
 **Source:** [[60_Claude/10_Source_Summaries/PDF Ingestion/AI Prediction Market Trading Bot (PDF)]]
 
