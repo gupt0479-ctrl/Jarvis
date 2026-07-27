@@ -7,7 +7,7 @@ tags:
   - summary
 notes:
   - "[[Tracker]]"
-  - "[[06 - ML Fundamentals (2033 + 2230)]]"
+  - "[[ML Fundamentals (2033 + 2230)]]"
 source_url: 60_Claude/05_Clippings/PDFs/How to Pivot into an Ai_ML Engineering Role in 2026.pdf
 source_note: "[[How to Pivot into an Ai_ML Engineering Role in 2026.pdf]]"
 input_kind: pdf
@@ -233,12 +233,12 @@ Focus: ==The hidden backbone — making training, deployment, and monitoring wor
 ### Sources
 Axial Search (10,000+ postings, Jan 2026) · Glassdoor (Feb 2026) · Second Talent (Feb 2026) · 365 Data Science (2025) · IntuitionLabs (Nov 2025) · LinkedIn Jobs on the Rise (2025).
 ## Why It Matters
-This is the market map the internship pipeline in [[Tracker]] operates inside — the Path B (AI Engineer) profile matches the existing project evidence (Jarvis, CausalOps agents, RAG-adjacent work) almost exactly, and the "3 deployed projects, README explains the ML problem, evaluation documented" bar is a concrete checklist for the Bangalore flagship loop. The Step 2 math list is literally [[06 - ML Fundamentals (2033 + 2230)]]'s syllabus, which confirms the summer course strategy against outside data. Caveat kept honest: the guide targets 2–6-year SWEs, not students — the salary anchors don't transfer, the portfolio bar and positioning logic do.
+This is the market map the internship pipeline in [[Tracker]] operates inside — the Path B (AI Engineer) profile matches the existing project evidence (Jarvis, CausalOps agents, RAG-adjacent work) almost exactly, and the "3 deployed projects, README explains the ML problem, evaluation documented" bar is a concrete checklist for the Bangalore flagship loop. The Step 2 math list is literally [[ML Fundamentals (2033 + 2230)]]'s syllabus, which confirms the summer course strategy against outside data. Caveat kept honest: the guide targets 2–6-year SWEs, not students — the salary anchors don't transfer, the portfolio bar and positioning logic do.
 ## Links Into The Vault
 - Source clip: `60_Claude/05_Clippings/PDFs/How to Pivot into an Ai_ML Engineering Role in 2026.pdf`
 - [[Tracker]] — internship pipeline this market data informs
-- [[06 - ML Fundamentals (2033 + 2230)]] — the vault's version of Step 2/3A
-- [[05 - LeetCode & CSCI 4041]] — note the guide's contrarian take: ML coding rounds are LeetCode-Medium, not Hard
+- [[ML Fundamentals (2033 + 2230)]] — the vault's version of Step 2/3A
+- [[LeetCode & CSCI 4041]] — note the guide's contrarian take: ML coding rounds are LeetCode-Medium, not Hard
 - ML system design prep note `(to create)` — Chip Huyen framework, 35% of interview weight
 ## Open Questions
 - [ ] Which of the three paths does the current project portfolio actually evidence best — AI Engineer looks right, but is there enough deployed (not just built) work?

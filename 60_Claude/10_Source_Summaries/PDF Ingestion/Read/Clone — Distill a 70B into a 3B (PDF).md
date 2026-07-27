@@ -7,7 +7,7 @@ tags:
   - summary
 notes:
   - "[[Claude Code Free with Ollama (PDF)]]"
-  - "[[06 - ML Fundamentals (2033 + 2230)]]"
+  - "[[ML Fundamentals (2033 + 2230)]]"
 source_url: 60_Claude/05_Clippings/PDFs/Clone Setup Guide (June 2026).pdf
 source_note: "[[Clone Setup Guide (June 2026).pdf]]"
 input_kind: pdf
@@ -32,11 +32,11 @@ A build guide for **task-specific model distillation**: use a 70B teacher (Toget
 3. **Deploy (Ollama).** Write a `Modelfile` (`FROM ./…unsloth.Q4_K_M.gguf`, `temperature 0.1`, system prompt) → `ollama create` → run, or call the OpenAI-compatible `http://localhost:11434/api/generate` endpoint. The Modelfile's `FROM` filename must match Unsloth's exact GGUF output name.
 **Cost breakdown:** generate 3,000 examples (~5M tokens ≈ $4.40) + judge/filter (~3M ≈ $2.64) + A100 fine-tune (~90 min ≈ $4.50) = **~$11.50**. The PDF also includes a paste-into-Claude-Code prompt that scaffolds all three scripts, asks for keys first, and runs the dry-run before spending.
 ## Why It Matters
-This is the cleanest end-to-end example of the **frozen-teacher → cheap-student** pattern that shows up across the ingested pile (the TRIBE v2 paper's frozen-encoder approach, the AI/ML pivot guide's LoRA fine-tuning project, the AI Engineer roadmap's fine-tuning section) — and it's a realistic Bangalore-flagship-scale build: a deployed, evaluated, task-specific model for ~$12 is exactly the "3 deployed projects" bar with a strong cost/privacy story. It pairs with [[Claude Code Free with Ollama (PDF)]] (same Ollama local-inference layer) and the [[06 - ML Fundamentals (2033 + 2230)]] track (LoRA/gradient-descent are the math being applied). The dry-run-before-spending and EOS-token discipline are the kind of concrete gotchas that make a portfolio project sound like real engineering in an interview.
+This is the cleanest end-to-end example of the **frozen-teacher → cheap-student** pattern that shows up across the ingested pile (the TRIBE v2 paper's frozen-encoder approach, the AI/ML pivot guide's LoRA fine-tuning project, the AI Engineer roadmap's fine-tuning section) — and it's a realistic Bangalore-flagship-scale build: a deployed, evaluated, task-specific model for ~$12 is exactly the "3 deployed projects" bar with a strong cost/privacy story. It pairs with [[Claude Code Free with Ollama (PDF)]] (same Ollama local-inference layer) and the [[ML Fundamentals (2033 + 2230)]] track (LoRA/gradient-descent are the math being applied). The dry-run-before-spending and EOS-token discipline are the kind of concrete gotchas that make a portfolio project sound like real engineering in an interview.
 ## Links Into The Vault
 - Source clip: `60_Claude/05_Clippings/PDFs/Clone Setup Guide (June 2026).pdf`
 - [[Claude Code Free with Ollama (PDF)]] — the same Ollama local-serving layer
-- [[06 - ML Fundamentals (2033 + 2230)]] — LoRA/fine-tuning math
+- [[ML Fundamentals (2033 + 2230)]] — LoRA/fine-tuning math
 - [[How to Pivot into an AI-ML Engineering Role in 2026 (PDF)]] — lists a LoRA fine-tuning project as a portfolio piece
 ## Open Questions
 - [ ] Is a task-specific distilled 3B a viable Bangalore flagship (deployed + evaluated + $12 cost story), and what narrow task?

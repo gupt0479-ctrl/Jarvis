@@ -8,7 +8,7 @@ tags:
 notes:
   - "[[Quant Foundations (PDF)]]"
   - "[[Stocks Trading AI Hub]]"
-  - "[[06 - ML Fundamentals (2033 + 2230)]]"
+  - "[[ML Fundamentals (2033 + 2230)]]"
 source_url: 60_Claude/05_Clippings/PDFs/MIT QUANT BIBLE pdf.pdf
 source_note: "[[MIT QUANT BIBLE pdf.pdf]]"
 input_kind: pdf
@@ -201,13 +201,13 @@ Framework: treat each data event as an i.i.d. r.v., pick an estimator (often the
 ### 7 Question Bank (index — full brainteasers in the PDF)
 Per-firm interview question sets with worked patterns: **Jane Street** (Evan/Brian), **Virtu Financial** (Evan), **Optiver** (Ravi), **Akuna Capital**, **Citadel**, **Hudson River Trading**, **Two Sigma**, **Five Rings**, **SIG** (Ravi), plus a preliminaries section. Use these as the drill deck once the fundamentals above are fluent.
 ## Why It Matters
-This is the map for the quant-internship track that runs alongside Anant's ML coursework and the [[Stocks Trading AI Hub]] project — and the overlap is exact: the probability/expectation/variance and the regression/dimensionality-reduction material *is* [[06 - ML Fundamentals (2033 + 2230)]] and CSCI 2033/MATH 2230, recontextualized. It pairs with [[Quant Foundations (PDF)]] (which is the "how to prepare" strategy layer; this is the "actual content" layer). The market-making section is the most uniquely valuable part — it's not in any course, and the three-determinant quoting method + riskless-PNL triangulation is directly drillable. Honest caveat: the guide targets MIT students recruiting for these specific firms; the course numbers and firm list are MIT-specific, but the math and the interview method transfer to any quant recruiting.
+This is the map for the quant-internship track that runs alongside Anant's ML coursework and the [[Stocks Trading AI Hub]] project — and the overlap is exact: the probability/expectation/variance and the regression/dimensionality-reduction material *is* [[ML Fundamentals (2033 + 2230)]] and CSCI 2033/MATH 2230, recontextualized. It pairs with [[Quant Foundations (PDF)]] (which is the "how to prepare" strategy layer; this is the "actual content" layer). The market-making section is the most uniquely valuable part — it's not in any course, and the three-determinant quoting method + riskless-PNL triangulation is directly drillable. Honest caveat: the guide targets MIT students recruiting for these specific firms; the course numbers and firm list are MIT-specific, but the math and the interview method transfer to any quant recruiting.
 ## Links Into The Vault
 - Source clip: `60_Claude/05_Clippings/PDFs/MIT QUANT BIBLE pdf.pdf`
 - [[Quant Foundations (PDF)]] — the strategy/prep companion to this content bible
 - [[Stocks Trading AI Hub]] — the trading project this feeds
-- [[06 - ML Fundamentals (2033 + 2230)]] — the vault's version of the probability/stats/regression fundamentals here
-- [[05 - LeetCode & CSCI 4041]] — several firms (Two Sigma, HRT, Akuna, Belvedere) give coding challenges
+- [[ML Fundamentals (2033 + 2230)]] — the vault's version of the probability/stats/regression fundamentals here
+- [[LeetCode & CSCI 4041]] — several firms (Two Sigma, HRT, Akuna, Belvedere) give coding challenges
 - ESL / regression concept notes `(to create)` — ridge/lasso/PCR, bias-variance, curse of dimensionality
 ## Open Questions
 - [ ] Which of the 4041/2033/2230 concepts already have vault notes that could absorb the ESL regression material vs need new ones?

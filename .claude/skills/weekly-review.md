@@ -43,27 +43,27 @@ For each group, note: what was created vs. what was updated, and whether the wor
 
 ## Step 2: Summer Execution Audit
 
-Check four execution tracks against the targets in `10_Areas/Life/Plans/`.
+Check four execution tracks against the targets in `10_Areas/Life/Plans/Summer/`. As of 2026-07-27 this folder holds 6 consolidated files, not the old numbered set — plan and tracker pairs were merged into one file each, tracker data now lives in a `§8` section of the plan note, and the old status/close-out/monthly-map notes are one file: [[Final Month Plan (Jul 28 - Sep 1)]].
 
 Do not re-read all plan files — use these specific checks:
 
 ### LeetCode
-- Read `10_Areas/Life/Plans/05a - LeetCode Tracker.md` — find this week's total
+- Read `10_Areas/Life/Plans/Summer/LeetCode & CSCI 4041.md` §8 Daily Log — find this week's total
 - Target: ≥35 problems/week
 - Flag if < 35: how far behind, which days had zero
 
-### Courses
-- Read `10_Areas/Life/Plans/04 - Summer Courses Ops.md` — deadline table
-- Did any deadline pass this week? If so, what was it and was it met?
-- Read `10_Areas/Life/Plans/06a - ML Fundamentals Progress.md` — how many units completed vs. planned?
+### Courses and certifications
+- MATH 2230 and HIST 1103 are complete — no deadline table to check there anymore
+- Read `10_Areas/Life/Plans/Summer/Final Month Plan (Jul 28 - Sep 1).md` — Timeframe table for this week's certification and any Git-exam date; Implementation Status / Current Progress for what's actually true
+- Read `10_Areas/Life/Plans/Summer/ML Fundamentals (2033 + 2230).md` §8 Progress Tracking — how many spine units or bridge notes completed vs. planned
 
 ### Projects
 - Check `20_Progress/` — any project notes modified in the past 7 days?
-- From `10_Areas/Life/Plans/07 - Projects & Hackathons Queue.md` — did any flagship project advance?
+- From `10_Areas/Life/Plans/Summer/Final Month Plan (Jul 28 - Sep 1).md`'s Timeframe table — did this week's flagship project advance?
 - What shipped this week? (code pushed, document finalized, demo done — concrete artifacts only)
 
 ### Career Pipeline
-- Any LeetCode company-tagged problems this week? (track from 05a)
+- Any LeetCode company-tagged problems this week? (track from the Daily Log)
 - Any applications submitted, outreach sent, or interviews scheduled?
 - Check if `20_Progress/` has any career-related notes touched this week
 

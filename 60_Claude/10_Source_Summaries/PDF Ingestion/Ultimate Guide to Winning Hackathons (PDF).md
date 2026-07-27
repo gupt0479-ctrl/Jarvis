@@ -9,7 +9,7 @@ tags:
   - portfolio
   - project-deployment
 notes:
-  - "[[07 - Projects & Hackathons Queue]]"
+  - "[[Projects & Hackathons Queue]]"
   - "[[Hall of Hacks — Winning Hackathon Archive (web)]]"
   - "[[How to Pivot into an AI-ML Engineering Role in 2026 (PDF)]]"
 source_url: 60_Claude/05_Clippings/PDFs/Ultimate Guide to Winning Hackathons.pdf
@@ -505,7 +505,7 @@ Do not add routing or external dependencies.
 
 - **Ingestion Source:** `60_Claude/05_Clippings/PDFs/Ultimate Guide to Winning Hackathons.pdf`
 - **Related Career Path:** [[How to Pivot into an AI-ML Engineering Role in 2026 (PDF)]]
-- **Project Queue:** [[07 - Projects & Hackathons Queue]]
+- **Project Queue:** [[10_Areas/Life/Plans/Summer/Final Month Plan (Jul 28 - Sep 1)|Final Month Plan (Jul 28 - Sep 1)]]
 - **Winning Projects Reference:** [[Hall of Hacks — Winning Hackathon Archive (web)]]
 - **Case Study Template:** Maverick Resume Prompt 2A
 

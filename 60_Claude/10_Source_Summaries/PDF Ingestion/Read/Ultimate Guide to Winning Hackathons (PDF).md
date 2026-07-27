@@ -6,7 +6,7 @@ updated: 2026-07-04
 tags:
   - summary
 notes:
-  - "[[07 - Projects & Hackathons Queue]]"
+  - "[[Projects & Hackathons Queue]]"
   - "[[Hall of Hacks — Winning Hackathon Archive (web)]]"
 source_url: 60_Claude/05_Clippings/PDFs/Ultimate Guide to Winning Hackathons.pdf
 source_note: "[[Ultimate Guide to Winning Hackathons.pdf]]"
@@ -33,10 +33,10 @@ A tactical how-to for winning college hackathons (author claims never having los
 5. **Presentation (last 2h):** map slides to rubric bullets; hook the room (15-sec story or live poll); live demo with Loom backup; quantify impact; close with the ask.
 6. **Judge-proofing:** explain the tech simply (simplicity signals real understanding), articulate the value clearly, name-drop the sponsor API in the first minute, leave 30 sec for Q&A and repeat each question before answering.
 ## Why It Matters
-Directly operational for the Saturday hackathon slot and the AWS+Vercel hackathon in [[07 - Projects & Hackathons Queue]]. The highest-leverage, least-obvious move is **booth-validating with the actual judge before building** — it turns a guess into a near-guaranteed rubric fit. The rubric-mapping + quantified-impact + close-with-the-ask presentation structure is reusable well beyond hackathons (it's the same "lead with a number" discipline as the BASWE portfolio-project case studies). Pairs with the archive note: study what won there, execute how here.
+Directly operational for the Saturday hackathon slot and the AWS+Vercel hackathon in [[Projects & Hackathons Queue]]. The highest-leverage, least-obvious move is **booth-validating with the actual judge before building** — it turns a guess into a near-guaranteed rubric fit. The rubric-mapping + quantified-impact + close-with-the-ask presentation structure is reusable well beyond hackathons (it's the same "lead with a number" discipline as the BASWE portfolio-project case studies). Pairs with the archive note: study what won there, execute how here.
 ## Links Into The Vault
 - Source clip: `60_Claude/05_Clippings/PDFs/Ultimate Guide to Winning Hackathons.pdf`
-- [[07 - Projects & Hackathons Queue]] — the hackathon lane
+- [[Projects & Hackathons Queue]] — the hackathon lane
 - [[Hall of Hacks — Winning Hackathon Archive (web)]] — the "what won" companion
 ## Open Questions
 - [ ] For the next hackathon, pre-write the rubric→slide map and the ≤90-sec demo click-path before the event?

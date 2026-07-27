@@ -30,12 +30,14 @@ Read these six files. No other reads. No vault dump.
 
 | File | What to extract |
 |------|-----------------|
-| `10_Areas/Life/Plans/Summer/01 - Daily Operating System.md` | 4 wins + MVP variants + academic minimums |
-| `10_Areas/Life/Plans/Summer/02 - Weekly Operating System.md` | Today's day-of-week focus |
-| `10_Areas/Life/Plans/Summer/04 - Summer Courses Ops.md` | Deadlines within 7 days |
-| `10_Areas/Life/Plans/Summer/05 - LeetCode & CSCI 4041.md` + `05a - LeetCode Tracker.md` | Today's LC topic; solved count vs ≥35/week |
-| `10_Areas/Life/Plans/Summer/06 - ML Fundamentals (2033 + 2230).md` + `06a - ML Fundamentals Progress.md` | Today's CSCI 2033 subtopic |
+| `10_Areas/Life/Plans/Summer/Daily Operating System.md` | 4 wins + MVP variants + 8-track academic stack |
+| `10_Areas/Life/Plans/Summer/Weekly Operating System.md` | Today's day-of-week focus |
+| `10_Areas/Life/Plans/Summer/Final Month Plan (Jul 28 - Sep 1).md` | Deadlines within 7 days (certifications, Git exam), this week's flagship, Current Progress |
+| `10_Areas/Life/Plans/Summer/LeetCode & CSCI 4041.md` (§8 Daily Log for solved count vs ≥35/week) | Today's LC topic; solved count |
+| `10_Areas/Life/Plans/Summer/ML Fundamentals (2033 + 2230).md` (§8 Progress Tracking) | Today's CSCI 2033 broad-pass unit |
 | `10_Areas/Life/Habits/` — find the file with a `## Daily` heading (currently `Habit Tracker Board.md`; don't hardcode the name, it has changed before) | Active daily habits |
+
+Note: as of 2026-07-27 this folder holds 6 files, not the old 00–08 numbered set — two plan/tracker pairs were merged into single files (their tracker data now lives in a numbered `§8` section of the plan note), and the status/close-out/monthly-plan notes were consolidated into [[Final Month Plan (Jul 28 - Sep 1)]]. If a referenced file is missing, check the index (`00 - Summer Plans Index.md`) before assuming it was never created.
 
 If any file is missing, note it in the output and continue.
 
@@ -47,7 +49,7 @@ Read `60_Claude/07_AI_Information/Session Logs/log.md`. Take the 10 most recent 
 
 Patch `10_Areas/Life/Enumerate/Daily/YYYY-MM-DD.md` by heading. Never overwrite frontmatter; never delete existing content. Exact per-heading formats: [reference.md §1](reference.md).
 
-Sections to fill: summary callout, Morning Plan goal, 80 — The One Thing, 20 — Supporting Work, Summer OS Checklist win targets, Academic Stack topics, deadline alert (if due ≤7 days), carryover block (if any), anti-drift line (from `08 - Anti-Drift Rules.md`), Productivity habit checkboxes.
+Sections to fill: summary callout, Morning Plan goal, 80 — The One Thing, 20 — Supporting Work, Summer OS Checklist win targets, Academic Stack topics, deadline alert (if due ≤7 days), carryover block (if any), anti-drift line (from `Anti-Drift Rules.md`), Productivity habit checkboxes.
 
 ### Step 3b — Patch the Dashboard
 

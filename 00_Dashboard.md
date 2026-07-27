@@ -2,17 +2,17 @@
 type: dashboard
 status: tree
 created: 2026-04-23
-updated: 2026-07-04
+updated: 2026-07-27
 tags:
   - dashboard
   - daily
 cssclasses:
   - dashboard
-today_focus: '"Friday: MATH 2230 Test 3 prep session 1 (3 days out, zero prep) +
-  land CSCI 2033 Unit 1 (0/14, carried 3rd day) + hold LC/4041 floor"'
-today_80: '"MATH 2230 Test 3 prep session 1 — Ch 7–8, 10.1"'
-today_20: '"LeetCode 5 (Sorting/Time Complexity, Google), CSCI 4041 review, CSCI
-  2033 Unit 1 (carried), inbox zero"'
+today_focus: '"See Final Month Plan (Jul 28 - Sep 1) — W0 close-out: internship-loop
+  verification, TradingView UI review, Portfolio UI-fix deploy"'
+today_80: '"Work the active close-out item from Final Month Plan (Jul 28 - Sep 1)"'
+today_20: '"LeetCode 5, System Design 20-30min, Trading Knowledge note, AI
+  Knowledge item — daily floor per Final Month Plan (Jul 28 - Sep 1)"'
 lc_today: 0
 study_today: 0
 wins_done: 0
@@ -144,7 +144,7 @@ LIMIT 8
 **System:** [[CLAUDE.md]] · [[AGENTS.md]] · [[Jarvis OS — North Star]] · [[AI_CONTEXT]] · [[HUMAN_WRITING]]
 **Claude OS:** [[Claude OS]] · [[20_Progress/AI/Claude OS Dashboard|Claude OS Dashboard]] · [[10_Areas/Excalidraw/Claude OS Map|OS Map]]
 **AI:** [[10_Areas/AI/Claude Code|Claude Code]] · [[10_Areas/AI/Cursor|Cursor]] · [[10_Areas/AI/Kiro|Kiro]] · [[10_Areas/AI/Codex|Codex]]
-**Daily OS:** [[10_Areas/Life/Plans/Summer/01 - Daily Operating System|Daily Operating System]] · personal, health, and finance tracking live in The Plan, not here
+**Daily OS:** [[Daily Operating System|Daily Operating System]] · personal, health, and finance tracking live in The Plan, not here
 
 ## 10_Areas Overview
 
@@ -155,7 +155,7 @@ What each area is for, and where it stands right now. This is an area-level fiel
 | [[10_Areas/Career/Engineer Edge Roadmap\|Career]] | Internship pipeline, freelancing, business-income tracking (`Career/Finance/`, scoped to project/business money only — no personal finance here) | Internship tracker + freelancing offer not yet defined; Finance folder empty until real income lands |
 | [[10_Areas/Trading/Stocks Trading AI Hub\|Trading]] | TradingView project — treated as an engineering/evaluation build, not a promise to beat the market | Flagship candidate for the Bangalore ship loop; not started yet |
 | [[10_Areas/AI/Claude Code\|AI]] | Reference notes for the AI tools actually in use (Claude Code, Cursor, Kiro, Codex) | Stable reference, low-churn |
-| [[10_Areas/Life/Plans/Summer/01 - Daily Operating System\|Life]] | Execution only: Enumerate daily/weekly/monthly notes, Summer OS plans, operational habit boards, builder-identity Truths of Life. No personal-life content — that lives in The Plan. | Active — this is what `/startday` and `/closeday` read every day |
+| [[Daily Operating System\|Life]] | Execution only: Enumerate daily/weekly/monthly notes, Summer OS plans, operational habit boards, builder-identity Truths of Life. No personal-life content — that lives in The Plan. | Active — this is what `/startday` and `/closeday` read every day. As of 2026-07-27, read [[10_Areas/Life/Plans/Summer/Final Month Plan (Jul 28 - Sep 1)\|Final Month Plan]] first — it's the one source of truth for the daily floor and real project status. |
 | Notes | Raw course-era captures (F'25, Files, PDFs) awaiting distillation or archive | Not actively worked — candidate for a cleanup pass |
 
 Full folder definitions: [[40_Resources/Obsidian/Jarvis Vault Architecture]]. The Plan holds the personal-life equivalent of this table on its own dashboard.

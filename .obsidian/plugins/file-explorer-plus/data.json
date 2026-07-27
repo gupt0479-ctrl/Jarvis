@@ -605,6 +605,13 @@
         "type": "FILES",
         "pattern": "10_Areas/Career/Internships/List/Resources.md",
         "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "10_Areas/Life/Plans/Summer/Final Month Plan (Jul 28 - Sep 1).md",
+        "patternType": "STRICT"
       }
     ],
     "frontMatter": [

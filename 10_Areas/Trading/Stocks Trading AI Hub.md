@@ -14,7 +14,7 @@ source_concepts:
   - "[[20_Progress/Projects/CS/TradingView/Research/Trading Tools and Platforms]]"
   - "[[AI Workflow]]"
 notes:
-  - "[[06 - ML Fundamentals (2033 + 2230)]]"
+  - "[[ML Fundamentals (2033 + 2230)]]"
 ---
 # AI Market Analyzer Project Brief
 ## Problem

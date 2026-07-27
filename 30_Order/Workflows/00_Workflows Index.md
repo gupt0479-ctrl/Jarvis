@@ -46,6 +46,7 @@ across all of it:  enrich existing notes in place  ·  capture AI conversations 
 | Capture an LLM conversation so its decisions survive | [[Conversation Capture]] |
 | Strengthen an existing note without rewriting it | [[Enrichment]] |
 | Move an internship (or any application) from found to offer/rejected | [[Internship Pipeline]] |
+| Create a plan, or keep an existing one wired into daily/weekly execution | [[Plan Review Cadence]] |
 
 ## Rules every workflow shares
 

@@ -1,12 +1,96 @@
 {
   "recentFiles": [
     {
-      "basename": "Random",
-      "path": "Random.md"
+      "basename": "Ingestion Pipeline Audit — Clippings, Summaries & Implementation (2026-07-27)",
+      "path": "60_Claude/20_Distilled_Notes/Ingestion Pipeline Audit — Clippings, Summaries & Implementation (2026-07-27).md"
+    },
+    {
+      "basename": "Final Month Plan (Jul 28 - Sep 1)",
+      "path": "10_Areas/Life/Plans/Summer/Final Month Plan (Jul 28 - Sep 1).md"
+    },
+    {
+      "basename": "Summer Grind",
+      "path": "10_Areas/Summer Grind.md"
+    },
+    {
+      "basename": "List Monthly Log Template",
+      "path": "30_Order/Templates/Career/List Monthly Log Template.md"
+    },
+    {
+      "basename": "Plans-to-Create",
+      "path": "10_Areas/Life/Plans/Plans-to-Create.md"
+    },
+    {
+      "basename": "Daily Workflow Standard",
+      "path": "30_Order/Standards/Daily Workflow Standard.md"
+    },
+    {
+      "basename": "Internship Notes Standard",
+      "path": "30_Order/Standards/Internship Notes Standard.md"
+    },
+    {
+      "basename": "Plan Template",
+      "path": "30_Order/Templates/Career/Plan Template.md"
+    },
+    {
+      "basename": "Anti-Drift Rules",
+      "path": "10_Areas/Life/Plans/Summer/Anti-Drift Rules.md"
+    },
+    {
+      "basename": "ML Fundamentals (2033 + 2230)",
+      "path": "10_Areas/Life/Plans/Summer/ML Fundamentals (2033 + 2230).md"
+    },
+    {
+      "basename": "LeetCode & CSCI 4041",
+      "path": "10_Areas/Life/Plans/Summer/LeetCode & CSCI 4041.md"
+    },
+    {
+      "basename": "Weekly Operating System",
+      "path": "10_Areas/Life/Plans/Summer/Weekly Operating System.md"
+    },
+    {
+      "basename": "Daily Operating System",
+      "path": "10_Areas/Life/Plans/Summer/Daily Operating System.md"
+    },
+    {
+      "basename": "00 - Summer Plans Index",
+      "path": "10_Areas/Life/Plans/Summer/00 - Summer Plans Index.md"
+    },
+    {
+      "basename": "Claude OS Dashboard",
+      "path": "20_Progress/AI/Claude OS Dashboard.md"
+    },
+    {
+      "basename": "Claude OS Dashboard",
+      "path": "20_Progress/AI/Claude OS Dashboard.canvas"
+    },
+    {
+      "basename": "Claude OS Map",
+      "path": "10_Areas/AI/Claude OS Map.excalidraw"
+    },
+    {
+      "basename": "Internship Search Stack",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Internship Search Stack.md"
+    },
+    {
+      "basename": "Links",
+      "path": "40_Resources/CS/Links.md"
+    },
+    {
+      "basename": "Repos",
+      "path": "40_Resources/CS/Repos.md"
     },
     {
       "basename": "Research Loop - Resources",
       "path": "20_Progress/Internship/Building System/Research Loop - Resources.md"
+    },
+    {
+      "basename": "Trackings-to-Create",
+      "path": "10_Areas/Career/Internships/Tracker/Each One/Trackings-to-Create.md"
+    },
+    {
+      "basename": "Random",
+      "path": "Random.md"
     },
     {
       "basename": "Research Loop - Implementation Plan",
@@ -29,20 +113,12 @@
       "path": "60_Claude/05_Clippings/Web/Claude Council.md"
     },
     {
-      "basename": "Claude OS Map",
-      "path": "10_Areas/Excalidraw/Claude OS Map.excalidraw"
-    },
-    {
       "basename": "Application Tracker",
       "path": "10_Areas/Career/Internships/Tracker/Application Tracker.md"
     },
     {
       "basename": "Habit Tracker",
       "path": "10_Areas/Career/Internships/Tracker/Habit Tracker.md"
-    },
-    {
-      "basename": "Trackings-to-Create",
-      "path": "10_Areas/Career/Internships/Tracker/Each One/Trackings-to-Create.md"
     },
     {
       "basename": "Tracker",
@@ -99,106 +175,6 @@
     {
       "basename": "Now",
       "path": "20_Progress/Internship/Applying/Now.md"
-    },
-    {
-      "basename": "Source of Truth",
-      "path": "20_Progress/Internship/Building System/Source of Truth.md"
-    },
-    {
-      "basename": "Internship Pipeline",
-      "path": "30_Order/Workflows/Internship Pipeline.md"
-    },
-    {
-      "basename": "Enrichment",
-      "path": "30_Order/Workflows/Enrichment.md"
-    },
-    {
-      "basename": "Conversation Capture",
-      "path": "30_Order/Workflows/Conversation Capture.md"
-    },
-    {
-      "basename": "Capture to Summary",
-      "path": "30_Order/Workflows/Capture to Summary.md"
-    },
-    {
-      "basename": "Brief to Progress",
-      "path": "30_Order/Workflows/Brief to Progress.md"
-    },
-    {
-      "basename": "00_Workflows Index",
-      "path": "30_Order/Workflows/00_Workflows Index.md"
-    },
-    {
-      "basename": "2026-07 Found",
-      "path": "10_Areas/Career/Internships/List/2026-07 Found.md"
-    },
-    {
-      "basename": "Programs-to-Create",
-      "path": "10_Areas/Career/Internships/Programs/Programs-to-Create.md"
-    },
-    {
-      "basename": "Internships Hub",
-      "path": "10_Areas/Career/Internships/Internships Hub.md"
-    },
-    {
-      "basename": "Dossiers MOC",
-      "path": "10_Areas/Career/Internships/List/Dossiers MOC.md"
-    },
-    {
-      "basename": "Networking Strategies",
-      "path": "10_Areas/Career/Internships/Contacts/Networking Strategies.md"
-    },
-    {
-      "basename": "GitHub Ingestion Implementation",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/GitHub Ingestion Implementation.md"
-    },
-    {
-      "basename": "Internship - Dashboard",
-      "path": "10_Areas/Career/Internships/Tracker/Internship - Dashboard.md"
-    },
-    {
-      "basename": "Programs MOC",
-      "path": "10_Areas/Career/Internships/Programs/Programs MOC.md"
-    },
-    {
-      "basename": "Software Engineering Intern - Appian",
-      "path": "10_Areas/Career/Internships/Tracker/Each One/Current/Software Engineering Intern - Appian.md"
-    },
-    {
-      "basename": "2026-HRT-Sophomore",
-      "path": "10_Areas/Career/Internships/Programs/Serious/2026-HRT-Sophomore.md"
-    },
-    {
-      "basename": "Software Engineering Intern - Appian",
-      "path": "10_Areas/Career/Internships/Programs/Considering/Software Engineering Intern - Appian.md"
-    },
-    {
-      "basename": "Dossiers-to-Create",
-      "path": "10_Areas/Career/Internships/List/Dossiers/Dossiers-to-Create.md"
-    },
-    {
-      "basename": "LinkedIn Post Template",
-      "path": "30_Order/Templates/Career/LinkedIn Post Template.md"
-    },
-    {
-      "basename": "Run Log",
-      "path": "10_Areas/Career/Internships/List/Run Log.md"
-    },
-    {
-      "basename": "Phases Run",
-      "path": "20_Progress/Internship/Building System/Runs/Phases Run.md"
-    },
-    {
-      "basename": "Research Loop - Phase 7 Coverage Expansion",
-      "path": "20_Progress/Internship/Building System/Runs/Research Loop - Phase 7 Coverage Expansion.md"
-    },
-    {
-      "basename": "simplifyjobs-02a3daa8-78be-409a-bd55-b630dfae60c1",
-      "path": "10_Areas/Career/Internships/List/Dossiers/simplifyjobs-02a3daa8-78be-409a-bd55-b630dfae60c1.md"
-    },
-    {
-      "basename": "simplifyjobs-2c656f83-6247-4e1c-a019-3126608b9e23",
-      "path": "10_Areas/Career/Internships/List/Dossiers/simplifyjobs-2c656f83-6247-4e1c-a019-3126608b9e23.md"
     }
   ],
   "omittedPaths": [],

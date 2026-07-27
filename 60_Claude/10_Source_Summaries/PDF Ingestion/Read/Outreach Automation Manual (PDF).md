@@ -77,11 +77,11 @@ Daily loop: open the project → "run outreach" → confirm targets if changed �
 4. **A Gmail draft didn't save** — Claude prints the full email text; paste manually
 > [!WARNING] The $49/mo Apify requirement is buried in Troubleshooting, not the setup steps — the "free account" in Step 1 does not actually run this pipeline via API.
 ## Why It Matters
-Internship outreach is a weekly cadence in [[02 - Weekly Operating System]] and the pipeline feeds [[Tracker]] directly — this is a concrete mechanism for it, not another "network more" platitude. The skill-file + MCP-connector shape is also the same architecture as the Jarvis skills, so adapting it (swap Gmail drafts for tracker rows) is a realistic weekend project. The cost gate matters: at $49/mo the manual variant (search + pattern-guess by hand, Claude writes the emails) may be the student-budget version.
+Internship outreach is a weekly cadence in [[Weekly Operating System]] and the pipeline feeds [[Tracker]] directly — this is a concrete mechanism for it, not another "network more" platitude. The skill-file + MCP-connector shape is also the same architecture as the Jarvis skills, so adapting it (swap Gmail drafts for tracker rows) is a realistic weekend project. The cost gate matters: at $49/mo the manual variant (search + pattern-guess by hand, Claude writes the emails) may be the student-budget version.
 ## Links Into The Vault
 - Source clip: `60_Claude/05_Clippings/PDFs/outreach-manual.pdf`
 - [[Tracker]] — the internship tracker these contacts would land in
-- [[02 - Weekly Operating System]] — where the weekly outreach slot lives
+- [[Weekly Operating System]] — where the weekly outreach slot lives
 - Cold-email skill for Jarvis `(to create)` — adaptation of this pipeline without Apify
 ## Open Questions
 - [ ] Is the $49/mo Apify plan worth it vs. hand-searching 10 profiles and letting Claude write the emails from the same inputs?

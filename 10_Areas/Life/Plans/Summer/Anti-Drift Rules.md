@@ -9,7 +9,7 @@ tags:
   - anti-drift
 notes:
   - "[[00 - Summer Plans Index]]"
-  - "[[01 - Daily Operating System]]"
+  - "[[Daily Operating System]]"
   - "[[Atomic Habits]]"
 next: "[[00 - Summer Plans Index]]"
 ---

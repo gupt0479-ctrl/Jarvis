@@ -7,7 +7,7 @@ tags:
   - summary
 notes:
   - "[[Life OS]]"
-  - "[[08 - Anti-Drift Rules]]"
+  - "[[Anti-Drift Rules]]"
 source_url: https://dustinbweiss.substack.com/p/the-output-audit
 source_note: "[[The Output Audit.md]]"
 input_kind: web
@@ -48,13 +48,13 @@ A companion essay to [[The Hidden Operating System Behind Every Income Ceiling (
 ### The trap at the end
 Most readers nod, feel seen, and go back to the failing routine — because doing the audit means confronting that the last 12 months may not have built what you thought. "You can't out-work a system that's measuring the wrong thing."
 ## Why It Matters
-This one is uncomfortably on-target for Anant's exact, self-diagnosed problem: the [[03 - Monthly & Phase Map]] says outright that "infrastructure (Jarvis, MCPs, skills) is built; execution has not started — time went to tool-tinkering, not the projects," which *is* Output Illusion by another name, and [[08 - Anti-Drift Rules]] is already an informal defense against it. The Output Audit is a concrete instrument to run against the current five pursuits (Jarvis, Portfolio, TradingView, Resq, coursework) and the "difficulty not volume" + "weekly velocity review" rules could be folded into `/weekly-review` and the [[02 - Weekly Operating System]]. The DRIV filter is a cleaner articulation of the "evidence or it didn't happen" rule in [[Life OS]]. Signal caveat: same coaching-funnel motivational genre with a fabricated study — take the exercise, leave the neuroscience claims.
+This one is uncomfortably on-target for Anant's exact, self-diagnosed problem: the [[Monthly & Phase Map]] says outright that "infrastructure (Jarvis, MCPs, skills) is built; execution has not started — time went to tool-tinkering, not the projects," which *is* Output Illusion by another name, and [[Anti-Drift Rules]] is already an informal defense against it. The Output Audit is a concrete instrument to run against the current five pursuits (Jarvis, Portfolio, TradingView, Resq, coursework) and the "difficulty not volume" + "weekly velocity review" rules could be folded into `/weekly-review` and the [[Weekly Operating System]]. The DRIV filter is a cleaner articulation of the "evidence or it didn't happen" rule in [[Life OS]]. Signal caveat: same coaching-funnel motivational genre with a fabricated study — take the exercise, leave the neuroscience claims.
 ## Links Into The Vault
 - Source clip: `60_Claude/05_Clippings/Web/The Output Audit.md`
 - [[The Hidden Operating System Behind Every Income Ceiling (web)]] — companion essay, same author/genre
 - [[Life OS]] — the "evidence not vibes" rule this sharpens
-- [[08 - Anti-Drift Rules]] — the vault's existing defense against exactly this failure mode
-- [[02 - Weekly Operating System]] — where a weekly velocity review would live
+- [[Anti-Drift Rules]] — the vault's existing defense against exactly this failure mode
+- [[Weekly Operating System]] — where a weekly velocity review would live
 ## Open Questions
 - [ ] Run the Output Audit on the current 5 pursuits (Jarvis / Portfolio / TradingView / Resq / coursework) — which survive Velocity + Direction + Resistance?
 - [ ] Fold the "difficulty not volume, +defined amount every 30 days" rule into the monthly phase-map review?

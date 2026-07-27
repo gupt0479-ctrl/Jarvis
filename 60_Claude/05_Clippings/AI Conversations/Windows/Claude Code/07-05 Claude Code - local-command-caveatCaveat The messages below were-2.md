@@ -2131,7 +2131,7 @@ From [[How to Pivot into an AI-ML Engineering Role in 2026 (PDF)]]:
 **Connection Points:**
 - **Career Path:** [[How to Pivot into an AI-ML Engineering Role in 2026]] → Portfolio projects
 - **Trading Bot:** Hackathon MVPs can become serious projects (AI/ML track ideal for your skills)
-- **Jarvis:** [[07 - Projects & Hackathons Queue]] now has tactical playbook
+- **Jarvis:**[[Projects & Hackathons Queue]]] now has tactical playbook
 - **Skills:** Hackathons are perfect for testing `/challenge` and `/strategy` skills once built
 
 ---

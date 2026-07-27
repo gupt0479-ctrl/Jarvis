@@ -2,9 +2,12 @@
 type: brainstorm
 status: seed
 created: 2026-04-26
+updated: 2026-07-27
 related_progress:
   - "[[Winter Break]]"
   - "[[Resolutions '26]]"
+notes:
+  - "[[10_Areas/Life/Plans/Summer/Final Month Plan (Jul 28 - Sep 1)]]"
 tags:
   - brainstorm
 next: "[[2026]]"
@@ -104,6 +107,9 @@ This summer is not a list of outcomes. [[Atomic Habits]] instead of motivation. 
 > 1. MVPs & Deployment: Arc, Portfolio, TradingView, Resq
 > 2. Health - Gym, Eat, Routines 
 > 3. Read - Research, Books, Investing
+
+> [!NOTE] Reality check, 2026-07-27
+> The daily/weekly cadence below is the original design. [[10_Areas/Life/Plans/Summer/Final Month Plan (Jul 28 - Sep 1)|Final Month Plan]] is the fact-checked account of how much of it ran, and the corrected system carrying it through 2026-09-01 — one file, not two.
 ### Dubai
 > [!TIME] 5 Weeks - 18th May - 19th June
 > - Distribute systems into weekly loads and plan from the end.
@@ -140,6 +146,9 @@ This summer is not a list of outcomes. [[Atomic Habits]] instead of motivation. 
 > - We already know what to do, we just follow it.
 
 **Goal for this block:** use the routine installed in Dubai to execute consistently for 8 weeks, then use the remaining time up to Sept 1 as a buffer for cleanup, polish, and any missed weeks. (The document only states “2 months” under Bangalore, so the plan here is a structured execution container anchored on the existing weekly operating + weekly review system.) 
+
+> [!NOTE] Actual Bangalore close, confirmed 2026-07-27
+> Bangalore runs June 20 → **August 17**, then a deliberately light BLR→Dubai travel stretch, then Dubai through the September 1 flight. [[10_Areas/Life/Plans/Summer/Final Month Plan (Jul 28 - Sep 1)|Final Month Plan]] carries the weekly-flagship mechanism below through to the actual deadline; the P0/P1 structure here is the origin design, not the current week-by-week.
 #### P0 (Week 1: June 20 → June 26) — Start with a single “flagship priority”
 - Choose **one flagship priority for the week** (must be shippable in 7 days).
 - Use the Weekly Operating System structure to run the week:

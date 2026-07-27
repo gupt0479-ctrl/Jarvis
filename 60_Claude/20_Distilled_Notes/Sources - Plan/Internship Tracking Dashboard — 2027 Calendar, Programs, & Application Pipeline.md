@@ -11,10 +11,10 @@ tags:
 notes:
   - "[[How to Pivot into an AI-ML Engineering Role in 2026 (PDF)]]"
   - "[[Tracker]]"
-  - "[[02 - Weekly Operating System]]"
+  - "[[Weekly Operating System]]"
   - "[[MavGPT AI Resume & Job Search Guide (PDF)]]"
   - "[[LinkedIn Search URL Cheatsheet (PDF)]]"
-next: "Create internship tracking board in Obsidian"
+next: Create internship tracking board in Obsidian
 ---
 
 # Internship Tracking Dashboard — 2027 Calendar, Programs & Application Pipeline
@@ -443,7 +443,7 @@ These open and close in 2–3 weeks. SET EMAIL ALERTS:
 
 ## Integration with Other Systems
 
-- **[[02 - Weekly Operating System]]** → Add Friday 15-min internship check
+- **[[Weekly Operating System]]** → Add Friday 15-min internship check
 - **[[Tracker]]** → Link to this dashboard
 - **[[MavGPT AI Resume & Job Search Guide (PDF)]]** → Use Prompt 5A (application tracking) for follow-ups
 - **[[LinkedIn Search URL Cheatsheet (PDF)]]** → Research recruiters at these firms

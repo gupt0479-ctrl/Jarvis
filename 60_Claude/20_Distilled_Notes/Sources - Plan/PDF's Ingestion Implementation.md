@@ -2536,7 +2536,7 @@ This is a **backtest, not live trading** — expect live results to be messier.
 - [ ] **Loom walkthrough** (2–3 min): show live demo + explain why it won/lost
 - [ ] **GitHub repo:** Clean README, boilerplate comments removed, deployment instructions
 - [ ] **Social proof:** LinkedIn post (tag hackathon + judges if they engaged); email judges thank-you + link to deployed project
-- [ ] **Add to portfolio website** or [[07 - Projects & Hackathons Queue]]
+- [ ] **Add to portfolio website** or [[Projects & Hackathons Queue]]
 
 **Resume integration (from Maverick Prompt 2A):**
 - ❌ Bad: "I built X over a weekend"

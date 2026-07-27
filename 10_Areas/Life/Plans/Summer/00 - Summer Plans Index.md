@@ -2,58 +2,43 @@
 type: evergreen
 status: active
 created: 2026-06-03
-updated: 2026-06-03
+updated: 2026-07-27
 tags:
   - plan
   - summer
   - moc
-notes: '["[[Summer Grind]]","[[01 - Daily Operating System]]","[[02 - Weekly
-  Operating System]]","[[03 - Monthly & Phase Map]]","[[04 - Summer Courses
-  Ops]]","[[05 - LeetCode & CSCI 4041]]","[[05a - LeetCode Tracker]]","[[06 - ML
-  Fundamentals (2033 + 2230)]]","[[06a - ML Fundamentals Progress]]","[[07 -
-  Projects & Hackathons Queue]]","[[08 - Anti-Drift Rules]]"]'
-next: "[[01 - Daily Operating System]]"
+notes:
+  - "[[Summer Grind]]"
+  - "[[Daily Operating System]]"
+  - "[[Weekly Operating System]]"
+  - "[[Final Month Plan (Jul 28 - Sep 1)]]"
+  - "[[LeetCode & CSCI 4041]]"
+  - "[[ML Fundamentals (2033 + 2230)]]"
+  - "[[Anti-Drift Rules]]"
+next: "[[Final Month Plan (Jul 28 - Sep 1)]]"
 ---
-
 # Summer Plans — Index (Map of Content)
-
-This folder is the **daily execution layer** for the summer (Dubai → Bangalore → Sept 1, 2026). It supersedes [[Summer Grind]] for *how to run a day*. Summer Grind stays the strategic source (identities, project list, weekly review questions); these files turn it into checkable daily systems.
-
-**Supersession note:** For daily operations, read these files, not Summer Grind. Summer Grind's `## How you manage the whole plan efficiently` heading is the origin; everything operational from it now lives here.
-
+==Six files, one job each, no duplicates.== This folder is the daily execution layer for the summer (Dubai → Bangalore → Sept 1, 2026). [[Summer Grind]] stays the strategic source (identities, project list, weekly review questions); this folder turns it into checkable daily systems. **Consolidated 2026-07-27:** the folder previously held 11 files with real overlap — two plan/tracker pairs and three fragments of one status note. Merged down to 6; nothing here is a stub anymore.
 ## How daily ops uses this folder
-
 | Skill | Reads | Produces |
 |---|---|---|
-| `/today`, `/ops morning-start` | [[01 - Daily Operating System]] + today's calendar + course board `next:` | `60_Claude/50_Reviews/Today - YYYY-MM-DD.md` with Summer Ops Checklist on top |
-| `/closeday`, `/ops evening-close` | Today note's checkboxes | Scorecard: % of daily minimums met; one friction fix if <90% |
-| Weekly (Sunday) | [[02 - Weekly Operating System]] | 7 review answers + next-7-day course deadline scan |
-
+| `/startday` | [[Daily Operating System]] + [[Final Month Plan (Jul 28 - Sep 1)]]'s current week row + today's calendar | `60_Claude/50_Reviews/Today - YYYY-MM-DD.md` with the Summer Ops Checklist on top |
+| `/closeday` | Today note's checkboxes | Scorecard: % of daily minimums met; one friction fix if <90% |
+| `/weekly-review` (Sunday) | [[Weekly Operating System]] | 7 review answers + [[Final Month Plan (Jul 28 - Sep 1)]]'s Current Progress line updated |
 ## The files
-
-| # | File | Purpose |
+| File | Purpose | Update trigger |
 |---|---|---|
-| 00 | This index | MOC + how skills consume the folder |
-| 01 | [[01 - Daily Operating System]] | **The primary daily checklist** — 5 wins + academic stack, with MVP variants |
-| 02 | [[02 - Weekly Operating System]] | Mon–Sun rhythm + Sunday 7 questions + course deadline scan |
-| 03 | [[03 - Monthly & Phase Map]] | Dubai install → Bangalore execute → Sept 1 buffer, with weekly load budgets |
-| 04 | [[04 - Summer Courses Ops]] | HIST 1103 (admin-only) + MATH 2230 (grade-A) triggers & MVPs |
-| 05 | [[05 - LeetCode & CSCI 4041]] | ≥5 problems/day, topic rotation, 4041 concept links |
-| 06 | [[06 - ML Fundamentals (2033 + 2230)]] | CSCI 2033 relearn + MATH 2230 ML concept-note bridge |
-| 07 | [[07 - Projects & Hackathons Queue]] | Flagship vs maintenance; hackathons (stub — detail later) |
-| 08 | [[08 - Anti-Drift Rules]] | Tab-switching, MCP rabbit holes, Never Miss Twice |
-
+| This index | MOC + how skills consume the folder | When a file is added, merged, or removed |
+| [[Daily Operating System]] | The daily checklist — 4 wins + 8-track academic stack, MVP variants | When a daily track changes |
+| [[Weekly Operating System]] | Mon–Sun rhythm + Sunday 7 questions + deadline scan | Rarely — mechanism, not content |
+| [[Final Month Plan (Jul 28 - Sep 1)]] | The one source of truth for goal, timeframe, systems, real status, and certifications through 2026-09-01 | Every Sunday via `/weekly-review`; immediately on any flagship change |
+| [[LeetCode & CSCI 4041]] | Plan + daily log + mastery table, merged into one file 2026-07-27 | Daily — log rows in §8 |
+| [[ML Fundamentals (2033 + 2230)]] | Plan + progress tracker, merged into one file 2026-07-27 | As the broad pass runs — dates in §8 |
+| [[Anti-Drift Rules]] | Tab-switching, MCP rabbit holes, Never Miss Twice, friction log | On any missed day |
 ## The contract (when vs what)
-
 - **Google Calendar** = time container (*when*). Source of truth for blocks/conflicts only.
 - **`60_Claude/50_Reviews/Today - *.md`** = task truth (*what*). Generated daily.
-- **Todoist / Reminders** = optional mirrors. Not source of truth.
+- **Todoist / Reminders** = optional mirrors, not source of truth — see [[Final Month Plan (Jul 28 - Sep 1)]]'s automation wishlist for the planned Obsidian-centered version.
 - **This folder** = the systems the Today note is built from.
-
-## Standing assumptions (documented, not blocking)
-
-- Today is 2026-06-03 (Wed), in Dubai. Post–17 May reset applies: infra is built, execution has not started. Goal of these files is to make "what to do today" unambiguous.
-- No tool/MCP configuration this session. Existing Jarvis MCP + calendar only; AI picks its own tooling.
-- Realistic capacity: 3–5 h focused work on heavy days; MVP everything else.
-- Career win primary = **LeetCode** (internship pipeline is secondary cadence, weekly not daily).
-- HIST 1103 = admin-only, zero learning. MATH 2230 = learn (doubles as ML math).
+## Current State (2026-07-27)
+Bangalore, one month out from the Sept 1 deadline. The daily/weekly mechanism below is correct; it did not run in June or July — [[Final Month Plan (Jul 28 - Sep 1)]]'s Implementation Status table is the verified account of what actually happened, and its Current Progress section is the living record from here forward. Read that file, not this index's old assumptions, for what's true right now.
