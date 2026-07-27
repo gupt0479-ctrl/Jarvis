@@ -69,9 +69,9 @@ notes:
 	- [AI Engineer](https://roadmap.sh/ai-engineer?utm_source=sp_auto_dm)
 - AI Engineering from Scratch - [Entire Guide](https://aiengineeringfromscratch.com/)
 - [Maverick's Resources](https://mavgpt.ai/)
-	- Claude Secret Codes: [100 Prompt Shortcuts](https://mavgpt.ai/resources/claude-secret-codes?mcp_token=eyJwaWQiOjI5OTM1MzIsInNpZCI6MzE2NDA5MDY3LCJheCI6ImNlNzQ1ZGM1OGEwMjMxOGEwZGYyYzNhYjA0NzZiYzdjIiwidHMiOjE3NzQ4ODY1NjYsImV4cCI6MTc3NzMwNTc2Nn0.0vlQq8gsX7QCoR5I9uSbKbun8xiUAAfiYpw3tbYIeNg&fbclid=PAVERFWAQ3ff1leHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAadfRJ4HAVJkVq-L0RW7RuNTQlbuuCH6-u2PGgCDN6FOIuxUgGB7rZ4AzIa2Qg_aem_POWtGoql3QatpqbSjv1uQg) - [[Maverick's 100 prompt shortcuts.pdf]]
-	- [The AI Resume & Job Search Guide](https://mavgpt.ai/resources/ai-resume-job-search-guide) - [[Maverick's AI Resume & Job Search.pdf]]
-	- [All of Maverick's Viral Prompts](https://mavgpt.ai/resources/viral-prompts) - [[Maverick's Viral Prompts.pdf]]
+	- Claude Secret Codes: [100 Prompt Shortcuts](https://mavgpt.ai/resources/claude-secret-codes?mcp_token=eyJwaWQiOjI5OTM1MzIsInNpZCI6MzE2NDA5MDY3LCJheCI6ImNlNzQ1ZGM1OGEwMjMxOGEwZGYyYzNhYjA0NzZiYzdjIiwidHMiOjE3NzQ4ODY1NjYsImV4cCI6MTc3NzMwNTc2Nn0.0vlQq8gsX7QCoR5I9uSbKbun8xiUAAfiYpw3tbYIeNg&fbclid=PAVERFWAQ3ff1leHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAadfRJ4HAVJkVq-L0RW7RuNTQlbuuCH6-u2PGgCDN6FOIuxUgGB7rZ4AzIa2Qg_aem_POWtGoql3QatpqbSjv1uQg) - [[60_Claude/05_Clippings/PDFs/Maverick's 100 prompt shortcuts.pdf]]
+	- [The AI Resume & Job Search Guide](https://mavgpt.ai/resources/ai-resume-job-search-guide) - [[60_Claude/05_Clippings/PDFs/Maverick's AI Resume & Job Search.pdf]]
+	- [All of Maverick's Viral Prompts](https://mavgpt.ai/resources/viral-prompts) - [[60_Claude/05_Clippings/PDFs/Maverick's Viral Prompts.pdf]]
 	- 
 
 #### Notion

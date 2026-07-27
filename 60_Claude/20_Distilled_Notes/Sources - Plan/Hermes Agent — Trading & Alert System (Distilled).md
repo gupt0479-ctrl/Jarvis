@@ -12,7 +12,7 @@ notes:
   - "[[trading-bot five-stage architecture]]"
   - "[[MIT Quant Bible (PDF)]]"
   - "[[TradingView Project Scope]]"
-source_url: https://zachdoesai.com/guides/hermes-money-playbook (Play 4: Markets)
+source_url:https://zachdoesai.com/guides/hermes-money-playbook (Play 4: Markets)
 source_note: "[[4 Ways to Make Money With the Hermes Agent (web).md]]"
 track: trading
 input_kind: web

@@ -9,7 +9,7 @@ notes:
   - "[[Tracker]]"
   - "[[ML Fundamentals (2033 + 2230)]]"
 source_url: 60_Claude/05_Clippings/PDFs/How to Pivot into an Ai_ML Engineering Role in 2026.pdf
-source_note: "[[How to Pivot into an Ai_ML Engineering Role in 2026.pdf]]"
+source_note: "[[60_Claude/05_Clippings/PDFs/How to Pivot into an Ai_ML Engineering Role in 2026.pdf]]"
 input_kind: pdf
 track: career
 ---

@@ -15,7 +15,7 @@ notes:
   - "[[Outreach Automation Manual (PDF)]]"
   - "[[LinkedIn Search URL Cheatsheet (PDF)]]"
 source_url: 60_Claude/05_Clippings/PDFs/Maverick's AI Resume & Job Search.pdf
-source_note: "[[Maverick's AI Resume & Job Search.pdf]]"
+source_note: "[[60_Claude/05_Clippings/PDFs/Maverick's AI Resume & Job Search.pdf]]"
 input_kind: pdf
 track: career
 ---

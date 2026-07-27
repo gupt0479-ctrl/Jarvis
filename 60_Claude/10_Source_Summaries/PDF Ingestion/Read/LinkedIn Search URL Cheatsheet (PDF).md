@@ -9,7 +9,7 @@ notes:
   - "[[Tracker]]"
   - "[[LinkedIn Premium]]"
 source_url: 60_Claude/05_Clippings/PDFs/Linkedin Searches.pdf
-source_note: "[[Linkedin Searches.pdf]]"
+source_note: "[[60_Claude/05_Clippings/PDFs/Linkedin Searches.pdf]]"
 input_kind: pdf
 track: career
 ---

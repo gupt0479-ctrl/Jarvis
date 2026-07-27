@@ -21,7 +21,7 @@ Actionable items from web sources on agent-ready infrastructure, portfolio diffe
 
 ---
 
-## Agent-Ready Infrastructure (AEO + MCP)
+## Agent-Ready Infrastructure (AEO + MCP) - BUILD
 
 **Source:** [[60_Claude/10_Source_Summaries/Web Ingestion/The Agent-Ready Roadmap (web)]]
 
@@ -46,7 +46,7 @@ Actionable items from web sources on agent-ready infrastructure, portfolio diffe
 
 ---
 
-## Agent Primitives & Integration
+## Agent Primitives & Integration - DROP
 
 **Source:** [[60_Claude/10_Source_Summaries/Web Ingestion/Naive — Agent Primitives API (web)]]
 
@@ -56,7 +56,7 @@ Actionable items from web sources on agent-ready infrastructure, portfolio diffe
 
 ---
 
-## Validation: Obsidian-as-OS Learning
+## Validation: Obsidian-as-OS Learning - DROP
 
 **Source:** [[60_Claude/10_Source_Summaries/Web Ingestion/NextWork — Automate Your AI Second Brain (web)]]
 

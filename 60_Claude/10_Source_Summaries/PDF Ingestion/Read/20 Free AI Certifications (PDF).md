@@ -9,7 +9,7 @@ notes:
   - "[[Tracker]]"
   - "[[How to Pivot into an AI-ML Engineering Role in 2026 (PDF)]]"
 source_url: 60_Claude/05_Clippings/PDFs/Free AI Certifications Guide.pdf
-source_note: "[[Free AI Certifications Guide.pdf]]"
+source_note: "[[60_Claude/05_Clippings/PDFs/Free AI Certifications Guide.pdf]]"
 input_kind: pdf
 track: career
 ---

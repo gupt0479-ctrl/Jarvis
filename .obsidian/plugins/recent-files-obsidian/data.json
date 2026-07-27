@@ -5,12 +5,96 @@
       "path": "60_Claude/20_Distilled_Notes/Sources - Plan/GitHub Ingestion Implementation.md"
     },
     {
+      "basename": "How Anant Uses Each Repo",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/How Anant Uses Each Repo.md"
+    },
+    {
+      "basename": "Source Summaries Board",
+      "path": "60_Claude/10_Source_Summaries/Source Summaries Board.md"
+    },
+    {
+      "basename": "The New Coding Interview — 5 Resources (web)",
+      "path": "60_Claude/10_Source_Summaries/Web Ingestion/The New Coding Interview — 5 Resources (web).md"
+    },
+    {
+      "basename": "Where teams and agents work together 1",
+      "path": "60_Claude/05_Clippings/Web/Where teams and agents work together 1.md"
+    },
+    {
+      "basename": "Where teams and agents work together",
+      "path": "60_Claude/05_Clippings/Web/Where teams and agents work together.md"
+    },
+    {
+      "basename": "AI Engineer Roadmap",
+      "path": "60_Claude/05_Clippings/Web/AI Engineer Roadmap.md"
+    },
+    {
+      "basename": "The Hidden Operating System Behind Every Income Ceiling",
+      "path": "60_Claude/05_Clippings/Web/The Hidden Operating System Behind Every Income Ceiling.md"
+    },
+    {
+      "basename": "Claude Council",
+      "path": "60_Claude/05_Clippings/Web/Claude Council.md"
+    },
+    {
+      "basename": "Distilled Notes Board",
+      "path": "60_Claude/20_Distilled_Notes/Distilled Notes Board.md"
+    },
+    {
+      "basename": "Synthesis Index",
+      "path": "60_Claude/20_Distilled_Notes/Synthesis/Synthesis Index.md"
+    },
+    {
+      "basename": "AI-Assisted Trading",
+      "path": "60_Claude/20_Distilled_Notes/AI-Assisted Trading.md"
+    },
+    {
+      "basename": "Trading Tools and Platforms",
+      "path": "60_Claude/20_Distilled_Notes/Trading Tools and Platforms.md"
+    },
+    {
+      "basename": "Mentorship and Networking",
+      "path": "60_Claude/20_Distilled_Notes/Mentorship and Networking.md"
+    },
+    {
+      "basename": "Ingestion Pipeline Audit — Clippings, Summaries & Implementation (2026-07-27)",
+      "path": "60_Claude/20_Distilled_Notes/Ingestion Pipeline Audit — Clippings, Summaries & Implementation (2026-07-27).md"
+    },
+    {
+      "basename": "Index Fund Investing",
+      "path": "60_Claude/20_Distilled_Notes/Index Fund Investing.md"
+    },
+    {
+      "basename": "Career Strategy",
+      "path": "60_Claude/20_Distilled_Notes/Career Strategy.md"
+    },
+    {
+      "basename": "Trading Resources Integration — TradingView Architecture Roadmap",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Trading Resources Integration — TradingView Architecture Roadmap.md"
+    },
+    {
+      "basename": "Maverick Skills Analysis - Cross-Reference with GitHub Repos",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Maverick Skills Analysis - Cross-Reference with GitHub Repos.md"
+    },
+    {
+      "basename": "Internship Tracking Dashboard — 2027 Calendar, Programs, & Application Pipeline",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Internship Tracking Dashboard — 2027 Calendar, Programs, & Application Pipeline.md"
+    },
+    {
+      "basename": "Hermes Agent — Trading & Alert System (Distilled)",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Hermes Agent — Trading & Alert System (Distilled).md"
+    },
+    {
       "basename": "Hall of Hacks — Winning Hackathon Patterns Analysis",
       "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Hall of Hacks — Winning Hackathon Patterns Analysis.md"
     },
     {
       "basename": "Web Ingestion Implementation",
       "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Web Ingestion Implementation.md"
+    },
+    {
+      "basename": "00_Execution",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
     },
     {
       "basename": "PDF's Ingestion Implementation",
@@ -23,14 +107,6 @@
     {
       "basename": "Companies giving OPT & CPT",
       "path": "20_Progress/Internship/Companies giving OPT & CPT.md"
-    },
-    {
-      "basename": "Ingestion Pipeline Audit — Clippings, Summaries & Implementation (2026-07-27)",
-      "path": "60_Claude/20_Distilled_Notes/Ingestion Pipeline Audit — Clippings, Summaries & Implementation (2026-07-27).md"
-    },
-    {
-      "basename": "Execution",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Execution.md"
     },
     {
       "basename": "MavGPT AI Resume & Job Search Guide (PDF)",
@@ -105,10 +181,6 @@
       "path": "10_Areas/AI/Claude OS Map.excalidraw"
     },
     {
-      "basename": "Internship Search Stack",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Internship Search Stack.md"
-    },
-    {
       "basename": "Repos",
       "path": "40_Resources/CS/Repos.md"
     },
@@ -127,78 +199,6 @@
     {
       "basename": "Research Loop - Implementation Plan",
       "path": "20_Progress/Internship/Building System/Research Loop - Implementation Plan.md"
-    },
-    {
-      "basename": "Research Loop - Improvement Plan",
-      "path": "20_Progress/Internship/Building System/Research Loop - Improvement Plan.md"
-    },
-    {
-      "basename": "Internship Research Loop — Full Pipeline",
-      "path": "20_Progress/Internship/Building System/Internship Research Loop — Full Pipeline.excalidraw"
-    },
-    {
-      "basename": "Claude Code Prompts",
-      "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
-    },
-    {
-      "basename": "Claude Council",
-      "path": "60_Claude/05_Clippings/Web/Claude Council.md"
-    },
-    {
-      "basename": "Application Tracker",
-      "path": "10_Areas/Career/Internships/Tracker/Application Tracker.md"
-    },
-    {
-      "basename": "Habit Tracker",
-      "path": "10_Areas/Career/Internships/Tracker/Habit Tracker.md"
-    },
-    {
-      "basename": "Tracker",
-      "path": "10_Areas/Career/Internships/Tracker/Tracker.md"
-    },
-    {
-      "basename": "Contacts-to-Create",
-      "path": "10_Areas/Career/Internships/Contacts/Each One/Contacts-to-Create.md"
-    },
-    {
-      "basename": "Contacts MOC",
-      "path": "10_Areas/Career/Internships/Contacts/Contacts MOC.md"
-    },
-    {
-      "basename": "LinkedIn Premium",
-      "path": "10_Areas/Career/Internships/Cheats/LinkedIn Premium.md"
-    },
-    {
-      "basename": "Links & Interlinks",
-      "path": "10_Areas/Career/Internships/Links & Interlinks.md"
-    },
-    {
-      "basename": "Resources",
-      "path": "10_Areas/Career/Internships/List/Resources.md"
-    },
-    {
-      "basename": "System - Build Log",
-      "path": "20_Progress/Internship/Building System/System - Build Log.md"
-    },
-    {
-      "basename": "Contact Template",
-      "path": "30_Order/Templates/Career/Contact Template.md"
-    },
-    {
-      "basename": "Program Template",
-      "path": "30_Order/Templates/Career/Program Template.md"
-    },
-    {
-      "basename": "Tracking Template",
-      "path": "30_Order/Templates/Career/Tracking Template.md"
-    },
-    {
-      "basename": "Applying Template",
-      "path": "30_Order/Templates/Career/Applying Template.md"
-    },
-    {
-      "basename": "Cheat Template",
-      "path": "30_Order/Templates/Career/Cheat Template.md"
     }
   ],
   "omittedPaths": [],

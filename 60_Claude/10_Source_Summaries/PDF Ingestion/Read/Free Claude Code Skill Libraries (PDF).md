@@ -8,7 +8,7 @@ tags:
 notes:
   - "[[Claude OS]]"
 source_url: 60_Claude/05_Clippings/PDFs/Free Claude Cowork Skills.pdf
-source_note: "[[Free Claude Cowork Skills.pdf]]"
+source_note: "[[60_Claude/05_Clippings/PDFs/Free Claude Cowork Skills.pdf]]"
 input_kind: pdf
 track: ai
 ---

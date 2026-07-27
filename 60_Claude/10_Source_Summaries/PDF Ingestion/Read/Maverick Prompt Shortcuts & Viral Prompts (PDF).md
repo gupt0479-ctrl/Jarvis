@@ -8,7 +8,7 @@ tags:
 notes:
   - "[[Claude OS]]"
 source_url: 60_Claude/05_Clippings/PDFs/Maverick's 100 prompt shortcuts.pdf
-source_note: "[[Maverick's 100 prompt shortcuts.pdf]]"
+source_note: "[[60_Claude/05_Clippings/PDFs/Maverick's 100 prompt shortcuts.pdf]]"
 input_kind: pdf
 track: ai
 ---

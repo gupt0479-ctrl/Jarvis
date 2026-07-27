@@ -9,7 +9,7 @@ notes:
   - "[[Stocks Trading AI Hub]]"
   - "[[Quant Foundations (PDF)]]"
 source_url: 60_Claude/05_Clippings/PDFs/How to Build an AI-Powered Prediction Market Trading Bot Using Claude Skills.pdf
-source_note: "[[How to Build an AI-Powered Prediction Market Trading Bot Using Claude Skills.pdf]]"
+source_note: "[[60_Claude/05_Clippings/PDFs/How to Build an AI-Powered Prediction Market Trading Bot Using Claude Skills.pdf]]"
 input_kind: pdf
 track: trading
 ---

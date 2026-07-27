@@ -612,6 +612,34 @@
         "type": "FILES",
         "pattern": "10_Areas/Life/Plans/Summer/Final Month Plan (Jul 28 - Sep 1).md",
         "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "60_Claude/20_Distilled_Notes/Sources - Plan/GitHub Ingestion Implementation.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "60_Claude/20_Distilled_Notes/Sources - Plan/PDF's Ingestion Implementation.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "60_Claude/20_Distilled_Notes/Sources - Plan/Video Ingestion Implementation.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "60_Claude/20_Distilled_Notes/Sources - Plan/Web Ingestion Implementation.md",
+        "patternType": "STRICT"
       }
     ],
     "frontMatter": [

@@ -10,7 +10,7 @@ notes:
   - "[[Stocks Trading AI Hub]]"
   - "[[ML Fundamentals (2033 + 2230)]]"
 source_url: 60_Claude/05_Clippings/PDFs/MIT QUANT BIBLE pdf.pdf
-source_note: "[[MIT QUANT BIBLE pdf.pdf]]"
+source_note: "[[60_Claude/05_Clippings/PDFs/MIT QUANT BIBLE pdf.pdf]]"
 input_kind: pdf
 track: trading
 ---
