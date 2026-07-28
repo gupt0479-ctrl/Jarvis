@@ -187,7 +187,20 @@ Security tooling and research.
 - [MantisHack](https://github.com/deonmenezes/mantishack) — autonomous security framework on Claude Code (fork of RAPTOR): scan, validate, exploit, patch via slash commands (/mantis-agentic, /mantis-scan, /mantis-auth-audit, etc.)
 
 ---
-
+# Removed
+Repos decided against, reasoned per entry — either genuinely not useful, or fully redundant with something already adopted (a "drained" repo: everything worth extracting from it already has been, and it does nothing further for an active project). Full reasoning for the GitHub pass overall lives in [[60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution#Github|00_Execution § Github]].
+**Already self-marked *not useful* — confirmed, no re-litigation:** Claude Code Templates (redundant with the plugin marketplaces now used directly), Dify (team-scale infra, not solo tooling), React Three Fiber, Modern JS Cheatsheet, ProjectLearn, Free Programming Books, Ghostty Blackhole, Mike, Paperclip, Jarvis (ethanplusai, macOS-only), Semantic Search Starter, Pretext.
+**Dropped this pass, with reason:**
+- **GitNexus** — dropped per your own header tag on [[PDF's Ingestion Implementation]]; CausalOps's own graphify report already gives blast-radius visibility, no second tool needed.
+- **Free Claude Code** — proxy fallback to NVIDIA NIM/OpenRouter for quota exhaustion; not needed with an active Claude subscription.
+- **jcode** — README was empty at time of review; can't evaluate, nothing to fork.
+- **Odysseus** — self-hosted AI workspace (chat/agents/research/email/calendar); fully redundant with Jarvis + gbrain + the ECC harness already being adopted — a second personal-AI-workspace platform fragments rather than helps.
+- **OpenHuman** — same reasoning as Odysseus: a second "private personal AI assistant" framework competes with, rather than extends, Jarvis + gbrain + jarvis-memory. Drop, not build a parallel system.
+- **Hiring Agent** — this is a tool for companies *running* technical interviews (HackerRank), not for a candidate taking them; no application to Anant's own job search.
+- **Obsidian Dashboard** (community template) — redundant now that Jarvis's own dashboard is a custom DataviewJS build already ahead of a generic template.
+- **ScrapeGraph-ai, Scrapling** — both redundant with Firecrawl, which is already integrated as a full skill suite (18+ firecrawl skills active) and covers the same scraping need with a working install, not a hypothetical one.
+- **Crawl4AI** — same reasoning: redundant scraping framework, Firecrawl already does this.
+- **ASI-Evolve, dots.ocr, AirLLM** — local-model/research-artifact tools with no active use case while on a Claude subscription with no local-inference workflow yet; drained of near-term relevance, not of quality.
 ## See Also
 
 - [[40_Resources/CS/Links]] — general CS links

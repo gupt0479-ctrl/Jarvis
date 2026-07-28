@@ -104,7 +104,6 @@ Actionable repo adoption priorities from the comprehensive GitHub guide: VS Code
 ---
 
 ## Learning Curriculum (Next Month)
-
 - **DataTalksClub zoomcamps** — data-engineering-zoomcamp (BOOM Kafka/MongoDB), mlops-zoomcamp (trading deployment), llm-zoomcamp (Jarvis eval framework), ai-dev-tools-zoomcamp (Claude/MCP structured path).
 - **applied-ml** (Eugene Yan) — Production ML baselines from Google/Spotify/Netflix; use before implementing Jarvis semantic index or portfolio AI Lab.
 - **system-design-primer** — Map BOOM to "distributed message queue" + "search with ranking" patterns for interview language.

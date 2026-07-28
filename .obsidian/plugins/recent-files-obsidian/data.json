@@ -1,12 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "How Anant Uses Each Repo",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/How Anant Uses Each Repo.md"
-    },
-    {
       "basename": "GitHub Ingestion Implementation",
       "path": "60_Claude/20_Distilled_Notes/Sources - Plan/GitHub Ingestion Implementation.md"
+    },
+    {
+      "basename": "Claude OS Map",
+      "path": "10_Areas/AI/Claude OS Map.excalidraw"
+    },
+    {
+      "basename": "Repos",
+      "path": "40_Resources/CS/Repos.md"
+    },
+    {
+      "basename": "Ingestion Pipeline Audit — Clippings, Summaries & Implementation (2026-07-27)",
+      "path": "60_Claude/20_Distilled_Notes/Ingestion Pipeline Audit — Clippings, Summaries & Implementation (2026-07-27).md"
+    },
+    {
+      "basename": "00_Execution",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
+    },
+    {
+      "basename": "How Anant Uses Each Repo",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/How Anant Uses Each Repo.md"
     },
     {
       "basename": "Source Summaries Board",
@@ -57,10 +73,6 @@
       "path": "60_Claude/20_Distilled_Notes/Mentorship and Networking.md"
     },
     {
-      "basename": "Ingestion Pipeline Audit — Clippings, Summaries & Implementation (2026-07-27)",
-      "path": "60_Claude/20_Distilled_Notes/Ingestion Pipeline Audit — Clippings, Summaries & Implementation (2026-07-27).md"
-    },
-    {
       "basename": "Index Fund Investing",
       "path": "60_Claude/20_Distilled_Notes/Index Fund Investing.md"
     },
@@ -91,10 +103,6 @@
     {
       "basename": "Web Ingestion Implementation",
       "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Web Ingestion Implementation.md"
-    },
-    {
-      "basename": "00_Execution",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
     },
     {
       "basename": "PDF's Ingestion Implementation",
@@ -175,14 +183,6 @@
     {
       "basename": "Claude OS Dashboard",
       "path": "20_Progress/AI/Claude OS Dashboard.canvas"
-    },
-    {
-      "basename": "Claude OS Map",
-      "path": "10_Areas/AI/Claude OS Map.excalidraw"
-    },
-    {
-      "basename": "Repos",
-      "path": "40_Resources/CS/Repos.md"
     },
     {
       "basename": "Research Loop - Resources",
