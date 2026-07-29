@@ -9,9 +9,9 @@ tags:
   - graphify
   - knowledge-graph
 source: graphify
-source_repo: gupta-builds/TradingView (main, post-PR #4 merge, commit c754f00)
+source_repo: gupta-builds/TradingView (main, post-PR
 notes:
-  - "[[20_Progress/Projects/CS/TradingView/Fable 5 — Read Order (TradingView folder)]]"
+  - "[[Fable 5 — Read Order (TradingView folder)]]"
   - "[[20_Progress/Projects/CS/TradingView/Session Findings/Session Findings — AI Brain Hub (2026-07-12)]]"
 ---
 

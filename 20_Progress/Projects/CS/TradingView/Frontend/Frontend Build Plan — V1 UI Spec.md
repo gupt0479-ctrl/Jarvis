@@ -19,6 +19,8 @@ track:
 next: "Cursor builds pages in this order: Watchlist + Stock Detail first (they carry the most shared components), then Dashboard, then Tests/Strategies, then My Stocks/Brain-Journal/Bots-Hub"
 ---
 # Frontend Build Plan — V1 UI Spec
+> [!WARNING] Partially superseded (2026-07-26, same day)
+> The user's own round-2 QNA answers in [[QNA for UI]] changed real scope after this note was written: Streamlit is dropped entirely, Stock Detail merges into My Stocks (no separate `/stock/{SYMBOL}` page), Watchlist click-through is a modal everywhere (not full-page nav), Dashboard's 5 non-starred slots are dynamic-by-confidence not a static pin list, and the build sequence is now prototype (coded Next.js/React, mock data) → finish backend infra → real production UI, not a single Streamlit V1. The page-by-page content below (data sources, gate/spec logic, non-negotiable rules) is still accurate — treat the **stack, navigation mechanics, and page-merge decisions** as overridden by [[QNA for UI]] until this note gets a full rewrite.
 ==This is the source-of-truth build spec for the first UI this desk has ever had. Decisions here come from [[Session Findings — Frontend UX Questionnaire (2026-07-26)]]; read that note for the reasoning trail, this note for the page-by-page spec Cursor should build against.==
 ## Ground rules (apply to every page)
 - **Stack:** Streamlit, Python source of truth. Reads directly off DuckDB / existing read APIs (`PriceReadAPI`, brain CLI internals) — no separate REST layer for V1.

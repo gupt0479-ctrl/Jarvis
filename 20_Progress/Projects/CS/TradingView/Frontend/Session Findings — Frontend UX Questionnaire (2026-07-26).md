@@ -20,7 +20,9 @@ track:
 next: "Cursor writes the V1 Streamlit build from [[Frontend Build Plan — V1 UI Spec]]; review its output against this note and the plan"
 ---
 # Session Findings — Frontend UX Questionnaire (2026-07-26)
-==Full Q&A audit trail for the first frontend/UI planning session on this desk. No UI has existed in code until now — confirmed zero Streamlit/Next.js code in the repo as of Phase 3. Locked decisions SoT going forward: [[Frontend Build Plan — V1 UI Spec]].==
+> [!WARNING] Partially superseded (2026-07-26, same day)
+> This note captures the first pass, run before the user supplied their own detailed round-1/round-2 answers directly in [[QNA for UI]]. That note is now the higher-fidelity source — it overrides the stack choice (Streamlit dropped), the Watchlist/Stock-Detail navigation model, and the Dashboard's top-6 logic described below. Keep this note for the reasoning trail and the vault-terminology grounding, which still hold.
+==Full Q&A audit trail for the first frontend/UI planning session on this desk. No UI has existed in code until now — confirmed zero Streamlit/Next.js code in the repo as of Phase 3. Locked decisions SoT going forward: [[QNA for UI]] (round 2 onward), [[Frontend Build Plan — V1 UI Spec]] (pending rewrite).==
 ## Mission
 Cursor (Haiku 4.5) ran a clarifying-question pass to scope the first UI build for the personal stocks/ETFs desk. Claude reviewed the full project history — Canon, Phases, Session Findings, Research, the pre-Canon Product Spec — before answering, since Cursor's questions assumed screen shapes that partially predate the current gate/brain architecture.
 ## Correction before answering

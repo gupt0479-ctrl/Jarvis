@@ -1,16 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "Random",
-      "path": "Random.md"
+      "basename": "00_Execution",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
+    },
+    {
+      "basename": "Final Month Plan (Jul 28 - Sep 1)",
+      "path": "10_Areas/Life/Plans/Summer/Final Month Plan (Jul 28 - Sep 1).md"
+    },
+    {
+      "basename": "QNA for UI",
+      "path": "20_Progress/Projects/CS/TradingView/Frontend/QNA for UI.md"
+    },
+    {
+      "basename": "Fable 5 — Read Order (TradingView folder)",
+      "path": "20_Progress/Projects/CS/TradingView/Claude Code/Fable 5 — Read Order (TradingView folder).md"
     },
     {
       "basename": "HUMAN_WRITING",
       "path": "HUMAN_WRITING.md"
-    },
-    {
-      "basename": "00_Execution",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
     },
     {
       "basename": "Links",
@@ -83,10 +91,6 @@
     {
       "basename": "Internship Pipeline",
       "path": "30_Order/Workflows/Internship Pipeline.md"
-    },
-    {
-      "basename": "Final Month Plan (Jul 28 - Sep 1)",
-      "path": "10_Areas/Life/Plans/Summer/Final Month Plan (Jul 28 - Sep 1).md"
     },
     {
       "basename": "Weekly Operating System",
@@ -195,10 +199,6 @@
     {
       "basename": "Hall of Hacks — Winning Hackathon Patterns Analysis",
       "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Hall of Hacks — Winning Hackathon Patterns Analysis.md"
-    },
-    {
-      "basename": "Web Ingestion Implementation",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Web Ingestion Implementation.md"
     }
   ],
   "omittedPaths": [],
