@@ -25,14 +25,15 @@ next: "[[Daily Operating System]]"
 Turn the daily floor that never ran in Dubai or Bangalore — LeetCode, system design, trading knowledge, AI knowledge — into an actual habit, and ship the project work already in flight (TradingView's UI, CausalOps' two remaining steps, Arc, internship-loop, Portfolio's Orby upgrade) before the 2026-09-01 flight to the US. **One metric:** daily floor checked ≥90% of days in `10_Areas/Life/Enumerate/Daily/` from 2026-07-28 through 2026-08-31.
 ## Timeframe
 2026-07-28 → 2026-09-01, 36 days. Real capacity is closer to 31 focused days — the BLR→Dubai move sits inside the week of Aug 15–21 and stays deliberately light, not zero. Location: Bangalore through Aug 17, Dubai Aug 24 through the Sept 1 flight.
-| Week | Dates | Location | Flagship | Certification |
-|---|---|---|---|---|
-| W0 | Jul 28–31 | Bangalore | Close-out — see §Implementation Status below | — |
-| W1 | Aug 1–7 | Bangalore | TradingView UI review + CausalOps close (SQL migration, integration tests) | Git & GitHub exam → AWS Cloud Practitioner starts |
-| W2 | Aug 8–14 | Bangalore | Arc — real scope (one sentence problem, one user, one hero flow, one metric), then build | AWS Cloud Practitioner finishes → Azure AI-900 starts |
-| W3 | Aug 15–21 | Bangalore → Dubai (light) | Arc continues, review-only on travel days | Azure AI-900 finishes; Google AI Essentials + NVIDIA credential |
-| W4 | Aug 22–28 | Dubai | internship-loop Steps 2–9 buildout + Portfolio Orby upgrade | Anthropic/Claude certification |
-| W5 | Aug 29–31 | Dubai | Buffer — close what slipped, write the Aug 31 review | Catch-up slot |
+
+| Week | Dates     | Location                  | Flagship                                                                                 | Certification                                                   |
+| ---- | --------- | ------------------------- | ---------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| W0   | Jul 28–31 | Bangalore                 | Close-out — see §Implementation Status below                                             | —                                                               |
+| W1   | Aug 1–7   | Bangalore                 | TradingView UI review + CausalOps close (SQL migration, integration tests)               | Git & GitHub exam → AWS Cloud Practitioner starts               |
+| W2   | Aug 8–14  | Bangalore                 | Arc — real scope (one sentence problem, one user, one hero flow, one metric), then build | AWS Cloud Practitioner finishes → Azure AI-900 starts           |
+| W3   | Aug 15–21 | Bangalore → Dubai (light) | Arc continues, review-only on travel days                                                | Azure AI-900 finishes; Google AI Essentials + NVIDIA credential |
+| W4   | Aug 22–28 | Dubai                     | internship-loop Steps 2–9 buildout + Portfolio Orby upgrade                              | Anthropic/Claude certification                                  |
+| W5   | Aug 29–31 | Dubai                     | Buffer — close what slipped, write the Aug 31 review                                     | Catch-up slot                                                   |
 ## Systems
 ### Daily floor
 Four tracks, every day, mechanism lives in [[Daily Operating System]] — this section states them, doesn't duplicate the checklist:
@@ -60,6 +61,7 @@ Chosen from `40_Resources/CS/Links` (Courses → Certifications), [[Summer Grind
 > Five scheduled `CronCreate` routines are designed — morning `/startday`, midday internship-dossier check against the 201-cap, evening `/closeday`, a daily check that no `Applying/` note has gone a week without a log entry, and Sunday `/weekly-review` — but **not provisioned**. Turning on unattended agents that consume recurring Pro-plan usage needs an explicit go-ahead, separate from writing this plan.
 ## Implementation Status
 Verified against live vault files and `git log` on 2026-07-27, corrected once by direct instruction mid-session. Not a self-report.
+
 | Track | Status |
 |---|---|
 | Daily floor (LeetCode, ML spine, friction log) | Never ran — [[LeetCode & CSCI 4041]]'s tracker has zero rows all summer; the CSCI 2033 progress table sits at 0/14 |

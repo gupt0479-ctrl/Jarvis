@@ -18,7 +18,7 @@ What you actually know about this person and why they're relevant to *this speci
 ### Contact
 - Email, LinkedIn URL, and how found — and is it verified, or an MX-validated guess? Say which.
 ### Relation
-How is this person actually related to the company — what's their real role, where have they been mentioned publicly (blog, GitHub, a talk)? What about them would give the conversation a genuine personal touch instead of a cold-form message? Concretely, how could this specific person help move me toward the goal in [[10_Areas/Career/Engineer Edge Roadmap]] — not "they might be useful," but the actual mechanism.
+How is this person actually related to the company — what's their real role, where have they been mentioned publicly (blog, GitHub, a talk)? What about them would give the conversation a genuine personal touch instead of a cold-form message? Concretely, how could this specific person help move me toward the goal in [[Engineer Edge Roadmap]] — not "they might be useful," but the actual mechanism.
 ## Current Draft
 ==The live, unsent message to this person right now.== Build it from [[Mimic]] and edit until it sounds like you, not the template.
 > [!IMPORTANT]

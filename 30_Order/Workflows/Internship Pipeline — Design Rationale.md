@@ -37,7 +37,7 @@ Program-note research answers "should I pursue this." Job & Company research ans
 ## The Conditions For Each Real Transition
 | From → To | Condition that actually fires it |
 | --- | --- |
-| Dossier → Screened | You've explicitly weighed goal-push + personal fit against [[10_Areas/Career/Engineer Edge Roadmap]] — not "it looked interesting for a second." |
+| Dossier → Screened | You've explicitly weighed goal-push + personal fit against [[Engineer Edge Roadmap]] — not "it looked interesting for a second." |
 | Screened → Committed | The fit test passed. Contact-reachability and pay never block this step either way. |
 | Committed → Contacted | A real contact was actually found by the `contact-researcher` agent — an empty result is a valid, honest outcome that doesn't block anything else. |
 | Considering/Serious → Ended | An application was **actually submitted** — not decided, not drafted, submitted. |

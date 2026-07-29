@@ -1,6 +1,98 @@
 {
   "recentFiles": [
     {
+      "basename": "00_Execution",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
+    },
+    {
+      "basename": "Useful Links",
+      "path": "10_Areas/Career/Useful Links.md"
+    },
+    {
+      "basename": "The AI Hub",
+      "path": "20_Progress/Projects/AI Use/The AI Hub.md"
+    },
+    {
+      "basename": "Jarvis",
+      "path": "20_Progress/Projects/Jarvis & The Plan/Jarvis.md"
+    },
+    {
+      "basename": "Companies giving OPT & CPT",
+      "path": "20_Progress/Internship/Companies giving OPT & CPT.md"
+    },
+    {
+      "basename": "Links",
+      "path": "20_Progress/Projects/CS/TradingView/Links.md"
+    },
+    {
+      "basename": "Gen AI Meeting",
+      "path": "40_Resources/CS/AI/Gen AI Meeting.md"
+    },
+    {
+      "basename": "Concepts Board",
+      "path": "40_Resources/CS/Concepts/Concepts Board.md"
+    },
+    {
+      "basename": "Second Brain",
+      "path": "40_Resources/Obsidian/Second Brain.md"
+    },
+    {
+      "basename": "UMN Board",
+      "path": "20_Progress/UMN/UMN Board.md"
+    },
+    {
+      "basename": "Repos",
+      "path": "40_Resources/CS/Repos.md"
+    },
+    {
+      "basename": "How Anant Uses Each Repo",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/How Anant Uses Each Repo.md"
+    },
+    {
+      "basename": "00-overview",
+      "path": "20_Progress/Projects/CS/Portfolio/architecture/00-overview.md"
+    },
+    {
+      "basename": "Maverick Skills Analysis - Cross-Reference with GitHub Repos",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Maverick Skills Analysis - Cross-Reference with GitHub Repos.md"
+    },
+    {
+      "basename": "Jarvis OS — North Star",
+      "path": "60_Claude/07_AI_Information/Jarvis OS — North Star.md"
+    },
+    {
+      "basename": "Internship Pipeline",
+      "path": "30_Order/Workflows/Internship Pipeline.md"
+    },
+    {
+      "basename": "Final Month Plan (Jul 28 - Sep 1)",
+      "path": "10_Areas/Life/Plans/Summer/Final Month Plan (Jul 28 - Sep 1).md"
+    },
+    {
+      "basename": "Weekly Operating System",
+      "path": "10_Areas/Life/Plans/Summer/Weekly Operating System.md"
+    },
+    {
+      "basename": "ML Fundamentals (2033 + 2230)",
+      "path": "10_Areas/Life/Plans/Summer/ML Fundamentals (2033 + 2230).md"
+    },
+    {
+      "basename": "LeetCode & CSCI 4041",
+      "path": "10_Areas/Life/Plans/Summer/LeetCode & CSCI 4041.md"
+    },
+    {
+      "basename": "Daily Operating System",
+      "path": "10_Areas/Life/Plans/Summer/Daily Operating System.md"
+    },
+    {
+      "basename": "Anti-Drift Rules",
+      "path": "10_Areas/Life/Plans/Summer/Anti-Drift Rules.md"
+    },
+    {
+      "basename": "00 - Summer Plans Index",
+      "path": "10_Areas/Life/Plans/Summer/00 - Summer Plans Index.md"
+    },
+    {
       "basename": "Ingestion Pipeline Audit — Clippings, Summaries & Implementation (2026-07-27)",
       "path": "60_Claude/20_Distilled_Notes/Ingestion Pipeline Audit — Clippings, Summaries & Implementation (2026-07-27).md"
     },
@@ -11,18 +103,6 @@
     {
       "basename": "Claude OS Map",
       "path": "10_Areas/AI/Claude OS Map.excalidraw"
-    },
-    {
-      "basename": "Repos",
-      "path": "40_Resources/CS/Repos.md"
-    },
-    {
-      "basename": "00_Execution",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
-    },
-    {
-      "basename": "How Anant Uses Each Repo",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/How Anant Uses Each Repo.md"
     },
     {
       "basename": "Source Summaries Board",
@@ -85,10 +165,6 @@
       "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Trading Resources Integration — TradingView Architecture Roadmap.md"
     },
     {
-      "basename": "Maverick Skills Analysis - Cross-Reference with GitHub Repos",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Maverick Skills Analysis - Cross-Reference with GitHub Repos.md"
-    },
-    {
       "basename": "Internship Tracking Dashboard — 2027 Calendar, Programs, & Application Pipeline",
       "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Internship Tracking Dashboard — 2027 Calendar, Programs, & Application Pipeline.md"
     },
@@ -113,10 +189,6 @@
       "path": "40_Resources/CS/Links.md"
     },
     {
-      "basename": "Companies giving OPT & CPT",
-      "path": "20_Progress/Internship/Companies giving OPT & CPT.md"
-    },
-    {
       "basename": "MavGPT AI Resume & Job Search Guide (PDF)",
       "path": "60_Claude/10_Source_Summaries/PDF Ingestion/MavGPT AI Resume & Job Search Guide (PDF).md"
     },
@@ -125,80 +197,8 @@
       "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Ultimate Guide to Winning Hackathons (PDF).md"
     },
     {
-      "basename": "Final Month Plan (Jul 28 - Sep 1)",
-      "path": "10_Areas/Life/Plans/Summer/Final Month Plan (Jul 28 - Sep 1).md"
-    },
-    {
       "basename": "Summer Grind",
       "path": "10_Areas/Summer Grind.md"
-    },
-    {
-      "basename": "List Monthly Log Template",
-      "path": "30_Order/Templates/Career/List Monthly Log Template.md"
-    },
-    {
-      "basename": "Plans-to-Create",
-      "path": "10_Areas/Life/Plans/Plans-to-Create.md"
-    },
-    {
-      "basename": "Daily Workflow Standard",
-      "path": "30_Order/Standards/Daily Workflow Standard.md"
-    },
-    {
-      "basename": "Internship Notes Standard",
-      "path": "30_Order/Standards/Internship Notes Standard.md"
-    },
-    {
-      "basename": "Plan Template",
-      "path": "30_Order/Templates/Career/Plan Template.md"
-    },
-    {
-      "basename": "Anti-Drift Rules",
-      "path": "10_Areas/Life/Plans/Summer/Anti-Drift Rules.md"
-    },
-    {
-      "basename": "ML Fundamentals (2033 + 2230)",
-      "path": "10_Areas/Life/Plans/Summer/ML Fundamentals (2033 + 2230).md"
-    },
-    {
-      "basename": "LeetCode & CSCI 4041",
-      "path": "10_Areas/Life/Plans/Summer/LeetCode & CSCI 4041.md"
-    },
-    {
-      "basename": "Weekly Operating System",
-      "path": "10_Areas/Life/Plans/Summer/Weekly Operating System.md"
-    },
-    {
-      "basename": "Daily Operating System",
-      "path": "10_Areas/Life/Plans/Summer/Daily Operating System.md"
-    },
-    {
-      "basename": "00 - Summer Plans Index",
-      "path": "10_Areas/Life/Plans/Summer/00 - Summer Plans Index.md"
-    },
-    {
-      "basename": "Claude OS Dashboard",
-      "path": "20_Progress/AI/Claude OS Dashboard.md"
-    },
-    {
-      "basename": "Claude OS Dashboard",
-      "path": "20_Progress/AI/Claude OS Dashboard.canvas"
-    },
-    {
-      "basename": "Research Loop - Resources",
-      "path": "20_Progress/Internship/Building System/Research Loop - Resources.md"
-    },
-    {
-      "basename": "Trackings-to-Create",
-      "path": "10_Areas/Career/Internships/Tracker/Each One/Trackings-to-Create.md"
-    },
-    {
-      "basename": "Random",
-      "path": "Random.md"
-    },
-    {
-      "basename": "Research Loop - Implementation Plan",
-      "path": "20_Progress/Internship/Building System/Research Loop - Implementation Plan.md"
     }
   ],
   "omittedPaths": [],

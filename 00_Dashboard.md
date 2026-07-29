@@ -152,7 +152,7 @@ What each area is for, and where it stands right now. This is an area-level fiel
 
 | Area | Purpose | Current state |
 |------|---------|----------------|
-| [[10_Areas/Career/Engineer Edge Roadmap\|Career]] | Internship pipeline, freelancing, business-income tracking (`Career/Finance/`, scoped to project/business money only — no personal finance here) | Internship tracker + freelancing offer not yet defined; Finance folder empty until real income lands |
+| [[Engineer Edge Roadmap\|Career]] | Internship pipeline, freelancing, business-income tracking (`Career/Finance/`, scoped to project/business money only — no personal finance here) | Internship tracker + freelancing offer not yet defined; Finance folder empty until real income lands |
 | [[10_Areas/Trading/Stocks Trading AI Hub\|Trading]] | TradingView project — treated as an engineering/evaluation build, not a promise to beat the market | Flagship candidate for the Bangalore ship loop; not started yet |
 | [[10_Areas/AI/Claude Code\|AI]] | Reference notes for the AI tools actually in use (Claude Code, Cursor, Kiro, Codex) | Stable reference, low-churn |
 | [[Daily Operating System\|Life]] | Execution only: Enumerate daily/weekly/monthly notes, Summer OS plans, operational habit boards, builder-identity Truths of Life. No personal-life content — that lives in The Plan. | Active — this is what `/startday` and `/closeday` read every day. As of 2026-07-27, read [[10_Areas/Life/Plans/Summer/Final Month Plan (Jul 28 - Sep 1)\|Final Month Plan]] first — it's the one source of truth for the daily floor and real project status. |

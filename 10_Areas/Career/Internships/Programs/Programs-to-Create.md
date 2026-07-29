@@ -38,4 +38,4 @@ Both `Serious/` and `Considering/` carry an `Ended/` subfolder. A Program note m
 - **Filename:** `[Company] - [Position].md`.
 - **Trigger:** created when you're ready to move a program toward actually applying — not automatically at commit time, and not for every program in `Considering/`.
 - **More than one real position at the same company (past 2):** stop using flat files — create a `[Company]/` subfolder and give each position its own note inside it. Do the same depth of research for each; a second posting at a company you've already researched still gets its own real pass, not a copy-paste.
-- **The payoff question to answer in every one of these notes:** how exactly would this specific company move you toward the goal in [[10_Areas/Career/Engineer Edge Roadmap]] — not "is this a good company" in the abstract, but "why this one, for me."
+- **The payoff question to answer in every one of these notes:** how exactly would this specific company move you toward the goal in [[Engineer Edge Roadmap]] — not "is this a good company" in the abstract, but "why this one, for me."

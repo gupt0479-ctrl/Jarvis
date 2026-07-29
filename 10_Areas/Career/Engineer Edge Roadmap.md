@@ -2,7 +2,7 @@
 type: project
 status: sprout
 created: 2026-04-26
-updated: 2026-04-26
+updated: 2026-07-29
 deadline: 2026-08-31
 related_progress:
   - "[[Compound Progress Framework]]"
@@ -56,6 +56,16 @@ Study order:
 6. observability: logs, metrics, traces
 7. reliability: retries, idempotency, timeouts
 8. scale scenarios: 1 user -> 100 users -> 10,000 users
+#### ML System Design Interview Format
+The 8-topic study order above is the practical skill. This is the specific *interview format* that skill gets tested in, worth drilling as its own shape — per [[PDF's Ingestion Implementation#Part 7: Interview Preparation — ML System Design (35% Weight)|the Pivot Guide]], ML system design carries 35% interview weight, the single largest slice, and it's the arena SWEs most often under-prepare because they over-index on coding instead.
+A 60-90 minute session runs in six timed phases:
+1. **Problem clarification (10 min)** — ask scale (DAU, QPS), latency SLA, accuracy target, cost budget. Don't start designing before these numbers exist.
+2. **Feature engineering (10 min)** — what signals actually matter; online vs. batch computation for each.
+3. **Model selection (10 min)** — why this model class over alternatives; training strategy; hyperparameter tuning approach.
+4. **Training infrastructure (10 min)** — batch vs. online training, compute needs, data versioning.
+5. **Serving architecture (15 min)** — latency budget, caching layer, fallback path, A/B test infrastructure.
+6. **Monitoring and degradation (10 min)** — which metrics break first, how drift gets detected, what triggers a retrain.
+Named resources for this specific format: **Chip Huyen's ML System Design guide** (the definitive reference for this exact structure) and **Grokking the ML Interview**. Practice against common prompts: design a recommendation system for 10M users, build fraud detection for 1M transactions/day, predict video watch time.
 ### 2. Debugging And Reliability
 Most students build happy paths. You should build failure stories. Create a **Failure Lab** inside each project:
 - malformed auth token

@@ -10,15 +10,15 @@ tags:
 notes:
   - "[[60_Claude/07_AI_Information/Jarvis OS — North Star]]"
   - "[[60_Claude/30_Reviews/North Star Convergence — Change Report 2026-06-11]]"
-  - "[[20_Progress/Projects/AI Second Brain/Jarvis Three-Month Research Engine Master Plan]]"
-  - "[[20_Progress/Projects/AI Second Brain/Jarvis Multi-Agent PKM Plan]]"
+  - "[[Jarvis Three-Month Research Engine Master Plan]]"
+  - "[[Jarvis Multi-Agent PKM Plan]]"
   - "[[60_Claude/30_Reviews/Weekly Synthesis/Weekly Synthesis Index]]"
   - "[[AGENTS.md]]"
   - "[[00_Dashboard]]"
 ---
 # Monthly Review — June 2026 (first monthly review)
 
-No monthly-review convention existed before this note. This version supersedes the first draft, which scored the vault against its own process health but never checked specific deliverables against the two plans that define what "done" means here — the [[20_Progress/Projects/AI Second Brain/Jarvis Three-Month Research Engine Master Plan|Three-Month Master Plan]] and the [[20_Progress/Projects/AI Second Brain/Jarvis Multi-Agent PKM Plan|Multi-Agent PKM Plan]] — or against the two weekly reviews that already tried to do that. This version does both, with exact deliverable-by-deliverable scoring, before getting to what's broken.
+No monthly-review convention existed before this note. This version supersedes the first draft, which scored the vault against its own process health but never checked specific deliverables against the two plans that define what "done" means here — the [[Jarvis Three-Month Research Engine Master Plan|Three-Month Master Plan]] and the [[Jarvis Multi-Agent PKM Plan|Multi-Agent PKM Plan]] — or against the two weekly reviews that already tried to do that. This version does both, with exact deliverable-by-deliverable scoring, before getting to what's broken.
 
 ## The one-sentence theme
 

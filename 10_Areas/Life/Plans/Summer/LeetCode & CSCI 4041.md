@@ -26,23 +26,24 @@ next: "[[Final Month Plan (Jul 28 - Sep 1)]]"
 LeetCode is the daily engine (≥5/day, never below); the 15 vault concept notes under [[DSA]] are the long-term memory; the two professor projects (AVL midterm, Maze final) are the proof artifacts. The win condition is not "finished the course" — it's every concept internalized and instantly revisable 48h before any interview, with company-tagged problems already drilled. Three layers run in parallel: **mastery** (the 15 concepts → `tree`), **practice** (daily LeetCode + company rotation, logged in §8 below), and **projects** (re-implement AVL + Maze with tests + interview bullets).
 ## 2. Mastery & interview revision system
 The 15 concepts from the [[DSA]] MOC. Mastery 0–10 is self-rated; no concept reaches `tree` until the Never-Forget checklist passes.
-| # | Concept | Vault note path | Mastery 0–10 | LeetCode patterns | Last reviewed | Company tags done |
-|---|---------|-----------------|:---:|-------------------|:---:|---|
-| 1 | Sorting Algorithms | `…/Concepts/Algorithms/Sorting Algorithms.md` | 0 | sort+scan, custom comparator, merge | — | — |
-| 2 | Time Complexity | `…/Concepts/Time Complexity.md` | 0 | amortized, recurrence, Master method | — | — |
-| 3 | Divide and Conquer | `…/Concepts/Algorithms/Divide and Conquer.md` | 0 | binary search, merge intervals | — | — |
-| 4 | QuickSort | `…/Concepts/Algorithms/QuickSort.md` | 0 | partition, quickselect, kth-largest | — | — |
-| 5 | HeapSort | `…/Concepts/Algorithms/HeapSort.md` | 0 | top-k, k-way merge, median stream | — | — |
-| 6 | Elementary Data Structures | `…/Concepts/Data Structures & Methods/Elementary Data Structures.md` | 0 | stack/queue, monotonic stack, linked-list | — | — |
-| 7 | AVL Trees | `…/Concepts/Trees/AVL Trees.md` | 0 | BST validate/insert/delete, rotations | — | — |
-| 8 | B-Trees | `…/Concepts/Trees/B-Trees.md` | 0 | range queries, ordered map intuition | — | — |
-| 9 | Hashing | `…/Concepts/Data Structures & Methods/Hashing.md` | 0 | freq map, two-sum family, dedup | — | — |
-| 10 | Dynamic Programming | `…/Concepts/Algorithms/Dynamic Programming.md` | 0 | 1D/2D DP, knapsack, LIS, edit distance | — | — |
-| 11 | Greedy Algorithms | `…/Concepts/Algorithms/Greedy Algorithms.md` | 0 | interval scheduling, heap-greedy | — | — |
-| 12 | Graph Algorithms | `…/Concepts/Graphs/Graph Algorithms.md` | 0 | BFS/DFS, topo sort, SCC, islands | — | — |
-| 13 | Minimum Spanning Trees | `…/Concepts/Graphs/Minimum Spanning Trees.md` | 0 | Kruskal+union-find, Prim | — | — |
-| 14 | Shortest Paths | `…/Concepts/Graphs/Shortest Paths.md` | 0 | Dijkstra, Bellman-Ford, Floyd-Warshall | — | — |
-| 15 | Maximum Flow | `…/Concepts/Graphs/Maximum Flow.md` | 0 | max-flow/min-cut, bipartite matching | — | — |
+
+| #   | Concept                    | Vault note path                                                      | Mastery 0–10 | LeetCode patterns                         | Last reviewed | Company tags done |
+| --- | -------------------------- | -------------------------------------------------------------------- | :----------: | ----------------------------------------- | :-----------: | ----------------- |
+| 1   | Sorting Algorithms         | `…/Concepts/Algorithms/Sorting Algorithms.md`                        |      0       | sort+scan, custom comparator, merge       |       —       | —                 |
+| 2   | Time Complexity            | `…/Concepts/Time Complexity.md`                                      |      0       | amortized, recurrence, Master method      |       —       | —                 |
+| 3   | Divide and Conquer         | `…/Concepts/Algorithms/Divide and Conquer.md`                        |      0       | binary search, merge intervals            |       —       | —                 |
+| 4   | QuickSort                  | `…/Concepts/Algorithms/QuickSort.md`                                 |      0       | partition, quickselect, kth-largest       |       —       | —                 |
+| 5   | HeapSort                   | `…/Concepts/Algorithms/HeapSort.md`                                  |      0       | top-k, k-way merge, median stream         |       —       | —                 |
+| 6   | Elementary Data Structures | `…/Concepts/Data Structures & Methods/Elementary Data Structures.md` |      0       | stack/queue, monotonic stack, linked-list |       —       | —                 |
+| 7   | AVL Trees                  | `…/Concepts/Trees/AVL Trees.md`                                      |      0       | BST validate/insert/delete, rotations     |       —       | —                 |
+| 8   | B-Trees                    | `…/Concepts/Trees/B-Trees.md`                                        |      0       | range queries, ordered map intuition      |       —       | —                 |
+| 9   | Hashing                    | `…/Concepts/Data Structures & Methods/Hashing.md`                    |      0       | freq map, two-sum family, dedup           |       —       | —                 |
+| 10  | Dynamic Programming        | `…/Concepts/Algorithms/Dynamic Programming.md`                       |      0       | 1D/2D DP, knapsack, LIS, edit distance    |       —       | —                 |
+| 11  | Greedy Algorithms          | `…/Concepts/Algorithms/Greedy Algorithms.md`                         |      0       | interval scheduling, heap-greedy          |       —       | —                 |
+| 12  | Graph Algorithms           | `…/Concepts/Graphs/Graph Algorithms.md`                              |      0       | BFS/DFS, topo sort, SCC, islands          |       —       | —                 |
+| 13  | Minimum Spanning Trees     | `…/Concepts/Graphs/Minimum Spanning Trees.md`                        |      0       | Kruskal+union-find, Prim                  |       —       | —                 |
+| 14  | Shortest Paths             | `…/Concepts/Graphs/Shortest Paths.md`                                |      0       | Dijkstra, Bellman-Ford, Floyd-Warshall    |       —       | —                 |
+| 15  | Maximum Flow               | `…/Concepts/Graphs/Maximum Flow.md`                                  |      0       | max-flow/min-cut, bipartite matching      |       —       | —                 |
 ### Never-Forget checklist (per concept — required to mark `tree`)
 A concept is `tree` only when all four pass, from memory:
 1. **Explain** it in 3 sentences (what, when to use, cost).
@@ -59,22 +60,23 @@ The floor stays 5/day. Each day: 3 pattern problems (this week's [[DSA]] concept
 Primary targets: **Google, Amazon, Meta** — rotate one per week. Source repos: `leetcode-companywise-interview-questions` (snehasishroy) and `interview-company-wise-problems`, both catalogued in [[Repos]]. These only cover FAANG-style tagging. The real dossier targets in `10_Areas/Career/Internships/List/Dossiers/` skew toward forward-deployed and quant-trading roles — Palantir, HRT, Virtu, Chicago Trading, Marshall Wace, The Trade Desk — which lean on live coding and math/probability puzzles more than tagged LeetCode sets. That gap is covered by the System Design and Trading Knowledge daily tracks in [[Final Month Plan (Jul 28 - Sep 1)]], not by inventing fake company tags here.
 ## 4. Summer 4041 syllabus (week-by-week)
 Mirrors [[DSA]] `## LeetCode / Weekly Plan`. Company focus rotates Google → Amazon → Meta. LC minimum ≥5/day = ≥35/week.
-| Wk | Vault week + textbook | Concept deep-dive | LC focus | Company | Project tie-in |
-|---|---|---|---|---|---|
-| 1 | Week 1 & 2 · Ch 1 & 2 | Sorting Algorithms, Time Complexity | insertion/merge, asymptotics | Google | — |
-| 2 | Week 3 · Ch 3 & 4 | Divide and Conquer | binary search, recurrences | Google | — |
-| 3 | Week 4 · Ch 7 & 10 | QuickSort, Elementary Data Structures | partition, stack/queue, linked-list | Amazon | — |
-| 4 | Week 5 · Ch 6 & 12 | HeapSort, BST basics | top-k, heap, BST ops | Amazon | — |
-| 5 | Week 6 · Ch 13, 18 | AVL Trees, B-Trees | rotations, balanced-tree | Meta | **AVL midterm — start** |
-| 6 | Week 7 · Ch 13 | AVL / Red-Black | tree validation, fix-up | Meta | **AVL midterm — ship** |
-| 7 | Week 8 · Ch 11 | Hashing | freq map, two-sum family | Google | — |
-| 8 | Week 9 · Ch 14 | Dynamic Programming | 1D→2D DP, knapsack, LIS | Amazon | — |
-| 9 | Week 10 · Ch 15 | Greedy Algorithms | interval scheduling, heap-greedy | Meta | — |
-| 10 | Week 11 · Ch 20 | Graph Algorithms (BFS/DFS) | islands, traversal, topo | Google | **Maze final — start** |
-| 11 | Week 12 · Ch 20, 21 | Topo sort, SCC, MST | union-find, Kruskal/Prim | Amazon | **Maze final — BFS/DFS core** |
-| 12 | Week 13 · Ch 22, 23 | Shortest Paths | Dijkstra, Bellman-Ford | Meta | **Maze final — ship + report** |
-| 13 | Week 14 · Ch 24 | Maximum Flow | max-flow/min-cut, matching | Google | — |
-| 14 | Week 15 · finals review | Redo from each block | mixed hardest-topic redo | rotate | Both projects: README + bullet |
+
+| Wk  | Vault week + textbook   | Concept deep-dive                     | LC focus                            | Company | Project tie-in                 |
+| --- | ----------------------- | ------------------------------------- | ----------------------------------- | ------- | ------------------------------ |
+| 1   | Week 1 & 2 · Ch 1 & 2   | Sorting Algorithms, Time Complexity   | insertion/merge, asymptotics        | Google  | —                              |
+| 2   | Week 3 · Ch 3 & 4       | Divide and Conquer                    | binary search, recurrences          | Google  | —                              |
+| 3   | Week 4 · Ch 7 & 10      | QuickSort, Elementary Data Structures | partition, stack/queue, linked-list | Amazon  | —                              |
+| 4   | Week 5 · Ch 6 & 12      | HeapSort, BST basics                  | top-k, heap, BST ops                | Amazon  | —                              |
+| 5   | Week 6 · Ch 13, 18      | AVL Trees, B-Trees                    | rotations, balanced-tree            | Meta    | **AVL midterm — start**        |
+| 6   | Week 7 · Ch 13          | AVL / Red-Black                       | tree validation, fix-up             | Meta    | **AVL midterm — ship**         |
+| 7   | Week 8 · Ch 11          | Hashing                               | freq map, two-sum family            | Google  | —                              |
+| 8   | Week 9 · Ch 14          | Dynamic Programming                   | 1D→2D DP, knapsack, LIS             | Amazon  | —                              |
+| 9   | Week 10 · Ch 15         | Greedy Algorithms                     | interval scheduling, heap-greedy    | Meta    | —                              |
+| 10  | Week 11 · Ch 20         | Graph Algorithms (BFS/DFS)            | islands, traversal, topo            | Google  | **Maze final — start**         |
+| 11  | Week 12 · Ch 20, 21     | Topo sort, SCC, MST                   | union-find, Kruskal/Prim            | Amazon  | **Maze final — BFS/DFS core**  |
+| 12  | Week 13 · Ch 22, 23     | Shortest Paths                        | Dijkstra, Bellman-Ford              | Meta    | **Maze final — ship + report** |
+| 13  | Week 14 · Ch 24         | Maximum Flow                          | max-flow/min-cut, matching          | Google  | —                              |
+| 14  | Week 15 · finals review | Redo from each block                  | mixed hardest-topic redo            | rotate  | Both projects: README + bullet |
 Milestones: AVL midterm (Weeks 5–6), Maze final (Weeks 10–12) — dates fix once the start Monday is set against the actual calendar in [[Final Month Plan (Jul 28 - Sep 1)]].
 ## 5. Professor projects
 Re-implementation milestones — done means working code + tests + one interview bullet.
@@ -88,9 +90,10 @@ Each day, after solving, spend a 25–45 min concept touch on the note matching 
 Daily row lives in [[Daily Operating System]]. Weekly LC total + weak-topic day handled in [[Weekly Operating System]].
 ## 8. Daily Log
 Append one row per day. Redo date schedules spaced repetition for anything that needed a hint or felt shaky.
+
 | Date | Count | Topics | Problem IDs | Company | 4041 concept | Difficulty | Redo date |
-|------|:---:|--------|-------------|---------|--------------|------------|-----------|
-| | | | | | | | |
+| ---- | :---: | ------ | ----------- | ------- | ------------ | ---------- | --------- |
+|      |       |        |             |         |              |            |           |
 ### Weekly totals (target ≥35/week)
 | Week of | Total solved | Weak topic flagged | Company drilled |
 |---|:---:|---|---|

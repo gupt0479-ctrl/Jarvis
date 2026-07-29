@@ -59,13 +59,13 @@ across all of it:  Tracker/Internship - Dashboard.md (whole-process) + Tracker/T
 Two paths in now. Automated: `internship-research-loop` writes screened matches straight into `List/Dossiers/`, sorted into priority subfolders (`1 - AI & ML/`, `2 - Fullstack/`, `3 - CyS & Finance/`, `Other/`) with a one-line reason at the top of each note — see [[Source of Truth]] for exactly what the loop screens for before a dossier ever lands. Manual: anything you come across yourself — a career fair conversation, LinkedIn, Handshake — still gets one row in this month's `List/YYYY-MM Found.md` (use [[List Monthly Log Template]]), and can move to Step 2 without ever having been a dossier. Neither is a commitment. Most dossiers and most rows never get promoted, and that's fine.
 ## Step 2 — Screen (the fit test)
 Before committing real hours, every dossier or manual find passes the same fit test, regardless of which priority folder it landed in (including `Other` — that folder gets the same scrutiny, not less):
-- **Goal-push** — does this role move you toward the systems-minded AI engineer direction in [[10_Areas/Career/Engineer Edge Roadmap]]? Bias against roles that don't.
+- **Goal-push** — does this role move you toward the systems-minded AI engineer direction in [[Engineer Edge Roadmap]]? Bias against roles that don't.
 - **Personal fit** — does it map to something you've built or want to build, worth learning, a real use of current skills?
 - **Contact reachability** — noted on the note, never a gate. A black-box ATS with no findable contact doesn't disqualify a role that passes the two tests above.
 - **Pay is not evaluated here, or anywhere in this pipeline.**
 ## Step 3 — Commit (Programs + Contacts + Tracker)
 When something passes the fit test, promote it in one sitting:
-- **Programs/Serious/<name>.md or Programs/Considering/<name>.md** — identical template, identical research depth in both. The split is preference/timing only (pursuing now vs. later/undecided), never rigor — don't write a thinner note for Considering.
+- **Programs/Serious/<name>.md or Programs/Considering/<name>.md — identical template, identical research depth in both. The split is preference/timing only (pursuing now vs. later/undecided), never rigor — don't write a thinner note for Considering.
 - **Contacts/Each One/<name>.md** — company-level contact research (recruiter, HR, relevant public info), run via the loop's `enrich.py` at promotion time, linked from the Program note.
 - **Tracker/Each One/<name>.md** — created only once the Program note exists. The dated index: noted/researched/created dates, deadline, applied date, result date, contact link, related notes, url. Source of truth for "where does this stand" until an Applying note exists.
 > [!WARNING]
@@ -99,6 +99,7 @@ When an outcome lands, update the Applying note's `status` to `Offer`, `Rejected
 ## Step 1 Is Automated — Steps 2+ Are Manual By Design
 Step 1 (Find) is live: `gupta-builds/internship-research-loop` (GitHub Actions, hourly, eight sources as of 2026-07-26) writes directly into `List/Dossiers/`'s priority subfolders — see [[Source of Truth]] for what it actually screens for. **Steps 2 through 9 remain entirely manual by design.** They were never exercised against real automated output until 2026-07-26, when Step 3 ran for real for the first time (the Appian promotion, via the `/promote-dossier` skill) — one real run, not a proven-at-scale pipeline. Don't treat one successful promotion as evidence the whole downstream flow is solid yet.
 ## Frontmatter Quick Reference
+
 | Note | Type | Lives in |
 | --- | --- | --- |
 | List monthly log | `input` | `10_Areas/Career/Internships/List/` |

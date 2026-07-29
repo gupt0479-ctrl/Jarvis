@@ -182,7 +182,7 @@ Append a session log entry:
 
 ## Integration With Existing System
 
-- Reads the same Capability Engine fields written by Master Plan Phase 2-4 enrichment work (see [[20_Progress/Projects/AI Second Brain/Jarvis Three-Month Research Engine Master Plan]] — moved out of `60_Claude/40_Project_Briefs/` once it became the live execution plan).
+- Reads the same Capability Engine fields written by Master Plan Phase 2-4 enrichment work (see [[Jarvis Three-Month Research Engine Master Plan]] — moved out of `60_Claude/40_Project_Briefs/` once it became the live execution plan).
 - Composes with `/ops capability-audit` — the audit surfaces overdue drills, this agent acts on them.
 - Composes with `vault-curator` — the curator flags duplicate concepts; this agent picks the enriched one to drill.
 - Composes with `research-distiller` — the distiller produces source summaries; this agent turns the surfaced concepts into drillable knowledge.
