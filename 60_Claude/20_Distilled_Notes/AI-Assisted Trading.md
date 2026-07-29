@@ -13,7 +13,7 @@ track:
   - ai
 prerequisites:
   - "[[Index Fund Investing]]"
-  - "[[60_Claude/20_Distilled_Notes/Trading Tools and Platforms]]"
+  - "[[20_Progress/Projects/CS/TradingView/Research/Trading Tools and Platforms]]"
 used_in: []
 evidence:
   - "[[AI Market Analyzer Project Brief]]"

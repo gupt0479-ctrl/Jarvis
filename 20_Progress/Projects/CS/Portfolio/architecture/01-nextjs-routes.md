@@ -86,7 +86,11 @@ Two proxy files exist — only one is active:
 
 `isPublicRoute` allows all portfolio routes. `isStudioRoute` gates `/studio/*` behind Clerk auth.
 
+## Agent-Readable Surface — Currently Empty
+The route tree above has **zero metadata exports, no `sitemap.ts`, no `robots.ts`, no OpenGraph tags anywhere** — confirmed by grep across this whole `architecture/` folder; the only hit for "metadata" is an unrelated Sanity image-metadata type. No route in `src/app/` calls Next.js's `metadata` API. This is the known-empty state the [[AEO & SEO/00 - Agent-Ready Infrastructure Build Plan|AEO & SEO build plan]] fills in — recorded here as fact, not yet built.
+
 ## See Also
 - [[02-sanity-cms|Sanity CMS]]
 - [[03-auth-clerk|Auth (Clerk)]]
 - [[../chatbot/01-api-route|Chatbot API Route]]
+- [[AEO & SEO/00 - Agent-Ready Infrastructure Build Plan|AEO & SEO Build Plan]]

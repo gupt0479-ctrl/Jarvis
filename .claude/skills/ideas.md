@@ -10,7 +10,7 @@ description: Generates a grounded idea report — tools worth building, people w
 
 ## Why This Exists
 
-Same confirmed gap as [[.claude/skills/challenge.md|/challenge]] — flagged independently by [[PDF's Ingestion Implementation#Vault Integration & Skills - REVIEW|Vault Integration & Skills]] and [[GitHub Ingestion Implementation]], resolved in [[00_Execution]] as buildable now against this vault's own patterns rather than templated off unbuilt repo installs (agent-skills-addyosmani's brainstorm template, GSD's PARETO filtering). The point of this skill isn't idea volume — the vault already has 100+ ingested sources sitting unconverted into action. The point is filtering: find the 20% of possible next moves that actually close a named gap in active work.
+Same confirmed gap as `/challenge` (`.claude/skills/challenge.md`) — flagged independently by [[PDF's Ingestion Implementation#Vault Integration & Skills - REVIEW|Vault Integration & Skills]] and [[GitHub Ingestion Implementation]], resolved in [[00_Execution]] as buildable now against this vault's own patterns rather than templated off unbuilt repo installs (agent-skills-addyosmani's brainstorm template, GSD's PARETO filtering). The point of this skill isn't idea volume — the vault already has 100+ ingested sources sitting unconverted into action. The point is filtering: find the 20% of possible next moves that actually close a named gap in active work.
 
 ## Instructions
 

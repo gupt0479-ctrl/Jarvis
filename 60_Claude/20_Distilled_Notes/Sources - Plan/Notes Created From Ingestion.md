@@ -1,0 +1,84 @@
+---
+type: index
+status: active
+created: 2026-07-29
+updated: 2026-07-29
+tags:
+  - index
+  - ingestion
+notes:
+  - "[[PDF's Ingestion Implementation]]"
+  - "[[Web Ingestion Implementation]]"
+  - "[[GitHub Ingestion Implementation]]"
+  - "[[00_Execution]]"
+next: "GitHub pass execution — append its own section to this table after that pass runs, following the same verify-before-index discipline as this one"
+---
+# Notes Created From Ingestion
+==This is the permanent, living record of every note the ingestion-execution effort has produced or meaningfully extended anywhere in the vault — the executed-output layer, not the raw-capture layer.== It **excludes** `60_Claude/10_Source_Summaries/` and `60_Claude/05_Clippings/` on purpose: those are the capture/summary layer that feeds this one. This index tracks what actually landed in real project notes, career notes, skills, and distilled articles — the layer someone would actually use.
+Grouped by pass: PDF, Web, and (next session) GitHub. Each pass gets its own section appended after it runs — this file is never rewritten wholesale, only extended. Every row below was directly re-verified against the real file on disk during the 2026-07-29 verification pass, not carried over from an unverified task-completion report — several rows here reflect corrections made *during* that verification (the Orby eval-harness edits, the CSCI 2033 write-up, the Trading Tools and Platforms duplicate cleanup, several stale-path fixes), not the original first-pass claims.
+**On the "Source header" column:** most rows cite an exact `##`/`###` heading inside [[PDF's Ingestion Implementation]] or [[Web Ingestion Implementation]]. A few Web-pass items (Mentors, Hermes Agent, Maverick Skills, Trading Resources Integration, Claude Council, the manual-web-find workflow) were actually driven by a heading inside [[00_Execution]]'s own `# Web` section referencing a *separate* standalone note, not a heading inside `Web Ingestion Implementation.md` itself — those rows say so explicitly rather than forcing a fake mapping.
+**On `.claude/` entries:** skill and command files live in a dotfolder Obsidian doesn't index, so they can't be real wikilinks. They're shown as inline-code paths instead.
+> [!NOTE] Process note, not a task for right now
+> This index was built by a manual read-everything-and-write-it-down pass across two sessions. That's the current method. The goal going forward is to make this faster — most likely a skill that runs this same verify-and-index loop with less manual back-and-forth. Not designed or built here — just flagged as the next thing to figure out once this base is solid. This session's job was making the record complete and correct, not automating it.
+
+---
+
+## PDF Pass
+
+| Note | New or Extended | Source header | Why it exists |
+|---|---|---|---|
+| `.claude/skills/challenge.md` + `.claude/commands/challenge.md` | New | [[PDF's Ingestion Implementation#Vault Integration & Skills - REVIEW\|Vault Integration & Skills]] | Pressure-test skill (premortem/red-team/blindspots/invert) closing a gap confirmed by two independent sources |
+| `.claude/skills/ideas.md` + `.claude/commands/ideas.md` | New | [[PDF's Ingestion Implementation#Vault Integration & Skills - REVIEW\|Vault Integration & Skills]] | Grounded idea-report skill, the second confirmed gap |
+| [[Resume Tailoring, LinkedIn Search & Outreach Discovery]] | New | [[PDF's Ingestion Implementation#CAREER TRACK: Integrated Resume + Job Search + Portfolio Strategy\|CAREER TRACK]] | MavGPT 5-prompt sequence + LinkedIn operators + Apollo verdict as one literal-steps Cheat |
+| [[Engineer Edge Roadmap]] | Extended | [[PDF's Ingestion Implementation#Part 7: Interview Preparation — ML System Design (35% Weight)\|Part 7: Interview Preparation]] | Added the named 60-90min ML system design interview format, additive to the existing System Design arena |
+| [[System Design Practice]] | New | [[PDF's Ingestion Implementation#Part 7: Interview Preparation — ML System Design (35% Weight)\|Part 7: Interview Preparation]] | Drill-bank tracking note; resolved the stale `20_Progress/UMN` routing to `Preperation/System Design/` |
+| [[Research - CSCI 2033 to Trading Cross-Link Status (2026-07-29)]] | New | [[PDF's Ingestion Implementation#TRADING BOT TRACK: Integrated Analysis (All Trading Resources) - ACTION\|TRADING BOT TRACK]] | Corrects the archived-course premise (Fall 2025, not current-term); leaves the retroactive-link decision explicit rather than forced |
+| [[Outreach Discovery & Automation Status]] | New | [[PDF's Ingestion Implementation#OUTREACH TRACK: Professional Email Automation + Apify Enhancement Research - BUILD\|OUTREACH TRACK]] | Apollo/Hunter discovery-tool-only verdict + Knowledge Gathering automation-channel status |
+| [[Certifications Strategy]] | New | [[PDF's Ingestion Implementation#Certifications Strategy (Career Signal + ATS Insurance)\|Certifications Strategy]] | Living tracking note for the real current cert decisions (first content in a previously-empty folder) |
+| [[Portfolio Option A — RAG + Hybrid Search (jarvis-memory Build)]] | New | [[PDF's Ingestion Implementation#Portfolio Projects: Pick 1-2, Build Deep - NOTED, CONSIDER\|Portfolio Projects]] | Frames the RAG build explicitly as the jarvis-memory semantic-search gap-closer, not a separate portfolio idea |
+| [[10 - Orby Golden Eval Dataset (Grounding Cases)]] | New | [[PDF's Ingestion Implementation#Orby (Portfolio): Model Regression Detection for Eval - BUILD\|Orby: Model Regression Detection]] | Corrected the eval-gate tool choice (promptfoo, already speced, not a second deepeval gate); real `grounding.yaml` cases now landed in [[04 - Eval Harness — promptfoo]] |
+| [[40_Resources/CS/Repos]] | Extended | [[PDF's Ingestion Implementation#Claude Code Skills & Repos: Implement vs. Knowledge Matrix - REVIEW\|Claude Code Skills & Repos Matrix]] | Implement > Knowledge markers (`INSTALL/SKIP/EVAL/DEFERRED`) replacing open questions on every Tier-1 + resolved repo |
+| [[How Anant Uses Each Repo]] | Extended | [[PDF's Ingestion Implementation#Claude Code Skills & Repos: Implement vs. Knowledge Matrix - REVIEW\|Claude Code Skills & Repos Matrix]] | Same status markers + the real (not speculative) install order replacing a stale "today" list |
+| [[Code Review & Eval Gap]] | New | [[PDF's Ingestion Implementation#Code Review & Eval Gap: Pre-Commit AI Backstop - BUILD\|Code Review & Eval Gap]] | Semgrep (permanent bug layer) + `/simplify`+`/code-review` habit (the actual slop fix) — CodeRabbit stays rejected |
+| [[Model Distillation]] | New | [[PDF's Ingestion Implementation#Model Distillation: Distill 70B into 3B for Task-Specific Offline Inference - BUILD\|Model Distillation]] | Records the deferred-to-next-laptop state and four candidate tasks honestly, without prematurely picking one |
+| [[Research - DeepThinksFinance Architecture Transfer (2026-07-29)]] | New | [[PDF's Ingestion Implementation#DeepThinksFinance: Competitive Analysis & Proof Testing (Not Primary Source) - USEFUL?\|DeepThinksFinance]] | Architecture-transfers-not-the-numbers verdict; the Strategy Lab build reference |
+| [[Research - Trading Bot Five-Stage Pipeline (2026-07-29)]] | New | [[PDF's Ingestion Implementation#Trading Bot Architecture: Five-Stage Pipeline - USEFUL?\|Trading Bot Architecture]] | Implementation reference (Kelly sizing, edge formula, Brier calibration) for when paper trading starts |
+| [[10_Areas/Career/Hackathon/Hackathons]] | Extended (full rewrite) | [[PDF's Ingestion Implementation#HACKATHON TRACK: Ultimate Guide to Winning Hackathons + Web Research Integration\|HACKATHON TRACK]] | Rewrote a 2-line stub into the actual judge-ranking/checklist/rubric/workflow playbook |
+| [[Vibe Coding Hackathon]] | Extended | [[PDF's Ingestion Implementation#HACKATHON TRACK: Ultimate Guide to Winning Hackathons + Web Research Integration\|HACKATHON TRACK]] | Applied the Case Study + Lessons Learned postmortem structure to the most recent of the seven hackathon projects |
+| [[Student Travel Discounts — Survey Note (Staging for The Plan)]] | New | [[PDF's Ingestion Implementation#FINANCE TRACK: Student Travel Discounts Deep-Dive (15–70% Savings Ecosystem) - MOVE\|FINANCE TRACK]] | Collects scattered student-discount facts into one source of truth before the eventual move to The Plan |
+
+---
+
+## Web Pass
+
+| Note | New or Extended | Source header | Why it exists |
+|---|---|---|---|
+| [[architecture/01-nextjs-routes\|Portfolio architecture/01-nextjs-routes]] | Extended | [[Web Ingestion Implementation#Agent-Ready Infrastructure (AEO + MCP) - BUILD\|Agent-Ready Infrastructure]] | Records the confirmed-empty metadata/sitemap/robots/OpenGraph state as fact |
+| [[20_Progress/Projects/CS/Portfolio/AEO & SEO/00 - Agent-Ready Infrastructure Build Plan]] | New | [[Web Ingestion Implementation#Agent-Ready Infrastructure (AEO + MCP) - BUILD\|Agent-Ready Infrastructure]] | The actual 5-phase build plan (metadata API, sitemap, robots, OpenGraph, AEO audit) plus the deferred agent-callable-Orby idea |
+| [[20_Progress/Projects/CS/Portfolio/INDEX\|Portfolio INDEX]] | Extended | [[Web Ingestion Implementation#Agent-Ready Infrastructure (AEO + MCP) - BUILD\|Agent-Ready Infrastructure]] | Navigation entry for the new AEO & SEO section |
+| [[Hermes Agent Framework — Corrected Framing]] | New | [[00_Execution#Hermes Agent — Trading & Alert System (Distilled)\|00_Execution's Hermes Agent entry]] (not a Web Ingestion Implementation header) | Corrects "Hermes" from a product to zachdoesai's 4-play framework; 3 of 4 plays already run under other names |
+| [[Maverick Skills Mode-to-Repo Mapping]] | New | [[00_Execution#Maverick Skills Analysis - Cross-Reference with GitHub Repos\|00_Execution's Maverick Skills Analysis entry]] (not a Web Ingestion Implementation header) | Condensed mode-to-repo reference table, confirms `/challenge`+`/strategy` close the two flagged custom-skill gaps |
+| `.claude/skills/strategy.md` + `.claude/commands/strategy.md` | New | [[00_Execution#Maverick Skills Analysis - Cross-Reference with GitHub Repos\|00_Execution's Maverick Skills Analysis entry]] | SWOT/WARGAME/PARETO/LEVERAGE skill — the second new gap this note surfaced, built the same way `/challenge`/`/ideas` were |
+| [[Claude Council (LLM Council Skill Install)]] | New | [[00_Execution#Claude Council — Path A Prompt (web) - BUILD today\|"BUILD today" verdict]] (not a Web Ingestion Implementation header) | Build-record note for the real skill install, correction on the false "HTML report" claim carried forward |
+| `.claude/skills/llm-council.md` + `.claude/commands/llm-council.md` | New | [[00_Execution#Claude Council — Path A Prompt (web) - BUILD today\|"BUILD today" verdict]] | The actual 5-advisor council skill, chat-only output enforced as a hard rule |
+| [[How Anant Uses Each Repo]] | Extended (again) | [[00_Execution#Maverick Skills Analysis - Cross-Reference with GitHub Repos\|Maverick Skills Analysis entry]] | Cross-reference pointer to the new mode-to-repo mapping, not duplicated in full |
+| [[Research - Trading Resources Integration Findings (2026-07-29)]] | New | [[00_Execution#Trading Resources Integration — TradingView Architecture Roadmap\|00_Execution's Trading Resources Integration entry]] (not a Web Ingestion Implementation header) | Market-making three-determinant quoting mechanism + confirms Phase 2 already exceeds the roadmap's own rigor bar |
+| [[10_Areas/Career/Mentors/AI Engineer Roadmap — Virtual Mentor Gap-Check]] | New | Not from either Implementation file — a direct task-list item in this session's own instructions, checked against [[Mentorship and Networking]] for overlap first | Genuinely distinct from the human-mentorship note; roadmap.sh as a self-directed gap-check resource |
+| [[Scarcity Imprint — The Hidden Operating System Behind Income Ceilings]] | New | [[00_Execution#The Hidden Operating System Behind Every Income Ceiling (web) - WRITE\|"WRITE" verdict]] (not a Web Ingestion Implementation header) | Full distilled article, fabricated-study warning carried forward explicitly rather than laundered as fact |
+| [[30_Order/Workflows/Internship Pipeline]] | Extended | [[00_Execution#Internships folder (manual web finds) - new workflow, BUILD\|Internships folder (manual web finds)]] (not a Web Ingestion Implementation header) | Documents the manual-web-find rule refining Step 1; also fixed 3 stale `Interviews/Prep/` path references after an external folder rename |
+| [[10_Areas/Career/Internships/Programs/Serious/2027-Uber-SWE-CareerPrep]] | New | [[00_Execution#Internships folder (manual web finds) - new workflow, BUILD\|Internships folder (manual web finds)]] | One of four real internships run through the new manual-find workflow, dossier + Program note both marked manually-found |
+| [[10_Areas/Career/Internships/Programs/Serious/2027-Nuro-AI-Platform-SWE]] | New | [[00_Execution#Internships folder (manual web finds) - new workflow, BUILD\|Internships folder (manual web finds)]] | Same — Nuro |
+| [[10_Areas/Career/Internships/Programs/Serious/2027-Deepgram-SWE-VoiceAI]] | New | [[00_Execution#Internships folder (manual web finds) - new workflow, BUILD\|Internships folder (manual web finds)]] | Same — Deepgram |
+| [[10_Areas/Career/Internships/Programs/Serious/2027-WesternDigital-SWE-EarlyCareer]] | New | [[00_Execution#Internships folder (manual web finds) - new workflow, BUILD\|Internships folder (manual web finds)]] | Same — Western Digital |
+| [[20_Progress/Internship/Building System/Research Loop - Resources]] | Extended | [[00_Execution#Internship Tracking Dashboard — 2027 Calendar, Programs, & Application Pipeline - ALREADY IN USE\|Internship Tracking Dashboard entry]] (not a Web Ingestion Implementation header) | Records the real named-program dossier-coverage check (3 of 11 present) as a loop-coverage gap, not a reason to hand-write Program notes |
+| [[40_Resources/Random]] | Extended | [[00_Execution#The link-file maintenance rule — not yet built\|The link-file maintenance rule]] | Every real link annotated with a one-sentence description + real relation or "no relations"; also fixed a broken frontmatter link and 3 stale Dataview paths |
+| [[40_Resources/CS/Links]] | Extended | [[00_Execution#The link-file maintenance rule — not yet built\|The link-file maintenance rule]] | Same annotation treatment across ~100 links |
+| [[40_Resources/CS/Repos]] | Extended (again) | [[00_Execution#The link-file maintenance rule — not yet built\|The link-file maintenance rule]] | Added a `→ [[note]]`/`→ no relations` marker to every one of ~95 repo entries, pointing at its individual deep-dive summary where one exists |
+| [[40_Resources/CS/AI/Gen AI Meeting]] | Extended | [[00_Execution#The link-file maintenance rule — not yet built\|The link-file maintenance rule]] | Annotated the Resources list; surfaced that this course and [[AI Generalist Roadmap — Outskill (PDF)]] are the same Outskill curriculum, previously uncross-linked |
+| [[40_Resources/Obsidian/Second Brain]] | Extended | [[00_Execution#The link-file maintenance rule — not yet built\|The link-file maintenance rule]] | Annotated its 3 links; fixed 2 broken frontmatter paths discovered while in the file |
+| [[20_Progress/Projects/CS/TradingView/Links]] | Extended | [[00_Execution#The link-file maintenance rule — not yet built\|The link-file maintenance rule]] | Same treatment, kept intentionally light per instruction — no deeper synthesis |
+
+---
+
+## GitHub Pass
+Not started. Added after that pass runs.

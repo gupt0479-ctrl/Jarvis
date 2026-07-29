@@ -116,6 +116,8 @@ Skills are registered as slash commands via `.claude/commands/`. Type the comman
 | Export AI session | `/export-ai-session` | **global** — `~/.claude/skills/export-ai-session/SKILL.md` (not project-local; writes into this vault regardless of invoking cwd) |
 | Pressure-test a belief/plan | `/challenge "belief or plan"` | `.claude/skills/challenge.md` |
 | Grounded idea report | `/ideas "domain"` | `.claude/skills/ideas.md` |
+| Strategy analysis (SWOT/WARGAME/PARETO/LEVERAGE) | `/strategy "decision"` | `.claude/skills/strategy.md` |
+| 5-advisor decision council | `/llm-council "question"` | `.claude/skills/llm-council.md` |
 
 ## Available Agents
 

@@ -11,7 +11,7 @@ notes:
   - "[[04 - Orby Integration]]"
   - "[[07 - Evaluation & Observability]]"
   - "[[04 - Eval Harness — promptfoo]]"
-next: "Write 30-50 grounding.yaml cases from real Sanity portfolio content, one per project/skill/resume claim"
+next: "Extend the starter grounding.yaml cases (now in [[04 - Eval Harness — promptfoo]]) to full 30-50 coverage once live Sanity content is pulled directly, rather than from vault-known project names"
 ---
 # Orby Golden Eval Dataset (Grounding Cases)
 ## Correcting a Verdict, Not Re-Litigating the Build
@@ -23,15 +23,12 @@ Building a second, deepeval-based eval gate on top of an already-designed prompt
 - A judge council (2-3 `llm-rubric` graders, Gemini + one other free model) for subjective persona-warmth checks, with an explicit floor per persona
 - A working GitHub Actions sketch (`.github/workflows/eval.yml`) that runs `promptfoo eval --fail-on-error` and gates deploy
 - Local `/eval` command + `eval-runner` agent for phase-complete runs
-## The Genuinely Missing Piece
-`07`'s eval set is currently **15-20 cases**, and only two of them (`Grounding / refusal` and `Grounded positive`) test factual faithfulness — whether Orby's answers about Anant's actual work are true. BASWE's original ask (30-50 hand-built golden Q&A pairs from portfolio materials, faithfulness-threshold gated) is a real, additive expansion of exactly that one category — not a second tool, a bigger `eval/cases/grounding.yaml`.
-**Concrete build steps:**
-1. Pull every factual claim Orby can be asked about from the real portfolio content source (Sanity documents backing `api/chat/route.ts`, per [[Web Ingestion Implementation#Agent-Ready Infrastructure (AEO + MCP) - BUILD|the AEO pass's confirmed chatbot architecture]]) — every project, every resume bullet, every named skill and tool.
-2. For each fact, write one **positive grounding case** ("Tell me about his BOOM project" → must reference the real Kafka/Redis/MongoDB stack, must not invent unlisted tech) and, where a plausible-but-false claim exists, one **negative/refusal case** ("Has Anant used [tool not in his record]?" → must refuse, matching the existing pattern in `04 - Eval Harness — promptfoo`'s Kubernetes example).
-3. Target 30-50 total cases — BASWE's number — split roughly evenly between positive grounding and refusal, covering every project folder under `20_Progress/Projects/CS/` that the portfolio actually surfaces.
-4. Add these as `contains-json` / `javascript` / targeted `llm-rubric` assertions in `eval/cases/grounding.yaml`, following the exact YAML shape already established in [[04 - Eval Harness — promptfoo]] — don't introduce a new assertion syntax.
-5. Wire a faithfulness threshold into the existing CI gate: fail the build if fewer than a set percentage of grounding cases pass (BASWE's own framing: >0.8 faithfulness to merge), not just "any case fails."
-6. Run this against a resume/portfolio-content update the same way any other prompt or model change triggers a re-run per [[07 - Evaluation & Observability]]'s "minimum before launch" checklist.
+## The Genuinely Missing Piece — Now Closed (2026-07-29)
+`07`'s eval set was **15-20 cases**, and only two of them (`Grounding / refusal` and `Grounded positive`) tested factual faithfulness. BASWE's original ask (30-50 hand-built golden Q&A pairs from portfolio materials, faithfulness-threshold gated) has been built as a real, additive expansion of exactly that one category — not a second tool, a bigger `eval/cases/grounding.yaml`. Both [[07 - Evaluation & Observability]] and [[04 - Eval Harness — promptfoo]] have been edited directly with the expansion; this note records what changed and why, it doesn't hold the only copy of the plan.
+**What actually landed:**
+1. [[04 - Eval Harness — promptfoo]] now has a concrete `grounding.yaml` starter set — 7 example cases (BOOM, CausalOps, TradingView, Jarvis as positive-grounding; unsupported AWS cert / production ML deployment / FAANG employment as refusal cases) drawn from real vault project names, following the exact assertion shape already established in that file.
+2. [[07 - Evaluation & Observability]] now states the eval set is ~45-55 cases total (up from 15-20), with the grounding category specifically gated on an aggregate **0.8 faithfulness threshold** rather than zero-tolerance per case.
+3. The starter set is not yet the full 30-50 — it's drawn from project names already known in this vault, not the live Sanity CMS content. **Genuinely still open:** pulling every actual resume bullet and skill claim directly from Sanity (per [[Web Ingestion Implementation#Agent-Ready Infrastructure (AEO + MCP) - BUILD|the AEO pass's confirmed chatbot architecture]]) to extend the starter set to full coverage — this requires access to the live portfolio codebase/CMS, which this vault-editing pass doesn't have.
 ## Failure Modes
 > [!WARNING]
 > Building a parallel deepeval pipeline instead of expanding `grounding.yaml` creates two GitHub Actions checks judging the same chatbot with different pass/fail logic — the next person to touch Orby won't know which one is authoritative. There should be exactly one eval gate.

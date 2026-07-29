@@ -3,21 +3,22 @@ type: brainstorm
 status: sprout
 created: 2025-12-26
 related_progress:
-  - "[[40_Resources/Obsidian/Plugins]]"
-  - "[[40_Resources/Obsidian/Obsidian-Excalidraw Plugin Tutorials]]"
+  - "[[40_Resources/Obsidian/Data View's/Plugins]]"
+  - "[[40_Resources/Obsidian/Data View's/Obsidian-Excalidraw Plugin Tutorials]]"
 tags:
   - brainstorm
 next: "[[MOC]]"
+updated: 2026-07-29
 ---
 # Obsidian Useful Learning
 ## Links
-1. [Tech Research](https://r.nikiv.dev/)
-2. [Information about everything - second brain of someone](https://wiki.xxiivv.com/site/about.html)
-	- [Notes on wisdom](https://wiki.xxiivv.com/site/wisdom.html)
-	- [Notes on quotes](http://wiki.xxiivv.com/site/quotes.html)
-	- [Notes on morals](https://wiki.xxiivv.com/site/morals.html)
-	- [All pages on the wiki](https://wiki.xxiivv.com/site/index.html)
-3. [Git](https://publish.obsidian.md/git-doc/Authentication)
+1. [Tech Research](https://r.nikiv.dev/) — a personal research/notes wiki (Niki V.). → no relations
+2. [Information about everything - second brain of someone](https://wiki.xxiivv.com/site/about.html) — Devine Lu Linvega's (XXIIVV) personal wiki, a reference example of a public second-brain vault. → no relations
+	- [Notes on wisdom](https://wiki.xxiivv.com/site/wisdom.html) → no relations
+	- [Notes on quotes](http://wiki.xxiivv.com/site/quotes.html) → no relations
+	- [Notes on morals](https://wiki.xxiivv.com/site/morals.html) → no relations
+	- [All pages on the wiki](https://wiki.xxiivv.com/site/index.html) → no relations
+3. [Git](https://publish.obsidian.md/git-doc/Authentication) — the Obsidian Git plugin's official documentation site. → [[40_Resources/Obsidian/Plugins/Git Recovery and Vault Safety]] (cites the same docs site's Features page for this vault's actual git-safety setup)
 4. 
 # ⚡ Obsidian Hotkeys (Final Setup)
 ## 🗂️ Files / Search / Explorer

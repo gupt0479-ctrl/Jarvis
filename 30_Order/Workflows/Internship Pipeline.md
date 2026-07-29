@@ -2,7 +2,7 @@
 type: evergreen
 status: sprout
 created: 2026-07-16
-updated: 2026-07-26
+updated: 2026-07-29
 tags:
   - system
   - workflow
@@ -49,7 +49,7 @@ deep dive      Programs/Job & Company/<Company> - <Position>.md — interview-pr
 apply          Applying/Now.md entry + Applying/<name>.md (live narrative) created; Tracker note
                moves Current/ → Applied/; Program note moves to its own Ended/ subfolder
    ↓ you get a screen or an interview
-prep           Interviews/Prep/<company>.md — linked from the Applying note's interview_note field
+prep           Preperation/Interviews/<company>.md — linked from the Applying note's interview_note field
    ↓ outcome lands
 close          Applying note status → Offer / Rejected / Withdrawn; Tracker note moves to Result/.
                Program note stays as reference for next cycle or a referral.
@@ -57,6 +57,7 @@ across all of it:  Tracker/Internship - Dashboard.md (whole-process) + Tracker/T
 ```
 ## Step 1 — Find (List + Dossiers)
 Two paths in now. Automated: `internship-research-loop` writes screened matches straight into `List/Dossiers/`, sorted into priority subfolders (`1 - AI & ML/`, `2 - Fullstack/`, `3 - CyS & Finance/`, `Other/`) with a one-line reason at the top of each note — see [[Source of Truth]] for exactly what the loop screens for before a dossier ever lands. Manual: anything you come across yourself — a career fair conversation, LinkedIn, Handshake — still gets one row in this month's `List/YYYY-MM Found.md` (use [[List Monthly Log Template]]), and can move to Step 2 without ever having been a dossier. Neither is a commitment. Most dossiers and most rows never get promoted, and that's fine.
+**Manual web clips (refined 2026-07-29):** a web-clipped internship (a full posting captured into `60_Claude/05_Clippings/Web/Internships/`, not just a row in the monthly log) skips the dossier-as-screening-artifact phase entirely and goes straight to a Program note in `Serious/` or `Considering/`, run through the same Step 2 fit test below. Once that Program note exists, the original clipping moves into `List/Dossiers/<priority folder>/`, rewritten in the loop's own dossier template (frontmatter + `## Posting` body) without losing any of its original content — this makes it a record of where the internship came from, not a screening artifact, since screening already happened via the Program note. Both the dossier and the Program note get marked manually found (`source: manual` / `list_origin: manual-web-find (Anant)`), never as loop-discovered. First real run of this refined rule: the four backlogged `Internships/` clippings (Uber, Nuro, Deepgram, Western Digital) on 2026-07-29 — see [[10_Areas/Career/Internships/Programs/Serious/2027-Uber-SWE-CareerPrep]] and its three siblings.
 ## Step 2 — Screen (the fit test)
 Before committing real hours, every dossier or manual find passes the same fit test, regardless of which priority folder it landed in (including `Other` — that folder gets the same scrutiny, not less):
 - **Goal-push** — does this role move you toward the systems-minded AI engineer direction in [[Engineer Edge Roadmap]]? Bias against roles that don't.
@@ -82,7 +83,7 @@ Submit. In the same sitting: add an entry to `Applying/Now.md`, create the Apply
 > [!IMPORTANT]
 > A Program note sitting in `Ended/` with no matching Applying note gets discarded, not kept — `Ended` means applied, and without an Applying note nothing was actually submitted.
 ## Step 8 — Prep (Interviews)
-Once a program moves to Phone Screen or Onsite, create `Interviews/Prep/<company>.md` and link it from the Applying note's `interview_note` field. `Interviews/Prep/Interview Questions.md` in the same folder is the generic bank — pull from it, don't duplicate it.
+Once a program moves to Phone Screen or Onsite, create `Preperation/Interviews/<company>.md` and link it from the Applying note's `interview_note` field. `Preperation/Interviews/Interview Questions.md` in the same folder is the generic behavioral bank — pull from it, don't duplicate it. `Preperation/System Design/` is the sibling folder for the system-design drill bank (see [[System Design Practice]]) — a different prep category, not interview-specific company research.
 ## Step 9 — Close
 When an outcome lands, update the Applying note's `status` to `Offer`, `Rejected`, or `Withdrawn`, move the Tracker note from `Applied/` to `Result/` and set its result date, and add the final Log entry. Leave the Program note alone — it's still valid reference if you (or a friend) reapply next cycle.
 ## Ongoing Views — Not Steps, Always Live
@@ -110,7 +111,8 @@ Step 1 (Find) is live: `gupta-builds/internship-research-loop` (GitHub Actions, 
 | Cheat | `evergreen` | `10_Areas/Career/Internships/Cheats/` |
 | Tracker (per internship) | (index note) | `10_Areas/Career/Internships/Tracker/Each One/` |
 | Applying | `project` | `20_Progress/Internship/Applying/` |
-| Interview prep | `project` or `input` | `20_Progress/Internship/Interviews/Prep/` |
+| Interview prep | `project` or `input` | `20_Progress/Internship/Preperation/Interviews/` |
+| System design drill bank | `project` | `20_Progress/Internship/Preperation/System Design/` |
 | Altered resume | (no `type` — working document) | `20_Progress/Internship/Resumes/Altered/` |
 | LinkedIn post | `output` | `20_Progress/Internship/Posts/` |
 ## Done When

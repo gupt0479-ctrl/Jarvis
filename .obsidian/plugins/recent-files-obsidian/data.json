@@ -1,8 +1,28 @@
 {
   "recentFiles": [
     {
+      "basename": "Random",
+      "path": "Random.md"
+    },
+    {
+      "basename": "HUMAN_WRITING",
+      "path": "HUMAN_WRITING.md"
+    },
+    {
       "basename": "00_Execution",
       "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
+    },
+    {
+      "basename": "Links",
+      "path": "40_Resources/CS/Links.md"
+    },
+    {
+      "basename": "The Hidden Operating System Behind Every Income Ceiling (web)",
+      "path": "60_Claude/10_Source_Summaries/Web Ingestion/The Hidden Operating System Behind Every Income Ceiling (web).md"
+    },
+    {
+      "basename": "Notes Created From Ingestion",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Notes Created From Ingestion.md"
     },
     {
       "basename": "Useful Links",
@@ -179,26 +199,6 @@
     {
       "basename": "Web Ingestion Implementation",
       "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Web Ingestion Implementation.md"
-    },
-    {
-      "basename": "PDF's Ingestion Implementation",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/PDF's Ingestion Implementation.md"
-    },
-    {
-      "basename": "Links",
-      "path": "40_Resources/CS/Links.md"
-    },
-    {
-      "basename": "MavGPT AI Resume & Job Search Guide (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/MavGPT AI Resume & Job Search Guide (PDF).md"
-    },
-    {
-      "basename": "Ultimate Guide to Winning Hackathons (PDF)",
-      "path": "60_Claude/10_Source_Summaries/PDF Ingestion/Ultimate Guide to Winning Hackathons (PDF).md"
-    },
-    {
-      "basename": "Summer Grind",
-      "path": "10_Areas/Summer Grind.md"
     }
   ],
   "omittedPaths": [],

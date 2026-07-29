@@ -27,6 +27,7 @@ created: 2026-06-12
 - [[architecture/02-sanity-cms|🗄️ Sanity CMS]] — Schemas, queries, live API
 - [[architecture/03-auth-clerk|🔐 Auth (Clerk)]] — Proxy, middleware, studio guard
 - [[architecture/04-design-system|🎨 Design System]] — Tailwind v4, cn(), CometCard
+- [[AEO & SEO/00 - Agent-Ready Infrastructure Build Plan|🤖 AEO & SEO]] — metadata/sitemap/robots/OpenGraph build plan (not yet built)
 
 ### AI Chatbot — Orby
 - [[chatbot/00-orby-overview|🤖 Orby Overview]] — Phases 0–6, god nodes, communities

@@ -2,6 +2,7 @@
 type: evergreen
 status: sprout
 created: 2026-05-29
+updated: 2026-07-29
 tags:
   - github
   - resources
@@ -16,6 +17,11 @@ Two questions for every starred repo: **how does he use it**, **why does he use 
 
 Context: Anant is a UMN CS sophomore (class 2028). He runs BOOM (Rust/Kafka/MongoDB observability work), a Next.js cosmic portfolio with an AI Lab, Jarvis (this vault), a trading AI project, and is setting up VS Code as source of truth with Claude Code, Cursor, Kiro, and Copilot as CLIs. He wants internships, is building toward ML/AI engineering, and needs to actually ship things today.
 
+## Status as of 2026-07-29 — Implement > Knowledge
+[[PDF's Ingestion Implementation#Claude Code Skills & Repos: Implement vs. Knowledge Matrix - REVIEW|The Claude Code Skills & Repos Matrix]] set the rule this whole doc should follow going forward: **install only what closes a named gap, reference everything else, test in one session before committing, mark every repo `(*INSTALLED*)`/`(*SKIP*)`/`(*EVAL: DATE*)` in [[40_Resources/CS/Repos]] once decided.** [[00_Execution]]'s GitHub pass (2026-07-29) confirmed neither this doc's install list nor `Repos.md`'s tier list had actually been executed, three weeks after both were written — real decisions now exist, but most are still queued, not run. See [[00_Execution#Github|00_Execution § Github]] for the full reasoning per repo; the per-repo "Status (2026-07-29)" lines below carry the resolved decision, and the real run order replaces the stale "Summary: Use Order for Today" at the bottom of this file.
+
+**Maverick mode-to-repo mapping:** for the complementary question — given a Maverick-style prompt shortcut, which installed skill already covers it — see [[Maverick Skills Mode-to-Repo Mapping]] rather than re-deriving it here. It condenses [[Maverick Skills Analysis - Cross-Reference with GitHub Repos]]'s full 100-mode table into the five high-impact bundles and confirms `/challenge` and `/strategy` (both now real files in `.claude/skills/`) close the two custom-skill gaps that analysis flagged.
+
 ---
 
 ## Today's Goal: VS Code + Claude Setup
@@ -27,18 +33,21 @@ These repos are the most immediately relevant to what Anant is doing right now.
 ### ECC (affaan-m)
 **How:** Install it. Run `npx ecc install` inside your VS Code project. It drops in a CLAUDE.md, skills, memory layer, and security hooks for Claude Code in one shot. Then point Cursor, Kiro, and Copilot at the same CLAUDE.md so every agent reads the same context.
 **Why:** You have four coding agents (Claude, Cursor, Kiro, Copilot) and no shared context between them. ECC is the single fastest way to make VS Code the source of truth — one install wires persistent memory, skills, and constraints into every agent that reads CLAUDE.md.
+**Status (2026-07-29):** `(*EVAL: 2026-07-29 — cherry-pick only*)`. Verified: ECC is now ECC 2.0, a 261-skill cross-harness plugin-marketplace install (`/plugin marketplace add` + `/plugin install ecc`), not the single-file drop above — a real over-installation risk. Revised plan: install into `second-brain-claudekit` only, cherry-pick `autonomous-agent-harness` + `gateguard` + the new `worktree-lifecycle service`, skip the rest of the 261.
 
 ---
 
 ### gstack (garrytan)
 **How:** Clone it, read the 23 skill files, steal the ones relevant to BOOM and the portfolio. Specifically: the `founder-review`, `eng-manager`, and `release-manager` skills. Copy them into your `.claude/` directory. Run them as slash commands when shipping.
 **Why:** Garry Tan's setup is the most battle-tested public Claude Code config. His skills encode real engineering decisions (security review, QA paranoia, doc writing) as reusable behaviors. You're setting up Claude today — start with a proven skeleton rather than inventing from scratch.
+**Status (2026-07-29):** `(*INSTALL: QUEUED*)`. Verified: 66K stars, now ~34 slash commands (grown from 13) including `/setup-gbrain` — gstack and [[#gbrain (garrytan)|gbrain]] are a matched pair from the same author, not two separate optional tools. Install both together into `second-brain-claudekit` first, then Jarvis global, via `git clone ... ~/.claude/skills/gstack && ./setup`.
 
 ---
 
 ### mattpocock-skills
 **How:** Install via `npx skills add mattpocock/skills`. Each skill targets a specific Claude failure mode. Use `verbose-thinking` when Claude is producing surface-level answers, `entropy-check` when a refactor starts getting weird, `feedback-loop` for the portfolio AI Lab.
 **Why:** Matt's skills are the most opinionated and shortest. They fix the exact problems you'll hit today: Claude going off-track, over-engineering, losing thread. Four skills, four problems. Install before you do any serious Claude Code work this morning.
+**Status (2026-07-29):** `(*INSTALL: QUEUED*)`. Verified: 77K stars, actively maintained (last commit Jul 13 2026). Use the `npx skills@latest add mattpocock/skills` path (file copy) over the newer `/plugin install mattpocock-skills@mattpocock` — Jarvis global, `second-brain-claudekit` first if untested.
 
 ---
 
@@ -51,6 +60,7 @@ These repos are the most immediately relevant to what Anant is doing right now.
 ### spec-kit (GitHub)
 **How:** Install the CLI. Before touching the portfolio today, run `npx spec-kit specify "AI Lab feature"`. It produces a constitution → spec → plan → tasks chain. Feed that plan to Claude Code. Use it for the TradingAgents integration and the portfolio AI Lab rebuild.
 **Why:** You have a lot of ambiguous work ahead (portfolio UI, AI Lab, trading dashboard). Spec Kit turns ambiguity into a structured task list before you write a single line. It's how GitHub's own teams avoid vibe coding.
+**Status (2026-07-29):** `(*INSTALL: GLOBALLY*)` — Tier-1, agreed across both master triage docs and `Repos.md`'s own annotation. Not yet run.
 
 ---
 
@@ -99,6 +109,7 @@ These repos are the most immediately relevant to what Anant is doing right now.
 ### ruflo (ruvnet)
 **How:** Use Ruflo when you need multi-agent swarm behavior — specifically for the trading project where you want analyst + researcher + trader agents coordinating. Run `npx ruflo deploy --agents analyst,researcher,trader` and wire it to your trading data pipeline.
 **Why:** Your trading AI Hub needs multiple coordinated agents. Ruflo has Q-Learning routing (agents learn which sub-agent to call) and built-in swarm coordination. It's the only open-source option that approaches TradingAgents' architecture at the infrastructure level.
+**Status (2026-07-29):** `(*DEFERRED*)`. Claude Code's native subagent/Task tooling already covers solo multi-project coordination; ECC 2.0's `worktree-lifecycle service` (see ECC above) is a more direct answer to running Claude + Cursor + Kiro on BOOM simultaneously than adopting a standalone framework. Revisit Ruflo only once true concurrent-agent work exists — not removed, just not applicable yet.
 
 ---
 
@@ -117,6 +128,14 @@ These repos are the most immediately relevant to what Anant is doing right now.
 ### memsearch (Zilliz)
 **How:** Install it as a Claude Code plugin. It auto-captures every session and makes your Claude Code memory searchable. After today's vault ingestion, every session becomes findable. Configure it to index your Jarvis vault directory as well.
 **Why:** You lose context between Claude Code sessions. Memsearch fixes this by auto-indexing sessions to markdown with hybrid search. Given you're doing serious vault ingestion today, having session memory is critical.
+**Status (2026-07-29):** `(*SKIP*)` — superseded. gstack's `/setup-gbrain` companion (see below) does the same auto-capture with a synthesis/gap-analysis layer memsearch lacks. Adopting both would duplicate the same memory function with two different backends.
+
+---
+
+### gbrain (garrytan)
+**How:** Install via gstack's `/setup-gbrain` (same author, matched pair — installs in under 2 minutes with PGLite, no Docker). Point it at the Jarvis vault directory as the corpus. Use its `remember`/`recall`-equivalent tools as the one memory MCP for both Jarvis and coding-agent sessions.
+**Why:** Personal-knowledge MCP with synthesis + gap-analysis, not just retrieval — benchmarked at +31.4 points over vector-only RAG on a rich-prose corpus. This is the centerpiece of the memory decision: one coherent memory stack (gstack + gbrain) instead of memsearch + context-sync as two uncoordinated half-measures.
+**Status (2026-07-29):** `(*INSTALL: QUEUED*)` — into `second-brain-claudekit` first, paired with gstack, then Jarvis global.
 
 ---
 
@@ -129,18 +148,21 @@ These repos are the most immediately relevant to what Anant is doing right now.
 ### context-sync
 **How:** Deploy it as a local MCP server. It gives Claude Code a persistent SQLite memory with `remember`/`recall` tools. Point it at your Jarvis vault path. Use it as a lightweight alternative to memsearch for the VS Code setup.
 **Why:** It's simpler than memsearch, no vector DB needed. For your immediate VS Code setup today, SQLite-backed memory is faster to get running than Milvus. Start with context-sync, graduate to memsearch later.
+**Status (2026-07-29):** `(*SKIP*)` — unnecessary as a separate install. gbrain's tools cover the same ground at higher quality, since it's already going in paired with gstack.
 
 ---
 
 ### cpr-compress-preserve-resume
 **How:** Install the three slash commands: `/preserve` before ending a session, `/compress` when context gets long, `/resume` at the start of a new session. Use this in every Claude Code session today — Jarvis ingestion is a long session that will hit context limits.
 **Why:** Today's vault ingestion will run long. Without CPR, you'll lose context mid-session and waste time re-explaining. The 55% token cost reduction on resume means fewer context resets.
+**Status (2026-07-29):** `(*INSTALL: QUEUED — Jarvis only*)`. Its session-lifecycle commands are specific to long single-vault ingestion sessions like this one; installing it globally would be unused surface in TradingView/Portfolio/BOOM sessions that don't run this long in one sitting.
 
 ---
 
 ### claude-context (Zilliz)
 **How:** Install it as an MCP server for BOOM and the portfolio. It indexes your entire codebase into Milvus (or local) and lets Claude Code do semantic code search. Most useful for BOOM's sprawling Rust codebase — instead of telling Claude where things are, let it search.
 **Why:** BOOM has `src/alert/*`, `src/api/*`, `src/scheduler/*`, `src/kafka/*`, `src/utils/o11y/*` — it's large. Claude Code without semantic search will hit token limits trying to hold the full codebase. This gets you to ~40% token reduction.
+**Status (2026-07-29):** `(*INSTALL: QUEUED — BOOM project-scoped only*)`. Not global — Graphify answers "what connects to what" (structural graph, already useful for CausalOps/BOOM), claude-context answers "find this by meaning" (embeddings). Complementary, not competing; the real blocker is the Milvus/Docker dependency, not a design choice against it.
 
 ---
 
@@ -267,6 +289,21 @@ These repos are the most immediately relevant to what Anant is doing right now.
 ### tradingview-mcp
 **How:** Connect it to Claude Code. Use it to run chart analysis on your Alpha Vantage data: send a ticker, get Claude's interpretation of the chart pattern, route that interpretation into the analyst agent of your TradingAgents setup.
 **Why:** Your trading dashboard needs chart analysis. Instead of building a technical analysis module from scratch, tradingview-mcp gives you Claude's visual chart reading as a tool call. It connects your existing TradingView workflow to the AI pipeline.
+**Status (2026-07-29):** `(*INSTALL, FREE TIER*)` — duplicate ingestion file found and resolved: `Claude Starred/tradingview-mcp (github).md` (canonical summary) and `Claude Starred/tradingview-mcp - AI-assisted TradingView chart analysis.md` (a raw clipped README misfiled into the summary folder) both exist. Merge the raw file's one unique `[!DECISION]` callout — use the free TradingView Desktop tier instead of paid — into the canonical summary, then delete the raw duplicate.
+
+---
+
+### openbb
+**How:** Wire it into the TradingView data layer as the provider-agnostic abstraction — swap Alpha Vantage/Financial Modeling Prep calls behind OpenBB's interface instead of hardcoding one vendor's API shape.
+**Why:** [[AI Market Analyzer - Data Sources]] already treats provider swaps as a real risk; OpenBB is a genuine data-abstraction layer (native agent tool exposure, provider-agnostic) — a stronger fit than hardcoding one provider directly.
+**Status (2026-07-29):** `(*INSTALL: QUEUED — TradingView project-scoped*)`.
+
+---
+
+### last30days-skill
+**How:** Install for the trading research workflow — recency-biased search across Reddit/X/YouTube/HN/Polymarket in one pass.
+**Why:** The Polymarket coverage is the one thing generic web search skills don't have; directly useful for the trading project's sentiment/signal research.
+**Status (2026-07-29):** `(*COPY GLOBALLY: QUEUED*)`.
 
 ---
 
@@ -554,6 +591,7 @@ These repos are the most immediately relevant to what Anant is doing right now.
 ### bumblebee (Perplexity)
 **How:** Run it on your development machine and BOOM's deployment environment. It scans installed packages and extensions for known supply-chain compromises. Run it before any major dependency update.
 **Why:** You're adding MCPs and plugins to VS Code today. Every MCP is a supply chain attack surface. Run bumblebee first, then add extensions.
+**Status (2026-07-29):** `(*INSTALL: QUEUED — run first*)`. Stays global, run before any other install queued on this page — it gates the whole install sequence below, not just today's.
 
 ---
 
@@ -607,11 +645,18 @@ These repos are the most immediately relevant to what Anant is doing right now.
 
 ---
 
-## Summary: Use Order for Today
+## Summary: Real Install Order (per [[00_Execution]], 2026-07-29)
 
-1. **Install first** (takes < 10 minutes each): ECC, mattpocock-skills, cpr-compress-preserve-resume, context-sync
-2. **Read before writing** (15 minutes): get-shit-done templates, claude-code-best-practice top section, system-prompts
-3. **Run on your codebase**: bumblebee (security check), claude-code-templates (scaffold), whichllm (pick local model)
-4. **Architecture reference** (open as tabs): TradingAgents, PageIndex, semantic-search-nextjs, obsidian-mind
-5. **Apply later this week**: spec-kit for portfolio AI Lab, promptfoo for testing, memsearch for persistent memory
-6. **Work through over the next month**: DataTalksClub zoomcamps (data-eng, mlops, llm), coding-interview-university, applied-ml
+The order below is what's actually decided, replacing the speculative "today" list above written before the GitHub pass ran. Nothing in this list has actually been run yet — this is the queue, not a completion record.
+
+1. **bumblebee scan** — run before anything else installs.
+2. **gstack + gbrain** — into `second-brain-claudekit` first, then Jarvis global (matched pair, one memory stack).
+3. **ECC cherry-pick** — `autonomous-agent-harness` + `gateguard` + `worktree-lifecycle` only, via `second-brain-claudekit`, not the full 261-skill plugin.
+4. **mattpocock-skills** via `npx` (Jarvis global) + **cpr-compress-preserve-resume** (Jarvis-only).
+5. **last30days-skill** for the trading research workflow.
+6. **claude-context**, project-scoped on BOOM only.
+7. **openbb**, into the TradingView data layer.
+8. **tradingview-mcp duplicate merge/delete** — fold the `[!DECISION]` callout into the canonical summary, delete the raw-clipping duplicate.
+9. **Enrich the three thin Learning Curriculum notes** (`llm-zoomcamp.md`, `applied-ml.md`, `system-design-primer.md`) with the concrete modules mapped to decisions already made this pass.
+
+Superseded/dropped from the original list above: **memsearch** and **context-sync** (both superseded by gbrain), **claude-code-templates** and **spec-kit for "later this week"** (spec-kit stays Tier-1 install-now, not deferred).

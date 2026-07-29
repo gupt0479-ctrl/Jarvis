@@ -5,18 +5,16 @@ created: 2026-04-26
 updated: 2026-07-29
 deadline: 2026-08-31
 related_progress:
-  - "[[Compound Progress Framework]]"
   - "[[Career Strategy]]"
-  - "[[Arc (Learning Tracker)]]"
   - "[[20_Progress/Projects/Research/BOOM/BOOM Systems Engineering Bullet]]"
-  - "[[60_Claude/35_Outputs/Observability-First ML Pipeline Brief]]"
+  - "[[20_Progress/Projects/Research/BOOM/Observability-First ML Pipeline Brief]]"
   - "[[Portfolio]]"
 tags:
   - "#progress"
   - "#career"
   - "#systems"
   - "#ai"
-next: "[[Arc (Learning Tracker)]]"
+next: "Start Days 1-30: Traceable MVP (see 90-Day Plan below)"
 ---
 # Engineer Edge Roadmap
 ## Positioning
