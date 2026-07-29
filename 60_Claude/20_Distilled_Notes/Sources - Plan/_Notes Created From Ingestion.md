@@ -81,4 +81,18 @@ Grouped by pass: PDF, Web, and (next session) GitHub. Each pass gets its own sec
 ---
 
 ## GitHub Pass
-Not started. Added after that pass runs.
+This pass was different in kind from PDF and Web — it involved real hands-on installs and tests in WSL (`gupta-builds/second-brain-claudekit` at `~/projects/ai/claude/second-brain-claudekit`), not just note-writing. Every row below reflects an actual command run, not a plan.
+
+| Note / Action | New, Extended, or Real Install | Source header | Why it exists |
+|---|---|---|---|
+| [[Immediate Action]] | New | [[GitHub Ingestion Implementation#VS Code + Claude Setup (Priority 1 — Install Today)\|VS Code + Claude Setup]] | Global/Project-based/Unsure split of every real install decision this session, replacing plan-only markers with tested results |
+| GBrain (`bun install` + `gbrain init --pglite --no-embedding`) | Real install, tested | [[GitHub Ingestion Implementation#Memory & Persistence (Week 2)\|Memory & Persistence]] | Working PGLite brain, 80/100 health confirmed via `doctor` — the memory-architecture decision is now empirically validated, not theoretical |
+| bun runtime | Real install (new dependency) | — (prerequisite discovered mid-session) | Wasn't present in WSL; required by both gstack's setup and gbrain's CLI |
+| mattpocock-skills `engineering/` category → `second-brain-claudekit/tested-skills/mattpocock-engineering/` | Real copy, not yet promoted | [[GitHub Ingestion Implementation#Install Immediately (< 10 min each)\|Install Immediately]] | 17 of 41 real skills staged for review; interactive installer doesn't complete non-interactively |
+| gstack `./setup` (attempted) | Real attempt, blocked | [[GitHub Ingestion Implementation#Secondary Installs This Week\|Secondary Installs This Week]] | Compiled + generated 55 skills for real, failed at Playwright Chromium launch — missing WSL system libs, needs interactive `sudo apt install` |
+| [[GitHub Ingestion Implementation#Agent Frameworks (Multi-Agent Coordination)\|Agent Frameworks]] section | Extended | same | Corrects the earlier "ECC cherry-pick" assumption — `ecc2` in WSL turned out to be an unrelated Rust project, not affaan-m/ECC; real install status is undecided, not done |
+| [[GitHub Ingestion Implementation#Security & Auditing\|Security & Auditing]] section | Extended | same | Verified bumblebee is a thin, point-in-time layer via real 2026 incident research (Socket.dev's Nx/TrapDoor writeups); added Socket.dev/OSV-Scanner as the continuous-monitoring layer bumblebee doesn't provide |
+| [[40_Resources/CS/Repos]] | Extended (again) | [[GitHub Ingestion Implementation#VS Code + Claude Setup (Priority 1 — Install Today)\|VS Code + Claude Setup]] | ECC/gstack/gbrain/mattpocock-skills markers corrected from plan-stage (`QUEUED`/`EVAL`) to real tested status (`INSTALLED`, `BLOCKED`, `PARTIAL`, `CORRECTED`) |
+| [[WSL Claude Code — Wiring Gap]] | New | Not from any Implementation file — the user's own AI-conversation-capture task for this session | Found the ask was ~90% already built (`/export-ai-session`, the Windows `SessionEnd` hook, the exact target folder); documents the one real gap (WSL sessions unwired) and the concrete fix, rather than designing a duplicate system |
+
+**Not done this session, flagged honestly rather than glossed over:** gstack's Chromium fix (needs the user's own interactive `sudo`), gbrain's embedding-provider choice (Voyage/ZeroEntropy/OpenAI, real recurring-cost decision), mattpocock's remaining 24 skills (personal/productivity/misc/in-progress/deprecated, unreviewed), promoting anything from the `second-brain-claudekit` sandbox to the real global `~/.claude/`, and the WSL hook-wiring implementation itself (design is written, script isn't).

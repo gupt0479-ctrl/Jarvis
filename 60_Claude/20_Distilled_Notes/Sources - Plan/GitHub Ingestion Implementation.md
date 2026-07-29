@@ -92,6 +92,9 @@ Actionable repo adoption priorities from the comprehensive GitHub guide: VS Code
 - **opencode** (anomalyco) — Fallback CLI when Claude Code rate-limited; shares same CLAUDE.md.
 - **hermes-agent** — Understand architecture (171K stars = community consensus). Persistent skill accumulation pattern.
 
+### Research finding (2026-07-29): does ECC actually solve this?
+**No, not yet, and the earlier assumption that it was already installed was wrong.** Went looking for the real ECC install in WSL to answer this properly: `~/projects/ai/claude/everything-claude-code/ecc2` turned out to be an *unrelated* Rust project (its own session/comms/tui/worktree/observability modules — coincidental naming, not affaan-m/ECC), and a direct check of `~/.claude/plugins/marketplaces/everything-claude-code` came back empty on one pass and populated on another — genuinely inconsistent, not confirmed either way. `~/tools/ecc-setup.sh` exists and *targets* enabling `everything-claude-code@everything-claude-code` as a project-scoped plugin for Portfolio specifically, but there's no evidence it was ever actually run. **Correct status: undecided, not installed** — see [[Immediate Action]]. Until ECC is actually cloned and run for real, it can't be credited with solving agent-framework coordination; right now Claude Code's native subagent/Task tooling is the only coordination mechanism actually in use, same conclusion as [[00_Execution#Github|00_Execution]] reached independently.
+
 ---
 
 ## Security & Auditing
@@ -100,6 +103,13 @@ Actionable repo adoption priorities from the comprehensive GitHub guide: VS Code
 - **keyhacks** — Verify leaked API keys; audit repos for accidentally-committed credentials.
 - **cai** (aliasrobotics) — Run on portfolio's auth/API for security testing and documentation.
 - **promptfoo** (red team mode) — Test portfolio AI Lab for jailbreak vulnerabilities before recruiter reaches it.
+
+### Research finding (2026-07-29): is bumblebee enough?
+**No — correctly identified as a thin layer.** Bumblebee is a one-time, read-only, on-disk scanner (checks installed packages/extensions against a known-compromise database) — it does exactly that one job well, but it's a point-in-time check, not continuous monitoring, and it doesn't touch npm-specific behavioral threats (typosquatting, compromised-maintainer takeovers) the way a dedicated supply-chain tool does. Checked against real 2026 incidents (Socket.dev's own blog: the Nx npm compromise and the TrapDoor crypto-stealer campaign across npm/PyPI/Crates.io) — both were caught by **behavioral** analysis, which bumblebee doesn't do.
+**Verdict:** keep bumblebee for its actual designed purpose (run once before adding any new MCP/package, per the existing plan) — it's free and does that job fine. But it is not sufficient as the whole security layer, especially for **Portfolio**, which is exactly Socket's strongest use case (npm/Next.js-heavy). Add continuous supply-chain monitoring on top:
+- **Socket.dev** — free tier for open-source projects, paid Pro per-contributor; the stronger choice if a small ongoing cost is fine, given Portfolio's real npm dependency surface.
+- **OSV-Scanner** (Google) — the free, vendor-neutral equivalent if avoiding a paid tool matters more than Socket's extra behavioral-detection depth; CVE-based rather than behavioral, but zero cost and no vendor lock-in.
+**Action:** wire one of these two into Portfolio's CI (GitHub Actions) as the actual continuous layer; bumblebee stays as the pre-install spot-check, not the whole answer. Not yet done — this is a decision, not an install, this session.
 
 ---
 

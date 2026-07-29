@@ -1,8 +1,24 @@
 {
   "recentFiles": [
     {
+      "basename": "_Notes Created From Ingestion",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/_Notes Created From Ingestion.md"
+    },
+    {
       "basename": "00_Execution",
       "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
+    },
+    {
+      "basename": "Links",
+      "path": "40_Resources/CS/Links.md"
+    },
+    {
+      "basename": "Certifications Strategy",
+      "path": "10_Areas/Career/Certifications/Certifications Strategy.md"
+    },
+    {
+      "basename": "Dossiers MOC",
+      "path": "10_Areas/Career/Internships/List/Dossiers MOC.md"
     },
     {
       "basename": "Immediate Action",
@@ -21,10 +37,6 @@
       "path": "20_Progress/Projects/CS/TradingView/Frontend/QNA for UI.md"
     },
     {
-      "basename": "Links",
-      "path": "40_Resources/CS/Links.md"
-    },
-    {
       "basename": "Final Month Plan (Jul 28 - Sep 1)",
       "path": "10_Areas/Life/Plans/Summer/Final Month Plan (Jul 28 - Sep 1).md"
     },
@@ -39,10 +51,6 @@
     {
       "basename": "The Hidden Operating System Behind Every Income Ceiling (web)",
       "path": "60_Claude/10_Source_Summaries/Web Ingestion/The Hidden Operating System Behind Every Income Ceiling (web).md"
-    },
-    {
-      "basename": "Notes Created From Ingestion",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Notes Created From Ingestion.md"
     },
     {
       "basename": "Useful Links",
@@ -191,14 +199,6 @@
     {
       "basename": "Index Fund Investing",
       "path": "60_Claude/20_Distilled_Notes/Index Fund Investing.md"
-    },
-    {
-      "basename": "Career Strategy",
-      "path": "60_Claude/20_Distilled_Notes/Career Strategy.md"
-    },
-    {
-      "basename": "Trading Resources Integration — TradingView Architecture Roadmap",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Trading Resources Integration — TradingView Architecture Roadmap.md"
     }
   ],
   "omittedPaths": [],
