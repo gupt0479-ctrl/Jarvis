@@ -5,12 +5,28 @@
       "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
     },
     {
-      "basename": "Final Month Plan (Jul 28 - Sep 1)",
-      "path": "10_Areas/Life/Plans/Summer/Final Month Plan (Jul 28 - Sep 1).md"
+      "basename": "Immediate Action",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Immediate Action.md"
+    },
+    {
+      "basename": "Note Writing System — Audit and Roadmap (2026-05-31)",
+      "path": "60_Claude/07_AI_Information/AI Conversation - Summaries/Note Writing System — Audit and Roadmap (2026-05-31).md"
+    },
+    {
+      "basename": "Cursor Project Brief — Vault OS Upgrade",
+      "path": "60_Claude/07_AI_Information/AI Conversation - Summaries/Cursor Project Brief — Vault OS Upgrade.md"
     },
     {
       "basename": "QNA for UI",
       "path": "20_Progress/Projects/CS/TradingView/Frontend/QNA for UI.md"
+    },
+    {
+      "basename": "Links",
+      "path": "40_Resources/CS/Links.md"
+    },
+    {
+      "basename": "Final Month Plan (Jul 28 - Sep 1)",
+      "path": "10_Areas/Life/Plans/Summer/Final Month Plan (Jul 28 - Sep 1).md"
     },
     {
       "basename": "Fable 5 — Read Order (TradingView folder)",
@@ -19,10 +35,6 @@
     {
       "basename": "HUMAN_WRITING",
       "path": "HUMAN_WRITING.md"
-    },
-    {
-      "basename": "Links",
-      "path": "40_Resources/CS/Links.md"
     },
     {
       "basename": "The Hidden Operating System Behind Every Income Ceiling (web)",
@@ -187,18 +199,6 @@
     {
       "basename": "Trading Resources Integration — TradingView Architecture Roadmap",
       "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Trading Resources Integration — TradingView Architecture Roadmap.md"
-    },
-    {
-      "basename": "Internship Tracking Dashboard — 2027 Calendar, Programs, & Application Pipeline",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Internship Tracking Dashboard — 2027 Calendar, Programs, & Application Pipeline.md"
-    },
-    {
-      "basename": "Hermes Agent — Trading & Alert System (Distilled)",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Hermes Agent — Trading & Alert System (Distilled).md"
-    },
-    {
-      "basename": "Hall of Hacks — Winning Hackathon Patterns Analysis",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Hall of Hacks — Winning Hackathon Patterns Analysis.md"
     }
   ],
   "omittedPaths": [],
