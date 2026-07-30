@@ -5,16 +5,28 @@
       "path": "60_Claude/20_Distilled_Notes/Sources - Plan/_Notes Created From Ingestion.md"
     },
     {
+      "basename": "PDF's Ingestion Implementation",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/PDF's Ingestion Implementation.md"
+    },
+    {
       "basename": "00_Execution",
       "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
     },
     {
-      "basename": "Links",
-      "path": "40_Resources/CS/Links.md"
+      "basename": "Tool Map",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Tool Map.md"
     },
     {
       "basename": "Certifications Strategy",
       "path": "10_Areas/Career/Certifications/Certifications Strategy.md"
+    },
+    {
+      "basename": "Resume Tailoring, LinkedIn Search & Outreach Discovery",
+      "path": "10_Areas/Career/Internships/Cheats/Resume Tailoring, LinkedIn Search & Outreach Discovery.md"
+    },
+    {
+      "basename": "Links",
+      "path": "40_Resources/CS/Links.md"
     },
     {
       "basename": "Dossiers MOC",
@@ -187,18 +199,6 @@
     {
       "basename": "AI-Assisted Trading",
       "path": "60_Claude/20_Distilled_Notes/AI-Assisted Trading.md"
-    },
-    {
-      "basename": "Trading Tools and Platforms",
-      "path": "60_Claude/20_Distilled_Notes/Trading Tools and Platforms.md"
-    },
-    {
-      "basename": "Mentorship and Networking",
-      "path": "60_Claude/20_Distilled_Notes/Mentorship and Networking.md"
-    },
-    {
-      "basename": "Index Fund Investing",
-      "path": "60_Claude/20_Distilled_Notes/Index Fund Investing.md"
     }
   ],
   "omittedPaths": [],
