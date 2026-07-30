@@ -11,7 +11,7 @@ tags:
 notes:
   - "[[20_Progress/AI/Claude Code/MOC]]"
   - "[[20_Progress/Projects/AI Use/Claude Kit/Tool Map]]"
-next: "Wire a Windows Task Scheduler trigger to run sync-jarvis.sh on a schedule — mechanism is tested, trigger is not yet built (see repo's Docs/Sync.md)"
+next: "None — 15-min hidden Task Scheduler sync is live (SecondBrainClaudekit-JarvisSync)"
 ---
 # second-brain-claudekit — Claude Code Setup
 
@@ -34,7 +34,7 @@ Editing files in this folder directly is safe and intentional — that's the poi
 
 ## Trigger status
 
-The sync script works when run manually (tested repeatedly this session — first sync, reverse-direction sync, conflict handling, all real). It is **not yet wired to run automatically** — no Windows Task Scheduler entry exists yet. Until that's built, run it by hand after making `.claude/`-layer changes on either side.
+Windows Scheduled Task `SecondBrainClaudekit-JarvisSync` runs `sync-jarvis.sh` every 15 minutes through a hidden `wscript` launcher (no console popup). Manual runs still work: `50_Claude/scripts/sync-jarvis.sh` from the repo. Re-register (if needed): `30_Order/System/claude-workflow/scripts/register-jarvis-sync-task.ps1`.
 
 ## Links
 [[20_Progress/AI/Claude Code/MOC]] · [[20_Progress/Projects/AI Use/Claude Kit/Tool Map]] · [[20_Progress/Projects/AI Use/Claude Kit/Log]]

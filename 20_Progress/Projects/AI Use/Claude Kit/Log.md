@@ -1,3 +1,10 @@
+## [2026-07-30] sandbox | 17 repos cloned into sandbox/ (clone-only; update script added)
+- Cloned into `second-brain-claudekit/sandbox/<name>/` as shallow (`--depth 1`) git checkouts so each can be refreshed with `git pull`: agent-skills, andrej-karpathy-skills, claude-skills-llm-council, llm-council, last30days-skill, spec-kit, claude-context, graphify, claude-code-best-practice, system-prompts-and-models-of-ai-tools, CL4R1T4S, agentscope, promptfoo, hiring-agent, autoresearch, TradingAgents, OpenBB.
+- **Intent tags from request (not yet executed):** claude-context + graphify + promptfoo marked to use; hiring-agent for internship-loop eval; autoresearch to implement; OpenBB + TradingAgents for TradingView review; system-prompts vs CL4R1T4S for prompt comparison; agentscope + best-practice as reference.
+- Added `sandbox/README.md` (inventory + intent) and `50_Claude/scripts/update-sandbox.sh` (`--list` or pull all / named clones).
+- **Nothing installed or run** — stage is clone-only per Anant's "just add these to sandbox" instruction. Tool Map rows added for each; Promotion-Criteria Q1 still unanswered for all 17.
+- Note vs Design.md: reference-only repos (best-practice, system-prompts) were previously meant to stay out of sandbox — explicitly overridden by this request.
+
 # Claude Kit — Log
 
 Dated entries, one per addition or status change in `second-brain-claudekit`'s tool pipeline. Same heading convention as [[60_Claude/07_AI_Information/Session Logs/log|the main Session Log]] (`## [YYYY-MM-DD] tag | title`) — not a new format invented for this folder.

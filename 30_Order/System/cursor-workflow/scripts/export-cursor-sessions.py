@@ -212,10 +212,25 @@ def collect_jsonl_index(roots: list[Path]) -> dict[str, dict]:
 
 def load_workspace_folder(workspace_id: str | None, value: dict) -> str:
     """Return the folder URI string for routing."""
-    uri = (value.get("workspaceIdentifier") or {}).get("uri") or {}
-    external = uri.get("external") or ""
-    if external:
-        return external
+    wi = value.get("workspaceIdentifier") or {}
+    if isinstance(wi, str):
+        # rare: just an id string
+        wi = {}
+    uri = wi.get("uri") if isinstance(wi, dict) else None
+    if isinstance(uri, str) and uri.strip():
+        return uri.strip()
+    if isinstance(uri, dict):
+        external = uri.get("external") or ""
+        if external:
+            return external
+        # reconstruct from scheme/path if present
+        scheme = uri.get("scheme") or ""
+        path = uri.get("path") or uri.get("fsPath") or ""
+        authority = uri.get("authority") or ""
+        if scheme == "vscode-remote" and path:
+            return f"vscode-remote://{authority}{path}"
+        if scheme == "file" and path:
+            return f"file://{path}"
     if not workspace_id:
         return ""
     wj = WORKSPACE_STORAGE / workspace_id / "workspace.json"
@@ -353,7 +368,21 @@ def parse_jsonl(path: Path) -> tuple[list[dict], Counter, list[str], list[str]]:
                         elif btype == "tool_use" and block.get("name"):
                             name = block["name"]
                             tool_tally[name] += 1
-                            inp = block.get("input") or {}
+                            raw_inp = block.get("input")
+                            if isinstance(raw_inp, dict):
+                                inp = raw_inp
+                            elif isinstance(raw_inp, str):
+                                # ApplyPatch (and similar) pass the patch body as a bare string
+                                inp = {"_raw": raw_inp}
+                                # Pull Update/Add/Delete File paths out of the patch header
+                                for m in re.finditer(
+                                    r"(?:\*\*\* (?:Update|Add|Delete) File: |^[\+\-]{3} [ab]/)(.+)$",
+                                    raw_inp,
+                                    re.MULTILINE,
+                                ):
+                                    files_touched.append(m.group(1).strip())
+                            else:
+                                inp = {}
                             call_line = format_tool_call(name, inp)
                             state["calls"].append(call_line)
                             for pk in path_keys:
@@ -361,11 +390,8 @@ def parse_jsonl(path: Path) -> tuple[list[dict], Counter, list[str], list[str]]:
                                     files_touched.append(str(inp[pk]))
                             if name == "Shell" and inp.get("command"):
                                 commands_run.append(str(inp["command"]))
-                            # Write/StrReplace/EditNotebook style
                             if name in ("Write", "StrReplace", "EditNotebook", "Delete") and inp.get("path"):
                                 files_touched.append(str(inp["path"]))
-                            if name == "Write" and inp.get("contents") is None and inp.get("path"):
-                                pass  # already recorded
     flush()
     # dedupe files preserving order
     seen = set()
@@ -395,6 +421,12 @@ def format_tool_call(name: str, inp: dict) -> str:
         pattern = inp.get("pattern") or inp.get("glob_pattern") or ""
         path = inp.get("path") or inp.get("target_directory") or "."
         return f"- `{name}` — pattern `{pattern}`, path `{path}`"
+    if name == "ApplyPatch" or inp.get("_raw"):
+        raw = inp.get("_raw") or ""
+        # Show first Update/Add file path if present
+        m = re.search(r"\*\*\* (?:Update|Add|Delete) File: (.+)$", raw, re.MULTILINE)
+        target = m.group(1).strip() if m else "(patch)"
+        return f"- `{name}` — `{target}`"
     dump = redact_secrets(json.dumps(inp, ensure_ascii=False, separators=(",", ":")))
     if len(dump) > 300:
         dump = dump[:300] + "…"
@@ -856,14 +888,18 @@ def run(args: argparse.Namespace) -> int:
         if not meta:
             counts["skip_no_jsonl"] += 1
             continue
-        status = export_one(con, cid, meta, exported_at, counts, touched)
-        row = con.execute(
-            "SELECT lastUpdatedAt FROM composerHeaders WHERE composerId=?", (cid,)
-        ).fetchone()
-        if row and row[0]:
-            max_updated = max(max_updated, int(row[0]))
-        counts["seen"] += 1
-        counts[status] += 0  # ensure key exists
+        try:
+            status = export_one(con, cid, meta, exported_at, counts, touched)
+            row = con.execute(
+                "SELECT lastUpdatedAt FROM composerHeaders WHERE composerId=?", (cid,)
+            ).fetchone()
+            if row and row[0]:
+                max_updated = max(max_updated, int(row[0]))
+            counts["seen"] += 1
+        except Exception as e:
+            counts["error"] += 1
+            print(f"ERROR {cid}: {type(e).__name__}: {e}", file=sys.stderr)
+            continue
 
     for source_os, project_name in sorted(touched):
         os_folder = "WSL" if source_os == "wsl" else "Windows"

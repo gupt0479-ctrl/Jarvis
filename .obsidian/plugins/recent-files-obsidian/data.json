@@ -1,16 +1,80 @@
 {
   "recentFiles": [
     {
+      "basename": "Claude Code Prompts",
+      "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
+    },
+    {
+      "basename": "Repos",
+      "path": "40_Resources/CS/Repos.md"
+    },
+    {
+      "basename": "_Notes Created From Ingestion",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/_Notes Created From Ingestion.md"
+    },
+    {
+      "basename": "Code Review & Eval Gap",
+      "path": "20_Progress/AI/Builds & Resources/Code Review & Eval Gap.md"
+    },
+    {
+      "basename": "Model Distillation",
+      "path": "20_Progress/AI/Builds & Resources/Model Distillation.md"
+    },
+    {
+      "basename": "00_Execution",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
+    },
+    {
+      "basename": "Student Travel Discounts — Survey Note (Staging for The Plan)",
+      "path": "60_Claude/20_Distilled_Notes/The Plan/Student Travel Discounts — Survey Note (Staging for The Plan).md"
+    },
+    {
+      "basename": "Research - CSCI 2033 to Trading Cross-Link Status (2026-07-29)",
+      "path": "20_Progress/Projects/CS/TradingView/Research/Research - CSCI 2033 to Trading Cross-Link Status (2026-07-29).md"
+    },
+    {
+      "basename": "System Design Practice",
+      "path": "20_Progress/Internship/Preperation/System Design/System Design Practice.md"
+    },
+    {
+      "basename": "Resume Tailoring, LinkedIn Search & Outreach Discovery",
+      "path": "10_Areas/Career/Internships/Cheats/Resume Tailoring, LinkedIn Search & Outreach Discovery.md"
+    },
+    {
+      "basename": "GitHub Ingestion Implementation",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/GitHub Ingestion Implementation.md"
+    },
+    {
+      "basename": "07-29 Second brain claude kit",
+      "path": "60_Claude/05_Clippings/AI Conversations/WSL/Cursor/second-brain-claudekit/07-29 Second brain claude kit.md"
+    },
+    {
+      "basename": "00 - Tool Usage Rollup",
+      "path": "60_Claude/05_Clippings/AI Conversations/WSL/Cursor/opspilot/00 - Tool Usage Rollup.md"
+    },
+    {
+      "basename": "04-13 OpsPilot implementation planning",
+      "path": "60_Claude/05_Clippings/AI Conversations/WSL/Cursor/opspilot/04-13 OpsPilot implementation planning.md"
+    },
+    {
+      "basename": "04-12 Restaurant backend implementation plan",
+      "path": "60_Claude/05_Clippings/AI Conversations/WSL/Cursor/opspilot/04-12 Restaurant backend implementation plan.md"
+    },
+    {
+      "basename": "04-12 Codebase analysis and PR review",
+      "path": "60_Claude/05_Clippings/AI Conversations/WSL/Cursor/opspilot/04-12 Codebase analysis and PR review.md"
+    },
+    {
+      "basename": "04-13 Feedback page data rendering issue",
+      "path": "60_Claude/05_Clippings/AI Conversations/WSL/Cursor/opspilot/04-13 Feedback page data rendering issue.md"
+    },
+    {
       "basename": "CLAUDE",
       "path": "20_Progress/AI/Claude Code/second-brain-claudekit/CLAUDE.md"
     },
     {
       "basename": "07-16 Build 247 internship discovery automation system",
       "path": "60_Claude/05_Clippings/AI Conversations/WSL/Claude Code/internship-research-loop/07-16 Build 247 internship discovery automation system.md"
-    },
-    {
-      "basename": "Claude Code Prompts",
-      "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
     },
     {
       "basename": "Sync - Unison",
@@ -101,16 +165,8 @@
       "path": "20_Progress/AI/Builds & Resources/Claude Council (LLM Council Skill Install).md"
     },
     {
-      "basename": "_Notes Created From Ingestion",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/_Notes Created From Ingestion.md"
-    },
-    {
       "basename": "PDF's Ingestion Implementation",
       "path": "60_Claude/20_Distilled_Notes/Sources - Plan/PDF's Ingestion Implementation.md"
-    },
-    {
-      "basename": "00_Execution",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
     },
     {
       "basename": "Tool Map",
@@ -119,10 +175,6 @@
     {
       "basename": "Certifications Strategy",
       "path": "10_Areas/Career/Certifications/Certifications Strategy.md"
-    },
-    {
-      "basename": "Resume Tailoring, LinkedIn Search & Outreach Discovery",
-      "path": "10_Areas/Career/Internships/Cheats/Resume Tailoring, LinkedIn Search & Outreach Discovery.md"
     },
     {
       "basename": "Links",
@@ -147,54 +199,6 @@
     {
       "basename": "QNA for UI",
       "path": "20_Progress/Projects/CS/TradingView/Frontend/QNA for UI.md"
-    },
-    {
-      "basename": "Final Month Plan (Jul 28 - Sep 1)",
-      "path": "10_Areas/Life/Plans/Summer/Final Month Plan (Jul 28 - Sep 1).md"
-    },
-    {
-      "basename": "Fable 5 — Read Order (TradingView folder)",
-      "path": "20_Progress/Projects/CS/TradingView/Claude Code/Fable 5 — Read Order (TradingView folder).md"
-    },
-    {
-      "basename": "HUMAN_WRITING",
-      "path": "HUMAN_WRITING.md"
-    },
-    {
-      "basename": "The Hidden Operating System Behind Every Income Ceiling (web)",
-      "path": "60_Claude/10_Source_Summaries/Web Ingestion/The Hidden Operating System Behind Every Income Ceiling (web).md"
-    },
-    {
-      "basename": "Useful Links",
-      "path": "10_Areas/Career/Useful Links.md"
-    },
-    {
-      "basename": "The AI Hub",
-      "path": "20_Progress/Projects/AI Use/The AI Hub.md"
-    },
-    {
-      "basename": "Jarvis",
-      "path": "20_Progress/Projects/Jarvis & The Plan/Jarvis.md"
-    },
-    {
-      "basename": "Companies giving OPT & CPT",
-      "path": "20_Progress/Internship/Companies giving OPT & CPT.md"
-    },
-    {
-      "basename": "Links",
-      "path": "20_Progress/Projects/CS/TradingView/Links.md"
-    },
-    {
-      "basename": "Gen AI Meeting",
-      "path": "40_Resources/CS/AI/Gen AI Meeting.md"
-    },
-    {
-      "basename": "Concepts Board",
-      "path": "40_Resources/CS/Concepts/Concepts Board.md"
-    },
-    {
-      "basename": "Second Brain",
-      "path": "40_Resources/Obsidian/Second Brain.md"
     }
   ],
   "omittedPaths": [],

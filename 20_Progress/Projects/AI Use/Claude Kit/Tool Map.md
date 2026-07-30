@@ -2,17 +2,20 @@
 type: index
 status: active
 created: 2026-07-29
-updated: 2026-07-29
+updated: 2026-07-30
 tags:
   - claude-code
   - ai-use
   - ingestion
   - claude-kit
 notes:
-  - "[[60_Claude/10_Source_Summaries/Github Ingestion/Immediate Action|Immediate Action]]"
+  - "[[60_Claude/10_Source_Summaries/Github Ingestion/Immediate Action|Immediate
+    Action]]"
   - "[[40_Resources/CS/Repos]]"
   - "[[20_Progress/AI/Claude Code/MOC|Claude Code MOC]]"
-next: "Add a row here the same session anything new lands in second-brain-claudekit's sandbox/, tested-skills/, or a rigid folder — see that repo's Docs/Jarvis.md for the ritual"
+next: Add a row here the same session anything new lands in
+  second-brain-claudekit's sandbox/, tested-skills/, or a rigid folder — see
+  that repo's Docs/Jarvis.md for the ritual
 ---
 # Claude Kit — second-brain-claudekit Tool Map
 
@@ -63,5 +66,110 @@ This tracks a different layer than `20_Progress/AI/Claude Code/<Project>/Setup.m
 
 - **Real test results (2026-07-30):** `node tests/run-all.js` — **3378/3388 passed (99.7%), 10 failed, exit 0.** All 10 failures isolated to two files, not scattered: 9 in `integration/plan-canvas-e2e.test.js` (ECC 2.1's browser-based "Plan Canvas" review feature — every failure traces to `connect ETIMEDOUT 127.0.0.1:21517`, a local detached server never coming up in this sandboxed WSL environment; looks environment-specific, same shape as gstack's Playwright/Chromium blocker, not a confirmed ECC bug) and 1 in `lib/dry-run.test.js` ("--dry-run works with implicit install routing" — `Expected exit 0, got null`, not yet root-caused). Per Promotion-Criteria.md Q1 ("did it actually run without a manual workaround") this is an honest **partial-yes**: the core test suite runs clean; one experimental feature (Plan Canvas) and one dry-run edge case do not, named and specific rather than glossed over.
 
+##### agent-skills (Addy Osmani)
+- **What:** Agent skills collection from Addy Osmani.
+- **Useful for:** Undetermined — clone only.
+- **Global vs. project-scoped:** Not decided.
+- **Pipeline stage:** `sandbox/agent-skills/` — `git clone --depth 1` only (2026-07-30). No install/run yet.
+- **Upstream:** https://github.com/addyosmani/agent-skills
+
+##### andrej-karpathy-skills
+- **What:** Karpathy-style skills pack (multica-ai mirror/pack).
+- **Useful for:** Undetermined — clone only.
+- **Global vs. project-scoped:** Not decided.
+- **Pipeline stage:** `sandbox/andrej-karpathy-skills/` — clone only (2026-07-30).
+- **Upstream:** https://github.com/multica-ai/andrej-karpathy-skills
+
+##### claude-skills-llm-council + llm-council (Karpathy original)
+- **What:** LLM Council as Claude skills (`aiwithremy/claude-skills-llm-council`) plus the original Karpathy repo (`karpathy/llm-council`). Both cloned so they can be compared side by side.
+- **Useful for:** Undetermined — this repo already has a `/llm-council` skill; need a real gap check before any promotion.
+- **Global vs. project-scoped:** Not decided.
+- **Pipeline stage:** `sandbox/claude-skills-llm-council/` and `sandbox/llm-council/` — clone only (2026-07-30).
+- **Upstream:** https://github.com/aiwithremy/claude-skills-llm-council · https://github.com/karpathy/llm-council
+
+##### last30days-skill
+- **What:** Skill for researching / summarizing the last 30 days of a topic.
+- **Useful for:** Undetermined — clone only.
+- **Global vs. project-scoped:** Not decided.
+- **Pipeline stage:** `sandbox/last30days-skill/` — clone only (2026-07-30).
+- **Upstream:** https://github.com/mvanhorn/last30days-skill
+
+##### spec-kit
+- **What:** GitHub Spec Kit — spec-driven development tooling.
+- **Useful for:** Undetermined — clone only. Previously listed as Tier-1 unexecuted in Design.md history.
+- **Global vs. project-scoped:** Not decided.
+- **Pipeline stage:** `sandbox/spec-kit/` — clone only (2026-07-30).
+- **Upstream:** https://github.com/github/spec-kit
+
+##### claude-context (Zilliz)
+- **What:** Semantic code context for Claude / agents.
+- **Useful for:** Marked **to use** — not just reference.
+- **Global vs. project-scoped:** Not decided.
+- **Pipeline stage:** `sandbox/claude-context/` — clone only (2026-07-30). Next: real install/run per Promotion-Criteria.
+- **Upstream:** https://github.com/zilliztech/claude-context
+
+##### graphify
+- **What:** Build knowledge graphs from content (code, docs, papers, etc.).
+- **Useful for:** Marked **to use** — local skill already exists at `~/.claude/skills/graphify`; sandbox clone is for qualification before trusting/promoting further.
+- **Global vs. project-scoped:** Not decided.
+- **Pipeline stage:** `sandbox/graphify/` — clone only (2026-07-30).
+- **Upstream:** https://github.com/safishamsi/graphify
+
+##### claude-code-best-practice
+- **What:** Claude Code best-practice / learning reference guide.
+- **Useful for:** Learning reference — not expected to install as runtime tooling.
+- **Global vs. project-scoped:** N/A (reference).
+- **Pipeline stage:** `sandbox/claude-code-best-practice/` — clone only (2026-07-30). Note: `Docs/Design.md` previously said reference-only repos stay out of sandbox; explicitly requested in on 2026-07-30.
+- **Upstream:** https://github.com/shanraisshan/claude-code-best-practice
+
+##### system-prompts-and-models-of-ai-tools + CL4R1T4S
+- **What:** Large system-prompt corpora — compare the two for the best prompts when guardrail-bypass phrasing is needed for legitimate eval/red-team work.
+- **Useful for:** Reference / prompt craft — not runtime install.
+- **Global vs. project-scoped:** N/A (reference).
+- **Pipeline stage:** `sandbox/system-prompts-and-models-of-ai-tools/` and `sandbox/CL4R1T4S/` — clone only (2026-07-30).
+- **Upstream:** https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools · https://github.com/elder-plinius/CL4R1T4S
+
+##### agentscope
+- **What:** AgentScope multi-agent framework.
+- **Useful for:** Reference for agent architectures — clone for study, not necessarily promote.
+- **Global vs. project-scoped:** Not decided.
+- **Pipeline stage:** `sandbox/agentscope/` — clone only (2026-07-30).
+- **Upstream:** https://github.com/agentscope-ai/agentscope
+
+##### promptfoo
+- **What:** Prompt / agent evaluation and scanning toolkit.
+- **Useful for:** Marked **to use** — better agent structures and scans.
+- **Global vs. project-scoped:** Not decided (likely global if it clears the bar).
+- **Pipeline stage:** `sandbox/promptfoo/` — clone only (2026-07-30). Large shallow clone (~417M).
+- **Upstream:** https://github.com/promptfoo/promptfoo
+
+##### hiring-agent
+- **What:** InterviewStreet hiring agent.
+- **Useful for:** Evaluate usefulness for the internship research loop (`internship-research-loop`).
+- **Global vs. project-scoped:** Likely project-scoped to internship work if useful.
+- **Pipeline stage:** `sandbox/hiring-agent/` — clone only (2026-07-30). Next: run and decide.
+- **Upstream:** https://github.com/interviewstreet/hiring-agent
+
+##### autoresearch (Karpathy)
+- **What:** Karpathy autoresearch — autonomous research loop.
+- **Useful for:** Clone then implement against real use cases (not promote blindly).
+- **Global vs. project-scoped:** Not decided.
+- **Pipeline stage:** `sandbox/autoresearch/` — clone only (2026-07-30).
+- **Upstream:** https://github.com/karpathy/autoresearch
+
+##### TradingAgents
+- **What:** Multi-agent LLM trading research framework (TauricResearch).
+- **Useful for:** Trading / markets experiments; pair with OpenBB review for TradingView.
+- **Global vs. project-scoped:** Likely project-scoped (TradingView / markets).
+- **Pipeline stage:** `sandbox/TradingAgents/` — clone only (2026-07-30).
+- **Upstream:** https://github.com/TauricResearch/TradingAgents
+
+##### OpenBB
+- **What:** OpenBB finance platform / SDK.
+- **Useful for:** Review for TradingView project (data/platform patterns), not a Claude Code skill promotion candidate by default.
+- **Global vs. project-scoped:** Project-scoped (TradingView) if anything is adopted.
+- **Pipeline stage:** `sandbox/OpenBB/` — clone only (2026-07-30). Large shallow clone (~345M).
+- **Upstream:** https://github.com/OpenBB-finance/OpenBB
+
 ## Not yet in `sandbox/` at all
-Everything else in [[40_Resources/CS/Repos]] not named above — still starred, still exactly where the 2026-07-29 GitHub ingestion pass ([[00_Execution#Github|00_Execution's Github section]]) left it. Not forgotten, just genuinely not ingested into this repo yet.
+Everything else in [[40_Resources/CS/Repos]] not named above — still starred, still where earlier GitHub ingestion left it. The 2026-07-30 batch (agent-skills through OpenBB, 17 new clones) is now in `sandbox/` as clone-only; none have been run for real yet. Update clones with `second-brain-claudekit/50_Claude/scripts/update-sandbox.sh`; inventory lives in `sandbox/README.md`.

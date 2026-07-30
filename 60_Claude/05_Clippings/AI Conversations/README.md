@@ -2,7 +2,7 @@
 type: dashboard
 status: tree
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-30
 tags:
   - clippings
   - ai-conversations
@@ -21,11 +21,11 @@ AI Conversations/
     Claude Code/   ← wired up: raw JSONL mirror + exported markdown notes (fully automatic via SessionEnd hook)
     Cowork/        ← wired up (2026-07-06): Cowork/Agent-Mode sessions, swept from %APPDATA%\Claude\local-agent-mode-sessions on every session end (no standing junction — credentials are scattered per-sandbox)
     Kiro/          ← scaffold only, not wired
-    Cursor/        ← wired up (2026-07-05): exported markdown notes + optional _raw_composer/
+    Cursor/        ← wired up (2026-07-30): per-project subfolders, JSONL+SQLite join, Task Scheduler sweep — see below
   WSL/
     Claude Code/   ← wired up (2026-07-30): per-project subfolders, raw JSONL mirror + richer exported markdown notes (tool calls captured, not just names), fully automatic via SessionEnd hook — see below
     Kiro/          ← scaffold only, not wired
-    Cursor/        ← wired up (2026-07-05): same pipeline as Windows/Cursor, routed here for vscode-remote workspaces
+    Cursor/        ← wired up (2026-07-30): same two-source join as Windows/Cursor, routed here for vscode-remote / file://wsl$ workspaces
   Claude App/      ← Desktop app, cloud-based — not part of the Windows/WSL split
   OpenCode/
 ```
@@ -33,7 +33,28 @@ AI Conversations/
 
 `Windows/Cowork/` covers Claude Desktop's Cowork/Agent-Mode feature, which spins up a fully isolated `.claude` sandbox per task under `%APPDATA%\Claude\local-agent-mode-sessions` (42+ sandboxes observed, each with its own `.credentials.json`). Because credentials are scattered per-sandbox rather than centralized the way `~/.claude/projects` is, there is deliberately no raw-JSONL junction here — a blanket directory link would mirror those credentials into the vault. Instead the same `SessionEnd` hook sweeps for new Cowork transcripts (via long-path-safe `.NET` enumeration, since these paths run past Windows' 260-char `MAX_PATH`) every time a normal Claude Code session ends, since Cowork's sandboxes can't fire the hook themselves — "eventually consistent" rather than instant, but fully automatic.
 
-Cursor uses a different Tier 0 shape than Claude Code: conversation data lives in a single commingled Windows SQLite store (`%APPDATA%\Cursor\User\globalStorage\state.vscdb`), not a per-project JSONL tree, so there is no standing junction. Instead each of `Windows/Cursor/` and `WSL/Cursor/` may contain an on-demand `_raw_composer/` folder (gitignored via `**/_raw_composer/`), populated per-composer only when explicitly requested — see `30_Order/System/cursor-workflow/README.md`. Cursor conversations are routed to `Windows/Cursor/` or `WSL/Cursor/` by the originating workspace's URI scheme (`file` vs `vscode-remote`), not by which OS the export script runs on — the script itself always runs on Windows since that's where the SQLite store lives.
+`Windows/Cursor/` and `WSL/Cursor/` (rewired 2026-07-30) join **two** stores — the old SQLite-only / on-demand `_raw_composer/` story is retired:
+
+1. **Per-session JSONL** under `~/.cursor/projects/**/agent-transcripts/<uuid>/<uuid>.jsonl` — lives on the OS where the workspace ran (WSL home or Windows profile). Shape is lean: `role` + `message.content[]` with `text` / `tool_use` blocks. No `timestamp`, `usage`, or `model` fields — those frontmatter keys are omitted for Cursor, never fabricated.
+2. **Windows-only SQLite** `%APPDATA%\Cursor\User\globalStorage\state.vscdb`, table `composerHeaders` — `composerId` equals the JSONL filename. The `value` JSON supplies `name` (title), `subtitle`, `createdAt` / `lastUpdatedAt` (epoch-ms → local `YYYY-MM-DDTHH:MM:SS`, no offset, no fraction), `filesChangedCount`, `totalLinesAdded`, `totalLinesRemoved`, `isDraft`. No token or cost data anywhere in this store.
+
+Routing uses `workspaceIdentifier.uri` (fallback: `workspaceStorage/<workspaceId>/workspace.json`): `vscode-remote://wsl+...` or `file://wsl$/...` → `WSL/Cursor/<project>/`; `file:///c:/...` / `file:///d:/...` → `Windows/Cursor/<project>/`. `<project>` is the resolved folder basename. The exporter always runs on **Windows** (that's where SQLite lives); WSL JSONL is read via `\\wsl.localhost\<distro>\home\...`.
+
+Layout per project (mirrors WSL Claude Code):
+```
+{WSL|Windows}/Cursor/<project>/
+  MM-DD {name}.md                 ← one per session
+  _raw_jsonl/                     ← Windows: NTFS junction to that Cursor project's agent-transcripts/; WSL: one-way per-session .jsonl copy (DrvFs can't junction)
+  _archive-pre-fix/               ← pre-2026-07-30 flat notes, archived not deleted
+  00 - Session Index.md           ← Dataview over this folder
+  00 - Tool Usage Rollup.md       ← DataviewJS tool/file aggregates (no tokens/cost — Cursor doesn't have them)
+```
+
+Skip (no note) if: no `composerHeaders` row, `isDraft`/`isArchived`/`isSubagent`, or the JSONL has no real assistant turn. Dedup: WSL flat `_raw_jsonl/<session_id>.jsonl` existence, or any note already carrying that `session_id`.
+
+**Trigger:** Windows Task Scheduler task `Jarvis-Cursor-Session-Export` (every 15 min) running `30_Order/System/cursor-workflow/scripts/sweep-cursor-sessions.ps1`. A Cursor `sessionEnd` hook is **not** used for live export — confirmed 2026-07-30 in `cursor.hooks` logs for this vscode-remote+wsl workspace: `User config path: \home\anant_gupta\.cursor\hooks.json` (WSL), not the Windows `%USERPROFILE%\.cursor\hooks.json`. WSL-side hooks cannot reliably open the Windows SQLite store. Same eventually-consistent pattern as Cowork. Manual: `py export-cursor-sessions.py --backfill` / `--sweep`.
+
+Backfill reconciled (2026-07-30): 48 WSL + 20 Windows JSONL = 68; `composerHeaders` 207 total / 127 non-archived non-subagent; jsonl∩header = 67; exported **63** (47 WSL + 16 Windows) after skipping 2 archived + 2 subagent + 1 jsonl-with-no-header. The 140 header-only rows are composers with no agent-transcripts JSONL (older bubble-store chats, aborted drafts, etc.).
 
 `WSL/Claude Code/` (wired 2026-07-30, revised 2026-07-30) is intentionally a different shape from `Windows/Claude Code/`, fixing gaps that Windows's exporter still has (tracked separately, out of scope to fix there in this pass): it exports **every** WSL project's session unconditionally (no `cwd`-gated allowlist), splits output **per-project** rather than dumping everything into one flat `Jarvis`-labeled folder, captures full tool-call inputs/results (not just tool names), titles sessions from Claude Code's own auto-generated `ai-title` (not a slug guessed from the first message), and generates session-level rollup metadata including a real per-model `cost_usd`. Wiring: the global `SessionEnd` hook `~/.claude/hooks/wsl-session-export.ps1` (WSL-side, `~/.claude/settings.json`); the same script also supports a manual `-BackfillAll` mode that walks every transcript under `~/.claude/projects/**/*.jsonl` (idempotent — safe to re-run). Layout per project:
 ```
