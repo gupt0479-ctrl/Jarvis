@@ -28,27 +28,27 @@ dv.paragraph(`**Total (excl. Viewed/): ${total} / 201.** Design: [[10_Areas/Care
 ```
 ## 1 — AI & ML
 ```dataview
-TABLE company, title, terms, status
+TABLE company, title, terms, status, preference_tier
 FROM "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML"
-SORT company ASC
+SORT preference_tier DESC, company ASC
 ```
 ## 2 — Fullstack
 ```dataview
-TABLE company, title, terms, status
+TABLE company, title, terms, status, preference_tier
 FROM "10_Areas/Career/Internships/List/Dossiers/2 - Fullstack"
-SORT company ASC
+SORT preference_tier DESC, company ASC
 ```
 ## 3 — CyS & Finance
 ```dataview
-TABLE company, title, terms, status
+TABLE company, title, terms, status, preference_tier
 FROM "10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance"
-SORT company ASC
+SORT preference_tier DESC, company ASC
 ```
 ## Other — Real Software, Outside The Three Priorities
 ```dataview
-TABLE company, title, terms, status
+TABLE company, title, terms, status, preference_tier
 FROM "10_Areas/Career/Internships/List/Dossiers/Other"
-SORT company ASC
+SORT preference_tier DESC, company ASC
 ```
 ## Not Yet Sorted
 Sits flat at this folder's root — written before the priority-classification build landed (see [[Claude Code Prompts]]). Once that ships, this section should stay empty.
