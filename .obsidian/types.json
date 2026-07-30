@@ -65,6 +65,9 @@
     "source_status": "text",
     "date_posted": "date",
     "date_applied": "date",
-    "date_result": "date"
+    "date_result": "date",
+    "started_at": "datetime",
+    "ended_at": "datetime",
+    "tokens": "number"
   }
 }

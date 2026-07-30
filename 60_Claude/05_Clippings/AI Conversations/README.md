@@ -23,7 +23,7 @@ AI Conversations/
     Kiro/          ← scaffold only, not wired
     Cursor/        ← wired up (2026-07-05): exported markdown notes + optional _raw_composer/
   WSL/
-    Claude Code/   ← scaffold only, not wired
+    Claude Code/   ← wired up (2026-07-30): per-project subfolders, raw JSONL mirror + richer exported markdown notes (tool calls captured, not just names), fully automatic via SessionEnd hook — see below
     Kiro/          ← scaffold only, not wired
     Cursor/        ← wired up (2026-07-05): same pipeline as Windows/Cursor, routed here for vscode-remote workspaces
   Claude App/      ← Desktop app, cloud-based — not part of the Windows/WSL split
@@ -34,6 +34,21 @@ AI Conversations/
 `Windows/Cowork/` covers Claude Desktop's Cowork/Agent-Mode feature, which spins up a fully isolated `.claude` sandbox per task under `%APPDATA%\Claude\local-agent-mode-sessions` (42+ sandboxes observed, each with its own `.credentials.json`). Because credentials are scattered per-sandbox rather than centralized the way `~/.claude/projects` is, there is deliberately no raw-JSONL junction here — a blanket directory link would mirror those credentials into the vault. Instead the same `SessionEnd` hook sweeps for new Cowork transcripts (via long-path-safe `.NET` enumeration, since these paths run past Windows' 260-char `MAX_PATH`) every time a normal Claude Code session ends, since Cowork's sandboxes can't fire the hook themselves — "eventually consistent" rather than instant, but fully automatic.
 
 Cursor uses a different Tier 0 shape than Claude Code: conversation data lives in a single commingled Windows SQLite store (`%APPDATA%\Cursor\User\globalStorage\state.vscdb`), not a per-project JSONL tree, so there is no standing junction. Instead each of `Windows/Cursor/` and `WSL/Cursor/` may contain an on-demand `_raw_composer/` folder (gitignored via `**/_raw_composer/`), populated per-composer only when explicitly requested — see `30_Order/System/cursor-workflow/README.md`. Cursor conversations are routed to `Windows/Cursor/` or `WSL/Cursor/` by the originating workspace's URI scheme (`file` vs `vscode-remote`), not by which OS the export script runs on — the script itself always runs on Windows since that's where the SQLite store lives.
+
+`WSL/Claude Code/` (wired 2026-07-30, revised 2026-07-30) is intentionally a different shape from `Windows/Claude Code/`, fixing gaps that Windows's exporter still has (tracked separately, out of scope to fix there in this pass): it exports **every** WSL project's session unconditionally (no `cwd`-gated allowlist), splits output **per-project** rather than dumping everything into one flat `Jarvis`-labeled folder, captures full tool-call inputs/results (not just tool names), titles sessions from Claude Code's own auto-generated `ai-title` (not a slug guessed from the first message), and generates session-level rollup metadata including a real per-model `cost_usd`. Wiring: the global `SessionEnd` hook `~/.claude/hooks/wsl-session-export.ps1` (WSL-side, `~/.claude/settings.json`); the same script also supports a manual `-BackfillAll` mode that walks every transcript under `~/.claude/projects/**/*.jsonl` (idempotent — safe to re-run). Layout per project:
+```
+WSL/Claude Code/<project-basename-of-cwd>/
+  MM-DD {ai-title}.md              ← one per session (folder path already says "Claude Code", so the filename doesn't repeat it)
+  _raw_jsonl/                      ← one-way copy (not a junction — can't junction across the WSL/DrvFs boundary) of this project's session .jsonl files; gitignore-equivalent, unredacted safety net
+  _archive-pre-fix/                ← pre-2026-07-30 output, archived (not deleted) when the exporter was rewritten
+  00 - Session Index.md            ← live Dataview query over this folder's session notes (date, linked title, turns, duration, tokens, cost) — recomputed by Obsidian at render time, not hand-built
+  00 - Tool Usage Rollup.md        ← live DataviewJS block aggregating tool-name counts, files-touched-by-session-count, and total tokens/cost across every session note in this folder
+```
+Dedup is keyed off the raw per-session copy (`_raw_jsonl/<session_id>.jsonl`) rather than a shared JSON index file, since that copy is already keyed on `session_id` and its mere existence is sufficient to know a session was processed — no extra index file, no write contention.
+
+A session is skipped entirely (no markdown, no folder pollution — though the raw JSONL safety-net copy still lands) if it has zero real assistant turns, or if Claude Code never generated an `ai-title` for it (a reliable signal of a trivial session — bare `/clear`, `/exit`, empty session).
+
+`WSL/Claude Code/` session notes carry these frontmatter keys beyond the "Required Frontmatter" minimum below: `source_os` (`wsl`), `duration_minutes` (first/last transcript timestamp), `exported_at` (when this export ran — distinct from `started_at`/`ended_at`, when the session actually happened), `tools_used` (a mapping of `ToolName: count`), `tokens` (`input`/`output`/`cache_creation`/`cache_read`/`total`, summed per assistant message's `usage` block), `cost_usd` (computed from Anthropic's published per-model pricing, summed across every distinct model that ran in the session — `null` if a model string has no findable price), `model` (list of every distinct model string that appeared), and `files_touched` (deduped list of file paths the session's Read/Write/Edit/MultiEdit calls touched — what the two rollup Dataview queries aggregate against). Each assistant turn's body also gets a **Tool Calls** subsection listing every `tool_use` with redacted meaningful inputs (and result, for `Bash`/`Edit`/`MultiEdit`/`Write`), and the note ends with an **Actions Taken** section (files created/modified/deleted, commands run, tool-call tally) — richer than Windows's tool-name-only capture, at the cost of meaningfully larger notes.
 ## Rules
 - **Files dropped here are immutable.** Read-only, never rewritten in place.
 - Distillation outputs go to `60_Claude/07_AI_Information/AI Conversation - Summaries/`.

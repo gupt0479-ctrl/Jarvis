@@ -1,6 +1,50 @@
 {
   "recentFiles": [
     {
+      "basename": "Claude Code Prompts",
+      "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
+    },
+    {
+      "basename": "Sync - Unison",
+      "path": "20_Progress/AI/Claude Code/Sync - Unison.md"
+    },
+    {
+      "basename": "Write Log",
+      "path": "20_Progress/AI/Claude Code/Write Log.md"
+    },
+    {
+      "basename": "Management",
+      "path": "20_Progress/AI/Claude Code/Management.md"
+    },
+    {
+      "basename": "Summaries-to-Create",
+      "path": "60_Claude/07_AI_Information/AI Conversation - Summaries/Summaries-to-Create.md"
+    },
+    {
+      "basename": "07-27 Claude Code - what skills am i not using",
+      "path": "60_Claude/05_Clippings/AI Conversations/Windows/Claude Code/07-27 Claude Code - what skills am i not using.md"
+    },
+    {
+      "basename": "07-09 Claude Code - Session 123314",
+      "path": "60_Claude/05_Clippings/AI Conversations/Windows/Claude Code/07-09 Claude Code - Session 123314.md"
+    },
+    {
+      "basename": "07-05 Claude Code - local-command-caveatCaveat The messages below were-2",
+      "path": "60_Claude/05_Clippings/AI Conversations/Windows/Claude Code/07-05 Claude Code - local-command-caveatCaveat The messages below were-2.md"
+    },
+    {
+      "basename": "07-05 Claude Code - local-command-caveatCaveat The messages below were",
+      "path": "60_Claude/05_Clippings/AI Conversations/Windows/Claude Code/07-05 Claude Code - local-command-caveatCaveat The messages below were.md"
+    },
+    {
+      "basename": "07-03 Claude Code - The previous session was fixing the local project mcps and",
+      "path": "60_Claude/05_Clippings/AI Conversations/Windows/Claude Code/07-03 Claude Code - The previous session was fixing the local project mcps and.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "20_Progress/AI/Claude Code/MOC.md"
+    },
+    {
       "basename": "Setup",
       "path": "20_Progress/AI/Claude Code/CausalOps/Setup.md"
     },
@@ -143,62 +187,6 @@
     {
       "basename": "Second Brain",
       "path": "40_Resources/Obsidian/Second Brain.md"
-    },
-    {
-      "basename": "UMN Board",
-      "path": "20_Progress/UMN/UMN Board.md"
-    },
-    {
-      "basename": "Repos",
-      "path": "40_Resources/CS/Repos.md"
-    },
-    {
-      "basename": "How Anant Uses Each Repo",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/How Anant Uses Each Repo.md"
-    },
-    {
-      "basename": "00-overview",
-      "path": "20_Progress/Projects/CS/Portfolio/architecture/00-overview.md"
-    },
-    {
-      "basename": "Maverick Skills Analysis - Cross-Reference with GitHub Repos",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Maverick Skills Analysis - Cross-Reference with GitHub Repos.md"
-    },
-    {
-      "basename": "Jarvis OS — North Star",
-      "path": "60_Claude/07_AI_Information/Jarvis OS — North Star.md"
-    },
-    {
-      "basename": "Internship Pipeline",
-      "path": "30_Order/Workflows/Internship Pipeline.md"
-    },
-    {
-      "basename": "Weekly Operating System",
-      "path": "10_Areas/Life/Plans/Summer/Weekly Operating System.md"
-    },
-    {
-      "basename": "ML Fundamentals (2033 + 2230)",
-      "path": "10_Areas/Life/Plans/Summer/ML Fundamentals (2033 + 2230).md"
-    },
-    {
-      "basename": "LeetCode & CSCI 4041",
-      "path": "10_Areas/Life/Plans/Summer/LeetCode & CSCI 4041.md"
-    },
-    {
-      "basename": "Daily Operating System",
-      "path": "10_Areas/Life/Plans/Summer/Daily Operating System.md"
-    },
-    {
-      "basename": "Anti-Drift Rules",
-      "path": "10_Areas/Life/Plans/Summer/Anti-Drift Rules.md"
-    },
-    {
-      "basename": "00 - Summer Plans Index",
-      "path": "10_Areas/Life/Plans/Summer/00 - Summer Plans Index.md"
-    },
-    {
-      "basename": "Ingestion Pipeline Audit — Clippings, Summaries & Implementation (2026-07-27)",
-      "path": "60_Claude/20_Distilled_Notes/Ingestion Pipeline Audit — Clippings, Summaries & Implementation (2026-07-27).md"
     }
   ],
   "omittedPaths": [],

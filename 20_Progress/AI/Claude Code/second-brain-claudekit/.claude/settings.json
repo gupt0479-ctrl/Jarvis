@@ -1,5 +1,6 @@
 {
   "autoCompact": false,
+  "claudeMdExcludes": ["sandbox/**", "tested-skills/**"],
   "hooks": {
     "PostToolUse": [
       {
@@ -7,7 +8,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "powershell -ExecutionPolicy Bypass -File .claude/hooks/after-edit-log.ps1"
+            "command": "pwsh -ExecutionPolicy Bypass -File \"$CLAUDE_PROJECT_DIR/.claude/hooks/after-edit-log.ps1\""
           }
         ]
       }
@@ -17,7 +18,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "powershell -ExecutionPolicy Bypass -File .claude/hooks/session-wrapup.ps1"
+            "command": "pwsh -ExecutionPolicy Bypass -File \"$CLAUDE_PROJECT_DIR/.claude/hooks/session-wrapup.ps1\""
           }
         ]
       }

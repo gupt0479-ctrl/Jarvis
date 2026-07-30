@@ -647,6 +647,13 @@
         "type": "FILES",
         "pattern": "60_Claude/10_Source_Summaries/Github Ingestion/Immediate Action.md",
         "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "20_Progress/AI/Claude Code/Management.md",
+        "patternType": "STRICT"
       }
     ],
     "frontMatter": [
