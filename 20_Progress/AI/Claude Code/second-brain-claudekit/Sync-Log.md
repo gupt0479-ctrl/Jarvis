@@ -1,0 +1,59 @@
+2026-07-30 12:41:14 +0400  TRANSFER ERRORS  exit=2
+```
+Warning: No archive files were found for these roots, whose canonical names are:
+	/home/anant_gupta/projects/ai/claude/second-brain-claudekit
+	/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/second-brain-claudekit
+This can happen either
+because this is the first time you have synchronized these roots, 
+or because you have upgraded Unison to a new version with a different
+archive format.  
+
+Update detection may take a while on this run if the replicas are 
+large.
+
+Unison will assume that the 'last synchronized state' of both replicas
+was completely empty.  This means that any files that are different
+will be reported as conflicts, and any files that exist only on one
+replica will be judged as new and propagated to the other replica.
+If the two replicas are identical, then no changes will be reported.
+
+If you see this message repeatedly, it may be because one of your machines
+is getting its address from DHCP, which is causing its host name to change
+between synchronizations.  See the documentation for the UNISONLOCALHOSTNAME
+environment variable for advice on how to correct this.
+
+
+dir      ---->            .claude/agents  
+dir      ---->            .claude/commands  
+dir      ---->            .claude/hooks  
+file     ---->            .claude/settings.json  
+file     ---->            CLAUDE.md  
+[BGN] Copying .claude/agents from /home/anant_gupta/projects/ai/claude/second-brain-claudekit to /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/second-brain-claudekit
+Failed [.claude/agents]: Failed to set permissions of file /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/second-brain-claudekit/.claude to rwxr-xr-x: the permissions was set to rwxrwxrwx instead. The filesystem probably does not support all permission bits. If this is a FAT filesystem, you should set the "fat" option to true. Otherwise, you should probably set the "perms" option to 0o1755 (or to 0 if you don't need to synchronize permissions).
+[BGN] Copying .claude/commands from /home/anant_gupta/projects/ai/claude/second-brain-claudekit to /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/second-brain-claudekit
+Failed [.claude/commands]: Failed to set permissions of file /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/second-brain-claudekit/.claude/.unison.commands.581106b2917358e73c9036f678424717.unison.tmp to rwxr-xr-x: the permissions was set to rwxrwxrwx instead. The filesystem probably does not support all permission bits. If this is a FAT filesystem, you should set the "fat" option to true. Otherwise, you should probably set the "perms" option to 0o1755 (or to 0 if you don't need to synchronize permissions).
+[BGN] Copying .claude/hooks from /home/anant_gupta/projects/ai/claude/second-brain-claudekit to /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/second-brain-claudekit
+Failed [.claude/hooks]: Failed to set permissions of file /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/second-brain-claudekit/.claude/.unison.hooks.581106b2917358e73c9036f678424717.unison.tmp to rwxr-xr-x: the permissions was set to rwxrwxrwx instead. The filesystem probably does not support all permission bits. If this is a FAT filesystem, you should set the "fat" option to true. Otherwise, you should probably set the "perms" option to 0o1755 (or to 0 if you don't need to synchronize permissions).
+[BGN] Copying .claude/settings.json from /home/anant_gupta/projects/ai/claude/second-brain-claudekit to /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/second-brain-claudekit
+Failed [.claude/settings.json]: Failed to set permissions of file /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/second-brain-claudekit/.claude/.unison.settings.json.581106b2917358e73c9036f678424717.unison.tmp to rw-r--r--: the permissions was set to rwxrwxrwx instead. The filesystem probably does not support all permission bits. If this is a FAT filesystem, you should set the "fat" option to true. Otherwise, you should probably set the "perms" option to 0o1644 (or to 0 if you don't need to synchronize permissions).
+[BGN] Copying CLAUDE.md from /home/anant_gupta/projects/ai/claude/second-brain-claudekit to /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/second-brain-claudekit
+Failed [CLAUDE.md]: Failed to set permissions of file /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/second-brain-claudekit/.unison.CLAUDE.md.581106b2917358e73c9036f678424717.unison.tmp to rw-r--r--: the permissions was set to rwxrwxrwx instead. The filesystem probably does not support all permission bits. If this is a FAT filesystem, you should set the "fat" option to true. Otherwise, you should probably set the "perms" option to 0o1644 (or to 0 if you don't need to synchronize permissions).
+Synchronization incomplete at 12:41:15  (0 items transferred, 0 skipped, 5 failed)
+  failed: .claude/agents
+  failed: .claude/commands
+  failed: .claude/hooks
+  failed: .claude/settings.json
+  failed: CLAUDE.md
+```
+2026-07-30 12:41:52 +0400  OK  exit=0
+2026-07-30 12:44:04 +0400  OK  exit=0
+2026-07-30 12:44:31 +0400  OK  exit=0
+2026-07-30 12:44:47 +0400  CONFLICTS (skipped, see below)  exit=1
+```
+changed  <-?-> changed    .claude/commands/today.md  
+No updates to propagate
+Synchronization complete at 12:44:48  (0 items transferred, 1 skipped, 0 failed)
+  skipped: .claude/commands/today.md (contents changed on both sides)
+```
+2026-07-30 12:45:27 +0400  OK  exit=0
+2026-07-30 12:49:04 +0400  OK  exit=0

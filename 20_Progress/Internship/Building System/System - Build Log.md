@@ -2,17 +2,18 @@
 type: project
 status: active
 created: 2026-07-16
-updated: 2026-07-26
+updated: 2026-07-29
 related_progress:
   - "[[Internships Hub]]"
   - "[[30_Order/Workflows/Internship Pipeline]]"
   - "[[Source of Truth]]"
   - "[[20_Progress/Internship/Building System/Research Loop - Improvement Plan]]"
+  - "[[30_Order/Standards/Internship Notes Standard]]"
 tags:
   - internship
   - career
   - system-design
-next: "Get Prompt 1-3's code (persona config, CS-relevance gate, priority classification, dossier template v2, contact-research widening, skills/agents) actually committed and pushed — none of it is live yet, see the 2026-07-26 entry."
+next: "Run the revised Prompt 4 (Tasks A-I) in [[20_Progress/Internship/Building System/Runs/Claude Code Prompts]] against gupta-builds/internship-research-loop — still not executed as of 2026-07-29, see that day's entry below."
 ---
 # Internship System — Build Log
 ==The full chronological record of every real build session on this system, vault side and codebase side, since 2026-07-16.== [[30_Order/Workflows/Internship Pipeline]] is the lean operating procedure; this note is why each decision landed where it did and exactly what shipped versus what's still sitting uncommitted somewhere. Read this note, in order, to pick the work back up without re-deriving anything — that's its only job.
@@ -73,3 +74,11 @@ Wrote Prompt 4 (`Runs/Claude Code Prompts.md`) covering the count-limit throttle
 2. **Dossier count-limit spec — still not implemented.** Confirmed directly: `run_pipeline.py:66` still reads `MAX_NEW_WRITES_PER_RUN = 18`, unchanged from the original backlog-throttle value. No 50-per-folder cap, no 150/170/190/200 warning stages, no 3/3/3/1-style per-push split exist in the live code. This is the next real build item, not yet touched by the 07:xx commits.
 3. **Confirm the live code actually works against a real fresh dossier**, not just that it exists on `master` — check the next hourly `run.yml` output directly, or run `loop-verifier`.
 4. Resume/cover-letter/interview-prep depth — foundation laid (templates exist), explicitly deferred as future work per this session's own scoping.
+## 2026-07-29 — Prompt 4 Confirmed Still Never Run; Live Audit Finds Four Bugs Recurring Plus One New; Standard Written; Prompt Revised
+Classification/routing code (`core/classify.py`, `core/relevance.py`, priority-folder writing) confirmed genuinely live and working since 2026-07-26 — real vault check via direct filesystem read (`/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis`, not MCP, which was disconnected this session), dossiers correctly sorted into `1 - AI & ML` (53), `2 - Fullstack` (21), `3 - CyS & Finance` (54), `Other` (11) — 139 recursive, 1 flat legacy note remaining. **Prompt 4, written 2026-07-26, confirmed still never executed** — zero commits against it (`git log` shows only routine "Update state + logs"/"Recheck log" entries). A fresh live-dossier audit (reported by a separate session, independently spot-checked here against the real vault and repo) found:
+- All four of Prompt 4's original bugs (Databricks PM misclassification, Mosaic "threat" false-positive, Aquatic/Google dedup misses, Google careers-page extraction bug) still unfixed, as expected since nothing shipped.
+- **The same two bug classes recurring on new postings since 2026-07-26**: Conagra Brands "Demand Science Rotational Analyst" (business rotational program, zero software content, same class as Databricks — `_STAGE1_REJECT_RE` has no rotational/business-analyst pattern); Virtu Financial triple-duplicate and Palantir cross-bucket duplicate (same `cross_source_key()` gap as Aquatic/Google, now with a same Greenhouse/Lever job ID present across all variant URLs — strong evidence a URL/job-ID-based identity check is the right general fix).
+- **One new bug class**: Optiver's PhD-only Greenhouse posting resurfaced after a prior manual deletion — `degrees_eligible()` is structurally blind on any source (5 of 8) with no structured degree field; no content-level degree check exists, unlike OPT which already has one at that same layer.
+- **User specified four additional requirements**, none in original scope: (1) dossiers must interlink to `List/Dossiers MOC` and cluster by company (chose a `company/<slug>` tag over a maintained link list — no per-company hub note exists anywhere in this vault, and a link list would need backfilling on every new same-company arrival); (2) `recheck.py` should move closed-posting dossiers to `Viewed/` instead of deleting them, keeping their MOC/company links and adding a link to `Viewed/Removed Dossiers MOC`; (3) dossier body content should be genuinely readable (real defects found: Conagra's "About Us" paragraph duplicated verbatim, ATS-chrome jammed against values with no line breaks) — fix stays zero-LLM, a better deterministic structuring pass, not a summarizer; (4) the count-limit (§ above) is a **notification**, not a hard write-refusal — a full bucket should surface via a vault dashboard notification and a codebase-side run-log/issue, never silently drop a real eligible posting, consistent with this codebase's founding permissive-by-default asymmetry.
+**Done this session, directly, vault-side (not code — these don't need a Claude Code session against the repo):** [[30_Order/Standards/Internship Notes Standard]] written for the first time (was an empty stub despite being cited everywhere); a live `dataviewjs` capacity table added to [[10_Areas/Career/Internships/List/Dossiers MOC]] (reads real folder counts at render time — the vault-side half of the notification requirement, done, no code needed); [[20_Progress/Internship/Building System/Runs/Claude Code Prompts]]'s Prompt 4 revised in place (kept, not wiped, since it was never executed) — Tasks A/B/D updated with the new recurring evidence, Tasks F (degree check), G (interlinking), H (move-not-delete), I (readable content) added new.
+**Not done this session, deliberately**: no repo code touched — this was a research/verification/planning pass per explicit instruction, followed by writing the next prompt. Niche-specific/FAANG-Fortune100/YC-backed targeting (raised in the same audit that surfaced these bugs) is explicitly sequenced *after* Prompt 4 ships and one clean cycle is observed — pointing a wider intake funnel at an unfixed classification/dedup/degree-gate layer would make every bug above worse, not better.

@@ -12,6 +12,20 @@ notes:
 ---
 # Dossiers — Map of Content
 ==Everything currently in `List/Dossiers/`, live, by priority folder.== See [[10_Areas/Career/Internships/List/Dossiers/Dossiers-to-Create]] for the gate that gets a posting here at all. Nothing here is hand-edited into existence — this note only reads what the loop already wrote.
+## ⚠️ Capacity Notification
+Live-computed, not code-maintained — this section reads the real folder counts every time this note renders, so a bucket crossing its threshold shows up here without anyone having to push a change. See [[30_Order/Standards/Internship Notes Standard]] §5: crossing 50 is a notification, never a silent write-refusal.
+```dataviewjs
+const buckets = ["1 - AI & ML", "2 - Fullstack", "3 - CyS & Finance", "Other"];
+const root = "10_Areas/Career/Internships/List/Dossiers";
+const rows = buckets.map(b => {
+  const count = dv.pages(`"${root}/${b}"`).length;
+  const flag = count >= 50 ? "🔴 AT/OVER CAP (50)" : count >= 40 ? "🟡 approaching (40+)" : "🟢 ok";
+  return [b, count, flag];
+});
+const total = rows.reduce((sum, r) => sum + r[1], 0);
+dv.table(["Bucket", "Count", "Status"], rows);
+dv.paragraph(`**Total (excl. Viewed/): ${total} / 201.** Design: [[10_Areas/Career/Internships/List/Dossiers/Dossiers-to-Create]].`);
+```
 ## 1 — AI & ML
 ```dataview
 TABLE company, title, terms, status

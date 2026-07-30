@@ -1,6 +1,54 @@
 {
   "recentFiles": [
     {
+      "basename": "Setup",
+      "path": "20_Progress/AI/Claude Code/CausalOps/Setup.md"
+    },
+    {
+      "basename": "Setup",
+      "path": "20_Progress/AI/Claude Code/second-brain-claudekit/Setup.md"
+    },
+    {
+      "basename": "Campus AI Research Engineer – Research Automation (Intern) - Jump Trading",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Campus AI Research Engineer – Research Automation (Intern) - Jump Trading.md"
+    },
+    {
+      "basename": "Campus AI Research Engineer - Deep Learning (Intern) - Jump Trading",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Campus AI Research Engineer - Deep Learning (Intern) - Jump Trading.md"
+    },
+    {
+      "basename": "Architecture AI Co-op - Nokia",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Architecture AI Co-op - Nokia.md"
+    },
+    {
+      "basename": "AI Operations Intern-Caddell Reynolds - Acds",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/AI Operations Intern-Caddell Reynolds - Acds.md"
+    },
+    {
+      "basename": "AI Operations Intern - Naukr AI - Acds",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/AI Operations Intern - Naukr AI - Acds.md"
+    },
+    {
+      "basename": "Agentic Software Engineering intern - Toshiba Global Commerce",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Agentic Software Engineering intern - Toshiba Global Commerce.md"
+    },
+    {
+      "basename": "A.I. Developer Co-Op (Boston, MA) - Manhattan Associates",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/A.I. Developer Co-Op (Boston, MA) - Manhattan Associates.md"
+    },
+    {
+      "basename": "Removed Dossiers MOC",
+      "path": "10_Areas/Career/Internships/List/Dossiers/Viewed/Removed Dossiers MOC.md"
+    },
+    {
+      "basename": "Dossiers-to-Create",
+      "path": "10_Areas/Career/Internships/List/Dossiers/Dossiers-to-Create.md"
+    },
+    {
+      "basename": "Claude Council (LLM Council Skill Install)",
+      "path": "20_Progress/AI/Builds & Resources/Claude Council (LLM Council Skill Install).md"
+    },
+    {
       "basename": "_Notes Created From Ingestion",
       "path": "60_Claude/20_Distilled_Notes/Sources - Plan/_Notes Created From Ingestion.md"
     },
@@ -151,54 +199,6 @@
     {
       "basename": "Ingestion Pipeline Audit — Clippings, Summaries & Implementation (2026-07-27)",
       "path": "60_Claude/20_Distilled_Notes/Ingestion Pipeline Audit — Clippings, Summaries & Implementation (2026-07-27).md"
-    },
-    {
-      "basename": "GitHub Ingestion Implementation",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/GitHub Ingestion Implementation.md"
-    },
-    {
-      "basename": "Claude OS Map",
-      "path": "10_Areas/AI/Claude OS Map.excalidraw"
-    },
-    {
-      "basename": "Source Summaries Board",
-      "path": "60_Claude/10_Source_Summaries/Source Summaries Board.md"
-    },
-    {
-      "basename": "The New Coding Interview — 5 Resources (web)",
-      "path": "60_Claude/10_Source_Summaries/Web Ingestion/The New Coding Interview — 5 Resources (web).md"
-    },
-    {
-      "basename": "Where teams and agents work together 1",
-      "path": "60_Claude/05_Clippings/Web/Where teams and agents work together 1.md"
-    },
-    {
-      "basename": "Where teams and agents work together",
-      "path": "60_Claude/05_Clippings/Web/Where teams and agents work together.md"
-    },
-    {
-      "basename": "AI Engineer Roadmap",
-      "path": "60_Claude/05_Clippings/Web/AI Engineer Roadmap.md"
-    },
-    {
-      "basename": "The Hidden Operating System Behind Every Income Ceiling",
-      "path": "60_Claude/05_Clippings/Web/The Hidden Operating System Behind Every Income Ceiling.md"
-    },
-    {
-      "basename": "Claude Council",
-      "path": "60_Claude/05_Clippings/Web/Claude Council.md"
-    },
-    {
-      "basename": "Distilled Notes Board",
-      "path": "60_Claude/20_Distilled_Notes/Distilled Notes Board.md"
-    },
-    {
-      "basename": "Synthesis Index",
-      "path": "60_Claude/20_Distilled_Notes/Synthesis/Synthesis Index.md"
-    },
-    {
-      "basename": "AI-Assisted Trading",
-      "path": "60_Claude/20_Distilled_Notes/AI-Assisted Trading.md"
     }
   ],
   "omittedPaths": [],

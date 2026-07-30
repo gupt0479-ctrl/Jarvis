@@ -2,7 +2,7 @@
 type: index
 status: active
 created: 2026-07-05
-updated: 2026-07-29
+updated: 2026-07-30
 tags:
   - claude-code
   - moc
@@ -17,13 +17,16 @@ notes:
   - "[[20_Progress/AI/Claude Code/Github ReadMe/Setup]]"
   - "[[20_Progress/AI/Claude Code/Portfolio/Setup]]"
   - "[[20_Progress/AI/Claude Code/Trading View/Setup]]"
+  - "[[20_Progress/AI/Claude Code/second-brain-claudekit/Setup]]"
   - "[[20_Progress/Projects/AI Use/Claude Kit/Tool Map]]"
-next: "Refresh Jarvis's stale files (agents, closeday/startday, excalidraw-diagram gap) — see [[20_Progress/AI/Claude Code/Jarvis/Setup]]"
+next: "Wire a Windows Task Scheduler trigger for second-brain-claudekit's sync-jarvis.sh — mechanism tested and working, trigger not yet built (see that repo's Docs/Sync.md)"
 ---
 # Claude Code — Content Map
 Every project folder under `20_Progress/AI/Claude Code/` now has a `Setup.md` that inventories its files and tags each markdown note with a `setup_status`. This MOC is the one place to see all of them at once and find what needs work, without opening every folder.
 
 **Upstream of this map:** tools land in a real project's `.claude/` (and therefore in this map) only after clearing the qualification pipeline run in `gupta-builds/second-brain-claudekit` (`~/projects/ai/claude/second-brain-claudekit`, WSL). That pipeline's own current state — GBrain (sandbox, tested, pending an embedding-key decision), gstack (sandbox, blocked on missing Chromium libs), mattpocock-skills (tested-skills, partial review) — is tracked separately at [[20_Progress/Projects/AI Use/Claude Kit/Tool Map|Claude Kit/Tool Map]], not duplicated here. None of the three have reached any project's real `.claude/` yet, so no row below reflects them.
+
+**`second-brain-claudekit` is the one row below that isn't a static snapshot.** It's kept at parity with the repo's live `.claude/` by a tested Unison sync script (`50_Claude/scripts/sync-jarvis.sh` in that repo), not a manual copy — see [[20_Progress/AI/Claude Code/second-brain-claudekit/Setup|its Setup.md]] and the repo's `Docs/Sync.md` for the research and real test results (install, first sync, reverse-direction sync, and a genuine conflict all tested for real this session). The sync runs on-demand only; no automatic scheduler trigger is wired up yet.
 `.claude_windows/` and `.claude_wsl/` (formerly `Windows Home/`/`WSL Home/`) are excluded from this map on purpose — they're raw mirrors of `~/.claude` (thousands of files each: credentials, backups, cache, daemon state), not hand-authored project configs. They're noted here for completeness, not tracked.
 ## Projects
 | Project | Status | Last Updated | Setup |
@@ -36,6 +39,7 @@ Every project folder under `20_Progress/AI/Claude Code/` now has a `Setup.md` th
 | Github ReadMe | dead | 2026-07-05 | [[20_Progress/AI/Claude Code/Github ReadMe/Setup\|Setup]] |
 | Portfolio | static | 2026-07-05 | [[20_Progress/AI/Claude Code/Portfolio/Setup\|Setup]] |
 | Trading View | static | 2026-07-05 | [[20_Progress/AI/Claude Code/Trading View/Setup\|Setup]] |
+| second-brain-claudekit | live-synced | 2026-07-30 | [[20_Progress/AI/Claude Code/second-brain-claudekit/Setup\|Setup]] |
 | .claude_windows | unmanaged mirror | — | not tracked (raw `~/.claude` backup, ~7,300 files) |
 | .claude_wsl | unmanaged mirror | — | not tracked (raw `~/.claude` backup) |
 ## Needs Work
