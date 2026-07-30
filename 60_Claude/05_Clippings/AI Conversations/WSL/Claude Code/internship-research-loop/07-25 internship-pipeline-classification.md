@@ -7,7 +7,7 @@ title: "internship-pipeline-classification"
 started_at: 2026-07-25T20:29:13
 ended_at: 2026-07-26T09:47:06
 duration_minutes: 798
-exported_at: 2026-07-30T15:28:59.6972445+04:00
+exported_at: 2026-07-30T16:47:46.9270578+04:00
 project: internship-research-loop
 cwd: '/home/anant_gupta/projects/work/internship-research-loop'
 session_id: 96eda8ff-1e57-422d-8863-87ad06f052e5
@@ -1556,7 +1556,9 @@ After each task: `.venv/bin/python -m pytest tests/ -v`, report the exact pass c
   ```
 KEY SET
   ```
-- `Bash` — `python3 -c "
+- `Bash`:
+  ```bash
+python3 -c "
 import requests, os, json
 url = 'https://jobs.ashbyhq.com/ellipsislabs/02136b22-35b1-4b3d-8bef-567c3380a849/application'
 resp = requests.post('https://api.firecrawl.dev/v1/scrape',
@@ -1570,14 +1572,17 @@ print('LENGTH', len(md))
 open('/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/ashby_raw.md', 'w').write(md)
 print('---saved---')
 "
-`
+
+  ```
   ```
 200
 LENGTH 1261
 ---saved---
   ```
 - `Read` — `/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/ashby_raw.md`
-- `Bash` — `python3 -c "
+- `Bash`:
+  ```bash
+python3 -c "
 import requests, json
 for token in ['ellipsislabs', 'quadrillion-labs', 'circleback', 'ctgt', 'pylon-labs']:
     try:
@@ -1589,7 +1594,8 @@ for token in ['ellipsislabs', 'quadrillion-labs', 'circleback', 'ctgt', 'pylon-l
     except Exception as e:
         print(token, 'ERROR', e)
 "
-`
+
+  ```
   ```
 ellipsislabs 200 11 jobs
     Senior Backend Engineer | https://jobs.ashbyhq.com/ellipsislabs/[REDACTED]
@@ -1612,7 +1618,9 @@ pylon-labs 200 23 jobs
     Customer Success Manager | https://jobs.ashbyhq.com/pylon-labs/[REDACTED]
     Account Executive | https://jobs.ashbyhq.com/pylon-labs/[REDACTED]
   ```
-- `Bash` — `python3 -c "
+- `Bash`:
+  ```bash
+python3 -c "
 import requests, os
 url = 'https://jobs.ashbyhq.com/ctgt/f657c2f5-125e-42b6-a68a-646bbea3d155'
 resp = requests.post('https://api.firecrawl.dev/v1/scrape',
@@ -1625,13 +1633,16 @@ md = data.get('data', {}).get('markdown', '')
 print('LENGTH', len(md))
 open('/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/ashby_ctgt_raw.md', 'w').write(md)
 "
-`
+
+  ```
   ```
 200
 LENGTH 4015
   ```
 - `Read` — `/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/ashby_ctgt_raw.md`
-- `Bash` — `python3 -c "
+- `Bash`:
+  ```bash
+python3 -c "
 import requests, os
 url = 'https://jobs.ashbyhq.com/ctgt/f657c2f5-125e-42b6-a68a-646bbea3d155/application'
 resp = requests.post('https://api.firecrawl.dev/v1/scrape',
@@ -1644,12 +1655,15 @@ md = data.get('data', {}).get('markdown', '')
 print('LENGTH', len(md))
 open('/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/ashby_ctgt_application.md', 'w').write(md)
 "
-`
+
+  ```
   ```
 200
 LENGTH 1099
   ```
-- `Bash` — `python3 -c "
+- `Bash`:
+  ```bash
+python3 -c "
 from ingestion.posting_page import extract_content
 md = open('/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/ashby_ctgt_raw.md').read()
 c = extract_content(md)
@@ -1659,7 +1673,8 @@ print('has blank lines:', '\n\n' in c)
 print('has bare ---:', any(l.strip()=='---' for l in c.splitlines()))
 print(len(c))
 "
-`
+
+  ```
   ```
 # Software Engineering Intern (Summer 2027)
 ## Location
@@ -1737,8 +1752,11 @@ def _content_fetch_url(url: str) -> str:
         timeout=FETCH_TIMEOUT,
     )
   ```
-- `Bash` — `cp /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/ashby_ctgt_raw.md /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/posting_ashby_ctgt.md
-wc -l /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/posting_ashby_ctgt.md`
+- `Bash`:
+  ```bash
+cp /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/ashby_ctgt_raw.md /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/posting_ashby_ctgt.md
+wc -l /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/posting_ashby_ctgt.md
+  ```
   ```
 83 /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/posting_ashby_ctgt.md
   ```
@@ -2647,7 +2665,9 @@ FAILED tests/test_run_pipeline.py::test_fetch_failure_fails_open_to_thin_dossier
   ```
 - `TaskUpdate` — `{"taskId":"1","status":"completed"}`
 - `TaskUpdate` — `{"taskId":"2","status":"in_progress"}`
-- `Bash` — `python3 -c "
+- `Bash`:
+  ```bash
+python3 -c "
 import requests, json
 companies = {
     'fccincinnati': 'FC Cincinnati',
@@ -2669,7 +2689,8 @@ for token, name in companies.items():
     except Exception as e:
         print(token, 'ERROR', e)
 "
-`
+
+  ```
   ```
 --- FC Cincinnati (fccincinnati): 3 intern titles ---
    Academy Performance Analyst Intern
@@ -2914,13 +2935,16 @@ Added `fireworksai`, `scaleai` (Greenhouse) and `cohere`, `cursor`, `modal`, `el
 
 **Tool calls:**
 
-- `Bash` — `grep -n "simplifyjobs.json" /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/simplifyjobs.json | head -1; python3 -c "
+- `Bash`:
+  ```bash
+grep -n "simplifyjobs.json" /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/simplifyjobs.json | head -1; python3 -c "
 import json
 data = json.loads(open('/home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/simplifyjobs.json').read())
 for i, d in enumerate(data):
     if 'tax' in d.get('title','').lower():
         print(i, d['title'], d.get('category'))
-"`
+"
+  ```
   ```
 1 Tax Technology Intern - Summer 2027 AI/ML/Data
   ```
@@ -3149,7 +3173,9 @@ from core.relevance import stage1_reject, stage2_confirm
   ```
 - `TaskUpdate` — `{"taskId":"2","status":"completed"}`
 - `TaskUpdate` — `{"taskId":"3","status":"in_progress"}`
-- `Bash` — `python3 -c "
+- `Bash`:
+  ```bash
+python3 -c "
 import json
 for f in ['vanshb03.json','zshah101.json','josegael.json']:
     data = json.loads(open(f'/home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/{f}').read())
@@ -3157,7 +3183,8 @@ for f in ['vanshb03.json','zshah101.json','josegael.json']:
     for d in data:
         print(' ', d.get('title') or d.get('role') or d.get('name'))
 "
-`
+
+  ```
   ```
 --- vanshb03.json (6) ---
   Quantitative Developer Intern
@@ -3182,14 +3209,17 @@ for f in ['vanshb03.json','zshah101.json','josegael.json']:
   Applied Research Intern - Spring 2027
   Women in Tech Global Conference 2026
   ```
-- `Bash` — `python3 -c "
+- `Bash`:
+  ```bash
+python3 -c "
 import json
 data = json.loads(open('/home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/vanshb03.json').read())
 for d in data:
     if 'Cloud Platform' in d.get('title',''):
         print(json.dumps(d, indent=2))
 "
-`
+
+  ```
   ```
 {
   "_case": "should-match-no-sponsorship-is-not-an-exclusion",
@@ -3210,13 +3240,16 @@ for d in data:
   "season": "Summer"
 }
   ```
-- `Bash` — `python3 -c "
+- `Bash`:
+  ```bash
+python3 -c "
 import json
 data = json.loads(open('/home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/zshah101.json').read())
 for d in data:
     print(json.dumps({k:v for k,v in d.items() if k in ('title','category','_case')}, indent=None))
 "
-`
+
+  ```
   ```
 {"_case": "[REDACTED]", "category": "Software", "title": "Software Engineer Intern"}
 {"_case": "[REDACTED]", "category": "Software", "title": "Software Engineering Intern"}
@@ -3446,7 +3479,9 @@ Found {{ date_found }} via {{ source }}. No posting content fetched.
 {%- endif %}
 
   ```
-- `Bash` — `.venv/bin/python -c "
+- `Bash`:
+  ```bash
+.venv/bin/python -c "
 import json
 from ingestion.normalize import normalize_simplify
 from vault_writer.writer import render_dossier
@@ -3468,7 +3503,8 @@ for content, callout, label in [
     print(repr(md))
     print()
 "
-`
+
+  ```
   ```
 --- no content, no callout --- passed=True reason=
 "---\ncompany: Palantir\ntitle: Forward Deployed Software Engineer – Internship - US Government\nurl: https://jobs.lever.co/palantir/[REDACTED]/apply\nsource: SimplifyJobs\nterms:\n  - Winter 2027\n  - Spring 2027\n  - Summer 2027\n  - Fall 2027\nlocations:\n  - Honolulu, HI\ntarget_year: []\ndate_posted: '2025-12-12'\ndate_found: '2026-07-26'\nmatched_reason: reason\nstatus: unreviewed\nnext:\ntags:\n  - internship\n  - auto-discovered\n---\n# Forward Deployed Software Engineer – Internship - US Government\nFound 2026-07-26 via SimplifyJobs. No posting content fetched.\n"
@@ -3591,7 +3627,9 @@ from core.relevance import stage1_reject, stage2_confirm
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/tests/test_run_pipeline.py`
 - `TaskUpdate` — `{"taskId":"4","status":"completed"}`
 - `TaskUpdate` — `{"taskId":"5","status":"in_progress"}`
-- `Bash` — `python3 -c "
+- `Bash`:
+  ```bash
+python3 -c "
 import requests, os, json
 r = requests.post('https://api.firecrawl.dev/v1/search',
     json={'query': 'Anduril recruiter', 'limit': 3},
@@ -3601,7 +3639,8 @@ print(r.status_code)
 data = r.json().get('data', [])
 print(json.dumps(data[:2], indent=2))
 "
-`
+
+  ```
   ```
 200
 [
@@ -3617,7 +3656,9 @@ print(json.dumps(data[:2], indent=2))
   }
 ]
   ```
-- `Bash` — `python3 -c "
+- `Bash`:
+  ```bash
+python3 -c "
 import requests, os, json
 r = requests.post('https://api.firecrawl.dev/v1/search',
     json={'query': 'site:linkedin.com Anduril recruiter', 'limit': 5},
@@ -3634,7 +3675,8 @@ import requests
 r = requests.get('https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json', timeout=15)
 d = r.json()
 print(d[0].get('application_link') if 'application_link' in d[0] else list(d[0].keys()))
-"`
+"
+  ```
   ```
 200
 https://www.linkedin.com/safety/go?url=https%3A%2F%2Fjob-boards.greenhouse.io%2Fandurilindustries%2Fjobs%2F5103305007%3Fgh_jid%3D5103305007&trk=flagship-messaging-web&messageThreadUrn=urn%3Ali%3AmessagingThread%[REDACTED]%3D%3D&lipi=urn%3Ali%3Apage%[REDACTED]%[REDACTED]%3D%3D | Open Roles
@@ -3645,14 +3687,17 @@ https://www.linkedin.com/in/raymondputrus | Ray Putrus - Recruiter @ Anduril
 ---checking SimplifyJobs domain---
 ['source', 'category', 'company_name', 'id', 'title', 'active', 'terms', 'date_updated', 'date_posted', 'url', 'locations', 'company_url', 'is_visible', 'sponsorship', 'degrees']
   ```
-- `Bash` — `python3 -c "
+- `Bash`:
+  ```bash
+python3 -c "
 import requests
 try:
     r = requests.head('https://simplify.jobs', timeout=10, allow_redirects=True)
     print('simplify.jobs ->', r.status_code, r.url)
 except Exception as e:
     print('ERROR', e)
-"`
+"
+  ```
   ```
 simplify.jobs -> 200 https://simplify.jobs/
   ```
@@ -3817,7 +3862,9 @@ tests/test_enrich.py::test_linkedin_recruiter_snippet_ignores_non_linkedin_hits 
   ```
 - `TaskUpdate` — `{"taskId":"5","status":"completed"}`
 - `TaskUpdate` — `{"taskId":"6","status":"in_progress"}`
-- `Bash` — `python3 -c "
+- `Bash`:
+  ```bash
+python3 -c "
 import requests
 
 greenhouse_candidates = [
@@ -3837,14 +3884,17 @@ for token in greenhouse_candidates:
     except Exception:
         pass
 "
-`
+
+  ```
   ```
 === Greenhouse ===
 fireworksai: LIVE, 46 jobs
 scaleai: LIVE, 204 jobs
 vercel: LIVE, 78 jobs
   ```
-- `Bash` — `python3 -c "
+- `Bash`:
+  ```bash
+python3 -c "
 import requests
 
 ashby_candidates = [
@@ -3865,7 +3915,8 @@ for token in ashby_candidates:
     except Exception:
         pass
 "
-`
+
+  ```
   ```
 === Ashby ===
 cohere: LIVE, 137 jobs
@@ -3883,7 +3934,9 @@ braintrust: LIVE, 23 jobs
 suno: LIVE, 69 jobs
 elevenlabs: LIVE, 215 jobs
   ```
-- `Bash` — `python3 -c "
+- `Bash`:
+  ```bash
+python3 -c "
 import requests
 
 print('=== Ashby intern check ===')
@@ -3908,7 +3961,8 @@ for token in ['fireworksai', 'scaleai', 'vercel']:
     except Exception as e:
         print(token, 'err', e)
 "
-`
+
+  ```
   ```
 === Ashby intern check ===
 cohere: 2 intern jobs -> ['Software Engineer Intern (Fall / Winter 2026)', 'Machine Learning Intern/Co-op  (Fall, 2026)']
@@ -4024,7 +4078,9 @@ ASHBY_COMPANIES = {
  tests/fixtures/zshah101.json     | 21 +++++++++++++++++++++
  5 files changed, 105 insertions(+), 1 deletion(-)
   ```
-- `Bash` — `python3 -c "
+- `Bash`:
+  ```bash
+python3 -c "
 import ast, sys
 for f in ['core/relevance.py', 'core/classify.py', 'vault_writer/writer.py', 'enrich.py', 'run_pipeline.py', 'recheck.py', 'ingestion/posting_page.py', 'ingestion/sources.py', 'vault_writer/validate.py']:
     try:
@@ -4034,7 +4090,8 @@ for f in ['core/relevance.py', 'core/classify.py', 'vault_writer/writer.py', 'en
         sys.exit(1)
 print('all parse cleanly')
 "
-.venv/bin/python -c "import run_pipeline, recheck, enrich, core.classify, core.relevance" && echo "all import cleanly"`
+.venv/bin/python -c "import run_pipeline, recheck, enrich, core.classify, core.relevance" && echo "all import cleanly"
+  ```
   ```
 all parse cleanly
 all import cleanly
@@ -4296,7 +4353,9 @@ db17ece Update state + logs — 2026-07-25
  state/seen_ids.json  |  78 ++++++++++-
  3 files changed, 470 insertions(+), 1 deletion(-)
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 echo "=== core/filter.py (should be 100% pre-existing, I never touched it) ==="
 git diff origin/master -- core/filter.py | head -5
 echo "lines changed:"; git diff origin/master --stat -- core/filter.py
@@ -4317,7 +4376,8 @@ echo "=== tests/test_sources.py diff stat (should be 100% pre-existing) ==="
 git diff origin/master --stat -- tests/test_sources.py
 echo
 echo "=== fixture JSONs diff stat ==="
-git diff origin/master --stat -- tests/fixtures/josegael.json tests/fixtures/simplifyjobs.json tests/fixtures/vanshb03.json tests/fixtures/zshah101.json`
+git diff origin/master --stat -- tests/fixtures/josegael.json tests/fixtures/simplifyjobs.json tests/fixtures/vanshb03.json tests/fixtures/zshah101.json
+  ```
   ```
 === core/filter.py (should be 100% pre-existing, I never touched it) ===
 diff --git a/core/filter.py b/core/filter.py
@@ -4356,9 +4416,12 @@ lines changed:
  tests/fixtures/zshah101.json     | 21 +++++++++++++++++++++
  4 files changed, 81 insertions(+)
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 echo "=== ingestion/sources.py FULL DIFF ==="
-git diff origin/master -- ingestion/sources.py`
+git diff origin/master -- ingestion/sources.py
+  ```
   ```
 === ingestion/sources.py FULL DIFF ===
 diff --git a/ingestion/sources.py b/ingestion/sources.py
@@ -4439,9 +4502,12 @@ index b5d6eab..6549cc8 100644
 +        return []
 +    return [normalize_ai_jobs(j) for j in jobs if j.get("level") == "Intern"]
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 echo "=== run_pipeline.py FULL DIFF ==="
-git diff origin/master -- run_pipeline.py`
+git diff origin/master -- run_pipeline.py
+  ```
   ```
 === run_pipeline.py FULL DIFF ===
 diff --git a/run_pipeline.py b/run_pipeline.py
@@ -4576,12 +4642,15 @@ index e84c781..0259507 100644
      )
      commit_and_push_with_retry(REPO_ROOT, f"Update state + logs — {now.date().isoformat()}")
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 echo "=== core/profile.yaml DIFF ==="
 git diff origin/master -- core/profile.yaml
 echo
 echo "=== core/filter.py DIFF ==="
-git diff origin/master -- core/filter.py`
+git diff origin/master -- core/filter.py
+  ```
   ```
 === core/profile.yaml DIFF ===
 diff --git a/core/profile.yaml b/core/profile.yaml
@@ -4687,12 +4756,15 @@ index b42b07c..14b49da 100644
   ```
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/ingestion/freehire.py`
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/tests/test_freehire.py`
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 echo "=== recheck.py FULL DIFF ==="
 git diff origin/master -- recheck.py
 echo
 echo "=== tests/test_run_pipeline.py FULL DIFF ==="
-git diff origin/master -- tests/test_run_pipeline.py`
+git diff origin/master -- tests/test_run_pipeline.py
+  ```
   ```
 === recheck.py FULL DIFF ===
 diff --git a/recheck.py b/recheck.py
@@ -4882,13 +4954,16 @@ index 3a68a3f..5215503 100644
      assert "## Posting (fetched 2026-07-18)" in dossier
      assert "Qualifications: Python." in dossier
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 mkdir -p /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/split_check
 git show origin/master:recheck.py > /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/split_check/recheck_origin.py
 git show origin/master:run_pipeline.py > /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/split_check/run_pipeline_origin.py
 git show origin/master:ingestion/sources.py > /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/split_check/sources_origin.py
 git show origin/master:tests/test_run_pipeline.py > /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/split_check/test_run_pipeline_origin.py
-echo done`
+echo done
+  ```
   ```
 done
   ```
@@ -5700,7 +5775,9 @@ def _fake_http_get(url, timeout=None):
 def _fake_http_head_all_live(url, timeout=None, allow_redirects=True):
     return Mock(status_code=200)
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/split_check
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/split_check
 python3 -c "
 content = open('test_run_pipeline_origin.py').read()
 
@@ -5769,7 +5846,8 @@ content = content.replace(old, new)
 open('test_run_pipeline_freehire_only.py', 'w').write(content)
 print('done')
 "
-`
+
+  ```
   ```
 done
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
@@ -5807,15 +5885,20 @@ Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
 ---
 >     dossier = next((tmp_path / "10_Areas/Career/Internships/List/Dossiers").glob("**/*.md")).read_text()
   ```
-- `Bash` — `set -e
+- `Bash`:
+  ```bash
+set -e
 cd /home/anant_gupta/projects/work/internship-research-loop
 WT=$(git worktree add --detach /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/freehire_check_wt origin/master 2>&1)
-echo "$WT"`
+echo "$WT"
+  ```
   ```
 Preparing worktree (detached HEAD ba2bdcd)
 HEAD is now at ba2bdcd Update state + logs — 2026-07-26
   ```
-- `Bash` — `set -e
+- `Bash`:
+  ```bash
+set -e
 SRC=/home/anant_gupta/projects/work/internship-research-loop
 WT=/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/freehire_check_wt
 RECON=/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/split_check
@@ -5846,7 +5929,8 @@ python3 -m venv .venv-check -q 2>/dev/null || true
 echo "=== git status in worktree (should show only the intended files as modified) ==="
 git status --short
 echo "=== running pytest ==="
-.venv-check/bin/python -m pytest tests/ -q 2>&1 | tail -40`
+.venv-check/bin/python -m pytest tests/ -q 2>&1 | tail -40
+  ```
   ```
 /bin/bash: line 59: .venv-check/bin/pip: No such file or directory
 === git status in worktree (should show only the intended files as modified) ===
@@ -5870,9 +5954,12 @@ echo "=== running pytest ==="
 /bin/bash: line 63: .venv-check/bin/python: No such file or directory
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `WT=/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/freehire_check_wt
+- `Bash`:
+  ```bash
+WT=/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/freehire_check_wt
 cd "$WT"
-/home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python -m pytest tests/ -q 2>&1 | tail -50`
+/home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python -m pytest tests/ -q 2>&1 | tail -50
+  ```
   ```
 ........................................................................ [ 31%]
 ........................................................................ [ 63%]
@@ -5881,7 +5968,9 @@ cd "$WT"
 227 passed in 2.22s
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git worktree remove /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/freehire_check_wt --force
 git worktree list
 echo "--- backing up my current full mixed-file versions before any swapping ---"
@@ -5891,7 +5980,8 @@ cp ingestion/sources.py "$BACKUP/sources_full.py"
 cp run_pipeline.py "$BACKUP/run_pipeline_full.py"
 cp recheck.py "$BACKUP/recheck_full.py"
 cp tests/test_run_pipeline.py "$BACKUP/test_run_pipeline_full.py"
-ls -la "$BACKUP"`
+ls -la "$BACKUP"
+  ```
   ```
 /home/anant_gupta/projects/work/internship-research-loop  f56ac8c [master]
 --- backing up my current full mixed-file versions before any swapping ---
@@ -5903,10 +5993,13 @@ drwxr-xr-x 3 anant_gupta anant_gupta  4096 Jul 26 11:18 ..
 -rw-r--r-- 1 anant_gupta anant_gupta  5950 Jul 26 11:18 sources_full.py
 -rw-r--r-- 1 anant_gupta anant_gupta 18801 Jul 26 11:18 test_run_pipeline_full.py
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git log --oneline -1
 git status
-git rev-parse HEAD`
+git rev-parse HEAD
+  ```
   ```
 f56ac8c Add promote-dossier skill, contact-researcher/loop-verifier agents, review-loop-change skill
 On branch master
@@ -5916,13 +6009,16 @@ Your branch is ahead of 'origin/master' by 2 commits.
 nothing to commit, working tree clean
 [REDACTED]
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 echo "=== reflog ==="
 git reflog -20
 echo "=== does core/relevance.py exist? ==="
 ls -la core/relevance.py core/classify.py 2>&1
 echo "=== log around f56ac8c ==="
-git log --oneline -5`
+git log --oneline -5
+  ```
   ```
 === reflog ===
 f56ac8c HEAD@{0}: commit: Add promote-dossier skill, contact-researcher/loop-verifier agents, review-loop-change skill
@@ -5955,12 +6051,15 @@ ba2bdcd Update state + logs — 2026-07-26
 1c3ddc4 Update state + logs — 2026-07-26
 ea1a38b Update state + logs — 2026-07-25
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 echo "=== 6622bca stat ==="
 git show --stat 6622bca | head -50
 echo
 echo "=== f56ac8c stat ==="
-git show --stat f56ac8c | head -30`
+git show --stat f56ac8c | head -30
+  ```
   ```
 === 6622bca stat ===
 commit [REDACTED]
@@ -6046,7 +6145,9 @@ Date:   Sun Jul 26 11:17:03 2026 +0400
     .claude/skills/review-loop-change/ — checks a diff against this repo's four
     established conventions (zero-LLM unattended path, permissive-by-default
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 echo "=== full reflog with relative times ==="
 git reflog --date=iso -20
 echo
@@ -6058,7 +6159,8 @@ ls -la .claude/skills/promote-dossier .claude/agents/contact-researcher.md .clau
 echo
 echo "=== any other git processes / locks? ==="
 ls -la .git/index.lock 2>&1
-ps aux | grep -i git | grep -v grep`
+ps aux | grep -i git | grep -v grep
+  ```
   ```
 === full reflog with relative times ===
 f56ac8c HEAD@{2026-07-26 11:17:03 +0400}: commit: Add promote-dossier skill, contact-researcher/loop-verifier agents, review-loop-change skill
@@ -6117,12 +6219,15 @@ anant_g+  560848  0.1  0.5 1736612 95800 pts/10  Sl+  10:03   0:07 npm exec @mod
 anant_g+  561113  0.0  0.0   2808  1104 pts/10   S+   10:03   0:00 sh -c "mcp-server-github"
 anant_g+  561114  0.0  0.4 1490936 71052 pts/10  Sl+  10:03   0:01 node /home/anant_gupta/.nvm/versions/node/v24.14.1/bin/mcp-server-github
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 echo "=== does the committed content match my own working files exactly? ==="
 diff <(git show 6622bca:core/relevance.py) core/relevance.py && echo "relevance.py: IDENTICAL"
 diff <(git show 6622bca:core/classify.py) core/classify.py && echo "classify.py: IDENTICAL"
 diff <(git show 6622bca:run_pipeline.py) run_pipeline.py && echo "run_pipeline.py: IDENTICAL"
-diff <(git show 6622bca:tests/test_relevance.py) tests/test_relevance.py && echo "test_relevance.py: IDENTICAL"`
+diff <(git show 6622bca:tests/test_relevance.py) tests/test_relevance.py && echo "test_relevance.py: IDENTICAL"
+  ```
   ```
 === does the committed content match my own working files exactly? ===
 relevance.py: IDENTICAL
@@ -6131,11 +6236,14 @@ run_pipeline.py: IDENTICAL
 test_relevance.py: IDENTICAL
   ```
 - `AskUserQuestion` — `{"questions":[{"question":"Another Claude Code session appears to be active in this same repo checkout (3 concurrent MCP GitHub processes, commits I didn't make). Is that expected — another window/session you have open — or should I treat it as unexpected?","header":"Concurrent session","multiSelect":false,"options":[{"label":"Yes, that's my other session (recommended context)","description":"You have another Claude Code window/terminal open working this repo, possibly on related work (promote-dossier skill, etc.). Its commits are legitimate and shouldn't be discarded blindly."},{"label":"Not expected — investigate/stop it","description":"You don't have another session intentionally running here. Something is operating on this repo without your knowledge and should be treated as a problem, not routed around."}]},{"question":"How should I handle the two existing local commits (6622bca bundling Freehire+Task A-F together, f56ac8c adding unrelated skill/agent files)?","header":"Commit handling","multiSelect":false,"options":[{"label":"Split 6622bca properly, leave f56ac8c alone (recommended)","description":"Soft-reset just enough to un-bundle 6622bca into the two separate commits you originally asked for (Freehire/AIJobs first, Task A-F second) — verified byte-identical content, so this is a pure history rewrite, no data loss. Leave f56ac8c (skill/agent files) as-is since it's unrelated to my task and may be the other session's legitimate work."},{"label":"Leave both exactly as committed, just push","description":"Accept the bundled commit as-is (Freehire mixed with Task A-F, against your original instruction) rather than rewriting local history that another session produced."},{"label":"Stop entirely — don't touch history or push yet","description":"Don't rewrite anything and don't push until you've checked in with the other session/window yourself first."}]}]}`
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git status
 git log --oneline -5
 git fetch origin -q
-git log --oneline origin/master -3`
+git log --oneline origin/master -3
+  ```
   ```
 On branch master
 Your branch is up to date with 'origin/master'.
@@ -6151,13 +6259,16 @@ f56ac8c Add promote-dossier skill, contact-researcher/loop-verifier agents, revi
 ba2bdcd Update state + logs — 2026-07-26
   ```
 - `AskUserQuestion` — `{"questions":[{"question":"6622bca and f56ac8c are now both on origin/master (the other session pushed them while I was investigating). Splitting 6622bca into two proper commits now requires a force-push to master, not just a local history rewrite — and that other session may already be building on top of these commits. How do you want to proceed?","header":"Force-push needed","multiSelect":false,"options":[{"label":"Force-push the split anyway","description":"I rewrite history locally (split 6622bca into Freehire+AIJobs / Task A-F, keep f56ac8c on top unchanged) and force-push master. Clean history, but risks conflicting with the other session if it pushes again before you tell it to stop/pull."},{"label":"Leave it as-is, don't force-push","description":"Accept 6622bca bundling Freehire+Task A-F together on master as it already stands. No further git history changes from me. I'll just confirm the pushed state is healthy (tests, CI)."},{"label":"Pause — you'll coordinate with the other session first","description":"I take no further git action until you tell me the other session is done/paused, to avoid a race."}]}]}`
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git log -1 --format="%B" a21b2fa
 echo "---re-verify current state before surgery---"
 git fetch origin -q
 git status
 git log --oneline -5
-git log --oneline origin/master -3`
+git log --oneline origin/master -3
+  ```
   ```
 Four new discovery sources: vanshb03, zshah101, Greenhouse, Ashby
 
@@ -6204,13 +6315,16 @@ f56ac8c Add promote-dossier skill, contact-researcher/loop-verifier agents, revi
 6622bca Priority-bucket classification, CS-relevance gate, widened contact research
 ba2bdcd Update state + logs — 2026-07-26
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 set -e
 git branch -D split-work 2>/dev/null || true
 git checkout -b split-work ba2bdcd
 echo "=== cherry-picking 6622bca content (no commit) ==="
 git cherry-pick --no-commit 6622bca
-git status --short | head -30`
+git status --short | head -30
+  ```
   ```
 Switched to a new branch 'split-work'
 === cherry-picking 6622bca content (no commit) ===
@@ -6245,7 +6359,9 @@ M  vault_writer/templates/dossier.md.j2
 M  vault_writer/validate.py
 M  vault_writer/writer.py
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 set -e
 RECON=/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/split_check
 
@@ -6265,7 +6381,8 @@ git add core/filter.py core/profile.yaml ingestion/normalize.py ingestion/freehi
 echo "=== staged for commit 1 ==="
 git status --short | grep '^[AM]' 
 echo "=== remaining unstaged (should be exactly my Task A-F files) ==="
-git status --short | grep -v '^[AM]'`
+git status --short | grep -v '^[AM]'
+  ```
   ```
 === staged for commit 1 ===
 A  core/classify.py
@@ -6300,7 +6417,9 @@ M  vault_writer/validate.py
 M  vault_writer/writer.py
 === remaining unstaged (should be exactly my Task A-F files) ===
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 set -e
 git reset
 echo "=== after reset, staged (should be empty) ==="
@@ -6312,7 +6431,8 @@ git add core/filter.py core/profile.yaml ingestion/normalize.py ingestion/freehi
        tests/fixtures/vanshb03.json tests/fixtures/zshah101.json \
        tests/test_filter.py tests/test_sources.py tests/test_freehire.py tests/test_run_pipeline.py
 echo "=== staged now ==="
-git status --short`
+git status --short
+  ```
   ```
 Unstaged changes after reset:
 M	core/filter.py
@@ -6372,14 +6492,17 @@ M  tests/test_sources.py
 ?? tests/test_classify.py
 ?? tests/test_relevance.py
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git diff --cached --stat
 echo "=== does staged ingestion/sources.py match my verified reconstruction? ==="
 git diff --cached ingestion/sources.py | wc -l
 diff <(git show :ingestion/sources.py) /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/split_check/sources_freehire_only.py && echo "sources.py staged content: MATCHES verified reconstruction"
 diff <(git show :run_pipeline.py) /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/split_check/run_pipeline_freehire_only.py && echo "run_pipeline.py staged content: MATCHES verified reconstruction"
 diff <(git show :recheck.py) /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/split_check/recheck_freehire_only.py && echo "recheck.py staged content: MATCHES verified reconstruction"
-diff <(git show :tests/test_run_pipeline.py) /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/split_check/test_run_pipeline_freehire_only.py && echo "test_run_pipeline.py staged content: MATCHES verified reconstruction"`
+diff <(git show :tests/test_run_pipeline.py) /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/split_check/test_run_pipeline_freehire_only.py && echo "test_run_pipeline.py staged content: MATCHES verified reconstruction"
+  ```
   ```
  core/filter.py                   |  29 ++++++++-
  core/profile.yaml                |  25 +++++++-
@@ -6405,7 +6528,9 @@ run_pipeline.py staged content: MATCHES verified reconstruction
 recheck.py staged content: MATCHES verified reconstruction
 test_run_pipeline.py staged content: MATCHES verified reconstruction
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git commit -m "$(cat <<'EOF'
 Two new discovery sources: Freehire, AIJobs
 
@@ -6440,7 +6565,8 @@ pipeline.
 Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
 EOF
 )"
-git log --oneline -3`
+git log --oneline -3
+  ```
   ```
 [split-work d0d6cd4] Two new discovery sources: Freehire, AIJobs
  16 files changed, 626 insertions(+), 3 deletions(-)
@@ -6451,7 +6577,9 @@ d0d6cd4 Two new discovery sources: Freehire, AIJobs
 ba2bdcd Update state + logs — 2026-07-26
 1c3ddc4 Update state + logs — 2026-07-26
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 set -e
 BACKUP=/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/split_check/my_full_versions
 cp "$BACKUP/sources_full.py" ingestion/sources.py
@@ -6460,7 +6588,8 @@ cp "$BACKUP/recheck_full.py" recheck.py
 cp "$BACKUP/test_run_pipeline_full.py" tests/test_run_pipeline.py
 
 git add -A
-git status --short`
+git status --short
+  ```
   ```
 A  core/classify.py
 A  core/relevance.py
@@ -6481,7 +6610,9 @@ M  vault_writer/templates/dossier.md.j2
 M  vault_writer/validate.py
 M  vault_writer/writer.py
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git commit -m "$(cat <<'EOF'
 Priority-bucket classification, CS-relevance gate, widened contact research
 
@@ -6515,7 +6646,8 @@ Scale AI, Cohere, Cursor, Modal, ElevenLabs.
 Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
 EOF
 )"
-git log --oneline -4`
+git log --oneline -4
+  ```
   ```
 [split-work 5c9a409] Priority-bucket classification, CS-relevance gate, widened contact research
  18 files changed, 865 insertions(+), 73 deletions(-)
@@ -6529,7 +6661,9 @@ d0d6cd4 Two new discovery sources: Freehire, AIJobs
 ba2bdcd Update state + logs — 2026-07-26
 1c3ddc4 Update state + logs — 2026-07-26
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 set -e
 git cherry-pick f56ac8c
 git log --oneline -5
@@ -6540,7 +6674,8 @@ if [ -z "$(git diff f56ac8c split-work)" ]; then
   echo "TREES ARE IDENTICAL — safe to proceed"
 else
   echo "MISMATCH — DO NOT PROCEED"
-fi`
+fi
+  ```
   ```
 [split-work 9cc30ec] Add promote-dossier skill, contact-researcher/loop-verifier agents, review-loop-change skill
  Date: Sun Jul 26 11:17:03 2026 +0400
@@ -6561,11 +6696,14 @@ ba2bdcd Update state + logs — 2026-07-26
 === CRITICAL CHECK: final tree of split-work vs original f56ac8c must be identical ===
 TREES ARE IDENTICAL — safe to proceed
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git fetch origin -q
 echo "=== has origin/master moved since I last checked? ==="
 git log --oneline origin/master -3
-echo "=== expected tip (f56ac8c) ==="`
+echo "=== expected tip (f56ac8c) ==="
+  ```
   ```
 === has origin/master moved since I last checked? ===
 f56ac8c Add promote-dossier skill, contact-researcher/loop-verifier agents, review-loop-change skill
@@ -6573,13 +6711,16 @@ f56ac8c Add promote-dossier skill, contact-researcher/loop-verifier agents, revi
 ba2bdcd Update state + logs — 2026-07-26
 === expected tip (f56ac8c) ===
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 set -e
 git checkout master
 git reset --hard split-work
 git log --oneline -5
 echo "=== force-pushing with lease (safe: fails if origin/master moved past f56ac8c) ==="
-git push --force-with-lease=master:f56ac8c origin master`
+git push --force-with-lease=master:f56ac8c origin master
+  ```
   ```
 Exit code 1
 Switched to branch 'master'
@@ -6596,13 +6737,16 @@ To https://github.com/gupta-builds/internship-research-loop.git
  ! [rejected]        master -> master (stale info)
 error: failed to push some refs to 'https://github.com/gupta-builds/internship-research-loop.git'
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git fetch origin -q
 echo "=== origin/master now ==="
 git log --oneline origin/master -8
 echo
 echo "=== what's new beyond f56ac8c? ==="
-git log --oneline f56ac8c..origin/master`
+git log --oneline f56ac8c..origin/master
+  ```
   ```
 === origin/master now ===
 5fee032 Recheck log — 2026-07-26
@@ -6618,10 +6762,13 @@ ea1a38b Update state + logs — 2026-07-25
 5fee032 Recheck log — 2026-07-26
 bcc4520 Update state + logs — 2026-07-26
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git diff --stat f56ac8c bcc4520
 echo "---"
-git diff --stat bcc4520 5fee032`
+git diff --stat bcc4520 5fee032
+  ```
   ```
  logs/runs.jsonl         |  1 +
  state/dossier_uids.json |  5 +++++
@@ -6632,7 +6779,9 @@ git diff --stat bcc4520 5fee032`
  logs/rechecks.jsonl | 1 +
  1 file changed, 1 insertion(+)
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 set -e
 git checkout split-work
 git cherry-pick bcc4520 5fee032
@@ -6644,7 +6793,8 @@ if [ -z "$(git diff origin/master split-work)" ]; then
 else
   echo "MISMATCH:"
   git diff --stat origin/master split-work
-fi`
+fi
+  ```
   ```
 Switched to branch 'split-work'
 [split-work c495bdf] Update state + logs — 2026-07-26
@@ -6667,11 +6817,14 @@ ba2bdcd Update state + logs — 2026-07-26
 === CRITICAL CHECK: final tree of split-work vs origin/master must be identical ===
 TREES ARE IDENTICAL — safe to proceed
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 set -e
 git checkout master
 git reset --hard split-work
-git push --force-with-lease=master:5fee032 origin master`
+git push --force-with-lease=master:5fee032 origin master
+  ```
   ```
 Switched to branch 'master'
 Your branch and 'origin/master' have diverged,
@@ -6681,14 +6834,17 @@ HEAD is now at 2b1a7d9 Recheck log — 2026-07-26
 To https://github.com/gupta-builds/internship-research-loop.git
  + 5fee032...2b1a7d9 master -> master (forced update)
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git branch -d split-work
 git fetch origin -q
 git log --oneline -8
 echo "=== confirm local == remote ==="
 git status
 echo "=== confirm working tree matches (no stray diffs from my swap operations) ==="
-git diff --stat HEAD`
+git diff --stat HEAD
+  ```
   ```
 Deleted branch split-work (was 2b1a7d9).
 2b1a7d9 Recheck log — 2026-07-26
@@ -6706,12 +6862,15 @@ Your branch is up to date with 'origin/master'.
 nothing to commit, working tree clean
 === confirm working tree matches (no stray diffs from my swap operations) ===
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 rm -rf /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/verify_pushed
 git clone -q . /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/verify_pushed
 cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/verify_pushed
 git log --oneline -3
-/home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python -m pytest tests/ -q 2>&1 | tail -15`
+/home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python -m pytest tests/ -q 2>&1 | tail -15
+  ```
   ```
 2b1a7d9 Recheck log — 2026-07-26
 c495bdf Update state + logs — 2026-07-26
@@ -6723,19 +6882,25 @@ c495bdf Update state + logs — 2026-07-26
 258 passed in 3.62s
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
-gh run list --repo gupta-builds/internship-research-loop --limit 10 --json databaseId,name,status,conclusion,headSha,createdAt 2>&1`
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+gh run list --repo gupta-builds/internship-research-loop --limit 10 --json databaseId,name,status,conclusion,headSha,createdAt 2>&1
+  ```
   ```
 [{"conclusion":"success","createdAt":"2026-07-26T09:42:23Z","databaseId":30196939629,"headSha":"[REDACTED]","name":"test","status":"completed"},{"conclusion":"success","createdAt":"2026-07-26T08:58:48Z","databaseId":30195603854,"headSha":"[REDACTED]","name":"recheck","status":"completed"},{"conclusion":"success","createdAt":"2026-07-26T08:08:37Z","databaseId":30194077826,"headSha":"[REDACTED]","name":"run","status":"completed"},{"conclusion":"success","createdAt":"2026-07-26T07:27:26Z","databaseId":30192835009,"headSha":"[REDACTED]","name":"test","status":"completed"},{"conclusion":"success","createdAt":"2026-07-26T05:22:26Z","databaseId":30189279140,"headSha":"[REDACTED]","name":"run","status":"completed"},{"conclusion":"success","createdAt":"2026-07-26T01:51:32Z","databaseId":30183579246,"headSha":"[REDACTED]","name":"run","status":"completed"},{"conclusion":"success","createdAt":"2026-07-25T23:51:58Z","databaseId":30180159107,"headSha":"[REDACTED]","name":"run","status":"completed"},{"conclusion":"success","createdAt":"2026-07-25T22:43:05Z","databaseId":30178100728,"headSha":"[REDACTED]","name":"run","status":"completed"},{"conclusion":"success","createdAt":"2026-07-25T21:43:56Z","databaseId":30176200772,"headSha":"[REDACTED]","name":"run","status":"completed"},{"conclusion":"success","createdAt":"2026-07-25T20:05:51Z","databaseId":30172905049,"headSha":"[REDACTED]","name":"run","status":"completed"}]
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 echo "My actual current HEAD full SHA:"
 git rev-parse HEAD
 echo
 date -u
 echo
 echo "=== runs for exactly this SHA ==="
-gh run list --repo gupta-builds/internship-research-loop --commit $(git rev-parse HEAD) --json databaseId,name,status,conclusion,createdAt,headSha 2>&1`
+gh run list --repo gupta-builds/internship-research-loop --commit $(git rev-parse HEAD) --json databaseId,name,status,conclusion,createdAt,headSha 2>&1
+  ```
   ```
 My actual current HEAD full SHA:
 [REDACTED]
@@ -6761,10 +6926,13 @@ pytest: .github#2
 For more information about the job, try: gh run view --job=89780000964
 View this run on GitHub: https://github.com/gupta-builds/internship-research-loop/actions/runs/30196939629
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git worktree list
 rm -rf /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/verify_pushed
-echo "cleanup done"`
+echo "cleanup done"
+  ```
   ```
 /home/anant_gupta/projects/work/internship-research-loop  2b1a7d9 [master]
 cleanup done
@@ -6774,639 +6942,6 @@ cleanup done
 - Files created: /home/anant_gupta/.claude/plans/you-are-working-in-purring-bentley.md, /home/anant_gupta/projects/work/internship-research-loop/tests/test_recheck.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_writer.py, /home/anant_gupta/projects/work/internship-research-loop/core/relevance.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_relevance.py, /home/anant_gupta/projects/work/internship-research-loop/core/classify.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_classify.py, /home/anant_gupta/projects/work/internship-research-loop/vault_writer/templates/dossier.md.j2, /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/split_check/recheck_freehire_only.py, /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/split_check/sources_freehire_only.py, /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/96eda8ff-1e57-422d-8863-87ad06f052e5/scratchpad/split_check/run_pipeline_freehire_only.py
 - Files modified: /home/anant_gupta/projects/work/internship-research-loop/ingestion/posting_page.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_posting_page.py, /home/anant_gupta/projects/work/internship-research-loop/vault_writer/writer.py, /home/anant_gupta/projects/work/internship-research-loop/vault_writer/templates/dossier.md.j2, /home/anant_gupta/projects/work/internship-research-loop/vault_writer/validate.py, /home/anant_gupta/projects/work/internship-research-loop/run_pipeline.py, /home/anant_gupta/projects/work/internship-research-loop/recheck.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_recheck.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_run_pipeline.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_relevance.py, /home/anant_gupta/projects/work/internship-research-loop/enrich.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_enrich.py, /home/anant_gupta/projects/work/internship-research-loop/ingestion/sources.py
 - Files deleted: (none)
-- Commands run: find / -maxdepth 6 -iname "*.obsidian*" -type d 2>/dev/null | grep -v "/proc/" | head -20, cat /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tasks/b6817k1e9.output 2>/dev/null | head -50, jobs -l; ls -la /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tasks/ 2>/dev/null, find /home/anant_gupta -maxdepth 8 -iname "*.obsidian" -type d 2>/dev/null; echo "---"; find /home/anant_gupta -maxdepth 10 -iname "Main Resume.md" 2>/dev/null; echo "---"; find /home/anant_gupta -maxdepth 6 -iname "*jarvis*" 2>/dev/null | head -20, cd /home/anant_gupta/projects/work/internship-research-loop/jarvis-checkout && find . -iname "Main Resume.md" -o -iname "Engineer Edge Roadmap.md" -o -iname "HUMAN_WRITING.md" 2>/dev/null; echo "---Dossiers folder---"; find . -type d -iname "Dossiers" 2>/dev/null, ls -la; echo "---"; du -sh . 2>/dev/null; echo "---is git repo?---"; git remote -v 2>/dev/null, ls -la "/mnt/d/Users/Anant/10_Areas/Documents/Jarvis" 2>&1 | head -20, ls /mnt/ 2>&1; echo "---"; mount 2>&1 | grep -i mnt | head -20, ls "/mnt/d/" 2>&1 | head -30, ls "/mnt/d/Users/" 2>&1; echo "---"; find "/mnt/d/Users" -maxdepth 4 -iname "*jarvis*" 2>&1 | head -20, V="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis"; echo "vault=$V"; find "$V/20_Progress/Internship/Resumes" -maxdepth 2 2>&1; echo "---roadmap---"; find "$V/10_Areas/Career" -maxdepth 1 -iname "*Roadmap*" 2>&1; echo "---dossiers---"; find "$V/10_Areas/Career/Internships/List/Dossiers" -maxdepth 1 2>&1; echo "---human writing---"; find "$V" -maxdepth 2 -iname "HUMAN_WRITING*" 2>&1, cd /home/anant_gupta/projects/work/internship-research-loop && find . -iname "profile*.json" -o -iname "profile*.yaml" 2>/dev/null | grep -v node_modules; echo "---vault_writer dir---"; ls vault_writer/; echo "---validate.py---"; cat vault_writer/validate.py 2>/dev/null, V="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers"; for d in "1 - AI & ML" "2 - Fullstack" "3 - CyS & Finance" "Other" "Viewed"; do echo "=== $d ==="; ls -la "$V/$d" 2>&1; done, ls tests/fixtures/ && echo "---" && wc -l tests/*.py core/*.py vault_writer/*.py, find tests/fixtures/throwaway_vault -type f 2>/dev/null; echo "---"; head -40 tests/fixtures/posting_fiverings.md, grep -n "promoted\|category\|uid\b" recheck.py | head -30, V="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers"; grep -l -iE "^title:.*(analyst|tax|trading|sports|finance|risk|accounting|hardware|manufactur)" "$V"/*.md 2>/dev/null; echo "---all titles---"; grep -h "^title:" "$V"/*.md 2>/dev/null, V="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers"; grep -l "Academy Performance Analyst" "$V"/*.md; grep -l "Tax Technology Intern" "$V"/*.md; grep -l "Hardware Engineer (FPGA/ASIC)" "$V"/*.md; grep -l "Corporate Risk Development" "$V"/*.md; grep -l "Risk Technology Analyst" "$V"/*.md, sleep 30 && echo done, grep -n "SIMPLIFY\|simplify" ingestion/sources.py | head -10, [ -n "$FIRECRAWL_API_KEY" ] && echo "KEY SET" || echo "NO KEY"; find . -iname "*.env*" -maxdepth 1 2>/dev/null, python3 -c "
-import requests, os, json
-url = 'https://jobs.ashbyhq.com/ellipsislabs/[REDACTED]/application'
-resp = requests.post('https://api.firecrawl.dev/v1/scrape',
-    headers={'Authorization': f'Bearer {os.environ[\"FIRECRAWL_API_KEY\"]}'},
-    json={'url': url, 'formats': ['markdown'], 'waitFor': 8000},
-    timeout=120)
-print(resp.status_code)
-data = resp.json()
-md = data.get('data', {}).get('markdown', '')
-print('LENGTH', len(md))
-open('/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/ashby_raw.md', 'w').write(md)
-print('---saved---')
-"
-, python3 -c "
-import requests, json
-for token in ['ellipsislabs', 'quadrillion-labs', 'circleback', 'ctgt', 'pylon-labs']:
-    try:
-        r = requests.get(f'https://api.ashbyhq.com/posting-api/job-board/{token}', params={'includeCompensation': 'true'}, timeout=15)
-        jobs = r.json().get('jobs', [])
-        print(token, r.status_code, len(jobs), 'jobs')
-        for j in jobs[:3]:
-            print('   ', j.get('title'), '|', j.get('jobUrl'))
-    except Exception as e:
-        print(token, 'ERROR', e)
-"
-, python3 -c "
-import requests, os
-url = 'https://jobs.ashbyhq.com/ctgt/[REDACTED]'
-resp = requests.post('https://api.firecrawl.dev/v1/scrape',
-    headers={'Authorization': f'Bearer {os.environ[\"FIRECRAWL_API_KEY\"]}'},
-    json={'url': url, 'formats': ['markdown'], 'waitFor': 8000},
-    timeout=120)
-print(resp.status_code)
-data = resp.json()
-md = data.get('data', {}).get('markdown', '')
-print('LENGTH', len(md))
-open('/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/ashby_ctgt_raw.md', 'w').write(md)
-"
-, python3 -c "
-import requests, os
-url = 'https://jobs.ashbyhq.com/ctgt/[REDACTED]/application'
-resp = requests.post('https://api.firecrawl.dev/v1/scrape',
-    headers={'Authorization': f'Bearer {os.environ[\"FIRECRAWL_API_KEY\"]}'},
-    json={'url': url, 'formats': ['markdown'], 'waitFor': 8000},
-    timeout=120)
-print(resp.status_code)
-data = resp.json()
-md = data.get('data', {}).get('markdown', '')
-print('LENGTH', len(md))
-open('/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/ashby_ctgt_application.md', 'w').write(md)
-"
-, python3 -c "
-from ingestion.posting_page import extract_content
-md = open('/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/ashby_ctgt_raw.md').read()
-c = extract_content(md)
-print(c[:400])
-print('---')
-print('has blank lines:', '\n\n' in c)
-print('has bare ---:', any(l.strip()=='---' for l in c.splitlines()))
-print(len(c))
-"
-, cp /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/ashby_ctgt_raw.md /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/posting_ashby_ctgt.md
-wc -l /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/posting_ashby_ctgt.md, .venv/bin/python -m pytest tests/test_posting_page.py -v 2>&1 | tail -30, .venv/bin/python -m pytest tests/test_recheck.py tests/test_validate.py -v 2>&1 | tail -60, .venv/bin/python -m pytest tests/ -v 2>&1 | tail -100, grep -n "glob(\"\*.md\")\|glob('\*.md')\|Dossiers" /home/anant_gupta/projects/work/internship-research-loop/tests/test_run_pipeline.py, sed -i 's/glob("\*\.md")/glob("**\/*.md")/g' tests/test_run_pipeline.py && grep -n 'glob(' tests/test_run_pipeline.py, .venv/bin/python -m pytest tests/ -v 2>&1 | tail -40, grep -n "No enrichment yet\|Auto-discovered" /home/anant_gupta/projects/work/internship-research-loop/tests/*.py, .venv/bin/python -m pytest tests/ -q 2>&1 | tail -15, python3 -c "
-import requests, json
-companies = {
-    'fccincinnati': 'FC Cincinnati',
-    'aquaticcapitalmanagement': 'Aquatic Capital Management',
-    'walleyecapital-external-students': 'Walleye Capital',
-    'pdtpartners': 'PDT Partners',
-    'virtu': 'Virtu Financial',
-    'mwinternshipprogram': 'Marshall Wace',
-    'optiverus': 'Optiver',
-}
-for token, name in companies.items():
-    try:
-        r = requests.get(f'https://boards-api.greenhouse.io/v1/boards/{token}/jobs', timeout=15)
-        jobs = r.json().get('jobs', [])
-        titles = [j['title'] for j in jobs if 'intern' in j['title'].lower()]
-        print(f'--- {name} ({token}): {len(titles)} intern titles ---')
-        for t in titles:
-            print('  ', t)
-    except Exception as e:
-        print(token, 'ERROR', e)
-"
-, grep -n "simplifyjobs.json" /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/simplifyjobs.json | head -1; python3 -c "
-import json
-data = json.loads(open('/home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/simplifyjobs.json').read())
-for i, d in enumerate(data):
-    if 'tax' in d.get('title','').lower():
-        print(i, d['title'], d.get('category'))
-", .venv/bin/python -m pytest tests/test_relevance.py -v 2>&1 | tail -30, .venv/bin/python -m pytest tests/ -q 2>&1 | tail -40, python3 -c "
-import json
-for f in ['vanshb03.json','zshah101.json','josegael.json']:
-    data = json.loads(open(f'/home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/{f}').read())
-    print(f'--- {f} ({len(data)}) ---')
-    for d in data:
-        print(' ', d.get('title') or d.get('role') or d.get('name'))
-"
-, python3 -c "
-import json
-data = json.loads(open('/home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/vanshb03.json').read())
-for d in data:
-    if 'Cloud Platform' in d.get('title',''):
-        print(json.dumps(d, indent=2))
-"
-, python3 -c "
-import json
-data = json.loads(open('/home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/zshah101.json').read())
-for d in data:
-    print(json.dumps({k:v for k,v in d.items() if k in ('title','category','_case')}, indent=None))
-"
-, .venv/bin/python -m pytest tests/test_classify.py -v 2>&1 | tail -30, .venv/bin/python -c "
-import json
-from ingestion.normalize import normalize_simplify
-from vault_writer.writer import render_dossier
-from vault_writer.validate import check_format_compliance
-
-raw = json.loads(open('tests/fixtures/simplifyjobs.json').read())[0]
-listing = normalize_simplify(raw)
-uid = f'{listing.source}:{listing.raw_id}'
-
-for content, callout, label in [
-    ('', '', 'no content, no callout'),
-    ('Some posting text here.', '', 'content, no callout'),
-    ('', '> [!NOTE] Other: genuine software engineering role, no bucket-specific signal matched.', 'no content, callout'),
-    ('Some posting text here.', '> [!NOTE] AI/ML: matched on \"rag\".', 'content + callout'),
-]:
-    md = render_dossier(listing, uid, '2026-07-26', 'reason', content, callout)
-    result = check_format_compliance(md)
-    print(f'--- {label} --- passed={result.passed} reason={result.reason}')
-    print(repr(md))
-    print()
-"
-, .venv/bin/python -m pytest tests/ -q 2>&1 | tail -20, grep -n "def test_validate_and_write_seeds_dedup_keys\|def test_.*dossier_keys\|def test_.*bucket\|def test_.*folder" /home/anant_gupta/projects/work/internship-research-loop/tests/test_run_pipeline.py, python3 -c "
-import requests, os, json
-r = requests.post('https://api.firecrawl.dev/v1/search',
-    json={'query': 'Anduril recruiter', 'limit': 3},
-    headers={'Authorization': f'Bearer {os.environ[\"FIRECRAWL_API_KEY\"]}'},
-    timeout=30)
-print(r.status_code)
-data = r.json().get('data', [])
-print(json.dumps(data[:2], indent=2))
-"
-, python3 -c "
-import requests, os, json
-r = requests.post('https://api.firecrawl.dev/v1/search',
-    json={'query': 'site:linkedin.com Anduril recruiter', 'limit': 5},
-    headers={'Authorization': f'Bearer {os.environ[\"FIRECRAWL_API_KEY\"]}'},
-    timeout=30)
-print(r.status_code)
-for h in r.json().get('data', []):
-    print(h.get('url'), '|', h.get('title'))
-"
-echo "---checking SimplifyJobs domain---"
-grep -rn "simplify\.jobs\|simplifyjobs.com" /home/anant_gupta/projects/work/internship-research-loop/*.md 2>/dev/null
-python3 -c "
-import requests
-r = requests.get('https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json', timeout=15)
-d = r.json()
-print(d[0].get('application_link') if 'application_link' in d[0] else list(d[0].keys()))
-", python3 -c "
-import requests
-try:
-    r = requests.head('https://simplify.jobs', timeout=10, allow_redirects=True)
-    print('simplify.jobs ->', r.status_code, r.url)
-except Exception as e:
-    print('ERROR', e)
-", .venv/bin/python -m pytest tests/test_enrich.py -v 2>&1 | tail -30, .venv/bin/python -m pytest tests/ -q 2>&1 | tail -10, python3 -c "
-import requests
-
-greenhouse_candidates = [
-    'perplexityai', 'together-ai', 'weightsandbiases', 'huggingface', 'cohere',
-    'runwayml', 'baseten', 'fireworksai', 'anysphere', 'sierra', 'glean-work',
-    'harveyai', 'crusoeenergy', 'groq', 'characterai', 'scaleai', 'codeium',
-    'cognitionlabs', 'langchain', 'pinecone', 'vercel', 'replicate', 'modal',
-]
-print('=== Greenhouse ===')
-for token in greenhouse_candidates:
-    try:
-        r = requests.get(f'https://boards-api.greenhouse.io/v1/boards/{token}/jobs', timeout=10)
-        if r.status_code == 200:
-            jobs = r.json().get('jobs', [])
-            if jobs:
-                print(f'{token}: LIVE, {len(jobs)} jobs')
-    except Exception:
-        pass
-"
-, python3 -c "
-import requests
-
-ashby_candidates = [
-    'perplexityai', 'together-ai', 'together', 'cohere', 'runwayml', 'runway',
-    'baseten', 'anysphere', 'cursor', 'sierra', 'glean', 'harvey', 'harveyai',
-    'crusoe', 'groq', 'character-ai', 'codeium', 'cognition', 'cognition-labs',
-    'langchain', 'pinecone', 'replicate', 'modal', 'braintrust', 'mistral',
-    'suno', 'elevenlabs', 'hume', 'weights-and-biases', 'wandb', 'openpipe',
-]
-print('=== Ashby ===')
-for token in ashby_candidates:
-    try:
-        r = requests.get(f'https://api.ashbyhq.com/posting-api/job-board/{token}', params={'includeCompensation':'true'}, timeout=10)
-        if r.status_code == 200:
-            jobs = r.json().get('jobs', [])
-            if jobs:
-                print(f'{token}: LIVE, {len(jobs)} jobs')
-    except Exception:
-        pass
-"
-, python3 -c "
-import requests
-
-print('=== Ashby intern check ===')
-for token in ['cohere', 'runway', 'baseten', 'cursor', 'sierra', 'harvey', 'crusoe', 'cognition', 'langchain', 'pinecone', 'modal', 'braintrust', 'suno', 'elevenlabs']:
-    try:
-        r = requests.get(f'https://api.ashbyhq.com/posting-api/job-board/{token}', params={'includeCompensation':'true'}, timeout=10)
-        jobs = r.json().get('jobs', [])
-        interns = [j['title'] for j in jobs if j.get('employmentType') == 'Intern']
-        if interns:
-            print(f'{token}: {len(interns)} intern jobs ->', interns[:3])
-    except Exception as e:
-        print(token, 'err', e)
-
-print('=== Greenhouse intern check ===')
-for token in ['fireworksai', 'scaleai', 'vercel']:
-    try:
-        r = requests.get(f'https://boards-api.greenhouse.io/v1/boards/{token}/jobs', timeout=10)
-        jobs = r.json().get('jobs', [])
-        interns = [j['title'] for j in jobs if 'intern' in j['title'].lower()]
-        if interns:
-            print(f'{token}: {len(interns)} intern titles ->', interns[:5])
-    except Exception as e:
-        print(token, 'err', e)
-"
-, git status --short, git diff --stat core/profile.yaml tests/fixtures/josegael.json tests/fixtures/simplifyjobs.json tests/fixtures/vanshb03.json tests/fixtures/zshah101.json, python3 -c "
-import ast, sys
-for f in ['core/relevance.py', 'core/classify.py', 'vault_writer/writer.py', 'enrich.py', 'run_pipeline.py', 'recheck.py', 'ingestion/posting_page.py', 'ingestion/sources.py', 'vault_writer/validate.py']:
-    try:
-        ast.parse(open(f).read())
-    except SyntaxError as e:
-        print(f'{f}: SYNTAX ERROR {e}')
-        sys.exit(1)
-print('all parse cleanly')
-"
-.venv/bin/python -c "import run_pipeline, recheck, enrich, core.classify, core.relevance" && echo "all import cleanly", .venv/bin/python -m pytest tests/ -v 2>&1 | tail -70, git status && echo "---FETCH---" && git fetch origin && echo "---LOG local vs origin/master---" && git log --oneline -5 && echo "---" && git log --oneline origin/master -5 && echo "---diff local vs origin---" && git rev-list --left-right --count HEAD...origin/master, git log --oneline cdb4299..origin/master && echo "===FILES CHANGED UPSTREAM===" && git diff --stat cdb4299 origin/master, cd /home/anant_gupta/projects/work/internship-research-loop
-echo "=== core/filter.py (should be 100% pre-existing, I never touched it) ==="
-git diff origin/master -- core/filter.py | head -5
-echo "lines changed:"; git diff origin/master --stat -- core/filter.py
-echo
-echo "=== ingestion/sources.py diff stat ==="
-git diff origin/master --stat -- ingestion/sources.py
-echo
-echo "=== run_pipeline.py diff stat ==="
-git diff origin/master --stat -- run_pipeline.py
-echo
-echo "=== recheck.py diff stat ==="
-git diff origin/master --stat -- recheck.py
-echo
-echo "=== tests/test_run_pipeline.py diff stat ==="
-git diff origin/master --stat -- tests/test_run_pipeline.py
-echo
-echo "=== tests/test_sources.py diff stat (should be 100% pre-existing) ==="
-git diff origin/master --stat -- tests/test_sources.py
-echo
-echo "=== fixture JSONs diff stat ==="
-git diff origin/master --stat -- tests/fixtures/josegael.json tests/fixtures/simplifyjobs.json tests/fixtures/vanshb03.json tests/fixtures/zshah101.json, cd /home/anant_gupta/projects/work/internship-research-loop
-echo "=== ingestion/sources.py FULL DIFF ==="
-git diff origin/master -- ingestion/sources.py, cd /home/anant_gupta/projects/work/internship-research-loop
-echo "=== run_pipeline.py FULL DIFF ==="
-git diff origin/master -- run_pipeline.py, cd /home/anant_gupta/projects/work/internship-research-loop
-echo "=== core/profile.yaml DIFF ==="
-git diff origin/master -- core/profile.yaml
-echo
-echo "=== core/filter.py DIFF ==="
-git diff origin/master -- core/filter.py, cd /home/anant_gupta/projects/work/internship-research-loop
-echo "=== recheck.py FULL DIFF ==="
-git diff origin/master -- recheck.py
-echo
-echo "=== tests/test_run_pipeline.py FULL DIFF ==="
-git diff origin/master -- tests/test_run_pipeline.py, cd /home/anant_gupta/projects/work/internship-research-loop
-mkdir -p /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check
-git show origin/master:recheck.py > /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/recheck_origin.py
-git show origin/master:run_pipeline.py > /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/run_pipeline_origin.py
-git show origin/master:ingestion/sources.py > /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/sources_origin.py
-git show origin/master:tests/test_run_pipeline.py > /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/test_run_pipeline_origin.py
-echo done, diff /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/recheck_freehire_only.py /home/anant_gupta/projects/work/internship-research-loop/recheck.py, diff /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/sources_freehire_only.py /home/anant_gupta/projects/work/internship-research-loop/ingestion/sources.py, diff /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/run_pipeline_freehire_only.py /home/anant_gupta/projects/work/internship-research-loop/run_pipeline.py, sed -n '30,70p' /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/test_run_pipeline_origin.py, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check
-python3 -c "
-content = open('test_run_pipeline_origin.py').read()
-
-old = '''def _fake_http_get(url, timeout=None):
-    from ingestion.sources import (
-        ASHBY_JOBS_URL,
-        GREENHOUSE_JOBS_URL,
-        JOSEGAEL_URL,
-        SIMPLIFY_URL,
-        VANSHB03_URL,
-        ZSHAH101_URL,
-    )
-
-    resp = Mock(status_code=200)
-    if url == SIMPLIFY_URL:
-        resp.json.return_value = _simplify_raw()
-    elif url == JOSEGAEL_URL:
-        resp.json.return_value = _josegael_raw()
-    elif url == VANSHB03_URL:
-        resp.json.return_value = _vanshb03_raw()
-    elif url == ZSHAH101_URL:
-        resp.json.return_value = _zshah101_raw()
-    elif url.startswith(GREENHOUSE_JOBS_URL.split(\"{\")[0]) or url.startswith(ASHBY_JOBS_URL.split(\"{\")[0]):
-        # per-company board endpoints — pipeline-orchestration tests dont need
-        # real per-company data, thats covered in test_sources.py directly
-        resp.json.return_value = {\"jobs\": []}
-    else:
-        raise AssertionError(f\"unexpected url: {url}\")
-    return resp'''.replace('dont', \"don't\").replace('thats', \"that's\")
-
-new = '''def _fake_http_get(url, timeout=None):
-    from ingestion.freehire import FREEHIRE_SEARCH_URL
-    from ingestion.sources import (
-        AI_JOBS_URL,
-        ASHBY_JOBS_URL,
-        GREENHOUSE_JOBS_URL,
-        JOSEGAEL_URL,
-        SIMPLIFY_URL,
-        VANSHB03_URL,
-        ZSHAH101_URL,
-    )
-
-    resp = Mock(status_code=200)
-    if url == SIMPLIFY_URL:
-        resp.json.return_value = _simplify_raw()
-    elif url == JOSEGAEL_URL:
-        resp.json.return_value = _josegael_raw()
-    elif url == VANSHB03_URL:
-        resp.json.return_value = _vanshb03_raw()
-    elif url == ZSHAH101_URL:
-        resp.json.return_value = _zshah101_raw()
-    elif url.startswith(GREENHOUSE_JOBS_URL.split(\"{\")[0]) or url.startswith(ASHBY_JOBS_URL.split(\"{\")[0]):
-        # per-company board endpoints — pipeline-orchestration tests don't need
-        # real per-company data, that's covered in test_sources.py directly
-        resp.json.return_value = {\"jobs\": []}
-    elif url.startswith(FREEHIRE_SEARCH_URL.split(\"{\")[0]):
-        resp.json.return_value = {\"data\": []}
-    elif url == AI_JOBS_URL:
-        resp.json.return_value = {\"jobs\": []}
-    else:
-        raise AssertionError(f\"unexpected url: {url}\")
-    return resp'''
-
-assert old in content, 'OLD BLOCK NOT FOUND'
-content = content.replace(old, new)
-open('test_run_pipeline_freehire_only.py', 'w').write(content)
-print('done')
-"
-, diff /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/test_run_pipeline_freehire_only.py /home/anant_gupta/projects/work/internship-research-loop/tests/test_run_pipeline.py, set -e
-cd /home/anant_gupta/projects/work/internship-research-loop
-WT=$(git worktree add --detach /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/freehire_check_wt origin/master 2>&1)
-echo "$WT", set -e
-SRC=/home/anant_gupta/projects/work/internship-research-loop
-WT=/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/freehire_check_wt
-RECON=/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check
-
-# 100% pre-existing, untouched by me
-cp "$SRC/core/filter.py" "$WT/core/filter.py"
-cp "$SRC/core/profile.yaml" "$WT/core/profile.yaml"
-cp "$SRC/ingestion/normalize.py" "$WT/ingestion/normalize.py"
-cp "$SRC/ingestion/freehire.py" "$WT/ingestion/freehire.py"
-cp "$SRC/tests/fixtures/freehire.json" "$WT/tests/fixtures/freehire.json"
-cp "$SRC/tests/fixtures/josegael.json" "$WT/tests/fixtures/josegael.json"
-cp "$SRC/tests/fixtures/simplifyjobs.json" "$WT/tests/fixtures/simplifyjobs.json"
-cp "$SRC/tests/fixtures/vanshb03.json" "$WT/tests/fixtures/vanshb03.json"
-cp "$SRC/tests/fixtures/zshah101.json" "$WT/tests/fixtures/zshah101.json"
-cp "$SRC/tests/test_filter.py" "$WT/tests/test_filter.py"
-cp "$SRC/tests/test_sources.py" "$WT/tests/test_sources.py"
-cp "$SRC/tests/test_freehire.py" "$WT/tests/test_freehire.py"
-
-# reconstructed pre-existing-only versions
-cp "$RECON/sources_freehire_only.py" "$WT/ingestion/sources.py"
-cp "$RECON/run_pipeline_freehire_only.py" "$WT/run_pipeline.py"
-cp "$RECON/recheck_freehire_only.py" "$WT/recheck.py"
-cp "$RECON/test_run_pipeline_freehire_only.py" "$WT/tests/test_run_pipeline.py"
-
-cd "$WT"
-python3 -m venv .venv-check -q 2>/dev/null || true
-.venv-check/bin/pip install -q -r requirements.txt 2>&1 | tail -5
-echo "=== git status in worktree (should show only the intended files as modified) ==="
-git status --short
-echo "=== running pytest ==="
-.venv-check/bin/python -m pytest tests/ -q 2>&1 | tail -40, WT=/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/freehire_check_wt
-cd "$WT"
-/home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python -m pytest tests/ -q 2>&1 | tail -50, cd /home/anant_gupta/projects/work/internship-research-loop
-git worktree remove /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/freehire_check_wt --force
-git worktree list
-echo "--- backing up my current full mixed-file versions before any swapping ---"
-BACKUP=/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/my_full_versions
-mkdir -p "$BACKUP"
-cp ingestion/sources.py "$BACKUP/sources_full.py"
-cp run_pipeline.py "$BACKUP/run_pipeline_full.py"
-cp recheck.py "$BACKUP/recheck_full.py"
-cp tests/test_run_pipeline.py "$BACKUP/test_run_pipeline_full.py"
-ls -la "$BACKUP", cd /home/anant_gupta/projects/work/internship-research-loop
-git log --oneline -1
-git status
-git rev-parse HEAD, cd /home/anant_gupta/projects/work/internship-research-loop
-echo "=== reflog ==="
-git reflog -20
-echo "=== does core/relevance.py exist? ==="
-ls -la core/relevance.py core/classify.py 2>&1
-echo "=== log around f56ac8c ==="
-git log --oneline -5, cd /home/anant_gupta/projects/work/internship-research-loop
-echo "=== 6622bca stat ==="
-git show --stat 6622bca | head -50
-echo
-echo "=== f56ac8c stat ==="
-git show --stat f56ac8c | head -30, cd /home/anant_gupta/projects/work/internship-research-loop
-echo "=== full reflog with relative times ==="
-git reflog --date=iso -20
-echo
-echo "=== current wall clock ==="
-date
-echo
-echo "=== do these new skill/agent files exist on disk right now? ==="
-ls -la .claude/skills/promote-dossier .claude/agents/contact-researcher.md .claude/agents/loop-verifier.md .claude/skills/review-loop-change 2>&1
-echo
-echo "=== any other git processes / locks? ==="
-ls -la .git/index.lock 2>&1
-ps aux | grep -i git | grep -v grep, cd /home/anant_gupta/projects/work/internship-research-loop
-echo "=== does the committed content match my own working files exactly? ==="
-diff <(git show 6622bca:core/relevance.py) core/relevance.py && echo "relevance.py: IDENTICAL"
-diff <(git show 6622bca:core/classify.py) core/classify.py && echo "classify.py: IDENTICAL"
-diff <(git show 6622bca:run_pipeline.py) run_pipeline.py && echo "run_pipeline.py: IDENTICAL"
-diff <(git show 6622bca:tests/test_relevance.py) tests/test_relevance.py && echo "test_relevance.py: IDENTICAL", cd /home/anant_gupta/projects/work/internship-research-loop
-git status
-git log --oneline -5
-git fetch origin -q
-git log --oneline origin/master -3, cd /home/anant_gupta/projects/work/internship-research-loop
-git log -1 --format="%B" a21b2fa
-echo "---re-verify current state before surgery---"
-git fetch origin -q
-git status
-git log --oneline -5
-git log --oneline origin/master -3, cd /home/anant_gupta/projects/work/internship-research-loop
-set -e
-git branch -D split-work 2>/dev/null || true
-git checkout -b split-work ba2bdcd
-echo "=== cherry-picking 6622bca content (no commit) ==="
-git cherry-pick --no-commit 6622bca
-git status --short | head -30, cd /home/anant_gupta/projects/work/internship-research-loop
-set -e
-RECON=/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check
-
-# Overwrite the 4 mixed files with their freehire-only reconstructions
-cp "$RECON/sources_freehire_only.py" ingestion/sources.py
-cp "$RECON/recheck_freehire_only.py" recheck.py
-cp "$RECON/run_pipeline_freehire_only.py" run_pipeline.py
-cp "$RECON/test_run_pipeline_freehire_only.py" tests/test_run_pipeline.py
-
-# Stage exactly the Freehire+AIJobs file set
-git add core/filter.py core/profile.yaml ingestion/normalize.py ingestion/freehire.py \
-       ingestion/sources.py recheck.py run_pipeline.py \
-       tests/fixtures/freehire.json tests/fixtures/josegael.json tests/fixtures/simplifyjobs.json \
-       tests/fixtures/vanshb03.json tests/fixtures/zshah101.json \
-       tests/test_filter.py tests/test_sources.py tests/test_freehire.py tests/test_run_pipeline.py
-
-echo "=== staged for commit 1 ==="
-git status --short | grep '^[AM]' 
-echo "=== remaining unstaged (should be exactly my Task A-F files) ==="
-git status --short | grep -v '^[AM]', cd /home/anant_gupta/projects/work/internship-research-loop
-set -e
-git reset
-echo "=== after reset, staged (should be empty) ==="
-git status --short | grep '^[AM]' || echo "(none staged, good)"
-echo "=== now add exactly the Freehire+AIJobs subset ==="
-git add core/filter.py core/profile.yaml ingestion/normalize.py ingestion/freehire.py \
-       ingestion/sources.py recheck.py run_pipeline.py \
-       tests/fixtures/freehire.json tests/fixtures/josegael.json tests/fixtures/simplifyjobs.json \
-       tests/fixtures/vanshb03.json tests/fixtures/zshah101.json \
-       tests/test_filter.py tests/test_sources.py tests/test_freehire.py tests/test_run_pipeline.py
-echo "=== staged now ==="
-git status --short, cd /home/anant_gupta/projects/work/internship-research-loop
-git diff --cached --stat
-echo "=== does staged ingestion/sources.py match my verified reconstruction? ==="
-git diff --cached ingestion/sources.py | wc -l
-diff <(git show :ingestion/sources.py) /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/sources_freehire_only.py && echo "sources.py staged content: MATCHES verified reconstruction"
-diff <(git show :run_pipeline.py) /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/run_pipeline_freehire_only.py && echo "run_pipeline.py staged content: MATCHES verified reconstruction"
-diff <(git show :recheck.py) /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/recheck_freehire_only.py && echo "recheck.py staged content: MATCHES verified reconstruction"
-diff <(git show :tests/test_run_pipeline.py) /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/test_run_pipeline_freehire_only.py && echo "test_run_pipeline.py staged content: MATCHES verified reconstruction", cd /home/anant_gupta/projects/work/internship-research-loop
-git commit -m "$(cat <<'EOF'
-Two new discovery sources: Freehire, AIJobs
-
-Freehire (github.com/strelov1/freehire): a live, no-auth public API
-aggregating 3.4M+ postings across 78 ATS platforms and direct company
-crawls (Google, Uber) no ATS-token approach can reach. Verified against
-three real ground-truth misses a manual clipping audit surfaced: Google's
-exact posting (freehire's created_at beat SimplifyJobs' date_posted by ~7
-hours), Nuro's exact posting, and a partial match on Uber's. Scoped
-deliberately to google/uber only — companies confirmed to have no reachable
-Greenhouse/Ashby/Lever token; broader company slugs (Western Digital, Wells
-Fargo, Grant Thornton) were tried and dropped after a live dry run surfaced
-they were already reachable via SimplifyJobs and added only noise (Wells
-Fargo alone: ~20/28 intern-tagged postings non-tech by title). active is
-always True (freehire's own closed_at field lags real closures by days,
-confirmed live) — not wired into recheck.py's removal checks for the same
-reason.
-
-AIJobs (artificialintelligencejobs.co): a single generated snapshot feed,
-filtered to level=Intern, degrading to empty on failure like every other
-source here.
-
-core/filter.py: _matches_freehire/_matches_ai_jobs share the existing
-Greenhouse/Ashby free-text matcher. profile.yaml widened to include Spring
-2027 (with a terms_weight field for a later priority pass) and documents two
-live-data non-findings: no fellowship/research-shaped listing needs new
-matching code, and pay is confirmed out of scope everywhere in this
-pipeline.
-
-227/227 tests passing.
-
-Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
-EOF
-)"
-git log --oneline -3, cd /home/anant_gupta/projects/work/internship-research-loop
-set -e
-BACKUP=/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/my_full_versions
-cp "$BACKUP/sources_full.py" ingestion/sources.py
-cp "$BACKUP/run_pipeline_full.py" run_pipeline.py
-cp "$BACKUP/recheck_full.py" recheck.py
-cp "$BACKUP/test_run_pipeline_full.py" tests/test_run_pipeline.py
-
-git add -A
-git status --short, cd /home/anant_gupta/projects/work/internship-research-loop
-git commit -m "$(cat <<'EOF'
-Priority-bucket classification, CS-relevance gate, widened contact research
-
-Adds core/classify.py (Layer 2.5b, zero-LLM keyword bucketing into AI/ML,
-CyS & Finance, Fullstack, Other) and core/relevance.py (Layer 2.5, two-stage
-CS/software-relevance gate: cheap title-only reject before fetch, content-
-confirmed adjacent-field check after). vault_writer/writer.py and the
-dossier template now sort writes into priority-bucket subfolders under
-List/Dossiers/, drop the unused uid/category/promoted frontmatter fields in
-favor of next (matching the vault's own note convention), and add a
-dossier_uids.json manifest for idempotent re-writes and recheck.py's
-removal-checking.
-
-Fixes a real Ashby extraction bug: some sources store the application-form
-URL (.../application) instead of the posting page, which renders no job
-description at all — confirmed live (the same posting returns 4015 chars of
-full content at its base URL vs 1099 chars of bare form fields at
-/application). ingestion/posting_page.py now strips that suffix before
-fetch.
-
-Widens enrich.py's contact search to recruiter/university-recruiting queries
-and LinkedIn search-snippet hits (site:linkedin.com, snippet text only —
-never scrapes or logs into linkedin.com, per its own hard line).
-
-Also diversifies ingestion/sources.py's Greenhouse/Ashby seed lists (all-
-quant-trading before) with 6 live-verified AI/ML companies: Fireworks AI,
-Scale AI, Cohere, Cursor, Modal, ElevenLabs.
-
-258/258 tests passing.
-
-Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
-EOF
-)"
-git log --oneline -4, cd /home/anant_gupta/projects/work/internship-research-loop
-set -e
-git cherry-pick f56ac8c
-git log --oneline -5
-echo
-echo "=== CRITICAL CHECK: final tree of split-work vs original f56ac8c must be identical ==="
-git diff f56ac8c split-work --stat
-if [ -z "$(git diff f56ac8c split-work)" ]; then
-  echo "TREES ARE IDENTICAL — safe to proceed"
-else
-  echo "MISMATCH — DO NOT PROCEED"
-fi, cd /home/anant_gupta/projects/work/internship-research-loop
-git fetch origin -q
-echo "=== has origin/master moved since I last checked? ==="
-git log --oneline origin/master -3
-echo "=== expected tip (f56ac8c) ===", cd /home/anant_gupta/projects/work/internship-research-loop
-set -e
-git checkout master
-git reset --hard split-work
-git log --oneline -5
-echo "=== force-pushing with lease (safe: fails if origin/master moved past f56ac8c) ==="
-git push --force-with-lease=master:f56ac8c origin master, cd /home/anant_gupta/projects/work/internship-research-loop
-git fetch origin -q
-echo "=== origin/master now ==="
-git log --oneline origin/master -8
-echo
-echo "=== what's new beyond f56ac8c? ==="
-git log --oneline f56ac8c..origin/master, cd /home/anant_gupta/projects/work/internship-research-loop
-git diff --stat f56ac8c bcc4520
-echo "---"
-git diff --stat bcc4520 5fee032, cd /home/anant_gupta/projects/work/internship-research-loop
-set -e
-git checkout split-work
-git cherry-pick bcc4520 5fee032
-git log --oneline -7
-echo
-echo "=== CRITICAL CHECK: final tree of split-work vs origin/master must be identical ==="
-if [ -z "$(git diff origin/master split-work)" ]; then
-  echo "TREES ARE IDENTICAL — safe to proceed"
-else
-  echo "MISMATCH:"
-  git diff --stat origin/master split-work
-fi, cd /home/anant_gupta/projects/work/internship-research-loop
-set -e
-git checkout master
-git reset --hard split-work
-git push --force-with-lease=master:5fee032 origin master, cd /home/anant_gupta/projects/work/internship-research-loop
-git branch -d split-work
-git fetch origin -q
-git log --oneline -8
-echo "=== confirm local == remote ==="
-git status
-echo "=== confirm working tree matches (no stray diffs from my swap operations) ==="
-git diff --stat HEAD, cd /home/anant_gupta/projects/work/internship-research-loop
-rm -rf /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/verify_pushed
-git clone -q . /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/verify_pushed
-cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/verify_pushed
-git log --oneline -3
-/home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python -m pytest tests/ -q 2>&1 | tail -15, cd /home/anant_gupta/projects/work/internship-research-loop
-gh run list --repo gupta-builds/internship-research-loop --limit 10 --json databaseId,name,status,conclusion,headSha,createdAt 2>&1, cd /home/anant_gupta/projects/work/internship-research-loop
-echo "My actual current HEAD full SHA:"
-git rev-parse HEAD
-echo
-date -u
-echo
-echo "=== runs for exactly this SHA ==="
-gh run list --repo gupta-builds/internship-research-loop --commit $(git rev-parse HEAD) --json databaseId,name,status,conclusion,createdAt,headSha 2>&1, gh run view 30196939629 --repo gupta-builds/internship-research-loop 2>&1 | head -30, cd /home/anant_gupta/projects/work/internship-research-loop
-git worktree list
-rm -rf /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/verify_pushed
-echo "cleanup done"
+- Commands run: find / -maxdepth 6 -iname "*.obsidian*" -type d 2>/dev/null | grep -v "/proc/" | head -20, cat /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tasks/b6817k1e9.output 2>/dev/null | head -50, jobs -l; ls -la /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tasks/ 2>/dev/null, find /home/anant_gupta -maxdepth 8 -iname "*.obsidian" -type d 2>/dev/null; echo "---"; find /home/anant_gupta -maxdepth 10 -iname "Main Resume.md" 2>/dev/null; echo "---"; find /home/anant_gupta -maxdepth 6 -iname "*jarvis*" 2>/dev/null | head -20, cd /home/anant_gupta/projects/work/internship-research-loop/jarvis-checkout && find . -iname "Main Resume.md" -o -iname "Engineer Edge Roadmap.md" -o -iname "HUMAN_WRITING.md" 2>/dev/null; echo "---Dossiers folder---"; find . -type d -iname "Dossiers" 2>/dev/null, ls -la; echo "---"; du -sh . 2>/dev/null; echo "---is git repo?---"; git remote -v 2>/dev/null, ls -la "/mnt/d/Users/Anant/10_Areas/Documents/Jarvis" 2>&1 | head -20, ls /mnt/ 2>&1; echo "---"; mount 2>&1 | grep -i mnt | head -20, ls "/mnt/d/" 2>&1 | head -30, ls "/mnt/d/Users/" 2>&1; echo "---"; find "/mnt/d/Users" -maxdepth 4 -iname "*jarvis*" 2>&1 | head -20, V="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis"; echo "vault=$V"; find "$V/20_Progress/Internship/Resumes" -maxdepth 2 2>&1; echo "---roadmap---"; find "$V/10_Areas/Career" -maxdepth 1 -iname "*Roadmap*" 2>&1; echo "---dossiers---"; find "$V/10_Areas/Career/Internships/List/Dossiers" -maxdepth 1 2>&1; echo "---human writing---"; find "$V" -maxdepth 2 -iname "HUMAN_WRITING*" 2>&1, cd /home/anant_gupta/projects/work/internship-research-loop && find . -iname "profile*.json" -o -iname "profile*.yaml" 2>/dev/null | grep -v node_modules; echo "---vault_writer dir---"; ls vault_writer/; echo "---validate.py---"; cat vault_writer/validate.py 2>/dev/null, V="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers"; for d in "1 - AI & ML" "2 - Fullstack" "3 - CyS & Finance" "Other" "Viewed"; do echo "=== $d ==="; ls -la "$V/$d" 2>&1; done, ls tests/fixtures/ && echo "---" && wc -l tests/*.py core/*.py vault_writer/*.py, find tests/fixtures/throwaway_vault -type f 2>/dev/null; echo "---"; head -40 tests/fixtures/posting_fiverings.md, grep -n "promoted\|category\|uid\b" recheck.py | head -30, V="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers"; grep -l -iE "^title:.*(analyst|tax|trading|sports|finance|risk|accounting|hardware|manufactur)" "$V"/*.md 2>/dev/null; echo "---all titles---"; grep -h "^title:" "$V"/*.md 2>/dev/null, V="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers"; grep -l "Academy Performance Analyst" "$V"/*.md; grep -l "Tax Technology Intern" "$V"/*.md; grep -l "Hardware Engineer (FPGA/ASIC)" "$V"/*.md; grep -l "Corporate Risk Development" "$V"/*.md; grep -l "Risk Technology Analyst" "$V"/*.md, sleep 30 && echo done, grep -n "SIMPLIFY\|simplify" ingestion/sources.py | head -10, [ -n "$FIRECRAWL_API_KEY" ] && echo "KEY SET" || echo "NO KEY"; find . -iname "*.env*" -maxdepth 1 2>/dev/null, python3 -c " import requests, os, json url = 'https://jobs.ashbyhq.com/ellipsislabs/[REDACTED]/application' resp = requests.post('https://api.firecrawl.dev/v1/scrape', headers={'Authorization': f'Bearer {os.environ[\"FIRECRAWL_API_KEY\"]}'}, json={'url': url, 'formats': ['markdown'], 'waitFor': 8000}, timeout=120) print(resp.status_code) data = resp.json() md = data.get('data', {}).get('markdown', '') print('LENGTH', len(md)) open('/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/ashby_raw.md', 'w').write(md) print('---saved---') " , python3 -c " import requests, json for token in ['ellipsislabs', 'quadrillion-labs', 'circleback', 'ctgt', 'pylon-labs']: try: r = requests.get(f'https://api.ashbyhq.com/posting-api/job-board/{token}', params={'includeCompensation': 'true'}, timeout=15) jobs = r.json().get('jobs', []) print(token, r.status_code, len(jobs), 'jobs') for j in jobs[:3]: print(' ', j.get('title'), '|', j.get('jobUrl')) except Exception as e: print(token, 'ERROR', e) " , python3 -c " import requests, os url = 'https://jobs.ashbyhq.com/ctgt/[REDACTED]' resp = requests.post('https://api.firecrawl.dev/v1/scrape', headers={'Authorization': f'Bearer {os.environ[\"FIRECRAWL_API_KEY\"]}'}, json={'url': url, 'formats': ['markdown'], 'waitFor': 8000}, timeout=120) print(resp.status_code) data = resp.json() md = data.get('data', {}).get('markdown', '') print('LENGTH', len(md)) open('/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/ashby_ctgt_raw.md', 'w').write(md) " , python3 -c " import requests, os url = 'https://jobs.ashbyhq.com/ctgt/[REDACTED]/application' resp = requests.post('https://api.firecrawl.dev/v1/scrape', headers={'Authorization': f'Bearer {os.environ[\"FIRECRAWL_API_KEY\"]}'}, json={'url': url, 'formats': ['markdown'], 'waitFor': 8000}, timeout=120) print(resp.status_code) data = resp.json() md = data.get('data', {}).get('markdown', '') print('LENGTH', len(md)) open('/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/ashby_ctgt_application.md', 'w').write(md) " , python3 -c " from ingestion.posting_page import extract_content md = open('/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/ashby_ctgt_raw.md').read() c = extract_content(md) print(c[:400]) print('---') print('has blank lines:', '\n\n' in c) print('has bare ---:', any(l.strip()=='---' for l in c.splitlines())) print(len(c)) " , cp /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/ashby_ctgt_raw.md /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/posting_ashby_ctgt.md wc -l /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/posting_ashby_ctgt.md, .venv/bin/python -m pytest tests/test_posting_page.py -v 2>&1 | tail -30, .venv/bin/python -m pytest tests/test_recheck.py tests/test_validate.py -v 2>&1 | tail -60, .venv/bin/python -m pytest tests/ -v 2>&1 | tail -100, grep -n "glob(\"\*.md\")\|glob('\*.md')\|Dossiers" /home/anant_gupta/projects/work/internship-research-loop/tests/test_run_pipeline.py, sed -i 's/glob("\*\.md")/glob("**\/*.md")/g' tests/test_run_pipeline.py && grep -n 'glob(' tests/test_run_pipeline.py, .venv/bin/python -m pytest tests/ -v 2>&1 | tail -40, grep -n "No enrichment yet\|Auto-discovered" /home/anant_gupta/projects/work/internship-research-loop/tests/*.py, .venv/bin/python -m pytest tests/ -q 2>&1 | tail -15, python3 -c " import requests, json companies = { 'fccincinnati': 'FC Cincinnati', 'aquaticcapitalmanagement': 'Aquatic Capital Management', 'walleyecapital-external-students': 'Walleye Capital', 'pdtpartners': 'PDT Partners', 'virtu': 'Virtu Financial', 'mwinternshipprogram': 'Marshall Wace', 'optiverus': 'Optiver', } for token, name in companies.items(): try: r = requests.get(f'https://boards-api.greenhouse.io/v1/boards/{token}/jobs', timeout=15) jobs = r.json().get('jobs', []) titles = [j['title'] for j in jobs if 'intern' in j['title'].lower()] print(f'--- {name} ({token}): {len(titles)} intern titles ---') for t in titles: print(' ', t) except Exception as e: print(token, 'ERROR', e) " , grep -n "simplifyjobs.json" /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/simplifyjobs.json | head -1; python3 -c " import json data = json.loads(open('/home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/simplifyjobs.json').read()) for i, d in enumerate(data): if 'tax' in d.get('title','').lower(): print(i, d['title'], d.get('category')) ", .venv/bin/python -m pytest tests/test_relevance.py -v 2>&1 | tail -30, .venv/bin/python -m pytest tests/ -q 2>&1 | tail -40, python3 -c " import json for f in ['vanshb03.json','zshah101.json','josegael.json']: data = json.loads(open(f'/home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/{f}').read()) print(f'--- {f} ({len(data)}) ---') for d in data: print(' ', d.get('title') or d.get('role') or d.get('name')) " , python3 -c " import json data = json.loads(open('/home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/vanshb03.json').read()) for d in data: if 'Cloud Platform' in d.get('title',''): print(json.dumps(d, indent=2)) " , python3 -c " import json data = json.loads(open('/home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/zshah101.json').read()) for d in data: print(json.dumps({k:v for k,v in d.items() if k in ('title','category','_case')}, indent=None)) " , .venv/bin/python -m pytest tests/test_classify.py -v 2>&1 | tail -30, .venv/bin/python -c " import json from ingestion.normalize import normalize_simplify from vault_writer.writer import render_dossier from vault_writer.validate import check_format_compliance raw = json.loads(open('tests/fixtures/simplifyjobs.json').read())[0] listing = normalize_simplify(raw) uid = f'{listing.source}:{listing.raw_id}' for content, callout, label in [ ('', '', 'no content, no callout'), ('Some posting text here.', '', 'content, no callout'), ('', '> [!NOTE] Other: genuine software engineering role, no bucket-specific signal matched.', 'no content, callout'), ('Some posting text here.', '> [!NOTE] AI/ML: matched on \"rag\".', 'content + callout'), ]: md = render_dossier(listing, uid, '2026-07-26', 'reason', content, callout) result = check_format_compliance(md) print(f'--- {label} --- passed={result.passed} reason={result.reason}') print(repr(md)) print() " , .venv/bin/python -m pytest tests/ -q 2>&1 | tail -20, grep -n "def test_validate_and_write_seeds_dedup_keys\|def test_.*dossier_keys\|def test_.*bucket\|def test_.*folder" /home/anant_gupta/projects/work/internship-research-loop/tests/test_run_pipeline.py, python3 -c " import requests, os, json r = requests.post('https://api.firecrawl.dev/v1/search', json={'query': 'Anduril recruiter', 'limit': 3}, headers={'Authorization': f'Bearer {os.environ[\"FIRECRAWL_API_KEY\"]}'}, timeout=30) print(r.status_code) data = r.json().get('data', []) print(json.dumps(data[:2], indent=2)) " , python3 -c " import requests, os, json r = requests.post('https://api.firecrawl.dev/v1/search', json={'query': 'site:linkedin.com Anduril recruiter', 'limit': 5}, headers={'Authorization': f'Bearer {os.environ[\"FIRECRAWL_API_KEY\"]}'}, timeout=30) print(r.status_code) for h in r.json().get('data', []): print(h.get('url'), '|', h.get('title')) " echo "---checking SimplifyJobs domain---" grep -rn "simplify\.jobs\|simplifyjobs.com" /home/anant_gupta/projects/work/internship-research-loop/*.md 2>/dev/null python3 -c " import requests r = requests.get('https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json', timeout=15) d = r.json() print(d[0].get('application_link') if 'application_link' in d[0] else list(d[0].keys())) ", python3 -c " import requests try: r = requests.head('https://simplify.jobs', timeout=10, allow_redirects=True) print('simplify.jobs ->', r.status_code, r.url) except Exception as e: print('ERROR', e) ", .venv/bin/python -m pytest tests/test_enrich.py -v 2>&1 | tail -30, .venv/bin/python -m pytest tests/ -q 2>&1 | tail -10, python3 -c " import requests greenhouse_candidates = [ 'perplexityai', 'together-ai', 'weightsandbiases', 'huggingface', 'cohere', 'runwayml', 'baseten', 'fireworksai', 'anysphere', 'sierra', 'glean-work', 'harveyai', 'crusoeenergy', 'groq', 'characterai', 'scaleai', 'codeium', 'cognitionlabs', 'langchain', 'pinecone', 'vercel', 'replicate', 'modal', ] print('=== Greenhouse ===') for token in greenhouse_candidates: try: r = requests.get(f'https://boards-api.greenhouse.io/v1/boards/{token}/jobs', timeout=10) if r.status_code == 200: jobs = r.json().get('jobs', []) if jobs: print(f'{token}: LIVE, {len(jobs)} jobs') except Exception: pass " , python3 -c " import requests ashby_candidates = [ 'perplexityai', 'together-ai', 'together', 'cohere', 'runwayml', 'runway', 'baseten', 'anysphere', 'cursor', 'sierra', 'glean', 'harvey', 'harveyai', 'crusoe', 'groq', 'character-ai', 'codeium', 'cognition', 'cognition-labs', 'langchain', 'pinecone', 'replicate', 'modal', 'braintrust', 'mistral', 'suno', 'elevenlabs', 'hume', 'weights-and-biases', 'wandb', 'openpipe', ] print('=== Ashby ===') for token in ashby_candidates: try: r = requests.get(f'https://api.ashbyhq.com/posting-api/job-board/{token}', params={'includeCompensation':'true'}, timeout=10) if r.status_code == 200: jobs = r.json().get('jobs', []) if jobs: print(f'{token}: LIVE, {len(jobs)} jobs') except Exception: pass " , python3 -c " import requests print('=== Ashby intern check ===') for token in ['cohere', 'runway', 'baseten', 'cursor', 'sierra', 'harvey', 'crusoe', 'cognition', 'langchain', 'pinecone', 'modal', 'braintrust', 'suno', 'elevenlabs']: try: r = requests.get(f'https://api.ashbyhq.com/posting-api/job-board/{token}', params={'includeCompensation':'true'}, timeout=10) jobs = r.json().get('jobs', []) interns = [j['title'] for j in jobs if j.get('employmentType') == 'Intern'] if interns: print(f'{token}: {len(interns)} intern jobs ->', interns[:3]) except Exception as e: print(token, 'err', e) print('=== Greenhouse intern check ===') for token in ['fireworksai', 'scaleai', 'vercel']: try: r = requests.get(f'https://boards-api.greenhouse.io/v1/boards/{token}/jobs', timeout=10) jobs = r.json().get('jobs', []) interns = [j['title'] for j in jobs if 'intern' in j['title'].lower()] if interns: print(f'{token}: {len(interns)} intern titles ->', interns[:5]) except Exception as e: print(token, 'err', e) " , git status --short, git diff --stat core/profile.yaml tests/fixtures/josegael.json tests/fixtures/simplifyjobs.json tests/fixtures/vanshb03.json tests/fixtures/zshah101.json, python3 -c " import ast, sys for f in ['core/relevance.py', 'core/classify.py', 'vault_writer/writer.py', 'enrich.py', 'run_pipeline.py', 'recheck.py', 'ingestion/posting_page.py', 'ingestion/sources.py', 'vault_writer/validate.py']: try: ast.parse(open(f).read()) except SyntaxError as e: print(f'{f}: SYNTAX ERROR {e}') sys.exit(1) print('all parse cleanly') " .venv/bin/python -c "import run_pipeline, recheck, enrich, core.classify, core.relevance" && echo "all import cleanly", .venv/bin/python -m pytest tests/ -v 2>&1 | tail -70, git status && echo "---FETCH---" && git fetch origin && echo "---LOG local vs origin/master---" && git log --oneline -5 && echo "---" && git log --oneline origin/master -5 && echo "---diff local vs origin---" && git rev-list --left-right --count HEAD...origin/master, git log --oneline cdb4299..origin/master && echo "===FILES CHANGED UPSTREAM===" && git diff --stat cdb4299 origin/master, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== core/filter.py (should be 100% pre-existing, I never touched it) ===" git diff origin/master -- core/filter.py | head -5 echo "lines changed:"; git diff origin/master --stat -- core/filter.py echo echo "=== ingestion/sources.py diff stat ===" git diff origin/master --stat -- ingestion/sources.py echo echo "=== run_pipeline.py diff stat ===" git diff origin/master --stat -- run_pipeline.py echo echo "=== recheck.py diff stat ===" git diff origin/master --stat -- recheck.py echo echo "=== tests/test_run_pipeline.py diff stat ===" git diff origin/master --stat -- tests/test_run_pipeline.py echo echo "=== tests/test_sources.py diff stat (should be 100% pre-existing) ===" git diff origin/master --stat -- tests/test_sources.py echo echo "=== fixture JSONs diff stat ===" git diff origin/master --stat -- tests/fixtures/josegael.json tests/fixtures/simplifyjobs.json tests/fixtures/vanshb03.json tests/fixtures/zshah101.json, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== ingestion/sources.py FULL DIFF ===" git diff origin/master -- ingestion/sources.py, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== run_pipeline.py FULL DIFF ===" git diff origin/master -- run_pipeline.py, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== core/profile.yaml DIFF ===" git diff origin/master -- core/profile.yaml echo echo "=== core/filter.py DIFF ===" git diff origin/master -- core/filter.py, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== recheck.py FULL DIFF ===" git diff origin/master -- recheck.py echo echo "=== tests/test_run_pipeline.py FULL DIFF ===" git diff origin/master -- tests/test_run_pipeline.py, cd /home/anant_gupta/projects/work/internship-research-loop mkdir -p /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check git show origin/master:recheck.py > /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/recheck_origin.py git show origin/master:run_pipeline.py > /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/run_pipeline_origin.py git show origin/master:ingestion/sources.py > /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/sources_origin.py git show origin/master:tests/test_run_pipeline.py > /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/test_run_pipeline_origin.py echo done, diff /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/recheck_freehire_only.py /home/anant_gupta/projects/work/internship-research-loop/recheck.py, diff /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/sources_freehire_only.py /home/anant_gupta/projects/work/internship-research-loop/ingestion/sources.py, diff /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/run_pipeline_freehire_only.py /home/anant_gupta/projects/work/internship-research-loop/run_pipeline.py, sed -n '30,70p' /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/test_run_pipeline_origin.py, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check python3 -c " content = open('test_run_pipeline_origin.py').read() old = '''def _fake_http_get(url, timeout=None): from ingestion.sources import ( ASHBY_JOBS_URL, GREENHOUSE_JOBS_URL, JOSEGAEL_URL, SIMPLIFY_URL, VANSHB03_URL, ZSHAH101_URL, ) resp = Mock(status_code=200) if url == SIMPLIFY_URL: resp.json.return_value = _simplify_raw() elif url == JOSEGAEL_URL: resp.json.return_value = _josegael_raw() elif url == VANSHB03_URL: resp.json.return_value = _vanshb03_raw() elif url == ZSHAH101_URL: resp.json.return_value = _zshah101_raw() elif url.startswith(GREENHOUSE_JOBS_URL.split(\"{\")[0]) or url.startswith(ASHBY_JOBS_URL.split(\"{\")[0]): # per-company board endpoints — pipeline-orchestration tests dont need # real per-company data, thats covered in test_sources.py directly resp.json.return_value = {\"jobs\": []} else: raise AssertionError(f\"unexpected url: {url}\") return resp'''.replace('dont', \"don't\").replace('thats', \"that's\") new = '''def _fake_http_get(url, timeout=None): from ingestion.freehire import FREEHIRE_SEARCH_URL from ingestion.sources import ( AI_JOBS_URL, ASHBY_JOBS_URL, GREENHOUSE_JOBS_URL, JOSEGAEL_URL, SIMPLIFY_URL, VANSHB03_URL, ZSHAH101_URL, ) resp = Mock(status_code=200) if url == SIMPLIFY_URL: resp.json.return_value = _simplify_raw() elif url == JOSEGAEL_URL: resp.json.return_value = _josegael_raw() elif url == VANSHB03_URL: resp.json.return_value = _vanshb03_raw() elif url == ZSHAH101_URL: resp.json.return_value = _zshah101_raw() elif url.startswith(GREENHOUSE_JOBS_URL.split(\"{\")[0]) or url.startswith(ASHBY_JOBS_URL.split(\"{\")[0]): # per-company board endpoints — pipeline-orchestration tests don't need # real per-company data, that's covered in test_sources.py directly resp.json.return_value = {\"jobs\": []} elif url.startswith(FREEHIRE_SEARCH_URL.split(\"{\")[0]): resp.json.return_value = {\"data\": []} elif url == AI_JOBS_URL: resp.json.return_value = {\"jobs\": []} else: raise AssertionError(f\"unexpected url: {url}\") return resp''' assert old in content, 'OLD BLOCK NOT FOUND' content = content.replace(old, new) open('test_run_pipeline_freehire_only.py', 'w').write(content) print('done') " , diff /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/test_run_pipeline_freehire_only.py /home/anant_gupta/projects/work/internship-research-loop/tests/test_run_pipeline.py, set -e cd /home/anant_gupta/projects/work/internship-research-loop WT=$(git worktree add --detach /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/freehire_check_wt origin/master 2>&1) echo "$WT", set -e SRC=/home/anant_gupta/projects/work/internship-research-loop WT=/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/freehire_check_wt RECON=/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check # 100% pre-existing, untouched by me cp "$SRC/core/filter.py" "$WT/core/filter.py" cp "$SRC/core/profile.yaml" "$WT/core/profile.yaml" cp "$SRC/ingestion/normalize.py" "$WT/ingestion/normalize.py" cp "$SRC/ingestion/freehire.py" "$WT/ingestion/freehire.py" cp "$SRC/tests/fixtures/freehire.json" "$WT/tests/fixtures/freehire.json" cp "$SRC/tests/fixtures/josegael.json" "$WT/tests/fixtures/josegael.json" cp "$SRC/tests/fixtures/simplifyjobs.json" "$WT/tests/fixtures/simplifyjobs.json" cp "$SRC/tests/fixtures/vanshb03.json" "$WT/tests/fixtures/vanshb03.json" cp "$SRC/tests/fixtures/zshah101.json" "$WT/tests/fixtures/zshah101.json" cp "$SRC/tests/test_filter.py" "$WT/tests/test_filter.py" cp "$SRC/tests/test_sources.py" "$WT/tests/test_sources.py" cp "$SRC/tests/test_freehire.py" "$WT/tests/test_freehire.py" # reconstructed pre-existing-only versions cp "$RECON/sources_freehire_only.py" "$WT/ingestion/sources.py" cp "$RECON/run_pipeline_freehire_only.py" "$WT/run_pipeline.py" cp "$RECON/recheck_freehire_only.py" "$WT/recheck.py" cp "$RECON/test_run_pipeline_freehire_only.py" "$WT/tests/test_run_pipeline.py" cd "$WT" python3 -m venv .venv-check -q 2>/dev/null || true .venv-check/bin/pip install -q -r requirements.txt 2>&1 | tail -5 echo "=== git status in worktree (should show only the intended files as modified) ===" git status --short echo "=== running pytest ===" .venv-check/bin/python -m pytest tests/ -q 2>&1 | tail -40, WT=/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/freehire_check_wt cd "$WT" /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python -m pytest tests/ -q 2>&1 | tail -50, cd /home/anant_gupta/projects/work/internship-research-loop git worktree remove /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/freehire_check_wt --force git worktree list echo "--- backing up my current full mixed-file versions before any swapping ---" BACKUP=/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/my_full_versions mkdir -p "$BACKUP" cp ingestion/sources.py "$BACKUP/sources_full.py" cp run_pipeline.py "$BACKUP/run_pipeline_full.py" cp recheck.py "$BACKUP/recheck_full.py" cp tests/test_run_pipeline.py "$BACKUP/test_run_pipeline_full.py" ls -la "$BACKUP", cd /home/anant_gupta/projects/work/internship-research-loop git log --oneline -1 git status git rev-parse HEAD, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== reflog ===" git reflog -20 echo "=== does core/relevance.py exist? ===" ls -la core/relevance.py core/classify.py 2>&1 echo "=== log around f56ac8c ===" git log --oneline -5, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== 6622bca stat ===" git show --stat 6622bca | head -50 echo echo "=== f56ac8c stat ===" git show --stat f56ac8c | head -30, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== full reflog with relative times ===" git reflog --date=iso -20 echo echo "=== current wall clock ===" date echo echo "=== do these new skill/agent files exist on disk right now? ===" ls -la .claude/skills/promote-dossier .claude/agents/contact-researcher.md .claude/agents/loop-verifier.md .claude/skills/review-loop-change 2>&1 echo echo "=== any other git processes / locks? ===" ls -la .git/index.lock 2>&1 ps aux | grep -i git | grep -v grep, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== does the committed content match my own working files exactly? ===" diff <(git show 6622bca:core/relevance.py) core/relevance.py && echo "relevance.py: IDENTICAL" diff <(git show 6622bca:core/classify.py) core/classify.py && echo "classify.py: IDENTICAL" diff <(git show 6622bca:run_pipeline.py) run_pipeline.py && echo "run_pipeline.py: IDENTICAL" diff <(git show 6622bca:tests/test_relevance.py) tests/test_relevance.py && echo "test_relevance.py: IDENTICAL", cd /home/anant_gupta/projects/work/internship-research-loop git status git log --oneline -5 git fetch origin -q git log --oneline origin/master -3, cd /home/anant_gupta/projects/work/internship-research-loop git log -1 --format="%B" a21b2fa echo "---re-verify current state before surgery---" git fetch origin -q git status git log --oneline -5 git log --oneline origin/master -3, cd /home/anant_gupta/projects/work/internship-research-loop set -e git branch -D split-work 2>/dev/null || true git checkout -b split-work ba2bdcd echo "=== cherry-picking 6622bca content (no commit) ===" git cherry-pick --no-commit 6622bca git status --short | head -30, cd /home/anant_gupta/projects/work/internship-research-loop set -e RECON=/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check # Overwrite the 4 mixed files with their freehire-only reconstructions cp "$RECON/sources_freehire_only.py" ingestion/sources.py cp "$RECON/recheck_freehire_only.py" recheck.py cp "$RECON/run_pipeline_freehire_only.py" run_pipeline.py cp "$RECON/test_run_pipeline_freehire_only.py" tests/test_run_pipeline.py # Stage exactly the Freehire+AIJobs file set git add core/filter.py core/profile.yaml ingestion/normalize.py ingestion/freehire.py \ ingestion/sources.py recheck.py run_pipeline.py \ tests/fixtures/freehire.json tests/fixtures/josegael.json tests/fixtures/simplifyjobs.json \ tests/fixtures/vanshb03.json tests/fixtures/zshah101.json \ tests/test_filter.py tests/test_sources.py tests/test_freehire.py tests/test_run_pipeline.py echo "=== staged for commit 1 ===" git status --short | grep '^[AM]' echo "=== remaining unstaged (should be exactly my Task A-F files) ===" git status --short | grep -v '^[AM]', cd /home/anant_gupta/projects/work/internship-research-loop set -e git reset echo "=== after reset, staged (should be empty) ===" git status --short | grep '^[AM]' || echo "(none staged, good)" echo "=== now add exactly the Freehire+AIJobs subset ===" git add core/filter.py core/profile.yaml ingestion/normalize.py ingestion/freehire.py \ ingestion/sources.py recheck.py run_pipeline.py \ tests/fixtures/freehire.json tests/fixtures/josegael.json tests/fixtures/simplifyjobs.json \ tests/fixtures/vanshb03.json tests/fixtures/zshah101.json \ tests/test_filter.py tests/test_sources.py tests/test_freehire.py tests/test_run_pipeline.py echo "=== staged now ===" git status --short, cd /home/anant_gupta/projects/work/internship-research-loop git diff --cached --stat echo "=== does staged ingestion/sources.py match my verified reconstruction? ===" git diff --cached ingestion/sources.py | wc -l diff <(git show :ingestion/sources.py) /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/sources_freehire_only.py && echo "sources.py staged content: MATCHES verified reconstruction" diff <(git show :run_pipeline.py) /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/run_pipeline_freehire_only.py && echo "run_pipeline.py staged content: MATCHES verified reconstruction" diff <(git show :recheck.py) /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/recheck_freehire_only.py && echo "recheck.py staged content: MATCHES verified reconstruction" diff <(git show :tests/test_run_pipeline.py) /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/test_run_pipeline_freehire_only.py && echo "test_run_pipeline.py staged content: MATCHES verified reconstruction", cd /home/anant_gupta/projects/work/internship-research-loop git commit -m "$(cat <<'EOF' Two new discovery sources: Freehire, AIJobs Freehire (github.com/strelov1/freehire): a live, no-auth public API aggregating 3.4M+ postings across 78 ATS platforms and direct company crawls (Google, Uber) no ATS-token approach can reach. Verified against three real ground-truth misses a manual clipping audit surfaced: Google's exact posting (freehire's created_at beat SimplifyJobs' date_posted by ~7 hours), Nuro's exact posting, and a partial match on Uber's. Scoped deliberately to google/uber only — companies confirmed to have no reachable Greenhouse/Ashby/Lever token; broader company slugs (Western Digital, Wells Fargo, Grant Thornton) were tried and dropped after a live dry run surfaced they were already reachable via SimplifyJobs and added only noise (Wells Fargo alone: ~20/28 intern-tagged postings non-tech by title). active is always True (freehire's own closed_at field lags real closures by days, confirmed live) — not wired into recheck.py's removal checks for the same reason. AIJobs (artificialintelligencejobs.co): a single generated snapshot feed, filtered to level=Intern, degrading to empty on failure like every other source here. core/filter.py: _matches_freehire/_matches_ai_jobs share the existing Greenhouse/Ashby free-text matcher. profile.yaml widened to include Spring 2027 (with a terms_weight field for a later priority pass) and documents two live-data non-findings: no fellowship/research-shaped listing needs new matching code, and pay is confirmed out of scope everywhere in this pipeline. 227/227 tests passing. Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> EOF )" git log --oneline -3, cd /home/anant_gupta/projects/work/internship-research-loop set -e BACKUP=/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/split_check/my_full_versions cp "$BACKUP/sources_full.py" ingestion/sources.py cp "$BACKUP/run_pipeline_full.py" run_pipeline.py cp "$BACKUP/recheck_full.py" recheck.py cp "$BACKUP/test_run_pipeline_full.py" tests/test_run_pipeline.py git add -A git status --short, cd /home/anant_gupta/projects/work/internship-research-loop git commit -m "$(cat <<'EOF' Priority-bucket classification, CS-relevance gate, widened contact research Adds core/classify.py (Layer 2.5b, zero-LLM keyword bucketing into AI/ML, CyS & Finance, Fullstack, Other) and core/relevance.py (Layer 2.5, two-stage CS/software-relevance gate: cheap title-only reject before fetch, content- confirmed adjacent-field check after). vault_writer/writer.py and the dossier template now sort writes into priority-bucket subfolders under List/Dossiers/, drop the unused uid/category/promoted frontmatter fields in favor of next (matching the vault's own note convention), and add a dossier_uids.json manifest for idempotent re-writes and recheck.py's removal-checking. Fixes a real Ashby extraction bug: some sources store the application-form URL (.../application) instead of the posting page, which renders no job description at all — confirmed live (the same posting returns 4015 chars of full content at its base URL vs 1099 chars of bare form fields at /application). ingestion/posting_page.py now strips that suffix before fetch. Widens enrich.py's contact search to recruiter/university-recruiting queries and LinkedIn search-snippet hits (site:linkedin.com, snippet text only — never scrapes or logs into linkedin.com, per its own hard line). Also diversifies ingestion/sources.py's Greenhouse/Ashby seed lists (all- quant-trading before) with 6 live-verified AI/ML companies: Fireworks AI, Scale AI, Cohere, Cursor, Modal, ElevenLabs. 258/258 tests passing. Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> EOF )" git log --oneline -4, cd /home/anant_gupta/projects/work/internship-research-loop set -e git cherry-pick f56ac8c git log --oneline -5 echo echo "=== CRITICAL CHECK: final tree of split-work vs original f56ac8c must be identical ===" git diff f56ac8c split-work --stat if [ -z "$(git diff f56ac8c split-work)" ]; then echo "TREES ARE IDENTICAL — safe to proceed" else echo "MISMATCH — DO NOT PROCEED" fi, cd /home/anant_gupta/projects/work/internship-research-loop git fetch origin -q echo "=== has origin/master moved since I last checked? ===" git log --oneline origin/master -3 echo "=== expected tip (f56ac8c) ===", cd /home/anant_gupta/projects/work/internship-research-loop set -e git checkout master git reset --hard split-work git log --oneline -5 echo "=== force-pushing with lease (safe: fails if origin/master moved past f56ac8c) ===" git push --force-with-lease=master:f56ac8c origin master, cd /home/anant_gupta/projects/work/internship-research-loop git fetch origin -q echo "=== origin/master now ===" git log --oneline origin/master -8 echo echo "=== what's new beyond f56ac8c? ===" git log --oneline f56ac8c..origin/master, cd /home/anant_gupta/projects/work/internship-research-loop git diff --stat f56ac8c bcc4520 echo "---" git diff --stat bcc4520 5fee032, cd /home/anant_gupta/projects/work/internship-research-loop set -e git checkout split-work git cherry-pick bcc4520 5fee032 git log --oneline -7 echo echo "=== CRITICAL CHECK: final tree of split-work vs origin/master must be identical ===" if [ -z "$(git diff origin/master split-work)" ]; then echo "TREES ARE IDENTICAL — safe to proceed" else echo "MISMATCH:" git diff --stat origin/master split-work fi, cd /home/anant_gupta/projects/work/internship-research-loop set -e git checkout master git reset --hard split-work git push --force-with-lease=master:5fee032 origin master, cd /home/anant_gupta/projects/work/internship-research-loop git branch -d split-work git fetch origin -q git log --oneline -8 echo "=== confirm local == remote ===" git status echo "=== confirm working tree matches (no stray diffs from my swap operations) ===" git diff --stat HEAD, cd /home/anant_gupta/projects/work/internship-research-loop rm -rf /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/verify_pushed git clone -q . /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/verify_pushed cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/verify_pushed git log --oneline -3 /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python -m pytest tests/ -q 2>&1 | tail -15, cd /home/anant_gupta/projects/work/internship-research-loop gh run list --repo gupta-builds/internship-research-loop --limit 10 --json databaseId,name,status,conclusion,headSha,createdAt 2>&1, cd /home/anant_gupta/projects/work/internship-research-loop echo "My actual current HEAD full SHA:" git rev-parse HEAD echo date -u echo echo "=== runs for exactly this SHA ===" gh run list --repo gupta-builds/internship-research-loop --commit $(git rev-parse HEAD) --json databaseId,name,status,conclusion,createdAt,headSha 2>&1, gh run view 30196939629 --repo gupta-builds/internship-research-loop 2>&1 | head -30, cd /home/anant_gupta/projects/work/internship-research-loop git worktree list rm -rf /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/verify_pushed echo "cleanup done"
 - Tool call tally: Agent (3), AskUserQuestion (3), Bash (105), Edit (31), ExitPlanMode (1), mcp__jarvis-fs__list_allowed_directories (1), mcp__jarvis-fs__list_directory (1), mcp__the-plan-fs__list_allowed_directories (1), Read (43), ScheduleWakeup (2), TaskCreate (7), TaskOutput (1), TaskUpdate (13), ToolSearch (7), Write (11)
 

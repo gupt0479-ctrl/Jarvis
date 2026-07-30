@@ -68,6 +68,8 @@
     "date_result": "date",
     "started_at": "datetime",
     "ended_at": "datetime",
-    "tokens": "number"
+    "tokens": "multitext",
+    "tools_used": "multitext",
+    "exported_at": "datetime"
   }
 }

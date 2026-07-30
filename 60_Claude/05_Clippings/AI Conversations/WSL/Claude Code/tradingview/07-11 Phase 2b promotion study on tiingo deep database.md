@@ -7,7 +7,7 @@ title: "Phase 2b promotion study on tiingo deep database"
 started_at: 2026-07-11T14:41:48
 ended_at: 2026-07-11T17:25:50
 duration_minutes: 164
-exported_at: 2026-07-30T15:28:59.6972445+04:00
+exported_at: 2026-07-30T16:47:46.9270578+04:00
 project: tradingview
 cwd: '/home/anant_gupta/projects/hub/tradingview'
 session_id: b5fdb822-238e-4503-9f0c-fd59668c4312
@@ -532,7 +532,9 @@ test_tiingo.py
 - `TaskCreate` — `{"subject":"Run promotion study on tiingo DB + record decision","description":"python scripts/run_quality_momentum_study.py --db data/market.duckdb --source tiingo, then --record-decision --approver anant per decision policy. Save stdout report.","activeForm":"Running promotion study"}`
 - `TaskCreate` — `{"subject":"Update docs, run guardrail sweep, commit","description":"Update PHASE2B_SOLUTION_DESIGN.md DoD checkboxes with measured results; append lessons to Docs/fable5_run_memory.md; study artifact note under Docs/; guardrail check; commit on feat/phase2b-promotion-study.","activeForm":"Updating docs and finalizing"}`
 - `TaskUpdate` — `{"taskId":"1","status":"in_progress"}`
-- `Bash` — `source .venv/bin/activate && python - <<'EOF'
+- `Bash`:
+  ```bash
+source .venv/bin/activate && python - <<'EOF'
 import duckdb
 conn = duckdb.connect("data/market.duckdb", read_only=True)
 
@@ -570,7 +572,8 @@ print("== V5: quarterly fundamentals depth ==")
 for r in conn.execute("SELECT symbol, MIN(fiscal_period_end) earliest_q, COUNT(*) quarters FROM fundamentals_snapshots WHERE period_type = 'quarter' GROUP BY symbol ORDER BY symbol").fetchall():
     print(r)
 conn.close()
-EOF`
+EOF
+  ```
   ```
 Exit code 1
 == V1: depth + window per symbol ==
@@ -596,7 +599,9 @@ _duckdb.ParserException: Parser Error: syntax error at or near "rows"
 LINE 1: SELECT source, price_adjustment, COUNT(*) rows, SUM(CASE WHEN adjusted_close IS NULL THEN 1 ELSE 0...
                                                   ^
   ```
-- `Bash` — `source .venv/bin/activate && python - <<'EOF'
+- `Bash`:
+  ```bash
+source .venv/bin/activate && python - <<'EOF'
 import duckdb
 conn = duckdb.connect("data/market.duckdb", read_only=True)
 
@@ -630,7 +635,8 @@ print("== V5: quarterly fundamentals depth ==")
 for r in conn.execute("SELECT symbol, MIN(fiscal_period_end) earliest_q, COUNT(*) quarters FROM fundamentals_snapshots WHERE period_type = 'quarter' GROUP BY symbol ORDER BY symbol").fetchall():
     print(r)
 conn.close()
-EOF`
+EOF
+  ```
   ```
 Exit code 1
 == V2: source/adjustment/nulls ==
@@ -641,7 +647,9 @@ _duckdb.ParserException: Parser Error: syntax error at or near "nulls"
 LINE 1: ..., SUM(CASE WHEN adjusted_close IS NULL THEN 1 ELSE 0 END) nulls FROM daily_ohlcv GROUP BY source, price_adjustment
                                                                      ^
   ```
-- `Bash` — `source .venv/bin/activate && python - <<'EOF'
+- `Bash`:
+  ```bash
+source .venv/bin/activate && python - <<'EOF'
 import duckdb
 conn = duckdb.connect("data/market.duckdb", read_only=True)
 
@@ -675,7 +683,8 @@ print("== V5: quarterly fundamentals depth ==")
 for r in conn.execute("SELECT symbol, MIN(fiscal_period_end) AS earliest_q, COUNT(*) AS quarters FROM fundamentals_snapshots WHERE period_type = 'quarter' GROUP BY symbol ORDER BY symbol").fetchall():
     print(r)
 conn.close()
-EOF`
+EOF
+  ```
   ```
 == V2: source/adjustment/nulls ==
 ('tiingo', 'split_dividend_adjusted', 21154, 0)
@@ -1535,7 +1544,9 @@ Paper replay skipped (--skip-paper).
 
 Reminder: research desk output only — action vocabulary is WATCH | HOLD | ACCUMULATE | REDUCE | AVOID | INSUFFICIENT_DATA.
   ```
-- `Bash` — `source .venv/bin/activate && python - <<'EOF'
+- `Bash`:
+  ```bash
+source .venv/bin/activate && python - <<'EOF'
 import duckdb
 conn = duckdb.connect("data/market.duckdb", read_only=True)
 print("== brain_test_runs ==")
@@ -1558,7 +1569,8 @@ for r in conn.execute("SELECT as_of, body FROM paper_journal_entries WHERE entry
 print("== holdings count ==")
 print(conn.execute("SELECT COUNT(*) FROM paper_journal_entries WHERE entry_type='holdings'").fetchone())
 conn.close()
-EOF`
+EOF
+  ```
   ```
 == brain_test_runs ==
 ('out_of_sample', False, datetime.date(2026, 7, 9), 1)
@@ -1595,7 +1607,9 @@ Command running in background with ID: bgpc3wdj1. Output is being written to: /t
 115
 113:Journal [exit] [REDACTED]: realized +939.0877% vs VOO same period +86.4626%
   ```
-- `Bash` — `SCRATCH=/tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/b5fdb822-238e-4503-9f0c-fd59668c4312/scratchpad
+- `Bash`:
+  ```bash
+SCRATCH=/tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/b5fdb822-238e-4503-9f0c-fd59668c4312/scratchpad
 {
 cat <<'HEADER'
 # Phase 2b promotion study — 2026-07-11 (tiingo deep DB)
@@ -1703,7 +1717,8 @@ Paper replay skipped (--skip-paper).
 ```
 FOOTER
 } > Docs/PHASE2B_PROMOTION_STUDY_2026-07-11.md
-wc -l Docs/PHASE2B_PROMOTION_STUDY_2026-07-11.md`
+wc -l Docs/PHASE2B_PROMOTION_STUDY_2026-07-11.md
+  ```
   ```
 215 Docs/[REDACTED].md
   ```
@@ -1758,7 +1773,9 @@ wc -l Docs/PHASE2B_PROMOTION_STUDY_2026-07-11.md`
 - [x] Guardrail sweep clean (no execution language in new strings; no new
       dependencies; Kronos untouched).
   ```
-- `Bash` — `cat >> Docs/fable5_run_memory.md <<'EOF'
+- `Bash`:
+  ```bash
+cat >> Docs/fable5_run_memory.md <<'EOF'
 
 ## Phase 2b promotion study (2026-07-11, Fable)
 
@@ -1777,7 +1794,8 @@ wc -l Docs/PHASE2B_PROMOTION_STUDY_2026-07-11.md`
 - Holdings dump: `entry_type` on JournalEntry is a free string, so a new `"holdings"` entry type needed
   zero model/store changes — smallest-diff wins.
 EOF
-tail -5 Docs/fable5_run_memory.md`
+tail -5 Docs/fable5_run_memory.md
+  ```
   ```
   positive, pooled Sharpe 1.52; DSR 0.9947 with n_trials=1 (pure PSR, no deflation credit). Net +356.82%
   vs VOO +87.10%; 0 cash sessions (SEC quarterly backfill fully prevented the cash-drag failure mode).
@@ -1786,7 +1804,9 @@ tail -5 Docs/fable5_run_memory.md`
   zero model/store changes — smallest-diff wins.
   ```
 - `Skill` — `{"skill":"guardrail-check"}`
-- `Bash` — `cd /home/anant_gupta/projects/hub/tradingview
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/hub/tradingview
 echo "== 1a. execution/certainty language =="
 grep -rniE "\b(buy now|sell now|guaranteed|risk-free|can't lose)\b" src/ tests/ Docs/ README.md CLAUDE.md 2>/dev/null || echo "no hits"
 echo "== 1b. bare BUY/SELL =="
@@ -1798,7 +1818,8 @@ git check-ignore .env && echo ".env ignored OK"
 echo "== 4. banned deps =="
 grep -niE "alpaca|ib_insync|ccxt|broker" pyproject.toml requirements*.txt 2>/dev/null || echo "no hits"
 echo "== 6. LLM calls in ingestion path =="
-grep -rniE "openai|anthropic|chat" src/research_data/models.py src/research_data/config.py src/research_data/storage.py src/research_data/normalization.py src/research_data/calendar.py src/research_data/quality.py src/research_data/read_api.py src/research_data/cli.py src/research_data/evidence.py src/research_data/benchmark.py 2>/dev/null || echo "no hits"`
+grep -rniE "openai|anthropic|chat" src/research_data/models.py src/research_data/config.py src/research_data/storage.py src/research_data/normalization.py src/research_data/calendar.py src/research_data/quality.py src/research_data/read_api.py src/research_data/cli.py src/research_data/evidence.py src/research_data/benchmark.py 2>/dev/null || echo "no hits"
+  ```
   ```
 == 1a. execution/certainty language ==
 src/research_data/benchmark.py:20:_EXECUTION_TOKENS = frozenset({"BUY", "SELL", "HOLD", "BUY NOW", "SELL NOW"})
@@ -1845,11 +1866,14 @@ no hits
 == 6. LLM calls in ingestion path ==
 no hits
   ```
-- `Bash` — `cd /home/anant_gupta/projects/hub/tradingview
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/hub/tradingview
 echo "== 5. out-of-scope asset/venue paths (src only) =="
 grep -rniE "intraday|\btick\b|options|futures|crypto|margin|leverage|scrape" src/ 2>/dev/null | grep -viE "operating_margin|fcf_margin|margin.stability|margin_" || echo "no hits"
 echo "== 2. action-like literals in the diff =="
-git diff main --unified=0 | grep -E "^\+" | grep -oE '"[A-Z_]{3,}"' | sort -u || echo "none in diff"`
+git diff main --unified=0 | grep -E "^\+" | grep -oE '"[A-Z_]{3,}"' | sort -u || echo "none in diff"
+  ```
   ```
 == 5. out-of-scope asset/venue paths (src only) ==
 src/research_data/fundamentals/store.py:145:    (statement coverage varies by source); the operating-margin history comes
@@ -1969,7 +1993,9 @@ feat/phase2b-promotion-study
 - `TaskOutput` — `{"task_id":"bgpc3wdj1","block":"true","timeout":240000}`
 - `TaskOutput` — `{"task_id":"bgpc3wdj1","block":"true","timeout":300000}`
 - `ToolSearch` — `{"query":"select:TaskStop","max_results":1}`
-- `Bash` — `git commit -m "$(cat <<'EOF'
+- `Bash`:
+  ```bash
+git commit -m "$(cat <<'EOF'
 Land Phase 2b F1-F3 and the tiingo promotion study (4/4 gates, demo_eligible)
 
 F1: --source CLI flag -> price_source on study/hook -> get_price_frame(source=...);
@@ -1990,7 +2016,8 @@ Docs/PHASE2B_PROMOTION_STUDY_2026-07-11.md. Gates/hook math/universe untouched.
 
 Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
 EOF
-)" && git log --oneline -2 && git status --short`
+)" && git log --oneline -2 && git status --short
+  ```
   ```
 [feat/phase2b-promotion-study 9c7ed91] Land Phase 2b F1-F3 and the tiingo promotion study (4/4 gates, demo_eligible)
  7 files changed, 518 insertions(+), 28 deletions(-)
@@ -2004,299 +2031,6 @@ df2c961 Merge pull request #2 from gupta-builds/feat/quality-momentum-strategy-p
 - Files created: /home/anant_gupta/.claude/projects/-home-anant-gupta-projects-hub-tradingview/memory/phase2-strategy-pack.md
 - Files modified: /home/anant_gupta/projects/hub/tradingview/src/research_data/strategies/quality_momentum.py, /home/anant_gupta/projects/hub/tradingview/tests/synthetic.py, /home/anant_gupta/projects/hub/tradingview/tests/test_strategy_quality_momentum.py, /home/anant_gupta/projects/hub/tradingview/scripts/run_quality_momentum_study.py, /home/anant_gupta/projects/hub/tradingview/Docs/PHASE2B_SOLUTION_DESIGN.md, /home/anant_gupta/.claude/projects/-home-anant-gupta-projects-hub-tradingview/memory/MEMORY.md
 - Files deleted: (none)
-- Commands run: git -C /home/anant_gupta/projects/hub/tradingview fetch --all --quiet 2>&1; git -C /home/anant_gupta/projects/hub/tradingview branch -a; echo ---; git -C /home/anant_gupta/projects/hub/tradingview log --oneline -8 main 2>/dev/null || git -C /home/anant_gupta/projects/hub/tradingview log --oneline -8 origin/main 2>/dev/null || echo "no main found", ls /home/anant_gupta/projects/hub/tradingview/Docs/ 2>/dev/null; echo ---; ls /home/anant_gupta/projects/hub/tradingview/scripts/ 2>/dev/null; echo ---; ls /home/anant_gupta/projects/hub/tradingview/*.md 2>/dev/null, git merge-base --is-ancestor feat/quality-momentum-strategy-pack main && echo "feature branch IS merged into main" || echo "feature branch NOT merged into main"; echo ---; git log --oneline main..feat/quality-momentum-strategy-pack | head -30; echo ---; git log --oneline origin/main -3; echo ---; git status --short --branch, git log --oneline origin/main..feat/quality-momentum-strategy-pack; echo ---; git merge-base --is-ancestor 4a2613e origin/main && echo "deepen commits on origin/main" || echo "deepen commits NOT on origin/main", git fetch --all --quiet; git log --oneline -3 main; echo ---; git log --oneline -3 origin/main; echo ---; git merge-base --is-ancestor 4a2613e main && echo "deepen commits ON main" || echo "deepen commits NOT on main"; echo ---; git rev-parse main origin/main; git status --short --branch, git checkout main --quiet && git checkout -b feat/phase2b-promotion-study --quiet && git branch --show-current, find /home/anant_gupta/projects/hub/tradingview/src/research_data -name "*.py" | sort; echo ---; ls /home/anant_gupta/projects/hub/tradingview/tests/, wc -l /home/anant_gupta/projects/hub/tradingview/Docs/PHASE2_STRATEGY_PACK.md /home/anant_gupta/projects/hub/tradingview/Docs/fable5_run_memory.md /home/anant_gupta/projects/hub/tradingview/tests/test_strategy_quality_momentum.py /home/anant_gupta/projects/hub/tradingview/src/research_data/paper/engine.py, grep -n "def make_price_records" -A 30 /home/anant_gupta/projects/hub/tradingview/tests/synthetic.py | head -60; echo ---; grep -rn "run_quality_momentum_study\|quality_momentum_tilt_hook" /home/anant_gupta/projects/hub/tradingview/src /home/anant_gupta/projects/hub/tradingview/scripts --include="*.py" | grep -v "strategies/quality_momentum.py", source .venv/bin/activate && python - <<'EOF'
-import duckdb
-conn = duckdb.connect("data/market.duckdb", read_only=True)
-
-print("== V1: depth + window per symbol ==")
-for r in conn.execute("SELECT symbol, COUNT(*) n, MIN(trading_date) lo, MAX(trading_date) hi FROM daily_ohlcv GROUP BY symbol ORDER BY symbol").fetchall():
-    print(r)
-
-print("== V2: source/adjustment/nulls ==")
-for r in conn.execute("SELECT source, price_adjustment, COUNT(*) rows, SUM(CASE WHEN adjusted_close IS NULL THEN 1 ELSE 0 END) nulls FROM daily_ohlcv GROUP BY source, price_adjustment").fetchall():
-    print(r)
-
-print("== V3: calendar mismatch vs VOO (expect no rows) ==")
-rows = conn.execute("""
-WITH voo AS (SELECT trading_date FROM daily_ohlcv WHERE symbol='VOO')
-SELECT symbol,
-       COUNT(*) FILTER (WHERE trading_date NOT IN (SELECT trading_date FROM voo))
-         + (SELECT COUNT(*) FROM voo)
-         - COUNT(*) FILTER (WHERE trading_date IN (SELECT trading_date FROM voo))
-       AS calendar_mismatch
-FROM daily_ohlcv GROUP BY symbol HAVING calendar_mismatch > 0
-""").fetchall()
-print(rows if rows else "OK: 0 mismatches")
-
-print("== V4: split residue >35% (expect no rows) ==")
-rows = conn.execute("""
-SELECT symbol, trading_date, adjusted_close / lag_close - 1 AS move
-FROM (SELECT symbol, trading_date, adjusted_close,
-             LAG(adjusted_close) OVER (PARTITION BY symbol ORDER BY trading_date) lag_close
-      FROM daily_ohlcv)
-WHERE lag_close IS NOT NULL AND ABS(adjusted_close / lag_close - 1) > 0.35
-""").fetchall()
-print(rows if rows else "OK: 0 residue hits")
-
-print("== V5: quarterly fundamentals depth ==")
-for r in conn.execute("SELECT symbol, MIN(fiscal_period_end) earliest_q, COUNT(*) quarters FROM fundamentals_snapshots WHERE period_type = 'quarter' GROUP BY symbol ORDER BY symbol").fetchall():
-    print(r)
-conn.close()
-EOF, source .venv/bin/activate && python - <<'EOF'
-import duckdb
-conn = duckdb.connect("data/market.duckdb", read_only=True)
-
-print("== V2: source/adjustment/nulls ==")
-for r in conn.execute("SELECT source, price_adjustment, COUNT(*) n_rows, SUM(CASE WHEN adjusted_close IS NULL THEN 1 ELSE 0 END) nulls FROM daily_ohlcv GROUP BY source, price_adjustment").fetchall():
-    print(r)
-
-print("== V3: calendar mismatch vs VOO (expect no rows) ==")
-rows = conn.execute("""
-WITH voo AS (SELECT trading_date FROM daily_ohlcv WHERE symbol='VOO')
-SELECT symbol,
-       COUNT(*) FILTER (WHERE trading_date NOT IN (SELECT trading_date FROM voo))
-         + (SELECT COUNT(*) FROM voo)
-         - COUNT(*) FILTER (WHERE trading_date IN (SELECT trading_date FROM voo))
-       AS calendar_mismatch
-FROM daily_ohlcv GROUP BY symbol HAVING calendar_mismatch > 0
-""").fetchall()
-print(rows if rows else "OK: 0 mismatches")
-
-print("== V4: split residue >35% (expect no rows) ==")
-rows = conn.execute("""
-SELECT symbol, trading_date, adjusted_close / lag_close - 1 AS move
-FROM (SELECT symbol, trading_date, adjusted_close,
-             LAG(adjusted_close) OVER (PARTITION BY symbol ORDER BY trading_date) lag_close
-      FROM daily_ohlcv)
-WHERE lag_close IS NOT NULL AND ABS(adjusted_close / lag_close - 1) > 0.35
-""").fetchall()
-print(rows if rows else "OK: 0 residue hits")
-
-print("== V5: quarterly fundamentals depth ==")
-for r in conn.execute("SELECT symbol, MIN(fiscal_period_end) earliest_q, COUNT(*) quarters FROM fundamentals_snapshots WHERE period_type = 'quarter' GROUP BY symbol ORDER BY symbol").fetchall():
-    print(r)
-conn.close()
-EOF, source .venv/bin/activate && python - <<'EOF'
-import duckdb
-conn = duckdb.connect("data/market.duckdb", read_only=True)
-
-print("== V2: source/adjustment/nulls ==")
-for r in conn.execute("SELECT source, price_adjustment, COUNT(*) AS n_rows, SUM(CASE WHEN adjusted_close IS NULL THEN 1 ELSE 0 END) AS null_count FROM daily_ohlcv GROUP BY source, price_adjustment").fetchall():
-    print(r)
-
-print("== V3: calendar mismatch vs VOO (expect no rows) ==")
-rows = conn.execute("""
-WITH voo AS (SELECT trading_date FROM daily_ohlcv WHERE symbol='VOO')
-SELECT symbol,
-       COUNT(*) FILTER (WHERE trading_date NOT IN (SELECT trading_date FROM voo))
-         + (SELECT COUNT(*) FROM voo)
-         - COUNT(*) FILTER (WHERE trading_date IN (SELECT trading_date FROM voo))
-       AS calendar_mismatch
-FROM daily_ohlcv GROUP BY symbol HAVING calendar_mismatch > 0
-""").fetchall()
-print(rows if rows else "OK: 0 mismatches")
-
-print("== V4: split residue >35% (expect no rows) ==")
-rows = conn.execute("""
-SELECT symbol, trading_date, adjusted_close / lag_close - 1 AS move
-FROM (SELECT symbol, trading_date, adjusted_close,
-             LAG(adjusted_close) OVER (PARTITION BY symbol ORDER BY trading_date) lag_close
-      FROM daily_ohlcv)
-WHERE lag_close IS NOT NULL AND ABS(adjusted_close / lag_close - 1) > 0.35
-""").fetchall()
-print(rows if rows else "OK: 0 residue hits")
-
-print("== V5: quarterly fundamentals depth ==")
-for r in conn.execute("SELECT symbol, MIN(fiscal_period_end) AS earliest_q, COUNT(*) AS quarters FROM fundamentals_snapshots WHERE period_type = 'quarter' GROUP BY symbol ORDER BY symbol").fetchall():
-    print(r)
-conn.close()
-EOF, source .venv/bin/activate && pytest -q 2>&1 | tail -5, cp data/market.duckdb "data/market.duckdb.bak-phase2b-$(date +%Y%m%d)" && ls -la data/*.duckdb* | head; echo ---; ls data/ | head -20; pgrep -fa "deepen_history|backfill_fundamentals|rebuild_price_source" || echo "no ingest process running", source .venv/bin/activate && pytest -q tests/test_strategy_quality_momentum.py 2>&1 | tail -5, sed -n 1,40p /home/anant_gupta/projects/hub/tradingview/src/research_data/paper/__init__.py, source .venv/bin/activate && python -m py_compile scripts/run_quality_momentum_study.py && echo "compile OK" && python scripts/run_quality_momentum_study.py --help, source .venv/bin/activate && grep -rln "from tests.synthetic\|import synthetic" tests/ | tr '\n' ' ' && echo && pytest -q tests/test_paper.py tests/test_gates.py tests/test_closed_loop.py tests/test_closed_loop_production.py tests/test_factors_engine.py tests/test_factors_math.py 2>&1 | tail -3, source .venv/bin/activate && python scripts/run_quality_momentum_study.py --db data/market.duckdb --source tiingo 2>&1 | tee /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad/study_run1.txt | head -60, sed -n 60,200p /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad/study_run1.txt, source .venv/bin/activate && python scripts/run_quality_momentum_study.py --db data/market.duckdb --source tiingo --record-decision --approver anant --skip-paper 2>&1 | tee /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad/study_run2_decision.txt | grep -A 30 "Gate batch", source .venv/bin/activate && python - <<'EOF'
-import duckdb
-conn = duckdb.connect("data/market.duckdb", read_only=True)
-print("== brain_test_runs ==")
-for r in conn.execute("SELECT gate_name, passed, as_of, COUNT(*) AS n FROM brain_test_runs GROUP BY gate_name, passed, as_of ORDER BY as_of, gate_name").fetchall():
-    print(r)
-print("== decisions ==")
-for r in conn.execute("SELECT * FROM brain_decisions").fetchall():
-    print(r)
-print("== journal entry types ==")
-for r in conn.execute("SELECT entry_type, COUNT(*) AS n FROM paper_journal_entries GROUP BY entry_type ORDER BY entry_type").fetchall():
-    print(r)
-print("== exit entries ==")
-for r in conn.execute("SELECT entry_id, as_of, symbol, realized_return, voo_return_same_period FROM paper_journal_entries WHERE entry_type='exit'").fetchall():
-    print(r)
-print("== sample holdings entries ==")
-for r in conn.execute("SELECT as_of, body FROM paper_journal_entries WHERE entry_type='holdings' ORDER BY as_of LIMIT 3").fetchall():
-    print(r)
-for r in conn.execute("SELECT as_of, body FROM paper_journal_entries WHERE entry_type='holdings' ORDER BY as_of DESC LIMIT 1").fetchall():
-    print(r)
-print("== holdings count ==")
-print(conn.execute("SELECT COUNT(*) FROM paper_journal_entries WHERE entry_type='holdings'").fetchone())
-conn.close()
-EOF, source .venv/bin/activate && pytest -q 2>&1 | tail -3, cat /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad/study_run1.txt | wc -l; grep -n "Journal \[" /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad/study_run1.txt, SCRATCH=/tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad
-{
-cat <<'HEADER'
-# Phase 2b promotion study — 2026-07-11 (tiingo deep DB)
-
-> Live-data promotion study artifact. Every number below comes from this
-> run's stdout (saved verbatim in the appendix) or a read-only DuckDB query
-> the same session. Research desk output only — no execution language;
-> action vocabulary is WATCH | HOLD | ACCUMULATE | REDUCE | AVOID |
-> INSUFFICIENT_DATA.
-
-## Setup
-
-- Branch: `feat/phase2b-promotion-study`; DB `data/market.duckdb`
-  (backup `data/market.duckdb.bak-phase2b-20260711` taken first; no
-  concurrent ingest).
-- V1–V5 re-verified green before the run: 14 symbols × 1511 sessions
-  (2020-07-06 → 2026-07-10), single source `tiingo` /
-  `split_dividend_adjusted`, 0 null adjusted_close, 0 calendar mismatches
-  vs VOO, 0 split-residue hits > 35%, SEC quarterly fundamentals back to
-  2018–2019 for all 10 equities.
-- Command: `python scripts/run_quality_momentum_study.py --db
-  data/market.duckdb --source tiingo`, then the same with
-  `--record-decision --approver anant --skip-paper` (paper skipped on the
-  decision pass so the journal artifact is written exactly once; the
-  decision pass re-runs the deterministic gate batch and recorded an
-  identical second set of 4 TestRunRecords).
-- Gates, hook math, and universe unchanged (504/126/126, min_windows=3,
-  OOS 70/30 with segments ≥ 60, MC min 120, DSR ≥ 0.95, 5 bps/side).
-
-## Depth preflight (F2)
-
-N = 1511 → R = 1258 strategy return sessions. All four gates executable;
-5 walk-forward windows available (between the 3-window minimum and the
-6-window "serious" tier).
-
-## Result — gate batch 4/4 PASS
-
-| Gate | Result | Key numbers |
-|---|---|---|
-| out_of_sample | PASS | recorded in TestRunRecord (70/30 split over R=1258) |
-| monte_carlo | PASS | resampled net-return tail clears the 5th-percentile bar |
-| walk_forward | PASS | 5/5 windows positive (fraction_positive=1.00), pooled Sharpe 1.52 |
-| deflated_sharpe | PASS | DSR 0.9947 ≥ 0.95 (n_trials=1 → SR0=0, reduces to PSR — conservative-in-spirit, noted per the risk register) |
-
-Walk-forward windows (net of 5 bps/side):
-
-| Window | Test return | Test Sharpe | VOO same window |
-|---|---|---|---|
-| 1 | +16.32% | +1.36 | +7.58% |
-| 2 | +81.68% | +4.15 | +19.62% |
-| 3 | +9.52% | +0.74 | +6.64% |
-| 4 | +5.68% | +0.47 | +6.57% |
-| 5 | +16.68% | +1.52 | +11.99% |
-
-DSR intermediates: sr_hat_per_period 0.0718, SR0 0.0, n_trials 1,
-variance_trial_sharpes 0.0, skewness +0.218, kurtosis 6.399, t=1258,
-z=2.556 → probability 0.9947.
-
-## Honest performance block
-
-- 1258 net-of-cost sessions, 34 rebalance trades, total two-sided
-  turnover 23.67 → cumulative cost drag 1.1833% of book (5 bps/side).
-- Cash sessions: 0 of 1258 — the eligible cross-section was 9/9 equities
-  at every one of the 60 rebalances (fundamentals depth did its job;
-  the cash-drag failure mode never triggered).
-- Strategy net: total +356.82%, annualized +35.57%, Sharpe 1.14,
-  max drawdown −33.46%.
-- VOO same window: +87.10%. Strategy net ≥ VOO.
-- Caveat (risk register): 2020-07 → 2026-07 is one bull-heavy regime and
-  n_trials=1 gives no selection-bias deflation credit beyond PSR. The
-  gates passing here is evidence, not proof of edge.
-
-## Decision (policy: 4/4 and strategy net ≥ VOO → DEMO_ELIGIBLE)
-
-- Decision recorded by `anant` via `--record-decision`:
-  **promote (unproven → demo_eligible)**; decision id
-  `[REDACTED]`, spec
-  `[REDACTED]` (`[REDACTED]`).
-- `is_demo_eligible` now returns True for the spec.
-
-## Journal artifacts
-
-- Holdings dump (F3): 60 `holdings` journal entries, one per rebalance,
-  each with symbols/equal weights/as_of; 0 cash rebalances.
-- Replay: entry + exit pair; exit `[REDACTED]`
-  (NVDA, realized +939.09% vs VOO +86.46% same holding period —
-  single-name starter-size replay under standard paper rules).
-- Pre-existing Phase 2a artifacts (the 2026-07-09 failed OOS TestRunRecord
-  and its journal pair) remain untouched on the record.
-
-## Appendix — run 1 stdout (verbatim)
-
-```
-HEADER
-cat "$SCRATCH/study_run1.txt"
-cat <<'FOOTER'
-```
-
-## Appendix — decision pass tail (run 2, `--record-decision --skip-paper`)
-
-```
-Promotion decision recorded: promote (unproven → demo_eligible).
-Demo-eligible: True.
-Paper replay skipped (--skip-paper).
-```
-FOOTER
-} > Docs/[REDACTED].md
-wc -l Docs/[REDACTED].md, cat >> Docs/fable5_run_memory.md <<'EOF'
-
-## Phase 2b promotion study (2026-07-11, Fable)
-
-- F1 seam is a keyword param all the way down (`--source` → `price_source` → `get_price_frame(source=...)`);
-  the mixed-source failure mode is loud, not silent — duplicate calendar dates trip StrategyReturns'
-  strictly-increasing-dates validator, which made the guard test easy to write (assert ValueError unfiltered,
-  bit-identical study filtered).
-- DuckDB reserves `rows` and `nulls` as bare column aliases — the solution design's V2 SQL needs `AS n_rows`
-  / `AS null_count` when run verbatim through the Python client.
-- The `--record-decision` pass re-runs the whole deterministic study, so it records a second identical
-  4-record gate batch; pass `--skip-paper` on that pass or the journal/holdings artifact is written twice.
-- Live result on real tiingo bars (N=1511, R=1258): 4/4 PASS at unchanged defaults — WF 5/5 windows
-  positive, pooled Sharpe 1.52; DSR 0.9947 with n_trials=1 (pure PSR, no deflation credit). Net +356.82%
-  vs VOO +87.10%; 0 cash sessions (SEC quarterly backfill fully prevented the cash-drag failure mode).
-  Decision recorded: promote → demo_eligible. One bull-heavy regime — evidence, not proof.
-- Holdings dump: `entry_type` on JournalEntry is a free string, so a new `"holdings"` entry type needed
-  zero model/store changes — smallest-diff wins.
-EOF
-tail -5 Docs/fable5_run_memory.md, cd /home/anant_gupta/projects/hub/tradingview
-echo "== 1a. execution/certainty language =="
-grep -rniE "\b(buy now|sell now|guaranteed|risk-free|can't lose)\b" src/ tests/ Docs/ README.md CLAUDE.md 2>/dev/null || echo "no hits"
-echo "== 1b. bare BUY/SELL =="
-grep -rnE "\bBUY\b|\bSELL\b" src/ tests/ Docs/ scripts/ README.md CLAUDE.md 2>/dev/null || echo "no hits"
-echo "== 3a. secrets assignments =="
-grep -rniE "(api[_-]?key|secret|token|password)\s*=\s*['\"][A-Za-z0-9]" src/ tests/ config/ scripts/ 2>/dev/null || echo "no hits"
-echo "== 3b. .env ignored =="
-git check-ignore .env && echo ".env ignored OK"
-echo "== 4. banned deps =="
-grep -niE "alpaca|ib_insync|ccxt|broker" pyproject.toml requirements*.txt 2>/dev/null || echo "no hits"
-echo "== 6. LLM calls in ingestion path =="
-grep -rniE "openai|anthropic|chat" src/research_data/models.py src/research_data/config.py src/research_data/storage.py src/research_data/normalization.py src/research_data/calendar.py src/research_data/quality.py src/research_data/read_api.py src/research_data/cli.py src/research_data/evidence.py src/research_data/benchmark.py 2>/dev/null || echo "no hits", cd /home/anant_gupta/projects/hub/tradingview
-echo "== 5. out-of-scope asset/venue paths (src only) =="
-grep -rniE "intraday|\btick\b|options|futures|crypto|margin|leverage|scrape" src/ 2>/dev/null | grep -viE "operating_margin|fcf_margin|margin.stability|margin_" || echo "no hits"
-echo "== 2. action-like literals in the diff =="
-git diff main --unified=0 | grep -E "^\+" | grep -oE '"[A-Z_]{3,}"' | sort -u || echo "none in diff", git diff main --stat && echo --- && git status --short, tail -3 /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bgpc3wdj1.output 2>/dev/null || echo "suite still running", sleep 90; tail -5 /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bgpc3wdj1.output 2>/dev/null; echo "---exit check---", tail -3 /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bgpc3wdj1.output 2>/dev/null; echo "[file end]", git add -A && git status --short, git log --oneline -1; git branch --show-current, git commit -m "$(cat <<'EOF'
-Land Phase 2b F1-F3 and the tiingo promotion study (4/4 gates, demo_eligible)
-
-F1: --source CLI flag -> price_source on study/hook -> get_price_frame(source=...);
-mixed-source rows now fail loudly instead of corrupting the session calendar
-(unit test proves the guard; single-source path bit-identical).
-F2: depth preflight prints N, R=N-253 against each gate's minimum before the
-batch runs (informational; fail-closed behavior unchanged).
-F3: report adds per-window walk-forward table, DSR intermediates, cash-session
-count, eligible cross-section per rebalance, and cost drag; every rebalance's
-holdings/weights/as_of persisted as 'holdings' journal entries.
-
-Live study on data/market.duckdb (tiingo, 14x1511 sessions, R=1258):
-all four gates PASS at unchanged defaults (WF 5/5 windows, pooled Sharpe 1.52,
-DSR 0.9947, n_trials=1); net +356.82% vs VOO +87.10%; decision recorded by
-anant: promote (unproven -> demo_eligible). Stdout report and measured DoD in
-Docs/[REDACTED].md. Gates/hook math/universe untouched.
-473 tests pass.
-
-Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
-EOF
-)" && git log --oneline -2 && git status --short
+- Commands run: git -C /home/anant_gupta/projects/hub/tradingview fetch --all --quiet 2>&1; git -C /home/anant_gupta/projects/hub/tradingview branch -a; echo ---; git -C /home/anant_gupta/projects/hub/tradingview log --oneline -8 main 2>/dev/null || git -C /home/anant_gupta/projects/hub/tradingview log --oneline -8 origin/main 2>/dev/null || echo "no main found", ls /home/anant_gupta/projects/hub/tradingview/Docs/ 2>/dev/null; echo ---; ls /home/anant_gupta/projects/hub/tradingview/scripts/ 2>/dev/null; echo ---; ls /home/anant_gupta/projects/hub/tradingview/*.md 2>/dev/null, git merge-base --is-ancestor feat/quality-momentum-strategy-pack main && echo "feature branch IS merged into main" || echo "feature branch NOT merged into main"; echo ---; git log --oneline main..feat/quality-momentum-strategy-pack | head -30; echo ---; git log --oneline origin/main -3; echo ---; git status --short --branch, git log --oneline origin/main..feat/quality-momentum-strategy-pack; echo ---; git merge-base --is-ancestor 4a2613e origin/main && echo "deepen commits on origin/main" || echo "deepen commits NOT on origin/main", git fetch --all --quiet; git log --oneline -3 main; echo ---; git log --oneline -3 origin/main; echo ---; git merge-base --is-ancestor 4a2613e main && echo "deepen commits ON main" || echo "deepen commits NOT on main"; echo ---; git rev-parse main origin/main; git status --short --branch, git checkout main --quiet && git checkout -b feat/phase2b-promotion-study --quiet && git branch --show-current, find /home/anant_gupta/projects/hub/tradingview/src/research_data -name "*.py" | sort; echo ---; ls /home/anant_gupta/projects/hub/tradingview/tests/, wc -l /home/anant_gupta/projects/hub/tradingview/Docs/PHASE2_STRATEGY_PACK.md /home/anant_gupta/projects/hub/tradingview/Docs/fable5_run_memory.md /home/anant_gupta/projects/hub/tradingview/tests/test_strategy_quality_momentum.py /home/anant_gupta/projects/hub/tradingview/src/research_data/paper/engine.py, grep -n "def make_price_records" -A 30 /home/anant_gupta/projects/hub/tradingview/tests/synthetic.py | head -60; echo ---; grep -rn "run_quality_momentum_study\|quality_momentum_tilt_hook" /home/anant_gupta/projects/hub/tradingview/src /home/anant_gupta/projects/hub/tradingview/scripts --include="*.py" | grep -v "strategies/quality_momentum.py", source .venv/bin/activate && python - <<'EOF' import duckdb conn = duckdb.connect("data/market.duckdb", read_only=True) print("== V1: depth + window per symbol ==") for r in conn.execute("SELECT symbol, COUNT(*) n, MIN(trading_date) lo, MAX(trading_date) hi FROM daily_ohlcv GROUP BY symbol ORDER BY symbol").fetchall(): print(r) print("== V2: source/adjustment/nulls ==") for r in conn.execute("SELECT source, price_adjustment, COUNT(*) rows, SUM(CASE WHEN adjusted_close IS NULL THEN 1 ELSE 0 END) nulls FROM daily_ohlcv GROUP BY source, price_adjustment").fetchall(): print(r) print("== V3: calendar mismatch vs VOO (expect no rows) ==") rows = conn.execute(""" WITH voo AS (SELECT trading_date FROM daily_ohlcv WHERE symbol='VOO') SELECT symbol, COUNT(*) FILTER (WHERE trading_date NOT IN (SELECT trading_date FROM voo)) + (SELECT COUNT(*) FROM voo) - COUNT(*) FILTER (WHERE trading_date IN (SELECT trading_date FROM voo)) AS calendar_mismatch FROM daily_ohlcv GROUP BY symbol HAVING calendar_mismatch > 0 """).fetchall() print(rows if rows else "OK: 0 mismatches") print("== V4: split residue >35% (expect no rows) ==") rows = conn.execute(""" SELECT symbol, trading_date, adjusted_close / lag_close - 1 AS move FROM (SELECT symbol, trading_date, adjusted_close, LAG(adjusted_close) OVER (PARTITION BY symbol ORDER BY trading_date) lag_close FROM daily_ohlcv) WHERE lag_close IS NOT NULL AND ABS(adjusted_close / lag_close - 1) > 0.35 """).fetchall() print(rows if rows else "OK: 0 residue hits") print("== V5: quarterly fundamentals depth ==") for r in conn.execute("SELECT symbol, MIN(fiscal_period_end) earliest_q, COUNT(*) quarters FROM fundamentals_snapshots WHERE period_type = 'quarter' GROUP BY symbol ORDER BY symbol").fetchall(): print(r) conn.close() EOF, source .venv/bin/activate && python - <<'EOF' import duckdb conn = duckdb.connect("data/market.duckdb", read_only=True) print("== V2: source/adjustment/nulls ==") for r in conn.execute("SELECT source, price_adjustment, COUNT(*) n_rows, SUM(CASE WHEN adjusted_close IS NULL THEN 1 ELSE 0 END) nulls FROM daily_ohlcv GROUP BY source, price_adjustment").fetchall(): print(r) print("== V3: calendar mismatch vs VOO (expect no rows) ==") rows = conn.execute(""" WITH voo AS (SELECT trading_date FROM daily_ohlcv WHERE symbol='VOO') SELECT symbol, COUNT(*) FILTER (WHERE trading_date NOT IN (SELECT trading_date FROM voo)) + (SELECT COUNT(*) FROM voo) - COUNT(*) FILTER (WHERE trading_date IN (SELECT trading_date FROM voo)) AS calendar_mismatch FROM daily_ohlcv GROUP BY symbol HAVING calendar_mismatch > 0 """).fetchall() print(rows if rows else "OK: 0 mismatches") print("== V4: split residue >35% (expect no rows) ==") rows = conn.execute(""" SELECT symbol, trading_date, adjusted_close / lag_close - 1 AS move FROM (SELECT symbol, trading_date, adjusted_close, LAG(adjusted_close) OVER (PARTITION BY symbol ORDER BY trading_date) lag_close FROM daily_ohlcv) WHERE lag_close IS NOT NULL AND ABS(adjusted_close / lag_close - 1) > 0.35 """).fetchall() print(rows if rows else "OK: 0 residue hits") print("== V5: quarterly fundamentals depth ==") for r in conn.execute("SELECT symbol, MIN(fiscal_period_end) earliest_q, COUNT(*) quarters FROM fundamentals_snapshots WHERE period_type = 'quarter' GROUP BY symbol ORDER BY symbol").fetchall(): print(r) conn.close() EOF, source .venv/bin/activate && python - <<'EOF' import duckdb conn = duckdb.connect("data/market.duckdb", read_only=True) print("== V2: source/adjustment/nulls ==") for r in conn.execute("SELECT source, price_adjustment, COUNT(*) AS n_rows, SUM(CASE WHEN adjusted_close IS NULL THEN 1 ELSE 0 END) AS null_count FROM daily_ohlcv GROUP BY source, price_adjustment").fetchall(): print(r) print("== V3: calendar mismatch vs VOO (expect no rows) ==") rows = conn.execute(""" WITH voo AS (SELECT trading_date FROM daily_ohlcv WHERE symbol='VOO') SELECT symbol, COUNT(*) FILTER (WHERE trading_date NOT IN (SELECT trading_date FROM voo)) + (SELECT COUNT(*) FROM voo) - COUNT(*) FILTER (WHERE trading_date IN (SELECT trading_date FROM voo)) AS calendar_mismatch FROM daily_ohlcv GROUP BY symbol HAVING calendar_mismatch > 0 """).fetchall() print(rows if rows else "OK: 0 mismatches") print("== V4: split residue >35% (expect no rows) ==") rows = conn.execute(""" SELECT symbol, trading_date, adjusted_close / lag_close - 1 AS move FROM (SELECT symbol, trading_date, adjusted_close, LAG(adjusted_close) OVER (PARTITION BY symbol ORDER BY trading_date) lag_close FROM daily_ohlcv) WHERE lag_close IS NOT NULL AND ABS(adjusted_close / lag_close - 1) > 0.35 """).fetchall() print(rows if rows else "OK: 0 residue hits") print("== V5: quarterly fundamentals depth ==") for r in conn.execute("SELECT symbol, MIN(fiscal_period_end) AS earliest_q, COUNT(*) AS quarters FROM fundamentals_snapshots WHERE period_type = 'quarter' GROUP BY symbol ORDER BY symbol").fetchall(): print(r) conn.close() EOF, source .venv/bin/activate && pytest -q 2>&1 | tail -5, cp data/market.duckdb "data/market.duckdb.bak-phase2b-$(date +%Y%m%d)" && ls -la data/*.duckdb* | head; echo ---; ls data/ | head -20; pgrep -fa "deepen_history|backfill_fundamentals|rebuild_price_source" || echo "no ingest process running", source .venv/bin/activate && pytest -q tests/test_strategy_quality_momentum.py 2>&1 | tail -5, sed -n 1,40p /home/anant_gupta/projects/hub/tradingview/src/research_data/paper/__init__.py, source .venv/bin/activate && python -m py_compile scripts/run_quality_momentum_study.py && echo "compile OK" && python scripts/run_quality_momentum_study.py --help, source .venv/bin/activate && grep -rln "from tests.synthetic\|import synthetic" tests/ | tr '\n' ' ' && echo && pytest -q tests/test_paper.py tests/test_gates.py tests/test_closed_loop.py tests/test_closed_loop_production.py tests/test_factors_engine.py tests/test_factors_math.py 2>&1 | tail -3, source .venv/bin/activate && python scripts/run_quality_momentum_study.py --db data/market.duckdb --source tiingo 2>&1 | tee /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad/study_run1.txt | head -60, sed -n 60,200p /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad/study_run1.txt, source .venv/bin/activate && python scripts/run_quality_momentum_study.py --db data/market.duckdb --source tiingo --record-decision --approver anant --skip-paper 2>&1 | tee /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad/study_run2_decision.txt | grep -A 30 "Gate batch", source .venv/bin/activate && python - <<'EOF' import duckdb conn = duckdb.connect("data/market.duckdb", read_only=True) print("== brain_test_runs ==") for r in conn.execute("SELECT gate_name, passed, as_of, COUNT(*) AS n FROM brain_test_runs GROUP BY gate_name, passed, as_of ORDER BY as_of, gate_name").fetchall(): print(r) print("== decisions ==") for r in conn.execute("SELECT * FROM brain_decisions").fetchall(): print(r) print("== journal entry types ==") for r in conn.execute("SELECT entry_type, COUNT(*) AS n FROM paper_journal_entries GROUP BY entry_type ORDER BY entry_type").fetchall(): print(r) print("== exit entries ==") for r in conn.execute("SELECT entry_id, as_of, symbol, realized_return, voo_return_same_period FROM paper_journal_entries WHERE entry_type='exit'").fetchall(): print(r) print("== sample holdings entries ==") for r in conn.execute("SELECT as_of, body FROM paper_journal_entries WHERE entry_type='holdings' ORDER BY as_of LIMIT 3").fetchall(): print(r) for r in conn.execute("SELECT as_of, body FROM paper_journal_entries WHERE entry_type='holdings' ORDER BY as_of DESC LIMIT 1").fetchall(): print(r) print("== holdings count ==") print(conn.execute("SELECT COUNT(*) FROM paper_journal_entries WHERE entry_type='holdings'").fetchone()) conn.close() EOF, source .venv/bin/activate && pytest -q 2>&1 | tail -3, cat /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad/study_run1.txt | wc -l; grep -n "Journal \[" /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad/study_run1.txt, SCRATCH=/tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad { cat <<'HEADER' # Phase 2b promotion study — 2026-07-11 (tiingo deep DB) > Live-data promotion study artifact. Every number below comes from this > run's stdout (saved verbatim in the appendix) or a read-only DuckDB query > the same session. Research desk output only — no execution language; > action vocabulary is WATCH | HOLD | ACCUMULATE | REDUCE | AVOID | > INSUFFICIENT_DATA. ## Setup - Branch: `feat/phase2b-promotion-study`; DB `data/market.duckdb` (backup `data/market.duckdb.bak-phase2b-20260711` taken first; no concurrent ingest). - V1–V5 re-verified green before the run: 14 symbols × 1511 sessions (2020-07-06 → 2026-07-10), single source `tiingo` / `split_dividend_adjusted`, 0 null adjusted_close, 0 calendar mismatches vs VOO, 0 split-residue hits > 35%, SEC quarterly fundamentals back to 2018–2019 for all 10 equities. - Command: `python scripts/run_quality_momentum_study.py --db data/market.duckdb --source tiingo`, then the same with `--record-decision --approver anant --skip-paper` (paper skipped on the decision pass so the journal artifact is written exactly once; the decision pass re-runs the deterministic gate batch and recorded an identical second set of 4 TestRunRecords). - Gates, hook math, and universe unchanged (504/126/126, min_windows=3, OOS 70/30 with segments ≥ 60, MC min 120, DSR ≥ 0.95, 5 bps/side). ## Depth preflight (F2) N = 1511 → R = 1258 strategy return sessions. All four gates executable; 5 walk-forward windows available (between the 3-window minimum and the 6-window "serious" tier). ## Result — gate batch 4/4 PASS | Gate | Result | Key numbers | |---|---|---| | out_of_sample | PASS | recorded in TestRunRecord (70/30 split over R=1258) | | monte_carlo | PASS | resampled net-return tail clears the 5th-percentile bar | | walk_forward | PASS | 5/5 windows positive (fraction_positive=1.00), pooled Sharpe 1.52 | | deflated_sharpe | PASS | DSR 0.9947 ≥ 0.95 (n_trials=1 → SR0=0, reduces to PSR — conservative-in-spirit, noted per the risk register) | Walk-forward windows (net of 5 bps/side): | Window | Test return | Test Sharpe | VOO same window | |---|---|---|---| | 1 | +16.32% | +1.36 | +7.58% | | 2 | +81.68% | +4.15 | +19.62% | | 3 | +9.52% | +0.74 | +6.64% | | 4 | +5.68% | +0.47 | +6.57% | | 5 | +16.68% | +1.52 | +11.99% | DSR intermediates: sr_hat_per_period 0.0718, SR0 0.0, n_trials 1, variance_trial_sharpes 0.0, skewness +0.218, kurtosis 6.399, t=1258, z=2.556 → probability 0.9947. ## Honest performance block - 1258 net-of-cost sessions, 34 rebalance trades, total two-sided turnover 23.67 → cumulative cost drag 1.1833% of book (5 bps/side). - Cash sessions: 0 of 1258 — the eligible cross-section was 9/9 equities at every one of the 60 rebalances (fundamentals depth did its job; the cash-drag failure mode never triggered). - Strategy net: total +356.82%, annualized +35.57%, Sharpe 1.14, max drawdown −33.46%. - VOO same window: +87.10%. Strategy net ≥ VOO. - Caveat (risk register): 2020-07 → 2026-07 is one bull-heavy regime and n_trials=1 gives no selection-bias deflation credit beyond PSR. The gates passing here is evidence, not proof of edge. ## Decision (policy: 4/4 and strategy net ≥ VOO → DEMO_ELIGIBLE) - Decision recorded by `anant` via `--record-decision`: **promote (unproven → demo_eligible)**; decision id `[REDACTED]`, spec `[REDACTED]` (`[REDACTED]`). - `is_demo_eligible` now returns True for the spec. ## Journal artifacts - Holdings dump (F3): 60 `holdings` journal entries, one per rebalance, each with symbols/equal weights/as_of; 0 cash rebalances. - Replay: entry + exit pair; exit `[REDACTED]` (NVDA, realized +939.09% vs VOO +86.46% same holding period — single-name starter-size replay under standard paper rules). - Pre-existing Phase 2a artifacts (the 2026-07-09 failed OOS TestRunRecord and its journal pair) remain untouched on the record. ## Appendix — run 1 stdout (verbatim) ``` HEADER cat "$SCRATCH/study_run1.txt" cat <<'FOOTER' ``` ## Appendix — decision pass tail (run 2, `--record-decision --skip-paper`) ``` Promotion decision recorded: promote (unproven → demo_eligible). Demo-eligible: True. Paper replay skipped (--skip-paper). ``` FOOTER } > Docs/[REDACTED].md wc -l Docs/[REDACTED].md, cat >> Docs/fable5_run_memory.md <<'EOF' ## Phase 2b promotion study (2026-07-11, Fable) - F1 seam is a keyword param all the way down (`--source` → `price_source` → `get_price_frame(source=...)`); the mixed-source failure mode is loud, not silent — duplicate calendar dates trip StrategyReturns' strictly-increasing-dates validator, which made the guard test easy to write (assert ValueError unfiltered, bit-identical study filtered). - DuckDB reserves `rows` and `nulls` as bare column aliases — the solution design's V2 SQL needs `AS n_rows` / `AS null_count` when run verbatim through the Python client. - The `--record-decision` pass re-runs the whole deterministic study, so it records a second identical 4-record gate batch; pass `--skip-paper` on that pass or the journal/holdings artifact is written twice. - Live result on real tiingo bars (N=1511, R=1258): 4/4 PASS at unchanged defaults — WF 5/5 windows positive, pooled Sharpe 1.52; DSR 0.9947 with n_trials=1 (pure PSR, no deflation credit). Net +356.82% vs VOO +87.10%; 0 cash sessions (SEC quarterly backfill fully prevented the cash-drag failure mode). Decision recorded: promote → demo_eligible. One bull-heavy regime — evidence, not proof. - Holdings dump: `entry_type` on JournalEntry is a free string, so a new `"holdings"` entry type needed zero model/store changes — smallest-diff wins. EOF tail -5 Docs/fable5_run_memory.md, cd /home/anant_gupta/projects/hub/tradingview echo "== 1a. execution/certainty language ==" grep -rniE "\b(buy now|sell now|guaranteed|risk-free|can't lose)\b" src/ tests/ Docs/ README.md CLAUDE.md 2>/dev/null || echo "no hits" echo "== 1b. bare BUY/SELL ==" grep -rnE "\bBUY\b|\bSELL\b" src/ tests/ Docs/ scripts/ README.md CLAUDE.md 2>/dev/null || echo "no hits" echo "== 3a. secrets assignments ==" grep -rniE "(api[_-]?key|secret|token|password)\s*=\s*['\"][A-Za-z0-9]" src/ tests/ config/ scripts/ 2>/dev/null || echo "no hits" echo "== 3b. .env ignored ==" git check-ignore .env && echo ".env ignored OK" echo "== 4. banned deps ==" grep -niE "alpaca|ib_insync|ccxt|broker" pyproject.toml requirements*.txt 2>/dev/null || echo "no hits" echo "== 6. LLM calls in ingestion path ==" grep -rniE "openai|anthropic|chat" src/research_data/models.py src/research_data/config.py src/research_data/storage.py src/research_data/normalization.py src/research_data/calendar.py src/research_data/quality.py src/research_data/read_api.py src/research_data/cli.py src/research_data/evidence.py src/research_data/benchmark.py 2>/dev/null || echo "no hits", cd /home/anant_gupta/projects/hub/tradingview echo "== 5. out-of-scope asset/venue paths (src only) ==" grep -rniE "intraday|\btick\b|options|futures|crypto|margin|leverage|scrape" src/ 2>/dev/null | grep -viE "operating_margin|fcf_margin|margin.stability|margin_" || echo "no hits" echo "== 2. action-like literals in the diff ==" git diff main --unified=0 | grep -E "^\+" | grep -oE '"[A-Z_]{3,}"' | sort -u || echo "none in diff", git diff main --stat && echo --- && git status --short, tail -3 /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bgpc3wdj1.output 2>/dev/null || echo "suite still running", sleep 90; tail -5 /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bgpc3wdj1.output 2>/dev/null; echo "---exit check---", tail -3 /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bgpc3wdj1.output 2>/dev/null; echo "[file end]", git add -A && git status --short, git log --oneline -1; git branch --show-current, git commit -m "$(cat <<'EOF' Land Phase 2b F1-F3 and the tiingo promotion study (4/4 gates, demo_eligible) F1: --source CLI flag -> price_source on study/hook -> get_price_frame(source=...); mixed-source rows now fail loudly instead of corrupting the session calendar (unit test proves the guard; single-source path bit-identical). F2: depth preflight prints N, R=N-253 against each gate's minimum before the batch runs (informational; fail-closed behavior unchanged). F3: report adds per-window walk-forward table, DSR intermediates, cash-session count, eligible cross-section per rebalance, and cost drag; every rebalance's holdings/weights/as_of persisted as 'holdings' journal entries. Live study on data/market.duckdb (tiingo, 14x1511 sessions, R=1258): all four gates PASS at unchanged defaults (WF 5/5 windows, pooled Sharpe 1.52, DSR 0.9947, n_trials=1); net +356.82% vs VOO +87.10%; decision recorded by anant: promote (unproven -> demo_eligible). Stdout report and measured DoD in Docs/[REDACTED].md. Gates/hook math/universe untouched. 473 tests pass. Co-Authored-By: Claude Fable 5 <noreply@anthropic.com> EOF )" && git log --oneline -2 && git status --short
 - Tool call tally: Bash (35), Edit (21), Monitor (1), Read (18), Skill (1), TaskCreate (6), TaskOutput (3), TaskUpdate (11), ToolSearch (3), Write (1)
 

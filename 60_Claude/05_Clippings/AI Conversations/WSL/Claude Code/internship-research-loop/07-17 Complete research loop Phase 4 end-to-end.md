@@ -7,7 +7,7 @@ title: "Complete research loop Phase 4 end-to-end"
 started_at: 2026-07-17T17:58:27
 ended_at: 2026-07-19T09:07:40
 duration_minutes: 2349
-exported_at: 2026-07-30T15:28:59.6972445+04:00
+exported_at: 2026-07-30T16:47:46.9270578+04:00
 project: internship-research-loop
 cwd: '/home/anant_gupta/projects/work/internship-research-loop'
 session_id: af1cc1c7-e783-48d6-9b5a-fa48ca0577ce
@@ -201,7 +201,9 @@ Auto-discovered 2026-07-17 from SimplifyJobs. No enrichment yet — company/cont
 11169404 total
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && python3 - <<'EOF'
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && python3 - <<'EOF'
 import json, collections
 for f in ("simplify.json", "josegael.json"):
     data = json.load(open(f))
@@ -216,7 +218,8 @@ for f in ("simplify.json", "josegael.json"):
     print(f"=== {f}: {len(data)} entries, {n_no_field} missing field, {n_empty} empty list, {len(locs)} distinct location strings")
     for s, c in locs.most_common(60):
         print(f"  {c:5d}  {s!r}")
-EOF`
+EOF
+  ```
   ```
 === simplify.json: 14900 entries, 0 missing field, 0 empty list, 1200 distinct location strings
     852  'NYC'
@@ -329,7 +332,9 @@ EOF`
       1  'Virtual Qualifiers'
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && python3 - <<'EOF'
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && python3 - <<'EOF'
 import json, re, collections
 US_STATES = {"AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VA","VT","WA","WI","WV","WY","DC","PR"}
 all_locs = set()
@@ -349,7 +354,8 @@ for k in ("remote_variants", "other"):
     print(f"\n--- {k} ({len(buckets[k])}) ---")
     for s in buckets[k]: print(f"  {s!r}")
 print(f"\nus_city_state count: {len(buckets['us_city_state'])}")
-EOF`
+EOF
+  ```
   ```
 total distinct: 1216
 
@@ -623,7 +629,9 @@ total distinct: 1216
 us_city_state count: 953
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && python3 - <<'EOF'
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && python3 - <<'EOF'
 import json, re, sys
 sys.path.insert(0, "/home/anant_gupta/projects/work/internship-research-loop")
 from ingestion.normalize import normalize_simplify, normalize_josegael
@@ -667,7 +675,8 @@ for f in ("simplify.json", "josegael.json"):
 weird = [s for s in sorted(all_locs) if not entry_eligible(s) and not any(seg.strip() in NON_US for seg in norm(s).split(","))]
 print(f"\n--- rejected strings NOT explained by a non-US country ({len(weird)}) ---")
 for s in weird: print(f"  {s!r}")
-EOF`
+EOF
+  ```
   ```
 === simplify.json: 116 pass current filter, 9 would be dropped by locations rule
   DROP DRW — AI/ML Research Intern: ['Montreal, QC, Canada']
@@ -692,13 +701,16 @@ EOF`
   'Toronto, ON, CAN'
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && python3 - <<'EOF'
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && python3 - <<'EOF'
 import re
 NON_US_RE = re.compile(r"\b(canada|can|uk|united kingdom|germany|india|france|spain|singapore|europe|south america|united arab emirates|mexico|japan|china|ireland|australia)\b")
 for s in ["Remote in Canada", "Remote in Germany", "Remote in India", "Remote in UK", "Remote", "Remote in USA", "Toronto, ON, CAN", "New Mexico"]:
     l = re.sub(r"\s+", " ", s).strip().lower()
     print(s, "->", bool(NON_US_RE.search(l)))
-EOF`
+EOF
+  ```
   ```
 Remote in Canada -> True
 Remote in Germany -> True
@@ -710,7 +722,9 @@ Toronto, ON, CAN -> True
 New Mexico -> True
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && python3 - <<'EOF'
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && python3 - <<'EOF'
 import json, re, sys
 sys.path.insert(0, "/home/anant_gupta/projects/work/internship-research-loop")
 from ingestion.normalize import normalize_simplify, normalize_josegael
@@ -750,7 +764,8 @@ for fname, normf in (("simplify.json", normalize_simplify), ("josegael.json", no
 # sanity: every remote variant classified correctly
 for s in ["Remote","Remote in USA","Remote in USa","Remote in US","Remote, US","Remote in Canada","Remote in Germany","Remote in India","Remote in UK","New Mexico","Multiple Locations","Multiple HBCUs","Virtual","Hybrid","Seattle, W","Carlsbad, Ca","Dallas. TX","Toronto, ON, CAN","London","NYC"]:
     print(f"  {entry_eligible(s)!s:5}  {s!r}")
-EOF`
+EOF
+  ```
   ```
 === simplify.json: 116 pass, 13 dropped by locations rule
   DROP Crowdstrike: ['Remote in UK']
@@ -791,10 +806,13 @@ EOF`
   True   'NYC'
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `date -u && tail -3 /home/anant_gupta/projects/work/internship-research-loop/logs/runs.jsonl && python3 -c "
+- `Bash`:
+  ```bash
+date -u && tail -3 /home/anant_gupta/projects/work/internship-research-loop/logs/runs.jsonl && python3 -c "
 import json
 runs=[json.loads(l) for l in open('/home/anant_gupta/projects/work/internship-research-loop/logs/runs.jsonl')]
-print(f'{len(runs)} runs, first={runs[0].get(\"ts\") or runs[0]}, last={runs[-1].get(\"ts\") or runs[-1]}')" 2>&1 | head -20`
+print(f'{len(runs)} runs, first={runs[0].get(\"ts\") or runs[0]}, last={runs[-1].get(\"ts\") or runs[-1]}')" 2>&1 | head -20
+  ```
   ```
 Fri Jul 17 18:07:58 UTC 2026
 {"timestamp": "2026-07-17T13:05:15.977755+00:00", "fetch_counts": {"SimplifyJobs": 14902, "Jose-Gael-Cruz-Lopez": 112, "zapplyjobs": 53}, "filter_match_counts": {"SimplifyJobs": 116, "Jose-Gael-Cruz-Lopez": 17, "zapplyjobs": 22}, "new_count": 18, "already_seen_count": 137, "written_count": 0, "rejections": [{"uid": "SimplifyJobs:[REDACTED]", "check": "url_liveness", "reason": "HTTP 404"}, {"uid": "SimplifyJobs:[REDACTED]", "check": "url_liveness", "reason": "HTTP 404"}, {"uid": "SimplifyJobs:[REDACTED]", "check": "url_liveness", "reason": "HTTP 404"}, {"uid": "SimplifyJobs:[REDACTED]", "check": "url_liveness", "reason": "HTTP 410"}, {"uid": "SimplifyJobs:[REDACTED]", "check": "url_liveness", "reason": "HTTP 405"}, {"uid": "SimplifyJobs:[REDACTED]", "check": "url_liveness", "reason": "HTTP 405"}, {"uid": "SimplifyJobs:[REDACTED]", "check": "url_liveness", "reason": "HTTP 403"}, {"uid": "SimplifyJobs:[REDACTED]", "check": "url_liveness", "reason": "HTTP 403"}, {"uid": "SimplifyJobs:[REDACTED]", "check": "url_liveness", "reason": "HTTP 403"}, {"uid": "SimplifyJobs:[REDACTED]", "check": "url_liveness", "reason": "HTTP 403"}, {"uid": "SimplifyJobs:[REDACTED]", "check": "url_liveness", "reason": "HTTP 403"}, {"uid": "SimplifyJobs:[REDACTED]", "check": "url_liveness", "reason": "HTTP 403"}, {"uid": "Jose-Gael-Cruz-Lopez:[REDACTED]", "check": "url_liveness", "reason": "HTTP 403"}, {"uid": "Jose-Gael-Cruz-Lopez:[REDACTED]", "check": "url_liveness", "reason": "HTTP 404"}, {"uid": "Jose-Gael-Cruz-Lopez:[REDACTED]", "check": "url_liveness", "reason": "HTTP 404"}, {"uid": "Jose-Gael-Cruz-Lopez:[REDACTED]", "check": "url_liveness", "reason": "HTTP 403"}, {"uid": "zapplyjobs:eaf6a1fee0d45435", "check": "url_liveness", "reason": "HTTP 403"}, {"uid": "zapplyjobs:a9e3157cc5bd0828", "check": "url_liveness", "reason": "request failed: No connection adapters were found for '[https://www.paragonone.com/externships/career-bootcamp]'"}], "errors": [], "halted": false, "halt_reason": null}
@@ -956,10 +974,13 @@ Dossiers
   ```
 - `AskUserQuestion` — `{"questions":[{"question":"The strict allowlist reading of the locations rule drops 2 real US scholarship listings (Thurgood Marshall College Fund, AAUW) whose only location string is 'Multiple Locations' — ambiguous, not foreign. How should ambiguous strings like 'Multiple Locations' be treated?","header":"Locations rule","multiSelect":false,"options":[{"label":"Treat as eligible (Recommended)","description":"Ambiguous-but-not-foreign strings pass. Keeps the 2 real US scholarships; only affirmatively non-US listings (Canada/UK/etc.) drop — 13 of 155."},{"label":"Strict allowlist","description":"Per the literal spec: locations data must affirmatively indicate US/Remote. Drops the 2 'Multiple Locations' scholarships too — 15 of 155."}]},{"question":"15 of the 137 already-written dossiers are for listings the new rule would have rejected (Toronto/London/Remote-in-UK etc.). The rule is prospective — what about those existing dossiers?","header":"Old dossiers","multiSelect":false,"options":[{"label":"Leave them (Recommended)","description":"They stay marked seen and unreviewed; you ignore them manually. No vault deletion by automation."},{"label":"Delete them","description":"One-time cleanup commit removing the non-US dossiers from the vault (they stay in seen_ids so they won't be re-written)."}]},{"question":"Where should Layer 5 enrichment output land when you run the script on a promoted dossier?","header":"Layer 5 output","multiSelect":false,"options":[{"label":"Append to dossier (Recommended)","description":"Adds an '## Enrichment' section to the existing dossier note. Simplest; you copy what you need into the Programs note when committing."},{"label":"Draft Programs note","description":"Writes a new Programs/<company>.md skeleton pre-filled with scraped facts + contacts, matching Pipeline Step 2's promotion flow."}]}]}`
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/tests/test_filter.py`
-- `Bash` — `python3 -c "
+- `Bash`:
+  ```bash
+python3 -c "
 import json
 d = json.load(open('/home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/simplifyjobs.json'))
-for r in d: print(r['_case'], '| locations =', r.get('locations'))"`
+for r in d: print(r['_case'], '| locations =', r.get('locations'))"
+  ```
   ```
 should-match: Summer 2027 in terms list, category Software | locations = ['Honolulu, HI']
 should-match: Summer 2027, category AI/ML/Data | locations = ['Dallas, TX']
@@ -1519,11 +1540,14 @@ def test_grade_ranks_matching_bullet_first():
     assert ranked[-1][0] == 0  # the public-speaking bullet matches nothing
 
   ```
-- `Bash` — `python3 -m pytest tests/ -q 2>&1 | tail -3 && python3 grade_resume.py - <<'EOF'
+- `Bash`:
+  ```bash
+python3 -m pytest tests/ -q 2>&1 | tail -3 && python3 grade_resume.py - <<'EOF'
 Software Engineering Intern — we want students with Python, TypeScript, React,
 REST APIs, Postgres, Docker, and experience building data pipelines and
 AI/LLM-powered features. Strong communication skills preferred.
-EOF`
+EOF
+  ```
   ```
 ........................................................................ [ 54%]
 ...........................................................              [100%]
@@ -1633,7 +1657,9 @@ Verification pass complete. **Verdict (5): the loop is done except one soft spot
 131 passed in 0.79s
   ```
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/core/git_ops.py`
-- `Bash` — `.venv/bin/python - <<'EOF'
+- `Bash`:
+  ```bash
+.venv/bin/python - <<'EOF'
 import re, sys, yaml
 from pathlib import Path
 sys.path.insert(0, ".")
@@ -1657,7 +1683,8 @@ print(f"{len(rejects)} would be REJECTED by location_eligible():\n")
 for name, company, detail in rejects:
     print(f"  {company}  [{name}]")
     for d in detail: print(f"      {d}")
-EOF`
+EOF
+  ```
   ```
 137 dossiers scanned, 20 with no locations data (pass as unrestricted)
 13 would be REJECTED by location_eligible():
@@ -1724,7 +1751,9 @@ index 733cfec..c645d7b 100644
 +# match; only affirmatively non-US listings (Canada/UK/'Remote in Germany') drop.
 +locations_allow: us_remote
   ```
-- `Bash` — `echo "PRD.md" >> .git/info/exclude && .venv/bin/python - <<'EOF'
+- `Bash`:
+  ```bash
+echo "PRD.md" >> .git/info/exclude && .venv/bin/python - <<'EOF'
 import sys; sys.path.insert(0, ".")
 from core.git_ops import commit_and_push_with_retry
 msg = """Phase 4: locations_allow filter, Layer 5 enrich.py, Layer 6 grade_resume.py
@@ -1737,7 +1766,8 @@ triggered (manual, Pipeline Step 2), never called by run_pipeline.py.
 Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"""
 print("pushed:", commit_and_push_with_retry(".", msg))
 EOF
-git log --oneline -2 && git status --short`
+git log --oneline -2 && git status --short
+  ```
   ```
 pushed: True
 697c110 Phase 4: locations_allow filter, Layer 5 enrich.py, Layer 6 grade_resume.py
@@ -1750,7 +1780,9 @@ c31c51c Update state + logs — 2026-07-18
 JARVIS_PUSH_TOKEN	2026-07-17T11:18:54Z
 ---done---
   ```
-- `Bash` — `.venv/bin/python - <<'EOF'
+- `Bash`:
+  ```bash
+.venv/bin/python - <<'EOF'
 import sys; sys.path.insert(0, ".")
 from enrich import github_org_members, mx_ok, infer_email
 org, members = github_org_members("Confluent")
@@ -1759,7 +1791,8 @@ print(f"mx_ok('confluent.io') = {mx_ok('confluent.io')}")
 print(f"mx_ok('no-such-domain-zzz-9812.com') = {mx_ok('no-such-domain-zzz-9812.com')}")
 if members:
     print("inferred:", infer_email(members[0][0], "confluent.io"))
-EOF`
+EOF
+  ```
   ```
 GitHub org match: confluentinc, public members: [('Ansh Jain', 'https://github.com/00anshjain'), ('Zhiyan Tang', 'https://github.com/0xffff-zhiyan'), ('a-jalan660', 'https://github.com/a-jalan660'), ('Aditya Addepalli', 'https://github.com/aaddepalli7'), ('Aadesh Agte', 'https://github.com/AadeshAgte')]
 mx_ok('confluent.io') = True
@@ -1774,12 +1807,15 @@ url: https://job-boards.greenhouse.io/aquaticcapitalmanagement/jobs/8489233002
 url: https://job-boards.greenhouse.io/thetradedesk/jobs/5187605007
 url: https://job-boards.eu.greenhouse.io/imc/jobs/4907430101
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && curl -s "https://boards-api.greenhouse.io/v1/boards/anthropic/jobs/5023394008" | python3 -c "
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && curl -s "https://boards-api.greenhouse.io/v1/boards/anthropic/jobs/5023394008" | python3 -c "
 import sys, json, html, re
 d = json.load(sys.stdin)
 text = re.sub(r'<[^>]+>', ' ', html.unescape(d['content']))
 print(d['title'], file=sys.stderr)
-print(text)" > jd_anthropic.txt 2>jd_title.txt && cat jd_title.txt && wc -w jd_anthropic.txt`
+print(text)" > jd_anthropic.txt 2>jd_title.txt && cat jd_title.txt && wc -w jd_anthropic.txt
+  ```
   ```
 Anthropic Fellows Program
 2594 jd_anthropic.txt
@@ -1961,7 +1997,9 @@ a38aefc Update state + logs — 2026-07-18
   ```
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/run_pipeline.py`
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/vault_writer/validate.py`
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && curl -s https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json -o josegael_fresh.json && curl -s https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json -o simplify_fresh.json && python3 - <<'EOF'
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && curl -s https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json -o josegael_fresh.json && curl -s https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json -o simplify_fresh.json && python3 - <<'EOF'
 import json, collections
 jg = json.load(open("josegael_fresh.json"))
 print("JGCL keys of first entry:", sorted(jg[0].keys()))
@@ -1982,7 +2020,8 @@ print("degrees distinct values (top 15):")
 for v, c in degs.most_common(15): print(f"  {c:6d}  {v}")
 print("\nJGCL active field:", collections.Counter(e.get("active") for e in jg))
 print("JGCL degrees:", collections.Counter(tuple(e.get("degrees") or []) for e in jg).most_common(8))
-EOF`
+EOF
+  ```
   ```
 JGCL keys of first entry: ['active', 'category', 'company_name', 'date_posted', 'date_updated', 'id', 'is_visible', 'locations', 'opportunity_type', 'season', 'source', 'sponsorship', 'target_year', 'title', 'url']
 JGCL year-ish fields: {'target_year': 112}
@@ -2012,7 +2051,9 @@ JGCL degrees: [((), 112)]
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/vault_writer/writer.py`
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && python3 - <<'EOF'
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && python3 - <<'EOF'
 import json, sys, collections
 sys.path.insert(0, "/home/anant_gupta/projects/work/internship-research-loop")
 from core.filter import matches, load_profile
@@ -2039,7 +2080,8 @@ sj_raw = {r["id"]: r for r in json.load(open("simplify_fresh.json"))}
 passing = [l for l in sj if matches(l, profile)]
 act = collections.Counter(sj_raw[l.raw_id]["active"] for l in passing)
 print(f"\nSimplify listings passing current filter: {len(passing)}, active breakdown: {dict(act)}")
-EOF`
+EOF
+  ```
   ```
 OLD (2026-07-17) first-entry keys: ['active', 'category', 'company_name', 'date_posted', 'date_updated', 'id', 'is_visible', 'locations', 'opportunity_type', 'season', 'source', 'sponsorship', 'target_year', 'title', 'url']
 OLD entries with non-empty target_year: Counter({True: 112})
@@ -2092,10 +2134,13 @@ status: unreviewed
 promoted:
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `cd "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" && git status --short -- "10_Areas/Career/Internships/List/Dossiers/" | head -3 && git status --short -- "10_Areas/Career/Internships/List/Dossiers/" | wc -l && echo === && for f in $(git ls-tree --name-only HEAD "10_Areas/Career/Internships/List/Dossiers/" | grep jose); do
+- `Bash`:
+  ```bash
+cd "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" && git status --short -- "10_Areas/Career/Internships/List/Dossiers/" | head -3 && git status --short -- "10_Areas/Career/Internships/List/Dossiers/" | wc -l && echo === && for f in $(git ls-tree --name-only HEAD "10_Areas/Career/Internships/List/Dossiers/" | grep jose); do
   ty=$(git show "HEAD:$f" | sed -n '/^target_year:/,/^[a-z]/p' | grep -c "^  - ")
   echo "$ty entries  $(basename $f)"
-done`
+done
+  ```
   ```
  D 10_Areas/Career/Internships/List/Dossiers/[REDACTED].md
  D 10_Areas/Career/Internships/List/Dossiers/[REDACTED].md
@@ -2117,7 +2162,9 @@ done`
 4 entries  [REDACTED].md
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && python3 - <<'EOF'
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && python3 - <<'EOF'
 import json, collections
 jg = json.load(open("josegael_fresh.json"))
 print("JGCL season values:", collections.Counter(e.get("season") for e in jg))
@@ -2127,7 +2174,8 @@ for slug_hint in ("gsoc", "MLH", "MIT", "Partiful"):
     hits = [e for e in jg if slug_hint.lower() in (e["company_name"] + e["title"]).lower()]
     for e in hits[:2]:
         print(f"  {e['company_name']!r} | season={e.get('season')!r} | active={e['active']} | target_year={e.get('target_year')}")
-EOF`
+EOF
+  ```
   ```
 JGCL season values: Counter({'Summer': 66, 'Multiple': 35, 'Spring': 5, 'Summer 2026': 2, 'Not Specified': 1, 'Winter': 1, 'Fall': 1, 'Year-Round': 1})
 JGCL opportunity_type: Counter({'Scholarship': 21, 'Research': 15, 'Program': 8, 'Internship': 6, 'Fellowship': 6, 'Networking Event': 4, 'Research Fellowship': 3, 'Externship': 2, 'Conference': 2, 'Campus Opportunities': 1, 'Ambassador Programme': 1, 'Not Specified': 1, 'Competition': 1, 'Career Accelerator': 1, 'Discovery Program': 1, 'Pre-Internship': 1, 'Early Engagement Program': 1, 'Recruiting Event': 1, 'Hackathon': 1, 'Career Fair': 1, 'Tech Summit': 1, 'Conference / Research Presentation': 1, 'Leadership Institute': 1, 'Research Experience': 1, 'Leadership Program': 1, 'Pre-Internship Program': 1, 'Mentorship Program': 1, 'Immersion Program': 1, 'Online Course + Event': 1, 'Paid Internship': 1, 'Sophomore Summit (FGLI / First-Gen)': 1, 'Sophomore Immersion': 1, 'Career Conference': 1, 'AI Safety Fellowship': 1, 'Open Source Program': 1, 'Creative Contest': 1, 'Photography Scholarship': 1, 'Music Award': 1, 'Fellowship (Graduating Seniors & MBA)': 1, 'Conference + Recruitment (All Majors)': 1, '4-Month Immersive (Finance/Business)': 1, 'Scholarship + Mentorship': 1, 'Externship / Co-Op (Rising Sophomores+)': 1, 'Recognition / Fellowship': 1, 'Scholarship Hub (Rolling)': 1, 'Program (Free Membership)': 1, 'Scholarship (CS/Gaming)': 1, 'Program (Finance/Business)': 1, 'Program (Finance, Markets, AM)': 1, 'Scholarship + Conference': 1, 'Scholarship (Rolling)': 1, 'Chess Competition': 1, 'Virtual Summit': 1, 'Program (Rising Freshmen Women)': 1})
@@ -2925,13 +2973,16 @@ simplifyjobs.json
 throwaway_vault
 zapply_readme.md
   ```
-- `Bash` — `python3 -c "
+- `Bash`:
+  ```bash
+python3 -c "
 import json
 for f in ('josegael.json','simplifyjobs.json'):
     d = json.load(open(f'tests/fixtures/{f}'))
     print(f'=== {f}: {len(d)} entries')
     for r in d:
-        print(' ', r['_case'][:80], '| active=', r.get('active'), '| season=', r.get('season'), '| degrees=', r.get('degrees'), '| keys missing:', {'active','degrees','season'} - set(r))"`
+        print(' ', r['_case'][:80], '| active=', r.get('active'), '| season=', r.get('season'), '| degrees=', r.get('degrees'), '| keys missing:', {'active','degrees','season'} - set(r))"
+  ```
   ```
 === josegael.json: 4 entries
   should-match: target_year includes Junior (3rd year) | active= False | season= Summer | degrees= None | keys missing: {'degrees'}
@@ -2945,7 +2996,9 @@ for f in ('josegael.json','simplifyjobs.json'):
   should-reject: category Software, terms include Summer 2027 AND excluded Summer  | active= True | season= None | degrees= [] | keys missing: {'season'}
   should-reject: category Software but terms only Summer 2026 (excluded term, wron | active= False | season= None | degrees= [] | keys missing: {'season'}
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && python3 - <<'EOF'
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && python3 - <<'EOF'
 import json
 jg = json.load(open("josegael_fresh.json"))
 for e in jg:
@@ -2957,7 +3010,8 @@ hits = [e for e in sj if "Summer 2027" in e.get("terms", []) and e.get("category
         and e.get("active") and e.get("degrees") and "Bachelor's" not in e["degrees"]]
 print(f"\nsimplify PhD/Masters-only Summer2027 active hits: {len(hits)}")
 if hits: print(json.dumps(hits[0], indent=1))
-EOF`
+EOF
+  ```
   ```
 {"id": "[REDACTED]", "company_name": "WomenTech Network", "title": "Women in Tech Global Conference 2026", "season": "Summer 2026", "active": false, "target_year": ["Freshman (1st year)", "Sophomore (2nd year)"]}
 {"id": "[REDACTED]", "company_name": "Outreachy", "title": "Open Source Internship - May 2026", "season": "Summer 2026", "active": false, "target_year": ["Freshman (1st year)", "Sophomore (2nd year)"]}
@@ -2989,7 +3043,9 @@ simplify PhD/Masters-only Summer2027 active hits: 4
 }
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && python3 - <<'EOF'
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && python3 - <<'EOF'
 import json
 jg = json.load(open("josegael_fresh.json"))
 sj = json.load(open("simplify_fresh.json"))
@@ -3012,7 +3068,8 @@ json.dump(sf, open(f"{fixtures}/simplifyjobs.json", "w"), indent=2)
 print("josegael cases:", [e["_case"][:60] for e in jf])
 print("simplify cases:", [e["_case"][:60] for e in sf])
 EOF
-rm /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/zapply_readme.md`
+rm /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/zapply_readme.md
+  ```
   ```
 josegael cases: ['should-reject: active false upstream (closed posting) — was ', 'should-reject: season Spring (wrong cycle) and active false ', 'should-reject: target_year is Freshman/Sophomore only, no Ju', 'should-match: target_year field absent entirely (accept_unre', 'should-match: active true, season Summer (year-less, passes)', 'should-reject: season Summer 2026 hits exclude_terms — real ']
 simplify cases: ['should-match: Summer 2027 in terms list, category Software', 'should-match: Summer 2027, category AI/ML/Data', 'should-reject: Summer 2027 but category Hardware (not in all', 'should-reject: category Software, terms include Summer 2027 ', 'should-reject: category Software but terms only Summer 2026 ', "should-reject: degrees PhD-only, no Bachelor's — real TikTok"]
@@ -3164,7 +3221,9 @@ def test_cross_source_key_normalizes_case_and_whitespace():
         cross_source_key("  mlh (major league hacking)", "mlh   fellowship ")
     assert cross_source_key("MLH", "Fellowship") != cross_source_key("MLH", "Other Program")
   ```
-- `Bash` — `python3 - <<'EOF'
+- `Bash`:
+  ```bash
+python3 - <<'EOF'
 import re
 p = "tests/test_schema_drift.py"
 s = open(p).read()
@@ -3246,7 +3305,8 @@ def test_josegael_schema_detects_dropped_permissive_field(josegael_raw, key):
         check_josegael_schema(http_get=http_get)""")
 open(p, "w").write(s)
 print("ok")
-EOF`
+EOF
+  ```
   ```
 ok
   ```
@@ -3267,7 +3327,9 @@ ok
 def test_fetch_simplify_propagates_http_errors():
   + def test_fetch_simplify_propagates_http_errors():
   ```
-- `Bash` — `python3 - <<'EOF'
+- `Bash`:
+  ```bash
+python3 - <<'EOF'
 p = "tests/test_run_pipeline.py"
 s = open(p).read()
 s = s.replace("from ingestion.normalize import normalize_josegael, normalize_simplify, parse_zapply_readme",
@@ -3367,7 +3429,8 @@ def test_validate_and_write_seeds_dedup_keys_from_existing_vault_files(tmp_path)
 def test_file_github_issue_calls_gh_with_expected_args():""")
 open(p, "w").write(s)
 print("ok")
-EOF`
+EOF
+  ```
   ```
 ok
   ```
@@ -3430,7 +3493,9 @@ core/filter.py:19:# JSON sources; zapplyjobs carries no location data at all). R
 tests/test_filter.py:133:    assert location_eligible([]) is True  # zapplyjobs carries no locations at all
 README.md:4:zapplyjobs, filters against a profile, dedups, and writes dossiers into an Obsidian
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && .venv_placeholder 2>/dev/null; /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && .venv_placeholder 2>/dev/null; /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
 import json, sys, collections
 sys.path.insert(0, "/home/anant_gupta/projects/work/internship-research-loop")
 from core.filter import load_profile, matches
@@ -3443,7 +3508,8 @@ for fname, normf in (("simplify_fresh.json", normalize_simplify), ("josegael_fre
     print(f"{fname}: {len(listings)} fetched -> {len(passing)} match new filter")
     for l in passing[:40]:
         print(f"   {l.company} — {l.title[:60]}")
-EOF`
+EOF
+  ```
   ```
 simplify_fresh.json: 14907 fetched -> 29 match new filter
    Palantir — Forward Deployed Software Engineer – Internship - US Governm
@@ -3551,7 +3617,9 @@ M  tests/test_sources.py
 M  vault_writer/validate.py
 M  vault_writer/writer.py
   ```
-- `Bash` — `.venv/bin/python - <<'EOF'
+- `Bash`:
+  ```bash
+.venv/bin/python - <<'EOF'
 import sys; sys.path.insert(0, ".")
 from core.git_ops import commit_and_push_with_retry
 msg = """Fix the 5 root causes behind dossier bloat (2026-07-18 vault audit)
@@ -3577,7 +3645,8 @@ with real live entries (TikTok PhD-only, MLH, Partiful, WomenTech).
 Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"""
 print("pushed:", commit_and_push_with_retry(".", msg))
 EOF
-git log --oneline -2`
+git log --oneline -2
+  ```
   ```
 pushed: True
 7a84be1 Fix the 5 root causes behind dossier bloat (2026-07-18 vault audit)
@@ -3624,7 +3693,9 @@ Built and verified 2026-07-18; everything below is from an evidence pass (fresh 
 Fetched both live `listings.json` feeds (14,900 + 112 entries, **1,216 distinct location strings**; zapplyjobs carries no location data at all) before writing any rule. `location_eligible()` in `core/filter.py`, enabled by `locations_allow: us_remote` in `profile.yaml`: a US signal always wins (state-code suffix tolerant of real dirt like `Carlsbad, Ca` / `Dallas. TX`; full state names checked *before* the foreign denylist so `New Mexico` survives its `mexico` token), an affirmative foreign token loses (`canada|can|uk|germany|india|…`, word-bounded), and everything ambiguous **passes** — `Multiple Locations`, `Virtual`, bare `Remote`, no data at all. Permissive by design: the denylist can't name every country, but a US signal is never falsely rejected.
 139
   ```
-- `Bash` — `cat >> "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Phases 1-3 Run.md" <<'EOF'
+- `Bash`:
+  ```bash
+cat >> "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Phases 1-3 Run.md" <<'EOF'
 ## Phase 5 — Bloat Root-Cause Fixes (2026-07-18)
 All five root causes from the vault audit shipped as commit `7a84be1` (pushed via `commit_and_push_with_retry()`, again rebasing over that day's automation commit). **148/148 tests passing** (was 131: −8 zapply, +25 new). Every rule below was built against freshly-fetched live feed data, not the audit's numbers re-quoted.
 1. **Post-write liveness recheck** — `recheck.py` + `.github/workflows/recheck.yml` (daily 06:30 UTC cron + workflow_dispatch, deliberately separate from hourly discovery). Scans the dossier **files actually in the checkout** (not seen_ids.json — the two diverged permanently at the cleanup), cross-refs each uid against its source's live feed, removes on `active: false` or absent-from-feed, logs to `logs/rechecks.jsonl`, never touches seen_ids. A failed source fetch skips that source's dossiers entirely (never read as "everything absent"), and a mass-deletion brake (> max(5, half the vault)) halts and files an issue instead of deleting. *Verified live via dry-run against the real vault: 28 dossiers scanned, 2 would be removed, both `active: false` upstream — postings that closed after the morning audit.* **Discovery side too:** `matches()` now rejects `active: false` at write time — 71 of 103 then-passing SimplifyJobs listings were already closed upstream (their ATS URLs still return 200, so `url_liveness` can't catch this).
@@ -3637,7 +3708,8 @@ Also: the schema-drift check now guards `active`/`degrees`/`season` — renamed 
 > [!WARNING]
 > First scheduled recheck timing: the vault's local working copy holds the audit's 110 deletions **uncommitted**. Until the vault's own auto-commit cycle pushes them, origin still has all 137 dossiers — a recheck run against that state would want to remove ~90 and the mass-deletion brake would halt it (harmless but noisy: one GitHub issue). Let the vault push first; the daily 06:30 UTC cron takes it from there.
 EOF
-echo appended`
+echo appended
+  ```
   ```
 appended
   ```
@@ -3675,7 +3747,9 @@ run completed success 697c110 (schedule)
 test completed success 697c110 (push)
 run completed success a38aefc (schedule)
   ```
-- `Bash` — `git pull --rebase -q && tail -1 logs/runs.jsonl | python3 -c "
+- `Bash`:
+  ```bash
+git pull --rebase -q && tail -1 logs/runs.jsonl | python3 -c "
 import json, sys
 r = json.loads(sys.stdin.read())
 print('timestamp:', r['timestamp'])
@@ -3683,7 +3757,8 @@ print('fetch_counts:', r['fetch_counts'])
 print('filter_match_counts:', r['filter_match_counts'])
 print('new:', r['new_count'], '| already_seen:', r['already_seen_count'], '| written:', r['written_count'])
 print('rejections:', len(r['rejections']), [f\"{x['check']}\" for x in r['rejections']])
-print('halted:', r['halted'], '| errors:', r['errors'])"`
+print('halted:', r['halted'], '| errors:', r['errors'])"
+  ```
   ```
 timestamp: 2026-07-18T10:10:04.356203+00:00
 fetch_counts: {'SimplifyJobs': 14907, 'Jose-Gael-Cruz-Lopez': 112, 'zapplyjobs': 53}
@@ -3759,7 +3834,9 @@ The run note has this recorded as the closing evidence line of the Phase 5 secti
 
 **Tool calls:**
 
-- `Bash` — `git pull --rebase -q && tail -1 logs/runs.jsonl | python3 -c "
+- `Bash`:
+  ```bash
+git pull --rebase -q && tail -1 logs/runs.jsonl | python3 -c "
 import json, sys
 r = json.loads(sys.stdin.read())
 print('timestamp:', r['timestamp'])
@@ -3767,7 +3844,8 @@ print('fetch_counts:', r['fetch_counts'])
 print('filter_match_counts:', r['filter_match_counts'])
 print('new:', r['new_count'], '| already_seen:', r['already_seen_count'], '| written:', r['written_count'])
 print('rejections:', [(x['check'], x['reason']) for x in r['rejections']])
-print('halted:', r['halted'], '| errors:', r['errors'])"`
+print('halted:', r['halted'], '| errors:', r['errors'])"
+  ```
   ```
 timestamp: 2026-07-18T12:53:04.452270+00:00
 fetch_counts: {'SimplifyJobs': 14907, 'Jose-Gael-Cruz-Lopez': 112}
@@ -3776,10 +3854,13 @@ new: 8 | already_seen: 26 | written: 0
 rejections: [('url_liveness', 'HTTP 403'), ('url_liveness', 'HTTP 403'), ('url_liveness', 'HTTP 403'), ('url_liveness', 'HTTP 403'), ('url_liveness', 'HTTP 403'), ('url_liveness', 'HTTP 403'), ('url_liveness', 'HTTP 404'), ('url_liveness', 'HTTP 403')]
 halted: False | errors: []
   ```
-- `Bash` — `cat >> "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Phases 1-3 Run.md" <<'EOF'
+- `Bash`:
+  ```bash
+cat >> "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Phases 1-3 Run.md" <<'EOF'
 *First live run on the new code (2026-07-18 12:53 UTC, run created 11:44): confirmed exactly as predicted — `fetch_counts` has no zapplyjobs key, `filter_match_counts` {SimplifyJobs: 29, Jose-Gael-Cruz-Lopez: 5} (was {103, 17, 22}), persistent url_liveness rejections down from 18 to 8 (the other 10 uids belonged to now-inactive listings the active gate refuses before any HEAD request), 0 written, 0 halts, 0 errors.*
 EOF
-echo done`
+echo done
+  ```
   ```
 done
   ```
@@ -4047,7 +4128,9 @@ import subprocess
 
 import requests
   ```
-- `Bash` — `cat >> tests/test_run_pipeline.py <<'EOF'
+- `Bash`:
+  ```bash
+cat >> tests/test_run_pipeline.py <<'EOF'
 
 
 def test_run_once_halts_and_files_issue_on_fetch_network_failure(tmp_path):
@@ -4077,7 +4160,8 @@ def test_josegael_whitespace_only_season_does_not_crash():
     listing = normalize_josegael({**raw, "season": " "})
     assert matches(listing, PROFILE) is True  # degenerate season ignored, not IndexError
 EOF
-.venv/bin/python -m pytest -q 2>&1 | tail -2`
+.venv/bin/python -m pytest -q 2>&1 | tail -2
+  ```
   ```
 FAILED tests/test_run_pipeline.py::test_run_once_halts_on_schema_drift_and_writes_nothing
 1 failed, 149 passed in 0.96s
@@ -4188,7 +4272,9 @@ Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
 - `TaskUpdate` — `{"taskId":"2","status":"completed"}`
 - `TaskUpdate` — `{"taskId":"3","status":"in_progress"}`
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && curl -s https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json -o sj_now.json && curl -s https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json -o jg_now.json && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && curl -s https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json -o sj_now.json && curl -s https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json -o jg_now.json && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
 import json, re, yaml
 from pathlib import Path
 D = Path("/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers")
@@ -4206,7 +4292,8 @@ print(f"{len(rows)} dossiers:")
 for r in rows:
     print(f"  {r[1][:28]:28} | {r[2]:45} | fm_terms={r[3]} | loc={r[4]} | live_active={r[5]} | live_terms={r[6]}")
     print(f"      url={r[7]}")
-EOF`
+EOF
+  ```
   ```
 27 dossiers:
   UNCF                         | UNCF Scholarships Portal (All Majors)         | fm_terms=[] | loc=['Remote'] | live_active=True | live_terms=Summer
@@ -4265,13 +4352,16 @@ EOF`
       url=https://jobs.lever.co/palantir/[REDACTED]/apply
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `export $(grep -o 'FIRECRAWL_API_KEY=[^ ]*' ~/.bashrc) && curl -s -X POST https://api.firecrawl.dev/v1/scrape -H "Authorization: Bearer $FIRECRAWL_API_KEY" -H "Content-Type: application/json" -d '{"url": "https://job-boards.greenhouse.io/fiveringsllc/jobs/5349707008", "formats": ["markdown"]}' | python3 -c "
+- `Bash`:
+  ```bash
+export $(grep -o 'FIRECRAWL_API_KEY=[^ ]*' ~/.bashrc) && curl -s -X POST https://api.firecrawl.dev/v1/scrape -H "Authorization: Bearer $FIRECRAWL_API_KEY" -H "Content-Type: application/json" -d '{"url": "https://job-boards.greenhouse.io/fiveringsllc/jobs/5349707008", "formats": ["markdown"]}' | python3 -c "
 import json, sys
 r = json.load(sys.stdin)
 print('success:', r.get('success'))
 md = r.get('data', {}).get('markdown', '')
 print('markdown length:', len(md))
-print(md[:400])"`
+print(md[:400])"
+  ```
   ```
 success: True
 markdown length: 9488
@@ -4291,7 +4381,9 @@ Apply
 
 Five Rings is a proprietary trading firm founded with a v
   ```
-- `Bash` — `export $(grep -o 'FIRECRAWL_API_KEY=[^ ]*' ~/.bashrc) && cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && mkdir -p pages && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
+- `Bash`:
+  ```bash
+export $(grep -o 'FIRECRAWL_API_KEY=[^ ]*' ~/.bashrc) && cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && mkdir -p pages && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
 import json, os, re, time, yaml
 import requests
 from pathlib import Path
@@ -4328,7 +4420,8 @@ for p in sorted(D.glob("*.md")):
         fail += 1; print(f"  FAIL {fm['company'][:30]} — {p.name}: {exc}")
     time.sleep(1)
 print(f"\n{ok} fetched, {fail} failed")
-EOF`
+EOF
+  ```
   ```
 skipping (already failed): ['[REDACTED].md', '[REDACTED].md']
   ok    2026  UNCF — [REDACTED].md
@@ -4360,10 +4453,13 @@ skipping (already failed): ['[REDACTED].md', '[REDACTED].md']
 25 fetched, 0 failed
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad/pages && for f in *.md; do
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad/pages && for f in *.md; do
   hits=$(grep -inoE ".{60}(citizen|clearance|U\.?S\.? person|OPT|CPT|work authorization|sponsor|export control|ITAR|permanent resident).{80}" "$f" | head -6)
   if [ -n "$hits" ]; then echo "=== $f"; echo "$hits"; fi
-done 2>/dev/null | head -100`
+done 2>/dev/null | head -100
+  ```
   ```
 === [REDACTED].md
 13:and quants to design tools, improve system reliability, and optimize our platform for low-latency, high-throughput data processing. This is a h
@@ -4476,14 +4572,17 @@ Loading
   - German (DEU)
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad/pages && grep -icE "what we do|responsibilities|qualifications" simplifyjobs-ada5c220-536e-454a-8ba0-1f7629d949e6.md; export $(grep -o 'FIRECRAWL_API_KEY=[^ ]*' ~/.bashrc) && for pair in "ada5c220-536e-454a-8ba0-1f7629d949e6 315f695d-04d1-4a9a-848e-cb2bec7a997e" "ea21f599-680e-4822-8289-fe0af38a4bfe 09846827-b931-4a9f-bd64-c3bb8860187b" "ffc1f08c-7dd5-4fce-986e-2e3b824aabb4 d5486403-c050-4920-b2e0-91b69b61ebb2"; do
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad/pages && grep -icE "what we do|responsibilities|qualifications" simplifyjobs-ada5c220-536e-454a-8ba0-1f7629d949e6.md; export $(grep -o 'FIRECRAWL_API_KEY=[^ ]*' ~/.bashrc) && for pair in "ada5c220-536e-454a-8ba0-1f7629d949e6 315f695d-04d1-4a9a-848e-cb2bec7a997e" "ea21f599-680e-4822-8289-fe0af38a4bfe 09846827-b931-4a9f-bd64-c3bb8860187b" "ffc1f08c-7dd5-4fce-986e-2e3b824aabb4 d5486403-c050-4920-b2e0-91b69b61ebb2"; do
   set -- $pair
   curl -s -X POST https://api.firecrawl.dev/v1/scrape -H "Authorization: Bearer $FIRECRAWL_API_KEY" -H "Content-Type: application/json" -d "{\"url\": \"https://jobs.lever.co/palantir/$2\", \"formats\": [\"markdown\"]}" | python3 -c "
 import json, sys
 md = json.load(sys.stdin).get('data', {}).get('markdown', '')
 open('palantir-desc-$1.md', 'w').write(md)
 print('$1:', len(md), 'chars')"
-done`
+done
+  ```
   ```
 0
 [REDACTED]: 7530 chars
@@ -4545,7 +4644,9 @@ Current Location\*
 Location Preference\*
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `export $(grep -o 'FIRECRAWL_API_KEY=[^ ]*' ~/.bashrc) && cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
+- `Bash`:
+  ```bash
+export $(grep -o 'FIRECRAWL_API_KEY=[^ ]*' ~/.bashrc) && cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
 import os, requests
 from pathlib import Path
 key = os.environ["FIRECRAWL_API_KEY"]
@@ -4565,7 +4666,8 @@ for name, url in targets.items():
     if len(md) > 600:
         (Path("pages") / name).write_text(md, encoding="utf-8")
     print(f"{len(md):7d}  {name}")
-EOF`
+EOF
+  ```
   ```
    2884  [REDACTED].md
    2818  [REDACTED].md
@@ -4621,7 +4723,9 @@ Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
 - `TaskUpdate` — `{"taskId":"3","status":"completed"}`
 - `TaskUpdate` — `{"taskId":"4","status":"in_progress"}`
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
 import re, yaml
 from pathlib import Path
 
@@ -4679,7 +4783,8 @@ for p in sorted(D.glob("*.md")):
     p.write_text(fm_block + body, encoding="utf-8")
     done += 1
 print(f"\nenriched {done} dossiers, {short} flagged short")
-EOF`
+EOF
+  ```
   ```
 SHORT (0): [REDACTED].md
 
@@ -4710,7 +4815,9 @@ Last Name\*
 
 Email\*
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && curl -s "https://boards-api.greenhouse.io/v1/boards/thetradedesk/jobs/5187605007" | /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && curl -s "https://boards-api.greenhouse.io/v1/boards/thetradedesk/jobs/5187605007" | /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
 import html, json, re, sys, yaml
 from pathlib import Path
 d = json.load(sys.stdin)
@@ -4734,7 +4841,8 @@ print("written")
 for pat in ("citizen", "clearance", "sponsor", "OPT", "winter", "start"):
     hits = [l for l in lines if pat.lower() in l.lower()]
     for h in hits[:2]: print(f"  [{pat}] {h[:110]}")
-EOF`
+EOF
+  ```
   ```
 Exit code 1
 Traceback (most recent call last):
@@ -4756,7 +4864,9 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
   ```
 200
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && curl -s "https://boards-api.greenhouse.io/v1/boards/thetradedesk/jobs/5187605007" -o ttd.json && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && curl -s "https://boards-api.greenhouse.io/v1/boards/thetradedesk/jobs/5187605007" -o ttd.json && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
 import html, json, re, yaml
 from pathlib import Path
 d = json.load(open("ttd.json"))
@@ -4778,7 +4888,8 @@ print("written")
 for pat in ("citizen", "clearance", "sponsor", "winter", "spring", "start date"):
     for h in [l for l in lines if pat.lower() in l.lower()][:2]:
         print(f"  [{pat}] {h[:120]}")
-EOF`
+EOF
+  ```
   ```
 title: 2027 North America Software Engineering Internship | chars: 7000
 written
@@ -4855,7 +4966,9 @@ Hudson River Trading (HRT) is seeking highly motivated full-time students to joi
   ```
 - `TaskUpdate` — `{"taskId":"4","status":"completed"}`
 - `TaskUpdate` — `{"taskId":"5","status":"in_progress"}`
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
 import json, collections, re
 sj = json.load(open("sj_now.json"))
 terms = collections.Counter(t for e in sj for t in e.get("terms", []))
@@ -4867,7 +4980,8 @@ for w in ("Winter 2026", "Winter 2027"):
     for e in only[:12]:
         m = re.search(r"(january|december|jan\b|dec\b|winter)", e["title"], re.I)
         print(f"   [{'DATE' if m else '    '}] {e['title'][:75]} | terms={e['terms']}")
-EOF`
+EOF
+  ```
   ```
 all distinct terms in live feed: {'Winter 2025': 219, 'Summer 2026': 10180, 'Spring 2026': 1569, 'Winter 2026': 503, 'Fall 2026': 1850, 'Summer 2027': 280, 'Spring 2025': 20, 'Summer 2025': 102, 'Fall 2025': 35, 'Winter 2027': 187, 'Spring 2027': 195, 'Fall 2027': 50, 'Fall 2024': 2, 'Summer 2024': 5, 'Spring 2028': 46, 'Summer 2028': 47, 'Winter 2028': 37, 'N/A': 1411, 'Winter 2029': 5, 'Spring 2029': 5, 'Summer 2029': 4, 'Fall 2028': 6, 'Winter 2016': 2, 'Spring 2016': 2, 'Summer 2016': 2, 'Fall 2016': 2, 'Winter 2017': 2, 'Spring 2017': 2, 'Summer 2017': 2, 'Fall 2017': 2, 'Winter 2024': 1, 'Spring 2024': 1, 'Fall 2029': 2}
 
@@ -4900,7 +5014,9 @@ Winter 2027: 24 active listings; titles mentioning months/dates:
    [    ] Applied Research Intern PhD / Graduate Co-op | terms=['Fall 2026', 'Winter 2027']
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
 import json, sys, re
 sys.path.insert(0, "/home/anant_gupta/projects/work/internship-research-loop")
 from core.filter import matches, load_profile, _entry_is_us_or_remote, _US_STATES, _US_STATE_NAMES, _STATE_SUFFIX, _norm
@@ -4929,7 +5045,8 @@ for l in w27 + [x for x in jg if matches(x, profile2)]:
         print(f"   {l.company} — {l.title[:55]} | {l.locations}")
 for l in [x for x in jg if matches(x, profile2)] :
     if not l.locations: print(f"   (no loc data) {l.company}")
-EOF`
+EOF
+  ```
   ```
 current terms: 29 match | +Winter 2027: 36 match | added 7:
    Fussball Club Cincinnati LLC (“FC Cincinnati”) — Academy Performance Analyst Intern - Academy Performance Ana | ['Winter 2027'] | ['Cincinnati, OH']
@@ -5423,7 +5540,9 @@ def test_fetch_posting_markdown_calls_firecrawl():
     assert kwargs["json"]["url"] == "https://x.example/job"
 
   ```
-- `Bash` — `cat >> tests/test_run_pipeline.py <<'EOF'
+- `Bash`:
+  ```bash
+cat >> tests/test_run_pipeline.py <<'EOF'
 
 
 def _page_with(text):
@@ -5501,14 +5620,17 @@ def test_cross_source_key_punctuation_insensitive_marmon_case():
     assert cross_source_key("Marmon Holdings", "Data Engineering Intern Co-op") == \
         cross_source_key("Marmon Holdings", "Data Engineering Intern/Co-op")
 EOF
-.venv/bin/python -m pytest -q 2>&1 | tail -4`
+.venv/bin/python -m pytest -q 2>&1 | tail -4
+  ```
   ```
 ........................................................................ [ 43%]
 ........................................................................ [ 86%]
 .......................                                                  [100%]
 167 passed in 0.81s
   ```
-- `Bash` — `head -30 "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Companies giving OPT & CPT.md"; echo ===; cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
+- `Bash`:
+  ```bash
+head -30 "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Companies giving OPT & CPT.md"; echo ===; cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
 import json, sys
 sys.path.insert(0, "/home/anant_gupta/projects/work/internship-research-loop")
 from core.filter import matches, load_profile
@@ -5519,7 +5641,8 @@ jg = [normalize_josegael(r) for r in json.load(open("jg_now.json"))]
 print("FINAL config vs live feeds:")
 print("  SimplifyJobs:", len([l for l in sj if matches(l, profile)]), "match (was 29 pre-Winter-2027, 103 pre-phase-5)")
 print("  JGCL:", len([l for l in jg if matches(l, profile)]), "match (was 5)")
-EOF`
+EOF
+  ```
   ```
 ---
 type: brainstorm
@@ -5644,7 +5767,9 @@ The hourly discovery loop fetches every new validated match's posting page once 
 
   ```
 - `TaskUpdate` — `{"taskId":"5","status":"completed"}`
-- `Bash` — `.venv/bin/python -m pytest -q 2>&1 | tail -1 && .venv/bin/python - <<'EOF'
+- `Bash`:
+  ```bash
+.venv/bin/python -m pytest -q 2>&1 | tail -1 && .venv/bin/python - <<'EOF'
 import sys; sys.path.insert(0, ".")
 from core.git_ops import commit_and_push_with_retry
 msg = """Phase 6: three hard criteria codified — Winter 2027 term, OPT gate, discovery-time content
@@ -5673,7 +5798,8 @@ msg = """Phase 6: three hard criteria codified — Winter 2027 term, OPT gate, d
 Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"""
 print("pushed:", commit_and_push_with_retry(".", msg))
 EOF
-git log --oneline -2`
+git log --oneline -2
+  ```
   ```
 167 passed in 0.70s
 pushed: True
@@ -5771,17 +5897,22 @@ Repo layout: `ingestion/` (`sources.py`, `normalize.py`, `posting_page.py`), `co
 This file is the standalone orientation document. `20_Progress/Internship/Building System/Phases 1-3 Run.md` in the Jarvis vault is the deeper record: build-by-build history, bugs found and fixed, audit evidence, and reasoning. If the two disagree on a fact, re-verify against live state — most-recently-verified wins, and the disagreement itself means one of them needs updating.
 
   ```
-- `Bash` — `sed -i '/^PRD.md$/d' .git/info/exclude && .venv/bin/python - <<'EOF'
+- `Bash`:
+  ```bash
+sed -i '/^PRD.md$/d' .git/info/exclude && .venv/bin/python - <<'EOF'
 import sys; sys.path.insert(0, ".")
 from core.git_ops import commit_and_push_with_retry
 print("pushed:", commit_and_push_with_retry(".", """PRD: three-criteria scope, content-carrying dossiers, verified 2026-07-18 state
 
 Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"""))
-EOF`
+EOF
+  ```
   ```
 pushed: True
   ```
-- `Bash` — `cat >> "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Phases 1-3 Run.md" <<'EOF'
+- `Bash`:
+  ```bash
+cat >> "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Phases 1-3 Run.md" <<'EOF'
 ## Phase 6 — Closing Pass: Review, Re-Verify, Three-Criteria Audit, Content, Codification (2026-07-18)
 Shipped as commits `69f76dc` (code) and the PRD update on master; **167/167 tests** (fresh run, was 148). Everything below is from direct verification this pass, not carried claims.
 ### Code review findings (Task 1)
@@ -5816,7 +5947,8 @@ All 20 survivors now carry the real posting's substantive sections — verbatim 
 - **On/after 2026-07-24** — cadence decision.
 - Layer 5 `enrich.py` still has never run end-to-end — the key now exists; run it at the next real promotion.
 EOF
-echo appended && .venv/bin/python -m pytest -q 2>&1 | tail -1`
+echo appended && .venv/bin/python -m pytest -q 2>&1 | tail -1
+  ```
   ```
 appended
 167 passed in 0.77s
@@ -5855,972 +5987,6 @@ Current state stands as reported: Phase 6 closing pass complete (`69f76dc` + PRD
 - Files created: /home/anant_gupta/projects/work/internship-research-loop/enrich.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_enrich.py, /home/anant_gupta/projects/work/internship-research-loop/grade_resume.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_grade_resume.py, /home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/memory/phase4-state-and-gates.md, /home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/memory/MEMORY.md, /home/anant_gupta/projects/work/internship-research-loop/ingestion/normalize.py, /home/anant_gupta/projects/work/internship-research-loop/ingestion/sources.py, /home/anant_gupta/projects/work/internship-research-loop/core/identity.py, /home/anant_gupta/projects/work/internship-research-loop/core/schema_drift.py, /home/anant_gupta/projects/work/internship-research-loop/recheck.py, /home/anant_gupta/projects/work/internship-research-loop/.github/workflows/recheck.yml, /home/anant_gupta/projects/work/internship-research-loop/tests/test_recheck.py, /home/anant_gupta/projects/work/internship-research-loop/ingestion/posting_page.py, /home/anant_gupta/projects/work/internship-research-loop/vault_writer/templates/dossier.md.j2, /home/anant_gupta/projects/work/internship-research-loop/tests/test_posting_page.py, /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Companies giving OPT & CPT.md, /home/anant_gupta/projects/work/internship-research-loop/PRD.md
 - Files modified: /home/anant_gupta/projects/work/internship-research-loop/core/filter.py, /home/anant_gupta/projects/work/internship-research-loop/core/profile.yaml, /home/anant_gupta/projects/work/internship-research-loop/tests/test_filter.py, /home/anant_gupta/projects/work/internship-research-loop/enrich.py, /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Phases 1-3 Run.md, /home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/memory/phase4-state-and-gates.md, /home/anant_gupta/projects/work/internship-research-loop/vault_writer/writer.py, /home/anant_gupta/projects/work/internship-research-loop/vault_writer/validate.py, /home/anant_gupta/projects/work/internship-research-loop/run_pipeline.py, /home/anant_gupta/projects/work/internship-research-loop/recheck.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_identity.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_sources.py, /home/anant_gupta/projects/work/internship-research-loop/README.md, /home/anant_gupta/projects/work/internship-research-loop/tests/test_run_pipeline.py, /home/anant_gupta/projects/work/internship-research-loop/core/identity.py, /home/anant_gupta/projects/work/internship-research-loop/.github/workflows/run.yml
 - Files deleted: (none)
-- Commands run: ls /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building\ System/ 2>/dev/null && ls /home/anant_gupta/projects/work/internship-research-loop, ls "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/" | head -20; ls "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/" | wc -l, cat "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/[REDACTED].md", cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && curl -sL https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json -o simplify.json && curl -sL https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json -o josegael.json && wc -c simplify.json josegael.json, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && python3 - <<'EOF'
-import json, collections
-for f in ("simplify.json", "josegael.json"):
-    data = json.load(open(f))
-    locs = collections.Counter()
-    n_no_field = n_empty = 0
-    for e in data:
-        l = e.get("locations")
-        if l is None: n_no_field += 1
-        elif not l: n_empty += 1
-        else:
-            for x in l: locs[x] += 1
-    print(f"=== {f}: {len(data)} entries, {n_no_field} missing field, {n_empty} empty list, {len(locs)} distinct location strings")
-    for s, c in locs.most_common(60):
-        print(f"  {c:5d}  {s!r}")
-EOF, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && python3 - <<'EOF'
-import json, re, collections
-US_STATES = {"AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VA","VT","WA","WI","WV","WY","DC","PR"}
-all_locs = set()
-for f in ("simplify.json", "josegael.json"):
-    for e in json.load(open(f)):
-        all_locs.update(e.get("locations") or [])
-print(f"total distinct: {len(all_locs)}")
-
-state_suffix = re.compile(r",\s*([A-Z]{2})$")
-buckets = collections.defaultdict(list)
-for s in sorted(all_locs):
-    m = state_suffix.search(s)
-    if m and m.group(1) in US_STATES: buckets["us_city_state"].append(s)
-    elif "remote" in s.lower(): buckets["remote_variants"].append(s)
-    else: buckets["other"].append(s)
-for k in ("remote_variants", "other"):
-    print(f"\n--- {k} ({len(buckets[k])}) ---")
-    for s in buckets[k]: print(f"  {s!r}")
-print(f"\nus_city_state count: {len(buckets['us_city_state'])}")
-EOF, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && python3 - <<'EOF'
-import json, re, sys
-sys.path.insert(0, "/home/anant_gupta/projects/work/internship-research-loop")
-from ingestion.normalize import normalize_simplify, normalize_josegael
-from core.filter import matches, load_profile
-
-US_STATE_CODES = {"AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VA","VT","WA","WI","WV","WY","DC","PR"}
-US_STATE_NAMES = {"alabama","alaska","arizona","arkansas","california","colorado","connecticut","delaware","florida","georgia","hawaii","idaho","illinois","indiana","iowa","kansas","kentucky","louisiana","maine","maryland","massachusetts","michigan","minnesota","mississippi","missouri","montana","nebraska","nevada","new hampshire","new jersey","new mexico","new york","north carolina","north dakota","ohio","oklahoma","oregon","pennsylvania","rhode island","south carolina","south dakota","tennessee","texas","utah","vermont","virginia","washington","west virginia","wisconsin","wyoming"}
-US_ALIASES = {"nyc","sf","la","new york city","united states","usa","us","u.s.","u.s. virgin islands","multiple us cities","remote in usa","remote in us","remote, us"}
-NON_US = {"canada","uk","united kingdom","germany","india","france","spain","singapore","europe","south america","united arab emirates"}
-_state_suffix = re.compile(r"[.,]\s*([A-Za-z]{2})$")
-
-def norm(s): return re.sub(r"\s+", " ", s).strip().lower()
-
-def entry_eligible(loc):
-    l = norm(loc)
-    if l in US_ALIASES: return True
-    segs = [seg.strip() for seg in l.split(",")]
-    if any(seg in NON_US for seg in segs): return False
-    m = _state_suffix.search(loc.strip())
-    if m and m.group(1).upper() in US_STATE_CODES: return True
-    if segs[-1] in US_STATE_NAMES or segs[-1] in US_ALIASES: return True
-    if any(k in l for k in ("remote", "virtual", "hybrid")): return True
-    return False
-
-def listing_eligible(locs):
-    if not locs: return True  # permissive: no location data = unrestricted
-    return any(entry_eligible(x) for x in locs)
-
-profile = load_profile("/home/anant_gupta/projects/work/internship-research-loop/core/profile.yaml")
-for fname, normf in (("simplify.json", normalize_simplify), ("josegael.json", normalize_josegael)):
-    listings = [normf(r) for r in json.load(open(fname))]
-    passing = [l for l in listings if matches(l, profile)]
-    dropped = [l for l in passing if not listing_eligible(l.locations)]
-    print(f"=== {fname}: {len(passing)} pass current filter, {len(dropped)} would be dropped by locations rule")
-    for l in dropped: print(f"  DROP {l.company} — {l.title}: {l.locations}")
-
-# strings judged eligible that shouldn't be, and vice versa — eyeball edge cases
-all_locs = set()
-for f in ("simplify.json", "josegael.json"):
-    for e in json.load(open(f)): all_locs.update(e.get("locations") or [])
-weird = [s for s in sorted(all_locs) if not entry_eligible(s) and not any(seg.strip() in NON_US for seg in norm(s).split(","))]
-print(f"\n--- rejected strings NOT explained by a non-US country ({len(weird)}) ---")
-for s in weird: print(f"  {s!r}")
-EOF, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && python3 - <<'EOF'
-import re
-NON_US_RE = re.compile(r"\b(canada|can|uk|united kingdom|germany|india|france|spain|singapore|europe|south america|united arab emirates|mexico|japan|china|ireland|australia)\b")
-for s in ["Remote in Canada", "Remote in Germany", "Remote in India", "Remote in UK", "Remote", "Remote in USA", "Toronto, ON, CAN", "New Mexico"]:
-    l = re.sub(r"\s+", " ", s).strip().lower()
-    print(s, "->", bool(NON_US_RE.search(l)))
-EOF, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && python3 - <<'EOF'
-import json, re, sys
-sys.path.insert(0, "/home/anant_gupta/projects/work/internship-research-loop")
-from ingestion.normalize import normalize_simplify, normalize_josegael
-from core.filter import matches, load_profile
-
-US_STATE_CODES = {"AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VA","VT","WA","WI","WV","WY","DC","PR"}
-US_STATE_NAMES = {"alabama","alaska","arizona","arkansas","california","colorado","connecticut","delaware","florida","georgia","hawaii","idaho","illinois","indiana","iowa","kansas","kentucky","louisiana","maine","maryland","massachusetts","michigan","minnesota","mississippi","missouri","montana","nebraska","nevada","new hampshire","new jersey","new mexico","new york","north carolina","north dakota","ohio","oklahoma","oregon","pennsylvania","rhode island","south carolina","south dakota","tennessee","texas","utah","vermont","virginia","washington","west virginia","wisconsin","wyoming"}
-US_ALIASES = {"nyc","sf","la","new york city","united states","usa","us","u.s.","u.s. virgin islands","multiple us cities","multiple hbcus","remote in usa","remote in us","remote, us"}
-NON_US_RE = re.compile(r"\b(canada|can|uk|united kingdom|germany|india|france|spain|singapore|europe|south america|united arab emirates|mexico|japan|china|ireland|australia)\b")
-_state_suffix = re.compile(r"[.,]\s*([A-Za-z]{2})$")
-
-def norm(s): return re.sub(r"\s+", " ", s).strip().lower()
-
-def entry_eligible(loc):
-    l = norm(loc)
-    if l in US_ALIASES: return True
-    m = _state_suffix.search(loc.strip())
-    if m and m.group(1).upper() in US_STATE_CODES: return True
-    last = l.split(",")[-1].strip()
-    if last in US_STATE_NAMES or last in US_ALIASES: return True
-    if NON_US_RE.search(l): return False
-    return any(k in l for k in ("remote", "virtual", "hybrid"))
-
-def listing_eligible(locs):
-    return not locs or any(entry_eligible(x) for x in locs)
-
-profile = load_profile("/home/anant_gupta/projects/work/internship-research-loop/core/profile.yaml")
-total_drop = 0
-for fname, normf in (("simplify.json", normalize_simplify), ("josegael.json", normalize_josegael)):
-    listings = [normf(r) for r in json.load(open(fname))]
-    passing = [l for l in listings if matches(l, profile)]
-    dropped = [l for l in passing if not listing_eligible(l.locations)]
-    total_drop += len(dropped)
-    print(f"=== {fname}: {len(passing)} pass, {len(dropped)} dropped by locations rule")
-    for l in dropped: print(f"  DROP {l.company}: {l.locations}")
-
-# sanity: every remote variant classified correctly
-for s in ["Remote","Remote in USA","Remote in USa","Remote in US","Remote, US","Remote in Canada","Remote in Germany","Remote in India","Remote in UK","New Mexico","Multiple Locations","Multiple HBCUs","Virtual","Hybrid","Seattle, W","Carlsbad, Ca","Dallas. TX","Toronto, ON, CAN","London","NYC"]:
-    print(f"  {entry_eligible(s)!s:5}  {s!r}")
-EOF, date -u && tail -3 /home/anant_gupta/projects/work/internship-research-loop/logs/runs.jsonl && python3 -c "
-import json
-runs=[json.loads(l) for l in open('/home/anant_gupta/projects/work/internship-research-loop/logs/runs.jsonl')]
-print(f'{len(runs)} runs, first={runs[0].get(\"ts\") or runs[0]}, last={runs[-1].get(\"ts\") or runs[-1]}')" 2>&1 | head -20, cat "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/30_Order/Workflows/Internship Pipeline.md" 2>/dev/null || find "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/30_Order" -name "*.md" | head, find "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career" -iname "*resume*" -o -ipath "*Resumes*" | head; echo ---; env | grep -i firecrawl; grep -ri firecrawl /home/anant_gupta/projects/work/internship-research-loop --include="*.py" --include="*.yml" --include="*.yaml" --include="*.md" -l, ls "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Resumes/" 2>/dev/null; echo ---; head -80 "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Resumes/Main Resume.md" 2>/dev/null, gh secret list 2>/dev/null; grep -i firecrawl ~/.bashrc ~/.profile ~/.env 2>/dev/null; ls "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/", python3 -c "
-import json
-d = json.load(open('/home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/simplifyjobs.json'))
-for r in d: print(r['_case'], '| locations =', r.get('locations'))", python3 -m pytest tests/ -q 2>&1 | tail -5, which dig nslookup host python3; python3 -c "import requests, yaml; print('deps ok')", python3 -m pytest tests/ -q 2>&1 | tail -3 && python3 grade_resume.py - <<'EOF'
-Software Engineering Intern — we want students with Python, TypeScript, React,
-REST APIs, Postgres, Docker, and experience building data pipelines and
-AI/LLM-powered features. Strong communication skills preferred.
-EOF, .venv/bin/python -m pytest -q 2>&1 | tail -6, .venv/bin/python - <<'EOF'
-import re, sys, yaml
-from pathlib import Path
-sys.path.insert(0, ".")
-from core.filter import location_eligible, _entry_is_us_or_remote, _NON_US, _norm
-
-DOSSIERS = Path("/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers")
-files = sorted(DOSSIERS.glob("*.md"))
-rejects, empty_loc = [], 0
-for f in files:
-    fm = yaml.safe_load(re.match(r"^---\n(.*?)\n---\n", f.read_text(encoding="utf-8"), re.DOTALL).group(1))
-    locs = fm.get("locations") or []
-    if not locs: empty_loc += 1
-    if not location_eligible(locs):
-        detail = []
-        for x in locs:
-            m = _NON_US.search(_norm(x))
-            detail.append(f"{x!r} -> denylist token '{m.group(1)}'" if m else f"{x!r} -> no US signal")
-        rejects.append((f.name, fm.get("company"), detail))
-print(f"{len(files)} dossiers scanned, {empty_loc} with no locations data (pass as unrestricted)")
-print(f"{len(rejects)} would be REJECTED by location_eligible():\n")
-for name, company, detail in rejects:
-    print(f"  {company}  [{name}]")
-    for d in detail: print(f"      {d}")
-EOF, git diff --stat && git status --short && echo ================= && git diff core/profile.yaml, echo "PRD.md" >> .git/info/exclude && .venv/bin/python - <<'EOF'
-import sys; sys.path.insert(0, ".")
-from core.git_ops import commit_and_push_with_retry
-msg = """Phase 4: locations_allow filter, Layer 5 enrich.py, Layer 6 grade_resume.py
-
-locations_allow built from live feed data (1216 distinct strings): US signal
-wins, affirmative foreign token loses, ambiguous passes. Prospective only —
-the 13 existing non-US dossiers are grandfathered. enrich.py is promotion-
-triggered (manual, Pipeline Step 2), never called by run_pipeline.py.
-
-Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"""
-print("pushed:", commit_and_push_with_retry(".", msg))
-EOF
-git log --oneline -2 && git status --short, env | grep -ci firecrawl; grep -rsi "firecrawl" ~/.bashrc ~/.profile ~/.bash_profile ~/.env ~/.config/fish/config.fish 2>/dev/null | wc -l; gh secret list 2>/dev/null; ls ~/.firecrawl 2>/dev/null; echo "---done---", .venv/bin/python - <<'EOF'
-import sys; sys.path.insert(0, ".")
-from enrich import github_org_members, mx_ok, infer_email
-org, members = github_org_members("Confluent")
-print(f"GitHub org match: {org}, public members: {members}")
-print(f"mx_ok('confluent.io') = {mx_ok('confluent.io')}")
-print(f"mx_ok('no-such-domain-zzz-9812.com') = {mx_ok('no-such-domain-zzz-9812.com')}")
-if members:
-    print("inferred:", infer_email(members[0][0], "confluent.io"))
-EOF, grep -h "^url:" "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/"*.md | grep -Ei "greenhouse|lever" | head -5, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && curl -s "https://boards-api.greenhouse.io/v1/boards/anthropic/jobs/5023394008" | python3 -c "
-import sys, json, html, re
-d = json.load(sys.stdin)
-text = re.sub(r'<[^>]+>', ' ', html.unescape(d['content']))
-print(d['title'], file=sys.stderr)
-print(text)" > jd_anthropic.txt 2>jd_title.txt && cat jd_title.txt && wc -w jd_anthropic.txt, .venv/bin/python grade_resume.py /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/jd_anthropic.txt, gh run list --limit 3 --json name,status,conclusion,headSha,createdAt --jq '.[] | "\(.name) \(.status) \(.conclusion // "-") \(.headSha[0:7]) \(.createdAt)"', grep -n "Vault Cleanup" "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Phases 1-3 Run.md", sed -n '112,180p' "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Phases 1-3 Run.md", git pull --rebase 2>&1 | tail -2 && git log --oneline -3, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && curl -s https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json -o josegael_fresh.json && curl -s https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json -o simplify_fresh.json && python3 - <<'EOF'
-import json, collections
-jg = json.load(open("josegael_fresh.json"))
-print("JGCL keys of first entry:", sorted(jg[0].keys()))
-ty_fields = collections.Counter()
-for e in jg:
-    for k in e:
-        if "year" in k.lower() or "target" in k.lower() or "class" in k.lower(): ty_fields[k] += 1
-print("JGCL year-ish fields:", dict(ty_fields))
-print("sample values:", [e.get(list(ty_fields)[0]) for e in jg[:5]] if ty_fields else "NONE")
-sj = json.load(open("simplify_fresh.json"))
-print("\nSimplify keys:", sorted(sj[0].keys()))
-print("active values:", collections.Counter(e.get("active") for e in sj))
-degs = collections.Counter()
-for e in sj:
-    d = e.get("degrees")
-    degs[tuple(d) if isinstance(d, list) else d] += 1
-print("degrees distinct values (top 15):")
-for v, c in degs.most_common(15): print(f"  {c:6d}  {v}")
-print("\nJGCL active field:", collections.Counter(e.get("active") for e in jg))
-print("JGCL degrees:", collections.Counter(tuple(e.get("degrees") or []) for e in jg).most_common(8))
-EOF, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && python3 - <<'EOF'
-import json, sys, collections
-sys.path.insert(0, "/home/anant_gupta/projects/work/internship-research-loop")
-from core.filter import matches, load_profile
-from ingestion.normalize import normalize_simplify, normalize_josegael
-
-old = json.load(open("josegael.json"))   # fetched 2026-07-17, pre-write snapshot era
-new = json.load(open("josegael_fresh.json"))
-print("OLD (2026-07-17) first-entry keys:", sorted(old[0].keys()))
-old_ty = collections.Counter(bool(e.get("target_year")) for e in old)
-new_ty = collections.Counter(bool(e.get("target_year")) for e in new)
-print(f"OLD entries with non-empty target_year: {old_ty}")
-print(f"NEW entries with non-empty target_year: {new_ty}")
-# same uid, both snapshots — did target_year appear between snapshots?
-old_by_id = {e["id"]: e for e in old}
-changed = [(e["id"], old_by_id[e["id"]].get("target_year"), e.get("target_year"))
-           for e in new if e["id"] in old_by_id
-           and old_by_id[e["id"]].get("target_year") != e.get("target_year")]
-print(f"entries whose target_year differs between snapshots: {len(changed)}")
-for i, o, n in changed[:5]: print(f"  {i}: {o} -> {n}")
-
-profile = load_profile("/home/anant_gupta/projects/work/internship-research-loop/core/profile.yaml")
-sj = [normalize_simplify(r) for r in json.load(open("simplify_fresh.json"))]
-sj_raw = {r["id"]: r for r in json.load(open("simplify_fresh.json"))}
-passing = [l for l in sj if matches(l, profile)]
-act = collections.Counter(sj_raw[l.raw_id]["active"] for l in passing)
-print(f"\nSimplify listings passing current filter: {len(passing)}, active breakdown: {dict(act)}")
-EOF, ls "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/" | grep jose; echo ===; for f in "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/"jose*.md; do echo "--- $f"; grep -A3 "^target_year" "$f" | head -4; grep "^uid" "$f"; done 2>/dev/null | head -30, cd "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" && git log --oneline -3 -- "10_Areas/Career/Internships/List/Dossiers/" && git show HEAD~1:"10_Areas/Career/Internships/List/Dossiers/[REDACTED].md" 2>/dev/null | sed -n '1,20p', cd "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" && git status --short -- "10_Areas/Career/Internships/List/Dossiers/" | head -3 && git status --short -- "10_Areas/Career/Internships/List/Dossiers/" | wc -l && echo === && for f in $(git ls-tree --name-only HEAD "10_Areas/Career/Internships/List/Dossiers/" | grep jose); do
-  ty=$(git show "HEAD:$f" | sed -n '/^target_year:/,/^[a-z]/p' | grep -c "^  - ")
-  echo "$ty entries  $(basename $f)"
-done, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && python3 - <<'EOF'
-import json, collections
-jg = json.load(open("josegael_fresh.json"))
-print("JGCL season values:", collections.Counter(e.get("season") for e in jg))
-print("JGCL opportunity_type:", collections.Counter(e.get("opportunity_type") for e in jg))
-# the 4 wrong-cycle dossiers deleted in the audit — what do their feed entries say?
-for slug_hint in ("gsoc", "MLH", "MIT", "Partiful"):
-    hits = [e for e in jg if slug_hint.lower() in (e["company_name"] + e["title"]).lower()]
-    for e in hits[:2]:
-        print(f"  {e['company_name']!r} | season={e.get('season')!r} | active={e['active']} | target_year={e.get('target_year')}")
-EOF, .venv/bin/python -m pytest -q 2>&1 | tail -25, grep -n "def test\|validate(" tests/test_validate.py | head -40 && echo === && head -30 tests/fixtures/josegael.json && ls tests/fixtures/, python3 -c "
-import json
-for f in ('josegael.json','simplifyjobs.json'):
-    d = json.load(open(f'tests/fixtures/{f}'))
-    print(f'=== {f}: {len(d)} entries')
-    for r in d:
-        print(' ', r['_case'][:80], '| active=', r.get('active'), '| season=', r.get('season'), '| degrees=', r.get('degrees'), '| keys missing:', {'active','degrees','season'} - set(r))", cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && python3 - <<'EOF'
-import json
-jg = json.load(open("josegael_fresh.json"))
-for e in jg:
-    if e.get("season") == "Summer 2026" or "MLH" in e["company_name"]:
-        print(json.dumps({k: e[k] for k in ("id","company_name","title","season","active","target_year")}, indent=None))
-sj = json.load(open("simplify_fresh.json"))
-# real entry: Summer 2027 + allowed category + active true + NO Bachelor's in degrees
-hits = [e for e in sj if "Summer 2027" in e.get("terms", []) and e.get("category") in ("Software","AI/ML/Data")
-        and e.get("active") and e.get("degrees") and "Bachelor's" not in e["degrees"]]
-print(f"\nsimplify PhD/Masters-only Summer2027 active hits: {len(hits)}")
-if hits: print(json.dumps(hits[0], indent=1))
-EOF, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && python3 - <<'EOF'
-import json
-jg = json.load(open("josegael_fresh.json"))
-sj = json.load(open("simplify_fresh.json"))
-
-fixtures = "/home/anant_gupta/projects/work/internship-research-loop/tests/fixtures"
-jf = json.load(open(f"{fixtures}/josegael.json"))
-jf[0]["_case"] = "should-reject: active false upstream (closed posting) — was should-match before the active gate"
-jf[1]["_case"] = "should-reject: season Spring (wrong cycle) and active false — real Partiful entry"
-jf[2]["_case"] = "should-reject: target_year is Freshman/Sophomore only, no Junior (also active false)"
-mlh = next(e for e in jg if e["id"] == "[REDACTED]")
-wtn = next(e for e in jg if e["id"] == "[REDACTED]")
-jf.append({"_case": "should-match: active true, season Summer (year-less, passes), Junior in target_year — real MLH entry", **mlh})
-jf.append({"_case": "should-reject: season Summer 2026 hits exclude_terms — real WomenTech entry", **wtn})
-json.dump(jf, open(f"{fixtures}/josegael.json", "w"), indent=2)
-
-sf = json.load(open(f"{fixtures}/simplifyjobs.json"))
-tiktok = next(e for e in sj if e["id"] == "[REDACTED]")
-sf.append({"_case": "should-reject: degrees PhD-only, no Bachelor's — real TikTok entry, otherwise matching", **tiktok})
-json.dump(sf, open(f"{fixtures}/simplifyjobs.json", "w"), indent=2)
-print("josegael cases:", [e["_case"][:60] for e in jf])
-print("simplify cases:", [e["_case"][:60] for e in sf])
-EOF
-rm /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/zapply_readme.md, python3 - <<'EOF'
-import re
-p = "tests/test_schema_drift.py"
-s = open(p).read()
-s = s.replace("""from core.schema_drift import (
-    SchemaDriftError,
-    check_all,
-    check_josegael_schema,
-    check_simplify_schema,
-    check_zapply_schema,
-)""", """from core.schema_drift import (
-    SchemaDriftError,
-    check_all,
-    check_josegael_schema,
-    check_simplify_schema,
-)""")
-# drop zapply fixture + its two tests + rewrite check_all tests
-s = s.replace("""@pytest.fixture
-def zapply_text():
-    return (FIXTURES / "zapply_readme.md").read_text()
-
-
-""", "")
-s = re.sub(r'def test_zapply_schema_passes_on_real_shape.*?# --- drift', '# --- drift', s, flags=re.DOTALL)
-s = re.sub(r'def test_zapply_schema_detects_missing_table.*?(?=# --- check_all)', '', s, flags=re.DOTALL)
-s = s.replace("def test_check_all_raises_on_first_failing_source(simplify_raw, josegael_raw, zapply_text):",
-              "def test_check_all_raises_on_first_failing_source(simplify_raw, josegael_raw):")
-s = s.replace("    assert call_count[\"n\"] == 1  # halted before ever checking josegael/zapply",
-              "    assert call_count[\"n\"] == 1  # halted before ever checking josegael")
-s = s.replace("""def test_check_all_passes_when_all_three_are_healthy(simplify_raw, josegael_raw, zapply_text):
-    call_log = []
-
-    def http_get(url, timeout):
-        call_log.append(url)
-        from ingestion.sources import JOSEGAEL_URL, SIMPLIFY_URL, ZAPPLY_README_URL
-
-        if url == SIMPLIFY_URL:
-            return _json_response(simplify_raw)
-        if url == JOSEGAEL_URL:
-            return _json_response(josegael_raw)
-        if url == ZAPPLY_README_URL:
-            return _text_response(zapply_text)
-        raise AssertionError(f"unexpected url: {url}")
-
-    check_all(http_get=http_get)  # does not raise
-    assert len(call_log) == 3""",
-"""def test_check_all_passes_when_both_are_healthy(simplify_raw, josegael_raw):
-    call_log = []
-
-    def http_get(url, timeout):
-        call_log.append(url)
-        from ingestion.sources import JOSEGAEL_URL, SIMPLIFY_URL
-
-        if url == SIMPLIFY_URL:
-            return _json_response(simplify_raw)
-        if url == JOSEGAEL_URL:
-            return _json_response(josegael_raw)
-        raise AssertionError(f"unexpected url: {url}")
-
-    check_all(http_get=http_get)  # does not raise
-    assert len(call_log) == 2
-
-
-# --- the permissive-default fields: renamed upstream, they'd silently make
-# every listing pass their checks — drift must catch them (2026-07-18) ---
-
-@pytest.mark.parametrize("key", ["active", "degrees"])
-def test_simplify_schema_detects_dropped_permissive_field(simplify_raw, key):
-    drifted = [{k: v for k, v in r.items() if k != key} for r in simplify_raw]
-    http_get = Mock(return_value=_json_response(drifted))
-    with pytest.raises(SchemaDriftError, match=key):
-        check_simplify_schema(http_get=http_get)
-
-
-@pytest.mark.parametrize("key", ["active", "season"])
-def test_josegael_schema_detects_dropped_permissive_field(josegael_raw, key):
-    drifted = [{k: v for k, v in r.items() if k != key} for r in josegael_raw]
-    http_get = Mock(return_value=_json_response(drifted))
-    with pytest.raises(SchemaDriftError, match=key):
-        check_josegael_schema(http_get=http_get)""")
-open(p, "w").write(s)
-print("ok")
-EOF, python3 - <<'EOF'
-p = "tests/test_run_pipeline.py"
-s = open(p).read()
-s = s.replace("from ingestion.normalize import normalize_josegael, normalize_simplify, parse_zapply_readme",
-              "from ingestion.normalize import normalize_josegael, normalize_simplify")
-s = s.replace("""def _zapply_text():
-    return (FIXTURES / "zapply_readme.md").read_text()
-
-
-""", "")
-s = s.replace("""    from ingestion.sources import JOSEGAEL_URL, SIMPLIFY_URL, ZAPPLY_README_URL
-
-    resp = Mock(status_code=200)
-    if url == SIMPLIFY_URL:
-        resp.json.return_value = _simplify_raw()
-    elif url == JOSEGAEL_URL:
-        resp.json.return_value = _josegael_raw()
-    elif url == ZAPPLY_README_URL:
-        resp.text = _zapply_text()
-    else:""",
-"""    from ingestion.sources import JOSEGAEL_URL, SIMPLIFY_URL
-
-    resp = Mock(status_code=200)
-    if url == SIMPLIFY_URL:
-        resp.json.return_value = _simplify_raw()
-    elif url == JOSEGAEL_URL:
-        resp.json.return_value = _josegael_raw()
-    else:""")
-s = s.replace("""    josegael_junior = normalize_josegael(_josegael_raw()[0])
-    assert run_pipeline.build_matched_reason(josegael_junior, PROFILE) == "Junior-eligible"
-
-    zapply = parse_zapply_readme(_zapply_text())[0]
-    assert run_pipeline.build_matched_reason(zapply, PROFILE) == "All-student eligible"
-""",
-"""    josegael_junior = normalize_josegael(_josegael_raw()[0])
-    assert run_pipeline.build_matched_reason(josegael_junior, PROFILE) == "Junior-eligible"
-""")
-s = s.replace("""    assert results["Jose-Gael-Cruz-Lopez"]["fetch_count"] == len(_josegael_raw())
-    assert results["zapplyjobs"]["fetch_count"] == len(parse_zapply_readme(_zapply_text()))
-    # every fixture set has at least one should-match case
-    assert len(results["SimplifyJobs"]["matched"]) > 0
-    assert len(results["Jose-Gael-Cruz-Lopez"]["matched"]) > 0
-    assert len(results["zapplyjobs"]["matched"]) > 0""",
-"""    assert results["Jose-Gael-Cruz-Lopez"]["fetch_count"] == len(_josegael_raw())
-    # every fixture set has at least one should-match case
-    assert len(results["SimplifyJobs"]["matched"]) > 0
-    assert len(results["Jose-Gael-Cruz-Lopez"]["matched"]) > 0""")
-s = s.replace("""def test_file_github_issue_calls_gh_with_expected_args():""",
-"""def test_validate_and_write_rejects_cross_source_duplicate(tmp_path):
-    \"\"\"Same program via two sources (two distinct uids, one company+title) —
-    the second write must be rejected by the cross_source_duplicate gate.
-    MLH Fellowship landed twice this way before the 2026-07-18 cleanup.\"\"\"
-    listing = normalize_simplify(_simplify_raw()[0])
-    twin_raw = {**_simplify_raw()[0], "id": "a-different-upstream-id"}
-    twin = normalize_josegael({  # same company+title arriving via JGCL
-        "id": "jgcl-twin", "company_name": listing.company, "title": listing.title,
-        "url": listing.url, "season": "Summer", "active": True,
-        "target_year": ["Junior (3rd year)"],
-    })
-    del twin_raw
-
-    written, rejections = run_pipeline.validate_and_write(
-        [(compute_uid(listing), listing), (compute_uid(twin), twin)],
-        PROFILE, tmp_path, seen_ids=set(), date_found="2026-07-18",
-        http_head=_fake_http_head_all_live,
-    )
-
-    assert written == [compute_uid(listing)]
-    assert len(rejections) == 1
-    assert rejections[0]["check"] == "cross_source_duplicate"
-
-
-def test_validate_and_write_seeds_dedup_keys_from_existing_vault_files(tmp_path):
-    \"\"\"Keys come from the dossier files actually in the checkout — a listing
-    whose company+title already sits in the vault (even under another uid,
-    written by an earlier run) is rejected, not re-written.\"\"\"
-    listing = normalize_simplify(_simplify_raw()[0])
-    first_uid = compute_uid(listing)
-    run_pipeline.validate_and_write(
-        [(first_uid, listing)], PROFILE, tmp_path, seen_ids=set(),
-        date_found="2026-07-18", http_head=_fake_http_head_all_live,
-    )
-
-    twin = normalize_josegael({
-        "id": "jgcl-twin", "company_name": listing.company, "title": listing.title,
-        "url": listing.url, "season": "Summer", "active": True,
-        "target_year": ["Junior (3rd year)"],
-    })
-    written, rejections = run_pipeline.validate_and_write(
-        [(compute_uid(twin), twin)], PROFILE, tmp_path, seen_ids={first_uid},
-        date_found="2026-07-18", http_head=_fake_http_head_all_live,
-    )
-
-    assert written == []
-    assert rejections[0]["check"] == "cross_source_duplicate"
-
-
-def test_file_github_issue_calls_gh_with_expected_args():""")
-open(p, "w").write(s)
-print("ok")
-EOF, .venv/bin/python -m pytest -q 2>&1 | tail -15, grep -rn "zapply" --include="*.py" --include="*.yml" --include="*.yaml" --include="*.md" . 2>/dev/null | grep -v ".venv\|jarvis-checkout" | head, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && .venv_placeholder 2>/dev/null; /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
-import json, sys, collections
-sys.path.insert(0, "/home/anant_gupta/projects/work/internship-research-loop")
-from core.filter import load_profile, matches
-from ingestion.normalize import normalize_simplify, normalize_josegael
-
-profile = load_profile("/home/anant_gupta/projects/work/internship-research-loop/core/profile.yaml")
-for fname, normf in (("simplify_fresh.json", normalize_simplify), ("josegael_fresh.json", normalize_josegael)):
-    listings = [normf(r) for r in json.load(open(fname))]
-    passing = [l for l in listings if matches(l, profile)]
-    print(f"{fname}: {len(listings)} fetched -> {len(passing)} match new filter")
-    for l in passing[:40]:
-        print(f"   {l.company} — {l.title[:60]}")
-EOF, head -20 README.md, JARVIS_DIR="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" .venv/bin/python recheck.py --dry-run, .venv/bin/python -m pytest -q 2>&1 | tail -3 && git add -A && git status --short | head -25, .venv/bin/python - <<'EOF'
-import sys; sys.path.insert(0, ".")
-from core.git_ops import commit_and_push_with_retry
-msg = """Fix the 5 root causes behind dossier bloat (2026-07-18 vault audit)
-
-1. recheck.py + daily recheck.yml — post-write liveness pass; removes
-   dossiers whose posting went active:false or vanished upstream, with a
-   mass-deletion brake; logs to logs/rechecks.jsonl; never touches seen_ids.
-   Discovery side: matches() now rejects active:false at write time (71 of
-   103 then-passing SimplifyJobs listings were already closed upstream).
-2. degrees gate — degrees_allow: ["Bachelor's"], permissive on empty.
-3. JGCL season mapped into Listing.terms (the actually-dropped field — the
-   audit's target_year claim didn't reproduce; all 13 written JGCL dossiers
-   had it populated per vault git history). Wrong-cycle seasons now reject.
-4. Cross-source dedup — fifth write-gate check on normalized company+title,
-   keyed off the dossier files actually present in the checkout.
-5. zapplyjobs removed as a source entirely (dead code paths deleted:
-   fetcher, parser, matcher, uid hash fallback, schema check, fixtures).
-
-Schema-drift check now also guards active/degrees/season — renamed upstream,
-they'd silently turn their filters permissive. 148 tests, fixtures extended
-with real live entries (TikTok PhD-only, MLH, Partiful, WomenTech).
-
-Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"""
-print("pushed:", commit_and_push_with_retry(".", msg))
-EOF
-git log --oneline -2, sleep 60; gh run list --limit 3 --json name,status,conclusion,headSha --jq '.[] | "\(.name) \(.status) \(.conclusion // "-") \(.headSha[0:7])"', sed -n '112,125p' "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Phases 1-3 Run.md"; grep -c "" "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Phases 1-3 Run.md", cat >> "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Phases 1-3 Run.md" <<'EOF'
-## Phase 5 — Bloat Root-Cause Fixes (2026-07-18)
-All five root causes from the vault audit shipped as commit `7a84be1` (pushed via `commit_and_push_with_retry()`, again rebasing over that day's automation commit). **148/148 tests passing** (was 131: −8 zapply, +25 new). Every rule below was built against freshly-fetched live feed data, not the audit's numbers re-quoted.
-1. **Post-write liveness recheck** — `recheck.py` + `.github/workflows/recheck.yml` (daily 06:30 UTC cron + workflow_dispatch, deliberately separate from hourly discovery). Scans the dossier **files actually in the checkout** (not seen_ids.json — the two diverged permanently at the cleanup), cross-refs each uid against its source's live feed, removes on `active: false` or absent-from-feed, logs to `logs/rechecks.jsonl`, never touches seen_ids. A failed source fetch skips that source's dossiers entirely (never read as "everything absent"), and a mass-deletion brake (> max(5, half the vault)) halts and files an issue instead of deleting. *Verified live via dry-run against the real vault: 28 dossiers scanned, 2 would be removed, both `active: false` upstream — postings that closed after the morning audit.* **Discovery side too:** `matches()` now rejects `active: false` at write time — 71 of 103 then-passing SimplifyJobs listings were already closed upstream (their ATS URLs still return 200, so `url_liveness` can't catch this).
-2. **`degrees` gate** — `degrees_allow: ["Bachelor's"]` in profile.yaml, permissive on empty (4,676 of 14,907 live entries carry no degrees data). Real apostrophe-form values confirmed by fetch; regression fixture is the real TikTok PhD-only Research Scientist entry, which passes every other check.
-3. **JGCL `season` mapped** (the audit's original target_year claim was corrected in the findings section above — a grep artifact). `normalize_josegael` now maps `season` → `Listing.terms`; wrong cycles reject (exclude_terms hits like "Summer 2026", year-less Spring/Fall/Winter), year-less "Summer"/"Multiple"/"Year-Round" pass permissively. Regression tests use the real Partiful (Spring) and WomenTech ("Summer 2026") entries verbatim, calling `_matches_josegael` directly since every wrong-season live entry is also `active: false` (the active gate would mask the season rule).
-4. **Cross-source dedup** — fifth write-gate check `cross_source_duplicate` on normalized company+title (`cross_source_key()` in core/identity.py), keyed off the dossier files actually present plus same-run writes; first source in write order wins (SimplifyJobs → JGCL). Runs before `url_liveness` — it's free, the HEAD request isn't.
-5. **zapplyjobs removed entirely** — fetcher, README parser, `_matches_zapply`, dispatch branch, uid content-hash fallback (both remaining sources guarantee upstream ids; `compute_uid` now raises on a missing one), schema check, fixture, and 8 tests all deleted, not bypassed.
-Also: the schema-drift check now guards `active`/`degrees`/`season` — renamed upstream, those fields would silently turn their filters permissive rather than crash, exactly the drift class the check exists for.
-*Net filter effect against the live feeds at ship time: SimplifyJobs 14,907 fetched → 29 match (was 103 before the active+degrees gates); JGCL 112 → 5 (was 17). Survivors are all active, Bachelor's-eligible, US/Remote, right-cycle.*
-> [!WARNING]
-> First scheduled recheck timing: the vault's local working copy holds the audit's 110 deletions **uncommitted**. Until the vault's own auto-commit cycle pushes them, origin still has all 137 dossiers — a recheck run against that state would want to remove ~90 and the mass-deletion brake would halt it (harmless but noisy: one GitHub issue). Let the vault push first; the daily 06:30 UTC cron takes it from there.
-EOF
-echo appended, gh run list --limit 5 --json name,status,conclusion,headSha,event --jq '.[] | "\(.name) \(.status) \(.conclusion // "-") \(.headSha[0:7]) (\(.event))"', git pull --rebase -q && tail -1 logs/runs.jsonl | python3 -c "
-import json, sys
-r = json.loads(sys.stdin.read())
-print('timestamp:', r['timestamp'])
-print('fetch_counts:', r['fetch_counts'])
-print('filter_match_counts:', r['filter_match_counts'])
-print('new:', r['new_count'], '| already_seen:', r['already_seen_count'], '| written:', r['written_count'])
-print('rejections:', len(r['rejections']), [f\"{x['check']}\" for x in r['rejections']])
-print('halted:', r['halted'], '| errors:', r['errors'])", date -u && git log --format='%h %cI %s' -4, gh run list --workflow=run.yml --limit 2 --json status,conclusion,createdAt,headSha --jq '.[] | "\(.createdAt) \(.status) \(.conclusion // "-") on \(.headSha[0:7])"', git pull --rebase -q && tail -1 logs/runs.jsonl | python3 -c "
-import json, sys
-r = json.loads(sys.stdin.read())
-print('timestamp:', r['timestamp'])
-print('fetch_counts:', r['fetch_counts'])
-print('filter_match_counts:', r['filter_match_counts'])
-print('new:', r['new_count'], '| already_seen:', r['already_seen_count'], '| written:', r['written_count'])
-print('rejections:', [(x['check'], x['reason']) for x in r['rejections']])
-print('halted:', r['halted'], '| errors:', r['errors'])", cat >> "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Phases 1-3 Run.md" <<'EOF'
-*First live run on the new code (2026-07-18 12:53 UTC, run created 11:44): confirmed exactly as predicted — `fetch_counts` has no zapplyjobs key, `filter_match_counts` {SimplifyJobs: 29, Jose-Gael-Cruz-Lopez: 5} (was {103, 17, 22}), persistent url_liveness rejections down from 18 to 8 (the other 10 uids belonged to now-inactive listings the active gate refuses before any HEAD request), 0 written, 0 halts, 0 errors.*
-EOF
-echo done, grep -n "^## " "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Phases 1-3 Run.md" && sed -n "$(grep -n 'Phase 6 Decision' "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Phases 1-3 Run.md" | head -1 | cut -d: -f1),\$p" "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Phases 1-3 Run.md", env | grep -i firecrawl | sed 's/=.*/=<set>/'; grep -rsil firecrawl ~/.bashrc ~/.profile ~/.env 2>/dev/null; ls ~/.config/firecrawl 2>/dev/null; echo ---; git log --oneline -12; echo ---; .venv/bin/python -m pytest -q 2>&1 | tail -2, grep -i firecrawl ~/.bashrc | sed 's/\(fc-[A-Za-z0-9]\{4\}\)[A-Za-z0-9]*/\1.../' && source ~/.bashrc 2>/dev/null; [ -n "$FIRECRAWL_API_KEY" ] && echo "key loads OK, length ${#FIRECRAWL_API_KEY}", wc -l "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Research Loop — Implementation Plan.md" PRD.md, cat vault_writer/templates/dossier.md.j2 requirements.txt && head -8 vault_writer/validate.py && grep -rn "three\|four\|five" run_pipeline.py README.md | grep -i "source\|check" | head, cat >> tests/test_run_pipeline.py <<'EOF'
-
-
-def test_run_once_halts_and_files_issue_on_fetch_network_failure(tmp_path):
-    """A source going offline (DNS failure, deleted repo, 5xx) must produce a
-    logged, issue-filed halt — not an uncaught crash with no record (the
-    PRD's previously-unmitigated 'source repo goes offline' risk)."""
-    import requests as _requests
-
-    def dying_http_get(url, timeout=None):
-        raise _requests.ConnectionError("simulated: upstream repo unreachable")
-
-    kwargs = _run_once_kwargs(tmp_path, http_get=dying_http_get)
-    record = run_pipeline.run_once(**kwargs)
-
-    assert record["halted"] is True
-    assert "ConnectionError" in record["halt_reason"]
-    logged = json.loads(kwargs["runs_log_path"].read_text().splitlines()[0])
-    assert logged["halted"] is True
-    kwargs["issue_fn"].assert_called_once()
-    assert not run_pipeline.load_seen_ids(kwargs["state_path"])
-EOF
-cat >> tests/test_filter.py <<'EOF'
-
-
-def test_josegael_whitespace_only_season_does_not_crash():
-    raw = next(r for r in _load("josegael.json") if r["id"] == "[REDACTED]")
-    listing = normalize_josegael({**raw, "season": " "})
-    assert matches(listing, PROFILE) is True  # degenerate season ignored, not IndexError
-EOF
-.venv/bin/python -m pytest -q 2>&1 | tail -2, .venv/bin/python -m pytest -q 2>&1 | tail -2, date -u; echo "== run.yml (last 8) =="; gh run list --workflow=run.yml --limit 8 --json status,conclusion,createdAt,event --jq '.[] | "\(.createdAt) \(.event) \(.status) \(.conclusion // "-")"'; echo "== recheck.yml (all) =="; gh run list --workflow=recheck.yml --limit 10 --json status,conclusion,createdAt,event --jq '.[] | "\(.createdAt) \(.event) \(.status) \(.conclusion // "-")"'; echo "== issues =="; gh issue list --state all --limit 10, gh workflow list; echo ---; python3 -c "import json; print('seen_ids:', len(json.load(open('state/seen_ids.json'))))"; echo "origin vault dossiers:"; gh api "repos/gupta-builds/Jarvis/contents/10_Areas/Career/Internships/List/Dossiers" --paginate --jq '. | length'; echo "local vault dossiers:"; ls "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/" | wc -l, cd "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" && git fetch -q origin 2>/dev/null; git status --short -- "10_Areas/Career/Internships/List/Dossiers/" | head -5; comm -3 <(git ls-tree --name-only origin/master "10_Areas/Career/Internships/List/Dossiers/" | xargs -n1 basename | sort) <(ls "10_Areas/Career/Internships/List/Dossiers/" | sort), cd "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" && git status --short -- "10_Areas/Career/Internships/List/Dossiers/[REDACTED].md"; git log --oneline -3 origin/master -- "10_Areas/Career/Internships/List/Dossiers/[REDACTED].md"; git log --oneline -2 && git log --oneline -2 origin/master; git status --short -- "10_Areas/Career/Internships/List/Dossiers/" | wc -l, ls "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/" && cat "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Run Log.md" 2>/dev/null | head; echo ---; cd "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" && git diff -- "10_Areas/Career/Internships/List/Dossiers/[REDACTED].md" | head -20, cd "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" && f="10_Areas/Career/Internships/List/Dossiers/[REDACTED].md"; file "$f"; git diff --ignore-cr-at-eol --stat -- "10_Areas/Career/Internships/List/Dossiers/" | tail -3, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && curl -s https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json -o sj_now.json && curl -s https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json -o jg_now.json && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
-import json, re, yaml
-from pathlib import Path
-D = Path("/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers")
-feed = {}
-for f, src in (("sj_now.json","SimplifyJobs"), ("jg_now.json","Jose-Gael-Cruz-Lopez")):
-    for e in json.load(open(f)):
-        feed[f"{src}:{e['id']}"] = e
-rows = []
-for p in sorted(D.glob("*.md")):
-    fm = yaml.safe_load(re.match(r"^---\n(.*?)\n---\n", p.read_text(encoding="utf-8"), re.DOTALL).group(1))
-    live = feed.get(fm["uid"], {})
-    rows.append((p.name, fm["company"], fm["title"][:45], fm.get("terms"), fm.get("locations"),
-                 live.get("active", "ABSENT"), live.get("terms") or live.get("season"), fm["url"]))
-print(f"{len(rows)} dossiers:")
-for r in rows:
-    print(f"  {r[1][:28]:28} | {r[2]:45} | fm_terms={r[3]} | loc={r[4]} | live_active={r[5]} | live_terms={r[6]}")
-    print(f"      url={r[7]}")
-EOF, export $(grep -o 'FIRECRAWL_API_KEY=[^ ]*' ~/.bashrc) && curl -s -X POST https://api.firecrawl.dev/v1/scrape -H "Authorization: Bearer $FIRECRAWL_API_KEY" -H "Content-Type: application/json" -d '{"url": "https://job-boards.greenhouse.io/fiveringsllc/jobs/5349707008", "formats": ["markdown"]}' | python3 -c "
-import json, sys
-r = json.load(sys.stdin)
-print('success:', r.get('success'))
-md = r.get('data', {}).get('markdown', '')
-print('markdown length:', len(md))
-print(md[:400])", export $(grep -o 'FIRECRAWL_API_KEY=[^ ]*' ~/.bashrc) && cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && mkdir -p pages && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
-import json, os, re, time, yaml
-import requests
-from pathlib import Path
-
-D = Path("/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers")
-SKIP = {"[REDACTED]",  # Motorola — already failed
-        "[REDACTED]"}  # placeholder, fixed below
-# resolve actual failing filenames by content instead of guessed ids
-skip_names = set()
-for p in D.glob("*.md"):
-    fm = yaml.safe_load(re.match(r"^---\n(.*?)\n---\n", p.read_text(encoding="utf-8"), re.DOTALL).group(1))
-    if fm["company"] == "Motorola" or (fm["company"] == "Marshall Wace" and fm.get("locations") == ["London, UK"]):
-        skip_names.add(p.name)
-print("skipping (already failed):", sorted(skip_names))
-
-key = os.environ["FIRECRAWL_API_KEY"]
-ok = fail = 0
-for p in sorted(D.glob("*.md")):
-    if p.name in skip_names: continue
-    out = Path("pages") / p.name
-    if out.exists() and out.stat().st_size > 500: continue
-    fm = yaml.safe_load(re.match(r"^---\n(.*?)\n---\n", p.read_text(encoding="utf-8"), re.DOTALL).group(1))
-    try:
-        r = requests.post("https://api.firecrawl.dev/v1/scrape",
-                          headers={"Authorization": f"Bearer {key}"},
-                          json={"url": fm["url"], "formats": ["markdown"]}, timeout=90)
-        md = r.json().get("data", {}).get("markdown", "") if r.status_code == 200 else ""
-        if md:
-            out.write_text(md, encoding="utf-8"); ok += 1
-            print(f"  ok  {len(md):6d}  {fm['company'][:30]} — {p.name}")
-        else:
-            fail += 1; print(f"  FAIL {r.status_code} {fm['company'][:30]} — {p.name}: {r.text[:120]}")
-    except Exception as exc:
-        fail += 1; print(f"  FAIL {fm['company'][:30]} — {p.name}: {exc}")
-    time.sleep(1)
-print(f"\n{ok} fetched, {fail} failed")
-EOF, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/pages && for f in *.md; do
-  hits=$(grep -inoE ".{60}(citizen|clearance|U\.?S\.? person|OPT|CPT|work authorization|sponsor|export control|ITAR|permanent resident).{80}" "$f" | head -6)
-  if [ -n "$hits" ]; then echo "=== $f"; echo "$hits"; fi
-done 2>/dev/null | head -100, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/pages && echo "=== ANDURIL (export control context) ===" && grep -B2 -A6 "export control" [REDACTED].md | head -25 && echo && echo "=== PALANTIR US GOV (Honolulu ada5c220): clearance/citizen in JD body ===" && sed -n '1,120p' [REDACTED].md | grep -inE "clearance|citizen|u\.s\. person|government|eligib" | head -10, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/pages && sed -n '3,80p' [REDACTED].md | grep -vE "^\[|^!\[|^$" | head -50, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/pages && grep -icE "what we do|responsibilities|qualifications" [REDACTED].md; export $(grep -o 'FIRECRAWL_API_KEY=[^ ]*' ~/.bashrc) && for pair in "[REDACTED] [REDACTED]" "[REDACTED] [REDACTED]" "[REDACTED] [REDACTED]"; do
-  set -- $pair
-  curl -s -X POST https://api.firecrawl.dev/v1/scrape -H "Authorization: Bearer $FIRECRAWL_API_KEY" -H "Content-Type: application/json" -d "{\"url\": \"https://jobs.lever.co/palantir/$2\", \"formats\": [\"markdown\"]}" | python3 -c "
-import json, sys
-md = json.load(sys.stdin).get('data', {}).get('markdown', '')
-open('palantir-desc-$1.md', 'w').write(md)
-print('$1:', len(md), 'chars')"
-done, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/pages && for f in palantir-desc-*.md; do echo "=== $f"; grep -iE "clearance|citizen|u\.s\. person|work authoriz|sponsor|eligib" "$f" | head -6; echo "  -- dates:"; grep -ioE "(december|january|dec|jan)[^.]{0,60}|13 weeks|10 weeks|start date[^.]{0,80}" "$f" | head -4; done, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/pages && for f in [REDACTED].md [REDACTED].md; do echo "=== $f"; grep -A2 -iE "graduat|background investigation|clearance" "$f" | head -12; done; echo "=== WH HBCU eligibility ==="; grep -iE "citizen|eligib|enrolled|nominat" [REDACTED].md | head -8; echo "=== SimonComputing ==="; grep -iE "clearance|citizen|eligib|graduat" [REDACTED].md | head -6, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/pages && echo "=== Marmon 69225149 ===" && grep -iE "winter|start|term|month|202[67]" [REDACTED].md | head -8; echo "=== Marmon 04c61af9 ===" && grep -iE "winter|start|term|month|202[67]" [REDACTED].md | head -8; echo "=== TradeDesk ===" && grep -iE "winter|summer|start date|program dates|202[678]" [REDACTED].md | head -8; echo "=== Aquatic office ===" && grep -iE "chicago|london|location" [REDACTED].md | head -5, export $(grep -o 'FIRECRAWL_API_KEY=[^ ]*' ~/.bashrc) && cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
-import os, requests
-from pathlib import Path
-key = os.environ["FIRECRAWL_API_KEY"]
-targets = {
-  "[REDACTED].md": "https://jobs.ashbyhq.com/ellipsislabs/[REDACTED]",
-  "[REDACTED].md": "https://jobs.ashbyhq.com/circleback/[REDACTED]",
-  "[REDACTED].md": "https://jobs.ashbyhq.com/ctgt/[REDACTED]",
-  "[REDACTED].md": "https://jobs.ashbyhq.com/pylon-labs/[REDACTED]",
-  "[REDACTED].md": "https://marmon.wd501.myworkdayjobs.com/Marmon_MSIP_Internships/job/Milwaukee-WI/[REDACTED]",
-  "[REDACTED].md": "https://marmon.wd501.myworkdayjobs.com/Marmon_Careers/job/Milwaukee-WI/[REDACTED]",
-}
-for name, url in targets.items():
-    r = requests.post("https://api.firecrawl.dev/v1/scrape",
-                      headers={"Authorization": f"Bearer {key}"},
-                      json={"url": url, "formats": ["markdown"], "waitFor": 8000}, timeout=120)
-    md = r.json().get("data", {}).get("markdown", "") if r.status_code == 200 else ""
-    if len(md) > 600:
-        (Path("pages") / name).write_text(md, encoding="utf-8")
-    print(f"{len(md):7d}  {name}")
-EOF, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/pages && echo "=== Marmon MSIP: dates/terms ===" && grep -iE "winter|spring|summer|fall|start|january|december|june|20 hours|full.time" [REDACTED].md | head -10; echo; for f in simplifyjobs-4f45fa19* simplifyjobs-75892e9b* simplifyjobs-8c8a1f21* simplifyjobs-f0aadc2c*; do echo "=== $f"; grep -iE "citizen|clearance|sponsor|work authoriz|opt|cpt|intern|summer|new york|francisco" "$f" | head -5; done, cd "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers" && rm -v [REDACTED].md [REDACTED].md [REDACTED].md [REDACTED].md [REDACTED].md [REDACTED].md [REDACTED].md && ls | wc -l, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
-import re, yaml
-from pathlib import Path
-
-D = Path("/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers")
-PAGES = Path("pages")
-# Palantir Chicago: use the clean description fetch instead of the /apply form page
-OVERRIDES = {"[REDACTED].md": "[REDACTED].md"}
-
-CUT_MARKERS = re.compile(
-    r"^(#+\s*)?(submit your application|apply for this job|autofill.*application|create a job alert"
-    r"|equal (employment )?opportunity|eeo|voluntary self.identification|privacy (policy|notice)"
-    r"|u\.s\. equal employment|by applying.*you (agree|acknowledge))", re.I)
-NOISE = re.compile(
-    r"^(\[?!\[|\[back to jobs|\[apply\]|apply\b|select\.\.\.|✱|.*✱\s*$|resume/cv|full name|email\b"
-    r"|phone\b|current location|current company|linkedin url|github url|portfolio url|loading$"
-    r"|no location found|couldn't auto-read|analyzing resume|success!$|file exceeds"
-    r"|cookie|jobs powered by|©|powered by\s|\[.*\]\(https?://[^)]*\)\s*$)", re.I)
-
-def extract(md: str) -> str:
-    lines = md.splitlines()
-    out, started = [], False
-    for ln in lines:
-        s = ln.strip()
-        if CUT_MARKERS.match(s):
-            break
-        if not started:
-            if s.startswith("#") and len(s) > 4:
-                started = True  # first real heading = JD title
-            else:
-                continue
-        if not s or NOISE.match(s):
-            continue
-        out.append(s)
-        if len("\n".join(out)) > 7000:
-            break
-    return "\n".join(out)
-
-today = "2026-07-18"
-done = short = 0
-for p in sorted(D.glob("*.md")):
-    src_page = PAGES / OVERRIDES.get(p.name, p.name)
-    if not src_page.exists():
-        print(f"NO PAGE: {p.name}"); continue
-    content = extract(src_page.read_text(encoding="utf-8"))
-    if len(content) < 300:
-        short += 1; print(f"SHORT ({len(content)}): {p.name}")
-    text = p.read_text(encoding="utf-8")
-    m = re.match(r"^(---\r?\n.*?\r?\n---\r?\n)(# [^\r\n]+)", text, re.DOTALL)
-    fm_block, title_line = m.group(1), m.group(2)
-    fm = yaml.safe_load(re.match(r"^---\r?\n(.*?)\r?\n---", text, re.DOTALL).group(1))
-    body = (f"{title_line}\n"
-            f"Auto-discovered {fm['date_found']} from {fm['source']}. Enriched {today} from the live posting — "
-            f"verbatim extraction, trimmed to the substantive sections; full text at the url above.\n"
-            f"## Posting (fetched {today})\n{content}\n")
-    p.write_text(fm_block + body, encoding="utf-8")
-    done += 1
-print(f"\nenriched {done} dossiers, {short} flagged short")
-EOF, grep -n "^#" /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/pages/[REDACTED].md | head; sed -n '1,20p' /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/pages/[REDACTED].md, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && curl -s "https://boards-api.greenhouse.io/v1/boards/thetradedesk/jobs/5187605007" | /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
-import html, json, re, sys, yaml
-from pathlib import Path
-d = json.load(sys.stdin)
-text = html.unescape(re.sub(r"</(p|div|li|ul|h[1-6]|br)>", "\n", d["content"]))
-text = re.sub(r"<li[^>]*>", "- ", text)
-text = re.sub(r"<[^>]+>", "", text)
-lines = [l.strip() for l in text.splitlines() if l.strip()]
-content = "\n".join(lines)[:7000]
-print("title:", d["title"], "| chars:", len(content))
-print(content[:300])
-p = Path("/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/[REDACTED].md")
-t = p.read_text(encoding="utf-8")
-m = re.match(r"^(---\r?\n.*?\r?\n---\r?\n)(# [^\r\n]+)", t, re.DOTALL)
-fm = yaml.safe_load(re.match(r"^---\r?\n(.*?)\r?\n---", t, re.DOTALL).group(1))
-body = (f"{m.group(2)}\nAuto-discovered {fm['date_found']} from {fm['source']}. Enriched 2026-07-18 from the live posting — "
-        f"verbatim extraction, trimmed to the substantive sections; full text at the url above.\n"
-        f"## Posting (fetched 2026-07-18, via Greenhouse board API)\n{content}\n")
-p.write_text(m.group(1) + body, encoding="utf-8")
-print("written")
-# grep the full JD for eligibility + winter-date semantics while it's here
-for pat in ("citizen", "clearance", "sponsor", "OPT", "winter", "start"):
-    hits = [l for l in lines if pat.lower() in l.lower()]
-    for h in hits[:2]: print(f"  [{pat}] {h[:110]}")
-EOF, curl -s -o /dev/null -w "%{http_code}\n" "https://boards-api.greenhouse.io/v1/boards/thetradedesk/jobs/5187605007"; curl -s "https://job-boards.greenhouse.io/thetradedesk/jobs/5187605007" | grep -oE '"board_token":"[^"]*"|boards-api[^"]*' | head -3, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && curl -s "https://boards-api.greenhouse.io/v1/boards/thetradedesk/jobs/5187605007" -o ttd.json && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
-import html, json, re, yaml
-from pathlib import Path
-d = json.load(open("ttd.json"))
-text = html.unescape(re.sub(r"</(p|div|li|ul|h[1-6]|br)>", "\n", d["content"]))
-text = re.sub(r"<li[^>]*>", "- ", text)
-text = re.sub(r"<[^>]+>", "", text)
-lines = [l.strip() for l in text.splitlines() if l.strip()]
-content = "\n".join(lines)[:7000]
-print("title:", d["title"], "| chars:", len(content))
-p = Path("/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/[REDACTED].md")
-t = p.read_text(encoding="utf-8")
-m = re.match(r"^(---\r?\n.*?\r?\n---\r?\n)(# [^\r\n]+)", t, re.DOTALL)
-fm = yaml.safe_load(re.match(r"^---\r?\n(.*?)\r?\n---", t, re.DOTALL).group(1))
-body = (f"{m.group(2)}\nAuto-discovered {fm['date_found']} from {fm['source']}. Enriched 2026-07-18 from the live posting — "
-        f"verbatim extraction, trimmed to the substantive sections; full text at the url above.\n"
-        f"## Posting (fetched 2026-07-18, via Greenhouse board API)\n{content}\n")
-p.write_text(m.group(1) + body, encoding="utf-8")
-print("written")
-for pat in ("citizen", "clearance", "sponsor", "winter", "spring", "start date"):
-    for h in [l for l in lines if pat.lower() in l.lower()][:2]:
-        print(f"  [{pat}] {h[:120]}")
-EOF, head -45 "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/[REDACTED].md" && echo "..." && for f in "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/"*.md; do printf "%6d  %s\n" $(wc -c < "$f") "$(basename "$f")"; done, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
-import json, collections, re
-sj = json.load(open("sj_now.json"))
-terms = collections.Counter(t for e in sj for t in e.get("terms", []))
-print("all distinct terms in live feed:", dict(terms))
-# listings tagged Winter 2026 or Winter 2027 — what do their TITLES say about real dates?
-for w in ("Winter 2026", "Winter 2027"):
-    only = [e for e in sj if w in e.get("terms", []) and e.get("active")]
-    print(f"\n{w}: {len(only)} active listings; titles mentioning months/dates:")
-    for e in only[:12]:
-        m = re.search(r"(january|december|jan\b|dec\b|winter)", e["title"], re.I)
-        print(f"   [{'DATE' if m else '    '}] {e['title'][:75]} | terms={e['terms']}")
-EOF, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
-import json, sys, re
-sys.path.insert(0, "/home/anant_gupta/projects/work/internship-research-loop")
-from core.filter import matches, load_profile, _entry_is_us_or_remote, _US_STATES, _US_STATE_NAMES, _STATE_SUFFIX, _norm
-from ingestion.normalize import normalize_simplify, normalize_josegael
-
-profile = load_profile("/home/anant_gupta/projects/work/internship-research-loop/core/profile.yaml")
-sj = [normalize_simplify(r) for r in json.load(open("sj_now.json"))]
-jg = [normalize_josegael(r) for r in json.load(open("jg_now.json"))]
-
-base = [l for l in sj if matches(l, profile)]
-profile2 = {**profile, "terms": ["Summer 2027", "Winter 2027"]}
-w27 = [l for l in sj if matches(l, profile2)]
-added = [l for l in w27 if l not in base]
-print(f"current terms: {len(base)} match | +Winter 2027: {len(w27)} match | added {len(added)}:")
-for l in added: print(f"   {l.company} — {l.title[:60]} | {l.terms} | {l.locations}")
-
-def affirm_us(loc):
-    l = _norm(loc)
-    m = _STATE_SUFFIX.search(loc.strip())
-    return bool(m and m.group(1).upper() in _US_STATES) or l.split(",")[-1].strip() in _US_STATE_NAMES \
-        or l in {"nyc","sf","la","united states","usa","remote in usa","remote in us","remote, us","multiple us cities","new york city"}
-
-print("\ncurrent matches whose locations have NO affirmative US signal (pass only via ambiguity):")
-for l in w27 + [x for x in jg if matches(x, profile2)]:
-    if l.locations and not any(affirm_us(x) for x in l.locations):
-        print(f"   {l.company} — {l.title[:55]} | {l.locations}")
-for l in [x for x in jg if matches(x, profile2)] :
-    if not l.locations: print(f"   (no loc data) {l.company}")
-EOF, export $(grep -o 'FIRECRAWL_API_KEY=[^ ]*' ~/.bashrc) && echo -n "$FIRECRAWL_API_KEY" | gh secret set FIRECRAWL_API_KEY && gh secret list, head -60 /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/pages/[REDACTED].md > tests/fixtures/posting_fiverings.md && wc -l tests/fixtures/posting_fiverings.md && head -12 tests/fixtures/posting_fiverings.md, cat >> tests/test_run_pipeline.py <<'EOF'
-
-
-def _page_with(text):
-    return f"# Great Intern Job\nRole details here.\n{text}\nMore details."
-
-
-def test_opt_exclusion_rejects_and_caches(tmp_path):
-    listing = normalize_simplify(_simplify_raw()[0])
-    uid = compute_uid(listing)
-    cache = {}
-    # real Anduril exclusion text, verbatim from the live page 2026-07-18
-    fetch = Mock(return_value=_page_with(
-        "U.S. Person status is required as this position needs to access export controlled data."))
-
-    written, rejections = run_pipeline.validate_and_write(
-        [(uid, listing)], PROFILE, tmp_path, seen_ids=set(), date_found="2026-07-18",
-        http_head=_fake_http_head_all_live, fetch_page_fn=fetch, opt_cache=cache,
-    )
-
-    assert written == []
-    assert rejections[0]["check"] == "opt_eligibility"
-    assert cache[uid]["verdict"] == "excluded"
-
-
-def test_opt_cache_short_circuits_before_fetch(tmp_path):
-    listing = normalize_simplify(_simplify_raw()[0])
-    uid = compute_uid(listing)
-    cache = {uid: {"verdict": "excluded", "signal": "U.S. Person status is required", "checked": "2026-07-18"}}
-    fetch = Mock(side_effect=AssertionError("must not fetch a cached-excluded posting"))
-
-    written, rejections = run_pipeline.validate_and_write(
-        [(uid, listing)], PROFILE, tmp_path, seen_ids=set(), date_found="2026-07-18",
-        http_head=_fake_http_head_all_live, fetch_page_fn=fetch, opt_cache=cache,
-    )
-
-    assert written == [] and rejections[0]["check"] == "opt_eligibility"
-    fetch.assert_not_called()
-
-
-def test_fetch_failure_fails_open_to_thin_dossier(tmp_path):
-    listing = normalize_simplify(_simplify_raw()[0])
-    uid = compute_uid(listing)
-    fetch = Mock(side_effect=ConnectionError("firecrawl down"))
-
-    written, rejections = run_pipeline.validate_and_write(
-        [(uid, listing)], PROFILE, tmp_path, seen_ids=set(), date_found="2026-07-18",
-        http_head=_fake_http_head_all_live, fetch_page_fn=fetch, opt_cache={},
-    )
-
-    assert written == [uid] and rejections == []
-    dossier = next((tmp_path / "10_Areas/Career/Internships/List/Dossiers").glob("*.md")).read_text()
-    assert "No enrichment yet" in dossier  # thin body, discovery not blocked
-
-
-def test_eligible_posting_gets_content_section(tmp_path):
-    listing = normalize_simplify(_simplify_raw()[0])
-    uid = compute_uid(listing)
-    fetch = Mock(return_value=_page_with("Great role. Qualifications: Python."))
-
-    written, _ = run_pipeline.validate_and_write(
-        [(uid, listing)], PROFILE, tmp_path, seen_ids=set(), date_found="2026-07-18",
-        http_head=_fake_http_head_all_live, fetch_page_fn=fetch, opt_cache={},
-    )
-
-    assert written == [uid]
-    dossier = next((tmp_path / "10_Areas/Career/Internships/List/Dossiers").glob("*.md")).read_text()
-    assert "## Posting (fetched 2026-07-18)" in dossier
-    assert "Qualifications: Python." in dossier
-
-
-def test_cross_source_key_punctuation_insensitive_marmon_case():
-    """Real dup from the 2026-07-18 audit: same Workday req via two routes,
-    titled 'Intern Co-op' vs 'Intern/Co-op'."""
-    from core.identity import cross_source_key
-    assert cross_source_key("Marmon Holdings", "Data Engineering Intern Co-op") == \
-        cross_source_key("Marmon Holdings", "Data Engineering Intern/Co-op")
-EOF
-.venv/bin/python -m pytest -q 2>&1 | tail -4, head -30 "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Companies giving OPT & CPT.md"; echo ===; cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF'
-import json, sys
-sys.path.insert(0, "/home/anant_gupta/projects/work/internship-research-loop")
-from core.filter import matches, load_profile
-from ingestion.normalize import normalize_simplify, normalize_josegael
-profile = load_profile("/home/anant_gupta/projects/work/internship-research-loop/core/profile.yaml")
-sj = [normalize_simplify(r) for r in json.load(open("sj_now.json"))]
-jg = [normalize_josegael(r) for r in json.load(open("jg_now.json"))]
-print("FINAL config vs live feeds:")
-print("  SimplifyJobs:", len([l for l in sj if matches(l, profile)]), "match (was 29 pre-Winter-2027, 103 pre-phase-5)")
-print("  JGCL:", len([l for l in jg if matches(l, profile)]), "match (was 5)")
-EOF, wc -l "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Companies giving OPT & CPT.md", .venv/bin/python -m pytest -q 2>&1 | tail -1 && .venv/bin/python - <<'EOF'
-import sys; sys.path.insert(0, ".")
-from core.git_ops import commit_and_push_with_retry
-msg = """Phase 6: three hard criteria codified — Winter 2027 term, OPT gate, discovery-time content
-
-- terms += "Winter 2027" (= Dec 2026-Feb 2027 by live term-adjacency evidence;
-  three real listings co-tag Fall 2026 + Winter 2027). +7 matches, all US.
-- locations_allow stays permissive: on live data, requiring an affirmative US
-  signal would only remove 5 correct JGCL scholarship matches (Remote/Multiple
-  Locations, all US orgs) and gain nothing.
-- OPT eligibility: per-POSTING check (Palantir US Gov vs Commercial differ in
-  one company), run on the same discovery-time Firecrawl fetch that fills the
-  dossier's content section. Explicit negative signals only (US-person/
-  citizenship, clearance, no-OPT/CPT); background investigations and no-visa-
-  sponsorship do not exclude. Verdicts cached in state/opt_cache.json so an
-  OPT-rejected (never-seen, hourly-retried) posting is fetched exactly once.
-- Dossiers no longer thin: eligible postings get verbatim extracted content
-  at discovery; fetch failure fails open to a thin dossier, and the enriched
-  render is format-checked with fallback to thin.
-- cross_source_key now punctuation-insensitive (real Marmon 'Co-op'/'Co-op'
-  dup from the audit). run_once now halts+logs+files an issue on fetch
-  network failures instead of crashing (PRD's unmitigated risk). JGCL
-  whitespace-only season no longer IndexErrors.
-
-167 tests. Firecrawl key added as Actions secret; no LLM calls anywhere.
-
-Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"""
-print("pushed:", commit_and_push_with_retry(".", msg))
-EOF
-git log --oneline -2, sed -i '/^PRD.md$/d' .git/info/exclude && .venv/bin/python - <<'EOF'
-import sys; sys.path.insert(0, ".")
-from core.git_ops import commit_and_push_with_retry
-print("pushed:", commit_and_push_with_retry(".", """PRD: three-criteria scope, content-carrying dossiers, verified 2026-07-18 state
-
-Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"""))
-EOF, cat >> "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Phases 1-3 Run.md" <<'EOF'
-## Phase 6 — Closing Pass: Review, Re-Verify, Three-Criteria Audit, Content, Codification (2026-07-18)
-Shipped as commits `69f76dc` (code) and the PRD update on master; **167/167 tests** (fresh run, was 148). Everything below is from direct verification this pass, not carried claims.
-### Code review findings (Task 1)
-- **Two real bugs fixed:** (1) a whitespace-only JGCL `season` crashed `_matches_josegael` with IndexError (`"".split()[0]`) — one bad upstream entry would have killed the run; (2) the PRD's documented-but-unmitigated risk was real: `run_once()` caught only `SchemaDriftError`, so any network failure during drift-check/fetch crashed the process with **no run-log record and no issue**. Now: `requests.RequestException` → halted record + auto-filed issue, regression-tested both.
-- Trivial: `validate.py` docstring still said "four-check" (now five); no dead zapply code found beyond deliberate historical comments; schema-drift guard list re-checked complete against today's live schemas (every field either normalizer reads is guarded, including the permissive-default trio).
-### Live verification numbers (Task 2)
-- `run.yml`: 8/8 most recent scheduled runs successful; cron firing with normal GitHub jitter (some hours skipped by the platform, zero failures). `recheck.yml`: registered/active, **zero runs** — created 10:56 UTC, first cron opportunity 2026-07-19 06:30 UTC.
-- State divergence consistent: `seen_ids.json` 137, origin vault 28 dossiers, local vault 27 — the one-file gap was `[REDACTED].md`, deleted locally, bounced back once via the vault's own 19:13 auto-commit, deleted again and pending push. Nothing pipeline-re-added (uid still seen, source removed). The 22 "modified" dossiers were pure CRLF conversions (verified with `--ignore-cr-at-eol`: zero content diffs).
-- Weekly rollup: **not fired** — `Run Log.md` does not exist yet; today is Saturday, first opportunity remains Sun 2026-07-19 23:00 UTC. Zero GitHub issues.
-### Dossier audit — 27 in, 20 out (Task 3)
-Every dossier checked against live feed state plus its actual posting page (Firecrawl, 25 pages fetched, 0 failures; Ashby/Workday JS pages re-fetched with `waitFor`). **Removed 7, each with cited evidence:**
-1. **Motorola — Data Analyst Co-op**: `active: false` upstream AND `locations: ['Remote in Canada']` (fails timing/closed + location).
-2. **Marshall Wace — Technology Intern (London)**: `locations: ['London, UK']` only. Its NYC twin was checked separately and kept.
-3. **Anduril — SWE Intern**: JD states "U.S. Person status is required as this position needs to access export controlled data" — the OPT criterion's citizenship-class signal, verbatim.
-4. **Palantir — FDSE US Government (Honolulu)**: kept-on-OPT but removed for "Must be planning on graduating in 2027" (profile: Spring 2028). Note the OPT nuance: its only screen is a *conditional* "willingness to undergo a US government background investigation" — deliberately not counted as a clearance requirement under the permissive rule.
-5. **Palantir — Privacy & Civil Liberties SWE (NYC)**: same "graduating in 2027" requirement.
-6. **White House HBCU Scholars**: page requires "current... student at a Historically Black College or University" plus faculty nomination — UMN is not an HBCU.
-7. **Marmon Holdings (Marmon_Careers route)**: exact same Workday req `JR0000037453` as the kept MSIP-route dossier — a real dup that slipped the dedup key on one punctuation character ("Intern Co-op" vs "Intern/Co-op").
-Items 4–6 are explicit-eligibility-text removals beyond the strict three criteria, applied consistently with the earlier manual audit's own grad-only deletions — stated here, not silently folded in. RTX and Northrop Grumman (named for checking) were already gone pre-audit. Also observed: CTGT flipped `active: false → true` between the morning dry-run and the audit — validating the recheck's remove-don't-blacklist conservatism.
-### Content (Task 4)
-All 20 survivors now carry the real posting's substantive sections — verbatim mechanical extraction (role, requirements, comp), trimmed of nav/form/EEO chrome, blank-line-free per vault format rules, 1.6–8K per dossier. Trade Desk's Greenhouse page is form-only, so its JD came via the Greenhouse board API. UNCF's "content" is thin because its stored URL genuinely is a portal welcome page.
-### Codified into the pipeline (Task 5)
-- **Timing**: `terms: ["Summer 2027", "Winter 2027"]`. Evidence for the mapping: SimplifyJobs labels winters by the *later* year — three real listings co-tag `["Fall 2026", "Winter 2027"]`, placing Winter 2027 = Dec 2026–Feb 2027; "Winter 2026" = Dec 2025–Feb 2026, already past. No posting publishes months in the feed (checked Marmon + Trade Desk pages directly — none state dates), so genuine-Dec-Jan confirmation stays a human screen step against the now-present content. Impact: +7 matches, all US (Rippling ×2, Palantir Intel DC + Commercial NYC, Western Digital co-op, Zurich Andover MN, FC Cincinnati).
-- **Location**: `locations_allow` stays permissive, measured not assumed — zero current SimplifyJobs matches rely on ambiguity; requiring an affirmative US signal would remove exactly 5 correct JGCL scholarship matches (`Remote`/`Multiple Locations`, all US orgs) and gain nothing.
-- **OPT**: **posting-level, not company-level** — the audit itself proved company-level verdicts wrong (Palantir US Gov vs Commercial differ within one company). `ingestion/posting_page.py` greps the fetched page for explicit negative signals only (US-person/citizenship required, clearance required, OPT/CPT not accepted; regex built from the real Anduril text and tested against real non-signals: Palantir's background-investigation line, Grant Thornton's EEO "citizenship status" boilerplate, Aquatic's sponsorship *question*). Verdicts cached in `state/opt_cache.json` keyed by uid — an OPT-rejected posting is never marked seen (retried hourly), and the cache is what makes that retry free.
-- **Discovery-time, not promotion-triggered — decided with numbers**: steady-state new-match volume is tiny (0–2/day observed across two days of hourly runs; the +7 Winter additions are the biggest single jump since day one), so Firecrawl cost is <100 fetches/month against a 500/month free tier — while the entire point of Phase 6 is screening in the vault, which requires content *at discovery*. Fetch runs only after the write gate passes (the 18 hourly dead-URL rejections never cost a credit), fails open to a thin dossier, and the enriched render is format-checked with fallback so an extraction bug can never write malformed markdown. Layer 5 `enrich.py` (company/contact research) stays promotion-triggered as before — this decision covers posting content + OPT only.
-- Also: `cross_source_key` made punctuation-insensitive (the Marmon dup class), `FIRECRAWL_API_KEY` set as an Actions secret, `[[20_Progress/Internship/Companies giving OPT & CPT]]` rebuilt from a stale Oct-2025 brainstorm into the human-readable OPT registry (machine truth: `state/opt_cache.json`; old Applied history preserved at its bottom).
-### What to watch next
-- **Sun 2026-07-19 06:30 UTC** — first scheduled recheck against the post-audit vault (deliberately not manually dispatched today to avoid racing this pass's own vault edits).
-- **Sun 2026-07-19 23:00 UTC** — first weekly rollup; check `Run Log.md` Monday.
-- **Within hours of the push** — the 7 Winter-2027 matches are unseen, so the next hourly run should produce the first live discovery-time enriched writes (Firecrawl + OPT gate exercising end-to-end in Actions for the first time).
-- **On/after 2026-07-24** — cadence decision.
-- Layer 5 `enrich.py` still has never run end-to-end — the key now exists; run it at the next real promotion.
-EOF
-echo appended && .venv/bin/python -m pytest -q 2>&1 | tail -1, gh run list --limit 3 --json name,status,conclusion,headSha --jq '.[] | "\(.name) \(.status) \(.conclusion // "-") \(.headSha[0:7])"'
+- Commands run: ls /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building\ System/ 2>/dev/null && ls /home/anant_gupta/projects/work/internship-research-loop, ls "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/" | head -20; ls "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/" | wc -l, cat "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/[REDACTED].md", cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && curl -sL https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json -o simplify.json && curl -sL https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json -o josegael.json && wc -c simplify.json josegael.json, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && python3 - <<'EOF' import json, collections for f in ("simplify.json", "josegael.json"): data = json.load(open(f)) locs = collections.Counter() n_no_field = n_empty = 0 for e in data: l = e.get("locations") if l is None: n_no_field += 1 elif not l: n_empty += 1 else: for x in l: locs[x] += 1 print(f"=== {f}: {len(data)} entries, {n_no_field} missing field, {n_empty} empty list, {len(locs)} distinct location strings") for s, c in locs.most_common(60): print(f" {c:5d} {s!r}") EOF, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && python3 - <<'EOF' import json, re, collections US_STATES = {"AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VA","VT","WA","WI","WV","WY","DC","PR"} all_locs = set() for f in ("simplify.json", "josegael.json"): for e in json.load(open(f)): all_locs.update(e.get("locations") or []) print(f"total distinct: {len(all_locs)}") state_suffix = re.compile(r",\s*([A-Z]{2})$") buckets = collections.defaultdict(list) for s in sorted(all_locs): m = state_suffix.search(s) if m and m.group(1) in US_STATES: buckets["us_city_state"].append(s) elif "remote" in s.lower(): buckets["remote_variants"].append(s) else: buckets["other"].append(s) for k in ("remote_variants", "other"): print(f"\n--- {k} ({len(buckets[k])}) ---") for s in buckets[k]: print(f" {s!r}") print(f"\nus_city_state count: {len(buckets['us_city_state'])}") EOF, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && python3 - <<'EOF' import json, re, sys sys.path.insert(0, "/home/anant_gupta/projects/work/internship-research-loop") from ingestion.normalize import normalize_simplify, normalize_josegael from core.filter import matches, load_profile US_STATE_CODES = {"AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VA","VT","WA","WI","WV","WY","DC","PR"} US_STATE_NAMES = {"alabama","alaska","arizona","arkansas","california","colorado","connecticut","delaware","florida","georgia","hawaii","idaho","illinois","indiana","iowa","kansas","kentucky","louisiana","maine","maryland","massachusetts","michigan","minnesota","mississippi","missouri","montana","nebraska","nevada","new hampshire","new jersey","new mexico","new york","north carolina","north dakota","ohio","oklahoma","oregon","pennsylvania","rhode island","south carolina","south dakota","tennessee","texas","utah","vermont","virginia","washington","west virginia","wisconsin","wyoming"} US_ALIASES = {"nyc","sf","la","new york city","united states","usa","us","u.s.","u.s. virgin islands","multiple us cities","remote in usa","remote in us","remote, us"} NON_US = {"canada","uk","united kingdom","germany","india","france","spain","singapore","europe","south america","united arab emirates"} _state_suffix = re.compile(r"[.,]\s*([A-Za-z]{2})$") def norm(s): return re.sub(r"\s+", " ", s).strip().lower() def entry_eligible(loc): l = norm(loc) if l in US_ALIASES: return True segs = [seg.strip() for seg in l.split(",")] if any(seg in NON_US for seg in segs): return False m = _state_suffix.search(loc.strip()) if m and m.group(1).upper() in US_STATE_CODES: return True if segs[-1] in US_STATE_NAMES or segs[-1] in US_ALIASES: return True if any(k in l for k in ("remote", "virtual", "hybrid")): return True return False def listing_eligible(locs): if not locs: return True # permissive: no location data = unrestricted return any(entry_eligible(x) for x in locs) profile = load_profile("/home/anant_gupta/projects/work/internship-research-loop/core/profile.yaml") for fname, normf in (("simplify.json", normalize_simplify), ("josegael.json", normalize_josegael)): listings = [normf(r) for r in json.load(open(fname))] passing = [l for l in listings if matches(l, profile)] dropped = [l for l in passing if not listing_eligible(l.locations)] print(f"=== {fname}: {len(passing)} pass current filter, {len(dropped)} would be dropped by locations rule") for l in dropped: print(f" DROP {l.company} — {l.title}: {l.locations}") # strings judged eligible that shouldn't be, and vice versa — eyeball edge cases all_locs = set() for f in ("simplify.json", "josegael.json"): for e in json.load(open(f)): all_locs.update(e.get("locations") or []) weird = [s for s in sorted(all_locs) if not entry_eligible(s) and not any(seg.strip() in NON_US for seg in norm(s).split(","))] print(f"\n--- rejected strings NOT explained by a non-US country ({len(weird)}) ---") for s in weird: print(f" {s!r}") EOF, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && python3 - <<'EOF' import re NON_US_RE = re.compile(r"\b(canada|can|uk|united kingdom|germany|india|france|spain|singapore|europe|south america|united arab emirates|mexico|japan|china|ireland|australia)\b") for s in ["Remote in Canada", "Remote in Germany", "Remote in India", "Remote in UK", "Remote", "Remote in USA", "Toronto, ON, CAN", "New Mexico"]: l = re.sub(r"\s+", " ", s).strip().lower() print(s, "->", bool(NON_US_RE.search(l))) EOF, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && python3 - <<'EOF' import json, re, sys sys.path.insert(0, "/home/anant_gupta/projects/work/internship-research-loop") from ingestion.normalize import normalize_simplify, normalize_josegael from core.filter import matches, load_profile US_STATE_CODES = {"AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VA","VT","WA","WI","WV","WY","DC","PR"} US_STATE_NAMES = {"alabama","alaska","arizona","arkansas","california","colorado","connecticut","delaware","florida","georgia","hawaii","idaho","illinois","indiana","iowa","kansas","kentucky","louisiana","maine","maryland","massachusetts","michigan","minnesota","mississippi","missouri","montana","nebraska","nevada","new hampshire","new jersey","new mexico","new york","north carolina","north dakota","ohio","oklahoma","oregon","pennsylvania","rhode island","south carolina","south dakota","tennessee","texas","utah","vermont","virginia","washington","west virginia","wisconsin","wyoming"} US_ALIASES = {"nyc","sf","la","new york city","united states","usa","us","u.s.","u.s. virgin islands","multiple us cities","multiple hbcus","remote in usa","remote in us","remote, us"} NON_US_RE = re.compile(r"\b(canada|can|uk|united kingdom|germany|india|france|spain|singapore|europe|south america|united arab emirates|mexico|japan|china|ireland|australia)\b") _state_suffix = re.compile(r"[.,]\s*([A-Za-z]{2})$") def norm(s): return re.sub(r"\s+", " ", s).strip().lower() def entry_eligible(loc): l = norm(loc) if l in US_ALIASES: return True m = _state_suffix.search(loc.strip()) if m and m.group(1).upper() in US_STATE_CODES: return True last = l.split(",")[-1].strip() if last in US_STATE_NAMES or last in US_ALIASES: return True if NON_US_RE.search(l): return False return any(k in l for k in ("remote", "virtual", "hybrid")) def listing_eligible(locs): return not locs or any(entry_eligible(x) for x in locs) profile = load_profile("/home/anant_gupta/projects/work/internship-research-loop/core/profile.yaml") total_drop = 0 for fname, normf in (("simplify.json", normalize_simplify), ("josegael.json", normalize_josegael)): listings = [normf(r) for r in json.load(open(fname))] passing = [l for l in listings if matches(l, profile)] dropped = [l for l in passing if not listing_eligible(l.locations)] total_drop += len(dropped) print(f"=== {fname}: {len(passing)} pass, {len(dropped)} dropped by locations rule") for l in dropped: print(f" DROP {l.company}: {l.locations}") # sanity: every remote variant classified correctly for s in ["Remote","Remote in USA","Remote in USa","Remote in US","Remote, US","Remote in Canada","Remote in Germany","Remote in India","Remote in UK","New Mexico","Multiple Locations","Multiple HBCUs","Virtual","Hybrid","Seattle, W","Carlsbad, Ca","Dallas. TX","Toronto, ON, CAN","London","NYC"]: print(f" {entry_eligible(s)!s:5} {s!r}") EOF, date -u && tail -3 /home/anant_gupta/projects/work/internship-research-loop/logs/runs.jsonl && python3 -c " import json runs=[json.loads(l) for l in open('/home/anant_gupta/projects/work/internship-research-loop/logs/runs.jsonl')] print(f'{len(runs)} runs, first={runs[0].get(\"ts\") or runs[0]}, last={runs[-1].get(\"ts\") or runs[-1]}')" 2>&1 | head -20, cat "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/30_Order/Workflows/Internship Pipeline.md" 2>/dev/null || find "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/30_Order" -name "*.md" | head, find "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career" -iname "*resume*" -o -ipath "*Resumes*" | head; echo ---; env | grep -i firecrawl; grep -ri firecrawl /home/anant_gupta/projects/work/internship-research-loop --include="*.py" --include="*.yml" --include="*.yaml" --include="*.md" -l, ls "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Resumes/" 2>/dev/null; echo ---; head -80 "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Resumes/Main Resume.md" 2>/dev/null, gh secret list 2>/dev/null; grep -i firecrawl ~/.bashrc ~/.profile ~/.env 2>/dev/null; ls "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/", python3 -c " import json d = json.load(open('/home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/simplifyjobs.json')) for r in d: print(r['_case'], '| locations =', r.get('locations'))", python3 -m pytest tests/ -q 2>&1 | tail -5, which dig nslookup host python3; python3 -c "import requests, yaml; print('deps ok')", python3 -m pytest tests/ -q 2>&1 | tail -3 && python3 grade_resume.py - <<'EOF' Software Engineering Intern — we want students with Python, TypeScript, React, REST APIs, Postgres, Docker, and experience building data pipelines and AI/LLM-powered features. Strong communication skills preferred. EOF, .venv/bin/python -m pytest -q 2>&1 | tail -6, .venv/bin/python - <<'EOF' import re, sys, yaml from pathlib import Path sys.path.insert(0, ".") from core.filter import location_eligible, _entry_is_us_or_remote, _NON_US, _norm DOSSIERS = Path("/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers") files = sorted(DOSSIERS.glob("*.md")) rejects, empty_loc = [], 0 for f in files: fm = yaml.safe_load(re.match(r"^---\n(.*?)\n---\n", f.read_text(encoding="utf-8"), re.DOTALL).group(1)) locs = fm.get("locations") or [] if not locs: empty_loc += 1 if not location_eligible(locs): detail = [] for x in locs: m = _NON_US.search(_norm(x)) detail.append(f"{x!r} -> denylist token '{m.group(1)}'" if m else f"{x!r} -> no US signal") rejects.append((f.name, fm.get("company"), detail)) print(f"{len(files)} dossiers scanned, {empty_loc} with no locations data (pass as unrestricted)") print(f"{len(rejects)} would be REJECTED by location_eligible():\n") for name, company, detail in rejects: print(f" {company} [{name}]") for d in detail: print(f" {d}") EOF, git diff --stat && git status --short && echo ================= && git diff core/profile.yaml, echo "PRD.md" >> .git/info/exclude && .venv/bin/python - <<'EOF' import sys; sys.path.insert(0, ".") from core.git_ops import commit_and_push_with_retry msg = """Phase 4: locations_allow filter, Layer 5 enrich.py, Layer 6 grade_resume.py locations_allow built from live feed data (1216 distinct strings): US signal wins, affirmative foreign token loses, ambiguous passes. Prospective only — the 13 existing non-US dossiers are grandfathered. enrich.py is promotion- triggered (manual, Pipeline Step 2), never called by run_pipeline.py. Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>""" print("pushed:", commit_and_push_with_retry(".", msg)) EOF git log --oneline -2 && git status --short, env | grep -ci firecrawl; grep -rsi "firecrawl" ~/.bashrc ~/.profile ~/.bash_profile ~/.env ~/.config/fish/config.fish 2>/dev/null | wc -l; gh secret list 2>/dev/null; ls ~/.firecrawl 2>/dev/null; echo "---done---", .venv/bin/python - <<'EOF' import sys; sys.path.insert(0, ".") from enrich import github_org_members, mx_ok, infer_email org, members = github_org_members("Confluent") print(f"GitHub org match: {org}, public members: {members}") print(f"mx_ok('confluent.io') = {mx_ok('confluent.io')}") print(f"mx_ok('no-such-domain-zzz-9812.com') = {mx_ok('no-such-domain-zzz-9812.com')}") if members: print("inferred:", infer_email(members[0][0], "confluent.io")) EOF, grep -h "^url:" "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/"*.md | grep -Ei "greenhouse|lever" | head -5, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && curl -s "https://boards-api.greenhouse.io/v1/boards/anthropic/jobs/5023394008" | python3 -c " import sys, json, html, re d = json.load(sys.stdin) text = re.sub(r'<[^>]+>', ' ', html.unescape(d['content'])) print(d['title'], file=sys.stderr) print(text)" > jd_anthropic.txt 2>jd_title.txt && cat jd_title.txt && wc -w jd_anthropic.txt, .venv/bin/python grade_resume.py /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/jd_anthropic.txt, gh run list --limit 3 --json name,status,conclusion,headSha,createdAt --jq '.[] | "\(.name) \(.status) \(.conclusion // "-") \(.headSha[0:7]) \(.createdAt)"', grep -n "Vault Cleanup" "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Phases 1-3 Run.md", sed -n '112,180p' "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Phases 1-3 Run.md", git pull --rebase 2>&1 | tail -2 && git log --oneline -3, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && curl -s https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json -o josegael_fresh.json && curl -s https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json -o simplify_fresh.json && python3 - <<'EOF' import json, collections jg = json.load(open("josegael_fresh.json")) print("JGCL keys of first entry:", sorted(jg[0].keys())) ty_fields = collections.Counter() for e in jg: for k in e: if "year" in k.lower() or "target" in k.lower() or "class" in k.lower(): ty_fields[k] += 1 print("JGCL year-ish fields:", dict(ty_fields)) print("sample values:", [e.get(list(ty_fields)[0]) for e in jg[:5]] if ty_fields else "NONE") sj = json.load(open("simplify_fresh.json")) print("\nSimplify keys:", sorted(sj[0].keys())) print("active values:", collections.Counter(e.get("active") for e in sj)) degs = collections.Counter() for e in sj: d = e.get("degrees") degs[tuple(d) if isinstance(d, list) else d] += 1 print("degrees distinct values (top 15):") for v, c in degs.most_common(15): print(f" {c:6d} {v}") print("\nJGCL active field:", collections.Counter(e.get("active") for e in jg)) print("JGCL degrees:", collections.Counter(tuple(e.get("degrees") or []) for e in jg).most_common(8)) EOF, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && python3 - <<'EOF' import json, sys, collections sys.path.insert(0, "/home/anant_gupta/projects/work/internship-research-loop") from core.filter import matches, load_profile from ingestion.normalize import normalize_simplify, normalize_josegael old = json.load(open("josegael.json")) # fetched 2026-07-17, pre-write snapshot era new = json.load(open("josegael_fresh.json")) print("OLD (2026-07-17) first-entry keys:", sorted(old[0].keys())) old_ty = collections.Counter(bool(e.get("target_year")) for e in old) new_ty = collections.Counter(bool(e.get("target_year")) for e in new) print(f"OLD entries with non-empty target_year: {old_ty}") print(f"NEW entries with non-empty target_year: {new_ty}") # same uid, both snapshots — did target_year appear between snapshots? old_by_id = {e["id"]: e for e in old} changed = [(e["id"], old_by_id[e["id"]].get("target_year"), e.get("target_year")) for e in new if e["id"] in old_by_id and old_by_id[e["id"]].get("target_year") != e.get("target_year")] print(f"entries whose target_year differs between snapshots: {len(changed)}") for i, o, n in changed[:5]: print(f" {i}: {o} -> {n}") profile = load_profile("/home/anant_gupta/projects/work/internship-research-loop/core/profile.yaml") sj = [normalize_simplify(r) for r in json.load(open("simplify_fresh.json"))] sj_raw = {r["id"]: r for r in json.load(open("simplify_fresh.json"))} passing = [l for l in sj if matches(l, profile)] act = collections.Counter(sj_raw[l.raw_id]["active"] for l in passing) print(f"\nSimplify listings passing current filter: {len(passing)}, active breakdown: {dict(act)}") EOF, ls "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/" | grep jose; echo ===; for f in "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/"jose*.md; do echo "--- $f"; grep -A3 "^target_year" "$f" | head -4; grep "^uid" "$f"; done 2>/dev/null | head -30, cd "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" && git log --oneline -3 -- "10_Areas/Career/Internships/List/Dossiers/" && git show HEAD~1:"10_Areas/Career/Internships/List/Dossiers/[REDACTED].md" 2>/dev/null | sed -n '1,20p', cd "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" && git status --short -- "10_Areas/Career/Internships/List/Dossiers/" | head -3 && git status --short -- "10_Areas/Career/Internships/List/Dossiers/" | wc -l && echo === && for f in $(git ls-tree --name-only HEAD "10_Areas/Career/Internships/List/Dossiers/" | grep jose); do ty=$(git show "HEAD:$f" | sed -n '/^target_year:/,/^[a-z]/p' | grep -c "^ - ") echo "$ty entries $(basename $f)" done, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && python3 - <<'EOF' import json, collections jg = json.load(open("josegael_fresh.json")) print("JGCL season values:", collections.Counter(e.get("season") for e in jg)) print("JGCL opportunity_type:", collections.Counter(e.get("opportunity_type") for e in jg)) # the 4 wrong-cycle dossiers deleted in the audit — what do their feed entries say? for slug_hint in ("gsoc", "MLH", "MIT", "Partiful"): hits = [e for e in jg if slug_hint.lower() in (e["company_name"] + e["title"]).lower()] for e in hits[:2]: print(f" {e['company_name']!r} | season={e.get('season')!r} | active={e['active']} | target_year={e.get('target_year')}") EOF, .venv/bin/python -m pytest -q 2>&1 | tail -25, grep -n "def test\|validate(" tests/test_validate.py | head -40 && echo === && head -30 tests/fixtures/josegael.json && ls tests/fixtures/, python3 -c " import json for f in ('josegael.json','simplifyjobs.json'): d = json.load(open(f'tests/fixtures/{f}')) print(f'=== {f}: {len(d)} entries') for r in d: print(' ', r['_case'][:80], '| active=', r.get('active'), '| season=', r.get('season'), '| degrees=', r.get('degrees'), '| keys missing:', {'active','degrees','season'} - set(r))", cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && python3 - <<'EOF' import json jg = json.load(open("josegael_fresh.json")) for e in jg: if e.get("season") == "Summer 2026" or "MLH" in e["company_name"]: print(json.dumps({k: e[k] for k in ("id","company_name","title","season","active","target_year")}, indent=None)) sj = json.load(open("simplify_fresh.json")) # real entry: Summer 2027 + allowed category + active true + NO Bachelor's in degrees hits = [e for e in sj if "Summer 2027" in e.get("terms", []) and e.get("category") in ("Software","AI/ML/Data") and e.get("active") and e.get("degrees") and "Bachelor's" not in e["degrees"]] print(f"\nsimplify PhD/Masters-only Summer2027 active hits: {len(hits)}") if hits: print(json.dumps(hits[0], indent=1)) EOF, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && python3 - <<'EOF' import json jg = json.load(open("josegael_fresh.json")) sj = json.load(open("simplify_fresh.json")) fixtures = "/home/anant_gupta/projects/work/internship-research-loop/tests/fixtures" jf = json.load(open(f"{fixtures}/josegael.json")) jf[0]["_case"] = "should-reject: active false upstream (closed posting) — was should-match before the active gate" jf[1]["_case"] = "should-reject: season Spring (wrong cycle) and active false — real Partiful entry" jf[2]["_case"] = "should-reject: target_year is Freshman/Sophomore only, no Junior (also active false)" mlh = next(e for e in jg if e["id"] == "[REDACTED]") wtn = next(e for e in jg if e["id"] == "[REDACTED]") jf.append({"_case": "should-match: active true, season Summer (year-less, passes), Junior in target_year — real MLH entry", **mlh}) jf.append({"_case": "should-reject: season Summer 2026 hits exclude_terms — real WomenTech entry", **wtn}) json.dump(jf, open(f"{fixtures}/josegael.json", "w"), indent=2) sf = json.load(open(f"{fixtures}/simplifyjobs.json")) tiktok = next(e for e in sj if e["id"] == "[REDACTED]") sf.append({"_case": "should-reject: degrees PhD-only, no Bachelor's — real TikTok entry, otherwise matching", **tiktok}) json.dump(sf, open(f"{fixtures}/simplifyjobs.json", "w"), indent=2) print("josegael cases:", [e["_case"][:60] for e in jf]) print("simplify cases:", [e["_case"][:60] for e in sf]) EOF rm /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/zapply_readme.md, python3 - <<'EOF' import re p = "tests/test_schema_drift.py" s = open(p).read() s = s.replace("""from core.schema_drift import ( SchemaDriftError, check_all, check_josegael_schema, check_simplify_schema, check_zapply_schema, )""", """from core.schema_drift import ( SchemaDriftError, check_all, check_josegael_schema, check_simplify_schema, )""") # drop zapply fixture + its two tests + rewrite check_all tests s = s.replace("""@pytest.fixture def zapply_text(): return (FIXTURES / "zapply_readme.md").read_text() """, "") s = re.sub(r'def test_zapply_schema_passes_on_real_shape.*?# --- drift', '# --- drift', s, flags=re.DOTALL) s = re.sub(r'def test_zapply_schema_detects_missing_table.*?(?=# --- check_all)', '', s, flags=re.DOTALL) s = s.replace("def test_check_all_raises_on_first_failing_source(simplify_raw, josegael_raw, zapply_text):", "def test_check_all_raises_on_first_failing_source(simplify_raw, josegael_raw):") s = s.replace(" assert call_count[\"n\"] == 1 # halted before ever checking josegael/zapply", " assert call_count[\"n\"] == 1 # halted before ever checking josegael") s = s.replace("""def test_check_all_passes_when_all_three_are_healthy(simplify_raw, josegael_raw, zapply_text): call_log = [] def http_get(url, timeout): call_log.append(url) from ingestion.sources import JOSEGAEL_URL, SIMPLIFY_URL, ZAPPLY_README_URL if url == SIMPLIFY_URL: return _json_response(simplify_raw) if url == JOSEGAEL_URL: return _json_response(josegael_raw) if url == ZAPPLY_README_URL: return _text_response(zapply_text) raise AssertionError(f"unexpected url: {url}") check_all(http_get=http_get) # does not raise assert len(call_log) == 3""", """def test_check_all_passes_when_both_are_healthy(simplify_raw, josegael_raw): call_log = [] def http_get(url, timeout): call_log.append(url) from ingestion.sources import JOSEGAEL_URL, SIMPLIFY_URL if url == SIMPLIFY_URL: return _json_response(simplify_raw) if url == JOSEGAEL_URL: return _json_response(josegael_raw) raise AssertionError(f"unexpected url: {url}") check_all(http_get=http_get) # does not raise assert len(call_log) == 2 # --- the permissive-default fields: renamed upstream, they'd silently make # every listing pass their checks — drift must catch them (2026-07-18) --- @pytest.mark.parametrize("key", ["active", "degrees"]) def test_simplify_schema_detects_dropped_permissive_field(simplify_raw, key): drifted = [{k: v for k, v in r.items() if k != key} for r in simplify_raw] http_get = Mock(return_value=_json_response(drifted)) with pytest.raises(SchemaDriftError, match=key): check_simplify_schema(http_get=http_get) @pytest.mark.parametrize("key", ["active", "season"]) def test_josegael_schema_detects_dropped_permissive_field(josegael_raw, key): drifted = [{k: v for k, v in r.items() if k != key} for r in josegael_raw] http_get = Mock(return_value=_json_response(drifted)) with pytest.raises(SchemaDriftError, match=key): check_josegael_schema(http_get=http_get)""") open(p, "w").write(s) print("ok") EOF, python3 - <<'EOF' p = "tests/test_run_pipeline.py" s = open(p).read() s = s.replace("from ingestion.normalize import normalize_josegael, normalize_simplify, parse_zapply_readme", "from ingestion.normalize import normalize_josegael, normalize_simplify") s = s.replace("""def _zapply_text(): return (FIXTURES / "zapply_readme.md").read_text() """, "") s = s.replace(""" from ingestion.sources import JOSEGAEL_URL, SIMPLIFY_URL, ZAPPLY_README_URL resp = Mock(status_code=200) if url == SIMPLIFY_URL: resp.json.return_value = _simplify_raw() elif url == JOSEGAEL_URL: resp.json.return_value = _josegael_raw() elif url == ZAPPLY_README_URL: resp.text = _zapply_text() else:""", """ from ingestion.sources import JOSEGAEL_URL, SIMPLIFY_URL resp = Mock(status_code=200) if url == SIMPLIFY_URL: resp.json.return_value = _simplify_raw() elif url == JOSEGAEL_URL: resp.json.return_value = _josegael_raw() else:""") s = s.replace(""" josegael_junior = normalize_josegael(_josegael_raw()[0]) assert run_pipeline.build_matched_reason(josegael_junior, PROFILE) == "Junior-eligible" zapply = parse_zapply_readme(_zapply_text())[0] assert run_pipeline.build_matched_reason(zapply, PROFILE) == "All-student eligible" """, """ josegael_junior = normalize_josegael(_josegael_raw()[0]) assert run_pipeline.build_matched_reason(josegael_junior, PROFILE) == "Junior-eligible" """) s = s.replace(""" assert results["Jose-Gael-Cruz-Lopez"]["fetch_count"] == len(_josegael_raw()) assert results["zapplyjobs"]["fetch_count"] == len(parse_zapply_readme(_zapply_text())) # every fixture set has at least one should-match case assert len(results["SimplifyJobs"]["matched"]) > 0 assert len(results["Jose-Gael-Cruz-Lopez"]["matched"]) > 0 assert len(results["zapplyjobs"]["matched"]) > 0""", """ assert results["Jose-Gael-Cruz-Lopez"]["fetch_count"] == len(_josegael_raw()) # every fixture set has at least one should-match case assert len(results["SimplifyJobs"]["matched"]) > 0 assert len(results["Jose-Gael-Cruz-Lopez"]["matched"]) > 0""") s = s.replace("""def test_file_github_issue_calls_gh_with_expected_args():""", """def test_validate_and_write_rejects_cross_source_duplicate(tmp_path): \"\"\"Same program via two sources (two distinct uids, one company+title) — the second write must be rejected by the cross_source_duplicate gate. MLH Fellowship landed twice this way before the 2026-07-18 cleanup.\"\"\" listing = normalize_simplify(_simplify_raw()[0]) twin_raw = {**_simplify_raw()[0], "id": "a-different-upstream-id"} twin = normalize_josegael({ # same company+title arriving via JGCL "id": "jgcl-twin", "company_name": listing.company, "title": listing.title, "url": listing.url, "season": "Summer", "active": True, "target_year": ["Junior (3rd year)"], }) del twin_raw written, rejections = run_pipeline.validate_and_write( [(compute_uid(listing), listing), (compute_uid(twin), twin)], PROFILE, tmp_path, seen_ids=set(), date_found="2026-07-18", http_head=_fake_http_head_all_live, ) assert written == [compute_uid(listing)] assert len(rejections) == 1 assert rejections[0]["check"] == "cross_source_duplicate" def test_validate_and_write_seeds_dedup_keys_from_existing_vault_files(tmp_path): \"\"\"Keys come from the dossier files actually in the checkout — a listing whose company+title already sits in the vault (even under another uid, written by an earlier run) is rejected, not re-written.\"\"\" listing = normalize_simplify(_simplify_raw()[0]) first_uid = compute_uid(listing) run_pipeline.validate_and_write( [(first_uid, listing)], PROFILE, tmp_path, seen_ids=set(), date_found="2026-07-18", http_head=_fake_http_head_all_live, ) twin = normalize_josegael({ "id": "jgcl-twin", "company_name": listing.company, "title": listing.title, "url": listing.url, "season": "Summer", "active": True, "target_year": ["Junior (3rd year)"], }) written, rejections = run_pipeline.validate_and_write( [(compute_uid(twin), twin)], PROFILE, tmp_path, seen_ids={first_uid}, date_found="2026-07-18", http_head=_fake_http_head_all_live, ) assert written == [] assert rejections[0]["check"] == "cross_source_duplicate" def test_file_github_issue_calls_gh_with_expected_args():""") open(p, "w").write(s) print("ok") EOF, .venv/bin/python -m pytest -q 2>&1 | tail -15, grep -rn "zapply" --include="*.py" --include="*.yml" --include="*.yaml" --include="*.md" . 2>/dev/null | grep -v ".venv\|jarvis-checkout" | head, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && .venv_placeholder 2>/dev/null; /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF' import json, sys, collections sys.path.insert(0, "/home/anant_gupta/projects/work/internship-research-loop") from core.filter import load_profile, matches from ingestion.normalize import normalize_simplify, normalize_josegael profile = load_profile("/home/anant_gupta/projects/work/internship-research-loop/core/profile.yaml") for fname, normf in (("simplify_fresh.json", normalize_simplify), ("josegael_fresh.json", normalize_josegael)): listings = [normf(r) for r in json.load(open(fname))] passing = [l for l in listings if matches(l, profile)] print(f"{fname}: {len(listings)} fetched -> {len(passing)} match new filter") for l in passing[:40]: print(f" {l.company} — {l.title[:60]}") EOF, head -20 README.md, JARVIS_DIR="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" .venv/bin/python recheck.py --dry-run, .venv/bin/python -m pytest -q 2>&1 | tail -3 && git add -A && git status --short | head -25, .venv/bin/python - <<'EOF' import sys; sys.path.insert(0, ".") from core.git_ops import commit_and_push_with_retry msg = """Fix the 5 root causes behind dossier bloat (2026-07-18 vault audit) 1. recheck.py + daily recheck.yml — post-write liveness pass; removes dossiers whose posting went active:false or vanished upstream, with a mass-deletion brake; logs to logs/rechecks.jsonl; never touches seen_ids. Discovery side: matches() now rejects active:false at write time (71 of 103 then-passing SimplifyJobs listings were already closed upstream). 2. degrees gate — degrees_allow: ["Bachelor's"], permissive on empty. 3. JGCL season mapped into Listing.terms (the actually-dropped field — the audit's target_year claim didn't reproduce; all 13 written JGCL dossiers had it populated per vault git history). Wrong-cycle seasons now reject. 4. Cross-source dedup — fifth write-gate check on normalized company+title, keyed off the dossier files actually present in the checkout. 5. zapplyjobs removed as a source entirely (dead code paths deleted: fetcher, parser, matcher, uid hash fallback, schema check, fixtures). Schema-drift check now also guards active/degrees/season — renamed upstream, they'd silently turn their filters permissive. 148 tests, fixtures extended with real live entries (TikTok PhD-only, MLH, Partiful, WomenTech). Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>""" print("pushed:", commit_and_push_with_retry(".", msg)) EOF git log --oneline -2, sleep 60; gh run list --limit 3 --json name,status,conclusion,headSha --jq '.[] | "\(.name) \(.status) \(.conclusion // "-") \(.headSha[0:7])"', sed -n '112,125p' "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Phases 1-3 Run.md"; grep -c "" "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Phases 1-3 Run.md", cat >> "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Phases 1-3 Run.md" <<'EOF' ## Phase 5 — Bloat Root-Cause Fixes (2026-07-18) All five root causes from the vault audit shipped as commit `7a84be1` (pushed via `commit_and_push_with_retry()`, again rebasing over that day's automation commit). **148/148 tests passing** (was 131: −8 zapply, +25 new). Every rule below was built against freshly-fetched live feed data, not the audit's numbers re-quoted. 1. **Post-write liveness recheck** — `recheck.py` + `.github/workflows/recheck.yml` (daily 06:30 UTC cron + workflow_dispatch, deliberately separate from hourly discovery). Scans the dossier **files actually in the checkout** (not seen_ids.json — the two diverged permanently at the cleanup), cross-refs each uid against its source's live feed, removes on `active: false` or absent-from-feed, logs to `logs/rechecks.jsonl`, never touches seen_ids. A failed source fetch skips that source's dossiers entirely (never read as "everything absent"), and a mass-deletion brake (> max(5, half the vault)) halts and files an issue instead of deleting. *Verified live via dry-run against the real vault: 28 dossiers scanned, 2 would be removed, both `active: false` upstream — postings that closed after the morning audit.* **Discovery side too:** `matches()` now rejects `active: false` at write time — 71 of 103 then-passing SimplifyJobs listings were already closed upstream (their ATS URLs still return 200, so `url_liveness` can't catch this). 2. **`degrees` gate** — `degrees_allow: ["Bachelor's"]` in profile.yaml, permissive on empty (4,676 of 14,907 live entries carry no degrees data). Real apostrophe-form values confirmed by fetch; regression fixture is the real TikTok PhD-only Research Scientist entry, which passes every other check. 3. **JGCL `season` mapped** (the audit's original target_year claim was corrected in the findings section above — a grep artifact). `normalize_josegael` now maps `season` → `Listing.terms`; wrong cycles reject (exclude_terms hits like "Summer 2026", year-less Spring/Fall/Winter), year-less "Summer"/"Multiple"/"Year-Round" pass permissively. Regression tests use the real Partiful (Spring) and WomenTech ("Summer 2026") entries verbatim, calling `_matches_josegael` directly since every wrong-season live entry is also `active: false` (the active gate would mask the season rule). 4. **Cross-source dedup** — fifth write-gate check `cross_source_duplicate` on normalized company+title (`cross_source_key()` in core/identity.py), keyed off the dossier files actually present plus same-run writes; first source in write order wins (SimplifyJobs → JGCL). Runs before `url_liveness` — it's free, the HEAD request isn't. 5. **zapplyjobs removed entirely** — fetcher, README parser, `_matches_zapply`, dispatch branch, uid content-hash fallback (both remaining sources guarantee upstream ids; `compute_uid` now raises on a missing one), schema check, fixture, and 8 tests all deleted, not bypassed. Also: the schema-drift check now guards `active`/`degrees`/`season` — renamed upstream, those fields would silently turn their filters permissive rather than crash, exactly the drift class the check exists for. *Net filter effect against the live feeds at ship time: SimplifyJobs 14,907 fetched → 29 match (was 103 before the active+degrees gates); JGCL 112 → 5 (was 17). Survivors are all active, Bachelor's-eligible, US/Remote, right-cycle.* > [!WARNING] > First scheduled recheck timing: the vault's local working copy holds the audit's 110 deletions **uncommitted**. Until the vault's own auto-commit cycle pushes them, origin still has all 137 dossiers — a recheck run against that state would want to remove ~90 and the mass-deletion brake would halt it (harmless but noisy: one GitHub issue). Let the vault push first; the daily 06:30 UTC cron takes it from there. EOF echo appended, gh run list --limit 5 --json name,status,conclusion,headSha,event --jq '.[] | "\(.name) \(.status) \(.conclusion // "-") \(.headSha[0:7]) (\(.event))"', git pull --rebase -q && tail -1 logs/runs.jsonl | python3 -c " import json, sys r = json.loads(sys.stdin.read()) print('timestamp:', r['timestamp']) print('fetch_counts:', r['fetch_counts']) print('filter_match_counts:', r['filter_match_counts']) print('new:', r['new_count'], '| already_seen:', r['already_seen_count'], '| written:', r['written_count']) print('rejections:', len(r['rejections']), [f\"{x['check']}\" for x in r['rejections']]) print('halted:', r['halted'], '| errors:', r['errors'])", date -u && git log --format='%h %cI %s' -4, gh run list --workflow=run.yml --limit 2 --json status,conclusion,createdAt,headSha --jq '.[] | "\(.createdAt) \(.status) \(.conclusion // "-") on \(.headSha[0:7])"', git pull --rebase -q && tail -1 logs/runs.jsonl | python3 -c " import json, sys r = json.loads(sys.stdin.read()) print('timestamp:', r['timestamp']) print('fetch_counts:', r['fetch_counts']) print('filter_match_counts:', r['filter_match_counts']) print('new:', r['new_count'], '| already_seen:', r['already_seen_count'], '| written:', r['written_count']) print('rejections:', [(x['check'], x['reason']) for x in r['rejections']]) print('halted:', r['halted'], '| errors:', r['errors'])", cat >> "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Phases 1-3 Run.md" <<'EOF' *First live run on the new code (2026-07-18 12:53 UTC, run created 11:44): confirmed exactly as predicted — `fetch_counts` has no zapplyjobs key, `filter_match_counts` {SimplifyJobs: 29, Jose-Gael-Cruz-Lopez: 5} (was {103, 17, 22}), persistent url_liveness rejections down from 18 to 8 (the other 10 uids belonged to now-inactive listings the active gate refuses before any HEAD request), 0 written, 0 halts, 0 errors.* EOF echo done, grep -n "^## " "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Phases 1-3 Run.md" && sed -n "$(grep -n 'Phase 6 Decision' "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Phases 1-3 Run.md" | head -1 | cut -d: -f1),\$p" "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Phases 1-3 Run.md", env | grep -i firecrawl | sed 's/=.*/=<set>/'; grep -rsil firecrawl ~/.bashrc ~/.profile ~/.env 2>/dev/null; ls ~/.config/firecrawl 2>/dev/null; echo ---; git log --oneline -12; echo ---; .venv/bin/python -m pytest -q 2>&1 | tail -2, grep -i firecrawl ~/.bashrc | sed 's/\(fc-[A-Za-z0-9]\{4\}\)[A-Za-z0-9]*/\1.../' && source ~/.bashrc 2>/dev/null; [ -n "$FIRECRAWL_API_KEY" ] && echo "key loads OK, length ${#FIRECRAWL_API_KEY}", wc -l "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Research Loop — Implementation Plan.md" PRD.md, cat vault_writer/templates/dossier.md.j2 requirements.txt && head -8 vault_writer/validate.py && grep -rn "three\|four\|five" run_pipeline.py README.md | grep -i "source\|check" | head, cat >> tests/test_run_pipeline.py <<'EOF' def test_run_once_halts_and_files_issue_on_fetch_network_failure(tmp_path): """A source going offline (DNS failure, deleted repo, 5xx) must produce a logged, issue-filed halt — not an uncaught crash with no record (the PRD's previously-unmitigated 'source repo goes offline' risk).""" import requests as _requests def dying_http_get(url, timeout=None): raise _requests.ConnectionError("simulated: upstream repo unreachable") kwargs = _run_once_kwargs(tmp_path, http_get=dying_http_get) record = run_pipeline.run_once(**kwargs) assert record["halted"] is True assert "ConnectionError" in record["halt_reason"] logged = json.loads(kwargs["runs_log_path"].read_text().splitlines()[0]) assert logged["halted"] is True kwargs["issue_fn"].assert_called_once() assert not run_pipeline.load_seen_ids(kwargs["state_path"]) EOF cat >> tests/test_filter.py <<'EOF' def test_josegael_whitespace_only_season_does_not_crash(): raw = next(r for r in _load("josegael.json") if r["id"] == "[REDACTED]") listing = normalize_josegael({**raw, "season": " "}) assert matches(listing, PROFILE) is True # degenerate season ignored, not IndexError EOF .venv/bin/python -m pytest -q 2>&1 | tail -2, .venv/bin/python -m pytest -q 2>&1 | tail -2, date -u; echo "== run.yml (last 8) =="; gh run list --workflow=run.yml --limit 8 --json status,conclusion,createdAt,event --jq '.[] | "\(.createdAt) \(.event) \(.status) \(.conclusion // "-")"'; echo "== recheck.yml (all) =="; gh run list --workflow=recheck.yml --limit 10 --json status,conclusion,createdAt,event --jq '.[] | "\(.createdAt) \(.event) \(.status) \(.conclusion // "-")"'; echo "== issues =="; gh issue list --state all --limit 10, gh workflow list; echo ---; python3 -c "import json; print('seen_ids:', len(json.load(open('state/seen_ids.json'))))"; echo "origin vault dossiers:"; gh api "repos/gupta-builds/Jarvis/contents/10_Areas/Career/Internships/List/Dossiers" --paginate --jq '. | length'; echo "local vault dossiers:"; ls "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/" | wc -l, cd "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" && git fetch -q origin 2>/dev/null; git status --short -- "10_Areas/Career/Internships/List/Dossiers/" | head -5; comm -3 <(git ls-tree --name-only origin/master "10_Areas/Career/Internships/List/Dossiers/" | xargs -n1 basename | sort) <(ls "10_Areas/Career/Internships/List/Dossiers/" | sort), cd "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" && git status --short -- "10_Areas/Career/Internships/List/Dossiers/[REDACTED].md"; git log --oneline -3 origin/master -- "10_Areas/Career/Internships/List/Dossiers/[REDACTED].md"; git log --oneline -2 && git log --oneline -2 origin/master; git status --short -- "10_Areas/Career/Internships/List/Dossiers/" | wc -l, ls "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/" && cat "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Run Log.md" 2>/dev/null | head; echo ---; cd "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" && git diff -- "10_Areas/Career/Internships/List/Dossiers/[REDACTED].md" | head -20, cd "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" && f="10_Areas/Career/Internships/List/Dossiers/[REDACTED].md"; file "$f"; git diff --ignore-cr-at-eol --stat -- "10_Areas/Career/Internships/List/Dossiers/" | tail -3, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && curl -s https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json -o sj_now.json && curl -s https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json -o jg_now.json && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF' import json, re, yaml from pathlib import Path D = Path("/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers") feed = {} for f, src in (("sj_now.json","SimplifyJobs"), ("jg_now.json","Jose-Gael-Cruz-Lopez")): for e in json.load(open(f)): feed[f"{src}:{e['id']}"] = e rows = [] for p in sorted(D.glob("*.md")): fm = yaml.safe_load(re.match(r"^---\n(.*?)\n---\n", p.read_text(encoding="utf-8"), re.DOTALL).group(1)) live = feed.get(fm["uid"], {}) rows.append((p.name, fm["company"], fm["title"][:45], fm.get("terms"), fm.get("locations"), live.get("active", "ABSENT"), live.get("terms") or live.get("season"), fm["url"])) print(f"{len(rows)} dossiers:") for r in rows: print(f" {r[1][:28]:28} | {r[2]:45} | fm_terms={r[3]} | loc={r[4]} | live_active={r[5]} | live_terms={r[6]}") print(f" url={r[7]}") EOF, export $(grep -o 'FIRECRAWL_API_KEY=[^ ]*' ~/.bashrc) && curl -s -X POST https://api.firecrawl.dev/v1/scrape -H "Authorization: Bearer $FIRECRAWL_API_KEY" -H "Content-Type: application/json" -d '{"url": "https://job-boards.greenhouse.io/fiveringsllc/jobs/5349707008", "formats": ["markdown"]}' | python3 -c " import json, sys r = json.load(sys.stdin) print('success:', r.get('success')) md = r.get('data', {}).get('markdown', '') print('markdown length:', len(md)) print(md[:400])", export $(grep -o 'FIRECRAWL_API_KEY=[^ ]*' ~/.bashrc) && cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && mkdir -p pages && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF' import json, os, re, time, yaml import requests from pathlib import Path D = Path("/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers") SKIP = {"[REDACTED]", # Motorola — already failed "[REDACTED]"} # placeholder, fixed below # resolve actual failing filenames by content instead of guessed ids skip_names = set() for p in D.glob("*.md"): fm = yaml.safe_load(re.match(r"^---\n(.*?)\n---\n", p.read_text(encoding="utf-8"), re.DOTALL).group(1)) if fm["company"] == "Motorola" or (fm["company"] == "Marshall Wace" and fm.get("locations") == ["London, UK"]): skip_names.add(p.name) print("skipping (already failed):", sorted(skip_names)) key = os.environ["FIRECRAWL_API_KEY"] ok = fail = 0 for p in sorted(D.glob("*.md")): if p.name in skip_names: continue out = Path("pages") / p.name if out.exists() and out.stat().st_size > 500: continue fm = yaml.safe_load(re.match(r"^---\n(.*?)\n---\n", p.read_text(encoding="utf-8"), re.DOTALL).group(1)) try: r = requests.post("https://api.firecrawl.dev/v1/scrape", headers={"Authorization": f"Bearer {key}"}, json={"url": fm["url"], "formats": ["markdown"]}, timeout=90) md = r.json().get("data", {}).get("markdown", "") if r.status_code == 200 else "" if md: out.write_text(md, encoding="utf-8"); ok += 1 print(f" ok {len(md):6d} {fm['company'][:30]} — {p.name}") else: fail += 1; print(f" FAIL {r.status_code} {fm['company'][:30]} — {p.name}: {r.text[:120]}") except Exception as exc: fail += 1; print(f" FAIL {fm['company'][:30]} — {p.name}: {exc}") time.sleep(1) print(f"\n{ok} fetched, {fail} failed") EOF, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/pages && for f in *.md; do hits=$(grep -inoE ".{60}(citizen|clearance|U\.?S\.? person|OPT|CPT|work authorization|sponsor|export control|ITAR|permanent resident).{80}" "$f" | head -6) if [ -n "$hits" ]; then echo "=== $f"; echo "$hits"; fi done 2>/dev/null | head -100, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/pages && echo "=== ANDURIL (export control context) ===" && grep -B2 -A6 "export control" [REDACTED].md | head -25 && echo && echo "=== PALANTIR US GOV (Honolulu ada5c220): clearance/citizen in JD body ===" && sed -n '1,120p' [REDACTED].md | grep -inE "clearance|citizen|u\.s\. person|government|eligib" | head -10, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/pages && sed -n '3,80p' [REDACTED].md | grep -vE "^\[|^!\[|^$" | head -50, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/pages && grep -icE "what we do|responsibilities|qualifications" [REDACTED].md; export $(grep -o 'FIRECRAWL_API_KEY=[^ ]*' ~/.bashrc) && for pair in "[REDACTED] [REDACTED]" "[REDACTED] [REDACTED]" "[REDACTED] [REDACTED]"; do set -- $pair curl -s -X POST https://api.firecrawl.dev/v1/scrape -H "Authorization: Bearer $FIRECRAWL_API_KEY" -H "Content-Type: application/json" -d "{\"url\": \"https://jobs.lever.co/palantir/$2\", \"formats\": [\"markdown\"]}" | python3 -c " import json, sys md = json.load(sys.stdin).get('data', {}).get('markdown', '') open('palantir-desc-$1.md', 'w').write(md) print('$1:', len(md), 'chars')" done, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/pages && for f in palantir-desc-*.md; do echo "=== $f"; grep -iE "clearance|citizen|u\.s\. person|work authoriz|sponsor|eligib" "$f" | head -6; echo " -- dates:"; grep -ioE "(december|january|dec|jan)[^.]{0,60}|13 weeks|10 weeks|start date[^.]{0,80}" "$f" | head -4; done, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/pages && for f in [REDACTED].md [REDACTED].md; do echo "=== $f"; grep -A2 -iE "graduat|background investigation|clearance" "$f" | head -12; done; echo "=== WH HBCU eligibility ==="; grep -iE "citizen|eligib|enrolled|nominat" [REDACTED].md | head -8; echo "=== SimonComputing ==="; grep -iE "clearance|citizen|eligib|graduat" [REDACTED].md | head -6, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/pages && echo "=== Marmon 69225149 ===" && grep -iE "winter|start|term|month|202[67]" [REDACTED].md | head -8; echo "=== Marmon 04c61af9 ===" && grep -iE "winter|start|term|month|202[67]" [REDACTED].md | head -8; echo "=== TradeDesk ===" && grep -iE "winter|summer|start date|program dates|202[678]" [REDACTED].md | head -8; echo "=== Aquatic office ===" && grep -iE "chicago|london|location" [REDACTED].md | head -5, export $(grep -o 'FIRECRAWL_API_KEY=[^ ]*' ~/.bashrc) && cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF' import os, requests from pathlib import Path key = os.environ["FIRECRAWL_API_KEY"] targets = { "[REDACTED].md": "https://jobs.ashbyhq.com/ellipsislabs/[REDACTED]", "[REDACTED].md": "https://jobs.ashbyhq.com/circleback/[REDACTED]", "[REDACTED].md": "https://jobs.ashbyhq.com/ctgt/[REDACTED]", "[REDACTED].md": "https://jobs.ashbyhq.com/pylon-labs/[REDACTED]", "[REDACTED].md": "https://marmon.wd501.myworkdayjobs.com/Marmon_MSIP_Internships/job/Milwaukee-WI/[REDACTED]", "[REDACTED].md": "https://marmon.wd501.myworkdayjobs.com/Marmon_Careers/job/Milwaukee-WI/[REDACTED]", } for name, url in targets.items(): r = requests.post("https://api.firecrawl.dev/v1/scrape", headers={"Authorization": f"Bearer {key}"}, json={"url": url, "formats": ["markdown"], "waitFor": 8000}, timeout=120) md = r.json().get("data", {}).get("markdown", "") if r.status_code == 200 else "" if len(md) > 600: (Path("pages") / name).write_text(md, encoding="utf-8") print(f"{len(md):7d} {name}") EOF, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/pages && echo "=== Marmon MSIP: dates/terms ===" && grep -iE "winter|spring|summer|fall|start|january|december|june|20 hours|full.time" [REDACTED].md | head -10; echo; for f in simplifyjobs-4f45fa19* simplifyjobs-75892e9b* simplifyjobs-8c8a1f21* simplifyjobs-f0aadc2c*; do echo "=== $f"; grep -iE "citizen|clearance|sponsor|work authoriz|opt|cpt|intern|summer|new york|francisco" "$f" | head -5; done, cd "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers" && rm -v [REDACTED].md [REDACTED].md [REDACTED].md [REDACTED].md [REDACTED].md [REDACTED].md [REDACTED].md && ls | wc -l, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF' import re, yaml from pathlib import Path D = Path("/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers") PAGES = Path("pages") # Palantir Chicago: use the clean description fetch instead of the /apply form page OVERRIDES = {"[REDACTED].md": "[REDACTED].md"} CUT_MARKERS = re.compile( r"^(#+\s*)?(submit your application|apply for this job|autofill.*application|create a job alert" r"|equal (employment )?opportunity|eeo|voluntary self.identification|privacy (policy|notice)" r"|u\.s\. equal employment|by applying.*you (agree|acknowledge))", re.I) NOISE = re.compile( r"^(\[?!\[|\[back to jobs|\[apply\]|apply\b|select\.\.\.|✱|.*✱\s*$|resume/cv|full name|email\b" r"|phone\b|current location|current company|linkedin url|github url|portfolio url|loading$" r"|no location found|couldn't auto-read|analyzing resume|success!$|file exceeds" r"|cookie|jobs powered by|©|powered by\s|\[.*\]\(https?://[^)]*\)\s*$)", re.I) def extract(md: str) -> str: lines = md.splitlines() out, started = [], False for ln in lines: s = ln.strip() if CUT_MARKERS.match(s): break if not started: if s.startswith("#") and len(s) > 4: started = True # first real heading = JD title else: continue if not s or NOISE.match(s): continue out.append(s) if len("\n".join(out)) > 7000: break return "\n".join(out) today = "2026-07-18" done = short = 0 for p in sorted(D.glob("*.md")): src_page = PAGES / OVERRIDES.get(p.name, p.name) if not src_page.exists(): print(f"NO PAGE: {p.name}"); continue content = extract(src_page.read_text(encoding="utf-8")) if len(content) < 300: short += 1; print(f"SHORT ({len(content)}): {p.name}") text = p.read_text(encoding="utf-8") m = re.match(r"^(---\r?\n.*?\r?\n---\r?\n)(# [^\r\n]+)", text, re.DOTALL) fm_block, title_line = m.group(1), m.group(2) fm = yaml.safe_load(re.match(r"^---\r?\n(.*?)\r?\n---", text, re.DOTALL).group(1)) body = (f"{title_line}\n" f"Auto-discovered {fm['date_found']} from {fm['source']}. Enriched {today} from the live posting — " f"verbatim extraction, trimmed to the substantive sections; full text at the url above.\n" f"## Posting (fetched {today})\n{content}\n") p.write_text(fm_block + body, encoding="utf-8") done += 1 print(f"\nenriched {done} dossiers, {short} flagged short") EOF, grep -n "^#" /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/pages/[REDACTED].md | head; sed -n '1,20p' /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/pages/[REDACTED].md, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && curl -s "https://boards-api.greenhouse.io/v1/boards/thetradedesk/jobs/5187605007" | /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF' import html, json, re, sys, yaml from pathlib import Path d = json.load(sys.stdin) text = html.unescape(re.sub(r"</(p|div|li|ul|h[1-6]|br)>", "\n", d["content"])) text = re.sub(r"<li[^>]*>", "- ", text) text = re.sub(r"<[^>]+>", "", text) lines = [l.strip() for l in text.splitlines() if l.strip()] content = "\n".join(lines)[:7000] print("title:", d["title"], "| chars:", len(content)) print(content[:300]) p = Path("/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/[REDACTED].md") t = p.read_text(encoding="utf-8") m = re.match(r"^(---\r?\n.*?\r?\n---\r?\n)(# [^\r\n]+)", t, re.DOTALL) fm = yaml.safe_load(re.match(r"^---\r?\n(.*?)\r?\n---", t, re.DOTALL).group(1)) body = (f"{m.group(2)}\nAuto-discovered {fm['date_found']} from {fm['source']}. Enriched 2026-07-18 from the live posting — " f"verbatim extraction, trimmed to the substantive sections; full text at the url above.\n" f"## Posting (fetched 2026-07-18, via Greenhouse board API)\n{content}\n") p.write_text(m.group(1) + body, encoding="utf-8") print("written") # grep the full JD for eligibility + winter-date semantics while it's here for pat in ("citizen", "clearance", "sponsor", "OPT", "winter", "start"): hits = [l for l in lines if pat.lower() in l.lower()] for h in hits[:2]: print(f" [{pat}] {h[:110]}") EOF, curl -s -o /dev/null -w "%{http_code}\n" "https://boards-api.greenhouse.io/v1/boards/thetradedesk/jobs/5187605007"; curl -s "https://job-boards.greenhouse.io/thetradedesk/jobs/5187605007" | grep -oE '"board_token":"[^"]*"|boards-api[^"]*' | head -3, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && curl -s "https://boards-api.greenhouse.io/v1/boards/thetradedesk/jobs/5187605007" -o ttd.json && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF' import html, json, re, yaml from pathlib import Path d = json.load(open("ttd.json")) text = html.unescape(re.sub(r"</(p|div|li|ul|h[1-6]|br)>", "\n", d["content"])) text = re.sub(r"<li[^>]*>", "- ", text) text = re.sub(r"<[^>]+>", "", text) lines = [l.strip() for l in text.splitlines() if l.strip()] content = "\n".join(lines)[:7000] print("title:", d["title"], "| chars:", len(content)) p = Path("/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/[REDACTED].md") t = p.read_text(encoding="utf-8") m = re.match(r"^(---\r?\n.*?\r?\n---\r?\n)(# [^\r\n]+)", t, re.DOTALL) fm = yaml.safe_load(re.match(r"^---\r?\n(.*?)\r?\n---", t, re.DOTALL).group(1)) body = (f"{m.group(2)}\nAuto-discovered {fm['date_found']} from {fm['source']}. Enriched 2026-07-18 from the live posting — " f"verbatim extraction, trimmed to the substantive sections; full text at the url above.\n" f"## Posting (fetched 2026-07-18, via Greenhouse board API)\n{content}\n") p.write_text(m.group(1) + body, encoding="utf-8") print("written") for pat in ("citizen", "clearance", "sponsor", "winter", "spring", "start date"): for h in [l for l in lines if pat.lower() in l.lower()][:2]: print(f" [{pat}] {h[:120]}") EOF, head -45 "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/[REDACTED].md" && echo "..." && for f in "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/"*.md; do printf "%6d %s\n" $(wc -c < "$f") "$(basename "$f")"; done, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF' import json, collections, re sj = json.load(open("sj_now.json")) terms = collections.Counter(t for e in sj for t in e.get("terms", [])) print("all distinct terms in live feed:", dict(terms)) # listings tagged Winter 2026 or Winter 2027 — what do their TITLES say about real dates? for w in ("Winter 2026", "Winter 2027"): only = [e for e in sj if w in e.get("terms", []) and e.get("active")] print(f"\n{w}: {len(only)} active listings; titles mentioning months/dates:") for e in only[:12]: m = re.search(r"(january|december|jan\b|dec\b|winter)", e["title"], re.I) print(f" [{'DATE' if m else ' '}] {e['title'][:75]} | terms={e['terms']}") EOF, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF' import json, sys, re sys.path.insert(0, "/home/anant_gupta/projects/work/internship-research-loop") from core.filter import matches, load_profile, _entry_is_us_or_remote, _US_STATES, _US_STATE_NAMES, _STATE_SUFFIX, _norm from ingestion.normalize import normalize_simplify, normalize_josegael profile = load_profile("/home/anant_gupta/projects/work/internship-research-loop/core/profile.yaml") sj = [normalize_simplify(r) for r in json.load(open("sj_now.json"))] jg = [normalize_josegael(r) for r in json.load(open("jg_now.json"))] base = [l for l in sj if matches(l, profile)] profile2 = {**profile, "terms": ["Summer 2027", "Winter 2027"]} w27 = [l for l in sj if matches(l, profile2)] added = [l for l in w27 if l not in base] print(f"current terms: {len(base)} match | +Winter 2027: {len(w27)} match | added {len(added)}:") for l in added: print(f" {l.company} — {l.title[:60]} | {l.terms} | {l.locations}") def affirm_us(loc): l = _norm(loc) m = _STATE_SUFFIX.search(loc.strip()) return bool(m and m.group(1).upper() in _US_STATES) or l.split(",")[-1].strip() in _US_STATE_NAMES \ or l in {"nyc","sf","la","united states","usa","remote in usa","remote in us","remote, us","multiple us cities","new york city"} print("\ncurrent matches whose locations have NO affirmative US signal (pass only via ambiguity):") for l in w27 + [x for x in jg if matches(x, profile2)]: if l.locations and not any(affirm_us(x) for x in l.locations): print(f" {l.company} — {l.title[:55]} | {l.locations}") for l in [x for x in jg if matches(x, profile2)] : if not l.locations: print(f" (no loc data) {l.company}") EOF, export $(grep -o 'FIRECRAWL_API_KEY=[^ ]*' ~/.bashrc) && echo -n "$FIRECRAWL_API_KEY" | gh secret set FIRECRAWL_API_KEY && gh secret list, head -60 /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/pages/[REDACTED].md > tests/fixtures/posting_fiverings.md && wc -l tests/fixtures/posting_fiverings.md && head -12 tests/fixtures/posting_fiverings.md, cat >> tests/test_run_pipeline.py <<'EOF' def _page_with(text): return f"# Great Intern Job\nRole details here.\n{text}\nMore details." def test_opt_exclusion_rejects_and_caches(tmp_path): listing = normalize_simplify(_simplify_raw()[0]) uid = compute_uid(listing) cache = {} # real Anduril exclusion text, verbatim from the live page 2026-07-18 fetch = Mock(return_value=_page_with( "U.S. Person status is required as this position needs to access export controlled data.")) written, rejections = run_pipeline.validate_and_write( [(uid, listing)], PROFILE, tmp_path, seen_ids=set(), date_found="2026-07-18", http_head=_fake_http_head_all_live, fetch_page_fn=fetch, opt_cache=cache, ) assert written == [] assert rejections[0]["check"] == "opt_eligibility" assert cache[uid]["verdict"] == "excluded" def test_opt_cache_short_circuits_before_fetch(tmp_path): listing = normalize_simplify(_simplify_raw()[0]) uid = compute_uid(listing) cache = {uid: {"verdict": "excluded", "signal": "U.S. Person status is required", "checked": "2026-07-18"}} fetch = Mock(side_effect=AssertionError("must not fetch a cached-excluded posting")) written, rejections = run_pipeline.validate_and_write( [(uid, listing)], PROFILE, tmp_path, seen_ids=set(), date_found="2026-07-18", http_head=_fake_http_head_all_live, fetch_page_fn=fetch, opt_cache=cache, ) assert written == [] and rejections[0]["check"] == "opt_eligibility" fetch.assert_not_called() def test_fetch_failure_fails_open_to_thin_dossier(tmp_path): listing = normalize_simplify(_simplify_raw()[0]) uid = compute_uid(listing) fetch = Mock(side_effect=ConnectionError("firecrawl down")) written, rejections = run_pipeline.validate_and_write( [(uid, listing)], PROFILE, tmp_path, seen_ids=set(), date_found="2026-07-18", http_head=_fake_http_head_all_live, fetch_page_fn=fetch, opt_cache={}, ) assert written == [uid] and rejections == [] dossier = next((tmp_path / "10_Areas/Career/Internships/List/Dossiers").glob("*.md")).read_text() assert "No enrichment yet" in dossier # thin body, discovery not blocked def test_eligible_posting_gets_content_section(tmp_path): listing = normalize_simplify(_simplify_raw()[0]) uid = compute_uid(listing) fetch = Mock(return_value=_page_with("Great role. Qualifications: Python.")) written, _ = run_pipeline.validate_and_write( [(uid, listing)], PROFILE, tmp_path, seen_ids=set(), date_found="2026-07-18", http_head=_fake_http_head_all_live, fetch_page_fn=fetch, opt_cache={}, ) assert written == [uid] dossier = next((tmp_path / "10_Areas/Career/Internships/List/Dossiers").glob("*.md")).read_text() assert "## Posting (fetched 2026-07-18)" in dossier assert "Qualifications: Python." in dossier def test_cross_source_key_punctuation_insensitive_marmon_case(): """Real dup from the 2026-07-18 audit: same Workday req via two routes, titled 'Intern Co-op' vs 'Intern/Co-op'.""" from core.identity import cross_source_key assert cross_source_key("Marmon Holdings", "Data Engineering Intern Co-op") == \ cross_source_key("Marmon Holdings", "Data Engineering Intern/Co-op") EOF .venv/bin/python -m pytest -q 2>&1 | tail -4, head -30 "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Companies giving OPT & CPT.md"; echo ===; cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad && /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python - <<'EOF' import json, sys sys.path.insert(0, "/home/anant_gupta/projects/work/internship-research-loop") from core.filter import matches, load_profile from ingestion.normalize import normalize_simplify, normalize_josegael profile = load_profile("/home/anant_gupta/projects/work/internship-research-loop/core/profile.yaml") sj = [normalize_simplify(r) for r in json.load(open("sj_now.json"))] jg = [normalize_josegael(r) for r in json.load(open("jg_now.json"))] print("FINAL config vs live feeds:") print(" SimplifyJobs:", len([l for l in sj if matches(l, profile)]), "match (was 29 pre-Winter-2027, 103 pre-phase-5)") print(" JGCL:", len([l for l in jg if matches(l, profile)]), "match (was 5)") EOF, wc -l "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Companies giving OPT & CPT.md", .venv/bin/python -m pytest -q 2>&1 | tail -1 && .venv/bin/python - <<'EOF' import sys; sys.path.insert(0, ".") from core.git_ops import commit_and_push_with_retry msg = """Phase 6: three hard criteria codified — Winter 2027 term, OPT gate, discovery-time content - terms += "Winter 2027" (= Dec 2026-Feb 2027 by live term-adjacency evidence; three real listings co-tag Fall 2026 + Winter 2027). +7 matches, all US. - locations_allow stays permissive: on live data, requiring an affirmative US signal would only remove 5 correct JGCL scholarship matches (Remote/Multiple Locations, all US orgs) and gain nothing. - OPT eligibility: per-POSTING check (Palantir US Gov vs Commercial differ in one company), run on the same discovery-time Firecrawl fetch that fills the dossier's content section. Explicit negative signals only (US-person/ citizenship, clearance, no-OPT/CPT); background investigations and no-visa- sponsorship do not exclude. Verdicts cached in state/opt_cache.json so an OPT-rejected (never-seen, hourly-retried) posting is fetched exactly once. - Dossiers no longer thin: eligible postings get verbatim extracted content at discovery; fetch failure fails open to a thin dossier, and the enriched render is format-checked with fallback to thin. - cross_source_key now punctuation-insensitive (real Marmon 'Co-op'/'Co-op' dup from the audit). run_once now halts+logs+files an issue on fetch network failures instead of crashing (PRD's unmitigated risk). JGCL whitespace-only season no longer IndexErrors. 167 tests. Firecrawl key added as Actions secret; no LLM calls anywhere. Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>""" print("pushed:", commit_and_push_with_retry(".", msg)) EOF git log --oneline -2, sed -i '/^PRD.md$/d' .git/info/exclude && .venv/bin/python - <<'EOF' import sys; sys.path.insert(0, ".") from core.git_ops import commit_and_push_with_retry print("pushed:", commit_and_push_with_retry(".", """PRD: three-criteria scope, content-carrying dossiers, verified 2026-07-18 state Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>""")) EOF, cat >> "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Phases 1-3 Run.md" <<'EOF' ## Phase 6 — Closing Pass: Review, Re-Verify, Three-Criteria Audit, Content, Codification (2026-07-18) Shipped as commits `69f76dc` (code) and the PRD update on master; **167/167 tests** (fresh run, was 148). Everything below is from direct verification this pass, not carried claims. ### Code review findings (Task 1) - **Two real bugs fixed:** (1) a whitespace-only JGCL `season` crashed `_matches_josegael` with IndexError (`"".split()[0]`) — one bad upstream entry would have killed the run; (2) the PRD's documented-but-unmitigated risk was real: `run_once()` caught only `SchemaDriftError`, so any network failure during drift-check/fetch crashed the process with **no run-log record and no issue**. Now: `requests.RequestException` → halted record + auto-filed issue, regression-tested both. - Trivial: `validate.py` docstring still said "four-check" (now five); no dead zapply code found beyond deliberate historical comments; schema-drift guard list re-checked complete against today's live schemas (every field either normalizer reads is guarded, including the permissive-default trio). ### Live verification numbers (Task 2) - `run.yml`: 8/8 most recent scheduled runs successful; cron firing with normal GitHub jitter (some hours skipped by the platform, zero failures). `recheck.yml`: registered/active, **zero runs** — created 10:56 UTC, first cron opportunity 2026-07-19 06:30 UTC. - State divergence consistent: `seen_ids.json` 137, origin vault 28 dossiers, local vault 27 — the one-file gap was `[REDACTED].md`, deleted locally, bounced back once via the vault's own 19:13 auto-commit, deleted again and pending push. Nothing pipeline-re-added (uid still seen, source removed). The 22 "modified" dossiers were pure CRLF conversions (verified with `--ignore-cr-at-eol`: zero content diffs). - Weekly rollup: **not fired** — `Run Log.md` does not exist yet; today is Saturday, first opportunity remains Sun 2026-07-19 23:00 UTC. Zero GitHub issues. ### Dossier audit — 27 in, 20 out (Task 3) Every dossier checked against live feed state plus its actual posting page (Firecrawl, 25 pages fetched, 0 failures; Ashby/Workday JS pages re-fetched with `waitFor`). **Removed 7, each with cited evidence:** 1. **Motorola — Data Analyst Co-op**: `active: false` upstream AND `locations: ['Remote in Canada']` (fails timing/closed + location). 2. **Marshall Wace — Technology Intern (London)**: `locations: ['London, UK']` only. Its NYC twin was checked separately and kept. 3. **Anduril — SWE Intern**: JD states "U.S. Person status is required as this position needs to access export controlled data" — the OPT criterion's citizenship-class signal, verbatim. 4. **Palantir — FDSE US Government (Honolulu)**: kept-on-OPT but removed for "Must be planning on graduating in 2027" (profile: Spring 2028). Note the OPT nuance: its only screen is a *conditional* "willingness to undergo a US government background investigation" — deliberately not counted as a clearance requirement under the permissive rule. 5. **Palantir — Privacy & Civil Liberties SWE (NYC)**: same "graduating in 2027" requirement. 6. **White House HBCU Scholars**: page requires "current... student at a Historically Black College or University" plus faculty nomination — UMN is not an HBCU. 7. **Marmon Holdings (Marmon_Careers route)**: exact same Workday req `JR0000037453` as the kept MSIP-route dossier — a real dup that slipped the dedup key on one punctuation character ("Intern Co-op" vs "Intern/Co-op"). Items 4–6 are explicit-eligibility-text removals beyond the strict three criteria, applied consistently with the earlier manual audit's own grad-only deletions — stated here, not silently folded in. RTX and Northrop Grumman (named for checking) were already gone pre-audit. Also observed: CTGT flipped `active: false → true` between the morning dry-run and the audit — validating the recheck's remove-don't-blacklist conservatism. ### Content (Task 4) All 20 survivors now carry the real posting's substantive sections — verbatim mechanical extraction (role, requirements, comp), trimmed of nav/form/EEO chrome, blank-line-free per vault format rules, 1.6–8K per dossier. Trade Desk's Greenhouse page is form-only, so its JD came via the Greenhouse board API. UNCF's "content" is thin because its stored URL genuinely is a portal welcome page. ### Codified into the pipeline (Task 5) - **Timing**: `terms: ["Summer 2027", "Winter 2027"]`. Evidence for the mapping: SimplifyJobs labels winters by the *later* year — three real listings co-tag `["Fall 2026", "Winter 2027"]`, placing Winter 2027 = Dec 2026–Feb 2027; "Winter 2026" = Dec 2025–Feb 2026, already past. No posting publishes months in the feed (checked Marmon + Trade Desk pages directly — none state dates), so genuine-Dec-Jan confirmation stays a human screen step against the now-present content. Impact: +7 matches, all US (Rippling ×2, Palantir Intel DC + Commercial NYC, Western Digital co-op, Zurich Andover MN, FC Cincinnati). - **Location**: `locations_allow` stays permissive, measured not assumed — zero current SimplifyJobs matches rely on ambiguity; requiring an affirmative US signal would remove exactly 5 correct JGCL scholarship matches (`Remote`/`Multiple Locations`, all US orgs) and gain nothing. - **OPT**: **posting-level, not company-level** — the audit itself proved company-level verdicts wrong (Palantir US Gov vs Commercial differ within one company). `ingestion/posting_page.py` greps the fetched page for explicit negative signals only (US-person/citizenship required, clearance required, OPT/CPT not accepted; regex built from the real Anduril text and tested against real non-signals: Palantir's background-investigation line, Grant Thornton's EEO "citizenship status" boilerplate, Aquatic's sponsorship *question*). Verdicts cached in `state/opt_cache.json` keyed by uid — an OPT-rejected posting is never marked seen (retried hourly), and the cache is what makes that retry free. - **Discovery-time, not promotion-triggered — decided with numbers**: steady-state new-match volume is tiny (0–2/day observed across two days of hourly runs; the +7 Winter additions are the biggest single jump since day one), so Firecrawl cost is <100 fetches/month against a 500/month free tier — while the entire point of Phase 6 is screening in the vault, which requires content *at discovery*. Fetch runs only after the write gate passes (the 18 hourly dead-URL rejections never cost a credit), fails open to a thin dossier, and the enriched render is format-checked with fallback so an extraction bug can never write malformed markdown. Layer 5 `enrich.py` (company/contact research) stays promotion-triggered as before — this decision covers posting content + OPT only. - Also: `cross_source_key` made punctuation-insensitive (the Marmon dup class), `FIRECRAWL_API_KEY` set as an Actions secret, `[[20_Progress/Internship/Companies giving OPT & CPT]]` rebuilt from a stale Oct-2025 brainstorm into the human-readable OPT registry (machine truth: `state/opt_cache.json`; old Applied history preserved at its bottom). ### What to watch next - **Sun 2026-07-19 06:30 UTC** — first scheduled recheck against the post-audit vault (deliberately not manually dispatched today to avoid racing this pass's own vault edits). - **Sun 2026-07-19 23:00 UTC** — first weekly rollup; check `Run Log.md` Monday. - **Within hours of the push** — the 7 Winter-2027 matches are unseen, so the next hourly run should produce the first live discovery-time enriched writes (Firecrawl + OPT gate exercising end-to-end in Actions for the first time). - **On/after 2026-07-24** — cadence decision. - Layer 5 `enrich.py` still has never run end-to-end — the key now exists; run it at the next real promotion. EOF echo appended && .venv/bin/python -m pytest -q 2>&1 | tail -1, gh run list --limit 3 --json name,status,conclusion,headSha --jq '.[] | "\(.name) \(.status) \(.conclusion // "-") \(.headSha[0:7])"'
 - Tool call tally: AskUserQuestion (2), Bash (103), Edit (51), Monitor (2), Read (24), TaskCreate (6), TaskUpdate (11), ToolSearch (3), WebSearch (1), Write (20)
 

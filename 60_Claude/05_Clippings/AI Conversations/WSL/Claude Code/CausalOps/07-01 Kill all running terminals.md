@@ -7,7 +7,7 @@ title: "Kill all running terminals"
 started_at: 2026-07-01T15:16:09
 ended_at: 2026-07-01T15:18:45
 duration_minutes: 3
-exported_at: 2026-07-30T15:28:59.6972445+04:00
+exported_at: 2026-07-30T16:47:46.9270578+04:00
 project: CausalOps
 cwd: '/home/anant_gupta/projects/hub/CausalOps'
 session_id: cff2d11f-2a5e-450a-827f-036c362cd475

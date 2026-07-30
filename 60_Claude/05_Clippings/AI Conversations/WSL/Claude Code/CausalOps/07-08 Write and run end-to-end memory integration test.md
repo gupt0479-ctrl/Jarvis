@@ -7,7 +7,7 @@ title: "Write and run end-to-end memory integration test"
 started_at: 2026-07-08T15:40:43
 ended_at: 2026-07-08T17:56:45
 duration_minutes: 136
-exported_at: 2026-07-30T15:28:59.6972445+04:00
+exported_at: 2026-07-30T16:47:46.9270578+04:00
 project: CausalOps
 cwd: '/home/anant_gupta/projects/hub/CausalOps'
 session_id: 1ffe50ad-9518-4da1-a99e-54ec869f86e6
@@ -392,7 +392,9 @@ ruff
 ---
 True True
   ```
-- `Bash` — `source .venv/bin/activate && cd src && python -c "
+- `Bash`:
+  ```bash
+source .venv/bin/activate && cd src && python -c "
 from dotenv import load_dotenv
 load_dotenv('../.env')
 from memory.store import SupabaseMemoryStore
@@ -402,7 +404,8 @@ print('memory_runs count:', r.count)
 e = s._client.table('memory_entities').select('id', count='exact').execute()
 print('memory_entities count:', e.count)
 "
-`
+
+  ```
   ```
 memory_runs count: 0
 memory_entities count: 4
@@ -496,13 +499,16 @@ def get_llm(temperature: float = 0.0) -> ChatOpenAI | AzureChatOpenAI:
   ```
 17:GEMINI_API_KEY=<set>
   ```
-- `Bash` — `cd /home/anant_gupta/projects/hub/CausalOps && source .venv/bin/activate && set -a && source .env && set +a && PYTHONPATH=src python -c "
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/hub/CausalOps && source .venv/bin/activate && set -a && source .env && set +a && PYTHONPATH=src python -c "
 import agents
 print('imported ok')
 print(agents._format_memory_context([]))
 print(repr(agents._format_memory_context([{'run_id':'r1','similarity':0.9,'weighted_score':0.8,'ate':-0.3,'method':'backdoor.linear_regression','n_rows':80,'task_description':'x'}])))
 "
-`
+
+  ```
   ```
 imported ok
 
@@ -928,7 +934,9 @@ exit:0
 http_code:404 time:0.056185
 done
   ```
-- `Bash` — `set -a && source .env && set +a && timeout 20 .venv/bin/python -c "
+- `Bash`:
+  ```bash
+set -a && source .env && set +a && timeout 20 .venv/bin/python -c "
 import sys, time
 sys.path.insert(0, 'src')
 from memory.embedder import embed_text
@@ -939,7 +947,8 @@ try:
 except Exception as e:
     print('ERR', repr(e), time.time()-t0)
 "
-echo "exit:$?"`
+echo "exit:$?"
+  ```
   ```
 exit:124
   ```
@@ -952,29 +961,38 @@ exit:124
 9:AZURE_OPENAI_API_VERSION="2025-...
 14:AZURE_OPENAI_EMBEDDING_DEPLOYMENT=text-e...
   ```
-- `Bash` — `set -a && source .env && set +a && echo "$AZURE_OPENAI_ENDPOINT"; python3 - <<'EOF'
+- `Bash`:
+  ```bash
+set -a && source .env && set +a && echo "$AZURE_OPENAI_ENDPOINT"; python3 - <<'EOF'
 import os, urllib.parse
 ep = os.environ.get("AZURE_OPENAI_ENDPOINT","")
 print(repr(ep))
 u = urllib.parse.urlparse(ep)
 print("host:", u.hostname)
-EOF`
+EOF
+  ```
   ```
 https://aimaker-openai.openai.azure.com
 'https://aimaker-openai.openai.azure.com'
 host: aimaker-openai.openai.azure.com
   ```
-- `Bash` — `timeout 8 getent hosts aimaker-openai.openai.azure.com; echo "dns_exit:$?"
+- `Bash`:
+  ```bash
+timeout 8 getent hosts aimaker-openai.openai.azure.com; echo "dns_exit:$?"
 timeout 8 curl -sS -o /dev/null -w "http_code:%{http_code} time:%{time_total}\n" "https://aimaker-openai.openai.azure.com" 2>&1
-echo "curl_exit:$?"`
+echo "curl_exit:$?"
+  ```
   ```
 dns_exit:124
 curl_exit:124
   ```
-- `Bash` — `timeout 8 nslookup aimaker-openai.openai.azure.com 8.8.8.8; echo "exit:$?"
+- `Bash`:
+  ```bash
+timeout 8 nslookup aimaker-openai.openai.azure.com 8.8.8.8; echo "exit:$?"
 echo "---resolv.conf---"; cat /etc/resolv.conf
 echo "---also test another azure domain to see if it's azure-wide or just this one---"
-timeout 8 getent hosts management.azure.com; echo "exit2:$?"`
+timeout 8 getent hosts management.azure.com; echo "exit2:$?"
+  ```
   ```
 timeout: failed to run command ‘nslookup’: No such file or directory
 exit:127
@@ -987,7 +1005,9 @@ nameserver 10.255.255.254
 2603:1030:a0b::10 arm-0001.arm-msedge.net management.azure.com management.privatelink.azure.com arm-frontdoor-edge-geo.trafficmanager.net edge-management-azure-com.arm-0001.arm-msedge.net
 exit2:0
   ```
-- `Bash` — `timeout 15 getent hosts aimaker-openai.openai.azure.com; echo "exit:$?"
+- `Bash`:
+  ```bash
+timeout 15 getent hosts aimaker-openai.openai.azure.com; echo "exit:$?"
 echo "---try openai.azure.com base domain---"
 timeout 8 getent hosts openai.azure.com; echo "exit2:$?"
 echo "---python socket with explicit resolution---"
@@ -999,7 +1019,8 @@ try:
 except Exception as e:
     print('ERR', repr(e))
 print('elapsed', time.time()-t0)
-"`
+"
+  ```
   ```
 Exit code 124
 exit:124
@@ -1017,8 +1038,11 @@ exit2:2
   ```
   PID TTY          TIME CMD
   ```
-- `Bash` — `echo "supabase.co DNS (works):"; timeout 5 getent hosts glbmdbwqmuttykhicasq.supabase.co
-echo; echo "azure openai endpoint DNS (hangs -> exit 124):"; timeout 8 getent hosts aimaker-openai.openai.azure.com; echo "exit:$?"`
+- `Bash`:
+  ```bash
+echo "supabase.co DNS (works):"; timeout 5 getent hosts glbmdbwqmuttykhicasq.supabase.co
+echo; echo "azure openai endpoint DNS (hangs -> exit 124):"; timeout 8 getent hosts aimaker-openai.openai.azure.com; echo "exit:$?"
+  ```
   ```
 supabase.co DNS (works):
 104.18.38.10    glbmdbwqmuttykhicasq.supabase.co
@@ -1051,7 +1075,9 @@ exit:124
 2001:4860:4846:400:: generativelanguage.googleapis.com
 dns_exit:0
   ```
-- `Bash` — `set -a && source .env && set +a && timeout 25 python3 - <<'EOF'
+- `Bash`:
+  ```bash
+set -a && source .env && set +a && timeout 25 python3 - <<'EOF'
 import os
 from openai import OpenAI
 
@@ -1067,7 +1093,8 @@ for model, kwargs in [
         print(model, "OK", "dims=", len(vec))
     except Exception as e:
         print(model, "ERR", repr(e)[:300])
-EOF`
+EOF
+  ```
   ```
 Exit code 1
 Traceback (most recent call last):
@@ -1079,7 +1106,9 @@ KeyError: 'GEMINI_BASE_URL'
   ```
 17:GEMINI_API_KEY="AQ.Ab8R...
   ```
-- `Bash` — `set -a && source .env && set +a && timeout 25 python3 - <<'EOF'
+- `Bash`:
+  ```bash
+set -a && source .env && set +a && timeout 25 python3 - <<'EOF'
 import os
 from openai import OpenAI
 
@@ -1095,7 +1124,8 @@ for model, kwargs in [
         print(model, "OK", "dims=", len(vec))
     except Exception as e:
         print(model, "ERR", repr(e)[:400])
-EOF`
+EOF
+  ```
   ```
 gemini-embedding-001 OK dims= 1536
 text-embedding-004 ERR NotFoundError("Error code: 404 - {'error': {'code': 404, 'message': 'models/text-embedding-004 is not found for API version v1main, or is not supported for embedContent. Call ModelService.ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}")
@@ -1327,14 +1357,17 @@ AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
 AZURE_OPENAI_API_KEY=your-azure-api-key-here
 AZURE_OPENAI_API_VERSION=2024-08-01-preview
   ```
-- `Bash` — `set -a && source .env && set +a && timeout 25 .venv/bin/python -c "
+- `Bash`:
+  ```bash
+set -a && source .env && set +a && timeout 25 .venv/bin/python -c "
 import sys, time
 sys.path.insert(0, 'src')
 from memory.embedder import embed_text
 t0 = time.time()
 v = embed_text('quick connectivity check via embedder module')
 print('OK dims=', len(v), 'elapsed=', round(time.time()-t0,2))
-"`
+"
+  ```
   ```
 OK dims= 1536 elapsed= 6.06
   ```
@@ -1839,96 +1872,6 @@ These are just stale cleanup notifications from the two earlier monitors I armed
 - Files created: /home/anant_gupta/projects/hub/CausalOps/tests/memory/test_end_to_end.py
 - Files modified: /home/anant_gupta/projects/hub/CausalOps/.env, /home/anant_gupta/projects/hub/CausalOps/src/memory/embedder.py, /home/anant_gupta/projects/hub/CausalOps/CLAUDE.md, /home/anant_gupta/projects/hub/CausalOps/.env.example, /home/anant_gupta/projects/hub/CausalOps/tests/memory/test_end_to_end.py
 - Files deleted: (none)
-- Commands run: git status && echo "---" && ls tests/memory/ && echo "---" && ls src/memory/, grep -n "memory" /home/anant_gupta/projects/hub/CausalOps/src/coordinator/runner.py | head -50, grep -n "_format_memory_context\|memory_context" /home/anant_gupta/projects/hub/CausalOps/src/agents.py, grep -n "class GraphState\|memory_context\|evidence_records\|causal_payload\|causal_estimate_report" /home/anant_gupta/projects/hub/CausalOps/src/schema.py | head -40, grep -c "^SUPABASE_URL=\|^SUPABASE_SERVICE_ROLE_KEY=\|^AZURE_OPENAI" .env 2>/dev/null; echo "---"; grep "^SUPABASE_URL=" .env | sed 's/=.*/=<present>/'; grep "^SUPABASE_SERVICE_ROLE_KEY=" .env | awk -F= '{print $1"=<len:"length($2)">"}'; echo "---conftest---"; cat tests/conftest.py; echo "---pytest.ini/pyproject markers---"; grep -n "markers\|integration\|kafka" pytest.ini pyproject.toml setup.cfg 2>/dev/null, sed -n '1,100p' pyproject.toml | grep -n "pytest\|addopts\|markers\|testpaths" -A5 -B2, ls .venv/bin/ 2>/dev/null | grep -E "pytest|ruff|pyright"; echo "---"; source .venv/bin/activate 2>/dev/null; python -c "import sys; sys.path.insert(0,'src'); from dotenv import load_dotenv; load_dotenv(); import os; print(bool(os.getenv('SUPABASE_URL')), bool(os.getenv('SUPABASE_SERVICE_ROLE_KEY')))" 2>&1 | tail -5, source .venv/bin/activate && cd src && python -c "
-from dotenv import load_dotenv
-load_dotenv('../.env')
-from memory.store import SupabaseMemoryStore
-s = SupabaseMemoryStore()
-r = s._client.table('memory_runs').select('run_id', count='exact').execute()
-print('memory_runs count:', r.count)
-e = s._client.table('memory_entities').select('id', count='exact').execute()
-print('memory_entities count:', e.count)
-"
-, sed -n '1,40p' /home/anant_gupta/projects/hub/CausalOps/src/agents.py, grep -n "GEMINI_API_KEY\|api_key" /home/anant_gupta/projects/hub/CausalOps/src/agents.py | head -20, cat /home/anant_gupta/projects/hub/CausalOps/src/llm.py 2>/dev/null || find /home/anant_gupta/projects/hub/CausalOps/src -iname "llm*.py", grep -n "GEMINI_API_KEY\|GEMINI_MODEL\|GEMINI_BASE_URL" /home/anant_gupta/projects/hub/CausalOps/.env | sed 's/=.*/=<set>/', cd /home/anant_gupta/projects/hub/CausalOps && source .venv/bin/activate && set -a && source .env && set +a && PYTHONPATH=src python -c "
-import agents
-print('imported ok')
-print(agents._format_memory_context([]))
-print(repr(agents._format_memory_context([{'run_id':'r1','similarity':0.9,'weighted_score':0.8,'ate':-0.3,'method':'backdoor.linear_regression','n_rows':80,'task_description':'x'}])))
-"
-, set -a && source .env && set +a && .venv/bin/pytest tests/memory/test_end_to_end.py -v -m integration 2>&1 | tail -80, sleep 60; echo done, true, cat /tmp/claude-1001/-home-anant-gupta-projects-hub-CausalOps/[REDACTED]/tasks/b8eplaodg.output 2>&1 | tail -100, cat /tmp/claude-1001/-home-anant-gupta-projects-hub-CausalOps/[REDACTED]/tasks/b8eplaodg.output 2>&1 | tail -150; echo "---procs---"; pgrep -af pytest, ps -o pid,etimes,cmd -p 33948 186810 2>/dev/null, ps -o pid,etimes,pcpu,stat,cmd -p 33948 2>/dev/null; echo "---"; cat /proc/33948/status 2>/dev/null | grep -E "State|VmRSS"; echo "---wchan---"; cat /proc/33948/wchan 2>/dev/null; echo; echo "---stack of threads---"; ls /proc/33948/task 2>/dev/null; echo "---net---"; ss -tnp 2>/dev/null | grep 33948, kill -9 33948 33950 2>/dev/null; sleep 1; ps -p 33948 2>&1 | tail -5, cat /tmp/claude-1001/-home-anant-gupta-projects-hub-CausalOps/[REDACTED]/tasks/b8eplaodg.output, set -a && source .env && set +a && .venv/bin/pytest tests/memory/test_end_to_end.py -v -m integration, cat /tmp/claude-1001/-home-anant-gupta-projects-hub-CausalOps/[REDACTED]/tasks/bbwcdhtez.output 2>&1; echo "---procstatus---"; ps -eo pid,etimes,stat,cmd | grep -i "test_end_to_end" | grep -v grep, echo "--- checking network from a fresh unsandboxed shell ---"; timeout 5 getent hosts glbmdbwqmuttykhicasq.supabase.co; echo "exit:$?"; timeout 5 curl -sS -o /dev/null -w "http_code:%{http_code} time:%{time_total}\n" https://glbmdbwqmuttykhicasq.supabase.co 2>&1; echo done, set -a && source .env && set +a && timeout 20 .venv/bin/python -c "
-import sys, time
-sys.path.insert(0, 'src')
-from memory.embedder import embed_text
-t0 = time.time()
-try:
-    v = embed_text('quick connectivity check')
-    print('OK', len(v), time.time()-t0)
-except Exception as e:
-    print('ERR', repr(e), time.time()-t0)
-"
-echo "exit:$?", grep -n "^AZURE_OPENAI" /home/anant_gupta/projects/hub/CausalOps/.env | sed -E 's/=(.{0,6}).*/=\1.../', set -a && source .env && set +a && echo "$AZURE_OPENAI_ENDPOINT"; python3 - <<'EOF'
-import os, urllib.parse
-ep = os.environ.get("AZURE_OPENAI_ENDPOINT","")
-print(repr(ep))
-u = urllib.parse.urlparse(ep)
-print("host:", u.hostname)
-EOF, timeout 8 getent hosts aimaker-openai.openai.azure.com; echo "dns_exit:$?"
-timeout 8 curl -sS -o /dev/null -w "http_code:%{http_code} time:%{time_total}\n" "https://aimaker-openai.openai.azure.com" 2>&1
-echo "curl_exit:$?", timeout 8 nslookup aimaker-openai.openai.azure.com 8.8.8.8; echo "exit:$?"
-echo "---resolv.conf---"; cat /etc/resolv.conf
-echo "---also test another azure domain to see if it's azure-wide or just this one---"
-timeout 8 getent hosts management.azure.com; echo "exit2:$?", timeout 15 getent hosts aimaker-openai.openai.azure.com; echo "exit:$?"
-echo "---try openai.azure.com base domain---"
-timeout 8 getent hosts openai.azure.com; echo "exit2:$?"
-echo "---python socket with explicit resolution---"
-timeout 15 python3 -c "
-import socket, time
-t0=time.time()
-try:
-    print(socket.getaddrinfo('aimaker-openai.openai.azure.com', 443))
-except Exception as e:
-    print('ERR', repr(e))
-print('elapsed', time.time()-t0)
-", ps -eo pid,etimes,cmd | grep "test_end_to_end" | grep -v grep, kill -9 40371 40391 2>/dev/null; sleep 1; ps -p 40391 2>&1 | tail -3, echo "supabase.co DNS (works):"; timeout 5 getent hosts glbmdbwqmuttykhicasq.supabase.co
-echo; echo "azure openai endpoint DNS (hangs -> exit 124):"; timeout 8 getent hosts aimaker-openai.openai.azure.com; echo "exit:$?", grep -rn "vector(\|VECTOR(\|task_embedding" /home/anant_gupta/projects/hub/CausalOps/supabase 2>/dev/null | head -20, find /home/anant_gupta/projects/hub/CausalOps/supabase -type f 2>/dev/null | head -30, timeout 6 getent hosts generativelanguage.googleapis.com; echo "dns_exit:$?", set -a && source .env && set +a && timeout 25 python3 - <<'EOF'
-import os
-from openai import OpenAI
-
-client = OpenAI(api_key=os.environ["GEMINI_API_KEY"], base_url=os.environ["GEMINI_BASE_URL"])
-
-for model, kwargs in [
-    ("gemini-embedding-001", {"dimensions": 1536}),
-    ("text-embedding-004", {}),
-]:
-    try:
-        resp = client.embeddings.create(model=model, input="quick connectivity check", **kwargs)
-        vec = resp.data[0].embedding
-        print(model, "OK", "dims=", len(vec))
-    except Exception as e:
-        print(model, "ERR", repr(e)[:300])
-EOF, grep -n "^GEMINI" /home/anant_gupta/projects/hub/CausalOps/.env | sed -E 's/=(.{0,8}).*/=\1.../', set -a && source .env && set +a && timeout 25 python3 - <<'EOF'
-import os
-from openai import OpenAI
-
-client = OpenAI(api_key=os.environ["GEMINI_API_KEY"], base_url="https://generativelanguage.googleapis.com/v1beta/openai/")
-
-for model, kwargs in [
-    ("gemini-embedding-001", {"dimensions": 1536}),
-    ("text-embedding-004", {}),
-]:
-    try:
-        resp = client.embeddings.create(model=model, input="quick connectivity check", **kwargs)
-        vec = resp.data[0].embedding
-        print(model, "OK", "dims=", len(vec))
-    except Exception as e:
-        print(model, "ERR", repr(e)[:400])
-EOF, grep -n "GEMINI_BASE_URL" /home/anant_gupta/projects/hub/CausalOps/docker-compose.yml /home/anant_gupta/projects/hub/CausalOps/.env.example 2>/dev/null, grep -n "." /home/anant_gupta/projects/hub/CausalOps/.env | sed -n '1,20p' | cut -c1-40, grep -rln "AZURE_OPENAI" /home/anant_gupta/projects/hub/CausalOps/src /home/anant_gupta/projects/hub/CausalOps/tests /home/anant_gupta/projects/hub/CausalOps/CLAUDE.md /home/anant_gupta/projects/hub/CausalOps/.env.example /home/anant_gupta/projects/hub/CausalOps/docker-compose.yml 2>/dev/null, grep -n "AZURE_OPENAI" -B3 -A3 /home/anant_gupta/projects/hub/CausalOps/tests/test_api_contracts.py, grep -n "Azure OpenAI — embeddings ONLY\|embedder.py" /home/anant_gupta/projects/hub/CausalOps/CLAUDE.md, set -a && source .env && set +a && timeout 25 .venv/bin/python -c "
-import sys, time
-sys.path.insert(0, 'src')
-from memory.embedder import embed_text
-t0 = time.time()
-v = embed_text('quick connectivity check via embedder module')
-print('OK dims=', len(v), 'elapsed=', round(time.time()-t0,2))
-", set -a && source .env && set +a && timeout 170 .venv/bin/pytest tests/memory/test_end_to_end.py -v -m integration 2>&1 | tail -100; echo "EXIT:$?", cat /tmp/claude-1001/-home-anant-gupta-projects-hub-CausalOps/[REDACTED]/tasks/bfto1aqg4.output, set -a && source .env && set +a && timeout 170 .venv/bin/pytest tests/memory/ -v 2>&1 | tail -120; echo "EXIT:$?", cat /tmp/claude-1001/-home-anant-gupta-projects-hub-CausalOps/[REDACTED]/tasks/b7c586bt1.output, timeout 170 .venv/bin/pytest tests/ -m "not integration and not kafka" 2>&1 | tail -60; echo "EXIT:$?", tail -40 /tmp/claude-1001/-home-anant-gupta-projects-hub-CausalOps/[REDACTED]/tasks/blzwhc7jj.output, .venv/bin/ruff check tests/memory/test_end_to_end.py src/memory/embedder.py; echo "ruff exit:$?"; echo "---pyright---"; .venv/bin/pyright tests/memory/test_end_to_end.py src/memory/embedder.py 2>&1 | tail -40; echo "pyright exit:$?", .venv/bin/pyright tests/test_coordinator_runner.py 2>&1 | tail -20; echo "---exit check separately---"; .venv/bin/pyright tests/memory/test_end_to_end.py; echo "actual_exit:$?", .venv/bin/ruff check tests/memory/test_end_to_end.py src/memory/embedder.py .env.example 2>&1; echo "exit:$?", .venv/bin/ruff check tests/memory/test_end_to_end.py src/memory/embedder.py; echo "exit:$?"
+- Commands run: git status && echo "---" && ls tests/memory/ && echo "---" && ls src/memory/, grep -n "memory" /home/anant_gupta/projects/hub/CausalOps/src/coordinator/runner.py | head -50, grep -n "_format_memory_context\|memory_context" /home/anant_gupta/projects/hub/CausalOps/src/agents.py, grep -n "class GraphState\|memory_context\|evidence_records\|causal_payload\|causal_estimate_report" /home/anant_gupta/projects/hub/CausalOps/src/schema.py | head -40, grep -c "^SUPABASE_URL=\|^SUPABASE_SERVICE_ROLE_KEY=\|^AZURE_OPENAI" .env 2>/dev/null; echo "---"; grep "^SUPABASE_URL=" .env | sed 's/=.*/=<present>/'; grep "^SUPABASE_SERVICE_ROLE_KEY=" .env | awk -F= '{print $1"=<len:"length($2)">"}'; echo "---conftest---"; cat tests/conftest.py; echo "---pytest.ini/pyproject markers---"; grep -n "markers\|integration\|kafka" pytest.ini pyproject.toml setup.cfg 2>/dev/null, sed -n '1,100p' pyproject.toml | grep -n "pytest\|addopts\|markers\|testpaths" -A5 -B2, ls .venv/bin/ 2>/dev/null | grep -E "pytest|ruff|pyright"; echo "---"; source .venv/bin/activate 2>/dev/null; python -c "import sys; sys.path.insert(0,'src'); from dotenv import load_dotenv; load_dotenv(); import os; print(bool(os.getenv('SUPABASE_URL')), bool(os.getenv('SUPABASE_SERVICE_ROLE_KEY')))" 2>&1 | tail -5, source .venv/bin/activate && cd src && python -c " from dotenv import load_dotenv load_dotenv('../.env') from memory.store import SupabaseMemoryStore s = SupabaseMemoryStore() r = s._client.table('memory_runs').select('run_id', count='exact').execute() print('memory_runs count:', r.count) e = s._client.table('memory_entities').select('id', count='exact').execute() print('memory_entities count:', e.count) " , sed -n '1,40p' /home/anant_gupta/projects/hub/CausalOps/src/agents.py, grep -n "GEMINI_API_KEY\|api_key" /home/anant_gupta/projects/hub/CausalOps/src/agents.py | head -20, cat /home/anant_gupta/projects/hub/CausalOps/src/llm.py 2>/dev/null || find /home/anant_gupta/projects/hub/CausalOps/src -iname "llm*.py", grep -n "GEMINI_API_KEY\|GEMINI_MODEL\|GEMINI_BASE_URL" /home/anant_gupta/projects/hub/CausalOps/.env | sed 's/=.*/=<set>/', cd /home/anant_gupta/projects/hub/CausalOps && source .venv/bin/activate && set -a && source .env && set +a && PYTHONPATH=src python -c " import agents print('imported ok') print(agents._format_memory_context([])) print(repr(agents._format_memory_context([{'run_id':'r1','similarity':0.9,'weighted_score':0.8,'ate':-0.3,'method':'backdoor.linear_regression','n_rows':80,'task_description':'x'}]))) " , set -a && source .env && set +a && .venv/bin/pytest tests/memory/test_end_to_end.py -v -m integration 2>&1 | tail -80, sleep 60; echo done, true, cat /tmp/claude-1001/-home-anant-gupta-projects-hub-CausalOps/[REDACTED]/tasks/b8eplaodg.output 2>&1 | tail -100, cat /tmp/claude-1001/-home-anant-gupta-projects-hub-CausalOps/[REDACTED]/tasks/b8eplaodg.output 2>&1 | tail -150; echo "---procs---"; pgrep -af pytest, ps -o pid,etimes,cmd -p 33948 186810 2>/dev/null, ps -o pid,etimes,pcpu,stat,cmd -p 33948 2>/dev/null; echo "---"; cat /proc/33948/status 2>/dev/null | grep -E "State|VmRSS"; echo "---wchan---"; cat /proc/33948/wchan 2>/dev/null; echo; echo "---stack of threads---"; ls /proc/33948/task 2>/dev/null; echo "---net---"; ss -tnp 2>/dev/null | grep 33948, kill -9 33948 33950 2>/dev/null; sleep 1; ps -p 33948 2>&1 | tail -5, cat /tmp/claude-1001/-home-anant-gupta-projects-hub-CausalOps/[REDACTED]/tasks/b8eplaodg.output, set -a && source .env && set +a && .venv/bin/pytest tests/memory/test_end_to_end.py -v -m integration, cat /tmp/claude-1001/-home-anant-gupta-projects-hub-CausalOps/[REDACTED]/tasks/bbwcdhtez.output 2>&1; echo "---procstatus---"; ps -eo pid,etimes,stat,cmd | grep -i "test_end_to_end" | grep -v grep, echo "--- checking network from a fresh unsandboxed shell ---"; timeout 5 getent hosts glbmdbwqmuttykhicasq.supabase.co; echo "exit:$?"; timeout 5 curl -sS -o /dev/null -w "http_code:%{http_code} time:%{time_total}\n" https://glbmdbwqmuttykhicasq.supabase.co 2>&1; echo done, set -a && source .env && set +a && timeout 20 .venv/bin/python -c " import sys, time sys.path.insert(0, 'src') from memory.embedder import embed_text t0 = time.time() try: v = embed_text('quick connectivity check') print('OK', len(v), time.time()-t0) except Exception as e: print('ERR', repr(e), time.time()-t0) " echo "exit:$?", grep -n "^AZURE_OPENAI" /home/anant_gupta/projects/hub/CausalOps/.env | sed -E 's/=(.{0,6}).*/=\1.../', set -a && source .env && set +a && echo "$AZURE_OPENAI_ENDPOINT"; python3 - <<'EOF' import os, urllib.parse ep = os.environ.get("AZURE_OPENAI_ENDPOINT","") print(repr(ep)) u = urllib.parse.urlparse(ep) print("host:", u.hostname) EOF, timeout 8 getent hosts aimaker-openai.openai.azure.com; echo "dns_exit:$?" timeout 8 curl -sS -o /dev/null -w "http_code:%{http_code} time:%{time_total}\n" "https://aimaker-openai.openai.azure.com" 2>&1 echo "curl_exit:$?", timeout 8 nslookup aimaker-openai.openai.azure.com 8.8.8.8; echo "exit:$?" echo "---resolv.conf---"; cat /etc/resolv.conf echo "---also test another azure domain to see if it's azure-wide or just this one---" timeout 8 getent hosts management.azure.com; echo "exit2:$?", timeout 15 getent hosts aimaker-openai.openai.azure.com; echo "exit:$?" echo "---try openai.azure.com base domain---" timeout 8 getent hosts openai.azure.com; echo "exit2:$?" echo "---python socket with explicit resolution---" timeout 15 python3 -c " import socket, time t0=time.time() try: print(socket.getaddrinfo('aimaker-openai.openai.azure.com', 443)) except Exception as e: print('ERR', repr(e)) print('elapsed', time.time()-t0) ", ps -eo pid,etimes,cmd | grep "test_end_to_end" | grep -v grep, kill -9 40371 40391 2>/dev/null; sleep 1; ps -p 40391 2>&1 | tail -3, echo "supabase.co DNS (works):"; timeout 5 getent hosts glbmdbwqmuttykhicasq.supabase.co echo; echo "azure openai endpoint DNS (hangs -> exit 124):"; timeout 8 getent hosts aimaker-openai.openai.azure.com; echo "exit:$?", grep -rn "vector(\|VECTOR(\|task_embedding" /home/anant_gupta/projects/hub/CausalOps/supabase 2>/dev/null | head -20, find /home/anant_gupta/projects/hub/CausalOps/supabase -type f 2>/dev/null | head -30, timeout 6 getent hosts generativelanguage.googleapis.com; echo "dns_exit:$?", set -a && source .env && set +a && timeout 25 python3 - <<'EOF' import os from openai import OpenAI client = OpenAI(api_key=os.environ["GEMINI_API_KEY"], base_url=os.environ["GEMINI_BASE_URL"]) for model, kwargs in [ ("gemini-embedding-001", {"dimensions": 1536}), ("text-embedding-004", {}), ]: try: resp = client.embeddings.create(model=model, input="quick connectivity check", **kwargs) vec = resp.data[0].embedding print(model, "OK", "dims=", len(vec)) except Exception as e: print(model, "ERR", repr(e)[:300]) EOF, grep -n "^GEMINI" /home/anant_gupta/projects/hub/CausalOps/.env | sed -E 's/=(.{0,8}).*/=\1.../', set -a && source .env && set +a && timeout 25 python3 - <<'EOF' import os from openai import OpenAI client = OpenAI(api_key=os.environ["GEMINI_API_KEY"], base_url="https://generativelanguage.googleapis.com/v1beta/openai/") for model, kwargs in [ ("gemini-embedding-001", {"dimensions": 1536}), ("text-embedding-004", {}), ]: try: resp = client.embeddings.create(model=model, input="quick connectivity check", **kwargs) vec = resp.data[0].embedding print(model, "OK", "dims=", len(vec)) except Exception as e: print(model, "ERR", repr(e)[:400]) EOF, grep -n "GEMINI_BASE_URL" /home/anant_gupta/projects/hub/CausalOps/docker-compose.yml /home/anant_gupta/projects/hub/CausalOps/.env.example 2>/dev/null, grep -n "." /home/anant_gupta/projects/hub/CausalOps/.env | sed -n '1,20p' | cut -c1-40, grep -rln "AZURE_OPENAI" /home/anant_gupta/projects/hub/CausalOps/src /home/anant_gupta/projects/hub/CausalOps/tests /home/anant_gupta/projects/hub/CausalOps/CLAUDE.md /home/anant_gupta/projects/hub/CausalOps/.env.example /home/anant_gupta/projects/hub/CausalOps/docker-compose.yml 2>/dev/null, grep -n "AZURE_OPENAI" -B3 -A3 /home/anant_gupta/projects/hub/CausalOps/tests/test_api_contracts.py, grep -n "Azure OpenAI — embeddings ONLY\|embedder.py" /home/anant_gupta/projects/hub/CausalOps/CLAUDE.md, set -a && source .env && set +a && timeout 25 .venv/bin/python -c " import sys, time sys.path.insert(0, 'src') from memory.embedder import embed_text t0 = time.time() v = embed_text('quick connectivity check via embedder module') print('OK dims=', len(v), 'elapsed=', round(time.time()-t0,2)) ", set -a && source .env && set +a && timeout 170 .venv/bin/pytest tests/memory/test_end_to_end.py -v -m integration 2>&1 | tail -100; echo "EXIT:$?", cat /tmp/claude-1001/-home-anant-gupta-projects-hub-CausalOps/[REDACTED]/tasks/bfto1aqg4.output, set -a && source .env && set +a && timeout 170 .venv/bin/pytest tests/memory/ -v 2>&1 | tail -120; echo "EXIT:$?", cat /tmp/claude-1001/-home-anant-gupta-projects-hub-CausalOps/[REDACTED]/tasks/b7c586bt1.output, timeout 170 .venv/bin/pytest tests/ -m "not integration and not kafka" 2>&1 | tail -60; echo "EXIT:$?", tail -40 /tmp/claude-1001/-home-anant-gupta-projects-hub-CausalOps/[REDACTED]/tasks/blzwhc7jj.output, .venv/bin/ruff check tests/memory/test_end_to_end.py src/memory/embedder.py; echo "ruff exit:$?"; echo "---pyright---"; .venv/bin/pyright tests/memory/test_end_to_end.py src/memory/embedder.py 2>&1 | tail -40; echo "pyright exit:$?", .venv/bin/pyright tests/test_coordinator_runner.py 2>&1 | tail -20; echo "---exit check separately---"; .venv/bin/pyright tests/memory/test_end_to_end.py; echo "actual_exit:$?", .venv/bin/ruff check tests/memory/test_end_to_end.py src/memory/embedder.py .env.example 2>&1; echo "exit:$?", .venv/bin/ruff check tests/memory/test_end_to_end.py src/memory/embedder.py; echo "exit:$?"
 - Tool call tally: AskUserQuestion (1), Bash (61), Edit (7), mcp__supabase__execute_sql (4), Monitor (2), Read (16), ScheduleWakeup (1), ToolSearch (2), Write (1)
 

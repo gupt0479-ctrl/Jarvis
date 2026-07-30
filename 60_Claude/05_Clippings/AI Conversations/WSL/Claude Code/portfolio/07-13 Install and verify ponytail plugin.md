@@ -7,7 +7,7 @@ title: "Install and verify ponytail plugin"
 started_at: 2026-07-13T04:59:18
 ended_at: 2026-07-13T05:01:26
 duration_minutes: 2
-exported_at: 2026-07-30T15:27:52.5343600+04:00
+exported_at: 2026-07-30T16:47:46.9270578+04:00
 project: portfolio
 cwd: '/home/anant_gupta/projects/hub/portfolio'
 session_id: 0a14a437-e6b6-4d82-bb70-438506dc2086

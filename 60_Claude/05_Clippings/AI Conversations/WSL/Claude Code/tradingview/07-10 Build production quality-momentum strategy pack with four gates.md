@@ -7,7 +7,7 @@ title: "Build production quality-momentum strategy pack with four gates"
 started_at: 2026-07-10T19:20:39
 ended_at: 2026-07-10T21:01:48
 duration_minutes: 101
-exported_at: 2026-07-30T15:28:59.6972445+04:00
+exported_at: 2026-07-30T16:47:46.9270578+04:00
 project: tradingview
 cwd: '/home/anant_gupta/projects/hub/tradingview'
 session_id: 4a65e4da-78f8-4bf4-82e7-908787f5f6ff
@@ -2287,7 +2287,9 @@ drwxr-xr-x 17 anant_gupta anant_gupta    4096 Jul 11 00:25 ..
 drwxr-xr-x  3 anant_gupta anant_gupta    4096 Jul 10 23:21 raw
 data/market.duckdb
   ```
-- `Bash` — `source .venv/bin/activate && python - <<'EOF'
+- `Bash`:
+  ```bash
+source .venv/bin/activate && python - <<'EOF'
 import duckdb
 conn = duckdb.connect("data/market.duckdb", read_only=True)
 print(conn.execute("SHOW TABLES").fetchall())
@@ -2296,7 +2298,8 @@ try:
     print(conn.execute("SELECT symbol, source, COUNT(*) FROM fundamentals_snapshots GROUP BY symbol, source ORDER BY symbol").fetchall())
 except Exception as e:
     print("fundamentals:", e)
-EOF`
+EOF
+  ```
   ```
 [('assets',), ('daily_ohlcv',), ('data_quality_reports',), ('fundamentals_snapshots',), ('ingestion_runs',), ('providers',), ('raw_market_payloads',)]
 [('AAPL', 274, datetime.date(2025, 6, 5), datetime.date(2026, 7, 9)), ('AMZN', 274, datetime.date(2025, 6, 5), datetime.date(2026, 7, 9)), ('BRKB', 274, datetime.date(2025, 6, 5), datetime.date(2026, 7, 9)), ('COST', 274, datetime.date(2025, 6, 5), datetime.date(2026, 7, 9)), ('GOOGL', 274, datetime.date(2025, 6, 5), datetime.date(2026, 7, 9)), ('JPM', 274, datetime.date(2025, 6, 5), datetime.date(2026, 7, 9)), ('META', 274, datetime.date(2025, 6, 5), datetime.date(2026, 7, 9)), ('MSFT', 274, datetime.date(2025, 6, 5), datetime.date(2026, 7, 9)), ('NVDA', 274, datetime.date(2025, 6, 5), datetime.date(2026, 7, 9)), ('QQQ', 274, datetime.date(2025, 6, 5), datetime.date(2026, 7, 9)), ('SPY', 274, datetime.date(2025, 6, 5), datetime.date(2026, 7, 9)), ('TSLA', 274, datetime.date(2025, 6, 5), datetime.date(2026, 7, 9)), ('VOO', 274, datetime.date(2025, 6, 5), datetime.date(2026, 7, 9)), ('VTI', 274, datetime.date(2025, 6, 5), datetime.date(2026, 7, 9))]
@@ -2328,7 +2331,9 @@ Journal [exit] [REDACTED]: realized -2.5986% vs VOO same period +1.9168%
 
 Reminder: research desk output only — action vocabulary is WATCH | HOLD | ACCUMULATE | REDUCE | AVOID | INSUFFICIENT_DATA.
   ```
-- `Bash` — `source .venv/bin/activate && python - <<'EOF'
+- `Bash`:
+  ```bash
+source .venv/bin/activate && python - <<'EOF'
 import duckdb
 conn = duckdb.connect("data/market.duckdb", read_only=True)
 print("specs:", conn.execute("SELECT spec_id, name, status, promotion_state FROM brain_strategy_specs").fetchall())
@@ -2336,7 +2341,8 @@ print("runs:", conn.execute("SELECT gate_name, sequence_index, passed FROM brain
 print("theses:", conn.execute("SELECT symbol, action, status FROM paper_theses").fetchall())
 print("journal:", conn.execute("SELECT entry_type, symbol, realized_return, voo_return_same_period FROM paper_journal_entries").fetchall())
 print("citations:", conn.execute("SELECT title FROM brain_citations").fetchall())
-EOF`
+EOF
+  ```
   ```
 specs: [('[REDACTED]', '[REDACTED]', 'approved', 'unproven')]
 runs: [('out_of_sample', 0, False)]
@@ -2933,7 +2939,9 @@ tests/test_property_quality_status.py:171:    @settings(max_examples=30, deadlin
         self,
         symbol: str,
   ```
-- `Bash` — `python - <<'EOF'
+- `Bash`:
+  ```bash
+python - <<'EOF'
 import re, pathlib
 p = pathlib.Path("tests/test_property_duplicate_pk.py")
 s = p.read_text()
@@ -2942,7 +2950,8 @@ s = s.replace("@settings(max_examples=100)\n    def test_upsert_overwrites_dupli
 p.write_text(s)
 print("patched")
 EOF
-source .venv/bin/activate && pytest -q tests/test_property_duplicate_pk.py 2>&1 | tail -2`
+source .venv/bin/activate && pytest -q tests/test_property_duplicate_pk.py 2>&1 | tail -2
+  ```
   ```
 /bin/bash: line 10: python: command not found
 FAILED tests/test_property_duplicate_pk.py::[REDACTED]::test_upsert_overwrites_duplicate_pk
@@ -2970,7 +2979,9 @@ Command running in background with ID: bpqtuu1kt. Output is being written to: /t
 ................................                                         [100%]
 464 passed in 288.88s (0:04:48)
   ```
-- `Bash` — `git add -A && git commit -m "$(cat <<'EOF'
+- `Bash`:
+  ```bash
+git add -A && git commit -m "$(cat <<'EOF'
 Add the quality+momentum production strategy pack through the four gates.
 
 First strategy implementation in the installed package (not test-only):
@@ -3002,7 +3013,8 @@ First strategy implementation in the installed package (not test-only):
 
 Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
 EOF
-)" && git push -u origin HEAD`
+)" && git push -u origin HEAD
+  ```
   ```
 [feat/quality-momentum-strategy-pack f6f26c6] Add the quality+momentum production strategy pack through the four gates.
  13 files changed, 1408 insertions(+), 4 deletions(-)
@@ -3020,7 +3032,9 @@ To https://github.com/gupta-builds/TradingView.git
  * [new branch]      HEAD -> feat/quality-momentum-strategy-pack
 branch 'feat/quality-momentum-strategy-pack' set up to track 'origin/feat/quality-momentum-strategy-pack'.
   ```
-- `Bash` — `gh pr create --base main --title "Quality+momentum production strategy pack through the four gates" --body "$(cat <<'EOF'
+- `Bash`:
+  ```bash
+gh pr create --base main --title "Quality+momentum production strategy pack through the four gates" --body "$(cat <<'EOF'
 ## What this is
 
 The first **production strategy pack** for the desk: a literature-default quality + momentum composite tilt that lives in the installed package, wired as a real spec `hook_ref`, proven offline through all four gates, and runnable as a study against the live DuckDB file. Closes the gap where the only strategy hook lived under `tests/`.
@@ -3049,7 +3063,8 @@ Guardrails checked: no execution language in new strings (only `ACCUMULATE` from
 
 🤖 Generated with [Claude Code](https://claude.com/claude-code)
 EOF
-)"`
+)"
+  ```
   ```
 https://github.com/gupta-builds/TradingView/pull/1
   ```
@@ -3181,7 +3196,9 @@ ea8a008 Complete live shakeout fixes and storage UTC normalization.
 OPEN MERGEABLE [REDACTED]
   ```
 - `Read` — `/home/anant_gupta/projects/hub/tradingview/src/research_data/gates/deflated_sharpe.py`
-- `Bash` — `source .venv/bin/activate && python - <<'EOF'
+- `Bash`:
+  ```bash
+source .venv/bin/activate && python - <<'EOF'
 import duckdb
 conn = duckdb.connect("data/market.duckdb", read_only=True)
 print("== sessions per symbol ==")
@@ -3205,7 +3222,8 @@ for r in conn.execute("SELECT symbol, source, COUNT(*) n, MIN(fiscal_period_end)
 print("== brain/paper artifacts from 2a study ==")
 print(conn.execute("SELECT name, status, promotion_state FROM brain_strategy_specs").fetchall())
 print(conn.execute("SELECT gate_name, passed, as_of FROM brain_test_runs").fetchall())
-EOF`
+EOF
+  ```
   ```
 == sessions per symbol ==
 ('AAPL', 274, datetime.date(2025, 6, 5), datetime.date(2026, 7, 9))
@@ -3253,14 +3271,17 @@ EOF`
 [('[REDACTED]', 'approved', 'unproven')]
 [('out_of_sample', False, datetime.date(2026, 7, 9))]
   ```
-- `Bash` — `source .venv/bin/activate && python - <<'EOF'
+- `Bash`:
+  ```bash
+source .venv/bin/activate && python - <<'EOF'
 import duckdb
 conn = duckdb.connect("data/market.duckdb", read_only=True)
 print("== period_type mix ==")
 for r in conn.execute("SELECT symbol, source, period_type, COUNT(*), MIN(fiscal_period_end), MAX(fiscal_period_end) FROM fundamentals_snapshots GROUP BY 1,2,3 ORDER BY 1,2,3").fetchall():
     print(r)
 EOF
-echo "== providers.toml history notes =="; grep -nE "min_history|rate_limit|source_name" config/providers.toml`
+echo "== providers.toml history notes =="; grep -nE "min_history|rate_limit|source_name" config/providers.toml
+  ```
   ```
 == period_type mix ==
 ('AAPL', 'fmp', 'quarter', 4, datetime.date(2025, 6, 28), datetime.date(2026, 3, 28))
@@ -3311,13 +3332,16 @@ echo "== providers.toml history notes =="; grep -nE "min_history|rate_limit|sour
 70:rate_limit = 10
 76:min_history_years_free = 5.0
   ```
-- `Bash` — `source .venv/bin/activate && python - <<'EOF'
+- `Bash`:
+  ```bash
+source .venv/bin/activate && python - <<'EOF'
 import duckdb
 conn = duckdb.connect("data/market.duckdb", read_only=True)
 print(conn.execute("SELECT DISTINCT source, price_adjustment FROM daily_ohlcv").fetchall())
 print(conn.execute("SELECT COUNT(*) FROM daily_ohlcv WHERE adjusted_close IS NULL").fetchone())
 EOF
-grep -n "adjustment_policy" config/providers.toml`
+grep -n "adjustment_policy" config/providers.toml
+  ```
   ```
 Traceback (most recent call last):
   File "<stdin>", line 2, in <module>
@@ -3329,7 +3353,9 @@ _duckdb.IOException: IO Error: Could not set lock on file "/home/anant_gupta/pro
 57:adjustment_policy = "split_adjusted"
 71:adjustment_policy = "split_dividend_adjusted"
   ```
-- `Bash` — `sleep 20 && source .venv/bin/activate && python - <<'EOF'
+- `Bash`:
+  ```bash
+sleep 20 && source .venv/bin/activate && python - <<'EOF'
 import duckdb
 try:
     conn = duckdb.connect("data/market.duckdb", read_only=True)
@@ -3337,16 +3363,20 @@ try:
     print("null adjusted_close rows:", conn.execute("SELECT COUNT(*) FROM daily_ohlcv WHERE adjusted_close IS NULL").fetchone())
 except Exception as e:
     print("still locked:", e)
-EOF`
+EOF
+  ```
   ```
 still locked: IO Error: Could not set lock on file "/home/anant_gupta/projects/hub/tradingview/data/market.duckdb": Conflicting lock is held in /usr/bin/python3.12 (PID 257678). See also https://duckdb.org/docs/stable/connect/concurrency
   ```
-- `Bash` — `source .venv/bin/activate && python - <<'EOF'
+- `Bash`:
+  ```bash
+source .venv/bin/activate && python - <<'EOF'
 import duckdb
 conn = duckdb.connect("/tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/4a65e4da-78f8-4bf4-82e7-908787f5f6ff/scratchpad/market.duckdb.bak", read_only=True)
 print(conn.execute("SELECT DISTINCT source, price_adjustment FROM daily_ohlcv").fetchall())
 print("null adjusted_close rows:", conn.execute("SELECT COUNT(*) FROM daily_ohlcv WHERE adjusted_close IS NULL").fetchone())
-EOF`
+EOF
+  ```
   ```
 [('polygon', 'split_dividend_adjusted')]
 null adjusted_close rows: (0,)
@@ -3753,143 +3783,6 @@ HOLD (especially in the passes-but-trails-VOO cell); when to run
 - Files created: /home/anant_gupta/projects/hub/tradingview/src/research_data/strategies/__init__.py, /home/anant_gupta/projects/hub/tradingview/src/research_data/strategies/quality_momentum.py, /home/anant_gupta/projects/hub/tradingview/tests/test_strategy_quality_momentum.py, /home/anant_gupta/projects/hub/tradingview/tests/test_closed_loop_production.py, /home/anant_gupta/projects/hub/tradingview/scripts/run_quality_momentum_study.py, /home/anant_gupta/projects/hub/tradingview/Docs/PHASE2_STRATEGY_PACK.md, /home/anant_gupta/.claude/projects/-home-anant-gupta-projects-hub-tradingview/memory/phase2-strategy-pack.md, /home/anant_gupta/projects/hub/tradingview/Docs/PHASE2B_PROBLEM_STATEMENT.md, /home/anant_gupta/projects/hub/tradingview/Docs/PHASE2B_SOLUTION_DESIGN.md
 - Files modified: /home/anant_gupta/projects/hub/tradingview/tests/test_models.py, /home/anant_gupta/projects/hub/tradingview/tests/synthetic.py, /home/anant_gupta/projects/hub/tradingview/tests/test_strategy_quality_momentum.py, /home/anant_gupta/projects/hub/tradingview/tests/test_brain_store.py, /home/anant_gupta/projects/hub/tradingview/Docs/YEAR_AHEAD_BASE.md, /home/anant_gupta/projects/hub/tradingview/Docs/fable5_run_memory.md, /home/anant_gupta/.claude/projects/-home-anant-gupta-projects-hub-tradingview/memory/MEMORY.md, /home/anant_gupta/projects/hub/tradingview/tests/test_package_invariants.py, /home/anant_gupta/projects/hub/tradingview/tests/test_property_duplicate_pk.py
 - Files deleted: (none)
-- Commands run: git status && git log --oneline -5 && git branch -a, source .venv/bin/activate && pytest -q 2>&1 | tail -5, grep -rn "momentum_strategy_hook" tests/ src/ | head; echo ---; ls src/research_data src/research_data/factors src/research_data/gates src/research_data/brain src/research_data/paper scripts 2>/dev/null, cat /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/boczzmddz.output 2>/dev/null; ls scripts 2>/dev/null || echo "no scripts dir"; grep -n "def " src/research_data/brain/store.py | head -30, grep -n "class Thesis" -A 40 src/research_data/paper/models.py; echo ====; grep -n "def get_price_frame" -A 30 src/research_data/read_api.py, cat /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/boczzmddz.output; echo ===; cat src/research_data/fundamentals/models.py | head -80, grep -n "test_today_trading_date_accepted" -B5 -A15 tests/test_models.py; grep -rn "future" src/research_data/models.py | head; date; date -u, sed -n 170,195p src/research_data/models.py; sed -n 1,30p tests/test_models.py | grep -n "import" , git checkout main && git pull --ff-only && git checkout -b feat/quality-momentum-strategy-pack, cat pyproject.toml; grep -n "def \|class " src/research_data/config.py | head -20, sed -n 40,95p src/research_data/config.py, source .venv/bin/activate && pytest -q tests/test_strategy_quality_momentum.py 2>&1 | tail -25, sed -n 296,330p src/research_data/brain/store.py, source .venv/bin/activate && pytest -q tests/test_strategy_quality_momentum.py 2>&1 | tail -8, source .venv/bin/activate && pytest -q tests/test_closed_loop_production.py 2>&1 | tail -8, sed -n 50,66p tests/test_brain_store.py, sed -n 241,265p src/research_data/brain/store.py; grep -n "def propose_thesis\|def approve_thesis" -A6 src/research_data/paper/store.py, ls -la data/ 2>/dev/null | head; ls data/*.duckdb 2>/dev/null, source .venv/bin/activate && python - <<'EOF'
-import duckdb
-conn = duckdb.connect("data/market.duckdb", read_only=True)
-print(conn.execute("SHOW TABLES").fetchall())
-print(conn.execute("SELECT symbol, COUNT(*), MIN(trading_date), MAX(trading_date) FROM daily_ohlcv GROUP BY symbol ORDER BY symbol").fetchall())
-try:
-    print(conn.execute("SELECT symbol, source, COUNT(*) FROM fundamentals_snapshots GROUP BY symbol, source ORDER BY symbol").fetchall())
-except Exception as e:
-    print("fundamentals:", e)
-EOF, cp data/market.duckdb /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad/market.duckdb.bak && echo backed up && source .venv/bin/activate && python scripts/run_quality_momentum_study.py 2>&1 | tail -50, source .venv/bin/activate && python - <<'EOF'
-import duckdb
-conn = duckdb.connect("data/market.duckdb", read_only=True)
-print("specs:", conn.execute("SELECT spec_id, name, status, promotion_state FROM brain_strategy_specs").fetchall())
-print("runs:", conn.execute("SELECT gate_name, sequence_index, passed FROM brain_test_runs").fetchall())
-print("theses:", conn.execute("SELECT symbol, action, status FROM paper_theses").fetchall())
-print("journal:", conn.execute("SELECT entry_type, symbol, realized_return, voo_return_same_period FROM paper_journal_entries").fetchall())
-print("citations:", conn.execute("SELECT title FROM brain_citations").fetchall())
-EOF, source .venv/bin/activate && pytest -q 2>&1 | tail -4, echo "=== 1. execution/certainty language ===" && grep -rniE "\b(buy now|sell now|guaranteed|risk-free|can't lose)\b" src/ tests/ Docs/ README.md CLAUDE.md scripts/ 2>/dev/null; echo "--- bare BUY/SELL ---" && grep -rnE "\bBUY\b|\bSELL\b" src/ scripts/ Docs/ 2>/dev/null; echo "=== 3. secrets ===" && grep -rniE "(api[_-]?key|secret|token|password)\s*=\s*['\"][A-Za-z0-9]" src/ tests/ config/ scripts/ 2>/dev/null; git check-ignore .env && echo ".env ignored OK", echo "=== 2. action labels in new files ===" && grep -rnE "action|Action" src/research_data/strategies/ scripts/run_quality_momentum_study.py | grep -vE "ActionLabel|action vocabulary|action driver|never produces an action" ; echo "=== 4. banned deps ===" && grep -niE "alpaca|ib_insync|ccxt|broker" pyproject.toml; echo "=== 5. out-of-scope terms in new code ===" && grep -rniE "intraday|tick|options|futures|crypto|margin|leverage|scrape|kalshi|polymarket" src/research_data/strategies/ scripts/ tests/test_strategy_quality_momentum.py tests/test_closed_loop_production.py; echo "=== 6. LLM calls in new code + ingestion path ===" && grep -rniE "openai|anthropic|llm|chat" src/research_data/strategies/ scripts/ src/research_data/models.py src/research_data/storage.py src/research_data/normalization.py src/research_data/quality.py src/research_data/read_api.py; echo; echo "sweep done (empty sections = clean)", git status --short; tail -3 /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bttth07ps.output 2>/dev/null, until [ -s /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bttth07ps.output ]; do sleep 2; done; cat /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bttth07ps.output, cat .github/workflows/ci.yml 2>/dev/null | head -60; ls tests/ | grep -i "invariant\|canar" , sed -n 60,110p .github/workflows/ci.yml; grep -n "def test" tests/test_package_invariants.py, sed -n 1,45p tests/test_package_invariants.py; grep -rn "strategies\|scripts" tests/test_security_scope.py | head, sed -n 45,90p tests/test_package_invariants.py, source .venv/bin/activate && pytest -q tests/test_package_invariants.py tests/test_security_scope.py tests/test_brain_store.py tests/test_models.py 2>&1 | tail -3, sleep 120; cat /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bttth07ps.output 2>/dev/null, git add -A && git status --short, sleep 180; cat /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bttth07ps.output 2>/dev/null || echo "still running", while [ ! -s /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bttth07ps.output ]; do sleep 5; done; echo DONE; cat /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bttth07ps.output, source .venv/bin/activate && pytest -q tests/test_property_duplicate_pk.py 2>&1 | tail -40, grep -n "settings\|@given" tests/test_property_duplicate_pk.py | head; grep -rn "deadline" tests/*.py | head, grep -n "@settings(max_examples=100)" tests/test_property_duplicate_pk.py, sed -n 125,132p tests/test_property_duplicate_pk.py, python - <<'EOF'
-import re, pathlib
-p = pathlib.Path("tests/test_property_duplicate_pk.py")
-s = p.read_text()
-s = s.replace("@settings(max_examples=100)\n    def test_upsert_overwrites_duplicate_pk",
-              "@settings(max_examples=100, deadline=None)\n    def test_upsert_overwrites_duplicate_pk")
-p.write_text(s)
-print("patched")
-EOF
-source .venv/bin/activate && pytest -q tests/test_property_duplicate_pk.py 2>&1 | tail -2, source .venv/bin/activate && pytest -q tests/test_property_duplicate_pk.py 2>&1 | tail -2, source .venv/bin/activate && pytest -q 2>&1 | tail -3, while [ ! -s /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bpqtuu1kt.output ]; do sleep 10; done; cat /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bpqtuu1kt.output, git add -A && git commit -m "$(cat <<'EOF'
-Add the quality+momentum production strategy pack through the four gates.
-
-First strategy implementation in the installed package (not test-only):
-- src/research_data/strategies/quality_momentum.py — 50/50 composite of
-  momentum 12-1 percentile and quality_fcf score, top-K equal-weight tilt,
-  21-session rebalance, 90-day fundamentals reporting lag, two-sided
-  turnover costing via the existing gate cost model. Fail-closed
-  eligibility: ETFs and no-sub-signal equities are INSUFFICIENT_DATA,
-  a cross-section of one holds cash, nothing is imputed.
-- hook_ref research_data.strategies.quality_momentum:quality_momentum_tilt_hook
-  resolves through the brain loop; RebalanceRecord audit trail carries
-  formulas, inputs, and statement as-of dates for every decision.
-- Offline proof: tests/test_strategy_quality_momentum.py (alignment,
-  prefix-invariance no-lookahead, eligibility rules, thin-history
-  fail-closed, and a full four-gate pass at unchanged literature defaults
-  on 1300 synthetic sessions) + tests/test_closed_loop_production.py
-  (citation → anant approval → production hook → gates → promotion →
-  paper replay → journal lesson).
-- scripts/run_quality_momentum_study.py — manual live study runner: no
-  network, reads the existing DuckDB, records gate TestRunRecords and a
-  paper replay journal artifact. First live run on 274 free-tier sessions:
-  OOS gate failed closed as expected; spec stays not demo-eligible.
-- tests/synthetic.py gains a deterministic fundamentals generator; brain
-  store test hook_ref now points at the real production hook; package
-  invariants cover the strategies package and new docs/script.
-- Flake fixes: UTC clock in the today-date model test (UTC+4 machines),
-  deadline=None on the duplicate-pk property test per repo convention.
-- Docs: PHASE2_STRATEGY_PACK.md, YEAR_AHEAD_BASE module map, run memory.
-
-Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
-EOF
-)" && git push -u origin HEAD, gh pr create --base main --title "Quality+momentum production strategy pack through the four gates" --body "$(cat <<'EOF'
-## What this is
-
-The first **production strategy pack** for the desk: a literature-default quality + momentum composite tilt that lives in the installed package, wired as a real spec `hook_ref`, proven offline through all four gates, and runnable as a study against the live DuckDB file. Closes the gap where the only strategy hook lived under `tests/`.
-
-## The strategy (`src/research_data/strategies/quality_momentum.py`)
-
-- `composite = 0.5 × momentum-12-1 percentile + 0.5 × quality_fcf score`; top-K (default 3) equal-weight, 21-session rebalance. Citations: Jegadeesh-Titman 1993, Novy-Marx 2013, AFP 2019 (in the module docstring and brain citations).
-- Point-in-time fundamentals with a 90-day reporting lag; decisions at close *i* earn returns from *i+1* — prefix-invariance test proves no lookahead.
-- Fail-closed eligibility: ETFs and equities with no computable quality sub-signal are `INSUFFICIENT_DATA` and never selectable; a cross-section of one holds cash at exactly 0.0. Nothing is imputed.
-- Costs via the existing gate cost model (5 bps/side); turnover is the two-sided sum of |Δweight| (entry from cash = 1.0). Every rebalance emits an audit record with formulas, inputs, and statement as-of dates.
-
-## Proof
-
-- **Offline (CI):** 464 tests green, 16 new. Includes a full four-gate pass at **unchanged literature defaults** on 1300 synthetic sessions, a thin-history fail-closed check, and a closed-loop test on the production `hook_ref` (citation → `anant` approval → gates → promotion → paper replay → journal lesson).
-- **Live study** (`scripts/run_quality_momentum_study.py`, no network): ran against `data/market.duckdb` (14 symbols × 274 sessions). Momentum warm-up leaves 21 sessions, so the OOS gate **failed closed** (train=14/oos=7 < 60) — recorded as a brain TestRunRecord; spec `[REDACTED]` stays not demo-eligible. Strategy net +0.43% vs VOO +1.62% same window; replay journal exit NVDA −2.60% vs VOO +1.92%. Honest fail on thin free-tier history is the intended behavior.
-
-## Also in this PR
-
-- `tests/synthetic.py`: deterministic quarterly fundamentals generator.
-- Package invariants now cover `research_data.strategies`, the study script, and `Docs/PHASE2_STRATEGY_PACK.md`.
-- Stale `hook_ref` in `test_brain_store.py` now points at the real production hook.
-- Two flake fixes: UTC clock in the today-date model test (UTC+4 machines flaked after local midnight) and `deadline=None` on the duplicate-pk property test (repo convention).
-- Docs: `Docs/PHASE2_STRATEGY_PACK.md` (formula, params, citations, free-tier limitation, how to run), module-map update, run-memory lessons.
-
-Guardrails checked: no execution language in new strings (only `ACCUMULATE` from the approved vocabulary), no fabrication paths, Kronos untouched, no new dependencies, universe unchanged at 14.
-
-🤖 Generated with [Claude Code](https://claude.com/claude-code)
-EOF
-)", gh pr checks 1 --watch --interval 60 2>&1 | tail -10, git status --short; git log --oneline -3; git rev-parse HEAD; gh pr view 1 --json state,mergeable,headRefOid -q '.state + " " + .mergeable + " " + .headRefOid' 2>/dev/null, source .venv/bin/activate && python - <<'EOF'
-import duckdb
-conn = duckdb.connect("data/market.duckdb", read_only=True)
-print("== sessions per symbol ==")
-for r in conn.execute("SELECT symbol, COUNT(*) n, MIN(trading_date) lo, MAX(trading_date) hi FROM daily_ohlcv GROUP BY symbol ORDER BY symbol").fetchall():
-    print(r)
-print("== distinct trading dates overall vs VOO ==")
-print(conn.execute("SELECT COUNT(DISTINCT trading_date) FROM daily_ohlcv").fetchone())
-print(conn.execute("SELECT COUNT(*) FROM daily_ohlcv WHERE symbol='VOO'").fetchone())
-print("== per-symbol dates identical to VOO? ==")
-print(conn.execute("""
-  WITH voo AS (SELECT trading_date FROM daily_ohlcv WHERE symbol='VOO')
-  SELECT symbol, COUNT(*) FILTER (WHERE trading_date NOT IN (SELECT trading_date FROM voo)) extra,
-         (SELECT COUNT(*) FROM voo) - COUNT(*) FILTER (WHERE trading_date IN (SELECT trading_date FROM voo)) missing
-  FROM daily_ohlcv GROUP BY symbol ORDER BY symbol
-""").fetchall())
-print("== quality status breakdown ==")
-print(conn.execute("SELECT quality_status, COUNT(*) FROM daily_ohlcv GROUP BY quality_status").fetchall())
-print("== fundamentals by symbol/source ==")
-for r in conn.execute("SELECT symbol, source, COUNT(*) n, MIN(fiscal_period_end) lo, MAX(fiscal_period_end) hi FROM fundamentals_snapshots GROUP BY symbol, source ORDER BY symbol, source").fetchall():
-    print(r)
-print("== brain/paper artifacts from 2a study ==")
-print(conn.execute("SELECT name, status, promotion_state FROM brain_strategy_specs").fetchall())
-print(conn.execute("SELECT gate_name, passed, as_of FROM brain_test_runs").fetchall())
-EOF, source .venv/bin/activate && python - <<'EOF'
-import duckdb
-conn = duckdb.connect("data/market.duckdb", read_only=True)
-print("== period_type mix ==")
-for r in conn.execute("SELECT symbol, source, period_type, COUNT(*), MIN(fiscal_period_end), MAX(fiscal_period_end) FROM fundamentals_snapshots GROUP BY 1,2,3 ORDER BY 1,2,3").fetchall():
-    print(r)
-EOF
-echo "== providers.toml history notes =="; grep -nE "min_history|rate_limit|source_name" config/providers.toml, source .venv/bin/activate && python - <<'EOF'
-import duckdb
-conn = duckdb.connect("data/market.duckdb", read_only=True)
-print(conn.execute("SELECT DISTINCT source, price_adjustment FROM daily_ohlcv").fetchall())
-print(conn.execute("SELECT COUNT(*) FROM daily_ohlcv WHERE adjusted_close IS NULL").fetchone())
-EOF
-grep -n "adjustment_policy" config/providers.toml, sleep 20 && source .venv/bin/activate && python - <<'EOF'
-import duckdb
-try:
-    conn = duckdb.connect("data/market.duckdb", read_only=True)
-    print(conn.execute("SELECT DISTINCT source, price_adjustment FROM daily_ohlcv").fetchall())
-    print("null adjusted_close rows:", conn.execute("SELECT COUNT(*) FROM daily_ohlcv WHERE adjusted_close IS NULL").fetchone())
-except Exception as e:
-    print("still locked:", e)
-EOF, source .venv/bin/activate && python - <<'EOF'
-import duckdb
-conn = duckdb.connect("/tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad/market.duckdb.bak", read_only=True)
-print(conn.execute("SELECT DISTINCT source, price_adjustment FROM daily_ohlcv").fetchall())
-print("null adjusted_close rows:", conn.execute("SELECT COUNT(*) FROM daily_ohlcv WHERE adjusted_close IS NULL").fetchone())
-EOF
+- Commands run: git status && git log --oneline -5 && git branch -a, source .venv/bin/activate && pytest -q 2>&1 | tail -5, grep -rn "momentum_strategy_hook" tests/ src/ | head; echo ---; ls src/research_data src/research_data/factors src/research_data/gates src/research_data/brain src/research_data/paper scripts 2>/dev/null, cat /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/boczzmddz.output 2>/dev/null; ls scripts 2>/dev/null || echo "no scripts dir"; grep -n "def " src/research_data/brain/store.py | head -30, grep -n "class Thesis" -A 40 src/research_data/paper/models.py; echo ====; grep -n "def get_price_frame" -A 30 src/research_data/read_api.py, cat /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/boczzmddz.output; echo ===; cat src/research_data/fundamentals/models.py | head -80, grep -n "test_today_trading_date_accepted" -B5 -A15 tests/test_models.py; grep -rn "future" src/research_data/models.py | head; date; date -u, sed -n 170,195p src/research_data/models.py; sed -n 1,30p tests/test_models.py | grep -n "import" , git checkout main && git pull --ff-only && git checkout -b feat/quality-momentum-strategy-pack, cat pyproject.toml; grep -n "def \|class " src/research_data/config.py | head -20, sed -n 40,95p src/research_data/config.py, source .venv/bin/activate && pytest -q tests/test_strategy_quality_momentum.py 2>&1 | tail -25, sed -n 296,330p src/research_data/brain/store.py, source .venv/bin/activate && pytest -q tests/test_strategy_quality_momentum.py 2>&1 | tail -8, source .venv/bin/activate && pytest -q tests/test_closed_loop_production.py 2>&1 | tail -8, sed -n 50,66p tests/test_brain_store.py, sed -n 241,265p src/research_data/brain/store.py; grep -n "def propose_thesis\|def approve_thesis" -A6 src/research_data/paper/store.py, ls -la data/ 2>/dev/null | head; ls data/*.duckdb 2>/dev/null, source .venv/bin/activate && python - <<'EOF' import duckdb conn = duckdb.connect("data/market.duckdb", read_only=True) print(conn.execute("SHOW TABLES").fetchall()) print(conn.execute("SELECT symbol, COUNT(*), MIN(trading_date), MAX(trading_date) FROM daily_ohlcv GROUP BY symbol ORDER BY symbol").fetchall()) try: print(conn.execute("SELECT symbol, source, COUNT(*) FROM fundamentals_snapshots GROUP BY symbol, source ORDER BY symbol").fetchall()) except Exception as e: print("fundamentals:", e) EOF, cp data/market.duckdb /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad/market.duckdb.bak && echo backed up && source .venv/bin/activate && python scripts/run_quality_momentum_study.py 2>&1 | tail -50, source .venv/bin/activate && python - <<'EOF' import duckdb conn = duckdb.connect("data/market.duckdb", read_only=True) print("specs:", conn.execute("SELECT spec_id, name, status, promotion_state FROM brain_strategy_specs").fetchall()) print("runs:", conn.execute("SELECT gate_name, sequence_index, passed FROM brain_test_runs").fetchall()) print("theses:", conn.execute("SELECT symbol, action, status FROM paper_theses").fetchall()) print("journal:", conn.execute("SELECT entry_type, symbol, realized_return, voo_return_same_period FROM paper_journal_entries").fetchall()) print("citations:", conn.execute("SELECT title FROM brain_citations").fetchall()) EOF, source .venv/bin/activate && pytest -q 2>&1 | tail -4, echo "=== 1. execution/certainty language ===" && grep -rniE "\b(buy now|sell now|guaranteed|risk-free|can't lose)\b" src/ tests/ Docs/ README.md CLAUDE.md scripts/ 2>/dev/null; echo "--- bare BUY/SELL ---" && grep -rnE "\bBUY\b|\bSELL\b" src/ scripts/ Docs/ 2>/dev/null; echo "=== 3. secrets ===" && grep -rniE "(api[_-]?key|secret|token|password)\s*=\s*['\"][A-Za-z0-9]" src/ tests/ config/ scripts/ 2>/dev/null; git check-ignore .env && echo ".env ignored OK", echo "=== 2. action labels in new files ===" && grep -rnE "action|Action" src/research_data/strategies/ scripts/run_quality_momentum_study.py | grep -vE "ActionLabel|action vocabulary|action driver|never produces an action" ; echo "=== 4. banned deps ===" && grep -niE "alpaca|ib_insync|ccxt|broker" pyproject.toml; echo "=== 5. out-of-scope terms in new code ===" && grep -rniE "intraday|tick|options|futures|crypto|margin|leverage|scrape|kalshi|polymarket" src/research_data/strategies/ scripts/ tests/test_strategy_quality_momentum.py tests/test_closed_loop_production.py; echo "=== 6. LLM calls in new code + ingestion path ===" && grep -rniE "openai|anthropic|llm|chat" src/research_data/strategies/ scripts/ src/research_data/models.py src/research_data/storage.py src/research_data/normalization.py src/research_data/quality.py src/research_data/read_api.py; echo; echo "sweep done (empty sections = clean)", git status --short; tail -3 /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bttth07ps.output 2>/dev/null, until [ -s /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bttth07ps.output ]; do sleep 2; done; cat /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bttth07ps.output, cat .github/workflows/ci.yml 2>/dev/null | head -60; ls tests/ | grep -i "invariant\|canar" , sed -n 60,110p .github/workflows/ci.yml; grep -n "def test" tests/test_package_invariants.py, sed -n 1,45p tests/test_package_invariants.py; grep -rn "strategies\|scripts" tests/test_security_scope.py | head, sed -n 45,90p tests/test_package_invariants.py, source .venv/bin/activate && pytest -q tests/test_package_invariants.py tests/test_security_scope.py tests/test_brain_store.py tests/test_models.py 2>&1 | tail -3, sleep 120; cat /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bttth07ps.output 2>/dev/null, git add -A && git status --short, sleep 180; cat /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bttth07ps.output 2>/dev/null || echo "still running", while [ ! -s /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bttth07ps.output ]; do sleep 5; done; echo DONE; cat /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bttth07ps.output, source .venv/bin/activate && pytest -q tests/test_property_duplicate_pk.py 2>&1 | tail -40, grep -n "settings\|@given" tests/test_property_duplicate_pk.py | head; grep -rn "deadline" tests/*.py | head, grep -n "@settings(max_examples=100)" tests/test_property_duplicate_pk.py, sed -n 125,132p tests/test_property_duplicate_pk.py, python - <<'EOF' import re, pathlib p = pathlib.Path("tests/test_property_duplicate_pk.py") s = p.read_text() s = s.replace("@settings(max_examples=100)\n def test_upsert_overwrites_duplicate_pk", "@settings(max_examples=100, deadline=None)\n def test_upsert_overwrites_duplicate_pk") p.write_text(s) print("patched") EOF source .venv/bin/activate && pytest -q tests/test_property_duplicate_pk.py 2>&1 | tail -2, source .venv/bin/activate && pytest -q tests/test_property_duplicate_pk.py 2>&1 | tail -2, source .venv/bin/activate && pytest -q 2>&1 | tail -3, while [ ! -s /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bpqtuu1kt.output ]; do sleep 10; done; cat /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bpqtuu1kt.output, git add -A && git commit -m "$(cat <<'EOF' Add the quality+momentum production strategy pack through the four gates. First strategy implementation in the installed package (not test-only): - src/research_data/strategies/quality_momentum.py — 50/50 composite of momentum 12-1 percentile and quality_fcf score, top-K equal-weight tilt, 21-session rebalance, 90-day fundamentals reporting lag, two-sided turnover costing via the existing gate cost model. Fail-closed eligibility: ETFs and no-sub-signal equities are INSUFFICIENT_DATA, a cross-section of one holds cash, nothing is imputed. - hook_ref research_data.strategies.quality_momentum:quality_momentum_tilt_hook resolves through the brain loop; RebalanceRecord audit trail carries formulas, inputs, and statement as-of dates for every decision. - Offline proof: tests/test_strategy_quality_momentum.py (alignment, prefix-invariance no-lookahead, eligibility rules, thin-history fail-closed, and a full four-gate pass at unchanged literature defaults on 1300 synthetic sessions) + tests/test_closed_loop_production.py (citation → anant approval → production hook → gates → promotion → paper replay → journal lesson). - scripts/run_quality_momentum_study.py — manual live study runner: no network, reads the existing DuckDB, records gate TestRunRecords and a paper replay journal artifact. First live run on 274 free-tier sessions: OOS gate failed closed as expected; spec stays not demo-eligible. - tests/synthetic.py gains a deterministic fundamentals generator; brain store test hook_ref now points at the real production hook; package invariants cover the strategies package and new docs/script. - Flake fixes: UTC clock in the today-date model test (UTC+4 machines), deadline=None on the duplicate-pk property test per repo convention. - Docs: PHASE2_STRATEGY_PACK.md, YEAR_AHEAD_BASE module map, run memory. Co-Authored-By: Claude Fable 5 <noreply@anthropic.com> EOF )" && git push -u origin HEAD, gh pr create --base main --title "Quality+momentum production strategy pack through the four gates" --body "$(cat <<'EOF' ## What this is The first **production strategy pack** for the desk: a literature-default quality + momentum composite tilt that lives in the installed package, wired as a real spec `hook_ref`, proven offline through all four gates, and runnable as a study against the live DuckDB file. Closes the gap where the only strategy hook lived under `tests/`. ## The strategy (`src/research_data/strategies/quality_momentum.py`) - `composite = 0.5 × momentum-12-1 percentile + 0.5 × quality_fcf score`; top-K (default 3) equal-weight, 21-session rebalance. Citations: Jegadeesh-Titman 1993, Novy-Marx 2013, AFP 2019 (in the module docstring and brain citations). - Point-in-time fundamentals with a 90-day reporting lag; decisions at close *i* earn returns from *i+1* — prefix-invariance test proves no lookahead. - Fail-closed eligibility: ETFs and equities with no computable quality sub-signal are `INSUFFICIENT_DATA` and never selectable; a cross-section of one holds cash at exactly 0.0. Nothing is imputed. - Costs via the existing gate cost model (5 bps/side); turnover is the two-sided sum of |Δweight| (entry from cash = 1.0). Every rebalance emits an audit record with formulas, inputs, and statement as-of dates. ## Proof - **Offline (CI):** 464 tests green, 16 new. Includes a full four-gate pass at **unchanged literature defaults** on 1300 synthetic sessions, a thin-history fail-closed check, and a closed-loop test on the production `hook_ref` (citation → `anant` approval → gates → promotion → paper replay → journal lesson). - **Live study** (`scripts/run_quality_momentum_study.py`, no network): ran against `data/market.duckdb` (14 symbols × 274 sessions). Momentum warm-up leaves 21 sessions, so the OOS gate **failed closed** (train=14/oos=7 < 60) — recorded as a brain TestRunRecord; spec `[REDACTED]` stays not demo-eligible. Strategy net +0.43% vs VOO +1.62% same window; replay journal exit NVDA −2.60% vs VOO +1.92%. Honest fail on thin free-tier history is the intended behavior. ## Also in this PR - `tests/synthetic.py`: deterministic quarterly fundamentals generator. - Package invariants now cover `research_data.strategies`, the study script, and `Docs/PHASE2_STRATEGY_PACK.md`. - Stale `hook_ref` in `test_brain_store.py` now points at the real production hook. - Two flake fixes: UTC clock in the today-date model test (UTC+4 machines flaked after local midnight) and `deadline=None` on the duplicate-pk property test (repo convention). - Docs: `Docs/PHASE2_STRATEGY_PACK.md` (formula, params, citations, free-tier limitation, how to run), module-map update, run-memory lessons. Guardrails checked: no execution language in new strings (only `ACCUMULATE` from the approved vocabulary), no fabrication paths, Kronos untouched, no new dependencies, universe unchanged at 14. 🤖 Generated with [Claude Code](https://claude.com/claude-code) EOF )", gh pr checks 1 --watch --interval 60 2>&1 | tail -10, git status --short; git log --oneline -3; git rev-parse HEAD; gh pr view 1 --json state,mergeable,headRefOid -q '.state + " " + .mergeable + " " + .headRefOid' 2>/dev/null, source .venv/bin/activate && python - <<'EOF' import duckdb conn = duckdb.connect("data/market.duckdb", read_only=True) print("== sessions per symbol ==") for r in conn.execute("SELECT symbol, COUNT(*) n, MIN(trading_date) lo, MAX(trading_date) hi FROM daily_ohlcv GROUP BY symbol ORDER BY symbol").fetchall(): print(r) print("== distinct trading dates overall vs VOO ==") print(conn.execute("SELECT COUNT(DISTINCT trading_date) FROM daily_ohlcv").fetchone()) print(conn.execute("SELECT COUNT(*) FROM daily_ohlcv WHERE symbol='VOO'").fetchone()) print("== per-symbol dates identical to VOO? ==") print(conn.execute(""" WITH voo AS (SELECT trading_date FROM daily_ohlcv WHERE symbol='VOO') SELECT symbol, COUNT(*) FILTER (WHERE trading_date NOT IN (SELECT trading_date FROM voo)) extra, (SELECT COUNT(*) FROM voo) - COUNT(*) FILTER (WHERE trading_date IN (SELECT trading_date FROM voo)) missing FROM daily_ohlcv GROUP BY symbol ORDER BY symbol """).fetchall()) print("== quality status breakdown ==") print(conn.execute("SELECT quality_status, COUNT(*) FROM daily_ohlcv GROUP BY quality_status").fetchall()) print("== fundamentals by symbol/source ==") for r in conn.execute("SELECT symbol, source, COUNT(*) n, MIN(fiscal_period_end) lo, MAX(fiscal_period_end) hi FROM fundamentals_snapshots GROUP BY symbol, source ORDER BY symbol, source").fetchall(): print(r) print("== brain/paper artifacts from 2a study ==") print(conn.execute("SELECT name, status, promotion_state FROM brain_strategy_specs").fetchall()) print(conn.execute("SELECT gate_name, passed, as_of FROM brain_test_runs").fetchall()) EOF, source .venv/bin/activate && python - <<'EOF' import duckdb conn = duckdb.connect("data/market.duckdb", read_only=True) print("== period_type mix ==") for r in conn.execute("SELECT symbol, source, period_type, COUNT(*), MIN(fiscal_period_end), MAX(fiscal_period_end) FROM fundamentals_snapshots GROUP BY 1,2,3 ORDER BY 1,2,3").fetchall(): print(r) EOF echo "== providers.toml history notes =="; grep -nE "min_history|rate_limit|source_name" config/providers.toml, source .venv/bin/activate && python - <<'EOF' import duckdb conn = duckdb.connect("data/market.duckdb", read_only=True) print(conn.execute("SELECT DISTINCT source, price_adjustment FROM daily_ohlcv").fetchall()) print(conn.execute("SELECT COUNT(*) FROM daily_ohlcv WHERE adjusted_close IS NULL").fetchone()) EOF grep -n "adjustment_policy" config/providers.toml, sleep 20 && source .venv/bin/activate && python - <<'EOF' import duckdb try: conn = duckdb.connect("data/market.duckdb", read_only=True) print(conn.execute("SELECT DISTINCT source, price_adjustment FROM daily_ohlcv").fetchall()) print("null adjusted_close rows:", conn.execute("SELECT COUNT(*) FROM daily_ohlcv WHERE adjusted_close IS NULL").fetchone()) except Exception as e: print("still locked:", e) EOF, source .venv/bin/activate && python - <<'EOF' import duckdb conn = duckdb.connect("/tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad/market.duckdb.bak", read_only=True) print(conn.execute("SELECT DISTINCT source, price_adjustment FROM daily_ohlcv").fetchall()) print("null adjusted_close rows:", conn.execute("SELECT COUNT(*) FROM daily_ohlcv WHERE adjusted_close IS NULL").fetchone()) EOF
 - Tool call tally: Bash (52), Edit (20), Read (24), Skill (1), ToolSearch (1), Write (9)
 

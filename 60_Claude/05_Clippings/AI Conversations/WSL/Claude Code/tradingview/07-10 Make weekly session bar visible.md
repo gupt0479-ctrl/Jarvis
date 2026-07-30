@@ -7,7 +7,7 @@ title: "Make weekly session bar visible"
 started_at: 2026-07-10T12:16:44
 ended_at: 2026-07-10T12:24:28
 duration_minutes: 8
-exported_at: 2026-07-30T15:28:59.6972445+04:00
+exported_at: 2026-07-30T16:47:46.9270578+04:00
 project: tradingview
 cwd: '/home/anant_gupta/projects/hub/tradingview'
 session_id: fb4cb460-e41c-4078-bdbc-6b3d98e3e6cc
@@ -120,7 +120,9 @@ Your global status line is live — it'll show up the next time Claude Code rend
   ```
 [36mtradingview[0m [90m|[0m [35msetup[0m [90m|[0m [34mSonnet 5[0m [90m|[0m [31m[#######---] 72%[0m [31m[1m![0m
   ```
-- `Bash` — `echo "--- low context ---"
+- `Bash`:
+  ```bash
+echo "--- low context ---"
 echo '{"workspace":{"current_dir":"'"$HOME"'/projects/hub/tradingview"},"model":{"display_name":"Sonnet 5"},"context_window":{"used_percentage":20}}' | bash ~/.claude/statusline.sh
 echo
 echo "--- no context data ---"
@@ -131,7 +133,8 @@ echo '{"workspace":{"current_dir":"'"$HOME"'"},"model":{"display_name":"Sonnet 5
 echo
 echo "--- validate settings.json ---"
 python3 -c "import json; json.load(open('$HOME/.claude/settings.json')); print('valid JSON')"
-grep -A4 '"statusLine"' ~/.claude/settings.json`
+grep -A4 '"statusLine"' ~/.claude/settings.json
+  ```
   ```
 --- low context ---
 [36mtradingview[0m [90m|[0m [35msetup[0m [90m|[0m [34mSonnet 5[0m [90m|[0m [32m[##--------] 20%[0m
@@ -367,14 +370,17 @@ fi
 
 printf '%s\n' "$out"
   ```
-- `Bash` — `echo "--- with weekly usage (low) ---"
+- `Bash`:
+  ```bash
+echo "--- with weekly usage (low) ---"
 echo '{"workspace":{"current_dir":"'"$HOME"'/projects/hub/tradingview"},"model":{"display_name":"Sonnet 5"},"context_window":{"used_percentage":45},"rate_limits":{"seven_day":{"used_percentage":30}}}' | bash ~/.claude/statusline.sh
 echo
 echo "--- with weekly usage (critical) ---"
 echo '{"workspace":{"current_dir":"'"$HOME"'/projects/hub/tradingview"},"model":{"display_name":"Sonnet 5"},"context_window":{"used_percentage":45},"rate_limits":{"seven_day":{"used_percentage":88}}}' | bash ~/.claude/statusline.sh
 echo
 echo "--- rate_limits absent (free/API-key session) ---"
-echo '{"workspace":{"current_dir":"'"$HOME"'/projects/hub/tradingview"},"model":{"display_name":"Sonnet 5"},"context_window":{"used_percentage":45}}' | bash ~/.claude/statusline.sh`
+echo '{"workspace":{"current_dir":"'"$HOME"'/projects/hub/tradingview"},"model":{"display_name":"Sonnet 5"},"context_window":{"used_percentage":45}}' | bash ~/.claude/statusline.sh
+  ```
   ```
 --- with weekly usage (low) ---
 [36mtradingview[0m [90m|[0m [35msetup[0m [90m|[0m [34mSonnet 5[0m [90m|[0m [33m[####------] 45%[0m [90m|[0m [90mwk[0m [32m[###-------] 30%[0m
@@ -390,24 +396,6 @@ echo '{"workspace":{"current_dir":"'"$HOME"'/projects/hub/tradingview"},"model":
 - Files created: (none)
 - Files modified: /home/anant_gupta/.claude/statusline.sh
 - Files deleted: (none)
-- Commands run: chmod +x ~/.claude/statusline.sh && echo '{"workspace":{"current_dir":"'"$HOME"'/projects/hub/tradingview"},"model":{"display_name":"Sonnet 5"},"context_window":{"used_percentage":72}}' | bash ~/.claude/statusline.sh, echo "--- low context ---"
-echo '{"workspace":{"current_dir":"'"$HOME"'/projects/hub/tradingview"},"model":{"display_name":"Sonnet 5"},"context_window":{"used_percentage":20}}' | bash ~/.claude/statusline.sh
-echo
-echo "--- no context data ---"
-echo '{"workspace":{"current_dir":"'"$HOME"'/projects/hub/tradingview"},"model":{"display_name":"Sonnet 5"}}' | bash ~/.claude/statusline.sh
-echo
-echo "--- outside git repo ---"
-echo '{"workspace":{"current_dir":"'"$HOME"'"},"model":{"display_name":"Sonnet 5"},"context_window":{"used_percentage":45}}' | bash ~/.claude/statusline.sh
-echo
-echo "--- validate settings.json ---"
-python3 -c "import json; json.load(open('$HOME/.claude/settings.json')); print('valid JSON')"
-grep -A4 '"statusLine"' ~/.claude/settings.json, grep -n -i -A15 "rate_limit\|seven_day\|five_hour\|weekly" "/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tool-results/[REDACTED].txt" | head -150, echo "--- with weekly usage (low) ---"
-echo '{"workspace":{"current_dir":"'"$HOME"'/projects/hub/tradingview"},"model":{"display_name":"Sonnet 5"},"context_window":{"used_percentage":45},"rate_limits":{"seven_day":{"used_percentage":30}}}' | bash ~/.claude/statusline.sh
-echo
-echo "--- with weekly usage (critical) ---"
-echo '{"workspace":{"current_dir":"'"$HOME"'/projects/hub/tradingview"},"model":{"display_name":"Sonnet 5"},"context_window":{"used_percentage":45},"rate_limits":{"seven_day":{"used_percentage":88}}}' | bash ~/.claude/statusline.sh
-echo
-echo "--- rate_limits absent (free/API-key session) ---"
-echo '{"workspace":{"current_dir":"'"$HOME"'/projects/hub/tradingview"},"model":{"display_name":"Sonnet 5"},"context_window":{"used_percentage":45}}' | bash ~/.claude/statusline.sh
+- Commands run: chmod +x ~/.claude/statusline.sh && echo '{"workspace":{"current_dir":"'"$HOME"'/projects/hub/tradingview"},"model":{"display_name":"Sonnet 5"},"context_window":{"used_percentage":72}}' | bash ~/.claude/statusline.sh, echo "--- low context ---" echo '{"workspace":{"current_dir":"'"$HOME"'/projects/hub/tradingview"},"model":{"display_name":"Sonnet 5"},"context_window":{"used_percentage":20}}' | bash ~/.claude/statusline.sh echo echo "--- no context data ---" echo '{"workspace":{"current_dir":"'"$HOME"'/projects/hub/tradingview"},"model":{"display_name":"Sonnet 5"}}' | bash ~/.claude/statusline.sh echo echo "--- outside git repo ---" echo '{"workspace":{"current_dir":"'"$HOME"'"},"model":{"display_name":"Sonnet 5"},"context_window":{"used_percentage":45}}' | bash ~/.claude/statusline.sh echo echo "--- validate settings.json ---" python3 -c "import json; json.load(open('$HOME/.claude/settings.json')); print('valid JSON')" grep -A4 '"statusLine"' ~/.claude/settings.json, grep -n -i -A15 "rate_limit\|seven_day\|five_hour\|weekly" "/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tool-results/[REDACTED].txt" | head -150, echo "--- with weekly usage (low) ---" echo '{"workspace":{"current_dir":"'"$HOME"'/projects/hub/tradingview"},"model":{"display_name":"Sonnet 5"},"context_window":{"used_percentage":45},"rate_limits":{"seven_day":{"used_percentage":30}}}' | bash ~/.claude/statusline.sh echo echo "--- with weekly usage (critical) ---" echo '{"workspace":{"current_dir":"'"$HOME"'/projects/hub/tradingview"},"model":{"display_name":"Sonnet 5"},"context_window":{"used_percentage":45},"rate_limits":{"seven_day":{"used_percentage":88}}}' | bash ~/.claude/statusline.sh echo echo "--- rate_limits absent (free/API-key session) ---" echo '{"workspace":{"current_dir":"'"$HOME"'/projects/hub/tradingview"},"model":{"display_name":"Sonnet 5"},"context_window":{"used_percentage":45}}' | bash ~/.claude/statusline.sh
 - Tool call tally: Agent (1), Bash (4), Edit (3), mcp__jarvis__vault_read (1), Read (1), ToolSearch (2), WebFetch (2), WebSearch (1)
 

@@ -7,7 +7,7 @@ title: "Implement LLM seam for AI brain hub Phase 3"
 started_at: 2026-07-11T21:06:10
 ended_at: 2026-07-11T22:22:43
 duration_minutes: 77
-exported_at: 2026-07-30T15:28:59.6972445+04:00
+exported_at: 2026-07-30T16:47:46.9270578+04:00
 project: tradingview
 cwd: '/home/anant_gupta/projects/hub/tradingview'
 session_id: 504fbca6-8871-498d-943f-f72218b1383c
@@ -949,7 +949,9 @@ models.py
 sec.py
 store.py
   ```
-- `Bash` — `source .venv/bin/activate && python - <<'EOF'
+- `Bash`:
+  ```bash
+source .venv/bin/activate && python - <<'EOF'
 import duckdb
 conn = duckdb.connect("data/market.duckdb", read_only=True)
 print(conn.execute("select count(*), min(trading_date), max(trading_date) from daily_ohlcv where symbol='NVDA'").fetchall())
@@ -967,7 +969,8 @@ try:
 except Exception as e:
     print(e)
 conn.close()
-EOF`
+EOF
+  ```
   ```
 [(1762, datetime.date(2020, 7, 6), datetime.date(2026, 7, 10))]
 [('tiingo', 'split_dividend_adjusted'), ('polygon', 'split_dividend_adjusted')]
@@ -1310,14 +1313,17 @@ Report every match with file:line and a one-line verdict (real violation / false
 ---
 [REDACTED].json
   ```
-- `Bash` — `source .venv/bin/activate && python - <<'EOF'
+- `Bash`:
+  ```bash
+source .venv/bin/activate && python - <<'EOF'
 import duckdb
 conn = duckdb.connect("data/market.duckdb", read_only=True)
 print(conn.execute("select symbol, source_name, quality_status, confidence_cap, generated_at from data_quality_reports where symbol='NVDA' order by generated_at desc limit 3").fetchall())
 print(conn.execute("select count(*) from daily_ohlcv where symbol='NVDA' and source='tiingo'").fetchall())
 print(conn.execute("select decision_id, decision, from_state, to_state from brain_decisions where spec_id='5f003778-42bc-4d8a-ac12-839699d98a02'").fetchall())
 conn.close()
-EOF`
+EOF
+  ```
   ```
 [('NVDA', 'polygon', 'usable', 1.0, datetime.datetime(2026, 7, 11, 16, 59, 24, 307908)), ('NVDA', 'tiingo', 'usable', 1.0, datetime.datetime(2026, 7, 11, 8, 19, 4, 100780)), ('NVDA', 'polygon', 'stale', 0.5, datetime.datetime(2026, 7, 10, 21, 2, 18, 71092))]
 [(1511,)]
@@ -2663,9 +2669,12 @@ GROQ_API_KEY=
 # OLLAMA_API_BASE=http://localhost:11434
 # LLM_MODEL_OLLAMA=ollama/llama3.1
   ```
-- `Bash` — `source .venv/bin/activate && python -c "
+- `Bash`:
+  ```bash
+source .venv/bin/activate && python -c "
 import research_data.cli_desk, research_data.agents.runner, research_data.agents.analyst, research_data.agents.critic, research_data.agents.llm_client
-print('imports ok')" && pytest tests/test_ai_hub_llm_seam.py tests/test_property_ai_hub_cards.py tests/test_ai_hub_security.py -q 2>&1 | tail -5`
+print('imports ok')" && pytest tests/test_ai_hub_llm_seam.py tests/test_property_ai_hub_cards.py tests/test_ai_hub_security.py -q 2>&1 | tail -5
+  ```
   ```
 imports ok
 ...................                                                      [100%]
@@ -3086,13 +3095,16 @@ PASS: planted false Sharpe rejected (fail closed)
 PASS: live AI card smoke complete
 exit=0
   ```
-- `Bash` — `ls -t data/cards | head -5; echo ---; python -c "
+- `Bash`:
+  ```bash
+ls -t data/cards | head -5; echo ---; python -c "
 import json
 d=json.load(open('data/cards/NVDA_2026-07-10_46f18d85-b224-48b4-a8b9-da0db7ce5891.json'))
 print(d['action'], d['confidence'], d['max_confidence'], d['data_quality_status'], d['spec_id'])
 print(d['summary'][:300])
 print('refs:', d['evidence_ref_keys'][:3], '…', len(d['evidence_ref_keys']))
-"; echo ---; git check-ignore data/cards && echo "data/cards ignored" || echo "data/cards TRACKED"`
+"; echo ---; git check-ignore data/cards && echo "data/cards ignored" || echo "data/cards TRACKED"
+  ```
   ```
 [REDACTED].json
 [REDACTED].json
@@ -3108,7 +3120,9 @@ data/cards
 data/cards ignored
   ```
 - `Read` — `/home/anant_gupta/projects/hub/tradingview/Docs/fable5_run_memory.md`
-- `Bash` — `cat >> Docs/fable5_run_memory.md <<'EOF'
+- `Bash`:
+  ```bash
+cat >> Docs/fable5_run_memory.md <<'EOF'
 
 ## Phase 3 LLM seam (2026-07-12)
 
@@ -3128,7 +3142,8 @@ data/cards ignored
   as-is; keep both imports lazy inside `LiveLLMClient.__init__` so fixture-mode CI never pays the
   litellm import cost (and C4 grep stays trivially true).
 EOF
-echo done`
+echo done
+  ```
   ```
 done
   ```
@@ -3299,7 +3314,9 @@ exit=0
 .................................................................        [100%]
 497 passed in 374.88s (0:06:14)
   ```
-- `Bash` — `git add .env.example AGENTS.md Docs/fable5_run_memory.md pyproject.toml src/research_data/agents/ src/research_data/cards/validators.py src/research_data/cli_desk.py src/research_data/read_api.py tests/test_property_ai_hub_cards.py tests/test_ai_hub_llm_seam.py scripts/live_ai_card_smoke.py && git commit -m "$(cat <<'EOF'
+- `Bash`:
+  ```bash
+git add .env.example AGENTS.md Docs/fable5_run_memory.md pyproject.toml src/research_data/agents/ src/research_data/cards/validators.py src/research_data/cli_desk.py src/research_data/read_api.py tests/test_property_ai_hub_cards.py tests/test_ai_hub_llm_seam.py scripts/live_ai_card_smoke.py && git commit -m "$(cat <<'EOF'
 Land Phase 3 LLM seam: live analyst/critic cards + NVDA smoke
 
 - agents/llm_client.py: LiveLLMClient — litellm.Router (Gemini Flash →
@@ -3329,7 +3346,8 @@ Land Phase 3 LLM seam: live analyst/critic cards + NVDA smoke
 
 Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
 EOF
-)" && git push -u origin HEAD 2>&1 | tail -3`
+)" && git push -u origin HEAD 2>&1 | tail -3
+  ```
   ```
 [feat/phase3-llm-seam 25d5be8] Land Phase 3 LLM seam: live analyst/critic cards + NVDA smoke
  14 files changed, 952 insertions(+), 80 deletions(-)
@@ -3352,89 +3370,6 @@ Date:   Sun Jul 12 02:14:38 2026 +0400
 - Files created: /home/anant_gupta/projects/hub/tradingview/src/research_data/agents/llm_client.py, /home/anant_gupta/projects/hub/tradingview/src/research_data/agents/analyst.py, /home/anant_gupta/projects/hub/tradingview/src/research_data/agents/critic.py, /home/anant_gupta/projects/hub/tradingview/scripts/live_ai_card_smoke.py, /home/anant_gupta/projects/hub/tradingview/tests/test_ai_hub_llm_seam.py
 - Files modified: /home/anant_gupta/projects/hub/tradingview/pyproject.toml, /home/anant_gupta/projects/hub/tradingview/src/research_data/agents/analyst.py, /home/anant_gupta/projects/hub/tradingview/src/research_data/agents/runner.py, /home/anant_gupta/projects/hub/tradingview/src/research_data/cli_desk.py, /home/anant_gupta/projects/hub/tradingview/scripts/live_ai_card_smoke.py, /home/anant_gupta/projects/hub/tradingview/tests/test_property_ai_hub_cards.py, /home/anant_gupta/projects/hub/tradingview/.env.example, /home/anant_gupta/projects/hub/tradingview/AGENTS.md, /home/anant_gupta/projects/hub/tradingview/src/research_data/read_api.py, /home/anant_gupta/projects/hub/tradingview/src/research_data/agents/llm_client.py, /home/anant_gupta/projects/hub/tradingview/src/research_data/cards/validators.py, /home/anant_gupta/projects/hub/tradingview/tests/test_ai_hub_llm_seam.py
 - Files deleted: (none)
-- Commands run: find /home/anant_gupta/projects/hub/tradingview/src/research_data/cards /home/anant_gupta/projects/hub/tradingview/src/research_data/agents -type f | sort && echo --- && ls /home/anant_gupta/projects/hub/tradingview/scripts 2>/dev/null; ls /home/anant_gupta/projects/hub/tradingview/Docs, cat pyproject.toml .env.example && ls src/research_data src/research_data/factors tests, source .venv/bin/activate && pip list 2>/dev/null | grep -iE 'litellm|instructor|pydantic|httpx|openai|typer|duckdb' ; python -V, sed -n 1,120p src/research_data/brain/models.py && grep -n "count_tested_specs\|def latest_gate_batch" src/research_data/brain/store.py src/research_data/brain/loop.py, grep -n "register_desk_commands\|default_db\|project_root\|def app\|typer.Typer" src/research_data/cli.py | head -30; echo ---; grep -n "class TestRunRecord" -A 30 src/research_data/brain/models.py; echo ---; grep -n "def build_evidence_packet" -A 25 src/research_data/evidence.py, cat AGENTS.md 2>/dev/null | head -60; echo ===; cat Docs/fable5_run_memory.md 2>/dev/null; echo ===; sed -n 1,80p Docs/[REDACTED].md, grep -n "FundamentalInputs\|to_factor_inputs\|FundamentalsStore\|fundamentals" scripts/run_quality_momentum_study.py | head -20; echo ---; grep -rn "def to_factor_inputs" -A 5 src/research_data/fundamentals/ | head -40; echo ---; ls src/research_data/fundamentals/, source .venv/bin/activate && python - <<'EOF'
-import duckdb
-conn = duckdb.connect("data/market.duckdb", read_only=True)
-print(conn.execute("select count(*), min(trading_date), max(trading_date) from daily_ohlcv where symbol='NVDA'").fetchall())
-print(conn.execute("select distinct source, price_adjustment from daily_ohlcv").fetchall())
-try:
-    print(conn.execute("select spec_id, name, status, promotion_state from brain_strategy_specs").fetchall())
-except Exception as e:
-    print("specs:", e)
-try:
-    print(conn.execute("select gate_name, passed, as_of from brain_test_runs where spec_id='[REDACTED]' order by created_at desc limit 8").fetchall())
-except Exception as e:
-    print("runs:", e)
-try:
-    print(conn.execute("select count(*) from fundamentals_snapshots where symbol='NVDA'").fetchall())
-except Exception as e:
-    print(e)
-conn.close()
-EOF, sed -n 160,200p scripts/run_quality_momentum_study.py; sed -n 370,410p scripts/run_quality_momentum_study.py; echo ---; sed -n 40,90p src/research_data/brain/loop.py; echo ---; sed -n 355,380p src/research_data/brain/store.py, grep -n "analyze\|critique\|run_analyze\|run_critique\|FixtureLLM" tests/test_cli.py tests/test_citations_and_projection.py | head -30; echo ---; grep -n "data_quality_reports\|def.*quality_report\|get_latest" src/research_data/storage.py src/research_data/read_api.py src/research_data/quality.py | head -20; echo ---; cat Docs/GITHUB_WORKFLOW.md | head -40, sed -n 125,165p src/research_data/read_api.py; echo ---; cat .github/workflows/ci.yml 2>/dev/null | head -40, grep -rn "BUY\|_EXECUTION" tests/test_security_scope.py | head; echo ---; sed -n 1,60p .claude/skills/guardrail-check/SKILL.md 2>/dev/null; echo ---; ls data/cards 2>/dev/null; grep -rn "cards\|analyst\|critic" .claude/skills/guardrail-check/SKILL.md 2>/dev/null | head, source .venv/bin/activate && python - <<'EOF'
-import duckdb
-conn = duckdb.connect("data/market.duckdb", read_only=True)
-print(conn.execute("select symbol, source_name, quality_status, confidence_cap, generated_at from data_quality_reports where symbol='NVDA' order by generated_at desc limit 3").fetchall())
-print(conn.execute("select count(*) from daily_ohlcv where symbol='NVDA' and source='tiingo'").fetchall())
-print(conn.execute("select decision_id, decision, from_state, to_state from brain_decisions where spec_id='[REDACTED]'").fetchall())
-conn.close()
-EOF, git checkout -b feat/phase3-llm-seam && grep -c . .env 2>/dev/null && grep -oE '^(GEMINI_API_KEY|GROQ_API_KEY|OLLAMA_API_BASE|RESEARCH_DATA_LLM|LLM_MODEL)=' .env 2>/dev/null; grep -oE '^(GEMINI_API_KEY|GROQ_API_KEY)=.{1,3}' .env >/dev/null 2>&1 && echo "keys have values: $(grep -cE '^(GEMINI_API_KEY|GROQ_API_KEY)=..' .env)", grep -E '^(RESEARCH_DATA_LLM|LLM_MODEL)=' .env, sed -i 's|^LLM_MODEL=gemini/gemini-2.0-flash$|LLM_MODEL=gemini/gemini-3.5-flash|' .env && grep -E '^LLM_MODEL=' .env, source .venv/bin/activate && pip install -e . -q 2>&1 | tail -5 && pip list 2>/dev/null | grep -iE '^(litellm|instructor) ', grep -n "load_config\|load_app_config\|universe\b\|_config\|AppConfig" src/research_data/cli.py | head -15; grep -n "universe =\|load_config\|config =" scripts/run_quality_momentum_study.py | head; grep -n "def load_config\|def load_app_config" src/research_data/config.py; sed -n 137,175p src/research_data/fundamentals/store.py, grep -n "benchmark" src/research_data/config.py | head -5; grep -n "class EvidenceConstructionError\|^from\|^import" src/research_data/evidence.py | head -12, grep -n "def .*decision\|def list_" src/research_data/brain/store.py, source .venv/bin/activate && python -c "
-import research_data.cli_desk, research_data.agents.runner, research_data.agents.analyst, research_data.agents.critic, research_data.agents.llm_client
-print('imports ok')" && pytest tests/test_ai_hub_llm_seam.py tests/test_property_ai_hub_cards.py tests/test_ai_hub_security.py -q 2>&1 | tail -5, source .venv/bin/activate && pytest -q 2>&1 | tail -15, grep -n "" AGENTS.md | sed -n '48,56p', source .venv/bin/activate && RESEARCH_DATA_LLM=fixture python scripts/live_ai_card_smoke.py --db data/market.duckdb --symbol NVDA; echo "exit=$?", source .venv/bin/activate && RESEARCH_DATA_LLM=live timeout 300 python scripts/live_ai_card_smoke.py --db data/market.duckdb --symbol NVDA; echo "exit=$?", tail -3 /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bjc7hfz82.output, source .venv/bin/activate && pytest tests/test_ai_hub_llm_seam.py tests/test_property_ai_hub_cards.py tests/test_ai_hub_security.py -q 2>&1 | tail -3 && RESEARCH_DATA_LLM=live timeout 300 python scripts/live_ai_card_smoke.py --db data/market.duckdb --symbol NVDA; echo "exit=$?", ls -t data/cards | head -5; echo ---; python -c "
-import json
-d=json.load(open('data/cards/[REDACTED].json'))
-print(d['action'], d['confidence'], d['max_confidence'], d['data_quality_status'], d['spec_id'])
-print(d['summary'][:300])
-print('refs:', d['evidence_ref_keys'][:3], '…', len(d['evidence_ref_keys']))
-"; echo ---; git check-ignore data/cards && echo "data/cards ignored" || echo "data/cards TRACKED", cat >> Docs/fable5_run_memory.md <<'EOF'
-
-## Phase 3 LLM seam (2026-07-12)
-
-- `gemini/gemini-2.0-flash` was retired 2026-06-01; current litellm alias is `gemini/gemini-3.5-flash`.
-  `.env` / `.env.example` lag reality — confirm the alias at implement time, every time.
-- Gemini 3.x Flash is a reasoning model: "thinking" tokens spend the same `max_tokens` completion
-  budget, so 2048 truncated instructor's JSON mid-object. Fix: `max_tokens=8192` +
-  `reasoning_effort="low"` (with `litellm.drop_params=True` so Groq/Ollama fallbacks don't 400).
-- Latent bug only a first caller finds: DuckDB UUID columns come back as `uuid.UUID` objects and
-  fail pydantic `str` fields — `read_api.get_quality_report` needed `str(row[0])` despite the
-  table existing since Month 1. Storage round-trip tests used in-memory inserts, not UUID casts.
-- Numeric-allowlist prose discipline: models leak digits through indicator names ("the RSI 14.")
-  and dates even when told to quote only listed numbers. Ban digits in prose wholesale, name the
-  indicator-digit trap explicitly in the system prompt, and give the runner ONE corrective retry
-  that feeds the exact validator error back — that combination went from 1/2 to green live runs.
-- Instructor + litellm.Router: `instructor.from_litellm(router.completion, mode=Mode.JSON)` works
-  as-is; keep both imports lazy inside `LiveLLMClient.__init__` so fixture-mode CI never pays the
-  litellm import cost (and C4 grep stays trivially true).
-EOF
-echo done, source .venv/bin/activate && pytest -q 2>&1 | tail -3, source .venv/bin/activate && python -m research_data.cli analyze-symbol NVDA --quality missing --cards-dir /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad/cards 2>&1 | tail -2, source .venv/bin/activate && python -m research_data.cli analyze-symbol NVDA --as-of 2026-07-10 --price-source tiingo --cards-dir /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad/cards; echo "exit=$?", source .venv/bin/activate && RESEARCH_DATA_LLM=live timeout 240 python -m research_data.cli analyze-symbol NVDA --as-of 2026-07-10 --price-source tiingo --spec-id [REDACTED] --cards-dir /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad/cards --vault-mirror /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad/nvda_mirror.md; echo "exit=$?", source .venv/bin/activate && pytest tests/test_ai_hub_llm_seam.py tests/test_property_ai_hub_cards.py -q 2>&1 | tail -2 && RESEARCH_DATA_LLM=live timeout 240 python -m research_data.cli analyze-symbol NVDA --as-of 2026-07-10 --price-source tiingo --spec-id [REDACTED] --cards-dir /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad/cards --vault-mirror /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad/nvda_mirror.md; echo "exit=$?", git status --short && git check-ignore .env && echo ".env ignored", git log --oneline -3 && git diff --stat | tail -3, sleep_pid=""; until [ -s /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bcjwqm1mh.output ] && grep -qE "passed|failed|error" /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bcjwqm1mh.output; do sleep 5; done; cat /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bcjwqm1mh.output, git add .env.example AGENTS.md Docs/fable5_run_memory.md pyproject.toml src/research_data/agents/ src/research_data/cards/validators.py src/research_data/cli_desk.py src/research_data/read_api.py tests/test_property_ai_hub_cards.py tests/test_ai_hub_llm_seam.py scripts/live_ai_card_smoke.py && git commit -m "$(cat <<'EOF'
-Land Phase 3 LLM seam: live analyst/critic cards + NVDA smoke
-
-- agents/llm_client.py: LiveLLMClient — litellm.Router (Gemini Flash →
-  Groq → Ollama) + instructor JSON mode; sole litellm import site (C4);
-  DEFAULT_MAX_TOKENS=8192 (Gemini 3.x thinking shares the completion
-  budget), reasoning_effort=low, fail-fast after ROUTER_MAX_FAILURES.
-  Fixture client stays the CI default.
-- agents/analyst.py / critic.py: evidence-bound prompts — ScorePacket
-  numbers + evidence_refs for the analyst, four-key gate whitelist for
-  the critic; quotable numbers pre-rendered at display precision;
-  confidence may only be capped/lowered.
-- agents/runner.py: happy path wired to real prompts for any client;
-  ids/caps/provenance stamped server-side, never model-authored; one
-  corrective retry feeding the validator error back (live only).
-- cli_desk.py: analyze-symbol happy path via FactorEngine over the
-  configured universe (--price-source, --spec-id); blocked E1 path
-  unchanged (MISSING/CONTRADICTORY → zero LLM calls).
-- cards/validators.py: integral float tokens ("ranks 3.") may match the
-  int bucket — live-run regression.
-- read_api.py: DuckDB UUID column coerced to str in get_quality_report.
-- scripts/live_ai_card_smoke.py: env-gated NVDA smoke — live card +
-  CriticReview under data/cards/, planted false Sharpe fails closed,
-  pass/fail stdout only; never part of default pytest.
-- tests: fixture happy-path/fail-closed/fail-fast coverage + Property 23
-  (497 passed offline).
-- .env.example: gemini-2.0-flash retired 2026-06-01 → gemini-3.5-flash.
-
-Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
-EOF
-)" && git push -u origin HEAD 2>&1 | tail -3, git status --short; git show --stat HEAD | head -5
+- Commands run: find /home/anant_gupta/projects/hub/tradingview/src/research_data/cards /home/anant_gupta/projects/hub/tradingview/src/research_data/agents -type f | sort && echo --- && ls /home/anant_gupta/projects/hub/tradingview/scripts 2>/dev/null; ls /home/anant_gupta/projects/hub/tradingview/Docs, cat pyproject.toml .env.example && ls src/research_data src/research_data/factors tests, source .venv/bin/activate && pip list 2>/dev/null | grep -iE 'litellm|instructor|pydantic|httpx|openai|typer|duckdb' ; python -V, sed -n 1,120p src/research_data/brain/models.py && grep -n "count_tested_specs\|def latest_gate_batch" src/research_data/brain/store.py src/research_data/brain/loop.py, grep -n "register_desk_commands\|default_db\|project_root\|def app\|typer.Typer" src/research_data/cli.py | head -30; echo ---; grep -n "class TestRunRecord" -A 30 src/research_data/brain/models.py; echo ---; grep -n "def build_evidence_packet" -A 25 src/research_data/evidence.py, cat AGENTS.md 2>/dev/null | head -60; echo ===; cat Docs/fable5_run_memory.md 2>/dev/null; echo ===; sed -n 1,80p Docs/[REDACTED].md, grep -n "FundamentalInputs\|to_factor_inputs\|FundamentalsStore\|fundamentals" scripts/run_quality_momentum_study.py | head -20; echo ---; grep -rn "def to_factor_inputs" -A 5 src/research_data/fundamentals/ | head -40; echo ---; ls src/research_data/fundamentals/, source .venv/bin/activate && python - <<'EOF' import duckdb conn = duckdb.connect("data/market.duckdb", read_only=True) print(conn.execute("select count(*), min(trading_date), max(trading_date) from daily_ohlcv where symbol='NVDA'").fetchall()) print(conn.execute("select distinct source, price_adjustment from daily_ohlcv").fetchall()) try: print(conn.execute("select spec_id, name, status, promotion_state from brain_strategy_specs").fetchall()) except Exception as e: print("specs:", e) try: print(conn.execute("select gate_name, passed, as_of from brain_test_runs where spec_id='[REDACTED]' order by created_at desc limit 8").fetchall()) except Exception as e: print("runs:", e) try: print(conn.execute("select count(*) from fundamentals_snapshots where symbol='NVDA'").fetchall()) except Exception as e: print(e) conn.close() EOF, sed -n 160,200p scripts/run_quality_momentum_study.py; sed -n 370,410p scripts/run_quality_momentum_study.py; echo ---; sed -n 40,90p src/research_data/brain/loop.py; echo ---; sed -n 355,380p src/research_data/brain/store.py, grep -n "analyze\|critique\|run_analyze\|run_critique\|FixtureLLM" tests/test_cli.py tests/test_citations_and_projection.py | head -30; echo ---; grep -n "data_quality_reports\|def.*quality_report\|get_latest" src/research_data/storage.py src/research_data/read_api.py src/research_data/quality.py | head -20; echo ---; cat Docs/GITHUB_WORKFLOW.md | head -40, sed -n 125,165p src/research_data/read_api.py; echo ---; cat .github/workflows/ci.yml 2>/dev/null | head -40, grep -rn "BUY\|_EXECUTION" tests/test_security_scope.py | head; echo ---; sed -n 1,60p .claude/skills/guardrail-check/SKILL.md 2>/dev/null; echo ---; ls data/cards 2>/dev/null; grep -rn "cards\|analyst\|critic" .claude/skills/guardrail-check/SKILL.md 2>/dev/null | head, source .venv/bin/activate && python - <<'EOF' import duckdb conn = duckdb.connect("data/market.duckdb", read_only=True) print(conn.execute("select symbol, source_name, quality_status, confidence_cap, generated_at from data_quality_reports where symbol='NVDA' order by generated_at desc limit 3").fetchall()) print(conn.execute("select count(*) from daily_ohlcv where symbol='NVDA' and source='tiingo'").fetchall()) print(conn.execute("select decision_id, decision, from_state, to_state from brain_decisions where spec_id='[REDACTED]'").fetchall()) conn.close() EOF, git checkout -b feat/phase3-llm-seam && grep -c . .env 2>/dev/null && grep -oE '^(GEMINI_API_KEY|GROQ_API_KEY|OLLAMA_API_BASE|RESEARCH_DATA_LLM|LLM_MODEL)=' .env 2>/dev/null; grep -oE '^(GEMINI_API_KEY|GROQ_API_KEY)=.{1,3}' .env >/dev/null 2>&1 && echo "keys have values: $(grep -cE '^(GEMINI_API_KEY|GROQ_API_KEY)=..' .env)", grep -E '^(RESEARCH_DATA_LLM|LLM_MODEL)=' .env, sed -i 's|^LLM_MODEL=gemini/gemini-2.0-flash$|LLM_MODEL=gemini/gemini-3.5-flash|' .env && grep -E '^LLM_MODEL=' .env, source .venv/bin/activate && pip install -e . -q 2>&1 | tail -5 && pip list 2>/dev/null | grep -iE '^(litellm|instructor) ', grep -n "load_config\|load_app_config\|universe\b\|_config\|AppConfig" src/research_data/cli.py | head -15; grep -n "universe =\|load_config\|config =" scripts/run_quality_momentum_study.py | head; grep -n "def load_config\|def load_app_config" src/research_data/config.py; sed -n 137,175p src/research_data/fundamentals/store.py, grep -n "benchmark" src/research_data/config.py | head -5; grep -n "class EvidenceConstructionError\|^from\|^import" src/research_data/evidence.py | head -12, grep -n "def .*decision\|def list_" src/research_data/brain/store.py, source .venv/bin/activate && python -c " import research_data.cli_desk, research_data.agents.runner, research_data.agents.analyst, research_data.agents.critic, research_data.agents.llm_client print('imports ok')" && pytest tests/test_ai_hub_llm_seam.py tests/test_property_ai_hub_cards.py tests/test_ai_hub_security.py -q 2>&1 | tail -5, source .venv/bin/activate && pytest -q 2>&1 | tail -15, grep -n "" AGENTS.md | sed -n '48,56p', source .venv/bin/activate && RESEARCH_DATA_LLM=fixture python scripts/live_ai_card_smoke.py --db data/market.duckdb --symbol NVDA; echo "exit=$?", source .venv/bin/activate && RESEARCH_DATA_LLM=live timeout 300 python scripts/live_ai_card_smoke.py --db data/market.duckdb --symbol NVDA; echo "exit=$?", tail -3 /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bjc7hfz82.output, source .venv/bin/activate && pytest tests/test_ai_hub_llm_seam.py tests/test_property_ai_hub_cards.py tests/test_ai_hub_security.py -q 2>&1 | tail -3 && RESEARCH_DATA_LLM=live timeout 300 python scripts/live_ai_card_smoke.py --db data/market.duckdb --symbol NVDA; echo "exit=$?", ls -t data/cards | head -5; echo ---; python -c " import json d=json.load(open('data/cards/[REDACTED].json')) print(d['action'], d['confidence'], d['max_confidence'], d['data_quality_status'], d['spec_id']) print(d['summary'][:300]) print('refs:', d['evidence_ref_keys'][:3], '…', len(d['evidence_ref_keys'])) "; echo ---; git check-ignore data/cards && echo "data/cards ignored" || echo "data/cards TRACKED", cat >> Docs/fable5_run_memory.md <<'EOF' ## Phase 3 LLM seam (2026-07-12) - `gemini/gemini-2.0-flash` was retired 2026-06-01; current litellm alias is `gemini/gemini-3.5-flash`. `.env` / `.env.example` lag reality — confirm the alias at implement time, every time. - Gemini 3.x Flash is a reasoning model: "thinking" tokens spend the same `max_tokens` completion budget, so 2048 truncated instructor's JSON mid-object. Fix: `max_tokens=8192` + `reasoning_effort="low"` (with `litellm.drop_params=True` so Groq/Ollama fallbacks don't 400). - Latent bug only a first caller finds: DuckDB UUID columns come back as `uuid.UUID` objects and fail pydantic `str` fields — `read_api.get_quality_report` needed `str(row[0])` despite the table existing since Month 1. Storage round-trip tests used in-memory inserts, not UUID casts. - Numeric-allowlist prose discipline: models leak digits through indicator names ("the RSI 14.") and dates even when told to quote only listed numbers. Ban digits in prose wholesale, name the indicator-digit trap explicitly in the system prompt, and give the runner ONE corrective retry that feeds the exact validator error back — that combination went from 1/2 to green live runs. - Instructor + litellm.Router: `instructor.from_litellm(router.completion, mode=Mode.JSON)` works as-is; keep both imports lazy inside `LiveLLMClient.__init__` so fixture-mode CI never pays the litellm import cost (and C4 grep stays trivially true). EOF echo done, source .venv/bin/activate && pytest -q 2>&1 | tail -3, source .venv/bin/activate && python -m research_data.cli analyze-symbol NVDA --quality missing --cards-dir /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad/cards 2>&1 | tail -2, source .venv/bin/activate && python -m research_data.cli analyze-symbol NVDA --as-of 2026-07-10 --price-source tiingo --cards-dir /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad/cards; echo "exit=$?", source .venv/bin/activate && RESEARCH_DATA_LLM=live timeout 240 python -m research_data.cli analyze-symbol NVDA --as-of 2026-07-10 --price-source tiingo --spec-id [REDACTED] --cards-dir /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad/cards --vault-mirror /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad/nvda_mirror.md; echo "exit=$?", source .venv/bin/activate && pytest tests/test_ai_hub_llm_seam.py tests/test_property_ai_hub_cards.py -q 2>&1 | tail -2 && RESEARCH_DATA_LLM=live timeout 240 python -m research_data.cli analyze-symbol NVDA --as-of 2026-07-10 --price-source tiingo --spec-id [REDACTED] --cards-dir /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad/cards --vault-mirror /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/scratchpad/nvda_mirror.md; echo "exit=$?", git status --short && git check-ignore .env && echo ".env ignored", git log --oneline -3 && git diff --stat | tail -3, sleep_pid=""; until [ -s /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bcjwqm1mh.output ] && grep -qE "passed|failed|error" /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bcjwqm1mh.output; do sleep 5; done; cat /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bcjwqm1mh.output, git add .env.example AGENTS.md Docs/fable5_run_memory.md pyproject.toml src/research_data/agents/ src/research_data/cards/validators.py src/research_data/cli_desk.py src/research_data/read_api.py tests/test_property_ai_hub_cards.py tests/test_ai_hub_llm_seam.py scripts/live_ai_card_smoke.py && git commit -m "$(cat <<'EOF' Land Phase 3 LLM seam: live analyst/critic cards + NVDA smoke - agents/llm_client.py: LiveLLMClient — litellm.Router (Gemini Flash → Groq → Ollama) + instructor JSON mode; sole litellm import site (C4); DEFAULT_MAX_TOKENS=8192 (Gemini 3.x thinking shares the completion budget), reasoning_effort=low, fail-fast after ROUTER_MAX_FAILURES. Fixture client stays the CI default. - agents/analyst.py / critic.py: evidence-bound prompts — ScorePacket numbers + evidence_refs for the analyst, four-key gate whitelist for the critic; quotable numbers pre-rendered at display precision; confidence may only be capped/lowered. - agents/runner.py: happy path wired to real prompts for any client; ids/caps/provenance stamped server-side, never model-authored; one corrective retry feeding the validator error back (live only). - cli_desk.py: analyze-symbol happy path via FactorEngine over the configured universe (--price-source, --spec-id); blocked E1 path unchanged (MISSING/CONTRADICTORY → zero LLM calls). - cards/validators.py: integral float tokens ("ranks 3.") may match the int bucket — live-run regression. - read_api.py: DuckDB UUID column coerced to str in get_quality_report. - scripts/live_ai_card_smoke.py: env-gated NVDA smoke — live card + CriticReview under data/cards/, planted false Sharpe fails closed, pass/fail stdout only; never part of default pytest. - tests: fixture happy-path/fail-closed/fail-fast coverage + Property 23 (497 passed offline). - .env.example: gemini-2.0-flash retired 2026-06-01 → gemini-3.5-flash. Co-Authored-By: Claude Fable 5 <noreply@anthropic.com> EOF )" && git push -u origin HEAD 2>&1 | tail -3, git status --short; git show --stat HEAD | head -5
 - Tool call tally: Bash (44), Edit (33), Read (24), TaskStop (1), ToolSearch (3), WebSearch (1), Write (5)
 

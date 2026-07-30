@@ -7,7 +7,7 @@ title: "Merge click burst into reusable formation sequence"
 started_at: 2026-07-23T12:05:51
 ended_at: 2026-07-24T20:40:36
 duration_minutes: 1955
-exported_at: 2026-07-30T15:28:59.6972445+04:00
+exported_at: 2026-07-30T16:47:46.9270578+04:00
 project: portfolio
 cwd: '/home/anant_gupta/projects/hub/portfolio'
 session_id: 16e3d2f6-7ccd-482e-9b15-aec209f29325
@@ -370,13 +370,16 @@ Removing the forced-eager Three.js (232 KB gz), Clerk (~188 KB raw), and GSAP (~
 **Tool calls:**
 
 - `Skill` — `{"skill":"performance"}`
-- `Bash` — `echo "=== SSR guard check ===" && grep -rn "ObsidianBackground\|ProjectsSlider" src/ --include="*.tsx" | grep -v "dynamic\|__tests__"
+- `Bash`:
+  ```bash
+echo "=== SSR guard check ===" && grep -rn "ObsidianBackground\|ProjectsSlider" src/ --include="*.tsx" | grep -v "dynamic\|__tests__"
 echo ""
 echo "=== Raw img tags ===" && grep -rn "<img " src/ --include="*.tsx" --include="*.jsx"
 echo ""
 echo "=== console.* in prod code ===" && grep -rn "console\." src/ --include="*.ts" --include="*.tsx" | grep -v "__tests__" | grep -v ".test."
 echo ""
-echo "=== use client in sections/cards ===" && grep -rln "'use client'" src/components/sections/ src/components/cards/ --include="*.tsx"`
+echo "=== use client in sections/cards ===" && grep -rln "'use client'" src/components/sections/ src/components/cards/ --include="*.tsx"
+  ```
   ```
 === SSR guard check ===
 src/components/PortfolioContent.tsx:13:import ObsidianBackground from "@/components/three/ObsidianBackground";
@@ -428,14 +431,17 @@ src/app/api/revalidate/route.ts:40:    console.error("Revalidation error:", err)
 === use client in sections/cards ===
   ```
 - `Read` — `/home/anant_gupta/projects/hub/portfolio/src/components/three/ObsidianBackground.tsx`
-- `Bash` — `echo "=== use client count in sections ===" 
+- `Bash`:
+  ```bash
+echo "=== use client count in sections ===" 
 grep -rl "\"use client\"" src/components/sections/ --include="*.tsx" 2>/dev/null
 echo "---"
 grep -rl "\"use client\"" src/components/cards/ --include="*.tsx" 2>/dev/null
 echo ""
 echo "=== GROQ over-fetch spread ===" && grep -n "\.\.\." src/sanity/lib/queries.ts 2>/dev/null | head -20
 ls src/sanity/lib/ 2>/dev/null
-find src/sanity -iname "*queries*"`
+find src/sanity -iname "*queries*"
+  ```
   ```
 === use client count in sections ===
 src/components/sections/ProfileImage.tsx
@@ -512,9 +518,12 @@ Route (app)
 ○  (Static)   prerendered as static content
 ƒ  (Dynamic)  server-rendered on demand
   ```
-- `Bash` — `cat package.json | grep -A2 '"scripts"' -A 40 | head -50
+- `Bash`:
+  ```bash
+cat package.json | grep -A2 '"scripts"' -A 40 | head -50
 echo "---"
-grep -n "analyze\|BundleAnalyzer" next.config.* package.json 2>/dev/null`
+grep -n "analyze\|BundleAnalyzer" next.config.* package.json 2>/dev/null
+  ```
   ```
   "scripts": {
     "dev": "next dev",
@@ -559,11 +568,14 @@ grep -n "analyze\|BundleAnalyzer" next.config.* package.json 2>/dev/null`
     "gsap": "^3.15.0",
 ---
   ```
-- `Bash` — `du -sh .next/static/chunks/*.js 2>/dev/null | sort -rh | head -25
+- `Bash`:
+  ```bash
+du -sh .next/static/chunks/*.js 2>/dev/null | sort -rh | head -25
 echo "---TOTAL client JS---"
 du -sh .next/static/chunks 2>/dev/null
 echo "---three/r3f related chunks---"
-find .next/static/chunks -iname "*.js" -exec sh -c 'grep -lE "ObsidianBackgroundCanvas|@react-three|drei" "$1" 2>/dev/null' _ {} \; | xargs -I{} du -h {} 2>/dev/null`
+find .next/static/chunks -iname "*.js" -exec sh -c 'grep -lE "ObsidianBackgroundCanvas|@react-three|drei" "$1" 2>/dev/null' _ {} \; | xargs -I{} du -h {} 2>/dev/null
+  ```
   ```
 4.1M	.next/static/chunks/2p27vjx4hgrm5.js
 1008K	.next/static/chunks/0qlix66s8cuqu.js
@@ -596,14 +608,17 @@ find .next/static/chunks -iname "*.js" -exec sh -c 'grep -lE "ObsidianBackground
 872K	.next/static/chunks/11q0il4m9o1xi.js
 260K	.next/static/chunks/3qbw60bgsh-ss.js
   ```
-- `Bash` — `echo "=== 4.1M chunk contents sniff ==="
+- `Bash`:
+  ```bash
+echo "=== 4.1M chunk contents sniff ==="
 grep -oE "\"[a-zA-Z@/_-]{4,40}\"" .next/static/chunks/2p27vjx4hgrm5.js | sort | uniq -c | sort -rn | head -30
 echo ""
 echo "=== does it contain sourcemap / is it dev-only? ==="
 head -c 300 .next/static/chunks/2p27vjx4hgrm5.js
 echo ""
 echo "=== 1M chunk sniff ==="
-grep -oE "\"[a-zA-Z@/_-]{4,40}\"" .next/static/chunks/0qlix66s8cuqu.js | sort | uniq -c | sort -rn | head -20`
+grep -oE "\"[a-zA-Z@/_-]{4,40}\"" .next/static/chunks/0qlix66s8cuqu.js | sort | uniq -c | sort -rn | head -20
+  ```
   ```
 === 4.1M chunk contents sniff ===
     677 "string"
@@ -661,7 +676,9 @@ grep -oE "\"[a-zA-Z@/_-]{4,40}\"" .next/static/chunks/0qlix66s8cuqu.js | sort | 
      20 "click"
      20 "aria-label"
   ```
-- `Bash` — `echo "=== app build manifest for / route ==="
+- `Bash`:
+  ```bash
+echo "=== app build manifest for / route ==="
 find .next -iname "*.json" | xargs grep -l "2p27vjx4hgrm5\|0qlix66s8cuqu" 2>/dev/null
 echo "---"
 cat .next/app-build-manifest.json 2>/dev/null | python3 -c "
@@ -671,7 +688,8 @@ for k,v in d.get('pages',{}).items():
     print(k, '->', len(v), 'files')
     for f in v:
         print('   ', f)
-" 2>/dev/null | head -100`
+" 2>/dev/null | head -100
+  ```
   ```
 === app build manifest for / route ===
 .next/diagnostics/route-bundle-stats.json
@@ -786,7 +804,9 @@ for k,v in d.get('pages',{}).items():
     }
 ]
   ```
-- `Bash` — `echo "=== confirm three.js/r3f signature in 11q0il4m9o1xi.js ==="
+- `Bash`:
+  ```bash
+echo "=== confirm three.js/r3f signature in 11q0il4m9o1xi.js ==="
 grep -oE "THREE\.[A-Za-z]+|react-three|@react-three/[a-z]+|drei" .next/static/chunks/11q0il4m9o1xi.js | sort | uniq -c | sort -rn | head -20
 echo ""
 echo "=== gzip size of this chunk ==="
@@ -794,7 +814,8 @@ gzip -c .next/static/chunks/11q0il4m9o1xi.js | wc -c
 echo ""
 echo "=== is this chunk ALSO in the /studio route list? (shared vendor vs page-specific) ==="
 grep -c "11q0il4m9o1xi" .next/diagnostics/route-bundle-stats.json
-grep -B2 "11q0il4m9o1xi" .next/diagnostics/route-bundle-stats.json | grep route`
+grep -B2 "11q0il4m9o1xi" .next/diagnostics/route-bundle-stats.json | grep route
+  ```
   ```
 === confirm three.js/r3f signature in 11q0il4m9o1xi.js ===
       9 THREE.BatchedMesh
@@ -823,22 +844,28 @@ grep -B2 "11q0il4m9o1xi" .next/diagnostics/route-bundle-stats.json | grep route`
 === is this chunk ALSO in the /studio route list? (shared vendor vs page-specific) ===
 1
   ```
-- `Bash` — `pnpm start > /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/16e3d2f6-7ccd-482e-9b15-aec209f29325/scratchpad/next-start.log 2>&1 &
+- `Bash`:
+  ```bash
+pnpm start > /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/16e3d2f6-7ccd-482e-9b15-aec209f29325/scratchpad/next-start.log 2>&1 &
 echo "started with pid $!"
 sleep 6
-curl -s http://localhost:3000/ -o /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/16e3d2f6-7ccd-482e-9b15-aec209f29325/scratchpad/root.html -w "HTTP %{http_code}\n" || cat /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/16e3d2f6-7ccd-482e-9b15-aec209f29325/scratchpad/next-start.log`
+curl -s http://localhost:3000/ -o /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/16e3d2f6-7ccd-482e-9b15-aec209f29325/scratchpad/root.html -w "HTTP %{http_code}\n" || cat /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/16e3d2f6-7ccd-482e-9b15-aec209f29325/scratchpad/next-start.log
+  ```
   ```
 started with pid 979116
 [1]+  Exit 1                  pnpm start > /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/next-start.log 2>&1
 HTTP 200
   ```
-- `Bash` — `cat /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/16e3d2f6-7ccd-482e-9b15-aec209f29325/scratchpad/next-start.log
+- `Bash`:
+  ```bash
+cat /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/16e3d2f6-7ccd-482e-9b15-aec209f29325/scratchpad/next-start.log
 echo "=== root.html script tags for the three chunk ==="
 grep -o '<script[^>]*11q0il4m9o1xi[^>]*>' /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/16e3d2f6-7ccd-482e-9b15-aec209f29325/scratchpad/root.html
 echo "=== all script src tags in head/body (first 40) ==="
 grep -oE '<script[^>]*src="[^"]*"[^>]*>' /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/16e3d2f6-7ccd-482e-9b15-aec209f29325/scratchpad/root.html | head -40
 echo "=== any preload link for the chunk ==="
-grep -o '<link[^>]*11q0il4m9o1xi[^>]*>' /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/16e3d2f6-7ccd-482e-9b15-aec209f29325/scratchpad/root.html`
+grep -o '<link[^>]*11q0il4m9o1xi[^>]*>' /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/16e3d2f6-7ccd-482e-9b15-aec209f29325/scratchpad/root.html
+  ```
   ```
 > portfolio@0.1.0 start /home/anant_gupta/projects/hub/portfolio
 > next start
@@ -900,11 +927,14 @@ Error: listen EADDRINUSE: address already in use :::3000
   ```
 - `Read` — `/home/anant_gupta/projects/hub/portfolio/src/components/PortfolioContent.tsx`
 - `Read` — `/home/anant_gupta/projects/hub/portfolio/src/components/three/ProjectsSlider.tsx`
-- `Bash` — `grep -n "three\|@react-three\|THREE" src/components/three/ProjectsSlider.tsx
+- `Bash`:
+  ```bash
+grep -n "three\|@react-three\|THREE" src/components/three/ProjectsSlider.tsx
 echo "--- CometCard ---"
 grep -n "three\|@react-three\|THREE\|use client" src/components/ui/comet-card.tsx | head -20
 echo "--- does ProjectsSlider import CometCard which pulls three? ---"
-wc -l src/components/three/ProjectsSlider.tsx src/components/ui/comet-card.tsx`
+wc -l src/components/three/ProjectsSlider.tsx src/components/ui/comet-card.tsx
+  ```
   ```
 --- CometCard ---
 1:"use client";
@@ -913,11 +943,14 @@ wc -l src/components/three/ProjectsSlider.tsx src/components/ui/comet-card.tsx`
   157 src/components/ui/comet-card.tsx
   618 total
   ```
-- `Bash` — `PORT=3001 pnpm start > /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/16e3d2f6-7ccd-482e-9b15-aec209f29325/scratchpad/next-start-prod.log 2>&1 &
+- `Bash`:
+  ```bash
+PORT=3001 pnpm start > /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/16e3d2f6-7ccd-482e-9b15-aec209f29325/scratchpad/next-start-prod.log 2>&1 &
 echo "started pid $!"
 sleep 5
 curl -s http://localhost:3001/ -o /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/16e3d2f6-7ccd-482e-9b15-aec209f29325/scratchpad/root-prod.html -w "HTTP %{http_code}\n"
-cat /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/16e3d2f6-7ccd-482e-9b15-aec209f29325/scratchpad/next-start-prod.log`
+cat /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/16e3d2f6-7ccd-482e-9b15-aec209f29325/scratchpad/next-start-prod.log
+  ```
   ```
 started pid 979803
 [1]+  Exit 1                  PORT=3001 pnpm start > /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/next-start-prod.log 2>&1
@@ -942,8 +975,11 @@ Error: listen EADDRINUSE: address already in use :::3001
   ```
 LISTEN 0      511                 *:3000             *:*    users:(("next-server (v1",pid=820827,fd=24))
   ```
-- `Bash` — `ss -ltnp 2>/dev/null | grep -E "LISTEN"
-ps aux | grep -E "next|node" | grep -v grep`
+- `Bash`:
+  ```bash
+ss -ltnp 2>/dev/null | grep -E "LISTEN"
+ps aux | grep -E "next|node" | grep -v grep
+  ```
   ```
 LISTEN 0      4096    127.0.0.53%lo:53         0.0.0.0:*                                           
 LISTEN 0      511         127.0.0.1:44636      0.0.0.0:*    users:(("node",pid=835648,fd=22))      
@@ -1027,11 +1063,14 @@ anant_g+  973158  0.8  0.4 9888072 68968 pts/23  Sl+  00:26   0:03 node /home/an
 anant_g+  973170  0.3  0.3 1485716 53860 pts/23  Sl+  00:26   0:01 node /home/anant_gupta/.nvm/versions/node/v24.14.1/bin/local-mcp
 anant_g+  973181  0.5  0.4 9983076 76236 pts/23  Sl+  00:26   0:02 node /home/anant_gupta/.nvm/versions/node/v24.14.1/bin/mcp-server
   ```
-- `Bash` — `nohup pnpm exec next start -p 4090 > /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/16e3d2f6-7ccd-482e-9b15-aec209f29325/scratchpad/next-start-prod.log 2>&1 &
+- `Bash`:
+  ```bash
+nohup pnpm exec next start -p 4090 > /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/16e3d2f6-7ccd-482e-9b15-aec209f29325/scratchpad/next-start-prod.log 2>&1 &
 disown
 sleep 5
 curl -s http://localhost:4090/ -o /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/16e3d2f6-7ccd-482e-9b15-aec209f29325/scratchpad/root-prod.html -w "HTTP %{http_code}\n"
-cat /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/16e3d2f6-7ccd-482e-9b15-aec209f29325/scratchpad/next-start-prod.log`
+cat /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/16e3d2f6-7ccd-482e-9b15-aec209f29325/scratchpad/next-start-prod.log
+  ```
   ```
 HTTP 200
 ▲ Next.js 16.2.9
@@ -1039,13 +1078,16 @@ HTTP 200
 - Network:       http://10.255.255.254:4090
 ✓ Ready in 298ms
   ```
-- `Bash` — `F=/tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/16e3d2f6-7ccd-482e-9b15-aec209f29325/scratchpad/root-prod.html
+- `Bash`:
+  ```bash
+F=/tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/16e3d2f6-7ccd-482e-9b15-aec209f29325/scratchpad/root-prod.html
 echo "=== total script tags ===" 
 grep -oE '<script[^>]*src="[^"]*"[^>]*>' "$F" | wc -l
 echo "=== does the three.js chunk (11q0il4m9o1xi) appear? ==="
 grep -o '11q0il4m9o1xi[^"]*' "$F"
 echo "=== all script src paths ==="
-grep -oE 'src="[^"]*chunks[^"]*"' "$F"`
+grep -oE 'src="[^"]*chunks[^"]*"' "$F"
+  ```
   ```
 === total script tags ===
 23
@@ -1100,13 +1142,16 @@ src="/_next/static/chunks/0dtpbx_krh0e5.js"
 src="/_next/static/chunks/0cz1d0mv5g_q7.js"
 src="/_next/static/chunks/1bfiwnxsa8696.js"
   ```
-- `Bash` — `echo "=== all files importing three or @react-three ===" 
+- `Bash`:
+  ```bash
+echo "=== all files importing three or @react-three ===" 
 grep -rln "from \"three\"\|from '@react-three\|from \"@react-three" src/ --include="*.tsx" --include="*.ts"
 echo ""
 echo "=== check HeaderScrolling / HeaderLogo for eager R3F import ==="
 grep -n "import\|dynamic" src/components/HeaderScrolling.tsx | head -20
 echo "---"
-grep -n "import\|dynamic" src/components/three/HeaderLogo.tsx | head -20`
+grep -n "import\|dynamic" src/components/three/HeaderLogo.tsx | head -20
+  ```
   ```
 === all files importing three or @react-three ===
 src/hooks/useLogoTexture.ts
@@ -1136,10 +1181,13 @@ src/components/orby/OrbyCanvas.tsx
 37:const DynamicHeaderLogoCanvas = dynamic(() => import("./HeaderLogoCanvas"), {
 50:/** Keeps a failed dynamic/R3F render from removing the visible static mark. */
   ```
-- `Bash` — `grep -n "^import\|from \"three\|from '@react-three\|use client" src/components/EducationFlowchart.tsx | head -20
+- `Bash`:
+  ```bash
+grep -n "^import\|from \"three\|from '@react-three\|use client" src/components/EducationFlowchart.tsx | head -20
 echo ""
 echo "=== who imports EducationFlowchart? ==="
-grep -rn "EducationFlowchart" src/ --include="*.tsx" | grep -v "__tests__"`
+grep -rn "EducationFlowchart" src/ --include="*.tsx" | grep -v "__tests__"
+  ```
   ```
 1:"use client";
 3:import { Html, Line, MeshDistortMaterial } from "@react-three/drei";
@@ -1155,7 +1203,9 @@ src/components/EducationFlowchart.tsx:476:export function EducationFlowchart({ i
 src/components/sections/EducationSection.tsx:2:import { EducationFlowchart } from "@/components/EducationFlowchart";
 src/components/sections/EducationSection.tsx:36:      <EducationFlowchart items={list} />
   ```
-- `Bash` — `echo "=== EducationSection.tsx - is it lazy at all? ===" 
+- `Bash`:
+  ```bash
+echo "=== EducationSection.tsx - is it lazy at all? ===" 
 cat src/components/sections/EducationSection.tsx | head -20
 echo ""
 echo "=== SkillsCapabilityGraph - canvas/heavy? ===" 
@@ -1166,7 +1216,8 @@ grep -n "next/font\|@font-face\|Google" src/app/layout.tsx
 echo ""
 echo "=== next/image usage vs plain img across sections ==="
 grep -rln "next/image" src/components/sections/ --include="*.tsx" | wc -l
-grep -rL "next/image" src/components/sections/*.tsx 2>/dev/null | xargs grep -l "Image\|<img" 2>/dev/null`
+grep -rL "next/image" src/components/sections/*.tsx 2>/dev/null | xargs grep -l "Image\|<img" 2>/dev/null
+  ```
   ```
 === EducationSection.tsx - is it lazy at all? ===
 import { defineQuery } from "next-sanity";
@@ -1206,14 +1257,17 @@ export async function EducationSection() {
 src/components/sections/HeroSection.tsx
 src/components/sections/HeroContent.tsx
   ```
-- `Bash` — `echo "=== font config ===" 
+- `Bash`:
+  ```bash
+echo "=== font config ===" 
 sed -n '1,30p' src/app/layout.tsx | grep -A15 "Lora\|Ubuntu"
 echo ""
 echo "=== hero image priority ==="
 grep -n "priority\|<Image" src/components/sections/HeroSection.tsx src/components/sections/HeroContent.tsx src/components/sections/ProfileImage.tsx 2>/dev/null
 echo ""
 echo "=== ObsidianBackgroundCanvas quick perf-checklist re-verify ==="
-grep -n "dpr=\|performance={{ min\|PLANET_COUNT_MOBILE\|skipEffects\|new THREE\." src/components/three/ObsidianBackgroundCanvas.tsx`
+grep -n "dpr=\|performance={{ min\|PLANET_COUNT_MOBILE\|skipEffects\|new THREE\." src/components/three/ObsidianBackgroundCanvas.tsx
+  ```
   ```
 === font config ===
 import { Lora, Ubuntu } from "next/font/google";
@@ -1277,7 +1331,9 @@ src/components/sections/ProfileImage.tsx:35:          priority
 1188:            skipEffects={skipEffects}
 1191:          {!skipEffects && <SceneEffects />}
   ```
-- `Bash` — `echo "=== where is OrbyCanvas used? ===" 
+- `Bash`:
+  ```bash
+echo "=== where is OrbyCanvas used? ===" 
 grep -rn "OrbyCanvas\|from \"@/components/orby" src/ --include="*.tsx" | grep -v "__tests__\|orby/Orby"
 echo ""
 echo "=== Orby.tsx wrapper - dynamic? ===" 
@@ -1287,7 +1343,8 @@ echo "=== is Orby rendered in PortfolioContent / layout eagerly? ==="
 grep -rn "<Orby\b\|Orby />" src/ --include="*.tsx" | grep -v "__tests__"
 echo ""
 echo "=== urlFor usage - width/quality params? ===" 
-grep -n "urlFor(" src/sanity/lib/queries.ts src/components/sections/*.tsx src/components/EducationFlowchart.tsx src/components/three/ProjectsSlider.tsx 2>/dev/null | head -20`
+grep -n "urlFor(" src/sanity/lib/queries.ts src/components/sections/*.tsx src/components/EducationFlowchart.tsx src/components/three/ProjectsSlider.tsx 2>/dev/null | head -20
+  ```
   ```
 === where is OrbyCanvas used? ===
 src/components/lab/PanelOrby.tsx:73:        <OrbyCanvas
@@ -1309,9 +1366,12 @@ src/components/sections/CertificationsSection.tsx:56:                    src={ur
 src/components/sections/HeroSection.tsx:11:    ? urlFor(profile.profileImage).width(800).height(800).url()
 src/components/EducationFlowchart.tsx:161:  const logoUrl = edu.logo ? urlFor(edu.logo).width(64).height(64).url() : null;
   ```
-- `Bash` — `cat src/components/OrbyLoader.tsx
+- `Bash`:
+  ```bash
+cat src/components/OrbyLoader.tsx
 echo "=== who renders OrbyLoader? ==="
-grep -rn "OrbyLoader" src/ --include="*.tsx" | grep -v "__tests__"`
+grep -rn "OrbyLoader" src/ --include="*.tsx" | grep -v "__tests__"
+  ```
   ```
 "use client";
 
@@ -1327,11 +1387,14 @@ src/components/OrbyLoader.tsx:7:export function OrbyLoader() {
 src/app/(portfolio)/layout.tsx:4:import { OrbyLoader } from "@/components/OrbyLoader";
 src/app/(portfolio)/layout.tsx:53:      <OrbyLoader />
   ```
-- `Bash` — `echo "=== ClerkProvider scope ===" 
+- `Bash`:
+  ```bash
+echo "=== ClerkProvider scope ===" 
 sed -n '1,60p' src/app/layout.tsx
 echo ""
 echo "=== is Clerk actually used/gated anywhere on portfolio routes? ===" 
-grep -rln "useUser\|useAuth\|SignedIn\|SignedOut\|auth()\|clerkMiddleware" src/ --include="*.tsx" --include="*.ts" | grep -v "__tests__\|node_modules"`
+grep -rln "useUser\|useAuth\|SignedIn\|SignedOut\|auth()\|clerkMiddleware" src/ --include="*.tsx" --include="*.ts" | grep -v "__tests__\|node_modules"
+  ```
   ```
 === ClerkProvider scope ===
 import { ClerkProvider } from "@clerk/nextjs";
@@ -1379,14 +1442,17 @@ export default function RootLayout({
 src/app/studio/[[...tool]]/page.tsx
 src/proxy.ts
   ```
-- `Bash` — `for f in 3t-7wbrazktu9 14d633hbsiyf3 0zo6_rhd98lqq 1tjnysktzfr6w 233b76j4c1z8o 3fw6c_5-4-ctd 026aznpktlcab 2sezti_frrjrr 03b8zhhi2zv8z 1cnqmu4z4fxmj 2f00b6naz3y3e 20ufwj-rd1rvr 0dtpbx_krh0e5; do
+- `Bash`:
+  ```bash
+for f in 3t-7wbrazktu9 14d633hbsiyf3 0zo6_rhd98lqq 1tjnysktzfr6w 233b76j4c1z8o 3fw6c_5-4-ctd 026aznpktlcab 2sezti_frrjrr 03b8zhhi2zv8z 1cnqmu4z4fxmj 2f00b6naz3y3e 20ufwj-rd1rvr 0dtpbx_krh0e5; do
   path=".next/static/chunks/${f}.js"
   if [ -f "$path" ]; then
     hit=$(grep -oc "clerk" "$path" 2>/dev/null)
     size=$(du -h "$path" | cut -f1)
     echo "$f: size=$size clerk_hits=$hit"
   fi
-done`
+done
+  ```
   ```
 3t-7wbrazktu9: size=64K clerk_hits=33
 14d633hbsiyf3: size=56K clerk_hits=0
@@ -1402,14 +1468,17 @@ done`
 20ufwj-rd1rvr: size=16K clerk_hits=0
 0dtpbx_krh0e5: size=180K clerk_hits=0
   ```
-- `Bash` — `echo "=== gsap usage ===" 
+- `Bash`:
+  ```bash
+echo "=== gsap usage ===" 
 grep -rln "from \"gsap\"\|from 'gsap'\|gsap/react" src/ --include="*.tsx" --include="*.ts" | grep -v "__tests__"
 echo ""
 echo "=== gsap import style (full vs subpath) ==="
 grep -rn "^import.*gsap" src/ --include="*.tsx" --include="*.ts" | grep -v "__tests__"
 echo ""
 echo "=== chunk size for gsap ===" 
-find .next/static/chunks -iname "*gsap*"`
+find .next/static/chunks -iname "*gsap*"
+  ```
   ```
 === gsap usage ===
 src/components/sections/SkillsSectionClient.tsx
@@ -1428,28 +1497,34 @@ src/components/Providers.tsx:4:import { ScrollTrigger } from "gsap/ScrollTrigger
 
 === chunk size for gsap ===
   ```
-- `Bash` — `for f in 3t-7wbrazktu9 14d633hbsiyf3 0zo6_rhd98lqq 1tjnysktzfr6w 233b76j4c1z8o 3fw6c_5-4-ctd 026aznpktlcab 2sezti_frrjrr 03b8zhhi2zv8z 1cnqmu4z4fxmj 2f00b6naz3y3e 20ufwj-rd1rvr 0dtpbx_krh0e5 0cz1d0mv5g_q7 1bfiwnxsa8696 3-yn0sba7m99d 2aapxv6spmpxd 0-f1ttuf4c5c5 2gp8hdv8oec_g 097ak-t617mk8; do
+- `Bash`:
+  ```bash
+for f in 3t-7wbrazktu9 14d633hbsiyf3 0zo6_rhd98lqq 1tjnysktzfr6w 233b76j4c1z8o 3fw6c_5-4-ctd 026aznpktlcab 2sezti_frrjrr 03b8zhhi2zv8z 1cnqmu4z4fxmj 2f00b6naz3y3e 20ufwj-rd1rvr 0dtpbx_krh0e5 0cz1d0mv5g_q7 1bfiwnxsa8696 3-yn0sba7m99d 2aapxv6spmpxd 0-f1ttuf4c5c5 2gp8hdv8oec_g 097ak-t617mk8; do
   path=".next/static/chunks/${f}.js"
   if [ -f "$path" ]; then
     hit=$(grep -oc "gsap\|ScrollTrigger\|SplitText" "$path" 2>/dev/null)
     size=$(du -h "$path" | cut -f1)
     [ "$hit" != "0" ] && echo "$f: size=$size gsap_hits=$hit"
   fi
-done`
+done
+  ```
   ```
 Exit code 1
 3t-7wbrazktu9: size=64K gsap_hits=3
 0zo6_rhd98lqq: size=116K gsap_hits=62
 0dtpbx_krh0e5: size=180K gsap_hits=3
   ```
-- `Bash` — `for f in 11q0il4m9o1xi 1tjnysktzfr6w 3t-7wbrazktu9 0zo6_rhd98lqq; do
+- `Bash`:
+  ```bash
+for f in 11q0il4m9o1xi 1tjnysktzfr6w 3t-7wbrazktu9 0zo6_rhd98lqq; do
   path=".next/static/chunks/${f}.js"
   raw=$(stat -c%s "$path")
   gz=$(gzip -c "$path" | wc -c)
   echo "$f: raw=$raw bytes ($((raw/1024))K)  gzip=$gz bytes ($((gz/1024))K)"
 done
 echo ""
-echo "TOTAL / route first load (uncompressed, per Next diagnostics): 2479767 bytes"`
+echo "TOTAL / route first load (uncompressed, per Next diagnostics): 2479767 bytes"
+  ```
   ```
 stat: cannot statx '.next/static/chunks/11q0il4m9o1xi.js': No such file or directory
 gzip: .next/static/chunks/11q0il4m9o1xi.js: No such file or directory
@@ -1466,11 +1541,14 @@ gzip: .next/static/chunks/0zo6_rhd98lqq.js: No such file or directory
 
 TOTAL / route first load (uncompressed, per Next diagnostics): 2479767 bytes
   ```
-- `Bash` — `ls .next/static/chunks/ 2>/dev/null | head -5
+- `Bash`:
+  ```bash
+ls .next/static/chunks/ 2>/dev/null | head -5
 echo "---"
 ls .next/static/chunks/ 2>/dev/null | wc -l
 echo "--- does .next even exist? ---"
-ls -la .next/ 2>/dev/null | head -5`
+ls -la .next/ 2>/dev/null | head -5
+  ```
   ```
 ---
 0
@@ -1494,153 +1572,6 @@ done check
 - Files created: (none)
 - Files modified: /home/anant_gupta/projects/hub/portfolio/src/components/three/ObsidianBackgroundCanvas.tsx
 - Files deleted: (none)
-- Commands run: pnpm typecheck 2>&1 | tail -30, pnpm exec biome check src/components/three/ObsidianBackgroundCanvas.tsx 2>&1 | tail -20, echo "=== SSR guard check ===" && grep -rn "ObsidianBackground\|ProjectsSlider" src/ --include="*.tsx" | grep -v "dynamic\|__tests__"
-echo ""
-echo "=== Raw img tags ===" && grep -rn "<img " src/ --include="*.tsx" --include="*.jsx"
-echo ""
-echo "=== console.* in prod code ===" && grep -rn "console\." src/ --include="*.ts" --include="*.tsx" | grep -v "__tests__" | grep -v ".test."
-echo ""
-echo "=== use client in sections/cards ===" && grep -rln "'use client'" src/components/sections/ src/components/cards/ --include="*.tsx", echo "=== use client count in sections ===" 
-grep -rl "\"use client\"" src/components/sections/ --include="*.tsx" 2>/dev/null
-echo "---"
-grep -rl "\"use client\"" src/components/cards/ --include="*.tsx" 2>/dev/null
-echo ""
-echo "=== GROQ over-fetch spread ===" && grep -n "\.\.\." src/sanity/lib/queries.ts 2>/dev/null | head -20
-ls src/sanity/lib/ 2>/dev/null
-find src/sanity -iname "*queries*", pnpm build 2>&1 | tail -60, cat package.json | grep -A2 '"scripts"' -A 40 | head -50
-echo "---"
-grep -n "analyze\|BundleAnalyzer" next.config.* package.json 2>/dev/null, du -sh .next/static/chunks/*.js 2>/dev/null | sort -rh | head -25
-echo "---TOTAL client JS---"
-du -sh .next/static/chunks 2>/dev/null
-echo "---three/r3f related chunks---"
-find .next/static/chunks -iname "*.js" -exec sh -c 'grep -lE "ObsidianBackgroundCanvas|@react-three|drei" "$1" 2>/dev/null' _ {} \; | xargs -I{} du -h {} 2>/dev/null, echo "=== 4.1M chunk contents sniff ==="
-grep -oE "\"[a-zA-Z@/_-]{4,40}\"" .next/static/chunks/2p27vjx4hgrm5.js | sort | uniq -c | sort -rn | head -30
-echo ""
-echo "=== does it contain sourcemap / is it dev-only? ==="
-head -c 300 .next/static/chunks/2p27vjx4hgrm5.js
-echo ""
-echo "=== 1M chunk sniff ==="
-grep -oE "\"[a-zA-Z@/_-]{4,40}\"" .next/static/chunks/0qlix66s8cuqu.js | sort | uniq -c | sort -rn | head -20, echo "=== app build manifest for / route ==="
-find .next -iname "*.json" | xargs grep -l "2p27vjx4hgrm5\|0qlix66s8cuqu" 2>/dev/null
-echo "---"
-cat .next/app-build-manifest.json 2>/dev/null | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-for k,v in d.get('pages',{}).items():
-    print(k, '->', len(v), 'files')
-    for f in v:
-        print('   ', f)
-" 2>/dev/null | head -100, cat .next/diagnostics/route-bundle-stats.json 2>/dev/null | python3 -m json.tool 2>/dev/null | head -150, echo "=== confirm three.js/r3f signature in 11q0il4m9o1xi.js ==="
-grep -oE "THREE\.[A-Za-z]+|react-three|@react-three/[a-z]+|drei" .next/static/chunks/11q0il4m9o1xi.js | sort | uniq -c | sort -rn | head -20
-echo ""
-echo "=== gzip size of this chunk ==="
-gzip -c .next/static/chunks/11q0il4m9o1xi.js | wc -c
-echo ""
-echo "=== is this chunk ALSO in the /studio route list? (shared vendor vs page-specific) ==="
-grep -c "11q0il4m9o1xi" .next/diagnostics/route-bundle-stats.json
-grep -B2 "11q0il4m9o1xi" .next/diagnostics/route-bundle-stats.json | grep route, pnpm start > /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/next-start.log 2>&1 &
-echo "started with pid $!"
-sleep 6
-curl -s http://localhost:3000/ -o /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/root.html -w "HTTP %{http_code}\n" || cat /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/next-start.log, cat /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/next-start.log
-echo "=== root.html script tags for the three chunk ==="
-grep -o '<script[^>]*11q0il4m9o1xi[^>]*>' /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/root.html
-echo "=== all script src tags in head/body (first 40) ==="
-grep -oE '<script[^>]*src="[^"]*"[^>]*>' /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/root.html | head -40
-echo "=== any preload link for the chunk ==="
-grep -o '<link[^>]*11q0il4m9o1xi[^>]*>' /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/root.html, grep -n "three\|@react-three\|THREE" src/components/three/ProjectsSlider.tsx
-echo "--- CometCard ---"
-grep -n "three\|@react-three\|THREE\|use client" src/components/ui/comet-card.tsx | head -20
-echo "--- does ProjectsSlider import CometCard which pulls three? ---"
-wc -l src/components/three/ProjectsSlider.tsx src/components/ui/comet-card.tsx, PORT=3001 pnpm start > /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/next-start-prod.log 2>&1 &
-echo "started pid $!"
-sleep 5
-curl -s http://localhost:3001/ -o /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/root-prod.html -w "HTTP %{http_code}\n"
-cat /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/next-start-prod.log, ss -ltnp 2>/dev/null | grep -E ":30[0-9][0-9]" || netstat -ltnp 2>/dev/null | grep -E ":30[0-9][0-9]", ss -ltnp 2>/dev/null | grep -E "LISTEN"
-ps aux | grep -E "next|node" | grep -v grep, nohup pnpm exec next start -p 4090 > /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/next-start-prod.log 2>&1 &
-disown
-sleep 5
-curl -s http://localhost:4090/ -o /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/root-prod.html -w "HTTP %{http_code}\n"
-cat /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/next-start-prod.log, F=/tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/root-prod.html
-echo "=== total script tags ===" 
-grep -oE '<script[^>]*src="[^"]*"[^>]*>' "$F" | wc -l
-echo "=== does the three.js chunk (11q0il4m9o1xi) appear? ==="
-grep -o '11q0il4m9o1xi[^"]*' "$F"
-echo "=== all script src paths ==="
-grep -oE 'src="[^"]*chunks[^"]*"' "$F", echo "=== all files importing three or @react-three ===" 
-grep -rln "from \"three\"\|from '@react-three\|from \"@react-three" src/ --include="*.tsx" --include="*.ts"
-echo ""
-echo "=== check HeaderScrolling / HeaderLogo for eager R3F import ==="
-grep -n "import\|dynamic" src/components/HeaderScrolling.tsx | head -20
-echo "---"
-grep -n "import\|dynamic" src/components/three/HeaderLogo.tsx | head -20, grep -n "^import\|from \"three\|from '@react-three\|use client" src/components/EducationFlowchart.tsx | head -20
-echo ""
-echo "=== who imports EducationFlowchart? ==="
-grep -rn "EducationFlowchart" src/ --include="*.tsx" | grep -v "__tests__", echo "=== EducationSection.tsx - is it lazy at all? ===" 
-cat src/components/sections/EducationSection.tsx | head -20
-echo ""
-echo "=== SkillsCapabilityGraph - canvas/heavy? ===" 
-grep -n "^import\|use client\|useFrame\|requestAnimationFrame\|Canvas" src/components/sections/SkillsCapabilityGraph.tsx | head -20
-echo ""
-echo "=== font loading in layout.tsx ==="
-grep -n "next/font\|@font-face\|Google" src/app/layout.tsx
-echo ""
-echo "=== next/image usage vs plain img across sections ==="
-grep -rln "next/image" src/components/sections/ --include="*.tsx" | wc -l
-grep -rL "next/image" src/components/sections/*.tsx 2>/dev/null | xargs grep -l "Image\|<img" 2>/dev/null, echo "=== font config ===" 
-sed -n '1,30p' src/app/layout.tsx | grep -A15 "Lora\|Ubuntu"
-echo ""
-echo "=== hero image priority ==="
-grep -n "priority\|<Image" src/components/sections/HeroSection.tsx src/components/sections/HeroContent.tsx src/components/sections/ProfileImage.tsx 2>/dev/null
-echo ""
-echo "=== ObsidianBackgroundCanvas quick perf-checklist re-verify ==="
-grep -n "dpr=\|performance={{ min\|PLANET_COUNT_MOBILE\|skipEffects\|new THREE\." src/components/three/ObsidianBackgroundCanvas.tsx, echo "=== where is OrbyCanvas used? ===" 
-grep -rn "OrbyCanvas\|from \"@/components/orby" src/ --include="*.tsx" | grep -v "__tests__\|orby/Orby"
-echo ""
-echo "=== Orby.tsx wrapper - dynamic? ===" 
-grep -n "dynamic\|import.*Orby\|ssr" src/components/orby/Orby.tsx | head -10
-echo ""
-echo "=== is Orby rendered in PortfolioContent / layout eagerly? ===" 
-grep -rn "<Orby\b\|Orby />" src/ --include="*.tsx" | grep -v "__tests__"
-echo ""
-echo "=== urlFor usage - width/quality params? ===" 
-grep -n "urlFor(" src/sanity/lib/queries.ts src/components/sections/*.tsx src/components/EducationFlowchart.tsx src/components/three/ProjectsSlider.tsx 2>/dev/null | head -20, cat src/components/OrbyLoader.tsx
-echo "=== who renders OrbyLoader? ==="
-grep -rn "OrbyLoader" src/ --include="*.tsx" | grep -v "__tests__", echo "=== ClerkProvider scope ===" 
-sed -n '1,60p' src/app/layout.tsx
-echo ""
-echo "=== is Clerk actually used/gated anywhere on portfolio routes? ===" 
-grep -rln "useUser\|useAuth\|SignedIn\|SignedOut\|auth()\|clerkMiddleware" src/ --include="*.tsx" --include="*.ts" | grep -v "__tests__\|node_modules", for f in 3t-7wbrazktu9 14d633hbsiyf3 0zo6_rhd98lqq 1tjnysktzfr6w 233b76j4c1z8o 3fw6c_5-4-ctd 026aznpktlcab 2sezti_frrjrr 03b8zhhi2zv8z 1cnqmu4z4fxmj 2f00b6naz3y3e 20ufwj-rd1rvr 0dtpbx_krh0e5; do
-  path=".next/static/chunks/${f}.js"
-  if [ -f "$path" ]; then
-    hit=$(grep -oc "clerk" "$path" 2>/dev/null)
-    size=$(du -h "$path" | cut -f1)
-    echo "$f: size=$size clerk_hits=$hit"
-  fi
-done, echo "=== gsap usage ===" 
-grep -rln "from \"gsap\"\|from 'gsap'\|gsap/react" src/ --include="*.tsx" --include="*.ts" | grep -v "__tests__"
-echo ""
-echo "=== gsap import style (full vs subpath) ==="
-grep -rn "^import.*gsap" src/ --include="*.tsx" --include="*.ts" | grep -v "__tests__"
-echo ""
-echo "=== chunk size for gsap ===" 
-find .next/static/chunks -iname "*gsap*", for f in 3t-7wbrazktu9 14d633hbsiyf3 0zo6_rhd98lqq 1tjnysktzfr6w 233b76j4c1z8o 3fw6c_5-4-ctd 026aznpktlcab 2sezti_frrjrr 03b8zhhi2zv8z 1cnqmu4z4fxmj 2f00b6naz3y3e 20ufwj-rd1rvr 0dtpbx_krh0e5 0cz1d0mv5g_q7 1bfiwnxsa8696 3-yn0sba7m99d 2aapxv6spmpxd 0-f1ttuf4c5c5 2gp8hdv8oec_g 097ak-t617mk8; do
-  path=".next/static/chunks/${f}.js"
-  if [ -f "$path" ]; then
-    hit=$(grep -oc "gsap\|ScrollTrigger\|SplitText" "$path" 2>/dev/null)
-    size=$(du -h "$path" | cut -f1)
-    [ "$hit" != "0" ] && echo "$f: size=$size gsap_hits=$hit"
-  fi
-done, for f in 11q0il4m9o1xi 1tjnysktzfr6w 3t-7wbrazktu9 0zo6_rhd98lqq; do
-  path=".next/static/chunks/${f}.js"
-  raw=$(stat -c%s "$path")
-  gz=$(gzip -c "$path" | wc -c)
-  echo "$f: raw=$raw bytes ($((raw/1024))K)  gzip=$gz bytes ($((gz/1024))K)"
-done
-echo ""
-echo "TOTAL / route first load (uncompressed, per Next diagnostics): 2479767 bytes", ls .next/static/chunks/ 2>/dev/null | head -5
-echo "---"
-ls .next/static/chunks/ 2>/dev/null | wc -l
-echo "--- does .next even exist? ---"
-ls -la .next/ 2>/dev/null | head -5, pkill -f "next start -p 4090" 2>/dev/null; echo "cleaned up test server (left the user's pnpm dev on :3000 untouched)", ss -ltnp 2>/dev/null | grep 4090; echo "done check"
+- Commands run: pnpm typecheck 2>&1 | tail -30, pnpm exec biome check src/components/three/ObsidianBackgroundCanvas.tsx 2>&1 | tail -20, echo "=== SSR guard check ===" && grep -rn "ObsidianBackground\|ProjectsSlider" src/ --include="*.tsx" | grep -v "dynamic\|__tests__" echo "" echo "=== Raw img tags ===" && grep -rn "<img " src/ --include="*.tsx" --include="*.jsx" echo "" echo "=== console.* in prod code ===" && grep -rn "console\." src/ --include="*.ts" --include="*.tsx" | grep -v "__tests__" | grep -v ".test." echo "" echo "=== use client in sections/cards ===" && grep -rln "'use client'" src/components/sections/ src/components/cards/ --include="*.tsx", echo "=== use client count in sections ===" grep -rl "\"use client\"" src/components/sections/ --include="*.tsx" 2>/dev/null echo "---" grep -rl "\"use client\"" src/components/cards/ --include="*.tsx" 2>/dev/null echo "" echo "=== GROQ over-fetch spread ===" && grep -n "\.\.\." src/sanity/lib/queries.ts 2>/dev/null | head -20 ls src/sanity/lib/ 2>/dev/null find src/sanity -iname "*queries*", pnpm build 2>&1 | tail -60, cat package.json | grep -A2 '"scripts"' -A 40 | head -50 echo "---" grep -n "analyze\|BundleAnalyzer" next.config.* package.json 2>/dev/null, du -sh .next/static/chunks/*.js 2>/dev/null | sort -rh | head -25 echo "---TOTAL client JS---" du -sh .next/static/chunks 2>/dev/null echo "---three/r3f related chunks---" find .next/static/chunks -iname "*.js" -exec sh -c 'grep -lE "ObsidianBackgroundCanvas|@react-three|drei" "$1" 2>/dev/null' _ {} \; | xargs -I{} du -h {} 2>/dev/null, echo "=== 4.1M chunk contents sniff ===" grep -oE "\"[a-zA-Z@/_-]{4,40}\"" .next/static/chunks/2p27vjx4hgrm5.js | sort | uniq -c | sort -rn | head -30 echo "" echo "=== does it contain sourcemap / is it dev-only? ===" head -c 300 .next/static/chunks/2p27vjx4hgrm5.js echo "" echo "=== 1M chunk sniff ===" grep -oE "\"[a-zA-Z@/_-]{4,40}\"" .next/static/chunks/0qlix66s8cuqu.js | sort | uniq -c | sort -rn | head -20, echo "=== app build manifest for / route ===" find .next -iname "*.json" | xargs grep -l "2p27vjx4hgrm5\|0qlix66s8cuqu" 2>/dev/null echo "---" cat .next/app-build-manifest.json 2>/dev/null | python3 -c " import json,sys d=json.load(sys.stdin) for k,v in d.get('pages',{}).items(): print(k, '->', len(v), 'files') for f in v: print(' ', f) " 2>/dev/null | head -100, cat .next/diagnostics/route-bundle-stats.json 2>/dev/null | python3 -m json.tool 2>/dev/null | head -150, echo "=== confirm three.js/r3f signature in 11q0il4m9o1xi.js ===" grep -oE "THREE\.[A-Za-z]+|react-three|@react-three/[a-z]+|drei" .next/static/chunks/11q0il4m9o1xi.js | sort | uniq -c | sort -rn | head -20 echo "" echo "=== gzip size of this chunk ===" gzip -c .next/static/chunks/11q0il4m9o1xi.js | wc -c echo "" echo "=== is this chunk ALSO in the /studio route list? (shared vendor vs page-specific) ===" grep -c "11q0il4m9o1xi" .next/diagnostics/route-bundle-stats.json grep -B2 "11q0il4m9o1xi" .next/diagnostics/route-bundle-stats.json | grep route, pnpm start > /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/next-start.log 2>&1 & echo "started with pid $!" sleep 6 curl -s http://localhost:3000/ -o /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/root.html -w "HTTP %{http_code}\n" || cat /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/next-start.log, cat /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/next-start.log echo "=== root.html script tags for the three chunk ===" grep -o '<script[^>]*11q0il4m9o1xi[^>]*>' /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/root.html echo "=== all script src tags in head/body (first 40) ===" grep -oE '<script[^>]*src="[^"]*"[^>]*>' /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/root.html | head -40 echo "=== any preload link for the chunk ===" grep -o '<link[^>]*11q0il4m9o1xi[^>]*>' /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/root.html, grep -n "three\|@react-three\|THREE" src/components/three/ProjectsSlider.tsx echo "--- CometCard ---" grep -n "three\|@react-three\|THREE\|use client" src/components/ui/comet-card.tsx | head -20 echo "--- does ProjectsSlider import CometCard which pulls three? ---" wc -l src/components/three/ProjectsSlider.tsx src/components/ui/comet-card.tsx, PORT=3001 pnpm start > /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/next-start-prod.log 2>&1 & echo "started pid $!" sleep 5 curl -s http://localhost:3001/ -o /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/root-prod.html -w "HTTP %{http_code}\n" cat /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/next-start-prod.log, ss -ltnp 2>/dev/null | grep -E ":30[0-9][0-9]" || netstat -ltnp 2>/dev/null | grep -E ":30[0-9][0-9]", ss -ltnp 2>/dev/null | grep -E "LISTEN" ps aux | grep -E "next|node" | grep -v grep, nohup pnpm exec next start -p 4090 > /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/next-start-prod.log 2>&1 & disown sleep 5 curl -s http://localhost:4090/ -o /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/root-prod.html -w "HTTP %{http_code}\n" cat /tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/next-start-prod.log, F=/tmp/claude-1001/-home-anant-gupta-projects-hub-portfolio/[REDACTED]/scratchpad/root-prod.html echo "=== total script tags ===" grep -oE '<script[^>]*src="[^"]*"[^>]*>' "$F" | wc -l echo "=== does the three.js chunk (11q0il4m9o1xi) appear? ===" grep -o '11q0il4m9o1xi[^"]*' "$F" echo "=== all script src paths ===" grep -oE 'src="[^"]*chunks[^"]*"' "$F", echo "=== all files importing three or @react-three ===" grep -rln "from \"three\"\|from '@react-three\|from \"@react-three" src/ --include="*.tsx" --include="*.ts" echo "" echo "=== check HeaderScrolling / HeaderLogo for eager R3F import ===" grep -n "import\|dynamic" src/components/HeaderScrolling.tsx | head -20 echo "---" grep -n "import\|dynamic" src/components/three/HeaderLogo.tsx | head -20, grep -n "^import\|from \"three\|from '@react-three\|use client" src/components/EducationFlowchart.tsx | head -20 echo "" echo "=== who imports EducationFlowchart? ===" grep -rn "EducationFlowchart" src/ --include="*.tsx" | grep -v "__tests__", echo "=== EducationSection.tsx - is it lazy at all? ===" cat src/components/sections/EducationSection.tsx | head -20 echo "" echo "=== SkillsCapabilityGraph - canvas/heavy? ===" grep -n "^import\|use client\|useFrame\|requestAnimationFrame\|Canvas" src/components/sections/SkillsCapabilityGraph.tsx | head -20 echo "" echo "=== font loading in layout.tsx ===" grep -n "next/font\|@font-face\|Google" src/app/layout.tsx echo "" echo "=== next/image usage vs plain img across sections ===" grep -rln "next/image" src/components/sections/ --include="*.tsx" | wc -l grep -rL "next/image" src/components/sections/*.tsx 2>/dev/null | xargs grep -l "Image\|<img" 2>/dev/null, echo "=== font config ===" sed -n '1,30p' src/app/layout.tsx | grep -A15 "Lora\|Ubuntu" echo "" echo "=== hero image priority ===" grep -n "priority\|<Image" src/components/sections/HeroSection.tsx src/components/sections/HeroContent.tsx src/components/sections/ProfileImage.tsx 2>/dev/null echo "" echo "=== ObsidianBackgroundCanvas quick perf-checklist re-verify ===" grep -n "dpr=\|performance={{ min\|PLANET_COUNT_MOBILE\|skipEffects\|new THREE\." src/components/three/ObsidianBackgroundCanvas.tsx, echo "=== where is OrbyCanvas used? ===" grep -rn "OrbyCanvas\|from \"@/components/orby" src/ --include="*.tsx" | grep -v "__tests__\|orby/Orby" echo "" echo "=== Orby.tsx wrapper - dynamic? ===" grep -n "dynamic\|import.*Orby\|ssr" src/components/orby/Orby.tsx | head -10 echo "" echo "=== is Orby rendered in PortfolioContent / layout eagerly? ===" grep -rn "<Orby\b\|Orby />" src/ --include="*.tsx" | grep -v "__tests__" echo "" echo "=== urlFor usage - width/quality params? ===" grep -n "urlFor(" src/sanity/lib/queries.ts src/components/sections/*.tsx src/components/EducationFlowchart.tsx src/components/three/ProjectsSlider.tsx 2>/dev/null | head -20, cat src/components/OrbyLoader.tsx echo "=== who renders OrbyLoader? ===" grep -rn "OrbyLoader" src/ --include="*.tsx" | grep -v "__tests__", echo "=== ClerkProvider scope ===" sed -n '1,60p' src/app/layout.tsx echo "" echo "=== is Clerk actually used/gated anywhere on portfolio routes? ===" grep -rln "useUser\|useAuth\|SignedIn\|SignedOut\|auth()\|clerkMiddleware" src/ --include="*.tsx" --include="*.ts" | grep -v "__tests__\|node_modules", for f in 3t-7wbrazktu9 14d633hbsiyf3 0zo6_rhd98lqq 1tjnysktzfr6w 233b76j4c1z8o 3fw6c_5-4-ctd 026aznpktlcab 2sezti_frrjrr 03b8zhhi2zv8z 1cnqmu4z4fxmj 2f00b6naz3y3e 20ufwj-rd1rvr 0dtpbx_krh0e5; do path=".next/static/chunks/${f}.js" if [ -f "$path" ]; then hit=$(grep -oc "clerk" "$path" 2>/dev/null) size=$(du -h "$path" | cut -f1) echo "$f: size=$size clerk_hits=$hit" fi done, echo "=== gsap usage ===" grep -rln "from \"gsap\"\|from 'gsap'\|gsap/react" src/ --include="*.tsx" --include="*.ts" | grep -v "__tests__" echo "" echo "=== gsap import style (full vs subpath) ===" grep -rn "^import.*gsap" src/ --include="*.tsx" --include="*.ts" | grep -v "__tests__" echo "" echo "=== chunk size for gsap ===" find .next/static/chunks -iname "*gsap*", for f in 3t-7wbrazktu9 14d633hbsiyf3 0zo6_rhd98lqq 1tjnysktzfr6w 233b76j4c1z8o 3fw6c_5-4-ctd 026aznpktlcab 2sezti_frrjrr 03b8zhhi2zv8z 1cnqmu4z4fxmj 2f00b6naz3y3e 20ufwj-rd1rvr 0dtpbx_krh0e5 0cz1d0mv5g_q7 1bfiwnxsa8696 3-yn0sba7m99d 2aapxv6spmpxd 0-f1ttuf4c5c5 2gp8hdv8oec_g 097ak-t617mk8; do path=".next/static/chunks/${f}.js" if [ -f "$path" ]; then hit=$(grep -oc "gsap\|ScrollTrigger\|SplitText" "$path" 2>/dev/null) size=$(du -h "$path" | cut -f1) [ "$hit" != "0" ] && echo "$f: size=$size gsap_hits=$hit" fi done, for f in 11q0il4m9o1xi 1tjnysktzfr6w 3t-7wbrazktu9 0zo6_rhd98lqq; do path=".next/static/chunks/${f}.js" raw=$(stat -c%s "$path") gz=$(gzip -c "$path" | wc -c) echo "$f: raw=$raw bytes ($((raw/1024))K) gzip=$gz bytes ($((gz/1024))K)" done echo "" echo "TOTAL / route first load (uncompressed, per Next diagnostics): 2479767 bytes", ls .next/static/chunks/ 2>/dev/null | head -5 echo "---" ls .next/static/chunks/ 2>/dev/null | wc -l echo "--- does .next even exist? ---" ls -la .next/ 2>/dev/null | head -5, pkill -f "next start -p 4090" 2>/dev/null; echo "cleaned up test server (left the user's pnpm dev on :3000 untouched)", ss -ltnp 2>/dev/null | grep 4090; echo "done check"
 - Tool call tally: Agent (1), Bash (33), Edit (1), Read (4), Skill (1)
 

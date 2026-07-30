@@ -7,7 +7,7 @@ title: "Fix cursor disconnection error"
 started_at: 2026-07-11T21:02:35
 ended_at: 2026-07-11T21:05:18
 duration_minutes: 3
-exported_at: 2026-07-30T15:28:59.6972445+04:00
+exported_at: 2026-07-30T16:47:46.9270578+04:00
 project: tradingview
 cwd: '/home/anant_gupta/projects/hub/tradingview'
 session_id: dd96cad8-8763-4ee7-9c5b-4bdeddf6700b

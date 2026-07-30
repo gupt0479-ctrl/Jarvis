@@ -7,7 +7,7 @@ title: "Improve internship sourcing and company career page scraping"
 started_at: 2026-07-19T09:26:11
 ended_at: 2026-07-25T11:27:03
 duration_minutes: 8761
-exported_at: 2026-07-30T15:28:59.6972445+04:00
+exported_at: 2026-07-30T16:47:46.9270578+04:00
 project: internship-research-loop
 cwd: '/home/anant_gupta/projects/work/internship-research-loop'
 session_id: 156d5c7d-7e03-456a-8148-6da71f1883c6
@@ -24,8 +24,8 @@ tokens:
   total: 1593097
 cost_usd: 1.158719
 model:
-  - claude-sonnet-5
   - claude-haiku-4-5-20251001
+  - claude-sonnet-5
 files_touched:
   - "/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/memory/phase4-state-and-gates.md"
   - "/home/anant_gupta/projects/work/internship-research-loop"

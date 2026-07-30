@@ -7,7 +7,7 @@ title: "Build 24/7 internship discovery automation system"
 started_at: 2026-07-16T17:47:33
 ended_at: 2026-07-18T14:06:52
 duration_minutes: 2659
-exported_at: 2026-07-30T15:28:59.6972445+04:00
+exported_at: 2026-07-30T16:47:46.9270578+04:00
 project: internship-research-loop
 cwd: '/home/anant_gupta/projects/work/internship-research-loop'
 session_id: ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64
@@ -179,14 +179,19 @@ drwxr-xr-x 2 anant_gupta anant_gupta 4096 Jul 16 21:47 .claude
 fatal: not a git repository (or any of the parent directories): .git
   ```
 - `ToolSearch` — `{"query":"select:WebFetch","max_results":3}`
-- `Bash` — `curl -s https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json -o /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad/simplify_raw.json 2>&1
+- `Bash`:
+  ```bash
+curl -s https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json -o /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad/simplify_raw.json 2>&1
 ls -la /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad/simplify_raw.json
-wc -c /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad/simplify_raw.json`
+wc -c /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad/simplify_raw.json
+  ```
   ```
 -rw-r--r-- 1 anant_gupta anant_gupta 11123776 Jul 16 21:48 /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/simplify_raw.json
 11123776 /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/simplify_raw.json
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad
 python3 -c "
 import json
 data = json.load(open('simplify_raw.json'))
@@ -194,7 +199,8 @@ print(type(data), len(data) if hasattr(data,'__len__') else '')
 if isinstance(data, list):
     print(json.dumps(data[0], indent=2)[:2000])
 "
-`
+
+  ```
   ```
 <class 'list'> 14940
 {
@@ -220,7 +226,9 @@ if isinstance(data, list):
 }
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad
 python3 -c "
 import json
 data = json.load(open('simplify_raw.json'))
@@ -231,7 +239,8 @@ print('categories among 2027:', cats)
 for d in s27[:3]:
     print(json.dumps(d, indent=2))
 "
-`
+
+  ```
   ```
 count 2027: 278
 categories among 2027: {'AI/ML/Data', 'Product', 'Software Engineering', 'Software', 'Quantitative Finance', 'Hardware', 'Quant'}
@@ -303,7 +312,9 @@ categories among 2027: {'AI/ML/Data', 'Product', 'Software Engineering', 'Softwa
 }
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad
 python3 -c "
 import json
 data = json.load(open('simplify_raw.json'))
@@ -317,7 +328,8 @@ print('sw/ai active 2027:', len(sw27))
 for d in sw27[:2]:
     print(json.dumps(d, indent=2))
 "
-`
+
+  ```
   ```
 all categories: {'Quantitative Finance', 'Product Management', 'Software', 'Quant', 'Data Science, AI & Machine Learning', 'Hardware', 'AI/ML/Data', 'Hardware Engineering', 'Product', 'Software Engineering'}
 active true/false counts: 1305 13635
@@ -372,7 +384,9 @@ sw/ai active 2027: 41
 }
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad
 curl -sL https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/listings.json -o josegael_raw.json
 wc -c josegael_raw.json
 python3 -c "
@@ -381,7 +395,8 @@ data = json.load(open('josegael_raw.json'))
 print(type(data), len(data))
 print(json.dumps(data[0], indent=2))
 "
-`
+
+  ```
   ```
 Exit code 1
 14 josegael_raw.json
@@ -397,29 +412,38 @@ Traceback (most recent call last):
     raise JSONDecodeError("Extra data", s, end)
 json.decoder.JSONDecodeError: Extra data: line 1 column 4 (char 3)
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad
 cat josegael_raw.json
 echo "---"
 curl -s "https://api.github.com/repos/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/contents/" | python3 -c "import json,sys; d=json.load(sys.stdin); print([x['path'] for x in d] if isinstance(d,list) else d)"
-`
+
+  ```
   ```
 404: Not Found---
 ['.github', '.gitignore', 'ARCHIVE.md', 'CONTRIBUTING.md', 'Contributor_Guide.pdf', 'OPENCLAWS_PROMPT.md', 'README.md', 'web']
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `curl -s "https://api.github.com/repos/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/contents/web" | python3 -c "import json,sys; d=json.load(sys.stdin); print([x['path'] for x in d] if isinstance(d,list) else d)"
+- `Bash`:
+  ```bash
+curl -s "https://api.github.com/repos/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/contents/web" | python3 -c "import json,sys; d=json.load(sys.stdin); print([x['path'] for x in d] if isinstance(d,list) else d)"
 echo "---github---"
-curl -s "https://api.github.com/repos/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/contents/.github" | python3 -c "import json,sys; d=json.load(sys.stdin); print([x['path'] for x in d] if isinstance(d,list) else d)"`
+curl -s "https://api.github.com/repos/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/contents/.github" | python3 -c "import json,sys; d=json.load(sys.stdin); print([x['path'] for x in d] if isinstance(d,list) else d)"
+  ```
   ```
 ['web/.gitignore', 'web/AGENTS.md', 'web/CLAUDE.md', 'web/README.md', 'web/app', 'web/components', 'web/eslint.config.mjs', 'web/lib', 'web/next.config.ts', 'web/package-lock.json', 'web/package.json', 'web/postcss.config.mjs', 'web/public', 'web/tsconfig.json']
 ---github---
 ['.github/ISSUE_TEMPLATE', '.github/scripts', '.github/workflows']
   ```
-- `Bash` — `curl -s "https://api.github.com/repos/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/contents/.github/scripts" | python3 -c "import json,sys; d=json.load(sys.stdin); print([x['path'] for x in d] if isinstance(d,list) else d)"
+- `Bash`:
+  ```bash
+curl -s "https://api.github.com/repos/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/contents/.github/scripts" | python3 -c "import json,sys; d=json.load(sys.stdin); print([x['path'] for x in d] if isinstance(d,list) else d)"
 echo "---workflows---"
 curl -s "https://api.github.com/repos/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/contents/.github/workflows" | python3 -c "import json,sys; d=json.load(sys.stdin); print([x['path'] for x in d] if isinstance(d,list) else d)"
 echo "---public---"
-curl -s "https://api.github.com/repos/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/contents/web/public" | python3 -c "import json,sys; d=json.load(sys.stdin); print([x['path'] for x in d] if isinstance(d,list) else d)"`
+curl -s "https://api.github.com/repos/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/contents/web/public" | python3 -c "import json,sys; d=json.load(sys.stdin); print([x['path'] for x in d] if isinstance(d,list) else d)"
+  ```
   ```
 ['.github/scripts/auto_extract.py', '.github/scripts/closing_soon.py', '.github/scripts/contribution_approved.py', '.github/scripts/listings.json', '.github/scripts/requirements.txt', '.github/scripts/update_readmes.py', '.github/scripts/util.py', '.github/scripts/weekly_digest.py']
 ---workflows---
@@ -427,7 +451,9 @@ curl -s "https://api.github.com/repos/Jose-Gael-Cruz-Lopez/underclassmen-opportu
 ---public---
 ['web/public/file.svg', 'web/public/globe.svg', 'web/public/next.svg', 'web/public/vercel.svg', 'web/public/window.svg']
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad
 curl -sL https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json -o josegael_raw.json
 wc -c josegael_raw.json
 python3 -c "
@@ -441,7 +467,8 @@ if isinstance(data, dict):
 elif isinstance(data, list):
     print(json.dumps(data[0], indent=2)[:1500])
 "
-`
+
+  ```
   ```
 73894 josegael_raw.json
 <class 'list'> 112
@@ -469,7 +496,9 @@ elif isinstance(data, list):
 }
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad
 python3 -c "
 import json
 data = json.load(open('josegael_raw.json'))
@@ -486,7 +515,8 @@ print('frosh/soph only count:', len(frosh_only))
 if frosh_only:
     print(json.dumps(frosh_only[0], indent=2))
 "
-`
+
+  ```
   ```
 junior count: 17
 {
@@ -563,10 +593,13 @@ frosh/soph only count: 95
 }
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad
 curl -sL https://raw.githubusercontent.com/zapplyjobs/underclassmen-internships/main/README.md -o zapply_readme.md
 wc -l zapply_readme.md
-grep -n "^|" zapply_readme.md | head -20`
+grep -n "^|" zapply_readme.md | head -20
+  ```
   ```
 219 zapply_readme.md
 78:| Name                                                                                                                                                                      | Status/Open Date   | Year                | Note                                                                                                                         |
@@ -591,10 +624,13 @@ grep -n "^|" zapply_readme.md | head -20`
 104:| [LyftU Early Talent Development](https://www.lyft.com/careers/early-talent)                                                                                 | ?                  | Freshman, Sophomore |                                                                                                                                                  |
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad
 grep -oP '\| (✅ Open[^|]*|\?)\s*\|\s*[^|]*\|' zapply_readme.md | grep -oP '(?<=\|)[^|]*student[^|]*' -i | sort -u
 echo "---all Year col values---"
-grep "^|" zapply_readme.md | awk -F'|' '{print $4}' | sed 's/^ *//;s/ *$//' | sort -u`
+grep "^|" zapply_readme.md | awk -F'|' '{print $4}' | sed 's/^ *//;s/ *$//' | sort -u
+  ```
   ```
  All Student 
  All Students        
@@ -659,8 +695,11 @@ hint: See PEP 668 for the detailed specification.
   ```
 ok
   ```
-- `Bash` — `mkdir -p ingestion core tests/fixtures state logs
-ls -la`
+- `Bash`:
+  ```bash
+mkdir -p ingestion core tests/fixtures state logs
+ls -la
+  ```
   ```
 total 36
 drwxr-xr-x 9 anant_gupta anant_gupta 4096 Jul 16 21:52 .
@@ -1314,7 +1353,9 @@ A  tests/fixtures/zapply_readme.md
 A  tests/test_filter.py
 A  tests/test_identity.py
   ```
-- `Bash` — `git commit -q -m "$(cat <<'EOF'
+- `Bash`:
+  ```bash
+git commit -q -m "$(cat <<'EOF'
 Phase 1: ingestion, filter, identity — tested against real fixtures
 
 Layer 1 (normalize) and Layer 2 (filter) and Layer 3 (identity) per the
@@ -1327,7 +1368,8 @@ student(s)" casing/pluralization. 16/16 tests passing locally.
 Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
 EOF
 )"
-git log --oneline`
+git log --oneline
+  ```
   ```
 9e585b2 Phase 1: ingestion, filter, identity — tested against real fixtures
   ```
@@ -1440,7 +1482,9 @@ pytest	Run pytest tests/ -v	2026-07-16T19:47:14.0506789Z ##[error]Process comple
   - .venv/bin/pytest tests/ -v
   + .venv/bin/python -m pytest tests/ -v
   ```
-- `Bash` — `git add -A && git commit -q -m "$(cat <<'EOF'
+- `Bash`:
+  ```bash
+git add -A && git commit -q -m "$(cat <<'EOF'
 Fix CI: use python -m pytest so repo root lands on sys.path
 
 Bare 'pytest' console script doesn't add cwd to sys.path the way
@@ -1449,13 +1493,17 @@ in the Actions runner even though it passed locally.
 
 Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
 EOF
-)" && git push -q && echo pushed`
+)" && git push -q && echo pushed
+  ```
   ```
 pushed
   ```
-- `Bash` — `sleep 5
+- `Bash`:
+  ```bash
+sleep 5
 RUN_ID=$(gh run list --repo gupta-builds/internship-research-loop --workflow=test --limit 1 --json databaseId -q '.[0].databaseId')
-gh run watch "$RUN_ID" --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -20`
+gh run watch "$RUN_ID" --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -20
+  ```
   ```
   * Post Run actions/setup-python@v5
   * Post Run actions/checkout@v4
@@ -1691,7 +1739,9 @@ jinja2
   ```
 3.1.6
   ```
-- `Bash` — `.venv/bin/python -c "
+- `Bash`:
+  ```bash
+.venv/bin/python -c "
 from ingestion.normalize import normalize_simplify
 from vault_writer.writer import render_dossier
 import json
@@ -1704,7 +1754,8 @@ print('---RENDERED---')
 print(md)
 print('---END, last 20 bytes:', repr(md[-20:]))
 "
-`
+
+  ```
   ```
 '---\nuid: SimplifyJobs:[REDACTED]'
 ---RENDERED---
@@ -1750,7 +1801,9 @@ Auto-discovered 2026-07-17 from SimplifyJobs. No enrichment yet — company/cont
     def increase_indent(self, flow=False, indentless=False):
         return super().increase_indent(flow, False)
   ```
-- `Bash` — `.venv/bin/python -c "
+- `Bash`:
+  ```bash
+.venv/bin/python -c "
 from ingestion.normalize import normalize_simplify
 from vault_writer.writer import render_dossier
 import json
@@ -1760,7 +1813,8 @@ uid = 'SimplifyJobs:' + raw['id']
 md = render_dossier(listing, uid, '2026-07-17', 'Junior-eligible, Summer 2027, Software Engineering')
 print(md)
 "
-`
+
+  ```
   ```
 ---
 uid: SimplifyJobs:[REDACTED]
@@ -1914,11 +1968,14 @@ def validate(listing, uid: str, markdown: str, seen_ids, http_head=requests.head
     return ValidationResult(True)
 
   ```
-- `Bash` — `.venv/bin/python -c "
+- `Bash`:
+  ```bash
+.venv/bin/python -c "
 print('abc\n'.split('\n'))
 print('abc\n'.splitlines())
 print('abc\n\n'.splitlines())
-"`
+"
+  ```
   ```
 ['abc', '']
 ['abc']
@@ -1931,7 +1988,9 @@ print('abc\n\n'.splitlines())
   + def check_format_compliance(markdown: str) -> ValidationResult:
     lines = markdown.splitlines()
   ```
-- `Bash` — `.venv/bin/python -c "
+- `Bash`:
+  ```bash
+.venv/bin/python -c "
 from ingestion.normalize import normalize_simplify
 from vault_writer.writer import render_dossier
 from vault_writer.validate import check_format_compliance, validate
@@ -1950,7 +2009,8 @@ fake_head = Mock(return_value=Mock(status_code=200))
 result = validate(listing, uid, md, seen_ids=set(), http_head=fake_head)
 print('full validate:', result)
 "
-`
+
+  ```
   ```
 format check: ValidationResult(passed=True, check='format_compliance', reason='')
 full validate: ValidationResult(passed=True, check='', reason='')
@@ -2315,9 +2375,12 @@ tests/test_validate.py::test_validate_rejects_duplicate_uid PASSED       [100%]
   ```
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/vault_writer/writer.py`
 - `AskUserQuestion` — `{"questions":[{"question":"write_dossier() currently trusts the caller already ran validate.validate() and just writes. Should it also defensively re-validate internally before writing?","header":"Defense in depth","options":[{"label":"No, keep it dumb (Recommended)","description":"Single source of truth for the gate stays in validate.py. Matches the plan's own phrasing (\"writer.py — only called if validate.py passes everything\") and avoids validate.py/writer.py importing each other both ways."},{"label":"Yes, re-validate inside write_dossier too","description":"Belt-and-suspenders: even if a future caller forgets to check validate() first, a malformed/duplicate write still can't reach disk. Costs one redundant HTTP HEAD call on every write."}]},{"question":"slugify_uid() turns \"SimplifyJobs:ada5c220-...\" into \"simplifyjobs-ada5c220-...\" (lowercased, colons/non-alnum collapsed to hyphens). Good enough, or do you want the source prefix preserved differently for readability in the vault file list?","header":"Slug format","options":[{"label":"Current format is fine (Recommended)","description":"[REDACTED].md — fully filesystem-safe, sorts by source, no further changes needed."},{"label":"Use company+title instead of raw uid","description":"e.g. palantir-forward-deployed-software-engineer.md — more human-readable in a file browser, but risks collisions across sources/postings and needs its own dedup-safe truncation logic."}]}]}`
-- `Bash` — `mkdir -p "tests/fixtures/throwaway_vault/10_Areas/Career/Internships/List/Dossiers"
+- `Bash`:
+  ```bash
+mkdir -p "tests/fixtures/throwaway_vault/10_Areas/Career/Internships/List/Dossiers"
 touch "tests/fixtures/throwaway_vault/10_Areas/Career/Internships/List/Dossiers/.gitkeep"
-find tests/fixtures/throwaway_vault -type f`
+find tests/fixtures/throwaway_vault -type f
+  ```
   ```
 tests/fixtures/throwaway_vault/10_Areas/Career/Internships/List/Dossiers/.gitkeep
   ```
@@ -2465,7 +2528,9 @@ A  vault_writer/templates/dossier.md.j2
 A  vault_writer/validate.py
 A  vault_writer/writer.py
   ```
-- `Bash` — `git commit -q -m "$(cat <<'EOF'
+- `Bash`:
+  ```bash
+git commit -q -m "$(cat <<'EOF'
 Phase 2: vault_writer — dossier template + four-check write gate
 
 Jinja2 template renders only the fixed shape from the plan; frontmatter
@@ -2492,13 +2557,17 @@ Jarvis path. 41/41 tests passing.
 Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
 EOF
 )"
-git push -q && echo pushed`
+git push -q && echo pushed
+  ```
   ```
 pushed
   ```
-- `Bash` — `sleep 5
+- `Bash`:
+  ```bash
+sleep 5
 RUN_ID=$(gh run list --repo gupta-builds/internship-research-loop --workflow=test --limit 1 --json databaseId -q '.[0].databaseId')
-gh run watch "$RUN_ID" --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -20`
+gh run watch "$RUN_ID" --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -20
+  ```
   ```
   ✓ Post Run actions/checkout@v4
   ✓ Complete job
@@ -2635,12 +2704,15 @@ Phase 3 per the build order: `.github/workflows/run.yml` (scheduled fetch → fi
 ./vault_writer/validate.py
 ./vault_writer/writer.py
   ```
-- `Bash` — `echo "=== git status ===" 
+- `Bash`:
+  ```bash
+echo "=== git status ===" 
 git status --short
 echo "=== tracked files ==="
 git ls-files | sort
 echo "=== .venv tracked? ==="
-git ls-files | grep -c "^\.venv" || echo 0`
+git ls-files | grep -c "^\.venv" || echo 0
+  ```
   ```
 === git status ===
 === tracked files ===
@@ -2678,7 +2750,9 @@ drwx------ 4 anant_gupta anant_gupta     4096 Jul 16 21:47 ..
 -rw-r--r-- 1 anant_gupta anant_gupta 11123776 Jul 16 21:48 simplify_raw.json
 -rw-r--r-- 1 anant_gupta anant_gupta    28415 Jul 16 21:50 zapply_readme.md
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 .venv/bin/python -c "
 from ingestion.normalize import parse_zapply_readme
 text = open('/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad/zapply_readme.md').read()
@@ -2687,7 +2761,8 @@ print('parsed rows:', len(rows))
 for r in rows[:15]:
     print(repr(r.company), '|', repr(r.target_year), '|', repr(r.url))
 "
-`
+
+  ```
   ```
 parsed rows: 53
 'Dropbox SWE intern' | ['Sophomore'] | 'https://www.gem.com/form?formID=[REDACTED]'
@@ -2706,13 +2781,16 @@ parsed rows: 53
 'HeadStart Fellowship' | ['Freshman, Sophomore'] | 'https://www.headstartfellowship.com/fellowship'
 'Sumeru Fellows' | ['Freshmen, Sophomore'] | 'https://sumeru-equity-partners.breezy.hr/p/[REDACTED]'
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad
 # count all pipe-table lines that aren't header/separator
 grep -cE '^\|' zapply_readme.md
 echo "--- separator/header rows (dashes or 'Name') ---"
 grep -cE '^\| Name| ?[-]{3,}' zapply_readme.md
 echo "--- rows with fewer than 4 pipe-delimited cells (might break the regex) ---"
-awk -F'|' '/^\|/ {if (NF < 5) print NR": "NF" cells: "$0}' zapply_readme.md | head -20`
+awk -F'|' '/^\|/ {if (NF < 5) print NR": "NF" cells: "$0}' zapply_readme.md | head -20
+  ```
   ```
 65
 --- separator/header rows (dashes or 'Name') ---
@@ -2720,7 +2798,9 @@ awk -F'|' '/^\|/ {if (NF < 5) print NR": "NF" cells: "$0}' zapply_readme.md | he
 --- rows with fewer than 4 pipe-delimited cells (might break the regex) ---
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 .venv/bin/python -c "
 from ingestion.normalize import parse_zapply_readme
 text = open('/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad/zapply_readme.md').read()
@@ -2732,7 +2812,8 @@ print('all no-link rows:')
 for r in no_link:
     print(' -', r.company, '|', r.target_year)
 "
-`
+
+  ```
   ```
 no-link all-student rows: []
 all no-link rows:
@@ -2741,11 +2822,14 @@ all no-link rows:
  - Wells Fargo Discovery Fellowship | ['Sophomore']
   ```
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/tests/test_filter.py`
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 echo "=== simplifyjobs.json cases ==="
 .venv/bin/python -c "import json; [print(r['_case']) for r in json.load(open('tests/fixtures/simplifyjobs.json'))]"
 echo "=== josegael.json cases ==="
-.venv/bin/python -c "import json; [print(r['_case']) for r in json.load(open('tests/fixtures/josegael.json'))]"`
+.venv/bin/python -c "import json; [print(r['_case']) for r in json.load(open('tests/fixtures/josegael.json'))]"
+  ```
   ```
 === simplifyjobs.json cases ===
 should-match: Summer 2027 in terms list, category Software
@@ -2760,10 +2844,13 @@ should-match: target_year field absent entirely (accept_unrestricted case)
   ```
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/core/filter.py`
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/core/profile.yaml`
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 grep -rn "locations_allow\|exclude_terms" --include="*.py" .
 echo "--- grep in whole repo (non-py) too ---"
-grep -rn "locations_allow\|exclude_terms" . --include="*.yaml" --include="*.md" --include="*.yml"`
+grep -rn "locations_allow\|exclude_terms" . --include="*.yaml" --include="*.md" --include="*.yml"
+  ```
   ```
 --- grep in whole repo (non-py) too ---
 core/profile.yaml:10:locations_allow: ["United States", "Remote"]
@@ -2783,8 +2870,11 @@ core/profile.yaml:11:exclude_terms: ["Summer 2026", "Fall 2026", "Spring 2026"]
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/tests/test_writer.py`
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/.github/workflows/test.yml`
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/requirements.txt`
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
-.venv/bin/pip freeze | grep -iE "^(requests|pyyaml|pytest|jinja2)=="`
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+.venv/bin/pip freeze | grep -iE "^(requests|pyyaml|pytest|jinja2)=="
+  ```
   ```
 Jinja2==3.1.6
 pytest==9.1.1
@@ -2793,9 +2883,12 @@ requests==2.34.2
   ```
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/README.md`
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/.gitignore`
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git ls-files | grep claude || echo "not tracked - good"
-cat .claude/settings.local.json 2>/dev/null | head -20`
+cat .claude/settings.local.json 2>/dev/null | head -20
+  ```
   ```
 not tracked - good
 {
@@ -2808,10 +2901,13 @@ not tracked - good
   ]
 }
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 ls -la state/ logs/ 2>&1
 echo "--- tracked? ---"
-git ls-files | grep -E "^(state|logs)/"`
+git ls-files | grep -E "^(state|logs)/"
+  ```
   ```
 logs/:
 total 8
@@ -2824,10 +2920,13 @@ drwxr-xr-x  2 anant_gupta anant_gupta 4096 Jul 16 21:52 .
 drwxr-xr-x 13 anant_gupta anant_gupta 4096 Jul 17 10:23 ..
 --- tracked? ---
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 find . -name "__pycache__" -not -path "./.venv/*" -exec rm -rf {} + 2>/dev/null
 rm -rf .pytest_cache
-.venv/bin/python -m pytest tests/ -v --tb=short 2>&1 | tail -50`
+.venv/bin/python -m pytest tests/ -v --tb=short 2>&1 | tail -50
+  ```
   ```
 ============================= test session starts ==============================
 platform linux -- Python 3.12.3, pytest-9.1.1, pluggy-1.6.0 -- /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python
@@ -2879,7 +2978,9 @@ tests/test_writer.py::test_write_dossier_creates_missing_dossiers_dir PASSED [10
 
 ============================== 41 passed in 0.24s ==============================
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git stash -u -q 2>/dev/null
 cp core/filter.py /tmp/filter_backup.py
 # Mutation 1: break zapply matching to always return True
@@ -2890,7 +2991,8 @@ open('core/filter.py', 'w').write(content)
 "
 .venv/bin/python -m pytest tests/test_filter.py -v 2>&1 | tail -15
 cp /tmp/filter_backup.py core/filter.py
-echo "=== restored ==="`
+echo "=== restored ==="
+  ```
   ```
         listings = parse_zapply_readme(text)
         by_company = {l.company: l for l in listings}
@@ -2909,7 +3011,9 @@ FAILED tests/test_filter.py::test_zapply_readme_parses_and_filters - Assertio...
 ========================= 1 failed, 8 passed in 0.04s ==========================
 === restored ===
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 cp vault_writer/validate.py /tmp/validate_backup.py
 python3 -c "
 content = open('vault_writer/validate.py').read()
@@ -2922,7 +3026,8 @@ open('vault_writer/validate.py', 'w').write(content)
 .venv/bin/python -m pytest tests/test_validate.py -v -k "duplicate" 2>&1 | tail -20
 cp /tmp/validate_backup.py vault_writer/validate.py
 echo "=== restored ==="
-git stash pop -q 2>/dev/null || true`
+git stash pop -q 2>/dev/null || true
+  ```
   ```
 tests/test_validate.py:92: AssertionError
 _____________________ test_validate_rejects_duplicate_uid ______________________
@@ -2945,15 +3050,20 @@ FAILED tests/test_validate.py::test_validate_rejects_duplicate_uid - Assertio...
 ================== 2 failed, 2 passed, 17 deselected in 0.14s ==================
 === restored ===
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git status --short
 git diff --stat
-.venv/bin/python -m pytest tests/ -q 2>&1 | tail -5`
+.venv/bin/python -m pytest tests/ -q 2>&1 | tail -5
+  ```
   ```
 .........................................                                [100%]
 41 passed in 0.21s
   ```
-- `Bash` — `for url in \
+- `Bash`:
+  ```bash
+for url in \
   "https://jobs.lever.co/palantir/315f695d-04d1-4a9a-848e-cb2bec7a997e/apply" \
   "https://hcsc.wd1.myworkdayjobs.com/en-US/HCSC_External/job/IL---Chicago/Early-Careers---Associate-AV-Infrastructure-Engineering-Intern_R0047168" \
   "https://boards.greenhouse.io/point72/jobs/8295501002" \
@@ -2961,7 +3071,8 @@ git diff --stat
   echo "=== $url ==="
   curl -s -o /dev/null -w "HEAD: %{http_code}\n" -I "$url" --max-time 10
   curl -s -o /dev/null -w "GET:  %{http_code}\n" "$url" --max-time 10
-done`
+done
+  ```
   ```
 === https://jobs.lever.co/palantir/[REDACTED]/apply ===
 HEAD: 200
@@ -3159,11 +3270,14 @@ Phase 1 (ingestion + filter + identity, tested against fixtures) and phase 2
 vault) complete. Phase 3 (wired to the real vault via a scheduled GitHub Actions
 run) not started — see Build Order in the spec.
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 .venv/bin/pip install -q -r requirements.txt
 find . -name "__pycache__" -not -path "./.venv/*" -exec rm -rf {} + 2>/dev/null
 rm -rf .pytest_cache
-.venv/bin/python -m pytest tests/ -v 2>&1 | tail -55`
+.venv/bin/python -m pytest tests/ -v 2>&1 | tail -55
+  ```
   ```
 ============================= test session starts ==============================
 platform linux -- Python 3.12.3, pytest-9.1.1, pluggy-1.6.0 -- /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python
@@ -3222,7 +3336,9 @@ tests/test_writer.py::test_write_dossier_creates_missing_dossiers_dir PASSED [10
 ============================== 47 passed in 0.22s ==============================
   ```
 - `AskUserQuestion` — `{"questions":[{"question":"profile.yaml defines locations_allow and exclude_terms, but core/filter.py never reads either field — confirmed by grep, zero references anywhere. This matches the plan's own \"Match rule per source\" section, which only specifies term+category matching for SimplifyJobs, target_year for Jose-Gael-Cruz-Lopez, and the Year column for zapplyjobs — it never mentions filtering by location or by exclude_terms. So the plan itself is silent on wiring these in, but the config implies a capability that doesn't exist. How do you want this resolved?","header":"Dead config","options":[{"label":"Wire exclude_terms in, drop locations_allow (Recommended)","description":"exclude_terms is a real safety net worth having explicitly (reject if a matched listing's terms also include an excluded cycle) even though today's terms-allowlist already achieves the same effect implicitly — makes the intent explicit and cheap. locations_allow has no clear rule in the plan (SimplifyJobs entries carry real per-item locations data, but the other two sources don't), so drop it from profile.yaml rather than guess a rule the plan never specified."},{"label":"Leave both as documented-but-inert","description":"Keep profile.yaml matching the plan's literal template verbatim, accept that these two fields are aspirational/future config not yet consulted by filter.py. Lowest risk of introducing filter behavior the plan didn't ask for."},{"label":"Wire both in now","description":"Add real logic for exclude_terms (reject on any excluded term present) and locations_allow (reject if a listing's locations list has entries and none intersect the allowlist, treating missing/empty locations as unrestricted) even though the plan doesn't specify the location rule precisely — I'd be inferring the exact semantics."}]}]}`
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad
 python3 -c "
 import json
 data = json.load(open('simplify_raw.json'))
@@ -3231,7 +3347,8 @@ print('mixed 2027+excluded-2026 count:', len(mixed))
 for d in mixed[:3]:
     print(json.dumps(d, indent=2))
 "
-`
+
+  ```
   ```
 mixed 2027+excluded-2026 count: 53
 {
@@ -3381,8 +3498,11 @@ exclude_terms: ["Summer 2026", "Fall 2026", "Spring 2026"]
   {
     "_case": "should-reject: category Software but terms only Summer 2026 (excluded term, wrong cycle)",
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
-.venv/bin/python -m pytest tests/ -v 2>&1 | tail -55`
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+.venv/bin/python -m pytest tests/ -v 2>&1 | tail -55
+  ```
   ```
 platform linux -- Python 3.12.3, pytest-9.1.1, pluggy-1.6.0 -- /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python
 cachedir: .pytest_cache
@@ -3440,7 +3560,9 @@ tests/test_writer.py::test_write_dossier_creates_missing_dossiers_dir PASSED [10
 
 ============================== 48 passed in 0.32s ==============================
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 cp core/filter.py /tmp/filter_backup2.py
 python3 -c "
 content = open('core/filter.py').read()
@@ -3452,7 +3574,8 @@ open('core/filter.py', 'w').write(content)
 "
 .venv/bin/python -m pytest tests/test_filter.py -v -k should_reject 2>&1 | tail -15
 cp /tmp/filter_backup2.py core/filter.py
-.venv/bin/python -m pytest tests/ -q 2>&1 | tail -3`
+.venv/bin/python -m pytest tests/ -q 2>&1 | tail -3
+  ```
   ```
     @pytest.mark.parametrize(
         "raw",
@@ -3472,9 +3595,12 @@ FAILED tests/test_filter.py::test_simplify_should_reject[raw1] - AssertionErr...
 ................................................                         [100%]
 48 passed in 0.18s
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git diff --stat core/filter.py
-git status --short`
+git status --short
+  ```
   ```
  core/filter.py | 5 ++++-
  1 file changed, 4 insertions(+), 1 deletion(-)
@@ -3489,8 +3615,11 @@ git status --short`
  M vault_writer/validate.py
 ?? tests/test_sources.py
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
-git diff -- core/filter.py core/profile.yaml ingestion/normalize.py vault_writer/validate.py`
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+git diff -- core/filter.py core/profile.yaml ingestion/normalize.py vault_writer/validate.py
+  ```
   ```
 diff --git a/core/filter.py b/core/filter.py
 index 9535eb3..04b7750 100644
@@ -3565,17 +3694,23 @@ index 7a601b1..b32f916 100644
          return ValidationResult(False, "required_fields", f"missing/empty: {', '.join(missing)}")
      return ValidationResult(True, "required_fields")
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 find . -name "__pycache__" -not -path "./.venv/*" -exec rm -rf {} + 2>/dev/null
 rm -rf .pytest_cache
-.venv/bin/python -m pytest tests/ -q 2>&1 | tail -5`
+.venv/bin/python -m pytest tests/ -q 2>&1 | tail -5
+  ```
   ```
 ................................................                         [100%]
 48 passed in 0.23s
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git add -A
-git status --short`
+git status --short
+  ```
   ```
 M  README.md
 M  core/filter.py
@@ -3588,7 +3723,9 @@ M  tests/test_filter.py
 A  tests/test_sources.py
 M  vault_writer/validate.py
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git commit -q -m "$(cat <<'EOF'
 Verification pass: fix dead config, close test gaps, pin deps
 
@@ -3632,20 +3769,27 @@ confirmed each break is caught by the existing tests, then reverted.
 Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
 EOF
 )"
-git push -q && echo pushed`
+git push -q && echo pushed
+  ```
   ```
 pushed
   ```
-- `Bash` — `sleep 5
+- `Bash`:
+  ```bash
+sleep 5
 RUN_ID=$(gh run list --repo gupta-builds/internship-research-loop --workflow=test --limit 1 --json databaseId -q '.[0].databaseId')
-gh run watch "$RUN_ID" --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -20`
+gh run watch "$RUN_ID" --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -20
+  ```
   ```
 Run test (29562100334) has already completed with 'success'
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git log --oneline
 echo "---"
-find . -type f -not -path './.venv/*' -not -path './.git/*' -not -path '*/__pycache__/*' -not -path './.pytest_cache/*' -not -path './.claude/*' | sort`
+find . -type f -not -path './.venv/*' -not -path './.git/*' -not -path '*/__pycache__/*' -not -path './.pytest_cache/*' -not -path './.claude/*' | sort
+  ```
   ```
 0737dfc Verification pass: fix dead config, close test gaps, pin deps
 fd772b7 Phase 2: vault_writer — dossier template + four-check write gate
@@ -3806,33 +3950,42 @@ Let me know once that's set and I'll push `run.yml` to activate the hourly sched
 
 - `Read` — `/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Research Loop — Implementation Plan.md`
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/ingestion/sources.py`
-- `Bash` — `curl -s -o /dev/null -w "HTTP %{http_code}\n" "https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json"
+- `Bash`:
+  ```bash
+curl -s -o /dev/null -w "HTTP %{http_code}\n" "https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json"
 echo "--- also check if a root-level listings.json exists (the naive/wrong guess) ---"
-curl -s -o /dev/null -w "HTTP %{http_code}\n" "https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/listings.json"`
+curl -s -o /dev/null -w "HTTP %{http_code}\n" "https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/listings.json"
+  ```
   ```
 HTTP 200
 --- also check if a root-level listings.json exists (the naive/wrong guess) ---
 HTTP 404
   ```
-- `Bash` — `curl -s "https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json" | python3 -c "
+- `Bash`:
+  ```bash
+curl -s "https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json" | python3 -c "
 import json, sys
 data = json.load(sys.stdin)
 print('count:', len(data))
 print('keys of entry 0:', sorted(data[0].keys()))
-"`
+"
+  ```
   ```
 count: 112
 keys of entry 0: ['active', 'category', 'company_name', 'date_posted', 'date_updated', 'id', 'is_visible', 'locations', 'opportunity_type', 'season', 'source', 'sponsorship', 'target_year', 'title', 'url']
   ```
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/core/profile.yaml`
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/core/filter.py`
-- `Bash` — `curl -s "https://raw.githubusercontent.com/zapplyjobs/underclassmen-internships/main/README.md" -o /tmp/zapply_now.md
+- `Bash`:
+  ```bash
+curl -s "https://raw.githubusercontent.com/zapplyjobs/underclassmen-internships/main/README.md" -o /tmp/zapply_now.md
 echo "=== variant counts ==="
 grep -o "All student\b" /tmp/zapply_now.md | wc -l
 grep -o "All Student\b" /tmp/zapply_now.md | wc -l
 grep -o "All Students\b" /tmp/zapply_now.md | wc -l
 echo "=== does literal 'All student(s)' exist anywhere? ==="
-grep -c "All student(s)" /tmp/zapply_now.md || echo 0`
+grep -c "All student(s)" /tmp/zapply_now.md || echo 0
+  ```
   ```
 === variant counts ===
 19
@@ -3842,7 +3995,9 @@ grep -c "All student(s)" /tmp/zapply_now.md || echo 0`
 0
 0
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 .venv/bin/python -c "
 from ingestion.normalize import parse_zapply_readme
 from core.filter import matches, load_profile
@@ -3855,7 +4010,8 @@ print('matched (should be 19+2+1=22 if all All-student* variants match):', len(m
 variants = set(r.target_year[0] for r in matched)
 print('matched Year values:', variants)
 "
-`
+
+  ```
   ```
 total rows parsed: 53
 matched (should be 19+2+1=22 if all All-student* variants match): 20
@@ -3887,7 +4043,9 @@ matched Year values: {'All Student', 'All student', 'All Students'}
 175:| [Forage](https://www.theforage.com/)                            | All student | 5-6 hour virtual work experience programs. Featuring JPMC, Lyft, Visa, EA, SAP, etc.                                                                                     |
   ```
 - `Read` — `/tmp/zapply_now.md`
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 .venv/bin/python -c "
 from ingestion.normalize import parse_zapply_readme
 text = open('/tmp/zapply_now.md').read()
@@ -3897,7 +4055,8 @@ for name in ('CodePath', 'Forage'):
     r = by_company.get(name)
     print(name, '->', repr(r.target_year) if r else 'NOT PARSED AT ALL')
 "
-`
+
+  ```
   ```
 CodePath -> ['Free online courses in web dev, mobile, cyber, etc. Also provide resume help, mentorship, interview prep, recruiting event, etc.']
 Forage -> ['5-6 hour virtual work experience programs. Featuring JPMC, Lyft, Visa, EA, SAP, etc.']
@@ -3984,7 +4143,9 @@ def parse_zapply_readme(text: str) -> list:
         )
     return rows
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 .venv/bin/python -c "
 from ingestion.normalize import parse_zapply_readme
 from core.filter import matches, load_profile
@@ -3997,7 +4158,8 @@ print('matched:', len(matched))
 for r in matched:
     print(' -', r.company, '|', r.target_year, '|', r.url[:50])
 "
-`
+
+  ```
   ```
 total rows parsed: 53
 matched: 22
@@ -4024,8 +4186,11 @@ matched: 22
  - CodePath | ['All student'] | https://www.codepath.org/plan-your-codepath
  - Forage | ['All student'] | https://www.theforage.com/
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
-.venv/bin/python -m pytest tests/ -v 2>&1 | tail -70`
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+.venv/bin/python -m pytest tests/ -v 2>&1 | tail -70
+  ```
   ```
 ============================= test session starts ==============================
 platform linux -- Python 3.12.3, pytest-9.1.1, pluggy-1.6.0 -- /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python
@@ -4134,13 +4299,16 @@ def [REDACTED]():
     assert matches(by_company["CodePath"], PROFILE) is True
     assert matches(by_company["Forage"], PROFILE) is True
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 cp ingestion/normalize.py /tmp/normalize_backup.py
 git show HEAD:ingestion/normalize.py > ingestion/normalize.py
 .venv/bin/python -m pytest tests/test_filter.py -v -k "3_column" 2>&1 | tail -20
 cp /tmp/normalize_backup.py ingestion/normalize.py
 echo "=== restored, full suite ==="
-.venv/bin/python -m pytest tests/ -q 2>&1 | tail -5`
+.venv/bin/python -m pytest tests/ -q 2>&1 | tail -5
+  ```
   ```
         text = (FIXTURES / "zapply_readme.md").read_text()
         listings = parse_zapply_readme(text)
@@ -4166,11 +4334,14 @@ FAILED tests/test_filter.py::[REDACTED]
 .................................................                        [100%]
 49 passed in 0.17s
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 find . -name "__pycache__" -not -path "./.venv/*" -exec rm -rf {} + 2>/dev/null
 rm -rf .pytest_cache
 .venv/bin/python -m pytest tests/ -q 2>&1 | tail -5
-git status --short`
+git status --short
+  ```
   ```
 .................................................                        [100%]
 49 passed in 0.23s
@@ -4179,24 +4350,32 @@ git status --short`
  M tests/test_filter.py
   ```
 - `AskUserQuestion` — `{"questions":[{"question":"Reconciliation done: JGCL URL and SimplifyJobs categories needed no changes (already correct); zapply matching logic was already fine but I found and fixed a real upstream parsing bug (3-column table variant dropping 2 real matches). Ready to commit this and move to the PAT + workflow file?","header":"Proceed","options":[{"label":"Yes, commit and proceed to phase 3 (Recommended)","description":"Commit the normalize.py fix + fixture/test, then create the fine-grained PAT scoped to gupta-builds/Jarvis and write run.yml with all four hardening requirements."},{"label":"Let me review the diff first","description":"Show the full diff before committing anything, hold off on the PAT and workflow until you've looked."}]}]}`
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
-cat requirements.txt`
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+cat requirements.txt
+  ```
   ```
 requests==2.34.2
 pyyaml==6.0.3
 pytest==9.1.1
 jinja2==3.1.6
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git add -A
-git diff --cached --stat`
+git diff --cached --stat
+  ```
   ```
  ingestion/normalize.py          | 47 ++++++++++++++++++++++++++---------------
  tests/fixtures/zapply_readme.md |  9 ++++++++
  tests/test_filter.py            | 15 +++++++++++++
  3 files changed, 54 insertions(+), 17 deletions(-)
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git commit -q -m "$(cat <<'EOF'
 Phase 3 step 0: reconcile plan review, fix real zapply parsing bug
 
@@ -4235,13 +4414,17 @@ catches the bug, not just passes coincidentally. 49/49 tests passing.
 Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
 EOF
 )"
-git push -q && echo pushed`
+git push -q && echo pushed
+  ```
   ```
 pushed
   ```
-- `Bash` — `sleep 5
+- `Bash`:
+  ```bash
+sleep 5
 RUN_ID=$(gh run list --repo gupta-builds/internship-research-loop --workflow=test --limit 1 --json databaseId -q '.[0].databaseId')
-gh run watch "$RUN_ID" --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -15`
+gh run watch "$RUN_ID" --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -15
+  ```
   ```
 Run test (29563008048) has already completed with 'success'
   ```
@@ -4467,8 +4650,11 @@ def test_check_all_passes_when_all_three_are_healthy(simplify_raw, josegael_raw,
     assert len(call_log) == 3
 
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
-.venv/bin/python -m pytest tests/test_schema_drift.py -v 2>&1 | tail -40`
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+.venv/bin/python -m pytest tests/test_schema_drift.py -v 2>&1 | tail -40
+  ```
   ```
 ============================= test session starts ==============================
 platform linux -- Python 3.12.3, pytest-9.1.1, pluggy-1.6.0 -- /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python
@@ -4688,9 +4874,12 @@ def test_raises_after_exhausting_retries_on_persistent_conflict(remote_and_clone
     assert "add unrelated file" not in _log_messages(ours)
 
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git config --global user.email 2>&1 || echo "no global git email set"
-.venv/bin/python -m pytest tests/test_git_ops.py -v 2>&1 | tail -60`
+.venv/bin/python -m pytest tests/test_git_ops.py -v 2>&1 | tail -60
+  ```
   ```
 anantmahi721@gmail.com
 ============================= test session starts ==============================
@@ -4706,13 +4895,16 @@ tests/test_git_ops.py::test_raises_after_exhausting_retries_on_persistent_confli
 
 ============================== 4 passed in 0.48s ===============================
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 cp core/git_ops.py /tmp/git_ops_backup.py
 sed -i 's/max_attempts = 2  # initial attempt + one retry/max_attempts = 1  # MUTATED, was 2/' core/git_ops.py
 .venv/bin/python -m pytest tests/test_git_ops.py -v 2>&1 | tail -30
 cp /tmp/git_ops_backup.py core/git_ops.py
 echo "=== restored ==="
-.venv/bin/python -m pytest tests/test_git_ops.py -q 2>&1 | tail -3`
+.venv/bin/python -m pytest tests/test_git_ops.py -q 2>&1 | tail -3
+  ```
   ```
         _git(repo_dir, "commit", "-m", message)
     
@@ -5008,8 +5200,11 @@ from core.run_log import (
     should_run_weekly_rollup,
 )
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
-.venv/bin/python -m pytest tests/test_run_log.py -v 2>&1 | tail -40`
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+.venv/bin/python -m pytest tests/test_run_log.py -v 2>&1 | tail -40
+  ```
   ```
 ============================= test session starts ==============================
 platform linux -- Python 3.12.3, pytest-9.1.1, pluggy-1.6.0 -- /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python
@@ -5029,9 +5224,12 @@ tests/test_run_log.py::test_appended_run_log_note_has_no_blank_lines_or_stray_da
 
 ============================== 9 passed in 0.05s ===============================
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 find . -name "__pycache__" -not -path "./.venv/*" -exec rm -rf {} + 2>/dev/null
-.venv/bin/python -m pytest tests/ -q 2>&1 | tail -10`
+.venv/bin/python -m pytest tests/ -q 2>&1 | tail -10
+  ```
   ```
 ........................................................................ [ 98%]
 .                                                                        [100%]
@@ -5073,8 +5271,11 @@ def fetch_zapply(http_get=requests.get) -> list:
     resp.raise_for_status()
     return parse_zapply_readme(resp.text)
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
-.venv/bin/python -m pytest tests/test_sources.py -v 2>&1 | tail -30`
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+.venv/bin/python -m pytest tests/test_sources.py -v 2>&1 | tail -30
+  ```
   ```
 kwargs = {'timeout': 30}
 
@@ -5175,8 +5376,11 @@ def fetch_zapply(http_get=None) -> list:
     resp.raise_for_status()
     return parse_zapply_readme(resp.text)
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
-grep -rn "=requests\.\(get\|head\)" --include="*.py" .`
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+grep -rn "=requests\.\(get\|head\)" --include="*.py" .
+  ```
   ```
 ingestion/sources.py:17:    # a `default=requests.get` here would capture the pre-patch function
 core/schema_drift.py:37:def check_simplify_schema(http_get=requests.get) -> None:
@@ -5256,9 +5460,12 @@ def check_all(http_get=None) -> None:
   - def validate(listing, uid: str, markdown: str, seen_ids, http_head=requests.head) -> ValidationResult:
   + def validate(listing, uid: str, markdown: str, seen_ids, http_head=None) -> ValidationResult:
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 find . -name "__pycache__" -not -path "./.venv/*" -exec rm -rf {} + 2>/dev/null
-.venv/bin/python -m pytest tests/ -v 2>&1 | tail -80`
+.venv/bin/python -m pytest tests/ -v 2>&1 | tail -80
+  ```
   ```
 platform linux -- Python 3.12.3, pytest-9.1.1, pluggy-1.6.0 -- /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python
 cachedir: .pytest_cache
@@ -5925,8 +6132,11 @@ def test_run_once_second_run_does_not_rewrite_already_seen_items(tmp_path):
 
     assert record["halted"] is True
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
-.venv/bin/python -m pytest tests/test_run_pipeline.py -v 2>&1 | tail -100`
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+.venv/bin/python -m pytest tests/test_run_pipeline.py -v 2>&1 | tail -100
+  ```
   ```
 ============================= test session starts ==============================
 platform linux -- Python 3.12.3, pytest-9.1.1, pluggy-1.6.0 -- /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/python
@@ -5951,7 +6161,9 @@ tests/test_run_pipeline.py::test_run_once_second_run_does_not_rewrite_already_se
 
 ============================== 14 passed in 0.20s ==============================
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 cp run_pipeline.py /tmp/run_pipeline_backup.py
 python3 -c "
 content = open('run_pipeline.py').read()
@@ -5965,7 +6177,8 @@ grep -n "MUTATED" run_pipeline.py
 .venv/bin/python -m pytest tests/test_run_pipeline.py -v -k "push_fails" 2>&1 | tail -25
 cp /tmp/run_pipeline_backup.py run_pipeline.py
 echo "=== restored ==="
-.venv/bin/python -m pytest tests/test_run_pipeline.py -q 2>&1 | tail -5`
+.venv/bin/python -m pytest tests/test_run_pipeline.py -q 2>&1 | tail -5
+  ```
   ```
 193:    seen_ids.update(written_uids)  # MUTATED: always mark seen regardless of push
 _______________ test_run_once_does_not_mark_seen_when_push_fails _______________
@@ -5997,9 +6210,12 @@ FAILED tests/test_run_pipeline.py::test_run_once_does_not_mark_seen_when_push_fa
 ..............                                                           [100%]
 14 passed in 0.20s
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 find . -name "__pycache__" -not -path "./.venv/*" -exec rm -rf {} + 2>/dev/null
-.venv/bin/python -m pytest tests/ -q 2>&1 | tail -10`
+.venv/bin/python -m pytest tests/ -q 2>&1 | tail -10
+  ```
   ```
 ........................................................................ [ 82%]
 ...............                                                          [100%]
@@ -6007,9 +6223,12 @@ find . -name "__pycache__" -not -path "./.venv/*" -exec rm -rf {} + 2>/dev/null
   ```
 - `TaskUpdate` — `{"taskId":"4","status":"completed"}`
 - `TaskUpdate` — `{"taskId":"5","status":"in_progress"}`
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 ls -la state/ logs/ 2>&1
-gh api repos/gupta-builds/internship-research-loop/actions/permissions 2>&1 | head -20`
+gh api repos/gupta-builds/internship-research-loop/actions/permissions 2>&1 | head -20
+  ```
   ```
 logs/:
 total 8
@@ -6070,8 +6289,11 @@ jobs:
         run: python run_pipeline.py
 
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
-.venv/bin/python -c "import yaml; d = yaml.safe_load(open('.github/workflows/run.yml')); print('valid YAML'); import json; print(json.dumps(d, indent=2))"`
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+.venv/bin/python -c "import yaml; d = yaml.safe_load(open('.github/workflows/run.yml')); print('valid YAML'); import json; print(json.dumps(d, indent=2))"
+  ```
   ```
 valid YAML
 {
@@ -6131,8 +6353,11 @@ valid YAML
   }
 }
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
-.venv/bin/python -c "import yaml; d = yaml.safe_load(open('.github/workflows/test.yml')); print(list(d.keys()))"`
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+.venv/bin/python -c "import yaml; d = yaml.safe_load(open('.github/workflows/test.yml')); print(list(d.keys()))"
+  ```
   ```
 ['name', True, 'jobs']
   ```
@@ -6157,10 +6382,13 @@ not installed
           fetch-depth: 0  # full history — a shallow clone can fail `git pull --rebase`
                           # if the vault's own auto-commit cycle has diverged by more than one commit
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 .venv/bin/python -c "import yaml; yaml.safe_load(open('.github/workflows/run.yml')); print('valid YAML')"
 find . -name "__pycache__" -not -path "./.venv/*" -exec rm -rf {} + 2>/dev/null
-.venv/bin/python -m pytest tests/ -q 2>&1 | tail -10`
+.venv/bin/python -m pytest tests/ -q 2>&1 | tail -10
+  ```
   ```
 valid YAML
 ........................................................................ [ 82%]
@@ -6187,8 +6415,11 @@ back from the default branch until `JARVIS_PUSH_TOKEN` (a fine-grained PAT
 scoped to that repo, `contents:write` only) exists as a repo secret, since
 pushing the workflow activates its hourly cron immediately.
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
-git status --short`
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+git status --short
+  ```
   ```
  M README.md
  M ingestion/sources.py
@@ -6203,9 +6434,12 @@ git status --short`
 ?? tests/test_run_pipeline.py
 ?? tests/test_schema_drift.py
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git add README.md ingestion/sources.py vault_writer/validate.py core/git_ops.py core/run_log.py core/schema_drift.py run_pipeline.py tests/test_git_ops.py tests/test_run_log.py tests/test_run_pipeline.py tests/test_schema_drift.py
-git status --short`
+git status --short
+  ```
   ```
 M  README.md
 A  core/git_ops.py
@@ -6220,7 +6454,9 @@ A  tests/test_schema_drift.py
 M  vault_writer/validate.py
 ?? .github/workflows/run.yml
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git commit -q -m "$(cat <<'EOF'
 Phase 3 code: schema-drift check, git push-retry, run log, orchestration
 
@@ -6275,13 +6511,17 @@ a duplicate issue hourly. 87/87 tests passing.
 Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
 EOF
 )"
-git push -q && echo pushed`
+git push -q && echo pushed
+  ```
   ```
 pushed
   ```
-- `Bash` — `sleep 5
+- `Bash`:
+  ```bash
+sleep 5
 RUN_ID=$(gh run list --repo gupta-builds/internship-research-loop --workflow=test --limit 1 --json databaseId -q '.[0].databaseId')
-gh run watch "$RUN_ID" --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -15`
+gh run watch "$RUN_ID" --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -15
+  ```
   ```
 JOBS
 ✓ pytest in 13s (ID 87832242772)
@@ -6347,9 +6587,12 @@ Either way, let me know once it's done and I'll re-trigger.
   ```
 JARVIS_PUSH_TOKEN	2026-07-17T11:14:11Z
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git status --short
-cat .github/workflows/run.yml`
+cat .github/workflows/run.yml
+  ```
   ```
 ?? .github/workflows/run.yml
 name: run
@@ -6396,7 +6639,9 @@ jobs:
         run: python run_pipeline.py
   ```
 - `AskUserQuestion` — `{"questions":[{"question":"state/seen_ids.json is empty, so the first real run will write every currently-eligible listing at once (likely several dozen dossiers), not just new-since-now ones. How do you want to handle the first real trigger?","header":"First run scope","options":[{"label":"Proceed as-is (Recommended)","description":"Trigger it now via workflow_dispatch and watch closely. Every dossier that lands has passed the real write gate (live URL check, format validation) — it's legitimate output, just all at once instead of trickling in."},{"label":"Cap the first run's write count","description":"I add a one-time max-writes-per-run limit (e.g. 5) so the first live test is small and easy to review by hand, then remove the cap once you've checked the output quality."},{"label":"Dry-run first, no writes at all","description":"I add a temporary mode that runs schema-drift + fetch + filter + dedup + validate but skips write+push entirely, so you see exactly what WOULD be written (counts, which postings) before anything touches Jarvis for real."}]}]}`
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git add .github/workflows/run.yml
 git commit -q -m "$(cat <<'EOF'
 Phase 3: activate the scheduled run against gupta-builds/Jarvis
@@ -6410,15 +6655,19 @@ secret first, confirmed set.
 Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
 EOF
 )"
-git push -q && echo pushed`
+git push -q && echo pushed
+  ```
   ```
 pushed
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 sleep 3
 gh workflow run run.yml --repo gupta-builds/internship-research-loop
 sleep 5
-gh run list --repo gupta-builds/internship-research-loop --workflow=run.yml --limit 3`
+gh run list --repo gupta-builds/internship-research-loop --workflow=run.yml --limit 3
+  ```
   ```
 in_progress		run	run	master	workflow_dispatch	29576348000	7s	2026-07-17T11:17:25Z
   ```
@@ -6593,9 +6842,12 @@ Per the plan's build order, next step is watching the Run Log rollup for a full 
   ```
 JARVIS_PUSH_TOKEN	2026-07-17T11:18:54Z
   ```
-- `Bash` — `gh workflow run run.yml --repo gupta-builds/internship-research-loop
+- `Bash`:
+  ```bash
+gh workflow run run.yml --repo gupta-builds/internship-research-loop
 sleep 6
-gh run list --repo gupta-builds/internship-research-loop --workflow=run.yml --limit 3`
+gh run list --repo gupta-builds/internship-research-loop --workflow=run.yml --limit 3
+  ```
   ```
 in_progress		run	run	master	workflow_dispatch	29576538461	8s	2026-07-17T11:20:55Z
 completed	failure	run	run	master	workflow_dispatch	29576348000	11s	2026-07-17T11:17:25Z
@@ -6671,7 +6923,9 @@ pipeline	Post Checkout internship-research-loop	2026-07-17T11:22:25.2998443Z ##[
 pipeline	Complete job	﻿2026-07-17T11:22:25.3116066Z Cleaning up orphan processes
 pipeline	Complete job	2026-07-17T11:22:25.3442227Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/[REDACTED]/
   ```
-- `Bash` — `gh api repos/gupta-builds/Jarvis/contents/10_Areas/Career/Internships/List/Dossiers 2>&1 | python3 -c "
+- `Bash`:
+  ```bash
+gh api repos/gupta-builds/Jarvis/contents/10_Areas/Career/Internships/List/Dossiers 2>&1 | python3 -c "
 import json, sys
 try:
     d = json.load(sys.stdin)
@@ -6683,7 +6937,8 @@ try:
         print(d)
 except Exception as e:
     print('error:', e)
-"`
+"
+  ```
   ```
 file count: 137
  - [REDACTED].md
@@ -6734,18 +6989,24 @@ Auto-discovered 2026-07-17 from Jose-Gael-Cruz-Lopez. No enrichment yet — comp
 {"date":"2026-07-16T19:33:10Z","message":"auto: 2026-07-17 01:03 | 1 files\n\nAffected files:\n.obsidian/plugins/recent-files-obsidian/data.json","sha":"48a3c625"}
 {"date":"2026-07-16T17:32:30Z","message":"auto: 2026-07-16 23:02 | 25 files\n\nAffected files:\n.gitignore\n.obsidian/plugins/recent-files-obsidian/data.json\n10_Areas/Career/Internships/Contacts/Mimic.md\n10_Areas/Career/Internships/Internships Hub.md\n10_Areas/Career/Internships/List/2026-07 Found.md\n10_Areas/Career/Internships/Programs/2026-HRT-Sophomore.md\n10_Areas/Career/Internships/Programs/Programs-to-Create.md\n10_Areas/Career/Internships/README.md\n10_Areas/Career/Internships/Tracker/Internship - Dashboard.md\n20_Progress/Internship/Applying/2026-HRT-Sophomore.md\n20_Progress/Internship/Applying/AI Applying.md\n20_Progress/Internship/Applying/_This Week.md\n20_Progress/Internship/Building System/Internship System — Build Log.md\n20_Progress/Internship/Building System/Research Loop — Implementation Plan.md\n20_Progress/Internship/Posts/README.md\n20_Progress/Internship/Resumes/Main Resume.pdf\n30_Order/Templates/Career/Applying Template.md\n30_Order/Templates/Career/Cheat Template.md\n30_Order/Templates/Career/Contact Template.md\n30_Order/Templates/Career/LinkedIn Post Template.md\n30_Order/Templates/Career/List Monthly Log Template.md\n30_Order/Templates/Career/Program Template.md\n30_Order/Workflows/00_Workflows Index.md\n30_Order/Workflows/Internship Pipeline.md\n60_Claude/07_AI_Information/Session Logs/log.md","sha":"24c1ca68"}
   ```
-- `Bash` — `gh api repos/gupta-builds/Jarvis/commits/2a326c28 --jq '{files_changed: (.files | length), stats: .stats}'
+- `Bash`:
+  ```bash
+gh api repos/gupta-builds/Jarvis/commits/2a326c28 --jq '{files_changed: (.files | length), stats: .stats}'
 echo "--- any files outside List/Dossiers or List/Run Log.md? ---"
-gh api repos/gupta-builds/Jarvis/commits/2a326c28 --jq '.files[].filename' | grep -v "^10_Areas/Career/Internships/List/Dossiers/" | grep -v "^10_Areas/Career/Internships/List/Run Log.md$"`
+gh api repos/gupta-builds/Jarvis/commits/2a326c28 --jq '.files[].filename' | grep -v "^10_Areas/Career/Internships/List/Dossiers/" | grep -v "^10_Areas/Career/Internships/List/Run Log.md$"
+  ```
   ```
 {"files_changed":137,"stats":{"additions":3334,"deletions":0,"total":3334}}
 --- any files outside List/Dossiers or List/Run Log.md? ---
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git fetch origin -q
 git log origin/master --oneline -5
 echo "--- files in latest commit ---"
-git show --stat origin/master -1`
+git show --stat origin/master -1
+  ```
   ```
 2b5938c Update state + logs — 2026-07-17
 2c58414 Phase 3: activate the scheduled run against gupta-builds/Jarvis
@@ -6764,13 +7025,16 @@ Date:   Fri Jul 17 11:22:23 2026 +0000
  state/seen_ids.json | 139 ++++++++++++++++++++++++++++++++++++++++++++++++++++
  3 files changed, 141 insertions(+)
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git ls-tree origin/master | grep jarvis
 echo "--- state/seen_ids.json content from that commit (sanity check the real data) ---"
 git show origin/master:state/seen_ids.json | head -5
 git show origin/master:state/seen_ids.json | python3 -c "import json,sys; d=json.load(sys.stdin); print('count:', len(d))"
 echo "--- logs/runs.jsonl ---"
-git show origin/master:logs/runs.jsonl`
+git show origin/master:logs/runs.jsonl
+  ```
   ```
 160000 commit [REDACTED]	jarvis-checkout
 --- state/seen_ids.json content from that commit (sanity check the real data) ---
@@ -6804,23 +7068,31 @@ __pycache__/
 jarvis-checkout/
 
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git pull -q origin master
 git ls-tree HEAD | grep jarvis
-git status --short`
+git status --short
+  ```
   ```
 160000 commit [REDACTED]	jarvis-checkout
  M .gitignore
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git rm --cached jarvis-checkout
-git status --short`
+git status --short
+  ```
   ```
 rm 'jarvis-checkout'
  M .gitignore
 D  jarvis-checkout
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git commit -q -m "$(cat <<'EOF'
 Fix: exclude jarvis-checkout/ from this repo's own git tracking
 
@@ -6840,19 +7112,26 @@ from tracking (git rm --cached, new commit — not a history rewrite).
 Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
 EOF
 )"
-git push -q && echo pushed`
+git push -q && echo pushed
+  ```
   ```
 pushed
   ```
-- `Bash` — `sleep 5
+- `Bash`:
+  ```bash
+sleep 5
 RUN_ID=$(gh run list --repo gupta-builds/internship-research-loop --workflow=test --limit 1 --json databaseId -q '.[0].databaseId')
-gh run watch "$RUN_ID" --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -15`
+gh run watch "$RUN_ID" --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -15
+  ```
   ```
 Run test (29576784068) has already completed with 'success'
   ```
-- `Bash` — `gh workflow run run.yml --repo gupta-builds/internship-research-loop
+- `Bash`:
+  ```bash
+gh workflow run run.yml --repo gupta-builds/internship-research-loop
 sleep 6
-gh run list --repo gupta-builds/internship-research-loop --workflow=run.yml --limit 3`
+gh run list --repo gupta-builds/internship-research-loop --workflow=run.yml --limit 3
+  ```
   ```
 in_progress		run	run	master	workflow_dispatch	29576802107	7s	2026-07-17T11:25:42Z
 completed	success	run	run	master	workflow_dispatch	29576538461	1m32s	2026-07-17T11:20:55Z
@@ -6919,13 +7198,16 @@ pipeline	Post Checkout internship-research-loop	2026-07-17T11:26:25.5427565Z [co
 pipeline	Post Checkout internship-research-loop	2026-07-17T11:26:25.5667431Z fatal: No url found for submodule path 'jarvis-checkout' in .gitmodules
 pipeline	Post Checkout internship-research-loop	2026-07-17T11:26:25.5717402Z ##[warning]The process '/usr/bin/git' failed with exit code 128
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git fetch origin -q
 git log origin/master --oneline -3
 echo "--- files in latest commit ---"
 git show --stat origin/master -1
 echo "--- is jarvis-checkout tracked now? ---"
-git ls-tree origin/master | grep jarvis || echo "not tracked - clean"`
+git ls-tree origin/master | grep jarvis || echo "not tracked - clean"
+  ```
   ```
 57dc82a Update state + logs — 2026-07-17
 573bfd5 Fix: exclude jarvis-checkout/ from this repo's own git tracking
@@ -6943,7 +7225,9 @@ Date:   Fri Jul 17 11:26:23 2026 +0000
 --- is jarvis-checkout tracked now? ---
 160000 commit [REDACTED]	jarvis-checkout
   ```
-- `Bash` — `cd /tmp
+- `Bash`:
+  ```bash
+cd /tmp
 rm -rf gitlink_test && mkdir gitlink_test && cd gitlink_test
 git init -q -b master
 echo "nested_repo/" > .gitignore
@@ -6966,16 +7250,20 @@ echo "=== git add -A ==="
 git add -A
 echo "=== status after add -A ==="
 git status --short
-git ls-files -s | grep nested`
+git ls-files -s | grep nested
+  ```
   ```
 === status before add -A ===
 === git add -A ===
 === status after add -A ===
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git show 573bfd5:.gitignore
 echo "--- was jarvis-checkout removed as of 573bfd5? ---"
-git ls-tree 573bfd5 | grep jarvis || echo "correctly absent"`
+git ls-tree 573bfd5 | grep jarvis || echo "correctly absent"
+  ```
   ```
 .venv/
 __pycache__/
@@ -6984,10 +7272,13 @@ __pycache__/
 --- was jarvis-checkout removed as of 573bfd5? ---
 correctly absent
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git show 573bfd5 -- .gitignore
 echo "=== current local .gitignore ==="
-cat .gitignore`
+cat .gitignore
+  ```
   ```
 === current local .gitignore ===
 .venv/
@@ -7002,13 +7293,16 @@ __pycache__/
 # submodule path 'jarvis-checkout' in .gitmodules").
 jarvis-checkout/
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git pull -q origin master
 git status --short
 echo "--- is jarvis-checkout tracked again? ---"
 git ls-tree HEAD | grep jarvis
 echo "--- .gitignore diff vs HEAD ---"
-git diff HEAD -- .gitignore`
+git diff HEAD -- .gitignore
+  ```
   ```
  M .gitignore
 --- is jarvis-checkout tracked again? ---
@@ -7030,23 +7324,31 @@ index 17cd2fc..5e77bb8 100644
 +# submodule path 'jarvis-checkout' in .gitmodules").
 +jarvis-checkout/
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git add .gitignore
 git rm --cached jarvis-checkout
-git status --short`
+git status --short
+  ```
   ```
 rm 'jarvis-checkout'
 M  .gitignore
 D  jarvis-checkout
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
-git diff --cached --stat`
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+git diff --cached --stat
+  ```
   ```
  .gitignore      | 7 +++++++
  jarvis-checkout | 1 -
  2 files changed, 7 insertions(+), 1 deletion(-)
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git commit -q -m "$(cat <<'EOF'
 Fix (for real this time): stage the .gitignore content, not just the rm
 
@@ -7061,13 +7363,17 @@ there was still no real ignore rule for it.
 Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
 EOF
 )"
-git push -q && echo pushed`
+git push -q && echo pushed
+  ```
   ```
 pushed
   ```
-- `Bash` — `sleep 5
+- `Bash`:
+  ```bash
+sleep 5
 RUN_ID=$(gh run list --repo gupta-builds/internship-research-loop --workflow=test --limit 1 --json databaseId -q '.[0].databaseId')
-gh run watch "$RUN_ID" --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -10`
+gh run watch "$RUN_ID" --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -10
+  ```
   ```
   ✓ Run pip install -r requirements.txt
   ✓ Run python -m pytest tests/ -v
@@ -7079,9 +7385,12 @@ ANNOTATIONS
 ! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/[REDACTED]/
 pytest: .github#2
   ```
-- `Bash` — `gh workflow run run.yml --repo gupta-builds/internship-research-loop
+- `Bash`:
+  ```bash
+gh workflow run run.yml --repo gupta-builds/internship-research-loop
 sleep 6
-gh run list --repo gupta-builds/internship-research-loop --workflow=run.yml --limit 3`
+gh run list --repo gupta-builds/internship-research-loop --workflow=run.yml --limit 3
+  ```
   ```
 in_progress		run	run	master	workflow_dispatch	29577014956	8s	2026-07-17T11:29:38Z
 completed	success	run	run	master	workflow_dispatch	29576802107	46s	2026-07-17T11:25:42Z
@@ -7128,7 +7437,9 @@ ANNOTATIONS
 ! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/[REDACTED]/
 pipeline: .github#2
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git fetch origin -q
 git log origin/master --oneline -3
 echo "--- latest commit files ---"
@@ -7136,7 +7447,8 @@ git show --stat origin/master -1
 echo "--- jarvis-checkout tracked? ---"
 git ls-tree origin/master | grep jarvis || echo "correctly absent"
 echo "--- seen_ids count now ---"
-git show origin/master:state/seen_ids.json | python3 -c "import json,sys; print(len(json.load(sys.stdin)))"`
+git show origin/master:state/seen_ids.json | python3 -c "import json,sys; print(len(json.load(sys.stdin)))"
+  ```
   ```
 c2b1ed1 Update state + logs — 2026-07-17
 cdcbc4e Fix (for real this time): stage the .gitignore content, not just the rm
@@ -7155,7 +7467,9 @@ correctly absent
 --- seen_ids count now ---
 137
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git show origin/master:logs/runs.jsonl | tail -1 | python3 -c "
 import json, sys
 r = json.loads(sys.stdin.read())
@@ -7164,7 +7478,8 @@ print('already_seen_count:', r['already_seen_count'])
 print('written_count:', r['written_count'])
 print('halted:', r['halted'])
 print('errors:', r['errors'])
-"`
+"
+  ```
   ```
 new_count: 18
 already_seen_count: 137
@@ -7172,9 +7487,12 @@ written_count: 0
 halted: False
 errors: []
   ```
-- `Bash` — `gh api repos/gupta-builds/Jarvis/contents/10_Areas/Career/Internships/List/Dossiers --paginate --jq '. | length'
+- `Bash`:
+  ```bash
+gh api repos/gupta-builds/Jarvis/contents/10_Areas/Career/Internships/List/Dossiers --paginate --jq '. | length'
 echo "--- recent Jarvis commits from our bot ---"
-gh api repos/gupta-builds/Jarvis/commits --jq '.[0:3] | .[] | {sha: .sha[0:8], message: .commit.message, author: .commit.author.name}'`
+gh api repos/gupta-builds/Jarvis/commits --jq '.[0:3] | .[] | {sha: .sha[0:8], message: .commit.message, author: .commit.author.name}'
+  ```
   ```
 137
 --- recent Jarvis commits from our bot ---
@@ -7182,11 +7500,14 @@ gh api repos/gupta-builds/Jarvis/commits --jq '.[0:3] | .[] | {sha: .sha[0:8], m
 {"author":"Anant Gupta","message":"auto: 2026-07-17 13:29 | 2 files\n\nAffected files:\n20_Progress/Internship/Building System/Research Loop — Implementation Plan.md\n60_Claude/07_AI_Information/Session Logs/log.md","sha":"c6b7b6f4"}
 {"author":"Anant Gupta","message":"auto: 2026-07-17 11:29 | 1 files\n\nAffected files:\n.obsidian/plugins/recent-files-obsidian/data.json","sha":"6d3ae0cb"}
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git pull -q origin master
 find . -name "__pycache__" -not -path "./.venv/*" -exec rm -rf {} + 2>/dev/null
 rm -rf .pytest_cache
-.venv/bin/python -m pytest tests/ -q 2>&1 | tail -10`
+.venv/bin/python -m pytest tests/ -q 2>&1 | tail -10
+  ```
   ```
 ........................................................................ [ 82%]
 ...............                                                          [100%]
@@ -7217,7 +7538,9 @@ recognized all 137 as already-seen and wrote zero duplicates. Per the plan's
 build order: watch the Run Log rollup for a full week before tightening the
 cadence past hourly.
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git add README.md
 git commit -q -m "$(cat <<'EOF'
 README: phase 3 is live
@@ -7228,7 +7551,8 @@ gupta-builds/Jarvis, dedup correctly no-ops on a second run.
 Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
 EOF
 )"
-git push -q && echo pushed`
+git push -q && echo pushed
+  ```
   ```
 pushed
   ```
@@ -7584,7 +7908,9 @@ f01e663 Fix CI: use python -m pytest so repo root lands on sys.path
      21 tests/test_validate.py
       4 tests/test_writer.py
   ```
-- `Bash` — `gh repo view gupta-builds/internship-research-loop --json visibility,defaultBranchRef -q '.visibility' 2>&1
+- `Bash`:
+  ```bash
+gh repo view gupta-builds/internship-research-loop --json visibility,defaultBranchRef -q '.visibility' 2>&1
 echo "---secrets---"
 gh secret list --repo gupta-builds/internship-research-loop 2>&1
 echo "---runs---"
@@ -7592,7 +7918,8 @@ gh run list --repo gupta-builds/internship-research-loop --limit 10 --json datab
 echo "---issues---"
 gh issue list --repo gupta-builds/internship-research-loop --state all 2>&1
 echo "---jarvis dossier count---"
-gh api repos/gupta-builds/Jarvis/contents/10_Areas/Career/Internships/List/Dossiers --paginate --jq '. | length' 2>&1`
+gh api repos/gupta-builds/Jarvis/contents/10_Areas/Career/Internships/List/Dossiers --paginate --jq '. | length' 2>&1
+  ```
   ```
 PUBLIC
 ---secrets---
@@ -7985,7 +8312,9 @@ test.yml
 ./vault_writer/validate.py
 ./vault_writer/writer.py
   ```
-- `Bash` — `gh repo view gupta-builds/internship-research-loop --json visibility -q '.visibility' 2>&1
+- `Bash`:
+  ```bash
+gh repo view gupta-builds/internship-research-loop --json visibility -q '.visibility' 2>&1
 echo "---secrets---"
 gh secret list --repo gupta-builds/internship-research-loop 2>&1
 echo "---secret expiry check---"
@@ -7997,7 +8326,8 @@ gh issue list --repo gupta-builds/internship-research-loop --state all 2>&1
 echo "---jarvis dossier count---"
 gh api repos/gupta-builds/Jarvis/contents/10_Areas/Career/Internships/List/Dossiers --paginate --jq '. | length' 2>&1
 echo "---jarvis repo visibility---"
-gh repo view gupta-builds/Jarvis --json visibility -q '.visibility' 2>&1`
+gh repo view gupta-builds/Jarvis --json visibility -q '.visibility' 2>&1
+  ```
   ```
 PUBLIC
 ---secrets---
@@ -8140,7 +8470,9 @@ One thing worth flagging since I was in there anyway: `git status` shows the `lo
 
 **Tool calls:**
 
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 echo "=== env var usage ===" 
 grep -rn "os\.environ\|getenv\|dotenv\|\.env" --include="*.py" --include="*.yml" . 2>/dev/null | grep -v ".venv\|__pycache__"
 echo "=== firecrawl/crawl4ai/anthropic/openai refs ==="
@@ -8152,7 +8484,8 @@ grep -n "secrets\.\|env:" .github/workflows/*.yml
 echo "=== full requirements.txt ==="
 cat requirements.txt
 echo "=== .gitignore ==="
-cat .gitignore`
+cat .gitignore
+  ```
   ```
 === env var usage ===
 run_pipeline.py:223:        jarvis_dir=os.environ["JARVIS_DIR"],
@@ -8224,14 +8557,17 @@ __pycache__/
 # submodule path 'jarvis-checkout' in .gitmodules").
 jarvis-checkout/
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git pull -q origin master 2>&1
 echo "=== git log ==="
 git log --oneline -15
 echo "=== full repo tree ==="
 find . -path ./.venv -prune -o -path ./.git -prune -o -path '*/__pycache__' -prune -o -path ./.pytest_cache -prune -o -type f -print | sort
 echo "=== git status ==="
-git status --short`
+git status --short
+  ```
   ```
 === git log ===
 c31c51c Update state + logs — 2026-07-18
@@ -8299,12 +8635,15 @@ cdcbc4e Fix (for real this time): stage the .gitignore content, not just the rm
 ?? tests/test_grade_resume.py
   ```
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/enrich.py`
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 echo "=== diff core/filter.py ===" && git diff core/filter.py
 echo "=== diff core/profile.yaml ===" && git diff core/profile.yaml
 echo "=== diff tests/test_filter.py (stat only) ===" && git diff --stat tests/test_filter.py
 echo "=== requirements.txt ===" && cat requirements.txt
-echo "=== full test run ===" && .venv/bin/python -m pytest tests/ -q 2>&1 | tail -15`
+echo "=== full test run ===" && .venv/bin/python -m pytest tests/ -q 2>&1 | tail -15
+  ```
   ```
 === diff core/filter.py ===
 diff --git a/core/filter.py b/core/filter.py
@@ -8445,10 +8784,13 @@ One thing to flag: `enrich.py` currently isn't committed yet (from the git statu
 
 **Tool calls:**
 
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 grep -rn "enrich" run_pipeline.py .github/workflows/*.yml 2>/dev/null
 echo "---exit code check---"
-echo "no output above means enrich.py is never invoked by the automation"`
+echo "no output above means enrich.py is never invoked by the automation"
+  ```
   ```
 ---exit code check---
 no output above means enrich.py is never invoked by the automation
@@ -8491,12 +8833,15 @@ If that prints `SET (length: NN)`, you're good. Paste that output back if you wa
 
 **Tool calls:**
 
-- `Bash` — `echo "=== what's actually in ~/.bashrc (value redacted) ===" 
+- `Bash`:
+  ```bash
+echo "=== what's actually in ~/.bashrc (value redacted) ===" 
 grep -n "FIRECRAWL_API_KEY" ~/.bashrc | sed -E 's/^([0-9]+:export[[:space:]]*FIRECRAWL_API_KEY)([[:space:]]*=[[:space:]]*).*/\1[gap="\2"]<redacted>/'
 echo "=== is it set in a fresh shell right now? ==="
 if [ -n "$FIRECRAWL_API_KEY" ]; then echo "SET — length ${#FIRECRAWL_API_KEY} chars"; else echo "NOT SET"; fi
 echo "=== same check inside a fresh interactive-style bash ==="
-bash -ic 'if [ -n "$FIRECRAWL_API_KEY" ]; then echo "SET — length ${#FIRECRAWL_API_KEY} chars"; else echo "NOT SET"; fi' 2>&1`
+bash -ic 'if [ -n "$FIRECRAWL_API_KEY" ]; then echo "SET — length ${#FIRECRAWL_API_KEY} chars"; else echo "NOT SET"; fi' 2>&1
+  ```
   ```
 === what's actually in ~/.bashrc (value redacted) ===
 === is it set in a fresh shell right now? ===
@@ -8507,7 +8852,9 @@ bash: no job control in this shell
 bash: export: `=': not a valid identifier
 NOT SET
   ```
-- `Bash` — `echo "HOME=$HOME"
+- `Bash`:
+  ```bash
+echo "HOME=$HOME"
 echo "=== does the string appear at all (case-insensitive)? ===" 
 grep -in "firecrawl" ~/.bashrc | wc -l
 echo "=== last 5 lines of ~/.bashrc, redacted after any '=' ===" 
@@ -8515,7 +8862,8 @@ tail -5 ~/.bashrc | sed -E 's/=.*/=<redacted>/'
 echo "=== line count ===" 
 wc -l ~/.bashrc
 echo "=== does ~/.zshrc contain it? ===" 
-grep -in "firecrawl" ~/.zshrc 2>&1 | sed -E 's/=.*/=<redacted>/'`
+grep -in "firecrawl" ~/.zshrc 2>&1 | sed -E 's/=.*/=<redacted>/'
+  ```
   ```
 HOME=/home/anant_gupta
 === does the string appear at all (case-insensitive)? ===
@@ -8530,12 +8878,15 @@ export =<redacted>
 152 /home/anant_gupta/.bashrc
 === does ~/.zshrc contain it? ===
   ```
-- `Bash` — `sed -i '/^export =/d' ~/.bashrc
+- `Bash`:
+  ```bash
+sed -i '/^export =/d' ~/.bashrc
 echo "=== confirming it's gone ===" 
 grep -n "^export =" ~/.bashrc
 echo "(no output above = removed)"
 echo "=== confirming a fresh shell starts clean now ===" 
-bash -ic 'echo shell started ok' 2>&1`
+bash -ic 'echo shell started ok' 2>&1
+  ```
   ```
 === confirming it's gone ===
 (no output above = removed)
@@ -8563,793 +8914,6 @@ shell started ok
 - Files created: /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/simplifyjobs.json, /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/josegael.json, /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/zapply_readme.md, /home/anant_gupta/projects/work/internship-research-loop/core/profile.yaml, /home/anant_gupta/projects/work/internship-research-loop/ingestion/normalize.py, /home/anant_gupta/projects/work/internship-research-loop/core/identity.py, /home/anant_gupta/projects/work/internship-research-loop/core/filter.py, /home/anant_gupta/projects/work/internship-research-loop/ingestion/sources.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_filter.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_identity.py, /home/anant_gupta/projects/work/internship-research-loop/requirements.txt, /home/anant_gupta/projects/work/internship-research-loop/.gitignore, /home/anant_gupta/projects/work/internship-research-loop/.github/workflows/test.yml, /home/anant_gupta/projects/work/internship-research-loop/README.md, /home/anant_gupta/projects/work/internship-research-loop/vault_writer/templates/dossier.md.j2, /home/anant_gupta/projects/work/internship-research-loop/vault_writer/writer.py, /home/anant_gupta/projects/work/internship-research-loop/vault_writer/validate.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_validate.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_writer.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_sources.py, /home/anant_gupta/projects/work/internship-research-loop/core/schema_drift.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_schema_drift.py, /home/anant_gupta/projects/work/internship-research-loop/core/git_ops.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_git_ops.py, /home/anant_gupta/projects/work/internship-research-loop/core/run_log.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_run_log.py, /home/anant_gupta/projects/work/internship-research-loop/run_pipeline.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_run_pipeline.py, /home/anant_gupta/projects/work/internship-research-loop/.github/workflows/run.yml, /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/ec2e4fcb-c0c9-434e-8cbe-3f3c81bafc64/scratchpad/phases-1-3-run.md, /home/anant_gupta/projects/work/internship-research-loop/PRD.md
 - Files modified: /home/anant_gupta/projects/work/internship-research-loop/ingestion/normalize.py, /home/anant_gupta/projects/work/internship-research-loop/.github/workflows/test.yml, /home/anant_gupta/projects/work/internship-research-loop/README.md, /home/anant_gupta/projects/work/internship-research-loop/requirements.txt, /home/anant_gupta/projects/work/internship-research-loop/vault_writer/writer.py, /home/anant_gupta/projects/work/internship-research-loop/vault_writer/validate.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_validate.py, /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/zapply_readme.md, /home/anant_gupta/projects/work/internship-research-loop/tests/test_filter.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_sources.py, /home/anant_gupta/projects/work/internship-research-loop/core/filter.py, /home/anant_gupta/projects/work/internship-research-loop/core/profile.yaml, /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/simplifyjobs.json, /home/anant_gupta/projects/work/internship-research-loop/tests/test_run_log.py, /home/anant_gupta/projects/work/internship-research-loop/ingestion/sources.py, /home/anant_gupta/projects/work/internship-research-loop/core/schema_drift.py, /home/anant_gupta/projects/work/internship-research-loop/run_pipeline.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_run_pipeline.py, /home/anant_gupta/projects/work/internship-research-loop/.github/workflows/run.yml, /home/anant_gupta/projects/work/internship-research-loop/.gitignore
 - Files deleted: (none)
-- Commands run: ls -la && echo "---git---" && git status 2>&1 | head -5, curl -s https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json -o /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/simplify_raw.json 2>&1
-ls -la /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/simplify_raw.json
-wc -c /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/simplify_raw.json, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad
-python3 -c "
-import json
-data = json.load(open('simplify_raw.json'))
-print(type(data), len(data) if hasattr(data,'__len__') else '')
-if isinstance(data, list):
-    print(json.dumps(data[0], indent=2)[:2000])
-"
-, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad
-python3 -c "
-import json
-data = json.load(open('simplify_raw.json'))
-s27 = [d for d in data if 'Summer 2027' in d.get('terms',[])]
-print('count 2027:', len(s27))
-cats = set(d['category'] for d in s27)
-print('categories among 2027:', cats)
-for d in s27[:3]:
-    print(json.dumps(d, indent=2))
-"
-, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad
-python3 -c "
-import json
-data = json.load(open('simplify_raw.json'))
-print('all categories:', set(d['category'] for d in data))
-print('active true/false counts:', sum(1 for d in data if d['active']), sum(1 for d in data if not d['active']))
-s27 = [d for d in data if 'Summer 2027' in d.get('terms',[])]
-active27 = [d for d in s27 if d['active']]
-print('active among 2027:', len(active27))
-sw27 = [d for d in active27 if d['category'] in ('Software','Software Engineering','AI/ML/Data','Data Science','Machine Learning')]
-print('sw/ai active 2027:', len(sw27))
-for d in sw27[:2]:
-    print(json.dumps(d, indent=2))
-"
-, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad
-curl -sL https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/listings.json -o josegael_raw.json
-wc -c josegael_raw.json
-python3 -c "
-import json
-data = json.load(open('josegael_raw.json'))
-print(type(data), len(data))
-print(json.dumps(data[0], indent=2))
-"
-, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad
-cat josegael_raw.json
-echo "---"
-curl -s "https://api.github.com/repos/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/contents/" | python3 -c "import json,sys; d=json.load(sys.stdin); print([x['path'] for x in d] if isinstance(d,list) else d)"
-, curl -s "https://api.github.com/repos/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/contents/web" | python3 -c "import json,sys; d=json.load(sys.stdin); print([x['path'] for x in d] if isinstance(d,list) else d)"
-echo "---github---"
-curl -s "https://api.github.com/repos/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/contents/.github" | python3 -c "import json,sys; d=json.load(sys.stdin); print([x['path'] for x in d] if isinstance(d,list) else d)", curl -s "https://api.github.com/repos/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/contents/.github/scripts" | python3 -c "import json,sys; d=json.load(sys.stdin); print([x['path'] for x in d] if isinstance(d,list) else d)"
-echo "---workflows---"
-curl -s "https://api.github.com/repos/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/contents/.github/workflows" | python3 -c "import json,sys; d=json.load(sys.stdin); print([x['path'] for x in d] if isinstance(d,list) else d)"
-echo "---public---"
-curl -s "https://api.github.com/repos/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/contents/web/public" | python3 -c "import json,sys; d=json.load(sys.stdin); print([x['path'] for x in d] if isinstance(d,list) else d)", cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad
-curl -sL https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json -o josegael_raw.json
-wc -c josegael_raw.json
-python3 -c "
-import json
-data = json.load(open('josegael_raw.json'))
-print(type(data), len(data) if hasattr(data,'__len__') else data.keys())
-if isinstance(data, dict):
-    print(list(data.keys())[:5])
-    k = list(data.keys())[0]
-    print(json.dumps(data[k], indent=2)[:1500])
-elif isinstance(data, list):
-    print(json.dumps(data[0], indent=2)[:1500])
-"
-, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad
-python3 -c "
-import json
-data = json.load(open('josegael_raw.json'))
-junior = [d for d in data if any('Junior' in t for t in d.get('target_year',[]))]
-print('junior count:', len(junior))
-for d in junior[:2]:
-    print(json.dumps(d, indent=2))
-empty = [d for d in data if not d.get('target_year')]
-print('empty target_year count:', len(empty))
-if empty:
-    print(json.dumps(empty[0], indent=2))
-frosh_only = [d for d in data if d.get('target_year') and all('Junior' not in t and 'All' not in t for t in d['target_year'])]
-print('frosh/soph only count:', len(frosh_only))
-if frosh_only:
-    print(json.dumps(frosh_only[0], indent=2))
-"
-, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad
-curl -sL https://raw.githubusercontent.com/zapplyjobs/underclassmen-internships/main/README.md -o zapply_readme.md
-wc -l zapply_readme.md
-grep -n "^|" zapply_readme.md | head -20, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad
-grep -oP '\| (✅ Open[^|]*|\?)\s*\|\s*[^|]*\|' zapply_readme.md | grep -oP '(?<=\|)[^|]*student[^|]*' -i | sort -u
-echo "---all Year col values---"
-grep "^|" zapply_readme.md | awk -F'|' '{print $4}' | sed 's/^ *//;s/ *$//' | sort -u, grep -n "All Students" /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/zapply_readme.md, python3 --version; python3 -c "import yaml" 2>&1; python3 -c "import requests" 2>&1; python3 -c "import pytest" 2>&1; which pip3 pip, pip3 install --user pytest 2>&1 | tail -20, python3 -m venv .venv && .venv/bin/pip install -q pytest pyyaml requests && .venv/bin/python -c "import pytest, yaml, requests; print('ok')", mkdir -p ingestion core tests/fixtures state logs
-ls -la, .venv/bin/python -m pytest tests/ -v 2>&1 | tail -60, mkdir -p .github/workflows, git init -q && git add -A && git status --short, git commit -q -m "$(cat <<'EOF'
-Phase 1: ingestion, filter, identity — tested against real fixtures
-
-Layer 1 (normalize) and Layer 2 (filter) and Layer 3 (identity) per the
-Research Loop Implementation Plan. Fixtures pulled live from each source
-today rather than fabricated, which surfaced three schema corrections
-against the original plan: Jose-Gael-Cruz-Lopez's listings.json path,
-SimplifyJobs' real category values, and zapplyjobs' inconsistent "All
-student(s)" casing/pluralization. 16/16 tests passing locally.
-
-Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
-EOF
-)"
-git log --oneline, gh auth status 2>&1 | head -5, gh repo create internship-research-loop --public --source=. --description "24/7 internship discovery — see Jarvis vault for full spec" --push 2>&1, sleep 8 && gh run list --repo gupta-builds/internship-research-loop --limit 3, gh run watch 29529366126 --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -30, gh run view 29529366126 --repo gupta-builds/internship-research-loop --log-failed 2>&1 | tail -50, git add -A && git commit -q -m "$(cat <<'EOF'
-Fix CI: use python -m pytest so repo root lands on sys.path
-
-Bare 'pytest' console script doesn't add cwd to sys.path the way
-'python -m pytest' does, so core/ and ingestion/ weren't importable
-in the Actions runner even though it passed locally.
-
-Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
-EOF
-)" && git push -q && echo pushed, sleep 5
-RUN_ID=$(gh run list --repo gupta-builds/internship-research-loop --workflow=test --limit 1 --json databaseId -q '.[0].databaseId')
-gh run watch "$RUN_ID" --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -20, mkdir -p vault_writer/templates && ls, .venv/bin/pip install -q jinja2 && .venv/bin/python -c "import jinja2; print(jinja2.__version__)", .venv/bin/python -c "
-from ingestion.normalize import normalize_simplify
-from vault_writer.writer import render_dossier
-import json
-raw = json.load(open('tests/fixtures/simplifyjobs.json'))[0]
-listing = normalize_simplify(raw)
-uid = 'SimplifyJobs:' + raw['id']
-md = render_dossier(listing, uid, '2026-07-17', 'Junior-eligible, Summer 2027, Software Engineering')
-print(repr(md[:50]))
-print('---RENDERED---')
-print(md)
-print('---END, last 20 bytes:', repr(md[-20:]))
-"
-, .venv/bin/python -c "
-from ingestion.normalize import normalize_simplify
-from vault_writer.writer import render_dossier
-import json
-raw = json.load(open('tests/fixtures/simplifyjobs.json'))[0]
-listing = normalize_simplify(raw)
-uid = 'SimplifyJobs:' + raw['id']
-md = render_dossier(listing, uid, '2026-07-17', 'Junior-eligible, Summer 2027, Software Engineering')
-print(md)
-"
-, .venv/bin/python -c "
-print('abc\n'.split('\n'))
-print('abc\n'.splitlines())
-print('abc\n\n'.splitlines())
-", .venv/bin/python -c "
-from ingestion.normalize import normalize_simplify
-from vault_writer.writer import render_dossier
-from vault_writer.validate import check_format_compliance, validate
-import json
-from unittest.mock import Mock
-
-raw = json.load(open('tests/fixtures/simplifyjobs.json'))[0]
-listing = normalize_simplify(raw)
-uid = 'SimplifyJobs:' + raw['id']
-md = render_dossier(listing, uid, '2026-07-17', 'Junior-eligible, Summer 2027, Software Engineering')
-
-r = check_format_compliance(md)
-print('format check:', r)
-
-fake_head = Mock(return_value=Mock(status_code=200))
-result = validate(listing, uid, md, seen_ids=set(), http_head=fake_head)
-print('full validate:', result)
-"
-, mkdir -p "tests/fixtures/throwaway_vault/10_Areas/Career/Internships/List/Dossiers"
-touch "tests/fixtures/throwaway_vault/10_Areas/Career/Internships/List/Dossiers/.gitkeep"
-find tests/fixtures/throwaway_vault -type f, find tests/fixtures/throwaway_vault -type f; git status --short, git add -A && git status --short, git commit -q -m "$(cat <<'EOF'
-Phase 2: vault_writer — dossier template + four-check write gate
-
-Jinja2 template renders only the fixed shape from the plan; frontmatter
-itself is built as a dict and dumped via PyYAML (indented lists, blank
-instead of null) rather than hand-rolled in the template, so duplicate
-keys are structurally impossible and the format-compliance check is a
-true regression guard rather than the only thing preventing them.
-
-validate.py implements all four checks independently (required fields,
-URL liveness via mockable HEAD, dedup against a seen-set, and format
-compliance: frontmatter completeness, no dupe keys, zero disallowed
-blank lines, no stray '---' in body) plus a validate() orchestrator.
-Fixed a real bug caught by its own test: the orchestrator's original
-tuple-based loop evaluated all four checks eagerly before checking any
-result, so a missing-field rejection still fired the HTTP HEAD call —
-rewritten as real early returns, verified with a mock that asserts the
-HEAD call never happens when required_fields already failed.
-
-writer.py's write_dossier() takes vault_root as a parameter (never
-hardcoded) and is idempotent on uid. Tested against a throwaway vault
-fixture copied into a pytest tmp_path per test, never against the real
-Jarvis path. 41/41 tests passing.
-
-Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
-EOF
-)"
-git push -q && echo pushed, find . -type f -not -path './.venv/*' -not -path './.git/*' -not -path './.pytest_cache/*' -not -path './__pycache__/*' | sort, echo "=== git status ===" 
-git status --short
-echo "=== tracked files ==="
-git ls-files | sort
-echo "=== .venv tracked? ==="
-git ls-files | grep -c "^\.venv" || echo 0, ls -la /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/, cd /home/anant_gupta/projects/work/internship-research-loop
-.venv/bin/python -c "
-from ingestion.normalize import parse_zapply_readme
-text = open('/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/zapply_readme.md').read()
-rows = parse_zapply_readme(text)
-print('parsed rows:', len(rows))
-for r in rows[:15]:
-    print(repr(r.company), '|', repr(r.target_year), '|', repr(r.url))
-"
-, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad
-# count all pipe-table lines that aren't header/separator
-grep -cE '^\|' zapply_readme.md
-echo "--- separator/header rows (dashes or 'Name') ---"
-grep -cE '^\| Name| ?[-]{3,}' zapply_readme.md
-echo "--- rows with fewer than 4 pipe-delimited cells (might break the regex) ---"
-awk -F'|' '/^\|/ {if (NF < 5) print NR": "NF" cells: "$0}' zapply_readme.md | head -20, cd /home/anant_gupta/projects/work/internship-research-loop
-.venv/bin/python -c "
-from ingestion.normalize import parse_zapply_readme
-text = open('/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/zapply_readme.md').read()
-rows = parse_zapply_readme(text)
-no_link_all_student = [r for r in rows if not r.url and 'all student' in r.target_year[0].lower()]
-print('no-link all-student rows:', no_link_all_student)
-no_link = [r for r in rows if not r.url]
-print('all no-link rows:')
-for r in no_link:
-    print(' -', r.company, '|', r.target_year)
-"
-, cd /home/anant_gupta/projects/work/internship-research-loop
-echo "=== simplifyjobs.json cases ==="
-.venv/bin/python -c "import json; [print(r['_case']) for r in json.load(open('tests/fixtures/simplifyjobs.json'))]"
-echo "=== josegael.json cases ==="
-.venv/bin/python -c "import json; [print(r['_case']) for r in json.load(open('tests/fixtures/josegael.json'))]", cd /home/anant_gupta/projects/work/internship-research-loop
-grep -rn "locations_allow\|exclude_terms" --include="*.py" .
-echo "--- grep in whole repo (non-py) too ---"
-grep -rn "locations_allow\|exclude_terms" . --include="*.yaml" --include="*.md" --include="*.yml", grep -n "REQUIRED_LISTING_FIELDS" -r /home/anant_gupta/projects/work/internship-research-loop --include="*.py", cd /home/anant_gupta/projects/work/internship-research-loop
-.venv/bin/pip freeze | grep -iE "^(requests|pyyaml|pytest|jinja2)==", cd /home/anant_gupta/projects/work/internship-research-loop
-git ls-files | grep claude || echo "not tracked - good"
-cat .claude/settings.local.json 2>/dev/null | head -20, cd /home/anant_gupta/projects/work/internship-research-loop
-ls -la state/ logs/ 2>&1
-echo "--- tracked? ---"
-git ls-files | grep -E "^(state|logs)/", cd /home/anant_gupta/projects/work/internship-research-loop
-find . -name "__pycache__" -not -path "./.venv/*" -exec rm -rf {} + 2>/dev/null
-rm -rf .pytest_cache
-.venv/bin/python -m pytest tests/ -v --tb=short 2>&1 | tail -50, cd /home/anant_gupta/projects/work/internship-research-loop
-git stash -u -q 2>/dev/null
-cp core/filter.py /tmp/filter_backup.py
-# Mutation 1: break zapply matching to always return True
-python3 -c "
-content = open('core/filter.py').read()
-content = content.replace('return bool(re.match(r\"^all students?\$\", year))', 'return True  # MUTATED')
-open('core/filter.py', 'w').write(content)
-"
-.venv/bin/python -m pytest tests/test_filter.py -v 2>&1 | tail -15
-cp /tmp/filter_backup.py core/filter.py
-echo "=== restored ===", cd /home/anant_gupta/projects/work/internship-research-loop
-cp vault_writer/validate.py /tmp/validate_backup.py
-python3 -c "
-content = open('vault_writer/validate.py').read()
-content = content.replace(
-    'def check_not_duplicate(uid: str, seen_ids) -> ValidationResult:\n    if uid in seen_ids:',
-    'def check_not_duplicate(uid: str, seen_ids) -> ValidationResult:\n    if False:  # MUTATED, was: uid in seen_ids'
-)
-open('vault_writer/validate.py', 'w').write(content)
-"
-.venv/bin/python -m pytest tests/test_validate.py -v -k "duplicate" 2>&1 | tail -20
-cp /tmp/validate_backup.py vault_writer/validate.py
-echo "=== restored ==="
-git stash pop -q 2>/dev/null || true, cd /home/anant_gupta/projects/work/internship-research-loop
-git status --short
-git diff --stat
-.venv/bin/python -m pytest tests/ -q 2>&1 | tail -5, for url in \
-  "https://jobs.lever.co/palantir/[REDACTED]/apply" \
-  "https://hcsc.wd1.myworkdayjobs.com/en-US/HCSC_External/job/IL---Chicago/[REDACTED]" \
-  "https://boards.greenhouse.io/point72/jobs/8295501002" \
-  ; do
-  echo "=== $url ==="
-  curl -s -o /dev/null -w "HEAD: %{http_code}\n" -I "$url" --max-time 10
-  curl -s -o /dev/null -w "GET:  %{http_code}\n" "$url" --max-time 10
-done, curl -s -o /dev/null -w "final: %{http_code}, redirects: %{num_redirects}\n" -L -I "https://boards.greenhouse.io/point72/jobs/8295501002" --max-time 10, cd /home/anant_gupta/projects/work/internship-research-loop
-.venv/bin/pip install -q -r requirements.txt
-find . -name "__pycache__" -not -path "./.venv/*" -exec rm -rf {} + 2>/dev/null
-rm -rf .pytest_cache
-.venv/bin/python -m pytest tests/ -v 2>&1 | tail -55, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad
-python3 -c "
-import json
-data = json.load(open('simplify_raw.json'))
-mixed = [d for d in data if 'Summer 2027' in d.get('terms',[]) and any(t in d.get('terms',[]) for t in ('Summer 2026','Fall 2026','Spring 2026'))]
-print('mixed 2027+excluded-2026 count:', len(mixed))
-for d in mixed[:3]:
-    print(json.dumps(d, indent=2))
-"
-, cd /home/anant_gupta/projects/work/internship-research-loop
-.venv/bin/python -m pytest tests/ -v 2>&1 | tail -55, cd /home/anant_gupta/projects/work/internship-research-loop
-cp core/filter.py /tmp/filter_backup2.py
-python3 -c "
-content = open('core/filter.py').read()
-content = content.replace(
-    'if have_terms & excluded_terms:\n        return False',
-    'if False:  # MUTATED\n        return False'
-)
-open('core/filter.py', 'w').write(content)
-"
-.venv/bin/python -m pytest tests/test_filter.py -v -k should_reject 2>&1 | tail -15
-cp /tmp/filter_backup2.py core/filter.py
-.venv/bin/python -m pytest tests/ -q 2>&1 | tail -3, cd /home/anant_gupta/projects/work/internship-research-loop
-git diff --stat core/filter.py
-git status --short, cd /home/anant_gupta/projects/work/internship-research-loop
-git diff -- core/filter.py core/profile.yaml ingestion/normalize.py vault_writer/validate.py, cd /home/anant_gupta/projects/work/internship-research-loop
-find . -name "__pycache__" -not -path "./.venv/*" -exec rm -rf {} + 2>/dev/null
-rm -rf .pytest_cache
-.venv/bin/python -m pytest tests/ -q 2>&1 | tail -5, cd /home/anant_gupta/projects/work/internship-research-loop
-git add -A
-git status --short, cd /home/anant_gupta/projects/work/internship-research-loop
-git commit -q -m "$(cat <<'EOF'
-Verification pass: fix dead config, close test gaps, pin deps
-
-Line-by-line review of every file against the plan and the vault's
-Writing and Formatting doc, plus mutation-testing the write gate and
-filter logic to confirm tests catch real regressions (not tautological).
-
-Real findings fixed:
-- exclude_terms was defined in profile.yaml but never read by filter.py
-  (confirmed by grep). Wired it in: a SimplifyJobs listing is rejected
-  if any excluded term is present, even alongside an allowed one, so a
-  rotational posting spanning both an excluded and included cycle can't
-  slip through the terms allowlist. Verified against a real multi-term
-  listing (KLA, terms spanning Summer 2026 through Fall 2027).
-- locations_allow was the same kind of dead config, but the plan never
-  specified a matching rule for it (substring vs exact, multi-location
-  arrays, sources with no location data) and guessing risks silently
-  dropping real matches. Dropped from profile.yaml rather than left
-  inert; noted to revisit once a live run shows real locations data.
-- validate.py's REQUIRED_LISTING_FIELDS constant was defined and never
-  used (check_required_fields hardcoded its own field list instead) —
-  wired it in as the single source of truth.
-- Listing.date_posted/raw_id were typed as non-Optional int/str despite
-  defaulting to None.
-- zapplyjobs' README parser has a name_plain regex branch (rows with no
-  markdown link, e.g. "Activision Blizzard SPARX") that real data
-  exercises but no fixture covered — added a real row for it.
-- ingestion/sources.py (fetch + URL wiring) had zero test coverage —
-  added tests/test_sources.py, requests.get mocked throughout.
-- Parametrized should-match/should-reject tests silently collect zero
-  cases (no error) if a fixture _case label is ever mistyped — added a
-  guard test asserting each fixture has at least one of each.
-- requirements.txt was unpinned; pinned to the versions actually tested.
-- README's Status section still said phase 2 hadn't started.
-
-Mutation-tested: manually broke the zapply category filter, the write
-gate's duplicate check, and the new exclude_terms check one at a time —
-confirmed each break is caught by the existing tests, then reverted.
-48/48 tests passing.
-
-Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
-EOF
-)"
-git push -q && echo pushed, cd /home/anant_gupta/projects/work/internship-research-loop
-git log --oneline
-echo "---"
-find . -type f -not -path './.venv/*' -not -path './.git/*' -not -path '*/__pycache__/*' -not -path './.pytest_cache/*' -not -path './.claude/*' | sort, curl -s -o /dev/null -w "HTTP %{http_code}\n" "https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json"
-echo "--- also check if a root-level listings.json exists (the naive/wrong guess) ---"
-curl -s -o /dev/null -w "HTTP %{http_code}\n" "https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/listings.json", curl -s "https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json" | python3 -c "
-import json, sys
-data = json.load(sys.stdin)
-print('count:', len(data))
-print('keys of entry 0:', sorted(data[0].keys()))
-", curl -s "https://raw.githubusercontent.com/zapplyjobs/underclassmen-internships/main/README.md" -o /tmp/zapply_now.md
-echo "=== variant counts ==="
-grep -o "All student\b" /tmp/zapply_now.md | wc -l
-grep -o "All Student\b" /tmp/zapply_now.md | wc -l
-grep -o "All Students\b" /tmp/zapply_now.md | wc -l
-echo "=== does literal 'All student(s)' exist anywhere? ==="
-grep -c "All student(s)" /tmp/zapply_now.md || echo 0, cd /home/anant_gupta/projects/work/internship-research-loop
-.venv/bin/python -c "
-from ingestion.normalize import parse_zapply_readme
-from core.filter import matches, load_profile
-text = open('/tmp/zapply_now.md').read()
-rows = parse_zapply_readme(text)
-profile = load_profile()
-matched = [r for r in rows if matches(r, profile)]
-print('total rows parsed:', len(rows))
-print('matched (should be 19+2+1=22 if all All-student* variants match):', len(matched))
-variants = set(r.target_year[0] for r in matched)
-print('matched Year values:', variants)
-"
-, grep -n "All student\|All Student\|All Students" /tmp/zapply_now.md, cd /home/anant_gupta/projects/work/internship-research-loop
-.venv/bin/python -c "
-from ingestion.normalize import parse_zapply_readme
-text = open('/tmp/zapply_now.md').read()
-rows = parse_zapply_readme(text)
-by_company = {r.company: r for r in rows}
-for name in ('CodePath', 'Forage'):
-    r = by_company.get(name)
-    print(name, '->', repr(r.target_year) if r else 'NOT PARSED AT ALL')
-"
-, grep -n "^| Name" /tmp/zapply_now.md, cd /home/anant_gupta/projects/work/internship-research-loop
-.venv/bin/python -c "
-from ingestion.normalize import parse_zapply_readme
-from core.filter import matches, load_profile
-text = open('/tmp/zapply_now.md').read()
-rows = parse_zapply_readme(text)
-profile = load_profile()
-matched = [r for r in rows if matches(r, profile)]
-print('total rows parsed:', len(rows))
-print('matched:', len(matched))
-for r in matched:
-    print(' -', r.company, '|', r.target_year, '|', r.url[:50])
-"
-, cd /home/anant_gupta/projects/work/internship-research-loop
-.venv/bin/python -m pytest tests/ -v 2>&1 | tail -70, cd /home/anant_gupta/projects/work/internship-research-loop
-cp ingestion/normalize.py /tmp/normalize_backup.py
-git show HEAD:ingestion/normalize.py > ingestion/normalize.py
-.venv/bin/python -m pytest tests/test_filter.py -v -k "3_column" 2>&1 | tail -20
-cp /tmp/normalize_backup.py ingestion/normalize.py
-echo "=== restored, full suite ==="
-.venv/bin/python -m pytest tests/ -q 2>&1 | tail -5, cd /home/anant_gupta/projects/work/internship-research-loop
-find . -name "__pycache__" -not -path "./.venv/*" -exec rm -rf {} + 2>/dev/null
-rm -rf .pytest_cache
-.venv/bin/python -m pytest tests/ -q 2>&1 | tail -5
-git status --short, cd /home/anant_gupta/projects/work/internship-research-loop
-cat requirements.txt, cd /home/anant_gupta/projects/work/internship-research-loop
-git add -A
-git diff --cached --stat, cd /home/anant_gupta/projects/work/internship-research-loop
-git commit -q -m "$(cat <<'EOF'
-Phase 3 step 0: reconcile plan review, fix real zapply parsing bug
-
-Re-verified all three items the plan's Phase 1-2 Build Review flagged,
-live, before touching workflow code:
-
-- JGCL listings.json URL: already correct in sources.py (re-fetched now,
-  200; naive root-level guess 404s; field structure unchanged). The
-  build report's "path differs from assumed" note described a phase-1
-  correction against the plan's original naive guess, not a claim the
-  current code was wrong — no actual discrepancy, just loose phrasing
-  on my end last session.
-- SimplifyJobs categories: already the corrected 4-value list from last
-  session's verification pass. No change needed.
-- zapply Year-column matching: the comparison logic itself was already
-  equivalent to the review's prescribed rstrip('s') technique (verified
-  against a live re-fetch: 19/2/1 casing variants, matches the review's
-  own grep count exactly). But tracing it end-to-end against the full
-  live README surfaced a real bug neither the plan nor phase 1-2 caught:
-  the README has two table layouts, and the parser assumed a fixed
-  Name|Status|Year|Note position for all of them. The "Special Programs
-  & Resources" table is Name|Year|Note (no Status column), so the old
-  parser silently read Note text into the Year field there, dropping 2
-  real eligible postings (CodePath, Forage) with zero errors raised.
-
-Rewrote parse_zapply_readme to read column positions from each table's
-own header row instead of assuming a fixed layout — robust to this
-class of drift generally, not just patched for the one table found.
-Re-verified against live data: now captures exactly 22 "All student*"
-matches, matching the review section's count precisely.
-
-Added a regression fixture (the real 3-column table, real rows) and
-mutation-tested it against the pre-fix parser to confirm it actually
-catches the bug, not just passes coincidentally. 49/49 tests passing.
-
-Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
-EOF
-)"
-git push -q && echo pushed, sleep 5
-RUN_ID=$(gh run list --repo gupta-builds/internship-research-loop --workflow=test --limit 1 --json databaseId -q '.[0].databaseId')
-gh run watch "$RUN_ID" --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -15, cd /home/anant_gupta/projects/work/internship-research-loop
-.venv/bin/python -m pytest tests/test_schema_drift.py -v 2>&1 | tail -40, cd /home/anant_gupta/projects/work/internship-research-loop
-git config --global user.email 2>&1 || echo "no global git email set"
-.venv/bin/python -m pytest tests/test_git_ops.py -v 2>&1 | tail -60, cd /home/anant_gupta/projects/work/internship-research-loop
-cp core/git_ops.py /tmp/git_ops_backup.py
-sed -i 's/max_attempts = 2  # initial attempt + one retry/max_attempts = 1  # MUTATED, was 2/' core/git_ops.py
-.venv/bin/python -m pytest tests/test_git_ops.py -v 2>&1 | tail -30
-cp /tmp/git_ops_backup.py core/git_ops.py
-echo "=== restored ==="
-.venv/bin/python -m pytest tests/test_git_ops.py -q 2>&1 | tail -3, cd /home/anant_gupta/projects/work/internship-research-loop
-.venv/bin/python -m pytest tests/test_run_log.py -v 2>&1 | tail -40, cd /home/anant_gupta/projects/work/internship-research-loop
-find . -name "__pycache__" -not -path "./.venv/*" -exec rm -rf {} + 2>/dev/null
-.venv/bin/python -m pytest tests/ -q 2>&1 | tail -10, cd /home/anant_gupta/projects/work/internship-research-loop
-.venv/bin/python -m pytest tests/test_sources.py -v 2>&1 | tail -30, cd /home/anant_gupta/projects/work/internship-research-loop
-grep -rn "=requests\.\(get\|head\)" --include="*.py" ., cd /home/anant_gupta/projects/work/internship-research-loop
-find . -name "__pycache__" -not -path "./.venv/*" -exec rm -rf {} + 2>/dev/null
-.venv/bin/python -m pytest tests/ -v 2>&1 | tail -80, cd /home/anant_gupta/projects/work/internship-research-loop
-.venv/bin/python -m pytest tests/test_run_pipeline.py -v 2>&1 | tail -100, cd /home/anant_gupta/projects/work/internship-research-loop
-cp run_pipeline.py /tmp/run_pipeline_backup.py
-python3 -c "
-content = open('run_pipeline.py').read()
-content = content.replace(
-    'if written_uids and not pushed:\n        # Push failed (or, in principle, never ran) — do NOT mark these as\n        # seen. They are still \"new\" next run and will be retried. This is\n        # the ordering guarantee: seen-state only advances on confirmed push.\n        pass\n    else:\n        seen_ids.update(written_uids)\n        record[\"written_count\"] = len(written_uids)',
-    'seen_ids.update(written_uids)  # MUTATED: always mark seen regardless of push\n    record[\"written_count\"] = len(written_uids)'
-)
-open('run_pipeline.py', 'w').write(content)
-"
-grep -n "MUTATED" run_pipeline.py
-.venv/bin/python -m pytest tests/test_run_pipeline.py -v -k "push_fails" 2>&1 | tail -25
-cp /tmp/run_pipeline_backup.py run_pipeline.py
-echo "=== restored ==="
-.venv/bin/python -m pytest tests/test_run_pipeline.py -q 2>&1 | tail -5, cd /home/anant_gupta/projects/work/internship-research-loop
-ls -la state/ logs/ 2>&1
-gh api repos/gupta-builds/internship-research-loop/actions/permissions 2>&1 | head -20, gh api repos/gupta-builds/internship-research-loop/actions/permissions/workflow 2>&1, cd /home/anant_gupta/projects/work/internship-research-loop
-.venv/bin/python -c "import yaml; d = yaml.safe_load(open('.github/workflows/run.yml')); print('valid YAML'); import json; print(json.dumps(d, indent=2))", cd /home/anant_gupta/projects/work/internship-research-loop
-.venv/bin/python -c "import yaml; d = yaml.safe_load(open('.github/workflows/test.yml')); print(list(d.keys()))", which actionlint 2>&1 || echo "not installed", cd /home/anant_gupta/projects/work/internship-research-loop
-.venv/bin/python -c "import yaml; yaml.safe_load(open('.github/workflows/run.yml')); print('valid YAML')"
-find . -name "__pycache__" -not -path "./.venv/*" -exec rm -rf {} + 2>/dev/null
-.venv/bin/python -m pytest tests/ -q 2>&1 | tail -10, cd /home/anant_gupta/projects/work/internship-research-loop
-git status --short, cd /home/anant_gupta/projects/work/internship-research-loop
-git add README.md ingestion/sources.py vault_writer/validate.py core/git_ops.py core/run_log.py core/schema_drift.py run_pipeline.py tests/test_git_ops.py tests/test_run_log.py tests/test_run_pipeline.py tests/test_schema_drift.py
-git status --short, cd /home/anant_gupta/projects/work/internship-research-loop
-git commit -q -m "$(cat <<'EOF'
-Phase 3 code: schema-drift check, git push-retry, run log, orchestration
-
-Four pieces the plan's Phase 1-2 Build Review flagged as genuinely unbuilt
-phase 3 scope, not just wiring:
-
-- core/schema_drift.py: fetches one real entry per source, confirms the
-  fields the normalizers actually read are still present (not just the
-  ones that would KeyError — a renamed but .get()-defaulted field like
-  "category" would silently reject everything downstream forever, which
-  is exactly the drift this exists to catch). zapply's check reuses the
-  real parser directly rather than a separate header-shape check, so the
-  check and the pipeline can never silently diverge from each other.
-
-- core/git_ops.py: commit_and_push_with_retry — pulls --rebase before
-  every push, retries once on rejection. Tested against real local git
-  repos (a bare "remote" plus two independent clones), including a
-  monkeypatch-injected race that reproduces the actual scenario (the
-  vault's own auto-commit cycle pushing in the window between our pull
-  and our push) and a genuine unresolvable-conflict case proving it
-  raises rather than silently giving up.
-
-- core/run_log.py: raw per-run JSONL here, weekly rollup appended (never
-  rewritten) to Jarvis's List/Run Log.md, gated by a pure
-  should_run_weekly_rollup(now) check (Sunday 23:00 UTC) so the hourly
-  cron doesn't need a second schedule entry.
-
-- run_pipeline.py: the actual orchestration — schema-drift check halts
-  the run before touching feeds for real; fetch -> filter -> dedup ->
-  validate -> write into the Jarvis checkout -> push with retry -> only
-  THEN mark uids seen. Mutation-tested the ordering guarantee directly:
-  broke the "don't mark seen unless push succeeded" logic and confirmed
-  the test catches it (10 dossiers incorrectly marked seen on a failed
-  push). Issues are filed on schema drift, push failure, or a systemic
-  (required_fields/format_compliance — our own bug) rejection; routine
-  rejections (a dead URL, an already-seen item) don't spam an issue.
-
-Also fixed a real bug this surfaced: `http_get=requests.get` /
-`http_head=requests.head` as default parameter values bind at import
-time, which silently defeats `patch("requests.get", ...)`-style test
-mocking — caught when adding DI to sources.py made existing tests
-start hitting the real network (7s runtime instead of <1s). Fixed
-everywhere the pattern appeared (sources.py, schema_drift.py,
-validate.py) with a `default=None` + resolve-at-call-time form.
-
-.github/workflows/run.yml is deliberately NOT included in this commit —
-pushing it to the default branch activates its hourly cron immediately,
-and the Jarvis push step needs JARVIS_PUSH_TOKEN (a fine-grained PAT) to
-exist as a repo secret first, or every run fails at that step and files
-a duplicate issue hourly. 87/87 tests passing.
-
-Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
-EOF
-)"
-git push -q && echo pushed, gh secret list --repo gupta-builds/internship-research-loop, cd /home/anant_gupta/projects/work/internship-research-loop
-git status --short
-cat .github/workflows/run.yml, cd /home/anant_gupta/projects/work/internship-research-loop
-git add .github/workflows/run.yml
-git commit -q -m "$(cat <<'EOF'
-Phase 3: activate the scheduled run against gupta-builds/Jarvis
-
-Hourly cron + workflow_dispatch. Held back from earlier commits
-deliberately — pushing this to the default branch activates the
-schedule immediately, and needed JARVIS_PUSH_TOKEN (a fine-grained PAT
-scoped to gupta-builds/Jarvis, contents:write only) to exist as a repo
-secret first, confirmed set.
-
-Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
-EOF
-)"
-git push -q && echo pushed, cd /home/anant_gupta/projects/work/internship-research-loop
-sleep 3
-gh workflow run run.yml --repo gupta-builds/internship-research-loop
-sleep 5
-gh run list --repo gupta-builds/internship-research-loop --workflow=run.yml --limit 3, gh run watch 29576348000 --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -60, gh run view 29576348000 --repo gupta-builds/internship-research-loop --log 2>&1 | tail -100, gh workflow run run.yml --repo gupta-builds/internship-research-loop
-sleep 6
-gh run list --repo gupta-builds/internship-research-loop --workflow=run.yml --limit 3, gh run watch 29576538461 --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -60, gh run view 29576538461 --repo gupta-builds/internship-research-loop --log 2>&1 | grep -A 3 -B 3 "exit code 128\|error\|Error\|Traceback" | head -150, gh api repos/gupta-builds/Jarvis/contents/10_Areas/Career/Internships/List/Dossiers 2>&1 | python3 -c "
-import json, sys
-try:
-    d = json.load(sys.stdin)
-    if isinstance(d, list):
-        print('file count:', len(d))
-        for f in d[:10]:
-            print(' -', f['name'])
-    else:
-        print(d)
-except Exception as e:
-    print('error:', e)
-", gh api repos/gupta-builds/Jarvis/contents/10_Areas/Career/Internships/List/Dossiers/[REDACTED].md --jq '.content' | base64 -d, gh api repos/gupta-builds/Jarvis/commits --jq '.[0:5] | .[] | {sha: .sha[0:8], message: .commit.message, date: .commit.author.date}', gh api repos/gupta-builds/Jarvis/commits/2a326c28 --jq '{files_changed: (.files | length), stats: .stats}'
-echo "--- any files outside List/Dossiers or List/Run Log.md? ---"
-gh api repos/gupta-builds/Jarvis/commits/2a326c28 --jq '.files[].filename' | grep -v "^10_Areas/Career/Internships/List/Dossiers/" | grep -v "^10_Areas/Career/Internships/List/Run Log.md$", cd /home/anant_gupta/projects/work/internship-research-loop
-git fetch origin -q
-git log origin/master --oneline -5
-echo "--- files in latest commit ---"
-git show --stat origin/master -1, cd /home/anant_gupta/projects/work/internship-research-loop
-git ls-tree origin/master | grep jarvis
-echo "--- state/seen_ids.json content from that commit (sanity check the real data) ---"
-git show origin/master:state/seen_ids.json | head -5
-git show origin/master:state/seen_ids.json | python3 -c "import json,sys; d=json.load(sys.stdin); print('count:', len(d))"
-echo "--- logs/runs.jsonl ---"
-git show origin/master:logs/runs.jsonl, cd /home/anant_gupta/projects/work/internship-research-loop
-git pull -q origin master
-git ls-tree HEAD | grep jarvis
-git status --short, cd /home/anant_gupta/projects/work/internship-research-loop
-git rm --cached jarvis-checkout
-git status --short, cd /home/anant_gupta/projects/work/internship-research-loop
-git commit -q -m "$(cat <<'EOF'
-Fix: exclude jarvis-checkout/ from this repo's own git tracking
-
-The first real scheduled run surfaced this: the workflow checks out
-gupta-builds/Jarvis into jarvis-checkout/ inside this repo's own working
-directory, and run_pipeline.py's own commit_and_push_with_retry call
-(for state/seen_ids.json + logs/runs.jsonl) does `git add -A` on this
-repo's root — which recorded jarvis-checkout as a gitlink (mode 160000)
-with no .gitmodules to back it. Harmless to the Jarvis repo itself (that
-push was a clean, separate operation and landed correctly — 137 files,
-0 deletions, nothing outside List/Dossiers/), but corrupted this repo's
-own history and broke actions/checkout's post-job submodule cleanup.
-
-Added jarvis-checkout/ to .gitignore and removed the bad gitlink entry
-from tracking (git rm --cached, new commit — not a history rewrite).
-
-Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
-EOF
-)"
-git push -q && echo pushed, gh run watch 29576802107 --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -40, gh run view 29576802107 --repo gupta-builds/internship-research-loop --log 2>&1 | grep -B 15 "exit code 128", cd /home/anant_gupta/projects/work/internship-research-loop
-git fetch origin -q
-git log origin/master --oneline -3
-echo "--- files in latest commit ---"
-git show --stat origin/master -1
-echo "--- is jarvis-checkout tracked now? ---"
-git ls-tree origin/master | grep jarvis || echo "not tracked - clean", cd /tmp
-rm -rf gitlink_test && mkdir gitlink_test && cd gitlink_test
-git init -q -b master
-echo "nested_repo/" > .gitignore
-git add .gitignore
-git commit -q -m "init"
-
-mkdir nested_repo
-cd nested_repo
-git init -q -b master
-git config user.email test@example.com
-git config user.name Test
-echo "hi" > file.txt
-git add -A
-git commit -q -m "nested commit"
-cd ..
-
-echo "=== status before add -A ==="
-git status --short
-echo "=== git add -A ==="
-git add -A
-echo "=== status after add -A ==="
-git status --short
-git ls-files -s | grep nested, cd /home/anant_gupta/projects/work/internship-research-loop
-git show 573bfd5:.gitignore
-echo "--- was jarvis-checkout removed as of 573bfd5? ---"
-git ls-tree 573bfd5 | grep jarvis || echo "correctly absent", cd /home/anant_gupta/projects/work/internship-research-loop
-git show 573bfd5 -- .gitignore
-echo "=== current local .gitignore ==="
-cat .gitignore, cd /home/anant_gupta/projects/work/internship-research-loop
-git pull -q origin master
-git status --short
-echo "--- is jarvis-checkout tracked again? ---"
-git ls-tree HEAD | grep jarvis
-echo "--- .gitignore diff vs HEAD ---"
-git diff HEAD -- .gitignore, cd /home/anant_gupta/projects/work/internship-research-loop
-git add .gitignore
-git rm --cached jarvis-checkout
-git status --short, cd /home/anant_gupta/projects/work/internship-research-loop
-git diff --cached --stat, cd /home/anant_gupta/projects/work/internship-research-loop
-git commit -q -m "$(cat <<'EOF'
-Fix (for real this time): stage the .gitignore content, not just the rm
-
-My previous "fix" commit (573bfd5) only staged `git rm --cached
-jarvis-checkout` — the .gitignore edit itself was made in the working
-tree but never `git add`ed, so it never actually landed in that commit
-(confirmed: `git show 573bfd5 -- .gitignore` is empty). git status's
-leading space in " M .gitignore" meant unstaged; I misread it as staged.
-Consequence: the very next scheduled run re-added the gitlink, since
-there was still no real ignore rule for it.
-
-Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
-EOF
-)"
-git push -q && echo pushed, sleep 5
-RUN_ID=$(gh run list --repo gupta-builds/internship-research-loop --workflow=test --limit 1 --json databaseId -q '.[0].databaseId')
-gh run watch "$RUN_ID" --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -10, gh run watch 29577014956 --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -40, cd /home/anant_gupta/projects/work/internship-research-loop
-git fetch origin -q
-git log origin/master --oneline -3
-echo "--- latest commit files ---"
-git show --stat origin/master -1
-echo "--- jarvis-checkout tracked? ---"
-git ls-tree origin/master | grep jarvis || echo "correctly absent"
-echo "--- seen_ids count now ---"
-git show origin/master:state/seen_ids.json | python3 -c "import json,sys; print(len(json.load(sys.stdin)))", cd /home/anant_gupta/projects/work/internship-research-loop
-git show origin/master:logs/runs.jsonl | tail -1 | python3 -c "
-import json, sys
-r = json.loads(sys.stdin.read())
-print('new_count:', r['new_count'])
-print('already_seen_count:', r['already_seen_count'])
-print('written_count:', r['written_count'])
-print('halted:', r['halted'])
-print('errors:', r['errors'])
-", gh api repos/gupta-builds/Jarvis/contents/10_Areas/Career/Internships/List/Dossiers --paginate --jq '. | length'
-echo "--- recent Jarvis commits from our bot ---"
-gh api repos/gupta-builds/Jarvis/commits --jq '.[0:3] | .[] | {sha: .sha[0:8], message: .commit.message, author: .commit.author.name}', cd /home/anant_gupta/projects/work/internship-research-loop
-git pull -q origin master
-find . -name "__pycache__" -not -path "./.venv/*" -exec rm -rf {} + 2>/dev/null
-rm -rf .pytest_cache
-.venv/bin/python -m pytest tests/ -q 2>&1 | tail -10, cd /home/anant_gupta/projects/work/internship-research-loop
-git add README.md
-git commit -q -m "$(cat <<'EOF'
-README: phase 3 is live
-
-First real scheduled run confirmed end-to-end: 137 dossiers written to
-gupta-builds/Jarvis, dedup correctly no-ops on a second run.
-
-Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
-EOF
-)"
-git push -q && echo pushed, find . -path ./.venv -prune -o -path ./.git -prune -o -type f -print | sort, echo "=== git log ===" && git log --oneline -30 && echo "=== test counts ===" && .venv/bin/python -m pytest tests/ -q 2>&1 | tail -5 && echo "=== seen_ids count ===" && python3 -c "import json; print(len(json.load(open('state/seen_ids.json'))))" && echo "=== runs.jsonl ===" && cat logs/runs.jsonl && echo "=== test file line counts ===" && wc -l tests/*.py, .venv/bin/python -m pytest tests/ --collect-only -q | awk -F'::' '{print $1}' | sort | uniq -c, gh repo view gupta-builds/internship-research-loop --json visibility,defaultBranchRef -q '.visibility' 2>&1
-echo "---secrets---"
-gh secret list --repo gupta-builds/internship-research-loop 2>&1
-echo "---runs---"
-gh run list --repo gupta-builds/internship-research-loop --limit 10 --json databaseId,status,conclusion,event,createdAt,name 2>&1
-echo "---issues---"
-gh issue list --repo gupta-builds/internship-research-loop --state all 2>&1
-echo "---jarvis dossier count---"
-gh api repos/gupta-builds/Jarvis/contents/10_Areas/Career/Internships/List/Dossiers --paginate --jq '. | length' 2>&1, git pull -q origin master && wc -l logs/runs.jsonl && tail -3 logs/runs.jsonl && python3 -c "import json; print(len(json.load(open('state/seen_ids.json'))))", true, git pull -q origin master 2>&1; echo "=== git log ===" && git log --oneline -30 && echo "=== test counts ===" && .venv/bin/python -m pytest tests/ -q 2>&1 | tail -5 && echo "=== seen_ids count ===" && python3 -c "import json; print(len(json.load(open('state/seen_ids.json'))))" && echo "=== runs.jsonl line count ===" && wc -l logs/runs.jsonl && echo "=== last run record ===" && tail -1 logs/runs.jsonl && echo "=== requirements.txt ===" && cat requirements.txt && echo "=== workflow files present ===" && ls .github/workflows/ && echo "=== repo tree ===" && find . -path ./.venv -prune -o -path ./.git -prune -o -path '*/__pycache__' -prune -o -path ./.pytest_cache -prune -o -type f -print | sort, gh repo view gupta-builds/internship-research-loop --json visibility -q '.visibility' 2>&1
-echo "---secrets---"
-gh secret list --repo gupta-builds/internship-research-loop 2>&1
-echo "---secret expiry check---"
-gh api repos/gupta-builds/internship-research-loop/actions/secrets/JARVIS_PUSH_TOKEN 2>&1
-echo "---recent runs---"
-gh run list --repo gupta-builds/internship-research-loop --limit 15 --json databaseId,status,conclusion,event,createdAt,name 2>&1
-echo "---open issues---"
-gh issue list --repo gupta-builds/internship-research-loop --state all 2>&1
-echo "---jarvis dossier count---"
-gh api repos/gupta-builds/Jarvis/contents/10_Areas/Career/Internships/List/Dossiers --paginate --jq '. | length' 2>&1
-echo "---jarvis repo visibility---"
-gh repo view gupta-builds/Jarvis --json visibility -q '.visibility' 2>&1, cd /home/anant_gupta/projects/work/internship-research-loop
-echo "=== env var usage ===" 
-grep -rn "os\.environ\|getenv\|dotenv\|\.env" --include="*.py" --include="*.yml" . 2>/dev/null | grep -v ".venv\|__pycache__"
-echo "=== firecrawl/crawl4ai/anthropic/openai refs ==="
-grep -rin "firecrawl\|crawl4ai\|anthropic\|openai\|api_key\|apikey" --include="*.py" --include="*.yml" --include="*.txt" --include="*.md" . 2>/dev/null | grep -v ".venv\|__pycache__"
-echo "=== requests/http calls in core code ==="
-grep -rn "requests\.\|http_get\|http_head" --include="*.py" core/ ingestion/ vault_writer/ run_pipeline.py 2>/dev/null
-echo "=== secrets referenced in workflow ==="
-grep -n "secrets\.\|env:" .github/workflows/*.yml
-echo "=== full requirements.txt ==="
-cat requirements.txt
-echo "=== .gitignore ==="
-cat .gitignore, cd /home/anant_gupta/projects/work/internship-research-loop
-git pull -q origin master 2>&1
-echo "=== git log ==="
-git log --oneline -15
-echo "=== full repo tree ==="
-find . -path ./.venv -prune -o -path ./.git -prune -o -path '*/__pycache__' -prune -o -path ./.pytest_cache -prune -o -type f -print | sort
-echo "=== git status ==="
-git status --short, cd /home/anant_gupta/projects/work/internship-research-loop
-echo "=== diff core/filter.py ===" && git diff core/filter.py
-echo "=== diff core/profile.yaml ===" && git diff core/profile.yaml
-echo "=== diff tests/test_filter.py (stat only) ===" && git diff --stat tests/test_filter.py
-echo "=== requirements.txt ===" && cat requirements.txt
-echo "=== full test run ===" && .venv/bin/python -m pytest tests/ -q 2>&1 | tail -15, cd /home/anant_gupta/projects/work/internship-research-loop
-grep -rn "enrich" run_pipeline.py .github/workflows/*.yml 2>/dev/null
-echo "---exit code check---"
-echo "no output above means enrich.py is never invoked by the automation", echo "=== what's actually in ~/.bashrc (value redacted) ===" 
-grep -n "FIRECRAWL_API_KEY" ~/.bashrc | sed -E 's/^([0-9]+:export[[:space:]]*FIRECRAWL_API_KEY)([[:space:]]*=[[:space:]]*).*/\1[gap="\2"]<redacted>/'
-echo "=== is it set in a fresh shell right now? ==="
-if [ -n "$FIRECRAWL_API_KEY" ]; then echo "SET — length ${#FIRECRAWL_API_KEY} chars"; else echo "NOT SET"; fi
-echo "=== same check inside a fresh interactive-style bash ==="
-bash -ic 'if [ -n "$FIRECRAWL_API_KEY" ]; then echo "SET — length ${#FIRECRAWL_API_KEY} chars"; else echo "NOT SET"; fi' 2>&1, echo "HOME=$HOME"
-echo "=== does the string appear at all (case-insensitive)? ===" 
-grep -in "firecrawl" ~/.bashrc | wc -l
-echo "=== last 5 lines of ~/.bashrc, redacted after any '=' ===" 
-tail -5 ~/.bashrc | sed -E 's/=.*/=<redacted>/'
-echo "=== line count ===" 
-wc -l ~/.bashrc
-echo "=== does ~/.zshrc contain it? ===" 
-grep -in "firecrawl" ~/.zshrc 2>&1 | sed -E 's/=.*/=<redacted>/', sed -i '/^export =/d' ~/.bashrc
-echo "=== confirming it's gone ===" 
-grep -n "^export =" ~/.bashrc
-echo "(no output above = removed)"
-echo "=== confirming a fresh shell starts clean now ===" 
-bash -ic 'echo shell started ok' 2>&1
+- Commands run: ls -la && echo "---git---" && git status 2>&1 | head -5, curl -s https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json -o /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/simplify_raw.json 2>&1 ls -la /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/simplify_raw.json wc -c /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/simplify_raw.json, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad python3 -c " import json data = json.load(open('simplify_raw.json')) print(type(data), len(data) if hasattr(data,'__len__') else '') if isinstance(data, list): print(json.dumps(data[0], indent=2)[:2000]) " , cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad python3 -c " import json data = json.load(open('simplify_raw.json')) s27 = [d for d in data if 'Summer 2027' in d.get('terms',[])] print('count 2027:', len(s27)) cats = set(d['category'] for d in s27) print('categories among 2027:', cats) for d in s27[:3]: print(json.dumps(d, indent=2)) " , cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad python3 -c " import json data = json.load(open('simplify_raw.json')) print('all categories:', set(d['category'] for d in data)) print('active true/false counts:', sum(1 for d in data if d['active']), sum(1 for d in data if not d['active'])) s27 = [d for d in data if 'Summer 2027' in d.get('terms',[])] active27 = [d for d in s27 if d['active']] print('active among 2027:', len(active27)) sw27 = [d for d in active27 if d['category'] in ('Software','Software Engineering','AI/ML/Data','Data Science','Machine Learning')] print('sw/ai active 2027:', len(sw27)) for d in sw27[:2]: print(json.dumps(d, indent=2)) " , cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad curl -sL https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/listings.json -o josegael_raw.json wc -c josegael_raw.json python3 -c " import json data = json.load(open('josegael_raw.json')) print(type(data), len(data)) print(json.dumps(data[0], indent=2)) " , cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad cat josegael_raw.json echo "---" curl -s "https://api.github.com/repos/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/contents/" | python3 -c "import json,sys; d=json.load(sys.stdin); print([x['path'] for x in d] if isinstance(d,list) else d)" , curl -s "https://api.github.com/repos/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/contents/web" | python3 -c "import json,sys; d=json.load(sys.stdin); print([x['path'] for x in d] if isinstance(d,list) else d)" echo "---github---" curl -s "https://api.github.com/repos/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/contents/.github" | python3 -c "import json,sys; d=json.load(sys.stdin); print([x['path'] for x in d] if isinstance(d,list) else d)", curl -s "https://api.github.com/repos/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/contents/.github/scripts" | python3 -c "import json,sys; d=json.load(sys.stdin); print([x['path'] for x in d] if isinstance(d,list) else d)" echo "---workflows---" curl -s "https://api.github.com/repos/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/contents/.github/workflows" | python3 -c "import json,sys; d=json.load(sys.stdin); print([x['path'] for x in d] if isinstance(d,list) else d)" echo "---public---" curl -s "https://api.github.com/repos/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/contents/web/public" | python3 -c "import json,sys; d=json.load(sys.stdin); print([x['path'] for x in d] if isinstance(d,list) else d)", cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad curl -sL https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json -o josegael_raw.json wc -c josegael_raw.json python3 -c " import json data = json.load(open('josegael_raw.json')) print(type(data), len(data) if hasattr(data,'__len__') else data.keys()) if isinstance(data, dict): print(list(data.keys())[:5]) k = list(data.keys())[0] print(json.dumps(data[k], indent=2)[:1500]) elif isinstance(data, list): print(json.dumps(data[0], indent=2)[:1500]) " , cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad python3 -c " import json data = json.load(open('josegael_raw.json')) junior = [d for d in data if any('Junior' in t for t in d.get('target_year',[]))] print('junior count:', len(junior)) for d in junior[:2]: print(json.dumps(d, indent=2)) empty = [d for d in data if not d.get('target_year')] print('empty target_year count:', len(empty)) if empty: print(json.dumps(empty[0], indent=2)) frosh_only = [d for d in data if d.get('target_year') and all('Junior' not in t and 'All' not in t for t in d['target_year'])] print('frosh/soph only count:', len(frosh_only)) if frosh_only: print(json.dumps(frosh_only[0], indent=2)) " , cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad curl -sL https://raw.githubusercontent.com/zapplyjobs/underclassmen-internships/main/README.md -o zapply_readme.md wc -l zapply_readme.md grep -n "^|" zapply_readme.md | head -20, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad grep -oP '\| (✅ Open[^|]*|\?)\s*\|\s*[^|]*\|' zapply_readme.md | grep -oP '(?<=\|)[^|]*student[^|]*' -i | sort -u echo "---all Year col values---" grep "^|" zapply_readme.md | awk -F'|' '{print $4}' | sed 's/^ *//;s/ *$//' | sort -u, grep -n "All Students" /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/zapply_readme.md, python3 --version; python3 -c "import yaml" 2>&1; python3 -c "import requests" 2>&1; python3 -c "import pytest" 2>&1; which pip3 pip, pip3 install --user pytest 2>&1 | tail -20, python3 -m venv .venv && .venv/bin/pip install -q pytest pyyaml requests && .venv/bin/python -c "import pytest, yaml, requests; print('ok')", mkdir -p ingestion core tests/fixtures state logs ls -la, .venv/bin/python -m pytest tests/ -v 2>&1 | tail -60, mkdir -p .github/workflows, git init -q && git add -A && git status --short, git commit -q -m "$(cat <<'EOF' Phase 1: ingestion, filter, identity — tested against real fixtures Layer 1 (normalize) and Layer 2 (filter) and Layer 3 (identity) per the Research Loop Implementation Plan. Fixtures pulled live from each source today rather than fabricated, which surfaced three schema corrections against the original plan: Jose-Gael-Cruz-Lopez's listings.json path, SimplifyJobs' real category values, and zapplyjobs' inconsistent "All student(s)" casing/pluralization. 16/16 tests passing locally. Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> EOF )" git log --oneline, gh auth status 2>&1 | head -5, gh repo create internship-research-loop --public --source=. --description "24/7 internship discovery — see Jarvis vault for full spec" --push 2>&1, sleep 8 && gh run list --repo gupta-builds/internship-research-loop --limit 3, gh run watch 29529366126 --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -30, gh run view 29529366126 --repo gupta-builds/internship-research-loop --log-failed 2>&1 | tail -50, git add -A && git commit -q -m "$(cat <<'EOF' Fix CI: use python -m pytest so repo root lands on sys.path Bare 'pytest' console script doesn't add cwd to sys.path the way 'python -m pytest' does, so core/ and ingestion/ weren't importable in the Actions runner even though it passed locally. Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> EOF )" && git push -q && echo pushed, sleep 5 RUN_ID=$(gh run list --repo gupta-builds/internship-research-loop --workflow=test --limit 1 --json databaseId -q '.[0].databaseId') gh run watch "$RUN_ID" --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -20, mkdir -p vault_writer/templates && ls, .venv/bin/pip install -q jinja2 && .venv/bin/python -c "import jinja2; print(jinja2.__version__)", .venv/bin/python -c " from ingestion.normalize import normalize_simplify from vault_writer.writer import render_dossier import json raw = json.load(open('tests/fixtures/simplifyjobs.json'))[0] listing = normalize_simplify(raw) uid = 'SimplifyJobs:' + raw['id'] md = render_dossier(listing, uid, '2026-07-17', 'Junior-eligible, Summer 2027, Software Engineering') print(repr(md[:50])) print('---RENDERED---') print(md) print('---END, last 20 bytes:', repr(md[-20:])) " , .venv/bin/python -c " from ingestion.normalize import normalize_simplify from vault_writer.writer import render_dossier import json raw = json.load(open('tests/fixtures/simplifyjobs.json'))[0] listing = normalize_simplify(raw) uid = 'SimplifyJobs:' + raw['id'] md = render_dossier(listing, uid, '2026-07-17', 'Junior-eligible, Summer 2027, Software Engineering') print(md) " , .venv/bin/python -c " print('abc\n'.split('\n')) print('abc\n'.splitlines()) print('abc\n\n'.splitlines()) ", .venv/bin/python -c " from ingestion.normalize import normalize_simplify from vault_writer.writer import render_dossier from vault_writer.validate import check_format_compliance, validate import json from unittest.mock import Mock raw = json.load(open('tests/fixtures/simplifyjobs.json'))[0] listing = normalize_simplify(raw) uid = 'SimplifyJobs:' + raw['id'] md = render_dossier(listing, uid, '2026-07-17', 'Junior-eligible, Summer 2027, Software Engineering') r = check_format_compliance(md) print('format check:', r) fake_head = Mock(return_value=Mock(status_code=200)) result = validate(listing, uid, md, seen_ids=set(), http_head=fake_head) print('full validate:', result) " , mkdir -p "tests/fixtures/throwaway_vault/10_Areas/Career/Internships/List/Dossiers" touch "tests/fixtures/throwaway_vault/10_Areas/Career/Internships/List/Dossiers/.gitkeep" find tests/fixtures/throwaway_vault -type f, find tests/fixtures/throwaway_vault -type f; git status --short, git add -A && git status --short, git commit -q -m "$(cat <<'EOF' Phase 2: vault_writer — dossier template + four-check write gate Jinja2 template renders only the fixed shape from the plan; frontmatter itself is built as a dict and dumped via PyYAML (indented lists, blank instead of null) rather than hand-rolled in the template, so duplicate keys are structurally impossible and the format-compliance check is a true regression guard rather than the only thing preventing them. validate.py implements all four checks independently (required fields, URL liveness via mockable HEAD, dedup against a seen-set, and format compliance: frontmatter completeness, no dupe keys, zero disallowed blank lines, no stray '---' in body) plus a validate() orchestrator. Fixed a real bug caught by its own test: the orchestrator's original tuple-based loop evaluated all four checks eagerly before checking any result, so a missing-field rejection still fired the HTTP HEAD call — rewritten as real early returns, verified with a mock that asserts the HEAD call never happens when required_fields already failed. writer.py's write_dossier() takes vault_root as a parameter (never hardcoded) and is idempotent on uid. Tested against a throwaway vault fixture copied into a pytest tmp_path per test, never against the real Jarvis path. 41/41 tests passing. Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> EOF )" git push -q && echo pushed, find . -type f -not -path './.venv/*' -not -path './.git/*' -not -path './.pytest_cache/*' -not -path './__pycache__/*' | sort, echo "=== git status ===" git status --short echo "=== tracked files ===" git ls-files | sort echo "=== .venv tracked? ===" git ls-files | grep -c "^\.venv" || echo 0, ls -la /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/, cd /home/anant_gupta/projects/work/internship-research-loop .venv/bin/python -c " from ingestion.normalize import parse_zapply_readme text = open('/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/zapply_readme.md').read() rows = parse_zapply_readme(text) print('parsed rows:', len(rows)) for r in rows[:15]: print(repr(r.company), '|', repr(r.target_year), '|', repr(r.url)) " , cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad # count all pipe-table lines that aren't header/separator grep -cE '^\|' zapply_readme.md echo "--- separator/header rows (dashes or 'Name') ---" grep -cE '^\| Name| ?[-]{3,}' zapply_readme.md echo "--- rows with fewer than 4 pipe-delimited cells (might break the regex) ---" awk -F'|' '/^\|/ {if (NF < 5) print NR": "NF" cells: "$0}' zapply_readme.md | head -20, cd /home/anant_gupta/projects/work/internship-research-loop .venv/bin/python -c " from ingestion.normalize import parse_zapply_readme text = open('/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/zapply_readme.md').read() rows = parse_zapply_readme(text) no_link_all_student = [r for r in rows if not r.url and 'all student' in r.target_year[0].lower()] print('no-link all-student rows:', no_link_all_student) no_link = [r for r in rows if not r.url] print('all no-link rows:') for r in no_link: print(' -', r.company, '|', r.target_year) " , cd /home/anant_gupta/projects/work/internship-research-loop echo "=== simplifyjobs.json cases ===" .venv/bin/python -c "import json; [print(r['_case']) for r in json.load(open('tests/fixtures/simplifyjobs.json'))]" echo "=== josegael.json cases ===" .venv/bin/python -c "import json; [print(r['_case']) for r in json.load(open('tests/fixtures/josegael.json'))]", cd /home/anant_gupta/projects/work/internship-research-loop grep -rn "locations_allow\|exclude_terms" --include="*.py" . echo "--- grep in whole repo (non-py) too ---" grep -rn "locations_allow\|exclude_terms" . --include="*.yaml" --include="*.md" --include="*.yml", grep -n "REQUIRED_LISTING_FIELDS" -r /home/anant_gupta/projects/work/internship-research-loop --include="*.py", cd /home/anant_gupta/projects/work/internship-research-loop .venv/bin/pip freeze | grep -iE "^(requests|pyyaml|pytest|jinja2)==", cd /home/anant_gupta/projects/work/internship-research-loop git ls-files | grep claude || echo "not tracked - good" cat .claude/settings.local.json 2>/dev/null | head -20, cd /home/anant_gupta/projects/work/internship-research-loop ls -la state/ logs/ 2>&1 echo "--- tracked? ---" git ls-files | grep -E "^(state|logs)/", cd /home/anant_gupta/projects/work/internship-research-loop find . -name "__pycache__" -not -path "./.venv/*" -exec rm -rf {} + 2>/dev/null rm -rf .pytest_cache .venv/bin/python -m pytest tests/ -v --tb=short 2>&1 | tail -50, cd /home/anant_gupta/projects/work/internship-research-loop git stash -u -q 2>/dev/null cp core/filter.py /tmp/filter_backup.py # Mutation 1: break zapply matching to always return True python3 -c " content = open('core/filter.py').read() content = content.replace('return bool(re.match(r\"^all students?\$\", year))', 'return True # MUTATED') open('core/filter.py', 'w').write(content) " .venv/bin/python -m pytest tests/test_filter.py -v 2>&1 | tail -15 cp /tmp/filter_backup.py core/filter.py echo "=== restored ===", cd /home/anant_gupta/projects/work/internship-research-loop cp vault_writer/validate.py /tmp/validate_backup.py python3 -c " content = open('vault_writer/validate.py').read() content = content.replace( 'def check_not_duplicate(uid: str, seen_ids) -> ValidationResult:\n if uid in seen_ids:', 'def check_not_duplicate(uid: str, seen_ids) -> ValidationResult:\n if False: # MUTATED, was: uid in seen_ids' ) open('vault_writer/validate.py', 'w').write(content) " .venv/bin/python -m pytest tests/test_validate.py -v -k "duplicate" 2>&1 | tail -20 cp /tmp/validate_backup.py vault_writer/validate.py echo "=== restored ===" git stash pop -q 2>/dev/null || true, cd /home/anant_gupta/projects/work/internship-research-loop git status --short git diff --stat .venv/bin/python -m pytest tests/ -q 2>&1 | tail -5, for url in \ "https://jobs.lever.co/palantir/[REDACTED]/apply" \ "https://hcsc.wd1.myworkdayjobs.com/en-US/HCSC_External/job/IL---Chicago/[REDACTED]" \ "https://boards.greenhouse.io/point72/jobs/8295501002" \ ; do echo "=== $url ===" curl -s -o /dev/null -w "HEAD: %{http_code}\n" -I "$url" --max-time 10 curl -s -o /dev/null -w "GET: %{http_code}\n" "$url" --max-time 10 done, curl -s -o /dev/null -w "final: %{http_code}, redirects: %{num_redirects}\n" -L -I "https://boards.greenhouse.io/point72/jobs/8295501002" --max-time 10, cd /home/anant_gupta/projects/work/internship-research-loop .venv/bin/pip install -q -r requirements.txt find . -name "__pycache__" -not -path "./.venv/*" -exec rm -rf {} + 2>/dev/null rm -rf .pytest_cache .venv/bin/python -m pytest tests/ -v 2>&1 | tail -55, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad python3 -c " import json data = json.load(open('simplify_raw.json')) mixed = [d for d in data if 'Summer 2027' in d.get('terms',[]) and any(t in d.get('terms',[]) for t in ('Summer 2026','Fall 2026','Spring 2026'))] print('mixed 2027+excluded-2026 count:', len(mixed)) for d in mixed[:3]: print(json.dumps(d, indent=2)) " , cd /home/anant_gupta/projects/work/internship-research-loop .venv/bin/python -m pytest tests/ -v 2>&1 | tail -55, cd /home/anant_gupta/projects/work/internship-research-loop cp core/filter.py /tmp/filter_backup2.py python3 -c " content = open('core/filter.py').read() content = content.replace( 'if have_terms & excluded_terms:\n return False', 'if False: # MUTATED\n return False' ) open('core/filter.py', 'w').write(content) " .venv/bin/python -m pytest tests/test_filter.py -v -k should_reject 2>&1 | tail -15 cp /tmp/filter_backup2.py core/filter.py .venv/bin/python -m pytest tests/ -q 2>&1 | tail -3, cd /home/anant_gupta/projects/work/internship-research-loop git diff --stat core/filter.py git status --short, cd /home/anant_gupta/projects/work/internship-research-loop git diff -- core/filter.py core/profile.yaml ingestion/normalize.py vault_writer/validate.py, cd /home/anant_gupta/projects/work/internship-research-loop find . -name "__pycache__" -not -path "./.venv/*" -exec rm -rf {} + 2>/dev/null rm -rf .pytest_cache .venv/bin/python -m pytest tests/ -q 2>&1 | tail -5, cd /home/anant_gupta/projects/work/internship-research-loop git add -A git status --short, cd /home/anant_gupta/projects/work/internship-research-loop git commit -q -m "$(cat <<'EOF' Verification pass: fix dead config, close test gaps, pin deps Line-by-line review of every file against the plan and the vault's Writing and Formatting doc, plus mutation-testing the write gate and filter logic to confirm tests catch real regressions (not tautological). Real findings fixed: - exclude_terms was defined in profile.yaml but never read by filter.py (confirmed by grep). Wired it in: a SimplifyJobs listing is rejected if any excluded term is present, even alongside an allowed one, so a rotational posting spanning both an excluded and included cycle can't slip through the terms allowlist. Verified against a real multi-term listing (KLA, terms spanning Summer 2026 through Fall 2027). - locations_allow was the same kind of dead config, but the plan never specified a matching rule for it (substring vs exact, multi-location arrays, sources with no location data) and guessing risks silently dropping real matches. Dropped from profile.yaml rather than left inert; noted to revisit once a live run shows real locations data. - validate.py's REQUIRED_LISTING_FIELDS constant was defined and never used (check_required_fields hardcoded its own field list instead) — wired it in as the single source of truth. - Listing.date_posted/raw_id were typed as non-Optional int/str despite defaulting to None. - zapplyjobs' README parser has a name_plain regex branch (rows with no markdown link, e.g. "Activision Blizzard SPARX") that real data exercises but no fixture covered — added a real row for it. - ingestion/sources.py (fetch + URL wiring) had zero test coverage — added tests/test_sources.py, requests.get mocked throughout. - Parametrized should-match/should-reject tests silently collect zero cases (no error) if a fixture _case label is ever mistyped — added a guard test asserting each fixture has at least one of each. - requirements.txt was unpinned; pinned to the versions actually tested. - README's Status section still said phase 2 hadn't started. Mutation-tested: manually broke the zapply category filter, the write gate's duplicate check, and the new exclude_terms check one at a time — confirmed each break is caught by the existing tests, then reverted. 48/48 tests passing. Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> EOF )" git push -q && echo pushed, cd /home/anant_gupta/projects/work/internship-research-loop git log --oneline echo "---" find . -type f -not -path './.venv/*' -not -path './.git/*' -not -path '*/__pycache__/*' -not -path './.pytest_cache/*' -not -path './.claude/*' | sort, curl -s -o /dev/null -w "HTTP %{http_code}\n" "https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json" echo "--- also check if a root-level listings.json exists (the naive/wrong guess) ---" curl -s -o /dev/null -w "HTTP %{http_code}\n" "https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/listings.json", curl -s "https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json" | python3 -c " import json, sys data = json.load(sys.stdin) print('count:', len(data)) print('keys of entry 0:', sorted(data[0].keys())) ", curl -s "https://raw.githubusercontent.com/zapplyjobs/underclassmen-internships/main/README.md" -o /tmp/zapply_now.md echo "=== variant counts ===" grep -o "All student\b" /tmp/zapply_now.md | wc -l grep -o "All Student\b" /tmp/zapply_now.md | wc -l grep -o "All Students\b" /tmp/zapply_now.md | wc -l echo "=== does literal 'All student(s)' exist anywhere? ===" grep -c "All student(s)" /tmp/zapply_now.md || echo 0, cd /home/anant_gupta/projects/work/internship-research-loop .venv/bin/python -c " from ingestion.normalize import parse_zapply_readme from core.filter import matches, load_profile text = open('/tmp/zapply_now.md').read() rows = parse_zapply_readme(text) profile = load_profile() matched = [r for r in rows if matches(r, profile)] print('total rows parsed:', len(rows)) print('matched (should be 19+2+1=22 if all All-student* variants match):', len(matched)) variants = set(r.target_year[0] for r in matched) print('matched Year values:', variants) " , grep -n "All student\|All Student\|All Students" /tmp/zapply_now.md, cd /home/anant_gupta/projects/work/internship-research-loop .venv/bin/python -c " from ingestion.normalize import parse_zapply_readme text = open('/tmp/zapply_now.md').read() rows = parse_zapply_readme(text) by_company = {r.company: r for r in rows} for name in ('CodePath', 'Forage'): r = by_company.get(name) print(name, '->', repr(r.target_year) if r else 'NOT PARSED AT ALL') " , grep -n "^| Name" /tmp/zapply_now.md, cd /home/anant_gupta/projects/work/internship-research-loop .venv/bin/python -c " from ingestion.normalize import parse_zapply_readme from core.filter import matches, load_profile text = open('/tmp/zapply_now.md').read() rows = parse_zapply_readme(text) profile = load_profile() matched = [r for r in rows if matches(r, profile)] print('total rows parsed:', len(rows)) print('matched:', len(matched)) for r in matched: print(' -', r.company, '|', r.target_year, '|', r.url[:50]) " , cd /home/anant_gupta/projects/work/internship-research-loop .venv/bin/python -m pytest tests/ -v 2>&1 | tail -70, cd /home/anant_gupta/projects/work/internship-research-loop cp ingestion/normalize.py /tmp/normalize_backup.py git show HEAD:ingestion/normalize.py > ingestion/normalize.py .venv/bin/python -m pytest tests/test_filter.py -v -k "3_column" 2>&1 | tail -20 cp /tmp/normalize_backup.py ingestion/normalize.py echo "=== restored, full suite ===" .venv/bin/python -m pytest tests/ -q 2>&1 | tail -5, cd /home/anant_gupta/projects/work/internship-research-loop find . -name "__pycache__" -not -path "./.venv/*" -exec rm -rf {} + 2>/dev/null rm -rf .pytest_cache .venv/bin/python -m pytest tests/ -q 2>&1 | tail -5 git status --short, cd /home/anant_gupta/projects/work/internship-research-loop cat requirements.txt, cd /home/anant_gupta/projects/work/internship-research-loop git add -A git diff --cached --stat, cd /home/anant_gupta/projects/work/internship-research-loop git commit -q -m "$(cat <<'EOF' Phase 3 step 0: reconcile plan review, fix real zapply parsing bug Re-verified all three items the plan's Phase 1-2 Build Review flagged, live, before touching workflow code: - JGCL listings.json URL: already correct in sources.py (re-fetched now, 200; naive root-level guess 404s; field structure unchanged). The build report's "path differs from assumed" note described a phase-1 correction against the plan's original naive guess, not a claim the current code was wrong — no actual discrepancy, just loose phrasing on my end last session. - SimplifyJobs categories: already the corrected 4-value list from last session's verification pass. No change needed. - zapply Year-column matching: the comparison logic itself was already equivalent to the review's prescribed rstrip('s') technique (verified against a live re-fetch: 19/2/1 casing variants, matches the review's own grep count exactly). But tracing it end-to-end against the full live README surfaced a real bug neither the plan nor phase 1-2 caught: the README has two table layouts, and the parser assumed a fixed Name|Status|Year|Note position for all of them. The "Special Programs & Resources" table is Name|Year|Note (no Status column), so the old parser silently read Note text into the Year field there, dropping 2 real eligible postings (CodePath, Forage) with zero errors raised. Rewrote parse_zapply_readme to read column positions from each table's own header row instead of assuming a fixed layout — robust to this class of drift generally, not just patched for the one table found. Re-verified against live data: now captures exactly 22 "All student*" matches, matching the review section's count precisely. Added a regression fixture (the real 3-column table, real rows) and mutation-tested it against the pre-fix parser to confirm it actually catches the bug, not just passes coincidentally. 49/49 tests passing. Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> EOF )" git push -q && echo pushed, sleep 5 RUN_ID=$(gh run list --repo gupta-builds/internship-research-loop --workflow=test --limit 1 --json databaseId -q '.[0].databaseId') gh run watch "$RUN_ID" --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -15, cd /home/anant_gupta/projects/work/internship-research-loop .venv/bin/python -m pytest tests/test_schema_drift.py -v 2>&1 | tail -40, cd /home/anant_gupta/projects/work/internship-research-loop git config --global user.email 2>&1 || echo "no global git email set" .venv/bin/python -m pytest tests/test_git_ops.py -v 2>&1 | tail -60, cd /home/anant_gupta/projects/work/internship-research-loop cp core/git_ops.py /tmp/git_ops_backup.py sed -i 's/max_attempts = 2 # initial attempt + one retry/max_attempts = 1 # MUTATED, was 2/' core/git_ops.py .venv/bin/python -m pytest tests/test_git_ops.py -v 2>&1 | tail -30 cp /tmp/git_ops_backup.py core/git_ops.py echo "=== restored ===" .venv/bin/python -m pytest tests/test_git_ops.py -q 2>&1 | tail -3, cd /home/anant_gupta/projects/work/internship-research-loop .venv/bin/python -m pytest tests/test_run_log.py -v 2>&1 | tail -40, cd /home/anant_gupta/projects/work/internship-research-loop find . -name "__pycache__" -not -path "./.venv/*" -exec rm -rf {} + 2>/dev/null .venv/bin/python -m pytest tests/ -q 2>&1 | tail -10, cd /home/anant_gupta/projects/work/internship-research-loop .venv/bin/python -m pytest tests/test_sources.py -v 2>&1 | tail -30, cd /home/anant_gupta/projects/work/internship-research-loop grep -rn "=requests\.\(get\|head\)" --include="*.py" ., cd /home/anant_gupta/projects/work/internship-research-loop find . -name "__pycache__" -not -path "./.venv/*" -exec rm -rf {} + 2>/dev/null .venv/bin/python -m pytest tests/ -v 2>&1 | tail -80, cd /home/anant_gupta/projects/work/internship-research-loop .venv/bin/python -m pytest tests/test_run_pipeline.py -v 2>&1 | tail -100, cd /home/anant_gupta/projects/work/internship-research-loop cp run_pipeline.py /tmp/run_pipeline_backup.py python3 -c " content = open('run_pipeline.py').read() content = content.replace( 'if written_uids and not pushed:\n # Push failed (or, in principle, never ran) — do NOT mark these as\n # seen. They are still \"new\" next run and will be retried. This is\n # the ordering guarantee: seen-state only advances on confirmed push.\n pass\n else:\n seen_ids.update(written_uids)\n record[\"written_count\"] = len(written_uids)', 'seen_ids.update(written_uids) # MUTATED: always mark seen regardless of push\n record[\"written_count\"] = len(written_uids)' ) open('run_pipeline.py', 'w').write(content) " grep -n "MUTATED" run_pipeline.py .venv/bin/python -m pytest tests/test_run_pipeline.py -v -k "push_fails" 2>&1 | tail -25 cp /tmp/run_pipeline_backup.py run_pipeline.py echo "=== restored ===" .venv/bin/python -m pytest tests/test_run_pipeline.py -q 2>&1 | tail -5, cd /home/anant_gupta/projects/work/internship-research-loop ls -la state/ logs/ 2>&1 gh api repos/gupta-builds/internship-research-loop/actions/permissions 2>&1 | head -20, gh api repos/gupta-builds/internship-research-loop/actions/permissions/workflow 2>&1, cd /home/anant_gupta/projects/work/internship-research-loop .venv/bin/python -c "import yaml; d = yaml.safe_load(open('.github/workflows/run.yml')); print('valid YAML'); import json; print(json.dumps(d, indent=2))", cd /home/anant_gupta/projects/work/internship-research-loop .venv/bin/python -c "import yaml; d = yaml.safe_load(open('.github/workflows/test.yml')); print(list(d.keys()))", which actionlint 2>&1 || echo "not installed", cd /home/anant_gupta/projects/work/internship-research-loop .venv/bin/python -c "import yaml; yaml.safe_load(open('.github/workflows/run.yml')); print('valid YAML')" find . -name "__pycache__" -not -path "./.venv/*" -exec rm -rf {} + 2>/dev/null .venv/bin/python -m pytest tests/ -q 2>&1 | tail -10, cd /home/anant_gupta/projects/work/internship-research-loop git status --short, cd /home/anant_gupta/projects/work/internship-research-loop git add README.md ingestion/sources.py vault_writer/validate.py core/git_ops.py core/run_log.py core/schema_drift.py run_pipeline.py tests/test_git_ops.py tests/test_run_log.py tests/test_run_pipeline.py tests/test_schema_drift.py git status --short, cd /home/anant_gupta/projects/work/internship-research-loop git commit -q -m "$(cat <<'EOF' Phase 3 code: schema-drift check, git push-retry, run log, orchestration Four pieces the plan's Phase 1-2 Build Review flagged as genuinely unbuilt phase 3 scope, not just wiring: - core/schema_drift.py: fetches one real entry per source, confirms the fields the normalizers actually read are still present (not just the ones that would KeyError — a renamed but .get()-defaulted field like "category" would silently reject everything downstream forever, which is exactly the drift this exists to catch). zapply's check reuses the real parser directly rather than a separate header-shape check, so the check and the pipeline can never silently diverge from each other. - core/git_ops.py: commit_and_push_with_retry — pulls --rebase before every push, retries once on rejection. Tested against real local git repos (a bare "remote" plus two independent clones), including a monkeypatch-injected race that reproduces the actual scenario (the vault's own auto-commit cycle pushing in the window between our pull and our push) and a genuine unresolvable-conflict case proving it raises rather than silently giving up. - core/run_log.py: raw per-run JSONL here, weekly rollup appended (never rewritten) to Jarvis's List/Run Log.md, gated by a pure should_run_weekly_rollup(now) check (Sunday 23:00 UTC) so the hourly cron doesn't need a second schedule entry. - run_pipeline.py: the actual orchestration — schema-drift check halts the run before touching feeds for real; fetch -> filter -> dedup -> validate -> write into the Jarvis checkout -> push with retry -> only THEN mark uids seen. Mutation-tested the ordering guarantee directly: broke the "don't mark seen unless push succeeded" logic and confirmed the test catches it (10 dossiers incorrectly marked seen on a failed push). Issues are filed on schema drift, push failure, or a systemic (required_fields/format_compliance — our own bug) rejection; routine rejections (a dead URL, an already-seen item) don't spam an issue. Also fixed a real bug this surfaced: `http_get=requests.get` / `http_head=requests.head` as default parameter values bind at import time, which silently defeats `patch("requests.get", ...)`-style test mocking — caught when adding DI to sources.py made existing tests start hitting the real network (7s runtime instead of <1s). Fixed everywhere the pattern appeared (sources.py, schema_drift.py, validate.py) with a `default=None` + resolve-at-call-time form. .github/workflows/run.yml is deliberately NOT included in this commit — pushing it to the default branch activates its hourly cron immediately, and the Jarvis push step needs JARVIS_PUSH_TOKEN (a fine-grained PAT) to exist as a repo secret first, or every run fails at that step and files a duplicate issue hourly. 87/87 tests passing. Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> EOF )" git push -q && echo pushed, gh secret list --repo gupta-builds/internship-research-loop, cd /home/anant_gupta/projects/work/internship-research-loop git status --short cat .github/workflows/run.yml, cd /home/anant_gupta/projects/work/internship-research-loop git add .github/workflows/run.yml git commit -q -m "$(cat <<'EOF' Phase 3: activate the scheduled run against gupta-builds/Jarvis Hourly cron + workflow_dispatch. Held back from earlier commits deliberately — pushing this to the default branch activates the schedule immediately, and needed JARVIS_PUSH_TOKEN (a fine-grained PAT scoped to gupta-builds/Jarvis, contents:write only) to exist as a repo secret first, confirmed set. Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> EOF )" git push -q && echo pushed, cd /home/anant_gupta/projects/work/internship-research-loop sleep 3 gh workflow run run.yml --repo gupta-builds/internship-research-loop sleep 5 gh run list --repo gupta-builds/internship-research-loop --workflow=run.yml --limit 3, gh run watch 29576348000 --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -60, gh run view 29576348000 --repo gupta-builds/internship-research-loop --log 2>&1 | tail -100, gh workflow run run.yml --repo gupta-builds/internship-research-loop sleep 6 gh run list --repo gupta-builds/internship-research-loop --workflow=run.yml --limit 3, gh run watch 29576538461 --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -60, gh run view 29576538461 --repo gupta-builds/internship-research-loop --log 2>&1 | grep -A 3 -B 3 "exit code 128\|error\|Error\|Traceback" | head -150, gh api repos/gupta-builds/Jarvis/contents/10_Areas/Career/Internships/List/Dossiers 2>&1 | python3 -c " import json, sys try: d = json.load(sys.stdin) if isinstance(d, list): print('file count:', len(d)) for f in d[:10]: print(' -', f['name']) else: print(d) except Exception as e: print('error:', e) ", gh api repos/gupta-builds/Jarvis/contents/10_Areas/Career/Internships/List/Dossiers/[REDACTED].md --jq '.content' | base64 -d, gh api repos/gupta-builds/Jarvis/commits --jq '.[0:5] | .[] | {sha: .sha[0:8], message: .commit.message, date: .commit.author.date}', gh api repos/gupta-builds/Jarvis/commits/2a326c28 --jq '{files_changed: (.files | length), stats: .stats}' echo "--- any files outside List/Dossiers or List/Run Log.md? ---" gh api repos/gupta-builds/Jarvis/commits/2a326c28 --jq '.files[].filename' | grep -v "^10_Areas/Career/Internships/List/Dossiers/" | grep -v "^10_Areas/Career/Internships/List/Run Log.md$", cd /home/anant_gupta/projects/work/internship-research-loop git fetch origin -q git log origin/master --oneline -5 echo "--- files in latest commit ---" git show --stat origin/master -1, cd /home/anant_gupta/projects/work/internship-research-loop git ls-tree origin/master | grep jarvis echo "--- state/seen_ids.json content from that commit (sanity check the real data) ---" git show origin/master:state/seen_ids.json | head -5 git show origin/master:state/seen_ids.json | python3 -c "import json,sys; d=json.load(sys.stdin); print('count:', len(d))" echo "--- logs/runs.jsonl ---" git show origin/master:logs/runs.jsonl, cd /home/anant_gupta/projects/work/internship-research-loop git pull -q origin master git ls-tree HEAD | grep jarvis git status --short, cd /home/anant_gupta/projects/work/internship-research-loop git rm --cached jarvis-checkout git status --short, cd /home/anant_gupta/projects/work/internship-research-loop git commit -q -m "$(cat <<'EOF' Fix: exclude jarvis-checkout/ from this repo's own git tracking The first real scheduled run surfaced this: the workflow checks out gupta-builds/Jarvis into jarvis-checkout/ inside this repo's own working directory, and run_pipeline.py's own commit_and_push_with_retry call (for state/seen_ids.json + logs/runs.jsonl) does `git add -A` on this repo's root — which recorded jarvis-checkout as a gitlink (mode 160000) with no .gitmodules to back it. Harmless to the Jarvis repo itself (that push was a clean, separate operation and landed correctly — 137 files, 0 deletions, nothing outside List/Dossiers/), but corrupted this repo's own history and broke actions/checkout's post-job submodule cleanup. Added jarvis-checkout/ to .gitignore and removed the bad gitlink entry from tracking (git rm --cached, new commit — not a history rewrite). Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> EOF )" git push -q && echo pushed, gh run watch 29576802107 --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -40, gh run view 29576802107 --repo gupta-builds/internship-research-loop --log 2>&1 | grep -B 15 "exit code 128", cd /home/anant_gupta/projects/work/internship-research-loop git fetch origin -q git log origin/master --oneline -3 echo "--- files in latest commit ---" git show --stat origin/master -1 echo "--- is jarvis-checkout tracked now? ---" git ls-tree origin/master | grep jarvis || echo "not tracked - clean", cd /tmp rm -rf gitlink_test && mkdir gitlink_test && cd gitlink_test git init -q -b master echo "nested_repo/" > .gitignore git add .gitignore git commit -q -m "init" mkdir nested_repo cd nested_repo git init -q -b master git config user.email test@example.com git config user.name Test echo "hi" > file.txt git add -A git commit -q -m "nested commit" cd .. echo "=== status before add -A ===" git status --short echo "=== git add -A ===" git add -A echo "=== status after add -A ===" git status --short git ls-files -s | grep nested, cd /home/anant_gupta/projects/work/internship-research-loop git show 573bfd5:.gitignore echo "--- was jarvis-checkout removed as of 573bfd5? ---" git ls-tree 573bfd5 | grep jarvis || echo "correctly absent", cd /home/anant_gupta/projects/work/internship-research-loop git show 573bfd5 -- .gitignore echo "=== current local .gitignore ===" cat .gitignore, cd /home/anant_gupta/projects/work/internship-research-loop git pull -q origin master git status --short echo "--- is jarvis-checkout tracked again? ---" git ls-tree HEAD | grep jarvis echo "--- .gitignore diff vs HEAD ---" git diff HEAD -- .gitignore, cd /home/anant_gupta/projects/work/internship-research-loop git add .gitignore git rm --cached jarvis-checkout git status --short, cd /home/anant_gupta/projects/work/internship-research-loop git diff --cached --stat, cd /home/anant_gupta/projects/work/internship-research-loop git commit -q -m "$(cat <<'EOF' Fix (for real this time): stage the .gitignore content, not just the rm My previous "fix" commit (573bfd5) only staged `git rm --cached jarvis-checkout` — the .gitignore edit itself was made in the working tree but never `git add`ed, so it never actually landed in that commit (confirmed: `git show 573bfd5 -- .gitignore` is empty). git status's leading space in " M .gitignore" meant unstaged; I misread it as staged. Consequence: the very next scheduled run re-added the gitlink, since there was still no real ignore rule for it. Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> EOF )" git push -q && echo pushed, sleep 5 RUN_ID=$(gh run list --repo gupta-builds/internship-research-loop --workflow=test --limit 1 --json databaseId -q '.[0].databaseId') gh run watch "$RUN_ID" --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -10, gh run watch 29577014956 --repo gupta-builds/internship-research-loop --exit-status 2>&1 | tail -40, cd /home/anant_gupta/projects/work/internship-research-loop git fetch origin -q git log origin/master --oneline -3 echo "--- latest commit files ---" git show --stat origin/master -1 echo "--- jarvis-checkout tracked? ---" git ls-tree origin/master | grep jarvis || echo "correctly absent" echo "--- seen_ids count now ---" git show origin/master:state/seen_ids.json | python3 -c "import json,sys; print(len(json.load(sys.stdin)))", cd /home/anant_gupta/projects/work/internship-research-loop git show origin/master:logs/runs.jsonl | tail -1 | python3 -c " import json, sys r = json.loads(sys.stdin.read()) print('new_count:', r['new_count']) print('already_seen_count:', r['already_seen_count']) print('written_count:', r['written_count']) print('halted:', r['halted']) print('errors:', r['errors']) ", gh api repos/gupta-builds/Jarvis/contents/10_Areas/Career/Internships/List/Dossiers --paginate --jq '. | length' echo "--- recent Jarvis commits from our bot ---" gh api repos/gupta-builds/Jarvis/commits --jq '.[0:3] | .[] | {sha: .sha[0:8], message: .commit.message, author: .commit.author.name}', cd /home/anant_gupta/projects/work/internship-research-loop git pull -q origin master find . -name "__pycache__" -not -path "./.venv/*" -exec rm -rf {} + 2>/dev/null rm -rf .pytest_cache .venv/bin/python -m pytest tests/ -q 2>&1 | tail -10, cd /home/anant_gupta/projects/work/internship-research-loop git add README.md git commit -q -m "$(cat <<'EOF' README: phase 3 is live First real scheduled run confirmed end-to-end: 137 dossiers written to gupta-builds/Jarvis, dedup correctly no-ops on a second run. Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> EOF )" git push -q && echo pushed, find . -path ./.venv -prune -o -path ./.git -prune -o -type f -print | sort, echo "=== git log ===" && git log --oneline -30 && echo "=== test counts ===" && .venv/bin/python -m pytest tests/ -q 2>&1 | tail -5 && echo "=== seen_ids count ===" && python3 -c "import json; print(len(json.load(open('state/seen_ids.json'))))" && echo "=== runs.jsonl ===" && cat logs/runs.jsonl && echo "=== test file line counts ===" && wc -l tests/*.py, .venv/bin/python -m pytest tests/ --collect-only -q | awk -F'::' '{print $1}' | sort | uniq -c, gh repo view gupta-builds/internship-research-loop --json visibility,defaultBranchRef -q '.visibility' 2>&1 echo "---secrets---" gh secret list --repo gupta-builds/internship-research-loop 2>&1 echo "---runs---" gh run list --repo gupta-builds/internship-research-loop --limit 10 --json databaseId,status,conclusion,event,createdAt,name 2>&1 echo "---issues---" gh issue list --repo gupta-builds/internship-research-loop --state all 2>&1 echo "---jarvis dossier count---" gh api repos/gupta-builds/Jarvis/contents/10_Areas/Career/Internships/List/Dossiers --paginate --jq '. | length' 2>&1, git pull -q origin master && wc -l logs/runs.jsonl && tail -3 logs/runs.jsonl && python3 -c "import json; print(len(json.load(open('state/seen_ids.json'))))", true, git pull -q origin master 2>&1; echo "=== git log ===" && git log --oneline -30 && echo "=== test counts ===" && .venv/bin/python -m pytest tests/ -q 2>&1 | tail -5 && echo "=== seen_ids count ===" && python3 -c "import json; print(len(json.load(open('state/seen_ids.json'))))" && echo "=== runs.jsonl line count ===" && wc -l logs/runs.jsonl && echo "=== last run record ===" && tail -1 logs/runs.jsonl && echo "=== requirements.txt ===" && cat requirements.txt && echo "=== workflow files present ===" && ls .github/workflows/ && echo "=== repo tree ===" && find . -path ./.venv -prune -o -path ./.git -prune -o -path '*/__pycache__' -prune -o -path ./.pytest_cache -prune -o -type f -print | sort, gh repo view gupta-builds/internship-research-loop --json visibility -q '.visibility' 2>&1 echo "---secrets---" gh secret list --repo gupta-builds/internship-research-loop 2>&1 echo "---secret expiry check---" gh api repos/gupta-builds/internship-research-loop/actions/secrets/JARVIS_PUSH_TOKEN 2>&1 echo "---recent runs---" gh run list --repo gupta-builds/internship-research-loop --limit 15 --json databaseId,status,conclusion,event,createdAt,name 2>&1 echo "---open issues---" gh issue list --repo gupta-builds/internship-research-loop --state all 2>&1 echo "---jarvis dossier count---" gh api repos/gupta-builds/Jarvis/contents/10_Areas/Career/Internships/List/Dossiers --paginate --jq '. | length' 2>&1 echo "---jarvis repo visibility---" gh repo view gupta-builds/Jarvis --json visibility -q '.visibility' 2>&1, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== env var usage ===" grep -rn "os\.environ\|getenv\|dotenv\|\.env" --include="*.py" --include="*.yml" . 2>/dev/null | grep -v ".venv\|__pycache__" echo "=== firecrawl/crawl4ai/anthropic/openai refs ===" grep -rin "firecrawl\|crawl4ai\|anthropic\|openai\|api_key\|apikey" --include="*.py" --include="*.yml" --include="*.txt" --include="*.md" . 2>/dev/null | grep -v ".venv\|__pycache__" echo "=== requests/http calls in core code ===" grep -rn "requests\.\|http_get\|http_head" --include="*.py" core/ ingestion/ vault_writer/ run_pipeline.py 2>/dev/null echo "=== secrets referenced in workflow ===" grep -n "secrets\.\|env:" .github/workflows/*.yml echo "=== full requirements.txt ===" cat requirements.txt echo "=== .gitignore ===" cat .gitignore, cd /home/anant_gupta/projects/work/internship-research-loop git pull -q origin master 2>&1 echo "=== git log ===" git log --oneline -15 echo "=== full repo tree ===" find . -path ./.venv -prune -o -path ./.git -prune -o -path '*/__pycache__' -prune -o -path ./.pytest_cache -prune -o -type f -print | sort echo "=== git status ===" git status --short, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== diff core/filter.py ===" && git diff core/filter.py echo "=== diff core/profile.yaml ===" && git diff core/profile.yaml echo "=== diff tests/test_filter.py (stat only) ===" && git diff --stat tests/test_filter.py echo "=== requirements.txt ===" && cat requirements.txt echo "=== full test run ===" && .venv/bin/python -m pytest tests/ -q 2>&1 | tail -15, cd /home/anant_gupta/projects/work/internship-research-loop grep -rn "enrich" run_pipeline.py .github/workflows/*.yml 2>/dev/null echo "---exit code check---" echo "no output above means enrich.py is never invoked by the automation", echo "=== what's actually in ~/.bashrc (value redacted) ===" grep -n "FIRECRAWL_API_KEY" ~/.bashrc | sed -E 's/^([0-9]+:export[[:space:]]*FIRECRAWL_API_KEY)([[:space:]]*=[[:space:]]*).*/\1[gap="\2"]<redacted>/' echo "=== is it set in a fresh shell right now? ===" if [ -n "$FIRECRAWL_API_KEY" ]; then echo "SET — length ${#FIRECRAWL_API_KEY} chars"; else echo "NOT SET"; fi echo "=== same check inside a fresh interactive-style bash ===" bash -ic 'if [ -n "$FIRECRAWL_API_KEY" ]; then echo "SET — length ${#FIRECRAWL_API_KEY} chars"; else echo "NOT SET"; fi' 2>&1, echo "HOME=$HOME" echo "=== does the string appear at all (case-insensitive)? ===" grep -in "firecrawl" ~/.bashrc | wc -l echo "=== last 5 lines of ~/.bashrc, redacted after any '=' ===" tail -5 ~/.bashrc | sed -E 's/=.*/=<redacted>/' echo "=== line count ===" wc -l ~/.bashrc echo "=== does ~/.zshrc contain it? ===" grep -in "firecrawl" ~/.zshrc 2>&1 | sed -E 's/=.*/=<redacted>/', sed -i '/^export =/d' ~/.bashrc echo "=== confirming it's gone ===" grep -n "^export =" ~/.bashrc echo "(no output above = removed)" echo "=== confirming a fresh shell starts clean now ===" bash -ic 'echo shell started ok' 2>&1
 - Tool call tally: AskUserQuestion (5), Bash (162), Edit (40), mcp__jarvis__search_query (1), mcp__jarvis__search_simple (1), mcp__jarvis__vault_get_document_map (1), mcp__jarvis__vault_list (1), mcp__jarvis__vault_patch (7), mcp__jarvis__vault_read (4), mcp__jarvis__vault_write (1), Read (51), TaskCreate (6), TaskUpdate (12), ToolSearch (6), WebFetch (1), Write (33)
 

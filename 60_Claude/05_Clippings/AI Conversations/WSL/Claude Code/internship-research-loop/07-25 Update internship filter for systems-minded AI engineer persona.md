@@ -7,7 +7,7 @@ title: "Update internship filter for systems-minded AI engineer persona"
 started_at: 2026-07-25T20:06:38
 ended_at: 2026-07-26T07:34:37
 duration_minutes: 688
-exported_at: 2026-07-30T15:28:59.6972445+04:00
+exported_at: 2026-07-30T16:47:46.9270578+04:00
 project: internship-research-loop
 cwd: '/home/anant_gupta/projects/work/internship-research-loop'
 session_id: b17ae14d-a7c6-424b-a324-d183b718dc31
@@ -110,7 +110,9 @@ Scoped correctly — didn't touch `ingestion/posting_page.py`, `degrees_allow`, 
   ```
 (Bash completed with no output)
   ```
-- `Bash` — `python3 -c "
+- `Bash`:
+  ```bash
+python3 -c "
 import json
 for f in ['josegael.json','vanshb03.json','zshah101.json','simplifyjobs.json']:
     data = json.load(open(f'tests/fixtures/{f}'))
@@ -118,7 +120,8 @@ for f in ['josegael.json','vanshb03.json','zshah101.json','simplifyjobs.json']:
     for r in data:
         print(r.get('_case'), '|', r.get('season') or r.get('terms') or r.get('term'))
 "
-`
+
+  ```
   ```
 === josegael.json 6
 should-reject: active false upstream (closed posting) — was should-match before the active gate | Summer
@@ -152,13 +155,16 @@ should-reject: degrees PhD-only, no Bachelor's — real TikTok entry, otherwise 
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/vanshb03.json`
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/zshah101.json`
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/ingestion/sources.py`
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/b17ae14d-a7c6-424b-a324-d183b718dc31/scratchpad
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/b17ae14d-a7c6-424b-a324-d183b718dc31/scratchpad
 curl -s -m 30 "https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json" -o simplify.json
 curl -s -m 30 "https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json" -o josegael.json
 curl -s -m 30 "https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/.github/scripts/listings.json" -o vanshb03.json
 curl -s -m 30 "https://raw.githubusercontent.com/zshah101/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships/main/data/jobs.json" -o zshah101.json
 ls -la *.json
-for f in simplify.json josegael.json vanshb03.json zshah101.json; do echo "$f: $(python3 -c "import json;print(len(json.load(open('$f'))))" 2>&1)"; done`
+for f in simplify.json josegael.json vanshb03.json zshah101.json; do echo "$f: $(python3 -c "import json;print(len(json.load(open('$f'))))" 2>&1)"; done
+  ```
   ```
 -rw-r--r-- 1 anant_gupta anant_gupta    73894 Jul 26 00:31 josegael.json
 -rw-r--r-- 1 anant_gupta anant_gupta 11010941 Jul 26 00:31 simplify.json
@@ -170,7 +176,9 @@ vanshb03.json: 275
 zshah101.json: 214
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/b17ae14d-a7c6-424b-a324-d183b718dc31/scratchpad
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/b17ae14d-a7c6-424b-a324-d183b718dc31/scratchpad
 python3 -c "
 import json
 data = json.load(open('simplify.json'))
@@ -180,13 +188,16 @@ for r in data:
     cats.add(r.get('category',''))
 print('categories:', cats)
 "
-`
+
+  ```
   ```
 total 14761
 categories: {'AI/ML/Data', 'Quant', 'Software', 'Software Engineering', 'Hardware', 'Product Management', 'Product', 'Quantitative Finance', 'Hardware Engineering', 'Data Science, AI & Machine Learning'}
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/b17ae14d-a7c6-424b-a324-d183b718dc31/scratchpad
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/b17ae14d-a7c6-424b-a324-d183b718dc31/scratchpad
 python3 -c "
 import json, re
 data = json.load(open('simplify.json'))
@@ -196,7 +207,8 @@ print('title hits:', len(hits))
 for r in hits[:20]:
     print(r.get('company_name'), '|', r.get('title'), '|', r.get('category'), '|', r.get('terms'))
 "
-`
+
+  ```
   ```
 title hits: 73
 RTX | Software Fellow Engineer Intern | Software | ['Summer 2026']
@@ -221,7 +233,9 @@ BlueLabs Analytics | Data Science Fellow | AI/ML/Data | ['N/A']
 BlueLabs Analytics | Polling Fellow | AI/ML/Data | ['N/A']
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/b17ae14d-a7c6-424b-a324-d183b718dc31/scratchpad
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/b17ae14d-a7c6-424b-a324-d183b718dc31/scratchpad
 python3 -c "
 import json, re
 data = json.load(open('simplify.json'))
@@ -233,7 +247,8 @@ for r in hits:
     if any(t in wanted for t in terms):
         print(r.get('company_name'), '|', r.get('title'), '|', r.get('category'), '|', r.get('terms'), '| active:', r.get('active'))
 "
-`
+
+  ```
   ```
 DRW | AI/ML Research Intern | AI/ML/Data | ['Summer 2027'] | active: False
 Oracle | Oracle Database Research Intern | Software | ['Fall 2026', 'Winter 2027', 'Spring 2027'] | active: False
@@ -262,7 +277,9 @@ G-Research | Quantitative Research Internship | Quant | ['Summer 2027'] | active
 Anthelion Capital | Quant Developer / Quant Research Intern | Quant | ['Fall 2026', 'Winter 2026', 'Summer 2027'] | active: True
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/b17ae14d-a7c6-424b-a324-d183b718dc31/scratchpad
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/b17ae14d-a7c6-424b-a324-d183b718dc31/scratchpad
 python3 -c "
 import json, re
 data = json.load(open('josegael.json'))
@@ -285,7 +302,8 @@ hits3 = [r for r in vals3 if kw.search(r.get('title',''))]
 print('zshah hits', len(hits3))
 for r in hits3: print(r.get('company'),'|',r.get('title'),'|',r.get('category'),'|',r.get('season'))
 "
-`
+
+  ```
   ```
 total josegael 112
 josegael hits 16
@@ -324,7 +342,9 @@ Sony | Research Intern on Generative and Protective AI for Content Creation | Da
 Tencent | Research Intern – Video World Models (Research & ML Systems) | Data & ML/AI | Summer 2027
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/b17ae14d-a7c6-424b-a324-d183b718dc31/scratchpad
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/b17ae14d-a7c6-424b-a324-d183b718dc31/scratchpad
 for token in fccincinnati pdtpartners mwinternshipprogram optiverus virtu; do
   echo "=== greenhouse: $token ==="
   curl -s -m 20 "https://boards-api.greenhouse.io/v1/boards/$token/jobs" | python3 -c "
@@ -340,7 +360,8 @@ for j in jobs:
     if kw.search(j.get('title','')):
         print('  HIT:', j.get('title'))
 "
-done`
+done
+  ```
   ```
 === greenhouse: fccincinnati ===
 total jobs 12
@@ -355,7 +376,9 @@ total jobs 190
 total jobs 43
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/b17ae14d-a7c6-424b-a324-d183b718dc31/scratchpad
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/b17ae14d-a7c6-424b-a324-d183b718dc31/scratchpad
 for token in ellipsislabs quadrillion-labs circleback ctgt pylon-labs; do
   echo "=== ashby: $token ==="
   curl -s -m 20 "https://api.ashbyhq.com/posting-api/job-board/$token" | python3 -c "
@@ -371,7 +394,8 @@ for j in jobs:
     if kw.search(j.get('title','')):
         print('  HIT:', j.get('title'), j.get('employmentType'))
 "
-done`
+done
+  ```
   ```
 === ashby: ellipsislabs ===
 total jobs 11
@@ -520,24 +544,30 @@ def _has_wrong_cycle_season(terms: list, excluded_terms: set) -> bool:
   ```
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/josegael.json`
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/simplifyjobs.json`
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/b17ae14d-a7c6-424b-a324-d183b718dc31/scratchpad
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/b17ae14d-a7c6-424b-a324-d183b718dc31/scratchpad
 python3 -c "
 import json
 data = json.load(open('vanshb03.json'))
 seasons = set(r.get('season') for r in data)
 print(seasons)
-"`
+"
+  ```
   ```
 {'Summer', 'Winter', 'Spring', 'Fall'}
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/b17ae14d-a7c6-424b-a324-d183b718dc31/scratchpad
+- `Bash`:
+  ```bash
+cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/b17ae14d-a7c6-424b-a324-d183b718dc31/scratchpad
 python3 -c "
 import json, re
 data = json.load(open('josegael.json'))
 seasons = sorted(set(r.get('season','') for r in data))
 print(seasons)
-"`
+"
+  ```
   ```
 ['Fall', 'Multiple', 'Not Specified', 'Spring', 'Summer', 'Summer 2026', 'Winter', 'Year-Round']
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
@@ -1306,13 +1336,16 @@ Date:   Sun Jul 26 11:13:15 2026 +0400
  vault_writer/writer.py               | 100 +++++++++++++++++++++-----
  30 files changed, 1492 insertions(+), 77 deletions(-)
   ```
-- `Bash` — `source .venv/bin/activate && python -m pytest tests/ -q 2>&1 | tail -15
+- `Bash`:
+  ```bash
+source .venv/bin/activate && python -m pytest tests/ -q 2>&1 | tail -15
 echo "=== git diff my-target files: HEAD vs what I built ==="
 git show 6622bca -- core/filter.py core/profile.yaml | head -5
 echo "=== origin status ==="
 git log --oneline origin/master -1
 git log --oneline HEAD -1
-git status --short`
+git status --short
+  ```
   ```
 ........................................................................ [ 27%]
 ........................................................................ [ 55%]
@@ -1331,9 +1364,12 @@ ba2bdcd Update state + logs — 2026-07-26
 ?? .claude/
 ?? CLAUDE.md
   ```
-- `Bash` — `git show 6622bca:core/profile.yaml | diff - core/profile.yaml && echo "profile.yaml MATCHES current working tree"
+- `Bash`:
+  ```bash
+git show 6622bca:core/profile.yaml | diff - core/profile.yaml && echo "profile.yaml MATCHES current working tree"
 git show 6622bca:core/filter.py | diff - core/filter.py && echo "filter.py MATCHES current working tree"
-git show 6622bca:tests/test_filter.py | diff - tests/test_filter.py && echo "test_filter.py MATCHES current working tree"`
+git show 6622bca:tests/test_filter.py | diff - tests/test_filter.py && echo "test_filter.py MATCHES current working tree"
+  ```
   ```
 profile.yaml MATCHES current working tree
 filter.py MATCHES current working tree
@@ -1344,14 +1380,17 @@ test_filter.py MATCHES current working tree
   ```
 Everything up-to-date
   ```
-- `Bash` — `git fetch origin 2>&1
+- `Bash`:
+  ```bash
+git fetch origin 2>&1
 echo "--- local HEAD ---"
 git log --oneline -3
 echo "--- origin/master ---"
 git log --oneline origin/master -3
 echo "--- status ---"
 git status --short
-git branch -vv`
+git branch -vv
+  ```
   ```
 --- local HEAD ---
 f56ac8c Add promote-dossier skill, contact-researcher/loop-verifier agents, review-loop-change skill
@@ -1373,134 +1412,6 @@ ba2bdcd Update state + logs — 2026-07-26
 - Files created: (none)
 - Files modified: /home/anant_gupta/projects/work/internship-research-loop/core/profile.yaml, /home/anant_gupta/projects/work/internship-research-loop/core/filter.py, /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/simplifyjobs.json, /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/josegael.json, /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/vanshb03.json, /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/zshah101.json, /home/anant_gupta/projects/work/internship-research-loop/tests/test_filter.py
 - Files deleted: (none)
-- Commands run: grep -rn "pay_per_week\|pay" /home/anant_gupta/projects/work/internship-research-loop/core/filter.py /home/anant_gupta/projects/work/internship-research-loop/core/profile.yaml /home/anant_gupta/projects/work/internship-research-loop/ingestion/*.py, python3 -c "
-import json
-for f in ['josegael.json','vanshb03.json','zshah101.json','simplifyjobs.json']:
-    data = json.load(open(f'tests/fixtures/{f}'))
-    print('===', f, len(data))
-    for r in data:
-        print(r.get('_case'), '|', r.get('season') or r.get('terms') or r.get('term'))
-"
-, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad
-curl -s -m 30 "https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json" -o simplify.json
-curl -s -m 30 "https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json" -o josegael.json
-curl -s -m 30 "https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/.github/scripts/listings.json" -o vanshb03.json
-curl -s -m 30 "https://raw.githubusercontent.com/zshah101/[REDACTED]/main/data/jobs.json" -o zshah101.json
-ls -la *.json
-for f in simplify.json josegael.json vanshb03.json zshah101.json; do echo "$f: $(python3 -c "import json;print(len(json.load(open('$f'))))" 2>&1)"; done, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad
-python3 -c "
-import json
-data = json.load(open('simplify.json'))
-print('total', len(data))
-cats = set()
-for r in data:
-    cats.add(r.get('category',''))
-print('categories:', cats)
-"
-, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad
-python3 -c "
-import json, re
-data = json.load(open('simplify.json'))
-kw = re.compile(r'fellow|mentorship|mentor program|research (fellow|program|scholar)|scholars? program', re.I)
-hits = [r for r in data if kw.search(r.get('title','')) ]
-print('title hits:', len(hits))
-for r in hits[:20]:
-    print(r.get('company_name'), '|', r.get('title'), '|', r.get('category'), '|', r.get('terms'))
-"
-, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad
-python3 -c "
-import json, re
-data = json.load(open('simplify.json'))
-kw = re.compile(r'fellow|mentorship|mentor program|research (fellow|program|scholar)|scholars? program|research intern', re.I)
-hits = [r for r in data if kw.search(r.get('title','')) ]
-wanted = {'summer 2027','winter 2027','spring 2027'}
-for r in hits:
-    terms = [t.lower() for t in r.get('terms',[])]
-    if any(t in wanted for t in terms):
-        print(r.get('company_name'), '|', r.get('title'), '|', r.get('category'), '|', r.get('terms'), '| active:', r.get('active'))
-"
-, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad
-python3 -c "
-import json, re
-data = json.load(open('josegael.json'))
-print('total josegael', len(data))
-kw = re.compile(r'fellow|mentorship|mentor program|research (fellow|program|scholar)|scholars? program|research intern', re.I)
-hits = [r for r in data if kw.search(r.get('title',''))]
-print('josegael hits', len(hits))
-for r in hits: print(r.get('company_name'),'|',r.get('title'),'|',r.get('category'),'|',r.get('season'))
-
-data2 = json.load(open('vanshb03.json'))
-print('total vansh', len(data2))
-hits2 = [r for r in data2 if kw.search(r.get('title',''))]
-print('vansh hits', len(hits2))
-for r in hits2: print(r.get('company_name'),'|',r.get('title'),'|',r.get('season'))
-
-data3 = json.load(open('zshah101.json'))
-vals3 = list(data3.values())
-print('total zshah', len(vals3))
-hits3 = [r for r in vals3 if kw.search(r.get('title',''))]
-print('zshah hits', len(hits3))
-for r in hits3: print(r.get('company'),'|',r.get('title'),'|',r.get('category'),'|',r.get('season'))
-"
-, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad
-for token in fccincinnati pdtpartners mwinternshipprogram optiverus virtu; do
-  echo "=== greenhouse: $token ==="
-  curl -s -m 20 "https://boards-api.greenhouse.io/v1/boards/$token/jobs" | python3 -c "
-import json,sys,re
-try:
-    data = json.load(sys.stdin)
-except Exception as e:
-    print('ERR', e); sys.exit()
-jobs = data.get('jobs', [])
-kw = re.compile(r'fellow|mentorship|mentor program|research (fellow|program|scholar)|scholars? program', re.I)
-print('total jobs', len(jobs))
-for j in jobs:
-    if kw.search(j.get('title','')):
-        print('  HIT:', j.get('title'))
-"
-done, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad
-for token in ellipsislabs quadrillion-labs circleback ctgt pylon-labs; do
-  echo "=== ashby: $token ==="
-  curl -s -m 20 "https://api.ashbyhq.com/posting-api/job-board/$token" | python3 -c "
-import json,sys,re
-try:
-    data = json.load(sys.stdin)
-except Exception as e:
-    print('ERR', e); sys.exit()
-jobs = data.get('jobs', [])
-kw = re.compile(r'fellow|mentorship|mentor program|research (fellow|program|scholar)|scholars? program', re.I)
-print('total jobs', len(jobs))
-for j in jobs:
-    if kw.search(j.get('title','')):
-        print('  HIT:', j.get('title'), j.get('employmentType'))
-"
-done, python3 -m pytest tests/ -q 2>&1 | tail -30, which python3.11 python3.12 2>/dev/null; ls -la .venv 2>/dev/null; find . -maxdepth 2 -iname "*requirements*" -o -iname "Pipfile" 2>/dev/null; python3 --version, source .venv/bin/activate && python -m pytest tests/ -q 2>&1 | tail -40, source .venv/bin/activate && python -m pytest tests/ -q 2>&1 | tail -20, grep -n "\"season\"\|_case" /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/josegael.json | head -20, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad
-python3 -c "
-import json
-data = json.load(open('vanshb03.json'))
-seasons = set(r.get('season') for r in data)
-print(seasons)
-", cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad
-python3 -c "
-import json, re
-data = json.load(open('josegael.json'))
-seasons = sorted(set(r.get('season','') for r in data))
-print(seasons)
-", source .venv/bin/activate && python -m pytest tests/ -q 2>&1 | tail -50, git diff --stat core/filter.py core/profile.yaml tests/test_filter.py tests/fixtures/simplifyjobs.json tests/fixtures/josegael.json tests/fixtures/vanshb03.json tests/fixtures/zshah101.json, git status && echo "---LOG---" && git log --oneline -15 && echo "---REMOTE---" && git fetch origin 2>&1 && git log --oneline origin/master -5 && echo "---DIFF ORIGIN---" && git log --oneline HEAD..origin/master && git log --oneline origin/master..HEAD, git diff --name-only cdb4299..origin/master, git diff --name-only cdb4299..origin/master -- core/ tests/ | sort, git diff core/filter.py core/profile.yaml, git diff tests/test_filter.py | head -100, git diff --stat tests/fixtures/simplifyjobs.json tests/fixtures/josegael.json tests/fixtures/vanshb03.json tests/fixtures/zshah101.json, git diff tests/fixtures/simplifyjobs.json tests/fixtures/josegael.json tests/fixtures/vanshb03.json tests/fixtures/zshah101.json, git show HEAD:tests/test_filter.py | tail -15, git diff --stat core/filter.py tests/test_filter.py, git diff core/filter.py | grep -c "^@@", git diff core/filter.py > /tmp/cf.diff; grep -n "^@@" /tmp/cf.diff; wc -l /tmp/cf.diff, git status --short; echo "---"; git log --oneline -5; echo "---diff cached---"; git diff --cached --stat, git log --oneline -1 origin/master 2>/dev/null; echo "---local vs origin---"; git log --oneline origin/master..HEAD; echo "---show commit stat---"; git show --stat 6622bca | head -60, source .venv/bin/activate && python -m pytest tests/ -q 2>&1 | tail -15
-echo "=== git diff my-target files: HEAD vs what I built ==="
-git show 6622bca -- core/filter.py core/profile.yaml | head -5
-echo "=== origin status ==="
-git log --oneline origin/master -1
-git log --oneline HEAD -1
-git status --short, git show 6622bca:core/profile.yaml | diff - core/profile.yaml && echo "profile.yaml MATCHES current working tree"
-git show 6622bca:core/filter.py | diff - core/filter.py && echo "filter.py MATCHES current working tree"
-git show 6622bca:tests/test_filter.py | diff - tests/test_filter.py && echo "test_filter.py MATCHES current working tree", git push origin master, git fetch origin 2>&1
-echo "--- local HEAD ---"
-git log --oneline -3
-echo "--- origin/master ---"
-git log --oneline origin/master -3
-echo "--- status ---"
-git status --short
-git branch -vv, gh run list --workflow=test.yml --limit 10 --json databaseId,headSha,status,conclusion,createdAt,displayTitle 2>&1
+- Commands run: grep -rn "pay_per_week\|pay" /home/anant_gupta/projects/work/internship-research-loop/core/filter.py /home/anant_gupta/projects/work/internship-research-loop/core/profile.yaml /home/anant_gupta/projects/work/internship-research-loop/ingestion/*.py, python3 -c " import json for f in ['josegael.json','vanshb03.json','zshah101.json','simplifyjobs.json']: data = json.load(open(f'tests/fixtures/{f}')) print('===', f, len(data)) for r in data: print(r.get('_case'), '|', r.get('season') or r.get('terms') or r.get('term')) " , cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad curl -s -m 30 "https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json" -o simplify.json curl -s -m 30 "https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json" -o josegael.json curl -s -m 30 "https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/.github/scripts/listings.json" -o vanshb03.json curl -s -m 30 "https://raw.githubusercontent.com/zshah101/[REDACTED]/main/data/jobs.json" -o zshah101.json ls -la *.json for f in simplify.json josegael.json vanshb03.json zshah101.json; do echo "$f: $(python3 -c "import json;print(len(json.load(open('$f'))))" 2>&1)"; done, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad python3 -c " import json data = json.load(open('simplify.json')) print('total', len(data)) cats = set() for r in data: cats.add(r.get('category','')) print('categories:', cats) " , cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad python3 -c " import json, re data = json.load(open('simplify.json')) kw = re.compile(r'fellow|mentorship|mentor program|research (fellow|program|scholar)|scholars? program', re.I) hits = [r for r in data if kw.search(r.get('title','')) ] print('title hits:', len(hits)) for r in hits[:20]: print(r.get('company_name'), '|', r.get('title'), '|', r.get('category'), '|', r.get('terms')) " , cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad python3 -c " import json, re data = json.load(open('simplify.json')) kw = re.compile(r'fellow|mentorship|mentor program|research (fellow|program|scholar)|scholars? program|research intern', re.I) hits = [r for r in data if kw.search(r.get('title','')) ] wanted = {'summer 2027','winter 2027','spring 2027'} for r in hits: terms = [t.lower() for t in r.get('terms',[])] if any(t in wanted for t in terms): print(r.get('company_name'), '|', r.get('title'), '|', r.get('category'), '|', r.get('terms'), '| active:', r.get('active')) " , cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad python3 -c " import json, re data = json.load(open('josegael.json')) print('total josegael', len(data)) kw = re.compile(r'fellow|mentorship|mentor program|research (fellow|program|scholar)|scholars? program|research intern', re.I) hits = [r for r in data if kw.search(r.get('title',''))] print('josegael hits', len(hits)) for r in hits: print(r.get('company_name'),'|',r.get('title'),'|',r.get('category'),'|',r.get('season')) data2 = json.load(open('vanshb03.json')) print('total vansh', len(data2)) hits2 = [r for r in data2 if kw.search(r.get('title',''))] print('vansh hits', len(hits2)) for r in hits2: print(r.get('company_name'),'|',r.get('title'),'|',r.get('season')) data3 = json.load(open('zshah101.json')) vals3 = list(data3.values()) print('total zshah', len(vals3)) hits3 = [r for r in vals3 if kw.search(r.get('title',''))] print('zshah hits', len(hits3)) for r in hits3: print(r.get('company'),'|',r.get('title'),'|',r.get('category'),'|',r.get('season')) " , cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad for token in fccincinnati pdtpartners mwinternshipprogram optiverus virtu; do echo "=== greenhouse: $token ===" curl -s -m 20 "https://boards-api.greenhouse.io/v1/boards/$token/jobs" | python3 -c " import json,sys,re try: data = json.load(sys.stdin) except Exception as e: print('ERR', e); sys.exit() jobs = data.get('jobs', []) kw = re.compile(r'fellow|mentorship|mentor program|research (fellow|program|scholar)|scholars? program', re.I) print('total jobs', len(jobs)) for j in jobs: if kw.search(j.get('title','')): print(' HIT:', j.get('title')) " done, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad for token in ellipsislabs quadrillion-labs circleback ctgt pylon-labs; do echo "=== ashby: $token ===" curl -s -m 20 "https://api.ashbyhq.com/posting-api/job-board/$token" | python3 -c " import json,sys,re try: data = json.load(sys.stdin) except Exception as e: print('ERR', e); sys.exit() jobs = data.get('jobs', []) kw = re.compile(r'fellow|mentorship|mentor program|research (fellow|program|scholar)|scholars? program', re.I) print('total jobs', len(jobs)) for j in jobs: if kw.search(j.get('title','')): print(' HIT:', j.get('title'), j.get('employmentType')) " done, python3 -m pytest tests/ -q 2>&1 | tail -30, which python3.11 python3.12 2>/dev/null; ls -la .venv 2>/dev/null; find . -maxdepth 2 -iname "*requirements*" -o -iname "Pipfile" 2>/dev/null; python3 --version, source .venv/bin/activate && python -m pytest tests/ -q 2>&1 | tail -40, source .venv/bin/activate && python -m pytest tests/ -q 2>&1 | tail -20, grep -n "\"season\"\|_case" /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/josegael.json | head -20, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad python3 -c " import json data = json.load(open('vanshb03.json')) seasons = set(r.get('season') for r in data) print(seasons) ", cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad python3 -c " import json, re data = json.load(open('josegael.json')) seasons = sorted(set(r.get('season','') for r in data)) print(seasons) ", source .venv/bin/activate && python -m pytest tests/ -q 2>&1 | tail -50, git diff --stat core/filter.py core/profile.yaml tests/test_filter.py tests/fixtures/simplifyjobs.json tests/fixtures/josegael.json tests/fixtures/vanshb03.json tests/fixtures/zshah101.json, git status && echo "---LOG---" && git log --oneline -15 && echo "---REMOTE---" && git fetch origin 2>&1 && git log --oneline origin/master -5 && echo "---DIFF ORIGIN---" && git log --oneline HEAD..origin/master && git log --oneline origin/master..HEAD, git diff --name-only cdb4299..origin/master, git diff --name-only cdb4299..origin/master -- core/ tests/ | sort, git diff core/filter.py core/profile.yaml, git diff tests/test_filter.py | head -100, git diff --stat tests/fixtures/simplifyjobs.json tests/fixtures/josegael.json tests/fixtures/vanshb03.json tests/fixtures/zshah101.json, git diff tests/fixtures/simplifyjobs.json tests/fixtures/josegael.json tests/fixtures/vanshb03.json tests/fixtures/zshah101.json, git show HEAD:tests/test_filter.py | tail -15, git diff --stat core/filter.py tests/test_filter.py, git diff core/filter.py | grep -c "^@@", git diff core/filter.py > /tmp/cf.diff; grep -n "^@@" /tmp/cf.diff; wc -l /tmp/cf.diff, git status --short; echo "---"; git log --oneline -5; echo "---diff cached---"; git diff --cached --stat, git log --oneline -1 origin/master 2>/dev/null; echo "---local vs origin---"; git log --oneline origin/master..HEAD; echo "---show commit stat---"; git show --stat 6622bca | head -60, source .venv/bin/activate && python -m pytest tests/ -q 2>&1 | tail -15 echo "=== git diff my-target files: HEAD vs what I built ===" git show 6622bca -- core/filter.py core/profile.yaml | head -5 echo "=== origin status ===" git log --oneline origin/master -1 git log --oneline HEAD -1 git status --short, git show 6622bca:core/profile.yaml | diff - core/profile.yaml && echo "profile.yaml MATCHES current working tree" git show 6622bca:core/filter.py | diff - core/filter.py && echo "filter.py MATCHES current working tree" git show 6622bca:tests/test_filter.py | diff - tests/test_filter.py && echo "test_filter.py MATCHES current working tree", git push origin master, git fetch origin 2>&1 echo "--- local HEAD ---" git log --oneline -3 echo "--- origin/master ---" git log --oneline origin/master -3 echo "--- status ---" git status --short git branch -vv, gh run list --workflow=test.yml --limit 10 --json databaseId,headSha,status,conclusion,createdAt,displayTitle 2>&1
 - Tool call tally: AskUserQuestion (1), Bash (36), Edit (8), Read (10), Skill (1), ToolSearch (1)
 

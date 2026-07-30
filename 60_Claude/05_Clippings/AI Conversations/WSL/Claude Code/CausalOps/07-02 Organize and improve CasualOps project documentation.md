@@ -7,7 +7,7 @@ title: "Organize and improve CasualOps project documentation"
 started_at: 2026-07-02T07:32:13
 ended_at: 2026-07-02T08:52:54
 duration_minutes: 81
-exported_at: 2026-07-30T15:28:59.6972445+04:00
+exported_at: 2026-07-30T16:47:46.9270578+04:00
 project: CausalOps
 cwd: '/home/anant_gupta/projects/hub/CausalOps'
 session_id: bbee927e-17db-4b3d-b994-1e210ae06ebe

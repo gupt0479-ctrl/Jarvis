@@ -7,7 +7,7 @@ title: "Batch entity upserts in SupabaseMemoryStore"
 started_at: 2026-07-08T17:56:47
 ended_at: 2026-07-08T18:04:56
 duration_minutes: 8
-exported_at: 2026-07-30T15:28:59.6972445+04:00
+exported_at: 2026-07-30T16:47:46.9270578+04:00
 project: CausalOps
 cwd: '/home/anant_gupta/projects/hub/CausalOps'
 session_id: f19b8931-7623-44d8-bc20-57b2e953fcfc
@@ -161,11 +161,14 @@ Summary: PostgREST client for Python. This library provides an ORM interface to 
 Home-page: 
 Author: Lương Quang Mạnh, Joel Lee, Anand, Oliver Rice, Andrew Smith
   ```
-- `Bash` — `PY_SITE=$(python3 -c "import postgrest, os; print(os.path.dirname(postgrest.__file__))" 2>/dev/null || .venv/bin/python -c "import postgrest, os; print(os.path.dirname(postgrest.__file__))")
+- `Bash`:
+  ```bash
+PY_SITE=$(python3 -c "import postgrest, os; print(os.path.dirname(postgrest.__file__))" 2>/dev/null || .venv/bin/python -c "import postgrest, os; print(os.path.dirname(postgrest.__file__))")
 echo "$PY_SITE"
 grep -rn "def upsert" "$PY_SITE" 
 echo "---"
-grep -rn "return=representation\|Prefer\|returning" "$PY_SITE"/_sync/request_builder.py 2>/dev/null | head -50`
+grep -rn "return=representation\|Prefer\|returning" "$PY_SITE"/_sync/request_builder.py 2>/dev/null | head -50
+  ```
   ```
 /home/anant_gupta/projects/hub/CausalOps/.venv/lib/python3.12/site-packages/postgrest
 /home/anant_gupta/projects/hub/CausalOps/.venv/lib/python3.12/site-packages/postgrest/_sync/request_builder.py:368:    def upsert(
@@ -284,7 +287,9 @@ tests/memory/test_store.py::test_write_run_inserts_row_and_indexes_entities
 74:    assert result["entities_indexed"] > 0
   ```
 - `Read` — `/home/anant_gupta/projects/hub/CausalOps/tests/memory/test_store.py`
-- `Bash` — `set -a && source .env && set +a && .venv/bin/python -c "
+- `Bash`:
+  ```bash
+set -a && source .env && set +a && .venv/bin/python -c "
 from memory.store import SupabaseMemoryStore
 import uuid
 run_id = f'test-{uuid.uuid4().hex[:12]}'
@@ -305,13 +310,16 @@ print('RESULT:', result)
 store._client.table('memory_entity_edges').delete().eq('source_run_id', run_id).execute()
 store._client.table('memory_runs').delete().eq('run_id', run_id).execute()
 " 2>&1 | grep -v Deprecation | grep -v "return SyncPostgrestClient"
-`
+
+  ```
   ```
 Traceback (most recent call last):
   File "<string>", line 2, in <module>
 ModuleNotFoundError: No module named 'memory'
   ```
-- `Bash` — `cd src && set -a && source ../.env && set +a && ../.venv/bin/python -c "
+- `Bash`:
+  ```bash
+cd src && set -a && source ../.env && set +a && ../.venv/bin/python -c "
 from memory.store import SupabaseMemoryStore
 import uuid
 run_id = f'test-{uuid.uuid4().hex[:12]}'
@@ -332,7 +340,8 @@ print('RESULT:', result)
 store._client.table('memory_entity_edges').delete().eq('source_run_id', run_id).execute()
 store._client.table('memory_runs').delete().eq('run_id', run_id).execute()
 " 2>&1 | grep -v Deprecation | grep -v "return SyncPostgrestClient"
-`
+
+  ```
   ```
 RESULT: {'run_id': 'test-7502ae0047c6', 'entities_indexed': 4}
   ```
@@ -491,52 +500,6 @@ EXIT=0
 - Files created: (none)
 - Files modified: /home/anant_gupta/projects/hub/CausalOps/src/memory/store.py
 - Files deleted: (none)
-- Commands run: (pip show supabase 2>/dev/null || .venv/bin/pip show supabase 2>/dev/null) | head -5; echo "---"; (pip show postgrest 2>/dev/null || .venv/bin/pip show postgrest 2>/dev/null) | head -5, PY_SITE=$(python3 -c "import postgrest, os; print(os.path.dirname(postgrest.__file__))" 2>/dev/null || .venv/bin/python -c "import postgrest, os; print(os.path.dirname(postgrest.__file__))")
-echo "$PY_SITE"
-grep -rn "def upsert" "$PY_SITE" 
-echo "---"
-grep -rn "return=representation\|Prefer\|returning" "$PY_SITE"/_sync/request_builder.py 2>/dev/null | head -50, .venv/bin/pytest tests/memory/test_extractor.py tests/memory/test_mcp_tools.py -v 2>&1 | tail -40, set -a && source .env && set +a && .venv/bin/pytest tests/memory/test_store.py::test_write_run_inserts_row_and_indexes_entities -v -m integration 2>&1 | tail -60, grep -n "entities_indexed\|def test_write_run_inserts_row_and_indexes_entities\|skip" tests/memory/test_store.py | head -30, set -a && source .env && set +a && .venv/bin/python -c "
-from memory.store import SupabaseMemoryStore
-import uuid
-run_id = f'test-{uuid.uuid4().hex[:12]}'
-artifact = {
-    'run_id': run_id,
-    'task_description': 'Integration test: suspected lateral movement via RDP',
-    'memos': [],
-    'causal_graph': {
-        'nodes': [{'id': 'Patch_Applied'}, {'id': 'Lateral_Movement'}],
-        'edges': [{'source': 'Patch_Applied', 'target': 'Lateral_Movement', 'relationship': 'reduces likelihood of'}],
-    },
-    'causal_estimate_report': {'ate': -0.3, 'method': 'backdoor.linear_regression', 'n_rows': 40},
-    'evidence_records': [{'asset_id': 'test-host-01', 'technique_id': 'T1021.001', 'cve_id': None}],
-}
-store = SupabaseMemoryStore()
-result = store.write_run(artifact)
-print('RESULT:', result)
-store._client.table('memory_entity_edges').delete().eq('source_run_id', run_id).execute()
-store._client.table('memory_runs').delete().eq('run_id', run_id).execute()
-" 2>&1 | grep -v Deprecation | grep -v "return SyncPostgrestClient"
-, cd src && set -a && source ../.env && set +a && ../.venv/bin/python -c "
-from memory.store import SupabaseMemoryStore
-import uuid
-run_id = f'test-{uuid.uuid4().hex[:12]}'
-artifact = {
-    'run_id': run_id,
-    'task_description': 'Integration test: suspected lateral movement via RDP',
-    'memos': [],
-    'causal_graph': {
-        'nodes': [{'id': 'Patch_Applied'}, {'id': 'Lateral_Movement'}],
-        'edges': [{'source': 'Patch_Applied', 'target': 'Lateral_Movement', 'relationship': 'reduces likelihood of'}],
-    },
-    'causal_estimate_report': {'ate': -0.3, 'method': 'backdoor.linear_regression', 'n_rows': 40},
-    'evidence_records': [{'asset_id': 'test-host-01', 'technique_id': 'T1021.001', 'cve_id': None}],
-}
-store = SupabaseMemoryStore()
-result = store.write_run(artifact)
-print('RESULT:', result)
-store._client.table('memory_entity_edges').delete().eq('source_run_id', run_id).execute()
-store._client.table('memory_runs').delete().eq('run_id', run_id).execute()
-" 2>&1 | grep -v Deprecation | grep -v "return SyncPostgrestClient"
-, .venv/bin/ruff check src/memory/store.py; echo "---pyright---"; .venv/bin/pyright src/memory/store.py 2>&1 | tail -30, which ruff pyright 2>&1; find / -maxdepth 6 -iname "ruff" -o -iname "pyright" 2>/dev/null | grep -v proc | head -20, python -m ruff check src/memory/ src/coordinator/ tests/memory/ --output-format=concise, ls .venv/bin | grep -i -E "ruff|pyright"; echo "---"; find . -maxdepth 4 -iname "ruff*" 2>/dev/null; python3 -c "import ruff" 2>&1; pip show ruff pyright 2>&1 | head -20, python3 -m ruff check src/memory/ src/coordinator/ tests/memory/ --output-format=concise; echo "RUFF_EXIT=$?"; echo "---pyright---"; python3 -m pyright src/memory/ src/coordinator/ 2>&1 | tail -40, pwd, cd /home/anant_gupta/projects/hub/CausalOps && python3 -m ruff check src/memory/ src/coordinator/ tests/memory/ --output-format=concise; echo "RUFF_EXIT=$?", git diff src/memory/store.py | head -60, git stash && python3 -m ruff check src/memory/store.py --output-format=concise; echo "RUFF_EXIT=$?"; git stash pop, python3 -m pyright src/memory/store.py 2>&1 | tail -40, python3 -m ruff check src/coordinator/ tests/memory/ --output-format=concise; echo "EXIT=$?"
+- Commands run: (pip show supabase 2>/dev/null || .venv/bin/pip show supabase 2>/dev/null) | head -5; echo "---"; (pip show postgrest 2>/dev/null || .venv/bin/pip show postgrest 2>/dev/null) | head -5, PY_SITE=$(python3 -c "import postgrest, os; print(os.path.dirname(postgrest.__file__))" 2>/dev/null || .venv/bin/python -c "import postgrest, os; print(os.path.dirname(postgrest.__file__))") echo "$PY_SITE" grep -rn "def upsert" "$PY_SITE" echo "---" grep -rn "return=representation\|Prefer\|returning" "$PY_SITE"/_sync/request_builder.py 2>/dev/null | head -50, .venv/bin/pytest tests/memory/test_extractor.py tests/memory/test_mcp_tools.py -v 2>&1 | tail -40, set -a && source .env && set +a && .venv/bin/pytest tests/memory/test_store.py::test_write_run_inserts_row_and_indexes_entities -v -m integration 2>&1 | tail -60, grep -n "entities_indexed\|def test_write_run_inserts_row_and_indexes_entities\|skip" tests/memory/test_store.py | head -30, set -a && source .env && set +a && .venv/bin/python -c " from memory.store import SupabaseMemoryStore import uuid run_id = f'test-{uuid.uuid4().hex[:12]}' artifact = { 'run_id': run_id, 'task_description': 'Integration test: suspected lateral movement via RDP', 'memos': [], 'causal_graph': { 'nodes': [{'id': 'Patch_Applied'}, {'id': 'Lateral_Movement'}], 'edges': [{'source': 'Patch_Applied', 'target': 'Lateral_Movement', 'relationship': 'reduces likelihood of'}], }, 'causal_estimate_report': {'ate': -0.3, 'method': 'backdoor.linear_regression', 'n_rows': 40}, 'evidence_records': [{'asset_id': 'test-host-01', 'technique_id': 'T1021.001', 'cve_id': None}], } store = SupabaseMemoryStore() result = store.write_run(artifact) print('RESULT:', result) store._client.table('memory_entity_edges').delete().eq('source_run_id', run_id).execute() store._client.table('memory_runs').delete().eq('run_id', run_id).execute() " 2>&1 | grep -v Deprecation | grep -v "return SyncPostgrestClient" , cd src && set -a && source ../.env && set +a && ../.venv/bin/python -c " from memory.store import SupabaseMemoryStore import uuid run_id = f'test-{uuid.uuid4().hex[:12]}' artifact = { 'run_id': run_id, 'task_description': 'Integration test: suspected lateral movement via RDP', 'memos': [], 'causal_graph': { 'nodes': [{'id': 'Patch_Applied'}, {'id': 'Lateral_Movement'}], 'edges': [{'source': 'Patch_Applied', 'target': 'Lateral_Movement', 'relationship': 'reduces likelihood of'}], }, 'causal_estimate_report': {'ate': -0.3, 'method': 'backdoor.linear_regression', 'n_rows': 40}, 'evidence_records': [{'asset_id': 'test-host-01', 'technique_id': 'T1021.001', 'cve_id': None}], } store = SupabaseMemoryStore() result = store.write_run(artifact) print('RESULT:', result) store._client.table('memory_entity_edges').delete().eq('source_run_id', run_id).execute() store._client.table('memory_runs').delete().eq('run_id', run_id).execute() " 2>&1 | grep -v Deprecation | grep -v "return SyncPostgrestClient" , .venv/bin/ruff check src/memory/store.py; echo "---pyright---"; .venv/bin/pyright src/memory/store.py 2>&1 | tail -30, which ruff pyright 2>&1; find / -maxdepth 6 -iname "ruff" -o -iname "pyright" 2>/dev/null | grep -v proc | head -20, python -m ruff check src/memory/ src/coordinator/ tests/memory/ --output-format=concise, ls .venv/bin | grep -i -E "ruff|pyright"; echo "---"; find . -maxdepth 4 -iname "ruff*" 2>/dev/null; python3 -c "import ruff" 2>&1; pip show ruff pyright 2>&1 | head -20, python3 -m ruff check src/memory/ src/coordinator/ tests/memory/ --output-format=concise; echo "RUFF_EXIT=$?"; echo "---pyright---"; python3 -m pyright src/memory/ src/coordinator/ 2>&1 | tail -40, pwd, cd /home/anant_gupta/projects/hub/CausalOps && python3 -m ruff check src/memory/ src/coordinator/ tests/memory/ --output-format=concise; echo "RUFF_EXIT=$?", git diff src/memory/store.py | head -60, git stash && python3 -m ruff check src/memory/store.py --output-format=concise; echo "RUFF_EXIT=$?"; git stash pop, python3 -m pyright src/memory/store.py 2>&1 | tail -40, python3 -m ruff check src/coordinator/ tests/memory/ --output-format=concise; echo "EXIT=$?"
 - Tool call tally: Bash (18), Edit (1), Read (3), Skill (1)
 

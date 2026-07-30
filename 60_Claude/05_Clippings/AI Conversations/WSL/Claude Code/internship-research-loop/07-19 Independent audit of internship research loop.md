@@ -7,7 +7,7 @@ title: "Independent audit of internship research loop"
 started_at: 2026-07-19T09:37:58
 ended_at: 2026-07-25T17:40:32
 duration_minutes: 9123
-exported_at: 2026-07-30T15:28:59.6972445+04:00
+exported_at: 2026-07-30T16:47:46.9270578+04:00
 project: internship-research-loop
 cwd: '/home/anant_gupta/projects/work/internship-research-loop'
 session_id: 27282fd2-49bd-45d9-bd18-39e7bab52d5f
@@ -474,11 +474,14 @@ no matches above means none
 - `ToolSearch` — `{"query":"select:mcp__jarvis__search_simple,mcp__jarvis__vault_get_document_map","max_results":5}`
 - `mcp__jarvis__vault_list` — `{"path":"10_Areas/Career/Internships/List"}`
 - `mcp__jarvis__vault_read` — `{"path":"20_Progress/Internship/Companies giving OPT & CPT.md"}`
-- `Bash` — `gh run list --repo gupta-builds/internship-research-loop --workflow=run.yml --limit 5 --json displayTitle,status,conclusion,createdAt 2>&1
+- `Bash`:
+  ```bash
+gh run list --repo gupta-builds/internship-research-loop --workflow=run.yml --limit 5 --json displayTitle,status,conclusion,createdAt 2>&1
 echo "---recheck---"
 gh run list --repo gupta-builds/internship-research-loop --workflow=recheck.yml --limit 5 --json displayTitle,status,conclusion,createdAt 2>&1
 echo "---current UTC time---"
-date -u`
+date -u
+  ```
   ```
 [{"conclusion":"success","createdAt":"2026-07-19T07:59:28Z","displayTitle":"run","status":"completed"},{"conclusion":"success","createdAt":"2026-07-19T05:12:22Z","displayTitle":"run","status":"completed"},{"conclusion":"success","createdAt":"2026-07-19T01:46:10Z","displayTitle":"run","status":"completed"},{"conclusion":"success","createdAt":"2026-07-18T23:42:39Z","displayTitle":"run","status":"completed"},{"conclusion":"success","createdAt":"2026-07-18T22:38:37Z","displayTitle":"run","status":"completed"}]
 ---recheck---
@@ -506,7 +509,9 @@ drwxrwxrwx 1 anant_gupta anant_gupta 4096 Jul 17 17:37 ..
 -rwxrwxrwx 1 anant_gupta anant_gupta 1667 Jul 18 18:14 [REDACTED].md
 -rwxrwxrwx 1 anant_gupta anant_gupta 4963 Jul 19 12:49 [REDACTED].md
   ```
-- `Bash` — `JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis
+- `Bash`:
+  ```bash
+JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis
 echo "--- Enrichment sections in dossiers ---"
 grep -rl "## Enrichment" "$JARVIS/10_Areas/Career/Internships/List/Dossiers/" 2>&1
 echo "(none = no output above)"
@@ -515,7 +520,8 @@ grep -L "^promoted:$" "$JARVIS/10_Areas/Career/Internships/List/Dossiers/"*.md
 echo "--- Run Log.md exists? ---"
 ls -la "$JARVIS/10_Areas/Career/Internships/List/" 2>&1
 echo "--- dossier byte sizes ---"
-wc -c "$JARVIS/10_Areas/Career/Internships/List/Dossiers/"*.md | sort -n`
+wc -c "$JARVIS/10_Areas/Career/Internships/List/Dossiers/"*.md | sort -n
+  ```
   ```
 --- Enrichment sections in dossiers ---
 (none = no output above)
@@ -563,13 +569,16 @@ drwxrwxrwx 1 anant_gupta anant_gupta 4096 Jul 19 12:48 Dossiers
 - `TaskUpdate` — `{"taskId":"7","status":"completed"}`
 - `TaskUpdate` — `{"taskId":"1","status":"completed"}`
 - `TaskUpdate` — `{"taskId":"2","status":"in_progress"}`
-- `Bash` — `python3 -c "import json; print(len(json.load(open('state/seen_ids.json'))))"
+- `Bash`:
+  ```bash
+python3 -c "import json; print(len(json.load(open('state/seen_ids.json'))))"
 echo "---issues---"
 gh issue list --repo gupta-builds/internship-research-loop --state all --json number,title 2>&1
 echo "---grep zapply anywhere in live source (not .venv)---"
 grep -ril "zapply" --include="*.py" . 2>/dev/null | grep -v .venv
 echo "---confirm no anthropic/openai/claude deps---"
-grep -iE "anthropic|openai|claude" requirements.txt core/*.py ingestion/*.py vault_writer/*.py *.py 2>/dev/null`
+grep -iE "anthropic|openai|claude" requirements.txt core/*.py ingestion/*.py vault_writer/*.py *.py 2>/dev/null
+  ```
   ```
 143
 ---issues---
@@ -647,12 +656,15 @@ That's actually 6 postings across 4 companies if you count both Rippling and bot
 - `mcp__jarvis__vault_read` — `{"path":"20_Progress/Internship/Building System/Research Loop - Source of Truth.md"}`
 - `mcp__jarvis__vault_read` — `{"path":"20_Progress/Internship/Building System/Research Loop - Improvement Plan.md"}`
 - `mcp__jarvis__vault_read` — `{"path":"30_Order/Workflows/Internship Pipeline.md"}`
-- `Bash` — `JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers
+- `Bash`:
+  ```bash
+JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers
 for f in "$JARVIS"/*.md; do
   company=$(grep -m1 "^company:" "$f" | sed 's/^company: *//')
   title=$(grep -m1 "^title:" "$f" | sed 's/^title: *//')
   echo "$(basename "$f"): $company — $title"
-done`
+done
+  ```
   ```
 [REDACTED].md: Fussball Club Cincinnati LLC (“FC Cincinnati”) — Academy Performance Analyst Intern - Academy Performance Analysis
 [REDACTED].md: Rippling — Full Stack Software Engineer Intern
@@ -680,11 +692,14 @@ done`
 [REDACTED].md: Palantir — Forward Deployed Software Engineer Intern - Intel
 [REDACTED].md: Palantir — Forward Deployed Software Engineer Intern - Commercial
   ```
-- `Bash` — `JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers
+- `Bash`:
+  ```bash
+JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers
 f="$JARVIS/jose-gael-cruz-lopez-792fbc5d-41af-4722-8800-22eb447d1602.md"
 grep -m1 "^company:" "$f"; grep -m1 "^title:" "$f"
 echo "---templates---"
-ls /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/30_Order/Templates/Career/`
+ls /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/30_Order/Templates/Career/
+  ```
   ```
 ugrep: warning: /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/[REDACTED].md: No such file or directory
 ugrep: warning: /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/[REDACTED].md: No such file or directory
@@ -700,13 +715,16 @@ Program Template.md
   ```
 (Bash completed with no output)
   ```
-- `Bash` — `JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers
+- `Bash`:
+  ```bash
+JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers
 ls "$JARVIS" | wc -l
 ls "$JARVIS"
 echo "---repo state now---"
 git pull --ff-only 2>&1 | tail -5
 tail -3 logs/rechecks.jsonl
-tail -3 logs/runs.jsonl`
+tail -3 logs/runs.jsonl
+  ```
   ```
 25
 [REDACTED].md
@@ -812,12 +830,15 @@ Given all that: for the write-on-first-seen change (option B), that's a real cod
 **Tool calls:**
 
 - `mcp__jarvis__vault_list` — `{"path":"60_Claude/05_Clippings/Web/Internships"}`
-- `Bash` — `cat logs/runs.jsonl | python3 -c "
+- `Bash`:
+  ```bash
+cat logs/runs.jsonl | python3 -c "
 import json,sys
 for line in sys.stdin:
     r = json.loads(line)
     print(r['timestamp'], r['fetch_counts'], r['filter_match_counts'], 'new=',r['new_count'],'written=',r['written_count'],'halted=',r['halted'])
-"`
+"
+  ```
   ```
 2026-07-17T11:21:15.269452+00:00 {'SimplifyJobs': 14898, 'Jose-Gael-Cruz-Lopez': 112, 'zapplyjobs': 53} {'SimplifyJobs': 116, 'Jose-Gael-Cruz-Lopez': 17, 'zapplyjobs': 22} new= 155 written= 137 halted= False
 2026-07-17T11:26:13.027976+00:00 {'SimplifyJobs': 14898, 'Jose-Gael-Cruz-Lopez': 112, 'zapplyjobs': 53} {'SimplifyJobs': 116, 'Jose-Gael-Cruz-Lopez': 17, 'zapplyjobs': 22} new= 18 written= 0 halted= False
@@ -857,7 +878,9 @@ for line in sys.stdin:
 2026-07-19T14:20:37.604079+00:00 {'SimplifyJobs': 14731, 'Jose-Gael-Cruz-Lopez': 112} {'SimplifyJobs': 36, 'Jose-Gael-Cruz-Lopez': 5} new= 9 written= 0 halted= False
 2026-07-19T15:47:33.503659+00:00 {'SimplifyJobs': 14731, 'Jose-Gael-Cruz-Lopez': 112} {'SimplifyJobs': 36, 'Jose-Gael-Cruz-Lopez': 5} new= 9 written= 0 halted= False
   ```
-- `Bash` — `source .venv/bin/activate 2>/dev/null
+- `Bash`:
+  ```bash
+source .venv/bin/activate 2>/dev/null
 python3 - <<'EOF'
 import requests, json
 url = "https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json"
@@ -878,7 +901,8 @@ for r in google:
     print("url:", r.get("url"))
     keys = list(r.keys())
     print("all keys:", keys)
-EOF`
+EOF
+  ```
   ```
 Total Google entries: 8
 ---
@@ -978,11 +1002,14 @@ date_updated: 1784595961
 url: https://www.google.com/about/careers/applications/jobs/results/132362676918461126
 all keys: ['source', 'category', 'company_name', 'id', 'title', 'active', 'terms', 'date_updated', 'date_posted', 'url', 'locations', 'company_url', 'is_visible', 'sponsorship', 'degrees']
   ```
-- `Bash` — `for ts in 1784591786 1784591882 1784591791 1784591853 1784591923 1784592001 1784595879 1784595961; do
+- `Bash`:
+  ```bash
+for ts in 1784591786 1784591882 1784591791 1784591853 1784591923 1784592001 1784595879 1784595961; do
   echo -n "$ts -> "; date -u -d @$ts +"%Y-%m-%dT%H:%M:%SZ"
 done
 echo "--- our run timestamps around that window ---"
-grep -oP '"timestamp": "\K[^"]+' logs/runs.jsonl | tail -15`
+grep -oP '"timestamp": "\K[^"]+' logs/runs.jsonl | tail -15
+  ```
   ```
 1784591786 -> 2026-07-20T23:56:26Z
 1784591882 -> 2026-07-20T23:58:02Z
@@ -1017,11 +1044,14 @@ Thu Jul 23 11:40:19 UTC 2026
 --- latest gh run ---
 [{"conclusion":"success","createdAt":"2026-07-23T10:11:39Z","displayTitle":"run","status":"completed"},{"conclusion":"success","createdAt":"2026-07-23T07:26:45Z","displayTitle":"run","status":"completed"},{"conclusion":"success","createdAt":"2026-07-23T04:09:10Z","displayTitle":"run","status":"completed"}]
   ```
-- `Bash` — `git pull --ff-only 2>&1 | tail -10
+- `Bash`:
+  ```bash
+git pull --ff-only 2>&1 | tail -10
 echo "--- new runs.jsonl line count ---"
 wc -l logs/runs.jsonl
 echo "--- runs since 07-20 ---"
-grep -oP '"timestamp": "\K[^"]+' logs/runs.jsonl | awk -F'T' '$1 >= "2026-07-20"'`
+grep -oP '"timestamp": "\K[^"]+' logs/runs.jsonl | awk -F'T' '$1 >= "2026-07-20"'
+  ```
   ```
 Updating 3cc845a..3f54d86
 Fast-forward
@@ -1071,7 +1101,9 @@ Fast-forward
 2026-07-23T07:27:03.226956+00:00
 2026-07-23T10:12:01.405182+00:00
   ```
-- `Bash` — `python3 -c "
+- `Bash`:
+  ```bash
+python3 -c "
 import json
 with open('logs/runs.jsonl') as f:
     for line in f:
@@ -1081,7 +1113,8 @@ with open('logs/runs.jsonl') as f:
             print(ts, r['fetch_counts'], r['filter_match_counts'], 'new=',r['new_count'],'already_seen=',r['already_seen_count'],'written=',r['written_count'])
             for rej in r['rejections']:
                 print('   rejection:', rej)
-"`
+"
+  ```
   ```
 2026-07-20T19:25:33.941129+00:00 {'SimplifyJobs': 14686, 'Jose-Gael-Cruz-Lopez': 112} {'SimplifyJobs': 37, 'Jose-Gael-Cruz-Lopez': 5} new= 9 already_seen= 33 written= 0
    rejection: {'uid': 'SimplifyJobs:[REDACTED]', 'check': 'cross_source_duplicate', 'reason': 'company+title already in vault: palantir|forward deployed software engineer intern commercial'}
@@ -1152,7 +1185,9 @@ with open('logs/runs.jsonl') as f:
   ```
 url: https://jobs.smartrecruiters.com/WesternDigital/744000138184309
   ```
-- `Bash` — `source .venv/bin/activate 2>/dev/null
+- `Bash`:
+  ```bash
+source .venv/bin/activate 2>/dev/null
 python3 - <<'EOF'
 import requests, json
 url = "https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json"
@@ -1177,7 +1212,8 @@ for t in targets:
     print(f"=== JGCL {t}: {len(hits)} entries ===")
     for r in hits:
         print(" ", r)
-EOF`
+EOF
+  ```
   ```
 <persisted-output>
 Output too large (32KB). Full output saved to: /home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/b8xm8tctm.txt
@@ -1194,7 +1230,9 @@ Preview (first 2KB):
 ...
 </persisted-output>
   ```
-- `Bash` — `grep -n "300697\|career prep\|Career Prep" /home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/27282fd2-49bd-45d9-bd18-39e7bab52d5f/tool-results/b8xm8tctm.txt
+- `Bash`:
+  ```bash
+grep -n "300697\|career prep\|Career Prep" /home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/27282fd2-49bd-45d9-bd18-39e7bab52d5f/tool-results/b8xm8tctm.txt
 echo "=== nuro section ==="
 sed -n '/=== nuro/,/=== deepgram/p' /home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/27282fd2-49bd-45d9-bd18-39e7bab52d5f/tool-results/b8xm8tctm.txt
 echo "=== deepgram section ==="
@@ -1202,7 +1240,8 @@ sed -n '/=== deepgram/,/=== western/p' /home/anant_gupta/.claude/projects/-home-
 echo "=== western digital section ==="
 sed -n '/=== western digital/,$p' /home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/27282fd2-49bd-45d9-bd18-39e7bab52d5f/tool-results/b8xm8tctm.txt
 echo "=== uber Summer 2027 active entries ==="
-grep -n "Summer 2027" /home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/27282fd2-49bd-45d9-bd18-39e7bab52d5f/tool-results/b8xm8tctm.txt | head -20`
+grep -n "Summer 2027" /home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/27282fd2-49bd-45d9-bd18-39e7bab52d5f/tool-results/b8xm8tctm.txt | head -20
+  ```
   ```
 === nuro section ===
 === nuro: 5 entries ===
@@ -1293,13 +1332,16 @@ grep -n "Summer 2027" /home/anant_gupta/.claude/projects/-home-anant-gupta-proje
 59: id: [REDACTED] | title: Software Engineer Intern - Pose - Vehicle State Estimation | active: False | terms: ['Winter 2027', 'Spring 2027', 'Summer 2027', 'Fall 2027'] | category: Hardware | degrees: [] | url: https://nuro.ai/careersitem?gh_jid=7545444
 128: id: [REDACTED] | title: Software Engineer Intern | active: True | terms: ['Summer 2027'] | category: Software | degrees: ["Bachelor's", "Master's"] | url: https://jobs.smartrecruiters.com/WesternDigital/744000138727213
   ```
-- `Bash` — `grep -c "01925f31" state/seen_ids.json state/opt_cache.json
+- `Bash`:
+  ```bash
+grep -c "01925f31" state/seen_ids.json state/opt_cache.json
 echo "--- last run full rejections, check for this uid ---"
 tail -1 logs/runs.jsonl | python3 -m json.tool
 echo "--- check across all logged rejections ever ---"
 grep -o "01925f31[a-z0-9-]*" logs/runs.jsonl | sort -u
 echo "--- curl liveness check ourselves ---"
-curl -s -o /dev/null -w "%{http_code}\n" -I "https://jobs.smartrecruiters.com/WesternDigital/744000138727213"`
+curl -s -o /dev/null -w "%{http_code}\n" -I "https://jobs.smartrecruiters.com/WesternDigital/744000138727213"
+  ```
   ```
 state/seen_ids.json:1
 state/opt_cache.json:1
@@ -1342,7 +1384,9 @@ state/opt_cache.json:1
 --- curl liveness check ourselves ---
 200
   ```
-- `Bash` — `python3 -c "
+- `Bash`:
+  ```bash
+python3 -c "
 import json
 cache = json.load(open('state/opt_cache.json'))
 for k,v in cache.items():
@@ -1350,7 +1394,8 @@ for k,v in cache.items():
         print(k, v)
 "
 echo "--- seen_ids context ---"
-grep -B1 -A1 "01925f31" state/seen_ids.json`
+grep -B1 -A1 "01925f31" state/seen_ids.json
+  ```
   ```
 SimplifyJobs:[REDACTED] {'checked': '2026-07-20', 'signal': None, 'verdict': 'eligible'}
 --- seen_ids context ---
@@ -1358,7 +1403,9 @@ SimplifyJobs:[REDACTED] {'checked': '2026-07-20', 'signal': None, 'verdict': 'el
   "SimplifyJobs:[REDACTED]",
   "SimplifyJobs:[REDACTED]",
   ```
-- `Bash` — `grep "01925f31" logs/rechecks.jsonl
+- `Bash`:
+  ```bash
+grep "01925f31" logs/rechecks.jsonl
 echo "--- full rechecks.jsonl ---"
 cat logs/rechecks.jsonl | python3 -c "
 import json,sys
@@ -1369,7 +1416,8 @@ for line in sys.stdin:
 echo "--- does the file exist under any name pattern ---"
 find /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/ -iname "*01925f31*"
 echo "--- git history of this file in the vault repo, if accessible ---"
-cd /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis 2>/dev/null && git log --all --oneline -- "10_Areas/Career/Internships/List/Dossiers/simplifyjobs-01925f31-564d-4bc0-94fc-2a2717d3132d.md" 2>&1 | head -20`
+cd /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis 2>/dev/null && git log --all --oneline -- "10_Areas/Career/Internships/List/Dossiers/simplifyjobs-01925f31-564d-4bc0-94fc-2a2717d3132d.md" 2>&1 | head -20
+  ```
   ```
 --- full rechecks.jsonl ---
 2026-07-19T08:55:58.847353+00:00 scanned= 26 removals= []
@@ -1383,13 +1431,16 @@ cd /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis 2>/dev/null && git log --all --
 5e82c0d2 Auto-discovered 1 internship(s) — 2026-07-20
 Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
   ```
-- `Bash` — `JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers
+- `Bash`:
+  ```bash
+JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers
 echo "current count: $(ls "$JARVIS" | wc -l)"
 for f in "$JARVIS"/*.md; do
   company=$(grep -m1 "^company:" "$f" | sed 's/^company: *//')
   status=$(grep -m1 "^status:" "$f" | sed 's/^status: *//')
   echo "$(basename "$f"): $company [$status]"
-done | grep -iE "uber|nuro|deepgram|western"`
+done | grep -iE "uber|nuro|deepgram|western"
+  ```
   ```
 current count: 29
 [REDACTED].md: Western Digital [unreviewed]
@@ -1450,12 +1501,15 @@ Real read: this isn't a hypothesis anymore, it's 15 confirmed live company board
 
 **Tool calls:**
 
-- `Bash` — `JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers
+- `Bash`:
+  ```bash
+JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers
 for f in "$JARVIS"/*.md; do
   company=$(grep -m1 "^company:" "$f" | sed 's/^company: *//')
   url=$(grep -m1 "^url:" "$f" | sed 's/^url: *//')
   echo "$company | $url"
-done`
+done
+  ```
   ```
 Western Digital | https://jobs.smartrecruiters.com/WesternDigital/744000138727213
 Fussball Club Cincinnati LLC (“FC Cincinnati”) | https://job-boards.greenhouse.io/fccincinnati/jobs/7741524003
@@ -1486,7 +1540,9 @@ Optiver | https://www.optiver.com/join-us/jobs/8604760002/?gh_jid=8604760002
 Palantir | https://jobs.lever.co/palantir/[REDACTED]/apply
 Palantir | https://jobs.lever.co/palantir/[REDACTED]/apply
   ```
-- `Bash` — `source .venv/bin/activate 2>/dev/null
+- `Bash`:
+  ```bash
+source .venv/bin/activate 2>/dev/null
 python3 - <<'EOF'
 import requests
 
@@ -1569,7 +1625,8 @@ for company, tokens in guess_targets.items():
             if res:
                 hits.append(res)
     print(f"{company}: {hits if hits else 'no hit on any of GH/Lever/Ashby for guessed tokens ' + str(tokens)}")
-EOF`
+EOF
+  ```
   ```
 FC Cincinnati: GH:fccincinnati -> 200, 12 jobs
 Aquatic Capital Management: GH:aquaticcapitalmanagement -> 200, 9 jobs
@@ -1600,7 +1657,9 @@ Nuro: ['GH:nuro -> 200, 99 jobs']
 Deepgram: ['Ashby:deepgram -> 200, 77 jobs', 'Ashby:Deepgram -> 200, 77 jobs']
 Google: no hit on any of GH/Lever/Ashby for guessed tokens ['google']
   ```
-- `Bash` — `source .venv/bin/activate 2>/dev/null
+- `Bash`:
+  ```bash
+source .venv/bin/activate 2>/dev/null
 python3 - <<'EOF'
 import requests
 def try_gh(token):
@@ -1623,7 +1682,8 @@ for token in ["optiverus", "optiver-us", "optiverinternship", "optiverna"]:
 # the actual live job id still resolves through the embed page itself (proves it's real Greenhouse, just wrong token guess)
 r = requests.get("https://www.optiver.com/join-us/jobs/8401052002/?gh_jid=8401052002", timeout=15)
 print("Optiver embed page status:", r.status_code)
-EOF`
+EOF
+  ```
   ```
 HRT try: hudsonrivertrading -> None
 HRT try: hrt -> None
@@ -1721,7 +1781,9 @@ Everything's committed to nothing yet — all changes are local and uncommitted,
 
 **Tool calls:**
 
-- `Bash` — `echo "=== vanshb03/Summer2027-Internships: does it exist, is it distinct from SimplifyJobs? ==="
+- `Bash`:
+  ```bash
+echo "=== vanshb03/Summer2027-Internships: does it exist, is it distinct from SimplifyJobs? ==="
 gh api repos/vanshb03/Summer2027-Internships --jq '{full_name, fork, parent: .parent.full_name, pushed_at, default_branch}' 2>&1
 echo ""
 echo "=== SimplifyJobs/Summer2026-Internships for comparison ==="
@@ -1734,7 +1796,8 @@ echo "=== search for speedyapply's repo ==="
 gh api "search/repositories?q=user:speedyapply" --jq '.items[] | {full_name, pushed_at, description}' 2>&1
 echo ""
 echo "=== search for sndsh404's repo ==="
-gh api "search/repositories?q=user:sndsh404" --jq '.items[] | {full_name, pushed_at, description}' 2>&1`
+gh api "search/repositories?q=user:sndsh404" --jq '.items[] | {full_name, pushed_at, description}' 2>&1
+  ```
   ```
 === vanshb03/Summer2027-Internships: does it exist, is it distinct from SimplifyJobs? ===
 {"default_branch":"dev","fork":false,"full_name":"vanshb03/Summer2027-Internships","parent":null,"pushed_at":"2026-07-24T18:13:21Z"}
@@ -1764,11 +1827,14 @@ gh api "search/repositories?q=user:sndsh404" --jq '.items[] | {full_name, pushed
 {"description":null,"full_name":"sndsh404/mantle_robotics","pushed_at":"2026-07-21T18:32:24Z"}
 {"description":null,"full_name":"sndsh404/my-dsa-book","pushed_at":"2026-05-16T05:14:49Z"}
   ```
-- `Bash` — `echo "=== speedyapply/2027-SWE-College-Jobs tree ==="
+- `Bash`:
+  ```bash
+echo "=== speedyapply/2027-SWE-College-Jobs tree ==="
 gh api repos/speedyapply/2027-SWE-College-Jobs/git/trees/main?recursive=true --jq '.tree[].path' 2>&1 | head -60
 echo ""
 echo "=== speedyapply/2027-SWE-College-Jobs recent commits ==="
-gh api repos/speedyapply/2027-SWE-College-Jobs/commits --jq '.[0:5] | .[] | {sha: .sha[0:8], message: .commit.message, date: .commit.author.date}' 2>&1`
+gh api repos/speedyapply/2027-SWE-College-Jobs/commits --jq '.[0:5] | .[] | {sha: .sha[0:8], message: .commit.message, date: .commit.author.date}' 2>&1
+  ```
   ```
 === speedyapply/2027-SWE-College-Jobs tree ===
 .github
@@ -1807,8 +1873,11 @@ README.md
 {"date":"2026-07-22T14:09:15Z","message":"chore: update tables","sha":"ec6ecb4a"}
 {"date":"2026-07-21T14:06:26Z","message":"chore: update tables","sha":"377f71e6"}
   ```
-- `Bash` — `echo "=== speedyapply/2027-AI-College-Jobs tree ==="
-gh api repos/speedyapply/2027-AI-College-Jobs/git/trees/main?recursive=true --jq '.tree[].path' 2>&1 | head -60`
+- `Bash`:
+  ```bash
+echo "=== speedyapply/2027-AI-College-Jobs tree ==="
+gh api repos/speedyapply/2027-AI-College-Jobs/git/trees/main?recursive=true --jq '.tree[].path' 2>&1 | head -60
+  ```
   ```
 === speedyapply/2027-AI-College-Jobs tree ===
 .github
@@ -1840,8 +1909,11 @@ NEW_GRAD_INTL.md
 NEW_GRAD_USA.md
 README.md
   ```
-- `Bash` — `echo "=== README first 100 lines, speedyapply/2027-SWE-College-Jobs ==="
-gh api repos/speedyapply/2027-SWE-College-Jobs/contents/README.md --jq '.content' 2>&1 | base64 -d 2>/dev/null | head -100`
+- `Bash`:
+  ```bash
+echo "=== README first 100 lines, speedyapply/2027-SWE-College-Jobs ==="
+gh api repos/speedyapply/2027-SWE-College-Jobs/contents/README.md --jq '.content' 2>&1 | base64 -d 2>/dev/null | head -100
+  ```
   ```
 === README first 100 lines, speedyapply/2027-SWE-College-Jobs ===
 # 2027 Software Engineering Internship & New Grad Positions
@@ -1945,8 +2017,11 @@ This repository is a comprehensive list of Software Engineering jobs for college
 | <a href="https://www.astranis.com"><strong>Astranis Space Technologies</strong></a> | Software Engineer Intern - Enterprise Systems - Fall 2026 | San Francisco, CA | <a href="https://job-boards.greenhouse.io/astranis/jobs/4699071006"><img src="https://i.imgur.com/JpkfjIq.png" alt="Apply" width="70"/></a> | 1d |
 | <a href="https://www.hp.com"><strong>HP</strong></a> | Software Engineering Intern - Device Experiences | San Francisco, CA | <a href="https://hp.wd5.myworkdayjobs.com/en-US/exteu-ac-careersite/job/San-Francisco-California-United-States-of-America/[REDACTED]"><img src="https://i.imgur.com/JpkfjIq.png" alt="Apply" width="70"/></a> | 3d |
   ```
-- `Bash` — `echo "=== vanshb03/Summer2027-Internships tree ==="
-gh api repos/vanshb03/Summer2027-Internships/git/trees/dev?recursive=true --jq '.tree[].path' 2>&1 | grep -i script`
+- `Bash`:
+  ```bash
+echo "=== vanshb03/Summer2027-Internships tree ==="
+gh api repos/vanshb03/Summer2027-Internships/git/trees/dev?recursive=true --jq '.tree[].path' 2>&1 | grep -i script
+  ```
   ```
 === vanshb03/Summer2027-Internships tree ===
 .github/scripts
@@ -1955,10 +2030,13 @@ gh api repos/vanshb03/Summer2027-Internships/git/trees/dev?recursive=true --jq '
 .github/scripts/update_readmes.py
 .github/scripts/util.py
   ```
-- `Bash` — `echo "=== zshah101 repo tree ==="
+- `Bash`:
+  ```bash
+echo "=== zshah101 repo tree ==="
 gh api repos/zshah101/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships/git/trees/main?recursive=true --jq '.tree[].path' 2>&1
 echo "--- if main doesn't exist, try master ---"
-gh api repos/zshah101/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships --jq '.default_branch' 2>&1`
+gh api repos/zshah101/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships --jq '.default_branch' 2>&1
+  ```
   ```
 === zshah101 repo tree ===
 .github
@@ -2068,7 +2146,9 @@ tools/verify_accuracy.py
 --- if main doesn't exist, try master ---
 main
   ```
-- `Bash` — `echo "=== vanshb03 listings.json: schema check (first entry, distinct keys, count, Uber/Deepgram presence) ==="
+- `Bash`:
+  ```bash
+echo "=== vanshb03 listings.json: schema check (first entry, distinct keys, count, Uber/Deepgram presence) ==="
 python3 - <<'EOF'
 import requests, json
 url = "https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/.github/scripts/listings.json"
@@ -2085,7 +2165,8 @@ for r in uber_entries[:5]:
     print("UBER:", r.get("id"), r.get("title"), r.get("active"), r.get("terms") or r.get("season"))
 for r in deepgram_entries[:5]:
     print("DEEPGRAM:", r.get("id"), r.get("title"), r.get("active"), r.get("terms") or r.get("season"))
-EOF`
+EOF
+  ```
   ```
 === vanshb03 listings.json: schema check (first entry, distinct keys, count, Uber/Deepgram presence) ===
 total entries: 274
@@ -2114,15 +2195,20 @@ has deepgram: True
 UBER: [REDACTED] Software Engineering Intern True Fall
 DEEPGRAM: [REDACTED] Software Engineering Intern True Summer
   ```
-- `Bash` — `gh api repos/zshah101/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships/contents/docs/api/jobs.json --jq '.content' 2>&1 | base64 -d 2>/dev/null | python3 -c "
+- `Bash`:
+  ```bash
+gh api repos/zshah101/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships/contents/docs/api/jobs.json --jq '.content' 2>&1 | base64 -d 2>/dev/null | python3 -c "
 import json,sys
 data = json.load(sys.stdin)
 print(type(data), len(data) if isinstance(data,list) else data.keys())
-" 2>&1`
+" 2>&1
+  ```
   ```
 <class 'dict'> dict_keys(['generated_at', 'source', 'h1b_window', 'count', 'jobs'])
   ```
-- `Bash` — `python3 - <<'EOF'
+- `Bash`:
+  ```bash
+python3 - <<'EOF'
 import requests, json
 
 # check if GH Pages serves this publicly
@@ -2134,11 +2220,14 @@ for url in [
         print(url, "->", r.status_code, len(r.content), "bytes")
     except Exception as e:
         print(url, "-> ERROR", e)
-EOF`
+EOF
+  ```
   ```
 https://zshah101.github.io/[REDACTED]/api/jobs.json -> 200 68374 bytes
   ```
-- `Bash` — `gh api repos/zshah101/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships/contents/docs/api/jobs.json --jq '.content' | base64 -d > /tmp/zshah_jobs.json
+- `Bash`:
+  ```bash
+gh api repos/zshah101/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships/contents/docs/api/jobs.json --jq '.content' | base64 -d > /tmp/zshah_jobs.json
 python3 - <<'EOF'
 import json
 data = json.load(open('/tmp/zshah_jobs.json'))
@@ -2160,7 +2249,8 @@ citizens_only = [j for j in jobs if j.get('sponsorship') == 'citizens_only' or (
 print("\ncitizens-only-ish count:", len(citizens_only))
 for j in citizens_only[:5]:
     print(" -", j.get('company_name') or j.get('company'), '|', j.get('title'), '| sponsorship:', j.get('sponsorship'), '| url:', j.get('url'))
-EOF`
+EOF
+  ```
   ```
 generated_at: 2026-07-25T13:58:54Z
 source: https://github.com/zshah101/[REDACTED]
@@ -2195,7 +2285,9 @@ citizens-only-ish count: 15
  - Junior | Software Engineering Intern — Fall 2026 | sponsorship: citizens-only | url: https://jobs.ashbyhq.com/junior/[REDACTED]
  - Palantir | Year at Palantir - Forward Deployed Software Engineer, Internship - Commercial | sponsorship: citizens-only | url: https://jobs.lever.co/palantir/[REDACTED]
   ```
-- `Bash` — `gh api repos/zshah101/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships/contents/data/jobs.json --jq '.content' | base64 -d > /tmp/zshah_data_jobs.json
+- `Bash`:
+  ```bash
+gh api repos/zshah101/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships/contents/data/jobs.json --jq '.content' | base64 -d > /tmp/zshah_data_jobs.json
 python3 - <<'EOF'
 import json
 from collections import Counter
@@ -2211,7 +2303,8 @@ citizens = [j for j in jobs if j.get('sponsorship') == 'citizens-only']
 print("citizens-only count:", len(citizens))
 for j in citizens:
     print(" -", j.get('company'), '|', j.get('title'), '|', j.get('url'))
-EOF`
+EOF
+  ```
   ```
 Exit code 1
 total: 214
@@ -2219,7 +2312,9 @@ Traceback (most recent call last):
   File "<stdin>", line 6, in <module>
 KeyError: 0
   ```
-- `Bash` — `python3 - <<'EOF'
+- `Bash`:
+  ```bash
+python3 - <<'EOF'
 import json
 data = json.load(open('/tmp/zshah_data_jobs.json'))
 print(type(data))
@@ -2227,7 +2322,8 @@ if isinstance(data, dict):
     print("keys:", list(data.keys())[:5], "... total keys:", len(data))
     sample_key = list(data.keys())[0]
     print("sample entry:", json.dumps(data[sample_key], indent=2)[:800])
-EOF`
+EOF
+  ```
   ```
 <class 'dict'>
 keys: ['amazon:amazon:10375983', 'amazon:amazon:10375998', 'amazon:amazon:10376009', 'amazon:amazon:10376731', 'amazon:amazon:10376736'] ... total keys: 214
@@ -2249,7 +2345,9 @@ sample entry: {
   "url": "https://www.amazon.jobs/en/jobs/10375983/[REDACTED]"
 }
   ```
-- `Bash` — `python3 - <<'EOF'
+- `Bash`:
+  ```bash
+python3 - <<'EOF'
 import json
 from collections import Counter
 data = json.load(open('/tmp/zshah_data_jobs.json'))
@@ -2275,7 +2373,8 @@ if isinstance(d, dict):
     print(list(d.keys())[:5])
     k = list(d.keys())[0]
     print(k, '->', d[k])
-"`
+"
+  ```
   ```
 total: 214
 sponsorship distribution: {'unknown': 181, 'citizens-only': 22, 'no-sponsorship': 7, 'offers': 4}
@@ -2312,7 +2411,9 @@ offers count: 4
 ['source', 'fiscal_years', 'built_at', 'min_approvals', 'employers']
 source -> USCIS H-1B Employer Data Hub (public per-employer export)
   ```
-- `Bash` — `python3 - <<'EOF'
+- `Bash`:
+  ```bash
+python3 - <<'EOF'
 import requests, json
 url = "https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/.github/scripts/listings.json"
 data = requests.get(url, timeout=30).json()
@@ -2331,7 +2432,8 @@ categories_present = any("category" in r for r in data)
 print("any entry has 'category' key:", categories_present)
 degrees_present = any("degrees" in r for r in data)
 print("any entry has 'degrees' key:", degrees_present)
-EOF`
+EOF
+  ```
   ```
 vanshb03 full key union across 274 entries: ['active', 'company_name', 'company_url', 'date_posted', 'date_updated', 'id', 'is_visible', 'locations', 'season', 'source', 'sponsorship', 'title', 'url']
 season value distribution: {'Winter': 61, 'Summer': 134, 'Fall': 75, 'Spring': 4}
@@ -2340,7 +2442,9 @@ active distribution: {True: 210, False: 64}
 any entry has 'category' key: False
 any entry has 'degrees' key: False
   ```
-- `Bash` — `python3 - <<'EOF'
+- `Bash`:
+  ```bash
+python3 - <<'EOF'
 import json
 data = json.load(open('/tmp/zshah_data_jobs.json'))
 jobs = list(data.values())
@@ -2355,7 +2459,8 @@ seasons = Counter(j.get("season") for j in jobs)
 print("season distribution (top 15):", dict(list(seasons.items())[:15]))
 EOF
 echo "--- sndsh404 quick shape check ---"
-gh api repos/sndsh404/summer-2027-internships/git/trees/main?recursive=true --jq '.tree[].path' 2>&1`
+gh api repos/sndsh404/summer-2027-internships/git/trees/main?recursive=true --jq '.tree[].path' 2>&1
+  ```
   ```
 zshah101 data/jobs.json full key union across 214 entries: ['category', 'closed_at', 'company', 'company_slug', 'enriched_at', 'first_seen_at', 'id', 'is_open', 'last_seen_at', 'location', 'posted_at', 'salary', 'season', 'season_inferred', 'skills', 'source', 'sponsorship', 'title', 'url']
 category distribution: {'Software': 111, 'Data & ML/AI': 87, 'Hardware': 7, 'Quant': 6, 'Security': 3}
@@ -2366,14 +2471,17 @@ LICENSE
 README.md
 internship_tracker.xlsx
   ```
-- `Bash` — `echo "--- confirm zshah101 raw data/jobs.json is fetchable with plain unauthenticated GET (same access pattern as our other 2 sources) ---"
+- `Bash`:
+  ```bash
+echo "--- confirm zshah101 raw data/jobs.json is fetchable with plain unauthenticated GET (same access pattern as our other 2 sources) ---"
 curl -s -o /dev/null -w "%{http_code}\n" "https://raw.githubusercontent.com/zshah101/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships/main/data/jobs.json"
 echo "--- and vanshb03, for the record ---"
 curl -s -o /dev/null -w "%{http_code}\n" "https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/.github/scripts/listings.json"
 echo "--- FIRECRAWL_API_KEY available locally? ---"
 [ -n "$FIRECRAWL_API_KEY" ] && echo "SET (len=${#FIRECRAWL_API_KEY})" || echo "NOT SET in this shell"
 grep -i firecrawl ~/.bashrc ~/.zshrc ~/.profile 2>/dev/null
-gh secret list --repo gupta-builds/internship-research-loop 2>&1`
+gh secret list --repo gupta-builds/internship-research-loop 2>&1
+  ```
   ```
 --- confirm zshah101 raw data/jobs.json is fetchable with plain unauthenticated GET (same access pattern as our other 2 sources) ---
 200
@@ -2386,7 +2494,9 @@ SET (len=35)
 FIRECRAWL_API_KEY	2026-07-18T14:18:16Z
 JARVIS_PUSH_TOKEN	2026-07-17T11:18:54Z
   ```
-- `Bash` — `python3 - <<'EOF'
+- `Bash`:
+  ```bash
+python3 - <<'EOF'
 import requests, json
 r = requests.get("https://boards-api.greenhouse.io/v1/boards/pdtpartners/jobs?content=true", timeout=15).json()
 job = r["jobs"][0]
@@ -2401,7 +2511,8 @@ r = requests.get("https://api.ashbyhq.com/posting-api/job-board/pylon-labs", tim
 job = r["jobs"][0]
 print("Ashby job keys:", sorted(job.keys()))
 print(json.dumps(job, indent=2)[:1800])
-EOF`
+EOF
+  ```
   ```
 Greenhouse job keys: ['absolute_url', 'ai_disclaimer', 'ai_opt_out_request_url', 'application_deadline', 'company_name', 'content', 'data_compliance', 'departments', 'first_published', 'id', 'include_ai_disclaimer', 'internal_job_id', 'language', 'location', 'metadata', 'offices', 'requisition_id', 'title', 'updated_at']
 {
@@ -2482,12 +2593,15 @@ Ashby job keys: ['address', 'applyUrl', 'department', 'descriptionHtml', 'descri
   "applyUrl": "https://jobs.ashbyhq.com/pylon-labs/[REDACTED]/application",
   "descriptionHtml": "<p style=\"min-height:1.5em\"><strong>Pylon is the only agentic support platform, purpose-built for B2B companies. </strong><br />For leaders scaling AI-native support teams, Pylon lets humans and agents collaborate on customer work \u2013 investigating, resolving, and acting on every signal across every channel that matters.<br /><br />Unlike platforms built before the AI era, Pylon enriches every interaction with deep account-level context, automates the low impact customer work, and surfaces answers before your team even has to ask. The result: faster responses, happier customers, and a system that continuously improves itself.<br /><br />We're backed by a16z, BCV, General Catalyst, and Y Combinator. More than 1,500 companies including Linear, Cognition (makers of Devin), Modal Labs, and <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"http://Incident.io\">Incident.io</a> run their support and customer success workflows on Pylon. We're also featured on the <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.enterprisetech
   ```
-- `Bash` — `python3 - <<'EOF'
+- `Bash`:
+  ```bash
+python3 - <<'EOF'
 import requests
 r = requests.get("https://api.ashbyhq.com/posting-api/job-board/ellipsislabs", timeout=15).json()
 for j in r["jobs"]:
     print(j["title"], "| employmentType:", j.get("employmentType"), "| isListed:", j.get("isListed"))
-EOF`
+EOF
+  ```
   ```
 Senior Backend Engineer | employmentType: FullTime | isListed: True
 Senior Product Engineer | employmentType: FullTime | isListed: True
@@ -3271,7 +3385,9 @@ def check_all(http_get=None) -> None:
     check_vanshb03_schema(http_get)
     check_zshah101_schema(http_get)
   ```
-- `Bash` — `python3 - <<'EOF'
+- `Bash`:
+  ```bash
+python3 - <<'EOF'
 import requests, json
 data = requests.get("https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/.github/scripts/listings.json", timeout=30).json()
 
@@ -3298,7 +3414,8 @@ print(json.dumps(r2[0], indent=2) if r2 else "none")
 r3 = find(lambda r: r.get("active") is False and r.get("season")=="Summer")
 print("\nSHOULD-REJECT (inactive):")
 print(json.dumps(r3[0], indent=2) if r3 else "none")
-EOF`
+EOF
+  ```
   ```
 SHOULD-MATCH (summer, active, not citizenship-req):
 {
@@ -3383,12 +3500,15 @@ SHOULD-REJECT (inactive):
   "season": "Summer"
 }
   ```
-- `Bash` — `python3 - <<'EOF'
+- `Bash`:
+  ```bash
+python3 - <<'EOF'
 import requests, json
 data = requests.get("https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/.github/scripts/listings.json", timeout=30).json()
 m = [r for r in data if r.get("active") is True and r.get("season")=="Summer" and r.get("sponsorship")=="Does Not Offer Sponsorship"]
 print(json.dumps(m[0], indent=2) if m else "none found")
-EOF`
+EOF
+  ```
   ```
 {
   "date_updated": 1776715588,
@@ -3408,7 +3528,9 @@ EOF`
   "season": "Summer"
 }
   ```
-- `Bash` — `python3 - <<'EOF'
+- `Bash`:
+  ```bash
+python3 - <<'EOF'
 import json
 data = json.load(open('/tmp/zshah_data_jobs.json'))
 jobs = list(data.values())
@@ -3435,7 +3557,8 @@ print(json.dumps(r3[0], indent=2) if r3 else "none")
 r4 = find(lambda j: j.get("is_open") is True and j.get("season")=="Summer 2027" and j.get("category")=="Hardware")
 print("\nSHOULD-REJECT (wrong category, e.g. Hardware):")
 print(json.dumps(r4[0], indent=2) if r4 else "none")
-EOF`
+EOF
+  ```
   ```
 SHOULD-MATCH (software, summer 2027, open, unknown sponsorship):
 {
@@ -3566,7 +3689,9 @@ SHOULD-REJECT (wrong category, e.g. Hardware):
   "url": "https://jobs.lever.co/fluxergy-2/[REDACTED]"
 }
   ```
-- `Bash` — `python3 - <<'EOF'
+- `Bash`:
+  ```bash
+python3 - <<'EOF'
 import requests, re
 
 def strip_html(s):
@@ -3590,7 +3715,8 @@ for j in r["jobs"]:
         desc = j.get("descriptionPlain","")
         print(j["title"], "| has summer2027:", "summer 2027" in desc.lower(), "| has 2027:", "2027" in (j["title"]+desc))
         print("first 300 chars:", desc[:300])
-EOF`
+EOF
+  ```
   ```
 === Greenhouse: pdtpartners, mwinternshipprogram, optiverus intern jobs ===
 pdtpartners | Summer 2027 Software Engineering Intern | has_2027=True summer2027=True summer2026=False | content_len=7091
@@ -4353,7 +4479,9 @@ def _fake_http_get(url, timeout=None):
 - `TaskUpdate` — `{"taskId":"10","status":"completed"}`
 - `TaskUpdate` — `{"taskId":"11","status":"completed"}`
 - `TaskUpdate` — `{"taskId":"12","status":"in_progress"}`
-- `Bash` — `source .venv/bin/activate 2>/dev/null
+- `Bash`:
+  ```bash
+source .venv/bin/activate 2>/dev/null
 cd /home/anant_gupta/projects/work/internship-research-loop
 python3 - <<'EOF'
 import sys
@@ -4402,7 +4530,8 @@ for uid, company, title, key in cross_source_rejects:
 print(f"\nWould pass cross_source_duplicate (still subject to url_liveness/format checks downstream): {len(would_pass_cross_source)}")
 for uid, company, title in would_pass_cross_source[:40]:
     print(f"  - {uid} | {company} — {title}")
-EOF`
+EOF
+  ```
   ```
 Fetching all 6 sources live (read-only)...
   SimplifyJobs: fetched 14766, matched 35
@@ -4476,7 +4605,9 @@ Would pass cross_source_duplicate (still subject to url_liveness/format checks d
   ```
 - `TaskUpdate` — `{"taskId":"12","status":"completed"}`
 - `TaskUpdate` — `{"taskId":"13","status":"in_progress"}`
-- `Bash` — `source .venv/bin/activate 2>/dev/null
+- `Bash`:
+  ```bash
+source .venv/bin/activate 2>/dev/null
 cd /home/anant_gupta/projects/work/internship-research-loop
 python3 - <<'EOF'
 import json, sys, time
@@ -4512,12 +4643,15 @@ caught = sum(1 for r in results if r.get("fetch_ok") and r.get("our_signal"))
 missed = sum(1 for r in results if r.get("fetch_ok") and not r.get("our_signal"))
 failed = sum(1 for r in results if not r.get("fetch_ok"))
 print(f"\n=== SUMMARY: {caught} caught, {missed} missed, {failed} fetch-failed, of {len(citizens)} total ===")
-EOF`
+EOF
+  ```
   ```
 Exit code 143
 Command timed out after 2m 0s
   ```
-- `Bash` — `source .venv/bin/activate 2>/dev/null
+- `Bash`:
+  ```bash
+source .venv/bin/activate 2>/dev/null
 cd /home/anant_gupta/projects/work/internship-research-loop
 python3 - <<'EOF'
 import json, sys, time, os
@@ -4547,7 +4681,8 @@ caught = sum(1 for r in results if r.get("fetch_ok") and r.get("our_signal"))
 missed = sum(1 for r in results if r.get("fetch_ok") and not r.get("our_signal"))
 failed = sum(1 for r in results if not r.get("fetch_ok"))
 print(f"\n=== SUMMARY: {caught} caught, {missed} missed, {failed} fetch-failed, of {len(citizens)} total ===")
-EOF`
+EOF
+  ```
   ```
 Fetching 22 real citizens-only-tagged postings via Firecrawl...
 
@@ -4576,7 +4711,9 @@ Fetching 22 real citizens-only-tagged postings via Firecrawl...
 
 === SUMMARY: 6 caught, 16 missed, 0 fetch-failed, of 22 total ===
   ```
-- `Bash` — `source .venv/bin/activate 2>/dev/null
+- `Bash`:
+  ```bash
+source .venv/bin/activate 2>/dev/null
 cd /home/anant_gupta/projects/work/internship-research-loop
 python3 - <<'EOF'
 import json, sys, os, re
@@ -4607,7 +4744,8 @@ for j in sample[:9]:
     else:
         print("  (no citizen/clearance/security/export-control/itar/us-person keyword found anywhere in fetched text)")
     print()
-EOF`
+EOF
+  ```
   ```
 === Junior — Software Engineering Intern — Fall 2026 ===
   (no citizen/clearance/security/export-control/itar/us-person keyword found anywhere in fetched text)
@@ -4642,7 +4780,9 @@ EOF`
   ... U.S. person ...
   ... citizen ...
   ```
-- `Bash` — `source .venv/bin/activate 2>/dev/null
+- `Bash`:
+  ```bash
+source .venv/bin/activate 2>/dev/null
 cd /home/anant_gupta/projects/work/internship-research-loop
 python3 - <<'EOF'
 import json, sys, os, re
@@ -4666,7 +4806,8 @@ for j in sample:
         if kw_re.search(line):
             print("  >>", line.strip()[:200])
     print()
-EOF`
+EOF
+  ```
   ```
 === Saronic — Software Engineer Intern (Fall 2026) ===
   >> _If this role is based in the United States, it requires access to export-controlled information or items that require “U.S. Person” status. As defined by U.S. law, individuals who are any one of the 
@@ -4701,7 +4842,9 @@ EOF`
   >> **U.S. EXPORT CONTROL COMPLIANCE STATUS**
   >> The person hired will have access to information and items subject to U.S. export controls, and therefore, must either be a “U.S. person” as defined by [22 C.F.R. § 120.62](https://www.ecfr.gov/curren
   ```
-- `Bash` — `source .venv/bin/activate 2>/dev/null
+- `Bash`:
+  ```bash
+source .venv/bin/activate 2>/dev/null
 cd /home/anant_gupta/projects/work/internship-research-loop
 python3 - <<'EOF'
 import json, sys, os, re
@@ -4729,7 +4872,8 @@ for j in sample:
     if not hit_any:
         print("  (nothing matched even a broad keyword scan)")
     print()
-EOF`
+EOF
+  ```
   ```
 === Junior — Software Engineering Intern — Fall 2026 ===
   >> ## **🌍 Visa & Work Authorization**
@@ -4771,7 +4915,9 @@ EOF`
 === Torch Technologies — Software Engineer Intern ===
   (nothing matched even a broad keyword scan)
   ```
-- `Bash` — `source .venv/bin/activate 2>/dev/null
+- `Bash`:
+  ```bash
+source .venv/bin/activate 2>/dev/null
 cd /home/anant_gupta/projects/work/internship-research-loop
 python3 - <<'EOF'
 import re
@@ -4803,7 +4949,8 @@ non_signals = [
 ]
 for t in non_signals:
     print(bool(CANDIDATE.search(t)), "|", t[:70])
-EOF`
+EOF
+  ```
   ```
 === does candidate catch the real misses? ===
 True | _If this role is based in the United States, it requires access to exp
@@ -4913,7 +5060,9 @@ def test_explicit_negative_signals_exclude(text):
 .........................................................                [100%]
 201 passed in 1.65s
   ```
-- `Bash` — `source .venv/bin/activate 2>/dev/null
+- `Bash`:
+  ```bash
+source .venv/bin/activate 2>/dev/null
 cd /home/anant_gupta/projects/work/internship-research-loop
 python3 - <<'EOF'
 import json, sys, os
@@ -4947,7 +5096,8 @@ for c, t, s in caught:
 print("\nStill missed:")
 for c, t, s in missed:
     print(f"  {c} | {t}")
-EOF`
+EOF
+  ```
   ```
 UPDATED REGEX RESULT: 13 caught, 9 missed, of 22 total
 
@@ -4979,11 +5129,14 @@ Still missed:
   ```
 - `TaskUpdate` — `{"taskId":"13","status":"completed"}`
 - `TaskUpdate` — `{"taskId":"14","status":"in_progress"}`
-- `Bash` — `source .venv/bin/activate 2>/dev/null && python -m pytest -q 2>&1 | tail -10
+- `Bash`:
+  ```bash
+source .venv/bin/activate 2>/dev/null && python -m pytest -q 2>&1 | tail -10
 echo "--- diff stat ---"
 git diff --stat
 echo "--- new untracked files ---"
-git status --short`
+git status --short
+  ```
   ```
 ........................................................................ [ 35%]
 ........................................................................ [ 71%]
@@ -5167,8 +5320,11 @@ Everything's still local, uncommitted, nothing pushed. Ready to commit whenever 
 
 **Tool calls:**
 
-- `Bash` — `echo "=== searching for freehire on GitHub ==="
-gh api "search/repositories?q=freehire" --jq '.items[] | {full_name, stargazers_count, pushed_at, description, fork}' 2>&1 | head -60`
+- `Bash`:
+  ```bash
+echo "=== searching for freehire on GitHub ==="
+gh api "search/repositories?q=freehire" --jq '.items[] | {full_name, stargazers_count, pushed_at, description, fork}' 2>&1 | head -60
+  ```
   ```
 === searching for freehire on GitHub ===
 {"description":"freehire — the open-source search engine for job seekers","fork":false,"full_name":"strelov1/freehire","pushed_at":"2026-07-25T15:11:14Z","stargazers_count":168}
@@ -5187,9 +5343,12 @@ gh api "search/repositories?q=freehire" --jq '.items[] | {full_name, stargazers_
 {"description":null,"fork":false,"full_name":"RuwanthiLakshika/FreeHireHub--Get-Hire-or-Hire-People-Free","pushed_at":"2024-10-03T00:43:58Z","stargazers_count":0}
 {"description":"Claude Code workspace for job hunting: scrape boards (HN, freehire, LinkedIn), evaluate fit, generate tailored LaTeX CVs \u0026 cover letters, prep interviews","fork":false,"full_name":"arafat1023/job-application-assistant","pushed_at":"2026-07-12T13:38:54Z","stargazers_count":0}
   ```
-- `Bash` — `gh api repos/strelov1/freehire --jq '{full_name, description, homepage, pushed_at, default_branch, size, license: .license.name}' 2>&1
+- `Bash`:
+  ```bash
+gh api repos/strelov1/freehire --jq '{full_name, description, homepage, pushed_at, default_branch, size, license: .license.name}' 2>&1
 echo "--- tree ---"
-gh api repos/strelov1/freehire/git/trees/main?recursive=true --jq '.tree[].path' 2>&1 | head -100`
+gh api repos/strelov1/freehire/git/trees/main?recursive=true --jq '.tree[].path' 2>&1 | head -100
+  ```
   ```
 {"default_branch":"main","description":"freehire — the open-source search engine for job seekers","full_name":"strelov1/freehire","homepage":"https://freehire.me","license":"MIT License","pushed_at":"2026-07-25T15:11:14Z","size":48220}
 --- tree ---
@@ -5357,9 +5516,12 @@ internal/database/database.go
 internal/database/database_test.go
 internal/db/board_health.sql.go
   ```
-- `Bash` — `gh api repos/strelov1/freehire/contents/cmd/harvest-boards/seed.go --jq '.content' | base64 -d | head -80
+- `Bash`:
+  ```bash
+gh api repos/strelov1/freehire/contents/cmd/harvest-boards/seed.go --jq '.content' | base64 -d | head -80
 echo "=================="
-gh api repos/strelov1/freehire/contents/README.md --jq '.content' | base64 -d | head -120`
+gh api repos/strelov1/freehire/contents/README.md --jq '.content' | base64 -d | head -120
+  ```
   ```
 package main
 
@@ -5675,7 +5837,9 @@ workingnomads.yml
 wpyoast.yml
 zohorecruit.yml
   ```
-- `Bash` — `gh api repos/strelov1/freehire/contents/sources/greenhouse.yml --jq '.content, .size' | head -1 | base64 -d 2>/dev/null | head -30
+- `Bash`:
+  ```bash
+gh api repos/strelov1/freehire/contents/sources/greenhouse.yml --jq '.content, .size' | head -1 | base64 -d 2>/dev/null | head -30
 echo "..."
 gh api repos/strelov1/freehire/contents/sources/greenhouse.yml --jq '.content' | base64 -d | wc -l
 echo "--- ashby.yml ---"
@@ -5685,7 +5849,8 @@ echo "--- check for our known tokens ---"
 gh api repos/strelov1/freehire/contents/sources/greenhouse.yml --jq '.content' | base64 -d > /tmp/freehire_gh.yml
 grep -iE "pdtpartners|fccincinnati|walleyecapital|virtu|mwinternshipprogram|optiverus|aquaticcapitalmanagement" /tmp/freehire_gh.yml
 echo "--- last commit date on greenhouse.yml ---"
-gh api repos/strelov1/freehire/commits?path=sources/greenhouse.yml --jq '.[0] | {sha: .sha[0:8], date: .commit.author.date, message: .commit.message}'`
+gh api repos/strelov1/freehire/commits?path=sources/greenhouse.yml --jq '.[0] | {sha: .sha[0:8], date: .commit.author.date, message: .commit.message}'
+  ```
   ```
 # greenhouse boards. Provider is the filename...
 14223
@@ -5729,12 +5894,15 @@ gh api repos/strelov1/freehire/commits?path=sources/greenhouse.yml --jq '.[0] | 
 --- last commit date on greenhouse.yml ---
 {"date":"2026-07-22T03:12:01Z","message":"feat(sources): harvest 769 live ATS boards via aggregator mining (#1042)\n\n* feat(sources): harvest 734 live ATS boards via aggregator mining\n\nMined outbound job-application links from a public job aggregator, classified\neach to (provider, board) with atsdetect.FromURL and subdomain parsing, dropped\ncase-insensitive duplicates of boards we already track, and live-validated every\nsurvivor via cmd/harvest-boards before adding.\n\nBoards added: workday 240, jazzhr 155, ashby 81, greenhouse 49, recruitee 29,\ncareerplug 27, lever 22, smartrecruiters 22, isolvedhire 17, applicantpro 16,\npageup 11, personio 9, bamboohr 9, freshteam 37, trakstar 6, icims 4.\n\n* feat(sources): add 35 harvested boards on prober-less providers\n\nfactorial (18), zohorecruit (15), avature (1), gupy (1) have adapters but no\ncmd/harvest-boards prober, so their candidate boards were live-validated by\nrunning the real adapter's Fetch (\u003e0 jobs). Board is the full careers host for\nfactorial/zohorecruit/avature and the numeric companyId for gupy; company names\nresolved from each careers page.","sha":"a50cb271"}
   ```
-- `Bash` — `grep -A3 "mwinternshipprogram" /tmp/freehire_gh.yml
+- `Bash`:
+  ```bash
+grep -A3 "mwinternshipprogram" /tmp/freehire_gh.yml
 echo "--- API section of README ---"
 gh api repos/strelov1/freehire/contents/README.md --jq '.content' | base64 -d | sed -n '/## API/,/## Adding a source/p'
 echo "--- quick live check: does freehire.me expose a public unauthenticated API? ---"
 curl -s -o /dev/null -w "%{http_code}\n" "https://freehire.me/api/v1/jobs"
-curl -s "https://freehire.me/api/v1/jobs?limit=1" | head -c 500`
+curl -s "https://freehire.me/api/v1/jobs?limit=1" | head -c 500
+  ```
   ```
 --- API section of README ---
 ## API
@@ -5967,7 +6135,9 @@ Plus **6** postings from manual bulk imports.
 200
 {"data":[{"public_slug":"[REDACTED]","source":"ashby","manually_added":false,"external_id":"kuro:[REDACTED]","url":"https://jobs.ashbyhq.com/kuro/[REDACTED]?utm_source=freehire.me","title":"Senior Product Manager ","company":"Kuro","company_slug":"kuro","location":"Berlin","description":"\u003ch2\u003etl;dr\u003c/h2\u003e\u003cul\u003e\u003cli\u003e\u003cp\u003eAfter 14 years in construction tech, Lea \u0026amp; Jonas
   ```
-- `Bash` — `curl -s "https://freehire.me/api/v1/jobs/search?q=software+engineer+intern&limit=3" | python3 -m json.tool 2>&1 | head -80
+- `Bash`:
+  ```bash
+curl -s "https://freehire.me/api/v1/jobs/search?q=software+engineer+intern&limit=3" | python3 -m json.tool 2>&1 | head -80
 echo "--- check meta/pagination shape on plain /jobs ---"
 curl -s "https://freehire.me/api/v1/jobs?limit=2" | python3 -c "
 import json,sys
@@ -5977,7 +6147,8 @@ print('meta:', d.get('meta'))
 print('job keys:', sorted(d['data'][0].keys()) if d.get('data') else None)
 "
 echo "--- rate/robots check ---"
-curl -sI "https://freehire.me/api/v1/jobs" | grep -iE "ratelimit|retry-after"`
+curl -sI "https://freehire.me/api/v1/jobs" | grep -iE "ratelimit|retry-after"
+  ```
   ```
 {
     "data": [
@@ -6065,7 +6236,9 @@ meta: {'limit': 2, 'offset': 0, 'total': 4270639}
 job keys: ['applied_count', 'cities', 'closed_at', 'collections', 'company', 'company_slug', 'countries', 'created_at', 'description', 'downvote_count', 'enriched_at', 'enrichment', 'enrichment_version', 'external_id', 'location', 'manually_added', 'my_vote', 'posted_at', 'public_slug', 'regions', 'skills', 'source', 'title', 'updated_at', 'upvote_count', 'url', 'view_count']
 --- rate/robots check ---
   ```
-- `Bash` — `echo "=== checking artificialintelligencejobs.co ==="
+- `Bash`:
+  ```bash
+echo "=== checking artificialintelligencejobs.co ==="
 curl -sI "https://artificialintelligencejobs.co" | head -5
 echo "--- try common API patterns ---"
 for path in "/api/jobs" "/api/v1/jobs" "/jobs.json" "/api" "/.well-known/ai-plugin.json"; do
@@ -6073,7 +6246,8 @@ for path in "/api/jobs" "/api/v1/jobs" "/jobs.json" "/api" "/.well-known/ai-plug
   echo "$path -> $code"
 done
 echo "--- fetch homepage to find real API docs/links ---"
-curl -s "https://artificialintelligencejobs.co" | grep -oiE 'api[^"'"'"' ]*' | sort -u | head -20`
+curl -s "https://artificialintelligencejobs.co" | grep -oiE 'api[^"'"'"' ]*' | sort -u | head -20
+  ```
   ```
 === checking artificialintelligencejobs.co ===
 HTTP/2 200 
@@ -6095,7 +6269,9 @@ apital
 apital|just
 apital|stage|series/.test(w));
   ```
-- `Bash` — `echo "=== /api/jobs ==="
+- `Bash`:
+  ```bash
+echo "=== /api/jobs ==="
 curl -s "https://artificialintelligencejobs.co/api/jobs" | python3 -c "
 import json,sys
 d = json.load(sys.stdin)
@@ -6118,7 +6294,8 @@ if isinstance(d, list):
 elif isinstance(d, dict):
     print('keys:', list(d.keys()))
     print(json.dumps(d, indent=2)[:1500])
-"`
+"
+  ```
   ```
 === /api/jobs ===
 <class 'dict'>
@@ -6174,7 +6351,9 @@ keys: ['generated', 'companies', 'count', 'new_today', 'new_by_cat', 'new_top', 
       "url": "https://jobs.ashbyhq.com/openai/[REDACTED]",
       "posted": "2026-07-25",
   ```
-- `Bash` — `python3 -c "
+- `Bash`:
+  ```bash
+python3 -c "
 import json
 from collections import Counter
 d = json.load(open('/tmp/aijobs.json'))
@@ -6194,7 +6373,8 @@ curl -s "https://artificialintelligencejobs.co/api/jobs" | python3 -c "
 import json,sys
 d = json.load(sys.stdin)
 print({k:v for k,v in d.items() if k not in ('jobs','docs')})
-"`
+"
+  ```
   ```
 total jobs: 17507 | companies claimed: 320
 level distribution: {'Mid': 7494, 'Lead+': 4922, 'Senior': 4498, 'Entry': 409, 'Intern': 184}
@@ -6410,9 +6590,12 @@ index 1e97bd7..920dfd5 100644
 +    re.I | re.S,
  )
   ```
-- `Bash` — `git diff -- core/filter.py | sed -n '/_matches_free_text_source\|_target_years\|Neither Greenhouse nor Ashby/,/^diff --git\|^$/p' | head -60
+- `Bash`:
+  ```bash
+git diff -- core/filter.py | sed -n '/_matches_free_text_source\|_target_years\|Neither Greenhouse nor Ashby/,/^diff --git\|^$/p' | head -60
 echo "=== full section for clean context ==="
-git diff -- core/filter.py | grep -n "^@@" `
+git diff -- core/filter.py | grep -n "^@@" 
+  ```
   ```
 +# Neither Greenhouse nor Ashby's public job APIs carry a structured term
 +# field — title + description text is all there is, and real postings on our
@@ -6716,12 +6899,15 @@ Ready to show you the freehire.py diff specifically, or anything else, before yo
 
 **Tool calls:**
 
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git status --short
 echo "--- final test run before commit ---"
 source .venv/bin/activate 2>/dev/null && python -m pytest -q 2>&1 | tail -5
 echo "--- recent commit message style ---"
-git log --oneline -8`
+git log --oneline -8
+  ```
   ```
  M core/filter.py
  M core/schema_drift.py
@@ -6751,8 +6937,11 @@ d3e06e5 Update state + logs — 2026-07-22
 7a7d4d4 Update state + logs — 2026-07-22
 2005411 Update state + logs — 2026-07-22
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
-git log --oneline --no-merges | grep -viE "^[a-f0-9]+ (update state|recheck log)" | head -10`
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+git log --oneline --no-merges | grep -viE "^[a-f0-9]+ (update state|recheck log)" | head -10
+  ```
   ```
 e10d06a PRD: three-criteria scope, content-carrying dossiers, verified 2026-07-18 state
 69f76dc Phase 6: three hard criteria codified — Winter 2027 term, OPT gate, discovery-time content
@@ -6765,9 +6954,12 @@ cdcbc4e Fix (for real this time): stage the .gitignore content, not just the rm
 c88b76c Phase 3 code: schema-drift check, git push-retry, run log, orchestration
 02b63c6 Phase 3 step 0: reconcile plan review, fix real zapply parsing bug
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git add core/filter.py core/schema_drift.py ingestion/normalize.py ingestion/posting_page.py ingestion/sources.py run_pipeline.py tests/test_filter.py tests/test_posting_page.py tests/test_run_pipeline.py tests/test_schema_drift.py tests/test_sources.py tests/fixtures/vanshb03.json tests/fixtures/zshah101.json
-git status --short`
+git status --short
+  ```
   ```
 M  core/filter.py
 M  core/schema_drift.py
@@ -6783,7 +6975,9 @@ M  tests/test_run_pipeline.py
 M  tests/test_schema_drift.py
 M  tests/test_sources.py
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git commit -m "$(cat <<'EOF'
 Four new discovery sources: vanshb03, zshah101, Greenhouse, Ashby
 
@@ -6819,7 +7013,8 @@ EOF
 )"
 echo "--- status after commit ---"
 git status --short
-git log --oneline -1`
+git log --oneline -1
+  ```
   ```
 [master 4599362] Four new discovery sources: vanshb03, zshah101, Greenhouse, Ashby
  13 files changed, 946 insertions(+), 27 deletions(-)
@@ -6828,11 +7023,14 @@ git log --oneline -1`
 --- status after commit ---
 4599362 Four new discovery sources: vanshb03, zshah101, Greenhouse, Ashby
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git fetch origin
 git status
 echo "--- pushing ---"
-git push origin master`
+git push origin master
+  ```
   ```
 Exit code 1
 On branch master
@@ -6850,11 +7048,14 @@ hint: its remote counterpart. If you want to integrate the remote changes,
 hint: use 'git pull' before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details.
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git pull --rebase origin master
 echo "--- status ---"
 git status --short
-git log --oneline -3`
+git log --oneline -3
+  ```
   ```
 From https://github.com/gupta-builds/internship-research-loop
  * branch            master     -> FETCH_HEAD
@@ -6864,9 +7065,12 @@ a21b2fa Four new discovery sources: vanshb03, zshah101, Greenhouse, Ashby
 b60a751 Update state + logs — 2026-07-25
 3e88959 Update state + logs — 2026-07-25
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 source .venv/bin/activate 2>/dev/null && python -m pytest -q 2>&1 | tail -5
-git push origin master`
+git push origin master
+  ```
   ```
 ........................................................................ [ 35%]
 ........................................................................ [ 70%]
@@ -6879,7 +7083,9 @@ To https://github.com/gupta-builds/internship-research-loop.git
   ```
 [{"conclusion":"","createdAt":"2026-07-25T16:46:10Z","headSha":"[REDACTED]","status":"in_progress"}]
   ```
-- `Bash` — `echo "=== Uber: does freehire have the exact Career Prep req 300697? ==="
+- `Bash`:
+  ```bash
+echo "=== Uber: does freehire have the exact Career Prep req 300697? ==="
 curl -s "https://freehire.me/api/v1/jobs/search?q=uber+software+engineering+intern&limit=50" | python3 -c "
 import json,sys
 d = json.load(sys.stdin)
@@ -6890,7 +7096,8 @@ for j in d['data']:
 "
 echo ""
 echo "=== also try /api/v1/companies for uber ==="
-curl -s "https://freehire.me/api/v1/companies?search=uber&limit=10" | python3 -m json.tool 2>&1 | head -40`
+curl -s "https://freehire.me/api/v1/companies?search=uber&limit=10" | python3 -m json.tool 2>&1 | head -40
+  ```
   ```
 === Uber: does freehire have the exact Career Prep req 300697? ===
 total matched: 26071
@@ -6940,7 +7147,9 @@ total matched: 26071
             "tagline": "Marriott International is a global hospitality leader headquartered in Bethesda, Maryland, operating nearly 9,000 properties across 30+ brands in 141 countries.",
             "industries": [
   ```
-- `Bash` — `echo "=== search: does the exact req 300697 exist anywhere in freehire? ==="
+- `Bash`:
+  ```bash
+echo "=== search: does the exact req 300697 exist anywhere in freehire? ==="
 curl -s "https://freehire.me/api/v1/jobs/search?q=career+prep&limit=100" | python3 -c "
 import json,sys
 d = json.load(sys.stdin)
@@ -6963,7 +7172,8 @@ print('exact req 300697 found:', len(hits))
 for j in d['data']:
     if j.get('company','').lower()=='uber':
         print(' -', j['title'], '|', j['url'])
-"`
+"
+  ```
   ```
 === search: does the exact req 300697 exist anywhere in freehire? ===
 2027 Software Engineering Internship, Uber Career Prep | https://www.uber.com/global/en/careers/list/302133/?utm_source=freehire.dev | posted: 2026-07-17T19:10:11Z
@@ -7039,7 +7249,9 @@ exact req 300697 found: 0
  - Program Manager, AV Operational Safety | https://www.uber.com/global/en/careers/list/158015/?utm_source=freehire.dev
  - Senior Manager, Safety Lead - AM&D Europe | https://www.uber.com/global/en/careers/list/152721/?utm_source=freehire.dev
   ```
-- `Bash` — `echo "=== Nuro: exact Greenhouse job 7351061? ==="
+- `Bash`:
+  ```bash
+echo "=== Nuro: exact Greenhouse job 7351061? ==="
 curl -s "https://freehire.me/api/v1/jobs/search?q=nuro+AI+platform+intern&limit=50" | python3 -c "
 import json,sys
 d = json.load(sys.stdin)
@@ -7064,7 +7276,8 @@ d = json.load(sys.stdin)
 for j in d['data']:
     if j.get('company','').lower()=='google' and 'intern' in j['title'].lower():
         print(j['title'], '|', j['url'], '| posted:', j.get('posted_at'), '| closed:', j.get('closed_at'))
-"`
+"
+  ```
   ```
 === Nuro: exact Greenhouse job 7351061? ===
 Software Engineer, AI Platform - Intern | https://nuro.ai/careersitem?gh_jid=7351061&utm_source=freehire.dev | posted: 2026-07-16T05:03:55Z | closed: None
@@ -7125,7 +7338,9 @@ matched: 0
 Software Engineer Intern | https://t.me/getjobss/7734?utm_source=freehire.dev | posted: 2026-06-16T18:43:24Z | closed: None
 Software Engineer Intern | https://t.me/gocareers/11204?utm_source=freehire.dev | posted: 2026-06-16T13:15:42Z | closed: None
   ```
-- `Bash` — `echo "=== search for exact Google job id string ==="
+- `Bash`:
+  ```bash
+echo "=== search for exact Google job id string ==="
 curl -s "https://freehire.me/api/v1/jobs/search?q=85564713261245126&limit=10" | python3 -c "
 import json,sys
 d = json.load(sys.stdin)
@@ -7146,7 +7361,8 @@ google_hits = [j for j in d['data'] if j.get('company','').lower()=='google']
 print('google hits in this page:', len(google_hits))
 for j in google_hits:
     print(' -', j['title'], '|', j['url'], '| posted:', j.get('posted_at'), 'closed:', j.get('closed_at'))
-"`
+"
+  ```
   ```
 === search for exact Google job id string ===
 matched: 0
@@ -7189,7 +7405,9 @@ google hits in this page: 2
  - Software Engineer Intern | https://t.me/getjobss/7734?utm_source=freehire.dev | posted: 2026-06-16T18:43:24Z closed: None
  - Software Engineer Intern | https://t.me/gocareers/11204?utm_source=freehire.dev | posted: 2026-06-16T13:15:42Z closed: None
   ```
-- `Bash` — `echo "=== try company-scoped jobs endpoints ==="
+- `Bash`:
+  ```bash
+echo "=== try company-scoped jobs endpoints ==="
 for path in "/api/v1/companies/google/jobs" "/api/v1/jobs?company_slug=google&limit=20" "/api/v1/jobs?company=google&limit=20"; do
   echo "--- $path ---"
   curl -s "https://freehire.me$path" | python3 -c "
@@ -7202,7 +7420,8 @@ try:
 except Exception as e:
     print('parse error', e)
 "
-done`
+done
+  ```
   ```
 === try company-scoped jobs endpoints ===
 --- /api/v1/companies/google/jobs ---
@@ -7215,7 +7434,9 @@ count: 20
 ['data', 'meta']
 count: 20
   ```
-- `Bash` — `curl -s "https://freehire.me/api/v1/jobs?company_slug=google&limit=100" > /tmp/freehire_google.json
+- `Bash`:
+  ```bash
+curl -s "https://freehire.me/api/v1/jobs?company_slug=google&limit=100" > /tmp/freehire_google.json
 python3 -c "
 import json
 d = json.load(open('/tmp/freehire_google.json'))
@@ -7248,12 +7469,15 @@ print(f"scanned to offset {offset}, total {r['meta']['total']}")
 print(f"matches found: {len(found)}")
 for j in found[:15]:
     print(" -", j["title"], "|", j["url"], "| posted:", j.get("posted_at"), "| closed:", j.get("closed_at"))
-EOF`
+EOF
+  ```
   ```
 Command did not complete within its 120s timeout and was moved to the background (ID: bzj98mrjc). Output is being written to: /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tasks/bzj98mrjc.output. You will be notified when it completes. To check interim output, use Read on that file path.
   ```
 - `Read` — `/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/4970dd9e-f8a3-4460-904f-f9c6e6d848a2/tasks/bzj98mrjc.output`
-- `Bash` — `tmux kill-session -t claude_bzj98mrjc 2>/dev/null; pkill -f "company_slug=google" 2>/dev/null
+- `Bash`:
+  ```bash
+tmux kill-session -t claude_bzj98mrjc 2>/dev/null; pkill -f "company_slug=google" 2>/dev/null
 echo "killed if running"
 echo "--- full companies/google response for hints on real job-listing endpoint ---"
 curl -s "https://freehire.me/api/v1/companies/google" | python3 -m json.tool
@@ -7263,7 +7487,8 @@ import json,sys
 d=json.load(sys.stdin)
 print('total:', d['meta']['total'])
 for j in d['data'][:5]: print(j.get('company'), '|', j['title'])
-"`
+"
+  ```
   ```
 Exit code 144
   ```
@@ -7330,7 +7555,9 @@ Exit code 144
                 "pl",
                 "qa",
   ```
-- `Bash` — `curl -s "https://freehire.me/api/v1/companies/google" | python3 -m json.tool | tail -30
+- `Bash`:
+  ```bash
+curl -s "https://freehire.me/api/v1/companies/google" | python3 -m json.tool | tail -30
 echo "=== try search with company param ==="
 curl -s "https://freehire.me/api/v1/jobs/search?company=google&limit=10" | python3 -c "
 import json,sys
@@ -7344,7 +7571,8 @@ import json,sys
 d=json.load(sys.stdin)
 print('total:', d['meta']['total'])
 for j in d['data'][:10]: print(j.get('company'), '|', j['title'])
-"`
+"
+  ```
   ```
                     "apac"
                 ],
@@ -7401,13 +7629,16 @@ Google | Senior Software Engineering Manager, AI/ML, Google Cloud AI
 Google | Product Manager II, Databases and Analytics, Google Cloud
 Google | Head of Business Operations and Sales Growth, GCS
   ```
-- `Bash` — `curl -s "https://freehire.me/api/v1/jobs/search?company_slug=google&q=software+engineer+intern&limit=20" | python3 -c "
+- `Bash`:
+  ```bash
+curl -s "https://freehire.me/api/v1/jobs/search?company_slug=google&q=software+engineer+intern&limit=20" | python3 -c "
 import json,sys
 d=json.load(sys.stdin)
 print('total matched:', d['meta']['total'])
 for j in d['data']:
     print(' -', j['title'], '|', j['url'], '| posted:', j.get('posted_at'), '| closed:', j.get('closed_at'))
-"`
+"
+  ```
   ```
 total matched: 1362
  - Software Engineer Intern | https://t.me/getjobss/7734?utm_source=freehire.dev | posted: 2026-06-16T18:43:24Z | closed: None
@@ -7431,7 +7662,9 @@ total matched: 1362
  - Senior Software Engineer, Site Reliability Engineering, Logs | https://www.google.com/about/careers/applications/jobs/results/84387057924743878?utm_source=freehire.dev | posted: 2026-06-09T12:08:43Z | closed: None
  - Software Engineer III, AI/ML, Google Ads | https://www.google.com/about/careers/applications/jobs/results/74366338629280454?utm_source=freehire.dev | posted: 2026-04-30T17:30:03Z | closed: None
   ```
-- `Bash` — `echo "=== exact job id search, google-scoped ==="
+- `Bash`:
+  ```bash
+echo "=== exact job id search, google-scoped ==="
 curl -s "https://freehire.me/api/v1/jobs/search?company_slug=google&q=85564713261245126&limit=5" | python3 -c "
 import json,sys
 d=json.load(sys.stdin)
@@ -7445,7 +7678,8 @@ d=json.load(sys.stdin)
 print('total:', d['meta']['total'])
 for j in d['data']:
     print(' -', j['title'], '|', j['url'], '| posted:', j.get('posted_at'), '| enrich:', j.get('enrichment'))
-"`
+"
+  ```
   ```
 === exact job id search, google-scoped ===
 total: 0
@@ -7482,13 +7716,16 @@ total: 346
  - Account Manager, International CPG, Large Customer Sales (English, Japanese) | https://www.google.com/about/careers/applications/jobs/results/136840047180554950?utm_source=freehire.dev | posted: 2026-07-08T08:11:24Z | enrich: {'experience_years_min': 5, 'english_level': 'c1', 'category': 'sales', 'posting_language': 'en'}
  - Head of Retail, International Growth, Large Customer Sales, EMEA | https://www.google.com/about/careers/applications/jobs/results/111872316735922886?utm_source=freehire.dev | posted: 2026-07-02T13:39:10Z | enrich: {'seniority': 'c_level', 'experience_years_min': 13, 'category': 'sales', 'posting_language': 'en'}
   ```
-- `Bash` — `curl -s "https://freehire.me/api/v1/jobs/search?company_slug=google&q=Software+Engineering+Intern+BS+Summer+2027&limit=5" | python3 -c "
+- `Bash`:
+  ```bash
+curl -s "https://freehire.me/api/v1/jobs/search?company_slug=google&q=Software+Engineering+Intern+BS+Summer+2027&limit=5" | python3 -c "
 import json,sys
 d=json.load(sys.stdin)
 for j in d['data']:
     if '85564713261245126' in j['url']:
         print(json.dumps(j, indent=2))
-"`
+"
+  ```
   ```
 {
   "public_slug": "[REDACTED]",
@@ -7591,7 +7828,9 @@ for j in d['data']:
   }
 }
   ```
-- `Bash` — `curl -s -o /dev/null -w "HTTP %{http_code}\n" "https://www.google.com/about/careers/applications/jobs/results/85564713261245126"
+- `Bash`:
+  ```bash
+curl -s -o /dev/null -w "HTTP %{http_code}\n" "https://www.google.com/about/careers/applications/jobs/results/85564713261245126"
 curl -s "https://www.google.com/about/careers/applications/jobs/results/85564713261245126" | grep -oiE "no longer accepting|closed|not found|position.{0,30}filled" | head -5
 echo "--- also re-check SimplifyJobs' current live status for this exact id ---"
 python3 -c "
@@ -7599,7 +7838,8 @@ import requests
 data = requests.get('https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json', timeout=30).json()
 hit = [r for r in data if r.get('id')=='820400f1-d2e5-43b3-94b0-c8913692b46a']
 print(hit)
-"`
+"
+  ```
   ```
 HTTP 200
 closed
@@ -7609,7 +7849,9 @@ closed
 --- also re-check SimplifyJobs' current live status for this exact id ---
 [{'source': 'Simplify', 'category': 'Software', 'company_name': 'Google', 'id': '[REDACTED]', 'title': 'Software Engineer Intern', 'active': False, 'terms': ['Summer 2027'], 'date_updated': 1784591853, 'date_posted': 1784591791, 'url': 'https://www.google.com/about/careers/applications/jobs/results/85564713261245126', 'locations': ['Palo Alto, CA', 'Cambridge, MA', 'Madison, WI', 'Seattle, WA', 'Houston, TX', 'SF', 'Austin, TX', 'LA', 'San Jose, CA', 'Irvine, CA', 'San Carlos, CA', 'Raleigh, NC', 'San Bruno, CA', 'Redmond, WA', 'Durham, NC', 'Santa Cruz, CA', 'Chicago, IL', 'Goleta, CA', 'Pittsburgh, PA', 'Kirkland, WA', 'Reston, VA', 'NYC', 'Bellevue, WA', 'Sunnyvale, CA', 'Mountain View, CA', 'Portland, OR', 'Boulder, CO', 'Atlanta, GA', 'San Diego, CA'], 'company_url': 'https://simplify.jobs/c/Google', 'is_visible': True, 'sponsorship': 'Other', 'degrees': ["Bachelor's"]}]
   ```
-- `Bash` — `echo "=== robots.txt ==="
+- `Bash`:
+  ```bash
+echo "=== robots.txt ==="
 curl -s "https://freehire.me/robots.txt"
 echo ""
 echo "=== full README for ToS/rate-limit/acceptable-use mentions ==="
@@ -7624,7 +7866,8 @@ for i in $(seq 1 20); do
   code=$(curl -s -o /dev/null -w "%{http_code}" "https://freehire.me/api/v1/jobs?limit=1")
   echo -n "$code "
 done
-echo ""`
+echo ""
+  ```
   ```
 === robots.txt ===
 User-agent: *
@@ -7710,7 +7953,9 @@ concept.
 === hammer test: 20 rapid requests, watch for 429 ===
 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200 200
   ```
-- `Bash` — `for slug in uber westerndigital wells-fargo sig grant-thornton marmon-holdings rippling; do
+- `Bash`:
+  ```bash
+for slug in uber westerndigital wells-fargo sig grant-thornton marmon-holdings rippling; do
   echo -n "$slug -> "
   curl -s "https://freehire.me/api/v1/companies/$slug" | python3 -c "
 import json,sys
@@ -7720,7 +7965,8 @@ try:
     else: print('job_count:', d['data']['company']['job_count'])
 except Exception as e: print('parse error', e)
 "
-done`
+done
+  ```
   ```
 uber -> job_count: 508
 westerndigital -> job_count: 283
@@ -8142,9 +8388,12 @@ FEEDS = {
     "AIJobs": fetch_ai_jobs,
 }
   ```
-- `Bash` — `curl -s "https://freehire.me/api/v1/jobs/search?q=7351061&company_slug=nuro&limit=5" 
+- `Bash`:
+  ```bash
+curl -s "https://freehire.me/api/v1/jobs/search?q=7351061&company_slug=nuro&limit=5" 
 echo "---"
-curl -s "https://freehire.me/api/v1/jobs/search?company_slug=nuro&q=AI+Platform+Intern&limit=5" | python3 -m json.tool | head -60`
+curl -s "https://freehire.me/api/v1/jobs/search?company_slug=nuro&q=AI+Platform+Intern&limit=5" | python3 -m json.tool | head -60
+  ```
   ```
 {"data":[],"meta":{"limit":5,"offset":0,"total":0}}---
 {
@@ -8208,13 +8457,16 @@ curl -s "https://freehire.me/api/v1/jobs/search?company_slug=nuro&q=AI+Platform+
             "enrichment_version": 1,
             "view_count": 0,
   ```
-- `Bash` — `curl -s "https://freehire.me/api/v1/jobs/search?company_slug=nuro&q=AI+Platform+Intern&limit=5" | python3 -c "
+- `Bash`:
+  ```bash
+curl -s "https://freehire.me/api/v1/jobs/search?company_slug=nuro&q=AI+Platform+Intern&limit=5" | python3 -c "
 import json,sys
 d = json.load(sys.stdin)
 j = d['data'][0]
 print('2027' in j['description'], '2026' in j['description'])
 print('summary:', j.get('enrichment',{}).get('summary'))
-"`
+"
+  ```
   ```
 False False
 summary: None
@@ -8550,15 +8802,20 @@ def test_normalize_ai_jobs_maps_fields_and_matches_real_intern_record():
         raise AssertionError(f"unexpected url: {url}")
     return resp
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
-source .venv/bin/activate 2>/dev/null && python -m pytest -q 2>&1 | tail -60`
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+source .venv/bin/activate 2>/dev/null && python -m pytest -q 2>&1 | tail -60
+  ```
   ```
 ........................................................................ [ 33%]
 ........................................................................ [ 66%]
 .......................................................................  [100%]
 215 passed in 4.32s
   ```
-- `Bash` — `source .venv/bin/activate 2>/dev/null
+- `Bash`:
+  ```bash
+source .venv/bin/activate 2>/dev/null
 cd /home/anant_gupta/projects/work/internship-research-loop
 python3 - <<'EOF'
 import sys
@@ -8593,7 +8850,8 @@ dossier_keys = {cross_source_key(fm.get("company",""), fm.get("title","")) for f
 freehire_dupe = [l for uid, l in freehire_new if cross_source_key(l.company, l.title) in dossier_keys]
 aijobs_dupe = [l for uid, l in aijobs_new if cross_source_key(l.company, l.title) in dossier_keys]
 print(f"\nOf those, already-in-vault-by-key (would hit cross_source_duplicate): Freehire={len(freehire_dupe)}, AIJobs={len(aijobs_dupe)}")
-EOF`
+EOF
+  ```
   ```
 Fetching all 8 sources live (read-only)...
   SimplifyJobs: fetched 14762, matched 35
@@ -8622,7 +8880,9 @@ AIJobs contributed 8 new candidates:
 
 Of those, already-in-vault-by-key (would hit cross_source_duplicate): Freehire=0, AIJobs=0
   ```
-- `Bash` — `echo "=== does the search endpoint support a structured seniority filter, not just free-text q? ==="
+- `Bash`:
+  ```bash
+echo "=== does the search endpoint support a structured seniority filter, not just free-text q? ==="
 curl -s "https://freehire.me/api/v1/jobs/search?company_slug=google&seniority=intern&limit=10" | python3 -c "
 import json,sys
 d=json.load(sys.stdin)
@@ -8638,7 +8898,8 @@ ids = [j['url'] for j in r['data']]
 print('our target in first 200:', any('85564713261245126' in u for u in ids))
 interns = [j for j in r['data'] if (j.get('enrichment') or {}).get('seniority')=='intern']
 print('intern-level in first 200:', len(interns))
-"`
+"
+  ```
   ```
 === does the search endpoint support a structured seniority filter, not just free-text q? ===
 total: 23
@@ -8666,7 +8927,9 @@ intern-level in first 200: 0
 # failure class recurring at any other high-volume company on this list.
 FREEHIRE_SEARCH_URL = "https://freehire.me/api/v1/jobs/search?company_slug={slug}&seniority=intern&limit=200"
   ```
-- `Bash` — `source .venv/bin/activate 2>/dev/null
+- `Bash`:
+  ```bash
+source .venv/bin/activate 2>/dev/null
 cd /home/anant_gupta/projects/work/internship-research-loop
 python -m pytest -q 2>&1 | tail -10
 echo "=== re-run live dry run with the fix ==="
@@ -8678,7 +8941,8 @@ listings = fetch_freehire()
 print(f"Freehire now fetches {len(listings)} intern-level candidates total")
 for l in listings:
     print(f"  - {l.company} — {l.title} | {l.date_posted}")
-EOF`
+EOF
+  ```
   ```
 ........................................................................ [ 33%]
 ........................................................................ [ 66%]
@@ -8788,7 +9052,9 @@ Freehire now fetches 101 intern-level candidates total
   - Wells Fargo — 2027 Consumer Banking and Lending Summer Internship – Early Careers | 1782432000
   - Wells Fargo — Branch Manager Trainee Imperial Gateway District | 1782172800
   ```
-- `Bash` — `source .venv/bin/activate 2>/dev/null
+- `Bash`:
+  ```bash
+source .venv/bin/activate 2>/dev/null
 cd /home/anant_gupta/projects/work/internship-research-loop
 python3 - <<'EOF'
 import sys
@@ -8819,7 +9085,8 @@ dossier_fms = scan_dossiers(JARVIS_DIR)
 dossier_keys = {cross_source_key(fm.get("company",""), fm.get("title","")) for fm in dossier_fms}
 freehire_dupe = [l for uid, l in freehire_new if cross_source_key(l.company, l.title) in dossier_keys]
 print(f"\nOf Freehire's new matches, already-in-vault-by-key: {len(freehire_dupe)}")
-EOF`
+EOF
+  ```
   ```
   SimplifyJobs: fetched 14762, matched 35
   Jose-Gael-Cruz-Lopez: fetched 112, matched 5
@@ -8871,7 +9138,9 @@ Freehire matched+new: 34
 
 Of Freehire's new matches, already-in-vault-by-key: 0
   ```
-- `Bash` — `source .venv/bin/activate 2>/dev/null
+- `Bash`:
+  ```bash
+source .venv/bin/activate 2>/dev/null
 cd /home/anant_gupta/projects/work/internship-research-loop
 python3 - <<'EOF'
 import requests
@@ -8879,18 +9148,22 @@ r = requests.get("https://freehire.me/api/v1/jobs/search?company_slug=wellsfargo
 print("total:", r["meta"]["total"])
 for j in r["data"]:
     print(f"  {j['title'][:60]:60s} | category: {(j.get('enrichment') or {}).get('category')}")
-EOF`
+EOF
+  ```
   ```
 total: 0
   ```
-- `Bash` — `source .venv/bin/activate 2>/dev/null
+- `Bash`:
+  ```bash
+source .venv/bin/activate 2>/dev/null
 python3 - <<'EOF'
 import requests
 r = requests.get("https://freehire.me/api/v1/jobs/search?company_slug=wells-fargo&seniority=intern&limit=200", timeout=20).json()
 print("total:", r["meta"]["total"])
 for j in r["data"]:
     print(f"  {j['title'][:65]:65s} | category: {(j.get('enrichment') or {}).get('category')} | domains: {(j.get('enrichment') or {}).get('domains')}")
-EOF`
+EOF
+  ```
   ```
 total: 28
   2027 CIB Corporate Banking Analyst Program - Early Careers        | category: data_analytics | domains: None
@@ -8922,8 +9195,11 @@ total: 28
   2027 Consumer Banking and Lending Summer Internship – Early Caree | category: None | domains: None
   Branch Manager Trainee Imperial Gateway District                  | category: management | domains: None
   ```
-- `Bash` — `JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers
-for f in "$JARVIS"/*.md; do grep -m1 "^title:" "$f" | sed 's/^title: *//'; done`
+- `Bash`:
+  ```bash
+JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers
+for f in "$JARVIS"/*.md; do grep -m1 "^title:" "$f" | sed 's/^title: *//'; done
+  ```
   ```
 Software Engineer Intern
 Academy Performance Analyst Intern - Academy Performance Analysis
@@ -8954,8 +9230,11 @@ Software Engineer Intern
 Forward Deployed Software Engineer Intern - Intel
 Forward Deployed Software Engineer Intern - Commercial
   ```
-- `Bash` — `JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers
-grep -l "Corporate Risk Development" "$JARVIS"/*.md | xargs -I{} sh -c 'grep -E "^company:|^category:|^title:" "{}"'`
+- `Bash`:
+  ```bash
+JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers
+grep -l "Corporate Risk Development" "$JARVIS"/*.md | xargs -I{} sh -c 'grep -E "^company:|^category:|^title:" "{}"'
+  ```
   ```
 company: Wells Fargo
 title: Corporate Risk Development Program Intern - Core Risk - Early Careers
@@ -9000,7 +9279,9 @@ FREEHIRE_COMPANIES = {
     "uber": "Uber",
 }
   ```
-- `Bash` — `source .venv/bin/activate 2>/dev/null
+- `Bash`:
+  ```bash
+source .venv/bin/activate 2>/dev/null
 cd /home/anant_gupta/projects/work/internship-research-loop
 python -m pytest -q 2>&1 | tail -10
 echo "=== re-run live dry run, trimmed seed list ==="
@@ -9015,7 +9296,8 @@ info = matched["Freehire"]
 print(f"Freehire: fetched {info['fetch_count']}, matched {len(info['matched'])}")
 for l in info["matched"]:
     print(f"  - {l.company} — {l.title}")
-EOF`
+EOF
+  ```
   ```
 ........................................................................ [ 33%]
 ........................................................................ [ 66%]
@@ -9033,7 +9315,9 @@ Freehire: fetched 38, matched 9
   - Google — Software Engineering Intern (Summer Internship 2027)
   - Uber — 2027 Software Engineering Internship, Uber Career Prep
   ```
-- `Bash` — `source .venv/bin/activate 2>/dev/null
+- `Bash`:
+  ```bash
+source .venv/bin/activate 2>/dev/null
 cd /home/anant_gupta/projects/work/internship-research-loop
 python3 - <<'EOF'
 import sys
@@ -9051,7 +9335,8 @@ EOF
 echo "--- final test count ---"
 python -m pytest -q 2>&1 | tail -5
 echo "--- git status ---"
-git status --short`
+git status --short
+  ```
   ```
   SimplifyJobs: fetched 14762, matched 35
   Jose-Gael-Cruz-Lopez: fetched 112, matched 5
@@ -9125,13 +9410,16 @@ API Error: Server error mid-response. The response above may be incomplete.
 **Tool calls:**
 
 - `mcp__jarvis__vault_read` — `{"path":"20_Progress/Internship/Building System/Research Loop - Phase 7 Coverage Expansion.md"}`
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git log --oneline -5
 echo "--- current status ---"
 git status --short
 echo "--- is a21b2fa still reachable / where is it relative to HEAD ---"
 git log --oneline -1 a21b2fa 2>&1
-git merge-base --is-ancestor a21b2fa HEAD && echo "a21b2fa is an ancestor of HEAD" || echo "a21b2fa is NOT an ancestor"`
+git merge-base --is-ancestor a21b2fa HEAD && echo "a21b2fa is an ancestor of HEAD" || echo "a21b2fa is NOT an ancestor"
+  ```
   ```
 a21b2fa Four new discovery sources: vanshb03, zshah101, Greenhouse, Ashby
 b60a751 Update state + logs — 2026-07-25
@@ -9154,10 +9442,13 @@ bdc2416 Update state + logs — 2026-07-25
 a21b2fa Four new discovery sources: vanshb03, zshah101, Greenhouse, Ashby
 a21b2fa is an ancestor of HEAD
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git fetch origin 2>&1
 git log --oneline origin/master -3
-git rev-parse HEAD origin/master`
+git rev-parse HEAD origin/master
+  ```
   ```
 cdb4299 Update state + logs — 2026-07-25
 a21b2fa Four new discovery sources: vanshb03, zshah101, Greenhouse, Ashby
@@ -9165,10 +9456,13 @@ b60a751 Update state + logs — 2026-07-25
 [REDACTED]
 [REDACTED]
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git pull --ff-only origin master 2>&1
 git log --oneline -3
-git status --short`
+git status --short
+  ```
   ```
 From https://github.com/gupta-builds/internship-research-loop
  * branch            master     -> FETCH_HEAD
@@ -9193,8 +9487,11 @@ b60a751 Update state + logs — 2026-07-25
 ?? tests/fixtures/freehire.json
 ?? tests/test_freehire.py
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
-git show a21b2fa -- run_pipeline.py | grep -n "MAX_NEW_WRITES_PER_RUN\|_prioritize_and_cap\|deferred_count" | head -30`
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+git show a21b2fa -- run_pipeline.py | grep -n "MAX_NEW_WRITES_PER_RUN\|_prioritize_and_cap\|deferred_count" | head -30
+  ```
   ```
 30:      budget. Throttled instead of absorbed or discarded: MAX_NEW_WRITES_PER_RUN
 75:+MAX_NEW_WRITES_PER_RUN = 18
@@ -9203,26 +9500,34 @@ git show a21b2fa -- run_pipeline.py | grep -n "MAX_NEW_WRITES_PER_RUN\|_prioriti
 102:+    this_run, deferred = _prioritize_and_cap(new_listings, MAX_NEW_WRITES_PER_RUN)
 103:+    record["deferred_count"] = len(deferred)
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
-grep -n "MAX_NEW_WRITES_PER_RUN\|_prioritize_and_cap" run_pipeline.py`
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+grep -n "MAX_NEW_WRITES_PER_RUN\|_prioritize_and_cap" run_pipeline.py
+  ```
   ```
 64:MAX_NEW_WRITES_PER_RUN = 18
 67:def _prioritize_and_cap(new_listings: list, limit: int) -> tuple:
 261:    this_run, deferred = _prioritize_and_cap(new_listings, MAX_NEW_WRITES_PER_RUN)
   ```
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/run_pipeline.py`
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 echo "=== grep for lever in all tracked .py files (case-insensitive) ==="
 git grep -ni "lever" -- '*.py' 2>&1
 echo "=== also check untracked freehire.py just in case (shouldn't have lever either) ==="
-grep -ni "lever" ingestion/freehire.py 2>&1`
+grep -ni "lever" ingestion/freehire.py 2>&1
+  ```
   ```
 === grep for lever in all tracked .py files (case-insensitive) ===
 === also check untracked freehire.py just in case (shouldn't have lever either) ===
 15:reachable Greenhouse/Ashby/Lever token — that's the value freehire adds over
 63:# Lever token AND to have real job data on freehire — but Western Digital,
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 source .venv/bin/activate 2>/dev/null
 echo "=== current working tree (includes uncommitted freehire work) ==="
 python -m pytest -q 2>&1 | tail -5
@@ -9233,7 +9538,8 @@ python -m pytest -q 2>&1 | tail -5
 echo ""
 echo "=== restoring uncommitted work ==="
 git stash pop
-git status --short`
+git status --short
+  ```
   ```
 === current working tree (includes uncommitted freehire work) ===
 ........................................................................ [ 33%]
@@ -9284,8 +9590,11 @@ Dropped refs/stash@{0} ([REDACTED])
 ?? tests/fixtures/freehire.json
 ?? tests/test_freehire.py
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
-sed -n '/GREENHOUSE_COMPANIES = {/,/^}/p; /ASHBY_COMPANIES = {/,/^}/p' ingestion/sources.py`
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+sed -n '/GREENHOUSE_COMPANIES = {/,/^}/p; /ASHBY_COMPANIES = {/,/^}/p' ingestion/sources.py
+  ```
   ```
 GREENHOUSE_COMPANIES = {
     "fccincinnati": "FC Cincinnati",
@@ -9304,7 +9613,9 @@ ASHBY_COMPANIES = {
     "pylon-labs": "Pylon",
 }
   ```
-- `Bash` — `source /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/activate 2>/dev/null
+- `Bash`:
+  ```bash
+source /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/activate 2>/dev/null
 python3 -c "
 import requests
 v = requests.get('https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/.github/scripts/listings.json', timeout=30).json()
@@ -9314,13 +9625,16 @@ print('zshah101 live count now:', len(z))
 from collections import Counter
 spon = Counter(j.get('sponsorship') for j in z.values())
 print('zshah101 sponsorship dist now:', dict(spon))
-"`
+"
+  ```
   ```
 vanshb03 live count now: 274
 zshah101 live count now: 214
 zshah101 sponsorship dist now: {'unknown': 181, 'citizens-only': 22, 'no-sponsorship': 7, 'offers': 4}
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 grep -n "OPT_EXCLUSION_RE" -A 20 ingestion/posting_page.py | grep -A 15 "re.compile"
 echo "--- Google SimplifyJobs live check (drift-prone, per Anant's own example) ---"
 source .venv/bin/activate 2>/dev/null
@@ -9330,7 +9644,8 @@ data = requests.get('https://raw.githubusercontent.com/SimplifyJobs/Summer2026-I
 hit = [r for r in data if r.get('id')=='820400f1-d2e5-43b3-94b0-c8913692b46a']
 print('exact ground-truth Google posting still in feed:', bool(hit))
 if hit: print(hit[0])
-"`
+"
+  ```
   ```
 46:OPT_EXCLUSION_RE = re.compile(
 47-    r"(u\.?s\.? person (status )?(is )?required"
@@ -9356,7 +9671,9 @@ if hit: print(hit[0])
 exact ground-truth Google posting still in feed: True
 {'source': 'Simplify', 'category': 'Software', 'company_name': 'Google', 'id': '[REDACTED]', 'title': 'Software Engineer Intern', 'active': False, 'terms': ['Summer 2027'], 'date_updated': 1784591853, 'date_posted': 1784591791, 'url': 'https://www.google.com/about/careers/applications/jobs/results/85564713261245126', 'locations': ['Palo Alto, CA', 'Cambridge, MA', 'Madison, WI', 'Seattle, WA', 'Houston, TX', 'SF', 'Austin, TX', 'LA', 'San Jose, CA', 'Irvine, CA', 'San Carlos, CA', 'Raleigh, NC', 'San Bruno, CA', 'Redmond, WA', 'Durham, NC', 'Santa Cruz, CA', 'Chicago, IL', 'Goleta, CA', 'Pittsburgh, PA', 'Kirkland, WA', 'Reston, VA', 'NYC', 'Bellevue, WA', 'Sunnyvale, CA', 'Mountain View, CA', 'Portland, OR', 'Boulder, CO', 'Atlanta, GA', 'San Diego, CA'], 'company_url': 'https://simplify.jobs/c/Google', 'is_visible': True, 'sponsorship': 'Other', 'degrees': ["Bachelor's"]}
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git show a21b2fa -- ingestion/posting_page.py | grep -n "export.control" 
 echo "--- confirm test count for posting_page tests specifically, and re-verify a sample of the 13 real catches still catch ---"
 source .venv/bin/activate 2>/dev/null
@@ -9373,7 +9690,8 @@ samples = {
 }
 for name, text in samples.items():
     print(name, '->', bool(opt_exclusion(text)))
-"`
+"
+  ```
   ```
 24:    - ingestion/posting_page.py: OPT_EXCLUSION_RE gained an ITAR/export-control
 45:+# The export-control/ITAR branch below was added 2026-07-25 against real,
@@ -9388,11 +9706,14 @@ Clarity (original 6) -> True
 Saronic (new export-control pattern) -> True
 Hermeus (new export-control pattern) -> False
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 source .venv/bin/activate 2>/dev/null
 python -m pytest tests/test_posting_page.py -q 2>&1 | tail -10
 echo "--- that Hermeus 'False' above was my own abbreviated test text, not the real fixture — confirming against the actual fixture text ---"
-grep -A3 "Hermeus SWE Intern" tests/test_posting_page.py`
+grep -A3 "Hermeus SWE Intern" tests/test_posting_page.py
+  ```
   ```
 ...............                                                          [100%]
 15 passed in 0.17s
@@ -9402,7 +9723,9 @@ grep -A3 "Hermeus SWE Intern" tests/test_posting_page.py`
         "and items subject to U.S. export controls, and therefore, must either be a "
         "“U.S. person” as defined by 22 C.F.R. § 120.62.",
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 echo "=== was recheck.py touched in commit a21b2fa? ==="
 git show a21b2fa --stat | grep recheck
 echo "(no output above = recheck.py was NOT part of that commit)"
@@ -9411,7 +9734,8 @@ echo "=== recheck.py as committed (HEAD, before my uncommitted stash) ==="
 git show HEAD:recheck.py | grep -n "^FEEDS = {" -A 8
 echo ""
 echo "=== recheck.py in my current uncommitted working tree ==="
-grep -n "^FEEDS = {" -A 8 recheck.py`
+grep -n "^FEEDS = {" -A 8 recheck.py
+  ```
   ```
 === was recheck.py touched in commit a21b2fa? ===
 (no output above = recheck.py was NOT part of that commit)
@@ -9487,7 +9811,9 @@ Note patched in place (not rewritten), session log entry appended above the prio
 
 **Tool calls:**
 
-- `Bash` — `gh run list --repo gupta-builds/internship-research-loop --workflow=run.yml --limit 5 --json status,conclusion,createdAt 2>&1
+- `Bash`:
+  ```bash
+gh run list --repo gupta-builds/internship-research-loop --workflow=run.yml --limit 5 --json status,conclusion,createdAt 2>&1
 echo "--- latest run's log tail for real written/matched counts from the new sources actually running ---"
 cd /home/anant_gupta/projects/work/internship-research-loop
 tail -3 logs/runs.jsonl | python3 -c "
@@ -9498,7 +9824,8 @@ for line in sys.stdin:
 "
 echo "--- recheck.yml history — has it run since a21b2fa, confirming only 2-source FEEDS in production ---"
 gh run list --repo gupta-builds/internship-research-loop --workflow=recheck.yml --limit 3 --json status,conclusion,createdAt 2>&1
-tail -2 logs/rechecks.jsonl`
+tail -2 logs/rechecks.jsonl
+  ```
   ```
 [{"conclusion":"success","createdAt":"2026-07-25T16:52:03Z","status":"completed"},{"conclusion":"success","createdAt":"2026-07-25T15:56:47Z","status":"completed"},{"conclusion":"success","createdAt":"2026-07-25T14:54:47Z","status":"completed"},{"conclusion":"success","createdAt":"2026-07-25T13:01:27Z","status":"completed"},{"conclusion":"success","createdAt":"2026-07-25T11:01:39Z","status":"completed"}]
 --- latest run's log tail for real written/matched counts from the new sources actually running ---
@@ -9510,13 +9837,16 @@ tail -2 logs/rechecks.jsonl`
 {"timestamp": "2026-07-24T09:05:00.370236+00:00", "type": "recheck", "scanned": 30, "removals": [{"uid": "SimplifyJobs:[REDACTED]", "reason": "active: false upstream"}, {"uid": "SimplifyJobs:[REDACTED]", "reason": "active: false upstream"}], "errors": [], "halted": false, "halt_reason": null}
 {"timestamp": "2026-07-25T08:32:27.387380+00:00", "type": "recheck", "scanned": 29, "removals": [{"uid": "SimplifyJobs:[REDACTED]", "reason": "active: false upstream"}], "errors": [], "halted": false, "halt_reason": null}
   ```
-- `Bash` — `JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers
+- `Bash`:
+  ```bash
+JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers
 echo "current dossier count: $(ls "$JARVIS" | wc -l)"
 python3 -c "
 import json
 print('seen_ids.json size:', len(json.load(open('/home/anant_gupta/projects/work/internship-research-loop/state/seen_ids.json'))))
 print('opt_cache.json size:', len(json.load(open('/home/anant_gupta/projects/work/internship-research-loop/state/opt_cache.json'))))
-"`
+"
+  ```
   ```
 current dossier count: 28
 seen_ids.json size: 169
@@ -9613,11 +9943,14 @@ next: "Verification pass complete (2026-07-25, fresh session, direct repo access
   ```
 - `Read` — `/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Research Loop - Phase 7 Coverage Expansion.md`
 - `mcp__jarvis__vault_get_document_map` — `{"path":"20_Progress/Internship/Building System/Research Loop - Phase 7 Coverage Expansion.md"}`
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 echo "=== confirm no pipeline code touched this task, only git reads + stash/pop ==="
 git status --short
 echo "=== confirm working tree tests still pass (sanity, read-only check) ==="
-source .venv/bin/activate 2>/dev/null && python -m pytest -q 2>&1 | tail -5`
+source .venv/bin/activate 2>/dev/null && python -m pytest -q 2>&1 | tail -5
+  ```
   ```
 === confirm no pipeline code touched this task, only git reads + stash/pop ===
  M core/filter.py
@@ -9699,1399 +10032,6 @@ source .venv/bin/activate 2>/dev/null && python -m pytest -q 2>&1 | tail -5`
 - Files created: /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/vanshb03.json, /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/zshah101.json, /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Research Loop - Improvement Plan.md, /home/anant_gupta/projects/work/internship-research-loop/ingestion/freehire.py, /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/freehire.json, /home/anant_gupta/projects/work/internship-research-loop/tests/test_freehire.py
 - Files modified: /home/anant_gupta/projects/work/internship-research-loop/core/filter.py, /home/anant_gupta/projects/work/internship-research-loop/ingestion/normalize.py, /home/anant_gupta/projects/work/internship-research-loop/ingestion/sources.py, /home/anant_gupta/projects/work/internship-research-loop/run_pipeline.py, /home/anant_gupta/projects/work/internship-research-loop/core/schema_drift.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_filter.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_sources.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_schema_drift.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_run_pipeline.py, /home/anant_gupta/projects/work/internship-research-loop/ingestion/posting_page.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_posting_page.py, /home/anant_gupta/projects/work/internship-research-loop/recheck.py, /home/anant_gupta/projects/work/internship-research-loop/ingestion/freehire.py, /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Research Loop - Phase 7 Coverage Expansion.md, /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/60_Claude/07_AI_Information/Session Logs/log.md
 - Files deleted: (none)
-- Commands run: git log --oneline -20 && echo "---STATUS---" && git status && echo "---REMOTE---" && git remote -v, find . -type f -not -path './.git/*' | sort, source .venv/bin/activate 2>/dev/null; python -m pytest -q 2>&1 | tail -40, find . -type f -not -path './.git/*' -not -path './.venv/*' -not -path './.pytest_cache/*' -not -path './__pycache__/*' -not -path '*/__pycache__/*' | sort, wc -l state/seen_ids.json logs/runs.jsonl logs/rechecks.jsonl; echo "---last 5 runs.jsonl---"; tail -5 logs/runs.jsonl; echo "---rechecks.jsonl---"; cat logs/rechecks.jsonl, grep -n "fa7fbaf4" logs/runs.jsonl state/seen_ids.json state/opt_cache.json, git log --all --oneline -- enrich.py; echo "---"; git log -p --follow -- enrich.py | grep -c "^commit"; echo "---grep enrich in logs---"; grep -i "enrich" logs/runs.jsonl | head -5; echo "no matches above means none"; echo "---check any Enrichment section anywhere in vault dossiers via jarvis search---", gh run list --repo gupta-builds/internship-research-loop --workflow=run.yml --limit 5 --json displayTitle,status,conclusion,createdAt 2>&1
-echo "---recheck---"
-gh run list --repo gupta-builds/internship-research-loop --workflow=recheck.yml --limit 5 --json displayTitle,status,conclusion,createdAt 2>&1
-echo "---current UTC time---"
-date -u, ls /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis 2>&1 | head -5; echo "---"; ls -la /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers 2>&1 | head -5, JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis
-echo "--- Enrichment sections in dossiers ---"
-grep -rl "## Enrichment" "$JARVIS/10_Areas/Career/Internships/List/Dossiers/" 2>&1
-echo "(none = no output above)"
-echo "--- promoted: non-null ---"
-grep -L "^promoted:$" "$JARVIS/10_Areas/Career/Internships/List/Dossiers/"*.md
-echo "--- Run Log.md exists? ---"
-ls -la "$JARVIS/10_Areas/Career/Internships/List/" 2>&1
-echo "--- dossier byte sizes ---"
-wc -c "$JARVIS/10_Areas/Career/Internships/List/Dossiers/"*.md | sort -n, python3 -c "import json; print(len(json.load(open('state/seen_ids.json'))))"
-echo "---issues---"
-gh issue list --repo gupta-builds/internship-research-loop --state all --json number,title 2>&1
-echo "---grep zapply anywhere in live source (not .venv)---"
-grep -ril "zapply" --include="*.py" . 2>/dev/null | grep -v .venv
-echo "---confirm no anthropic/openai/claude deps---"
-grep -iE "anthropic|openai|claude" requirements.txt core/*.py ingestion/*.py vault_writer/*.py *.py 2>/dev/null, grep -in "zapply" core/identity.py core/filter.py tests/test_identity.py tests/test_filter.py, JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers
-for f in "$JARVIS"/*.md; do
-  company=$(grep -m1 "^company:" "$f" | sed 's/^company: *//')
-  title=$(grep -m1 "^title:" "$f" | sed 's/^title: *//')
-  echo "$(basename "$f"): $company — $title"
-done, JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers
-f="$JARVIS/[REDACTED].md"
-grep -m1 "^company:" "$f"; grep -m1 "^title:" "$f"
-echo "---templates---"
-ls /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/30_Order/Templates/Career/, ls /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/ | grep -i gael, JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers
-ls "$JARVIS" | wc -l
-ls "$JARVIS"
-echo "---repo state now---"
-git pull --ff-only 2>&1 | tail -5
-tail -3 logs/rechecks.jsonl
-tail -3 logs/runs.jsonl, cat logs/runs.jsonl | python3 -c "
-import json,sys
-for line in sys.stdin:
-    r = json.loads(line)
-    print(r['timestamp'], r['fetch_counts'], r['filter_match_counts'], 'new=',r['new_count'],'written=',r['written_count'],'halted=',r['halted'])
-", source .venv/bin/activate 2>/dev/null
-python3 - <<'EOF'
-import requests, json
-url = "https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json"
-data = requests.get(url, timeout=30).json()
-google = [r for r in data if r.get("company_name","").strip().lower() == "google"]
-print(f"Total Google entries: {len(google)}")
-for r in google:
-    print("---")
-    print("id:", r.get("id"))
-    print("title:", r.get("title"))
-    print("active:", r.get("active"))
-    print("terms:", r.get("terms"))
-    print("category:", r.get("category"))
-    print("locations:", r.get("locations"))
-    print("degrees:", r.get("degrees"))
-    print("date_posted:", r.get("date_posted"))
-    print("date_updated:", r.get("date_updated"))
-    print("url:", r.get("url"))
-    keys = list(r.keys())
-    print("all keys:", keys)
-EOF, for ts in 1784591786 1784591882 1784591791 1784591853 1784591923 1784592001 1784595879 1784595961; do
-  echo -n "$ts -> "; date -u -d @$ts +"%Y-%m-%dT%H:%M:%SZ"
-done
-echo "--- our run timestamps around that window ---"
-grep -oP '"timestamp": "\K[^"]+' logs/runs.jsonl | tail -15, date -u; echo "---"; git log -1 --format=%cd --date=iso-strict; echo "--- latest gh run ---"; gh run list --repo gupta-builds/internship-research-loop --workflow=run.yml --limit 3 --json displayTitle,status,conclusion,createdAt 2>&1, git pull --ff-only 2>&1 | tail -10
-echo "--- new runs.jsonl line count ---"
-wc -l logs/runs.jsonl
-echo "--- runs since 07-20 ---"
-grep -oP '"timestamp": "\K[^"]+' logs/runs.jsonl | awk -F'T' '$1 >= "2026-07-20"', python3 -c "
-import json
-with open('logs/runs.jsonl') as f:
-    for line in f:
-        r = json.loads(line)
-        ts = r['timestamp']
-        if '2026-07-20T19' <= ts <= '2026-07-21T05':
-            print(ts, r['fetch_counts'], r['filter_match_counts'], 'new=',r['new_count'],'already_seen=',r['already_seen_count'],'written=',r['written_count'])
-            for rej in r['rejections']:
-                print('   rejection:', rej)
-", grep -m1 "^url:" "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/[REDACTED].md", source .venv/bin/activate 2>/dev/null
-python3 - <<'EOF'
-import requests, json
-url = "https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json"
-data = requests.get(url, timeout=30).json()
-targets = ["uber", "nuro", "deepgram", "western digital"]
-for t in targets:
-    hits = [r for r in data if t in r.get("company_name","").strip().lower()]
-    print(f"=== {t}: {len(hits)} entries ===")
-    for r in hits:
-        print(" id:", r.get("id"), "| title:", r.get("title"), "| active:", r.get("active"),
-              "| terms:", r.get("terms"), "| category:", r.get("category"),
-              "| degrees:", r.get("degrees"), "| url:", r.get("url"))
-EOF
-echo "--- JGCL feed ---"
-python3 - <<'EOF'
-import requests
-url = "https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json"
-data = requests.get(url, timeout=30).json()
-targets = ["uber", "nuro", "deepgram", "western digital"]
-for t in targets:
-    hits = [r for r in data if t in r.get("company_name","").strip().lower()]
-    print(f"=== JGCL {t}: {len(hits)} entries ===")
-    for r in hits:
-        print(" ", r)
-EOF, grep -n "300697\|career prep\|Career Prep" /home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/b8xm8tctm.txt
-echo "=== nuro section ==="
-sed -n '/=== nuro/,/=== deepgram/p' /home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/b8xm8tctm.txt
-echo "=== deepgram section ==="
-sed -n '/=== deepgram/,/=== western/p' /home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/b8xm8tctm.txt
-echo "=== western digital section ==="
-sed -n '/=== western digital/,$p' /home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/b8xm8tctm.txt
-echo "=== uber Summer 2027 active entries ==="
-grep -n "Summer 2027" /home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/b8xm8tctm.txt | head -20, grep -c "01925f31" state/seen_ids.json state/opt_cache.json
-echo "--- last run full rejections, check for this uid ---"
-tail -1 logs/runs.jsonl | python3 -m json.tool
-echo "--- check across all logged rejections ever ---"
-grep -o "01925f31[a-z0-9-]*" logs/runs.jsonl | sort -u
-echo "--- curl liveness check ourselves ---"
-curl -s -o /dev/null -w "%{http_code}\n" -I "https://jobs.smartrecruiters.com/WesternDigital/744000138727213", python3 -c "
-import json
-cache = json.load(open('state/opt_cache.json'))
-for k,v in cache.items():
-    if '01925f31' in k:
-        print(k, v)
-"
-echo "--- seen_ids context ---"
-grep -B1 -A1 "01925f31" state/seen_ids.json, grep "01925f31" logs/rechecks.jsonl
-echo "--- full rechecks.jsonl ---"
-cat logs/rechecks.jsonl | python3 -c "
-import json,sys
-for line in sys.stdin:
-    r = json.loads(line)
-    print(r['timestamp'], 'scanned=',r['scanned'], 'removals=',r['removals'])
-"
-echo "--- does the file exist under any name pattern ---"
-find /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/ -iname "*01925f31*"
-echo "--- git history of this file in the vault repo, if accessible ---"
-cd /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis 2>/dev/null && git log --all --oneline -- "10_Areas/Career/Internships/List/Dossiers/[REDACTED].md" 2>&1 | head -20, JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers
-echo "current count: $(ls "$JARVIS" | wc -l)"
-for f in "$JARVIS"/*.md; do
-  company=$(grep -m1 "^company:" "$f" | sed 's/^company: *//')
-  status=$(grep -m1 "^status:" "$f" | sed 's/^status: *//')
-  echo "$(basename "$f"): $company [$status]"
-done | grep -iE "uber|nuro|deepgram|western", JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers
-for f in "$JARVIS"/*.md; do
-  company=$(grep -m1 "^company:" "$f" | sed 's/^company: *//')
-  url=$(grep -m1 "^url:" "$f" | sed 's/^url: *//')
-  echo "$company | $url"
-done, source .venv/bin/activate 2>/dev/null
-python3 - <<'EOF'
-import requests
-
-def try_gh(token):
-    try:
-        r = requests.get(f"https://boards-api.greenhouse.io/v1/boards/{token}/jobs", timeout=15)
-        if r.status_code == 200:
-            n = len(r.json().get("jobs", []))
-            return f"GH:{token} -> 200, {n} jobs"
-    except Exception as e:
-        pass
-    return None
-
-def try_lever(token):
-    try:
-        r = requests.get(f"https://api.lever.co/v0/postings/{token}?mode=json", timeout=15)
-        if r.status_code == 200:
-            data = r.json()
-            if isinstance(data, list):
-                return f"Lever:{token} -> 200, {len(data)} postings"
-    except Exception:
-        pass
-    return None
-
-def try_ashby(token):
-    try:
-        r = requests.get(f"https://api.ashbyhq.com/posting-api/job-board/{token}", timeout=15)
-        if r.status_code == 200:
-            data = r.json()
-            jobs = data.get("jobs", [])
-            return f"Ashby:{token} -> 200, {len(jobs)} jobs"
-    except Exception:
-        pass
-    return None
-
-# Known tokens extracted directly from existing dossier URLs
-known = {
-    "FC Cincinnati": [("gh","fccincinnati")],
-    "Aquatic Capital Management": [("gh","aquaticcapitalmanagement")],
-    "Walleye Capital": [("gh","walleyecapital-external-students")],
-    "PDT Partners": [("gh","pdtpartners")],
-    "Virtu Financial": [("gh","virtu")],
-    "Marshall Wace": [("gh","mwinternshipprogram")],
-    "Ellipsis Labs": [("ashby","ellipsislabs")],
-    "Quadrillion": [("ashby","quadrillion-labs")],
-    "Circleback": [("ashby","circleback")],
-    "CTGT": [("ashby","ctgt")],
-    "Pylon": [("ashby","pylon-labs")],
-    "Palantir": [("lever","palantir")],
-}
-
-for company, toks in known.items():
-    for kind, token in toks:
-        fn = {"gh": try_gh, "lever": try_lever, "ashby": try_ashby}[kind]
-        res = fn(token)
-        print(f"{company}: {res or f'{kind}:{token} -> FAILED'}")
-
-print("\n--- guessed tokens for companies NOT currently on GH/Lever/Ashby, or unconfirmed ---")
-guess_targets = {
-    "Western Digital": ["westerndigital", "westerndigitalcorporation", "wdc"],
-    "Wells Fargo": ["wellsfargo"],
-    "Susquehanna International Group (SIG)": ["sig", "susquehanna", "sigfinancial"],
-    "Grant Thornton": ["grantthornton"],
-    "Marmon Holdings": ["marmon", "marmonholdings"],
-    "Castleton Commodities International": ["castletoncommodities", "cci", "castleton"],
-    "SimonComputing": ["simoncomputing"],
-    "Rippling": ["rippling"],
-    "Optiver": ["optiver"],
-    "Hudson River Trading": ["hudsonrivertrading", "hrt"],
-    "Uber": ["uber"],
-    "Nuro": ["nuro"],
-    "Deepgram": ["deepgram", "Deepgram"],
-    "Google": ["google"],
-}
-for company, tokens in guess_targets.items():
-    hits = []
-    for t in tokens:
-        for kind, fn in [("gh", try_gh), ("lever", try_lever), ("ashby", try_ashby)]:
-            res = fn(t)
-            if res:
-                hits.append(res)
-    print(f"{company}: {hits if hits else 'no hit on any of GH/Lever/Ashby for guessed tokens ' + str(tokens)}")
-EOF, source .venv/bin/activate 2>/dev/null
-python3 - <<'EOF'
-import requests
-def try_gh(token):
-    try:
-        r = requests.get(f"https://boards-api.greenhouse.io/v1/boards/{token}/jobs", timeout=15)
-        if r.status_code == 200:
-            n = len(r.json().get("jobs", []))
-            return f"GH:{token} -> 200, {n} jobs"
-    except Exception:
-        pass
-    return None
-
-# both HRT and Optiver embed gh_jid on their own custom domain -> Greenhouse, not Ashby
-for token in ["hudsonrivertrading", "hrt", "hudsonriver"]:
-    print("HRT try:", token, "->", try_gh(token))
-for token in ["optiverus", "optiver-us", "optiverinternship", "optiverna"]:
-    print("Optiver try:", token, "->", try_gh(token))
-
-# direct job-id lookup against a *correct* guess isn't possible without token, but let's confirm
-# the actual live job id still resolves through the embed page itself (proves it's real Greenhouse, just wrong token guess)
-r = requests.get("https://www.optiver.com/join-us/jobs/8401052002/?gh_jid=8401052002", timeout=15)
-print("Optiver embed page status:", r.status_code)
-EOF, echo "=== vanshb03/Summer2027-Internships: does it exist, is it distinct from SimplifyJobs? ==="
-gh api repos/vanshb03/Summer2027-Internships --jq '{full_name, fork, parent: .parent.full_name, pushed_at, default_branch}' 2>&1
-echo ""
-echo "=== SimplifyJobs/Summer2026-Internships for comparison ==="
-gh api repos/SimplifyJobs/Summer2026-Internships --jq '{full_name, fork, parent: .parent.full_name, pushed_at, default_branch}' 2>&1
-echo ""
-echo "=== search for zshah101's internship repo ==="
-gh api "search/repositories?q=user:zshah101" --jq '.items[] | {full_name, pushed_at, description}' 2>&1
-echo ""
-echo "=== search for speedyapply's repo ==="
-gh api "search/repositories?q=user:speedyapply" --jq '.items[] | {full_name, pushed_at, description}' 2>&1
-echo ""
-echo "=== search for sndsh404's repo ==="
-gh api "search/repositories?q=user:sndsh404" --jq '.items[] | {full_name, pushed_at, description}' 2>&1, echo "=== speedyapply/2027-SWE-College-Jobs tree ==="
-gh api repos/speedyapply/2027-SWE-College-Jobs/git/trees/main?recursive=true --jq '.tree[].path' 2>&1 | head -60
-echo ""
-echo "=== speedyapply/2027-SWE-College-Jobs recent commits ==="
-gh api repos/speedyapply/2027-SWE-College-Jobs/commits --jq '.[0:5] | .[] | {sha: .sha[0:8], message: .commit.message, date: .commit.author.date}' 2>&1, echo "=== speedyapply/2027-AI-College-Jobs tree ==="
-gh api repos/speedyapply/2027-AI-College-Jobs/git/trees/main?recursive=true --jq '.tree[].path' 2>&1 | head -60, echo "=== README first 100 lines, speedyapply/2027-SWE-College-Jobs ==="
-gh api repos/speedyapply/2027-SWE-College-Jobs/contents/README.md --jq '.content' 2>&1 | base64 -d 2>/dev/null | head -100, echo "=== vanshb03/Summer2027-Internships tree ==="
-gh api repos/vanshb03/Summer2027-Internships/git/trees/dev?recursive=true --jq '.tree[].path' 2>&1 | grep -i script, echo "=== zshah101 repo tree ==="
-gh api repos/zshah101/[REDACTED]/git/trees/main?recursive=true --jq '.tree[].path' 2>&1
-echo "--- if main doesn't exist, try master ---"
-gh api repos/zshah101/[REDACTED] --jq '.default_branch' 2>&1, echo "=== vanshb03 listings.json: schema check (first entry, distinct keys, count, Uber/Deepgram presence) ==="
-python3 - <<'EOF'
-import requests, json
-url = "https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/.github/scripts/listings.json"
-data = requests.get(url, timeout=30).json()
-print("total entries:", len(data))
-print("keys of entry 0:", sorted(data[0].keys()))
-print(json.dumps(data[0], indent=2)[:1000])
-companies = {r.get("company_name","").strip().lower() for r in data}
-print("\nhas uber:", any("uber" in c for c in companies))
-print("has deepgram:", any("deepgram" in c for c in companies))
-uber_entries = [r for r in data if "uber" in r.get("company_name","").lower()]
-deepgram_entries = [r for r in data if "deepgram" in r.get("company_name","").lower()]
-for r in uber_entries[:5]:
-    print("UBER:", r.get("id"), r.get("title"), r.get("active"), r.get("terms") or r.get("season"))
-for r in deepgram_entries[:5]:
-    print("DEEPGRAM:", r.get("id"), r.get("title"), r.get("active"), r.get("terms") or r.get("season"))
-EOF, gh api repos/zshah101/[REDACTED]/contents/docs/api/jobs.json --jq '.content' 2>&1 | base64 -d 2>/dev/null | python3 -c "
-import json,sys
-data = json.load(sys.stdin)
-print(type(data), len(data) if isinstance(data,list) else data.keys())
-" 2>&1, python3 - <<'EOF'
-import requests, json
-
-# check if GH Pages serves this publicly
-for url in [
-    "https://zshah101.github.io/[REDACTED]/api/jobs.json",
-]:
-    try:
-        r = requests.get(url, timeout=15)
-        print(url, "->", r.status_code, len(r.content), "bytes")
-    except Exception as e:
-        print(url, "-> ERROR", e)
-EOF, gh api repos/zshah101/[REDACTED]/contents/docs/api/jobs.json --jq '.content' | base64 -d > /tmp/zshah_jobs.json
-python3 - <<'EOF'
-import json
-data = json.load(open('/tmp/zshah_jobs.json'))
-print("generated_at:", data['generated_at'])
-print("source:", data['source'])
-print("h1b_window:", data.get('h1b_window'))
-print("count:", data['count'])
-jobs = data['jobs']
-print("actual len(jobs):", len(jobs))
-print("keys of job 0:", sorted(jobs[0].keys()))
-print(json.dumps(jobs[0], indent=2))
-
-# sponsorship field distribution
-from collections import Counter
-spon = Counter(j.get('sponsorship') for j in jobs)
-print("\nsponsorship value counts:", dict(spon))
-
-citizens_only = [j for j in jobs if j.get('sponsorship') == 'citizens_only' or (isinstance(j.get('sponsorship'),str) and 'citizen' in j.get('sponsorship','').lower())]
-print("\ncitizens-only-ish count:", len(citizens_only))
-for j in citizens_only[:5]:
-    print(" -", j.get('company_name') or j.get('company'), '|', j.get('title'), '| sponsorship:', j.get('sponsorship'), '| url:', j.get('url'))
-EOF, gh api repos/zshah101/[REDACTED]/contents/data/jobs.json --jq '.content' | base64 -d > /tmp/zshah_data_jobs.json
-python3 - <<'EOF'
-import json
-from collections import Counter
-data = json.load(open('/tmp/zshah_data_jobs.json'))
-jobs = data if isinstance(data, list) else data.get('jobs', data)
-print("total:", len(jobs))
-print("keys:", sorted(jobs[0].keys()) if jobs else "empty")
-spon = Counter(j.get('sponsorship') for j in jobs)
-print("sponsorship dist:", dict(spon))
-tagged = [j for j in jobs if j.get('sponsorship') not in (None, 'unknown')]
-print("non-unknown/tagged count:", len(tagged))
-citizens = [j for j in jobs if j.get('sponsorship') == 'citizens-only']
-print("citizens-only count:", len(citizens))
-for j in citizens:
-    print(" -", j.get('company'), '|', j.get('title'), '|', j.get('url'))
-EOF, python3 - <<'EOF'
-import json
-data = json.load(open('/tmp/zshah_data_jobs.json'))
-print(type(data))
-if isinstance(data, dict):
-    print("keys:", list(data.keys())[:5], "... total keys:", len(data))
-    sample_key = list(data.keys())[0]
-    print("sample entry:", json.dumps(data[sample_key], indent=2)[:800])
-EOF, python3 - <<'EOF'
-import json
-from collections import Counter
-data = json.load(open('/tmp/zshah_data_jobs.json'))
-jobs = list(data.values())
-print("total:", len(jobs))
-spon = Counter(j.get('sponsorship') for j in jobs)
-print("sponsorship distribution:", dict(spon))
-tagged = [j for j in jobs if j.get('sponsorship') not in (None, 'unknown')]
-print("tagged (non-unknown) count:", len(tagged), "of", len(jobs))
-citizens = [j for j in jobs if j.get('sponsorship') == 'citizens-only']
-print("\ncitizens-only count:", len(citizens))
-for j in citizens:
-    print(" -", j.get('company'), '|', j.get('title'), '| open:', j.get('is_open'), '|', j.get('url'))
-print("\nno-sponsorship count:", len([j for j in jobs if j.get('sponsorship')=='no-sponsorship']))
-print("offers count:", len([j for j in jobs if j.get('sponsorship')=='offers']))
-EOF
-echo "--- h1b.json quick look ---"
-gh api repos/zshah101/[REDACTED]/contents/data/h1b.json --jq '.content' | base64 -d | python3 -c "
-import json,sys
-d = json.load(sys.stdin)
-print(type(d), len(d) if hasattr(d,'__len__') else '')
-if isinstance(d, dict):
-    print(list(d.keys())[:5])
-    k = list(d.keys())[0]
-    print(k, '->', d[k])
-", python3 - <<'EOF'
-import requests, json
-url = "https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/.github/scripts/listings.json"
-data = requests.get(url, timeout=30).json()
-allkeys = set()
-for r in data:
-    allkeys |= set(r.keys())
-print("vanshb03 full key union across", len(data), "entries:", sorted(allkeys))
-from collections import Counter
-seasons = Counter(r.get("season") for r in data)
-print("season value distribution:", dict(seasons))
-sponsorship = Counter(r.get("sponsorship") for r in data)
-print("sponsorship value distribution:", dict(sponsorship))
-actives = Counter(r.get("active") for r in data)
-print("active distribution:", dict(actives))
-categories_present = any("category" in r for r in data)
-print("any entry has 'category' key:", categories_present)
-degrees_present = any("degrees" in r for r in data)
-print("any entry has 'degrees' key:", degrees_present)
-EOF, python3 - <<'EOF'
-import json
-data = json.load(open('/tmp/zshah_data_jobs.json'))
-jobs = list(data.values())
-allkeys = set()
-for j in jobs:
-    allkeys |= set(j.keys())
-print("zshah101 data/jobs.json full key union across", len(jobs), "entries:", sorted(allkeys))
-from collections import Counter
-cats = Counter(j.get("category") for j in jobs)
-print("category distribution:", dict(cats))
-seasons = Counter(j.get("season") for j in jobs)
-print("season distribution (top 15):", dict(list(seasons.items())[:15]))
-EOF
-echo "--- sndsh404 quick shape check ---"
-gh api repos/sndsh404/summer-2027-internships/git/trees/main?recursive=true --jq '.tree[].path' 2>&1, echo "--- confirm zshah101 raw data/jobs.json is fetchable with plain unauthenticated GET (same access pattern as our other 2 sources) ---"
-curl -s -o /dev/null -w "%{http_code}\n" "https://raw.githubusercontent.com/zshah101/[REDACTED]/main/data/jobs.json"
-echo "--- and vanshb03, for the record ---"
-curl -s -o /dev/null -w "%{http_code}\n" "https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/.github/scripts/listings.json"
-echo "--- FIRECRAWL_API_KEY available locally? ---"
-[ -n "$FIRECRAWL_API_KEY" ] && echo "SET (len=${#FIRECRAWL_API_KEY})" || echo "NOT SET in this shell"
-grep -i firecrawl ~/.bashrc ~/.zshrc ~/.profile 2>/dev/null
-gh secret list --repo gupta-builds/internship-research-loop 2>&1, python3 - <<'EOF'
-import requests, json
-r = requests.get("https://boards-api.greenhouse.io/v1/boards/pdtpartners/jobs?content=true", timeout=15).json()
-job = r["jobs"][0]
-print("Greenhouse job keys:", sorted(job.keys()))
-print(json.dumps({k:v for k,v in job.items() if k != 'content'}, indent=2)[:1200])
-print("content len:", len(job.get("content","")))
-EOF
-echo "=================="
-python3 - <<'EOF'
-import requests, json
-r = requests.get("https://api.ashbyhq.com/posting-api/job-board/pylon-labs", timeout=15).json()
-job = r["jobs"][0]
-print("Ashby job keys:", sorted(job.keys()))
-print(json.dumps(job, indent=2)[:1800])
-EOF, python3 - <<'EOF'
-import requests
-r = requests.get("https://api.ashbyhq.com/posting-api/job-board/ellipsislabs", timeout=15).json()
-for j in r["jobs"]:
-    print(j["title"], "| employmentType:", j.get("employmentType"), "| isListed:", j.get("isListed"))
-EOF, python3 - <<'EOF'
-import requests, json
-data = requests.get("https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/.github/scripts/listings.json", timeout=30).json()
-
-def find(pred, n=1):
-    out = [r for r in data if pred(r)]
-    return out[:n]
-
-# should-match: active True, season Summer, sponsorship not citizenship-required
-m = find(lambda r: r.get("active") is True and r.get("season")=="Summer" and r.get("sponsorship") != "U.S. Citizenship is Required")
-print("SHOULD-MATCH (summer, active, not citizenship-req):")
-print(json.dumps(m[0], indent=2) if m else "none found")
-
-# should-reject: wrong season (Fall)
-r1 = find(lambda r: r.get("active") is True and r.get("season")=="Fall")
-print("\nSHOULD-REJECT (fall season):")
-print(json.dumps(r1[0], indent=2) if r1 else "none")
-
-# should-reject: citizenship required, but otherwise matching season/active
-r2 = find(lambda r: r.get("active") is True and r.get("season")=="Summer" and r.get("sponsorship")=="U.S. Citizenship is Required")
-print("\nSHOULD-REJECT (citizenship required, else matches):")
-print(json.dumps(r2[0], indent=2) if r2 else "none")
-
-# should-reject: inactive
-r3 = find(lambda r: r.get("active") is False and r.get("season")=="Summer")
-print("\nSHOULD-REJECT (inactive):")
-print(json.dumps(r3[0], indent=2) if r3 else "none")
-EOF, python3 - <<'EOF'
-import requests, json
-data = requests.get("https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/.github/scripts/listings.json", timeout=30).json()
-m = [r for r in data if r.get("active") is True and r.get("season")=="Summer" and r.get("sponsorship")=="Does Not Offer Sponsorship"]
-print(json.dumps(m[0], indent=2) if m else "none found")
-EOF, python3 - <<'EOF'
-import json
-data = json.load(open('/tmp/zshah_data_jobs.json'))
-jobs = list(data.values())
-
-def find(pred, n=1):
-    return [j for j in jobs if pred(j)][:n]
-
-m = find(lambda j: j.get("is_open") is True and j.get("season")=="Summer 2027" and j.get("category")=="Software" and j.get("sponsorship")=="unknown")
-print("SHOULD-MATCH (software, summer 2027, open, unknown sponsorship):")
-print(json.dumps(m[0], indent=2) if m else "none")
-
-r1 = find(lambda j: j.get("is_open") is True and j.get("season")=="Fall 2026" and j.get("category")=="Software")
-print("\nSHOULD-REJECT (fall 2026 season):")
-print(json.dumps(r1[0], indent=2) if r1 else "none")
-
-r2 = find(lambda j: j.get("is_open") is True and j.get("season")=="Summer 2027" and j.get("sponsorship")=="citizens-only")
-print("\nSHOULD-REJECT (citizens-only, else matches):")
-print(json.dumps(r2[0], indent=2) if r2 else "none")
-
-r3 = find(lambda j: j.get("is_open") is False and j.get("season")=="Summer 2027" and j.get("category")=="Software")
-print("\nSHOULD-REJECT (closed):")
-print(json.dumps(r3[0], indent=2) if r3 else "none")
-
-r4 = find(lambda j: j.get("is_open") is True and j.get("season")=="Summer 2027" and j.get("category")=="Hardware")
-print("\nSHOULD-REJECT (wrong category, e.g. Hardware):")
-print(json.dumps(r4[0], indent=2) if r4 else "none")
-EOF, python3 - <<'EOF'
-import requests, re
-
-def strip_html(s):
-    return re.sub(r"<[^>]+>", " ", s or "")
-
-print("=== Greenhouse: pdtpartners, mwinternshipprogram, optiverus intern jobs ===")
-for token in ["pdtpartners", "mwinternshipprogram", "optiverus"]:
-    r = requests.get(f"https://boards-api.greenhouse.io/v1/boards/{token}/jobs?content=true", timeout=15).json()
-    for j in r["jobs"]:
-        if "intern" in j["title"].lower():
-            content = strip_html(j.get("content",""))
-            has_2027 = "2027" in (j["title"]+content)
-            has_summer2027 = "summer 2027" in (j["title"]+content).lower()
-            has_summer2026 = "summer 2026" in (j["title"]+content).lower()
-            print(f"{token} | {j['title']} | has_2027={has_2027} summer2027={has_summer2027} summer2026={has_summer2026} | content_len={len(content)}")
-
-print("\n=== Ashby: ellipsislabs intern job full descriptionPlain check ===")
-r = requests.get("https://api.ashbyhq.com/posting-api/job-board/ellipsislabs", timeout=15).json()
-for j in r["jobs"]:
-    if j.get("employmentType") == "Intern":
-        desc = j.get("descriptionPlain","")
-        print(j["title"], "| has summer2027:", "summer 2027" in desc.lower(), "| has 2027:", "2027" in (j["title"]+desc))
-        print("first 300 chars:", desc[:300])
-EOF, source .venv/bin/activate 2>/dev/null && python -m pytest -q 2>&1 | tail -100, source .venv/bin/activate 2>/dev/null
-cd /home/anant_gupta/projects/work/internship-research-loop
-python3 - <<'EOF'
-import sys
-sys.path.insert(0, ".")
-from core.filter import load_profile, matches
-from core.identity import compute_uid, cross_source_key
-from run_pipeline import fetch_and_filter, dedup_new, load_seen_ids
-from vault_writer.validate import check_cross_source_duplicate, check_url_live
-from vault_writer.writer import scan_dossiers
-from ingestion.normalize import Listing
-
-JARVIS_DIR = "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis"
-
-profile = load_profile()
-print("Fetching all 6 sources live (read-only)...")
-matched_by_source = fetch_and_filter(profile)
-for name, info in matched_by_source.items():
-    print(f"  {name}: fetched {info['fetch_count']}, matched {len(info['matched'])}")
-
-seen_ids = load_seen_ids("state/seen_ids.json")
-new_listings, already_seen = dedup_new(matched_by_source, seen_ids)
-print(f"\nTotal new (unseen uid) across all 6 sources: {len(new_listings)}; already-seen: {already_seen}")
-
-# real current dossier keys, read-only scan of the real vault
-dossier_fms = scan_dossiers(JARVIS_DIR)
-dossier_keys = {cross_source_key(fm.get("company",""), fm.get("title","")) for fm in dossier_fms}
-print(f"Real current dossiers scanned: {len(dossier_fms)}")
-
-# ALSO dedup within this run's own new_listings (same-run cross-source collisions),
-# same order-dependent "first source wins" semantics as validate_and_write.
-seen_this_dryrun_keys = set()
-cross_source_rejects = []
-would_pass_cross_source = []
-for uid, listing in new_listings:
-    key = cross_source_key(listing.company, listing.title)
-    if key in dossier_keys or key in seen_this_dryrun_keys:
-        cross_source_rejects.append((uid, listing.company, listing.title, key))
-    else:
-        seen_this_dryrun_keys.add(key)
-        would_pass_cross_source.append((uid, listing.company, listing.title))
-
-print(f"\nWould be rejected as cross_source_duplicate: {len(cross_source_rejects)}")
-for uid, company, title, key in cross_source_rejects:
-    print(f"  - {uid} | {company} — {title} | key={key}")
-
-print(f"\nWould pass cross_source_duplicate (still subject to url_liveness/format checks downstream): {len(would_pass_cross_source)}")
-for uid, company, title in would_pass_cross_source[:40]:
-    print(f"  - {uid} | {company} — {title}")
-EOF, source .venv/bin/activate 2>/dev/null
-cd /home/anant_gupta/projects/work/internship-research-loop
-python3 - <<'EOF'
-import json, sys, time
-sys.path.insert(0, ".")
-import requests
-from ingestion.posting_page import fetch_posting_markdown, opt_exclusion
-
-data = json.load(open('/tmp/zshah_data_jobs.json'))
-jobs = list(data.values())
-citizens = [j for j in jobs if j.get('sponsorship') == 'citizens-only']
-print(f"Fetching {len(citizens)} real citizens-only-tagged postings via Firecrawl...\n")
-
-import os
-key = os.environ["FIRECRAWL_API_KEY"]
-
-results = []
-for j in citizens:
-    url = j["url"]
-    company = j["company"]
-    title = j["title"]
-    try:
-        md = fetch_posting_markdown(url, key)
-        signal = opt_exclusion(md)
-        results.append({"company": company, "title": title, "url": url, "fetch_ok": True, "md_len": len(md), "our_signal": signal})
-        print(f"{'CAUGHT' if signal else 'MISSED'} | {company} | {title[:60]} | our_regex: {signal!r}")
-    except Exception as e:
-        results.append({"company": company, "title": title, "url": url, "fetch_ok": False, "error": str(e)})
-        print(f"FETCH-FAILED | {company} | {title[:60]} | {e}")
-    time.sleep(0.5)
-
-json.dump(results, open('/tmp/opt_regex_comparison.json', 'w'), indent=2)
-caught = sum(1 for r in results if r.get("fetch_ok") and r.get("our_signal"))
-missed = sum(1 for r in results if r.get("fetch_ok") and not r.get("our_signal"))
-failed = sum(1 for r in results if not r.get("fetch_ok"))
-print(f"\n=== SUMMARY: {caught} caught, {missed} missed, {failed} fetch-failed, of {len(citizens)} total ===")
-EOF, source .venv/bin/activate 2>/dev/null
-cd /home/anant_gupta/projects/work/internship-research-loop
-python3 - <<'EOF'
-import json, sys, time, os
-sys.path.insert(0, ".")
-from ingestion.posting_page import fetch_posting_markdown, opt_exclusion
-
-data = json.load(open('/tmp/zshah_data_jobs.json'))
-jobs = list(data.values())
-citizens = [j for j in jobs if j.get('sponsorship') == 'citizens-only']
-print(f"Fetching {len(citizens)} real citizens-only-tagged postings via Firecrawl...\n", flush=True)
-
-key = os.environ["FIRECRAWL_API_KEY"]
-results = []
-for i, j in enumerate(citizens):
-    url = j["url"]; company = j["company"]; title = j["title"]
-    try:
-        md = fetch_posting_markdown(url, key)
-        signal = opt_exclusion(md)
-        results.append({"company": company, "title": title, "url": url, "fetch_ok": True, "md_len": len(md), "our_signal": signal})
-        print(f"[{i+1}/{len(citizens)}] {'CAUGHT' if signal else 'MISSED'} | {company} | {title[:60]} | our_regex: {signal!r}", flush=True)
-    except Exception as e:
-        results.append({"company": company, "title": title, "url": url, "fetch_ok": False, "error": str(e)})
-        print(f"[{i+1}/{len(citizens)}] FETCH-FAILED | {company} | {title[:60]} | {e}", flush=True)
-
-json.dump(results, open('/tmp/opt_regex_comparison.json', 'w'), indent=2)
-caught = sum(1 for r in results if r.get("fetch_ok") and r.get("our_signal"))
-missed = sum(1 for r in results if r.get("fetch_ok") and not r.get("our_signal"))
-failed = sum(1 for r in results if not r.get("fetch_ok"))
-print(f"\n=== SUMMARY: {caught} caught, {missed} missed, {failed} fetch-failed, of {len(citizens)} total ===")
-EOF, source .venv/bin/activate 2>/dev/null
-cd /home/anant_gupta/projects/work/internship-research-loop
-python3 - <<'EOF'
-import json, sys, os, re
-sys.path.insert(0, ".")
-from ingestion.posting_page import fetch_posting_markdown
-
-data = json.load(open('/tmp/zshah_data_jobs.json'))
-jobs = list(data.values())
-citizens = [j for j in jobs if j.get('sponsorship') == 'citizens-only']
-
-# a representative sample of the MISSED ones (defense/gov-adjacent + a couple non-obvious)
-missed_titles = ["Junior", "Saronic", "Rocket Lab", "Hermeus", "CACI", "Northrop Grumman", "Palantir", "Varda Space", "Torch Technologies"]
-sample = [j for j in citizens if j["company"] in missed_titles]
-
-key = os.environ["FIRECRAWL_API_KEY"]
-kw_re = re.compile(r".{80}(citizen|clearance|security|export.control|itar|u\.s\. person).{80}", re.I)
-
-for j in sample[:9]:
-    try:
-        md = fetch_posting_markdown(j["url"], key)
-    except Exception as e:
-        print(j["company"], "FAILED", e); continue
-    hits = kw_re.findall(md)
-    print(f"=== {j['company']} — {j['title'][:60]} ===")
-    if hits:
-        for h in hits[:3]:
-            print("  ...", h.replace("\n"," ").strip(), "...")
-    else:
-        print("  (no citizen/clearance/security/export-control/itar/us-person keyword found anywhere in fetched text)")
-    print()
-EOF, source .venv/bin/activate 2>/dev/null
-cd /home/anant_gupta/projects/work/internship-research-loop
-python3 - <<'EOF'
-import json, sys, os, re
-sys.path.insert(0, ".")
-from ingestion.posting_page import fetch_posting_markdown
-
-data = json.load(open('/tmp/zshah_data_jobs.json'))
-jobs = list(data.values())
-citizens = [j for j in jobs if j.get('sponsorship') == 'citizens-only']
-targets = ["Saronic", "Hermeus", "Varda Space"]
-sample = [j for j in citizens if j["company"] in targets]
-
-key = os.environ["FIRECRAWL_API_KEY"]
-kw_re = re.compile(r"(citizen|clearance|security|export.control|itar|u\.s\. person)", re.I)
-
-for j in sample:
-    md = fetch_posting_markdown(j["url"], key)
-    lines = md.splitlines()
-    print(f"=== {j['company']} — {j['title'][:60]} ===")
-    for i, line in enumerate(lines):
-        if kw_re.search(line):
-            print("  >>", line.strip()[:200])
-    print()
-EOF, source .venv/bin/activate 2>/dev/null
-cd /home/anant_gupta/projects/work/internship-research-loop
-python3 - <<'EOF'
-import json, sys, os, re
-sys.path.insert(0, ".")
-from ingestion.posting_page import fetch_posting_markdown
-
-data = json.load(open('/tmp/zshah_data_jobs.json'))
-jobs = list(data.values())
-citizens = [j for j in jobs if j.get('sponsorship') == 'citizens-only']
-targets = ["Northrop Grumman", "CACI", "Palantir", "Torch Technologies", "Junior", "Rocket Lab"]
-sample = [j for j in citizens if j["company"] in targets]
-
-key = os.environ["FIRECRAWL_API_KEY"]
-kw_re = re.compile(r"(citizen|clearance|security|export|itar|u\.s\. person|authoriz)", re.I)
-
-for j in sample:
-    md = fetch_posting_markdown(j["url"], key)
-    lines = md.splitlines()
-    print(f"=== {j['company']} — {j['title'][:60]} ===")
-    hit_any = False
-    for line in lines:
-        if kw_re.search(line):
-            hit_any = True
-            print("  >>", line.strip()[:220])
-    if not hit_any:
-        print("  (nothing matched even a broad keyword scan)")
-    print()
-EOF, source .venv/bin/activate 2>/dev/null
-cd /home/anant_gupta/projects/work/internship-research-loop
-python3 - <<'EOF'
-import re
-
-# candidate addition: ITAR/export-control "U.S. Person" boilerplate, phrased very
-# differently from our current direct-imperative patterns ("must be a US citizen").
-# real text observed: "requires access to export-controlled information or items
-# that require 'U.S. Person' status" (Saronic); "must either be a 'U.S. person' as
-# defined by 22 C.F.R. 120.62" (Hermeus); "employees are exposed to and have
-# access to certain [ITAR-controlled]... 'US person' means: U.S. citizen..." (Varda)
-CANDIDATE = re.compile(r"export.control.{0,150}u\.?s\.?\s*person|u\.?s\.?\s*person.{0,150}export.control", re.I | re.S)
-
-real_misses = [
- "_If this role is based in the United States, it requires access to export-controlled information or items that require “U.S. Person” status. As defined by U.S. law, individuals who are any one of the following qualify as a U.S. Person",
- "**U.S. EXPORT CONTROL COMPLIANCE STATUS**\nThe person hired will have access to information and items subject to U.S. export controls, and therefore, must either be a “U.S. person” as defined by 22 C.F.R. Section 120.62",
- "## ITAR Requirements\nVarda, like all employers, must ensure that its employees working in the United States are lawfully authorized to work in the U.S. Additionally, our employees are exposed to and have access to certain export-controlled technology... “US person” means: U.S. citizen, U.S. lawful permanent resident",
-]
-print("=== does candidate catch the real misses? ===")
-for t in real_misses:
-    print(bool(CANDIDATE.search(t)), "|", t[:70].replace("\n"," "))
-
-print("\n=== does candidate false-positive on the EXISTING non-signal fixtures? ===")
-non_signals = [
-    "Willingness to undergo a US government background investigation, depending on US government project requirements.",
-    "without regard to race, color, religion, national origin, citizenship status, veteran status, disability",
-    "Will you require the firm's sponsorship to obtain, maintain, or extend your employment authorization?",
-    "We are unable to provide visa sponsorship for this role.",
-    "Base Salary $8K – $12K per month • Will Sponsor",
-]
-for t in non_signals:
-    print(bool(CANDIDATE.search(t)), "|", t[:70])
-EOF, source .venv/bin/activate 2>/dev/null && python -m pytest -q 2>&1 | tail -20, source .venv/bin/activate 2>/dev/null
-cd /home/anant_gupta/projects/work/internship-research-loop
-python3 - <<'EOF'
-import json, sys, os
-sys.path.insert(0, ".")
-from ingestion.posting_page import opt_exclusion
-
-# reuse the raw markdown we already fetched — re-fetching isn't needed since
-# opt_exclusion() is pure regex; but we only saved signal booleans, not md.
-# Instead, re-run the classification using the freshly imported (now updated) regex
-# against the SAME 22 targets, refetching just once more since md wasn't cached.
-from ingestion.posting_page import fetch_posting_markdown
-
-data = json.load(open('/tmp/zshah_data_jobs.json'))
-jobs = list(data.values())
-citizens = [j for j in jobs if j.get('sponsorship') == 'citizens-only']
-key = os.environ["FIRECRAWL_API_KEY"]
-
-caught, missed = [], []
-for j in citizens:
-    try:
-        md = fetch_posting_markdown(j["url"], key)
-    except Exception as e:
-        continue
-    signal = opt_exclusion(md)
-    (caught if signal else missed).append((j["company"], j["title"][:50], signal))
-
-print(f"UPDATED REGEX RESULT: {len(caught)} caught, {len(missed)} missed, of {len(citizens)} total\n")
-print("Caught:")
-for c, t, s in caught:
-    print(f"  {c} | {t} | {s!r}")
-print("\nStill missed:")
-for c, t, s in missed:
-    print(f"  {c} | {t}")
-EOF, source .venv/bin/activate 2>/dev/null && python -m pytest -q 2>&1 | tail -10
-echo "--- diff stat ---"
-git diff --stat
-echo "--- new untracked files ---"
-git status --short, echo "=== searching for freehire on GitHub ==="
-gh api "search/repositories?q=freehire" --jq '.items[] | {full_name, stargazers_count, pushed_at, description, fork}' 2>&1 | head -60, gh api repos/strelov1/freehire --jq '{full_name, description, homepage, pushed_at, default_branch, size, license: .license.name}' 2>&1
-echo "--- tree ---"
-gh api repos/strelov1/freehire/git/trees/main?recursive=true --jq '.tree[].path' 2>&1 | head -100, gh api repos/strelov1/freehire/git/trees/main?recursive=true --jq '.tree[].path' 2>&1 | grep -iE "seed|board|data|companies|token" | head -60, gh api repos/strelov1/freehire/contents/cmd/harvest-boards/seed.go --jq '.content' | base64 -d | head -80
-echo "=================="
-gh api repos/strelov1/freehire/contents/README.md --jq '.content' | base64 -d | head -120, gh api repos/strelov1/freehire/contents/sources --jq '.[].name' 2>&1, gh api repos/strelov1/freehire/contents/sources/greenhouse.yml --jq '.content, .size' | head -1 | base64 -d 2>/dev/null | head -30
-echo "..."
-gh api repos/strelov1/freehire/contents/sources/greenhouse.yml --jq '.content' | base64 -d | wc -l
-echo "--- ashby.yml ---"
-gh api repos/strelov1/freehire/contents/sources/ashby.yml --jq '.content' | base64 -d | wc -l
-gh api repos/strelov1/freehire/contents/sources/ashby.yml --jq '.content' | base64 -d | head -20
-echo "--- check for our known tokens ---"
-gh api repos/strelov1/freehire/contents/sources/greenhouse.yml --jq '.content' | base64 -d > /tmp/freehire_gh.yml
-grep -iE "pdtpartners|fccincinnati|walleyecapital|virtu|mwinternshipprogram|optiverus|aquaticcapitalmanagement" /tmp/freehire_gh.yml
-echo "--- last commit date on greenhouse.yml ---"
-gh api repos/strelov1/freehire/commits?path=sources/greenhouse.yml --jq '.[0] | {sha: .sha[0:8], date: .commit.author.date, message: .commit.message}', grep -A3 "mwinternshipprogram" /tmp/freehire_gh.yml
-echo "--- API section of README ---"
-gh api repos/strelov1/freehire/contents/README.md --jq '.content' | base64 -d | sed -n '/## API/,/## Adding a source/p'
-echo "--- quick live check: does freehire.me expose a public unauthenticated API? ---"
-curl -s -o /dev/null -w "%{http_code}\n" "https://freehire.me/api/v1/jobs"
-curl -s "https://freehire.me/api/v1/jobs?limit=1" | head -c 500, curl -s "https://freehire.me/api/v1/jobs/search?q=software+engineer+intern&limit=3" | python3 -m json.tool 2>&1 | head -80
-echo "--- check meta/pagination shape on plain /jobs ---"
-curl -s "https://freehire.me/api/v1/jobs?limit=2" | python3 -c "
-import json,sys
-d = json.load(sys.stdin)
-print('top-level keys:', list(d.keys()))
-print('meta:', d.get('meta'))
-print('job keys:', sorted(d['data'][0].keys()) if d.get('data') else None)
-"
-echo "--- rate/robots check ---"
-curl -sI "https://freehire.me/api/v1/jobs" | grep -iE "ratelimit|retry-after", echo "=== checking artificialintelligencejobs.co ==="
-curl -sI "https://artificialintelligencejobs.co" | head -5
-echo "--- try common API patterns ---"
-for path in "/api/jobs" "/api/v1/jobs" "/jobs.json" "/api" "/.well-known/ai-plugin.json"; do
-  code=$(curl -s -o /dev/null -w "%{http_code}" "https://artificialintelligencejobs.co$path")
-  echo "$path -> $code"
-done
-echo "--- fetch homepage to find real API docs/links ---"
-curl -s "https://artificialintelligencejobs.co" | grep -oiE 'api[^"'"'"' ]*' | sort -u | head -20, echo "=== /api/jobs ==="
-curl -s "https://artificialintelligencejobs.co/api/jobs" | python3 -c "
-import json,sys
-d = json.load(sys.stdin)
-print(type(d))
-if isinstance(d, list):
-    print('count:', len(d))
-    print(json.dumps(d[0], indent=2))
-elif isinstance(d, dict):
-    print('keys:', list(d.keys()))
-"
-echo "=== /jobs.json ==="
-curl -s "https://artificialintelligencejobs.co/jobs.json" -o /tmp/aijobs.json
-python3 -c "
-import json
-d = json.load(open('/tmp/aijobs.json'))
-print(type(d))
-if isinstance(d, list):
-    print('count:', len(d))
-    print(json.dumps(d[0], indent=2)[:1500])
-elif isinstance(d, dict):
-    print('keys:', list(d.keys()))
-    print(json.dumps(d, indent=2)[:1500])
-", python3 -c "
-import json
-from collections import Counter
-d = json.load(open('/tmp/aijobs.json'))
-jobs = d['jobs']
-print('total jobs:', len(jobs), '| companies claimed:', d['companies'])
-print('level distribution:', dict(Counter(j.get('level') for j in jobs)))
-interns = [j for j in jobs if 'intern' in j.get('title','').lower() or j.get('level','').lower()=='intern']
-print('intern-titled or intern-level jobs:', len(interns))
-for j in interns[:10]:
-    print(' -', j['company'], '|', j['title'], '|', j.get('region'), '|', j.get('posted'))
-companies = sorted(set(j['company'] for j in jobs))
-print('\ntotal distinct companies:', len(companies))
-print('sample companies:', companies[:30])
-"
-echo "--- /api/jobs meta ---"
-curl -s "https://artificialintelligencejobs.co/api/jobs" | python3 -c "
-import json,sys
-d = json.load(sys.stdin)
-print({k:v for k,v in d.items() if k not in ('jobs','docs')})
-", source .venv/bin/activate 2>/dev/null && python -m pytest -q 2>&1 | tail -40, git diff -- ingestion/posting_page.py, git diff -- core/filter.py | sed -n '/_matches_free_text_source\|_target_years\|Neither Greenhouse nor Ashby/,/^diff --git\|^$/p' | head -60
-echo "=== full section for clean context ==="
-git diff -- core/filter.py | grep -n "^@@" , grep -n "only rejecting outright" /home/anant_gupta/projects/work/internship-research-loop/core/filter.py, source .venv/bin/activate 2>/dev/null && python -m pytest -q 2>&1 | tail -10, git diff -- core/filter.py | sed -n '/^@@ -102,23/,/^@@ -/p' | head -120, cd /home/anant_gupta/projects/work/internship-research-loop
-git status --short
-echo "--- final test run before commit ---"
-source .venv/bin/activate 2>/dev/null && python -m pytest -q 2>&1 | tail -5
-echo "--- recent commit message style ---"
-git log --oneline -8, cd /home/anant_gupta/projects/work/internship-research-loop
-git log --oneline --no-merges | grep -viE "^[a-f0-9]+ (update state|recheck log)" | head -10, cd /home/anant_gupta/projects/work/internship-research-loop
-git add core/filter.py core/schema_drift.py ingestion/normalize.py ingestion/posting_page.py ingestion/sources.py run_pipeline.py tests/test_filter.py tests/test_posting_page.py tests/test_run_pipeline.py tests/test_schema_drift.py tests/test_sources.py tests/fixtures/vanshb03.json tests/fixtures/zshah101.json
-git status --short, cd /home/anant_gupta/projects/work/internship-research-loop
-git commit -m "$(cat <<'EOF'
-Four new discovery sources: vanshb03, zshah101, Greenhouse, Ashby
-
-Real hit-rate check against the 26 companies in the vault before building
-anything: 15/22 (68%) confirmed live on Greenhouse/Ashby/Lever, plus two more
-listings.json-shaped feeds (vanshb03, zshah101) found while chasing two real
-misses (Nuro, Deepgram) a manual clipping audit surfaced.
-
-- ingestion/sources.py: fetch_vanshb03, fetch_zshah101 (dict-keyed feed, not
-  a list), fetch_greenhouse, fetch_ashby (seeded company-token lists, every
-  token verified live before being added; a dead company board is skipped,
-  not fatal to the run).
-- core/filter.py: _matches_vanshb03, _matches_zshah101, and a shared
-  free-text matcher for Greenhouse/Ashby (neither exposes a structured term
-  field) that accepts a bare target year with no season word, not just the
-  literal "Summer 2027" string — real postings on our own seeded companies
-  (Marshall Wace, Ellipsis Labs) state the year that way, and a strict match
-  would have silently rejected both.
-- vanshb03's and zshah101's own structured sponsorship/citizenship fields are
-  checked at the filter layer, before a Firecrawl call is ever spent.
-- ingestion/posting_page.py: OPT_EXCLUSION_RE gained an ITAR/export-control
-  pattern built from real text, not a guess — measured against all 22 of
-  zshah101's live citizens-only-tagged postings (27% -> 59% caught).
-- core/schema_drift.py: drift checks added for the two new JSON feeds.
-- run_pipeline.py: turning on 4 sources at once produced a one-time 186-
-  candidate backlog (171 write-gate-passing) against a <100/month Firecrawl
-  budget. Throttled instead of absorbed or discarded: MAX_NEW_WRITES_PER_RUN
-  caps writes per run, most-recently-posted first; anything deferred is
-  simply never marked seen, so it's naturally re-offered next run.
-
-204/204 tests passing (was 167), all new fixtures from live data.
-EOF
-)"
-echo "--- status after commit ---"
-git status --short
-git log --oneline -1, cd /home/anant_gupta/projects/work/internship-research-loop
-git fetch origin
-git status
-echo "--- pushing ---"
-git push origin master, cd /home/anant_gupta/projects/work/internship-research-loop
-git pull --rebase origin master
-echo "--- status ---"
-git status --short
-git log --oneline -3, cd /home/anant_gupta/projects/work/internship-research-loop
-source .venv/bin/activate 2>/dev/null && python -m pytest -q 2>&1 | tail -5
-git push origin master, gh run list --repo gupta-builds/internship-research-loop --workflow=test.yml --limit 1 --json status,conclusion,headSha,createdAt 2>&1, echo "=== Uber: does freehire have the exact Career Prep req 300697? ==="
-curl -s "https://freehire.me/api/v1/jobs/search?q=uber+software+engineering+intern&limit=50" | python3 -c "
-import json,sys
-d = json.load(sys.stdin)
-print('total matched:', d.get('meta',{}).get('total'))
-for j in d['data']:
-    if j.get('company','').lower()=='uber' or 'uber.com' in j.get('url',''):
-        print(' -', j.get('title'), '|', j.get('url'), '| posted:', j.get('posted_at'), '| closed:', j.get('closed_at'))
-"
-echo ""
-echo "=== also try /api/v1/companies for uber ==="
-curl -s "https://freehire.me/api/v1/companies?search=uber&limit=10" | python3 -m json.tool 2>&1 | head -40, echo "=== search: does the exact req 300697 exist anywhere in freehire? ==="
-curl -s "https://freehire.me/api/v1/jobs/search?q=career+prep&limit=100" | python3 -c "
-import json,sys
-d = json.load(sys.stdin)
-for j in d['data']:
-    if 'uber' in j.get('company','').lower():
-        print(j.get('title'), '|', j.get('url'), '| posted:', j.get('posted_at'))
-"
-echo ""
-echo "=== try uber company slug directly ==="
-curl -s "https://freehire.me/api/v1/companies?search=Uber&limit=5" | python3 -m json.tool
-echo ""
-echo "=== all uber jobs via company_slug filter, check for 300697 in url ==="
-curl -s "https://freehire.me/api/v1/jobs?limit=100&offset=0" > /dev/null  # plain jobs has no company filter shown yet, try search paging
-curl -s "https://freehire.me/api/v1/jobs/search?q=uber+intern&limit=100" | python3 -c "
-import json,sys
-d = json.load(sys.stdin)
-print('matched total:', d['meta']['total'])
-hits = [j for j in d['data'] if 'uber.com' in j.get('url','') and '300697' in j.get('url','')]
-print('exact req 300697 found:', len(hits))
-for j in d['data']:
-    if j.get('company','').lower()=='uber':
-        print(' -', j['title'], '|', j['url'])
-", echo "=== Nuro: exact Greenhouse job 7351061? ==="
-curl -s "https://freehire.me/api/v1/jobs/search?q=nuro+AI+platform+intern&limit=50" | python3 -c "
-import json,sys
-d = json.load(sys.stdin)
-for j in d['data']:
-    if 'nuro' in j.get('company','').lower():
-        print(j['title'], '|', j['url'], '| posted:', j.get('posted_at'), '| closed:', j.get('closed_at'))
-"
-echo ""
-echo "=== raw search for the exact job id string 7351061 ==="
-curl -s "https://freehire.me/api/v1/jobs/search?q=7351061&limit=10" | python3 -c "
-import json,sys
-d = json.load(sys.stdin)
-print('matched:', d['meta']['total'])
-for j in d['data']:
-    print(' -', j.get('company'),'|', j['title'], '|', j['url'])
-"
-echo ""
-echo "=== Google: exact job 85564713261245126? ==="
-curl -s "https://freehire.me/api/v1/jobs/search?q=google+software+engineer+intern+BS&limit=50" | python3 -c "
-import json,sys
-d = json.load(sys.stdin)
-for j in d['data']:
-    if j.get('company','').lower()=='google' and 'intern' in j['title'].lower():
-        print(j['title'], '|', j['url'], '| posted:', j.get('posted_at'), '| closed:', j.get('closed_at'))
-", echo "=== search for exact Google job id string ==="
-curl -s "https://freehire.me/api/v1/jobs/search?q=85564713261245126&limit=10" | python3 -c "
-import json,sys
-d = json.load(sys.stdin)
-print('matched:', d['meta']['total'])
-for j in d['data']:
-    print(' -', j.get('company'),'|', j['title'], '|', j['url'])
-"
-echo ""
-echo "=== try google company slug directly ==="
-curl -s "https://freehire.me/api/v1/companies/google" | python3 -m json.tool 2>&1 | head -30
-echo ""
-echo "=== search q=google software engineer intern BS Summer 2027, look at ALL company=Google hits regardless of relevance filtering ==="
-curl -s "https://freehire.me/api/v1/jobs/search?q=software+engineer+intern&limit=100" | python3 -c "
-import json,sys
-d = json.load(sys.stdin)
-print('matched:', d['meta']['total'])
-google_hits = [j for j in d['data'] if j.get('company','').lower()=='google']
-print('google hits in this page:', len(google_hits))
-for j in google_hits:
-    print(' -', j['title'], '|', j['url'], '| posted:', j.get('posted_at'), 'closed:', j.get('closed_at'))
-", echo "=== try company-scoped jobs endpoints ==="
-for path in "/api/v1/companies/google/jobs" "/api/v1/jobs?company_slug=google&limit=20" "/api/v1/jobs?company=google&limit=20"; do
-  echo "--- $path ---"
-  curl -s "https://freehire.me$path" | python3 -c "
-import json,sys
-try:
-    d = json.load(sys.stdin)
-    print(list(d.keys()) if isinstance(d,dict) else type(d))
-    jobs = d.get('data', d.get('jobs', []))
-    print('count:', len(jobs) if isinstance(jobs,list) else 'n/a')
-except Exception as e:
-    print('parse error', e)
-"
-done, curl -s "https://freehire.me/api/v1/jobs?company_slug=google&limit=100" > /tmp/freehire_google.json
-python3 -c "
-import json
-d = json.load(open('/tmp/freehire_google.json'))
-print('meta:', d['meta'])
-jobs = d['data']
-companies = set(j.get('company') for j in jobs)
-print('companies in this page:', companies)
-interns = [j for j in jobs if 'intern' in j.get('title','').lower()]
-print('intern-titled jobs in this page:', len(interns))
-for j in interns:
-    print(' -', j['title'], '|', j['url'], '| posted:', j.get('posted_at'), '| closed:', j.get('closed_at'))
-"
-echo "--- paginate through all 3651 google jobs to find the exact SWE intern BS posting ---"
-python3 - <<'EOF'
-import requests
-found = []
-offset = 0
-while True:
-    r = requests.get(f"https://freehire.me/api/v1/jobs?company_slug=google&limit=200&offset={offset}", timeout=20).json()
-    jobs = r["data"]
-    if not jobs:
-        break
-    for j in jobs:
-        if "85564713261245126" in j.get("url","") or ("intern" in j.get("title","").lower() and "software engineer" in j.get("title","").lower()):
-            found.append(j)
-    offset += 200
-    if offset > r["meta"]["total"]:
-        break
-print(f"scanned to offset {offset}, total {r['meta']['total']}")
-print(f"matches found: {len(found)}")
-for j in found[:15]:
-    print(" -", j["title"], "|", j["url"], "| posted:", j.get("posted_at"), "| closed:", j.get("closed_at"))
-EOF, tmux kill-session -t claude_bzj98mrjc 2>/dev/null; pkill -f "company_slug=google" 2>/dev/null
-echo "killed if running"
-echo "--- full companies/google response for hints on real job-listing endpoint ---"
-curl -s "https://freehire.me/api/v1/companies/google" | python3 -m json.tool
-echo "--- try search endpoint's company param instead of plain /jobs ---"
-curl -s "https://freehire.me/api/v1/jobs/search?company=google&limit=5" | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-print('total:', d['meta']['total'])
-for j in d['data'][:5]: print(j.get('company'), '|', j['title'])
-", curl -s "https://freehire.me/api/v1/companies/google" | python3 -m json.tool | head -60, curl -s "https://freehire.me/api/v1/companies/google" | python3 -m json.tool | tail -30
-echo "=== try search with company param ==="
-curl -s "https://freehire.me/api/v1/jobs/search?company=google&limit=10" | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-print('total:', d['meta']['total'])
-for j in d['data'][:10]: print(j.get('company'), '|', j['title'])
-"
-echo "=== try search with company_slug param ==="
-curl -s "https://freehire.me/api/v1/jobs/search?company_slug=google&limit=10" | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-print('total:', d['meta']['total'])
-for j in d['data'][:10]: print(j.get('company'), '|', j['title'])
-", curl -s "https://freehire.me/api/v1/jobs/search?company_slug=google&q=software+engineer+intern&limit=20" | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-print('total matched:', d['meta']['total'])
-for j in d['data']:
-    print(' -', j['title'], '|', j['url'], '| posted:', j.get('posted_at'), '| closed:', j.get('closed_at'))
-", echo "=== exact job id search, google-scoped ==="
-curl -s "https://freehire.me/api/v1/jobs/search?company_slug=google&q=85564713261245126&limit=5" | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-print('total:', d['meta']['total'])
-for j in d['data']: print(j['title'], j['url'])
-"
-echo "=== all Google + Intern enrichment.seniority ==="
-curl -s "https://freehire.me/api/v1/jobs/search?company_slug=google&q=intern&limit=30" | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-print('total:', d['meta']['total'])
-for j in d['data']:
-    print(' -', j['title'], '|', j['url'], '| posted:', j.get('posted_at'), '| enrich:', j.get('enrichment'))
-", curl -s "https://freehire.me/api/v1/jobs/search?company_slug=google&q=Software+Engineering+Intern+BS+Summer+2027&limit=5" | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-for j in d['data']:
-    if '85564713261245126' in j['url']:
-        print(json.dumps(j, indent=2))
-", curl -s -o /dev/null -w "HTTP %{http_code}\n" "https://www.google.com/about/careers/applications/jobs/results/85564713261245126"
-curl -s "https://www.google.com/about/careers/applications/jobs/results/85564713261245126" | grep -oiE "no longer accepting|closed|not found|position.{0,30}filled" | head -5
-echo "--- also re-check SimplifyJobs' current live status for this exact id ---"
-python3 -c "
-import requests
-data = requests.get('https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json', timeout=30).json()
-hit = [r for r in data if r.get('id')=='[REDACTED]']
-print(hit)
-", echo "=== robots.txt ==="
-curl -s "https://freehire.me/robots.txt"
-echo ""
-echo "=== full README for ToS/rate-limit/acceptable-use mentions ==="
-gh api repos/strelov1/freehire/contents/README.md --jq '.content' | base64 -d | grep -iA5 "rate.limit\|acceptable use\|terms of\|fair use\|abuse"
-echo "=== SECURITY.md ==="
-gh api repos/strelov1/freehire/contents/SECURITY.md --jq '.content' | base64 -d
-echo "=== check for a LICENSE / ToS page on the live site ==="
-curl -s "https://freehire.me/terms" -o /dev/null -w "%{http_code}\n"
-curl -s "https://freehire.me/api/v1/docs" -o /dev/null -w "%{http_code}\n"
-echo "=== hammer test: 20 rapid requests, watch for 429 ==="
-for i in $(seq 1 20); do
-  code=$(curl -s -o /dev/null -w "%{http_code}" "https://freehire.me/api/v1/jobs?limit=1")
-  echo -n "$code "
-done
-echo "", for slug in uber westerndigital wells-fargo sig grant-thornton marmon-holdings rippling; do
-  echo -n "$slug -> "
-  curl -s "https://freehire.me/api/v1/companies/$slug" | python3 -c "
-import json,sys
-try:
-    d=json.load(sys.stdin)
-    if 'error' in d: print('NOT FOUND')
-    else: print('job_count:', d['data']['company']['job_count'])
-except Exception as e: print('parse error', e)
-"
-done, curl -s "https://freehire.me/api/v1/jobs/search?q=7351061&company_slug=nuro&limit=5" 
-echo "---"
-curl -s "https://freehire.me/api/v1/jobs/search?company_slug=nuro&q=AI+Platform+Intern&limit=5" | python3 -m json.tool | head -60, curl -s "https://freehire.me/api/v1/jobs/search?company_slug=nuro&q=AI+Platform+Intern&limit=5" | python3 -c "
-import json,sys
-d = json.load(sys.stdin)
-j = d['data'][0]
-print('2027' in j['description'], '2026' in j['description'])
-print('summary:', j.get('enrichment',{}).get('summary'))
-", grep -n "def test_normalize_ashby_maps_fields" /home/anant_gupta/projects/work/internship-research-loop/tests/test_filter.py, cd /home/anant_gupta/projects/work/internship-research-loop
-source .venv/bin/activate 2>/dev/null && python -m pytest -q 2>&1 | tail -60, source .venv/bin/activate 2>/dev/null
-cd /home/anant_gupta/projects/work/internship-research-loop
-python3 - <<'EOF'
-import sys
-sys.path.insert(0, ".")
-from core.filter import load_profile, matches
-from core.identity import cross_source_key
-from run_pipeline import fetch_and_filter, dedup_new, load_seen_ids
-from vault_writer.writer import scan_dossiers
-
-JARVIS_DIR = "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis"
-profile = load_profile()
-print("Fetching all 8 sources live (read-only)...")
-matched_by_source = fetch_and_filter(profile)
-for name, info in matched_by_source.items():
-    print(f"  {name}: fetched {info['fetch_count']}, matched {len(info['matched'])}")
-
-seen_ids = load_seen_ids("state/seen_ids.json")
-new_listings, already_seen = dedup_new(matched_by_source, seen_ids)
-print(f"\nTotal new (unseen uid) across all 8 sources: {len(new_listings)}; already-seen: {already_seen}")
-
-freehire_new = [(uid, l) for uid, l in new_listings if l.source == "Freehire"]
-aijobs_new = [(uid, l) for uid, l in new_listings if l.source == "AIJobs"]
-print(f"\nFreehire contributed {len(freehire_new)} new candidates:")
-for uid, l in freehire_new:
-    print(f"  - {l.company} — {l.title} | {l.url}")
-print(f"\nAIJobs contributed {len(aijobs_new)} new candidates:")
-for uid, l in aijobs_new:
-    print(f"  - {l.company} — {l.title} | {l.url}")
-
-dossier_fms = scan_dossiers(JARVIS_DIR)
-dossier_keys = {cross_source_key(fm.get("company",""), fm.get("title","")) for fm in dossier_fms}
-freehire_dupe = [l for uid, l in freehire_new if cross_source_key(l.company, l.title) in dossier_keys]
-aijobs_dupe = [l for uid, l in aijobs_new if cross_source_key(l.company, l.title) in dossier_keys]
-print(f"\nOf those, already-in-vault-by-key (would hit cross_source_duplicate): Freehire={len(freehire_dupe)}, AIJobs={len(aijobs_dupe)}")
-EOF, echo "=== does the search endpoint support a structured seniority filter, not just free-text q? ==="
-curl -s "https://freehire.me/api/v1/jobs/search?company_slug=google&seniority=intern&limit=10" | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-print('total:', d['meta']['total'])
-for j in d['data'][:5]: print(j['title'])
-"
-echo "=== default order of company_slug=google with no q — does our exact posting appear in first 200? ==="
-python3 -c "
-import requests
-r = requests.get('https://freehire.me/api/v1/jobs/search?company_slug=google&limit=200', timeout=20).json()
-print('total:', r['meta']['total'], '| returned:', len(r['data']))
-ids = [j['url'] for j in r['data']]
-print('our target in first 200:', any('85564713261245126' in u for u in ids))
-interns = [j for j in r['data'] if (j.get('enrichment') or {}).get('seniority')=='intern']
-print('intern-level in first 200:', len(interns))
-", source .venv/bin/activate 2>/dev/null
-cd /home/anant_gupta/projects/work/internship-research-loop
-python -m pytest -q 2>&1 | tail -10
-echo "=== re-run live dry run with the fix ==="
-python3 - <<'EOF'
-import sys
-sys.path.insert(0, ".")
-from ingestion.freehire import fetch_freehire
-listings = fetch_freehire()
-print(f"Freehire now fetches {len(listings)} intern-level candidates total")
-for l in listings:
-    print(f"  - {l.company} — {l.title} | {l.date_posted}")
-EOF, source .venv/bin/activate 2>/dev/null
-cd /home/anant_gupta/projects/work/internship-research-loop
-python3 - <<'EOF'
-import sys
-sys.path.insert(0, ".")
-from core.filter import load_profile, matches
-from core.identity import cross_source_key
-from run_pipeline import fetch_and_filter, dedup_new, load_seen_ids
-from vault_writer.writer import scan_dossiers
-
-JARVIS_DIR = "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis"
-profile = load_profile()
-matched_by_source = fetch_and_filter(profile)
-for name, info in matched_by_source.items():
-    print(f"  {name}: fetched {info['fetch_count']}, matched {len(info['matched'])}")
-
-seen_ids = load_seen_ids("state/seen_ids.json")
-new_listings, already_seen = dedup_new(matched_by_source, seen_ids)
-print(f"\nTotal new across all 8 sources: {len(new_listings)}; already-seen: {already_seen}")
-
-freehire_new = [(uid, l) for uid, l in new_listings if l.source == "Freehire"]
-print(f"\nFreehire matched+new: {len(freehire_new)}")
-for uid, l in freehire_new:
-    print(f"  - {l.company} — {l.title}")
-    if "85564713261245126" in l.url:
-        print("    *** This IS the exact Google ground-truth posting ***")
-
-dossier_fms = scan_dossiers(JARVIS_DIR)
-dossier_keys = {cross_source_key(fm.get("company",""), fm.get("title","")) for fm in dossier_fms}
-freehire_dupe = [l for uid, l in freehire_new if cross_source_key(l.company, l.title) in dossier_keys]
-print(f"\nOf Freehire's new matches, already-in-vault-by-key: {len(freehire_dupe)}")
-EOF, source .venv/bin/activate 2>/dev/null
-cd /home/anant_gupta/projects/work/internship-research-loop
-python3 - <<'EOF'
-import requests
-r = requests.get("https://freehire.me/api/v1/jobs/search?company_slug=wellsfargo&seniority=intern&limit=200", timeout=20).json()
-print("total:", r["meta"]["total"])
-for j in r["data"]:
-    print(f"  {j['title'][:60]:60s} | category: {(j.get('enrichment') or {}).get('category')}")
-EOF, source .venv/bin/activate 2>/dev/null
-python3 - <<'EOF'
-import requests
-r = requests.get("https://freehire.me/api/v1/jobs/search?company_slug=wells-fargo&seniority=intern&limit=200", timeout=20).json()
-print("total:", r["meta"]["total"])
-for j in r["data"]:
-    print(f"  {j['title'][:65]:65s} | category: {(j.get('enrichment') or {}).get('category')} | domains: {(j.get('enrichment') or {}).get('domains')}")
-EOF, JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers
-for f in "$JARVIS"/*.md; do grep -m1 "^title:" "$f" | sed 's/^title: *//'; done, JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers
-grep -l "Corporate Risk Development" "$JARVIS"/*.md | xargs -I{} sh -c 'grep -E "^company:|^category:|^title:" "{}"', source .venv/bin/activate 2>/dev/null
-cd /home/anant_gupta/projects/work/internship-research-loop
-python -m pytest -q 2>&1 | tail -10
-echo "=== re-run live dry run, trimmed seed list ==="
-python3 - <<'EOF'
-import sys
-sys.path.insert(0, ".")
-from core.filter import load_profile
-from run_pipeline import fetch_and_filter
-profile = load_profile()
-matched = fetch_and_filter(profile)
-info = matched["Freehire"]
-print(f"Freehire: fetched {info['fetch_count']}, matched {len(info['matched'])}")
-for l in info["matched"]:
-    print(f"  - {l.company} — {l.title}")
-EOF, source .venv/bin/activate 2>/dev/null
-cd /home/anant_gupta/projects/work/internship-research-loop
-python3 - <<'EOF'
-import sys
-sys.path.insert(0, ".")
-from core.filter import load_profile
-from run_pipeline import fetch_and_filter, dedup_new, load_seen_ids
-profile = load_profile()
-matched = fetch_and_filter(profile)
-for name, info in matched.items():
-    print(f"  {name}: fetched {info['fetch_count']}, matched {len(info['matched'])}")
-seen_ids = load_seen_ids("state/seen_ids.json")
-new_listings, already_seen = dedup_new(matched, seen_ids)
-print(f"\nTotal new across all 8 sources: {len(new_listings)}; already-seen: {already_seen}")
-EOF
-echo "--- final test count ---"
-python -m pytest -q 2>&1 | tail -5
-echo "--- git status ---"
-git status --short, cd /home/anant_gupta/projects/work/internship-research-loop
-git log --oneline -5
-echo "--- current status ---"
-git status --short
-echo "--- is a21b2fa still reachable / where is it relative to HEAD ---"
-git log --oneline -1 a21b2fa 2>&1
-git merge-base --is-ancestor a21b2fa HEAD && echo "a21b2fa is an ancestor of HEAD" || echo "a21b2fa is NOT an ancestor", cd /home/anant_gupta/projects/work/internship-research-loop
-git fetch origin 2>&1
-git log --oneline origin/master -3
-git rev-parse HEAD origin/master, cd /home/anant_gupta/projects/work/internship-research-loop
-git pull --ff-only origin master 2>&1
-git log --oneline -3
-git status --short, cd /home/anant_gupta/projects/work/internship-research-loop
-git show a21b2fa -- run_pipeline.py | grep -n "MAX_NEW_WRITES_PER_RUN\|_prioritize_and_cap\|deferred_count" | head -30, cd /home/anant_gupta/projects/work/internship-research-loop
-grep -n "MAX_NEW_WRITES_PER_RUN\|_prioritize_and_cap" run_pipeline.py, cd /home/anant_gupta/projects/work/internship-research-loop
-echo "=== grep for lever in all tracked .py files (case-insensitive) ==="
-git grep -ni "lever" -- '*.py' 2>&1
-echo "=== also check untracked freehire.py just in case (shouldn't have lever either) ==="
-grep -ni "lever" ingestion/freehire.py 2>&1, cd /home/anant_gupta/projects/work/internship-research-loop
-source .venv/bin/activate 2>/dev/null
-echo "=== current working tree (includes uncommitted freehire work) ==="
-python -m pytest -q 2>&1 | tail -5
-echo ""
-echo "=== stashing uncommitted changes to test pure committed (a21b2fa/cdb4299) state ==="
-git stash push -u -m "freehire WIP, stashed for pure-commit test count"
-python -m pytest -q 2>&1 | tail -5
-echo ""
-echo "=== restoring uncommitted work ==="
-git stash pop
-git status --short, cd /home/anant_gupta/projects/work/internship-research-loop
-sed -n '/GREENHOUSE_COMPANIES = {/,/^}/p; /ASHBY_COMPANIES = {/,/^}/p' ingestion/sources.py, source /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/activate 2>/dev/null
-python3 -c "
-import requests
-v = requests.get('https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/.github/scripts/listings.json', timeout=30).json()
-print('vanshb03 live count now:', len(v))
-z = requests.get('https://raw.githubusercontent.com/zshah101/[REDACTED]/main/data/jobs.json', timeout=30).json()
-print('zshah101 live count now:', len(z))
-from collections import Counter
-spon = Counter(j.get('sponsorship') for j in z.values())
-print('zshah101 sponsorship dist now:', dict(spon))
-", cd /home/anant_gupta/projects/work/internship-research-loop
-grep -n "OPT_EXCLUSION_RE" -A 20 ingestion/posting_page.py | grep -A 15 "re.compile"
-echo "--- Google SimplifyJobs live check (drift-prone, per Anant's own example) ---"
-source .venv/bin/activate 2>/dev/null
-python3 -c "
-import requests
-data = requests.get('https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json', timeout=30).json()
-hit = [r for r in data if r.get('id')=='[REDACTED]']
-print('exact ground-truth Google posting still in feed:', bool(hit))
-if hit: print(hit[0])
-", cd /home/anant_gupta/projects/work/internship-research-loop
-git show a21b2fa -- ingestion/posting_page.py | grep -n "export.control" 
-echo "--- confirm test count for posting_page tests specifically, and re-verify a sample of the 13 real catches still catch ---"
-source .venv/bin/activate 2>/dev/null
-python3 -c "
-import sys; sys.path.insert(0,'.')
-from ingestion.posting_page import opt_exclusion
-# real text samples from the 22-posting check, spot-checking 3 of the original 6 + 2 of the newly-added 7
-samples = {
-  'Anduril (original 6)': 'U.S. Person status is required as this position needs to access export controlled data.',
-  'Astranis (original 6)': 'must be a U.S. citizen due to export control regulations',
-  'Clarity (original 6)': 'US Citizenship is required for this internship',
-  'Saronic (new export-control pattern)': 'it requires access to export-controlled information or items that require “U.S. Person” status',
-  'Hermeus (new export-control pattern)': 'must either be a “U.S. person” as defined by 22 C.F.R. Section 120.62',
-}
-for name, text in samples.items():
-    print(name, '->', bool(opt_exclusion(text)))
-", cd /home/anant_gupta/projects/work/internship-research-loop
-source .venv/bin/activate 2>/dev/null
-python -m pytest tests/test_posting_page.py -q 2>&1 | tail -10
-echo "--- that Hermeus 'False' above was my own abbreviated test text, not the real fixture — confirming against the actual fixture text ---"
-grep -A3 "Hermeus SWE Intern" tests/test_posting_page.py, cd /home/anant_gupta/projects/work/internship-research-loop
-echo "=== was recheck.py touched in commit a21b2fa? ==="
-git show a21b2fa --stat | grep recheck
-echo "(no output above = recheck.py was NOT part of that commit)"
-echo ""
-echo "=== recheck.py as committed (HEAD, before my uncommitted stash) ==="
-git show HEAD:recheck.py | grep -n "^FEEDS = {" -A 8
-echo ""
-echo "=== recheck.py in my current uncommitted working tree ==="
-grep -n "^FEEDS = {" -A 8 recheck.py, gh run list --repo gupta-builds/internship-research-loop --workflow=run.yml --limit 5 --json status,conclusion,createdAt 2>&1
-echo "--- latest run's log tail for real written/matched counts from the new sources actually running ---"
-cd /home/anant_gupta/projects/work/internship-research-loop
-tail -3 logs/runs.jsonl | python3 -c "
-import json,sys
-for line in sys.stdin:
-    r = json.loads(line)
-    print(r['timestamp'], r.get('fetch_counts'), r.get('filter_match_counts'), 'written=', r.get('written_count'), 'deferred=', r.get('deferred_count'))
-"
-echo "--- recheck.yml history — has it run since a21b2fa, confirming only 2-source FEEDS in production ---"
-gh run list --repo gupta-builds/internship-research-loop --workflow=recheck.yml --limit 3 --json status,conclusion,createdAt 2>&1
-tail -2 logs/rechecks.jsonl, JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers
-echo "current dossier count: $(ls "$JARVIS" | wc -l)"
-python3 -c "
-import json
-print('seen_ids.json size:', len(json.load(open('/home/anant_gupta/projects/work/internship-research-loop/state/seen_ids.json'))))
-print('opt_cache.json size:', len(json.load(open('/home/anant_gupta/projects/work/internship-research-loop/state/opt_cache.json'))))
-", true, cd /home/anant_gupta/projects/work/internship-research-loop
-echo "=== confirm no pipeline code touched this task, only git reads + stash/pop ==="
-git status --short
-echo "=== confirm working tree tests still pass (sanity, read-only check) ==="
-source .venv/bin/activate 2>/dev/null && python -m pytest -q 2>&1 | tail -5, head -20 "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/60_Claude/07_AI_Information/Session Logs/log.md", head -12 "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/60_Claude/07_AI_Information/Session Logs/log.md"
+- Commands run: git log --oneline -20 && echo "---STATUS---" && git status && echo "---REMOTE---" && git remote -v, find . -type f -not -path './.git/*' | sort, source .venv/bin/activate 2>/dev/null; python -m pytest -q 2>&1 | tail -40, find . -type f -not -path './.git/*' -not -path './.venv/*' -not -path './.pytest_cache/*' -not -path './__pycache__/*' -not -path '*/__pycache__/*' | sort, wc -l state/seen_ids.json logs/runs.jsonl logs/rechecks.jsonl; echo "---last 5 runs.jsonl---"; tail -5 logs/runs.jsonl; echo "---rechecks.jsonl---"; cat logs/rechecks.jsonl, grep -n "fa7fbaf4" logs/runs.jsonl state/seen_ids.json state/opt_cache.json, git log --all --oneline -- enrich.py; echo "---"; git log -p --follow -- enrich.py | grep -c "^commit"; echo "---grep enrich in logs---"; grep -i "enrich" logs/runs.jsonl | head -5; echo "no matches above means none"; echo "---check any Enrichment section anywhere in vault dossiers via jarvis search---", gh run list --repo gupta-builds/internship-research-loop --workflow=run.yml --limit 5 --json displayTitle,status,conclusion,createdAt 2>&1 echo "---recheck---" gh run list --repo gupta-builds/internship-research-loop --workflow=recheck.yml --limit 5 --json displayTitle,status,conclusion,createdAt 2>&1 echo "---current UTC time---" date -u, ls /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis 2>&1 | head -5; echo "---"; ls -la /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers 2>&1 | head -5, JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis echo "--- Enrichment sections in dossiers ---" grep -rl "## Enrichment" "$JARVIS/10_Areas/Career/Internships/List/Dossiers/" 2>&1 echo "(none = no output above)" echo "--- promoted: non-null ---" grep -L "^promoted:$" "$JARVIS/10_Areas/Career/Internships/List/Dossiers/"*.md echo "--- Run Log.md exists? ---" ls -la "$JARVIS/10_Areas/Career/Internships/List/" 2>&1 echo "--- dossier byte sizes ---" wc -c "$JARVIS/10_Areas/Career/Internships/List/Dossiers/"*.md | sort -n, python3 -c "import json; print(len(json.load(open('state/seen_ids.json'))))" echo "---issues---" gh issue list --repo gupta-builds/internship-research-loop --state all --json number,title 2>&1 echo "---grep zapply anywhere in live source (not .venv)---" grep -ril "zapply" --include="*.py" . 2>/dev/null | grep -v .venv echo "---confirm no anthropic/openai/claude deps---" grep -iE "anthropic|openai|claude" requirements.txt core/*.py ingestion/*.py vault_writer/*.py *.py 2>/dev/null, grep -in "zapply" core/identity.py core/filter.py tests/test_identity.py tests/test_filter.py, JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers for f in "$JARVIS"/*.md; do company=$(grep -m1 "^company:" "$f" | sed 's/^company: *//') title=$(grep -m1 "^title:" "$f" | sed 's/^title: *//') echo "$(basename "$f"): $company — $title" done, JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers f="$JARVIS/[REDACTED].md" grep -m1 "^company:" "$f"; grep -m1 "^title:" "$f" echo "---templates---" ls /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/30_Order/Templates/Career/, ls /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/ | grep -i gael, JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers ls "$JARVIS" | wc -l ls "$JARVIS" echo "---repo state now---" git pull --ff-only 2>&1 | tail -5 tail -3 logs/rechecks.jsonl tail -3 logs/runs.jsonl, cat logs/runs.jsonl | python3 -c " import json,sys for line in sys.stdin: r = json.loads(line) print(r['timestamp'], r['fetch_counts'], r['filter_match_counts'], 'new=',r['new_count'],'written=',r['written_count'],'halted=',r['halted']) ", source .venv/bin/activate 2>/dev/null python3 - <<'EOF' import requests, json url = "https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json" data = requests.get(url, timeout=30).json() google = [r for r in data if r.get("company_name","").strip().lower() == "google"] print(f"Total Google entries: {len(google)}") for r in google: print("---") print("id:", r.get("id")) print("title:", r.get("title")) print("active:", r.get("active")) print("terms:", r.get("terms")) print("category:", r.get("category")) print("locations:", r.get("locations")) print("degrees:", r.get("degrees")) print("date_posted:", r.get("date_posted")) print("date_updated:", r.get("date_updated")) print("url:", r.get("url")) keys = list(r.keys()) print("all keys:", keys) EOF, for ts in 1784591786 1784591882 1784591791 1784591853 1784591923 1784592001 1784595879 1784595961; do echo -n "$ts -> "; date -u -d @$ts +"%Y-%m-%dT%H:%M:%SZ" done echo "--- our run timestamps around that window ---" grep -oP '"timestamp": "\K[^"]+' logs/runs.jsonl | tail -15, date -u; echo "---"; git log -1 --format=%cd --date=iso-strict; echo "--- latest gh run ---"; gh run list --repo gupta-builds/internship-research-loop --workflow=run.yml --limit 3 --json displayTitle,status,conclusion,createdAt 2>&1, git pull --ff-only 2>&1 | tail -10 echo "--- new runs.jsonl line count ---" wc -l logs/runs.jsonl echo "--- runs since 07-20 ---" grep -oP '"timestamp": "\K[^"]+' logs/runs.jsonl | awk -F'T' '$1 >= "2026-07-20"', python3 -c " import json with open('logs/runs.jsonl') as f: for line in f: r = json.loads(line) ts = r['timestamp'] if '2026-07-20T19' <= ts <= '2026-07-21T05': print(ts, r['fetch_counts'], r['filter_match_counts'], 'new=',r['new_count'],'already_seen=',r['already_seen_count'],'written=',r['written_count']) for rej in r['rejections']: print(' rejection:', rej) ", grep -m1 "^url:" "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/[REDACTED].md", source .venv/bin/activate 2>/dev/null python3 - <<'EOF' import requests, json url = "https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json" data = requests.get(url, timeout=30).json() targets = ["uber", "nuro", "deepgram", "western digital"] for t in targets: hits = [r for r in data if t in r.get("company_name","").strip().lower()] print(f"=== {t}: {len(hits)} entries ===") for r in hits: print(" id:", r.get("id"), "| title:", r.get("title"), "| active:", r.get("active"), "| terms:", r.get("terms"), "| category:", r.get("category"), "| degrees:", r.get("degrees"), "| url:", r.get("url")) EOF echo "--- JGCL feed ---" python3 - <<'EOF' import requests url = "https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json" data = requests.get(url, timeout=30).json() targets = ["uber", "nuro", "deepgram", "western digital"] for t in targets: hits = [r for r in data if t in r.get("company_name","").strip().lower()] print(f"=== JGCL {t}: {len(hits)} entries ===") for r in hits: print(" ", r) EOF, grep -n "300697\|career prep\|Career Prep" /home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/b8xm8tctm.txt echo "=== nuro section ===" sed -n '/=== nuro/,/=== deepgram/p' /home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/b8xm8tctm.txt echo "=== deepgram section ===" sed -n '/=== deepgram/,/=== western/p' /home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/b8xm8tctm.txt echo "=== western digital section ===" sed -n '/=== western digital/,$p' /home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/b8xm8tctm.txt echo "=== uber Summer 2027 active entries ===" grep -n "Summer 2027" /home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/b8xm8tctm.txt | head -20, grep -c "01925f31" state/seen_ids.json state/opt_cache.json echo "--- last run full rejections, check for this uid ---" tail -1 logs/runs.jsonl | python3 -m json.tool echo "--- check across all logged rejections ever ---" grep -o "01925f31[a-z0-9-]*" logs/runs.jsonl | sort -u echo "--- curl liveness check ourselves ---" curl -s -o /dev/null -w "%{http_code}\n" -I "https://jobs.smartrecruiters.com/WesternDigital/744000138727213", python3 -c " import json cache = json.load(open('state/opt_cache.json')) for k,v in cache.items(): if '01925f31' in k: print(k, v) " echo "--- seen_ids context ---" grep -B1 -A1 "01925f31" state/seen_ids.json, grep "01925f31" logs/rechecks.jsonl echo "--- full rechecks.jsonl ---" cat logs/rechecks.jsonl | python3 -c " import json,sys for line in sys.stdin: r = json.loads(line) print(r['timestamp'], 'scanned=',r['scanned'], 'removals=',r['removals']) " echo "--- does the file exist under any name pattern ---" find /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/ -iname "*01925f31*" echo "--- git history of this file in the vault repo, if accessible ---" cd /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis 2>/dev/null && git log --all --oneline -- "10_Areas/Career/Internships/List/Dossiers/[REDACTED].md" 2>&1 | head -20, JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers echo "current count: $(ls "$JARVIS" | wc -l)" for f in "$JARVIS"/*.md; do company=$(grep -m1 "^company:" "$f" | sed 's/^company: *//') status=$(grep -m1 "^status:" "$f" | sed 's/^status: *//') echo "$(basename "$f"): $company [$status]" done | grep -iE "uber|nuro|deepgram|western", JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers for f in "$JARVIS"/*.md; do company=$(grep -m1 "^company:" "$f" | sed 's/^company: *//') url=$(grep -m1 "^url:" "$f" | sed 's/^url: *//') echo "$company | $url" done, source .venv/bin/activate 2>/dev/null python3 - <<'EOF' import requests def try_gh(token): try: r = requests.get(f"https://boards-api.greenhouse.io/v1/boards/{token}/jobs", timeout=15) if r.status_code == 200: n = len(r.json().get("jobs", [])) return f"GH:{token} -> 200, {n} jobs" except Exception as e: pass return None def try_lever(token): try: r = requests.get(f"https://api.lever.co/v0/postings/{token}?mode=json", timeout=15) if r.status_code == 200: data = r.json() if isinstance(data, list): return f"Lever:{token} -> 200, {len(data)} postings" except Exception: pass return None def try_ashby(token): try: r = requests.get(f"https://api.ashbyhq.com/posting-api/job-board/{token}", timeout=15) if r.status_code == 200: data = r.json() jobs = data.get("jobs", []) return f"Ashby:{token} -> 200, {len(jobs)} jobs" except Exception: pass return None # Known tokens extracted directly from existing dossier URLs known = { "FC Cincinnati": [("gh","fccincinnati")], "Aquatic Capital Management": [("gh","aquaticcapitalmanagement")], "Walleye Capital": [("gh","walleyecapital-external-students")], "PDT Partners": [("gh","pdtpartners")], "Virtu Financial": [("gh","virtu")], "Marshall Wace": [("gh","mwinternshipprogram")], "Ellipsis Labs": [("ashby","ellipsislabs")], "Quadrillion": [("ashby","quadrillion-labs")], "Circleback": [("ashby","circleback")], "CTGT": [("ashby","ctgt")], "Pylon": [("ashby","pylon-labs")], "Palantir": [("lever","palantir")], } for company, toks in known.items(): for kind, token in toks: fn = {"gh": try_gh, "lever": try_lever, "ashby": try_ashby}[kind] res = fn(token) print(f"{company}: {res or f'{kind}:{token} -> FAILED'}") print("\n--- guessed tokens for companies NOT currently on GH/Lever/Ashby, or unconfirmed ---") guess_targets = { "Western Digital": ["westerndigital", "westerndigitalcorporation", "wdc"], "Wells Fargo": ["wellsfargo"], "Susquehanna International Group (SIG)": ["sig", "susquehanna", "sigfinancial"], "Grant Thornton": ["grantthornton"], "Marmon Holdings": ["marmon", "marmonholdings"], "Castleton Commodities International": ["castletoncommodities", "cci", "castleton"], "SimonComputing": ["simoncomputing"], "Rippling": ["rippling"], "Optiver": ["optiver"], "Hudson River Trading": ["hudsonrivertrading", "hrt"], "Uber": ["uber"], "Nuro": ["nuro"], "Deepgram": ["deepgram", "Deepgram"], "Google": ["google"], } for company, tokens in guess_targets.items(): hits = [] for t in tokens: for kind, fn in [("gh", try_gh), ("lever", try_lever), ("ashby", try_ashby)]: res = fn(t) if res: hits.append(res) print(f"{company}: {hits if hits else 'no hit on any of GH/Lever/Ashby for guessed tokens ' + str(tokens)}") EOF, source .venv/bin/activate 2>/dev/null python3 - <<'EOF' import requests def try_gh(token): try: r = requests.get(f"https://boards-api.greenhouse.io/v1/boards/{token}/jobs", timeout=15) if r.status_code == 200: n = len(r.json().get("jobs", [])) return f"GH:{token} -> 200, {n} jobs" except Exception: pass return None # both HRT and Optiver embed gh_jid on their own custom domain -> Greenhouse, not Ashby for token in ["hudsonrivertrading", "hrt", "hudsonriver"]: print("HRT try:", token, "->", try_gh(token)) for token in ["optiverus", "optiver-us", "optiverinternship", "optiverna"]: print("Optiver try:", token, "->", try_gh(token)) # direct job-id lookup against a *correct* guess isn't possible without token, but let's confirm # the actual live job id still resolves through the embed page itself (proves it's real Greenhouse, just wrong token guess) r = requests.get("https://www.optiver.com/join-us/jobs/8401052002/?gh_jid=8401052002", timeout=15) print("Optiver embed page status:", r.status_code) EOF, echo "=== vanshb03/Summer2027-Internships: does it exist, is it distinct from SimplifyJobs? ===" gh api repos/vanshb03/Summer2027-Internships --jq '{full_name, fork, parent: .parent.full_name, pushed_at, default_branch}' 2>&1 echo "" echo "=== SimplifyJobs/Summer2026-Internships for comparison ===" gh api repos/SimplifyJobs/Summer2026-Internships --jq '{full_name, fork, parent: .parent.full_name, pushed_at, default_branch}' 2>&1 echo "" echo "=== search for zshah101's internship repo ===" gh api "search/repositories?q=user:zshah101" --jq '.items[] | {full_name, pushed_at, description}' 2>&1 echo "" echo "=== search for speedyapply's repo ===" gh api "search/repositories?q=user:speedyapply" --jq '.items[] | {full_name, pushed_at, description}' 2>&1 echo "" echo "=== search for sndsh404's repo ===" gh api "search/repositories?q=user:sndsh404" --jq '.items[] | {full_name, pushed_at, description}' 2>&1, echo "=== speedyapply/2027-SWE-College-Jobs tree ===" gh api repos/speedyapply/2027-SWE-College-Jobs/git/trees/main?recursive=true --jq '.tree[].path' 2>&1 | head -60 echo "" echo "=== speedyapply/2027-SWE-College-Jobs recent commits ===" gh api repos/speedyapply/2027-SWE-College-Jobs/commits --jq '.[0:5] | .[] | {sha: .sha[0:8], message: .commit.message, date: .commit.author.date}' 2>&1, echo "=== speedyapply/2027-AI-College-Jobs tree ===" gh api repos/speedyapply/2027-AI-College-Jobs/git/trees/main?recursive=true --jq '.tree[].path' 2>&1 | head -60, echo "=== README first 100 lines, speedyapply/2027-SWE-College-Jobs ===" gh api repos/speedyapply/2027-SWE-College-Jobs/contents/README.md --jq '.content' 2>&1 | base64 -d 2>/dev/null | head -100, echo "=== vanshb03/Summer2027-Internships tree ===" gh api repos/vanshb03/Summer2027-Internships/git/trees/dev?recursive=true --jq '.tree[].path' 2>&1 | grep -i script, echo "=== zshah101 repo tree ===" gh api repos/zshah101/[REDACTED]/git/trees/main?recursive=true --jq '.tree[].path' 2>&1 echo "--- if main doesn't exist, try master ---" gh api repos/zshah101/[REDACTED] --jq '.default_branch' 2>&1, echo "=== vanshb03 listings.json: schema check (first entry, distinct keys, count, Uber/Deepgram presence) ===" python3 - <<'EOF' import requests, json url = "https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/.github/scripts/listings.json" data = requests.get(url, timeout=30).json() print("total entries:", len(data)) print("keys of entry 0:", sorted(data[0].keys())) print(json.dumps(data[0], indent=2)[:1000]) companies = {r.get("company_name","").strip().lower() for r in data} print("\nhas uber:", any("uber" in c for c in companies)) print("has deepgram:", any("deepgram" in c for c in companies)) uber_entries = [r for r in data if "uber" in r.get("company_name","").lower()] deepgram_entries = [r for r in data if "deepgram" in r.get("company_name","").lower()] for r in uber_entries[:5]: print("UBER:", r.get("id"), r.get("title"), r.get("active"), r.get("terms") or r.get("season")) for r in deepgram_entries[:5]: print("DEEPGRAM:", r.get("id"), r.get("title"), r.get("active"), r.get("terms") or r.get("season")) EOF, gh api repos/zshah101/[REDACTED]/contents/docs/api/jobs.json --jq '.content' 2>&1 | base64 -d 2>/dev/null | python3 -c " import json,sys data = json.load(sys.stdin) print(type(data), len(data) if isinstance(data,list) else data.keys()) " 2>&1, python3 - <<'EOF' import requests, json # check if GH Pages serves this publicly for url in [ "https://zshah101.github.io/[REDACTED]/api/jobs.json", ]: try: r = requests.get(url, timeout=15) print(url, "->", r.status_code, len(r.content), "bytes") except Exception as e: print(url, "-> ERROR", e) EOF, gh api repos/zshah101/[REDACTED]/contents/docs/api/jobs.json --jq '.content' | base64 -d > /tmp/zshah_jobs.json python3 - <<'EOF' import json data = json.load(open('/tmp/zshah_jobs.json')) print("generated_at:", data['generated_at']) print("source:", data['source']) print("h1b_window:", data.get('h1b_window')) print("count:", data['count']) jobs = data['jobs'] print("actual len(jobs):", len(jobs)) print("keys of job 0:", sorted(jobs[0].keys())) print(json.dumps(jobs[0], indent=2)) # sponsorship field distribution from collections import Counter spon = Counter(j.get('sponsorship') for j in jobs) print("\nsponsorship value counts:", dict(spon)) citizens_only = [j for j in jobs if j.get('sponsorship') == 'citizens_only' or (isinstance(j.get('sponsorship'),str) and 'citizen' in j.get('sponsorship','').lower())] print("\ncitizens-only-ish count:", len(citizens_only)) for j in citizens_only[:5]: print(" -", j.get('company_name') or j.get('company'), '|', j.get('title'), '| sponsorship:', j.get('sponsorship'), '| url:', j.get('url')) EOF, gh api repos/zshah101/[REDACTED]/contents/data/jobs.json --jq '.content' | base64 -d > /tmp/zshah_data_jobs.json python3 - <<'EOF' import json from collections import Counter data = json.load(open('/tmp/zshah_data_jobs.json')) jobs = data if isinstance(data, list) else data.get('jobs', data) print("total:", len(jobs)) print("keys:", sorted(jobs[0].keys()) if jobs else "empty") spon = Counter(j.get('sponsorship') for j in jobs) print("sponsorship dist:", dict(spon)) tagged = [j for j in jobs if j.get('sponsorship') not in (None, 'unknown')] print("non-unknown/tagged count:", len(tagged)) citizens = [j for j in jobs if j.get('sponsorship') == 'citizens-only'] print("citizens-only count:", len(citizens)) for j in citizens: print(" -", j.get('company'), '|', j.get('title'), '|', j.get('url')) EOF, python3 - <<'EOF' import json data = json.load(open('/tmp/zshah_data_jobs.json')) print(type(data)) if isinstance(data, dict): print("keys:", list(data.keys())[:5], "... total keys:", len(data)) sample_key = list(data.keys())[0] print("sample entry:", json.dumps(data[sample_key], indent=2)[:800]) EOF, python3 - <<'EOF' import json from collections import Counter data = json.load(open('/tmp/zshah_data_jobs.json')) jobs = list(data.values()) print("total:", len(jobs)) spon = Counter(j.get('sponsorship') for j in jobs) print("sponsorship distribution:", dict(spon)) tagged = [j for j in jobs if j.get('sponsorship') not in (None, 'unknown')] print("tagged (non-unknown) count:", len(tagged), "of", len(jobs)) citizens = [j for j in jobs if j.get('sponsorship') == 'citizens-only'] print("\ncitizens-only count:", len(citizens)) for j in citizens: print(" -", j.get('company'), '|', j.get('title'), '| open:', j.get('is_open'), '|', j.get('url')) print("\nno-sponsorship count:", len([j for j in jobs if j.get('sponsorship')=='no-sponsorship'])) print("offers count:", len([j for j in jobs if j.get('sponsorship')=='offers'])) EOF echo "--- h1b.json quick look ---" gh api repos/zshah101/[REDACTED]/contents/data/h1b.json --jq '.content' | base64 -d | python3 -c " import json,sys d = json.load(sys.stdin) print(type(d), len(d) if hasattr(d,'__len__') else '') if isinstance(d, dict): print(list(d.keys())[:5]) k = list(d.keys())[0] print(k, '->', d[k]) ", python3 - <<'EOF' import requests, json url = "https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/.github/scripts/listings.json" data = requests.get(url, timeout=30).json() allkeys = set() for r in data: allkeys |= set(r.keys()) print("vanshb03 full key union across", len(data), "entries:", sorted(allkeys)) from collections import Counter seasons = Counter(r.get("season") for r in data) print("season value distribution:", dict(seasons)) sponsorship = Counter(r.get("sponsorship") for r in data) print("sponsorship value distribution:", dict(sponsorship)) actives = Counter(r.get("active") for r in data) print("active distribution:", dict(actives)) categories_present = any("category" in r for r in data) print("any entry has 'category' key:", categories_present) degrees_present = any("degrees" in r for r in data) print("any entry has 'degrees' key:", degrees_present) EOF, python3 - <<'EOF' import json data = json.load(open('/tmp/zshah_data_jobs.json')) jobs = list(data.values()) allkeys = set() for j in jobs: allkeys |= set(j.keys()) print("zshah101 data/jobs.json full key union across", len(jobs), "entries:", sorted(allkeys)) from collections import Counter cats = Counter(j.get("category") for j in jobs) print("category distribution:", dict(cats)) seasons = Counter(j.get("season") for j in jobs) print("season distribution (top 15):", dict(list(seasons.items())[:15])) EOF echo "--- sndsh404 quick shape check ---" gh api repos/sndsh404/summer-2027-internships/git/trees/main?recursive=true --jq '.tree[].path' 2>&1, echo "--- confirm zshah101 raw data/jobs.json is fetchable with plain unauthenticated GET (same access pattern as our other 2 sources) ---" curl -s -o /dev/null -w "%{http_code}\n" "https://raw.githubusercontent.com/zshah101/[REDACTED]/main/data/jobs.json" echo "--- and vanshb03, for the record ---" curl -s -o /dev/null -w "%{http_code}\n" "https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/.github/scripts/listings.json" echo "--- FIRECRAWL_API_KEY available locally? ---" [ -n "$FIRECRAWL_API_KEY" ] && echo "SET (len=${#FIRECRAWL_API_KEY})" || echo "NOT SET in this shell" grep -i firecrawl ~/.bashrc ~/.zshrc ~/.profile 2>/dev/null gh secret list --repo gupta-builds/internship-research-loop 2>&1, python3 - <<'EOF' import requests, json r = requests.get("https://boards-api.greenhouse.io/v1/boards/pdtpartners/jobs?content=true", timeout=15).json() job = r["jobs"][0] print("Greenhouse job keys:", sorted(job.keys())) print(json.dumps({k:v for k,v in job.items() if k != 'content'}, indent=2)[:1200]) print("content len:", len(job.get("content",""))) EOF echo "==================" python3 - <<'EOF' import requests, json r = requests.get("https://api.ashbyhq.com/posting-api/job-board/pylon-labs", timeout=15).json() job = r["jobs"][0] print("Ashby job keys:", sorted(job.keys())) print(json.dumps(job, indent=2)[:1800]) EOF, python3 - <<'EOF' import requests r = requests.get("https://api.ashbyhq.com/posting-api/job-board/ellipsislabs", timeout=15).json() for j in r["jobs"]: print(j["title"], "| employmentType:", j.get("employmentType"), "| isListed:", j.get("isListed")) EOF, python3 - <<'EOF' import requests, json data = requests.get("https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/.github/scripts/listings.json", timeout=30).json() def find(pred, n=1): out = [r for r in data if pred(r)] return out[:n] # should-match: active True, season Summer, sponsorship not citizenship-required m = find(lambda r: r.get("active") is True and r.get("season")=="Summer" and r.get("sponsorship") != "U.S. Citizenship is Required") print("SHOULD-MATCH (summer, active, not citizenship-req):") print(json.dumps(m[0], indent=2) if m else "none found") # should-reject: wrong season (Fall) r1 = find(lambda r: r.get("active") is True and r.get("season")=="Fall") print("\nSHOULD-REJECT (fall season):") print(json.dumps(r1[0], indent=2) if r1 else "none") # should-reject: citizenship required, but otherwise matching season/active r2 = find(lambda r: r.get("active") is True and r.get("season")=="Summer" and r.get("sponsorship")=="U.S. Citizenship is Required") print("\nSHOULD-REJECT (citizenship required, else matches):") print(json.dumps(r2[0], indent=2) if r2 else "none") # should-reject: inactive r3 = find(lambda r: r.get("active") is False and r.get("season")=="Summer") print("\nSHOULD-REJECT (inactive):") print(json.dumps(r3[0], indent=2) if r3 else "none") EOF, python3 - <<'EOF' import requests, json data = requests.get("https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/.github/scripts/listings.json", timeout=30).json() m = [r for r in data if r.get("active") is True and r.get("season")=="Summer" and r.get("sponsorship")=="Does Not Offer Sponsorship"] print(json.dumps(m[0], indent=2) if m else "none found") EOF, python3 - <<'EOF' import json data = json.load(open('/tmp/zshah_data_jobs.json')) jobs = list(data.values()) def find(pred, n=1): return [j for j in jobs if pred(j)][:n] m = find(lambda j: j.get("is_open") is True and j.get("season")=="Summer 2027" and j.get("category")=="Software" and j.get("sponsorship")=="unknown") print("SHOULD-MATCH (software, summer 2027, open, unknown sponsorship):") print(json.dumps(m[0], indent=2) if m else "none") r1 = find(lambda j: j.get("is_open") is True and j.get("season")=="Fall 2026" and j.get("category")=="Software") print("\nSHOULD-REJECT (fall 2026 season):") print(json.dumps(r1[0], indent=2) if r1 else "none") r2 = find(lambda j: j.get("is_open") is True and j.get("season")=="Summer 2027" and j.get("sponsorship")=="citizens-only") print("\nSHOULD-REJECT (citizens-only, else matches):") print(json.dumps(r2[0], indent=2) if r2 else "none") r3 = find(lambda j: j.get("is_open") is False and j.get("season")=="Summer 2027" and j.get("category")=="Software") print("\nSHOULD-REJECT (closed):") print(json.dumps(r3[0], indent=2) if r3 else "none") r4 = find(lambda j: j.get("is_open") is True and j.get("season")=="Summer 2027" and j.get("category")=="Hardware") print("\nSHOULD-REJECT (wrong category, e.g. Hardware):") print(json.dumps(r4[0], indent=2) if r4 else "none") EOF, python3 - <<'EOF' import requests, re def strip_html(s): return re.sub(r"<[^>]+>", " ", s or "") print("=== Greenhouse: pdtpartners, mwinternshipprogram, optiverus intern jobs ===") for token in ["pdtpartners", "mwinternshipprogram", "optiverus"]: r = requests.get(f"https://boards-api.greenhouse.io/v1/boards/{token}/jobs?content=true", timeout=15).json() for j in r["jobs"]: if "intern" in j["title"].lower(): content = strip_html(j.get("content","")) has_2027 = "2027" in (j["title"]+content) has_summer2027 = "summer 2027" in (j["title"]+content).lower() has_summer2026 = "summer 2026" in (j["title"]+content).lower() print(f"{token} | {j['title']} | has_2027={has_2027} summer2027={has_summer2027} summer2026={has_summer2026} | content_len={len(content)}") print("\n=== Ashby: ellipsislabs intern job full descriptionPlain check ===") r = requests.get("https://api.ashbyhq.com/posting-api/job-board/ellipsislabs", timeout=15).json() for j in r["jobs"]: if j.get("employmentType") == "Intern": desc = j.get("descriptionPlain","") print(j["title"], "| has summer2027:", "summer 2027" in desc.lower(), "| has 2027:", "2027" in (j["title"]+desc)) print("first 300 chars:", desc[:300]) EOF, source .venv/bin/activate 2>/dev/null && python -m pytest -q 2>&1 | tail -100, source .venv/bin/activate 2>/dev/null cd /home/anant_gupta/projects/work/internship-research-loop python3 - <<'EOF' import sys sys.path.insert(0, ".") from core.filter import load_profile, matches from core.identity import compute_uid, cross_source_key from run_pipeline import fetch_and_filter, dedup_new, load_seen_ids from vault_writer.validate import check_cross_source_duplicate, check_url_live from vault_writer.writer import scan_dossiers from ingestion.normalize import Listing JARVIS_DIR = "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" profile = load_profile() print("Fetching all 6 sources live (read-only)...") matched_by_source = fetch_and_filter(profile) for name, info in matched_by_source.items(): print(f" {name}: fetched {info['fetch_count']}, matched {len(info['matched'])}") seen_ids = load_seen_ids("state/seen_ids.json") new_listings, already_seen = dedup_new(matched_by_source, seen_ids) print(f"\nTotal new (unseen uid) across all 6 sources: {len(new_listings)}; already-seen: {already_seen}") # real current dossier keys, read-only scan of the real vault dossier_fms = scan_dossiers(JARVIS_DIR) dossier_keys = {cross_source_key(fm.get("company",""), fm.get("title","")) for fm in dossier_fms} print(f"Real current dossiers scanned: {len(dossier_fms)}") # ALSO dedup within this run's own new_listings (same-run cross-source collisions), # same order-dependent "first source wins" semantics as validate_and_write. seen_this_dryrun_keys = set() cross_source_rejects = [] would_pass_cross_source = [] for uid, listing in new_listings: key = cross_source_key(listing.company, listing.title) if key in dossier_keys or key in seen_this_dryrun_keys: cross_source_rejects.append((uid, listing.company, listing.title, key)) else: seen_this_dryrun_keys.add(key) would_pass_cross_source.append((uid, listing.company, listing.title)) print(f"\nWould be rejected as cross_source_duplicate: {len(cross_source_rejects)}") for uid, company, title, key in cross_source_rejects: print(f" - {uid} | {company} — {title} | key={key}") print(f"\nWould pass cross_source_duplicate (still subject to url_liveness/format checks downstream): {len(would_pass_cross_source)}") for uid, company, title in would_pass_cross_source[:40]: print(f" - {uid} | {company} — {title}") EOF, source .venv/bin/activate 2>/dev/null cd /home/anant_gupta/projects/work/internship-research-loop python3 - <<'EOF' import json, sys, time sys.path.insert(0, ".") import requests from ingestion.posting_page import fetch_posting_markdown, opt_exclusion data = json.load(open('/tmp/zshah_data_jobs.json')) jobs = list(data.values()) citizens = [j for j in jobs if j.get('sponsorship') == 'citizens-only'] print(f"Fetching {len(citizens)} real citizens-only-tagged postings via Firecrawl...\n") import os key = os.environ["FIRECRAWL_API_KEY"] results = [] for j in citizens: url = j["url"] company = j["company"] title = j["title"] try: md = fetch_posting_markdown(url, key) signal = opt_exclusion(md) results.append({"company": company, "title": title, "url": url, "fetch_ok": True, "md_len": len(md), "our_signal": signal}) print(f"{'CAUGHT' if signal else 'MISSED'} | {company} | {title[:60]} | our_regex: {signal!r}") except Exception as e: results.append({"company": company, "title": title, "url": url, "fetch_ok": False, "error": str(e)}) print(f"FETCH-FAILED | {company} | {title[:60]} | {e}") time.sleep(0.5) json.dump(results, open('/tmp/opt_regex_comparison.json', 'w'), indent=2) caught = sum(1 for r in results if r.get("fetch_ok") and r.get("our_signal")) missed = sum(1 for r in results if r.get("fetch_ok") and not r.get("our_signal")) failed = sum(1 for r in results if not r.get("fetch_ok")) print(f"\n=== SUMMARY: {caught} caught, {missed} missed, {failed} fetch-failed, of {len(citizens)} total ===") EOF, source .venv/bin/activate 2>/dev/null cd /home/anant_gupta/projects/work/internship-research-loop python3 - <<'EOF' import json, sys, time, os sys.path.insert(0, ".") from ingestion.posting_page import fetch_posting_markdown, opt_exclusion data = json.load(open('/tmp/zshah_data_jobs.json')) jobs = list(data.values()) citizens = [j for j in jobs if j.get('sponsorship') == 'citizens-only'] print(f"Fetching {len(citizens)} real citizens-only-tagged postings via Firecrawl...\n", flush=True) key = os.environ["FIRECRAWL_API_KEY"] results = [] for i, j in enumerate(citizens): url = j["url"]; company = j["company"]; title = j["title"] try: md = fetch_posting_markdown(url, key) signal = opt_exclusion(md) results.append({"company": company, "title": title, "url": url, "fetch_ok": True, "md_len": len(md), "our_signal": signal}) print(f"[{i+1}/{len(citizens)}] {'CAUGHT' if signal else 'MISSED'} | {company} | {title[:60]} | our_regex: {signal!r}", flush=True) except Exception as e: results.append({"company": company, "title": title, "url": url, "fetch_ok": False, "error": str(e)}) print(f"[{i+1}/{len(citizens)}] FETCH-FAILED | {company} | {title[:60]} | {e}", flush=True) json.dump(results, open('/tmp/opt_regex_comparison.json', 'w'), indent=2) caught = sum(1 for r in results if r.get("fetch_ok") and r.get("our_signal")) missed = sum(1 for r in results if r.get("fetch_ok") and not r.get("our_signal")) failed = sum(1 for r in results if not r.get("fetch_ok")) print(f"\n=== SUMMARY: {caught} caught, {missed} missed, {failed} fetch-failed, of {len(citizens)} total ===") EOF, source .venv/bin/activate 2>/dev/null cd /home/anant_gupta/projects/work/internship-research-loop python3 - <<'EOF' import json, sys, os, re sys.path.insert(0, ".") from ingestion.posting_page import fetch_posting_markdown data = json.load(open('/tmp/zshah_data_jobs.json')) jobs = list(data.values()) citizens = [j for j in jobs if j.get('sponsorship') == 'citizens-only'] # a representative sample of the MISSED ones (defense/gov-adjacent + a couple non-obvious) missed_titles = ["Junior", "Saronic", "Rocket Lab", "Hermeus", "CACI", "Northrop Grumman", "Palantir", "Varda Space", "Torch Technologies"] sample = [j for j in citizens if j["company"] in missed_titles] key = os.environ["FIRECRAWL_API_KEY"] kw_re = re.compile(r".{80}(citizen|clearance|security|export.control|itar|u\.s\. person).{80}", re.I) for j in sample[:9]: try: md = fetch_posting_markdown(j["url"], key) except Exception as e: print(j["company"], "FAILED", e); continue hits = kw_re.findall(md) print(f"=== {j['company']} — {j['title'][:60]} ===") if hits: for h in hits[:3]: print(" ...", h.replace("\n"," ").strip(), "...") else: print(" (no citizen/clearance/security/export-control/itar/us-person keyword found anywhere in fetched text)") print() EOF, source .venv/bin/activate 2>/dev/null cd /home/anant_gupta/projects/work/internship-research-loop python3 - <<'EOF' import json, sys, os, re sys.path.insert(0, ".") from ingestion.posting_page import fetch_posting_markdown data = json.load(open('/tmp/zshah_data_jobs.json')) jobs = list(data.values()) citizens = [j for j in jobs if j.get('sponsorship') == 'citizens-only'] targets = ["Saronic", "Hermeus", "Varda Space"] sample = [j for j in citizens if j["company"] in targets] key = os.environ["FIRECRAWL_API_KEY"] kw_re = re.compile(r"(citizen|clearance|security|export.control|itar|u\.s\. person)", re.I) for j in sample: md = fetch_posting_markdown(j["url"], key) lines = md.splitlines() print(f"=== {j['company']} — {j['title'][:60]} ===") for i, line in enumerate(lines): if kw_re.search(line): print(" >>", line.strip()[:200]) print() EOF, source .venv/bin/activate 2>/dev/null cd /home/anant_gupta/projects/work/internship-research-loop python3 - <<'EOF' import json, sys, os, re sys.path.insert(0, ".") from ingestion.posting_page import fetch_posting_markdown data = json.load(open('/tmp/zshah_data_jobs.json')) jobs = list(data.values()) citizens = [j for j in jobs if j.get('sponsorship') == 'citizens-only'] targets = ["Northrop Grumman", "CACI", "Palantir", "Torch Technologies", "Junior", "Rocket Lab"] sample = [j for j in citizens if j["company"] in targets] key = os.environ["FIRECRAWL_API_KEY"] kw_re = re.compile(r"(citizen|clearance|security|export|itar|u\.s\. person|authoriz)", re.I) for j in sample: md = fetch_posting_markdown(j["url"], key) lines = md.splitlines() print(f"=== {j['company']} — {j['title'][:60]} ===") hit_any = False for line in lines: if kw_re.search(line): hit_any = True print(" >>", line.strip()[:220]) if not hit_any: print(" (nothing matched even a broad keyword scan)") print() EOF, source .venv/bin/activate 2>/dev/null cd /home/anant_gupta/projects/work/internship-research-loop python3 - <<'EOF' import re # candidate addition: ITAR/export-control "U.S. Person" boilerplate, phrased very # differently from our current direct-imperative patterns ("must be a US citizen"). # real text observed: "requires access to export-controlled information or items # that require 'U.S. Person' status" (Saronic); "must either be a 'U.S. person' as # defined by 22 C.F.R. 120.62" (Hermeus); "employees are exposed to and have # access to certain [ITAR-controlled]... 'US person' means: U.S. citizen..." (Varda) CANDIDATE = re.compile(r"export.control.{0,150}u\.?s\.?\s*person|u\.?s\.?\s*person.{0,150}export.control", re.I | re.S) real_misses = [ "_If this role is based in the United States, it requires access to export-controlled information or items that require “U.S. Person” status. As defined by U.S. law, individuals who are any one of the following qualify as a U.S. Person", "**U.S. EXPORT CONTROL COMPLIANCE STATUS**\nThe person hired will have access to information and items subject to U.S. export controls, and therefore, must either be a “U.S. person” as defined by 22 C.F.R. Section 120.62", "## ITAR Requirements\nVarda, like all employers, must ensure that its employees working in the United States are lawfully authorized to work in the U.S. Additionally, our employees are exposed to and have access to certain export-controlled technology... “US person” means: U.S. citizen, U.S. lawful permanent resident", ] print("=== does candidate catch the real misses? ===") for t in real_misses: print(bool(CANDIDATE.search(t)), "|", t[:70].replace("\n"," ")) print("\n=== does candidate false-positive on the EXISTING non-signal fixtures? ===") non_signals = [ "Willingness to undergo a US government background investigation, depending on US government project requirements.", "without regard to race, color, religion, national origin, citizenship status, veteran status, disability", "Will you require the firm's sponsorship to obtain, maintain, or extend your employment authorization?", "We are unable to provide visa sponsorship for this role.", "Base Salary $8K – $12K per month • Will Sponsor", ] for t in non_signals: print(bool(CANDIDATE.search(t)), "|", t[:70]) EOF, source .venv/bin/activate 2>/dev/null && python -m pytest -q 2>&1 | tail -20, source .venv/bin/activate 2>/dev/null cd /home/anant_gupta/projects/work/internship-research-loop python3 - <<'EOF' import json, sys, os sys.path.insert(0, ".") from ingestion.posting_page import opt_exclusion # reuse the raw markdown we already fetched — re-fetching isn't needed since # opt_exclusion() is pure regex; but we only saved signal booleans, not md. # Instead, re-run the classification using the freshly imported (now updated) regex # against the SAME 22 targets, refetching just once more since md wasn't cached. from ingestion.posting_page import fetch_posting_markdown data = json.load(open('/tmp/zshah_data_jobs.json')) jobs = list(data.values()) citizens = [j for j in jobs if j.get('sponsorship') == 'citizens-only'] key = os.environ["FIRECRAWL_API_KEY"] caught, missed = [], [] for j in citizens: try: md = fetch_posting_markdown(j["url"], key) except Exception as e: continue signal = opt_exclusion(md) (caught if signal else missed).append((j["company"], j["title"][:50], signal)) print(f"UPDATED REGEX RESULT: {len(caught)} caught, {len(missed)} missed, of {len(citizens)} total\n") print("Caught:") for c, t, s in caught: print(f" {c} | {t} | {s!r}") print("\nStill missed:") for c, t, s in missed: print(f" {c} | {t}") EOF, source .venv/bin/activate 2>/dev/null && python -m pytest -q 2>&1 | tail -10 echo "--- diff stat ---" git diff --stat echo "--- new untracked files ---" git status --short, echo "=== searching for freehire on GitHub ===" gh api "search/repositories?q=freehire" --jq '.items[] | {full_name, stargazers_count, pushed_at, description, fork}' 2>&1 | head -60, gh api repos/strelov1/freehire --jq '{full_name, description, homepage, pushed_at, default_branch, size, license: .license.name}' 2>&1 echo "--- tree ---" gh api repos/strelov1/freehire/git/trees/main?recursive=true --jq '.tree[].path' 2>&1 | head -100, gh api repos/strelov1/freehire/git/trees/main?recursive=true --jq '.tree[].path' 2>&1 | grep -iE "seed|board|data|companies|token" | head -60, gh api repos/strelov1/freehire/contents/cmd/harvest-boards/seed.go --jq '.content' | base64 -d | head -80 echo "==================" gh api repos/strelov1/freehire/contents/README.md --jq '.content' | base64 -d | head -120, gh api repos/strelov1/freehire/contents/sources --jq '.[].name' 2>&1, gh api repos/strelov1/freehire/contents/sources/greenhouse.yml --jq '.content, .size' | head -1 | base64 -d 2>/dev/null | head -30 echo "..." gh api repos/strelov1/freehire/contents/sources/greenhouse.yml --jq '.content' | base64 -d | wc -l echo "--- ashby.yml ---" gh api repos/strelov1/freehire/contents/sources/ashby.yml --jq '.content' | base64 -d | wc -l gh api repos/strelov1/freehire/contents/sources/ashby.yml --jq '.content' | base64 -d | head -20 echo "--- check for our known tokens ---" gh api repos/strelov1/freehire/contents/sources/greenhouse.yml --jq '.content' | base64 -d > /tmp/freehire_gh.yml grep -iE "pdtpartners|fccincinnati|walleyecapital|virtu|mwinternshipprogram|optiverus|aquaticcapitalmanagement" /tmp/freehire_gh.yml echo "--- last commit date on greenhouse.yml ---" gh api repos/strelov1/freehire/commits?path=sources/greenhouse.yml --jq '.[0] | {sha: .sha[0:8], date: .commit.author.date, message: .commit.message}', grep -A3 "mwinternshipprogram" /tmp/freehire_gh.yml echo "--- API section of README ---" gh api repos/strelov1/freehire/contents/README.md --jq '.content' | base64 -d | sed -n '/## API/,/## Adding a source/p' echo "--- quick live check: does freehire.me expose a public unauthenticated API? ---" curl -s -o /dev/null -w "%{http_code}\n" "https://freehire.me/api/v1/jobs" curl -s "https://freehire.me/api/v1/jobs?limit=1" | head -c 500, curl -s "https://freehire.me/api/v1/jobs/search?q=software+engineer+intern&limit=3" | python3 -m json.tool 2>&1 | head -80 echo "--- check meta/pagination shape on plain /jobs ---" curl -s "https://freehire.me/api/v1/jobs?limit=2" | python3 -c " import json,sys d = json.load(sys.stdin) print('top-level keys:', list(d.keys())) print('meta:', d.get('meta')) print('job keys:', sorted(d['data'][0].keys()) if d.get('data') else None) " echo "--- rate/robots check ---" curl -sI "https://freehire.me/api/v1/jobs" | grep -iE "ratelimit|retry-after", echo "=== checking artificialintelligencejobs.co ===" curl -sI "https://artificialintelligencejobs.co" | head -5 echo "--- try common API patterns ---" for path in "/api/jobs" "/api/v1/jobs" "/jobs.json" "/api" "/.well-known/ai-plugin.json"; do code=$(curl -s -o /dev/null -w "%{http_code}" "https://artificialintelligencejobs.co$path") echo "$path -> $code" done echo "--- fetch homepage to find real API docs/links ---" curl -s "https://artificialintelligencejobs.co" | grep -oiE 'api[^"'"'"' ]*' | sort -u | head -20, echo "=== /api/jobs ===" curl -s "https://artificialintelligencejobs.co/api/jobs" | python3 -c " import json,sys d = json.load(sys.stdin) print(type(d)) if isinstance(d, list): print('count:', len(d)) print(json.dumps(d[0], indent=2)) elif isinstance(d, dict): print('keys:', list(d.keys())) " echo "=== /jobs.json ===" curl -s "https://artificialintelligencejobs.co/jobs.json" -o /tmp/aijobs.json python3 -c " import json d = json.load(open('/tmp/aijobs.json')) print(type(d)) if isinstance(d, list): print('count:', len(d)) print(json.dumps(d[0], indent=2)[:1500]) elif isinstance(d, dict): print('keys:', list(d.keys())) print(json.dumps(d, indent=2)[:1500]) ", python3 -c " import json from collections import Counter d = json.load(open('/tmp/aijobs.json')) jobs = d['jobs'] print('total jobs:', len(jobs), '| companies claimed:', d['companies']) print('level distribution:', dict(Counter(j.get('level') for j in jobs))) interns = [j for j in jobs if 'intern' in j.get('title','').lower() or j.get('level','').lower()=='intern'] print('intern-titled or intern-level jobs:', len(interns)) for j in interns[:10]: print(' -', j['company'], '|', j['title'], '|', j.get('region'), '|', j.get('posted')) companies = sorted(set(j['company'] for j in jobs)) print('\ntotal distinct companies:', len(companies)) print('sample companies:', companies[:30]) " echo "--- /api/jobs meta ---" curl -s "https://artificialintelligencejobs.co/api/jobs" | python3 -c " import json,sys d = json.load(sys.stdin) print({k:v for k,v in d.items() if k not in ('jobs','docs')}) ", source .venv/bin/activate 2>/dev/null && python -m pytest -q 2>&1 | tail -40, git diff -- ingestion/posting_page.py, git diff -- core/filter.py | sed -n '/_matches_free_text_source\|_target_years\|Neither Greenhouse nor Ashby/,/^diff --git\|^$/p' | head -60 echo "=== full section for clean context ===" git diff -- core/filter.py | grep -n "^@@" , grep -n "only rejecting outright" /home/anant_gupta/projects/work/internship-research-loop/core/filter.py, source .venv/bin/activate 2>/dev/null && python -m pytest -q 2>&1 | tail -10, git diff -- core/filter.py | sed -n '/^@@ -102,23/,/^@@ -/p' | head -120, cd /home/anant_gupta/projects/work/internship-research-loop git status --short echo "--- final test run before commit ---" source .venv/bin/activate 2>/dev/null && python -m pytest -q 2>&1 | tail -5 echo "--- recent commit message style ---" git log --oneline -8, cd /home/anant_gupta/projects/work/internship-research-loop git log --oneline --no-merges | grep -viE "^[a-f0-9]+ (update state|recheck log)" | head -10, cd /home/anant_gupta/projects/work/internship-research-loop git add core/filter.py core/schema_drift.py ingestion/normalize.py ingestion/posting_page.py ingestion/sources.py run_pipeline.py tests/test_filter.py tests/test_posting_page.py tests/test_run_pipeline.py tests/test_schema_drift.py tests/test_sources.py tests/fixtures/vanshb03.json tests/fixtures/zshah101.json git status --short, cd /home/anant_gupta/projects/work/internship-research-loop git commit -m "$(cat <<'EOF' Four new discovery sources: vanshb03, zshah101, Greenhouse, Ashby Real hit-rate check against the 26 companies in the vault before building anything: 15/22 (68%) confirmed live on Greenhouse/Ashby/Lever, plus two more listings.json-shaped feeds (vanshb03, zshah101) found while chasing two real misses (Nuro, Deepgram) a manual clipping audit surfaced. - ingestion/sources.py: fetch_vanshb03, fetch_zshah101 (dict-keyed feed, not a list), fetch_greenhouse, fetch_ashby (seeded company-token lists, every token verified live before being added; a dead company board is skipped, not fatal to the run). - core/filter.py: _matches_vanshb03, _matches_zshah101, and a shared free-text matcher for Greenhouse/Ashby (neither exposes a structured term field) that accepts a bare target year with no season word, not just the literal "Summer 2027" string — real postings on our own seeded companies (Marshall Wace, Ellipsis Labs) state the year that way, and a strict match would have silently rejected both. - vanshb03's and zshah101's own structured sponsorship/citizenship fields are checked at the filter layer, before a Firecrawl call is ever spent. - ingestion/posting_page.py: OPT_EXCLUSION_RE gained an ITAR/export-control pattern built from real text, not a guess — measured against all 22 of zshah101's live citizens-only-tagged postings (27% -> 59% caught). - core/schema_drift.py: drift checks added for the two new JSON feeds. - run_pipeline.py: turning on 4 sources at once produced a one-time 186- candidate backlog (171 write-gate-passing) against a <100/month Firecrawl budget. Throttled instead of absorbed or discarded: MAX_NEW_WRITES_PER_RUN caps writes per run, most-recently-posted first; anything deferred is simply never marked seen, so it's naturally re-offered next run. 204/204 tests passing (was 167), all new fixtures from live data. EOF )" echo "--- status after commit ---" git status --short git log --oneline -1, cd /home/anant_gupta/projects/work/internship-research-loop git fetch origin git status echo "--- pushing ---" git push origin master, cd /home/anant_gupta/projects/work/internship-research-loop git pull --rebase origin master echo "--- status ---" git status --short git log --oneline -3, cd /home/anant_gupta/projects/work/internship-research-loop source .venv/bin/activate 2>/dev/null && python -m pytest -q 2>&1 | tail -5 git push origin master, gh run list --repo gupta-builds/internship-research-loop --workflow=test.yml --limit 1 --json status,conclusion,headSha,createdAt 2>&1, echo "=== Uber: does freehire have the exact Career Prep req 300697? ===" curl -s "https://freehire.me/api/v1/jobs/search?q=uber+software+engineering+intern&limit=50" | python3 -c " import json,sys d = json.load(sys.stdin) print('total matched:', d.get('meta',{}).get('total')) for j in d['data']: if j.get('company','').lower()=='uber' or 'uber.com' in j.get('url',''): print(' -', j.get('title'), '|', j.get('url'), '| posted:', j.get('posted_at'), '| closed:', j.get('closed_at')) " echo "" echo "=== also try /api/v1/companies for uber ===" curl -s "https://freehire.me/api/v1/companies?search=uber&limit=10" | python3 -m json.tool 2>&1 | head -40, echo "=== search: does the exact req 300697 exist anywhere in freehire? ===" curl -s "https://freehire.me/api/v1/jobs/search?q=career+prep&limit=100" | python3 -c " import json,sys d = json.load(sys.stdin) for j in d['data']: if 'uber' in j.get('company','').lower(): print(j.get('title'), '|', j.get('url'), '| posted:', j.get('posted_at')) " echo "" echo "=== try uber company slug directly ===" curl -s "https://freehire.me/api/v1/companies?search=Uber&limit=5" | python3 -m json.tool echo "" echo "=== all uber jobs via company_slug filter, check for 300697 in url ===" curl -s "https://freehire.me/api/v1/jobs?limit=100&offset=0" > /dev/null # plain jobs has no company filter shown yet, try search paging curl -s "https://freehire.me/api/v1/jobs/search?q=uber+intern&limit=100" | python3 -c " import json,sys d = json.load(sys.stdin) print('matched total:', d['meta']['total']) hits = [j for j in d['data'] if 'uber.com' in j.get('url','') and '300697' in j.get('url','')] print('exact req 300697 found:', len(hits)) for j in d['data']: if j.get('company','').lower()=='uber': print(' -', j['title'], '|', j['url']) ", echo "=== Nuro: exact Greenhouse job 7351061? ===" curl -s "https://freehire.me/api/v1/jobs/search?q=nuro+AI+platform+intern&limit=50" | python3 -c " import json,sys d = json.load(sys.stdin) for j in d['data']: if 'nuro' in j.get('company','').lower(): print(j['title'], '|', j['url'], '| posted:', j.get('posted_at'), '| closed:', j.get('closed_at')) " echo "" echo "=== raw search for the exact job id string 7351061 ===" curl -s "https://freehire.me/api/v1/jobs/search?q=7351061&limit=10" | python3 -c " import json,sys d = json.load(sys.stdin) print('matched:', d['meta']['total']) for j in d['data']: print(' -', j.get('company'),'|', j['title'], '|', j['url']) " echo "" echo "=== Google: exact job 85564713261245126? ===" curl -s "https://freehire.me/api/v1/jobs/search?q=google+software+engineer+intern+BS&limit=50" | python3 -c " import json,sys d = json.load(sys.stdin) for j in d['data']: if j.get('company','').lower()=='google' and 'intern' in j['title'].lower(): print(j['title'], '|', j['url'], '| posted:', j.get('posted_at'), '| closed:', j.get('closed_at')) ", echo "=== search for exact Google job id string ===" curl -s "https://freehire.me/api/v1/jobs/search?q=85564713261245126&limit=10" | python3 -c " import json,sys d = json.load(sys.stdin) print('matched:', d['meta']['total']) for j in d['data']: print(' -', j.get('company'),'|', j['title'], '|', j['url']) " echo "" echo "=== try google company slug directly ===" curl -s "https://freehire.me/api/v1/companies/google" | python3 -m json.tool 2>&1 | head -30 echo "" echo "=== search q=google software engineer intern BS Summer 2027, look at ALL company=Google hits regardless of relevance filtering ===" curl -s "https://freehire.me/api/v1/jobs/search?q=software+engineer+intern&limit=100" | python3 -c " import json,sys d = json.load(sys.stdin) print('matched:', d['meta']['total']) google_hits = [j for j in d['data'] if j.get('company','').lower()=='google'] print('google hits in this page:', len(google_hits)) for j in google_hits: print(' -', j['title'], '|', j['url'], '| posted:', j.get('posted_at'), 'closed:', j.get('closed_at')) ", echo "=== try company-scoped jobs endpoints ===" for path in "/api/v1/companies/google/jobs" "/api/v1/jobs?company_slug=google&limit=20" "/api/v1/jobs?company=google&limit=20"; do echo "--- $path ---" curl -s "https://freehire.me$path" | python3 -c " import json,sys try: d = json.load(sys.stdin) print(list(d.keys()) if isinstance(d,dict) else type(d)) jobs = d.get('data', d.get('jobs', [])) print('count:', len(jobs) if isinstance(jobs,list) else 'n/a') except Exception as e: print('parse error', e) " done, curl -s "https://freehire.me/api/v1/jobs?company_slug=google&limit=100" > /tmp/freehire_google.json python3 -c " import json d = json.load(open('/tmp/freehire_google.json')) print('meta:', d['meta']) jobs = d['data'] companies = set(j.get('company') for j in jobs) print('companies in this page:', companies) interns = [j for j in jobs if 'intern' in j.get('title','').lower()] print('intern-titled jobs in this page:', len(interns)) for j in interns: print(' -', j['title'], '|', j['url'], '| posted:', j.get('posted_at'), '| closed:', j.get('closed_at')) " echo "--- paginate through all 3651 google jobs to find the exact SWE intern BS posting ---" python3 - <<'EOF' import requests found = [] offset = 0 while True: r = requests.get(f"https://freehire.me/api/v1/jobs?company_slug=google&limit=200&offset={offset}", timeout=20).json() jobs = r["data"] if not jobs: break for j in jobs: if "85564713261245126" in j.get("url","") or ("intern" in j.get("title","").lower() and "software engineer" in j.get("title","").lower()): found.append(j) offset += 200 if offset > r["meta"]["total"]: break print(f"scanned to offset {offset}, total {r['meta']['total']}") print(f"matches found: {len(found)}") for j in found[:15]: print(" -", j["title"], "|", j["url"], "| posted:", j.get("posted_at"), "| closed:", j.get("closed_at")) EOF, tmux kill-session -t claude_bzj98mrjc 2>/dev/null; pkill -f "company_slug=google" 2>/dev/null echo "killed if running" echo "--- full companies/google response for hints on real job-listing endpoint ---" curl -s "https://freehire.me/api/v1/companies/google" | python3 -m json.tool echo "--- try search endpoint's company param instead of plain /jobs ---" curl -s "https://freehire.me/api/v1/jobs/search?company=google&limit=5" | python3 -c " import json,sys d=json.load(sys.stdin) print('total:', d['meta']['total']) for j in d['data'][:5]: print(j.get('company'), '|', j['title']) ", curl -s "https://freehire.me/api/v1/companies/google" | python3 -m json.tool | head -60, curl -s "https://freehire.me/api/v1/companies/google" | python3 -m json.tool | tail -30 echo "=== try search with company param ===" curl -s "https://freehire.me/api/v1/jobs/search?company=google&limit=10" | python3 -c " import json,sys d=json.load(sys.stdin) print('total:', d['meta']['total']) for j in d['data'][:10]: print(j.get('company'), '|', j['title']) " echo "=== try search with company_slug param ===" curl -s "https://freehire.me/api/v1/jobs/search?company_slug=google&limit=10" | python3 -c " import json,sys d=json.load(sys.stdin) print('total:', d['meta']['total']) for j in d['data'][:10]: print(j.get('company'), '|', j['title']) ", curl -s "https://freehire.me/api/v1/jobs/search?company_slug=google&q=software+engineer+intern&limit=20" | python3 -c " import json,sys d=json.load(sys.stdin) print('total matched:', d['meta']['total']) for j in d['data']: print(' -', j['title'], '|', j['url'], '| posted:', j.get('posted_at'), '| closed:', j.get('closed_at')) ", echo "=== exact job id search, google-scoped ===" curl -s "https://freehire.me/api/v1/jobs/search?company_slug=google&q=85564713261245126&limit=5" | python3 -c " import json,sys d=json.load(sys.stdin) print('total:', d['meta']['total']) for j in d['data']: print(j['title'], j['url']) " echo "=== all Google + Intern enrichment.seniority ===" curl -s "https://freehire.me/api/v1/jobs/search?company_slug=google&q=intern&limit=30" | python3 -c " import json,sys d=json.load(sys.stdin) print('total:', d['meta']['total']) for j in d['data']: print(' -', j['title'], '|', j['url'], '| posted:', j.get('posted_at'), '| enrich:', j.get('enrichment')) ", curl -s "https://freehire.me/api/v1/jobs/search?company_slug=google&q=Software+Engineering+Intern+BS+Summer+2027&limit=5" | python3 -c " import json,sys d=json.load(sys.stdin) for j in d['data']: if '85564713261245126' in j['url']: print(json.dumps(j, indent=2)) ", curl -s -o /dev/null -w "HTTP %{http_code}\n" "https://www.google.com/about/careers/applications/jobs/results/85564713261245126" curl -s "https://www.google.com/about/careers/applications/jobs/results/85564713261245126" | grep -oiE "no longer accepting|closed|not found|position.{0,30}filled" | head -5 echo "--- also re-check SimplifyJobs' current live status for this exact id ---" python3 -c " import requests data = requests.get('https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json', timeout=30).json() hit = [r for r in data if r.get('id')=='[REDACTED]'] print(hit) ", echo "=== robots.txt ===" curl -s "https://freehire.me/robots.txt" echo "" echo "=== full README for ToS/rate-limit/acceptable-use mentions ===" gh api repos/strelov1/freehire/contents/README.md --jq '.content' | base64 -d | grep -iA5 "rate.limit\|acceptable use\|terms of\|fair use\|abuse" echo "=== SECURITY.md ===" gh api repos/strelov1/freehire/contents/SECURITY.md --jq '.content' | base64 -d echo "=== check for a LICENSE / ToS page on the live site ===" curl -s "https://freehire.me/terms" -o /dev/null -w "%{http_code}\n" curl -s "https://freehire.me/api/v1/docs" -o /dev/null -w "%{http_code}\n" echo "=== hammer test: 20 rapid requests, watch for 429 ===" for i in $(seq 1 20); do code=$(curl -s -o /dev/null -w "%{http_code}" "https://freehire.me/api/v1/jobs?limit=1") echo -n "$code " done echo "", for slug in uber westerndigital wells-fargo sig grant-thornton marmon-holdings rippling; do echo -n "$slug -> " curl -s "https://freehire.me/api/v1/companies/$slug" | python3 -c " import json,sys try: d=json.load(sys.stdin) if 'error' in d: print('NOT FOUND') else: print('job_count:', d['data']['company']['job_count']) except Exception as e: print('parse error', e) " done, curl -s "https://freehire.me/api/v1/jobs/search?q=7351061&company_slug=nuro&limit=5" echo "---" curl -s "https://freehire.me/api/v1/jobs/search?company_slug=nuro&q=AI+Platform+Intern&limit=5" | python3 -m json.tool | head -60, curl -s "https://freehire.me/api/v1/jobs/search?company_slug=nuro&q=AI+Platform+Intern&limit=5" | python3 -c " import json,sys d = json.load(sys.stdin) j = d['data'][0] print('2027' in j['description'], '2026' in j['description']) print('summary:', j.get('enrichment',{}).get('summary')) ", grep -n "def test_normalize_ashby_maps_fields" /home/anant_gupta/projects/work/internship-research-loop/tests/test_filter.py, cd /home/anant_gupta/projects/work/internship-research-loop source .venv/bin/activate 2>/dev/null && python -m pytest -q 2>&1 | tail -60, source .venv/bin/activate 2>/dev/null cd /home/anant_gupta/projects/work/internship-research-loop python3 - <<'EOF' import sys sys.path.insert(0, ".") from core.filter import load_profile, matches from core.identity import cross_source_key from run_pipeline import fetch_and_filter, dedup_new, load_seen_ids from vault_writer.writer import scan_dossiers JARVIS_DIR = "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" profile = load_profile() print("Fetching all 8 sources live (read-only)...") matched_by_source = fetch_and_filter(profile) for name, info in matched_by_source.items(): print(f" {name}: fetched {info['fetch_count']}, matched {len(info['matched'])}") seen_ids = load_seen_ids("state/seen_ids.json") new_listings, already_seen = dedup_new(matched_by_source, seen_ids) print(f"\nTotal new (unseen uid) across all 8 sources: {len(new_listings)}; already-seen: {already_seen}") freehire_new = [(uid, l) for uid, l in new_listings if l.source == "Freehire"] aijobs_new = [(uid, l) for uid, l in new_listings if l.source == "AIJobs"] print(f"\nFreehire contributed {len(freehire_new)} new candidates:") for uid, l in freehire_new: print(f" - {l.company} — {l.title} | {l.url}") print(f"\nAIJobs contributed {len(aijobs_new)} new candidates:") for uid, l in aijobs_new: print(f" - {l.company} — {l.title} | {l.url}") dossier_fms = scan_dossiers(JARVIS_DIR) dossier_keys = {cross_source_key(fm.get("company",""), fm.get("title","")) for fm in dossier_fms} freehire_dupe = [l for uid, l in freehire_new if cross_source_key(l.company, l.title) in dossier_keys] aijobs_dupe = [l for uid, l in aijobs_new if cross_source_key(l.company, l.title) in dossier_keys] print(f"\nOf those, already-in-vault-by-key (would hit cross_source_duplicate): Freehire={len(freehire_dupe)}, AIJobs={len(aijobs_dupe)}") EOF, echo "=== does the search endpoint support a structured seniority filter, not just free-text q? ===" curl -s "https://freehire.me/api/v1/jobs/search?company_slug=google&seniority=intern&limit=10" | python3 -c " import json,sys d=json.load(sys.stdin) print('total:', d['meta']['total']) for j in d['data'][:5]: print(j['title']) " echo "=== default order of company_slug=google with no q — does our exact posting appear in first 200? ===" python3 -c " import requests r = requests.get('https://freehire.me/api/v1/jobs/search?company_slug=google&limit=200', timeout=20).json() print('total:', r['meta']['total'], '| returned:', len(r['data'])) ids = [j['url'] for j in r['data']] print('our target in first 200:', any('85564713261245126' in u for u in ids)) interns = [j for j in r['data'] if (j.get('enrichment') or {}).get('seniority')=='intern'] print('intern-level in first 200:', len(interns)) ", source .venv/bin/activate 2>/dev/null cd /home/anant_gupta/projects/work/internship-research-loop python -m pytest -q 2>&1 | tail -10 echo "=== re-run live dry run with the fix ===" python3 - <<'EOF' import sys sys.path.insert(0, ".") from ingestion.freehire import fetch_freehire listings = fetch_freehire() print(f"Freehire now fetches {len(listings)} intern-level candidates total") for l in listings: print(f" - {l.company} — {l.title} | {l.date_posted}") EOF, source .venv/bin/activate 2>/dev/null cd /home/anant_gupta/projects/work/internship-research-loop python3 - <<'EOF' import sys sys.path.insert(0, ".") from core.filter import load_profile, matches from core.identity import cross_source_key from run_pipeline import fetch_and_filter, dedup_new, load_seen_ids from vault_writer.writer import scan_dossiers JARVIS_DIR = "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" profile = load_profile() matched_by_source = fetch_and_filter(profile) for name, info in matched_by_source.items(): print(f" {name}: fetched {info['fetch_count']}, matched {len(info['matched'])}") seen_ids = load_seen_ids("state/seen_ids.json") new_listings, already_seen = dedup_new(matched_by_source, seen_ids) print(f"\nTotal new across all 8 sources: {len(new_listings)}; already-seen: {already_seen}") freehire_new = [(uid, l) for uid, l in new_listings if l.source == "Freehire"] print(f"\nFreehire matched+new: {len(freehire_new)}") for uid, l in freehire_new: print(f" - {l.company} — {l.title}") if "85564713261245126" in l.url: print(" *** This IS the exact Google ground-truth posting ***") dossier_fms = scan_dossiers(JARVIS_DIR) dossier_keys = {cross_source_key(fm.get("company",""), fm.get("title","")) for fm in dossier_fms} freehire_dupe = [l for uid, l in freehire_new if cross_source_key(l.company, l.title) in dossier_keys] print(f"\nOf Freehire's new matches, already-in-vault-by-key: {len(freehire_dupe)}") EOF, source .venv/bin/activate 2>/dev/null cd /home/anant_gupta/projects/work/internship-research-loop python3 - <<'EOF' import requests r = requests.get("https://freehire.me/api/v1/jobs/search?company_slug=wellsfargo&seniority=intern&limit=200", timeout=20).json() print("total:", r["meta"]["total"]) for j in r["data"]: print(f" {j['title'][:60]:60s} | category: {(j.get('enrichment') or {}).get('category')}") EOF, source .venv/bin/activate 2>/dev/null python3 - <<'EOF' import requests r = requests.get("https://freehire.me/api/v1/jobs/search?company_slug=wells-fargo&seniority=intern&limit=200", timeout=20).json() print("total:", r["meta"]["total"]) for j in r["data"]: print(f" {j['title'][:65]:65s} | category: {(j.get('enrichment') or {}).get('category')} | domains: {(j.get('enrichment') or {}).get('domains')}") EOF, JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers for f in "$JARVIS"/*.md; do grep -m1 "^title:" "$f" | sed 's/^title: *//'; done, JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers grep -l "Corporate Risk Development" "$JARVIS"/*.md | xargs -I{} sh -c 'grep -E "^company:|^category:|^title:" "{}"', source .venv/bin/activate 2>/dev/null cd /home/anant_gupta/projects/work/internship-research-loop python -m pytest -q 2>&1 | tail -10 echo "=== re-run live dry run, trimmed seed list ===" python3 - <<'EOF' import sys sys.path.insert(0, ".") from core.filter import load_profile from run_pipeline import fetch_and_filter profile = load_profile() matched = fetch_and_filter(profile) info = matched["Freehire"] print(f"Freehire: fetched {info['fetch_count']}, matched {len(info['matched'])}") for l in info["matched"]: print(f" - {l.company} — {l.title}") EOF, source .venv/bin/activate 2>/dev/null cd /home/anant_gupta/projects/work/internship-research-loop python3 - <<'EOF' import sys sys.path.insert(0, ".") from core.filter import load_profile from run_pipeline import fetch_and_filter, dedup_new, load_seen_ids profile = load_profile() matched = fetch_and_filter(profile) for name, info in matched.items(): print(f" {name}: fetched {info['fetch_count']}, matched {len(info['matched'])}") seen_ids = load_seen_ids("state/seen_ids.json") new_listings, already_seen = dedup_new(matched, seen_ids) print(f"\nTotal new across all 8 sources: {len(new_listings)}; already-seen: {already_seen}") EOF echo "--- final test count ---" python -m pytest -q 2>&1 | tail -5 echo "--- git status ---" git status --short, cd /home/anant_gupta/projects/work/internship-research-loop git log --oneline -5 echo "--- current status ---" git status --short echo "--- is a21b2fa still reachable / where is it relative to HEAD ---" git log --oneline -1 a21b2fa 2>&1 git merge-base --is-ancestor a21b2fa HEAD && echo "a21b2fa is an ancestor of HEAD" || echo "a21b2fa is NOT an ancestor", cd /home/anant_gupta/projects/work/internship-research-loop git fetch origin 2>&1 git log --oneline origin/master -3 git rev-parse HEAD origin/master, cd /home/anant_gupta/projects/work/internship-research-loop git pull --ff-only origin master 2>&1 git log --oneline -3 git status --short, cd /home/anant_gupta/projects/work/internship-research-loop git show a21b2fa -- run_pipeline.py | grep -n "MAX_NEW_WRITES_PER_RUN\|_prioritize_and_cap\|deferred_count" | head -30, cd /home/anant_gupta/projects/work/internship-research-loop grep -n "MAX_NEW_WRITES_PER_RUN\|_prioritize_and_cap" run_pipeline.py, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== grep for lever in all tracked .py files (case-insensitive) ===" git grep -ni "lever" -- '*.py' 2>&1 echo "=== also check untracked freehire.py just in case (shouldn't have lever either) ===" grep -ni "lever" ingestion/freehire.py 2>&1, cd /home/anant_gupta/projects/work/internship-research-loop source .venv/bin/activate 2>/dev/null echo "=== current working tree (includes uncommitted freehire work) ===" python -m pytest -q 2>&1 | tail -5 echo "" echo "=== stashing uncommitted changes to test pure committed (a21b2fa/cdb4299) state ===" git stash push -u -m "freehire WIP, stashed for pure-commit test count" python -m pytest -q 2>&1 | tail -5 echo "" echo "=== restoring uncommitted work ===" git stash pop git status --short, cd /home/anant_gupta/projects/work/internship-research-loop sed -n '/GREENHOUSE_COMPANIES = {/,/^}/p; /ASHBY_COMPANIES = {/,/^}/p' ingestion/sources.py, source /home/anant_gupta/projects/work/internship-research-loop/.venv/bin/activate 2>/dev/null python3 -c " import requests v = requests.get('https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/.github/scripts/listings.json', timeout=30).json() print('vanshb03 live count now:', len(v)) z = requests.get('https://raw.githubusercontent.com/zshah101/[REDACTED]/main/data/jobs.json', timeout=30).json() print('zshah101 live count now:', len(z)) from collections import Counter spon = Counter(j.get('sponsorship') for j in z.values()) print('zshah101 sponsorship dist now:', dict(spon)) ", cd /home/anant_gupta/projects/work/internship-research-loop grep -n "OPT_EXCLUSION_RE" -A 20 ingestion/posting_page.py | grep -A 15 "re.compile" echo "--- Google SimplifyJobs live check (drift-prone, per Anant's own example) ---" source .venv/bin/activate 2>/dev/null python3 -c " import requests data = requests.get('https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json', timeout=30).json() hit = [r for r in data if r.get('id')=='[REDACTED]'] print('exact ground-truth Google posting still in feed:', bool(hit)) if hit: print(hit[0]) ", cd /home/anant_gupta/projects/work/internship-research-loop git show a21b2fa -- ingestion/posting_page.py | grep -n "export.control" echo "--- confirm test count for posting_page tests specifically, and re-verify a sample of the 13 real catches still catch ---" source .venv/bin/activate 2>/dev/null python3 -c " import sys; sys.path.insert(0,'.') from ingestion.posting_page import opt_exclusion # real text samples from the 22-posting check, spot-checking 3 of the original 6 + 2 of the newly-added 7 samples = { 'Anduril (original 6)': 'U.S. Person status is required as this position needs to access export controlled data.', 'Astranis (original 6)': 'must be a U.S. citizen due to export control regulations', 'Clarity (original 6)': 'US Citizenship is required for this internship', 'Saronic (new export-control pattern)': 'it requires access to export-controlled information or items that require “U.S. Person” status', 'Hermeus (new export-control pattern)': 'must either be a “U.S. person” as defined by 22 C.F.R. Section 120.62', } for name, text in samples.items(): print(name, '->', bool(opt_exclusion(text))) ", cd /home/anant_gupta/projects/work/internship-research-loop source .venv/bin/activate 2>/dev/null python -m pytest tests/test_posting_page.py -q 2>&1 | tail -10 echo "--- that Hermeus 'False' above was my own abbreviated test text, not the real fixture — confirming against the actual fixture text ---" grep -A3 "Hermeus SWE Intern" tests/test_posting_page.py, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== was recheck.py touched in commit a21b2fa? ===" git show a21b2fa --stat | grep recheck echo "(no output above = recheck.py was NOT part of that commit)" echo "" echo "=== recheck.py as committed (HEAD, before my uncommitted stash) ===" git show HEAD:recheck.py | grep -n "^FEEDS = {" -A 8 echo "" echo "=== recheck.py in my current uncommitted working tree ===" grep -n "^FEEDS = {" -A 8 recheck.py, gh run list --repo gupta-builds/internship-research-loop --workflow=run.yml --limit 5 --json status,conclusion,createdAt 2>&1 echo "--- latest run's log tail for real written/matched counts from the new sources actually running ---" cd /home/anant_gupta/projects/work/internship-research-loop tail -3 logs/runs.jsonl | python3 -c " import json,sys for line in sys.stdin: r = json.loads(line) print(r['timestamp'], r.get('fetch_counts'), r.get('filter_match_counts'), 'written=', r.get('written_count'), 'deferred=', r.get('deferred_count')) " echo "--- recheck.yml history — has it run since a21b2fa, confirming only 2-source FEEDS in production ---" gh run list --repo gupta-builds/internship-research-loop --workflow=recheck.yml --limit 3 --json status,conclusion,createdAt 2>&1 tail -2 logs/rechecks.jsonl, JARVIS=/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers echo "current dossier count: $(ls "$JARVIS" | wc -l)" python3 -c " import json print('seen_ids.json size:', len(json.load(open('/home/anant_gupta/projects/work/internship-research-loop/state/seen_ids.json')))) print('opt_cache.json size:', len(json.load(open('/home/anant_gupta/projects/work/internship-research-loop/state/opt_cache.json')))) ", true, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== confirm no pipeline code touched this task, only git reads + stash/pop ===" git status --short echo "=== confirm working tree tests still pass (sanity, read-only check) ===" source .venv/bin/activate 2>/dev/null && python -m pytest -q 2>&1 | tail -5, head -20 "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/60_Claude/07_AI_Information/Session Logs/log.md", head -12 "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/60_Claude/07_AI_Information/Session Logs/log.md"
 - Tool call tally: Bash (138), Edit (50), mcp__jarvis__search_simple (1), mcp__jarvis__vault_get_document_map (3), mcp__jarvis__vault_list (4), mcp__jarvis__vault_patch (4), mcp__jarvis__vault_read (23), Read (69), TaskCreate (14), TaskUpdate (23), ToolSearch (6), Write (6)
 

@@ -7,7 +7,7 @@ title: "Sonnet 5 upgrade discrepancy between apps"
 started_at: 2026-07-01T14:29:45
 ended_at: 2026-07-01T14:35:13
 duration_minutes: 5
-exported_at: 2026-07-30T15:28:59.6972445+04:00
+exported_at: 2026-07-30T16:47:46.9270578+04:00
 project: CausalOps
 cwd: '/home/anant_gupta/projects/hub/CausalOps'
 session_id: 67c08ab6-7c20-477c-8d71-e09e8e690b28

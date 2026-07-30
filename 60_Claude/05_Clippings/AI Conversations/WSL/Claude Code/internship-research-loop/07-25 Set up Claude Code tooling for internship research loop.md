@@ -7,7 +7,7 @@ title: "Set up Claude Code tooling for internship research loop"
 started_at: 2026-07-25T20:51:15
 ended_at: 2026-07-30T08:42:18
 duration_minutes: 6471
-exported_at: 2026-07-30T15:28:59.6972445+04:00
+exported_at: 2026-07-30T16:47:46.9270578+04:00
 project: internship-research-loop
 cwd: '/home/anant_gupta/projects/work/internship-research-loop'
 session_id: f80cd4cf-b82c-4b53-a7b9-0bb8c67543f0
@@ -184,10 +184,13 @@ eb06ec6 Update state + logs — 2026-07-24
 4d1bf26 Update state + logs — 2026-07-24
 b2dc704 Recheck log — 2026-07-24
   ```
-- `Bash` — `echo "=== search for priority anywhere ===" && grep -rl "priority" --include="*.py" . | grep -v .venv | grep -v __pycache__
+- `Bash`:
+  ```bash
+echo "=== search for priority anywhere ===" && grep -rl "priority" --include="*.py" . | grep -v .venv | grep -v __pycache__
 echo "=== jarvis-checkout dir ===" && ls -la jarvis-checkout/
 echo "=== is jarvis-checkout a git repo / submodule? ===" && cat .gitmodules 2>/dev/null; git -C jarvis-checkout status 2>&1 | head -5
-echo "=== search repo for any Jarvis vault path references ===" && grep -rn "Jarvis" --include="*.py" --include="*.yaml" --include="*.md" . | grep -v .venv | grep -v __pycache__ | head -30`
+echo "=== search repo for any Jarvis vault path references ===" && grep -rn "Jarvis" --include="*.py" --include="*.yaml" --include="*.md" . | grep -v .venv | grep -v __pycache__ | head -30
+  ```
   ```
 === search for priority anywhere ===
 run_pipeline.py
@@ -220,10 +223,13 @@ PRD.md:3:**Status:** Verified against live repo/GitHub state on 2026-07-18 (git 
 PRD.md:11:A 24/7 background process that watches known internship-listing sources, keeps only postings the user is actually eligible for under **three hard criteria** — timing (Summer 2027 or the Dec 2026–Jan 2027 winter window), location (US/Remote), and OPT eligibility (excluded only on an explicit citizenship/clearance/no-OPT signal) — and writes a live, deduplicated, dead-link-free, **content-carrying** list into the user's Obsidian vault (Jarvis), so screening happens in the vault without visiting posting pages by hand.
 PRD.md:87:This file is the standalone orientation document. `20_Progress/Internship/Building System/Phases 1-3 Run.md` in the Jarvis vault is the deeper record: build-by-build history, bugs found and fixed, audit evidence, and reasoning. If the two disagree on a fact, re-verify against live state — most-recently-verified wins, and the disagreement itself means one of them needs updating.
   ```
-- `Bash` — `echo "=== jarvis-checkout remote ===" && git -C jarvis-checkout remote -v
+- `Bash`:
+  ```bash
+echo "=== jarvis-checkout remote ===" && git -C jarvis-checkout remote -v
 echo "=== jarvis-checkout full status ===" && git -C jarvis-checkout status
 echo "=== jarvis-checkout top-level dirs ===" && ls jarvis-checkout/ 2>/dev/null; find jarvis-checkout -maxdepth 1 2>/dev/null
-echo "=== .gitignore mentions jarvis-checkout? ===" && grep -n "jarvis" .gitignore -i`
+echo "=== .gitignore mentions jarvis-checkout? ===" && grep -n "jarvis" .gitignore -i
+  ```
   ```
 === jarvis-checkout remote ===
 origin	https://github.com/gupta-builds/internship-research-loop.git (fetch)
@@ -265,9 +271,12 @@ jarvis-checkout
 10:# submodule path 'jarvis-checkout' in .gitmodules").
 11:jarvis-checkout/
   ```
-- `Bash` — `echo "=== run_pipeline.py priority context ===" && grep -n -i "priority" run_pipeline.py
+- `Bash`:
+  ```bash
+echo "=== run_pipeline.py priority context ===" && grep -n -i "priority" run_pipeline.py
 echo "=== enrich.py content ===" && cat enrich.py | head -60
-echo "=== search for Programs/Serious Considering Contacts Tracker ===" && grep -rn -i "Programs/Serious\|Programs/Considering\|Contacts/Each\|Tracker/Each\|Each One" . --include="*.py" --include="*.md" --include="*.yaml" 2>/dev/null | grep -v .venv`
+echo "=== search for Programs/Serious Considering Contacts Tracker ===" && grep -rn -i "Programs/Serious\|Programs/Considering\|Contacts/Each\|Tracker/Each\|Each One" . --include="*.py" --include="*.md" --include="*.yaml" 2>/dev/null | grep -v .venv
+  ```
   ```
 === run_pipeline.py priority context ===
 69:    (an unknown post date must not win priority over a known-recent one).
@@ -432,8 +441,11 @@ drwxr-xr-x  2 anant_gupta anant_gupta  4096 Jul 26 01:24 __pycache__
 === priority.py? ===
 NO
   ```
-- `Bash` — `echo "=== jarvis-checkout ===" && ls -la jarvis-checkout/ && find jarvis-checkout -maxdepth 3 2>/dev/null
-echo "=== git diff stat ===" && git diff --stat HEAD`
+- `Bash`:
+  ```bash
+echo "=== jarvis-checkout ===" && ls -la jarvis-checkout/ && find jarvis-checkout -maxdepth 3 2>/dev/null
+echo "=== git diff stat ===" && git diff --stat HEAD
+  ```
   ```
 === jarvis-checkout ===
 total 8
@@ -465,8 +477,11 @@ jarvis-checkout
  vault_writer/writer.py               | 100 ++++++++++++++++++++++++++++-------
  22 files changed, 751 insertions(+), 77 deletions(-)
   ```
-- `Bash` — `echo "=== core/classify.py ===" && cat core/classify.py
-echo "=== core/relevance.py ===" && cat core/relevance.py`
+- `Bash`:
+  ```bash
+echo "=== core/classify.py ===" && cat core/classify.py
+echo "=== core/relevance.py ===" && cat core/relevance.py
+  ```
   ```
 === core/classify.py ===
 """Layer 2.5b — priority-bucket classification for listings that already
@@ -635,11 +650,14 @@ def stage2_confirm(title: str, company: str, posting_content: str) -> bool:
         return True
     return bool(_SOFTWARE_CONTENT_SIGNAL_RE.search(posting_content))
   ```
-- `Bash` — `git diff HEAD -- enrich.py
+- `Bash`:
+  ```bash
+git diff HEAD -- enrich.py
 echo "=====VAULT_WRITER TEMPLATE====="
 git diff HEAD -- vault_writer/templates/dossier.md.j2
 echo "=====VAULT_WRITER WRITER====="
-git diff HEAD -- vault_writer/writer.py`
+git diff HEAD -- vault_writer/writer.py
+  ```
   ```
 diff --git a/enrich.py b/enrich.py
 index e99d93c..3ced3d0 100644
@@ -909,10 +927,13 @@ index 2c6c423..0ded6ff 100644
 - `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/Programs/Serious/2026-HRT-Sophomore.md"}`
 - `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/Tracker/Internship - Dashboard.md"}`
 - `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/Tracker/Tracker.md"}`
-- `Bash` — `echo "=== does repo already have CLAUDE.md? ===" && find . -iname "CLAUDE.md" -not -path "./.venv/*"
+- `Bash`:
+  ```bash
+echo "=== does repo already have CLAUDE.md? ===" && find . -iname "CLAUDE.md" -not -path "./.venv/*"
 echo "=== .claude dir ===" && ls -la .claude/
 echo "=== profile.yaml diff ===" && git diff HEAD -- core/profile.yaml
-echo "=== .github workflows ===" && ls .github/workflows/ 2>/dev/null && find .github -type f`
+echo "=== .github workflows ===" && ls .github/workflows/ 2>/dev/null && find .github -type f
+  ```
   ```
 === does repo already have CLAUDE.md? ===
 === .claude dir ===
@@ -969,9 +990,12 @@ test.yml
 .github/workflows/test.yml
 .github/workflows/recheck.yml
   ```
-- `Bash` — `cat .claude/settings.local.json
+- `Bash`:
+  ```bash
+cat .claude/settings.local.json
 echo "=== run tests ==="
-source .venv/bin/activate 2>/dev/null; python -m pytest -q 2>&1 | tail -20`
+source .venv/bin/activate 2>/dev/null; python -m pytest -q 2>&1 | tail -20
+  ```
   ```
 {
   "enabledMcpjsonServers": [
@@ -989,8 +1013,11 @@ source .venv/bin/activate 2>/dev/null; python -m pytest -q 2>&1 | tail -20`
 ..........................................                               [100%]
 258 passed in 2.30s
   ```
-- `Bash` — `gh repo view gupta-builds/internship-research-loop --json name,defaultBranchRef 2>&1 | head -5
-gh api user -q .login 2>&1`
+- `Bash`:
+  ```bash
+gh repo view gupta-builds/internship-research-loop --json name,defaultBranchRef 2>&1 | head -5
+gh api user -q .login 2>&1
+  ```
   ```
 {"defaultBranchRef":{"name":"master"},"name":"internship-research-loop"}
 gupta-builds
@@ -1006,8 +1033,11 @@ gupta-builds
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/core/filter.py`
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/recheck.py`
 - `Read` — `/home/anant_gupta/projects/work/internship-research-loop/core/git_ops.py`
-- `Bash` — `ls state/ logs/ && echo "=== seen_ids sample ===" && head -c 300 state/seen_ids.json && echo && echo "=== runs.jsonl tail ===" && tail -3 logs/runs.jsonl 2>/dev/null
-echo "=== workflows ===" && cat .github/workflows/run.yml`
+- `Bash`:
+  ```bash
+ls state/ logs/ && echo "=== seen_ids sample ===" && head -c 300 state/seen_ids.json && echo && echo "=== runs.jsonl tail ===" && tail -3 logs/runs.jsonl 2>/dev/null
+echo "=== workflows ===" && cat .github/workflows/run.yml
+  ```
   ```
 logs/:
 rechecks.jsonl
@@ -1073,9 +1103,12 @@ jobs:
           FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}  # discovery-time posting fetch; absent = thin dossiers, never a failure
         run: python run_pipeline.py
   ```
-- `Bash` — `cat enrich.py
+- `Bash`:
+  ```bash
+cat enrich.py
 echo "=====VALIDATE====="
-cat vault_writer/validate.py`
+cat vault_writer/validate.py
+  ```
   ```
 #!/usr/bin/env python3
 """Layer 5 — on-demand company/contact enrichment for one promoted dossier.
@@ -1431,11 +1464,14 @@ def validate(listing, uid: str, markdown: str, seen_ids, http_head=None, dossier
         return result
     return ValidationResult(True)
   ```
-- `Bash` — `find ~/.claude/skills -maxdepth 2 -iname "SKILL.md" | head -5
+- `Bash`:
+  ```bash
+find ~/.claude/skills -maxdepth 2 -iname "SKILL.md" | head -5
 echo "---"
 cat ~/.claude/skills/graphify/SKILL.md 2>/dev/null | head -40
 echo "=== any local project skill examples elsewhere on disk? ==="
-find / -maxdepth 6 -path "*/.claude/skills/*/SKILL.md" 2>/dev/null | grep -v "^/home/anant_gupta/.claude/skills" | head -10`
+find / -maxdepth 6 -path "*/.claude/skills/*/SKILL.md" 2>/dev/null | grep -v "^/home/anant_gupta/.claude/skills" | head -10
+  ```
   ```
 /home/anant_gupta/.claude/skills/sandbox-sdk/SKILL.md
 /home/anant_gupta/.claude/skills/web-perf/SKILL.md
@@ -1485,10 +1521,13 @@ Turn any folder of files into a navigable knowledge graph with community detecti
 /graphify path "AuthModule" "Database"                # shortest path between two concepts
 === any local project skill examples elsewhere on disk? ===
   ```
-- `Bash` — `find ~/.claude/agents -maxdepth 1 -iname "*.md" 2>/dev/null | head -5
+- `Bash`:
+  ```bash
+find ~/.claude/agents -maxdepth 1 -iname "*.md" 2>/dev/null | head -5
 find / -maxdepth 8 -path "*/.claude/agents/*.md" 2>/dev/null | grep -v "^/home/anant_gupta/.claude/agents" | head -10
 echo "=== check plugin agents for example frontmatter ==="
-find / -path "*agents*" -iname "*.md" 2>/dev/null | grep -iv "node_modules\|/.venv/\|/.git/" | grep -i "code-reviewer\|explore" | head -10`
+find / -path "*agents*" -iname "*.md" 2>/dev/null | grep -iv "node_modules\|/.venv/\|/.git/" | grep -i "code-reviewer\|explore" | head -10
+  ```
   ```
 Command did not complete within its 120s timeout and was moved to the background (ID: b0w0wai02). Output is being written to: /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tasks/b0w0wai02.output. You will be notified when it completes. To check interim output, use Read on that file path.
   ```
@@ -1846,10 +1885,13 @@ On no (or if the human wants changes): go back to step 2/3 as needed. Never writ
 - Does not push/commit the vault changes. Leave that to the human (or to whatever the vault's own auto-commit cycle already does) unless explicitly asked to, and if asked, follow the same git-safety discipline as anywhere else — show the diff before committing.
 
   ```
-- `Bash` — `cat .github/workflows/recheck.yml
+- `Bash`:
+  ```bash
+cat .github/workflows/recheck.yml
 echo "=====test.yml====="
 cat .github/workflows/test.yml
-echo "=== state/dossier_uids.json exists? ===" && ls state/`
+echo "=== state/dossier_uids.json exists? ===" && ls state/
+  ```
   ```
 name: recheck
 on:
@@ -2044,9 +2086,12 @@ If the diff doesn't touch any of the conventions above (e.g. it's a test-only ch
   ```
 - `TaskUpdate` — `{"taskId":"4","status":"completed"}`
 - `TaskUpdate` — `{"taskId":"5","status":"in_progress"}`
-- `Bash` — `cat ~/.claude/settings.json 2>/dev/null | head -60
+- `Bash`:
+  ```bash
+cat ~/.claude/settings.json 2>/dev/null | head -60
 echo "=== any other settings.json examples with permissions block ==="
-find /home/anant_gupta/projects -maxdepth 4 -path "*/.claude/settings.json" 2>/dev/null | head -5`
+find /home/anant_gupta/projects -maxdepth 4 -path "*/.claude/settings.json" 2>/dev/null | head -5
+  ```
   ```
 {
   "permissions": {
@@ -2412,14 +2457,17 @@ One loose end: your last message cut off mid-sentence on the vault-side MOC ques
 
 **Tool calls:**
 
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git fetch origin 2>&1
 echo "=== local vs origin/master ==="
 git log --oneline -5 origin/master
 echo "=== current branch status ==="
 git status
 echo "=== is local master behind/ahead of origin ==="
-git rev-list --left-right --count origin/master...HEAD`
+git rev-list --left-right --count origin/master...HEAD
+  ```
   ```
 === local vs origin/master ===
 ba2bdcd Update state + logs — 2026-07-26
@@ -2475,10 +2523,13 @@ no changes added to commit (use "git add" and/or "git commit -a")
 === is local master behind/ahead of origin ===
 8	0
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git diff --stat HEAD origin/master
 echo "=== do incoming commits touch any file I have modified locally? ==="
-comm -12 <(git diff --stat HEAD origin/master --name-only | sort) <(git status --porcelain | awk '{print $2}' | sort)`
+comm -12 <(git diff --stat HEAD origin/master --name-only | sort) <(git status --porcelain | awk '{print $2}' | sort)
+  ```
   ```
  logs/runs.jsonl      |   8 ++
  state/opt_cache.json | 385 +++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -2486,10 +2537,13 @@ comm -12 <(git diff --stat HEAD origin/master --name-only | sort) <(git status -
  3 files changed, 470 insertions(+), 1 deletion(-)
 === do incoming commits touch any file I have modified locally? ===
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git diff HEAD --stat -- ingestion/ vault_writer/ tests/test_writer.py tests/test_filter.py
 echo "=== ingestion/freehire.py head ==="
-head -20 ingestion/freehire.py`
+head -20 ingestion/freehire.py
+  ```
   ```
  ingestion/normalize.py               |  41 ++++++++++++++
  ingestion/posting_page.py            |  25 ++++++++-
@@ -2522,11 +2576,14 @@ would just be redundant traffic against someone else's free API.
 Reliability, checked before depending on it: no documented rate limit
 anywhere (README, SECURITY.md, robots.txt all checked; robots.txt fully
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git pull --ff-only origin master
 echo "=== post-pull status ==="
 git status --short | head -5
-git log --oneline -3`
+git log --oneline -3
+  ```
   ```
 From https://github.com/gupta-builds/internship-research-loop
  * branch            master     -> FETCH_HEAD
@@ -2546,7 +2603,9 @@ ba2bdcd Update state + logs — 2026-07-26
 1c3ddc4 Update state + logs — 2026-07-26
 ea1a38b Update state + logs — 2026-07-25
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git add core/filter.py core/profile.yaml core/classify.py core/relevance.py \
   enrich.py \
   ingestion/normalize.py ingestion/posting_page.py ingestion/sources.py ingestion/freehire.py \
@@ -2556,7 +2615,8 @@ git add core/filter.py core/profile.yaml core/classify.py core/relevance.py \
   tests/fixtures/freehire.json tests/fixtures/posting_ashby_ctgt.md \
   tests/test_enrich.py tests/test_filter.py tests/test_posting_page.py tests/test_recheck.py \
   tests/test_run_pipeline.py tests/test_sources.py tests/test_writer.py tests/test_classify.py tests/test_relevance.py tests/test_freehire.py
-git status --short`
+git status --short
+  ```
   ```
 A  core/classify.py
 M  core/filter.py
@@ -2599,7 +2659,9 @@ M  vault_writer/writer.py
 ..........................................                               [100%]
 258 passed in 6.71s
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git commit -m "$(cat <<'EOF'
 Priority-bucket classification, CS-relevance gate, widened contact research
 
@@ -2624,7 +2686,8 @@ AIJobs into recheck.py's removal checks.
 258/258 tests passing.
 EOF
 )"
-git log --oneline -3`
+git log --oneline -3
+  ```
   ```
 [master 6622bca] Priority-bucket classification, CS-relevance gate, widened contact research
  30 files changed, 1492 insertions(+), 77 deletions(-)
@@ -2739,10 +2802,13 @@ date_applied: null
   ```
 - `mcp__jarvis__vault_write` — `{"path":"10_Areas/Career/Internships/Programs/Considering/Software Engineering Intern - Appian.md","content":"---\nname: Software Engineering Intern at Appian\ncompany: Appian\nprogram_type: Fullstack\neligible_classes:\n  - Bachelor's\n  - Master's\ngrad_year:\nrole_type: internship\nwave:\nopens_date:\ndeadline_posted:\ndeadline_real:\npay_per_week: 2000\npay_currency: USD\nduration_weeks: 10\nbenefits:\n  - Health coverage\n  - Employee Assistance Program (EAP)\n  - Employee Stock Purchase Program (ESPP)\n  - Retirement/pension plan\n  - Tuition reimbursement\napplication_url: https://careers.appian.com/jobs/[REDACTED]\ncareers_page: https://careers.appian.com/students\nlist_origin: \"[[10_Areas/Career/Internships/List/Dossiers/[REDACTED]]]\"\napplying_note:\nrecruiter_contact: \"[[10_Areas/Career/Internships/Contacts/Each One/Software Engineering Intern - Appian]]\"\ntags:\n  - internship\n  - program\n---\n# Software Engineering Intern — Appian\nStatic research only — comp, eligibility, deadlines, traps, prep. Live status (applied, interview, offer) lives on the matching note in `20_Progress/Internship/Applying/`, linked via `applying_note` above.\n## Program Overview\nAppian is an enterprise low-code/AI process automation software company (Nasdaq: APPN), headquartered in McLean, VA. The Software Engineering Intern role sits within Appian Engineering, contributing to production-adjacent work across the AI-powered Process Automation platform: full-stack components, AI-assisted development tooling, debugging/systems thinking, and design/code-review collaboration. 10-week program. Pay stated on the posting as $50.00/hour ($8,666/month) — `pay_per_week` above is derived from that hourly rate at 40 hrs/week, not a figure Appian states directly.\n## Eligibility\nCurrently pursuing a Bachelor's or Master's degree in Computer Science or Computer Engineering (`eligible_classes` above); must be returning to school after the internship to continue degree requirements — that rules out graduating in the internship's own cycle but the posting never states a specific class year or grad year, so `grad_year` stays unset rather than a guessed number. Full-time (40 hrs/week) commitment required for the full 10 weeks. Considered for Summer 2027, students only.\n## Traps & Gotchas\n> [!WARNING]\n> In-person 5 days/week at the McLean, VA headquarters is mandatory (\"Interns in this program are expected to be in the office 5 days a week\"). Applications aren't reviewed and interviews aren't scheduled until August 2026 even though the posting is live now — this is a review-start signal, not a stated application-open date or deadline, so `opens_date`/`deadline_posted`/`deadline_real` stay unset above rather than forcing this fact into a field it doesn't actually match; the fact itself lives here instead. The posting also states \"Appian will not sponsor a new applicant for employment authorization for this position\" — that's a sponsorship exclusion, not necessarily an OPT exclusion, but confirm it doesn't conflict with OPT usage before investing further time.\n## Prep Checklist\n- [ ] Review data structures, algorithms, and object-oriented programming fundamentals — the posting names these directly as what you'll apply to \"full-stack components and engineering tasks\"\n- [ ] Practice using an AI coding assistant critically (generating AND reviewing/evaluating its output, not just accepting suggestions) — the posting explicitly wants \"AI fluency,\" not just familiarity\n- [ ] Prepare a debugging / root-cause-analysis story from a real project — matches \"support issue investigation, learn how to identify root causes\"\n- [ ] Have a portfolio project or prior technical internship ready to discuss — explicitly named as a Preferred Qualification\n- [ ] Practice explaining a technical decision in a design-discussion/code-review format — the posting lists \"design discussions, stand-ups, and code reviews\" as core day-to-day work\n## Related Resources\n- [[10_Areas/Career/Internships/List/Dossiers/[REDACTED]]] (List/Dossiers origin)\n"}`
 - `mcp__jarvis__vault_write` — `{"path":"10_Areas/Career/Internships/Tracker/Each One/Software Engineering Intern - Appian.md","content":"---\ntype: tracker\nprogram: \"[[10_Areas/Career/Internships/Programs/Considering/Software Engineering Intern - Appian]]\"\ncontact: \"[[10_Areas/Career/Internships/Contacts/Each One/Software Engineering Intern - Appian]]\"\ncompany: Appian\nurl: https://careers.appian.com/jobs/[REDACTED]\ndate_noted: 2026-07-25\ndate_researched: 2026-07-26\ndate_created: 2026-07-26\ndate_applied:\ndate_result:\nresult:\ndeadline:\nrelated_notes:\n  - \"[[10_Areas/Career/Internships/List/Dossiers/[REDACTED]]]\"\ntags:\n  - internship\n  - tracker\nnext:\n---\n# Software Engineering Intern — Appian\nThe dated index for this internship — source of truth for \"where does this stand\" until an Applying note exists (see [[30_Order/Workflows/Internship Pipeline]] Step 8).\n## Timeline\n- **Noted:** 2026-07-25\n- **Researched:** 2026-07-26\n- **Created:** 2026-07-26\n- **Applied:** —\n- **Result:** —\n## Next Action\nDecide whether to move this from Considering to actually applying — applications aren't reviewed until August 2026 per the Program note's Traps section, so there's no rush, but the in-person 5-day/week requirement is worth weighing before committing further.\n"}`
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 source .venv/bin/activate && python -m pytest -q 2>&1 | tail -3
 git add .claude/ CLAUDE.md
-git status --short`
+git status --short
+  ```
   ```
 ........................................................................ [ 83%]
 ..........................................                               [100%]
@@ -2755,7 +2821,9 @@ A  .claude/skills/promote-dossier/reference/note-templates.md
 A  .claude/skills/review-loop-change/SKILL.md
 A  CLAUDE.md
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git commit -m "$(cat <<'EOF'
 Add promote-dossier skill, contact-researcher/loop-verifier agents, review-loop-change skill
 
@@ -2805,7 +2873,8 @@ commit, not left for later.
 258/258 tests passing (no pipeline code touched by this commit).
 EOF
 )"
-git log --oneline -5`
+git log --oneline -5
+  ```
   ```
 [master f56ac8c] Add promote-dossier skill, contact-researcher/loop-verifier agents, review-loop-change skill
  7 files changed, 535 insertions(+)
@@ -2822,9 +2891,12 @@ ba2bdcd Update state + logs — 2026-07-26
 1c3ddc4 Update state + logs — 2026-07-26
 ea1a38b Update state + logs — 2026-07-25
   ```
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 git push origin master
-git log --oneline -5 origin/master 2>&1 || git fetch origin && git log --oneline -5 origin/master`
+git log --oneline -5 origin/master 2>&1 || git fetch origin && git log --oneline -5 origin/master
+  ```
   ```
 To https://github.com/gupta-builds/internship-research-loop.git
    ba2bdcd..f56ac8c  master -> master
@@ -2926,14 +2998,17 @@ Ready to run the revised Prompt 4 against the repo whenever you want — it's no
 
 **Tool calls:**
 
-- `Bash` — `cat /home/anant_gupta/projects/work/internship-research-loop/grade_resume.py | head -25
+- `Bash`:
+  ```bash
+cat /home/anant_gupta/projects/work/internship-research-loop/grade_resume.py | head -25
 echo "=== jarvis-checkout populated now? ==="
 ls -la /home/anant_gupta/projects/work/internship-research-loop/jarvis-checkout/ 2>/dev/null
 echo "=== check /mnt/d for a Jarvis vault ==="
 ls /mnt/d/Users/_Anant/ 2>/dev/null
 find /mnt/d -maxdepth 3 -iname "*jarvis*" 2>/dev/null
 echo "=== check /mnt for other drives ==="
-ls /mnt/ 2>/dev/null`
+ls /mnt/ 2>/dev/null
+  ```
   ```
 #!/usr/bin/env python3
 """Layer 6 — resume grader: keyword-overlap scorer, no LLM, no network.
@@ -2982,14 +3057,17 @@ d
 wsl
 wslg
   ```
-- `Bash` — `echo "=== does the literal DEFAULT_RESUME path exist? ==="
+- `Bash`:
+  ```bash
+echo "=== does the literal DEFAULT_RESUME path exist? ==="
 ls -la "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Resumes/" 2>&1
 echo "=== what's actually in /mnt/d/Users/_Anant/10_Areas/ ==="
 ls "/mnt/d/Users/_Anant/10_Areas/" 2>&1
 echo "=== search for a folder literally named Jarvis anywhere under /mnt/d ==="
 find /mnt/d -maxdepth 5 -iname "Jarvis" -type d 2>/dev/null
 echo "=== does /mnt/d/Users/_Anant/10_Areas/Career/Internships exist (the vault path used throughout this repo)? ==="
-ls "/mnt/d/Users/_Anant/10_Areas/Career/Internships/" 2>&1 | head -20`
+ls "/mnt/d/Users/_Anant/10_Areas/Career/Internships/" 2>&1 | head -20
+  ```
   ```
 === does the literal DEFAULT_RESUME path exist? ===
 total 252
@@ -3010,7 +3088,9 @@ UMN
 === does /mnt/d/Users/_Anant/10_Areas/Career/Internships exist (the vault path used throughout this repo)? ===
 ls: cannot access '/mnt/d/Users/_Anant/10_Areas/Career/Internships/': No such file or directory
   ```
-- `Bash` — `JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis"
+- `Bash`:
+  ```bash
+JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis"
 echo "=== vault root ===" && ls "$JARVIS"
 echo "=== 30_Order/Standards ===" && find "$JARVIS/30_Order" -iname "*standard*" 2>/dev/null
 echo "=== 20_Progress/Internship/Building System ===" && ls "$JARVIS/20_Progress/Internship/Building System/" 2>/dev/null
@@ -3019,7 +3099,8 @@ find "$JARVIS" -iname "*Claude Code Prompts*" 2>/dev/null
 echo "=== Dossiers dir ===" && ls "$JARVIS/10_Areas/Career/Internships/List/Dossiers/" | head -30
 echo "=== count dossiers ===" && ls "$JARVIS/10_Areas/Career/Internships/List/Dossiers/" | grep -c "\.md$"
 echo "=== is there a Viewed subfolder already? ===" && ls "$JARVIS/10_Areas/Career/Internships/List/Dossiers/Viewed/" 2>&1
-echo "=== is there a Dossiers MOC already? ===" && find "$JARVIS/10_Areas/Career/Internships" -iname "*MOC*" 2>/dev/null`
+echo "=== is there a Dossiers MOC already? ===" && find "$JARVIS/10_Areas/Career/Internships" -iname "*MOC*" 2>/dev/null
+  ```
   ```
 === vault root ===
 00_Dashboard.md
@@ -3098,14 +3179,17 @@ Removed Dossiers MOC.md
 /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/Programs/Programs MOC.md
 /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/Viewed/Removed Dossiers MOC.md
   ```
-- `Bash` — `JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis"
+- `Bash`:
+  ```bash
+JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis"
 echo "=== recursive dossier count per bucket ==="
 for d in "1 - AI & ML" "2 - Fullstack" "3 - CyS & Finance" "Other"; do
   echo "$d: $(find "$JARVIS/10_Areas/Career/Internships/List/Dossiers/$d" -maxdepth 1 -iname "*.md" 2>/dev/null | wc -l)"
 done
 echo "Viewed: $(find "$JARVIS/10_Areas/Career/Internships/List/Dossiers/Viewed" -maxdepth 1 -iname "*.md" 2>/dev/null | wc -l)"
 echo "flat root: $(find "$JARVIS/10_Areas/Career/Internships/List/Dossiers" -maxdepth 1 -iname "*.md" 2>/dev/null | wc -l)"
-echo "TOTAL recursive: $(find "$JARVIS/10_Areas/Career/Internships/List/Dossiers" -iname "*.md" 2>/dev/null | wc -l)"`
+echo "TOTAL recursive: $(find "$JARVIS/10_Areas/Career/Internships/List/Dossiers" -iname "*.md" 2>/dev/null | wc -l)"
+  ```
   ```
 === recursive dossier count per bucket ===
 1 - AI & ML: 53
@@ -3119,13 +3203,16 @@ TOTAL recursive: 141
 - `Read` — `/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/30_Order/Standards/Internship Notes Standard.md`
 - `Read` — `/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers MOC.md`
 - `Read` — `/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/Viewed/Removed Dossiers MOC.md`
-- `Bash` — `JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis"
+- `Bash`:
+  ```bash
+JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis"
 echo "=== sample dossiers from each bucket (filenames) ==="
 find "$JARVIS/10_Areas/Career/Internships/List/Dossiers/1 - AI & ML" -iname "*.md" | head -5
 echo "---"
 find "$JARVIS/10_Areas/Career/Internships/List/Dossiers/Other" -iname "*.md" | head -5
 echo "=== the one flat-root dossier still there ==="
-find "$JARVIS/10_Areas/Career/Internships/List/Dossiers" -maxdepth 1 -iname "*.md"`
+find "$JARVIS/10_Areas/Career/Internships/List/Dossiers" -maxdepth 1 -iname "*.md"
+  ```
   ```
 === sample dossiers from each bucket (filenames) ===
 /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/A.I. Developer Co-Op (Boston, MA) - Manhattan Associates.md
@@ -3144,11 +3231,14 @@ find "$JARVIS/10_Areas/Career/Internships/List/Dossiers" -maxdepth 1 -iname "*.m
   ```
 - `Read` — `/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/Other/Demand Science Rotational Analyst - Conagra Brands.md`
 - `Read` — `/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/A.I. Developer Co-Op (Boston, MA) - Manhattan Associates.md`
-- `Bash` — `JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis"
+- `Bash`:
+  ```bash
+JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis"
 echo "=== Internship Notes Standard.md ===" && wc -c "$JARVIS/30_Order/Standards/Internship Notes Standard.md" && ls -la "$JARVIS/30_Order/Standards/Internship Notes Standard.md"
 echo "=== Removed Dossiers MOC.md ===" && wc -c "$JARVIS/10_Areas/Career/Internships/List/Dossiers/Viewed/Removed Dossiers MOC.md"
 echo "=== Dossiers-to-Create.md ===" && wc -l "$JARVIS/10_Areas/Career/Internships/List/Dossiers-to-Create.md"
-cat "$JARVIS/10_Areas/Career/Internships/List/Dossiers-to-Create.md"`
+cat "$JARVIS/10_Areas/Career/Internships/List/Dossiers-to-Create.md"
+  ```
   ```
 Exit code 1
 === Internship Notes Standard.md ===
@@ -3160,8 +3250,11 @@ Exit code 1
 wc: /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers-to-Create.md: No such file or directory
 cat: /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers-to-Create.md: No such file or directory
   ```
-- `Bash` — `JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis"
-cat "$JARVIS/10_Areas/Career/Internships/List/Dossiers/Dossiers-to-Create.md"`
+- `Bash`:
+  ```bash
+JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis"
+cat "$JARVIS/10_Areas/Career/Internships/List/Dossiers/Dossiers-to-Create.md"
+  ```
   ```
 ---
 type: evergreen
@@ -3200,11 +3293,14 @@ The manual reorganization (2026-07-26) sorted the 117 dossiers that had accumula
 - `Read` — `/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/System - Build Log.md`
 - `Read` — `/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Research Loop - Improvement Plan.md`
 - `Read` — `/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Runs/Claude Code Prompts.md`
-- `Bash` — `JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis"
+- `Bash`:
+  ```bash
+JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis"
 echo "=== Programs MOC frontmatter ===" && head -20 "$JARVIS/10_Areas/Career/Internships/Programs/Programs MOC.md"
 echo "=== Contacts MOC frontmatter ===" && head -20 "$JARVIS/10_Areas/Career/Internships/Contacts/Contacts MOC.md"
 echo "=== a real Program note frontmatter (Appian, since it was actually promoted) ===" && find "$JARVIS/10_Areas/Career/Internships/Programs" -iname "*ppian*"
-echo "=== Source of Truth (head) ===" && head -40 "$JARVIS/20_Progress/Internship/Building System/Source of Truth.md"`
+echo "=== Source of Truth (head) ===" && head -40 "$JARVIS/20_Progress/Internship/Building System/Source of Truth.md"
+  ```
   ```
 === Programs MOC frontmatter ===
 ---
@@ -3293,12 +3389,15 @@ Full step-by-step reasoning lives in the new detailed workflow note (`30_Order/W
 ```
   ```
 - `Read` — `/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/Programs/Considering/Software Engineering Intern - Appian.md`
-- `Bash` — `cd /home/anant_gupta/projects/work/internship-research-loop
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
 grep -n "MAX_NEW_WRITES_PER_RUN" run_pipeline.py
 echo "=== core/identity.py cross_source_key ===" && cat core/identity.py
 echo "=== profile.yaml degrees_allow ===" && grep -n "degrees" core/profile.yaml
 echo "=== core/relevance.py current stage1 patterns ===" && grep -n "_STAGE1_REJECT_RE" -A 8 core/relevance.py
-echo "=== core/classify.py CYS_FINANCE_RE ===" && grep -n "_CYS_FINANCE_RE" -A 5 core/classify.py`
+echo "=== core/classify.py CYS_FINANCE_RE ===" && grep -n "_CYS_FINANCE_RE" -A 5 core/classify.py
+  ```
   ```
 66:MAX_NEW_WRITES_PER_RUN = 18
 282:    this_run, deferred = _prioritize_and_cap(new_listings, MAX_NEW_WRITES_PER_RUN)
@@ -3630,198 +3729,6 @@ Classification/routing code (`core/classify.py`, `core/relevance.py`, priority-f
 - Files created: /home/anant_gupta/projects/work/internship-research-loop/.claude/agents/contact-researcher.md, /home/anant_gupta/projects/work/internship-research-loop/.claude/skills/promote-dossier/reference/note-templates.md, /home/anant_gupta/projects/work/internship-research-loop/.claude/skills/promote-dossier/SKILL.md, /home/anant_gupta/projects/work/internship-research-loop/.claude/agents/loop-verifier.md, /home/anant_gupta/projects/work/internship-research-loop/.claude/skills/review-loop-change/SKILL.md, /home/anant_gupta/projects/work/internship-research-loop/.claude/settings.json, /home/anant_gupta/projects/work/internship-research-loop/CLAUDE.md, /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/30_Order/Standards/Internship Notes Standard.md
 - Files modified: /home/anant_gupta/projects/work/internship-research-loop/.claude/agents/contact-researcher.md, /home/anant_gupta/projects/work/internship-research-loop/.claude/skills/promote-dossier/reference/note-templates.md, /home/anant_gupta/projects/work/internship-research-loop/.claude/skills/promote-dossier/SKILL.md, /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers MOC.md, /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Runs/Claude Code Prompts.md, /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/System - Build Log.md
 - Files deleted: (none)
-- Commands run: echo "=== repo root ===" && ls -la && echo "=== core/ ===" && ls -la core/ 2>/dev/null && echo "=== priority.py exists? ===" && test -f core/priority.py && echo YES || echo NO && echo "=== enrich.py ===" && find . -iname "enrich.py" && echo "=== git log ===" && git log --oneline -20, echo "=== search for priority anywhere ===" && grep -rl "priority" --include="*.py" . | grep -v .venv | grep -v __pycache__
-echo "=== jarvis-checkout dir ===" && ls -la jarvis-checkout/
-echo "=== is jarvis-checkout a git repo / submodule? ===" && cat .gitmodules 2>/dev/null; git -C jarvis-checkout status 2>&1 | head -5
-echo "=== search repo for any Jarvis vault path references ===" && grep -rn "Jarvis" --include="*.py" --include="*.yaml" --include="*.md" . | grep -v .venv | grep -v __pycache__ | head -30, echo "=== jarvis-checkout remote ===" && git -C jarvis-checkout remote -v
-echo "=== jarvis-checkout full status ===" && git -C jarvis-checkout status
-echo "=== jarvis-checkout top-level dirs ===" && ls jarvis-checkout/ 2>/dev/null; find jarvis-checkout -maxdepth 1 2>/dev/null
-echo "=== .gitignore mentions jarvis-checkout? ===" && grep -n "jarvis" .gitignore -i, echo "=== run_pipeline.py priority context ===" && grep -n -i "priority" run_pipeline.py
-echo "=== enrich.py content ===" && cat enrich.py | head -60
-echo "=== search for Programs/Serious Considering Contacts Tracker ===" && grep -rn -i "Programs/Serious\|Programs/Considering\|Contacts/Each\|Tracker/Each\|Each One" . --include="*.py" --include="*.md" --include="*.yaml" 2>/dev/null | grep -v .venv, echo "=== git log ===" && git log --oneline -10 && echo "=== git status ===" && git status && echo "=== core/ ===" && ls -la core/ && echo "=== priority.py? ===" && test -f core/priority.py && echo YES || echo NO, echo "=== jarvis-checkout ===" && ls -la jarvis-checkout/ && find jarvis-checkout -maxdepth 3 2>/dev/null
-echo "=== git diff stat ===" && git diff --stat HEAD, echo "=== core/classify.py ===" && cat core/classify.py
-echo "=== core/relevance.py ===" && cat core/relevance.py, git diff HEAD -- enrich.py
-echo "=====VAULT_WRITER TEMPLATE====="
-git diff HEAD -- vault_writer/templates/dossier.md.j2
-echo "=====VAULT_WRITER WRITER====="
-git diff HEAD -- vault_writer/writer.py, echo "=== does repo already have CLAUDE.md? ===" && find . -iname "CLAUDE.md" -not -path "./.venv/*"
-echo "=== .claude dir ===" && ls -la .claude/
-echo "=== profile.yaml diff ===" && git diff HEAD -- core/profile.yaml
-echo "=== .github workflows ===" && ls .github/workflows/ 2>/dev/null && find .github -type f, cat .claude/settings.local.json
-echo "=== run tests ==="
-source .venv/bin/activate 2>/dev/null; python -m pytest -q 2>&1 | tail -20, gh repo view gupta-builds/internship-research-loop --json name,defaultBranchRef 2>&1 | head -5
-gh api user -q .login 2>&1, ls state/ logs/ && echo "=== seen_ids sample ===" && head -c 300 state/seen_ids.json && echo && echo "=== runs.jsonl tail ===" && tail -3 logs/runs.jsonl 2>/dev/null
-echo "=== workflows ===" && cat .github/workflows/run.yml, cat enrich.py
-echo "=====VALIDATE====="
-cat vault_writer/validate.py, find ~/.claude/skills -maxdepth 2 -iname "SKILL.md" | head -5
-echo "---"
-cat ~/.claude/skills/graphify/SKILL.md 2>/dev/null | head -40
-echo "=== any local project skill examples elsewhere on disk? ==="
-find / -maxdepth 6 -path "*/.claude/skills/*/SKILL.md" 2>/dev/null | grep -v "^/home/anant_gupta/.claude/skills" | head -10, find ~/.claude/agents -maxdepth 1 -iname "*.md" 2>/dev/null | head -5
-find / -maxdepth 8 -path "*/.claude/agents/*.md" 2>/dev/null | grep -v "^/home/anant_gupta/.claude/agents" | head -10
-echo "=== check plugin agents for example frontmatter ==="
-find / -path "*agents*" -iname "*.md" 2>/dev/null | grep -iv "node_modules\|/.venv/\|/.git/" | grep -i "code-reviewer\|explore" | head -10, find /home/anant_gupta -maxdepth 10 -path "*/.claude/agents/*.md" 2>/dev/null | head -20, mkdir -p .claude/agents .claude/skills/promote-dossier/reference .claude/skills/review-loop-change, cat .github/workflows/recheck.yml
-echo "=====test.yml====="
-cat .github/workflows/test.yml
-echo "=== state/dossier_uids.json exists? ===" && ls state/, cat ~/.claude/settings.json 2>/dev/null | head -60
-echo "=== any other settings.json examples with permissions block ==="
-find /home/anant_gupta/projects -maxdepth 4 -path "*/.claude/settings.json" 2>/dev/null | head -5, test -f /home/anant_gupta/projects/work/internship-research-loop/.claude/settings.json && echo EXISTS || echo MISSING, python3 -m json.tool .claude/settings.json > /dev/null && echo "valid JSON", cat README.md, python -m pytest -q 2>&1 | tail -5, source .venv/bin/activate && python -m pytest -q 2>&1 | tail -5, cd /home/anant_gupta/projects/work/internship-research-loop
-git fetch origin 2>&1
-echo "=== local vs origin/master ==="
-git log --oneline -5 origin/master
-echo "=== current branch status ==="
-git status
-echo "=== is local master behind/ahead of origin ==="
-git rev-list --left-right --count origin/master...HEAD, cd /home/anant_gupta/projects/work/internship-research-loop
-git diff --stat HEAD origin/master
-echo "=== do incoming commits touch any file I have modified locally? ==="
-comm -12 <(git diff --stat HEAD origin/master --name-only | sort) <(git status --porcelain | awk '{print $2}' | sort), cd /home/anant_gupta/projects/work/internship-research-loop
-git diff HEAD --stat -- ingestion/ vault_writer/ tests/test_writer.py tests/test_filter.py
-echo "=== ingestion/freehire.py head ==="
-head -20 ingestion/freehire.py, cd /home/anant_gupta/projects/work/internship-research-loop
-git pull --ff-only origin master
-echo "=== post-pull status ==="
-git status --short | head -5
-git log --oneline -3, cd /home/anant_gupta/projects/work/internship-research-loop
-git add core/filter.py core/profile.yaml core/classify.py core/relevance.py \
-  enrich.py \
-  ingestion/normalize.py ingestion/posting_page.py ingestion/sources.py ingestion/freehire.py \
-  recheck.py run_pipeline.py \
-  vault_writer/templates/dossier.md.j2 vault_writer/validate.py vault_writer/writer.py \
-  tests/fixtures/josegael.json tests/fixtures/simplifyjobs.json tests/fixtures/vanshb03.json tests/fixtures/zshah101.json \
-  tests/fixtures/freehire.json tests/fixtures/posting_ashby_ctgt.md \
-  tests/test_enrich.py tests/test_filter.py tests/test_posting_page.py tests/test_recheck.py \
-  tests/test_run_pipeline.py tests/test_sources.py tests/test_writer.py tests/test_classify.py tests/test_relevance.py tests/test_freehire.py
-git status --short, cd /home/anant_gupta/projects/work/internship-research-loop
-git commit -m "$(cat <<'EOF'
-Priority-bucket classification, CS-relevance gate, widened contact research
-
-Adds core/classify.py (Layer 2.5b, zero-LLM keyword bucketing into AI/ML,
-CyS & Finance, Fullstack, Other) and core/relevance.py (Layer 2.5, two-stage
-CS/software-relevance gate: cheap title-only reject before fetch, content
--confirmed adjacent-field check after). vault_writer/writer.py and the
-dossier template now sort writes into priority-bucket subfolders under
-List/Dossiers/, drop the unused uid/category/promoted frontmatter fields in
-favor of next (matching the vault's own note convention), and add a
-dossier_uids.json manifest for idempotent re-writes and recheck.py's
-removal-checking.
-
-Widens enrich.py's contact search to recruiter/university-recruiting queries
-and LinkedIn search-snippet hits (site:linkedin.com, snippet text only —
-never scrapes or logs into linkedin.com, per its own hard line).
-
-Adds ingestion/freehire.py as an 8th discovery source (scoped to companies
-with no reachable Greenhouse/Ashby/Lever token) and wires Greenhouse/Ashby/
-AIJobs into recheck.py's removal checks.
-
-258/258 tests passing.
-EOF
-)"
-git log --oneline -3, cd /home/anant_gupta/projects/work/internship-research-loop
-source .venv/bin/activate && python -m pytest -q 2>&1 | tail -3
-git add .claude/ CLAUDE.md
-git status --short, cd /home/anant_gupta/projects/work/internship-research-loop
-git commit -m "$(cat <<'EOF'
-Add promote-dossier skill, contact-researcher/loop-verifier agents, review-loop-change skill
-
-.claude/skills/promote-dossier/ — turns one List/Dossiers entry into a Program
-note + Contacts/Each One note + Tracker/Each One note (Internship Pipeline.md
-Step 3), human-consent-gated before any write. Templates copied verbatim from
-the vault's own Program Template.md/Contact Template.md; Tracker/Each One has
-no pre-existing vault template so its shape is authored from the pipeline
-doc's own field description. Requires the Jarvis vault present in the same
-working environment (git checkout sibling to this repo, or the jarvis MCP
-tools) — documented explicitly rather than assumed, per this being the first
-interactive (human-in-the-loop) writer this pipeline has ever had, distinct
-from run_pipeline.py/recheck.py's non-interactive scoped-PAT writes.
-
-.claude/agents/contact-researcher.md — exploratory subagent invoked by
-promote-dossier's Step 3, using enrich.py's widened search primitives
-(recruiter/university-recruiting search, GitHub org members, engineering
-blog bylines, LinkedIn search-snippets). Never fabricates a contact; reports
-"nothing found" honestly.
-
-.claude/agents/loop-verifier.md — standalone pipeline health check (tests,
-scheduled-run history via gh api, vault-vs-run-log dossier counts,
-seen_ids/vault divergence, auto-filed issues), the automated version of this
-project's prior manual audits (2026-07-19, 2026-07-25).
-
-.claude/skills/review-loop-change/ — checks a diff against this repo's four
-established conventions (zero-LLM unattended path, permissive-by-default
-filtering, fail-closed write-gate ordering, cited-real-data rule comments)
-before it ships. Built as a skill rather than an agent — reasoning is in the
-skill file's own "why a skill" section.
-
-.claude/settings.json — pytest/safe-git-reads/gh-reads allowed without
-prompting; git push and gh secret modification explicitly require
-confirmation every time (permissions.ask), never silently allowed or denied.
-
-CLAUDE.md — documents the three note-template contracts (required fields,
-always present even as null) and the explicit agent-vs-script judgment call
-for each of contact research / promotion / verification / review.
-
-Verified live against a real dossier (Appian — Software Engineering Intern):
-promote-dossier run end-to-end including the write step, contact-researcher
-found real sourced contacts, and a real gap this surfaced (structured
-frontmatter fields left null while the same fact was already narrated in
-body prose — eligible_classes, Tracker's date_created) is fixed in this
-commit, not left for later.
-
-258/258 tests passing (no pipeline code touched by this commit).
-EOF
-)"
-git log --oneline -5, cd /home/anant_gupta/projects/work/internship-research-loop
-git push origin master
-git log --oneline -5 origin/master 2>&1 || git fetch origin && git log --oneline -5 origin/master, cat /home/anant_gupta/projects/work/internship-research-loop/grade_resume.py | head -25
-echo "=== jarvis-checkout populated now? ==="
-ls -la /home/anant_gupta/projects/work/internship-research-loop/jarvis-checkout/ 2>/dev/null
-echo "=== check /mnt/d for a Jarvis vault ==="
-ls /mnt/d/Users/_Anant/ 2>/dev/null
-find /mnt/d -maxdepth 3 -iname "*jarvis*" 2>/dev/null
-echo "=== check /mnt for other drives ==="
-ls /mnt/ 2>/dev/null, echo "=== does the literal DEFAULT_RESUME path exist? ==="
-ls -la "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Resumes/" 2>&1
-echo "=== what's actually in /mnt/d/Users/_Anant/10_Areas/ ==="
-ls "/mnt/d/Users/_Anant/10_Areas/" 2>&1
-echo "=== search for a folder literally named Jarvis anywhere under /mnt/d ==="
-find /mnt/d -maxdepth 5 -iname "Jarvis" -type d 2>/dev/null
-echo "=== does /mnt/d/Users/_Anant/10_Areas/Career/Internships exist (the vault path used throughout this repo)? ==="
-ls "/mnt/d/Users/_Anant/10_Areas/Career/Internships/" 2>&1 | head -20, JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis"
-echo "=== vault root ===" && ls "$JARVIS"
-echo "=== 30_Order/Standards ===" && find "$JARVIS/30_Order" -iname "*standard*" 2>/dev/null
-echo "=== 20_Progress/Internship/Building System ===" && ls "$JARVIS/20_Progress/Internship/Building System/" 2>/dev/null
-echo "=== Runs dir ===" && find "$JARVIS" -maxdepth 4 -iname "Runs" -type d 2>/dev/null
-find "$JARVIS" -iname "*Claude Code Prompts*" 2>/dev/null
-echo "=== Dossiers dir ===" && ls "$JARVIS/10_Areas/Career/Internships/List/Dossiers/" | head -30
-echo "=== count dossiers ===" && ls "$JARVIS/10_Areas/Career/Internships/List/Dossiers/" | grep -c "\.md$"
-echo "=== is there a Viewed subfolder already? ===" && ls "$JARVIS/10_Areas/Career/Internships/List/Dossiers/Viewed/" 2>&1
-echo "=== is there a Dossiers MOC already? ===" && find "$JARVIS/10_Areas/Career/Internships" -iname "*MOC*" 2>/dev/null, JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis"
-echo "=== recursive dossier count per bucket ==="
-for d in "1 - AI & ML" "2 - Fullstack" "3 - CyS & Finance" "Other"; do
-  echo "$d: $(find "$JARVIS/10_Areas/Career/Internships/List/Dossiers/$d" -maxdepth 1 -iname "*.md" 2>/dev/null | wc -l)"
-done
-echo "Viewed: $(find "$JARVIS/10_Areas/Career/Internships/List/Dossiers/Viewed" -maxdepth 1 -iname "*.md" 2>/dev/null | wc -l)"
-echo "flat root: $(find "$JARVIS/10_Areas/Career/Internships/List/Dossiers" -maxdepth 1 -iname "*.md" 2>/dev/null | wc -l)"
-echo "TOTAL recursive: $(find "$JARVIS/10_Areas/Career/Internships/List/Dossiers" -iname "*.md" 2>/dev/null | wc -l)", JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis"
-echo "=== sample dossiers from each bucket (filenames) ==="
-find "$JARVIS/10_Areas/Career/Internships/List/Dossiers/1 - AI & ML" -iname "*.md" | head -5
-echo "---"
-find "$JARVIS/10_Areas/Career/Internships/List/Dossiers/Other" -iname "*.md" | head -5
-echo "=== the one flat-root dossier still there ==="
-find "$JARVIS/10_Areas/Career/Internships/List/Dossiers" -maxdepth 1 -iname "*.md", JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis"
-echo "=== Internship Notes Standard.md ===" && wc -c "$JARVIS/30_Order/Standards/Internship Notes Standard.md" && ls -la "$JARVIS/30_Order/Standards/Internship Notes Standard.md"
-echo "=== Removed Dossiers MOC.md ===" && wc -c "$JARVIS/10_Areas/Career/Internships/List/Dossiers/Viewed/Removed Dossiers MOC.md"
-echo "=== Dossiers-to-Create.md ===" && wc -l "$JARVIS/10_Areas/Career/Internships/List/Dossiers-to-Create.md"
-cat "$JARVIS/10_Areas/Career/Internships/List/Dossiers-to-Create.md", JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis"
-cat "$JARVIS/10_Areas/Career/Internships/List/Dossiers/Dossiers-to-Create.md", JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis"
-echo "=== Programs MOC frontmatter ===" && head -20 "$JARVIS/10_Areas/Career/Internships/Programs/Programs MOC.md"
-echo "=== Contacts MOC frontmatter ===" && head -20 "$JARVIS/10_Areas/Career/Internships/Contacts/Contacts MOC.md"
-echo "=== a real Program note frontmatter (Appian, since it was actually promoted) ===" && find "$JARVIS/10_Areas/Career/Internships/Programs" -iname "*ppian*"
-echo "=== Source of Truth (head) ===" && head -40 "$JARVIS/20_Progress/Internship/Building System/Source of Truth.md", cd /home/anant_gupta/projects/work/internship-research-loop
-grep -n "MAX_NEW_WRITES_PER_RUN" run_pipeline.py
-echo "=== core/identity.py cross_source_key ===" && cat core/identity.py
-echo "=== profile.yaml degrees_allow ===" && grep -n "degrees" core/profile.yaml
-echo "=== core/relevance.py current stage1 patterns ===" && grep -n "_STAGE1_REJECT_RE" -A 8 core/relevance.py
-echo "=== core/classify.py CYS_FINANCE_RE ===" && grep -n "_CYS_FINANCE_RE" -A 5 core/classify.py
+- Commands run: echo "=== repo root ===" && ls -la && echo "=== core/ ===" && ls -la core/ 2>/dev/null && echo "=== priority.py exists? ===" && test -f core/priority.py && echo YES || echo NO && echo "=== enrich.py ===" && find . -iname "enrich.py" && echo "=== git log ===" && git log --oneline -20, echo "=== search for priority anywhere ===" && grep -rl "priority" --include="*.py" . | grep -v .venv | grep -v __pycache__ echo "=== jarvis-checkout dir ===" && ls -la jarvis-checkout/ echo "=== is jarvis-checkout a git repo / submodule? ===" && cat .gitmodules 2>/dev/null; git -C jarvis-checkout status 2>&1 | head -5 echo "=== search repo for any Jarvis vault path references ===" && grep -rn "Jarvis" --include="*.py" --include="*.yaml" --include="*.md" . | grep -v .venv | grep -v __pycache__ | head -30, echo "=== jarvis-checkout remote ===" && git -C jarvis-checkout remote -v echo "=== jarvis-checkout full status ===" && git -C jarvis-checkout status echo "=== jarvis-checkout top-level dirs ===" && ls jarvis-checkout/ 2>/dev/null; find jarvis-checkout -maxdepth 1 2>/dev/null echo "=== .gitignore mentions jarvis-checkout? ===" && grep -n "jarvis" .gitignore -i, echo "=== run_pipeline.py priority context ===" && grep -n -i "priority" run_pipeline.py echo "=== enrich.py content ===" && cat enrich.py | head -60 echo "=== search for Programs/Serious Considering Contacts Tracker ===" && grep -rn -i "Programs/Serious\|Programs/Considering\|Contacts/Each\|Tracker/Each\|Each One" . --include="*.py" --include="*.md" --include="*.yaml" 2>/dev/null | grep -v .venv, echo "=== git log ===" && git log --oneline -10 && echo "=== git status ===" && git status && echo "=== core/ ===" && ls -la core/ && echo "=== priority.py? ===" && test -f core/priority.py && echo YES || echo NO, echo "=== jarvis-checkout ===" && ls -la jarvis-checkout/ && find jarvis-checkout -maxdepth 3 2>/dev/null echo "=== git diff stat ===" && git diff --stat HEAD, echo "=== core/classify.py ===" && cat core/classify.py echo "=== core/relevance.py ===" && cat core/relevance.py, git diff HEAD -- enrich.py echo "=====VAULT_WRITER TEMPLATE=====" git diff HEAD -- vault_writer/templates/dossier.md.j2 echo "=====VAULT_WRITER WRITER=====" git diff HEAD -- vault_writer/writer.py, echo "=== does repo already have CLAUDE.md? ===" && find . -iname "CLAUDE.md" -not -path "./.venv/*" echo "=== .claude dir ===" && ls -la .claude/ echo "=== profile.yaml diff ===" && git diff HEAD -- core/profile.yaml echo "=== .github workflows ===" && ls .github/workflows/ 2>/dev/null && find .github -type f, cat .claude/settings.local.json echo "=== run tests ===" source .venv/bin/activate 2>/dev/null; python -m pytest -q 2>&1 | tail -20, gh repo view gupta-builds/internship-research-loop --json name,defaultBranchRef 2>&1 | head -5 gh api user -q .login 2>&1, ls state/ logs/ && echo "=== seen_ids sample ===" && head -c 300 state/seen_ids.json && echo && echo "=== runs.jsonl tail ===" && tail -3 logs/runs.jsonl 2>/dev/null echo "=== workflows ===" && cat .github/workflows/run.yml, cat enrich.py echo "=====VALIDATE=====" cat vault_writer/validate.py, find ~/.claude/skills -maxdepth 2 -iname "SKILL.md" | head -5 echo "---" cat ~/.claude/skills/graphify/SKILL.md 2>/dev/null | head -40 echo "=== any local project skill examples elsewhere on disk? ===" find / -maxdepth 6 -path "*/.claude/skills/*/SKILL.md" 2>/dev/null | grep -v "^/home/anant_gupta/.claude/skills" | head -10, find ~/.claude/agents -maxdepth 1 -iname "*.md" 2>/dev/null | head -5 find / -maxdepth 8 -path "*/.claude/agents/*.md" 2>/dev/null | grep -v "^/home/anant_gupta/.claude/agents" | head -10 echo "=== check plugin agents for example frontmatter ===" find / -path "*agents*" -iname "*.md" 2>/dev/null | grep -iv "node_modules\|/.venv/\|/.git/" | grep -i "code-reviewer\|explore" | head -10, find /home/anant_gupta -maxdepth 10 -path "*/.claude/agents/*.md" 2>/dev/null | head -20, mkdir -p .claude/agents .claude/skills/promote-dossier/reference .claude/skills/review-loop-change, cat .github/workflows/recheck.yml echo "=====test.yml=====" cat .github/workflows/test.yml echo "=== state/dossier_uids.json exists? ===" && ls state/, cat ~/.claude/settings.json 2>/dev/null | head -60 echo "=== any other settings.json examples with permissions block ===" find /home/anant_gupta/projects -maxdepth 4 -path "*/.claude/settings.json" 2>/dev/null | head -5, test -f /home/anant_gupta/projects/work/internship-research-loop/.claude/settings.json && echo EXISTS || echo MISSING, python3 -m json.tool .claude/settings.json > /dev/null && echo "valid JSON", cat README.md, python -m pytest -q 2>&1 | tail -5, source .venv/bin/activate && python -m pytest -q 2>&1 | tail -5, cd /home/anant_gupta/projects/work/internship-research-loop git fetch origin 2>&1 echo "=== local vs origin/master ===" git log --oneline -5 origin/master echo "=== current branch status ===" git status echo "=== is local master behind/ahead of origin ===" git rev-list --left-right --count origin/master...HEAD, cd /home/anant_gupta/projects/work/internship-research-loop git diff --stat HEAD origin/master echo "=== do incoming commits touch any file I have modified locally? ===" comm -12 <(git diff --stat HEAD origin/master --name-only | sort) <(git status --porcelain | awk '{print $2}' | sort), cd /home/anant_gupta/projects/work/internship-research-loop git diff HEAD --stat -- ingestion/ vault_writer/ tests/test_writer.py tests/test_filter.py echo "=== ingestion/freehire.py head ===" head -20 ingestion/freehire.py, cd /home/anant_gupta/projects/work/internship-research-loop git pull --ff-only origin master echo "=== post-pull status ===" git status --short | head -5 git log --oneline -3, cd /home/anant_gupta/projects/work/internship-research-loop git add core/filter.py core/profile.yaml core/classify.py core/relevance.py \ enrich.py \ ingestion/normalize.py ingestion/posting_page.py ingestion/sources.py ingestion/freehire.py \ recheck.py run_pipeline.py \ vault_writer/templates/dossier.md.j2 vault_writer/validate.py vault_writer/writer.py \ tests/fixtures/josegael.json tests/fixtures/simplifyjobs.json tests/fixtures/vanshb03.json tests/fixtures/zshah101.json \ tests/fixtures/freehire.json tests/fixtures/posting_ashby_ctgt.md \ tests/test_enrich.py tests/test_filter.py tests/test_posting_page.py tests/test_recheck.py \ tests/test_run_pipeline.py tests/test_sources.py tests/test_writer.py tests/test_classify.py tests/test_relevance.py tests/test_freehire.py git status --short, cd /home/anant_gupta/projects/work/internship-research-loop git commit -m "$(cat <<'EOF' Priority-bucket classification, CS-relevance gate, widened contact research Adds core/classify.py (Layer 2.5b, zero-LLM keyword bucketing into AI/ML, CyS & Finance, Fullstack, Other) and core/relevance.py (Layer 2.5, two-stage CS/software-relevance gate: cheap title-only reject before fetch, content -confirmed adjacent-field check after). vault_writer/writer.py and the dossier template now sort writes into priority-bucket subfolders under List/Dossiers/, drop the unused uid/category/promoted frontmatter fields in favor of next (matching the vault's own note convention), and add a dossier_uids.json manifest for idempotent re-writes and recheck.py's removal-checking. Widens enrich.py's contact search to recruiter/university-recruiting queries and LinkedIn search-snippet hits (site:linkedin.com, snippet text only — never scrapes or logs into linkedin.com, per its own hard line). Adds ingestion/freehire.py as an 8th discovery source (scoped to companies with no reachable Greenhouse/Ashby/Lever token) and wires Greenhouse/Ashby/ AIJobs into recheck.py's removal checks. 258/258 tests passing. EOF )" git log --oneline -3, cd /home/anant_gupta/projects/work/internship-research-loop source .venv/bin/activate && python -m pytest -q 2>&1 | tail -3 git add .claude/ CLAUDE.md git status --short, cd /home/anant_gupta/projects/work/internship-research-loop git commit -m "$(cat <<'EOF' Add promote-dossier skill, contact-researcher/loop-verifier agents, review-loop-change skill .claude/skills/promote-dossier/ — turns one List/Dossiers entry into a Program note + Contacts/Each One note + Tracker/Each One note (Internship Pipeline.md Step 3), human-consent-gated before any write. Templates copied verbatim from the vault's own Program Template.md/Contact Template.md; Tracker/Each One has no pre-existing vault template so its shape is authored from the pipeline doc's own field description. Requires the Jarvis vault present in the same working environment (git checkout sibling to this repo, or the jarvis MCP tools) — documented explicitly rather than assumed, per this being the first interactive (human-in-the-loop) writer this pipeline has ever had, distinct from run_pipeline.py/recheck.py's non-interactive scoped-PAT writes. .claude/agents/contact-researcher.md — exploratory subagent invoked by promote-dossier's Step 3, using enrich.py's widened search primitives (recruiter/university-recruiting search, GitHub org members, engineering blog bylines, LinkedIn search-snippets). Never fabricates a contact; reports "nothing found" honestly. .claude/agents/loop-verifier.md — standalone pipeline health check (tests, scheduled-run history via gh api, vault-vs-run-log dossier counts, seen_ids/vault divergence, auto-filed issues), the automated version of this project's prior manual audits (2026-07-19, 2026-07-25). .claude/skills/review-loop-change/ — checks a diff against this repo's four established conventions (zero-LLM unattended path, permissive-by-default filtering, fail-closed write-gate ordering, cited-real-data rule comments) before it ships. Built as a skill rather than an agent — reasoning is in the skill file's own "why a skill" section. .claude/settings.json — pytest/safe-git-reads/gh-reads allowed without prompting; git push and gh secret modification explicitly require confirmation every time (permissions.ask), never silently allowed or denied. CLAUDE.md — documents the three note-template contracts (required fields, always present even as null) and the explicit agent-vs-script judgment call for each of contact research / promotion / verification / review. Verified live against a real dossier (Appian — Software Engineering Intern): promote-dossier run end-to-end including the write step, contact-researcher found real sourced contacts, and a real gap this surfaced (structured frontmatter fields left null while the same fact was already narrated in body prose — eligible_classes, Tracker's date_created) is fixed in this commit, not left for later. 258/258 tests passing (no pipeline code touched by this commit). EOF )" git log --oneline -5, cd /home/anant_gupta/projects/work/internship-research-loop git push origin master git log --oneline -5 origin/master 2>&1 || git fetch origin && git log --oneline -5 origin/master, cat /home/anant_gupta/projects/work/internship-research-loop/grade_resume.py | head -25 echo "=== jarvis-checkout populated now? ===" ls -la /home/anant_gupta/projects/work/internship-research-loop/jarvis-checkout/ 2>/dev/null echo "=== check /mnt/d for a Jarvis vault ===" ls /mnt/d/Users/_Anant/ 2>/dev/null find /mnt/d -maxdepth 3 -iname "*jarvis*" 2>/dev/null echo "=== check /mnt for other drives ===" ls /mnt/ 2>/dev/null, echo "=== does the literal DEFAULT_RESUME path exist? ===" ls -la "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Resumes/" 2>&1 echo "=== what's actually in /mnt/d/Users/_Anant/10_Areas/ ===" ls "/mnt/d/Users/_Anant/10_Areas/" 2>&1 echo "=== search for a folder literally named Jarvis anywhere under /mnt/d ===" find /mnt/d -maxdepth 5 -iname "Jarvis" -type d 2>/dev/null echo "=== does /mnt/d/Users/_Anant/10_Areas/Career/Internships exist (the vault path used throughout this repo)? ===" ls "/mnt/d/Users/_Anant/10_Areas/Career/Internships/" 2>&1 | head -20, JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" echo "=== vault root ===" && ls "$JARVIS" echo "=== 30_Order/Standards ===" && find "$JARVIS/30_Order" -iname "*standard*" 2>/dev/null echo "=== 20_Progress/Internship/Building System ===" && ls "$JARVIS/20_Progress/Internship/Building System/" 2>/dev/null echo "=== Runs dir ===" && find "$JARVIS" -maxdepth 4 -iname "Runs" -type d 2>/dev/null find "$JARVIS" -iname "*Claude Code Prompts*" 2>/dev/null echo "=== Dossiers dir ===" && ls "$JARVIS/10_Areas/Career/Internships/List/Dossiers/" | head -30 echo "=== count dossiers ===" && ls "$JARVIS/10_Areas/Career/Internships/List/Dossiers/" | grep -c "\.md$" echo "=== is there a Viewed subfolder already? ===" && ls "$JARVIS/10_Areas/Career/Internships/List/Dossiers/Viewed/" 2>&1 echo "=== is there a Dossiers MOC already? ===" && find "$JARVIS/10_Areas/Career/Internships" -iname "*MOC*" 2>/dev/null, JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" echo "=== recursive dossier count per bucket ===" for d in "1 - AI & ML" "2 - Fullstack" "3 - CyS & Finance" "Other"; do echo "$d: $(find "$JARVIS/10_Areas/Career/Internships/List/Dossiers/$d" -maxdepth 1 -iname "*.md" 2>/dev/null | wc -l)" done echo "Viewed: $(find "$JARVIS/10_Areas/Career/Internships/List/Dossiers/Viewed" -maxdepth 1 -iname "*.md" 2>/dev/null | wc -l)" echo "flat root: $(find "$JARVIS/10_Areas/Career/Internships/List/Dossiers" -maxdepth 1 -iname "*.md" 2>/dev/null | wc -l)" echo "TOTAL recursive: $(find "$JARVIS/10_Areas/Career/Internships/List/Dossiers" -iname "*.md" 2>/dev/null | wc -l)", JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" echo "=== sample dossiers from each bucket (filenames) ===" find "$JARVIS/10_Areas/Career/Internships/List/Dossiers/1 - AI & ML" -iname "*.md" | head -5 echo "---" find "$JARVIS/10_Areas/Career/Internships/List/Dossiers/Other" -iname "*.md" | head -5 echo "=== the one flat-root dossier still there ===" find "$JARVIS/10_Areas/Career/Internships/List/Dossiers" -maxdepth 1 -iname "*.md", JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" echo "=== Internship Notes Standard.md ===" && wc -c "$JARVIS/30_Order/Standards/Internship Notes Standard.md" && ls -la "$JARVIS/30_Order/Standards/Internship Notes Standard.md" echo "=== Removed Dossiers MOC.md ===" && wc -c "$JARVIS/10_Areas/Career/Internships/List/Dossiers/Viewed/Removed Dossiers MOC.md" echo "=== Dossiers-to-Create.md ===" && wc -l "$JARVIS/10_Areas/Career/Internships/List/Dossiers-to-Create.md" cat "$JARVIS/10_Areas/Career/Internships/List/Dossiers-to-Create.md", JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" cat "$JARVIS/10_Areas/Career/Internships/List/Dossiers/Dossiers-to-Create.md", JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" echo "=== Programs MOC frontmatter ===" && head -20 "$JARVIS/10_Areas/Career/Internships/Programs/Programs MOC.md" echo "=== Contacts MOC frontmatter ===" && head -20 "$JARVIS/10_Areas/Career/Internships/Contacts/Contacts MOC.md" echo "=== a real Program note frontmatter (Appian, since it was actually promoted) ===" && find "$JARVIS/10_Areas/Career/Internships/Programs" -iname "*ppian*" echo "=== Source of Truth (head) ===" && head -40 "$JARVIS/20_Progress/Internship/Building System/Source of Truth.md", cd /home/anant_gupta/projects/work/internship-research-loop grep -n "MAX_NEW_WRITES_PER_RUN" run_pipeline.py echo "=== core/identity.py cross_source_key ===" && cat core/identity.py echo "=== profile.yaml degrees_allow ===" && grep -n "degrees" core/profile.yaml echo "=== core/relevance.py current stage1 patterns ===" && grep -n "_STAGE1_REJECT_RE" -A 8 core/relevance.py echo "=== core/classify.py CYS_FINANCE_RE ===" && grep -n "_CYS_FINANCE_RE" -A 5 core/classify.py
 - Tool call tally: Agent (2), AskUserQuestion (2), Bash (43), Edit (16), mcp__jarvis__vault_list (11), mcp__jarvis__vault_read (10), mcp__jarvis__vault_write (5), mcp__jarvis-fs__list_allowed_directories (1), Read (22), Skill (1), TaskCreate (6), TaskUpdate (12), ToolSearch (4), Write (8)
 

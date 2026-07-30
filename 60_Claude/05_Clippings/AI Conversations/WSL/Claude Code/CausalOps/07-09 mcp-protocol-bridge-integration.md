@@ -7,7 +7,7 @@ title: "mcp-protocol-bridge-integration"
 started_at: 2026-07-09T07:21:55
 ended_at: 2026-07-09T07:34:44
 duration_minutes: 13
-exported_at: 2026-07-30T15:28:59.6972445+04:00
+exported_at: 2026-07-30T16:47:46.9270578+04:00
 project: CausalOps
 cwd: '/home/anant_gupta/projects/hub/CausalOps'
 session_id: a5ffba60-907c-437b-b8c4-6fe1e97014bf
@@ -1422,22 +1422,28 @@ tests/memory/test_mcp_tools.py ......                                    [100%]
 
 ============================== 6 passed in 7.14s ===============================
   ```
-- `Bash` — `set -a && source .env && set +a && python -c "
+- `Bash`:
+  ```bash
+set -a && source .env && set +a && python -c "
 import os
 key = os.getenv('SUPABASE_SERVICE_ROLE_KEY','')
 print('SUPABASE_URL set:', bool(os.getenv('SUPABASE_URL')))
 print('key looks real:', bool(key) and 'your-' not in key)
-"`
+"
+  ```
   ```
 Exit code 127
 /bin/bash: line 6: python: command not found
   ```
-- `Bash` — `set -a && source .env && set +a && .venv/bin/python -c "
+- `Bash`:
+  ```bash
+set -a && source .env && set +a && .venv/bin/python -c "
 import os
 key = os.getenv('SUPABASE_SERVICE_ROLE_KEY','')
 print('SUPABASE_URL set:', bool(os.getenv('SUPABASE_URL')))
 print('key looks real:', bool(key) and 'your-' not in key)
-"`
+"
+  ```
   ```
 SUPABASE_URL set: True
 key looks real: True
@@ -1513,7 +1519,9 @@ All checks passed!
   ```
 0 errors, 0 warnings, 0 informations
   ```
-- `Bash` — `set -a && source .env && set +a && .venv/bin/python -c "
+- `Bash`:
+  ```bash
+set -a && source .env && set +a && .venv/bin/python -c "
 from memory.store import SupabaseMemoryStore
 import sys
 sys.path.insert(0, 'src')
@@ -1528,7 +1536,8 @@ print('leftover runs:', runs.data)
 print('leftover entities:', entities.data)
 print('leftover edges:', edges.data)
 "
-`
+
+  ```
   ```
 Traceback (most recent call last):
   File "<string>", line 2, in <module>
@@ -1706,31 +1715,6 @@ index b67f6abc..2c42996e 100644
 - Files created: /home/anant_gupta/.claude/plans/05-mcp-dapper-abelson.md, /home/anant_gupta/projects/hub/CausalOps/tests/memory/test_mcp_bridge.py
 - Files modified: /home/anant_gupta/projects/hub/CausalOps/tests/memory/test_mcp_tools.py, /home/anant_gupta/projects/hub/CausalOps/CLAUDE.md, /home/anant_gupta/projects/hub/CausalOps/.gitignore
 - Files deleted: (none)
-- Commands run: .venv/bin/python -m pytest tests/memory/test_mcp_tools.py -v 2>&1 | tail -40, set -a && source .env && set +a && python -c "
-import os
-key = os.getenv('SUPABASE_SERVICE_ROLE_KEY','')
-print('SUPABASE_URL set:', bool(os.getenv('SUPABASE_URL')))
-print('key looks real:', bool(key) and 'your-' not in key)
-", set -a && source .env && set +a && .venv/bin/python -c "
-import os
-key = os.getenv('SUPABASE_SERVICE_ROLE_KEY','')
-print('SUPABASE_URL set:', bool(os.getenv('SUPABASE_URL')))
-print('key looks real:', bool(key) and 'your-' not in key)
-", set -a && source .env && set +a && .venv/bin/python -m pytest tests/memory/test_mcp_bridge.py -v -m integration 2>&1 | tail -40, set -a && source .env && set +a && .venv/bin/python -m pytest tests/memory/ -v 2>&1 | tail -70, .venv/bin/python -m pytest tests/ -m "not integration and not kafka" 2>&1 | tail -20, .venv/bin/python -m ruff check tests/memory/test_mcp_tools.py tests/memory/test_mcp_bridge.py, .venv/bin/python -m pyright tests/memory/test_mcp_bridge.py 2>&1 | tail -30, set -a && source .env && set +a && .venv/bin/python -c "
-from memory.store import SupabaseMemoryStore
-import sys
-sys.path.insert(0, 'src')
-" 2>&1
-cd /home/anant_gupta/projects/hub/CausalOps/src && set -a && source ../.env && set +a && ../.venv/bin/python -c "
-from memory.store import SupabaseMemoryStore
-store = SupabaseMemoryStore()
-runs = store._client.table('memory_runs').select('run_id').like('run_id', 'mcp-bridge-%').execute()
-entities = store._client.table('memory_entities').select('entity_value').like('entity_value', 'mcp-bridge-%').execute()
-edges = store._client.table('memory_entity_edges').select('source_run_id').like('source_run_id', 'mcp-bridge-%').execute()
-print('leftover runs:', runs.data)
-print('leftover entities:', entities.data)
-print('leftover edges:', edges.data)
-"
-, cd /home/anant_gupta/projects/hub/CausalOps && git diff CLAUDE.md && echo "---GITIGNORE---" && git diff .gitignore && echo "---STATUS---" && git status --short, git diff tests/memory/test_mcp_tools.py | head -60
+- Commands run: .venv/bin/python -m pytest tests/memory/test_mcp_tools.py -v 2>&1 | tail -40, set -a && source .env && set +a && python -c " import os key = os.getenv('SUPABASE_SERVICE_ROLE_KEY','') print('SUPABASE_URL set:', bool(os.getenv('SUPABASE_URL'))) print('key looks real:', bool(key) and 'your-' not in key) ", set -a && source .env && set +a && .venv/bin/python -c " import os key = os.getenv('SUPABASE_SERVICE_ROLE_KEY','') print('SUPABASE_URL set:', bool(os.getenv('SUPABASE_URL'))) print('key looks real:', bool(key) and 'your-' not in key) ", set -a && source .env && set +a && .venv/bin/python -m pytest tests/memory/test_mcp_bridge.py -v -m integration 2>&1 | tail -40, set -a && source .env && set +a && .venv/bin/python -m pytest tests/memory/ -v 2>&1 | tail -70, .venv/bin/python -m pytest tests/ -m "not integration and not kafka" 2>&1 | tail -20, .venv/bin/python -m ruff check tests/memory/test_mcp_tools.py tests/memory/test_mcp_bridge.py, .venv/bin/python -m pyright tests/memory/test_mcp_bridge.py 2>&1 | tail -30, set -a && source .env && set +a && .venv/bin/python -c " from memory.store import SupabaseMemoryStore import sys sys.path.insert(0, 'src') " 2>&1 cd /home/anant_gupta/projects/hub/CausalOps/src && set -a && source ../.env && set +a && ../.venv/bin/python -c " from memory.store import SupabaseMemoryStore store = SupabaseMemoryStore() runs = store._client.table('memory_runs').select('run_id').like('run_id', 'mcp-bridge-%').execute() entities = store._client.table('memory_entities').select('entity_value').like('entity_value', 'mcp-bridge-%').execute() edges = store._client.table('memory_entity_edges').select('source_run_id').like('source_run_id', 'mcp-bridge-%').execute() print('leftover runs:', runs.data) print('leftover entities:', entities.data) print('leftover edges:', edges.data) " , cd /home/anant_gupta/projects/hub/CausalOps && git diff CLAUDE.md && echo "---GITIGNORE---" && git diff .gitignore && echo "---STATUS---" && git status --short, git diff tests/memory/test_mcp_tools.py | head -60
 - Tool call tally: Agent (1), Bash (11), Edit (4), ExitPlanMode (1), Read (3), TaskCreate (6), TaskUpdate (8), ToolSearch (2), Write (2)
 

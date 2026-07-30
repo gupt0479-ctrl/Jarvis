@@ -7,7 +7,7 @@ title: "Refine LinkedIn about me section"
 started_at: 2026-06-30T11:18:31
 ended_at: 2026-06-30T11:26:51
 duration_minutes: 8
-exported_at: 2026-07-30T15:28:59.6972445+04:00
+exported_at: 2026-07-30T16:47:46.9270578+04:00
 project: gupta-builds
 cwd: '/home/anant_gupta/projects/work/gupta-builds'
 session_id: 30606798-a3e9-4022-b0ac-5f07030acd7f
