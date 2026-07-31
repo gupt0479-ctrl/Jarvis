@@ -5,6 +5,14 @@
       "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
     },
     {
+      "basename": "Claude Council (LLM Council Skill Install)",
+      "path": "20_Progress/AI/Builds & Resources/Claude Council (LLM Council Skill Install).md"
+    },
+    {
+      "basename": "00_Execution",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
+    },
+    {
       "basename": "Repos",
       "path": "40_Resources/CS/Repos.md"
     },
@@ -19,10 +27,6 @@
     {
       "basename": "Model Distillation",
       "path": "20_Progress/AI/Builds & Resources/Model Distillation.md"
-    },
-    {
-      "basename": "00_Execution",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
     },
     {
       "basename": "Student Travel Discounts — Survey Note (Staging for The Plan)",
@@ -97,20 +101,12 @@
       "path": "60_Claude/05_Clippings/AI Conversations/Windows/Claude Code/07-27 Claude Code - what skills am i not using.md"
     },
     {
-      "basename": "07-09 Claude Code - Session 123314",
-      "path": "60_Claude/05_Clippings/AI Conversations/Windows/Claude Code/07-09 Claude Code - Session 123314.md"
-    },
-    {
       "basename": "07-05 Claude Code - local-command-caveatCaveat The messages below were-2",
       "path": "60_Claude/05_Clippings/AI Conversations/Windows/Claude Code/07-05 Claude Code - local-command-caveatCaveat The messages below were-2.md"
     },
     {
       "basename": "07-05 Claude Code - local-command-caveatCaveat The messages below were",
       "path": "60_Claude/05_Clippings/AI Conversations/Windows/Claude Code/07-05 Claude Code - local-command-caveatCaveat The messages below were.md"
-    },
-    {
-      "basename": "07-03 Claude Code - The previous session was fixing the local project mcps and",
-      "path": "60_Claude/05_Clippings/AI Conversations/Windows/Claude Code/07-03 Claude Code - The previous session was fixing the local project mcps and.md"
     },
     {
       "basename": "MOC",
@@ -159,10 +155,6 @@
     {
       "basename": "Dossiers-to-Create",
       "path": "10_Areas/Career/Internships/List/Dossiers/Dossiers-to-Create.md"
-    },
-    {
-      "basename": "Claude Council (LLM Council Skill Install)",
-      "path": "20_Progress/AI/Builds & Resources/Claude Council (LLM Council Skill Install).md"
     },
     {
       "basename": "PDF's Ingestion Implementation",

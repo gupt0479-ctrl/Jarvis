@@ -1,1 +1,10 @@
-{}
+{
+  "enabledCssSnippets": [
+    "dashboard",
+    "myedits",
+    "rainbowfile_colors",
+    "readingview",
+    "headerspace"
+  ],
+  "cssTheme": "AnuPpuccin"
+}

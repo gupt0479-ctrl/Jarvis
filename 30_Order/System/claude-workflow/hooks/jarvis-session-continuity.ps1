@@ -17,34 +17,6 @@ $eventName = [string]$hookInput.hook_event_name
 $cwd = [string]$hookInput.cwd
 $jarvisRoot = "D:\Users\_Anant\10_Areas\Documents\Jarvis"
 
-function ConvertTo-JsonStringArray {
-    # ConvertTo-Json unwraps a single-element array into a bare scalar
-    # ("abc" instead of ["abc"]), which then fails to round-trip as an array
-    # on the next read. Build the JSON by hand instead - simple, and correct
-    # regardless of element count.
-    param([string[]]$Items)
-    $escaped = @($Items) | ForEach-Object { '"' + ($_ -replace '\\','\\' -replace '"','\"') + '"' }
-    return "[" + ($escaped -join ",") + "]"
-}
-
-function Read-JsonStringArray {
-    # @(Get-Content -Raw | ConvertFrom-Json) silently collapses a 2+ element
-    # JSON array into a single space-joined string when the whole pipeline is
-    # wrapped in one @(...) - verified reproducible in this PowerShell version.
-    # Parsing into a variable first, then wrapping that variable, is the
-    # combination that actually preserves each element. Do not "simplify"
-    # this back to the one-line form.
-    param([string]$Path)
-    if (-not (Test-Path -LiteralPath $Path)) { return @() }
-    try {
-        $raw = Get-Content -LiteralPath $Path -Raw
-        $parsed = $raw | ConvertFrom-Json
-        return @($parsed)
-    } catch {
-        return @()
-    }
-}
-
 function Test-IsInsideJarvis {
     param([string]$Path)
 
@@ -111,21 +83,19 @@ if ($eventName -eq "SessionEnd") {
     # the raw archive the moment it ends, so capture is live rather than
     # depending on a manual /export-ai-session pass. Distillation (tier 2)
     # stays manual - a hook can't invoke an LLM to synthesize a summary.
+    #
+    # Unconditional (no $isJarvis gate) - every Windows Claude Code project
+    # (Home, Jarvis, The Plan, and anything new) gets exported and routed to
+    # its own per-project folder by export-claude-session.ps1 itself, keyed
+    # off the session's real cwd. Dedup is now a per-session marker file
+    # inside that project folder (checked by the export script itself), not
+    # a shared exported-claude-sessions.json index - so no index file to
+    # read/write here at all.
     try {
         $exportScript = "D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\System\claude-workflow\scripts\export-claude-session.ps1"
-        $indexPath = "D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\System\claude-workflow\exported-claude-sessions.json"
 
-        if ($isJarvis -and $sessionId -and $transcriptPath -and (Test-Path -LiteralPath $transcriptPath)) {
-            $exported = Read-JsonStringArray -Path $indexPath
-
-            if ($exported -notcontains $sessionId) {
-                $outDir = "D:\Users\_Anant\10_Areas\Documents\Jarvis\60_Claude\05_Clippings\AI Conversations\Windows\Claude Code"
-                & $exportScript -TranscriptPath $transcriptPath -OutputDir $outDir `
-                    -SessionId $sessionId -Project "Jarvis" -Cwd $cwd | Out-Null
-
-                $exported = @($exported) + $sessionId
-                (ConvertTo-JsonStringArray $exported) | Set-Content -LiteralPath $indexPath -Encoding UTF8
-            }
+        if ($sessionId -and $transcriptPath -and (Test-Path -LiteralPath $transcriptPath)) {
+            & $exportScript -TranscriptPath $transcriptPath -SessionId $sessionId -Cwd $cwd -SourceApp "ClaudeCode" | Out-Null
         }
     } catch {
         # fail open - a bad transcript must never block Claude Code from exiting
@@ -136,13 +106,14 @@ if ($eventName -eq "SessionEnd") {
     # this hook themselves, so they can't be captured live. Piggyback on every
     # normal session end instead - "eventually consistent" within one real
     # Claude Code use, not instant, but fully automatic.
+    #
+    # No shared cowork index file either - every candidate transcript found
+    # this sweep is handed to export-claude-session.ps1, which checks its own
+    # per-session marker (keyed on the transcript's own basename, grouped by
+    # month) and returns instantly for anything already exported.
     try {
         $coworkRoot = Join-Path $env:APPDATA "Claude\local-agent-mode-sessions"
         if (Test-Path -LiteralPath $coworkRoot) {
-            $coworkIndexPath = "D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\System\claude-workflow\exported-cowork-sessions.json"
-            $coworkExported = Read-JsonStringArray -Path $coworkIndexPath
-
-            $coworkOutDir = "D:\Users\_Anant\10_Areas\Documents\Jarvis\60_Claude\05_Clippings\AI Conversations\Windows\Cowork"
             $exportScript = "D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\System\claude-workflow\scripts\export-claude-session.ps1"
 
             # Only top-level session transcripts (parent dir ends "-outputs") -
@@ -155,23 +126,13 @@ if ($eventName -eq "SessionEnd") {
             $candidatePaths = [System.IO.Directory]::EnumerateFiles($longCoworkRoot, "*.jsonl", [System.IO.SearchOption]::AllDirectories) |
                 Where-Object { (Split-Path $_ -Parent) -like "*-outputs" }
 
-            $newlyExported = New-Object System.Collections.Generic.List[string]
             foreach ($fullPath in $candidatePaths) {
-                if ($coworkExported -notcontains $fullPath) {
-                    try {
-                        $baseName = [System.IO.Path]::GetFileNameWithoutExtension($fullPath)
-                        & $exportScript -TranscriptPath $fullPath -OutputDir $coworkOutDir `
-                            -SessionId $baseName -Project "Cowork" | Out-Null
-                        $newlyExported.Add($fullPath)
-                    } catch {
-                        # skip this one transcript, keep sweeping the rest
-                    }
+                try {
+                    $baseName = [System.IO.Path]::GetFileNameWithoutExtension($fullPath)
+                    & $exportScript -TranscriptPath $fullPath -SessionId $baseName -SourceApp "Cowork" | Out-Null
+                } catch {
+                    # skip this one transcript, keep sweeping the rest
                 }
-            }
-
-            if ($newlyExported.Count -gt 0) {
-                $coworkExported = @($coworkExported) + @($newlyExported)
-                (ConvertTo-JsonStringArray $coworkExported) | Set-Content -LiteralPath $coworkIndexPath -Encoding UTF8
             }
         }
     } catch {
