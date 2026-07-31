@@ -1,0 +1,61 @@
+---
+company: Melius
+title: Software Engineer Intern
+url: https://jobs.ashbyhq.com/melius/b61f063a-4f94-4e50-a4ef-05aaab552280/application?embed=true
+source: SimplifyJobs
+terms:
+  - Spring 2027
+  - Summer 2027
+locations:
+  - NYC
+target_year: []
+date_posted: '2026-07-31'
+date_found: '2026-07-31'
+matched_reason: Spring 2027, Summer 2027, Software
+status: unreviewed
+next:
+tags:
+  - internship
+  - auto-discovered
+---
+# Software Engineer Intern
+Found 2026-07-31 via SimplifyJobs.
+> [!NOTE] AI/ML: matched on "agentic".
+## Posting (fetched 2026-07-31)
+# Software Engineering Intern \[Spring/Summer 2027\]
+## Location
+New York City
+## Employment Type
+Intern
+## Location Type
+On-site
+## Department
+Engineering
+## Compensation
+- $11,000 monthly $11K per month
+**Melius** — New York City
+Engineers have Cursor. Lawyers have Harvey. The office of the CFO has Ramp. Every knowledge profession has been handed a platform that lets them orchestrate agents and scale their output by an order of magnitude — except the people who actually make the things we look at, watch, and listen to.
+**Melius is the agents lab for creative work.** We build agentic interfaces to all the work that goes into building the next generation of images, video, audio and so much more. Generative media canvas, timeline editor, asset manager, and much more, built native for agents. Using Melius, users can spend more time being creative and let go of the century old legacy tools that only acted as constraints to their imagination.
+We’re backed by **General Catalyst, Vine Ventures, Genius Ventures, and Antifund**, and built by a team of second-time founders, former engineering leaders from Ramp, and operators who came up through top-tier VC and PE. We move fast, ship every day, and have strong opinions about craft.
+## **The role**
+This is not a “summer project” internship. Expect to be treated exactly as a full time engineer would be from the first day at your job. There will be dozens of projects that you lead and are expected to educate both customers and other members of the team on.
+The stack: Next.js and a real-time CRDT canvas on the frontend, NestJS / MikroORM / Postgres / Temporal / Turbopuffer on the backend, and the agent and model orchestration layer that ties it all together.
+High level activities for the internship might include:
+- Building new tools for our agent end-to-end — what it can do on the canvas, what it can change in the timeline editor, and how it can semantically search in the asset manager.
+- Sitting in on user sessions, watching a creative hit a rough edge, and shipping the fix that same hour.
+- Adding evals and traces that tell us, honestly, whether the agent got better this week.
+- Polishing canvas interactions that thousands of creatives touch every day — the small details users never explicitly notice but always feel.
+You’ll work directly with senior engineers and the founders. Expect fast feedback, real code review, and more ownership than you’ve been trusted with before.
+## **You’ll fit if you**
+- Are pursuing a degree in CS (or equivalent) and have built something real: a side project people actually used, open source contributions, a previous internship where you shipped.
+- Are comfortable in TypeScript, or good enough at programming that you’ll be effective in it within a week.
+- Have played with LLMs beyond the chat box. Tool-calling, agent frameworks, React Flow, Yjs/CRDTs, or anything you hacked together at 2am are all table stakes.
+- Care about small details users never explicitly notice.
+- Are comfortable with uncertainty. We might implode tomorrow or we might grow 100,000,000% WoW next week.
+- Default to shipping. Let’s get shit done.
+## **What we offer**
+- **$8500 monthly salary**
+- **$2500 monthly stipend for housing**
+- **$70 per diem for meals**
+- In-person in NYC with a lean team of people who love the game, obsessed with building the future of creativity.
+If this is the kind of problem you’re interested in, apply!
