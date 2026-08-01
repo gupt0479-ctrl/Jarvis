@@ -8,11 +8,10 @@ tags:
   - daily
 cssclasses:
   - dashboard
-today_focus: '"See Final Month Plan (Jul 28 - Sep 1) — W0 close-out: internship-loop
-  verification, TradingView UI review, Portfolio UI-fix deploy"'
-today_80: '"Work the active close-out item from Final Month Plan (Jul 28 - Sep 1)"'
-today_20: '"LeetCode 5, System Design 20-30min, Trading Knowledge note, AI
-  Knowledge item — daily floor per Final Month Plan (Jul 28 - Sep 1)"'
+today_focus: "W1 kickoff: close CausalOps' SQL migration + restart the daily academic floor"
+today_80: Run CausalOps Supabase SQL migration + integration tests
+today_20: LeetCode 5 (Sorting/Time Complexity), CSCI 4041 review, CSCI 2033 Unit
+  1, Git & GitHub exam admin
 lc_today: 0
 study_today: 0
 wins_done: 0

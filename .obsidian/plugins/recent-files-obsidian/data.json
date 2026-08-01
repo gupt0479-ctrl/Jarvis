@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "_Notes Created From Ingestion",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/_Notes Created From Ingestion.md"
+    },
+    {
       "basename": "Claude Code Prompts",
       "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
     },
@@ -15,10 +19,6 @@
     {
       "basename": "Repos",
       "path": "40_Resources/CS/Repos.md"
-    },
-    {
-      "basename": "_Notes Created From Ingestion",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/_Notes Created From Ingestion.md"
     },
     {
       "basename": "Code Review & Eval Gap",
