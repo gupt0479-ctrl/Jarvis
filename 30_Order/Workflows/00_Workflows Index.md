@@ -9,7 +9,7 @@ tags:
 notes:
   - "[[40_Resources/Obsidian/Jarvis Vault Architecture]]"
   - "[[HUMAN_WRITING]]"
-  - "[[60_Claude/07_AI_Information/Agent Operating Guide]]"
+  - "[[Agent Operating Guide]]"
   - "[[Internship Pipeline]]"
 ---
 # Workflows Index

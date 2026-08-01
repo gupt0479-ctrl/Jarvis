@@ -1,36 +1,72 @@
 {
   "recentFiles": [
     {
+      "basename": "00_Execution",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
+    },
+    {
       "basename": "_Notes Created From Ingestion",
       "path": "60_Claude/20_Distilled_Notes/Sources - Plan/_Notes Created From Ingestion.md"
     },
     {
-      "basename": "Claude Code Prompts",
-      "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
+      "basename": "Scarcity Imprint — The Hidden Operating System Behind Income Ceilings",
+      "path": "60_Claude/20_Distilled_Notes/Scarcity Imprint — The Hidden Operating System Behind Income Ceilings.md"
+    },
+    {
+      "basename": "AI Engineer Roadmap — Virtual Mentor Gap-Check",
+      "path": "10_Areas/Career/Mentors/AI Engineer Roadmap — Virtual Mentor Gap-Check.md"
     },
     {
       "basename": "Claude Council (LLM Council Skill Install)",
       "path": "20_Progress/AI/Builds & Resources/Claude Council (LLM Council Skill Install).md"
     },
     {
-      "basename": "00_Execution",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
+      "basename": "Claude Council — Path A Prompt (web)",
+      "path": "60_Claude/10_Source_Summaries/Web Ingestion/Claude Council — Path A Prompt (web).md"
     },
     {
-      "basename": "Repos",
-      "path": "40_Resources/CS/Repos.md"
+      "basename": "Maverick Skills Mode-to-Repo Mapping",
+      "path": "20_Progress/AI/Builds & Resources/Maverick Skills Mode-to-Repo Mapping.md"
+    },
+    {
+      "basename": "Hermes Agent Framework — Corrected Framing",
+      "path": "20_Progress/AI/Builds & Resources/Hermes Agent Framework — Corrected Framing.md"
+    },
+    {
+      "basename": "01-nextjs-routes",
+      "path": "20_Progress/Projects/CS/Portfolio/architecture/01-nextjs-routes.md"
+    },
+    {
+      "basename": "Student Travel Discounts — Survey Note (Staging for The Plan)",
+      "path": "60_Claude/20_Distilled_Notes/The Plan/Student Travel Discounts — Survey Note (Staging for The Plan).md"
+    },
+    {
+      "basename": "Vibe Coding Hackathon",
+      "path": "20_Progress/Projects/CS/Hackathons/Vibe Coding Hackathon.md"
+    },
+    {
+      "basename": "Hackathons",
+      "path": "10_Areas/Career/Hackathon/Hackathons.md"
+    },
+    {
+      "basename": "Research - DeepThinksFinance Architecture Transfer (2026-07-29)",
+      "path": "20_Progress/Projects/CS/TradingView/Research/Research - DeepThinksFinance Architecture Transfer (2026-07-29).md"
     },
     {
       "basename": "Code Review & Eval Gap",
       "path": "20_Progress/AI/Builds & Resources/Code Review & Eval Gap.md"
     },
     {
-      "basename": "Model Distillation",
-      "path": "20_Progress/AI/Builds & Resources/Model Distillation.md"
+      "basename": "Portfolio Option A — RAG + Hybrid Search (jarvis-memory Build)",
+      "path": "40_Resources/Obsidian/Portfolio Option A — RAG + Hybrid Search (jarvis-memory Build).md"
     },
     {
-      "basename": "Student Travel Discounts — Survey Note (Staging for The Plan)",
-      "path": "60_Claude/20_Distilled_Notes/The Plan/Student Travel Discounts — Survey Note (Staging for The Plan).md"
+      "basename": "Certifications Strategy",
+      "path": "10_Areas/Career/Certifications/Certifications Strategy.md"
+    },
+    {
+      "basename": "Outreach Discovery & Automation Status",
+      "path": "10_Areas/Career/Internships/Contacts/Outreach Discovery & Automation Status.md"
     },
     {
       "basename": "Research - CSCI 2033 to Trading Cross-Link Status (2026-07-29)",
@@ -39,6 +75,26 @@
     {
       "basename": "System Design Practice",
       "path": "20_Progress/Internship/Preperation/System Design/System Design Practice.md"
+    },
+    {
+      "basename": "Claude OS",
+      "path": "60_Claude/07_AI_Information/How to Use Claude/Claude OS.md"
+    },
+    {
+      "basename": "Claude Code Prompts",
+      "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
+    },
+    {
+      "basename": "Summer Courses",
+      "path": "20_Progress/Degree/Summer Courses.md"
+    },
+    {
+      "basename": "Repos",
+      "path": "40_Resources/CS/Repos.md"
+    },
+    {
+      "basename": "Model Distillation",
+      "path": "20_Progress/AI/Builds & Resources/Model Distillation.md"
     },
     {
       "basename": "Resume Tailoring, LinkedIn Search & Outreach Discovery",
@@ -143,54 +199,6 @@
     {
       "basename": "Agentic Software Engineering intern - Toshiba Global Commerce",
       "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Agentic Software Engineering intern - Toshiba Global Commerce.md"
-    },
-    {
-      "basename": "A.I. Developer Co-Op (Boston, MA) - Manhattan Associates",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/A.I. Developer Co-Op (Boston, MA) - Manhattan Associates.md"
-    },
-    {
-      "basename": "Removed Dossiers MOC",
-      "path": "10_Areas/Career/Internships/List/Dossiers/Viewed/Removed Dossiers MOC.md"
-    },
-    {
-      "basename": "Dossiers-to-Create",
-      "path": "10_Areas/Career/Internships/List/Dossiers/Dossiers-to-Create.md"
-    },
-    {
-      "basename": "PDF's Ingestion Implementation",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/PDF's Ingestion Implementation.md"
-    },
-    {
-      "basename": "Tool Map",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Tool Map.md"
-    },
-    {
-      "basename": "Certifications Strategy",
-      "path": "10_Areas/Career/Certifications/Certifications Strategy.md"
-    },
-    {
-      "basename": "Links",
-      "path": "40_Resources/CS/Links.md"
-    },
-    {
-      "basename": "Dossiers MOC",
-      "path": "10_Areas/Career/Internships/List/Dossiers MOC.md"
-    },
-    {
-      "basename": "Immediate Action",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Immediate Action.md"
-    },
-    {
-      "basename": "Note Writing System — Audit and Roadmap (2026-05-31)",
-      "path": "60_Claude/07_AI_Information/AI Conversation - Summaries/Note Writing System — Audit and Roadmap (2026-05-31).md"
-    },
-    {
-      "basename": "Cursor Project Brief — Vault OS Upgrade",
-      "path": "60_Claude/07_AI_Information/AI Conversation - Summaries/Cursor Project Brief — Vault OS Upgrade.md"
-    },
-    {
-      "basename": "QNA for UI",
-      "path": "20_Progress/Projects/CS/TradingView/Frontend/QNA for UI.md"
     }
   ],
   "omittedPaths": [],

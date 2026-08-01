@@ -30,6 +30,27 @@ next: "All three ingestion passes (PDF, Web, GitHub) done — next is executing 
 ---
 # Execution
 Per-header verdicts for every ingestion in `Sources - Plan`. Pass 1 covers [[PDF's Ingestion Implementation]] only — Web and GitHub get their own pass next. Each entry states what actually happens next: build it, drop it, defer it, or fold it into an existing file. No header is left unresolved.
+
+> [!IMPORTANT] 
+> Notes: Portfolio (Orby) Build Plans listed, Internship loop research listed,
+> 1. PDFs
+> 	- [[PDF's Ingestion Implementation#Vault Integration & Skills - REVIEW|Vault Integration & Skills]] - Installed in Jarvis (review)
+> 	- [[System Design Practice]] - Details in the folder
+> 	- [[Research - CSCI 2033 to Trading Cross-Link Status (2026-07-29)|Trading Resources]], [[Research - DeepThinksFinance Architecture Transfer (2026-07-29)|One More]], [[Research - Trading Bot Five-Stage Pipeline (2026-07-29)|Second One]], [[Research - Trading Resources Integration Findings (2026-07-29)|Third One]] - All need to reviewed and implemented
+> 	- [[Certifications Strategy]] - Final certifications with links and plans (Improve folder)
+> 	- [[Portfolio Option A — RAG + Hybrid Search (jarvis-memory Build)|Obsidian Builds - Memory]] - Needs further definition, organized notes (Jarvis builds)
+> 2. Github 
+> 	- [[40_Resources/CS/Repos|Repos]] - Redefine and clear instructions
+> 	- [[How Anant Uses Each Repo]] - Methods
+> 	- [[Code Review & Eval Gap]] - Close it (Research)
+> 	- [[Model Distillation]] - Implement in August
+> 	- [[Maverick Skills Mode-to-Repo Mapping]] - Review Against Installations
+> 	- [[Claude Council (LLM Council Skill Install)]] - Build Globally
+> 	- 
+> 3. Web
+> 	- [[40_Resources/Random|Links Updated]], [[40_Resources/CS/Links|Again]], [[40_Resources/CS/Repos|Again]], [[40_Resources/CS/AI/Gen AI Meeting|Again]], [[40_Resources/Obsidian/Second Brain|Again]], [[20_Progress/Projects/CS/TradingView/Links|Again]] - Updated links
+> 	- Internships added to Serious Programs
+> 
 # PDFs
 ## [[PDF's Ingestion Implementation#MCP Setup & Installation - NOTED|MCP Setup & Installation]]
 Status confirmed: **noted, parked**. Browser research was the whole ask — no install action pending. Sequential Thinking MCP (`claude mcp add sequential-thinking`) stays unstarted; not urgent enough to force this session.

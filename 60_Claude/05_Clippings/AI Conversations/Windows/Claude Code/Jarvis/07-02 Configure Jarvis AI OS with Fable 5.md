@@ -1023,7 +1023,7 @@ LIMIT 8
 
 **Projects:** [[20_Progress/AI/Claude Code/Jarvis/|Jarvis]] · [[20_Progress/Projects/Projects Board|Projects Board]] · [[20_Progress/UROP/BOOM Board|BOOM]]
 
-**Knowledge:** [[60_Claude/07_AI_Information/Claude OS|Claude OS]] · [[60_Claude/44_Indexes/Vault Health Dashboard|Vault Health]] · [[60_Claude/44_Indexes/Claude Layer Index|Claude Layer]] · [[00_Dashboard|↑ Top]]
+**Knowledge:**[[Claude OS|Claude OS]]] · [[60_Claude/44_Indexes/Vault Health Dashboard|Vault Health]] · [[60_Claude/44_Indexes/Claude Layer Index|Claude Layer]] · [[00_Dashboard|↑ Top]]
 
 ```
 - `Edit` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\Templates\Enumerate\Better Today.md`
