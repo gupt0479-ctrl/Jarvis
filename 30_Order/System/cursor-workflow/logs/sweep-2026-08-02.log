@@ -10,3 +10,4 @@
 [2026-08-02T03:10:33] === Summary ===
 [2026-08-02T03:10:33] Projects touched: 0
 [2026-08-02T03:10:33] Exit code: 0
+[2026-08-02T13:34:00] Running: C:\WINDOWS\py.exe D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\System\cursor-workflow\scripts\export-cursor-sessions.py --sweep
