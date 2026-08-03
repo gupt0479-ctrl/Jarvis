@@ -9,9 +9,9 @@ tags:
 cssclasses:
   - dashboard
 today_focus: "W1 kickoff: close CausalOps' SQL migration + restart the daily academic floor"
-today_80: Run CausalOps Supabase SQL migration + integration tests
-today_20: LeetCode 5 (Sorting/Time Complexity), CSCI 4041 review, CSCI 2033 Unit
-  1, Git & GitHub exam admin
+today_80: Run CausalOps Supabase SQL migration + integration tests (or TradingView UI review if blocked)
+today_20: LeetCode 5 (Sorting/Time Complexity, Google tag), CSCI 4041 review, CSCI
+  2033 Unit 1, Git & GitHub exam admin
 lc_today: 0
 study_today: 0
 wins_done: 0
