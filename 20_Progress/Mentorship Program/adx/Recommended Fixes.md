@@ -5,17 +5,17 @@ created: 2026-07-22
 updated: 2026-07-22
 deadline:
 related_progress:
-  - "[[adx — MOC]]"
-  - "[[adx — Source Claims]]"
-  - "[[adx — Claims vs Implementation]]"
+  - "[[adx]]"
+  - "[[Source Claims]]"
+  - "[[Claims vs Implementation]]"
 tags:
   - "#progress"
-next: "Share this list with Ahnaf and get his read on priority before recommending any of it upstream."
+next: Share this list with Ahnaf and get his read on priority before recommending any of it upstream.
 ---
 # adx — Recommended Fixes
-==Everything below is a recommendation, not a fact — the factual record lives in [[adx — Source Claims]] and [[adx — Claims vs Implementation]]; this note exists solely to turn those findings into an actionable list.==
+==Everything below is a recommendation, not a fact — the factual record lives in [[Source Claims]] and [[Claims vs Implementation]]; this note exists solely to turn those findings into an actionable list.==
 ## Goal
-Turn every gap and discrepancy found in [[adx — Source Claims]] and [[adx — Claims vs Implementation]] into a single prioritized, actionable list — so those two notes can stay pure fact and this one can carry all the judgment.
+Turn every gap and discrepancy found in [[Source Claims]] and [[Claims vs Implementation]] into a single prioritized, actionable list — so those two notes can stay pure fact and this one can carry all the judgment.
 ## Integrity Fixes — Highest Priority
 These touch the product's actual accountability claim, not just its polish.
 - [ ] **Capture a real signer identity.** `signedBy` is hardcoded to the literal string `'engineer'` in `packages/adx-gate/src/gate.ts` on every gate run, interactive or not. Read `git config user.name` (or an equivalent identity source) instead, so the agency ledger can actually attribute a sign-off to a specific human.
@@ -50,14 +50,14 @@ Things that can alter or delete a user's repository and are currently undocument
 - [ ] **Move frozen-path matching from substring/suffix to real path-boundary matching**, in both `packages/adx-maintain/src/frozen.ts` and the generated shell hook — a substring match can over-block files that merely share a path fragment with a frozen pattern.
 - [ ] **Guard against a pre-existing pre-commit hook that exits early.** `installHook` appends the adx block after any existing hook content; if that hook calls `exit 0` on its own success path, the appended adx block never runs.
 ## Why This List Exists
-[[adx — MOC]] and [[adx — Claims vs Implementation]] describe what adx claims and what it actually does. This is the only one of the four notes in this set that contains a recommendation — everything above is judgment, not fact, and should be read as a starting point for a conversation with Ahnaf, not a verdict on the project.
+[[adx]] and [[Claims vs Implementation]] describe what adx claims and what it actually does. This is the only one of the four notes in this set that contains a recommendation — everything above is judgment, not fact, and should be read as a starting point for a conversation with Ahnaf, not a verdict on the project.
 ## Open Questions
 - [ ] Which of these does Ahnaf already know about, versus which are genuine blind spots worth raising directly?
 - [ ] Does he want this list raised all at once, or scoped down to the 3–4 highest-leverage items for a first conversation?
 ## Links Into The Vault
-- [[adx — MOC]] — judgment-level synthesis this list was extracted from
-- [[adx — Source Claims]] — what adx claims about itself
-- [[adx — Claims vs Implementation]] — the file-level evidence behind every fix above
+- [[adx]] — judgment-level synthesis this list was extracted from
+- [[Source Claims]] — what adx claims about itself
+- [[Claims vs Implementation]] — the file-level evidence behind every fix above
 - [[Mentor Details]] — the mentor whose project this is
 ## Log
-- **2026-07-22:** Extracted every fix implied by [[adx — MOC]] and [[adx — Claims vs Implementation]] into this dedicated punch list, and trimmed recommendation language out of both of those notes so the full four-note set separates fact from judgment cleanly.
+- **2026-07-22:** Extracted every fix implied by [[adx]] and [[Claims vs Implementation]] into this dedicated punch list, and trimmed recommendation language out of both of those notes so the full four-note set separates fact from judgment cleanly.

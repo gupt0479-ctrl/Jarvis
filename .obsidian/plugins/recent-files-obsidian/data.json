@@ -1,6 +1,30 @@
 {
   "recentFiles": [
     {
+      "basename": "adx",
+      "path": "20_Progress/Mentorship Program/adx/adx.md"
+    },
+    {
+      "basename": "Claims vs Implementation",
+      "path": "20_Progress/Mentorship Program/adx/Claims vs Implementation.md"
+    },
+    {
+      "basename": "Mentor Meeting Transcript",
+      "path": "20_Progress/Mentorship Program/Meetings/Mentor Meeting Transcript.md"
+    },
+    {
+      "basename": "Project Briefings - 2026-07-13",
+      "path": "20_Progress/Mentorship Program/Meetings/Project Briefings - 2026-07-13.md"
+    },
+    {
+      "basename": "Recommended Fixes",
+      "path": "20_Progress/Mentorship Program/adx/Recommended Fixes.md"
+    },
+    {
+      "basename": "Source Claims",
+      "path": "20_Progress/Mentorship Program/adx/Source Claims.md"
+    },
+    {
       "basename": "00_Execution",
       "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
     },
@@ -175,22 +199,6 @@
     {
       "basename": "Setup",
       "path": "20_Progress/AI/Claude Code/second-brain-claudekit/Setup.md"
-    },
-    {
-      "basename": "Campus AI Research Engineer – Research Automation (Intern) - Jump Trading",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Campus AI Research Engineer – Research Automation (Intern) - Jump Trading.md"
-    },
-    {
-      "basename": "Campus AI Research Engineer - Deep Learning (Intern) - Jump Trading",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Campus AI Research Engineer - Deep Learning (Intern) - Jump Trading.md"
-    },
-    {
-      "basename": "AI Operations Intern-Caddell Reynolds - Acds",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/AI Operations Intern-Caddell Reynolds - Acds.md"
-    },
-    {
-      "basename": "AI Operations Intern - Naukr AI - Acds",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/AI Operations Intern - Naukr AI - Acds.md"
     }
   ],
   "omittedPaths": [],

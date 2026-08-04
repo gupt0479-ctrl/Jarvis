@@ -6,21 +6,21 @@ updated: 2026-07-22
 tags:
   - summary
 notes:
-  - "[[adx — MOC]]"
-  - "[[adx — Source Claims]]"
-  - "[[adx — Recommended Fixes]]"
+  - "[[adx]]"
+  - "[[Source Claims]]"
+  - "[[Recommended Fixes]]"
 source_url: https://github.com/ahnafyy/adx
 input_kind: github
 track: ai
 ---
 # adx — Claims vs Implementation
-**Source:** `https://github.com/ahnafyy/adx` — full clone, every non-test `.ts` source file read across all 8 packages, cross-referenced line-by-line against [[adx — Source Claims]]
+**Source:** `https://github.com/ahnafyy/adx` — full clone, every non-test `.ts` source file read across all 8 packages, cross-referenced line-by-line against [[Source Claims]]
 **Verified:** 2026-07-22
 **Scope:** `adx-core`, `adx-cli`, `adx-shape`, `adx-gate`, `adx-sweep`, `adx-maintain`, `adx-mcp`, `adx-vscode`; all 90 test cases counted directly; both GitHub Actions workflows; the repo's own `.adx/` and `.evidence/` state; the single commit in its git history
 ## Source
-This note checks every substantive claim in [[adx — Source Claims]] against the actual TypeScript implementation in the GitHub repository, rather than the docs site or README. Where the docs describe a formula, a threshold, a blocking condition, or a feature, this note names the exact file that implements it and states plainly whether the code matches.
+This note checks every substantive claim in [[Source Claims]] against the actual TypeScript implementation in the GitHub repository, rather than the docs site or README. Where the docs describe a formula, a threshold, a blocking condition, or a feature, this note names the exact file that implements it and states plainly whether the code matches.
 ## Key Claims
-- The website capture in [[adx — Source Claims]] held up under code review — nothing material was missed there; every discrepancy below is between **what adx claims and what it does**, not an error in the prior capture
+- The website capture in [[Source Claims]] held up under code review — nothing material was missed there; every discrepancy below is between **what adx claims and what it does**, not an error in the prior capture
 - **"Import cycles always score 0" is false** — a cyclic file gets a flat +0.5 risk bonus, not a forced floor; the aggregate FRR score barely moves for one small cycle in a large codebase
 - **"Gate score below 60 blocks merge" is false** — blocking is driven by three unrelated boolean triggers, independent of the numeric gate score
 - **`signedBy` is hardcoded to the literal string `'engineer'`** in every interactive gate run, and CI-mode runs auto-approve at Agency Level 6 with zero human input
@@ -35,7 +35,7 @@ This note checks every substantive claim in [[adx — Source Claims]] against th
 ## Full Content
 ### Repository Reality Check
 ==The entire public history of adx is a single commit, and the tool's own self-scored evidence trail is exactly one gate run and one agency-ledger entry — signed by "agent," not a human.==
-`git log --oneline` returns exactly one commit, dated 2026-07-07. `.evidence/` contains exactly one bundle (`run-2026-07-07T06-49-22-177Z`). `.adx/state/adx-agency.json` contains exactly one entry: Level 6 (Resolve), `signedBy: "agent"`, with a summary describing the agent fixing its own missing scaffolding (agent specs, `llms.txt` content, fat-file splits, orphaned exports) so its own badge would score well. This directly answers the open question in [[adx — MOC]] about real-world usage: there is none visible from outside the project yet. This is a single-session, self-bootstrapped snapshot, not a track record.
+`git log --oneline` returns exactly one commit, dated 2026-07-07. `.evidence/` contains exactly one bundle (`run-2026-07-07T06-49-22-177Z`). `.adx/state/adx-agency.json` contains exactly one entry: Level 6 (Resolve), `signedBy: "agent"`, with a summary describing the agent fixing its own missing scaffolding (agent specs, `llms.txt` content, fat-file splits, orphaned exports) so its own badge would score well. This directly answers the open question in [[adx]] about real-world usage: there is none visible from outside the project yet. This is a single-session, self-bootstrapped snapshot, not a track record.
 Separately: `.adx/state/progress.json` and one file under `.adx/tasks/` are tracked in git despite being explicitly listed in the repo's own `.gitignore` — committed before the ignore rule took effect, and never cleaned up. The repo does not currently follow its own documented commit/ignore hygiene table in practice.
 ### The Agency Ladder's Integrity Gap
 ==`signedBy` is hardcoded to the literal string `'engineer'` in every interactive `adx gate` sign-off, and CI-mode runs auto-stamp Level 6 (Resolve) with zero human input — the exact rubber-stamp failure the ladder exists to catch.==
@@ -66,7 +66,7 @@ In CI mode (`--ci`, or whenever `!process.stdin.isTTY`), `packages/adx-gate/src/
 ### Config Fields That Are Silently No-Ops
 ==`enforceTasteCheck` is a real, typed, defaulted-to-`true` config field that the gate code never reads — taste analysis runs unconditionally regardless of its value, and its score is never included in the gate score or the persisted evidence bundle.==
 `grep -rn "enforceTasteCheck"` across the whole repo returns exactly three hits: the type definition and two default-value assignments. `packages/adx-gate/src/gate.ts` calls `profileProjectStyle` and `analyzeDiffTaste` unconditionally, with no check against this flag anywhere. Setting it to `false` in `adx.config.ts` changes nothing.
-Taste analysis's own score (`tasteAnalysis.score`) is computed but never added to `gateScore` and never written into `manifest.json` — it only ever produces a `stdout` warning line during a gate run. This resolves the open question left in [[adx — Source Claims]]: taste deficit is not a fourth scored layer; it is cosmetic terminal output only.
+Taste analysis's own score (`tasteAnalysis.score`) is computed but never added to `gateScore` and never written into `manifest.json` — it only ever produces a `stdout` warning line during a gate run. This resolves the open question left in [[Source Claims]]: taste deficit is not a fourth scored layer; it is cosmetic terminal output only.
 `boundary.requireExplanationInvariants` is never checked against actual diff content anywhere in the codebase. `packages/adx-gate/src/ui.ts` only checks whether the configured list is non-empty; if so, it demands one blanket explanation on every interactive gate run, regardless of whether the diff touches security, auth, or anything the category names imply. There is no logic anywhere that inspects the diff for `security`-relevant or `dependency-addition`-relevant content — the categorization is names-only.
 ### Undocumented Features Found In The Code
 ==`adx sweep` ships four flags — `--fix`, `--auto`, `--dry-run`, `--comments` — that interactively or automatically delete "orphaned" exports and dark comments from real source files, and none of them appear anywhere in the docs' options table for the command.==
@@ -96,11 +96,11 @@ Orphaned-export and dark-comment detection in `adx-sweep` use real AST parsing (
 Barrel files (>70% re-export lines) are correctly excluded from the FRR import-graph risk calculation, matching the docs' own stated exception ("barrel files scoring low TDS is expected, not a bug").
 The harness's maker/checker loop, oscillation detection, and ratchet integration in `packages/adx-core/src/harness.ts` match the documented behavior closely and are the most faithfully-implemented part of the whole system.
 ## Why It Matters
-This is the deliverable Ahnaf actually asked for: not "does the website read well" but "does the tool do what it says." Every finding above traces to an exact file and line, checked against the corresponding claim in [[adx — Source Claims]]. What to do about each finding — priority, whether it's a code fix or a docs fix, what's worth raising with Ahnaf first — is deliberately kept out of this note; that judgment lives entirely in [[adx — Recommended Fixes]] so this note stays a pure record of what the code actually does.
+This is the deliverable Ahnaf actually asked for: not "does the website read well" but "does the tool do what it says." Every finding above traces to an exact file and line, checked against the corresponding claim in [[Source Claims]]. What to do about each finding — priority, whether it's a code fix or a docs fix, what's worth raising with Ahnaf first — is deliberately kept out of this note; that judgment lives entirely in [[Recommended Fixes]] so this note stays a pure record of what the code actually does.
 ## Links Into The Vault
-- [[adx — Source Claims]] — the claims this note checks, captured faithfully from the website and README before this code review began
-- [[adx — MOC]] — the judgment-level synthesis; see its "Verification Against The Codebase" section for the condensed version of these findings
-- [[adx — Recommended Fixes]] — the actionable punch list built from every finding in this note
+- [[Source Claims]] — the claims this note checks, captured faithfully from the website and README before this code review began
+- [[adx]] — the judgment-level synthesis; see its "Verification Against The Codebase" section for the condensed version of these findings
+- [[Recommended Fixes]] — the actionable punch list built from every finding in this note
 - [[Mentor Details]] — the mentor whose project this is
 ## Open Questions
 - [ ] Is the agency-ledger integrity gap (hardcoded `signedBy`, CI auto-approval at Level 6) something Ahnaf already knows about, or a genuine blind spot worth raising directly?
