@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "Useful Repos - Shortlist",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Useful Repos - Shortlist.md"
+      "basename": "00_Execution",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
     },
     {
-      "basename": "Immediate Action",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Immediate Action.md"
+      "basename": "Claude Kit Implementation",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Kit Implementation.md"
+    },
+    {
+      "basename": "Software Fundamentals Matter More Than Ever With AI Coding",
+      "path": "40_Resources/CS/Concepts/Software Fundamentals Matter More Than Ever With AI Coding.md"
+    },
+    {
+      "basename": "Useful Repos - Shortlist",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Useful Repos - Shortlist.md"
     },
     {
       "basename": "How Anant Uses Each Repo",
@@ -23,10 +31,6 @@
     {
       "basename": "GitHub Ingestion Implementation",
       "path": "60_Claude/20_Distilled_Notes/Sources - Plan/GitHub Ingestion Implementation.md"
-    },
-    {
-      "basename": "00_Execution",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
     },
     {
       "basename": "Portfolio Option A — RAG + Hybrid Search (jarvis-memory Build)",
@@ -195,10 +199,6 @@
     {
       "basename": "Write Log",
       "path": "20_Progress/AI/Claude Code/Write Log.md"
-    },
-    {
-      "basename": "Management",
-      "path": "20_Progress/AI/Claude Code/Management.md"
     }
   ],
   "omittedPaths": [],

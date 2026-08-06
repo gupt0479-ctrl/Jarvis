@@ -9,13 +9,10 @@ tags:
   - ingestion
   - claude-kit
 notes:
-  - "[[60_Claude/10_Source_Summaries/Github Ingestion/Immediate Action|Immediate
-    Action]]"
+  - "[[Claude Kit Implementation|Claude Kit]]"
   - "[[40_Resources/CS/Repos]]"
   - "[[20_Progress/AI/Claude Code/MOC|Claude Code MOC]]"
-next: Add a row here the same session anything new lands in
-  second-brain-claudekit's sandbox/, tested-skills/, or a rigid folder — see
-  that repo's Docs/Jarvis.md for the ritual
+next: Add a row here the same session anything new lands in second-brain-claudekit's sandbox/, tested-skills/, or a rigid folder — see that repo's Docs/Jarvis.md for the ritual
 ---
 # Claude Kit — second-brain-claudekit Tool Map
 

@@ -7,7 +7,7 @@ tags:
   - summary
   - github
 notes:
-  - "[[40_Resources/CS/AI/Toolkit/Github Skills]]"
+  - "[[Github Skills]]"
 input_kind: github
 track: ai
 source_note: "[[aiwithremyclaude-skills-llm-council LLM Council — a Claude Code skill that runs your decisions through 5 AI advisors with peer review.md]]"
@@ -65,7 +65,7 @@ This is the live demonstration of the Tier-2 GitHub ingestion method just added 
 
 ## Links Into The Vault
 
-- [[40_Resources/CS/AI/Toolkit/Github Skills]] — confirmed; the natural home for this entry alongside mattpocock/skills, gstack, and Spec Kit (proposed addition, not yet written — see Open Questions).
+- [[Github Skills]] — confirmed; the natural home for this entry alongside mattpocock/skills, gstack, and Spec Kit (proposed addition, not yet written — see Open Questions).
 - [[aiwithremyclaude-skills-llm-council LLM Council — a Claude Code skill that runs your decisions through 5 AI advisors with peer review.md]] — the raw clip this note replaces.
 - [[Claude Council — Path A Prompt (web)]] — companion Web Ingestion note: the discovery-context landing page that pointed at this repo, including the prompt-only fallback version and the Karpathy → Lehmann → Flynn lineage.
 
@@ -73,7 +73,7 @@ This is the live demonstration of the Tier-2 GitHub ingestion method just added 
 
 - [ ] Does the landing page's Path B claim of "an HTML report saved to your workspace" reflect an older version of the skill? The live `SKILL.md` explicitly forbids generating HTML and mandates chat-only output — this is a direct contradiction between the secondary source and the actual installed artifact, not a paraphrase difference.
 - [ ] Should this skill be installed into this vault's own `.claude/skills/`? It would give Jarvis a built-in pressure-test step for exactly the kind of ambiguous, high-stakes calls this ingestion redesign itself is an example of.
-- [ ] Worth proposing the one-line addition to [[40_Resources/CS/AI/Toolkit/Github Skills]] — repo name, link, one-line description — matching its existing table format?
+- [ ] Worth proposing the one-line addition to [[Github Skills]] — repo name, link, one-line description — matching its existing table format?
 
 ## Flashcards
 

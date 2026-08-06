@@ -6,7 +6,7 @@ updated: 2026-06-20
 tags:
   - summary
 notes:
-  - "[[40_Resources/CS/AI/Toolkit/Github Skills]]"
+  - "[[Github Skills]]"
 input_kind: web
 track: ai
 source_note: "[[Claude Council.md]]"
@@ -67,7 +67,7 @@ This page is the human-readable discovery layer; [[LLM Council skills]] is the v
 
 ## Links Into The Vault
 
-- [[40_Resources/CS/AI/Toolkit/Github Skills]] — confirmed; existing list of Claude Code skill repos this entry belongs alongside.
+- [[Github Skills]] — confirmed; existing list of Claude Code skill repos this entry belongs alongside.
 - [[LLM Council skills]] — the verified-against-source companion note.
 - [[Claude Council.md]] — the raw clip this note replaces.
 

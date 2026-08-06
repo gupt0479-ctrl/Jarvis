@@ -645,7 +645,7 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "60_Claude/10_Source_Summaries/Github Ingestion/Immediate Action.md",
+        "pattern": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Kit Implementation.md",
         "patternType": "STRICT"
       },
       {

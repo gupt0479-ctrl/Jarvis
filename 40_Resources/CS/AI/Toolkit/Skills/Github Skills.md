@@ -436,7 +436,7 @@ Start with Matt Pocock's skills because they are compact and directly aimed at t
 - [[Domain-Driven Design]]
 - [[Code Architecture]]
 - [[Codex]]
-- [[Claude Code]]
+- [[40_Resources/CS/AI/Toolkit/Claude Code]]
 - [[Cursor]]
 - [[Kiro]]
 
