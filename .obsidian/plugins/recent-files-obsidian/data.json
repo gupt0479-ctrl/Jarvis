@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "Outreach Discovery & Automation Status",
+      "path": "10_Areas/Career/Internships/Contacts/Outreach Discovery & Automation Status.md"
+    },
+    {
+      "basename": "Mimic",
+      "path": "10_Areas/Career/Internships/Contacts/Mimic.md"
+    },
+    {
+      "basename": "Networking Strategies",
+      "path": "10_Areas/Career/Internships/Contacts/Networking Strategies.md"
+    },
+    {
       "basename": "adx",
       "path": "20_Progress/Mentorship Program/adx/adx.md"
     },
@@ -87,10 +99,6 @@
     {
       "basename": "Certifications Strategy",
       "path": "10_Areas/Career/Certifications/Certifications Strategy.md"
-    },
-    {
-      "basename": "Outreach Discovery & Automation Status",
-      "path": "10_Areas/Career/Internships/Contacts/Outreach Discovery & Automation Status.md"
     },
     {
       "basename": "Research - CSCI 2033 to Trading Cross-Link Status (2026-07-29)",
@@ -191,14 +199,6 @@
     {
       "basename": "MOC",
       "path": "20_Progress/AI/Claude Code/MOC.md"
-    },
-    {
-      "basename": "Setup",
-      "path": "20_Progress/AI/Claude Code/CausalOps/Setup.md"
-    },
-    {
-      "basename": "Setup",
-      "path": "20_Progress/AI/Claude Code/second-brain-claudekit/Setup.md"
     }
   ],
   "omittedPaths": [],
