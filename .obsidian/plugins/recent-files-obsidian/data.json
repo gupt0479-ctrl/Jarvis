@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Claude Code",
+      "path": "40_Resources/CS/AI/Toolkit/Claude Code.md"
+    },
+    {
       "basename": "Outreach Discovery & Automation Status",
       "path": "10_Areas/Career/Internships/Contacts/Outreach Discovery & Automation Status.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "07-05 Claude Code - local-command-caveatCaveat The messages below were",
       "path": "60_Claude/05_Clippings/AI Conversations/Windows/Claude Code/07-05 Claude Code - local-command-caveatCaveat The messages below were.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "20_Progress/AI/Claude Code/MOC.md"
     }
   ],
   "omittedPaths": [],
