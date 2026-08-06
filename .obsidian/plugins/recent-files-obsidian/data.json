@@ -1,12 +1,48 @@
 {
   "recentFiles": [
     {
-      "basename": "Claude Code",
-      "path": "40_Resources/CS/AI/Toolkit/Claude Code.md"
+      "basename": "Useful Repos - Shortlist",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Useful Repos - Shortlist.md"
+    },
+    {
+      "basename": "Immediate Action",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Immediate Action.md"
+    },
+    {
+      "basename": "How Anant Uses Each Repo",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/How Anant Uses Each Repo.md"
+    },
+    {
+      "basename": "_Notes Created From Ingestion",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/_Notes Created From Ingestion.md"
+    },
+    {
+      "basename": "WSL Claude Code — Wiring Gap",
+      "path": "60_Claude/07_AI_Information/AI Conversation - Summaries/WSL Claude Code — Wiring Gap.md"
+    },
+    {
+      "basename": "GitHub Ingestion Implementation",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/GitHub Ingestion Implementation.md"
+    },
+    {
+      "basename": "00_Execution",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
+    },
+    {
+      "basename": "Portfolio Option A — RAG + Hybrid Search (jarvis-memory Build)",
+      "path": "40_Resources/Obsidian/Portfolio Option A — RAG + Hybrid Search (jarvis-memory Build).md"
+    },
+    {
+      "basename": "Claims vs Implementation",
+      "path": "20_Progress/Mentorship Program/adx/Claims vs Implementation.md"
     },
     {
       "basename": "Outreach Discovery & Automation Status",
       "path": "10_Areas/Career/Internships/Contacts/Outreach Discovery & Automation Status.md"
+    },
+    {
+      "basename": "Claude Code",
+      "path": "40_Resources/CS/AI/Toolkit/Claude Code.md"
     },
     {
       "basename": "Mimic",
@@ -19,10 +55,6 @@
     {
       "basename": "adx",
       "path": "20_Progress/Mentorship Program/adx/adx.md"
-    },
-    {
-      "basename": "Claims vs Implementation",
-      "path": "20_Progress/Mentorship Program/adx/Claims vs Implementation.md"
     },
     {
       "basename": "Mentor Meeting Transcript",
@@ -39,14 +71,6 @@
     {
       "basename": "Source Claims",
       "path": "20_Progress/Mentorship Program/adx/Source Claims.md"
-    },
-    {
-      "basename": "00_Execution",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
-    },
-    {
-      "basename": "_Notes Created From Ingestion",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/_Notes Created From Ingestion.md"
     },
     {
       "basename": "Scarcity Imprint — The Hidden Operating System Behind Income Ceilings",
@@ -97,10 +121,6 @@
       "path": "20_Progress/AI/Builds & Resources/Code Review & Eval Gap.md"
     },
     {
-      "basename": "Portfolio Option A — RAG + Hybrid Search (jarvis-memory Build)",
-      "path": "40_Resources/Obsidian/Portfolio Option A — RAG + Hybrid Search (jarvis-memory Build).md"
-    },
-    {
       "basename": "Certifications Strategy",
       "path": "10_Areas/Career/Certifications/Certifications Strategy.md"
     },
@@ -135,10 +155,6 @@
     {
       "basename": "Resume Tailoring, LinkedIn Search & Outreach Discovery",
       "path": "10_Areas/Career/Internships/Cheats/Resume Tailoring, LinkedIn Search & Outreach Discovery.md"
-    },
-    {
-      "basename": "GitHub Ingestion Implementation",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/GitHub Ingestion Implementation.md"
     },
     {
       "basename": "07-29 Second brain claude kit",
@@ -183,22 +199,6 @@
     {
       "basename": "Management",
       "path": "20_Progress/AI/Claude Code/Management.md"
-    },
-    {
-      "basename": "Summaries-to-Create",
-      "path": "60_Claude/07_AI_Information/AI Conversation - Summaries/Summaries-to-Create.md"
-    },
-    {
-      "basename": "07-27 Claude Code - what skills am i not using",
-      "path": "60_Claude/05_Clippings/AI Conversations/Windows/Claude Code/07-27 Claude Code - what skills am i not using.md"
-    },
-    {
-      "basename": "07-05 Claude Code - local-command-caveatCaveat The messages below were-2",
-      "path": "60_Claude/05_Clippings/AI Conversations/Windows/Claude Code/07-05 Claude Code - local-command-caveatCaveat The messages below were-2.md"
-    },
-    {
-      "basename": "07-05 Claude Code - local-command-caveatCaveat The messages below were",
-      "path": "60_Claude/05_Clippings/AI Conversations/Windows/Claude Code/07-05 Claude Code - local-command-caveatCaveat The messages below were.md"
     }
   ],
   "omittedPaths": [],
