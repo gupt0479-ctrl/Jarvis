@@ -654,6 +654,13 @@
         "type": "FILES",
         "pattern": "20_Progress/AI/Claude Code/Management.md",
         "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "20_Progress/Mentorship Program/adx/adx.md",
+        "patternType": "STRICT"
       }
     ],
     "frontMatter": [

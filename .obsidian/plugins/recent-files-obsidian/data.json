@@ -1,16 +1,32 @@
 {
   "recentFiles": [
     {
+      "basename": "Source Claims",
+      "path": "20_Progress/Mentorship Program/adx/Source Claims.md"
+    },
+    {
+      "basename": "Recommended Fixes",
+      "path": "20_Progress/Mentorship Program/adx/Recommended Fixes.md"
+    },
+    {
+      "basename": "Claims vs Implementation",
+      "path": "20_Progress/Mentorship Program/adx/Claims vs Implementation.md"
+    },
+    {
+      "basename": "adx",
+      "path": "20_Progress/Mentorship Program/adx/adx.md"
+    },
+    {
+      "basename": "Claude Kit Implementation",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Kit Implementation.md"
+    },
+    {
       "basename": "Claude Council (LLM Council Skill Install)",
       "path": "20_Progress/AI/Builds & Resources/Claude Council (LLM Council Skill Install).md"
     },
     {
       "basename": "00_Execution",
       "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
-    },
-    {
-      "basename": "Claude Kit Implementation",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Kit Implementation.md"
     },
     {
       "basename": "Software Fundamentals Matter More Than Ever With AI Coding",
@@ -41,10 +57,6 @@
       "path": "40_Resources/Obsidian/Portfolio Option A — RAG + Hybrid Search (jarvis-memory Build).md"
     },
     {
-      "basename": "Claims vs Implementation",
-      "path": "20_Progress/Mentorship Program/adx/Claims vs Implementation.md"
-    },
-    {
       "basename": "Outreach Discovery & Automation Status",
       "path": "10_Areas/Career/Internships/Contacts/Outreach Discovery & Automation Status.md"
     },
@@ -61,24 +73,12 @@
       "path": "10_Areas/Career/Internships/Contacts/Networking Strategies.md"
     },
     {
-      "basename": "adx",
-      "path": "20_Progress/Mentorship Program/adx/adx.md"
-    },
-    {
       "basename": "Mentor Meeting Transcript",
       "path": "20_Progress/Mentorship Program/Meetings/Mentor Meeting Transcript.md"
     },
     {
       "basename": "Project Briefings - 2026-07-13",
       "path": "20_Progress/Mentorship Program/Meetings/Project Briefings - 2026-07-13.md"
-    },
-    {
-      "basename": "Recommended Fixes",
-      "path": "20_Progress/Mentorship Program/adx/Recommended Fixes.md"
-    },
-    {
-      "basename": "Source Claims",
-      "path": "20_Progress/Mentorship Program/adx/Source Claims.md"
     },
     {
       "basename": "Scarcity Imprint — The Hidden Operating System Behind Income Ceilings",
