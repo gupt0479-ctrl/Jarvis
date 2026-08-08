@@ -1,6 +1,90 @@
 {
   "recentFiles": [
     {
+      "basename": "GitHub Ingestion Implementation",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/GitHub Ingestion Implementation.md"
+    },
+    {
+      "basename": "Repos",
+      "path": "40_Resources/CS/Repos.md"
+    },
+    {
+      "basename": "Maverick Skills Analysis - Cross-Reference with GitHub Repos",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Maverick Skills Analysis - Cross-Reference with GitHub Repos.md"
+    },
+    {
+      "basename": "Hermes Agent — Trading & Alert System (Distilled)",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Hermes Agent — Trading & Alert System (Distilled).md"
+    },
+    {
+      "basename": "Claude Council (LLM Council Skill Install)",
+      "path": "20_Progress/AI/Builds & Resources/Claude Council (LLM Council Skill Install).md"
+    },
+    {
+      "basename": "Claude Kit Implementation",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Kit Implementation.md"
+    },
+    {
+      "basename": "Model Distillation",
+      "path": "20_Progress/AI/Builds & Resources/Model Distillation.md"
+    },
+    {
+      "basename": "Maverick Skills Mode-to-Repo Mapping",
+      "path": "20_Progress/AI/Builds & Resources/Maverick Skills Mode-to-Repo Mapping.md"
+    },
+    {
+      "basename": "Hermes Agent Framework — Corrected Framing",
+      "path": "20_Progress/AI/Builds & Resources/Hermes Agent Framework — Corrected Framing.md"
+    },
+    {
+      "basename": "Code Review & Eval Gap",
+      "path": "20_Progress/AI/Builds & Resources/Code Review & Eval Gap.md"
+    },
+    {
+      "basename": "Claude OS Dashboard",
+      "path": "20_Progress/AI/Claude OS Dashboard.md"
+    },
+    {
+      "basename": "Gen AI Meeting",
+      "path": "40_Resources/CS/AI/Gen AI Meeting.md"
+    },
+    {
+      "basename": "AI Workflow",
+      "path": "40_Resources/CS/AI/Workflows/AI Workflow.md"
+    },
+    {
+      "basename": "Claude Code",
+      "path": "40_Resources/CS/AI/Toolkit/Claude Code.md"
+    },
+    {
+      "basename": "Web Ingestion Implementation",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Web Ingestion Implementation.md"
+    },
+    {
+      "basename": "00_Execution",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
+    },
+    {
+      "basename": "_Notes Created From Ingestion",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/_Notes Created From Ingestion.md"
+    },
+    {
+      "basename": "Useful Repos - Shortlist",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Useful Repos - Shortlist.md"
+    },
+    {
+      "basename": "How Anant Uses Each Repo",
+      "path": "60_Claude/10_Source_Summaries/Github Ingestion/How Anant Uses Each Repo.md"
+    },
+    {
+      "basename": "PDF's Ingestion Implementation",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/PDF's Ingestion Implementation.md"
+    },
+    {
+      "basename": "2026-07-14 Mentor Meeting — Actions",
+      "path": "20_Progress/Mentorship Program/Meetings/Action/2026-07-14 Mentor Meeting — Actions.md"
+    },
+    {
       "basename": "MOC Standard",
       "path": "30_Order/Standards/MOC Standard.md"
     },
@@ -69,40 +153,12 @@
       "path": "20_Progress/Mentorship Program/adx/adx.md"
     },
     {
-      "basename": "Claude Kit Implementation",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Kit Implementation.md"
-    },
-    {
-      "basename": "Claude Council (LLM Council Skill Install)",
-      "path": "20_Progress/AI/Builds & Resources/Claude Council (LLM Council Skill Install).md"
-    },
-    {
-      "basename": "00_Execution",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
-    },
-    {
       "basename": "Software Fundamentals Matter More Than Ever With AI Coding",
       "path": "40_Resources/CS/Concepts/Software Fundamentals Matter More Than Ever With AI Coding.md"
     },
     {
-      "basename": "Useful Repos - Shortlist",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Useful Repos - Shortlist.md"
-    },
-    {
-      "basename": "How Anant Uses Each Repo",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/How Anant Uses Each Repo.md"
-    },
-    {
-      "basename": "_Notes Created From Ingestion",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/_Notes Created From Ingestion.md"
-    },
-    {
       "basename": "WSL Claude Code — Wiring Gap",
       "path": "60_Claude/07_AI_Information/AI Conversation - Summaries/WSL Claude Code — Wiring Gap.md"
-    },
-    {
-      "basename": "GitHub Ingestion Implementation",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/GitHub Ingestion Implementation.md"
     },
     {
       "basename": "Portfolio Option A — RAG + Hybrid Search (jarvis-memory Build)",
@@ -111,10 +167,6 @@
     {
       "basename": "Outreach Discovery & Automation Status",
       "path": "10_Areas/Career/Internships/Contacts/Outreach Discovery & Automation Status.md"
-    },
-    {
-      "basename": "Claude Code",
-      "path": "40_Resources/CS/AI/Toolkit/Claude Code.md"
     },
     {
       "basename": "Mimic",
@@ -137,14 +189,6 @@
       "path": "60_Claude/10_Source_Summaries/Web Ingestion/Claude Council — Path A Prompt (web).md"
     },
     {
-      "basename": "Maverick Skills Mode-to-Repo Mapping",
-      "path": "20_Progress/AI/Builds & Resources/Maverick Skills Mode-to-Repo Mapping.md"
-    },
-    {
-      "basename": "Hermes Agent Framework — Corrected Framing",
-      "path": "20_Progress/AI/Builds & Resources/Hermes Agent Framework — Corrected Framing.md"
-    },
-    {
       "basename": "01-nextjs-routes",
       "path": "20_Progress/Projects/CS/Portfolio/architecture/01-nextjs-routes.md"
     },
@@ -155,50 +199,6 @@
     {
       "basename": "Vibe Coding Hackathon",
       "path": "20_Progress/Projects/CS/Hackathons/Vibe Coding Hackathon.md"
-    },
-    {
-      "basename": "Hackathons",
-      "path": "10_Areas/Career/Hackathon/Hackathons.md"
-    },
-    {
-      "basename": "Research - DeepThinksFinance Architecture Transfer (2026-07-29)",
-      "path": "20_Progress/Projects/CS/TradingView/Research/Research - DeepThinksFinance Architecture Transfer (2026-07-29).md"
-    },
-    {
-      "basename": "Code Review & Eval Gap",
-      "path": "20_Progress/AI/Builds & Resources/Code Review & Eval Gap.md"
-    },
-    {
-      "basename": "Certifications Strategy",
-      "path": "10_Areas/Career/Certifications/Certifications Strategy.md"
-    },
-    {
-      "basename": "Research - CSCI 2033 to Trading Cross-Link Status (2026-07-29)",
-      "path": "20_Progress/Projects/CS/TradingView/Research/Research - CSCI 2033 to Trading Cross-Link Status (2026-07-29).md"
-    },
-    {
-      "basename": "System Design Practice",
-      "path": "20_Progress/Internship/Preperation/System Design/System Design Practice.md"
-    },
-    {
-      "basename": "Claude OS",
-      "path": "60_Claude/07_AI_Information/How to Use Claude/Claude OS.md"
-    },
-    {
-      "basename": "Claude Code Prompts",
-      "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
-    },
-    {
-      "basename": "Summer Courses",
-      "path": "20_Progress/Degree/Summer Courses.md"
-    },
-    {
-      "basename": "Repos",
-      "path": "40_Resources/CS/Repos.md"
-    },
-    {
-      "basename": "Model Distillation",
-      "path": "20_Progress/AI/Builds & Resources/Model Distillation.md"
     }
   ],
   "omittedPaths": [],
