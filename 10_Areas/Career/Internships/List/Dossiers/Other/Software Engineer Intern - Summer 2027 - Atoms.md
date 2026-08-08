@@ -2,15 +2,19 @@
 company: Atoms
 title: Software Engineer Intern - Summer 2027
 url: https://job-boards.greenhouse.io/cssmerge/jobs/8687896002
-source: zshah101
+source: SimplifyJobs
 terms:
   - Summer 2027
 locations:
-  - Los Angeles, CA
+  - Seattle, WA
+  - SF
+  - LA
+  - NYC
+  - Mountain View, CA
 target_year: []
-date_posted: '2026-08-06'
-date_found: '2026-08-07'
-matched_reason: matched
+date_posted: '2026-08-07'
+date_found: '2026-08-08'
+matched_reason: Summer 2027, Software
 status: unreviewed
 next:
 tags:
@@ -18,9 +22,9 @@ tags:
   - auto-discovered
 ---
 # Software Engineer Intern - Summer 2027
-Found 2026-08-07 via zshah101.
+Found 2026-08-08 via SimplifyJobs.
 > [!NOTE] Other: genuine software engineering role, no bucket-specific signal matched.
-## Posting (fetched 2026-08-07)
+## Posting (fetched 2026-08-08)
 # Software Engineer Intern - Summer 2027
 Multiple Locations Available
 Join Us
@@ -34,7 +38,7 @@ Join Atoms, we build progress machines for the physical world.
 **Who You Are:**
 **Actively pursuing a Bachelor/Master in Computer Science, Engineering or a related technical field**
 - Graduating in Fall-Winter 2027 or Spring/Summer 2028.
-- 3,7 GPA Minimum
+- 3.7 GPA Minimum
 - Must have completed an introductory Computer Science course
 - Have advanced programming experience in one or more application or systems languages (Go, Python, Ruby, Java, Kotlin, C/C++, etc.)
 - A problem-solver who thrives in tackling diverse technical challenges and demonstrates a clear track record of growth and learning
