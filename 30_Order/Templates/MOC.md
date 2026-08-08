@@ -27,6 +27,12 @@ notes:
 [[For Inputs]]
 [[For Progress]]
 [[For Thoughts]]
+[[For Transcript]]
+# Capability
+[[Clipping Distill Template]]
+[[MOC Template]]
+[[Brief Template]]
+[[Action Template]]
 # Classes
 [[Concept Template]]
 [[Discussion Template]]

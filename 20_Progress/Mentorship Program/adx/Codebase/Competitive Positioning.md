@@ -2,15 +2,16 @@
 type: project
 status: active
 created: 2026-08-07
-updated: 2026-08-07
-deadline:
+updated: 2026-08-08
+deadline: null
 related_progress:
   - "[[Codebase Deep Read]]"
   - "[[adx]]"
   - "[[Distribution and Adoption Gaps]]"
 tags:
   - "#progress"
-next: Decide whether to update adx.md's Competitive Read section with this, and scope the single Factory-comparison GitHub issue.
+next: Decide whether to update adx.md's Competitive Read section with this, and
+  scope the single Factory-comparison GitHub issue.
 ---
 # adx — Competitive Positioning
 ==Factory AI's "Agent Readiness" is a sharper, more granular measurement tool than adx's four vitals — but it doesn't compete with adx's Agency Ladder at all, because it doesn't attempt the accountability problem. And its own published methodology has the same undisclosed-validation gap this review found in adx's abstraction.ts.==

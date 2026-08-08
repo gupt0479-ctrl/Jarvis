@@ -1,15 +1,18 @@
 ---
 type: input
-input_kind:
-status:
-created:
+input_kind: transcript
+status: seed
+created: 2026-07-14
 source_url:
-related_progress: []
+related_progress:
+  - "[[adx]]"
+  - "[[Mentor Details]]"
+  - "[[Project Briefings - 2026-07-13]]"
 tags:
-  - input
-next:
+  - transcript
+next: "None — already distilled into [[Project Briefings - 2026-07-13]]"
 ---
-# Transcript
+# Mentor Meeting Transcript
 7-14-2026
 ## From Cluely
 ```

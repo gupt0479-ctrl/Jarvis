@@ -6,11 +6,12 @@ related_progress:
   - "[[Useful Links]]"
   - "[[Elevator pitch]]"
   - "[[Mentor Details]]"
-  - "[[Arc (Learning Tracker)]]"
+  - "[[Learning Tracker tool|Arc (Learning Tracker)]]"
   - "[[Winter Break]]"
   - "[[Portfolio]]"
   - "[[Mentor Meeting Playbook]]"
   - "[[Project Briefings - 2026-07-13]]"
+  - "[[Fall 2026 — Detailed Expectations]]"
 tags:
   - brainstorm
 next: "[[Winter Break]]"
@@ -42,7 +43,7 @@ Google doc link - [Detailed Goals](https://docs.google.com/document/d/1xu8pmUATj
 - The MoSCoW framework is a simple yet powerful prioritization technique in project management and business analysis, using an acronym for **M**ust-have, **S**hould-have, **C**ould-have, and **W**on't-have (this time) to classify requirements and features, ensuring stakeholder alignment on what's crucial for a successful delivery, especially in time-boxed projects like [Agile sprints](https://www.google.com/search?q=Agile+sprints&oq=mosco+fr&gs_lcrp=EgZjaHJvbWUqCwgBEAAYChgLGIAEMgYIABBFGDkyCwgBEAAYChgLGIAEMgsIAhAAGAoYCxiABDIOCAMQABgKGAsYiwMYgAQyCwgEEAAYChgLGIAEMgsIBRAAGAoYCxiABDILCAYQABgKGAsYgAQyCwgHEAAYChgLGIAEMgsICBAAGAoYCxiABDILCAkQABgKGAsYgATSAQkxMzE4NWoxajeoAgiwAgHxBWFML88kPkUD8QVhTC_PJD5FAw&sourceid=chrome&ie=UTF-8&ved=2ahUKEwjf6Ka9gdCRAxXyjokEHQC3C74QgK4QegYIAQgAEAY). It creates a shared understanding of priorities, focusing teams on essential features first (Must-haves) while managing expectations for desirable but non-critical items (Could-haves) and deferred items (Won't-haves). 
 - *Projects*: 
 	- [[Portfolio]]: Chatbot and moving carousels. 
-	- [[Arc (Learning Tracker)]]: 
+	- [[Learning Tracker tool|Arc (Learning Tracker)]]: 
 - *Internship*: 
 	- Resources for applying to internships
 	- Courses that i should be working on right now - help me with my project
@@ -57,14 +58,14 @@ Google doc link - [Detailed Goals](https://docs.google.com/document/d/1xu8pmUATj
 	5. Reach out to employeers for project based learning. 
 	6. **Validation plan** (thought experiment): Success metric for a pilot: 10 weekly active users with ≥2 check-ins/week; if not, what would you change?
 	**What to ask Ahnaf each time**
-	- “Where would you cut scope more?”
-	- “What metric would you watch first?”
-	- “What early mistakes would you pre-empt?”
+	- "Where would you cut scope more?"
+	- "What metric would you watch first?"
+	- "What early mistakes would you pre-empt?"
 #### Plan
-1. **Standing items I’ll bring each meeting**:
+1. **Standing items I'll bring each meeting**:
 	- **Demo link + 3 screenshots**
-	- **What I shipped / What blocked me / What I’m deciding next** (one slide).
-	- **One Role Brief** (1 page) until you’ve covered: Frontend, Backend, Full-stack, DevOps, Data, Mobile.
+	- **What I shipped / What blocked me / What I'm deciding next** (one slide).
+	- **One Role Brief** (1 page) until you've covered: Frontend, Backend, Full-stack, DevOps, Data, Mobile.
 ## Summer
 This section covers only what earns a mentor's time: 4 focused goals, not the full execution grind. Daily/weekly work (LeetCode, courses, project builds) lives in [[Summer Grind]] and [[10_Areas/Life/Plans/Summer/00 - Summer Plans Index|the Summer Plans folder]] — Ahnaf never needs that layer, only the parts that need outside judgment. Full per-meeting scripts and the running log live in [[Mentor Meeting Playbook]].
 ### The 4 Goals
@@ -93,3 +94,4 @@ By the program's end, this should be true:
 ### Resources
 1. Informational Interviews - [Link](https://youtu.be/Of9w5eLNBwA?si=BFmcNow-6J2dY9XE) Youtube video.
 ## Fall 2026
+Cadence holds at alternate weeks, unchanged from [[Plan#Summer|Summer]]. Specifics are deliberately not pre-written here — [[Fall 2026 — Detailed Expectations]] accumulates what's actually required from Ahnaf as real meetings happen, via `/note-to-actions` against each meeting's brief, not from assumptions made now. Before any adx-specific work, the priority is establishing everything required from Ahnaf systematically, so nothing gets worked on out of order. A second mentor, for a different purpose, is a live idea for fall enrollment — future work, not yet built out.

@@ -3,15 +3,17 @@ type: project
 status: active
 created: 2026-07-22
 updated: 2026-07-22
-deadline:
+deadline: null
 related_progress:
   - "[[Source Claims]]"
   - "[[Claims vs Implementation]]"
   - "[[Recommended Fixes]]"
+  - "[[Codebase Deep Read]]"
   - "[[Mentor Details]]"
 tags:
   - "#progress"
-next: Share [[adx — Recommended Fixes]] with Ahnaf and get his read on priority before recommending any of it upstream.
+next: Recommended Fixes is now rewritten and current. Get Ahnaf's read on
+  priority before raising anything — see its Open Questions.
 ---
 # adx — MOC (Agentic Developer Experience)
 =="adx" is meta-tooling — not an agent itself — that scores how "agent-ready" a codebase is, runs agent tasks inside an isolated harness, and gates every resulting diff behind a 3-layer check plus a mandatory human sign-off recorded on a 7-level Agency Ladder.==
@@ -43,6 +45,7 @@ Three findings change the read on this product:
 - **Two headline claims are false as stated.** "Import cycles always score 0" — a cyclic file actually gets a flat +0.5 risk bonus, not a forced floor, so one small cycle in a large codebase barely moves the aggregate FRR score. "Gate score below 60 blocks merge" — blocking is actually driven by three unrelated boolean triggers (abstraction flagged, any tautological test, more than 3 drifted files), independent of the numeric gate score entirely.
 - **`adx sweep` has undocumented flags that delete code.** `--fix`, `--auto`, `--dry-run`, and `--comments` all exist and work — `--auto` batch-removes "orphaned" exports and dark comments across the repo with no confirmation prompt. None of the four appear anywhere on the docs site.
 This also resolves the earlier open question below about JS/TS-only scope: `harness.observe.tests` already accepts `pytest` and a free-form `custom` + `testCommand`, so cross-language test execution is real today, just undocumented — not a permanent limitation.
+**This section is now the shallower of two passes.** [[Codebase Deep Read]] (2026-08-07/08) built and ran the CLI against a throwaway repo rather than reading source alone, and found something that outranks every finding above: **nobody can currently install adx by following its own docs.** The npm package name `adx` is already taken by an unrelated, empty package from 2019 — `npm install -g adx`, the literal first command in the getting-started guide, silently installs the wrong thing, with no error. Every code-level finding in this note and the deeper pass assumes someone already has the code running from source; that assumption doesn't hold for an actual first-time visitor to the website. The three findings above were also hardened from static reading into live reproduction — the worktree bypass was caught mid-run via `git worktree list` polling and a file-write probe, and the CI auto-approve was confirmed unconditional across three different config variations, not just read once in source.
 ## Open Questions
 - [ ] Is adx meant to be adopted whole, or is the Agency Ladder useful standalone without any of the CLI tooling? Worth asking Ahnaf directly — it changes how a reviewer should frame the pitch
 - [ ] Are the vital weights (30/25/30/15), the gate-score weights (40/40/20, undocumented anywhere), and the 8% abstraction threshold tuned against real repos, or reasonable-sounding defaults he chose?
@@ -53,3 +56,4 @@ Read the `adx-core` and `adx-gate` package source in the GitHub repo against the
 ## Log
 - **2026-07-22:** Read the full docs site (14 pages, verified against the live Astro sidebar config in the repo) and the GitHub README end to end; wrote [[Source Claims]] and this MOC. Codebase not yet reviewed — that's the next session.
 - **2026-07-22:** Cloned and read the full repo (all 8 packages, 90 test cases, git history, self-dogfooded evidence); wrote [[Claims vs Implementation]]. Extracted every recommendation and prioritization judgment out of this note and that one into a new dedicated note, [[Recommended Fixes]], so this MOC and the two source-of-truth notes stay strictly factual.
+- **2026-08-08:** Fixed a stale wikilink in this note's own `next:` field (a leftover from before the four adx\ notes were renamed). Linked forward to [[Codebase Deep Read]] and added a pointer in Verification Against The Codebase — did not rewrite this note's content, since [[Codebase Deep Read]] now supersedes parts of it and a full merge is real work, not a quick edit. [[Recommended Fixes]] still needs the same treatment; flagged there and in the next session's brief.

@@ -1,8 +1,8 @@
 ---
 type: input
 status: sprout
-created: 2026-08-07
-updated: 2026-08-07
+created: 2026-08-08
+updated: 2026-08-08
 tags:
   - summary
 notes:
@@ -15,7 +15,7 @@ track: ai
 ---
 # adx — Distribution and Adoption Gaps
 **Source:** `npm view adx` and a real `npm install adx` in a clean, isolated directory (not the sandbox clone, not the throwaway repo); every `package.json` in `sandbox/adx`; root directory listing for `LICENSE`
-**Verified:** 2026-08-07
+**Verified:** 2026-08-08
 **Scope:** package distribution and legal/adoption surface — not the code's behavior, whether anyone can reach it in the first place
 ## Source
 Everything else written this session assumes someone already has the code running. This note checks the layer before that: can a new user actually get adx onto their machine by following the docs, and would a team doing real due diligence stop before they even try. Both checks came from a lead flagged mid-review, verified independently here, not taken on report.

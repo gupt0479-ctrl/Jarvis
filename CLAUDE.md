@@ -61,10 +61,12 @@ next: "[[Next Action]]"  # optional
 
 **Type guide:**
 - `evergreen` — Distilled, reusable knowledge (`60_Claude/20_Distilled_Notes/`, `40_Resources/`)
-- `input` — Raw captures, source summaries (`60_Claude/05_Clippings/`, `60_Claude/10_Source_Summaries/`)
+- `input` — Raw captures, source summaries (`60_Claude/05_Clippings/`, `60_Claude/10_Source_Summaries/`); transcripts and briefs also use `input` — see [[Brief Standard]]
 - `concept` — Course concepts, definitions (`10_Areas/UMN/`, `40_Resources/CS/`)
 - `project` — Active work with outcomes (`20_Progress/`)
 - `thought` / `brainstorm` — Inbox-style captures (`00_Inbox/`)
+- `index` — MOC / content map for a folder (see [[MOC Standard]]) — prose Map + Status + Dataview, not a bare link list
+- `action` — Link-dense map of concrete next steps derived from a brief or note (see [[Action Standard]]); statements only, no checkboxes
 
 ### Output Destinations
 See the routing table in [[AGENTS.md]] → Write Contract → "Where does this note go?".
@@ -101,6 +103,8 @@ Skills are registered as slash commands via `.claude/commands/`. Type the comman
 | Skill | Command | Logic file |
 |-------|---------|------------|
 | Ingest clipping | `/ingest-clipping "filename.md"` | `.claude/skills/ingest-clipping.md` |
+| Transcript to brief | `/transcript-to-brief` | `.claude/skills/transcript-to-brief.md` |
+| Note to actions | `/note-to-actions` | `.claude/skills/note-to-actions.md` |
 | Distill note | `/distill-note` | `.claude/skills/distill-note.md` |
 | Remove AI slop | `/remove-ai-slop` | `.claude/skills/remove-ai-slop.md` |
 | Get context | `/context` | `.claude/skills/context.md` |

@@ -44,6 +44,8 @@ across all of it:  enrich existing notes in place  ·  capture AI conversations 
 | Turn a project brief into a live `20_Progress` note | [[Brief to Progress]] |
 | Build a reusable deliverable (story, bullet, prompt) with provenance | [[Output with Provenance]] |
 | Capture an LLM conversation so its decisions survive | [[Conversation Capture]] |
+| Turn any transcript (meeting, call, video) into a brief | [[Transcript to Brief]] |
+| Turn a brief or linked note into a map of concrete next steps | [[Brief to Action]] |
 | Strengthen an existing note without rewriting it | [[Enrichment]] |
 | Move an internship (or any application) from found to offer/rejected | [[Internship Pipeline]] |
 | Create a plan, or keep an existing one wired into daily/weekly execution | [[Plan Review Cadence]] |
