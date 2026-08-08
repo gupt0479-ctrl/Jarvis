@@ -1,6 +1,58 @@
 {
   "recentFiles": [
     {
+      "basename": "MOC Standard",
+      "path": "30_Order/Standards/MOC Standard.md"
+    },
+    {
+      "basename": "Internship Notes Standard",
+      "path": "30_Order/Standards/Internship Notes Standard.md"
+    },
+    {
+      "basename": "Concept Standard",
+      "path": "30_Order/Standards/Concept Standard.md"
+    },
+    {
+      "basename": "Course Week Standard",
+      "path": "30_Order/Standards/Course Week Standard.md"
+    },
+    {
+      "basename": "Daily Workflow Standard",
+      "path": "30_Order/Standards/Daily Workflow Standard.md"
+    },
+    {
+      "basename": "Evergreen Standard",
+      "path": "30_Order/Standards/Evergreen Standard.md"
+    },
+    {
+      "basename": "Mentorship Board",
+      "path": "20_Progress/Mentorship Program/Mentorship Board.md"
+    },
+    {
+      "basename": "Elevator pitch",
+      "path": "20_Progress/Internship/Preperation/Communication/Elevator pitch.md"
+    },
+    {
+      "basename": "Plan",
+      "path": "20_Progress/Mentorship Program/Plans/Plan.md"
+    },
+    {
+      "basename": "Process and CI Gaps",
+      "path": "20_Progress/Mentorship Program/adx/Codebase/Process and CI Gaps.md"
+    },
+    {
+      "basename": "Dead-on-Arrival Code",
+      "path": "20_Progress/Mentorship Program/adx/Codebase/Dead-on-Arrival Code.md"
+    },
+    {
+      "basename": "Competitive Positioning",
+      "path": "20_Progress/Mentorship Program/adx/Codebase/Competitive Positioning.md"
+    },
+    {
+      "basename": "Codebase Deep Read",
+      "path": "20_Progress/Mentorship Program/adx/Codebase/Codebase Deep Read.md"
+    },
+    {
       "basename": "Source Claims",
       "path": "20_Progress/Mentorship Program/adx/Source Claims.md"
     },
@@ -71,14 +123,6 @@
     {
       "basename": "Networking Strategies",
       "path": "10_Areas/Career/Internships/Contacts/Networking Strategies.md"
-    },
-    {
-      "basename": "Mentor Meeting Transcript",
-      "path": "20_Progress/Mentorship Program/Meetings/Mentor Meeting Transcript.md"
-    },
-    {
-      "basename": "Project Briefings - 2026-07-13",
-      "path": "20_Progress/Mentorship Program/Meetings/Project Briefings - 2026-07-13.md"
     },
     {
       "basename": "Scarcity Imprint — The Hidden Operating System Behind Income Ceilings",
@@ -155,50 +199,6 @@
     {
       "basename": "Model Distillation",
       "path": "20_Progress/AI/Builds & Resources/Model Distillation.md"
-    },
-    {
-      "basename": "Resume Tailoring, LinkedIn Search & Outreach Discovery",
-      "path": "10_Areas/Career/Internships/Cheats/Resume Tailoring, LinkedIn Search & Outreach Discovery.md"
-    },
-    {
-      "basename": "07-29 Second brain claude kit",
-      "path": "60_Claude/05_Clippings/AI Conversations/WSL/Cursor/second-brain-claudekit/07-29 Second brain claude kit.md"
-    },
-    {
-      "basename": "00 - Tool Usage Rollup",
-      "path": "60_Claude/05_Clippings/AI Conversations/WSL/Cursor/opspilot/00 - Tool Usage Rollup.md"
-    },
-    {
-      "basename": "04-13 OpsPilot implementation planning",
-      "path": "60_Claude/05_Clippings/AI Conversations/WSL/Cursor/opspilot/04-13 OpsPilot implementation planning.md"
-    },
-    {
-      "basename": "04-12 Restaurant backend implementation plan",
-      "path": "60_Claude/05_Clippings/AI Conversations/WSL/Cursor/opspilot/04-12 Restaurant backend implementation plan.md"
-    },
-    {
-      "basename": "04-12 Codebase analysis and PR review",
-      "path": "60_Claude/05_Clippings/AI Conversations/WSL/Cursor/opspilot/04-12 Codebase analysis and PR review.md"
-    },
-    {
-      "basename": "04-13 Feedback page data rendering issue",
-      "path": "60_Claude/05_Clippings/AI Conversations/WSL/Cursor/opspilot/04-13 Feedback page data rendering issue.md"
-    },
-    {
-      "basename": "CLAUDE",
-      "path": "20_Progress/AI/Claude Code/second-brain-claudekit/CLAUDE.md"
-    },
-    {
-      "basename": "07-16 Build 247 internship discovery automation system",
-      "path": "60_Claude/05_Clippings/AI Conversations/WSL/Claude Code/internship-research-loop/07-16 Build 247 internship discovery automation system.md"
-    },
-    {
-      "basename": "Sync - Unison",
-      "path": "20_Progress/AI/Claude Code/Sync - Unison.md"
-    },
-    {
-      "basename": "Write Log",
-      "path": "20_Progress/AI/Claude Code/Write Log.md"
     }
   ],
   "omittedPaths": [],

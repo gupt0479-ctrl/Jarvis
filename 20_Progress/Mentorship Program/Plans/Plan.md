@@ -92,3 +92,4 @@ By the program's end, this should be true:
 - [ ] Cadence held through September without either side letting it lapse.
 ### Resources
 1. Informational Interviews - [Link](https://youtu.be/Of9w5eLNBwA?si=BFmcNow-6J2dY9XE) Youtube video.
+## Fall 2026
