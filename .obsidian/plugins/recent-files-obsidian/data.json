@@ -1,16 +1,36 @@
 {
   "recentFiles": [
     {
+      "basename": "Repos",
+      "path": "40_Resources/CS/Repos.md"
+    },
+    {
       "basename": "GitHub Ingestion Implementation",
       "path": "60_Claude/20_Distilled_Notes/Sources - Plan/GitHub Ingestion Implementation.md"
     },
     {
-      "basename": "trace",
-      "path": "20_Progress/AI/Claude Code/second-brain-claudekit/Da Shit/commands/trace.md"
+      "basename": "Tool Map",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Tool Map.md"
     },
     {
-      "basename": "Repos",
-      "path": "40_Resources/CS/Repos.md"
+      "basename": "Build Map",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Build Map.md"
+    },
+    {
+      "basename": "Prompts",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Claude Code/Prompts.md"
+    },
+    {
+      "basename": "Overview",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Overview.md"
+    },
+    {
+      "basename": "Claude OS Map",
+      "path": "10_Areas/AI/Claude OS Map.excalidraw"
+    },
+    {
+      "basename": "trace",
+      "path": "20_Progress/AI/Claude Code/second-brain-claudekit/Da Shit/commands/trace.md"
     },
     {
       "basename": "Maverick Skills Analysis - Cross-Reference with GitHub Repos",
@@ -22,7 +42,7 @@
     },
     {
       "basename": "Claude Council (LLM Council Skill Install)",
-      "path": "20_Progress/AI/Builds & Resources/Claude Council (LLM Council Skill Install).md"
+      "path": "20_Progress/Projects/AI Use/Builds & Resources/Claude Council (LLM Council Skill Install).md"
     },
     {
       "basename": "Claude Kit Implementation",
@@ -30,19 +50,19 @@
     },
     {
       "basename": "Model Distillation",
-      "path": "20_Progress/AI/Builds & Resources/Model Distillation.md"
+      "path": "20_Progress/Projects/AI Use/Builds & Resources/Model Distillation.md"
     },
     {
       "basename": "Maverick Skills Mode-to-Repo Mapping",
-      "path": "20_Progress/AI/Builds & Resources/Maverick Skills Mode-to-Repo Mapping.md"
+      "path": "20_Progress/Projects/AI Use/Builds & Resources/Maverick Skills Mode-to-Repo Mapping.md"
     },
     {
       "basename": "Hermes Agent Framework — Corrected Framing",
-      "path": "20_Progress/AI/Builds & Resources/Hermes Agent Framework — Corrected Framing.md"
+      "path": "20_Progress/Projects/AI Use/Builds & Resources/Hermes Agent Framework — Corrected Framing.md"
     },
     {
       "basename": "Code Review & Eval Gap",
-      "path": "20_Progress/AI/Builds & Resources/Code Review & Eval Gap.md"
+      "path": "20_Progress/Projects/AI Use/Builds & Resources/Code Review & Eval Gap.md"
     },
     {
       "basename": "Claude OS Dashboard",
@@ -58,7 +78,7 @@
     },
     {
       "basename": "Claude Code",
-      "path": "40_Resources/CS/AI/Toolkit/Claude Code.md"
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Claude Code.md"
     },
     {
       "basename": "Web Ingestion Implementation",
@@ -179,26 +199,6 @@
     {
       "basename": "Networking Strategies",
       "path": "10_Areas/Career/Internships/Contacts/Networking Strategies.md"
-    },
-    {
-      "basename": "Scarcity Imprint — The Hidden Operating System Behind Income Ceilings",
-      "path": "60_Claude/20_Distilled_Notes/Scarcity Imprint — The Hidden Operating System Behind Income Ceilings.md"
-    },
-    {
-      "basename": "AI Engineer Roadmap — Virtual Mentor Gap-Check",
-      "path": "10_Areas/Career/Mentors/AI Engineer Roadmap — Virtual Mentor Gap-Check.md"
-    },
-    {
-      "basename": "Claude Council — Path A Prompt (web)",
-      "path": "60_Claude/10_Source_Summaries/Web Ingestion/Claude Council — Path A Prompt (web).md"
-    },
-    {
-      "basename": "01-nextjs-routes",
-      "path": "20_Progress/Projects/CS/Portfolio/architecture/01-nextjs-routes.md"
-    },
-    {
-      "basename": "Student Travel Discounts — Survey Note (Staging for The Plan)",
-      "path": "60_Claude/20_Distilled_Notes/The Plan/Student Travel Discounts — Survey Note (Staging for The Plan).md"
     }
   ],
   "omittedPaths": [],

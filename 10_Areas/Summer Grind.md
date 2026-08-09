@@ -43,7 +43,7 @@ This summer is not a list of outcomes. [[Atomic Habits]] instead of motivation. 
 	*System*: Reading is not consumption. It feeds behavior change and language for the systems. Current list: [[Easy Way to Quit Smoking]], [[Atomic Habits]], and "The Subtle Art Not to Give a Fuck" / likely [[Stoicism]] or [[Essentialism]] themes.
 	- **Obvious:** book stays visible beside bed or on phone home screen.
 7. **Laptop**: WSL, file system, Windows, backup, ai agents, photos
-	*System*: Laptop cleanup is environment design from [[Atomic Habits#The 1st Law - Make it Obvious|Make it Obvious]]. A clean machine makes work easier; a chaotic machine makes procrastination cheaper. Tie this to [[Ubuntu - WSL]], [[Claude Code]], [[Cursor AI]], and [[AI Workflow]].
+	*System*: Laptop cleanup is environment design from [[Atomic Habits#The 1st Law - Make it Obvious|Make it Obvious]]. A clean machine makes work easier; a chaotic machine makes procrastination cheaper. Tie this to [[Ubuntu - WSL]], [[10_Areas/AI/Claude Code]], [[Cursor AI]], and [[AI Workflow]].
 8. **Phone**: Photos, procrastination, sync, files, ai agents
 	*System*: Phone becomes a capture, communication, maps, photos, and reading device. It should not be the default dopamine machine.
 	- **Obvious:** put reading, calendar, tasks, camera, and notes on the first screen. Hide or friction-add procrastination apps.
@@ -97,7 +97,7 @@ This summer is not a list of outcomes. [[Atomic Habits]] instead of motivation. 
 				1. [MLOps Zoomcamp](https://datatalks.club/blog/mlops-zoomcamp.html): [Github](https://github.com/DataTalksClub/mlops-zoomcamp)
 			7. HuggingFace: 
 				1. [AI Agents course](https://huggingface.co/learn/agents-course/unit0/introduction#expect)
-	*System*: Certifications support projects and applications. They are not the main achievement. Use [[Git & GitHub]], [[Gen AI Roadmap]], [[AI Workflow]], [[AWS]], [[Azure]], [[Claude Code]], and AI/ML course notes as they appear.
+	*System*: Certifications support projects and applications. They are not the main achievement. Use [[Git & GitHub]], [[Gen AI Roadmap]], [[AI Workflow]], [[AWS]], [[Azure]], [[10_Areas/AI/Claude Code]], and AI/ML course notes as they appear.
 	- **Obvious:** one certification/course queue with reason, project connection, deadline, and proof.
 ## How you manage the whole plan efficiently (Dubai → Bangalore → Sept 1)
 - **Dubai sets the system** (routines + cues + minimum viable daily wins) so Bangalore becomes repetition, not reinvention.

@@ -18,7 +18,7 @@ tags:
 - [[AI_CONTEXT]] — the shared cross-tool context manifest that tells agents what the live context sources are and what to read next. It explicitly instructs agents to read `AGENTS.md` and `HUMAN_WRITING.md`, then use the manifest to find the right live sources for the task. [^1]
 - [[AGENTS]] — the “Jarvis Agent Guide” with priority files, folder roles, working rules, retrieval rules, and safety boundaries (including not surfacing secrets and keeping raw capture separate from distillation). [^2]
 - [[00_Dashboard]] — the “current control panel” / continuity layer for what’s going on right now (active projects, open tasks, inbox/cleanup). It’s repeatedly named as the live state source to consult before making assumptions. [^1]  
-- [[log]] (at `60_Claude/10_Session_Logs/log.md`) — the other core continuity layer for recent AI-assisted work and system changes, used alongside the dashboard. [^1]
+- [[20_Progress/Projects/AI Use/Claude Kit/Log]] (at `60_Claude/10_Session_Logs/log.md`) — the other core continuity layer for recent AI-assisted work and system changes, used alongside the dashboard. [^1]
 
 In addition, the vault defines **agent + workflow specific first-read packs**:
 

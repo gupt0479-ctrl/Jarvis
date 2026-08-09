@@ -23,7 +23,7 @@ These are the load-bearing ideas. If you can't explain these, the rest doesn't h
 - [[MCPs]]
 - [[Gen AI Roadmap]]
 - [[AI Workflow]]
-- [[Claude Code]]
+- [[10_Areas/AI/Claude Code]]
 - [[Cursor AI]]
 - [[Ollama]]
 
@@ -47,7 +47,7 @@ Adjacent concepts that are easy to confuse. Review these in pairs, not isolation
 
 1. [[Gen AI Roadmap]]
 2. [[MCPs]]
-3. [[Claude Code]]
+3. [[10_Areas/AI/Claude Code]]
 4. [[AI Workflow]]
 5. [[Cursor AI]]
 6. [[Ollama]]

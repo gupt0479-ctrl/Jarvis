@@ -10,8 +10,8 @@ tags:
   - sync
 notes:
   - "[[20_Progress/AI/Claude Code/MOC]]"
-  - "[[20_Progress/Projects/AI Use/Claude Kit/Tool Map]]"
-next: "None — 15-min hidden Task Scheduler sync is live (SecondBrainClaudekit-JarvisSync)"
+  - "[[Tool Map]]"
+next: None — 15-min hidden Task Scheduler sync is live (SecondBrainClaudekit-JarvisSync)
 ---
 # second-brain-claudekit — Claude Code Setup
 
@@ -37,4 +37,4 @@ Editing files in this folder directly is safe and intentional — that's the poi
 Windows Scheduled Task `SecondBrainClaudekit-JarvisSync` runs `sync-jarvis.sh` every 15 minutes through a hidden `wscript` launcher (no console popup). Manual runs still work: `50_Claude/scripts/sync-jarvis.sh` from the repo. Re-register (if needed): `30_Order/System/claude-workflow/scripts/register-jarvis-sync-task.ps1`.
 
 ## Links
-[[20_Progress/AI/Claude Code/MOC]] · [[20_Progress/Projects/AI Use/Claude Kit/Tool Map]] · [[20_Progress/Projects/AI Use/Claude Kit/Log]]
+[[20_Progress/AI/Claude Code/MOC]] · [[Tool Map]] · [[20_Progress/Projects/AI Use/Claude Kit/Log]]

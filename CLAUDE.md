@@ -12,7 +12,7 @@ related_progress:
   - "[[AI Workflow]]"
   - "[[Claude Pro Workflow]]"
   - "[[40_Resources/CS/Links|Links]]"
-  - "[[Claude Code]]"
+  - "[[10_Areas/AI/Claude Code]]"
   - "[[MCPs]]"
   - "[[Claude Board]]"
   - "[[HUMAN_WRITING]]"

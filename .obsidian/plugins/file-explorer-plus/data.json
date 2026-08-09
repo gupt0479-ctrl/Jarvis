@@ -668,6 +668,13 @@
         "type": "FILES",
         "pattern": "20_Progress/Mentorship Program/adx/Codebase/Codebase Deep Read.md",
         "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "10_Areas/AI/Claude OS Map.excalidraw",
+        "patternType": "STRICT"
       }
     ],
     "frontMatter": [

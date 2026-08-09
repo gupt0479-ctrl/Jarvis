@@ -11,8 +11,8 @@ tags:
 notes:
   - "[[20_Progress/AI/Claude Code/MOC]]"
   - "[[20_Progress/AI/Claude Code/second-brain-claudekit/Setup]]"
-  - "[[20_Progress/Projects/AI Use/Claude Kit/Tool Map]]"
-next: "Get Anant's per-project go-ahead (Step 0), then bootstrap the manifest-driven script and onboard the first additional project"
+  - "[[Tool Map]]"
+next: Get Anant's per-project go-ahead (Step 0), then bootstrap the manifest-driven script and onboard the first additional project
 ---
 # Sync — Unison, multi-project rollout
 
@@ -186,4 +186,4 @@ Not one Windows Task Scheduler entry per project — one entry that calls the ma
 - **Keep the manifest as the single source of truth for what's live.** Resist the urge to special-case a project's sync behavior directly in the driver script — if a project genuinely needs different handling, that's a new manifest field (like `needs_fat` already is), not a branch in the script that only applies to one name.
 
 ## Links
-[[20_Progress/AI/Claude Code/MOC]] · [[20_Progress/AI/Claude Code/second-brain-claudekit/Setup]] · [[20_Progress/Projects/AI Use/Claude Kit/Tool Map]] · [[20_Progress/Projects/AI Use/Claude Kit/Log]]
+[[20_Progress/AI/Claude Code/MOC]] · [[20_Progress/AI/Claude Code/second-brain-claudekit/Setup]] · [[Tool Map]] · [[20_Progress/Projects/AI Use/Claude Kit/Log]]

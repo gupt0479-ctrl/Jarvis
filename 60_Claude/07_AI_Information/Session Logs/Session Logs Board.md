@@ -19,4 +19,4 @@ SORT file.mtime DESC
 LIMIT 15
 ```
 ## Log File
-- [[log]] — Main append-only log
+- [[60_Claude/07_AI_Information/Session Logs/log]] — Main append-only log

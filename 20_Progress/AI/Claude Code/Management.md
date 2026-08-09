@@ -12,12 +12,12 @@ notes:
   - "[[20_Progress/AI/Claude Code/MOC]]"
   - "[[20_Progress/AI/Claude Code/Write Log]]"
   - "[[20_Progress/AI/Claude Code/Sync - Unison]]"
-  - "[[20_Progress/Projects/AI Use/Claude Kit/Tool Map]]"
-next: "Get Anant's per-project go-ahead for the multi-project sync rollout (Sync - Unison.md, Step 0), then this file's blocker list shrinks by one row"
+  - "[[Tool Map]]"
+next: Get Anant's per-project go-ahead for the multi-project sync rollout (Sync - Unison.md, Step 0), then this file's blocker list shrinks by one row
 ---
 # Claude Code — Management
 
-The single current-status page for everything happening across this vault's Claude Code tooling — sync health, active blockers, and recent findings. [[20_Progress/AI/Claude Code/Write Log]] is the append-only chronological record this page summarizes; this page is the living, overwritten-in-place snapshot. [[20_Progress/AI/Claude Code/MOC]] is the per-project file inventory; [[20_Progress/Projects/AI Use/Claude Kit/Tool Map]] is the second-brain-claudekit tool-pipeline tracker (gbrain/gstack/mattpocock/ECC). None of the four duplicate each other — this one answers "what's the state right now," today.
+The single current-status page for everything happening across this vault's Claude Code tooling — sync health, active blockers, and recent findings. [[20_Progress/AI/Claude Code/Write Log]] is the append-only chronological record this page summarizes; this page is the living, overwritten-in-place snapshot. [[20_Progress/AI/Claude Code/MOC]] is the per-project file inventory; [[Tool Map]] is the second-brain-claudekit tool-pipeline tracker (gbrain/gstack/mattpocock/ECC). None of the four duplicate each other — this one answers "what's the state right now," today.
 
 ## Sync status
 
@@ -42,7 +42,7 @@ The single current-status page for everything happening across this vault's Clau
 ## Recent findings (2026-07-30)
 
 - **Claude Code's `sandbox/` isn't actually inert.** Cloning ECC into `second-brain-claudekit/sandbox/ecc/` auto-loaded its `CLAUDE.md`/`.claude/rules/`/skills with zero install step — confirmed against official docs, not assumed. Partial fix applied (`claudeMdExcludes` in that repo's `.claude/settings.json`); no fix exists for the rules/skills vector, documented as accepted residual risk in that repo's `Docs/Architecture.md`.
-- **ECC identity, re-corrected.** `ecc2` is genuinely `affaan-m/everything-claude-code`'s own tracked ECC 2.0 Rust control-plane component, not an unrelated project — the 2026-07-29 note that said otherwise was itself wrong (it checked the leaf directory, not the parent repo's git remote). Fixed in [[40_Resources/CS/Repos]] and [[20_Progress/Projects/AI Use/Claude Kit/Tool Map]].
+- **ECC identity, re-corrected.** `ecc2` is genuinely `affaan-m/everything-claude-code`'s own tracked ECC 2.0 Rust control-plane component, not an unrelated project — the 2026-07-29 note that said otherwise was itself wrong (it checked the leaf directory, not the parent repo's git remote). Fixed in [[40_Resources/CS/Repos]] and [[Tool Map]].
 - **`/challenge` and `/strategy` (Jarvis `.claude/skills/`) — confirmed real, complete, not stubs.** A same-day contradiction in the vault's own notes (one said built, one said still-pending) is resolved: both files are real, dated 2026-07-29, fully operational.
 - **Four real drift items found in Jarvis's own `.claude/` folder, not yet fixed (Anant's call, not fixed silently):**
   1. `skills/mcp-hub.md` has no matching `commands/mcp-hub.md` pointer — `/mcp-hub` may not be invocable as a slash command.
@@ -52,4 +52,4 @@ The single current-status page for everything happening across this vault's Clau
   5. `.claude/README.md` documents `SessionStart`/`SessionEnd` hooks not present in the real `settings.json` (only a `PreToolUse` write-guard is registered).
 
 ## Links
-[[20_Progress/AI/Claude Code/MOC]] · [[20_Progress/AI/Claude Code/Write Log]] · [[20_Progress/AI/Claude Code/Sync - Unison]] · [[20_Progress/Projects/AI Use/Claude Kit/Tool Map]] · [[20_Progress/Projects/AI Use/Claude Kit/Log]]
+[[20_Progress/AI/Claude Code/MOC]] · [[20_Progress/AI/Claude Code/Write Log]] · [[20_Progress/AI/Claude Code/Sync - Unison]] · [[Tool Map]] · [[20_Progress/Projects/AI Use/Claude Kit/Log]]

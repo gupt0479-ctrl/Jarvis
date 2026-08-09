@@ -32,7 +32,7 @@ Read in this order:
 2. [[HUMAN_WRITING]]
 3. [[40_Resources/Obsidian/Vault Operating System]]
 4. [[00_Dashboard]]
-5. [[log]]
+5. [[20_Progress/Projects/AI Use/Claude Kit/Log]]
 6. relevant source, project, course, or concept notes
 
 Copilot memory, chat history, embeddings, provider context, and recent files are secondary. They can suggest where to look; they do not overrule the notes.

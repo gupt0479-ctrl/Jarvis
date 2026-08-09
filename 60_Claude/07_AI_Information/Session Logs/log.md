@@ -252,7 +252,7 @@ Created a shared context manifest and rewired project instruction entrypoints so
 
 **Continuity layer:**
 - [[00_Dashboard]]
-- [[log]]
+- [[60_Claude/07_AI_Information/Session Logs/log]]
 - [[40_Resources/Obsidian/Vault Operating System]]
 
 ## [2026-04-24] plan | Jarvis multi-agent PKM plan
