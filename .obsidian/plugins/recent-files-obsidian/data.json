@@ -5,6 +5,10 @@
       "path": "60_Claude/20_Distilled_Notes/Sources - Plan/GitHub Ingestion Implementation.md"
     },
     {
+      "basename": "trace",
+      "path": "20_Progress/AI/Claude Code/second-brain-claudekit/Da Shit/commands/trace.md"
+    },
+    {
       "basename": "Repos",
       "path": "40_Resources/CS/Repos.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Student Travel Discounts — Survey Note (Staging for The Plan)",
       "path": "60_Claude/20_Distilled_Notes/The Plan/Student Travel Discounts — Survey Note (Staging for The Plan).md"
-    },
-    {
-      "basename": "Vibe Coding Hackathon",
-      "path": "20_Progress/Projects/CS/Hackathons/Vibe Coding Hackathon.md"
     }
   ],
   "omittedPaths": [],

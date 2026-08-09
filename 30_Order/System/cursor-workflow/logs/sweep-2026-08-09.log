@@ -69,3 +69,170 @@
 [2026-08-09T02:02:12] === Summary ===
 [2026-08-09T02:02:12] Projects touched: 0
 [2026-08-09T02:02:12] Exit code: 0
+[2026-08-09T02:17:12] Running: C:\WINDOWS\py.exe D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\System\cursor-workflow\scripts\export-cursor-sessions.py --sweep
+[2026-08-09T02:17:13] WSL distro: Ubuntu
+[2026-08-09T02:17:13] WSL projects root: \\wsl.localhost\Ubuntu\home\anant_gupta\.cursor\projects
+[2026-08-09T02:17:13] Windows projects root: C:\Users\Anant Gupta\.cursor\projects
+[2026-08-09T02:17:13] DB: C:\Users\Anant Gupta\AppData\Roaming\Cursor\User\globalStorage\state.vscdb
+[2026-08-09T02:17:13] JSONL found: 69 (wsl=49, windows=20)
+[2026-08-09T02:17:13] composerHeaders: total=208 non-archived/non-subagent=128
+[2026-08-09T02:17:13] Reconciliation: jsonlΓê⌐header=68 jsonl-only=1 header-only=140
+[2026-08-09T02:17:13] Sweep: 0 candidates newer than 1785424013233
+[2026-08-09T02:17:13] === Summary ===
+[2026-08-09T02:17:13] Projects touched: 0
+[2026-08-09T02:17:13] Exit code: 0
+[2026-08-09T11:07:55] Running: C:\WINDOWS\py.exe D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\System\cursor-workflow\scripts\export-cursor-sessions.py --sweep
+[2026-08-09T11:18:59] Running: C:\WINDOWS\py.exe D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\System\cursor-workflow\scripts\export-cursor-sessions.py --sweep
+[2026-08-09T11:19:00] WSL distro: Ubuntu
+[2026-08-09T11:19:00] WSL projects root: \\wsl.localhost\Ubuntu\home\anant_gupta\.cursor\projects
+[2026-08-09T11:19:00] Windows projects root: C:\Users\Anant Gupta\.cursor\projects
+[2026-08-09T11:19:00] DB: C:\Users\Anant Gupta\AppData\Roaming\Cursor\User\globalStorage\state.vscdb
+[2026-08-09T11:19:00] JSONL found: 69 (wsl=49, windows=20)
+[2026-08-09T11:19:00] composerHeaders: total=208 non-archived/non-subagent=128
+[2026-08-09T11:19:00] Reconciliation: jsonlΓê⌐header=68 jsonl-only=1 header-only=140
+[2026-08-09T11:19:00] Sweep: 0 candidates newer than 1785424013233
+[2026-08-09T11:19:00] === Summary ===
+[2026-08-09T11:19:00] Projects touched: 0
+[2026-08-09T11:19:00] Exit code: 0
+[2026-08-09T11:19:01] WSL distro: Ubuntu
+[2026-08-09T11:19:01] WSL projects root: \\wsl.localhost\Ubuntu\home\anant_gupta\.cursor\projects
+[2026-08-09T11:19:01] Windows projects root: C:\Users\Anant Gupta\.cursor\projects
+[2026-08-09T11:19:01] DB: C:\Users\Anant Gupta\AppData\Roaming\Cursor\User\globalStorage\state.vscdb
+[2026-08-09T11:19:01] JSONL found: 69 (wsl=49, windows=20)
+[2026-08-09T11:19:01] composerHeaders: total=208 non-archived/non-subagent=128
+[2026-08-09T11:19:01] Reconciliation: jsonlΓê⌐header=68 jsonl-only=1 header-only=140
+[2026-08-09T11:19:01] Sweep: 0 candidates newer than 1785424013233
+[2026-08-09T11:19:01] === Summary ===
+[2026-08-09T11:19:01] Projects touched: 0
+[2026-08-09T11:19:01] Exit code: 0
+[2026-08-09T11:32:11] Running: C:\WINDOWS\py.exe D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\System\cursor-workflow\scripts\export-cursor-sessions.py --sweep
+[2026-08-09T11:32:11] WSL distro: Ubuntu
+[2026-08-09T11:32:11] WSL projects root: \\wsl.localhost\Ubuntu\home\anant_gupta\.cursor\projects
+[2026-08-09T11:32:11] Windows projects root: C:\Users\Anant Gupta\.cursor\projects
+[2026-08-09T11:32:11] DB: C:\Users\Anant Gupta\AppData\Roaming\Cursor\User\globalStorage\state.vscdb
+[2026-08-09T11:32:11] JSONL found: 69 (wsl=49, windows=20)
+[2026-08-09T11:32:11] composerHeaders: total=208 non-archived/non-subagent=128
+[2026-08-09T11:32:11] Reconciliation: jsonlΓê⌐header=68 jsonl-only=1 header-only=140
+[2026-08-09T11:32:11] Sweep: 0 candidates newer than 1785424013233
+[2026-08-09T11:32:11] === Summary ===
+[2026-08-09T11:32:11] Projects touched: 0
+[2026-08-09T11:32:11] Exit code: 0
+[2026-08-09T11:47:11] Running: C:\WINDOWS\py.exe D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\System\cursor-workflow\scripts\export-cursor-sessions.py --sweep
+[2026-08-09T11:47:12] WSL distro: Ubuntu
+[2026-08-09T11:47:12] WSL projects root: \\wsl.localhost\Ubuntu\home\anant_gupta\.cursor\projects
+[2026-08-09T11:47:12] Windows projects root: C:\Users\Anant Gupta\.cursor\projects
+[2026-08-09T11:47:12] DB: C:\Users\Anant Gupta\AppData\Roaming\Cursor\User\globalStorage\state.vscdb
+[2026-08-09T11:47:12] JSONL found: 69 (wsl=49, windows=20)
+[2026-08-09T11:47:12] composerHeaders: total=208 non-archived/non-subagent=128
+[2026-08-09T11:47:12] Reconciliation: jsonlΓê⌐header=68 jsonl-only=1 header-only=140
+[2026-08-09T11:47:12] Sweep: 0 candidates newer than 1785424013233
+[2026-08-09T11:47:12] === Summary ===
+[2026-08-09T11:47:12] Projects touched: 0
+[2026-08-09T11:47:12] Exit code: 0
+[2026-08-09T12:02:11] Running: C:\WINDOWS\py.exe D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\System\cursor-workflow\scripts\export-cursor-sessions.py --sweep
+[2026-08-09T12:02:12] WSL distro: Ubuntu
+[2026-08-09T12:02:12] WSL projects root: \\wsl.localhost\Ubuntu\home\anant_gupta\.cursor\projects
+[2026-08-09T12:02:12] Windows projects root: C:\Users\Anant Gupta\.cursor\projects
+[2026-08-09T12:02:12] DB: C:\Users\Anant Gupta\AppData\Roaming\Cursor\User\globalStorage\state.vscdb
+[2026-08-09T12:02:13] JSONL found: 69 (wsl=49, windows=20)
+[2026-08-09T12:02:13] composerHeaders: total=208 non-archived/non-subagent=128
+[2026-08-09T12:02:13] Reconciliation: jsonlΓê⌐header=68 jsonl-only=1 header-only=140
+[2026-08-09T12:02:13] Sweep: 0 candidates newer than 1785424013233
+[2026-08-09T12:02:13] === Summary ===
+[2026-08-09T12:02:13] Projects touched: 0
+[2026-08-09T12:02:13] Exit code: 0
+[2026-08-09T12:17:11] Running: C:\WINDOWS\py.exe D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\System\cursor-workflow\scripts\export-cursor-sessions.py --sweep
+[2026-08-09T12:17:12] WSL distro: Ubuntu
+[2026-08-09T12:17:12] WSL projects root: \\wsl.localhost\Ubuntu\home\anant_gupta\.cursor\projects
+[2026-08-09T12:17:12] Windows projects root: C:\Users\Anant Gupta\.cursor\projects
+[2026-08-09T12:17:12] DB: C:\Users\Anant Gupta\AppData\Roaming\Cursor\User\globalStorage\state.vscdb
+[2026-08-09T12:17:12] JSONL found: 69 (wsl=49, windows=20)
+[2026-08-09T12:17:12] composerHeaders: total=208 non-archived/non-subagent=128
+[2026-08-09T12:17:12] Reconciliation: jsonlΓê⌐header=68 jsonl-only=1 header-only=140
+[2026-08-09T12:17:12] Sweep: 0 candidates newer than 1785424013233
+[2026-08-09T12:17:12] === Summary ===
+[2026-08-09T12:17:12] Projects touched: 0
+[2026-08-09T12:17:12] Exit code: 0
+[2026-08-09T12:32:11] Running: C:\WINDOWS\py.exe D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\System\cursor-workflow\scripts\export-cursor-sessions.py --sweep
+[2026-08-09T12:32:13] WSL distro: Ubuntu
+[2026-08-09T12:32:13] WSL projects root: \\wsl.localhost\Ubuntu\home\anant_gupta\.cursor\projects
+[2026-08-09T12:32:13] Windows projects root: C:\Users\Anant Gupta\.cursor\projects
+[2026-08-09T12:32:13] DB: C:\Users\Anant Gupta\AppData\Roaming\Cursor\User\globalStorage\state.vscdb
+[2026-08-09T12:32:13] JSONL found: 69 (wsl=49, windows=20)
+[2026-08-09T12:32:13] composerHeaders: total=208 non-archived/non-subagent=128
+[2026-08-09T12:32:13] Reconciliation: jsonlΓê⌐header=68 jsonl-only=1 header-only=140
+[2026-08-09T12:32:13] Sweep: 0 candidates newer than 1785424013233
+[2026-08-09T12:32:13] === Summary ===
+[2026-08-09T12:32:13] Projects touched: 0
+[2026-08-09T12:32:13] Exit code: 0
+[2026-08-09T12:47:11] Running: C:\WINDOWS\py.exe D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\System\cursor-workflow\scripts\export-cursor-sessions.py --sweep
+[2026-08-09T12:47:12] WSL distro: Ubuntu
+[2026-08-09T12:47:12] WSL projects root: \\wsl.localhost\Ubuntu\home\anant_gupta\.cursor\projects
+[2026-08-09T12:47:12] Windows projects root: C:\Users\Anant Gupta\.cursor\projects
+[2026-08-09T12:47:12] DB: C:\Users\Anant Gupta\AppData\Roaming\Cursor\User\globalStorage\state.vscdb
+[2026-08-09T12:47:12] JSONL found: 69 (wsl=49, windows=20)
+[2026-08-09T12:47:12] composerHeaders: total=208 non-archived/non-subagent=128
+[2026-08-09T12:47:12] Reconciliation: jsonlΓê⌐header=68 jsonl-only=1 header-only=140
+[2026-08-09T12:47:12] Sweep: 0 candidates newer than 1785424013233
+[2026-08-09T12:47:12] === Summary ===
+[2026-08-09T12:47:12] Projects touched: 0
+[2026-08-09T12:47:12] Exit code: 0
+[2026-08-09T13:02:11] Running: C:\WINDOWS\py.exe D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\System\cursor-workflow\scripts\export-cursor-sessions.py --sweep
+[2026-08-09T13:02:12] WSL distro: Ubuntu
+[2026-08-09T13:02:12] WSL projects root: \\wsl.localhost\Ubuntu\home\anant_gupta\.cursor\projects
+[2026-08-09T13:02:12] Windows projects root: C:\Users\Anant Gupta\.cursor\projects
+[2026-08-09T13:02:12] DB: C:\Users\Anant Gupta\AppData\Roaming\Cursor\User\globalStorage\state.vscdb
+[2026-08-09T13:02:12] JSONL found: 69 (wsl=49, windows=20)
+[2026-08-09T13:02:12] composerHeaders: total=208 non-archived/non-subagent=128
+[2026-08-09T13:02:12] Reconciliation: jsonlΓê⌐header=68 jsonl-only=1 header-only=140
+[2026-08-09T13:02:12] Sweep: 0 candidates newer than 1785424013233
+[2026-08-09T13:02:12] === Summary ===
+[2026-08-09T13:02:12] Projects touched: 0
+[2026-08-09T13:02:12] Exit code: 0
+[2026-08-09T13:17:11] Running: C:\WINDOWS\py.exe D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\System\cursor-workflow\scripts\export-cursor-sessions.py --sweep
+[2026-08-09T13:17:12] WSL distro: Ubuntu
+[2026-08-09T13:17:12] WSL projects root: \\wsl.localhost\Ubuntu\home\anant_gupta\.cursor\projects
+[2026-08-09T13:17:12] Windows projects root: C:\Users\Anant Gupta\.cursor\projects
+[2026-08-09T13:17:12] DB: C:\Users\Anant Gupta\AppData\Roaming\Cursor\User\globalStorage\state.vscdb
+[2026-08-09T13:17:12] JSONL found: 69 (wsl=49, windows=20)
+[2026-08-09T13:17:12] composerHeaders: total=208 non-archived/non-subagent=128
+[2026-08-09T13:17:12] Reconciliation: jsonlΓê⌐header=68 jsonl-only=1 header-only=140
+[2026-08-09T13:17:12] Sweep: 0 candidates newer than 1785424013233
+[2026-08-09T13:17:12] === Summary ===
+[2026-08-09T13:17:12] Projects touched: 0
+[2026-08-09T13:17:12] Exit code: 0
+[2026-08-09T13:32:11] Running: C:\WINDOWS\py.exe D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\System\cursor-workflow\scripts\export-cursor-sessions.py --sweep
+[2026-08-09T13:32:12] WSL distro: Ubuntu
+[2026-08-09T13:32:12] WSL projects root: \\wsl.localhost\Ubuntu\home\anant_gupta\.cursor\projects
+[2026-08-09T13:32:12] Windows projects root: C:\Users\Anant Gupta\.cursor\projects
+[2026-08-09T13:32:12] DB: C:\Users\Anant Gupta\AppData\Roaming\Cursor\User\globalStorage\state.vscdb
+[2026-08-09T13:32:12] JSONL found: 69 (wsl=49, windows=20)
+[2026-08-09T13:32:12] composerHeaders: total=208 non-archived/non-subagent=128
+[2026-08-09T13:32:12] Reconciliation: jsonlΓê⌐header=68 jsonl-only=1 header-only=140
+[2026-08-09T13:32:12] Sweep: 0 candidates newer than 1785424013233
+[2026-08-09T13:32:12] === Summary ===
+[2026-08-09T13:32:12] Projects touched: 0
+[2026-08-09T13:32:12] Exit code: 0
+[2026-08-09T13:47:11] Running: C:\WINDOWS\py.exe D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\System\cursor-workflow\scripts\export-cursor-sessions.py --sweep
+[2026-08-09T13:47:12] WSL distro: Ubuntu
+[2026-08-09T13:47:12] WSL projects root: \\wsl.localhost\Ubuntu\home\anant_gupta\.cursor\projects
+[2026-08-09T13:47:12] Windows projects root: C:\Users\Anant Gupta\.cursor\projects
+[2026-08-09T13:47:12] DB: C:\Users\Anant Gupta\AppData\Roaming\Cursor\User\globalStorage\state.vscdb
+[2026-08-09T13:47:12] JSONL found: 69 (wsl=49, windows=20)
+[2026-08-09T13:47:12] composerHeaders: total=208 non-archived/non-subagent=128
+[2026-08-09T13:47:12] Reconciliation: jsonlΓê⌐header=68 jsonl-only=1 header-only=140
+[2026-08-09T13:47:12] Sweep: 0 candidates newer than 1785424013233
+[2026-08-09T13:47:12] === Summary ===
+[2026-08-09T13:47:12] Projects touched: 0
+[2026-08-09T13:47:12] Exit code: 0
+[2026-08-09T14:02:12] Running: C:\WINDOWS\py.exe D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\System\cursor-workflow\scripts\export-cursor-sessions.py --sweep
+[2026-08-09T14:02:19] WSL distro: Ubuntu
+[2026-08-09T14:02:19] WSL projects root: \\wsl.localhost\Ubuntu\home\anant_gupta\.cursor\projects
+[2026-08-09T14:02:19] Windows projects root: C:\Users\Anant Gupta\.cursor\projects
+[2026-08-09T14:02:19] JSONL found: 69 (wsl=49, windows=20)
+[2026-08-09T14:02:19] composerHeaders: total=208 non-archived/non-subagent=128
+[2026-08-09T14:02:19] Reconciliation: jsonlΓê⌐header=68 jsonl-only=1 header-only=140
+[2026-08-09T14:02:19] Sweep: 0 candidates newer than 1785424013233
+[2026-08-09T14:02:19] === Summary ===
+[2026-08-09T14:02:19] Projects touched: 0
+[2026-08-09T14:02:19] Exit code: 0
