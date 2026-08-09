@@ -12,7 +12,7 @@ notes:
   - "[[30_Order/Standards/Daily Workflow Standard|Daily Workflow Standard]]"
   - "[[Plan Review Cadence]]"
   - "[[Plans Board]]"
-  - "[[10_Areas/Life/Plans/Summer/Final Month Plan (Jul 28 - Sep 1)|Final Month Plan (Jul 28 - Sep 1)]]"
+  - "[[Final Month Plan (Jul 28 - Sep 1)|Final Month Plan (Jul 28 - Sep 1)]]"
 next: "[[30_Order/Templates/Career/Plan Template|Plan Template]]"
 ---
 # Plans-to-Create
@@ -39,8 +39,8 @@ Three checks, before opening the template:
 12. Log the creation in `60_Claude/07_AI_Information/Session Logs/log.md`.
 ## The One-Source-of-Truth Rule
 Two failure shapes caused nearly all of the Summer Plans cleanup, and both are now explicit rules:
-- **No plan/tracker splits.** A plan's own tracking data — a log table, a progress table, a mastery table — lives inside the plan note as a numbered section (see [[10_Areas/Life/Plans/Summer/LeetCode & CSCI 4041|LeetCode & CSCI 4041]] §8 and [[10_Areas/Life/Plans/Summer/ML Fundamentals (2033 + 2230)|ML Fundamentals (2033 + 2230)]] §8 for the corrected shape). A separate "Tracker" file next to a "Plan" file is always wrong.
-- **No status fragments.** A plan has exactly one "what's true right now" section — Current Progress, inside the plan itself. It does not get a separate recap note, a separate close-out note, and a separate forward-plan note that each claim to be current. [[10_Areas/Life/Plans/Summer/Final Month Plan (Jul 28 - Sep 1)|Final Month Plan (Jul 28 - Sep 1)]] replaced exactly three such fragments with one file.
+- **No plan/tracker splits.** A plan's own tracking data — a log table, a progress table, a mastery table — lives inside the plan note as a numbered section (see [[LeetCode & CSCI 4041|LeetCode & CSCI 4041]] §8 and [[ML Fundamentals (2033 + 2230)|ML Fundamentals (2033 + 2230)]] §8 for the corrected shape). A separate "Tracker" file next to a "Plan" file is always wrong.
+- **No status fragments.** A plan has exactly one "what's true right now" section — Current Progress, inside the plan itself. It does not get a separate recap note, a separate close-out note, and a separate forward-plan note that each claim to be current. [[Final Month Plan (Jul 28 - Sep 1)|Final Month Plan (Jul 28 - Sep 1)]] replaced exactly three such fragments with one file.
 ## Anti-Patterns Found In The 2026-07-27 Cleanup
 Concrete, not hypothetical — these are what actually had to be fixed:
 - **Hedges standing in for decisions.** Phrases like "estimated hours" or "not yet known" repeated across a note without ever getting resolved. A real plan states an unknown as a dated action item ("W1 task: confirm the exact hour count before W4") — not a permanent shrug that reappears every time the note is read.

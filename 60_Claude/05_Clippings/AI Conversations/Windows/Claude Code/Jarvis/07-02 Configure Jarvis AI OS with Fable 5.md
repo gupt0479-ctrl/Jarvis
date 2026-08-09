@@ -1019,7 +1019,7 @@ LIMIT 8
 
 **System:** [[CLAUDE.md]] · [[AGENTS.md]] · [[Jarvis OS — North Star]] · [[AI_CONTEXT]] · [[Claude Layer Index]]
 
-**Life OS:** [[10_Areas/Life/Plans/Summer/00 - Summer Plans Index|Summer Plans]] · [[10_Areas/Life/Habits/Daily Habit Board|Habits]] · [[10_Areas/Life/Plans/Summer/05a - LeetCode Tracker|LC Tracker]] · [[10_Areas/Life/Plans/Summer/06a - ML Fundamentals Progress|ML Progress]]
+**Life OS:**[[00 - Summer Plans Index|Summer Plans]]] · [[10_Areas/Life/Habits/Daily Habit Board|Habits]] · [[10_Areas/Life/Plans/Summer/05a - LeetCode Tracker|LC Tracker]] · [[10_Areas/Life/Plans/Summer/06a - ML Fundamentals Progress|ML Progress]]
 
 **Projects:** [[20_Progress/AI/Claude Code/Jarvis/|Jarvis]] · [[20_Progress/Projects/Projects Board|Projects Board]] · [[20_Progress/UROP/BOOM Board|BOOM]]
 

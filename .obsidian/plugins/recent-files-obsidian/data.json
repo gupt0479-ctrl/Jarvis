@@ -1,6 +1,30 @@
 {
   "recentFiles": [
     {
+      "basename": "Fall 2026 Plan",
+      "path": "10_Areas/Life/Plans/Fall 2026/Fall 2026 Plan.md"
+    },
+    {
+      "basename": "Links",
+      "path": "40_Resources/UMN/Links.md"
+    },
+    {
+      "basename": "UMN Board",
+      "path": "20_Progress/Degree/UMN Board.md"
+    },
+    {
+      "basename": "Final Month Plan (Jul 28 - Sep 1)",
+      "path": "10_Areas/Life/Plans/Summer 2026/Final Month Plan (Jul 28 - Sep 1).md"
+    },
+    {
+      "basename": "Gaps",
+      "path": "10_Areas/AI/Gaps.md"
+    },
+    {
+      "basename": "Folder Map",
+      "path": "10_Areas/AI/Folder Map.md"
+    },
+    {
       "basename": "Repos",
       "path": "40_Resources/CS/Repos.md"
     },
@@ -175,30 +199,6 @@
     {
       "basename": "adx",
       "path": "20_Progress/Mentorship Program/adx/adx.md"
-    },
-    {
-      "basename": "Software Fundamentals Matter More Than Ever With AI Coding",
-      "path": "40_Resources/CS/Concepts/Software Fundamentals Matter More Than Ever With AI Coding.md"
-    },
-    {
-      "basename": "WSL Claude Code — Wiring Gap",
-      "path": "60_Claude/07_AI_Information/AI Conversation - Summaries/WSL Claude Code — Wiring Gap.md"
-    },
-    {
-      "basename": "Portfolio Option A — RAG + Hybrid Search (jarvis-memory Build)",
-      "path": "40_Resources/Obsidian/Portfolio Option A — RAG + Hybrid Search (jarvis-memory Build).md"
-    },
-    {
-      "basename": "Outreach Discovery & Automation Status",
-      "path": "10_Areas/Career/Internships/Contacts/Outreach Discovery & Automation Status.md"
-    },
-    {
-      "basename": "Mimic",
-      "path": "10_Areas/Career/Internships/Contacts/Mimic.md"
-    },
-    {
-      "basename": "Networking Strategies",
-      "path": "10_Areas/Career/Internships/Contacts/Networking Strategies.md"
     }
   ],
   "omittedPaths": [],

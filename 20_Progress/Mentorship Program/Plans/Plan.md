@@ -67,7 +67,7 @@ Google doc link - [Detailed Goals](https://docs.google.com/document/d/1xu8pmUATj
 	- **What I shipped / What blocked me / What I'm deciding next** (one slide).
 	- **One Role Brief** (1 page) until you've covered: Frontend, Backend, Full-stack, DevOps, Data, Mobile.
 ## Summer
-This section covers only what earns a mentor's time: 4 focused goals, not the full execution grind. Daily/weekly work (LeetCode, courses, project builds) lives in [[Summer Grind]] and [[10_Areas/Life/Plans/Summer/00 - Summer Plans Index|the Summer Plans folder]] — Ahnaf never needs that layer, only the parts that need outside judgment. Full per-meeting scripts and the running log live in [[Mentor Meeting Playbook]].
+This section covers only what earns a mentor's time: 4 focused goals, not the full execution grind. Daily/weekly work (LeetCode, courses, project builds) lives in [[Summer Grind]] and [[00 - Summer Plans Index|the Summer Plans folder]] — Ahnaf never needs that layer, only the parts that need outside judgment. Full per-meeting scripts and the running log live in [[Mentor Meeting Playbook]].
 ### The 4 Goals
 Not "help with my whole summer" — four specific things a mentor is actually useful for:
 1. **Relationship** — a connection with Ahnaf strong enough that he'd recommend me to other employers, and one that keeps going after the program's stated end around September 2026. Earned by demonstrating execution each meeting, not by asking directly — see [[Mentorship and Networking]] on why warm intros beat cold applications.

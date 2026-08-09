@@ -50,7 +50,7 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "20_Progress/UMN/UMN Board.md",
+        "pattern": "20_Progress/Degree/UMN Board.md",
         "patternType": "STRICT"
       },
       {
@@ -288,7 +288,7 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "20_Progress/Degree/Summer Courses.md",
+        "pattern": "40_Resources/UMN/Previous Classes/Summer Courses.md",
         "patternType": "STRICT"
       },
       {
@@ -351,7 +351,7 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "20_Progress/Degree/HIST 1103/HIST 1103 Board.md",
+        "pattern": "40_Resources/UMN/Previous Classes/HIST 1103/HIST 1103 Board.md",
         "patternType": "STRICT"
       },
       {
@@ -386,7 +386,7 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "20_Progress/Degree/HIST 1103/Assignments/Assignments Board.md",
+        "pattern": "40_Resources/UMN/Previous Classes/HIST 1103/Assignments/Assignments Board.md",
         "patternType": "STRICT"
       },
       {
@@ -610,7 +610,7 @@
         "name": "",
         "active": true,
         "type": "FILES",
-        "pattern": "10_Areas/Life/Plans/Summer/Final Month Plan (Jul 28 - Sep 1).md",
+        "pattern": "10_Areas/Life/Plans/Summer 2026/Final Month Plan (Jul 28 - Sep 1).md",
         "patternType": "STRICT"
       },
       {

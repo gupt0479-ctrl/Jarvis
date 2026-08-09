@@ -61,4 +61,4 @@ States which skill touches this note and on what cadence, and what happens on tw
 - The note is linked from its folder's index (e.g. [[00 - Summer Plans Index]]) so it's discoverable, not just linked from other plan notes.
 - No two notes in the same folder duplicate the same tracking data — a plan and its tracker are one file, per [[10_Areas/Life/Plans/Plans-to-Create|Plans-to-Create]].
 ## Gold Standard Example
-- [[10_Areas/Life/Plans/Summer/Final Month Plan (Jul 28 - Sep 1)|Final Month Plan (Jul 28 - Sep 1)]] — Goal with one metric, a dated Timeframe table, Systems broken into checkable tracks, Implementation Status verified against real files and `git log`, a Current Progress log seeded with its baseline entry, and an Update Protocol naming the exact Sunday trigger and the two-miss consequence.
+- [[Final Month Plan (Jul 28 - Sep 1)|Final Month Plan (Jul 28 - Sep 1)]] — Goal with one metric, a dated Timeframe table, Systems broken into checkable tracks, Implementation Status verified against real files and `git log`, a Current Progress log seeded with its baseline entry, and an Update Protocol naming the exact Sunday trigger and the two-miss consequence.
