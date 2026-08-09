@@ -1,12 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "Fall 2026 Plan",
-      "path": "10_Areas/Life/Plans/Fall 2026/Fall 2026 Plan.md"
+      "basename": "Claude OS Dashboard",
+      "path": "20_Progress/AI/Claude OS Dashboard.canvas"
+    },
+    {
+      "basename": "Jarvis OS Dashboard",
+      "path": "10_Areas/Jarvis OS Dashboard.canvas"
     },
     {
       "basename": "Links",
       "path": "40_Resources/UMN/Links.md"
+    },
+    {
+      "basename": "Fall 2026 Plan",
+      "path": "10_Areas/Life/Plans/Fall 2026/Fall 2026 Plan.md"
+    },
+    {
+      "basename": "00_Dashboard",
+      "path": "00_Dashboard.md"
+    },
+    {
+      "basename": "Gaps",
+      "path": "10_Areas/AI/Gaps.md"
     },
     {
       "basename": "UMN Board",
@@ -15,10 +31,6 @@
     {
       "basename": "Final Month Plan (Jul 28 - Sep 1)",
       "path": "10_Areas/Life/Plans/Summer 2026/Final Month Plan (Jul 28 - Sep 1).md"
-    },
-    {
-      "basename": "Gaps",
-      "path": "10_Areas/AI/Gaps.md"
     },
     {
       "basename": "Folder Map",
@@ -187,18 +199,6 @@
     {
       "basename": "Source Claims",
       "path": "20_Progress/Mentorship Program/adx/Source Claims.md"
-    },
-    {
-      "basename": "Recommended Fixes",
-      "path": "20_Progress/Mentorship Program/adx/Recommended Fixes.md"
-    },
-    {
-      "basename": "Claims vs Implementation",
-      "path": "20_Progress/Mentorship Program/adx/Claims vs Implementation.md"
-    },
-    {
-      "basename": "adx",
-      "path": "20_Progress/Mentorship Program/adx/adx.md"
     }
   ],
   "omittedPaths": [],

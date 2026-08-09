@@ -10,11 +10,10 @@ cssclasses:
   - dashboard
 today_focus: "Saturday stress-test: close CausalOps (carried from yesterday) + clear the overdue Git & GitHub exam"
 today_80: Run CausalOps Supabase SQL migration + integration tests, then stress-test it
-today_20: Git & GitHub exam (overdue), LeetCode 5 (Sorting/Time Complexity, Amazon tag),
-  system design, trading/AI knowledge
+today_20: Git & GitHub exam (overdue), LeetCode 5 (Sorting/Time Complexity, Amazon tag), system design, trading/AI knowledge
 lc_today: 0
-study_today: 0
-wins_done: 0
+study_today: 4
+wins_done: 4
 notes:
   - "[[CLAUDE.md]]"
   - "[[AGENTS.md]]"
