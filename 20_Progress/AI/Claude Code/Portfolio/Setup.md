@@ -1,54 +1,34 @@
 ---
-type: project
-status: static
-created: 2026-07-05
-updated: 2026-07-05
+type: input
+status: sprout
+created: 2026-08-10
+updated: 2026-08-10
 tags:
   - claude-code
-  - setup
-  - portfolio
+  - sync
+  - claude-kit
 notes:
+  - "[[20_Progress/AI/Claude Code/Sync - Unison]]"
   - "[[20_Progress/AI/Claude Code/MOC]]"
-next: "none — reference dump from the AI portfolio repo, not synced to this vault"
+next: Watch the first few scheduled runs, then apply the same shape to Trading View/Resq/OpsPilot
 ---
-# Portfolio — Claude Code Setup
-A copy of the Claude Code config for Anant's AI portfolio site (Next.js 16 App Router, Tailwind v4, Sanity CMS, Three.js/R3F, an AI chatbot with a promptfoo eval suite). Previously an empty placeholder folder; re-exported with real content on 2026-07-05. Reference material only — not part of the Jarvis vault's own tooling.
-## Files
-### Agents
-- [[20_Progress/AI/Claude Code/Portfolio/agents/ai-engineer|ai-engineer]] — chatbot server side: `/api/chat`, agent runtime loop, context engine, Gemini→Groq router
-- [[20_Progress/AI/Claude Code/Portfolio/agents/eval-runner|eval-runner]] — promptfoo eval suite (grounding/refusal/tool-correctness/injection/fail-safe)
-- [[20_Progress/AI/Claude Code/Portfolio/agents/frontend-builder|frontend-builder]] — Next.js/React UI, shadcn/Radix, Framer Motion, PortfolioLab panel
-- [[20_Progress/AI/Claude Code/Portfolio/agents/sanity-schema|sanity-schema]] — GROQ query advisor + `localContent.ts` fallback (does not touch schema files)
-- [[20_Progress/AI/Claude Code/Portfolio/agents/security-reviewer|security-reviewer]] — pre-deploy security gate, reports only
-- [[20_Progress/AI/Claude Code/Portfolio/agents/test-runner|test-runner]] — Vitest specialist
-- [[20_Progress/AI/Claude Code/Portfolio/agents/three-artist|three-artist]] — Three.js/R3F specialist (particle sphere, float physics, ObsidianBackground)
-### Commands
-- [[20_Progress/AI/Claude Code/Portfolio/commands/add-project|add-project]]
-- [[20_Progress/AI/Claude Code/Portfolio/commands/build-fix|build-fix]]
-- [[20_Progress/AI/Claude Code/Portfolio/commands/deploy|deploy]]
-- [[20_Progress/AI/Claude Code/Portfolio/commands/e2e|e2e]]
-- [[20_Progress/AI/Claude Code/Portfolio/commands/eval|eval]]
-- [[20_Progress/AI/Claude Code/Portfolio/commands/performance|performance]]
-- [[20_Progress/AI/Claude Code/Portfolio/commands/review|review]]
-- [[20_Progress/AI/Claude Code/Portfolio/commands/sanity-push|sanity-push]]
-- [[20_Progress/AI/Claude Code/Portfolio/commands/ship-check|ship-check]]
-- [[20_Progress/AI/Claude Code/Portfolio/commands/typecheck|typecheck]]
-### Docs
-- [[20_Progress/AI/Claude Code/Portfolio/CLAUDE|CLAUDE]] — stack, visual identity, and hard rules primer for the repo root
-- [[20_Progress/AI/Claude Code/Portfolio/docs/ecc-setup-guide|docs/ecc-setup-guide]] — Everything Claude Code setup notes for this project
-- [[20_Progress/AI/Claude Code/Portfolio/docs/ORBY|docs/ORBY]] — "Orby" scroll-companion concept doc
-## Inventory
-```dataview
-TABLE setup_status, updated
-FROM "20_Progress/AI/Claude Code/Portfolio"
-WHERE setup_status
-SORT setup_status ASC, file.name ASC
-```
-## Non-Markdown Files
-- `cosmic-frontend.mdc` — a **Cursor** rule file (`.mdc`, not Claude Code), scoped to `src/components/**/*.tsx` and globals.css. Its presence here means this dump mixes both tools' configs in one folder.
-- `scheduled_tasks.lock` — Claude Code scheduled-task lock file.
-- `settings.local.json` — local Claude Code permission overrides.
-## Status & Gaps
-This folder was empty (dead) as of the first pass on 2026-07-05 and has since been re-exported with the project's actual `.claude/` contents. No live equivalent exists in this vault to diff against, so every markdown file is marked `static`. Worth noting: `cosmic-frontend.mdc` is a Cursor artifact sitting inside a Claude Code dump — likely copied because the two tools' config folders were merged during export, not a filing mistake worth fixing here.
-## Links
-[[20_Progress/AI/Claude Code/MOC]] · [[20_Progress/AI/Claude OS Dashboard]]
+# Portfolio — Setup
+This note is Jarvis-only. It is never read or written by the sync itself — `sync-all.sh` never touches it, it carries no `paths` entry in the manifest. It exists purely to tell a Jarvis reader what's actually in this folder and how it got that way.
+## What this is
+The live-synced mirror of `~/projects/hub/portfolio` (WSL, git remote `gupta-builds/Portfolio`), Anant's personal portfolio site. Rebuilt clean 2026-08-10 — everything except this Setup.md was deleted and the folder was fully repopulated by a fresh sync, replacing an old flat, hand-copied dump.
+## Sync scope
+Bidirectional, via `second-brain-claudekit/60_Claude/scripts/sync-all.sh`, manifest entry `Portfolio`, `needs_fat: true`. Synced paths: `.claude/agents`, `.claude/commands`, `.claude/docs`, `.claude/CLAUDE.md`, `.claude/cosmic-frontend.mdc`. **Shape note:** unlike every other project here, Portfolio keeps `CLAUDE.md` *inside* `.claude/`, not at repo root — there is no root-level `CLAUDE.md` or `AGENTS.md` in this repo at all, confirmed directly, not assumed from the earlier draft. Not synced: `.claude/settings.local.json` (machine-local) and `.claude/scheduled_tasks.lock` (runtime state, not configuration).
+## What's actually here
+- `.claude/agents/` — 7 files: `ai-engineer.md`, `eval-runner.md`, `frontend-builder.md`, `sanity-schema.md`, `security-reviewer.md`, `test-runner.md`, `three-artist.md`.
+- `.claude/commands/` — 10 files: `add-project.md`, `build-fix.md`, `deploy.md`, `e2e.md`, `eval.md`, `performance.md`, `review.md`, `sanity-push.md`, `ship-check.md`, `typecheck.md`. **This was missing from the original manifest draft** (dropped by mistake when the manifest was first written) — caught and fixed before the first sync ran, not after.
+- `.claude/docs/` — `ORBY.md`, `ecc-setup-guide.md`.
+- `.claude/CLAUDE.md` — the repo's real operating instructions: exact stack (Next.js 16, Tailwind v4 CSS-first, shadcn/Radix, React Three Fiber, Sanity CMS, Clerk, Biome, pnpm), a full visual-identity spec (color tokens, `.cosmic-card`/`.float-btn` CSS contracts), R3F performance rules, and an explicit forbidden-actions list.
+- `.claude/cosmic-frontend.mdc` — a Cursor-style rule file living alongside the Claude config.
+## Verification performed
+Both directions and the conflict path tested for real with a throwaway file (`.claude/commands/_sync_test.md`):
+1. Created on the Jarvis-mirror side, synced, confirmed it landed in the real WSL repo.
+2. Edited on the WSL repo side, synced, confirmed the edit landed back in the mirror.
+3. Edited differently on both sides without syncing in between, synced: Unison reported the conflict (`CONFLICTS`, exit 1) and **both edits were still intact afterward** — nothing overwritten.
+4. Deleted from both sides, synced once more, confirmed a clean no-op.
+## Trigger
+Live on the 15-minute Windows Scheduled Task `ClaudeKit-Sync-All` as of 2026-08-10 — added to the manifest with `status: live` in the same pass this Setup.md was written, no separate manual-only period like the first three targets had.

@@ -1,37 +1,35 @@
 ---
-type: project
-status: static
-created: 2026-07-05
-updated: 2026-07-05
+type: input
+status: sprout
+created: 2026-08-10
+updated: 2026-08-10
 tags:
   - claude-code
-  - setup
-  - trading-view
+  - sync
+  - claude-kit
 notes:
+  - "[[20_Progress/AI/Claude Code/Sync - Unison]]"
   - "[[20_Progress/AI/Claude Code/MOC]]"
-next: "none — reference dump from the gupta-builds/TradingView repo, not synced to this vault"
+next: Watch the first few scheduled runs, then apply the same shape to Resq/OpsPilot
 ---
-# Trading View — Claude Code Setup
-A copy of the Claude Code config for the `gupta-builds/TradingView` repo — a data-ingestion project run through a Kiro design-first spec workflow (`.kiro/specs/data-ingestion-foundation/`: requirements.md, design.md, tasks.md). Previously an empty placeholder folder (as `TradingView/`, no space); re-exported with real content on 2026-07-05 under the folder name `Trading View` (with a space). Reference material only — not the same as the live TradingView build at `20_Progress/Projects/CS/TradingView/` per the Vault Architecture note.
-## Files
-### Agents
-- [[20_Progress/AI/Claude Code/Trading View/agents/guardrail-auditor|guardrail-auditor]] — audits code/docs against the project's non-negotiable safety constraints (no execution language, no data fabrication, secrets redaction, confidence caps, scope boundaries)
-- [[20_Progress/AI/Claude Code/Trading View/agents/spec-implementer|spec-implementer]] — implements the next open task from `tasks.md` strictly per `design.md`, reconciles checkbox state with actual code
-### Skills
-- [[20_Progress/AI/Claude Code/Trading View/skills/guardrail-check/SKILL|skills/guardrail-check/SKILL]] — mechanical grep sweep for guardrail violations, hands findings to `guardrail-auditor`
-- [[20_Progress/AI/Claude Code/Trading View/skills/kiro-status/SKILL|skills/kiro-status/SKILL]] — reconciles `tasks.md` checkbox state against what's actually implemented
-## Inventory
-```dataview
-TABLE setup_status, updated
-FROM "20_Progress/AI/Claude Code/Trading View"
-WHERE setup_status
-SORT setup_status ASC, file.name ASC
-```
-## Non-Markdown Files
-- `hooks/block-secrets.sh` — PreToolUse hook on Bash; blocks `git commit`/`git push` when the diff contains an `.env` file or secret-shaped value (this repo is public).
-- `settings.json` — Claude Code project settings (Bash/git permission allowlist).
-- `settings.local.json` — local permission overrides.
-## Status & Gaps
-This folder was empty (dead) as of the first pass on 2026-07-05 and has since been re-exported with the project's actual `.claude/` contents, under a renamed folder (`Trading View` instead of `TradingView`). No live equivalent exists in this vault to diff against, so every markdown file is marked `static`. This project treats `.claude/` as canonical and `.kiro/steering` as a thin mirror — same convention as Resq.
-## Links
-[[20_Progress/AI/Claude Code/MOC]] · [[20_Progress/AI/Claude OS Dashboard]]
+# Trading View — Setup
+This note is Jarvis-only. It is never read or written by the sync itself — `sync-all.sh` never touches it, it carries no `paths` entry in the manifest. It exists purely to tell a Jarvis reader what's actually in this folder and how it got that way.
+## What this is
+The live-synced mirror of `~/projects/hub/tradingview` (WSL, git remote `gupta-builds/TradingView`) — despite the folder name, confirmed **not affiliated with TradingView**: a beginner-safe AI market-research desk for learning and disciplined investment reasoning, currently in its Month-1 data-ingestion-foundation phase. Rebuilt clean 2026-08-10, replacing an old flat, hand-copied dump.
+## Sync scope
+Bidirectional, via `second-brain-claudekit/60_Claude/scripts/sync-all.sh`, manifest entry `Trading View`, `needs_fat: true`. Synced paths: `.claude/agents`, `.claude/hooks`, `.claude/skills`, `.claude/settings.json`, root `CLAUDE.md`, root `AGENTS.md`. No `.claude/commands/` here — confirmed this repo genuinely has none, not a sync gap. Not synced: `.claude/settings.local.json` (machine-local).
+## What's actually here
+- `.claude/agents/` — 2 files: `guardrail-auditor.md` (reviews diffs against the repo's non-negotiable guardrails: no execution language like BUY/SELL, no fabricated data, confidence always capped by data quality, no LLM calls inside the ingestion path, no secrets, no broker/order-routing code), `spec-implementer.md` (implements the next open `tasks.md` item, flags drift between spec and code).
+- `.claude/hooks/block-secrets.sh` — a real guardrail hook.
+- `.claude/skills/` — `guardrail-check/SKILL.md` (grep-based sweep for guardrail violations), `kiro-status/SKILL.md` (reconciles `tasks.md` against actual implementation).
+- `.claude/settings.json` — Claude Code config for this repo.
+- `CLAUDE.md` — the repo's real operating instructions: module map for the `research_data` Python package (OHLCV data fetch → DuckDB storage → quality auditing → AI-consumable evidence packets), explicit non-negotiable guardrails carried over from a `.kiro/specs/` design doc, and the phase roadmap.
+- `AGENTS.md` — present alongside `CLAUDE.md`.
+## Verification performed
+Both directions and the conflict path tested for real with a throwaway file (`.claude/agents/_sync_test.md`):
+1. Created on the Jarvis-mirror side, synced, confirmed it landed in the real WSL repo.
+2. Edited on the WSL repo side, synced, confirmed the edit landed back in the mirror.
+3. Edited differently on both sides without syncing in between, synced: Unison reported the conflict and **both edits stayed intact**, nothing overwritten.
+4. Deleted from both sides, synced once more, confirmed a clean no-op.
+## Trigger
+Live on the 15-minute Windows Scheduled Task `ClaudeKit-Sync-All` as of 2026-08-10.

@@ -1,54 +1,37 @@
 ---
-type: project
-status: static
-created: 2026-07-05
-updated: 2026-07-05
+type: input
+status: sprout
+created: 2026-08-10
+updated: 2026-08-10
 tags:
   - claude-code
-  - setup
-  - opspilot
+  - sync
+  - claude-kit
 notes:
+  - "[[20_Progress/AI/Claude Code/Sync - Unison]]"
   - "[[20_Progress/AI/Claude Code/MOC]]"
-next: "none — reference dump from the OpsPilot repo, not synced to this vault"
+next: Watch the first few scheduled runs; this was the last of the four project candidates onboarded 2026-08-10
 ---
-# OpsPilot — Claude Code Setup
-A copy of the Claude Code project-memory layer for OpsPilot, a small-business AI workflow companion (hackathon build, demo vertical: Ember Table restaurant). Structured as agent handoff docs: a canonical `PRD.md`, live `context/`, domain `playbooks/`, `checklists/`, `workflows/`, and a `decisions/decision-log.md`. Reference material only — not part of the Jarvis vault's own tooling.
-## Files
-### Docs
-- [[20_Progress/AI/Claude Code/OpsPilot/README|README]] — folder read-order and project rules
-- [[20_Progress/AI/Claude Code/OpsPilot/PRD|PRD]] — canonical product spec
-### Context
-- [[20_Progress/AI/Claude Code/OpsPilot/context/6hour-status|context/6hour-status]]
-- [[20_Progress/AI/Claude Code/OpsPilot/context/architecture|context/architecture]]
-- [[20_Progress/AI/Claude Code/OpsPilot/context/current-state|context/current-state]]
-- [[20_Progress/AI/Claude Code/OpsPilot/context/external-review-codex-2026-04|context/external-review-codex-2026-04]]
-- [[20_Progress/AI/Claude Code/OpsPilot/context/keyword-map|context/keyword-map]]
-- [[20_Progress/AI/Claude Code/OpsPilot/context/remote-main-and-merge|context/remote-main-and-merge]]
-### Playbooks
-- [[20_Progress/AI/Claude Code/OpsPilot/playbooks/ai-features|playbooks/ai-features]]
-- [[20_Progress/AI/Claude Code/OpsPilot/playbooks/backend-and-api|playbooks/backend-and-api]]
-- [[20_Progress/AI/Claude Code/OpsPilot/playbooks/integrations-and-webhooks|playbooks/integrations-and-webhooks]]
-- [[20_Progress/AI/Claude Code/OpsPilot/playbooks/invoice-and-finance|playbooks/invoice-and-finance]]
-- [[20_Progress/AI/Claude Code/OpsPilot/playbooks/supabase-and-data|playbooks/supabase-and-data]]
-- [[20_Progress/AI/Claude Code/OpsPilot/playbooks/ui-and-read-models|playbooks/ui-and-read-models]]
-### Checklists
-- [[20_Progress/AI/Claude Code/OpsPilot/checklists/ai-change-checklist|checklists/ai-change-checklist]]
-- [[20_Progress/AI/Claude Code/OpsPilot/checklists/change-planning|checklists/change-planning]]
-- [[20_Progress/AI/Claude Code/OpsPilot/checklists/demo-readiness|checklists/demo-readiness]]
-- [[20_Progress/AI/Claude Code/OpsPilot/checklists/mutation-checklist|checklists/mutation-checklist]]
-### Decisions & Workflows
-- [[20_Progress/AI/Claude Code/OpsPilot/decisions/decision-log|decisions/decision-log]]
-- [[20_Progress/AI/Claude Code/OpsPilot/workflows/restaurant-core-demo|workflows/restaurant-core-demo]]
-## Inventory
-```dataview
-TABLE setup_status, updated
-FROM "20_Progress/AI/Claude Code/OpsPilot"
-WHERE setup_status
-SORT setup_status ASC, file.name ASC
-```
-## Non-Markdown Files
-None — this folder is entirely markdown.
-## Status & Gaps
-External project dump, no live equivalent in this vault to diff against — every file marked `static`. Re-export from the OpsPilot repo if this needs refreshing.
-## Links
-[[20_Progress/AI/Claude Code/MOC]] · [[20_Progress/AI/Claude OS Dashboard]]
+# OpsPilot — Setup
+This note is Jarvis-only. It is never read or written by the sync itself — `sync-all.sh` never touches it, it carries no `paths` entry in the manifest. It exists purely to tell a Jarvis reader what's actually in this folder and how it got that way.
+## What this is
+The live-synced mirror of `~/projects/hackathon/opspilot` (WSL, git remote `gupta-builds/opspilot`), a hackathon submission project — a reservation → invoice → payment → finance → feedback → recovery pipeline. Rebuilt clean 2026-08-10, replacing an old flat, hand-copied dump. Same doc-only `.claude/` shape as Resq (no `agents/`/`commands/`/`hooks/`), plus a `workflows/` subfolder Resq doesn't have.
+## Sync scope
+Bidirectional, via `second-brain-claudekit/60_Claude/scripts/sync-all.sh`, manifest entry `OpsPilot`, `needs_fat: true`. Synced paths: `.claude/PRD.md`, `.claude/README.md`, `.claude/context`, `.claude/playbooks`, `.claude/workflows`, `.claude/decisions`, `.claude/checklists`, root `CLAUDE.md`, root `AGENTS.md`. Double-checked before this sync ran that `.claude/` genuinely has no top-level `settings.json`/`settings.local.json` here (confirmed via direct listing — unlike Resq, which did have one the manifest was initially missing).
+## What's actually here
+- `.claude/PRD.md`, `.claude/README.md`.
+- `.claude/context/` — 6 files: `6hour-status.md`, `architecture.md`, `current-state.md`, `external-review-codex-2026-04.md`, `keyword-map.md`, `remote-main-and-merge.md`.
+- `.claude/playbooks/` — 6 files: `ai-features.md`, `backend-and-api.md`, `integrations-and-webhooks.md`, `invoice-and-finance.md`, `supabase-and-data.md`, `ui-and-read-models.md`.
+- `.claude/workflows/restaurant-core-demo.md`.
+- `.claude/decisions/decision-log.md`.
+- `.claude/checklists/` — `ai-change-checklist.md`, `change-planning.md`, `demo-readiness.md`, `mutation-checklist.md`.
+- `CLAUDE.md` — hackathon-mode agent brief: explicit demo-critical read order, a "what's already done, don't rebuild" list, a hard boundary between deterministic services (own mutations) and AI (classify/summarize/draft only, never owns invoice totals or ledger writes), key file map, verification commands, and a step-by-step demo script.
+- `AGENTS.md` — present alongside `CLAUDE.md`.
+## Verification performed
+Both directions and the conflict path tested for real with a throwaway file (`.claude/decisions/_sync_test.md`):
+1. Created on the Jarvis-mirror side, synced, confirmed it landed in the real WSL repo.
+2. Edited on the WSL repo side, synced, confirmed the edit landed back in the mirror.
+3. Edited differently on both sides without syncing in between, synced: Unison reported the conflict and **both edits stayed intact**.
+4. Deleted from both sides, synced once more, confirmed a clean no-op.
+## Trigger
+Live on the 15-minute Windows Scheduled Task `ClaudeKit-Sync-All` as of 2026-08-10 — the fourth and last of this session's project onboardings.

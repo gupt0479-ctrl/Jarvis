@@ -11,23 +11,20 @@ related_progress:
   - "[[20_Progress/AI/Claude Code/MOC]]"
   - "[[20_Progress/Projects/AI Use/Claude Kit/Tool Map]]"
   - "[[60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution]]"
-next: Decide the "Da Shit" folder's fate in [[20_Progress/AI/Claude Code/second-brain-claudekit/Setup]] before it gets rediscovered and mistaken for the live config
+next: Decide whether/how to reconcile the two home directories' still-disjoint agents/commands/skills content, per [[20_Progress/AI/Claude Code/Sync - Unison]]
 ---
 # Gaps
 Derived from [[Folder Map]] and [[Notes Map]], both built from a full read-through of every AI-related folder in the vault on 2026-08-09. Statements only — no checkboxes, no prose paragraphs. Every statement links to the thing it concerns.
 ## Claude Kit sync layer
-Restructure Portfolio, Trading View, Resq, and OpsPilot's flat mirror folders into the nested `.claude/` + sibling-docs (`CLAUDE.md`, `AGENTS.md`, `Setup.md`) shape and onboard them into live sync — CausalOps and Jarvis already went through this 2026-08-10 via the new manifest-driven [[20_Progress/AI/Claude Code/Sync - Unison]] driver (`sync-all.sh`), same steps apply to the rest.
-Delete the orphaned `second-brain-claudekit/Da Shit/` folder — confirmed dead, safe to remove, just not yet done.
-Wire `.claude_wsl` the same way `.claude_windows` was done 2026-08-10 (wiped clean, curated live sync — `agents/`, `commands/`, `skills/`, `hooks/`, `CLAUDE.md`, secrets/session-state hard-excluded) — see [[20_Progress/AI/Claude Code/.claude_windows/Setup]] for the pattern to repeat.
-Commit the in-flight uncommitted move of `20_Progress/AI/Builds & Resources/` to `20_Progress/Projects/AI Use/Builds & Resources/` — content is verified byte-identical, only the git commit is missing.
-Commit the in-flight uncommitted move of `40_Resources/CS/AI/Toolkit/` to `20_Progress/Projects/AI Use/Claude Kit/Toolkit/` for the same reason.
+**Fully resolved 2026-08-10.** Every real project under `20_Progress/AI/Claude Code/` (`second-brain-claudekit`, `CausalOps`, `Jarvis`, `Portfolio`, `Trading View`, `Resq`, `OpsPilot`, `The Plan`) plus both home directories (`.claude_windows`, `.claude_wsl`) is now live-synced via the manifest-driven [[20_Progress/AI/Claude Code/Sync - Unison]] driver (`sync-all.sh`), each wiped clean and rebuilt, each verified in both directions plus a real conflict test. `Da Shit/` is deleted. `The Plan` turned out to be a real Windows-side sibling vault, not dead as earlier research concluded — found and onboarded the same pass. `Github ReadMe` re-checked and confirmed to still have no real source. Remaining open question, not a gap: whether to reconcile the two home directories' still largely disjoint `agents/`/`commands/`/`skills/` content — see [[20_Progress/AI/Claude Code/Sync - Unison]].
+Both pending folder-move commits from the original pass are long since resolved by the vault's own auto-commit bot — no action needed.
 ## Per-tool operational registry
 Refresh [[20_Progress/AI/Claude OS Dashboard]] — it is over a month stale and its `.canvas` twin still claims Portfolio and Trading View are empty when both were re-exported 2026-07-05.
 Reconcile or delete the stale `.canvas` fork of [[20_Progress/AI/Claude OS Dashboard]] so the two stop disagreeing.
 Re-export `20_Progress/AI/Claude Code/Jarvis/` — [[20_Progress/AI/Claude Code/MOC]] already marks it `stale`, missing `tools:`/`model:` frontmatter on all five agents and the `excalidraw-diagram` command entirely.
 ## AI Use hub
 Write real content into `20_Progress/Projects/AI Use/The AI Hub.md` or delete it — an empty note named "hub" is actively misleading.
-Fill or remove `20_Progress/Projects/AI Use/Claude Kit/Overview.md`, `Build Map.md`, and `Claude Code/Prompts.md` — all three are 0-byte files sitting where real content is expected.
+Fill or remove `20_Progress/Projects/AI Use/Claude Kit/Overview.md`, `Build Map.md`, and `Claude Code/Prompts.md` — still 0-byte files sitting where real content is expected. (`Toolkit/` itself, previously the same complaint, was filled 2026-08-10 — see [[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Claude Code|Toolkit/Claude Code.md]].)
 Resolve gstack's missing-Chromium blocker and gbrain's embedding-provider choice, both logged as open in [[20_Progress/Projects/AI Use/Claude Kit/Tool Map]].
 ## GitHub ingestion pipeline
 Fix the broken `[[Immediate Action]]` link in `_Notes Created From Ingestion.md` — it should resolve to [[60_Claude/10_Source_Summaries/Github Ingestion/Claude Kit Implementation]], either by renaming the file or adding an `aliases:` entry.
@@ -62,4 +59,4 @@ Review Codex, Cursor, and Kiro's own `MOC.md` files in full — this pass confir
 Turn the plain-code-formatted folder paths in [[10_Areas/AI/Claude Code]], `Codex.md`, `Cursor.md`, and `Kiro.md` into real wikilinks where the target folders have MOCs, so this meta-map layer and the per-tool registry actually connect.
 ## Open Threads
 Whether `10_Areas/AI`, `20_Progress/AI`, and `20_Progress/Projects/AI Use` should be merged into fewer trees now that [[Folder Map]] has written down what each one does — flagged, not decided, in this pass.
-Whether the automated review system described by the user should live under `60_Claude/30_Reviews/AI/` as scaffolded, or fold into the existing `Weekly Synthesis/`/`Monthly/` structure that already works — needs a decision before any build work starts.
+Decided 2026-08-10: the automated review system builds out under `60_Claude/30_Reviews/AI/` as its own tree, kept separate from `Weekly Synthesis/`/`Monthly/` since that structure is concept-mastery review (Capability Engine), a different subject — not yet built, but no longer an open question.

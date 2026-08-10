@@ -1,131 +1,47 @@
 ---
-type: concept
-course:
+type: index
 status: sprout
-mastery (1/10): 0
-created:
-topics: []
-related:
-  - "[[40_Resources/CS/Links|Links]]"
+created: 2026-08-10
+updated: 2026-08-10
+tags:
+  - moc
+  - claude-kit
+  - toolkit
+notes:
+  - "[[20_Progress/Projects/AI Use/Claude Kit/Tool Map]]"
+  - "[[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Agents/What Agents]]"
+  - "[[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Agents/How to Use Agents]]"
+  - "[[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Commands/What Commands]]"
+  - "[[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Commands/How to Use Commands]]"
+  - "[[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Hooks/What Hooks]]"
+  - "[[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Hooks/How to Use Hooks]]"
+  - "[[20_Progress/Projects/AI Use/Claude Kit/Toolkit/MCPs/What MCPs]]"
+  - "[[20_Progress/Projects/AI Use/Claude Kit/Toolkit/MCPs/How to Use MCPs]]"
+  - "[[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Skills/What Skills]]"
+  - "[[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Skills/How to Use Skills]]"
+next: Build out 60_Claude/30_Reviews/AI/ as the review-system counterpart to this catalog
 ---
-# Anthropic
-## MOC
-- [[W__ L__ - ...]]
-- [[HW__ - ...]]
-## Definition
-- 
-## Resources
-- 
-### Custom Instructions
-1. Use the `#` command to enter "memory mode" - this lets you edit your `CLAUDE.md` files intelligently. Just type something like: `# Use comments sparingly. Only comment complex code.`. 
-	- Claude will merge this instruction into your `CLAUDE.md` file automatically.
-2. You can rewind the conversation by pressing `Escape` *twice*.
-3. `/compact`: The `/compact` command summarizes your entire conversation history while preserving the key information Claude has learned. This is ideal when:
-	- Claude has gained valuable knowledge about your project
-	- You want to continue with related tasks
-	- The conversation has become long but contains important context
-4. `/clear`: The `/clear` command completely removes the conversation history, giving you a fresh start. This is most useful when:
-	- You're switching to a completely different, unrelated task
-	- The current conversation context might confuse Claude for the new task
-	- You want to start over without any previous context
-## Everything Claude Code (ECC)
-### Part 4: Your Daily Workflow with ECC
-**Monday: Start New Feature**
-- Plan the feature:
-    ```bash
-    /everything-claude-code:plan "Add certification timeline visualization"
-    ```
-    → Planner creates blueprint
-- Write tests first:
-    ```bash
-    /tdd
-    ```
-    → TDD-guide helps write failing tests
-- Implement:
-    ```bash
-    [write your code]
-    ```
-- Review:
-    ```bash
-    /code-review
-    ```
-    → Code-reviewer checks for issues
-**Tuesday: Debug Build Error**
-- Your build fails:
-    ```bash
-    pnpm build  # fails with error
-    ```
-- Run fixer:
-    ```bash
-    /build-fix
-    ```
-    → Build-error-resolver analyzes and fixes
-**Wednesday: Security Check**
-- Before committing:
-    ```bash
-    /security-scan
-    ```
-    
-    → AgentShield runs 102 security rules
-
----
-
-**Thursday: Documentation**
-
-- After feature completion:
-    
-    ```bash
-    /update-docs
-    ```
-    
-    → Doc-updater updates relevant docs
-
----
-
-**Friday: Code Quality**
-
-- Refactor old code:
-    
-    ```bash
-    /refactor-clean
-    ```
-    
-    → Removes dead code, unused imports
-## Courses
-### Claude Code in Action
-1. When you first start Claude in a new project, run the `/init` command. This tells Claude to analyze your entire codebase and understand:
-	- The project's purpose and architecture
-	- Important commands and critical files
-	- Coding patterns and structure
-	Types Of files:
-	- **CLAUDE.md** - Generated with /init, committed to source control, shared with other engineers
-	- **CLAUDE.local.md** - Not shared with other engineers, contains personal instructions and customizations for Claude
-	- **~/.claude/CLAUDE.md** - Used with all projects on your machine, contains instructions that you want Claude to follow on all projects
-2. When you need Claude to look at specific files, use the `@` symbol followed by the file path. This automatically includes that file's contents in your request to Claude.
-3. You can also mention files directly in your `CLAUDE.md` file using the same `@` syntax.
-4. **Planning Mode** is best for:
-	- Tasks requiring broad understanding of your codebase
-	- Multi-step implementations
-	- Changes that affect multiple files or components
-5. **Thinking Mode** is best for:
-	- Complex logic problems
-	- Debugging difficult issues
-	- Algorithmic challenges
-> [!NOTE] You can combine both modes for tasks that require both breadth and depth. Just keep in mind that both features consume additional tokens, so there's a cost consideration for using them.
-6. You can rewind the conversation by pressing Escape twice. This shows you all the messages you've sent, allowing you to jump back to an earlier point and continue from there. This technique helps you:
-	- Maintain valuable context (like Claude's understanding of your codebase)
-	- Remove distracting or irrelevant conversation history
-	- Keep Claude focused on the current task
-7. To create a custom command, you need to set up a specific folder structure in your project:
-	1. Find the `.claude` folder in your project directory
-	2. Create a new directory called `commands` inside it
-	3. Create a new markdown file with your desired command name (like `audit.md`)
-	The filename becomes your command name - so `audit.md` creates the `/audit` command.
-8. 
-## Common mistakes
-- 
-## Mini-test (answer without looking)
-- [ ] Flashcards
-- [ ] 
-## Flashcards (best 3–8)
-
+# Claude Kit Toolkit
+==This folder answers one question in real time: mid-session, which promoted agent, command, hook, MCP, or skill actually closes the task in front of you, and where is the concrete "how" for it?==
+## Purpose
+The Toolkit is the reference layer between [[20_Progress/Projects/AI Use/Claude Kit/Tool Map|Tool Map.md]] (which tracks pipeline *stage* — sandbox, tested-tools, promoted) and an actual working session. Tool Map answers "is this tool trustworthy yet"; the Toolkit answers "given a real task right now, what do I actually type." Read this before starting any non-trivial Claude Code session that touches agents, commands, hooks, MCPs, or skills.
+## Map
+Five categories, each with two notes and a fixed job split. `What {Category}.md` is a ground-truth inventory — split into what second-brain-claudekit itself has promoted into its own `.claude/` ([[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Agents/What Agents|example]]) and what is actually live in Jarvis's real vault-root `.claude/` right now, verified against the files on disk, not against a stale snapshot. `How to Use {Category}.md` is the dispatch note — a `# Claude Kit` section giving project-agnostic usage guidance per promoted claudekit tool, and a `# Particular Use` section of named-use-case anchors ("code review," "vault curation," "learning drills") that the use-case notes below link straight into.
+[[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Agents/What Agents|What Agents]] and [[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Agents/How to Use Agents|How to Use Agents]] cover sub-agents — long-running, focused personas invoked via the Agent/Task tool. [[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Commands/What Commands|What Commands]] and its pair cover `/slash-commands` — the trigger layer, one command per skill in most cases. [[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Hooks/What Hooks|What Hooks]] and its pair cover lifecycle automation (PreToolUse/PostToolUse/SessionStart/SessionEnd/Stop) — the layer that runs without being asked. [[20_Progress/Projects/AI Use/Claude Kit/Toolkit/MCPs/What MCPs|What MCPs]] and its pair cover Model Context Protocol servers — external tool access beyond the filesystem. [[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Skills/What Skills|What Skills]] and its pair cover the actual logic behind each command — `SKILL.md` files and directory skills, plus [[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Skills/Github Skills|Github Skills]], the one pre-existing note in this folder that was already real and stays as-is.
+Below the category pairs, this folder holds one shared set of use-case notes — [[Research & Distillation]], [[Vault Curation]], [[Writing Quality]], [[Decision & Planning]], [[Learning & Mastery]], [[Career Ops]], [[Daily Operations]] — each a short summary that cross-links into whichever category notes' `# Particular Use` anchors actually serve that task. [[Code Review]] and [[Frontend]] exist too, honestly flagged as **not yet served** — the tools that would close them (mattpocock-skills' `code-review`, gstack's design-review workflow) are still at `sandbox`/`tested-tools` stage per Tool Map, not promoted.
+## Status
+| Category | Promoted in claudekit | Live in Jarvis | Use cases served |
+|---|---|---|---|
+| Agents | 3 (vault-curator, research-distiller, weekly-reviewer) | 5 (adds anti-slop-editor, learning-agent, career-operator) | Vault Curation, Research & Distillation, Writing Quality, Learning & Mastery, Career Ops |
+| Commands | 11 | 19 | Daily Operations, Decision & Planning |
+| Hooks | 2, both wired | 2 registered, 1 actually active — session-continuity hook exists on disk, unregistered in `settings.json` | — |
+| MCPs | 0 promoted (GBrain is the closest, still sandbox stage) | 6 (`obsidian`, `filesystem`, `git`, `fetch`, `jarvis-memory`, `excalidraw`) | Vault Curation, Daily Operations |
+| Skills | 0 (claudekit's own `skills/` is empty) | ~19 directory/file skills | most of the above |
+## Dataview
+```dataview
+TABLE type, status, updated
+FROM "20_Progress/Projects/AI Use/Claude Kit/Toolkit"
+SORT file.folder ASC, file.name ASC
+```
+## Links
+[[20_Progress/Projects/AI Use/Claude Kit/Tool Map]] for pipeline stage. [[10_Areas/AI/Setup/Review System]] for how usage of everything catalogued here gets reviewed on a cadence. [[10_Areas/AI/Setup/Folder Map]] for where this folder sits in the wider AI-tooling layer.
