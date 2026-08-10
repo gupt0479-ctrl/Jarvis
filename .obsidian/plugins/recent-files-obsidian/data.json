@@ -1,8 +1,52 @@
 {
   "recentFiles": [
     {
+      "basename": "Write Log",
+      "path": "20_Progress/AI/Claude Code/Write Log.md"
+    },
+    {
+      "basename": "_All-Projects-Sync-Log",
+      "path": "20_Progress/AI/Claude Code/_All-Projects-Sync-Log.md"
+    },
+    {
+      "basename": "Skill log",
+      "path": "60_Claude/30_Reviews/AI/Conversations/Skill log.md"
+    },
+    {
+      "basename": "Log",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Log.md"
+    },
+    {
+      "basename": "What MCPs",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/MCPs/What MCPs.md"
+    },
+    {
+      "basename": "How to Use Hooks",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Hooks/How to Use Hooks.md"
+    },
+    {
+      "basename": "How to Use Commands",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Commands/How to Use Commands.md"
+    },
+    {
+      "basename": "How to Use Agents",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Agents/How to Use Agents.md"
+    },
+    {
       "basename": "Claude Code",
       "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Claude Code.md"
+    },
+    {
+      "basename": "Career Ops",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Career Ops.md"
+    },
+    {
+      "basename": "Code Review",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Code Review.md"
+    },
+    {
+      "basename": "00_Execution",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
     },
     {
       "basename": "What Skills",
@@ -15,10 +59,6 @@
     {
       "basename": "Claude Council (LLM Council Skill Install)",
       "path": "20_Progress/Projects/AI Use/Builds & Resources/Claude Council (LLM Council Skill Install).md"
-    },
-    {
-      "basename": "00_Execution",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
     },
     {
       "basename": "_Notes Created From Ingestion",
@@ -159,46 +199,6 @@
     {
       "basename": "Tracking Template",
       "path": "30_Order/Templates/Career/Tracking Template.md"
-    },
-    {
-      "basename": "Program Template",
-      "path": "30_Order/Templates/Career/Program Template.md"
-    },
-    {
-      "basename": "Plan Template",
-      "path": "30_Order/Templates/Career/Plan Template.md"
-    },
-    {
-      "basename": "List Monthly Log Template",
-      "path": "30_Order/Templates/Career/List Monthly Log Template.md"
-    },
-    {
-      "basename": "Clipping Distill Template",
-      "path": "30_Order/Templates/Capability/Clipping Distill Template.md"
-    },
-    {
-      "basename": "Review System",
-      "path": "10_Areas/AI/Setup/Review System.md"
-    },
-    {
-      "basename": "Tool Map",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Tool Map.md"
-    },
-    {
-      "basename": "Overview",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Overview.md"
-    },
-    {
-      "basename": "Cursor",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Cursor.md"
-    },
-    {
-      "basename": "What Agents",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Agents/What Agents.md"
-    },
-    {
-      "basename": "What Commands",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Commands/What Commands.md"
     }
   ],
   "omittedPaths": [],
