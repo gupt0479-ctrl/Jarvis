@@ -8,9 +8,12 @@ tags:
   - daily
 cssclasses:
   - dashboard
-today_focus: "Saturday stress-test: close CausalOps (carried from yesterday) + clear the overdue Git & GitHub exam"
-today_80: Run CausalOps Supabase SQL migration + integration tests, then stress-test it
-today_20: Git & GitHub exam (overdue), LeetCode 5 (Sorting/Time Complexity, Amazon tag), system design, trading/AI knowledge
+today_focus: Ship Jarvis's self-improving ingestion loop, log 5 LeetCode reps
+  (Amazon week), and open Arc's real scope
+today_80: Finish the ingestion so the toolkit executes inside Jarvis — a
+  functional self-improving loop in place
+today_20: Hivemind fixes + overview doc, Adx issues doc, sync .claude/ folders
+  across repos
 lc_today: 0
 study_today: 4
 wins_done: 4

@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "Claude OS Dashboard",
-      "path": "20_Progress/AI/Claude OS Dashboard.canvas"
+      "basename": "Gaps",
+      "path": "10_Areas/AI/Gaps.md"
     },
     {
       "basename": "Jarvis OS Dashboard",
       "path": "10_Areas/Jarvis OS Dashboard.canvas"
+    },
+    {
+      "basename": "2026-08-10",
+      "path": "10_Areas/Life/Enumerate/Daily/2026-08-10.md"
+    },
+    {
+      "basename": "Untitled Kanban",
+      "path": "Untitled Kanban.md"
+    },
+    {
+      "basename": "Claude OS Dashboard",
+      "path": "20_Progress/AI/Claude OS Dashboard.canvas"
     },
     {
       "basename": "Links",
@@ -19,10 +31,6 @@
     {
       "basename": "00_Dashboard",
       "path": "00_Dashboard.md"
-    },
-    {
-      "basename": "Gaps",
-      "path": "10_Areas/AI/Gaps.md"
     },
     {
       "basename": "UMN Board",
@@ -191,14 +199,6 @@
     {
       "basename": "Competitive Positioning",
       "path": "20_Progress/Mentorship Program/adx/Codebase/Competitive Positioning.md"
-    },
-    {
-      "basename": "Codebase Deep Read",
-      "path": "20_Progress/Mentorship Program/adx/Codebase/Codebase Deep Read.md"
-    },
-    {
-      "basename": "Source Claims",
-      "path": "20_Progress/Mentorship Program/adx/Source Claims.md"
     }
   ],
   "omittedPaths": [],
