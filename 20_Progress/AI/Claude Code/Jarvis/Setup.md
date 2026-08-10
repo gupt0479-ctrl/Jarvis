@@ -1,80 +1,30 @@
 ---
-type: project
-status: stale
-created: 2026-07-05
-updated: 2026-07-05
+type: input
+status: sprout
+created: 2026-08-10
+updated: 2026-08-10
 tags:
   - claude-code
-  - setup
-  - jarvis
+  - sync
+  - claude-kit
 notes:
+  - "[[20_Progress/AI/Claude Code/Sync - Unison]]"
   - "[[20_Progress/AI/Claude Code/MOC]]"
-next: "Refresh agents/*.md (missing tools:/model: fields), commands+skills/closeday.md and startday.md (still point at flat skill files instead of SKILL.md directories), and add the missing excalidraw-diagram command+skill"
+next: Watch the first few scheduled runs after cutover, especially any that land while a live session is mid-edit on the source .claude/
 ---
-# Jarvis — Claude Code Setup
-This is a copy of this vault's own `.claude/` tooling layer — the agents, commands, skills, hooks, and rules that make Claude Code operate *this* vault. It's the most actively maintained of the four platform dumps under `20_Progress/AI`, and the reference for how the other project folders should eventually look, but the copy itself has drifted behind the live `.claude/` at the vault root.
-## Files
-### Agents
-- [[20_Progress/AI/Claude Code/Jarvis/agents/anti-slop-editor|anti-slop-editor]]
-- [[20_Progress/AI/Claude Code/Jarvis/agents/career-operator|career-operator]]
-- [[20_Progress/AI/Claude Code/Jarvis/agents/learning-agent|learning-agent]]
-- [[20_Progress/AI/Claude Code/Jarvis/agents/research-distiller|research-distiller]]
-- [[20_Progress/AI/Claude Code/Jarvis/agents/vault-curator|vault-curator]]
-### Commands
-- [[20_Progress/AI/Claude Code/Jarvis/commands/closeday|closeday]]
-- [[20_Progress/AI/Claude Code/Jarvis/commands/connect-notes|connect-notes]]
-- [[20_Progress/AI/Claude Code/Jarvis/commands/context|context]]
-- [[20_Progress/AI/Claude Code/Jarvis/commands/distill-note|distill-note]]
-- [[20_Progress/AI/Claude Code/Jarvis/commands/ingest-clipping|ingest-clipping]]
-- [[20_Progress/AI/Claude Code/Jarvis/commands/lint-claude-layer|lint-claude-layer]]
-- [[20_Progress/AI/Claude Code/Jarvis/commands/ops|ops]]
-- [[20_Progress/AI/Claude Code/Jarvis/commands/organize-csci2033|organize-csci2033]]
-- [[20_Progress/AI/Claude Code/Jarvis/commands/remove-ai-slop|remove-ai-slop]]
-- [[20_Progress/AI/Claude Code/Jarvis/commands/startday|startday]]
-- [[20_Progress/AI/Claude Code/Jarvis/commands/tag-month|tag-month]]
-- [[20_Progress/AI/Claude Code/Jarvis/commands/trace-topic|trace-topic]]
-- [[20_Progress/AI/Claude Code/Jarvis/commands/weekly-review|weekly-review]]
-### Skills
-- [[20_Progress/AI/Claude Code/Jarvis/skills/closeday|closeday]]
-- [[20_Progress/AI/Claude Code/Jarvis/skills/connect-notes|connect-notes]]
-- [[20_Progress/AI/Claude Code/Jarvis/skills/context|context]]
-- [[20_Progress/AI/Claude Code/Jarvis/skills/distill-note|distill-note]]
-- [[20_Progress/AI/Claude Code/Jarvis/skills/ingesting-clipping/SKILL|ingesting-clipping/SKILL]]
-- [[20_Progress/AI/Claude Code/Jarvis/skills/ingesting-clipping/examples|ingesting-clipping/examples]]
-- [[20_Progress/AI/Claude Code/Jarvis/skills/ingesting-clipping/reference|ingesting-clipping/reference]]
-- [[20_Progress/AI/Claude Code/Jarvis/skills/lint-claude-layer|lint-claude-layer]]
-- [[20_Progress/AI/Claude Code/Jarvis/skills/mcp-hub|mcp-hub]]
-- [[20_Progress/AI/Claude Code/Jarvis/skills/ops|ops]]
-- [[20_Progress/AI/Claude Code/Jarvis/skills/ops-reference|ops-reference]]
-- [[20_Progress/AI/Claude Code/Jarvis/skills/organize-csci2033|organize-csci2033]]
-- [[20_Progress/AI/Claude Code/Jarvis/skills/remove-ai-slop|remove-ai-slop]]
-- [[20_Progress/AI/Claude Code/Jarvis/skills/startday|startday]]
-- [[20_Progress/AI/Claude Code/Jarvis/skills/tag-month|tag-month]]
-- [[20_Progress/AI/Claude Code/Jarvis/skills/trace-topic|trace-topic]]
-- [[20_Progress/AI/Claude Code/Jarvis/skills/weekly-review|weekly-review]]
-### Docs
-- [[20_Progress/AI/Claude Code/Jarvis/README|README]]
-- [[20_Progress/AI/Claude Code/Jarvis/GITHUB_WORKFLOW|GITHUB_WORKFLOW]]
-- [[20_Progress/AI/Claude Code/Jarvis/context/workspace-context|context/workspace-context]]
-- [[20_Progress/AI/Claude Code/Jarvis/rules/human-writing|rules/human-writing]]
-## Inventory
-```dataview
-TABLE setup_status, updated
-FROM "20_Progress/AI/Claude Code/Jarvis"
-WHERE setup_status
-SORT setup_status ASC, file.name ASC
-```
-## Non-Markdown Files
-- `settings.json` — Claude Code project settings (model pin). **Stale**: pins `claude-sonnet-4-6`; live `.claude/settings.json` pins `claude-sonnet-5`.
-- `settings.local.json` — local permission overrides. Current, matches live file byte-for-byte.
-- `skills/ingesting-clipping/scripts/extract_pdf.py` — PDF text extraction helper used by the ingestion skill. Current, matches live file.
-## Status & Gaps
-Diffed directly against the live `D:\Users\_Anant\10_Areas\Documents\Jarvis\.claude\` on 2026-07-05:
-- **All 5 agent files are stale.** The live versions carry `tools:` and `model:` frontmatter fields and longer, more specific `description:` text; this dump still has the older, thinner frontmatter shape (no `tools:`/`model:`, shorter descriptions).
-- **`commands/closeday.md` and `commands/startday.md` are stale** — both still tell the agent to read `.claude/skills/closeday.md` / `.claude/skills/startday.md` as flat files. Live `.claude/skills/closeday/` and `.claude/skills/startday/` are now directories (`SKILL.md` inside), and `startday.md` live also references an additional "Step 3b" this dump doesn't mention.
-- **`skills/closeday.md` and `skills/startday.md` are stale** for the same reason — they exist here as flat files; live has them as `closeday/` and `startday/` directories.
-- **Missing entirely**: `commands/excalidraw-diagram.md` and `skills/excalidraw-diagram.md` — both exist live but were never captured in this dump.
-- Everything else (11 commands, 14 flat/nested skill files, `README.md`, `GITHUB_WORKFLOW.md`, `context/workspace-context.md`, `rules/human-writing.md`, `settings.local.json`, the ingestion script) is byte-identical to the live vault-root `.claude/`.
-- **Note on this pass**: `commands/ingest-clipping.md`, `commands/ops.md`, and `commands/trace-topic.md` had a pre-existing `description:` value with an unquoted colon (e.g. `Usage: /ops [operation]`), which is invalid YAML and would have made this file's frontmatter — including the new `setup_status` field — unparseable by Dataview. Quoted the value to fix it; no wording changed, so these 3 files now differ from live by quoting only.
-## Links
-[[20_Progress/AI/Claude Code/MOC]] · [[20_Progress/AI/Claude OS Dashboard]]
+# Jarvis — Setup
+This note is Jarvis-only. It is never read or written by the sync itself — `sync-all.sh` never touches it, it carries no `paths` entry in the manifest. It exists purely to tell a Jarvis reader what's actually in this folder and how it got that way.
+## What this is
+The live-synced mirror of this vault's own root `.claude/` — the config actually executing whenever a Claude Code session runs inside Jarvis, including the one that built this sync. Rebuilt clean 2026-08-10 — the folder previously held a flat, hand-copied, drifted snapshot that [[20_Progress/AI/Claude Code/MOC]] had already flagged `stale`: missing `challenge`, `excalidraw-diagram`, `ideas`, `llm-council`, `note-to-actions`, `strategy`, `transcript-to-brief`, and `mcp-hub` entirely, among other gaps. That snapshot was wiped and replaced with a fresh sync.
+## Sync scope
+Bidirectional, via `second-brain-claudekit/60_Claude/scripts/sync-all.sh`, manifest entry `Jarvis`, `needs_fat: true` (both replicas are DrvFs from the executing WSL process's point of view, even though both are Windows-side paths on the same drive — confirmed empirically rather than assumed, since the first run needed it same as every other entry). Synced paths: `.claude/agents`, `.claude/commands`, `.claude/skills`, `.claude/context`, `.claude/rules`, `.claude/settings.json`, root `CLAUDE.md`, root `AGENTS.md`. Not synced: `.claude/settings.local.json`, `.claude/README.md`, `.claude/GITHUB_WORKFLOW.md`, `.claude/scheduled_tasks.lock` — the first is machine-local, the rest are repo-facing docs and runtime state that don't need a Jarvis-side copy.
+## What's actually here
+`.claude/agents/` (5), `.claude/commands/` (19), `.claude/skills/` (21, including the `closeday/`, `ingesting-clipping/`, `startday/` subfolder-shaped skills), `.claude/context/workspace-context.md`, `.claude/rules/human-writing.md`, `.claude/settings.json`, root `CLAUDE.md`, root `AGENTS.md` — verified byte-identical against the live source immediately after the first sync (`diff` on every list and every doc file, zero differences).
+## Verification performed
+Extra care taken here specifically because the source is the live config of the very session that built this sync — not treated as routine just because the mechanism was already proven twice on other targets:
+1. First sync populated the (wiped) mirror entirely from the live source — confirmed every file and folder count matches exactly (19 commands, 21 skills, both root docs).
+2. Created a new, inert test file (`_sync_test.md`, not a real command) on the Jarvis-mirror side, synced, confirmed it landed in the real live `.claude/commands/` — mirror-to-source direction proven without touching any file this session actually reads.
+3. Deleted the test file from both the real source and the mirror immediately after confirming, synced once more, confirmed a clean no-op and zero leftover files.
+4. Deliberately did **not** run the "edit the same file on both sides to trigger a conflict" leg of the test here, unlike `.claude_windows` and CausalOps — that leg was already proven twice with the identical Unison invocation and binary, and repeating it against this session's own live config for marginal additional confidence wasn't worth the risk of touching a file this session might read mid-edit.
+## Trigger
+Manual only as of 2026-08-10 — runs when `sync-all.sh Jarvis` (or a full `sync-all.sh` run) is invoked by hand. Cutover to the 15-minute Windows Scheduled Task happens once all three of this session's targets are confirmed (see [[20_Progress/AI/Claude Code/Sync - Unison]]) — worth watching the first few scheduled runs specifically for what happens if one lands while a live session has an uncommitted edit to a synced file (e.g. `settings.json`) open.

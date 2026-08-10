@@ -16,8 +16,9 @@ next: Decide the "Da Shit" folder's fate in [[20_Progress/AI/Claude Code/second-
 # Gaps
 Derived from [[Folder Map]] and [[Notes Map]], both built from a full read-through of every AI-related folder in the vault on 2026-08-09. Statements only — no checkboxes, no prose paragraphs. Every statement links to the thing it concerns.
 ## Claude Kit sync layer
-Get Anant's per-project go-ahead on [[20_Progress/AI/Claude Code/Sync - Unison]]'s candidate list, then onboard the first project beyond second-brain-claudekit into live sync.
-Decide whether `second-brain-claudekit/Da Shit/` gets deleted, revived, or formally documented in [[20_Progress/AI/Claude Code/second-brain-claudekit/Setup]] — it is currently referenced nowhere and frozen since 2026-07-30.
+Restructure Portfolio, Trading View, Resq, and OpsPilot's flat mirror folders into the nested `.claude/` + sibling-docs (`CLAUDE.md`, `AGENTS.md`, `Setup.md`) shape and onboard them into live sync — CausalOps and Jarvis already went through this 2026-08-10 via the new manifest-driven [[20_Progress/AI/Claude Code/Sync - Unison]] driver (`sync-all.sh`), same steps apply to the rest.
+Delete the orphaned `second-brain-claudekit/Da Shit/` folder — confirmed dead, safe to remove, just not yet done.
+Wire `.claude_wsl` the same way `.claude_windows` was done 2026-08-10 (wiped clean, curated live sync — `agents/`, `commands/`, `skills/`, `hooks/`, `CLAUDE.md`, secrets/session-state hard-excluded) — see [[20_Progress/AI/Claude Code/.claude_windows/Setup]] for the pattern to repeat.
 Commit the in-flight uncommitted move of `20_Progress/AI/Builds & Resources/` to `20_Progress/Projects/AI Use/Builds & Resources/` — content is verified byte-identical, only the git commit is missing.
 Commit the in-flight uncommitted move of `40_Resources/CS/AI/Toolkit/` to `20_Progress/Projects/AI Use/Claude Kit/Toolkit/` for the same reason.
 ## Per-tool operational registry
@@ -57,7 +58,7 @@ Fix `Claude Optimization Master Setup.md`'s internal links to `Skills/Github Ski
 Fill or delete the empty `40_Resources/CS/AI/Workflows/Claude Code/` subfolder.
 ## This meta-map
 Review Codex, Cursor, and Kiro's own `MOC.md` files in full — this pass confirmed they exist and are real but did not read them end to end the way `20_Progress/AI/Claude Code/MOC` was read.
-Decide the empty `10_Areas/AI/Setup/` folder's purpose or delete it — nothing in the vault documents what it was for.
+`10_Areas/AI/Setup/` is no longer empty — [[Folder Map]], [[Notes Map]], and this note were relocated into it 2026-08-10; its purpose is now this meta-map itself, not open anymore.
 Turn the plain-code-formatted folder paths in [[10_Areas/AI/Claude Code]], `Codex.md`, `Cursor.md`, and `Kiro.md` into real wikilinks where the target folders have MOCs, so this meta-map layer and the per-tool registry actually connect.
 ## Open Threads
 Whether `10_Areas/AI`, `20_Progress/AI`, and `20_Progress/Projects/AI Use` should be merged into fewer trees now that [[Folder Map]] has written down what each one does — flagged, not decided, in this pass.

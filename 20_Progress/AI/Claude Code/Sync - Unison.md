@@ -2,7 +2,7 @@
 type: project
 status: active
 created: 2026-07-30
-updated: 2026-07-30
+updated: 2026-08-10
 tags:
   - claude-code
   - sync
@@ -11,8 +11,11 @@ tags:
 notes:
   - "[[20_Progress/AI/Claude Code/MOC]]"
   - "[[20_Progress/AI/Claude Code/second-brain-claudekit/Setup]]"
+  - "[[20_Progress/AI/Claude Code/CausalOps/Setup]]"
+  - "[[20_Progress/AI/Claude Code/Jarvis/Setup]]"
+  - "[[20_Progress/AI/Claude Code/.claude_windows/Setup]]"
   - "[[Tool Map]]"
-next: Get Anant's per-project go-ahead (Step 0), then bootstrap the manifest-driven script and onboard the first additional project
+next: Restructure Portfolio/Trading View/Resq/OpsPilot's flat mirror folders into the nested .claude/ + sibling-docs shape, onboard them the same way CausalOps just went, then wire .claude_wsl
 ---
 # Sync — Unison, multi-project rollout
 
@@ -77,6 +80,8 @@ Two categories, and the classification decides one flag (`needs_fat`):
 
 **Manifest** (`second-brain-claudekit/50_Claude/sync-manifest.json`), one entry per project:
 
+**This block is the original planning draft — superseded 2026-08-10.** The real, executing manifest now lives at `second-brain-claudekit/60_Claude/scripts/sync-manifest.json`, driven by `60_Claude/scripts/sync-all.sh` (which replaced the single-project `sync-jarvis.sh`). Keep this block for the planning rationale (why each `paths` list is shaped the way it is); treat the JSON in the repo as the source of truth for current `status`/`needs_fat` values, since those have already moved past what's written below.
+
 ```json
 {
   "projects": [
@@ -90,10 +95,10 @@ Two categories, and the classification decides one flag (`needs_fat`):
     },
     {
       "name": "CausalOps",
-      "status": "candidate",
+      "status": "live",
       "repo_root": "/home/anant_gupta/projects/hub/CausalOps",
       "mirror_path": "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/CausalOps",
-      "paths": [".claude/agents", ".claude/commands", ".claude/hooks", "CLAUDE.md"],
+      "paths": [".claude/agents", ".claude/commands", ".claude/hooks", "CLAUDE.md", "AGENTS.md"],
       "needs_fat": true
     },
     {
@@ -109,7 +114,7 @@ Two categories, and the classification decides one flag (`needs_fat`):
       "status": "candidate",
       "repo_root": "/home/anant_gupta/projects/hub/tradingview",
       "mirror_path": "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/Trading View",
-      "paths": [".claude/agents", ".claude/hooks", ".claude/skills", ".claude/settings.json", "CLAUDE.md"],
+      "paths": [".claude/agents", ".claude/hooks", ".claude/skills", ".claude/settings.json", "CLAUDE.md", "AGENTS.md"],
       "needs_fat": true
     },
     {
@@ -117,7 +122,7 @@ Two categories, and the classification decides one flag (`needs_fat`):
       "status": "candidate",
       "repo_root": "/home/anant_gupta/projects/hackathon/Resq",
       "mirror_path": "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/Resq",
-      "paths": [".claude/PRD.md", ".claude/README.md", ".claude/context", ".claude/playbooks", ".claude/decisions", ".claude/checklists"],
+      "paths": [".claude/PRD.md", ".claude/README.md", ".claude/context", ".claude/playbooks", ".claude/decisions", ".claude/checklists", "AGENTS.md"],
       "needs_fat": true
     },
     {
@@ -130,17 +135,23 @@ Two categories, and the classification decides one flag (`needs_fat`):
     },
     {
       "name": "Jarvis",
-      "status": "candidate",
+      "status": "live",
       "repo_root": "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis",
       "mirror_path": "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/Jarvis",
-      "paths": [".claude/agents", ".claude/commands", ".claude/skills", ".claude/context", ".claude/rules", ".claude/settings.json"],
-      "needs_fat": false
+      "paths": [".claude/agents", ".claude/commands", ".claude/skills", ".claude/context", ".claude/rules", ".claude/settings.json", "CLAUDE.md", "AGENTS.md"],
+      "needs_fat": true
     }
   ]
 }
 ```
 
-Note `.claude/settings.local.json` is excluded from every entry's `paths` list on purpose (machine-local, never meant to travel), and Portfolio's `scheduled_tasks.lock` is excluded because it's runtime state, not configuration — neither belongs in a `paths` list even though they physically live inside the source `.claude/` folder.
+Note `.claude/settings.local.json` is excluded from every entry's `paths` list on purpose (machine-local, never meant to travel), and Portfolio's `scheduled_tasks.lock` is excluded because it's runtime state, not configuration — neither belongs in a `paths` list even though they physically live inside the source `.claude/` folder. `AGENTS.md` was added 2026-08-10 to every project confirmed to have one at its root (CausalOps, Trading View, Resq, Jarvis) — the original draft above only carried `CLAUDE.md`.
+
+**Executed 2026-08-10:** `second-brain-claudekit`, `CausalOps`, `Jarvis`, and a new `.claude_windows` home-directory entry are all live, running on one Windows Scheduled Task (`ClaudeKit-Sync-All`, 15-minute interval, invokes `wsl.exe` directly with no VBS wrapper — see `_docs/Sync.md`'s newest amendment for why that matters). `needs_fat` turned out to be `true` for Jarvis too, not `false` as originally guessed here — both replicas are DrvFs from the executing WSL process's point of view regardless of both being Windows-native paths on the same drive; confirmed empirically, not assumed. Every one of the three newly-onboarded entries had its flat, hand-copied mirror folder wiped and rebuilt from a fresh sync, and every direction plus a real conflict was tested on each before trusting it. Full verification detail lives in each project's own `Setup.md`. Portfolio, Trading View, Resq, and OpsPilot remain `candidate` — next in line.
+
+**Naming, decided 2026-08-10, reversing an earlier direction:** every mirror keeps the literal `.claude/` folder name — no rename to a visible-in-Obsidian name (`Da Shit/` or otherwise) for any project, ever. Full reasoning lives in `second-brain-claudekit/_docs/Sync.md`'s 2026-08-10 amendment; the short version is that a rename step is one more thing a manifest-driven script across N projects has to get right every run, and Obsidian hiding dot-folders from its sidebar is an accepted tradeoff, not a problem worth engineering around. Each project's mirror folder additionally carries a `Setup.md`, written and maintained entirely from the Jarvis side — permanently excluded from every `paths` list above, in either direction. It describes what's actually in that project's mirror for a Jarvis reader; nothing in it is derived from or fed back into the source repo.
+
+**Home directories (`~/.claude` WSL ↔ `C:\Users\Anant Gupta\.claude` Windows) are a separate, later phase from the per-project rollout above**, decided 2026-08-10, not yet built — full scope in `second-brain-claudekit/_docs/Sync.md`'s second 2026-08-10 amendment and `_docs/Design.md`'s matching amendment: sync only `agents/`, `commands/`, `skills/`, `hooks/`, `CLAUDE.md`, hard-exclude all credentials/MCP-secrets/session state, two physical directories kept (never merged into one — the same corruption-risk reasoning as the live-project-link rejection above, at a larger scale since both homes are read/written by a live session constantly). `.claude_windows/`/`.claude_wsl/` in this vault are retired as sync targets — both currently hold a live `.credentials.json` each — and need rebuilding clean before either can be a real mirror.
 
 **Driver script** (`sync-all.sh`, replacing direct calls to `sync-jarvis.sh`):
 - Reads the manifest, skips any entry whose `status` isn't `live`.

@@ -1,8 +1,40 @@
 {
   "recentFiles": [
     {
+      "basename": "Claude Code",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Claude Code.md"
+    },
+    {
+      "basename": "What Skills",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Skills/What Skills.md"
+    },
+    {
+      "basename": "Github Skills",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Skills/Github Skills.md"
+    },
+    {
+      "basename": "Claude Council (LLM Council Skill Install)",
+      "path": "20_Progress/Projects/AI Use/Builds & Resources/Claude Council (LLM Council Skill Install).md"
+    },
+    {
+      "basename": "00_Execution",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
+    },
+    {
+      "basename": "_Notes Created From Ingestion",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/_Notes Created From Ingestion.md"
+    },
+    {
       "basename": "Internship Pipeline - Design Rationale",
       "path": "30_Order/Workflows/Internship Pipeline - Design Rationale.md"
+    },
+    {
+      "basename": "2026-08-10",
+      "path": "10_Areas/Life/Enumerate/Daily/2026-08-10.md"
+    },
+    {
+      "basename": "Jarvis OS Dashboard",
+      "path": "10_Areas/Jarvis OS Dashboard.canvas"
     },
     {
       "basename": "For AI",
@@ -167,38 +199,6 @@
     {
       "basename": "What Commands",
       "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Commands/What Commands.md"
-    },
-    {
-      "basename": "What Hooks",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Hooks/What Hooks.md"
-    },
-    {
-      "basename": "What Skills",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Skills/What Skills.md"
-    },
-    {
-      "basename": "Github Skills",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Skills/Github Skills.md"
-    },
-    {
-      "basename": "What MCPs",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/MCPs/What MCPs.md"
-    },
-    {
-      "basename": "How to Use Agents",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Agents/How to Use Agents.md"
-    },
-    {
-      "basename": "How to Use Commands",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Commands/How to Use Commands.md"
-    },
-    {
-      "basename": "How to Use Hooks",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Hooks/How to Use Hooks.md"
-    },
-    {
-      "basename": "How to Use MCPs",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/MCPs/How to Use MCPs.md"
     }
   ],
   "omittedPaths": [],
