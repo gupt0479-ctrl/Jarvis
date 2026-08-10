@@ -65,7 +65,7 @@ This note is not a copy of either source file — copying both into the vault ve
 ## Evidence From This Vault
 - [[Ubuntu - WSL]] — the WSL mental model this setup depends on
 - [[Jarvis MCP and REST API Setup]] — the subsystem neither source file documents well
-- [[MCPs]] — older, generic MCP brainstorm note from the Cursor era; superseded by the note above for this vault's actual Jarvis/The Plan wiring
+- [[What MCPs]] — older, generic MCP brainstorm note from the Cursor era; superseded by the note above for this vault's actual Jarvis/The Plan wiring
 ## Flashcards
 Where does the WSL2 `memory=` resource cap actually go — `/etc/wsl.conf` or `.wslconfig`?::`%UserProfile%\.wslconfig`. `/etc/wsl.conf` has no `[wsl2]` section, so a memory/processors line there is silently ignored. This is the exact bug from the old machine.
 #cards/laptop

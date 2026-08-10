@@ -7,10 +7,10 @@ source_url: gpt
 related_progress:
   - "[[Gen AI Meeting]]"
   - "[[Gen AI Roadmap]]"
-  - "[[MCPs]]"
+  - "[[What MCPs]]"
 tags:
   - input
-next: "[[MCPs]]"
+next: "[[What MCPs]]"
 ---
 # AI Workflow Implementation Plan
 Based on your current subscriptions, learning goals, and the Gen AI Mastermind curriculum, here's a comprehensive workflow designed for a CS student aspiring to become an AI/ML engineer.

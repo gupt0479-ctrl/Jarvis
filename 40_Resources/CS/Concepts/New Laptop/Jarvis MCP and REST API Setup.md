@@ -15,7 +15,7 @@ evidence: []
 tags:
   - concept
 related:
-  - "[[MCPs]]"
+  - "[[What MCPs]]"
   - "[[New Laptop Setup]]"
 ---
 # Jarvis MCP and REST API Setup
@@ -32,7 +32,7 @@ related:
 2. `D:\Users\_Anant\10_Areas\Documents\Jarvis\.mcp.json` — a second, project-local config that only applies when Claude Code's working directory is inside the vault. It uses a different package (`uvx mcp-obsidian`) instead of a direct HTTP call, and defaults `OBSIDIAN_PORT` to `27124` — that is The Plan's port, not Jarvis's `27123`. It also defines `git`, `fetch`, and a custom `jarvis-memory` Python server (`30_Order/System/jarvis-memory/server.py`) that the other two configs never mention.
 3. WSL `~/.mcp.json` — does not exist. A Claude Code session started from WSL has none of this wired up. Even if it inherited the project-local config above, that config's filesystem path is a Windows-style string (`D:\Users\_Anant\...`, backslashes) handed to a Linux-side `npx` process, which cannot resolve it.
 ## Contrast / What It Is Not
-This is not the same note as [[MCPs]], the older Cursor-era brainstorm. That note explains MCP as a general concept — transports, security notes, generic server categories — and never once names Jarvis's actual ports, keys, or config files. This note documents what is wired up on this specific machine, not what MCP is in the abstract.
+This is not the same note as [[What MCPs]], the older Cursor-era brainstorm. That note explains MCP as a general concept — transports, security notes, generic server categories — and never once names Jarvis's actual ports, keys, or config files. This note documents what is wired up on this specific machine, not what MCP is in the abstract.
 ## Failure Modes / Misconceptions
 > [!WARNING]
 > Assuming `jarvis` and `jarvis-fs` are redundant and only one is needed. Close Obsidian and the HTTP path goes dark while the filesystem path keeps working; ask for a tag search or a command run and the filesystem path simply can't do it.
@@ -54,7 +54,7 @@ This is not the same note as [[MCPs]], the older Cursor-era brainstorm. That not
 ## Evidence From This Vault
 - the `mcp__jarvis__*`, `mcp__jarvis-fs__*`, `mcp__the-plan__*`, `mcp__the-plan-fs__*` tool families available in any Claude Code session — direct proof the dual-path setup is real
 - `D:\Users\_Anant\10_Areas\Documents\Jarvis\.mcp.json` — the project-local config with the port mismatch
-- [[MCPs]] — the older, generic note this one supersedes for Jarvis-specific wiring
+- [[What MCPs]] — the older, generic note this one supersedes for Jarvis-specific wiring
 ## Flashcards
 Why do `jarvis` and `jarvis-fs` both exist for the same vault?::`jarvis` (HTTP) is Obsidian-app-aware — search, tags, commands — but needs Obsidian running. `jarvis-fs` (filesystem) always works but is just file read/write with no app awareness. Neither replaces the other.
 #cards/laptop

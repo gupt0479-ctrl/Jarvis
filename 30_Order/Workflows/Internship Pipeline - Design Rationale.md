@@ -13,7 +13,7 @@ notes:
   - "[[Source of Truth]]"
 next:
 ---
-# Internship Pipeline — Design Rationale
+# Internship Pipeline - Design Rationale
 ==Why each piece of [[30_Order/Workflows/Internship Pipeline]] is shaped the way it is, and exactly what has to be true for a real internship to move from one stage to the next.== The Pipeline note is the lean operating procedure — what to do. This note is *why*, and *under what condition each transition actually fires*. Read this when a step feels arbitrary or when deciding whether to bend a rule.
 ## Why A Dossier Looks The Way It Does
 A dossier exists to make a 60-second decision possible without visiting the actual posting. That's the entire design constraint behind every choice in it:

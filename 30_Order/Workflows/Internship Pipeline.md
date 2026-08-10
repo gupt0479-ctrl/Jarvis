@@ -12,7 +12,7 @@ notes:
   - "[[00_Workflows Index]]"
   - "[[40_Resources/Obsidian/Jarvis Vault Architecture]]"
   - "[[10_Areas/Career/Internships/Internships Hub]]"
-  - "[[Internship Pipeline — Design Rationale]]"
+  - "[[Internship Pipeline - Design Rationale]]"
 next:
 ---
 # Internship Pipeline

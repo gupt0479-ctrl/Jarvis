@@ -437,6 +437,6 @@ Start with Matt Pocock's skills because they are compact and directly aimed at t
 - [[Code Architecture]]
 - [[Codex]]
 - [[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Claude Code]]
-- [[Cursor]]
+- [[10_Areas/AI/Cursor]]
 - [[Kiro]]
 

@@ -20,7 +20,7 @@ Modeled after the [[BOOM Board]]. Curated sequences for reviewing AI concepts at
 
 These are the load-bearing ideas. If you can't explain these, the rest doesn't hold.
 
-- [[MCPs]]
+- [[What MCPs]]
 - [[Gen AI Roadmap]]
 - [[AI Workflow]]
 - [[10_Areas/AI/Claude Code]]
@@ -40,13 +40,13 @@ Adjacent concepts that are easy to confuse. Review these in pairs, not isolation
 ## 30-Minute Refresher
 
 1. [[Gen AI Roadmap]]
-2. [[MCPs]]
+2. [[What MCPs]]
 3. [[AI Workflow]]
 
 ## 2-Hour Technical Refresher
 
 1. [[Gen AI Roadmap]]
-2. [[MCPs]]
+2. [[What MCPs]]
 3. [[10_Areas/AI/Claude Code]]
 4. [[AI Workflow]]
 5. [[Cursor AI]]

@@ -5,7 +5,7 @@ status: sprout
 mastery (1/10): 2
 created: 2026-03-07
 topics:
-  - "[[MCPs]]"
+  - "[[What MCPs]]"
   - "[[AI Workflow]]"
 related:
   - "[[Gen AI Meeting]]"

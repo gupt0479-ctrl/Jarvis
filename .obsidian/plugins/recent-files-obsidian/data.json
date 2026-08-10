@@ -1,156 +1,64 @@
 {
   "recentFiles": [
     {
-      "basename": "Gaps",
-      "path": "10_Areas/AI/Gaps.md"
+      "basename": "Internship Pipeline - Design Rationale",
+      "path": "30_Order/Workflows/Internship Pipeline - Design Rationale.md"
     },
     {
-      "basename": "Jarvis OS Dashboard",
-      "path": "10_Areas/Jarvis OS Dashboard.canvas"
+      "basename": "For AI",
+      "path": "30_Order/Templates/Frontmatter/For AI.md"
     },
     {
-      "basename": "2026-08-10",
-      "path": "10_Areas/Life/Enumerate/Daily/2026-08-10.md"
+      "basename": "The AI Hub",
+      "path": "20_Progress/Projects/AI Use/The AI Hub.md"
     },
     {
-      "basename": "Untitled Kanban",
-      "path": "Untitled Kanban.md"
+      "basename": "Field OS Template",
+      "path": "30_Order/Templates/Capability/Field OS Template.md"
     },
     {
-      "basename": "Claude OS Dashboard",
-      "path": "20_Progress/AI/Claude OS Dashboard.canvas"
+      "basename": "Monthly Synthesis Template",
+      "path": "30_Order/Templates/Capability/Monthly Synthesis Template.md"
     },
     {
-      "basename": "Links",
-      "path": "40_Resources/UMN/Links.md"
+      "basename": "Weekly Synthesis Template",
+      "path": "30_Order/Templates/Capability/Weekly Synthesis Template.md"
     },
     {
-      "basename": "Fall 2026 Plan",
-      "path": "10_Areas/Life/Plans/Fall 2026/Fall 2026 Plan.md"
+      "basename": "Synthesis Template",
+      "path": "30_Order/Templates/Capability/Synthesis Template.md"
     },
     {
-      "basename": "00_Dashboard",
-      "path": "00_Dashboard.md"
+      "basename": "Question Bank Template",
+      "path": "30_Order/Templates/Capability/Question Bank Template.md"
     },
     {
-      "basename": "UMN Board",
-      "path": "20_Progress/Degree/UMN Board.md"
+      "basename": "Output Template",
+      "path": "30_Order/Templates/Capability/Output Template.md"
     },
     {
-      "basename": "Final Month Plan (Jul 28 - Sep 1)",
-      "path": "10_Areas/Life/Plans/Summer 2026/Final Month Plan (Jul 28 - Sep 1).md"
+      "basename": "MOC Template",
+      "path": "30_Order/Templates/Capability/MOC Template.md"
     },
     {
-      "basename": "Folder Map",
-      "path": "10_Areas/AI/Folder Map.md"
+      "basename": "Deep Dive Template",
+      "path": "30_Order/Templates/Capability/Deep Dive Template.md"
     },
     {
-      "basename": "Repos",
-      "path": "40_Resources/CS/Repos.md"
+      "basename": "Depth Ladder Template",
+      "path": "30_Order/Templates/Capability/Depth Ladder Template.md"
     },
     {
-      "basename": "GitHub Ingestion Implementation",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/GitHub Ingestion Implementation.md"
+      "basename": "Source Summary Standard",
+      "path": "30_Order/Standards/Source Summary Standard.md"
     },
     {
-      "basename": "Tool Map",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Tool Map.md"
+      "basename": "Review Standard",
+      "path": "30_Order/Standards/Review Standard.md"
     },
     {
-      "basename": "Build Map",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Build Map.md"
-    },
-    {
-      "basename": "Prompts",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Claude Code/Prompts.md"
-    },
-    {
-      "basename": "Overview",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Overview.md"
-    },
-    {
-      "basename": "Claude OS Map",
-      "path": "10_Areas/AI/Claude OS Map.excalidraw"
-    },
-    {
-      "basename": "trace",
-      "path": "20_Progress/AI/Claude Code/second-brain-claudekit/Da Shit/commands/trace.md"
-    },
-    {
-      "basename": "Maverick Skills Analysis - Cross-Reference with GitHub Repos",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Maverick Skills Analysis - Cross-Reference with GitHub Repos.md"
-    },
-    {
-      "basename": "Hermes Agent — Trading & Alert System (Distilled)",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Hermes Agent — Trading & Alert System (Distilled).md"
-    },
-    {
-      "basename": "Claude Council (LLM Council Skill Install)",
-      "path": "20_Progress/Projects/AI Use/Builds & Resources/Claude Council (LLM Council Skill Install).md"
-    },
-    {
-      "basename": "Claude Kit Implementation",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Claude Kit Implementation.md"
-    },
-    {
-      "basename": "Model Distillation",
-      "path": "20_Progress/Projects/AI Use/Builds & Resources/Model Distillation.md"
-    },
-    {
-      "basename": "Maverick Skills Mode-to-Repo Mapping",
-      "path": "20_Progress/Projects/AI Use/Builds & Resources/Maverick Skills Mode-to-Repo Mapping.md"
-    },
-    {
-      "basename": "Hermes Agent Framework — Corrected Framing",
-      "path": "20_Progress/Projects/AI Use/Builds & Resources/Hermes Agent Framework — Corrected Framing.md"
-    },
-    {
-      "basename": "Code Review & Eval Gap",
-      "path": "20_Progress/Projects/AI Use/Builds & Resources/Code Review & Eval Gap.md"
-    },
-    {
-      "basename": "Claude OS Dashboard",
-      "path": "20_Progress/AI/Claude OS Dashboard.md"
-    },
-    {
-      "basename": "Gen AI Meeting",
-      "path": "40_Resources/CS/AI/Gen AI Meeting.md"
-    },
-    {
-      "basename": "AI Workflow",
-      "path": "40_Resources/CS/AI/Workflows/AI Workflow.md"
-    },
-    {
-      "basename": "Claude Code",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Claude Code.md"
-    },
-    {
-      "basename": "Web Ingestion Implementation",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/Web Ingestion Implementation.md"
-    },
-    {
-      "basename": "00_Execution",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
-    },
-    {
-      "basename": "_Notes Created From Ingestion",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/_Notes Created From Ingestion.md"
-    },
-    {
-      "basename": "Useful Repos - Shortlist",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/Useful Repos - Shortlist.md"
-    },
-    {
-      "basename": "How Anant Uses Each Repo",
-      "path": "60_Claude/10_Source_Summaries/Github Ingestion/How Anant Uses Each Repo.md"
-    },
-    {
-      "basename": "PDF's Ingestion Implementation",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/PDF's Ingestion Implementation.md"
-    },
-    {
-      "basename": "2026-07-14 Mentor Meeting — Actions",
-      "path": "20_Progress/Mentorship Program/Meetings/Action/2026-07-14 Mentor Meeting — Actions.md"
+      "basename": "Project Standard",
+      "path": "30_Order/Standards/Project Standard.md"
     },
     {
       "basename": "MOC Standard",
@@ -161,44 +69,136 @@
       "path": "30_Order/Standards/Internship Notes Standard.md"
     },
     {
-      "basename": "Concept Standard",
-      "path": "30_Order/Standards/Concept Standard.md"
-    },
-    {
-      "basename": "Course Week Standard",
-      "path": "30_Order/Standards/Course Week Standard.md"
+      "basename": "Evergreen Standard",
+      "path": "30_Order/Standards/Evergreen Standard.md"
     },
     {
       "basename": "Daily Workflow Standard",
       "path": "30_Order/Standards/Daily Workflow Standard.md"
     },
     {
-      "basename": "Evergreen Standard",
-      "path": "30_Order/Standards/Evergreen Standard.md"
+      "basename": "Course Week Standard",
+      "path": "30_Order/Standards/Course Week Standard.md"
     },
     {
-      "basename": "Mentorship Board",
-      "path": "20_Progress/Mentorship Program/Mentorship Board.md"
+      "basename": "Concept Standard",
+      "path": "30_Order/Standards/Concept Standard.md"
     },
     {
-      "basename": "Elevator pitch",
-      "path": "20_Progress/Internship/Preperation/Communication/Elevator pitch.md"
+      "basename": "Brief Standard",
+      "path": "30_Order/Standards/Brief Standard.md"
     },
     {
-      "basename": "Plan",
-      "path": "20_Progress/Mentorship Program/Plans/Plan.md"
+      "basename": "Action Standard",
+      "path": "30_Order/Standards/Action Standard.md"
     },
     {
-      "basename": "Process and CI Gaps",
-      "path": "20_Progress/Mentorship Program/adx/Codebase/Process and CI Gaps.md"
+      "basename": "For Brainstorm",
+      "path": "30_Order/Templates/Frontmatter/For Brainstorm.md"
     },
     {
-      "basename": "Dead-on-Arrival Code",
-      "path": "20_Progress/Mentorship Program/adx/Codebase/Dead-on-Arrival Code.md"
+      "basename": "For Classes",
+      "path": "30_Order/Templates/Frontmatter/For Classes.md"
     },
     {
-      "basename": "Competitive Positioning",
-      "path": "20_Progress/Mentorship Program/adx/Codebase/Competitive Positioning.md"
+      "basename": "For Evergreen",
+      "path": "30_Order/Templates/Frontmatter/For Evergreen.md"
+    },
+    {
+      "basename": "For Everything",
+      "path": "30_Order/Templates/Frontmatter/For Everything.md"
+    },
+    {
+      "basename": "For Progress",
+      "path": "30_Order/Templates/Frontmatter/For Progress.md"
+    },
+    {
+      "basename": "For Inputs",
+      "path": "30_Order/Templates/Frontmatter/For Inputs.md"
+    },
+    {
+      "basename": "For Transcript",
+      "path": "30_Order/Templates/Frontmatter/For Transcript.md"
+    },
+    {
+      "basename": "For Thoughts",
+      "path": "30_Order/Templates/Frontmatter/For Thoughts.md"
+    },
+    {
+      "basename": "Tracking Template",
+      "path": "30_Order/Templates/Career/Tracking Template.md"
+    },
+    {
+      "basename": "Program Template",
+      "path": "30_Order/Templates/Career/Program Template.md"
+    },
+    {
+      "basename": "Plan Template",
+      "path": "30_Order/Templates/Career/Plan Template.md"
+    },
+    {
+      "basename": "List Monthly Log Template",
+      "path": "30_Order/Templates/Career/List Monthly Log Template.md"
+    },
+    {
+      "basename": "Clipping Distill Template",
+      "path": "30_Order/Templates/Capability/Clipping Distill Template.md"
+    },
+    {
+      "basename": "Review System",
+      "path": "10_Areas/AI/Setup/Review System.md"
+    },
+    {
+      "basename": "Tool Map",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Tool Map.md"
+    },
+    {
+      "basename": "Overview",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Overview.md"
+    },
+    {
+      "basename": "Cursor",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Cursor.md"
+    },
+    {
+      "basename": "What Agents",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Agents/What Agents.md"
+    },
+    {
+      "basename": "What Commands",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Commands/What Commands.md"
+    },
+    {
+      "basename": "What Hooks",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Hooks/What Hooks.md"
+    },
+    {
+      "basename": "What Skills",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Skills/What Skills.md"
+    },
+    {
+      "basename": "Github Skills",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Skills/Github Skills.md"
+    },
+    {
+      "basename": "What MCPs",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/MCPs/What MCPs.md"
+    },
+    {
+      "basename": "How to Use Agents",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Agents/How to Use Agents.md"
+    },
+    {
+      "basename": "How to Use Commands",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Commands/How to Use Commands.md"
+    },
+    {
+      "basename": "How to Use Hooks",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Hooks/How to Use Hooks.md"
+    },
+    {
+      "basename": "How to Use MCPs",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/MCPs/How to Use MCPs.md"
     }
   ],
   "omittedPaths": [],

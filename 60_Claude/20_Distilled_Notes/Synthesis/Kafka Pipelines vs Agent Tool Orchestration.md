@@ -8,7 +8,7 @@ tags:
   - synthesis
 concepts:
   - "[[Kafka Redis and Workers]]"
-  - "[[MCPs]]"
+  - "[[What MCPs]]"
 tracks:
   - systems
   - ai

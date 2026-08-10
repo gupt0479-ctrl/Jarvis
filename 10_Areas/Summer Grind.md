@@ -31,7 +31,7 @@ This summer is not a list of outcomes. [[Atomic Habits]] instead of motivation. 
 	- Link the money side to [[Stocks]] so investing stays separate from short-term trading experiments.
 2. **Arc (Learning Tracker)**
 	*System*: [[Arc (Learning Tracker)]] becomes the flagship full-stack + GenAI project if chosen for the summer. It should prove product engineering: auth, database schema, tracked sessions, weekly recap, RAG tutor, deployment, and polish.
-	- **Interlinks:** connect implementation decisions to [[AI Workflow]], [[MCPs]], [[Gen AI Roadmap]], [[Portfolio]], and [[Engineer Edge Roadmap]].
+	- **Interlinks:** connect implementation decisions to [[AI Workflow]], [[What MCPs]], [[Gen AI Roadmap]], [[Portfolio]], and [[Engineer Edge Roadmap]].
 3. **Jarvis**
 	*System*: Jarvis is the operations layer for the vault, not a random AI toy. Keep it tied to [[Jarvis Control Center]], [[Jarvis Operating Rules]], [[Jarvis System Status]], [[Jarvis Capability Register]], and [[AI AGENT]].
 	- **Obvious:** weekly Jarvis review opens the control center and asks: what capability actually saved time this week?

@@ -12,7 +12,7 @@ output_kind: project-brief
 source_concepts:
   - "[[Observability and Tracing]]"
   - "[[Kafka Redis and Workers]]"
-  - "[[MCPs]]"
+  - "[[What MCPs]]"
 ---
 # Observability-First ML Pipeline Brief
 ## Problem

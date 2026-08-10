@@ -66,7 +66,7 @@ You already have a hint of this in your planning: build weekly recaps from notes
   - Output: weekly review note with themes, wins, failures, next week focus (and links)
 
 ### Phase 3 (Connectors/MCP): Give the agent safe “hands”
-Your [[MCPs]] note is basically your roadmap: filesystem MCP, git MCP, GitHub MCP, and an “Obsidian second brain manager” that updates notes carefully and tracks changes.[^8]
+Your [[What MCPs]] note is basically your roadmap: filesystem MCP, git MCP, GitHub MCP, and an “Obsidian second brain manager” that updates notes carefully and tracks changes.[^8]
 
 **How to implement safely:**
 - Start with the **Obsidian-aware toolset** you described (search/read/create/append), but restrict behavior:
@@ -97,7 +97,7 @@ If you later productize it, you already sketched a related direction: an AI-powe
 
 ## What I can do next (pick one)
 - Write a concrete “Jarvis Operating Manual” note: roles, pipelines, templates, and review workflow (based strictly on the patterns in your notes).  
-- Draft the specification for your “Obsidian Second Brain Manager MCP” (inputs/outputs, allowed operations, change tracking), based on your [[MCPs]] description.[^8]  
+- Draft the specification for your “Obsidian Second Brain Manager MCP” (inputs/outputs, allowed operations, change tracking), based on your [[What MCPs]] description.[^8]  
 - Turn your Obsidian-aware prompt (the `obsidian-aware.md` concept) into a finalized standard prompt + checklist you can reuse across Claude/ChatGPT/Ollama.[^6]
 
 #### Sources
@@ -108,7 +108,7 @@ If you later productize it, you already sketched a related direction: an AI-powe
 [^5]: [[AI Workflow]]
 [^6]: [[Claude_Code_with_Obsidian_Integration@20260331_211446]]
 [^7]: [[Gen AI Meeting]]
-[^8]: [[MCPs]]
+[^8]: [[What MCPs]]
 [^9]: [[AI Workflow]]
 [^10]: [[AI Workflow]]
 [Timestamp: 2026/04/23 20:39:43]
@@ -128,7 +128,7 @@ notes:
 - "[[Gen AI Meeting]]"
 - "[[Claude_Code_with_Obsidian_Integration@20260331_211446]]"
 - "[[AI_Second_Brain_Vault_Structure@20260423_203909]]"
-next: "[[MCPs]]"
+next: "[[What MCPs]]"
 ---
 
 # Jarvis Operating Manual (AI-Optimized Vault)

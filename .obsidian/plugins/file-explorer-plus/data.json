@@ -675,6 +675,62 @@
         "type": "FILES",
         "pattern": "10_Areas/AI/Claude OS Map.excalidraw",
         "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "10_Areas/AI/Setup/Gaps.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Skills/How to Use Skills.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/MCPs/How to Use MCPs.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Hooks/How to Use Hooks.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Commands/How to Use Commands.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Agents/How to Use Agents.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "20_Progress/Projects/AI Use/Claude Kit/Tool Map.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "20_Progress/Projects/AI Use/Claude Kit/Overview.md",
+        "patternType": "STRICT"
       }
     ],
     "frontMatter": [

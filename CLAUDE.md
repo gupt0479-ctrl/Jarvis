@@ -13,7 +13,7 @@ related_progress:
   - "[[Claude Pro Workflow]]"
   - "[[40_Resources/CS/Links|Links]]"
   - "[[10_Areas/AI/Claude Code]]"
-  - "[[MCPs]]"
+  - "[[What MCPs]]"
   - "[[Claude Board]]"
   - "[[HUMAN_WRITING]]"
 ---

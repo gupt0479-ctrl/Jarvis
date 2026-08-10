@@ -46,6 +46,6 @@ This is not bad. It means the vault has enough structure to produce an actual wo
 ## Next
 
 - Enrich the top CSCI 2041 queue: [[OCaml - Polymorphism]], [[OCaml - Tautology Problems]], [[OCaml - Pattern Matching]].
-- Enrich AI infrastructure notes: [[10_Areas/AI/Claude Code]], [[MCPs]], [[AI Workflow]].
+- Enrich AI infrastructure notes: [[10_Areas/AI/Claude Code]], [[What MCPs]], [[AI Workflow]].
 - Add a later `enrich-report` command if the queue needs its own generated report separate from ops health.
 

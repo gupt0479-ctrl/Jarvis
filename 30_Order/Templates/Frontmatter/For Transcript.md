@@ -1,7 +1,7 @@
 ---
 type: input
 status: seed
-created: <% tp.date.now("YYYY-MM-DD") %>
+created:
 input_kind: transcript
 source_url:
 related_progress: []

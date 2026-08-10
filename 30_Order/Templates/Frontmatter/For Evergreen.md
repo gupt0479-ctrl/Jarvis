@@ -1,8 +1,8 @@
 ---
 type: evergreen
 status: sprout
-created: <% tp.date.now("YYYY-MM-DD") %>
-updated: <% tp.date.now("YYYY-MM-DD") %>
+created:
+updated:
 tags:
   - evergreen
 notes: []

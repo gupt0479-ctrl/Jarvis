@@ -13,7 +13,7 @@ notes:
   - "[[AI_CONTEXT]]"
   - "[[40_Resources/Obsidian/Vault Operating System]]"
   - "[[AI Workflow]]"
-  - "[[MCPs]]"
+  - "[[What MCPs]]"
   - "[[40_Resources/Capability/Capability Engine Guide]]"
   - "[[60_Claude/40_Project_Briefs/40_Project_Briefs Board]]"
 next: Build Phase 1 conversation registry, context pack builder, and promotion manifest.

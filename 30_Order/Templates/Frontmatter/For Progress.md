@@ -1,13 +1,13 @@
 ---
 type: project
-status: active  # active | paused | complete | archived
-created: <% tp.date.now("YYYY-MM-DD") %>
-updated: <% tp.date.now("YYYY-MM-DD") %>
+status: active
+created:
+updated:
 deadline:
 related_progress: []
 tags:
   - "#progress"
-next:  # the single next move — also stated in ## Next Action
+next:
 ---
 # <% tp.file.title %>
 
