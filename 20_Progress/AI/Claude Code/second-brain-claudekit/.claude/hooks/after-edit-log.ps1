@@ -1,4 +1,4 @@
-#!/usr/bin/env pwsh
+﻿#!/usr/bin/env pwsh
 # after-edit-log.ps1
 # PostToolUse hook — logs every file edit to 60_Claude/Sessions/_today-edits.md
 # Claude Code passes tool context as environment variables.
@@ -7,7 +7,7 @@ param()
 
 # Resolve vault root (two levels up from .claude/hooks/)
 $vaultRoot = $PSScriptRoot | Split-Path -Parent | Split-Path -Parent
-$sessionDir = Join-Path $vaultRoot "60_Claude" "Sessions"
+$sessionDir = Join-Path $vaultRoot "60_Claude/Sessions"
 $logFile    = Join-Path $sessionDir "_today-edits.md"
 
 # Ensure sessions directory exists

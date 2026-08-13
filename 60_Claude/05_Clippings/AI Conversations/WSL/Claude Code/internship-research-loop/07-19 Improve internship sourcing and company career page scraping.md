@@ -7,7 +7,7 @@ title: "Improve internship sourcing and company career page scraping"
 started_at: 2026-07-19T09:26:11
 ended_at: 2026-07-25T11:27:03
 duration_minutes: 8761
-exported_at: 2026-07-30T16:47:46.9270578+04:00
+exported_at: 2026-08-11T12:13:12
 project: internship-research-loop
 cwd: '/home/anant_gupta/projects/work/internship-research-loop'
 session_id: 156d5c7d-7e03-456a-8148-6da71f1883c6

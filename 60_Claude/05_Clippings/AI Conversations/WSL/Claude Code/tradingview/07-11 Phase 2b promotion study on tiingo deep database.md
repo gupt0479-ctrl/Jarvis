@@ -7,12 +7,12 @@ title: "Phase 2b promotion study on tiingo deep database"
 started_at: 2026-07-11T14:41:48
 ended_at: 2026-07-11T17:25:50
 duration_minutes: 164
-exported_at: 2026-07-30T16:47:46.9270578+04:00
+exported_at: 2026-08-11T12:13:12
 project: tradingview
 cwd: '/home/anant_gupta/projects/hub/tradingview'
 session_id: b5fdb822-238e-4503-9f0c-fd59668c4312
 status: raw
-turn_count: 7
+turn_count: 9
 tools_used:
   Bash: 35
   Edit: 21
@@ -325,16 +325,6 @@ Decision recorded: `promote (unproven → demo_eligible)`. Verifying the persist
 Now updating the DoD checkboxes in the solution design with measured results:
 
 Docs are written. Running the guardrail sweep on the working tree while the full test suite finishes:
-
-**GO — the desk is real. All four gates executed and PASSED on real tiingo bars at unchanged defaults, the strategy beat VOO over the same window, and `[REDACTED]` is now recorded as `demo_eligible` by `anant`. Everything is committed green on `feat/phase2b-promotion-study` (`9c7ed91`); per the agreement I stopped there — you open the PR.**
-
-**The study, in numbers.** On 14 symbols × 1,511 tiingo sessions (2020-07-06 → 2026-07-10), the preflight showed R = 1,258 return sessions with all four gates executable and 5 walk-forward windows. The batch ran to completion: out-of-sample PASS, Monte Carlo PASS, walk-forward PASS (5/5 windows positive, pooled Sharpe 1.52 — each window also beat its VOO segment), deflated Sharpe PASS (0.9947 vs the 0.95 bar, with n_trials=1 so it reduces to plain PSR — no deflation credit taken). Strategy net of 5 bps/side: **+356.82% total, +35.57% annualized, Sharpe 1.14, max drawdown −33.46%**, versus **VOO +87.10%** same window. 34 rebalance trades, cumulative cost drag 1.18% of book, and **0 cash sessions** — the SEC fundamentals backfill kept 9/9 equities eligible at all 60 rebalances, so the cash-drag failure mode never appeared. Honest caveat (also in the artifact doc): this is one bull-heavy regime and one trial; the gates passing is evidence, not proof.
-
-**Artifact ids.** Decision `[REDACTED]` (promote, unproven → demo_eligible) on spec `[REDACTED]`; 4 TestRunRecords per batch (the `--record-decision` pass deterministically re-runs the study, so two identical batches are on record); 60 `holdings` journal entries (symbols/weights/as_of per rebalance) plus a replay exit carrying `voo_return_same_period` (NVDA +939.09% vs VOO +86.46%). Full stdout is saved verbatim in `Docs/[REDACTED].md`, and the solution-design DoD checkboxes are updated with measured results.
-
-**Code and hygiene.** F1 (`--source` → `price_source` → `get_price_frame(source=...)`, with a mixed-source test proving corruption fails loudly and the filtered study is bit-identical), F2 (depth preflight), and F3 (WF table, DSR intermediates, cash count, cross-section sizes, cost drag, holdings dump) landed with no changes to gate constants, hook math, or the universe. `pytest -q` is green at 473 passed (baseline 472 + the new F1 test), and the guardrail sweep is clean. One deliberate deviation: I added `--skip-paper` to the `--record-decision` pass so the journal artifact is written exactly once.
-
-Two asks: (1) push the branch and open the PR when you're ready (`git push origin feat/phase2b-promotion-study` — the commit is local-only right now); (2) the pre-study backup `data/market.duckdb.bak-phase2b-20260711` is sitting next to the live DB — say the word once the PR lands if you want it deleted, or keep it as the pre-promotion snapshot.
 
 **Tool calls:**
 
@@ -1804,6 +1794,43 @@ tail -5 Docs/fable5_run_memory.md
   zero model/store changes — smallest-diff wins.
   ```
 - `Skill` — `{"skill":"guardrail-check"}`
+
+## You
+
+Base directory for this skill: /home/anant_gupta/projects/hub/tradingview/.claude/skills/guardrail-check
+
+# guardrail-check
+
+Mechanical sweep for the hard rules in `design.md` ("Guardrails to Preserve", "Non-Goals") and `CLAUDE.md`. This is grep-based triage, not judgment — hand anything found to the `guardrail-auditor` agent (or the user) for a real review; don't silently fix or dismiss matches.
+
+## Checks to run
+
+1. **Execution / certainty language** in source, docstrings, CLI strings, fixtures, and Docs:
+   `grep -rniE "\b(buy now|sell now|guaranteed|risk-free|can't lose)\b" src/ tests/ Docs/ README.md CLAUDE.md 2>/dev/null`
+   Also check bare `\bBUY\b|\bSELL\b` outside of test names/comments discussing the *rule itself*.
+2. **Forbidden action labels** — any string literal that looks like an action/recommendation field should be one of `WATCH HOLD ACCUMULATE REDUCE AVOID INSUFFICIENT_DATA`. Grep for quoted action-like strings and check against this list.
+3. **Secrets** — `grep -rniE "(api[_-]?key|secret|token|password)\s*=\s*['\"][A-Za-z0-9]" src/ tests/ config/` and confirm no real-looking key material; confirm `.env` is listed in `.gitignore` and `git check-ignore .env` succeeds.
+4. **Banned dependencies** — check `pyproject.toml` / any `requirements*.txt` for broker/order-routing SDKs (e.g. `alpaca-trade-api`, `ib_insync`, `ccxt`) or options/futures/crypto-specific packages. None should be present in this phase.
+5. **Out-of-scope asset/venue paths** — grep for `intraday`, `tick`, `options`, `futures`, `crypto`, `margin`, `leverage`, `scrape` (case-insensitive) across `src/` and flag any hit for human review (some may be legitimate comments about what's excluded — read context before flagging).
+6. **LLM calls in the ingestion path** — grep `src/research_data/{models,config,storage,normalization,calendar,quality,read_api}.py` (and `cli.py`/`evidence.py`/`benchmark.py` once they exist) for `openai`, `anthropic`, `requests.post.*chat`, or similar — none should appear.
+
+Report every match with file:line and a one-line verdict (real violation / false positive with reason). End with a pass/fail summary.
+
+
+## Claude
+
+**GO — the desk is real. All four gates executed and PASSED on real tiingo bars at unchanged defaults, the strategy beat VOO over the same window, and `[REDACTED]` is now recorded as `demo_eligible` by `anant`. Everything is committed green on `feat/phase2b-promotion-study` (`9c7ed91`); per the agreement I stopped there — you open the PR.**
+
+**The study, in numbers.** On 14 symbols × 1,511 tiingo sessions (2020-07-06 → 2026-07-10), the preflight showed R = 1,258 return sessions with all four gates executable and 5 walk-forward windows. The batch ran to completion: out-of-sample PASS, Monte Carlo PASS, walk-forward PASS (5/5 windows positive, pooled Sharpe 1.52 — each window also beat its VOO segment), deflated Sharpe PASS (0.9947 vs the 0.95 bar, with n_trials=1 so it reduces to plain PSR — no deflation credit taken). Strategy net of 5 bps/side: **+356.82% total, +35.57% annualized, Sharpe 1.14, max drawdown −33.46%**, versus **VOO +87.10%** same window. 34 rebalance trades, cumulative cost drag 1.18% of book, and **0 cash sessions** — the SEC fundamentals backfill kept 9/9 equities eligible at all 60 rebalances, so the cash-drag failure mode never appeared. Honest caveat (also in the artifact doc): this is one bull-heavy regime and one trial; the gates passing is evidence, not proof.
+
+**Artifact ids.** Decision `[REDACTED]` (promote, unproven → demo_eligible) on spec `[REDACTED]`; 4 TestRunRecords per batch (the `--record-decision` pass deterministically re-runs the study, so two identical batches are on record); 60 `holdings` journal entries (symbols/weights/as_of per rebalance) plus a replay exit carrying `voo_return_same_period` (NVDA +939.09% vs VOO +86.46%). Full stdout is saved verbatim in `Docs/[REDACTED].md`, and the solution-design DoD checkboxes are updated with measured results.
+
+**Code and hygiene.** F1 (`--source` → `price_source` → `get_price_frame(source=...)`, with a mixed-source test proving corruption fails loudly and the filtered study is bit-identical), F2 (depth preflight), and F3 (WF table, DSR intermediates, cash count, cross-section sizes, cost drag, holdings dump) landed with no changes to gate constants, hook math, or the universe. `pytest -q` is green at 473 passed (baseline 472 + the new F1 test), and the guardrail sweep is clean. One deliberate deviation: I added `--skip-paper` to the `--record-decision` pass so the journal artifact is written exactly once.
+
+Two asks: (1) push the branch and open the PR when you're ready (`git push origin feat/phase2b-promotion-study` — the commit is local-only right now); (2) the pre-study backup `data/market.duckdb.bak-phase2b-20260711` is sitting next to the live DB — say the word once the PR lands if you want it deleted, or keep it as the pre-promotion snapshot.
+
+**Tool calls:**
+
 - `Bash`:
   ```bash
 cd /home/anant_gupta/projects/hub/tradingview

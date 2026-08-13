@@ -7,7 +7,7 @@ title: "gsap-draggable-inertia-autoplay"
 started_at: 2026-07-24T20:26:14
 ended_at: 2026-07-24T20:51:29
 duration_minutes: 25
-exported_at: 2026-07-30T16:47:46.9270578+04:00
+exported_at: 2026-08-11T12:13:12
 project: portfolio
 cwd: '/home/anant_gupta/projects/hub/portfolio'
 session_id: a4bdc954-8d03-4c75-b84c-b8d1a7c11c0d

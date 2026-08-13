@@ -5,14 +5,14 @@ source_app: claude-code
 source_os: windows
 title: "Design internship tracking and research loop system"
 started_at: 2026-07-25T18:46:03
-ended_at: 2026-07-30T18:30:14
-exported_at: 2026-07-31T21:03:03
-duration_minutes: 7184.2
+ended_at: 2026-08-01T14:01:45
+exported_at: 2026-08-11T13:34:17
+duration_minutes: 9795.7
 project: Jarvis
 cwd: 'D:\Users\_Anant\10_Areas\Documents\Jarvis'
 session_id: 39500f4c-c106-4c38-a454-833438422103
 status: raw
-turn_count: 36
+turn_count: 38
 tools_used:
   AskUserQuestion: 2
   Bash: 79
@@ -7202,6 +7202,169 @@ Tests: a dossier's rendered frontmatter contains both the MOC link and a correct
 ```
 - `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Internship\Building System\Runs\Claude Code Prompts.md`
 - `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Internship\Building System\Runs\Claude Code Prompts.md`
+
+## You
+
+<command-message>export-ai-session</command-message>
+<command-name>/export-ai-session</command-name>
+
+## You
+
+Base directory for this skill: C:\Users\Anant Gupta\.claude\skills\export-ai-session
+
+# export-ai-session
+
+**Usage:** `/export-ai-session`
+
+This is a **global** skill (`~/.claude/skills/export-ai-session/`), invocable
+from any repo, always writing into the Jarvis vault. Every path below is
+absolute for that reason.
+
+## What changed on 2026-07-06 - read this before assuming anything below is manual
+
+Tier 1 (the raw archive note) is now **fully automatic** for both surfaces:
+
+- **Main Claude Code (Windows), any project inside the Jarvis vault** - the
+  global `SessionEnd` hook (`jarvis-session-continuity.ps1`, registered in
+  `C:\Users\<user>\.claude\settings.json`) exports the transcript itself, the
+  moment the session ends. No manual step. True live capture.
+- **Cowork/Agent-Mode sessions** (`%APPDATA%\Claude\local-agent-mode-sessions`,
+  each one a fully isolated `.claude` sandbox with its own credentials) -
+  the *same* hook sweeps for new Cowork transcripts every time a normal
+  session ends, since Cowork's sandboxes can't fire the hook themselves.
+  "Eventually consistent" within one real Claude Code use, not instant, but
+  fully automatic - no manual sweep needed.
+
+So **this skill's job is now only tier 2**: pick raw notes that already exist
+and write real distilled summaries for the ones worth keeping. It no longer
+invokes the converter script itself - that already happened before this
+skill was ever run.
+
+Two hard-won correctness notes from building this, so they don't get
+relearned the hard way:
+- Cowork transcript paths can exceed Windows' 260-char MAX_PATH (observed up
+  to ~440 chars) - `Get-ChildItem -Recurse` silently skips them. The hook
+  uses `[System.IO.Directory]::EnumerateFiles` with a `\\?\` long-path
+  prefix instead. If you ever touch Cowork discovery again, keep that.
+- `@(Get-Content -Raw | ConvertFrom-Json)` wrapping the *whole pipeline* in
+  one `@()` silently collapses a multi-element JSON array into a single
+  space-joined string in this PowerShell version. Parse into a variable
+  first, *then* wrap that variable in `@()`. The hook's `Read-JsonStringArray`
+  helper does this correctly - reuse it, don't inline the pipeline form again.
+
+## The layers
+
+0. **Raw JSONL mirror** (Claude Code main only, zero token) -
+   `60_Claude/05_Clippings/AI Conversations/Windows/Claude Code/_raw_jsonl/`,
+   an NTFS junction to `~/.claude/projects`. Complete, unredacted, gitignored.
+   Cowork does **not** get an equivalent junction - its credentials are
+   scattered per-sandbox (37+ separate `.credentials.json` files at last
+   count), so a blanket directory junction there would mirror those in too.
+   Mechanical export (below) reads only `*.jsonl` files directly and never
+   creates a filesystem link to the credential-bearing directories.
+1. **Raw archive note** (automatic, ~0 tokens) -
+   `60_Claude/05_Clippings/AI Conversations/Windows/Claude Code/` and
+   `.../Windows/Cowork/`. One markdown file per session, immutable once
+   written, produced by
+   `30_Order/System/claude-workflow/scripts/export-claude-session.ps1`.
+   Keeps only natural-language turns, strips tool payloads, and runs a
+   regex redaction pass for key-shaped strings - verified against 48 real
+   Cowork transcripts with zero unredacted key-shaped strings surviving.
+   Best-effort, not a guarantee - skim before trusting fully.
+2. **Distilled summary** (this skill's actual job, costs tokens) -
+   `60_Claude/07_AI_Information/AI Conversation - Summaries/`. Short,
+   decision-focused synthesis, per that folder's own `README.md` template.
+3. **Promotion** - separate, manual, later decision. Never automatic.
+
+## Instructions
+
+### 1. Find candidates
+
+- List `.md` files directly in
+  `D:\Users\_Anant\10_Areas\Documents\Jarvis\60_Claude\05_Clippings\AI Conversations\Windows\Claude Code\`
+  and `...\Windows\Cowork\` (skip `_raw_jsonl`, it's a junction not a note).
+- Read
+  `D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\System\claude-workflow\distilled-sessions.json`
+  (flat JSON array of raw-note filenames already distilled; treat a missing
+  file as `[]`). Drop any raw note already in that list.
+- Sort newest first (by the `created` frontmatter field), cap at ~15.
+
+### 2. Preview
+
+Each raw note is already clean markdown - just read its `## You` section
+directly (no JSONL parsing needed) and show ~150 chars per candidate,
+alongside its `title` and `created` frontmatter.
+
+### 3. Ask the user which ones matter
+
+AskUserQuestion (multiSelect) or plain text. Do not distill without
+confirmation - most sessions aren't worth a permanent summary.
+
+### 4. Write the distilled summary
+
+Read the full raw note (small - already cleaned) and write an actual
+synthesis to:
+
+`D:\Users\_Anant\10_Areas\Documents\Jarvis\60_Claude\07_AI_Information\AI Conversation - Summaries\<YYYY-MM-DD>-<claude-code|cowork>-<slug> — Summary.md`
+
+```yaml
+---
+type: input
+input_kind: ai-conversation-summary
+status: sprout
+created: YYYY-MM-DD
+source_app: claude-code
+source_note: "[[60_Claude/05_Clippings/AI Conversations/Windows/<Claude Code|Cowork>/<raw file name>]]"
+project: <Jarvis|Cowork>
+decision_count: N
+action_count: N
+tags:
+  - input
+  - ai-conversation-summary
+notes: []
+---
+```
+
+```markdown
+# Conversation Summary - [Title]
+
+## What Was Decided
+## What Changed
+## Important Context
+## Source Claims (Quoted From Transcript)
+## Inferred Claims (Distiller Interpretation)
+## Open Questions
+## Follow-Up Actions
+## Related Notes
+## Should Be Promoted?
+```
+
+Fill in only sections with real content. Keep it short - the value is the
+decisions, not the back-and-forth.
+
+### 5. Log the session
+
+Append a one-line entry to
+`D:\Users\_Anant\10_Areas\Documents\Jarvis\60_Claude\07_AI_Information\Session Logs\log.md`.
+
+### 6. Update the distilled index
+
+Append each raw note's filename to
+`D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\System\claude-workflow\distilled-sessions.json`
+(create `[]` if missing) so it isn't offered again.
+
+### 7. Report back
+
+How many were distilled, links to each summary, backlog size remaining.
+
+## Scope note
+
+Claude Code (Windows) and Cowork only - both fully automatic at tier 1.
+Kiro, Cursor (Windows + WSL), and Claude Code on WSL remain future work - see
+`60_Claude/05_Clippings/AI Conversations/README.md` for current wiring status
+per surface. Claude Desktop's regular chat (not Cowork) and ChatGPT/Gemini
+have no local structured transcript at all - those stay manual regardless.
+
 
 ## Actions Taken
 

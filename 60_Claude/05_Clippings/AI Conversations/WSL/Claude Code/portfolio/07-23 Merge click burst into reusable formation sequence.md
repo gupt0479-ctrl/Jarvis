@@ -7,12 +7,12 @@ title: "Merge click burst into reusable formation sequence"
 started_at: 2026-07-23T12:05:51
 ended_at: 2026-07-24T20:40:36
 duration_minutes: 1955
-exported_at: 2026-07-30T16:47:46.9270578+04:00
+exported_at: 2026-08-11T12:13:12
 project: portfolio
 cwd: '/home/anant_gupta/projects/hub/portfolio'
 session_id: 16e3d2f6-7ccd-482e-9b15-aec209f29325
 status: raw
-turn_count: 10
+turn_count: 12
 tools_used:
   Agent: 1
   Bash: 33
@@ -322,6 +322,88 @@ Do a performance test on the entire portfolio, specifically the background. Test
 
 This matches the project's `performance` skill (Core Web Vitals, bundle size, Three.js performance, client component bloat) — let me run that.
 
+**Tool calls:**
+
+- `Skill` — `{"skill":"performance"}`
+
+## You
+
+# /performance
+
+## Step 1 — Quick Static Audit
+
+```bash
+# Three.js SSR guard (must all use next/dynamic ssr:false)
+grep -rn "ObsidianBackground\|ProjectsSlider" src/ --include="*.tsx" | grep -v "dynamic\|__tests__"
+
+# Raw <img> tags (should all be next/image)
+grep -rn "<img " src/ --include="*.tsx" --include="*.jsx"
+
+# console.log left in production
+grep -rn "console\." src/ --include="*.ts" --include="*.tsx" | grep -v "__tests__" | grep -v ".test."
+
+# Client component audit in sections (could any be server?)
+grep -rn "'use client'" src/components/sections/ src/components/cards/ --include="*.tsx"
+
+# GROQ over-fetching (look for { ... } or select(*))
+grep -rn "{\s*\.\.\." src/sanity/lib/queries.ts
+```
+
+## Step 2 — Build Analysis
+
+```bash
+pnpm build 2>&1 | grep -E "Route|chunks|kB|First Load"
+```
+
+Watch for:
+- Any route First Load JS > 150 kB — investigate with `/docs next.js` bundle analysis
+- Three.js chunk split correctly (should be dynamic, not in main bundle)
+
+## Step 3 — ECC Deep Analysis
+
+```
+Spawn vercel:performance-optimizer agent
+```
+
+This agent covers: LCP, CLS, FID/INP, font loading, image optimization, ISR vs SSG vs SSR decision, and Vercel Edge Cache behavior.
+
+Also reference ECC skill for Next.js caching:
+```
+/docs next-cache-components
+```
+
+## Step 4 — Three.js Specific
+
+Verify in ObsidianBackground and ProjectsSlider:
+- `dpr={[1, 2]}` on Canvas — never `dpr={[1, 3]}`
+- `performance={{ min: 0.5 }}` on Canvas
+- Mobile check halves particle count
+- Post-processing disabled on mobile
+- `useMemo` wraps all geometry/position arrays
+- No `new THREE.*` in `useFrame` (read the component, don't grep)
+
+## Performance Targets
+
+| Metric | Target |
+|--------|--------|
+| LCP | < 2.5s |
+| CLS | < 0.1 |
+| First Load JS (main page) | < 200 kB |
+| Three.js chunk | separate, lazy-loaded |
+| Images | next/image, explicit w×h, priority on hero |
+
+## Common Fixes
+
+| Issue | Fix |
+|-------|-----|
+| Three.js in main bundle | ensure `next/dynamic({ ssr: false })` |
+| LCP slow | add `priority` to hero `<Image>`, verify Sanity CDN URLs use `urlFor().width()` |
+| CLS from images | explicit `width` + `height` on all `<Image>` |
+| Client component too large | extract data fetch to Server Component, pass as props |
+
+
+## Claude
+
 Good — SSR guard is correct. Let me check the sections/cards client-component grep (came back empty, worth verifying) plus GROQ over-fetch and run the build.
 
 This is the key finding: the `/` route's synchronous first-load JS is **~2.42 MB uncompressed**, and one of its chunks (`11q0il4m9o1xi.js`, 872 KB) matched my earlier grep for `@react-three/drei` — meaning Three.js is leaking into the main bundle despite `dynamic(ssr:false)`. Let me confirm.
@@ -369,7 +451,6 @@ Removing the forced-eager Three.js (232 KB gz), Clerk (~188 KB raw), and GSAP (~
 
 **Tool calls:**
 
-- `Skill` — `{"skill":"performance"}`
 - `Bash`:
   ```bash
 echo "=== SSR guard check ===" && grep -rn "ObsidianBackground\|ProjectsSlider" src/ --include="*.tsx" | grep -v "dynamic\|__tests__"

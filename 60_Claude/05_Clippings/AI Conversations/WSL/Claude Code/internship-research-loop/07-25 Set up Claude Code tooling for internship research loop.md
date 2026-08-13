@@ -5,36 +5,36 @@ source_app: claude-code
 source_os: wsl
 title: "Set up Claude Code tooling for internship research loop"
 started_at: 2026-07-25T20:51:15
-ended_at: 2026-07-30T08:42:18
-duration_minutes: 6471
-exported_at: 2026-07-30T16:47:46.9270578+04:00
+ended_at: 2026-07-30T15:28:45
+duration_minutes: 6878
+exported_at: 2026-08-11T12:13:12
 project: internship-research-loop
 cwd: '/home/anant_gupta/projects/work/internship-research-loop'
 session_id: f80cd4cf-b82c-4b53-a7b9-0bb8c67543f0
 status: raw
-turn_count: 14
+turn_count: 21
 tools_used:
   Agent: 2
   AskUserQuestion: 2
-  Bash: 43
-  Edit: 16
+  Bash: 64
+  Edit: 20
   mcp__jarvis__vault_list: 11
   mcp__jarvis__vault_read: 10
   mcp__jarvis__vault_write: 5
   mcp__jarvis-fs__list_allowed_directories: 1
-  Read: 22
+  Read: 24
   Skill: 1
   TaskCreate: 6
   TaskUpdate: 12
   ToolSearch: 4
   Write: 8
 tokens:
-  input: 624
-  output: 311319
-  cache_creation: 2500870
-  cache_read: 54133146
-  total: 56945959
-cost_usd: 23.944547
+  input: 736
+  output: 405467
+  cache_creation: 3362339
+  cache_read: 76714476
+  total: 80483018
+cost_usd: 32.848393
 model:
   - claude-sonnet-5
 files_touched:
@@ -358,14 +358,6 @@ The Jarvis vault isn't checked out in this git repo, but I have live MCP access 
 Good, plenty of local examples. Let me check the format of a couple of relevant ones (a reviewer agent and an Obsidian one, since our agents touch both domains).
 
 Task E's settings.json changes match exactly what the `update-config` skill is meant for — let me use it instead of hand-rolling the permissions format.
-
-Settings file written and validated. Now for the CLAUDE.md documenting note-template contracts and when to use each skill/agent.
-
-Now let's verify promote-dossier end-to-end against a real dossier, up to (not including) the write step. First, pick a real dossier from the vault.
-
-Found a real, unpromoted dossier to test against: Appian's "Software Engineering Intern" (vanshb03 source). One honest complication already surfaced — this dossier predates `core/classify.py`, so it has no auto-assigned bucket/classification callout to default to. Let me run the actual skill flow, including that edge case.
-
-No response requested.
 
 **Tool calls:**
 
@@ -2159,6 +2151,3647 @@ find /home/anant_gupta/projects -maxdepth 4 -path "*/.claude/settings.json" 2>/d
   ```
 - `Read` — `/home/anant_gupta/projects/hub/tradingview/.claude/settings.json`
 - `Skill` — `{"skill":"update-config","args":"Configure .claude/settings.json for this repo (internship-research-loop). Needs: (1) pytest runs allowed without prompting — `python -m pytest`, `pytest` and common variants; (2) git operations short of force-push allowed without prompting — status, diff, log, branch, show, add, commit (local), pull; explicitly do NOT blanket-allow `git push` or `git push --force`/`-f` — those must still prompt for confirmation every time, especially anything pushing to origin/master; (3) gh CLI read operations without prompting — `gh api ...` (GET-style reads), `gh run list`, `gh run view`, `gh issue list`, `gh issue view`, `gh workflow list`; explicitly do NOT allow `gh secret set`/`gh secret remove` or any GitHub Actions secret modification — those must still require confirmation. This is a small repo (internship-research-loop) with an existing .claude/settings.local.json that already has enabledMcpjsonServers — add a new .claude/settings.json (project-shared, not local) with a permissions.allow list matching the above, plus explicit deny/ask entries (whichever the schema supports) for force-push and secret-modifying gh commands so they're not just \"unlisted\" but explicitly guarded. Follow this repo's own existing pattern seen in sibling repos (e.g. Bash(pytest *), Bash(git status *) style glob permission strings)."}`
+
+## You
+
+# Update Config Skill
+
+Modify Claude Code configuration by updating settings.json files.
+
+## When Hooks Are Required (Not Memory)
+
+If the user wants something to happen automatically in response to an EVENT, they need a **hook** configured in settings.json. Memory/preferences cannot trigger automated actions.
+
+**These require hooks:**
+- "Before compacting, ask me what to preserve" → PreCompact hook
+- "After writing files, run prettier" → PostToolUse hook with Write|Edit matcher
+- "When I run bash commands, log them" → PreToolUse hook with Bash matcher
+- "Always run tests after code changes" → PostToolUse hook
+
+**Hook events:** PreToolUse, PostToolUse, PreCompact, PostCompact, Stop, Notification, SessionStart
+
+## CRITICAL: Read Before Write
+
+**Always read the existing settings file before making changes.** Merge new settings with existing ones - never replace the entire file.
+
+## CRITICAL: Use AskUserQuestion for Ambiguity
+
+When the user's request is ambiguous, use AskUserQuestion to clarify:
+- Which settings file to modify (user/project/local)
+- Whether to add to existing arrays or replace them
+- Specific values when multiple options exist
+
+## Decision: /config command vs Direct Edit
+
+**Suggest the `/config` slash command** for these simple settings:
+- `theme`, `editorMode`, `verbose`, `model`
+- `language`, `alwaysThinkingEnabled`
+- `permissions.defaultMode`
+
+**Edit settings.json directly** for:
+- Hooks (PreToolUse, PostToolUse, etc.)
+- Complex permission rules (allow/deny arrays)
+- Environment variables
+- MCP server configuration
+- Plugin configuration
+
+## Workflow
+
+1. **Clarify intent** - Ask if the request is ambiguous
+2. **Read existing file** - Use Read tool on the target settings file
+3. **Merge carefully** - Preserve existing settings, especially arrays
+4. **Edit file** - Use Edit tool (if file doesn't exist, ask user to create it first)
+5. **Confirm** - Tell user what was changed
+
+## Merging Arrays (Important!)
+
+When adding to permission arrays or hook arrays, **merge with existing**, don't replace:
+
+**WRONG** (replaces existing permissions):
+```json
+{ "permissions": { "allow": ["Bash(npm *)"] } }
+```
+
+**RIGHT** (preserves existing + adds new):
+```json
+{
+  "permissions": {
+    "allow": [
+      "Bash(git *)",      // existing
+      "Edit(.claude)",    // existing
+      "Bash(npm *)"       // new
+    ]
+  }
+}
+```
+
+## Settings File Locations
+
+Choose the appropriate file based on scope:
+
+| File | Scope | Git | Use For |
+|------|-------|-----|---------|
+| `~/.claude/settings.json` | Global | N/A | Personal preferences for all projects |
+| `.claude/settings.json` | Project | Commit | Team-wide hooks, permissions, plugins |
+| `.claude/settings.local.json` | Project | Gitignore | Personal overrides for this project |
+
+Settings load in order: user → project → local (later overrides earlier).
+
+## Settings Schema Reference
+
+### Permissions
+```json
+{
+  "permissions": {
+    "allow": ["Bash(npm *)", "Edit(.claude)", "Read"],
+    "deny": ["Bash(rm -rf *)"],
+    "ask": ["Edit(//etc/*)"],
+    "defaultMode": "default" | "plan" | "acceptEdits" | "dontAsk",
+    "additionalDirectories": ["/extra/dir"]
+  }
+}
+```
+
+**Permission Rule Syntax:**
+- Exact match: `"Bash(npm run test)"`
+- Prefix wildcard: `"Bash(git *)"` - matches `git`, `git status`, `git commit`, etc.
+- Tool only: `"Read"` - allows all Read operations
+
+### Environment Variables
+```json
+{
+  "env": {
+    "DEBUG": "true",
+    "MY_API_KEY": "value"
+  }
+}
+```
+
+### Model & Agent
+```json
+{
+  "model": "sonnet",  // or "fable", "opus", "haiku", full model ID
+  "agent": "agent-name",
+  "alwaysThinkingEnabled": true
+}
+```
+
+### Attribution (Commits & PRs)
+```json
+{
+  "attribution": {
+    "commit": "Custom commit trailer text",
+    "pr": "Custom PR description text"
+  }
+}
+```
+Set `commit` or `pr` to empty string `""` to hide that attribution.
+
+### MCP Server Management
+```json
+{
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": ["server1", "server2"],
+  "disabledMcpjsonServers": ["blocked-server"]
+}
+```
+
+### Plugins
+```json
+{
+  "enabledPlugins": {
+    "formatter@anthropic-tools": true
+  }
+}
+```
+Plugin syntax: `plugin-name@source` where source is `claude-code-marketplace`, `claude-plugins-official`, or `builtin`.
+
+### Other Settings
+- `language`: Preferred response language (e.g., "japanese")
+- `cleanupPeriodDays`: Days to keep transcripts before automatic cleanup (default: 30; minimum 1)
+- `respectGitignore`: Whether to respect .gitignore (default: true)
+- `spinnerTipsEnabled`: Show tips in spinner
+- `spinnerVerbs`: Customize spinner verbs (`{ "mode": "append" | "replace", "verbs": [...] }`)
+- `spinnerTipsOverride`: Override spinner tips (`{ "excludeDefault": true, "tips": ["Custom tip"] }`)
+- `syntaxHighlightingDisabled`: Disable diff highlighting
+
+
+## Hooks Configuration
+
+Hooks run commands at specific points in Claude Code's lifecycle.
+
+### Hook Structure
+```json
+{
+  "hooks": {
+    "EVENT_NAME": [
+      {
+        "matcher": "ToolName|OtherTool",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "your-command-here",
+            "timeout": 60,
+            "statusMessage": "Running..."
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+### Hook Events
+
+| Event | Matcher | Purpose |
+|-------|---------|---------|
+| PermissionRequest | Tool name | Run before permission prompt |
+| PreToolUse | Tool name | Run before tool, can block |
+| PostToolUse | Tool name | Run after successful tool |
+| PostToolUseFailure | Tool name | Run after tool fails |
+| Notification | Notification type | Run on notifications |
+| Stop | - | Run when Claude stops (including clear, resume, compact) |
+| PreCompact | "manual"/"auto" | Before compaction |
+| PostCompact | "manual"/"auto" | After compaction (receives summary) |
+| UserPromptSubmit | - | When user submits |
+| SessionStart | - | When session starts |
+
+**Common tool matchers:** `Bash`, `Write`, `Edit`, `Read`, `Glob`, `Grep`
+
+### Hook Types
+
+**1. Command Hook** - Runs a shell command:
+```json
+{ "type": "command", "command": "prettier --write $FILE", "timeout": 30 }
+```
+
+**2. Prompt Hook** - Evaluates a condition with LLM:
+```json
+{ "type": "prompt", "prompt": "Is this safe? $ARGUMENTS" }
+```
+Only available for tool events: PreToolUse, PostToolUse, PermissionRequest.
+
+**3. Agent Hook** - Runs an agent with tools:
+```json
+{ "type": "agent", "prompt": "Verify tests pass: $ARGUMENTS" }
+```
+Only available for tool events: PreToolUse, PostToolUse, PermissionRequest.
+
+### Hook Input (stdin JSON)
+```json
+{
+  "session_id": "abc123",
+  "tool_name": "Write",
+  "tool_input": { "file_path": "/path/to/file.txt", "content": "..." },
+  "tool_response": { "success": true }  // PostToolUse only
+}
+```
+
+### Hook JSON Output
+
+Hooks can return JSON to control behavior:
+
+```json
+{
+  "systemMessage": "Warning shown to user in UI",
+  "continue": false,
+  "stopReason": "Message shown when blocking",
+  "suppressOutput": false,
+  "decision": "block",
+  "reason": "Explanation for decision",
+  "hookSpecificOutput": {
+    "hookEventName": "PostToolUse",
+    "additionalContext": "Context injected back to model"
+  }
+}
+```
+
+**Fields:**
+- `systemMessage` - Display a message to the user (all hooks)
+- `continue` - Set to `false` to block/stop (default: true)
+- `stopReason` - Message shown when `continue` is false
+- `suppressOutput` - Hide stdout from transcript (default: false)
+- `decision` - "block" for PostToolUse/Stop/UserPromptSubmit hooks (deprecated for PreToolUse, use hookSpecificOutput.permissionDecision instead)
+- `reason` - Explanation for decision
+- `hookSpecificOutput` - Event-specific output (must include `hookEventName`):
+  - `additionalContext` - Text injected into model context
+  - `permissionDecision` - "allow", "deny", or "ask" (PreToolUse only)
+  - `permissionDecisionReason` - Reason for the permission decision (PreToolUse only)
+  - `updatedInput` - Modified tool input (PreToolUse only)
+
+### Common Patterns
+
+**Auto-format after writes:**
+```json
+{
+  "hooks": {
+    "PostToolUse": [{
+      "matcher": "Write|Edit",
+      "hooks": [{
+        "type": "command",
+        "command": "jq -r '.tool_response.filePath // .tool_input.file_path' | { read -r f; prettier --write \"$f\"; } 2>/dev/null || true"
+      }]
+    }]
+  }
+}
+```
+
+**Log all bash commands:**
+```json
+{
+  "hooks": {
+    "PreToolUse": [{
+      "matcher": "Bash",
+      "hooks": [{
+        "type": "command",
+        "command": "jq -r '.tool_input.command' >> ~/.claude/bash-log.txt"
+      }]
+    }]
+  }
+}
+```
+
+**Stop hook that displays message to user:**
+
+Command must output JSON with `systemMessage` field:
+```bash
+# Example command that outputs: {"systemMessage": "Session complete!"}
+echo '{"systemMessage": "Session complete!"}'
+```
+
+**Run tests after code changes:**
+```json
+{
+  "hooks": {
+    "PostToolUse": [{
+      "matcher": "Write|Edit",
+      "hooks": [{
+        "type": "command",
+        "command": "jq -r '.tool_input.file_path // .tool_response.filePath' | grep -E '\\.(ts|js)$' && npm test || true"
+      }]
+    }]
+  }
+}
+```
+
+
+## Constructing a Hook (with verification)
+
+Given an event, matcher, target file, and desired behavior, follow this flow. Each step catches a different failure class — a hook that silently does nothing is worse than no hook.
+
+1. **Dedup check.** Read the target file. If a hook already exists on the same event+matcher, show the existing command and ask: keep it, replace it, or add alongside.
+
+2. **Construct the command for THIS project — don't assume.** The hook receives JSON on stdin. Build a command that:
+   - Extracts any needed payload safely — use `jq -r` into a quoted variable or `{ read -r f; ... "$f"; }`, NOT unquoted `| xargs` (splits on spaces)
+   - Invokes the underlying tool the way this project runs it (npx/bunx/yarn/pnpm? Makefile target? globally-installed?)
+   - Skips inputs the tool doesn't handle (formatters often have `--ignore-unknown`; if not, guard by extension)
+   - Stays RAW for now — no `|| true`, no stderr suppression. You'll wrap it after the pipe-test passes.
+
+3. **Pipe-test the raw command.** Synthesize the stdin payload the hook will receive and pipe it directly:
+   - `Pre|PostToolUse` on `Write|Edit`: `echo '{"tool_name":"Edit","tool_input":{"file_path":"<a real file from this repo>"}}' | <cmd>`
+   - `Pre|PostToolUse` on `Bash`: `echo '{"tool_name":"Bash","tool_input":{"command":"ls"}}' | <cmd>`
+   - `Stop`/`UserPromptSubmit`/`SessionStart`: most commands don't read stdin, so `echo '{}' | <cmd>` suffices
+
+   Check exit code AND side effect (file actually formatted, test actually ran). If it fails you get a real error — fix (wrong package manager? tool not installed? jq path wrong?) and retest. Once it works, wrap with `2>/dev/null || true` (unless the user wants a blocking check).
+
+4. **Write the JSON.** Merge into the target file (schema shape in the "Hook Structure" section above). If this creates `.claude/settings.local.json` for the first time, add it to .gitignore — the Write tool doesn't auto-gitignore it.
+
+5. **Validate syntax + schema in one shot:**
+
+   `jq -e '.hooks.<event>[] | select(.matcher == "<matcher>") | .hooks[] | select(.type == "command") | .command' <target-file>`
+
+   Exit 0 + prints your command = correct. Exit 4 = matcher doesn't match. Exit 5 = malformed JSON or wrong nesting. A broken settings.json silently disables ALL settings from that file — fix any pre-existing malformation too.
+
+6. **Prove the hook fires** — only for `Pre|PostToolUse` on a matcher you can trigger in-turn (`Write|Edit` via Edit, `Bash` via Bash). `Stop`/`UserPromptSubmit`/`SessionStart` fire outside this turn — skip to step 7.
+
+   For a **formatter** on `PostToolUse`/`Write|Edit`: introduce a detectable violation via Edit (two consecutive blank lines, bad indentation, missing semicolon — something this formatter corrects; NOT trailing whitespace, Edit strips that before writing), re-read, confirm the hook **fixed** it. For **anything else**: temporarily prefix the command in settings.json with `echo "$(date) hook fired" >> /tmp/claude-hook-check.txt; `, trigger the matching tool (Edit for `Write|Edit`, a harmless `true` for `Bash`), read the sentinel file.
+
+   **Always clean up** — revert the violation, strip the sentinel prefix — whether the proof passed or failed.
+
+   **If proof fails but pipe-test passed and `jq -e` passed**: the settings watcher isn't watching `.claude/` — it only watches directories that had a settings file when this session started. The hook is written correctly. Tell the user to open `/hooks` once (reloads config) or restart — you can't do this yourself; `/hooks` is a user UI menu and opening it ends this turn.
+
+7. **Handoff.** Tell the user the hook is live (or needs `/hooks`/restart per the watcher caveat). Point them at `/hooks` to review, edit, or disable it later. The UI only shows "Ran N hooks" if a hook errors or is slow — silent success is invisible by design.
+
+
+## Example Workflows
+
+### Adding a Hook
+
+User: "Format my code after Claude writes it"
+
+1. **Clarify**: Which formatter? (prettier, gofmt, etc.)
+2. **Read**: `.claude/settings.json` (or create if missing)
+3. **Merge**: Add to existing hooks, don't replace
+4. **Result**:
+```json
+{
+  "hooks": {
+    "PostToolUse": [{
+      "matcher": "Write|Edit",
+      "hooks": [{
+        "type": "command",
+        "command": "jq -r '.tool_response.filePath // .tool_input.file_path' | { read -r f; prettier --write \"$f\"; } 2>/dev/null || true"
+      }]
+    }]
+  }
+}
+```
+
+### Adding Permissions
+
+User: "Allow npm commands without prompting"
+
+1. **Read**: Existing permissions
+2. **Merge**: Add `Bash(npm *)` to allow array
+3. **Result**: Combined with existing allows
+
+### Environment Variables
+
+User: "Set DEBUG=true"
+
+1. **Decide**: User settings (global) or project settings?
+2. **Read**: Target file
+3. **Merge**: Add to env object
+```json
+{ "env": { "DEBUG": "true" } }
+```
+
+## Common Mistakes to Avoid
+
+1. **Replacing instead of merging** - Always preserve existing settings
+2. **Wrong file** - Ask user if scope is unclear
+3. **Invalid JSON** - Validate syntax after changes
+4. **Forgetting to read first** - Always read before write
+
+## Troubleshooting Hooks
+
+If a hook isn't running:
+1. **Check the settings file** - Read ~/.claude/settings.json or .claude/settings.json
+2. **Verify JSON syntax** - Invalid JSON silently fails
+3. **Check the matcher** - Does it match the tool name? (e.g., "Bash", "Write", "Edit")
+4. **Check hook type** - Is it "command", "prompt", or "agent"?
+5. **Test the command** - Run the hook command manually to see if it works
+6. **Use --debug** - Run `claude --debug` to see hook execution logs
+
+
+## Full Settings JSON Schema
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "description": "JSON Schema reference for Claude Code settings",
+      "type": "string"
+    },
+    "apiKeyHelper": {
+      "description": "Path to a script that outputs authentication values",
+      "type": "string"
+    },
+    "proxyAuthHelper": {
+      "description": "Shell command that outputs a Proxy-Authorization header value (EAP)",
+      "type": "string"
+    },
+    "awsCredentialExport": {
+      "description": "Path to a script that exports AWS credentials",
+      "type": "string"
+    },
+    "awsAuthRefresh": {
+      "description": "Path to a script that refreshes AWS authentication",
+      "type": "string"
+    },
+    "gcpAuthRefresh": {
+      "description": "Command to refresh GCP authentication (e.g., gcloud auth application-default login)",
+      "type": "string"
+    },
+    "processWrapper": {
+      "description": "Corporate launcher argv prefix for the background-agent supervisor, the sessions and workers it hosts, and the other covered background processes listed in the Claude Code corporate-launcher documentation. Equivalent to the CLAUDE_CODE_PROCESS_WRAPPER environment variable, which takes precedence when set. Honored from managed settings, a --settings/SDK-supplied settings file, and user settings, in that precedence order; project and local settings are ignored.",
+      "type": "string"
+    },
+    "policyHelper": {
+      "description": "Executable that computes managed settings at startup. Honored only from admin-controlled policy sources.",
+      "type": "object",
+      "properties": {
+        "path": {
+          "description": "Absolute path to the helper executable",
+          "type": "string"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1000,
+          "maximum": 9007199254740991
+        },
+        "refreshIntervalMs": {
+          "anyOf": [
+            {
+              "type": "number",
+              "const": 0
+            },
+            {
+              "type": "integer",
+              "minimum": 60000,
+              "maximum": 9007199254740991
+            }
+          ]
+        }
+      },
+      "required": [
+        "path"
+      ]
+    },
+    "fileSuggestion": {
+      "description": "Custom file suggestion configuration for @ mentions",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "command"
+        },
+        "command": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "command"
+      ]
+    },
+    "respectGitignore": {
+      "description": "Whether file picker should respect .gitignore files (default: true). Note: .ignore files are always respected.",
+      "type": "boolean"
+    },
+    "breakReminder": {
+      "description": "@internal Opt-in break reminder. When enabled, shows a dismissible nudge after sustained continuous use. Never blocks — just a friendly heads-up.",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "description": "Show a friendly nudge after sustained continuous use (default false). Must be true for the reminder to fire.",
+          "type": "boolean"
+        },
+        "intervalMinutes": {
+          "description": "Minutes of continuous use before the reminder fires (default 30). Re-fires every interval until you take a break.",
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "breakThresholdMinutes": {
+          "description": "Minutes of inactivity that count as a break and reset the timer (default 10)",
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "message": {
+          "description": "Custom reminder text. Leave unset for a rotating set of friendly nudges.",
+          "type": "string"
+        }
+      }
+    },
+    "quietHours": {
+      "description": "@internal Opt-in quiet hours. When enabled, shows a single soft nudge per session while inside the configured local-time window. Never blocks.",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "description": "Show a one-time nudge when you start or keep using the CLI inside your quiet-hours window (default false).",
+          "type": "boolean"
+        },
+        "start": {
+          "description": "Start of the quiet-hours window, 24-hour local time \"HH:MM\".",
+          "type": "string",
+          "pattern": "^([01]?\\d|2[0-3]):[0-5]\\d$"
+        },
+        "end": {
+          "description": "End of the quiet-hours window, 24-hour local time \"HH:MM\". May be earlier than start for an overnight range.",
+          "type": "string",
+          "pattern": "^([01]?\\d|2[0-3]):[0-5]\\d$"
+        }
+      }
+    },
+    "cleanupPeriodDays": {
+      "description": "Number of days to retain chat transcripts before automatic cleanup (default: 30). Minimum 1. Use a large value for long retention; use --no-session-persistence to disable transcript writes entirely.",
+      "type": "integer",
+      "exclusiveMinimum": 0,
+      "maximum": 9007199254740991
+    },
+    "skillListingMaxDescChars": {
+      "description": "Per-skill description character cap in the skill listing sent to Claude (default: 1536). Descriptions longer than this are truncated. Raise to opt in to higher per-turn context cost.",
+      "type": "integer",
+      "exclusiveMinimum": 0,
+      "maximum": 9007199254740991
+    },
+    "skillListingBudgetFraction": {
+      "description": "Fraction of the context window (in characters) reserved for the skill listing sent to Claude (default: 0.01 = 1%). When the listing exceeds this, descriptions are shortened to fit. Raise to opt in to higher per-turn context cost.",
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "maximum": 1
+    },
+    "wslInheritsWindowsSettings": {
+      "description": "When set to true in either admin-only Windows source — the HKLM SOFTWARE/Policies/ClaudeCode registry key or C:/Program Files/ClaudeCode/managed-settings.json — WSL reads managed settings from the full Windows policy chain (HKLM, C:/Program Files/ClaudeCode via DrvFs, HKCU) in addition to /etc/claude-code. Windows sources take priority. The flag is also required in HKCU itself for HKCU policy to apply on WSL (double opt-in: admin enables the chain, user confirms HKCU). On native Windows the flag has no effect.",
+      "type": "boolean"
+    },
+    "env": {
+      "description": "Environment variables to set for Claude Code sessions",
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "attribution": {
+      "description": "Customize attribution text for commits and PRs. Each field defaults to the standard Claude Code attribution if not set.",
+      "type": "object",
+      "properties": {
+        "commit": {
+          "description": "Attribution text for git commits, including any trailers. Empty string hides attribution.",
+          "type": "string"
+        },
+        "pr": {
+          "description": "Attribution text for pull request descriptions. Empty string hides attribution.",
+          "type": "string"
+        },
+        "sessionUrl": {
+          "description": "Whether to append the claude.ai session link to commits and PRs created from web or Remote Control sessions (default: true). Set to false to omit the Claude-Session trailer and PR-body link.",
+          "type": "boolean"
+        }
+      }
+    },
+    "includeCoAuthoredBy": {
+      "description": "Deprecated: Use attribution instead. Whether to include Claude's co-authored by attribution in commits and PRs (defaults to true)",
+      "type": "boolean"
+    },
+    "includeGitInstructions": {
+      "description": "Include built-in commit and PR workflow instructions in Claude's system prompt (default: true)",
+      "type": "boolean"
+    },
+    "permissions": {
+      "description": "Tool usage permissions configuration",
+      "type": "object",
+      "properties": {
+        "allow": {
+          "description": "List of permission rules for allowed operations",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "deny": {
+          "description": "List of permission rules for denied operations",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ask": {
+          "description": "List of permission rules that should always prompt for confirmation",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "defaultMode": {
+          "description": "Default permission mode when Claude Code needs access ('manual' is accepted as an alias for 'default')",
+          "type": "string",
+          "enum": [
+            "acceptEdits",
+            "auto",
+            "bypassPermissions",
+            "default",
+            "dontAsk",
+            "plan"
+          ]
+        },
+        "disableBypassPermissionsMode": {
+          "description": "Disable the ability to bypass permission prompts",
+          "type": "string",
+          "enum": [
+            "disable"
+          ]
+        },
+        "disableAutoMode": {
+          "description": "Disable auto mode",
+          "type": "string",
+          "enum": [
+            "disable"
+          ]
+        },
+        "additionalDirectories": {
+          "description": "Additional directories to include in the permission scope",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": {}
+    },
+    "model": {
+      "description": "Override the default model used by Claude Code",
+      "type": "string"
+    },
+    "fallbackModel": {
+      "description": "Fallback model(s) tried in order when the primary model is overloaded or unavailable. Each element accepts a model name or alias; \"default\" expands to the default model. CLI --fallback-model takes precedence.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "availableModels": {
+      "description": "Allowlist of models that users can select. Accepts family aliases (\"opus\" allows any opus version), version prefixes (\"opus-4-5\" allows only that version), and full model IDs. If undefined, all models are available. If empty array, only the default model is available. Typically set in managed settings by enterprise administrators.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "enforceAvailableModels": {
+      "description": "When true and availableModels is a non-empty array, the Default model selection is also constrained: if the default model for the user tier is not in availableModels, Default resolves to the first allowed availableModels entry instead. Has no effect when availableModels is unset or an empty array. Typically set in managed settings by enterprise administrators.",
+      "type": "boolean"
+    },
+    "modelOverrides": {
+      "description": "Override mapping from Anthropic model ID (e.g. \"claude-opus-4-6\") to provider-specific model ID (e.g. a Bedrock inference profile ARN). Typically set in managed settings by enterprise administrators.",
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "enableAllProjectMcpServers": {
+      "description": "Whether to automatically approve all MCP servers in the project",
+      "type": "boolean"
+    },
+    "enabledMcpjsonServers": {
+      "description": "List of approved MCP servers from .mcp.json",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "disabledMcpjsonServers": {
+      "description": "List of rejected MCP servers from .mcp.json",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "disableClaudeAiConnectors": {
+      "description": "When true in any settings source, claude.ai MCP cloud connectors are not auto-fetched or connected. Only gates auto-fetched connectors — a claudeai-proxy server passed explicitly (e.g. via --mcp-config or the SDK mcpServers option) still follows the normal MCP config trust flow. Any-source-true wins: a project can opt out, but a project-level false cannot override a user-level true.",
+      "type": "boolean"
+    },
+    "skillOverrides": {
+      "description": "Per-skill listing overrides keyed by skill name. \"name-only\" lists the skill without its description; \"user-invocable-only\" hides it from the model but keeps /name; \"off\" hides it from both. Absent = on.",
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "enum": [
+          "on",
+          "name-only",
+          "user-invocable-only",
+          "off"
+        ]
+      }
+    },
+    "disableBundledSkills": {
+      "description": "Disable the skills and workflows that ship with Claude Code: bundled skills and workflows are removed entirely; built-in slash commands stay typable but are hidden from the model. Plugins, .claude/skills/, and .claude/commands/ are unaffected. Equivalent to CLAUDE_CODE_DISABLE_BUNDLED_SKILLS=1.",
+      "type": "boolean"
+    },
+    "allowedMcpServers": {
+      "description": "Enterprise allowlist of MCP servers that can be used. Applies to all scopes including enterprise servers from managed-mcp.json. If undefined, all servers are allowed. If empty array, no servers are allowed. Denylist takes precedence - if a server is on both lists, it is denied.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "serverName": {
+            "description": "Name of the MCP server that users are allowed to configure",
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]+$"
+          },
+          "serverCommand": {
+            "description": "Command array [command, ...args] to match exactly for allowed stdio servers",
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "serverUrl": {
+            "description": "URL pattern with wildcard support (e.g., \"https://*.example.com/*\") for allowed remote MCP servers",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "deniedMcpServers": {
+      "description": "Enterprise denylist of MCP servers that are explicitly blocked. If a server is on the denylist, it will be blocked across all scopes including enterprise. Denylist takes precedence over allowlist - if a server is on both lists, it is denied.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "serverName": {
+            "description": "Name of the MCP server that is explicitly blocked",
+            "type": "string",
+            "minLength": 1
+          },
+          "serverCommand": {
+            "description": "Command array [command, ...args] to match exactly for blocked stdio servers",
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "serverUrl": {
+            "description": "URL pattern with wildcard support (e.g., \"https://*.example.com/*\") for blocked remote MCP servers",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "hooks": {
+      "description": "Custom commands to run before/after tool executions",
+      "type": "object",
+      "propertyNames": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "PreToolUse",
+              "PostToolUse",
+              "PostToolUseFailure",
+              "PostToolBatch",
+              "Notification",
+              "UserPromptSubmit",
+              "UserPromptExpansion",
+              "SessionStart",
+              "SessionEnd",
+              "Stop",
+              "StopFailure",
+              "SubagentStart",
+              "SubagentStop",
+              "PreCompact",
+              "PostCompact",
+              "PermissionRequest",
+              "PermissionDenied",
+              "Setup",
+              "TeammateIdle",
+              "TaskCreated",
+              "TaskCompleted",
+              "Elicitation",
+              "ElicitationResult",
+              "ConfigChange",
+              "WorktreeCreate",
+              "WorktreeRemove",
+              "InstructionsLoaded",
+              "CwdChanged",
+              "FileChanged",
+              "DirectoryAdded",
+              "MessageDisplay"
+            ]
+          },
+          {
+            "not": {}
+          }
+        ]
+      },
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "matcher": {
+              "description": "String pattern to match (e.g. tool names like \"Write\")",
+              "type": "string"
+            },
+            "hooks": {
+              "description": "List of hooks to execute when the matcher matches",
+              "type": "array",
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "description": "Shell command hook type",
+                        "type": "string",
+                        "const": "command"
+                      },
+                      "command": {
+                        "description": "Shell command to execute",
+                        "type": "string"
+                      },
+                      "args": {
+                        "description": "Argument list for exec form. When present, `command` is resolved as an executable and spawned directly with these arguments — no shell. Path placeholders like ${CLAUDE_PLUGIN_ROOT} are substituted per-element as plain strings, so paths with quotes, $, or backticks never reach a shell parser. When absent, `command` runs through a shell (bash on POSIX, PowerShell on Windows without Git Bash).",
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "if": {
+                        "description": "Permission rule syntax to filter when this hook runs (e.g., \"Bash(git *)\"). Only runs if the tool call matches the pattern. Avoids spawning hooks for non-matching commands.",
+                        "type": "string"
+                      },
+                      "shell": {
+                        "description": "Shell interpreter. 'bash' uses your $SHELL (bash/zsh/sh); 'powershell' uses pwsh. Defaults to bash (powershell on Windows without Git Bash).",
+                        "type": "string",
+                        "enum": [
+                          "bash",
+                          "powershell"
+                        ]
+                      },
+                      "timeout": {
+                        "description": "Timeout in seconds for this specific command",
+                        "type": "number",
+                        "exclusiveMinimum": 0
+                      },
+                      "statusMessage": {
+                        "description": "Custom status message to display in spinner while hook runs",
+                        "type": "string"
+                      },
+                      "once": {
+                        "description": "If true, hook runs once and is removed after execution",
+                        "type": "boolean"
+                      },
+                      "async": {
+                        "description": "If true, hook runs in background without blocking",
+                        "type": "boolean"
+                      },
+                      "asyncRewake": {
+                        "description": "If true, hook runs in background and wakes the model on exit code 2 (blocking error). Implies async.",
+                        "type": "boolean"
+                      },
+                      "rewakeMessage": {
+                        "description": "@internal Custom prefix for the system-reminder shown to the model when an asyncRewake hook exits with code 2. The hook output is appended after this prefix.",
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "rewakeSummary": {
+                        "description": "@internal One-line summary shown to the user in the terminal when an asyncRewake hook exits with code 2. Defaults to \"Stop hook feedback\".",
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "command"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "description": "LLM prompt hook type",
+                        "type": "string",
+                        "const": "prompt"
+                      },
+                      "prompt": {
+                        "description": "Prompt to evaluate with LLM. Use $ARGUMENTS placeholder for hook input JSON.",
+                        "type": "string"
+                      },
+                      "if": {
+                        "description": "Permission rule syntax to filter when this hook runs (e.g., \"Bash(git *)\"). Only runs if the tool call matches the pattern. Avoids spawning hooks for non-matching commands.",
+                        "type": "string"
+                      },
+                      "timeout": {
+                        "description": "Timeout in seconds for this specific prompt evaluation",
+                        "type": "number",
+                        "exclusiveMinimum": 0
+                      },
+                      "model": {
+                        "description": "Model to use for this prompt hook (e.g., \"claude-sonnet-5\"). If not specified, uses the default small fast model.",
+                        "type": "string"
+                      },
+                      "continueOnBlock": {
+                        "description": "Sets the continue value for the decision:\"block\" produced when ok is false. Default false (turn ends). Whether continue:true lets the turn proceed depends on the event's decision:\"block\" semantics. On PostToolUse, the reason is fed back to Claude and the turn continues.",
+                        "type": "boolean"
+                      },
+                      "statusMessage": {
+                        "description": "Custom status message to display in spinner while hook runs",
+                        "type": "string"
+                      },
+                      "once": {
+                        "description": "If true, hook runs once and is removed after execution",
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "prompt"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "description": "Agentic verifier hook type",
+                        "type": "string",
+                        "const": "agent"
+                      },
+                      "prompt": {
+                        "description": "Prompt describing what to verify (e.g. \"Verify that unit tests ran and passed.\"). Use $ARGUMENTS placeholder for hook input JSON.",
+                        "type": "string"
+                      },
+                      "if": {
+                        "description": "Permission rule syntax to filter when this hook runs (e.g., \"Bash(git *)\"). Only runs if the tool call matches the pattern. Avoids spawning hooks for non-matching commands.",
+                        "type": "string"
+                      },
+                      "timeout": {
+                        "description": "Timeout in seconds for agent execution (default 60)",
+                        "type": "number",
+                        "exclusiveMinimum": 0
+                      },
+                      "model": {
+                        "description": "Model to use for this agent hook (e.g., \"claude-sonnet-5\"). If not specified, uses Haiku.",
+                        "type": "string"
+                      },
+                      "statusMessage": {
+                        "description": "Custom status message to display in spinner while hook runs",
+                        "type": "string"
+                      },
+                      "once": {
+                        "description": "If true, hook runs once and is removed after execution",
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "prompt"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "description": "HTTP hook type",
+                        "type": "string",
+                        "const": "http"
+                      },
+                      "url": {
+                        "description": "URL to POST the hook input JSON to",
+                        "type": "string",
+                        "format": "uri"
+                      },
+                      "if": {
+                        "description": "Permission rule syntax to filter when this hook runs (e.g., \"Bash(git *)\"). Only runs if the tool call matches the pattern. Avoids spawning hooks for non-matching commands.",
+                        "type": "string"
+                      },
+                      "timeout": {
+                        "description": "Timeout in seconds for this specific request",
+                        "type": "number",
+                        "exclusiveMinimum": 0
+                      },
+                      "headers": {
+                        "description": "Additional headers to include in the request. Values may reference environment variables using $VAR_NAME or ${VAR_NAME} syntax (e.g., \"Authorization\": \"Bearer $MY_TOKEN\"). Only variables listed in allowedEnvVars will be interpolated.",
+                        "type": "object",
+                        "propertyNames": {
+                          "type": "string"
+                        },
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "allowedEnvVars": {
+                        "description": "Explicit list of environment variable names that may be interpolated in header values. Only variables listed here will be resolved; all other $VAR references are left as empty strings. Required for env var interpolation to work.",
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "statusMessage": {
+                        "description": "Custom status message to display in spinner while hook runs",
+                        "type": "string"
+                      },
+                      "once": {
+                        "description": "If true, hook runs once and is removed after execution",
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "url"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "description": "MCP tool hook type",
+                        "type": "string",
+                        "const": "mcp_tool"
+                      },
+                      "server": {
+                        "description": "Name of an already-configured MCP server to invoke",
+                        "type": "string"
+                      },
+                      "tool": {
+                        "description": "Name of the tool on that server to call",
+                        "type": "string"
+                      },
+                      "input": {
+                        "description": "Arguments passed to the MCP tool. String values support ${path} interpolation from the hook input JSON (e.g. \"${tool_input.file_path}\").",
+                        "type": "object",
+                        "propertyNames": {
+                          "type": "string"
+                        },
+                        "additionalProperties": {}
+                      },
+                      "if": {
+                        "description": "Permission rule syntax to filter when this hook runs (e.g., \"Bash(git *)\"). Only runs if the tool call matches the pattern. Avoids spawning hooks for non-matching commands.",
+                        "type": "string"
+                      },
+                      "timeout": {
+                        "description": "Timeout in seconds for this specific tool call",
+                        "type": "number",
+                        "exclusiveMinimum": 0
+                      },
+                      "statusMessage": {
+                        "description": "Custom status message to display in spinner while hook runs",
+                        "type": "string"
+                      },
+                      "once": {
+                        "description": "If true, hook runs once and is removed after execution",
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "server",
+                      "tool"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "required": [
+            "hooks"
+          ]
+        }
+      }
+    },
+    "worktree": {
+      "description": "Git worktree configuration for --worktree flag.",
+      "type": "object",
+      "properties": {
+        "symlinkDirectories": {
+          "description": "Directories to symlink from main repository to worktrees to avoid disk bloat. Must be explicitly configured - no directories are symlinked by default. Common examples: \"node_modules\", \".cache\", \".bin\"",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sparsePaths": {
+          "description": "Directories to include when creating worktrees, via git sparse-checkout (cone mode). Dramatically faster in large monorepos — only the listed paths are written to disk.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "baseRef": {
+          "description": "Which ref new worktrees branch from. 'fresh' (default) branches from origin/<default-branch> for a clean tree. 'head' branches from your current local HEAD so unpushed commits and feature-branch state are present. Applies to --worktree, EnterWorktree, and agent isolation.",
+          "type": "string",
+          "enum": [
+            "fresh",
+            "head"
+          ]
+        },
+        "bgIsolation": {
+          "description": "Isolation mode for background sessions in this repo. 'worktree' (default) blocks Edit/Write in the main checkout until EnterWorktree is called. 'none' lets background jobs edit the working copy directly.",
+          "type": "string",
+          "enum": [
+            "worktree",
+            "none"
+          ]
+        }
+      }
+    },
+    "disableAllHooks": {
+      "description": "Disable all hooks and statusLine execution",
+      "type": "boolean"
+    },
+    "disableAgentView": {
+      "description": "Disable agent view (`claude agents`, `--bg`, /background, the on-demand daemon). Typically set in managed settings. Equivalent to CLAUDE_CODE_DISABLE_AGENT_VIEW=1.",
+      "type": "boolean"
+    },
+    "disableRemoteControl": {
+      "description": "Disable Remote Control (claude.ai/code, `claude remote-control`, `--remote-control`/`--rc`, auto-start, and the in-session toggle). Typically set in managed settings.",
+      "type": "boolean"
+    },
+    "disableWorkflows": {
+      "description": "Disable the Workflows feature (also via CLAUDE_CODE_DISABLE_WORKFLOWS).",
+      "type": "boolean"
+    },
+    "disableArtifact": {
+      "description": "Disable the Artifact tool (also via CLAUDE_CODE_DISABLE_ARTIFACT).",
+      "type": "boolean"
+    },
+    "enableArtifact": {
+      "description": "Enable or disable the Artifact tool for this user. Unset defaults to enabled once the feature is available.",
+      "type": "boolean"
+    },
+    "enableWorkflows": {
+      "description": "Enable or disable the Workflows feature for this user. Unset = default by plan once the feature is available.",
+      "type": "boolean"
+    },
+    "workflowSizeGuideline": {
+      "description": "Advisory size guideline for the dynamic workflows Claude writes: \"small\" aims for fewer than 5 agents, \"medium\" (the default) fewer than 15, \"large\" fewer than 50, and \"unrestricted\" sends no guideline. A value here — including from managed settings — takes precedence over the \"Dynamic workflow size\" choice in /config, and that /config row is hidden while a settings file provides the key. This is a guideline, not an enforced limit.",
+      "type": "string",
+      "enum": [
+        "unrestricted",
+        "small",
+        "medium",
+        "large"
+      ]
+    },
+    "workflowKeywordTriggerEnabled": {
+      "description": "Enable the \"ultracode\" keyword trigger: including the keyword in a prompt opts that turn into the Workflow tool. Set to false to disable the trigger. Default: true.",
+      "type": "boolean"
+    },
+    "disableSkillShellExecution": {
+      "description": "Disable inline shell execution in skills and custom slash commands from user, project, or plugin sources. Commands are replaced with a placeholder instead of being run.",
+      "type": "boolean"
+    },
+    "defaultShell": {
+      "description": "Default shell for input-box ! commands. Defaults to 'bash' on all platforms (no Windows auto-flip).",
+      "type": "string",
+      "enum": [
+        "bash",
+        "powershell"
+      ]
+    },
+    "respondToBashCommands": {
+      "description": "Whether Claude responds after an input-box ! bash command runs. Set to false to add the command output to context without a response. Default: true.",
+      "type": "boolean"
+    },
+    "allowManagedHooksOnly": {
+      "description": "When true (and set in managed settings), only hooks from managed settings run. User, project, and local hooks are ignored.",
+      "type": "boolean"
+    },
+    "allowedHttpHookUrls": {
+      "description": "Allowlist of URL patterns that HTTP hooks may target. Supports * as a wildcard (e.g. \"https://hooks.example.com/*\"). When set, HTTP hooks with non-matching URLs are blocked. If undefined, all URLs are allowed. If empty array, no HTTP hooks are allowed. Arrays merge across settings sources (same semantics as allowedMcpServers).",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "httpHookAllowedEnvVars": {
+      "description": "Allowlist of environment variable names HTTP hooks may interpolate into headers. When set, each hook's effective allowedEnvVars is the intersection with this list. If undefined, no restriction is applied. Arrays merge across settings sources (same semantics as allowedMcpServers).",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "allowManagedPermissionRulesOnly": {
+      "description": "When true (and set in managed settings), only permission rules (allow/deny/ask) from managed settings are respected. User, project, local, and CLI argument permission rules are ignored.",
+      "type": "boolean"
+    },
+    "allowManagedMcpServersOnly": {
+      "description": "When true (and set in managed settings), allowedMcpServers is only read from managed settings. deniedMcpServers still merges from all sources, so users can deny servers for themselves. Users can still add their own MCP servers, but only the admin-defined allowlist applies.",
+      "type": "boolean"
+    },
+    "allowAllClaudeAiMcps": {
+      "description": "When true (and set in managed settings), claude.ai cloud MCP connectors load alongside managed-mcp.json instead of being suppressed by its exclusive-control lockdown. Default off preserves the lockdown. Read from managed settings only.",
+      "type": "boolean"
+    },
+    "strictPluginOnlyCustomization": {
+      "description": "When set in managed settings, blocks non-plugin customization sources for the listed surfaces. Array form locks specific surfaces (e.g. [\"skills\", \"hooks\"]); `true` locks all four; `false` is an explicit no-op. Blocked: ~/.claude/{surface}/, .claude/{surface}/ (project), settings.json hooks, .mcp.json. NOT blocked: managed (policySettings) sources, plugin-provided customizations. Composes with strictKnownMarketplaces for end-to-end admin control — plugins gated by marketplace allowlist, everything else blocked here.",
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "skills",
+              "agents",
+              "hooks",
+              "mcp"
+            ]
+          }
+        }
+      ]
+    },
+    "statusLine": {
+      "description": "Custom status line display configuration",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "command"
+        },
+        "command": {
+          "type": "string"
+        },
+        "padding": {
+          "type": "number"
+        },
+        "refreshInterval": {
+          "description": "Re-run the status line command every N seconds in addition to event-driven updates",
+          "type": "number",
+          "minimum": 1
+        },
+        "hideVimModeIndicator": {
+          "description": "Hide the built-in `-- INSERT --` / `-- VISUAL --` indicator below the prompt. Use this when your status line script renders `vim.mode` itself.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "type",
+        "command"
+      ]
+    },
+    "prUrlTemplate": {
+      "description": "URL template for PR links in the footer link badges and inline messages. The detected git PR is rendered as the first footer-link badge. Placeholders: {host} {owner} {repo} {number} {url}. Example: \"https://reviews.example.com/{owner}/{repo}/pull/{number}\"",
+      "type": "string"
+    },
+    "footerLinksRegexes": {
+      "description": "Extra clickable footer badges that appear when a regex matches turn output (tool results and assistant responses). Read from user, flag, and managed settings only; ignored in project .claude/settings.json and local .claude/settings.local.json. At most 5 badges render; the oldest is displaced by newer matches and /clear removes them. Use to surface IDs printed by project CLIs as session links.",
+      "type": "array",
+      "items": {
+        "default": {
+          "type": "invalid-entry-stripped"
+        },
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Config variant. This client understands \"regex\": matches turn output and builds a URL from named capture groups. Entries with other variants are preserved but skipped at runtime.",
+                "type": "string",
+                "const": "regex"
+              },
+              "pattern": {
+                "description": "Regex matched against turn output (tool results and assistant text)",
+                "type": "string"
+              },
+              "url": {
+                "description": "Link target. {name} placeholders are filled from named regex capture groups, e.g. (?<id>...) -> {id}. Values are URL-encoded; the origin must be literal in the template. The scheme must be https, http, or a recognized editor or workspace deep-link scheme: vscode, vscode-insiders, cursor, windsurf, zed, jetbrains, idea, slack, linear, notion, figma.",
+                "type": "string"
+              },
+              "label": {
+                "description": "Badge text. {name} placeholders filled from named capture groups; defaults to the full match.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "pattern",
+              "url"
+            ],
+            "additionalProperties": {}
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Config variant discriminator for entries this client does not understand; the entry is preserved as-is and skipped at runtime.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "additionalProperties": {}
+          }
+        ]
+      }
+    },
+    "subagentStatusLine": {
+      "description": "Custom per-subagent status line shown in the agent panel; receives row context as JSON on stdin",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "command"
+        },
+        "command": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "command"
+      ]
+    },
+    "enabledPlugins": {
+      "description": "Enabled plugins using plugin-id@marketplace-id format. Example: { \"formatter@anthropic-tools\": true }. Also supports extended format with version constraints. Settings precedence is user < project < local < flag < policy, so to disable a plugin that project settings enable, set it to false in .claude/settings.local.json — setting false in ~/.claude/settings.json is overridden by the project.",
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "not": {}
+          }
+        ]
+      }
+    },
+    "extraKnownMarketplaces": {
+      "description": "Additional marketplaces to make available for this repository. Typically used in repository .claude/settings.json to ensure team members have required plugin sources.",
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "description": "Where to fetch the marketplace from",
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "const": "url"
+                  },
+                  "url": {
+                    "description": "Direct URL to marketplace.json file",
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "headers": {
+                    "description": "Custom HTTP headers (e.g., for authentication)",
+                    "type": "object",
+                    "propertyNames": {
+                      "type": "string"
+                    },
+                    "additionalProperties": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "source",
+                  "url"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "const": "github"
+                  },
+                  "repo": {
+                    "description": "GitHub repository in owner/repo format",
+                    "type": "string"
+                  },
+                  "ref": {
+                    "description": "Git branch or tag to use (e.g., \"main\", \"v1.0.0\"). Defaults to repository default branch.",
+                    "type": "string"
+                  },
+                  "path": {
+                    "description": "Path to marketplace.json within repo (defaults to .claude-plugin/marketplace.json)",
+                    "type": "string"
+                  },
+                  "sparsePaths": {
+                    "description": "Directories to include via git sparse-checkout (cone mode). Use for monorepos where the marketplace lives in a subdirectory. Example: [\".claude-plugin\", \"plugins\"]. If omitted, the full repository is cloned.",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "skipLfs": {
+                    "description": "Skip Git LFS smudge during clone and update (sets GIT_LFS_SKIP_SMUDGE=1) so LFS pointer files stay as pointers instead of downloading their content. Use for marketplaces hosted in repos with large LFS objects.",
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "source",
+                  "repo"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "const": "git"
+                  },
+                  "url": {
+                    "description": "Full git repository URL",
+                    "type": "string"
+                  },
+                  "ref": {
+                    "description": "Git branch or tag to use (e.g., \"main\", \"v1.0.0\"). Defaults to repository default branch.",
+                    "type": "string"
+                  },
+                  "path": {
+                    "description": "Path to marketplace.json within repo (defaults to .claude-plugin/marketplace.json)",
+                    "type": "string"
+                  },
+                  "sparsePaths": {
+                    "description": "Directories to include via git sparse-checkout (cone mode). Use for monorepos where the marketplace lives in a subdirectory. Example: [\".claude-plugin\", \"plugins\"]. If omitted, the full repository is cloned.",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "skipLfs": {
+                    "description": "Skip Git LFS smudge during clone and update (sets GIT_LFS_SKIP_SMUDGE=1) so LFS pointer files stay as pointers instead of downloading their content. Use for marketplaces hosted in repos with large LFS objects.",
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "source",
+                  "url"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "const": "npm"
+                  },
+                  "package": {
+                    "description": "NPM package containing marketplace.json",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "source",
+                  "package"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "const": "file"
+                  },
+                  "path": {
+                    "description": "Local file path to marketplace.json",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "source",
+                  "path"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "const": "directory"
+                  },
+                  "path": {
+                    "description": "Local directory containing .claude-plugin/marketplace.json",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "source",
+                  "path"
+                ]
+              },
+              {
+                "description": "Policy-list sentinel for the ~/.claude/skills/ auto-load (@skills-dir plugins). In strictKnownMarketplaces: opt the scan back IN (by default any allowlist blocks it). In blockedMarketplaces: turn the scan OFF without otherwise restricting marketplaces. Only meaningful in those two managed-settings lists (areLocalPluginDirsAllowedByPolicy); known_marketplaces.json / marketplace add etc. ignore it.",
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "const": "skills-dir"
+                  }
+                },
+                "required": [
+                  "source"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "const": "hostPattern"
+                  },
+                  "hostPattern": {
+                    "description": "Regex pattern to match the host/domain extracted from any marketplace source type. For github sources, matches against github.com. For git sources (SSH or HTTPS), extracts the hostname from the URL. Use in strictKnownMarketplaces to allow all marketplaces from a specific host (e.g., \"^github\\.mycompany\\.com$\").",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "source",
+                  "hostPattern"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "const": "pathPattern"
+                  },
+                  "pathPattern": {
+                    "description": "Regex pattern matched against the .path field of file and directory sources. Use in strictKnownMarketplaces to allow filesystem-based marketplaces alongside hostPattern restrictions for network sources. Use \".*\" to allow all filesystem paths, or a narrower pattern (e.g., \"^/opt/approved/\") to restrict to specific directories.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "source",
+                  "pathPattern"
+                ]
+              },
+              {
+                "description": "Inline marketplace manifest defined directly in settings.json. The reconciler writes a synthetic marketplace.json to the cache; diffMarketplaces detects edits via isEqual on the stored source (the plugins array is inside this object, so edits surface as sourceChanged).",
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "const": "settings"
+                  },
+                  "name": {
+                    "description": "Marketplace name. Must match the extraKnownMarketplaces key (enforced); the synthetic manifest is written under this name. Same validation as PluginMarketplaceSchema plus reserved-name rejection — validateOfficialNameSource runs after the disk write, too late to clean up.",
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "plugins": {
+                    "description": "Plugin entries declared inline in settings.json",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "description": "Plugin name as it appears in the target repository",
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "source": {
+                          "description": "Where to fetch the plugin from. Must be a remote source — relative paths have no marketplace repository to resolve against.",
+                          "anyOf": [
+                            {
+                              "description": "Path to the plugin root, relative to the marketplace root (the directory containing .claude-plugin/, not .claude-plugin/ itself)",
+                              "type": "string",
+                              "pattern": "^\\.\\/.*"
+                            },
+                            {
+                              "description": "NPM package as plugin source",
+                              "type": "object",
+                              "properties": {
+                                "source": {
+                                  "type": "string",
+                                  "const": "npm"
+                                },
+                                "package": {
+                                  "description": "Package name (or url, or local path, or anything else that can be passed to `npm` as a package)",
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "version": {
+                                  "description": "Specific version or version range (e.g., ^1.0.0, ~2.1.0)",
+                                  "type": "string"
+                                },
+                                "registry": {
+                                  "description": "Custom NPM registry URL (defaults to using system default, likely npmjs.org)",
+                                  "type": "string",
+                                  "format": "uri"
+                                }
+                              },
+                              "required": [
+                                "source",
+                                "package"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "source": {
+                                  "type": "string",
+                                  "const": "url"
+                                },
+                                "url": {
+                                  "description": "Full git repository URL (https:// or git@)",
+                                  "type": "string"
+                                },
+                                "ref": {
+                                  "description": "Git branch or tag to use (e.g., \"main\", \"v1.0.0\"). Defaults to repository default branch.",
+                                  "type": "string"
+                                },
+                                "sha": {
+                                  "description": "Specific commit SHA to use",
+                                  "type": "string",
+                                  "minLength": 40,
+                                  "maxLength": 40,
+                                  "pattern": "^[a-f0-9]{40}$"
+                                }
+                              },
+                              "required": [
+                                "source",
+                                "url"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "source": {
+                                  "type": "string",
+                                  "const": "github"
+                                },
+                                "repo": {
+                                  "description": "GitHub repository in owner/repo format",
+                                  "type": "string"
+                                },
+                                "ref": {
+                                  "description": "Git branch or tag to use (e.g., \"main\", \"v1.0.0\"). Defaults to repository default branch.",
+                                  "type": "string"
+                                },
+                                "sha": {
+                                  "description": "Specific commit SHA to use",
+                                  "type": "string",
+                                  "minLength": 40,
+                                  "maxLength": 40,
+                                  "pattern": "^[a-f0-9]{40}$"
+                                }
+                              },
+                              "required": [
+                                "source",
+                                "repo"
+                              ]
+                            },
+                            {
+                              "description": "Plugin located in a subdirectory of a larger repository (monorepo). Only the specified subdirectory is materialized; the rest of the repo is not downloaded.",
+                              "type": "object",
+                              "properties": {
+                                "source": {
+                                  "type": "string",
+                                  "const": "git-subdir"
+                                },
+                                "url": {
+                                  "description": "Git repository: GitHub owner/repo shorthand, https://, or git@ URL",
+                                  "type": "string"
+                                },
+                                "path": {
+                                  "description": "Subdirectory within the repo containing the plugin (e.g., \"tools/claude-plugin\"). Cloned sparsely using partial clone (--filter=tree:0) to minimize bandwidth for monorepos.",
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "ref": {
+                                  "description": "Git branch or tag to use (e.g., \"main\", \"v1.0.0\"). Defaults to repository default branch.",
+                                  "type": "string"
+                                },
+                                "sha": {
+                                  "description": "Specific commit SHA to use",
+                                  "type": "string",
+                                  "minLength": 40,
+                                  "maxLength": 40,
+                                  "pattern": "^[a-f0-9]{40}$"
+                                }
+                              },
+                              "required": [
+                                "source",
+                                "url",
+                                "path"
+                              ]
+                            },
+                            {
+                              "description": "Placeholder for source types this Claude Code version does not recognize. Never authored by hand — PluginMarketplaceSchema rewrites unparseable sources to this so the entry remains in marketplace.plugins (detectDelistedPlugins must not see it as removed). Install attempts fail at cachePlugin with a clear \"update Claude Code\" message.",
+                              "type": "object",
+                              "properties": {
+                                "source": {
+                                  "type": "string",
+                                  "const": "unsupported"
+                                }
+                              },
+                              "required": [
+                                "source"
+                              ]
+                            }
+                          ]
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "version": {
+                          "type": "string"
+                        },
+                        "strict": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "source"
+                      ]
+                    }
+                  },
+                  "owner": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "description": "Display name of the plugin author or organization",
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "email": {
+                        "description": "Contact email for support or feedback",
+                        "type": "string"
+                      },
+                      "url": {
+                        "description": "Website, GitHub profile, or organization URL",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ]
+                  }
+                },
+                "required": [
+                  "source",
+                  "name",
+                  "plugins"
+                ]
+              }
+            ]
+          },
+          "installLocation": {
+            "description": "Local cache path where marketplace manifest is stored (auto-generated if not provided)",
+            "type": "string"
+          },
+          "autoUpdate": {
+            "description": "Whether to automatically update this marketplace and its installed plugins on startup",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "source"
+        ]
+      }
+    },
+    "strictKnownMarketplaces": {
+      "description": "Enterprise strict list of allowed marketplace sources. When set in managed settings, ONLY these exact sources can be added as marketplaces. The check happens BEFORE downloading, so blocked sources never touch the filesystem. Note: this is a policy gate only — it does NOT register marketplaces. To pre-register allowed marketplaces for users, also set extraKnownMarketplaces.",
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "const": "url"
+              },
+              "url": {
+                "description": "Direct URL to marketplace.json file",
+                "type": "string",
+                "format": "uri"
+              },
+              "headers": {
+                "description": "Custom HTTP headers (e.g., for authentication)",
+                "type": "object",
+                "propertyNames": {
+                  "type": "string"
+                },
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "source",
+              "url"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "const": "github"
+              },
+              "repo": {
+                "description": "GitHub repository in owner/repo format",
+                "type": "string"
+              },
+              "ref": {
+                "description": "Git branch or tag to use (e.g., \"main\", \"v1.0.0\"). Defaults to repository default branch.",
+                "type": "string"
+              },
+              "path": {
+                "description": "Path to marketplace.json within repo (defaults to .claude-plugin/marketplace.json)",
+                "type": "string"
+              },
+              "sparsePaths": {
+                "description": "Directories to include via git sparse-checkout (cone mode). Use for monorepos where the marketplace lives in a subdirectory. Example: [\".claude-plugin\", \"plugins\"]. If omitted, the full repository is cloned.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "skipLfs": {
+                "description": "Skip Git LFS smudge during clone and update (sets GIT_LFS_SKIP_SMUDGE=1) so LFS pointer files stay as pointers instead of downloading their content. Use for marketplaces hosted in repos with large LFS objects.",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "source",
+              "repo"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "const": "git"
+              },
+              "url": {
+                "description": "Full git repository URL",
+                "type": "string"
+              },
+              "ref": {
+                "description": "Git branch or tag to use (e.g., \"main\", \"v1.0.0\"). Defaults to repository default branch.",
+                "type": "string"
+              },
+              "path": {
+                "description": "Path to marketplace.json within repo (defaults to .claude-plugin/marketplace.json)",
+                "type": "string"
+              },
+              "sparsePaths": {
+                "description": "Directories to include via git sparse-checkout (cone mode). Use for monorepos where the marketplace lives in a subdirectory. Example: [\".claude-plugin\", \"plugins\"]. If omitted, the full repository is cloned.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "skipLfs": {
+                "description": "Skip Git LFS smudge during clone and update (sets GIT_LFS_SKIP_SMUDGE=1) so LFS pointer files stay as pointers instead of downloading their content. Use for marketplaces hosted in repos with large LFS objects.",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "source",
+              "url"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "const": "npm"
+              },
+              "package": {
+                "description": "NPM package containing marketplace.json",
+                "type": "string"
+              }
+            },
+            "required": [
+              "source",
+              "package"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "const": "file"
+              },
+              "path": {
+                "description": "Local file path to marketplace.json",
+                "type": "string"
+              }
+            },
+            "required": [
+              "source",
+              "path"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "const": "directory"
+              },
+              "path": {
+                "description": "Local directory containing .claude-plugin/marketplace.json",
+                "type": "string"
+              }
+            },
+            "required": [
+              "source",
+              "path"
+            ]
+          },
+          {
+            "description": "Policy-list sentinel for the ~/.claude/skills/ auto-load (@skills-dir plugins). In strictKnownMarketplaces: opt the scan back IN (by default any allowlist blocks it). In blockedMarketplaces: turn the scan OFF without otherwise restricting marketplaces. Only meaningful in those two managed-settings lists (areLocalPluginDirsAllowedByPolicy); known_marketplaces.json / marketplace add etc. ignore it.",
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "const": "skills-dir"
+              }
+            },
+            "required": [
+              "source"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "const": "hostPattern"
+              },
+              "hostPattern": {
+                "description": "Regex pattern to match the host/domain extracted from any marketplace source type. For github sources, matches against github.com. For git sources (SSH or HTTPS), extracts the hostname from the URL. Use in strictKnownMarketplaces to allow all marketplaces from a specific host (e.g., \"^github\\.mycompany\\.com$\").",
+                "type": "string"
+              }
+            },
+            "required": [
+              "source",
+              "hostPattern"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "const": "pathPattern"
+              },
+              "pathPattern": {
+                "description": "Regex pattern matched against the .path field of file and directory sources. Use in strictKnownMarketplaces to allow filesystem-based marketplaces alongside hostPattern restrictions for network sources. Use \".*\" to allow all filesystem paths, or a narrower pattern (e.g., \"^/opt/approved/\") to restrict to specific directories.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "source",
+              "pathPattern"
+            ]
+          },
+          {
+            "description": "Inline marketplace manifest defined directly in settings.json. The reconciler writes a synthetic marketplace.json to the cache; diffMarketplaces detects edits via isEqual on the stored source (the plugins array is inside this object, so edits surface as sourceChanged).",
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "const": "settings"
+              },
+              "name": {
+                "description": "Marketplace name. Must match the extraKnownMarketplaces key (enforced); the synthetic manifest is written under this name. Same validation as PluginMarketplaceSchema plus reserved-name rejection — validateOfficialNameSource runs after the disk write, too late to clean up.",
+                "type": "string",
+                "minLength": 1
+              },
+              "plugins": {
+                "description": "Plugin entries declared inline in settings.json",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "description": "Plugin name as it appears in the target repository",
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "source": {
+                      "description": "Where to fetch the plugin from. Must be a remote source — relative paths have no marketplace repository to resolve against.",
+                      "anyOf": [
+                        {
+                          "description": "Path to the plugin root, relative to the marketplace root (the directory containing .claude-plugin/, not .claude-plugin/ itself)",
+                          "type": "string",
+                          "pattern": "^\\.\\/.*"
+                        },
+                        {
+                          "description": "NPM package as plugin source",
+                          "type": "object",
+                          "properties": {
+                            "source": {
+                              "type": "string",
+                              "const": "npm"
+                            },
+                            "package": {
+                              "description": "Package name (or url, or local path, or anything else that can be passed to `npm` as a package)",
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "version": {
+                              "description": "Specific version or version range (e.g., ^1.0.0, ~2.1.0)",
+                              "type": "string"
+                            },
+                            "registry": {
+                              "description": "Custom NPM registry URL (defaults to using system default, likely npmjs.org)",
+                              "type": "string",
+                              "format": "uri"
+                            }
+                          },
+                          "required": [
+                            "source",
+                            "package"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "source": {
+                              "type": "string",
+                              "const": "url"
+                            },
+                            "url": {
+                              "description": "Full git repository URL (https:// or git@)",
+                              "type": "string"
+                            },
+                            "ref": {
+                              "description": "Git branch or tag to use (e.g., \"main\", \"v1.0.0\"). Defaults to repository default branch.",
+                              "type": "string"
+                            },
+                            "sha": {
+                              "description": "Specific commit SHA to use",
+                              "type": "string",
+                              "minLength": 40,
+                              "maxLength": 40,
+                              "pattern": "^[a-f0-9]{40}$"
+                            }
+                          },
+                          "required": [
+                            "source",
+                            "url"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "source": {
+                              "type": "string",
+                              "const": "github"
+                            },
+                            "repo": {
+                              "description": "GitHub repository in owner/repo format",
+                              "type": "string"
+                            },
+                            "ref": {
+                              "description": "Git branch or tag to use (e.g., \"main\", \"v1.0.0\"). Defaults to repository default branch.",
+                              "type": "string"
+                            },
+                            "sha": {
+                              "description": "Specific commit SHA to use",
+                              "type": "string",
+                              "minLength": 40,
+                              "maxLength": 40,
+                              "pattern": "^[a-f0-9]{40}$"
+                            }
+                          },
+                          "required": [
+                            "source",
+                            "repo"
+                          ]
+                        },
+                        {
+                          "description": "Plugin located in a subdirectory of a larger repository (monorepo). Only the specified subdirectory is materialized; the rest of the repo is not downloaded.",
+                          "type": "object",
+                          "properties": {
+                            "source": {
+                              "type": "string",
+                              "const": "git-subdir"
+                            },
+                            "url": {
+                              "description": "Git repository: GitHub owner/repo shorthand, https://, or git@ URL",
+                              "type": "string"
+                            },
+                            "path": {
+                              "description": "Subdirectory within the repo containing the plugin (e.g., \"tools/claude-plugin\"). Cloned sparsely using partial clone (--filter=tree:0) to minimize bandwidth for monorepos.",
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "ref": {
+                              "description": "Git branch or tag to use (e.g., \"main\", \"v1.0.0\"). Defaults to repository default branch.",
+                              "type": "string"
+                            },
+                            "sha": {
+                              "description": "Specific commit SHA to use",
+                              "type": "string",
+                              "minLength": 40,
+                              "maxLength": 40,
+                              "pattern": "^[a-f0-9]{40}$"
+                            }
+                          },
+                          "required": [
+                            "source",
+                            "url",
+                            "path"
+                          ]
+                        },
+                        {
+                          "description": "Placeholder for source types this Claude Code version does not recognize. Never authored by hand — PluginMarketplaceSchema rewrites unparseable sources to this so the entry remains in marketplace.plugins (detectDelistedPlugins must not see it as removed). Install attempts fail at cachePlugin with a clear \"update Claude Code\" message.",
+                          "type": "object",
+                          "properties": {
+                            "source": {
+                              "type": "string",
+                              "const": "unsupported"
+                            }
+                          },
+                          "required": [
+                            "source"
+                          ]
+                        }
+                      ]
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "version": {
+                      "type": "string"
+                    },
+                    "strict": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "source"
+                  ]
+                }
+              },
+              "owner": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "description": "Display name of the plugin author or organization",
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "email": {
+                    "description": "Contact email for support or feedback",
+                    "type": "string"
+                  },
+                  "url": {
+                    "description": "Website, GitHub profile, or organization URL",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name"
+                ]
+              }
+            },
+            "required": [
+              "source",
+              "name",
+              "plugins"
+            ]
+          }
+        ]
+      }
+    },
+    "blockedMarketplaces": {
+      "description": "Enterprise blocklist of marketplace sources. When set in managed settings, these exact sources are blocked from being added as marketplaces. The check happens BEFORE downloading, so blocked sources never touch the filesystem.",
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "const": "url"
+              },
+              "url": {
+                "description": "Direct URL to marketplace.json file",
+                "type": "string",
+                "format": "uri"
+              },
+              "headers": {
+                "description": "Custom HTTP headers (e.g., for authentication)",
+                "type": "object",
+                "propertyNames": {
+                  "type": "string"
+                },
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "source",
+              "url"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "const": "github"
+              },
+              "repo": {
+                "description": "GitHub repository in owner/repo format",
+                "type": "string"
+              },
+              "ref": {
+                "description": "Git branch or tag to use (e.g., \"main\", \"v1.0.0\"). Defaults to repository default branch.",
+                "type": "string"
+              },
+              "path": {
+                "description": "Path to marketplace.json within repo (defaults to .claude-plugin/marketplace.json)",
+                "type": "string"
+              },
+              "sparsePaths": {
+                "description": "Directories to include via git sparse-checkout (cone mode). Use for monorepos where the marketplace lives in a subdirectory. Example: [\".claude-plugin\", \"plugins\"]. If omitted, the full repository is cloned.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "skipLfs": {
+                "description": "Skip Git LFS smudge during clone and update (sets GIT_LFS_SKIP_SMUDGE=1) so LFS pointer files stay as pointers instead of downloading their content. Use for marketplaces hosted in repos with large LFS objects.",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "source",
+              "repo"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "const": "git"
+              },
+              "url": {
+                "description": "Full git repository URL",
+                "type": "string"
+              },
+              "ref": {
+                "description": "Git branch or tag to use (e.g., \"main\", \"v1.0.0\"). Defaults to repository default branch.",
+                "type": "string"
+              },
+              "path": {
+                "description": "Path to marketplace.json within repo (defaults to .claude-plugin/marketplace.json)",
+                "type": "string"
+              },
+              "sparsePaths": {
+                "description": "Directories to include via git sparse-checkout (cone mode). Use for monorepos where the marketplace lives in a subdirectory. Example: [\".claude-plugin\", \"plugins\"]. If omitted, the full repository is cloned.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "skipLfs": {
+                "description": "Skip Git LFS smudge during clone and update (sets GIT_LFS_SKIP_SMUDGE=1) so LFS pointer files stay as pointers instead of downloading their content. Use for marketplaces hosted in repos with large LFS objects.",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "source",
+              "url"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "const": "npm"
+              },
+              "package": {
+                "description": "NPM package containing marketplace.json",
+                "type": "string"
+              }
+            },
+            "required": [
+              "source",
+              "package"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "const": "file"
+              },
+              "path": {
+                "description": "Local file path to marketplace.json",
+                "type": "string"
+              }
+            },
+            "required": [
+              "source",
+              "path"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "const": "directory"
+              },
+              "path": {
+                "description": "Local directory containing .claude-plugin/marketplace.json",
+                "type": "string"
+              }
+            },
+            "required": [
+              "source",
+              "path"
+            ]
+          },
+          {
+            "description": "Policy-list sentinel for the ~/.claude/skills/ auto-load (@skills-dir plugins). In strictKnownMarketplaces: opt the scan back IN (by default any allowlist blocks it). In blockedMarketplaces: turn the scan OFF without otherwise restricting marketplaces. Only meaningful in those two managed-settings lists (areLocalPluginDirsAllowedByPolicy); known_marketplaces.json / marketplace add etc. ignore it.",
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "const": "skills-dir"
+              }
+            },
+            "required": [
+              "source"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "const": "hostPattern"
+              },
+              "hostPattern": {
+                "description": "Regex pattern to match the host/domain extracted from any marketplace source type. For github sources, matches against github.com. For git sources (SSH or HTTPS), extracts the hostname from the URL. Use in strictKnownMarketplaces to allow all marketplaces from a specific host (e.g., \"^github\\.mycompany\\.com$\").",
+                "type": "string"
+              }
+            },
+            "required": [
+              "source",
+              "hostPattern"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "const": "pathPattern"
+              },
+              "pathPattern": {
+                "description": "Regex pattern matched against the .path field of file and directory sources. Use in strictKnownMarketplaces to allow filesystem-based marketplaces alongside hostPattern restrictions for network sources. Use \".*\" to allow all filesystem paths, or a narrower pattern (e.g., \"^/opt/approved/\") to restrict to specific directories.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "source",
+              "pathPattern"
+            ]
+          },
+          {
+            "description": "Inline marketplace manifest defined directly in settings.json. The reconciler writes a synthetic marketplace.json to the cache; diffMarketplaces detects edits via isEqual on the stored source (the plugins array is inside this object, so edits surface as sourceChanged).",
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "const": "settings"
+              },
+              "name": {
+                "description": "Marketplace name. Must match the extraKnownMarketplaces key (enforced); the synthetic manifest is written under this name. Same validation as PluginMarketplaceSchema plus reserved-name rejection — validateOfficialNameSource runs after the disk write, too late to clean up.",
+                "type": "string",
+                "minLength": 1
+              },
+              "plugins": {
+                "description": "Plugin entries declared inline in settings.json",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "description": "Plugin name as it appears in the target repository",
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "source": {
+                      "description": "Where to fetch the plugin from. Must be a remote source — relative paths have no marketplace repository to resolve against.",
+                      "anyOf": [
+                        {
+                          "description": "Path to the plugin root, relative to the marketplace root (the directory containing .claude-plugin/, not .claude-plugin/ itself)",
+                          "type": "string",
+                          "pattern": "^\\.\\/.*"
+                        },
+                        {
+                          "description": "NPM package as plugin source",
+                          "type": "object",
+                          "properties": {
+                            "source": {
+                              "type": "string",
+                              "const": "npm"
+                            },
+                            "package": {
+                              "description": "Package name (or url, or local path, or anything else that can be passed to `npm` as a package)",
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "version": {
+                              "description": "Specific version or version range (e.g., ^1.0.0, ~2.1.0)",
+                              "type": "string"
+                            },
+                            "registry": {
+                              "description": "Custom NPM registry URL (defaults to using system default, likely npmjs.org)",
+                              "type": "string",
+                              "format": "uri"
+                            }
+                          },
+                          "required": [
+                            "source",
+                            "package"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "source": {
+                              "type": "string",
+                              "const": "url"
+                            },
+                            "url": {
+                              "description": "Full git repository URL (https:// or git@)",
+                              "type": "string"
+                            },
+                            "ref": {
+                              "description": "Git branch or tag to use (e.g., \"main\", \"v1.0.0\"). Defaults to repository default branch.",
+                              "type": "string"
+                            },
+                            "sha": {
+                              "description": "Specific commit SHA to use",
+                              "type": "string",
+                              "minLength": 40,
+                              "maxLength": 40,
+                              "pattern": "^[a-f0-9]{40}$"
+                            }
+                          },
+                          "required": [
+                            "source",
+                            "url"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "source": {
+                              "type": "string",
+                              "const": "github"
+                            },
+                            "repo": {
+                              "description": "GitHub repository in owner/repo format",
+                              "type": "string"
+                            },
+                            "ref": {
+                              "description": "Git branch or tag to use (e.g., \"main\", \"v1.0.0\"). Defaults to repository default branch.",
+                              "type": "string"
+                            },
+                            "sha": {
+                              "description": "Specific commit SHA to use",
+                              "type": "string",
+                              "minLength": 40,
+                              "maxLength": 40,
+                              "pattern": "^[a-f0-9]{40}$"
+                            }
+                          },
+                          "required": [
+                            "source",
+                            "repo"
+                          ]
+                        },
+                        {
+                          "description": "Plugin located in a subdirectory of a larger repository (monorepo). Only the specified subdirectory is materialized; the rest of the repo is not downloaded.",
+                          "type": "object",
+                          "properties": {
+                            "source": {
+                              "type": "string",
+                              "const": "git-subdir"
+                            },
+                            "url": {
+                              "description": "Git repository: GitHub owner/repo shorthand, https://, or git@ URL",
+                              "type": "string"
+                            },
+                            "path": {
+                              "description": "Subdirectory within the repo containing the plugin (e.g., \"tools/claude-plugin\"). Cloned sparsely using partial clone (--filter=tree:0) to minimize bandwidth for monorepos.",
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "ref": {
+                              "description": "Git branch or tag to use (e.g., \"main\", \"v1.0.0\"). Defaults to repository default branch.",
+                              "type": "string"
+                            },
+                            "sha": {
+                              "description": "Specific commit SHA to use",
+                              "type": "string",
+                              "minLength": 40,
+                              "maxLength": 40,
+                              "pattern": "^[a-f0-9]{40}$"
+                            }
+                          },
+                          "required": [
+                            "source",
+                            "url",
+                            "path"
+                          ]
+                        },
+                        {
+                          "description": "Placeholder for source types this Claude Code version does not recognize. Never authored by hand — PluginMarketplaceSchema rewrites unparseable sources to this so the entry remains in marketplace.plugins (detectDelistedPlugins must not see it as removed). Install attempts fail at cachePlugin with a clear \"update Claude Code\" message.",
+                          "type": "object",
+                          "properties": {
+                            "source": {
+                              "type": "string",
+                              "const": "unsupported"
+                            }
+                          },
+                          "required": [
+                            "source"
+                          ]
+                        }
+                      ]
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "version": {
+                      "type": "string"
+                    },
+                    "strict": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "source"
+                  ]
+                }
+              },
+              "owner": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "description": "Display name of the plugin author or organization",
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "email": {
+                    "description": "Contact email for support or feedback",
+                    "type": "string"
+                  },
+                  "url": {
+                    "description": "Website, GitHub profile, or organization URL",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name"
+                ]
+              }
+            },
+            "required": [
+              "source",
+              "name",
+              "plugins"
+            ]
+          }
+        ]
+      }
+    },
+    "disableSideloadFlags": {
+      "description": "When true (and set in managed settings), rejects the --plugin-dir, --plugin-url, --agents, and non-sdk --mcp-config CLI flags at startup. Closes the CLI-flag bypass of strictKnownMarketplaces. Pair with allowedMcpServers for per-server MCP control; this setting does not gate other MCP entry points (SDK setMcpServers, claude mcp add, .mcp.json). Also blocks surfaces that spawn the CLI with these flags internally (see settings documentation). Only honored from managed settings; ignored in user/project/local settings.",
+      "type": "boolean"
+    },
+    "pluginSuggestionMarketplaces": {
+      "description": "Marketplace names whose plugins may surface as contextual install suggestions (relevance-based tips). No marketplace-declared suggestions surface without this allowlist; the built-in first-party frontend-design tip is unaffected. Only honored when set in managed settings (policy scope); the key is ignored in user, project, and local settings. A name only takes effect when the marketplace is registered on the machine AND its registered source is also declared in managed settings, either as the extraKnownMarketplaces entry for that name or as an entry of strictKnownMarketplaces. A marketplace registered from a different source under an allowlisted name is ignored. The official marketplace is exempt from the source requirement: allowlisting its name alone suffices, since that name can only register from the official Anthropic source.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "forceLoginMethod": {
+      "description": "Force a specific login method: \"claudeai\" for Claude Pro/Max, \"console\" for Console billing, \"gateway\" for the Cloud gateway OIDC device flow",
+      "type": "string",
+      "enum": [
+        "claudeai",
+        "console",
+        "gateway"
+      ]
+    },
+    "forceLoginGatewayUrl": {
+      "description": "@internal Cloud gateway URL to pre-fill and auto-connect to during login. Typically set in local managed settings alongside forceLoginMethod: \"gateway\" so users never type the URL. Hidden from public SDK types until Cloud gateway is documented.",
+      "type": "string",
+      "format": "uri"
+    },
+    "parentSettingsBehavior": {
+      "description": "Controls whether the SDK parent tier (Options.managedSettings / --managed-settings) layers under this admin tier. \"first-wins\" (default): parent is dropped — admin tiers are the only policy source. \"merge\": parent's restrictive-only-filtered settings union under the admin winner. Has no effect when no admin tier exists (parent applies as the sole policy tier, still filtered restrictive-only).",
+      "type": "string",
+      "enum": [
+        "first-wins",
+        "merge"
+      ]
+    },
+    "forceLoginOrgUUID": {
+      "description": "Organization UUID to require for OAuth login. Accepts a single UUID string or an array of UUIDs (any one is permitted). When set in managed settings, login fails if the authenticated account does not belong to a listed organization.",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "forceRemoteSettingsRefresh": {
+      "description": "When set in managed settings, the CLI blocks startup until remote managed settings are freshly fetched, and exits if the fetch fails",
+      "type": "boolean"
+    },
+    "otelHeadersHelper": {
+      "description": "Path to a script that outputs OpenTelemetry headers",
+      "type": "string"
+    },
+    "outputStyle": {
+      "description": "Controls the output style for assistant responses",
+      "type": "string"
+    },
+    "viewMode": {
+      "description": "Default transcript view mode on startup",
+      "type": "string",
+      "enum": [
+        "default",
+        "verbose",
+        "focus"
+      ]
+    },
+    "language": {
+      "description": "Preferred language for Claude responses and voice dictation (e.g., \"japanese\", \"spanish\")",
+      "type": "string"
+    },
+    "skipWebFetchPreflight": {
+      "description": "Skip the WebFetch blocklist check for enterprise environments with restrictive security policies",
+      "type": "boolean"
+    },
+    "sandbox": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "failIfUnavailable": {
+          "description": "Exit with an error at startup if sandbox.enabled is true but the sandbox cannot start (missing dependencies or unsupported platform). When false (default), a warning is shown and commands run unsandboxed. Intended for managed-settings deployments that require sandboxing as a hard gate.",
+          "type": "boolean"
+        },
+        "autoAllowBashIfSandboxed": {
+          "type": "boolean"
+        },
+        "allowUnsandboxedCommands": {
+          "description": "Allow commands to run outside the sandbox via the dangerouslyDisableSandbox parameter. When false, the dangerouslyDisableSandbox parameter is completely ignored and all commands must run sandboxed. Default: true.",
+          "type": "boolean"
+        },
+        "network": {
+          "type": "object",
+          "properties": {
+            "allowedDomains": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "deniedDomains": {
+              "description": "Domains that are always blocked, even if matched by allowedDomains. Supports the same wildcard syntax as allowedDomains. Merged from all settings sources regardless of allowManagedDomainsOnly.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "strictAllowlist": {
+              "description": "When true, the sandbox runtime deterministically denies hosts not in allowedDomains instead of prompting. Enforced for sandboxed commands only — in-process tools such as WebFetch are not gated by this setting. Only honored from user, managed/policy, or CLI (--settings) settings — project settings (.claude/settings.json and .claude/settings.local.json) are ignored.",
+              "type": "boolean"
+            },
+            "allowManagedDomainsOnly": {
+              "description": "When true (and set in managed settings), only allowedDomains and WebFetch(domain:...) allow rules from managed settings are respected. User, project, local, and flag settings domains are ignored. Denied domains are still respected from all sources.",
+              "type": "boolean"
+            },
+            "allowUnixSockets": {
+              "description": "macOS only: Unix socket paths to allow. Ignored on Linux (seccomp cannot filter by path).",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "allowAllUnixSockets": {
+              "description": "If true, allow all Unix sockets (disables blocking on both platforms).",
+              "type": "boolean"
+            },
+            "allowLocalBinding": {
+              "type": "boolean"
+            },
+            "allowMachLookup": {
+              "description": "macOS only: Additional XPC/Mach service names to allow looking up. Supports trailing-wildcard prefix matching (e.g., \"com.apple.coresimulator.*\"). Needed for tools that communicate via XPC such as the iOS Simulator or Playwright.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "httpProxyPort": {
+              "type": "number"
+            },
+            "socksProxyPort": {
+              "type": "number"
+            },
+            "tlsTerminate": {
+              "description": "[EXPERIMENTAL] Enable in-process TLS termination so the per-request filter can see HTTPS request bodies. Provide a CA cert+key, or omit both to have sandbox-runtime generate an ephemeral one for the session. Only honored from user, managed/policy, or CLI (`--settings`) settings — project settings (.claude/settings.json and .claude/settings.local.json) are ignored.",
+              "type": "object",
+              "properties": {
+                "caCertPath": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "caKeyPath": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        "filesystem": {
+          "type": "object",
+          "properties": {
+            "allowWrite": {
+              "description": "Additional paths to allow writing within the sandbox. Merged with paths from Edit(...) allow permission rules.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "denyWrite": {
+              "description": "Additional paths to deny writing within the sandbox. Merged with paths from Edit(...) deny permission rules.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "denyRead": {
+              "description": "Additional paths to deny reading within the sandbox. Merged with paths from Read(...) deny permission rules.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "allowRead": {
+              "description": "Paths to re-allow reading within denyRead regions. Takes precedence over denyRead for matching paths.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "allowManagedReadPathsOnly": {
+              "description": "When true (set in managed settings), only allowRead paths from policySettings are used.",
+              "type": "boolean"
+            },
+            "disabled": {
+              "description": "macOS and Linux/WSL only: skip filesystem isolation entirely while keeping network and seccomp isolation. Ignored on native Windows, where the sandboxed process runs as a separate user with no inherent rights, so skipping the filesystem rules would withhold every access grant rather than loosen them — filesystem isolation stays on there. Sandboxed commands get unrestricted read/write access to the host filesystem; network egress is still confined to network.allowedDomains. Intended for deployments whose goal is egress control rather than filesystem containment. Does not change Bash prompting: sandbox.autoAllowBashIfSandboxed is independent and still defaults to true, so set it to false to keep prompting for sandboxed commands. Drops the read protection from filesystem.denyRead and credentials.files for sandboxed commands, since both are enforced by the filesystem layer this turns off; credentials.envVars deny/mask is unaffected. Only honored from user, managed/policy, or CLI (`--settings`) settings — project settings (.claude/settings.json and .claude/settings.local.json) are ignored. If managed settings configure sandbox.filesystem at all, or list any sandbox.credentials.files entry, only managed settings can set this: an admin who deployed filesystem restrictions must not have them switched off by a user-writable file. (sandbox.credentials.envVars does not pin it — env scrubbing is independent of the filesystem layer and survives this setting.) When unset, filesystem isolation stays on.",
+              "type": "boolean"
+            }
+          }
+        },
+        "credentials": {
+          "type": "object",
+          "properties": {
+            "files": {
+              "description": "Credential files or directories to protect. `deny` blocks reads inside the sandbox.",
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "description": "Path to a credential file or directory. Same resolution as sandbox.filesystem.* paths: absolute, ~ expanded, or relative to the settings file root (project root for project settings, ~/.claude for user settings).",
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "mode": {
+                    "description": "Access mode for this path. Only `deny` is supported.",
+                    "type": "string",
+                    "const": "deny"
+                  }
+                },
+                "required": [
+                  "path",
+                  "mode"
+                ]
+              }
+            },
+            "envVars": {
+              "description": "Environment variables to protect. `deny` unsets the variable for sandboxed commands; `mask` substitutes a sentinel inside the sandbox and injects the real value at the proxy.",
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "description": "Environment variable name.",
+                    "type": "string",
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+                  },
+                  "mode": {
+                    "description": "Access mode for this environment variable. `deny` unsets the variable for sandboxed commands; `mask` shows sandboxed commands a sentinel value and the host proxy swaps sentinel→real on egress to `injectHosts`.",
+                    "type": "string",
+                    "enum": [
+                      "deny",
+                      "mask"
+                    ]
+                  },
+                  "injectHosts": {
+                    "description": "Optional narrowing of where the proxy substitutes this credential. Only meaningful when mode is `mask`; accepted but ignored for `deny`. If unset, defaults to `network.allowedDomains` — the credential is injected at every reachable host. Each entry must be reachable via `network.allowedDomains` (sandbox-runtime validates this).",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "name",
+                  "mode"
+                ]
+              }
+            },
+            "allowPlaintextInject": {
+              "description": "Allow sentinel→real substitution on the plain-HTTP proxy path. Defaults to false: without TLS termination the upstream identity is unverified and the credential travels in cleartext. Set only for trusted-network test fixtures. Only honored from user, managed/policy, or CLI (`--settings`) settings — project settings (.claude/settings.json and .claude/settings.local.json) are ignored.",
+              "type": "boolean"
+            }
+          }
+        },
+        "ignoreViolations": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "enableWeakerNestedSandbox": {
+          "type": "boolean"
+        },
+        "enableWeakerNetworkIsolation": {
+          "description": "macOS only: Allow access to com.apple.trustd.agent in the sandbox. Needed for Go-based CLI tools (gh, gcloud, terraform, etc.) to verify TLS certificates when using httpProxyPort with a MITM proxy and custom CA. **Reduces security** — opens a potential data exfiltration vector through the trustd service. Default: false",
+          "type": "boolean"
+        },
+        "allowAppleEvents": {
+          "description": "macOS only: Allow sandboxed commands to send Apple Events (and look up the appleeventsd Mach service). Needed for `open`, `osascript`, and browser-based auth flows that open URLs. **Removes code-execution isolation** — sandboxed commands can launch other applications unsandboxed with no user prompt, and can script running apps (e.g. Terminal) subject to the user's per-app TCC automation consent. Only honored from user, managed/policy, or CLI (--settings) settings — project settings (.claude/settings.json and .claude/settings.local.json) are ignored. Default: false",
+          "type": "boolean"
+        },
+        "excludedCommands": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ripgrep": {
+          "description": "Custom ripgrep configuration for bundled ripgrep support",
+          "type": "object",
+          "properties": {
+            "command": {
+              "type": "string"
+            },
+            "args": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "command"
+          ]
+        },
+        "bwrapPath": {
+          "description": "Linux/WSL only: Absolute path to the bwrap (bubblewrap) binary. Overrides auto-detection via PATH. Only honored from admin-controlled managed settings.",
+          "type": "string"
+        },
+        "socatPath": {
+          "description": "Linux/WSL only: Absolute path to the socat binary used for the sandbox network proxy. Overrides auto-detection via PATH. Only honored from admin-controlled managed settings.",
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "feedbackSurveyRate": {
+      "description": "Probability (0–1) that the session quality survey appears when eligible. 0.05 is a reasonable starting point.",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "feedbackDrafts": {
+      "description": "Model-drafted feedback (the SendFeedback tool). \"notify\" (default) shows a one-line notice when a draft is queued; \"quiet\" shows only the footer counter; \"off\" disables the tool entirely so drafts are never queued.",
+      "type": "string",
+      "enum": [
+        "notify",
+        "quiet",
+        "off"
+      ]
+    },
+    "spinnerTipsEnabled": {
+      "description": "Whether to show tips in the spinner",
+      "type": "boolean"
+    },
+    "spinnerVerbs": {
+      "description": "Customize spinner verbs. mode: \"append\" adds verbs to defaults, \"replace\" uses only your verbs.",
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "append",
+            "replace"
+          ]
+        },
+        "verbs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "mode",
+        "verbs"
+      ]
+    },
+    "spinnerTipsOverride": {
+      "description": "Override spinner tips. tips: array of tip strings. excludeDefault: if true, only show custom tips (default: false).",
+      "type": "object",
+      "properties": {
+        "excludeDefault": {
+          "type": "boolean"
+        },
+        "tips": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "tips"
+      ]
+    },
+    "syntaxHighlightingDisabled": {
+      "description": "Whether to disable syntax highlighting in diffs",
+      "type": "boolean"
+    },
+    "terminalTitleFromRename": {
+      "description": "Whether /rename updates the terminal tab title (defaults to true). Set to false to keep auto-generated topic titles.",
+      "type": "boolean"
+    },
+    "alwaysThinkingEnabled": {
+      "description": "When false, thinking is disabled. When absent or true, thinking is enabled automatically for supported models.",
+      "type": "boolean"
+    },
+    "effortLevel": {
+      "description": "Persisted effort level for supported models.",
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "xhigh"
+      ]
+    },
+    "ultracode": {
+      "description": "Enable ultracode for the session: xhigh effort plus standing dynamic-workflow orchestration. Session-scoped — typically provided via --settings or the apply_flag_settings control request; interactive toggles never persist it. Requires workflows to be enabled and an xhigh-capable model.",
+      "type": "boolean"
+    },
+    "autoCompactWindow": {
+      "description": "Auto-compact window size",
+      "type": "integer",
+      "minimum": 100000,
+      "maximum": 1000000
+    },
+    "advisorModel": {
+      "description": "Advisor model for the server-side advisor tool.",
+      "type": "string"
+    },
+    "fastMode": {
+      "description": "When true, fast mode is enabled. When absent or false, fast mode is off.",
+      "type": "boolean"
+    },
+    "fastModePerSessionOptIn": {
+      "description": "When true, fast mode does not persist across sessions. Each session starts with fast mode off.",
+      "type": "boolean"
+    },
+    "promptSuggestionEnabled": {
+      "description": "When false, prompt suggestions are disabled. When absent or true, prompt suggestions are enabled.",
+      "type": "boolean"
+    },
+    "emojiCompletionEnabled": {
+      "description": "When false, the :emoji: shortcode typeahead (the suggestion popup and the :name: inline replacement) is disabled. When absent or true, it is enabled.",
+      "type": "boolean"
+    },
+    "awaySummaryEnabled": {
+      "description": "@internal When false, the session recap (shown when you return after being away for 5+ minutes) is disabled. When absent or true, recap is enabled. Hidden from public SDK types until external launch.",
+      "type": "boolean"
+    },
+    "showClearContextOnPlanAccept": {
+      "description": "When true, the plan-approval dialog offers a \"clear context\" option. Defaults to false.",
+      "type": "boolean"
+    },
+    "askUserQuestionTimeout": {
+      "description": "Idle time before Claude's questions auto-continue with any answers selected so far. Defaults to never — auto-continue only runs when explicitly set to 60s/5m/10m.",
+      "type": "string",
+      "enum": [
+        "60s",
+        "5m",
+        "10m",
+        "never"
+      ]
+    },
+    "agent": {
+      "description": "Name of an agent (built-in or custom) to use for the main thread. Applies the agent's system prompt, tool restrictions, and model.",
+      "type": "string"
+    },
+    "companyAnnouncements": {
+      "description": "Company announcements to display at startup (one will be randomly selected if multiple are provided)",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "pluginConfigs": {
+      "description": "Per-plugin configuration including MCP server user configs, keyed by plugin ID (plugin@marketplace format)",
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "mcpServers": {
+                "description": "User configuration values for MCP servers keyed by server name",
+                "type": "object",
+                "propertyNames": {
+                  "type": "string"
+                },
+                "additionalProperties": {
+                  "type": "object",
+                  "propertyNames": {
+                    "type": "string"
+                  },
+                  "additionalProperties": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "boolean"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              "options": {
+                "description": "Non-sensitive option values from plugin manifest userConfig, keyed by option name. Sensitive values go to secure storage instead.",
+                "type": "object",
+                "propertyNames": {
+                  "type": "string"
+                },
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "boolean"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "not": {}
+          }
+        ]
+      }
+    },
+    "remote": {
+      "description": "Cloud session configuration",
+      "type": "object",
+      "properties": {
+        "defaultEnvironmentId": {
+          "description": "Default environment ID to use for cloud sessions",
+          "type": "string"
+        }
+      }
+    },
+    "autoUpdatesChannel": {
+      "description": "Release channel for auto-updates (latest or stable)",
+      "type": "string",
+      "enum": [
+        "latest",
+        "stable",
+        "rc"
+      ]
+    },
+    "minimumVersion": {
+      "description": "Minimum version to stay on - prevents downgrades when switching to stable channel",
+      "type": "string"
+    },
+    "requiredMinimumVersion": {
+      "description": "Minimum Claude Code version required to start. If the running version is older, Claude Code exits at startup with instructions to update. Only enforced from managed (policy) settings.",
+      "type": "string"
+    },
+    "requiredMaximumVersion": {
+      "description": "Maximum Claude Code version allowed to start. If the running version is newer, Claude Code exits at startup with instructions to install an approved version. Only enforced from managed (policy) settings.",
+      "type": "string"
+    },
+    "plansDirectory": {
+      "description": "Custom directory for plan files, relative to project root. If not set, defaults to ~/.claude/plans/",
+      "type": "string"
+    },
+    "tui": {
+      "description": "Terminal UI renderer. \"fullscreen\" uses the flicker-free alt-screen renderer with virtualized scrollback (equivalent to CLAUDE_CODE_NO_FLICKER=1). \"default\" uses the classic main-screen renderer.",
+      "type": "string",
+      "enum": [
+        "default",
+        "fullscreen"
+      ]
+    },
+    "voice": {
+      "description": "Voice mode settings (hold-to-talk / tap-to-toggle dictation)",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "mode": {
+          "description": "'hold' (default): hold to talk. 'tap': tap to start, tap to stop+submit.",
+          "type": "string",
+          "enum": [
+            "hold",
+            "tap"
+          ]
+        },
+        "autoSubmit": {
+          "description": "Submit the prompt when hold-to-talk is released (hold mode only)",
+          "type": "boolean"
+        }
+      }
+    },
+    "channelsEnabled": {
+      "description": "Managed-org opt-in for channel notifications (MCP servers with the claude/channel capability pushing inbound messages). claude.ai Teams/Enterprise: default off. Console: default on unless managed settings exist. Set true to allow; users then select servers via --channels.",
+      "type": "boolean"
+    },
+    "allowedChannelPlugins": {
+      "description": "Managed-org allowlist of channel plugins. When set, replaces the default Anthropic allowlist — admins decide which plugins may push inbound messages. Undefined falls back to the default. Requires channelsEnabled: true.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "marketplace": {
+            "type": "string"
+          },
+          "plugin": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "marketplace",
+          "plugin"
+        ]
+      }
+    },
+    "prefersReducedMotion": {
+      "description": "Reduce or disable animations for accessibility (spinner shimmer, flash effects, etc.)",
+      "type": "boolean"
+    },
+    "doneMeansMerged": {
+      "description": "@internal When true, Claude keeps working until the PR is ready for you to merge, a cron/Monitor is armed to resume later, or it hands you a self-contained next step.",
+      "type": "boolean"
+    },
+    "totalTokensReminder": {
+      "description": "@internal Emit a <total_tokens>N tokens left</total_tokens> block in the system prompt, after each tool result, and (when totalTokensReminderAfterUserTurn is on) after each regular user prompt. 'infinite' uses the literal value Infinite, 'fixed' uses 5000000, 'countdown' uses the live remaining context-window tokens, 'padded-countdown' counts down from totalTokensReminderBudget (re-anchoring to the full budget on each regular user prompt when totalTokensReminderAfterUserTurn is on — task-budget semantics). Defaults to off. Env var CLAUDE_CODE_TOTAL_TOKENS_REMINDER overrides.",
+      "type": "string",
+      "enum": [
+        "off",
+        "infinite",
+        "fixed",
+        "countdown",
+        "padded-countdown"
+      ]
+    },
+    "totalTokensReminderBudget": {
+      "description": "@internal Starting budget (tokens) for totalTokensReminder 'padded-countdown' mode. Defaults to 15000000. Server-controlled via GrowthBook; env var CLAUDE_CODE_TOTAL_TOKENS_REMINDER_BUDGET overrides.",
+      "type": "integer",
+      "exclusiveMinimum": 0,
+      "maximum": 9007199254740991
+    },
+    "totalTokensReminderAfterUserTurn": {
+      "description": "@internal When true, emit the totalTokensReminder block after each regular user prompt and (for 'padded-countdown') re-anchor the task budget to the full configured value at the start of each user turn. When false, the reminder appears only in the system prompt and after each tool-result batch, and 'padded-countdown' counts down over the whole session. Defaults to off. Env var CLAUDE_CODE_TOTAL_TOKENS_REMINDER_AFTER_USER_TURN overrides; server-controlled via GrowthBook tengu_lapis_anchor_user_turn.",
+      "type": "boolean"
+    },
+    "autoMemoryEnabled": {
+      "description": "Enable auto-memory for this project. When false, Claude will not read from or write to the auto-memory directory.",
+      "type": "boolean"
+    },
+    "autoMemoryDirectory": {
+      "description": "Custom directory path for auto-memory storage. Supports ~/ prefix for home directory expansion. Ignored if set in projectSettings (checked-in .claude/settings.json) for security. When unset, defaults to ~/.claude/projects/<sanitized-cwd>/memory/.",
+      "type": "string"
+    },
+    "autoDreamEnabled": {
+      "description": "Enable background memory consolidation (auto-dream). When set, overrides the server-side default.",
+      "type": "boolean"
+    },
+    "showThinkingSummaries": {
+      "description": "Request API-side thinking summaries and show them in the conversation and in the transcript view (ctrl+o). Set explicitly to override the default for your install.",
+      "type": "boolean"
+    },
+    "skipDangerousModePermissionPrompt": {
+      "description": "Whether the user has accepted the bypass permissions mode dialog",
+      "type": "boolean"
+    },
+    "skipWorkflowUsageWarning": {
+      "description": "@internal Whether the user has accepted the multi-agent workflow usage warning. Until set, auto permission mode prompts before running a workflow.",
+      "type": "boolean"
+    },
+    "disableAutoMode": {
+      "description": "Disable auto mode",
+      "type": "string",
+      "enum": [
+        "disable"
+      ]
+    },
+    "sshConfigs": {
+      "description": "SSH connection configurations for remote environments. Typically set in managed settings by enterprise administrators to pre-configure SSH connections for team members.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Unique identifier for this SSH config. Used to match configs across settings sources.",
+            "type": "string"
+          },
+          "name": {
+            "description": "Display name for the SSH connection",
+            "type": "string"
+          },
+          "sshHost": {
+            "description": "SSH host in format \"user@hostname\" or \"hostname\", or a host alias from ~/.ssh/config",
+            "type": "string"
+          },
+          "sshPort": {
+            "description": "SSH port (default: 22)",
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "sshIdentityFile": {
+            "description": "Path to SSH identity file (private key)",
+            "type": "string"
+          },
+          "startDirectory": {
+            "description": "Default working directory on the remote host. Supports tilde expansion (e.g. ~/projects). If not specified, defaults to the remote user home directory. Can be overridden by the [dir] positional argument in `claude ssh <config> [dir]`.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "sshHost"
+        ]
+      }
+    },
+    "claudeMd": {
+      "description": "CLAUDE.md-style instructions injected as organization-managed memory. Only honored from managed/policy settings.",
+      "type": "string"
+    },
+    "claudeMdExcludes": {
+      "description": "Glob patterns or absolute paths of CLAUDE.md files to exclude from loading. Patterns are matched against absolute file paths using picomatch. Only applies to User, Project, and Local memory types (Managed/policy files cannot be excluded). Examples: \"/home/user/monorepo/CLAUDE.md\", \"**/code/CLAUDE.md\", \"**/some-dir/.claude/rules/**\"",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "pluginTrustMessage": {
+      "description": "Custom message to append to the plugin trust warning shown before installation. Only read from policy settings (managed-settings.json / MDM). Useful for enterprise administrators to add organization-specific context (e.g., \"All plugins from our internal marketplace are vetted and approved.\").",
+      "type": "string"
+    },
+    "theme": {
+      "description": "Color theme for the UI",
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "auto",
+            "dark",
+            "light",
+            "light-daltonized",
+            "dark-daltonized",
+            "light-ansi",
+            "dark-ansi"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^custom:.*"
+        }
+      ]
+    },
+    "editorMode": {
+      "description": "Key binding mode for the prompt input",
+      "type": "string",
+      "enum": [
+        "normal",
+        "vim"
+      ]
+    },
+    "vimInsertModeRemaps": {
+      "description": "Vim INSERT-mode key-sequence remaps, e.g. {\"jj\": \"<Esc>\"}. Each key is exactly two printable characters typed in sequence; \"<Esc>\" (return to NORMAL mode) is the only supported target. Applies when editorMode is \"vim\".",
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {}
+    },
+    "verbose": {
+      "description": "Show full tool output instead of truncated summaries",
+      "type": "boolean"
+    },
+    "preferredNotifChannel": {
+      "description": "Preferred OS notification channel",
+      "type": "string",
+      "enum": [
+        "auto",
+        "iterm2",
+        "terminal_bell",
+        "iterm2_with_bell",
+        "kitty",
+        "ghostty",
+        "notifications_disabled"
+      ]
+    },
+    "autoCompactEnabled": {
+      "description": "Automatically compact conversation when context fills",
+      "type": "boolean"
+    },
+    "precomputeCompactionEnabled": {
+      "description": "Precompute the compaction summary in the background before it is needed. Only applies when auto-compact is on.",
+      "type": "boolean"
+    },
+    "switchModelsOnFlag": {
+      "description": "When safeguards flag a message, automatically switch to a different model to keep chatting. When off, your session will pause instead.",
+      "type": "boolean"
+    },
+    "autoScrollEnabled": {
+      "description": "Auto-scroll the conversation view to bottom (fullscreen mode only)",
+      "type": "boolean"
+    },
+    "wheelScrollAccelerationEnabled": {
+      "description": "Ramp mouse-wheel scroll speed during fast scrolls (fullscreen mode only)",
+      "type": "boolean"
+    },
+    "fileCheckpointingEnabled": {
+      "description": "Snapshot files before edits so /rewind can restore them",
+      "type": "boolean"
+    },
+    "showTurnDuration": {
+      "description": "Show \"Cooked for Nm Ns\" after each assistant turn",
+      "type": "boolean"
+    },
+    "showMessageTimestamps": {
+      "description": "Stamp each message with its arrival time",
+      "type": "boolean"
+    },
+    "terminalProgressBarEnabled": {
+      "description": "Emit OSC 9;4 progress sequences during long operations",
+      "type": "boolean"
+    },
+    "todoFeatureEnabled": {
+      "description": "Enable the todo / task tracking panel",
+      "type": "boolean"
+    },
+    "teammateMode": {
+      "description": "How spawned teammates execute (tmux, iterm2, in-process, auto)",
+      "type": "string",
+      "enum": [
+        "auto",
+        "tmux",
+        "iterm2",
+        "in-process"
+      ]
+    },
+    "remoteControlAtStartup": {
+      "description": "Start Remote Control bridge automatically each session",
+      "type": "boolean"
+    },
+    "isolatePeerMachines": {
+      "description": "Require explicit approval before SendMessage can reach a peer session on another machine via Remote Control",
+      "type": "boolean"
+    },
+    "daemonColdStart": {
+      "description": "When no background service is running: 'transient' spawns one for this login session; 'ask' offers to install it persistently",
+      "type": "string",
+      "enum": [
+        "transient",
+        "ask"
+      ]
+    },
+    "autoUploadSessions": {
+      "description": "Mirror local sessions to claude.ai as view-only (no remote control)",
+      "type": "boolean"
+    },
+    "inputNeededNotifEnabled": {
+      "description": "Push to mobile when a permission prompt or question is waiting",
+      "type": "boolean"
+    },
+    "agentPushNotifEnabled": {
+      "description": "Allow Claude to push proactive mobile notifications",
+      "type": "boolean"
+    },
+    "skipAutoPermissionPrompt": {
+      "description": "Whether the user has accepted the auto mode opt-in dialog",
+      "type": "boolean"
+    },
+    "useAutoModeDuringPlan": {
+      "description": "Whether plan mode uses auto mode semantics when auto mode is available (default: true)",
+      "type": "boolean"
+    },
+    "autoMode": {
+      "description": "Auto mode classifier prompt customization",
+      "type": "object",
+      "properties": {
+        "allow": {
+          "description": "Rules for the auto mode classifier allow section. Include the literal string \"$defaults\" to inherit the built-in rules at that position.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "soft_deny": {
+          "description": "Rules for the auto mode classifier SOFT BLOCK section — destructive/irreversible actions that user intent can clear. Include the literal string \"$defaults\" to inherit the built-in rules at that position.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "hard_deny": {
+          "description": "Rules for the auto mode classifier HARD BLOCK section — security boundaries that user intent does NOT clear. Include the literal string \"$defaults\" to inherit the built-in rules at that position.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "environment": {
+          "description": "Entries for the auto mode classifier environment section. Include the literal string \"$defaults\" to inherit the built-in entries at that position.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "classifyAllShell": {
+          "description": "When true, every Bash/PowerShell allow rule is suspended while auto mode is active so all shell commands are routed through the classifier (higher safety, more classifier calls). Default: false.",
+          "type": "boolean"
+        }
+      }
+    },
+    "disableDeepLinkRegistration": {
+      "description": "Prevent claude-cli:// protocol handler registration with the OS",
+      "type": "string",
+      "enum": [
+        "disable"
+      ]
+    },
+    "voiceEnabled": {
+      "description": "Enable voice mode (hold-to-talk dictation)",
+      "type": "boolean"
+    },
+    "defaultView": {
+      "description": "Default transcript view: chat (SendUserMessage checkpoints only) or transcript (full)",
+      "type": "string",
+      "enum": [
+        "chat",
+        "transcript"
+      ]
+    },
+    "axScreenReader": {
+      "description": "Render screen-reader friendly output (flat text, no decorative borders or animations). Overridden by the CLAUDE_AX_SCREEN_READER env var and the --ax-screen-reader CLI flag.",
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": {}
+}
+```
+
+## User Request
+
+Configure .claude/settings.json for this repo (internship-research-loop). Needs: (1) pytest runs allowed without prompting — `python -m pytest`, `pytest` and common variants; (2) git operations short of force-push allowed without prompting — status, diff, log, branch, show, add, commit (local), pull; explicitly do NOT blanket-allow `git push` or `git push --force`/`-f` — those must still prompt for confirmation every time, especially anything pushing to origin/master; (3) gh CLI read operations without prompting — `gh api ...` (GET-style reads), `gh run list`, `gh run view`, `gh issue list`, `gh issue view`, `gh workflow list`; explicitly do NOT allow `gh secret set`/`gh secret remove` or any GitHub Actions secret modification — those must still require confirmation. This is a small repo (internship-research-loop) with an existing .claude/settings.local.json that already has enabledMcpjsonServers — add a new .claude/settings.json (project-shared, not local) with a permissions.allow list matching the above, plus explicit deny/ask entries (whichever the schema supports) for force-push and secret-modifying gh commands so they're not just "unlisted" but explicitly guarded. Follow this repo's own existing pattern seen in sibling repos (e.g. Bash(pytest *), Bash(git status *) style glob permission strings).
+
+## Claude
+
+Settings file written and validated. Now for the CLAUDE.md documenting note-template contracts and when to use each skill/agent.
+
+Now let's verify promote-dossier end-to-end against a real dossier, up to (not including) the write step. First, pick a real dossier from the vault.
+
+Found a real, unpromoted dossier to test against: Appian's "Software Engineering Intern" (vanshb03 source). One honest complication already surfaced — this dossier predates `core/classify.py`, so it has no auto-assigned bucket/classification callout to default to. Let me run the actual skill flow, including that edge case.
+
+**Tool calls:**
+
 - `Bash` — `test -f /home/anant_gupta/projects/work/internship-research-loop/.claude/settings.json && echo EXISTS || echo MISSING`
   ```
 MISSING
@@ -2302,6 +5935,14 @@ If a new piece of recurring toil shows up and it's mechanical/deterministic (ano
 - `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/[REDACTED].md"}`
 - `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/[REDACTED].md"}`
 - `AskUserQuestion` — `{"questions":[{"question":"Promoting the Appian \"Software Engineering Intern\" dossier (vanshb03, McLean VA, Summer 2027) — which Programs folder should it go in?","header":"Target folder","multiSelect":false,"options":[{"label":"Programs/Serious/","description":"Pursuing this now — same research depth as Considering, just signals active intent."},{"label":"Programs/Considering/","description":"Later/undecided for now — same research depth, just a timing signal."}]},{"question":"This dossier predates core/classify.py (written 2026-07-25, before the bucket-classifier landed) — it has no auto-assigned priority bucket or classification callout to default to. Pick one manually, or leave it Other/unclassified?","header":"Priority bucket","multiSelect":false,"options":[{"label":"Fullstack","description":"Posting content: full-stack components, production-adjacent engineering, data structures/OOP — matches core/classify.py's Fullstack signals most closely."},{"label":"AI/ML","description":"Posting mentions AI tooling/LLMs, but as a workflow accelerant (\"engineer with AI\"), not the actual engineering domain of the role itself."},{"label":"Other","description":"Leave unclassified rather than force-fit a bucket onto a dossier the classifier never actually saw."}]}]}`
+
+## You
+
+[Request interrupted by user for tool use]
+
+## Claude
+
+No response requested.
 
 ## You
 
@@ -2925,6 +6566,10 @@ find / -maxdepth 8 -path "*/.claude/agents/*.md" 2&gt;/dev/null | grep -v "^/hom
 echo "=== check plugin agents for example frontmatter ==="
 find / -path "*agents*" -iname "*.md" 2&gt;/dev/null | grep -iv "node_modules\|/.venv/\|/.git/" | grep -i "code-reviewer\|explore" | head -10" was stopped</summary>
 </task-notification>
+
+## You
+
+Continue from where you left off.
 
 ## Claude
 
@@ -3725,10 +7370,1655 @@ Classification/routing code (`core/classify.py`, `core/relevance.py`, priority-f
 **Not done this session, deliberately**: no repo code touched — this was a research/verification/planning pass per explicit instruction, followed by writing the next prompt. Niche-specific/FAANG-Fortune100/YC-backed targeting (raised in the same audit that surfaced these bugs) is explicitly sequenced *after* Prompt 4 ships and one clean cycle is observed — pointing a wider intake funnel at an unfixed classification/dedup/degree-gate layer would make every bug above worse, not better.
   ```
 
+## You
+
+The prompt 4 was updated and run in a new session with sonnet 5. I want you to review the result in detail here: ```All 303 tests pass (up from 258 baseline — 45 new tests added). Here's the task-by-task report:
+
+Task-by-task summary
+
+A — Per-bucket write budget + capacity notification (not a refusal). run_pipeline.py: MAX_NEW_WRITES_PER_RUN is now a per-bucket dict ({"AI/ML": 3, "Fullstack": 3, "CyS & Finance": 3, "Other": 1}), _prioritize_and_cap scopes budget per-bucket so an empty bucket can't donate slots. count_dossiers_by_bucket() counts real files; hitting 50 never blocks the write, only adds to bucket_at_capacity in the run record and files one GitHub issue per bucket the first time it crosses 50 (tracked in state/capacity_notified.json, not refiled on subsequent runs). Global total crossing 190/200 also files an issue; 150/170 are log-only. Tested at 48/49/50 (write always happens, notification only at ≥50), global at 189/190/200, per-bucket isolation, and "notify once" suppression across two runs.
+
+B — Product/rotational reject patterns. Added to core/relevance.py's _STAGE1_REJECT_RE + a new _ROTATIONAL_ANALYST_RE with negative lookbehind so an engineering-track rotational program still passes. Verified against real data: Databricks "Product Management Intern" → rejects; Conagra "Demand Science Rotational Analyst" → rejects; a constructed "Software Engineering Rotational Program Intern" still passes.
+
+C — 'threat' narrowed + Mosaic-class reject. classify.py's _CYS_FINANCE_RE now requires threat to co-occur with model|actor|intelligence|detection. relevance.py's adjacent-field hint extended to chemical/industrial/PLC/DCS/SCADA, and (root-cause fix) the hint check now also scans posting content, not just title+company, since Mosaic's chemical signal only appears in the fetched body. Verified: real Mosaic content → stage2_confirm is False, classify no longer fires on the safety-disclaimer "threat".
+
+D — URL/job-ID cross-source dedup. core/identity.py gained extract_ats_job_id() (Greenhouse/Lever/Ashby/Google-careers patterns) and cross_source_key() now prefers the job ID over normalized text, falling back when no ID is extractable. Wired through validate.py and run_pipeline.py. Verified against all four real incidents: Virtu's triple-duplicate collapses to 1 key, Google BS/MS variant collapses, Palantir's cross-bucket duplicate collapses, Aquatic's name-variant still collapses (via the URL, which both share).
+
+E — Google careers extraction bug. Added _LISTING_SHELL_RESET_RE to extract_content(): on hitting a listing-shell marker (Back to jobs search, N jobs matched, pagination), it discards everything gathered and waits for the next real heading. Verified: real captured Google fixture now extracts the actual MS-track posting with zero unrelated job titles bleeding through.
+
+F — Content-level degree gate. New phd_only_exclusion() in posting_page.py, same permissive-by-default shape as opt_exclusion(), wired into run_pipeline.py as a degree_eligibility rejection. Verified: real Optiver text → rejects; real Aquatic/Appian/Manhattan Bachelor's-or-Master's-eligible text → zero false rejections.
+
+G — Dossier interlinking. build_frontmatter() now emits notes: [Dossiers MOC link] and a company/<slug> tag, in the position specified; REQUIRED_FRONTMATTER_FIELDS updated so the write gate actually enforces it. Also updated the Standard doc's own §1 order line in the vault to describe shipped reality. Shown before/after on a real test dossier above.
+
+H — recheck.py moves to Viewed/. New move_dossier_to_viewed() in writer.py: appends the Removed MOC link (keeping the original), sets status: removed, adds removed_date/removed_reason, updates dossier_uids.json. recheck.py calls it instead of unlink(); mass-move brake logic unchanged. Shown before/after above.
+
+I — Structured body content. extract_content() now dedupes repeated paragraph lines, splits ATS label run-ons onto their own line, promotes real bolded section names to ### headings (narrow — only canonical keywords), and strips Read More/Follow Us social chrome (fixed a link-title-syntax bug I introduced and caught via the real Manhattan fixture). Verified via before/after diffs above using the real Conagra and Manhattan Associates content.
+
+All nine tasks were exercised against real fixture data, not just reviewed for correctness — the two exceptions worth flagging are Task A's GitHub issue-filing (correct by test, but gh itself isn't invoked in tests, consistent with how test_file_github_issue_calls_gh_with_expected_args already handles this) and Task E's fixture, which is a hand-transcribed subset of the real captured markdown rather than a live re-fetch (per the prompt's instruction to use the existing broken vault content, not re-fetch).
+
+Nothing has been committed — say the word if you want this committed (and optionally run /review-loop-change first, per this repo's convention for core/ingestion/vault_writer changes).```. Upon reveiwing each and everything that claude has finished provide me with another prompt to add the company niche and improve the existing reflections made. We need to dossiers to be extremely powerful on each and every single push. Write me another prompt in the same claude code prompts file, without removing the existing prompt 4. Write a prompt 5 that further enhances the dossier setup for this loop. A company niche along with the strict limit for per push to jarvis. Each and every internship that is listed should be competed alongside with priority based on the preferred companies. So, on each push that we make - we are debating between two internships - which one should be added based on preference. We make sure that we have more than enough resources to be doing this procedure. We find postings and debate which one I should add. Another point, if the same internship that was note added previously appears again and wins the debate then we add it. But if it is loosing the debate then we add that to an excluded list - making sure that we do not add duplicated internship postings and actually find good real content out there. For this we need our resources to be upgraded further and the dossier classification to be more niche. Let's dive in to this prompt 5. It should be doing this process in a much neater and planned manner. This only takes place after the verification of prompt 4 has been done, if there any fixes required we make them before diving into the real work for prompt 5. Write the prompt based on the prompting guide and make sure that it is neat - run in the same session as prompt 4.
+
+## Claude
+
+Good, `classify` and `BUCKET_FOLDERS` were already imported. Let's check the remaining diffs — relevance.py, classify.py, identity.py, posting_page.py, writer.py, recheck.py, validate.py.
+
+Found something worth flagging — let me verify it more carefully before reporting.
+
+Good, consistent. Let me check test_relevance.py, test_classify.py, and test_identity.py to verify the "verified against real fixture" claims are backed by real assertions, not just synthetic strings.
+
+Let me quickly check two more things before writing Prompt 5 — the current profile.yaml shape (to design where the preferred-company list lives) and the Resources doc the user referenced about "resources."
+
+I've done a thorough code-level review of the Prompt 4 result — 303/303 tests genuinely pass, and eight of the nine tasks check out cleanly against real fixtures when I traced the logic and ran it myself. I found two real, concrete gaps worth fixing before Prompt 5, plus one real seed-data source for the niche list. Let me write it all up.
+
+## Review of the Prompt 4 run
+
+I verified this directly against the repo (not just the report) — pulled the real diffs, ran the actual test suite (303/303 confirmed, matches the claim), and traced/executed the logic for the trickiest pieces rather than trusting the summary.
+
+**Confirmed solid, 7 of 9 tasks:** A (bucket notification, not refusal — correctly implemented, "notify once" logic verified in code), B (product/rotational patterns — tested against real Databricks/Conagra text, the negative-lookbehind exemption for engineering-track rotationals works), C (root-caused correctly — the adjacent-field hint now scans `posting_content`, not just title+company, which is the actual reason Mosaic slipped through), E (I ran `extract_content()` against the real Google fixture myself — the listing-shell reset genuinely works, zero unrelated job titles bleed through), F (mirrors `opt_exclusion()`'s shape correctly, permissive window-guard verified), G (wiring is clean), I (traced a subtle interaction between the new paragraph-dedup and the shell-reset — worried it could strip the real posting's heading, checked it against the actual fixture, it doesn't — the two features happen to compose safely).
+
+**Two real gaps, both worth fixing before Prompt 5** (per your own instruction):
+
+1. **Task D — the Google job-ID regex has no domain anchor.** Unlike the Greenhouse/Lever/Ashby patterns (each scoped to their own domain), `careers/(?:applications/)?jobs/results/(\d+)` matches that path shape on *any* domain. I reproduced it: `extract_ats_job_id("https://random-startup.com/careers/jobs/results/12345")` returns `"12345"` — meaning an unrelated company's posting with a coincidentally-matching numeric ID would silently collapse into the same `cross_source_key` as a real Google posting and get rejected as a "duplicate." Low probability, but a real false-exclusion path in a codebase that treats false exclusions as worse than false inclusions everywhere else.
+2. **Task H — `move_dossier_to_viewed()` has no collision handling.** `dossier_filename()` already solves this exact problem at write time (`(2)`, `(3)` suffixing) — but bucket-scoped collision checks only look within one bucket folder, so two same-named dossiers *can* legitimately exist in two different buckets. If `recheck.py` ever moves both into the flat `Viewed/` folder, the second move silently overwrites and destroys the first one's content. No test covers this because it wasn't handled.
+
+I've written both fixes as a required "fix first" step at the top of Prompt 5 below, exactly as you asked.
+
+I also found something useful for the niche work: a **real** "Named-Program Coverage Check" already sitting in `Research Loop - Resources.md` (dated 2026-07-29) — 11 real target companies (Jane Street FTTP, Two Sigma First-Year, D.E. Shaw, Citadel Launch, Google ASDI, Microsoft Explore, LinkedIn First Play, MLH, NASA OSTEM, Capital One, Bloomberg), only 3 of which have *any* dossier at all. I used this as the real seed data for the preferred-company list instead of guessing a generic FAANG list.
+
+Now writing Prompt 5 into the vault file, appended after Prompt 4 (not removed).
+
+Now appending Prompt 5, right after Prompt 4's closing fence, without touching anything above it.
+
+Everything's written. Summary:
+
+**Review of Prompt 4:** 303/303 tests confirmed real. 7 of 9 tasks (A, B, C, E, F, G, I) checked out clean — I didn't just read the diffs, I ran `extract_content()` against the real Google fixture myself and traced a suspected dedup/shell-reset interaction bug by hand (it turned out safe). Two real, reproducible gaps found and written as a mandatory "fix first" step at the top of Prompt 5:
+- Task D's Google job-ID regex has no domain anchor — repro'd it collapsing an unrelated domain's URL into the same dedup key.
+- Task H's `move_dossier_to_viewed()` has no collision handling — a real, untested silent-overwrite path.
+
+**Prompt 5**, appended to the same file (Prompt 4 untouched above it):
+- Fix First: the two gaps above, with required before/after repros.
+- **Task J**: explicitly tells the fresh session *not* to invent a FAANG/Fortune-100 list — points it at a real, already-vetted seed already sitting in the vault (`Research Loop - Resources.md`'s 11-company Named-Program Coverage Check).
+- **Task K**: `preferred_companies` in `profile.yaml`, human-editable, same shape as the existing `terms_weight`.
+- **Task L**: the "debate" as a deterministic three-stage comparator (preference tier → bucket fill-need → recency), sorted via `cmp_to_key` — I made a point of calling out, loudly, that this is exactly the spot a fresh session might reach for an actual LLM call, and forbade it explicitly.
+- **Task M**: reuses Prompt 4's existing per-bucket budget as the "strict limit" rather than building a second one.
+- **Task N**: loss-tracking → exclusion after 5 consecutive losses, but kept human-reviewable via an append-only log, not silently permanent — matches this whole project's "human makes the final call" ethos.
+- **Task O**: niche visibility via a frontmatter field + Dataview sort, explicitly *not* another folder migration so soon after the last one.
+- **Task P**: states plainly this whole feature needs zero new resources/API calls — pure string-matching, answering your "resources upgraded" question directly rather than assuming.
+
+Both the Build Log and the prompt file's frontmatter are updated to reflect current state. Ready to run whenever you want.
+
+**Tool calls:**
+
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+echo "=== git log ===" && git log --oneline -15
+echo "=== git status ===" && git status
+echo "=== pytest ===" && source .venv/bin/activate 2>/dev/null; python -m pytest -q 2>&1 | tail -15
+  ```
+  ```
+=== git log ===
+3fd4b88 Update state + logs — 2026-07-30
+225d09b Update state + logs — 2026-07-30
+8d84b20 Recheck log — 2026-07-30
+2378732 Update state + logs — 2026-07-30
+b6b2c9f Update state + logs — 2026-07-30
+8f34d93 Update state + logs — 2026-07-30
+086b829 Update state + logs — 2026-07-29
+e787fdf Update state + logs — 2026-07-29
+31623a7 Update state + logs — 2026-07-29
+7e22b93 Update state + logs — 2026-07-29
+8364b6f Update state + logs — 2026-07-29
+05a5c13 Update state + logs — 2026-07-29
+e3325c8 Update state + logs — 2026-07-29
+a961ec2 Update state + logs — 2026-07-29
+cb7e46c Update state + logs — 2026-07-29
+=== git status ===
+On branch master
+Your branch is behind 'origin/master' by 1 commit, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   core/classify.py
+	modified:   core/identity.py
+	modified:   core/relevance.py
+	modified:   ingestion/posting_page.py
+	modified:   recheck.py
+	modified:   run_pipeline.py
+	modified:   tests/test_classify.py
+	modified:   tests/test_identity.py
+	modified:   tests/test_posting_page.py
+	modified:   tests/test_relevance.py
+	modified:   tests/test_run_pipeline.py
+	modified:   tests/test_validate.py
+	modified:   tests/test_writer.py
+	modified:   vault_writer/validate.py
+	modified:   vault_writer/writer.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	tests/fixtures/posting_google_careers.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+=== pytest ===
+........................................................................ [ 23%]
+........................................................................ [ 47%]
+........................................................................ [ 71%]
+........................................................................ [ 95%]
+...............                                                          [100%]
+303 passed in 1.34s
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+git diff run_pipeline.py
+  ```
+  ```
+diff --git a/run_pipeline.py b/run_pipeline.py
+index 0259507..80114d8 100644
+--- a/run_pipeline.py
++++ b/run_pipeline.py
+@@ -29,7 +29,7 @@ from core.identity import cross_source_key
+ from core.schema_drift import SchemaDriftError
+ from core.schema_drift import check_all as check_schema_drift
+ from ingestion.freehire import fetch_freehire
+-from ingestion.posting_page import extract_content, fetch_posting_markdown, opt_exclusion
++from ingestion.posting_page import extract_content, fetch_posting_markdown, opt_exclusion, phd_only_exclusion
+ from ingestion.sources import (
+     fetch_ai_jobs,
+     fetch_ashby,
+@@ -40,7 +40,7 @@ from ingestion.sources import (
+     fetch_zshah101,
+ )
+ from vault_writer.validate import check_format_compliance, validate
+-from vault_writer.writer import render_dossier, scan_dossiers, write_dossier
++from vault_writer.writer import DOSSIER_SUBPATH, render_dossier, scan_dossiers, write_dossier
+ 
+ SOURCES = (
+     ("SimplifyJobs", fetch_simplify),
+@@ -63,17 +63,80 @@ SOURCES = (
+ # exists across all 6 sources (Greenhouse sometimes has one via metadata, the
+ # other 5 sources never do) — most-recently-posted first is the prioritization
+ # that's actually available everywhere, not a compromise on the chosen rule.
+-MAX_NEW_WRITES_PER_RUN = 18
++#
++# Revised 2026-07-29 (Task A): split per bucket instead of one flat number —
++# a tunable dict, not magic numbers spread through the function. Still caps
++# at roughly 10/run to protect Firecrawl budget and review throughput; a
++# bucket with 0 eligible candidates this run never lets another bucket borrow
++# its unused slots (each bucket only draws from its own ordered queue).
++MAX_NEW_WRITES_PER_RUN = {"AI/ML": 3, "Fullstack": 3, "CyS & Finance": 3, "Other": 1}
++
++# Per-bucket vault capacity, per the original design (Dossiers-to-Create.md,
++# Source of Truth.md) — but per the user's explicit 2026-07-29 override, this
++# is a NOTIFICATION mechanism, never a write refusal: the false-exclusion-
++# worse-than-false-inclusion asymmetry that governs every other gate in this
++# codebase applies here too (a hard-refusal cap would silently drop a real,
++# currently-open posting for no benefit — the scarce resource is human review
++# attention, not vault storage). See run_once()'s bucket_at_capacity handling.
++BUCKET_CAPACITY = 50
++# Global total across List/Dossiers/ excluding Viewed/. 150/170 are logged in
++# the run record only (informational); 190/200 additionally file a GitHub
++# issue the first time each is crossed (same "notify once" state as buckets).
++GLOBAL_INFO_THRESHOLDS = (150, 170)
++GLOBAL_ISSUE_THRESHOLDS = (190, 200)
++CAPACITY_STATE_FILENAME = "capacity_notified.json"
++
++
++def _prioritize_and_cap(new_listings: list, budget: dict) -> tuple:
++    """Most-recently-posted first, scoped per-bucket per the tunable budget
++    dict — each bucket fills only from its own ordered queue, so an empty
++    bucket this run can't let another bucket's items borrow its slots.
++    Bucket is the same degraded-signal classify() (title/category only, no
++    fetched content yet) validate_and_write() itself falls back to before a
++    posting's content is fetched — pacing doesn't need the refined,
++    content-informed bucket, only the final written folder does. Missing
++    date_posted sorts last, never first (an unknown post date must not win
++    priority over a known-recent one). Returns (this_run, deferred) —
++    deferred items are simply not passed to validate_and_write and therefore
++    never marked seen, so dedup_new() naturally re-offers them next run
++    without any extra state to manage."""
++    by_bucket = {}
++    for uid, listing in new_listings:
++        bucket, _ = classify(listing.title, listing.category, "")
++        by_bucket.setdefault(bucket, []).append((uid, listing))
++
++    this_run, deferred = [], []
++    for bucket, items in by_bucket.items():
++        ordered = sorted(items, key=lambda item: item[1].date_posted or 0, reverse=True)
++        limit = budget.get(bucket, 0)
++        this_run.extend(ordered[:limit])
++        deferred.extend(ordered[limit:])
++    return this_run, deferred
++
++
++def count_dossiers_by_bucket(vault_root) -> dict:
++    """Real per-bucket file counts in the vault checkout — Viewed/ isn't one
++    of BUCKET_FOLDERS' values, so it's excluded automatically, matching the
++    Standard's '201 total excluding Viewed/' scope."""
++    vault_root = Path(vault_root)
++    counts = {}
++    for bucket, folder in BUCKET_FOLDERS.items():
++        d = vault_root / DOSSIER_SUBPATH / folder
++        counts[bucket] = len(list(d.glob("*.md"))) if d.is_dir() else 0
++    return counts
++
++
++def load_capacity_notified(state_dir) -> dict:
++    path = Path(state_dir) / CAPACITY_STATE_FILENAME
++    if not path.exists():
++        return {"buckets": [], "global": []}
++    return json.loads(path.read_text())
+ 
+ 
+-def _prioritize_and_cap(new_listings: list, limit: int) -> tuple:
+-    """Most-recently-posted first; missing date_posted sorts last, never first
+-    (an unknown post date must not win priority over a known-recent one).
+-    Returns (this_run, deferred) — deferred items are simply not passed to
+-    validate_and_write and therefore never marked seen, so dedup_new()
+-    naturally re-offers them next run without any extra state to manage."""
+-    ordered = sorted(new_listings, key=lambda item: item[1].date_posted or 0, reverse=True)
+-    return ordered[:limit], ordered[limit:]
++def save_capacity_notified(state_dir, notified: dict) -> None:
++    path = Path(state_dir) / CAPACITY_STATE_FILENAME
++    path.parent.mkdir(parents=True, exist_ok=True)
++    path.write_text(json.dumps(notified, indent=2, sort_keys=True) + "\n")
+ 
+ RUN_LOG_MD_SUBPATH = Path("10_Areas/Career/Internships/List/Run Log.md")
+ 
+@@ -158,7 +221,8 @@ def validate_and_write(new_listings, profile: dict, jarvis_dir, seen_ids: set, d
+     # diverged from seen_ids after the 2026-07-18 manual cleanup), plus
+     # whatever this run writes — first source in SOURCES order wins.
+     dossier_keys = {
+-        cross_source_key(fm.get("company", ""), fm.get("title", "")) for fm in scan_dossiers(jarvis_dir)
++        cross_source_key(fm.get("company", ""), fm.get("title", ""), fm.get("url", ""))
++        for fm in scan_dossiers(jarvis_dir)
+     }
+     written_uids = []
+     rejections = []
+@@ -198,6 +262,10 @@ def validate_and_write(new_listings, profile: dict, jarvis_dir, seen_ids: set, d
+                     opt_cache[uid] = {"verdict": "excluded", "signal": opt_signal, "checked": date_found}
+                     rejections.append({"uid": uid, "check": "opt_eligibility", "reason": opt_signal})
+                     continue
++                degree_signal = phd_only_exclusion(page_md)
++                if degree_signal:
++                    rejections.append({"uid": uid, "check": "degree_eligibility", "reason": degree_signal})
++                    continue
+                 opt_cache[uid] = {"verdict": "eligible", "signal": None, "checked": date_found}
+                 bucket, signal = classify(listing.title, listing.category, posting_content)
+                 enriched = render_dossier(listing, uid, date_found,
+@@ -211,7 +279,7 @@ def validate_and_write(new_listings, profile: dict, jarvis_dir, seen_ids: set, d
+         write_dossier(jarvis_dir, uid, markdown, listing.title, listing.company, BUCKET_FOLDERS[bucket],
+                      state_dir=state_dir)
+         written_uids.append(uid)
+-        dossier_keys.add(cross_source_key(listing.company, listing.title))
++        dossier_keys.add(cross_source_key(listing.company, listing.title, listing.url))
+     return written_uids, rejections
+ 
+ 
+@@ -250,6 +318,8 @@ def run_once(
+         "errors": [],
+         "halted": False,
+         "halt_reason": None,
++        "bucket_at_capacity": [],
++        "dossier_total": 0,
+     }
+ 
+     try:
+@@ -294,6 +364,38 @@ def run_once(
+         Path(opt_cache_path).write_text(json.dumps(opt_cache, indent=2, sort_keys=True) + "\n")
+     record["rejections"] = rejections
+ 
++    # Task A resource-limit notification (Standard §5): a bucket at/over
++    # capacity or the global total crossing a threshold is surfaced, never a
++    # write refusal — the writes above already happened regardless.
++    bucket_counts = count_dossiers_by_bucket(jarvis_dir)
++    record["bucket_at_capacity"] = sorted(b for b, c in bucket_counts.items() if c >= BUCKET_CAPACITY)
++    record["dossier_total"] = sum(bucket_counts.values())
++
++    notified = load_capacity_notified(state_dir) if state_dir is not None else {"buckets": [], "global": []}
++    newly_notified = False
++    for bucket in record["bucket_at_capacity"]:
++        if bucket not in notified["buckets"]:
++            notified["buckets"].append(bucket)
++            newly_notified = True
++            issue_fn(
++                issue_repo,
++                f"Bucket '{bucket}' at/over its {BUCKET_CAPACITY}-dossier notification threshold ({timestamp})",
++                f"'{bucket}' now has {bucket_counts[bucket]} dossiers in List/Dossiers/ — this is a "
++                "notification, not a write refusal (a full bucket is a signal to review more urgently, "
++                "not a reason to lose a real posting). New matches keep writing into this bucket.",
++            )
++    for threshold in GLOBAL_ISSUE_THRESHOLDS:
++        if record["dossier_total"] >= threshold and threshold not in notified["global"]:
++            notified["global"].append(threshold)
++            newly_notified = True
++            issue_fn(
++                issue_repo,
++                f"Total dossier count crossed {threshold} ({timestamp})",
++                f"List/Dossiers/ (excluding Viewed/) now has {record['dossier_total']} dossiers total.",
++            )
++    if state_dir is not None and newly_notified:
++        save_capacity_notified(state_dir, notified)
++
+     if should_run_weekly_rollup(now):
+         week_start = now - timedelta(days=7)
+         recent = load_recent_runs(runs_log_path, since=week_start)
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+sed -n '1,20p' run_pipeline.py | grep -n "import\|classify"
+grep -n "^from\|^import" run_pipeline.py
+  ```
+  ```
+8:import json
+9:import os
+10:import subprocess
+12:import requests
+13:from datetime import datetime, timedelta, timezone
+14:from pathlib import Path
+16:from core.classify import BUCKET_FOLDERS, classification_callout, classify
+17:from core.filter import load_profile, matches
+18:from core.git_ops import GitPushError, commit_and_push_with_retry
+19:from core.identity import compute_uid
+20:from core.relevance import stage1_reject, stage2_confirm
+8:import json
+9:import os
+10:import subprocess
+12:import requests
+13:from datetime import datetime, timedelta, timezone
+14:from pathlib import Path
+16:from core.classify import BUCKET_FOLDERS, classification_callout, classify
+17:from core.filter import load_profile, matches
+18:from core.git_ops import GitPushError, commit_and_push_with_retry
+19:from core.identity import compute_uid
+20:from core.relevance import stage1_reject, stage2_confirm
+21:from core.run_log import (
+28:from core.identity import cross_source_key
+29:from core.schema_drift import SchemaDriftError
+30:from core.schema_drift import check_all as check_schema_drift
+31:from ingestion.freehire import fetch_freehire
+32:from ingestion.posting_page import extract_content, fetch_posting_markdown, opt_exclusion, phd_only_exclusion
+33:from ingestion.sources import (
+42:from vault_writer.validate import check_format_compliance, validate
+43:from vault_writer.writer import DOSSIER_SUBPATH, render_dossier, scan_dossiers, write_dossier
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+git diff core/relevance.py
+  ```
+  ```
+diff --git a/core/relevance.py b/core/relevance.py
+index 9cddae9..7041b02 100644
+--- a/core/relevance.py
++++ b/core/relevance.py
+@@ -43,12 +43,34 @@ def _norm(s: str) -> str:
+ # (real Walleye Capital title) must NOT match "risk analyst" — "Technology"
+ # sits between the two words in both real titles, breaking the adjacency
+ # these patterns require.
++# Product/program-management and business-rotational patterns added 2026-07-29
++# from two real recurring incidents: Databricks "Product Management Intern
++# (Summer 2027)" (AIJobs, found 2026-07-26 — explicitly PM work, "learn how to
++# be a successful PM," despite listing "computer science" as an acceptable
++# major, and classified AI/ML only because "Machine Learning" is one of
++# Databricks' internal team names, not because the role does ML work) and
++# Conagra Brands "Demand Science Rotational Analyst" (SimplifyJobs,
++# 2026-07-27, still live at List/Dossiers/Other/ as of this writing — a 2-year
++# business rotational program across Behavioral Science/Demand
++# Forecasting/Demand Planning/Advanced Analytics with zero programming
++# content; its own stated requirement is "a general understanding of
++# business, financial concepts, and theory behind processes"). The rotational
++# pattern requires "rotational" not be immediately preceded by "engineering "/
++# "software " so a genuine software-engineering-track rotational program still
++# passes (checked explicitly in tests/test_relevance.py).
++_ROTATIONAL_ANALYST_RE = re.compile(
++    r"(?<!engineering )(?<!software )\brotational (analyst|program)\b", re.I,
++)
+ _STAGE1_REJECT_RE = re.compile(
+     r"\b(financial analyst|risk analyst|performance analyst"
+     r"|tax (associate|preparer|accountant)"
+     r"|investor relations"
+     r"|sports performance (analyst|analytics)|academy performance (analyst|analysis)"
+-    r"|human resources intern|hr intern|marketing intern|business development intern)\b",
++    r"|human resources intern|hr intern|marketing intern|business development intern"
++    r"|product management intern|product manager intern"
++    r"|program management intern|technical program manager intern"
++    r"|demand (planning|science) (analyst|rotational)"
++    r"|business analyst intern)\b",
+     re.I,
+ )
+ 
+@@ -56,7 +78,8 @@ _STAGE1_REJECT_RE = re.compile(
+ def stage1_reject(title: str, raw_text: str) -> bool:
+     """True if this listing's title/raw_text is unambiguously non-software —
+     reject without ever fetching the page."""
+-    return bool(_STAGE1_REJECT_RE.search(f"{title} {raw_text}"))
++    haystack = f"{title} {raw_text}"
++    return bool(_STAGE1_REJECT_RE.search(haystack)) or bool(_ROTATIONAL_ANALYST_RE.search(haystack))
+ 
+ 
+ # Adjacent-field company/title hint — NOT a reject signal on its own (Jane
+@@ -64,9 +87,20 @@ def stage1_reject(title: str, raw_text: str) -> bool:
+ # ML roles all pass real content checks below). Only postings that hit this
+ # hint need their fetched content checked at all; everything else already
+ # cleared stage 1 and passes through unconditionally.
++# chemical/plant/PLC-DCS-SCADA added 2026-07-29: real false-positive, Mosaic
++# (The Mosaic Company, agricultural/mining) "Operations & Automation
++# Engineering Co-op/Intern" — a chemical-plant industrial-automation role
++# (PLC/DCS/SCADA controls, Bachelor's in Chemical Engineering required,
++# physical labor requirements, "basic computer skills" as a minor bullet)
++# passed stage 2 unconditionally because neither "chemical" nor "automation"
++# hit the old hint list, so its content (no Python/Java/C++/git/algorithm
++# anywhere) was never checked at all — it only got flagged downstream by
++# classify.py's now-fixed bare-'threat' match on an unrelated workplace-safety
++# disclaimer. Adding these hints routes it through the real software-signal
++# content check below, which correctly rejects it.
+ _ADJACENT_FIELD_COMPANY_HINT_RE = re.compile(
+     r"\b(space|aerospace|robotics|astro|satellite|defense|automotive|firmware"
+-    r"|embedded|hardware)\b", re.I,
++    r"|embedded|hardware|chemical|industrial|plant operations|\bplc\b|\bdcs\b|\bscada\b)\b", re.I,
+ )
+ 
+ # Real content signals confirmed against live vault dossiers 2026-07-26: Bosch
+@@ -89,9 +123,17 @@ _SOFTWARE_CONTENT_SIGNAL_RE = re.compile(
+ def stage2_confirm(title: str, company: str, posting_content: str) -> bool:
+     """Called only when posting_content is non-empty. True = passes (either
+     not adjacent-field at all, or adjacent-field AND content shows real
+-    software work). False = adjacent-field company/title with no software
+-    signal in the actual content — genuinely non-technical despite passing
+-    stage 1 (e.g. a hardware-manufacturing floor role at a space company)."""
+-    if not _ADJACENT_FIELD_COMPANY_HINT_RE.search(f"{title} {company}"):
++    software work). False = adjacent-field with no software signal in the
++    actual content — genuinely non-technical despite passing stage 1 (e.g. a
++    hardware-manufacturing floor role at a space company).
++
++    The hint check also scans posting_content, not just title+company: real
++    bug, Mosaic Company's "Operations & Automation Engineering Co-op/Intern"
++    (2026-07-29) — its chemical-plant/PLC-DCS-SCADA signal appears only in
++    the fetched content ("Bachelor's degree in Chemical Engineering",
++    "PLC, DCS, and SCADA control systems"), never in the title or company
++    name, so a title+company-only hint check never routed it through the
++    software-signal confirmation below at all."""
++    if not _ADJACENT_FIELD_COMPANY_HINT_RE.search(f"{title} {company} {posting_content}"):
+         return True
+     return bool(_SOFTWARE_CONTENT_SIGNAL_RE.search(posting_content))
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+git diff core/classify.py
+echo "===== identity.py ====="
+git diff core/identity.py
+  ```
+  ```
+diff --git a/core/classify.py b/core/classify.py
+index 3aea600..2ce956a 100644
+--- a/core/classify.py
++++ b/core/classify.py
+@@ -32,9 +32,19 @@ _AI_ML_RE = re.compile(
+     r"|computer vision|\bnlp\b|natural language|embeddings?|pytorch|tensorflow"
+     r"|neural network|data scientist|ml engineer|ai engineer|ai.enabled)\b", re.I,
+ )
++# 'threat' narrowed 2026-07-29: real false positive, Mosaic Company
++# "Operations & Automation Engineering Co-op/Intern" (chemical-plant
++# PLC/DCS/SCADA role, zero cybersecurity content) matched bare 'threat' on a
++# workplace-safety disclaimer ("without posing a direct threat to the safety
++# of his or her own self"). Requiring co-occurrence with a real
++# security-context word within 30 chars catches genuine cybersecurity usage
++# ("threat model", "threat actor", "threat intelligence", "threat detection")
++# without matching safety-boilerplate/weather/insider-threat-to-unrelated-
++# things mentions of the bare word.
+ _CYS_FINANCE_RE = re.compile(
+     r"\b(security engineer|cybersecurity|application security|appsec"
+-    r"|penetration test|infosec|threat|vulnerability|quant(itative)? developer"
++    r"|penetration test|infosec|threat.{0,30}(model|actor|intelligence|detection)|vulnerability"
++    r"|quant(itative)? developer"
+     r"|quantitative (research|trading)|trading systems?|fintech|risk engine"
+     r"|payments? (engineer|infrastructure)|blockchain|crypto|defi)\b", re.I,
+ )
+===== identity.py =====
+diff --git a/core/identity.py b/core/identity.py
+index 86447f1..e862dbf 100644
+--- a/core/identity.py
++++ b/core/identity.py
+@@ -5,10 +5,40 @@ source:raw_id. (The content-hash fallback existed only for zapplyjobs,
+ removed as a source 2026-07-18.)
+ 
+ cross_source_key() is the secondary dedup identity: the same program listed
+-by two different sources gets two different uids but one company+title key.
++by two different sources gets two different uids but one cross-source key.
+ """
+ import re
+ 
++# Real, confirmed 2026-07-29 — four real duplicate incidents the old
++# normalized-company+title key missed because either string varied across
++# sources: Aquatic vs Aquatic Capital Management (company-name variant),
++# Google BS/MS Summer 2027 SWE intern (title-string variant, same numeric job
++# id in both URLs), Virtu Financial's genuine triple duplicate (three
++# different title strings, identical greenhouse.io/virtu/jobs/8624410002 URL
++# across SimplifyJobs/zshah101/vanshb03), and Palantir's "Intel" FDSE role
++# duplicated across two different buckets (same Lever job id via SimplifyJobs
++# and zshah101). A URL-embedded ATS job id is a stronger identity signal than
++# company+title text in every one of these — extract it when present, fall
++# back to the normalized-text key only when the URL carries no recognizable id.
++_ATS_JOB_ID_PATTERNS = (
++    re.compile(r"greenhouse\.io/[^/]+/jobs/(\d+)", re.I),
++    re.compile(r"lever\.co/[^/]+/([0-9a-f-]{36})", re.I),
++    re.compile(r"ashbyhq\.com/[^/]+/([0-9a-f-]{36})", re.I),
++    # Google's own careers site embeds a long numeric id after .../jobs/results/
++    re.compile(r"careers/(?:applications/)?jobs/results/(\d+)", re.I),
++)
++
++
++def extract_ats_job_id(url: str) -> str:
++    """The ATS-native job id embedded in url, or None if url is from a
++    source/ATS with no recognizable id in its URL shape (e.g. Freehire's
++    Telegram links, Workday's slug-only URLs)."""
++    for pattern in _ATS_JOB_ID_PATTERNS:
++        m = pattern.search(url or "")
++        if m:
++            return m.group(1)
++    return None
++
+ 
+ def compute_uid(listing) -> str:
+     if not listing.raw_id:
+@@ -16,7 +46,10 @@ def compute_uid(listing) -> str:
+     return f"{listing.source}:{listing.raw_id}"
+ 
+ 
+-def cross_source_key(company: str, title: str) -> str:
++def cross_source_key(company: str, title: str, url: str = "") -> str:
++    job_id = extract_ats_job_id(url)
++    if job_id:
++        return f"jobid:{job_id}"
+     # Punctuation-insensitive: "Intern Co-op" and "Intern/Co-op" are the same
+     # posting (real Marmon dup that slipped past a whitespace-only key,
+     # caught in the 2026-07-18 dossier audit).
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+grep -n "careers\|google\|extract_ats_job_id\|jobid" tests/test_identity.py
+  ```
+  ```
+6:from core.identity import compute_uid, cross_source_key, extract_ats_job_id
+59:def test_extract_ats_job_id_greenhouse():
+60:    assert extract_ats_job_id("https://job-boards.greenhouse.io/virtu/jobs/8624410002") == "8624410002"
+63:def test_extract_ats_job_id_lever_ignores_apply_suffix():
+68:    assert extract_ats_job_id(with_apply) == "[REDACTED]"
+69:    assert extract_ats_job_id(with_apply) == extract_ats_job_id(without_apply)
+72:def test_extract_ats_job_id_google_careers_results_url():
+76:    url = "https://www.google.com/about/careers/applications/jobs/results/85564713261245126"
+77:    assert extract_ats_job_id(url) == "85564713261245126"
+80:def test_extract_ats_job_id_none_when_no_recognizable_id():
+81:    assert extract_ats_job_id("https://t.me/getjobss/7795") is None
+98:def test_cross_source_key_prefers_job_id_over_text_real_google_case():
+100:    url = "https://www.google.com/about/careers/applications/jobs/results/85564713261245126"
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+python3 -c "
+from core.identity import extract_ats_job_id, cross_source_key
+# unrelated hypothetical company using the same URL path shape, no google.com domain
+fake_url = 'https://careers.totallydifferentcompany.com/careers/jobs/results/85564713261245126'
+print('extracted id:', extract_ats_job_id(fake_url))
+print('cross_source_key A (Google, real):', cross_source_key('Google', 'Software Engineering Intern', 'https://www.google.com/about/careers/applications/jobs/results/85564713261245126'))
+print('cross_source_key B (unrelated company, coincidental same numeric path):', cross_source_key('Totally Different Company', 'Totally Unrelated Role', fake_url))
+"
+
+  ```
+  ```
+extracted id: 85564713261245126
+cross_source_key A (Google, real): jobid:85564713261245126
+cross_source_key B (unrelated company, coincidental same numeric path): jobid:85564713261245126
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+git diff ingestion/posting_page.py
+  ```
+  ```
+diff --git a/ingestion/posting_page.py b/ingestion/posting_page.py
+index 43dff97..32aa5bd 100644
+--- a/ingestion/posting_page.py
++++ b/ingestion/posting_page.py
+@@ -87,6 +87,43 @@ def opt_exclusion(text: str):
+     return m.group(0) if m else None
+ 
+ 
++# Built from the real Optiver "Quantitative Research Intern, PhD (Summer
++# 2027)" posting (Greenhouse job id 8451781002 — the same posting manually
++# deleted from the vault once already, then resurfaced, 2026-07-29): its
++# structured degrees field is empty (Greenhouse carries none), so
++# core/filter.py's degrees_eligible() waved it through on missing-data
++# permissiveness. Its real content states the requirement as "Currently
++# enrolled in a PhD program in Statistics, Computer Science, ..." rather than
++# a blunt "PhD required" — the enrolled-in/pursuing-a-phd-program phrasing is
++# the literal shape this real posting uses, so it's included as an explicit
++# equivalent alongside "PhD required"/"PhD only"/"doctoral candidates only".
++# Permissive by default like every other gate here: never fires on "PhD
++# preferred", and the window guard below never fires when a Bachelor's/
++# Master's is also named nearby (checked against the real Aquatic Capital
++# Management, Appian, and Manhattan Associates postings, all of which list
++# PhD only as one of several acceptable degrees and must keep passing).
++_PHD_ONLY_RE = re.compile(
++    r"\bphd\s+(?:is\s+)?(?:required|only)\b"
++    r"|\bdoctoral candidates?\s+only\b"
++    r"|\b(?:currently\s+)?(?:enrolled in|pursuing)\s+an?\s+(?:phd|doctoral)\s+(?:program|degree)\b",
++    re.I,
++)
++
++
++def phd_only_exclusion(text: str):
++    """The matched PhD-exclusivity phrase, or None if the posting shows no
++    explicit signal that only PhD candidates are eligible. Never fires when a
++    Bachelor's/Master's is also named near the match — that's a posting
++    listing PhD as one of several acceptable degrees, not a PhD-only one."""
++    m = _PHD_ONLY_RE.search(text)
++    if not m:
++        return None
++    window = text[max(0, m.start() - 80): m.end() + 80]
++    if re.search(r"bachelor|master|\bbs\b|\bms\b", window, re.I):
++        return None
++    return m.group(0)
++
++
+ def fetch_posting_markdown(url: str, api_key: str, http_post=None) -> str:
+     """Page markdown via Firecrawl (JS-rendered — ATS pages are SPAs).
+     Raises requests exceptions on failure; callers treat any failure as
+@@ -109,19 +146,105 @@ _NOISE = re.compile(
+     r"^(\[?!\[|\[back to jobs|\[apply\]|apply\b|select\.\.\.|✱|.*✱\s*$|resume/cv|full name|email\b"
+     r"|phone\b|current location|current company|linkedin url|github url|portfolio url|loading$"
+     r"|no location found|couldn't auto-read|analyzing resume|success!$|file exceeds|-{3,}$"
+-    r"|cookie|jobs powered by|©|powered by\s|\[.*\]\(https?://[^)]*\)\s*$)", re.I)
++    r"|cookie|jobs powered by|©|powered by\s|\[.*\]\(https?://[^)]*\)\s*$|read more$)", re.I)
++
++# Real, distinct bug from the Ashby application-URL one — confirmed 2026-07-26
++# on both Google dossiers sourced via Freehire (BS and MS tracks): Google's
++# careers site returns a *search-results listing page* shell (~20 unrelated
++# job titles, "Back to jobs search" nav, "N jobs matched", pagination) ahead
++# of the specific posting's own content in the SAME fetched markdown — not a
++# wrong-URL problem like Ashby's /application suffix, the real posting text is
++# right there further down. classify() fired on an unrelated listed job's
++# title as a result. Whenever one of these listing-shell markers appears,
++# everything gathered so far is shell noise — reset and wait for the next
++# real heading, which lands on the actual posting content once the shell ends.
++_LISTING_SHELL_RESET_RE = re.compile(
++    r"^(_arrow_back_|back to jobs search|##?\s*jobs search results|[\d,]+\s+jobs matched"
++    r"|showing \d+ to \d+ of|_navigate_next_)", re.I,
++)
++
++# ATS UI labels jammed against their values with no separator, real examples
++# from the Conagra Brands fixture (List/Dossiers/Other/Demand Science
++# Rotational Analyst - Conagra Brands.md): "locationsChicago, Illinois",
++# "time typeFull time", "posted onPosted Today", "job requisition idReq-039400".
++_ATS_LABEL_RUN_ON_RE = re.compile(
++    r"^(locations|time type|posted on|job requisition id|time left to apply)(?=\S)", re.M,
++)
++
++# A posting's own section names, real shape confirmed against the Appian
++# ("**Basic Qualifications**", "**Benefits**") and Conagra ("**Compensation**",
++# "**Our Benefits**") fixtures: a fully-bolded standalone line naming one of
++# these sections. Deliberately narrow — only fires when the *whole* line is
++# one bold span ending in a real section keyword, so inline bold emphasis
++# ("our values of **Intensity** and **Excellence**...") and non-section bold
++# lines ("**Why should you kick off your career with Conagra?**") are left as
++# flattened prose, per the "don't invent section boundaries" rule.
++_BOLD_SECTION_RE = re.compile(r"^\*\*([^*]+?)\*\*:?$")
++_SECTION_KEYWORD_RE = re.compile(r"(responsibilities|qualifications|requirements|benefits|compensation)$", re.I)
++
++# Real, from the Manhattan Associates fixture (List/Dossiers/1 - AI & ML/A.I.
++# Developer Co-Op (Boston, MA) - Manhattan Associates.md): a "Follow Us"
++# heading followed by a bulleted LinkedIn/X/Facebook link list, pure chrome.
++_FOLLOW_US_HEADING_RE = re.compile(r"^#{1,6}\s*follow us\s*$", re.I)
++# Real Manhattan Associates link shape includes a markdown title after the
++# URL ('[LinkedIn](https://...4376?trk=tyah "LinkedIn")') — the optional
++# quoted-title group handles that, not just a bare '(url)'.
++_LINK_BULLET_RE = re.compile(r'^-\s*\[.+\]\(https?://\S+?(?:\s+"[^"]*")?\)\s*$')
++
++
++def _dedupe_paragraphs(markdown: str, min_len: int = 40) -> str:
++    """Drops a paragraph line that repeats verbatim later in the same fetch,
++    keeping the first occurrence — real example: the Conagra fixture's whole
++    'About Us' paragraph appears twice. Real fetched markdown from this
++    pipeline's sources renders each prose paragraph as one continuous line
++    (confirmed against the Manhattan Associates/Appian/Optiver fixtures), so
++    line-level comparison catches this without needing blank-line block
++    boundaries the source markdown may not consistently have. min_len guards
++    against deduping short, legitimately-repeated lines (labels, headings)
++    that aren't real paragraph content."""
++    seen, kept = set(), []
++    for line in markdown.splitlines():
++        key = line.strip()
++        if len(key) >= min_len:
++            if key in seen:
++                continue
++            seen.add(key)
++        kept.append(line)
++    return "\n".join(kept)
++
++
++def _strip_trailing_social_chrome(lines: list) -> list:
++    out, skip_links = [], False
++    for line in lines:
++        if _FOLLOW_US_HEADING_RE.match(line.strip()):
++            skip_links = True
++            continue
++        if skip_links and _LINK_BULLET_RE.match(line.strip()):
++            continue
++        skip_links = False
++        out.append(line)
++    return out
+ 
+ 
+ def extract_content(markdown: str, limit: int = CONTENT_LIMIT) -> str:
+     """The posting's substantive text: from the first real heading up to the
+     application-form/EEO chrome, minus nav/form/boilerplate lines. Verbatim
+-    lines, never a summary. Blank lines and '---' rules dropped to satisfy
+-    the vault's format conventions (see validate.check_format_compliance)."""
++    lines, never a summary — but deduped (no repeated paragraph), chrome-split
++    (ATS UI labels get their own line), and structured (a source's own bolded
++    section names become real '###' headings) per the Internship Notes
++    Standard §2. Blank lines and '---' rules dropped to satisfy the vault's
++    format conventions (see validate.check_format_compliance)."""
++    markdown = _dedupe_paragraphs(markdown)
++    markdown = _ATS_LABEL_RUN_ON_RE.sub(lambda m: m.group(1) + "\n", markdown)
++
+     out, started = [], False
+     for line in markdown.splitlines():
+         s = line.strip()
+         if _CUT_MARKERS.match(s):
+             break
++        if _LISTING_SHELL_RESET_RE.match(s):
++            started, out = False, []
++            continue
+         if not started:
+             if s.startswith("#") and len(s) > 4:
+                 started = True
+@@ -129,7 +252,10 @@ def extract_content(markdown: str, limit: int = CONTENT_LIMIT) -> str:
+                 continue
+         if not s or _NOISE.match(s):
+             continue
++        section = _BOLD_SECTION_RE.match(s)
++        if section and _SECTION_KEYWORD_RE.search(section.group(1).strip()):
++            s = f"### {section.group(1).strip()}"
+         out.append(s)
+         if len("\n".join(out)) > limit:
+             break
+-    return "\n".join(out)
++    return "\n".join(_strip_trailing_social_chrome(out))
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+cat tests/fixtures/posting_google_careers.md 2>/dev/null | head -60
+echo "=== relevant tests in test_posting_page.py ==="
+grep -n "def test_.*listing\|def test_.*dedupe\|def test_.*google\|def test_.*shell" tests/test_posting_page.py
+  ```
+  ```
+# job details
+_arrow_back_ [Back to jobs search](https://www.google.com/about/careers/applications/jobs/results)
+Back to jobs search
+## Jobs search results
+3,583 jobs matched
+- [**Regulatory and Litigation Counsel, APAC Defense** \
+Seoul, South Korea](https://www.google.com/about/careers/applications/jobs/results/[REDACTED])
+- [**Staff Software Developer, Embedded Systems/Firmware** \
+Waterloo, ON, Canada](https://www.google.com/about/careers/applications/jobs/results/[REDACTED])
+- [**Product Manager, AI Platform Operations and Tooling** \
+Hyderabad, Telangana, India; Bengaluru, Karnataka, India](https://www.google.com/about/careers/applications/jobs/results/[REDACTED])
+- [**Senior Software Engineer, Site Reliability Engineering, Vertex AI 3P SRE** \
+Warsaw, Poland](https://www.google.com/about/careers/applications/jobs/results/[REDACTED])
+- [**Corporate Development Associate** \
+Mountain View, CA, USA; San Francisco, CA, USA](https://www.google.com/about/careers/applications/jobs/results/[REDACTED])
+- [**ASIC Design Verification Engineer, Digital Signal Processing** \
+Sunnyvale, CA, USA](https://www.google.com/about/careers/applications/jobs/results/[REDACTED])
+- [**Forward Deployed Engineer IV, GenAI, Google Cloud** \
+Austin, TX, USA; Chicago, IL, USA; +24 more; +23 more](https://www.google.com/about/careers/applications/jobs/results/[REDACTED])
+- [**Senior Product Engineer, Machine Learning Accelerators** \
+Sunnyvale, CA, USA](https://www.google.com/about/careers/applications/jobs/results/[REDACTED])
+- [**Facilities Technician Developmental Program (Fixed-Term Contract) (English)** \
+Midlothian, TX, USA](https://www.google.com/about/careers/applications/jobs/results/[REDACTED])
+- [**Senior Software Engineer, Search, Mobile (Android)** \
+London, UK](https://www.google.com/about/careers/applications/jobs/results/[REDACTED])
+Showing 1 to 20 of 3583 rows
+1‑20 of 3583
+_navigate_next_ [Go to next page](https://www.google.com/about/careers/applications/jobs/results/95141459539174086?page=2)
+_arrow_back_ [Back to jobs search](https://www.google.com/about/careers/applications/jobs/results)
+Back to jobs search
+## Software Engineering Intern, MS, Summer 2027
+_share_
+- _link_Copy link
+- _email_Email a friend
+_corporate_fare_ Google_place_ Mountain View, CA, USA; Atlanta, GA, USA; +29 more; +28 more_bar_chart_ Intern & Apprentice
+**This posting is for students who want early consideration for our Summer 2027 roles. If you aren't ready to apply yet, the same applications will open again during our regular fall recruiting cycle.**
+**Applications will be reviewed on a rolling basis and it's in the candidate's best interest to apply early.** The anticipated application window is open until July 24th, 2026, but may close earlier if all available projects are full.
+This internship is intended for students in all academic years who are pursuing a Master's degree program in Computer Science or a related field.
+To start the application process, you will need an updated CV or resume and a current unofficial or official transcript in English.
+=== relevant tests in test_posting_page.py ===
+133:def test_extract_content_skips_google_careers_listing_shell():
+202:def test_extract_content_dedupes_repeated_paragraph_real_conagra_case():
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+python3 -c "
+from ingestion.posting_page import extract_content
+text = open('tests/fixtures/posting_google_careers.md').read()
+result = extract_content(text)
+print(result[:500])
+print('---')
+print('contains unrelated job title (Regulatory):', 'Regulatory and Litigation' in result)
+print('contains real posting heading text (Master):', 'Master' in result)
+"
+
+  ```
+  ```
+## Software Engineering Intern, MS, Summer 2027
+_share_
+- _link_Copy link
+- _email_Email a friend
+_corporate_fare_ Google_place_ Mountain View, CA, USA; Atlanta, GA, USA; +29 more; +28 more_bar_chart_ Intern & Apprentice
+**This posting is for students who want early consideration for our Summer 2027 roles. If you aren't ready to apply yet, the same applications will open again during our regular fall recruiting cycle.**
+**Applications will be reviewed on a rolling basis and it's in the candidate
+---
+contains unrelated job title (Regulatory): False
+contains real posting heading text (Master): True
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+sed -n '145,260p' ingestion/posting_page.py
+  ```
+  ```
+_NOISE = re.compile(
+    r"^(\[?!\[|\[back to jobs|\[apply\]|apply\b|select\.\.\.|✱|.*✱\s*$|resume/cv|full name|email\b"
+    r"|phone\b|current location|current company|linkedin url|github url|portfolio url|loading$"
+    r"|no location found|couldn't auto-read|analyzing resume|success!$|file exceeds|-{3,}$"
+    r"|cookie|jobs powered by|©|powered by\s|\[.*\]\(https?://[^)]*\)\s*$|read more$)", re.I)
+
+# Real, distinct bug from the Ashby application-URL one — confirmed 2026-07-26
+# on both Google dossiers sourced via Freehire (BS and MS tracks): Google's
+# careers site returns a *search-results listing page* shell (~20 unrelated
+# job titles, "Back to jobs search" nav, "N jobs matched", pagination) ahead
+# of the specific posting's own content in the SAME fetched markdown — not a
+# wrong-URL problem like Ashby's /application suffix, the real posting text is
+# right there further down. classify() fired on an unrelated listed job's
+# title as a result. Whenever one of these listing-shell markers appears,
+# everything gathered so far is shell noise — reset and wait for the next
+# real heading, which lands on the actual posting content once the shell ends.
+_LISTING_SHELL_RESET_RE = re.compile(
+    r"^(_arrow_back_|back to jobs search|##?\s*jobs search results|[\d,]+\s+jobs matched"
+    r"|showing \d+ to \d+ of|_navigate_next_)", re.I,
+)
+
+# ATS UI labels jammed against their values with no separator, real examples
+# from the Conagra Brands fixture (List/Dossiers/Other/Demand Science
+# Rotational Analyst - Conagra Brands.md): "locationsChicago, Illinois",
+# "time typeFull time", "posted onPosted Today", "job requisition idReq-039400".
+_ATS_LABEL_RUN_ON_RE = re.compile(
+    r"^(locations|time type|posted on|job requisition id|time left to apply)(?=\S)", re.M,
+)
+
+# A posting's own section names, real shape confirmed against the Appian
+# ("**Basic Qualifications**", "**Benefits**") and Conagra ("**Compensation**",
+# "**Our Benefits**") fixtures: a fully-bolded standalone line naming one of
+# these sections. Deliberately narrow — only fires when the *whole* line is
+# one bold span ending in a real section keyword, so inline bold emphasis
+# ("our values of **Intensity** and **Excellence**...") and non-section bold
+# lines ("**Why should you kick off your career with Conagra?**") are left as
+# flattened prose, per the "don't invent section boundaries" rule.
+_BOLD_SECTION_RE = re.compile(r"^\*\*([^*]+?)\*\*:?$")
+_SECTION_KEYWORD_RE = re.compile(r"(responsibilities|qualifications|requirements|benefits|compensation)$", re.I)
+
+# Real, from the Manhattan Associates fixture (List/Dossiers/1 - AI & ML/A.I.
+# Developer Co-Op (Boston, MA) - Manhattan Associates.md): a "Follow Us"
+# heading followed by a bulleted LinkedIn/X/Facebook link list, pure chrome.
+_FOLLOW_US_HEADING_RE = re.compile(r"^#{1,6}\s*follow us\s*$", re.I)
+# Real Manhattan Associates link shape includes a markdown title after the
+# URL ('[LinkedIn](https://...4376?trk=tyah "LinkedIn")') — the optional
+# quoted-title group handles that, not just a bare '(url)'.
+_LINK_BULLET_RE = re.compile(r'^-\s*\[.+\]\(https?://\S+?(?:\s+"[^"]*")?\)\s*$')
+
+
+def _dedupe_paragraphs(markdown: str, min_len: int = 40) -> str:
+    """Drops a paragraph line that repeats verbatim later in the same fetch,
+    keeping the first occurrence — real example: the Conagra fixture's whole
+    'About Us' paragraph appears twice. Real fetched markdown from this
+    pipeline's sources renders each prose paragraph as one continuous line
+    (confirmed against the Manhattan Associates/Appian/Optiver fixtures), so
+    line-level comparison catches this without needing blank-line block
+    boundaries the source markdown may not consistently have. min_len guards
+    against deduping short, legitimately-repeated lines (labels, headings)
+    that aren't real paragraph content."""
+    seen, kept = set(), []
+    for line in markdown.splitlines():
+        key = line.strip()
+        if len(key) >= min_len:
+            if key in seen:
+                continue
+            seen.add(key)
+        kept.append(line)
+    return "\n".join(kept)
+
+
+def _strip_trailing_social_chrome(lines: list) -> list:
+    out, skip_links = [], False
+    for line in lines:
+        if _FOLLOW_US_HEADING_RE.match(line.strip()):
+            skip_links = True
+            continue
+        if skip_links and _LINK_BULLET_RE.match(line.strip()):
+            continue
+        skip_links = False
+        out.append(line)
+    return out
+
+
+def extract_content(markdown: str, limit: int = CONTENT_LIMIT) -> str:
+    """The posting's substantive text: from the first real heading up to the
+    application-form/EEO chrome, minus nav/form/boilerplate lines. Verbatim
+    lines, never a summary — but deduped (no repeated paragraph), chrome-split
+    (ATS UI labels get their own line), and structured (a source's own bolded
+    section names become real '###' headings) per the Internship Notes
+    Standard §2. Blank lines and '---' rules dropped to satisfy the vault's
+    format conventions (see validate.check_format_compliance)."""
+    markdown = _dedupe_paragraphs(markdown)
+    markdown = _ATS_LABEL_RUN_ON_RE.sub(lambda m: m.group(1) + "\n", markdown)
+
+    out, started = [], False
+    for line in markdown.splitlines():
+        s = line.strip()
+        if _CUT_MARKERS.match(s):
+            break
+        if _LISTING_SHELL_RESET_RE.match(s):
+            started, out = False, []
+            continue
+        if not started:
+            if s.startswith("#") and len(s) > 4:
+                started = True
+            else:
+                continue
+        if not s or _NOISE.match(s):
+            continue
+        section = _BOLD_SECTION_RE.match(s)
+        if section and _SECTION_KEYWORD_RE.search(section.group(1).strip()):
+            s = f"### {section.group(1).strip()}"
+        out.append(s)
+        if len("\n".join(out)) > limit:
+            break
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+git diff vault_writer/writer.py
+  ```
+  ```
+diff --git a/vault_writer/writer.py b/vault_writer/writer.py
+index 0ded6ff..0d906b0 100644
+--- a/vault_writer/writer.py
++++ b/vault_writer/writer.py
+@@ -45,12 +45,28 @@ def _iso_date(epoch) -> str:
+     return datetime.fromtimestamp(epoch, tz=timezone.utc).date().isoformat() if epoch else None
+ 
+ 
++DOSSIERS_MOC_LINK = "[[10_Areas/Career/Internships/List/Dossiers MOC]]"
++
++_TAG_ILLEGAL_CHARS = re.compile(r'[\\/:*?"<>|]')
++
++
++def company_slug(company: str) -> str:
++    """Same slugification as dossier_filename(): lowercase, spaces to
++    hyphens, illegal chars stripped — so 'Aquatic Capital Management' and
++    ' aquatic capital management ' both produce company/aquatic-capital-management,
++    per the Standard's same-company clustering rule (§1)."""
++    s = _TAG_ILLEGAL_CHARS.sub("", company).strip().lower()
++    return re.sub(r"\s+", "-", s)
++
++
+ def build_frontmatter(listing, uid: str, date_found: str, matched_reason: str) -> dict:
+     """uid and category are deliberately not rendered — uid stays available
+     internally via the dossier_uids.json manifest (see write_dossier), and
+     category was never surfaced to the reader anywhere else in the note.
+     `next:` (not `promoted:`) matches every other note type's convention
+-    across the vault."""
++    across the vault. `notes:` (always the Dossiers MOC link) and the
++    `company/<slug>` tag are the Internship Notes Standard §1 interlinking
++    requirement — `notes` sits right after `next`, right before `tags`."""
+     return {
+         "company": listing.company,
+         "title": listing.title,
+@@ -64,16 +80,24 @@ def build_frontmatter(listing, uid: str, date_found: str, matched_reason: str) -
+         "matched_reason": matched_reason,
+         "status": "unreviewed",
+         "next": None,
+-        "tags": ["internship", "auto-discovered"],
++        "notes": [DOSSIERS_MOC_LINK],
++        "tags": ["internship", "auto-discovered", f"company/{company_slug(listing.company)}"],
+     }
+ 
+ 
++def dump_frontmatter(frontmatter: dict) -> str:
++    """Shared YAML rendering (None as blank scalar, indented list items) so
++    every dossier-writing code path — including recheck.py's removal-time
++    frontmatter patch — serializes identically."""
++    return yaml.dump(
++        frontmatter, Dumper=_FrontmatterDumper, sort_keys=False, default_flow_style=False, allow_unicode=True
++    )
++
++
+ def render_dossier(listing, uid: str, date_found: str, matched_reason: str, posting_content: str = "",
+                    classification_callout: str = "") -> str:
+     frontmatter = build_frontmatter(listing, uid, date_found, matched_reason)
+-    frontmatter_yaml = yaml.dump(
+-        frontmatter, Dumper=_FrontmatterDumper, sort_keys=False, default_flow_style=False, allow_unicode=True
+-    )
++    frontmatter_yaml = dump_frontmatter(frontmatter)
+     markdown = _template.render(
+         frontmatter_yaml=frontmatter_yaml,
+         company=listing.company,
+@@ -168,3 +192,50 @@ def write_dossier(vault_root, uid: str, markdown: str, role: str, company: str,
+         manifest[str(path.relative_to(vault_root))] = uid
+         save_dossier_uids(state_dir, manifest)
+     return path
++
++
++REMOVED_DOSSIERS_MOC_LINK = "[[10_Areas/Career/Internships/List/Dossiers/Viewed/Removed Dossiers MOC]]"
++VIEWED_SUBPATH = DOSSIER_SUBPATH / "Viewed"
++
++
++def move_dossier_to_viewed(vault_root, path, reason: str, removed_date: str, state_dir=None) -> Path:
++    """Moves a closed-posting dossier into Viewed/ instead of deleting it
++    (Internship Notes Standard §4) — the posting closing is real information
++    (hiring cadence, why a later duplicate should be rejected, a record of
++    what this pipeline actually saw), not something to throw away. Appends
++    the Removed Dossiers MOC link to the existing notes: list (never
++    replacing the original Dossiers MOC / company links already there), sets
++    status: removed (the field's first real transition away from its static
++    'unreviewed'), and records removed_date/removed_reason. Updates
++    dossier_uids.json to the new path so the next write_dossier() idempotency
++    check for this uid isn't left pointing at a file that moved."""
++    vault_root = Path(vault_root)
++    path = Path(path)
++    text = path.read_text(encoding="utf-8")
++    m = re.match(r"^---\n(.*?)\n---\n(.*)$", text, re.DOTALL)
++    frontmatter = yaml.safe_load(m.group(1)) or {}
++    body = m.group(2)
++
++    notes = list(frontmatter.get("notes") or [])
++    if DOSSIERS_MOC_LINK not in notes:
++        notes.append(DOSSIERS_MOC_LINK)
++    if REMOVED_DOSSIERS_MOC_LINK not in notes:
++        notes.append(REMOVED_DOSSIERS_MOC_LINK)
++    frontmatter["notes"] = notes
++    frontmatter["status"] = "removed"
++    frontmatter["removed_date"] = removed_date
++    frontmatter["removed_reason"] = reason
++
++    new_path = vault_root / VIEWED_SUBPATH / path.name
++    new_path.parent.mkdir(parents=True, exist_ok=True)
++    new_path.write_text("---\n" + dump_frontmatter(frontmatter) + "---\n" + body)
++    path.unlink()
++
++    if state_dir is not None:
++        manifest = load_dossier_uids(state_dir)
++        old_rel = str(path.relative_to(vault_root))
++        uid = manifest.pop(old_rel, None)
++        if uid is not None:
++            manifest[str(new_path.relative_to(vault_root))] = uid
++            save_dossier_uids(state_dir, manifest)
++    return new_path
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+grep -n "def test_move_dossier\|def test_.*viewed\|collision" tests/test_writer.py
+echo "=== recheck.py diff ==="
+git diff recheck.py
+  ```
+  ```
+51:def test_dossier_filename_collision_appends_number():
+56:def test_dossier_filename_collision_increments_past_multiple():
+97:def test_write_dossier_different_uid_same_role_company_gets_collision_suffix(vault_root, listing, state_dir):
+179:def test_move_dossier_to_viewed_moves_file_and_updates_frontmatter(vault_root, listing, state_dir):
+200:def test_move_dossier_to_viewed_updates_uid_manifest(vault_root, listing, state_dir):
+=== recheck.py diff ===
+diff --git a/recheck.py b/recheck.py
+index e760606..d26252d 100644
+--- a/recheck.py
++++ b/recheck.py
+@@ -2,10 +2,11 @@
+ """Daily post-write liveness recheck. Scans the dossier files actually present
+ in the vault checkout (file existence is the truth — seen_ids.json diverged
+ from the vault after the 2026-07-18 manual cleanup and stays untouched here),
+-cross-refs each against its source's live feed, and removes any dossier whose
+-posting is now inactive or gone from the feed entirely. Runs on its own daily
+-cron (.github/workflows/recheck.yml) — postings don't close often enough to
+-justify rechecking every hour.
++cross-refs each against its source's live feed, and moves any dossier whose
++posting is now inactive or gone from the feed entirely into Viewed/ (never
++deletes — Internship Notes Standard §4: a closed posting's history is real
++information). Runs on its own daily cron (.github/workflows/recheck.yml) —
++postings don't close often enough to justify rechecking every hour.
+ 
+     JARVIS_DIR=... python recheck.py [--dry-run]
+ """
+@@ -27,7 +28,7 @@ from ingestion.sources import (
+     fetch_zshah101,
+ )
+ from run_pipeline import file_github_issue
+-from vault_writer.writer import load_dossier_uids, scan_dossiers
++from vault_writer.writer import load_dossier_uids, move_dossier_to_viewed, scan_dossiers
+ 
+ # 2026-07-25: was still SimplifyJobs/JGCL only after the 4-source batch shipped
+ # earlier the same day — dossiers from vanshb03/zshah101/Greenhouse/Ashby were
+@@ -107,34 +108,39 @@ def main():
+         "halt_reason": None,
+     }
+ 
+-    # ponytail: crude mass-deletion brake — a truncated/glitched feed must not
+-    # wipe the vault. Threshold is arbitrary but safe; tune if it ever trips wrongly.
++    # ponytail: crude mass-move brake — a truncated/glitched feed must not
++    # empty the vault into Viewed/. Threshold is arbitrary but safe; tune if it
++    # ever trips wrongly. Same protective logic as before this was a move
++    # instead of a delete — the risk (a feed glitch wiping real dossiers out
++    # of the live buckets) is identical either way.
+     if len(removals) > max(5, len(dossiers) // 2):
+         record["halted"] = True
+-        record["halt_reason"] = f"would remove {len(removals)} of {len(dossiers)} dossiers — feed glitch?"
++        record["halt_reason"] = f"would move {len(removals)} of {len(dossiers)} dossiers to Viewed/ — feed glitch?"
+         if not args.dry_run:
+             _commit_log(record, now)
+             file_github_issue(
+                 ISSUE_REPO,
+-                f"Recheck halted: mass-deletion brake at {now.isoformat()}",
+-                f"{record['halt_reason']}\n\nNothing was removed. Removal list:\n"
++                f"Recheck halted: mass-move brake at {now.isoformat()}",
++                f"{record['halt_reason']}\n\nNothing was moved. Removal list:\n"
+                 + "\n".join(f"- `{r['uid']}`: {r['reason']}" for r in removals),
+             )
+         print(record["halt_reason"])
+         sys.exit(1)
+ 
+     for r in removals:
+-        print(f"{'would remove' if args.dry_run else 'removing'}: {r['uid']} — {r['reason']}")
++        print(f"{'would move' if args.dry_run else 'moving'}: {r['uid']} — {r['reason']}")
+     if args.dry_run:
+-        print(f"dry run: {len(removals)} of {len(dossiers)} would be removed")
++        print(f"dry run: {len(removals)} of {len(dossiers)} would be moved to Viewed/")
+         return
+ 
+     if removals:
+         for r in removals:
+-            Path(r["path"]).unlink()
++            move_dossier_to_viewed(
++                jarvis_dir, r["path"], r["reason"], now.date().isoformat(), state_dir=STATE_DIR
++            )
+         try:
+             commit_and_push_with_retry(
+-                jarvis_dir, f"Remove {len(removals)} closed posting(s) — recheck {now.date().isoformat()}"
++                jarvis_dir, f"Move {len(removals)} closed posting(s) to Viewed/ — recheck {now.date().isoformat()}"
+             )
+         except GitPushError as exc:
+             record["errors"].append(f"Jarvis push failed: {exc}")
+@@ -144,7 +150,7 @@ def main():
+                 f"Removals were made in the checkout but the push failed after retry:\n\n```\n{exc}\n```",
+             )
+     _commit_log(record, now)
+-    print(f"removed {len(removals)} of {len(dossiers)} dossiers; {len(errors)} fetch error(s)")
++    print(f"moved {len(removals)} of {len(dossiers)} dossiers to Viewed/; {len(errors)} fetch error(s)")
+     if record["errors"]:
+         sys.exit(1)
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+git diff vault_writer/validate.py
+  ```
+  ```
+diff --git a/vault_writer/validate.py b/vault_writer/validate.py
+index c892aed..eca9dc6 100644
+--- a/vault_writer/validate.py
++++ b/vault_writer/validate.py
+@@ -12,7 +12,7 @@ from core.identity import cross_source_key
+ REQUIRED_LISTING_FIELDS = ("company", "title", "url", "source", "uid")
+ REQUIRED_FRONTMATTER_FIELDS = (
+     "company", "title", "url", "source", "terms", "locations",
+-    "target_year", "date_posted", "date_found", "matched_reason", "status", "next", "tags",
++    "target_year", "date_posted", "date_found", "matched_reason", "status", "next", "notes", "tags",
+ )
+ 
+ 
+@@ -71,7 +71,7 @@ def check_cross_source_duplicate(listing, dossier_keys) -> ValidationResult:
+     """Same program via two sources = two different uids but one normalized
+     company+title key (MLH Fellowship landed twice pre-cleanup). Routine
+     rejection, not systemic — first source in write order wins."""
+-    key = cross_source_key(listing.company, listing.title)
++    key = cross_source_key(listing.company, listing.title, listing.url)
+     if key in dossier_keys:
+         return ValidationResult(False, "cross_source_duplicate", f"company+title already in vault: {key}")
+     return ValidationResult(True, "cross_source_duplicate")
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+grep -n "_prioritize_and_cap(" run_pipeline.py
+grep -n "def test_task_a\|def test_.*bucket\|def test_.*capacity\|def test_.*prioritize" tests/test_run_pipeline.py | head -30
+  ```
+  ```
+90:def _prioritize_and_cap(new_listings: list, budget: dict) -> tuple:
+352:    this_run, deferred = _prioritize_and_cap(new_listings, MAX_NEW_WRITES_PER_RUN)
+99:def test_prioritize_and_cap_keeps_most_recent_first():
+110:def test_prioritize_and_cap_missing_date_posted_sorts_last():
+118:def test_prioritize_and_cap_scopes_budget_per_bucket():
+501:def test_count_dossiers_by_bucket_counts_real_files(tmp_path):
+511:def test_run_once_reports_bucket_at_capacity_without_refusing_writes(tmp_path, seed_count, expect_at_capacity):
+524:def test_run_once_files_issue_once_per_bucket_crossing_capacity(tmp_path):
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+git diff tests/test_relevance.py | head -120
+  ```
+  ```
+diff --git a/tests/test_relevance.py b/tests/test_relevance.py
+index 9564440..239251c 100644
+--- a/tests/test_relevance.py
++++ b/tests/test_relevance.py
+@@ -56,6 +56,67 @@ def [REDACTED]():
+     assert stage1_reject("Machine Learning Engineer Intern", "") is False
+ 
+ 
++# --- Task B: product/program-management and rotational-program roles ---
++
++def [REDACTED]():
++    """Real, live Databricks posting (AIJobs, found 2026-07-26) — genuinely
++    PM work ('learn how to be a successful PM') despite listing 'computer
++    science' as an acceptable major; previously slipped through both stages
++    and was classified AI/ML only because 'Machine Learning' is one of
++    Databricks' internal team names, not because the role does ML work."""
++    assert stage1_reject("Product Management Intern (Summer 2027)", "") is True
++
++
++def [REDACTED]():
++    """Real, live Conagra Brands posting (SimplifyJobs, found 2026-07-27,
++    still in the vault at List/Dossiers/Other/ as of this writing) — a 2-year
++    business rotational program (Behavioral Science/Demand Forecasting/
++    Demand Planning/Advanced Analytics) with zero programming content;
++    previously passed the gate on no real software signal at all."""
++    assert stage1_reject("Demand Science Rotational Analyst", "") is True
++
++
++def [REDACTED]():
++    """A genuine software-engineering-track rotational program that names
++    actual engineering rotations must still pass — the reject pattern
++    requires 'rotational' not be immediately preceded by 'engineering'/
++    'software', same adjacency-breaking idiom this file already uses for
++    Tax/Risk Technology titles."""
++    assert stage1_reject(
++        "Software Engineering Rotational Program Intern",
++        "Rotations include: Backend Services, Frontend Platform, Infrastructure.",
++    ) is False
++
++
++def [REDACTED]():
++    assert stage1_reject("Product Engineer Intern", "") is False
++    assert stage1_reject("Product-Focused Software Engineer Intern", "") is False
++
++
++# --- Task C: adjacent-field hint now catches chemical/industrial roles ---
++
++# Real, from the live Mosaic Company "Operations & Automation Engineering
++# Co-op/Intern" posting (chemical-plant industrial-automation role) — PLC/
++# DCS/SCADA controls, Bachelor's in Chemical Engineering required, physical
++# labor requirements, "basic computer skills" as a minor bullet, zero real
++# programming content anywhere. Previously passed stage 2 unconditionally
++# (neither "chemical" nor "automation" hit the old adjacent-field hint list)
++# and only got flagged downstream by classify.py's since-fixed bare-'threat'
++# match on this exact workplace-safety disclaimer.
++MOSAIC_CONTENT = (
++    "Requires a Bachelor's degree in Chemical Engineering or related field. Experience with PLC, DCS, "
++    "and SCADA control systems preferred. Basic computer skills required. Must be able to lift 50 lbs "
++    "and wear a respirator as needed. The Company will not require an employee to perform any duty "
++    "without posing a direct threat to the safety of his or her own self or others."
++)
++
++
++def [REDACTED]():
++    assert stage2_confirm(
++        "Operations & Automation Engineering Co-op/Intern", "The Mosaic Company", MOSAIC_CONTENT
++    ) is False
++
++
+ # --- stage2_confirm ---
+ 
+ # Real content, copied verbatim from the vault dossier
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+sed -n '170,215p' tests/test_writer.py
+  ```
+  ```
+def test_render_dossier_frontmatter_contains_moc_link_and_company_tag(listing):
+    uid = f"{listing.source}:{listing.raw_id}"
+    md = render_dossier(listing, uid, "2026-07-17", "reason")
+    assert DOSSIERS_MOC_LINK in md
+    assert f"company/{company_slug(listing.company)}" in md
+
+
+# --- Task H: recheck.py moves closed postings to Viewed/, doesn't delete ---
+
+def test_move_dossier_to_viewed_moves_file_and_updates_frontmatter(vault_root, listing, state_dir):
+    uid = f"{listing.source}:{listing.raw_id}"
+    md = render_dossier(listing, uid, "2026-07-17", "reason")
+    path = write_dossier(vault_root, uid, md, listing.title, listing.company, "Other", state_dir=state_dir)
+
+    new_path = move_dossier_to_viewed(
+        vault_root, path, "absent from live feed", "2026-07-30", state_dir=state_dir
+    )
+
+    assert not path.exists()
+    assert new_path.exists()
+    assert new_path.parent == vault_root / DOSSIERS_SUBPATH / "Viewed"
+
+    text = new_path.read_text()
+    assert "status: removed" in text
+    assert "removed_date: '2026-07-30'" in text or "removed_date: 2026-07-30" in text
+    assert "removed_reason: absent from live feed" in text
+    assert DOSSIERS_MOC_LINK in text
+    assert REMOVED_DOSSIERS_MOC_LINK in text
+
+
+def test_move_dossier_to_viewed_updates_uid_manifest(vault_root, listing, state_dir):
+    uid = f"{listing.source}:{listing.raw_id}"
+    md = render_dossier(listing, uid, "2026-07-17", "reason")
+    path = write_dossier(vault_root, uid, md, listing.title, listing.company, "Other", state_dir=state_dir)
+
+    new_path = move_dossier_to_viewed(
+        vault_root, path, "active: false upstream", "2026-07-30", state_dir=state_dir
+    )
+
+    manifest = load_dossier_uids(state_dir)
+    assert manifest[str(new_path.relative_to(vault_root))] == uid
+    assert str(path.relative_to(vault_root)) not in manifest
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+cat core/profile.yaml
+echo "=== Research Loop - Resources.md (vault) ==="
+cat "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Research Loop - Resources.md" 2>/dev/null | head -40
+  ```
+  ```
+# Layer 2 filter config — see Research Loop Implementation Plan for rationale.
+grad_year: 2028
+class_year: junior
+eligible_class_tags: [Junior, "3rd year"]  # matched as case-insensitive substrings against target_year entries
+accept_unrestricted: true  # postings with no class-year field at all still match
+# "Winter 2027" = Dec 2026-Feb 2027 in SimplifyJobs' taxonomy — winters are
+# labeled by the LATER year, confirmed 2026-07-18 by term adjacency in live data
+# (three real listings co-tag ["Fall 2026", "Winter 2027"]). Postings don't
+# publish actual months in the feed, so the human screen of the fetched posting
+# content is still what confirms a genuine Dec-Jan window per posting.
+terms: ["Summer 2027", "Winter 2027", "Spring 2027"]
+# Summer/Winter 2027 are equally top priority; Spring 2027 is wanted but
+# explicitly lower priority. This is a weight, not a second pass/fail gate —
+# Spring 2027 still matches like any other wanted term today. A later, separate
+# task consumes this for priority tagging; this one only makes it present and
+# readable downstream.
+terms_weight: {"Summer 2027": "high", "Winter 2027": "high", "Spring 2027": "low"}
+# Real category values observed on SimplifyJobs/Summer2026-Internships (dev/.github/scripts/listings.json),
+# not the generic names in the original transcript — confirmed by fetching live data 2026-07-16.
+categories: ["Software", "Software Engineering", "AI/ML/Data", "Data Science, AI & Machine Learning"]
+# Fellowship/research/mentorship-shaped entries were checked against live data
+# 2026-07-26 (SimplifyJobs, JGCL, zshah101 feeds + 5 Greenhouse/5 Ashby seeded
+# company boards): real examples exist (e.g. SimplifyJobs "Oracle Database
+# Research Intern" category=Software terms includes Winter/Spring 2027; JGCL
+# "CBAI Summer Research Fellowship in AI Safety '26" category=Research; JGCL
+# "Anthropic Fellows Program" category=Program; zshah101 "Research Intern -
+# School of Computer Science - LTI" (CMU) category=Software) — but every one
+# already matches under the existing rules: SimplifyJobs/zshah101 tag them
+# with a category already in categories/_ZSHAH101_CATEGORIES above, and JGCL's
+# matcher never gates on category at all. No fellowship/mentorship-shaped hits
+# turned up on the seeded Greenhouse/Ashby boards, and those two sources are
+# free-text term matching with no category gate to begin with. No matching
+# code needed — nothing here to extend yet.
+#
+# Pay is never a filter criterion anywhere in this pipeline — confirmed
+# 2026-07-26 by grepping core/filter.py for any pay/pay_per_week gate; none
+# exists. Don't add one; compensation is out of scope for Layer 2 eligibility.
+# Rejects a SimplifyJobs listing outright if any of these terms are present, even
+# alongside an allowed term (multi-term/rotational postings spanning both cycles).
+exclude_terms: ["Summer 2026", "Fall 2026", "Spring 2026"]
+# Rule built 2026-07-17 from live feed data (1216 distinct location strings), not
+# guessed — see location_eligible() in core/filter.py. Permissive: no location
+# data or ambiguous strings ('Multiple Locations', 'Virtual', bare 'Remote') still
+# match; only affirmatively non-US listings (Canada/UK/'Remote in Germany') drop.
+locations_allow: us_remote
+# Real live values use the apostrophe form ("Bachelor's" 5450, ("Master's","PhD")
+# 592, ("PhD",) 586, empty 4676 — fetched 2026-07-18). Permissive: empty degrees
+# data passes; non-empty must intersect this list.
+degrees_allow: ["Bachelor's"]
+=== Research Loop - Resources.md (vault) ===
+---
+type: project
+status: active
+created: 2026-07-26
+updated: 2026-07-29
+related_progress:
+  - "[[Source of Truth]]"
+  - "[[10_Areas/Career/Internships/List/Resources]]"
+tags:
+  - internship
+  - automation
+  - resources
+next: "Freehire and AIJobs are now live (confirmed 2026-07-26) — next is the count-limit throttle and confirming recheck.py's Freehire gap in FEEDS."
+---
+# Research Loop — Resources
+==The main list of every data source this loop uses or has evaluated, what each one actually provides, and the planned alternative once a source runs dry or breaks.== This is the planning-level note — what exists, what's next in line. `10_Areas/Career/Internships/List/Resources` is the operational companion: how much has actually been drawn from each source and live exhaustion signals.
+## Live, Committed, Firing In Production (confirmed 2026-07-26)
+| Source | Shape | What it gives us | Verified scale |
+| --- | --- | --- | --- |
+| SimplifyJobs (`Summer2026-Internships`) | `listings.json` | The original, largest curated internship list | 14,900+ entries |
+| Jose-Gael-Cruz-Lopez (`underclassmen-opportunities`) | `listings.json` | Smaller, underclassmen-focused | ~112 entries |
+| `vanshb03/Summer2027-Internships` | `listings.json` (bare `season`, no `category`) | Independent curation, caught Uber + Deepgram | 274 entries |
+| `zshah101/...Tech-Internships` | `data/jobs.json` (dict-keyed) | First-party `sponsorship` field — cleaner OPT signal than any other source | 214 entries |
+| Greenhouse (direct API) | `boards-api.greenhouse.io` | No scraping — structured JSON, full JD text | 7 verified-live company tokens |
+| Ashby (direct API) | `api.ashbyhq.com` | Same — structured, no scraping | 5 verified-live company tokens |
+> [!NOTE]
+> Token verification standard, non-negotiable: never add a Greenhouse/Ashby token that hasn't been confirmed live against real job data first — a wrong guess silently returns zero jobs, not an error. See `ingestion/sources.py`'s comment above `GREENHOUSE_COMPANIES` for the exact check.
+## Freehire and AIJobs — Moved To Live (2026-07-26)
+- **`freehire` (`strelov1/freehire`)** — MIT-licensed, 4,270,639 postings indexed, 187,542 companies, 78 ATS platforms. Its "Company career sites" crawl reaches **Uber and Google directly** (562 and 3,484 open postings) — the exact companies Phase 11's direct-ATS check confirmed unreachable through Greenhouse/Lever/Ashby. Also carries `enrichment.seniority`, `posted_at`/`closed_at`, repost/fake-freshness detection. **Confirmed committed and pushed** (`Two new discovery sources: Freehire, AIJobs`, 2026-07-26) — `ingestion/freehire.py` live on `master`. Note: `recheck.py`'s `FEEDS` dict does not yet include Freehire — confirm whether that's a deliberate exclusion or a real gap.
+- **`artificialintelligencejobs.co`** — 320 companies, 17,507 jobs, 184 carrying an explicit `level: "Intern"` field. Company list skews AI-native (OpenAI, Anthropic, Mistral, a long tail of AI startups) — complementary to the finance/general-tech-heavy set the other six sources produce. **Confirmed committed and pushed**, same commit as Freehire — `recheck.py`'s `FEEDS` dict already includes `AIJobs`.
+## Researched, Deliberately Not Built
+- **Lever** — one confirmed live example (Palantir), didn't justify a fifth ingestion module on its own. Revisit if a second real Lever-hosted target company shows up.
+- **`speedyapply/2027-AI-College-Jobs`** — daily commits, but no accessible data file anywhere in the repo; the real data lives in a private Supabase backend, commits only re-render it into README tables. Same structural problem class as the already-removed zapplyjobs.
+- **`sndsh404/summer-2027-internships`** — README + a binary `.xlsx` only, arguably worse than zapplyjobs.
+- **Intern Dock** — a snapshot page, no API.
+## Ruled Out
+zapplyjobs (removed 2026-07-18 — entries are program/resource pages, not deadline-bearing postings). General job-board aggregators from `public-apis`' Jobs category (Adzuna, Careerjet, Jooble, Reed, ZipRecruiter) — same low-signal-for-internships problem as zapplyjobs, not internship-specific enough to be worth the integration.
+## Named-Program Coverage Check (2026-07-29) — Real Gap, Not Yet Fixed
+Per [[00_Execution]]'s Web pass, [[Internship Tracking Dashboard — 2027 Calendar, Programs, & Application Pipeline]] named ~11 target early-talent programs. Checked directly against `List/Dossiers/` (frontmatter `company:` field, not just body-text mentions of the name — a JD that merely links to LinkedIn or namechecks Google isn't a real hit): **only 3 of 11 companies have any dossier at all, and even those aren't confirmed to be the specific named program.**
+| Company / Program | Dossier Coverage |
+  ```
+- `Bash`:
+  ```bash
+JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis"
+sed -n '40,90p' "$JARVIS/20_Progress/Internship/Building System/Research Loop - Resources.md"
+  ```
+  ```
+| Company / Program | Dossier Coverage |
+|---|---|
+| Jane Street (FTTP) | 11 Jane Street dossiers exist (SWE, ML Engineer, ML Researcher, Hardware, Network, etc.) — none confirmed as the specific FTTP program by name; likely generic postings, not the named pipeline |
+| Two Sigma (First-Year) | **None** |
+| D.E. Shaw | 1 dossier (`Software Developer Intern - DE Shaw`) — generic, not confirmed as a named early-talent pipeline |
+| Citadel (Launch) | **None** |
+| Google (ASDI) | 3 Google dossiers exist, all generic "Software Engineering Intern" postings — no ASDI-specific mention found |
+| Microsoft (Explore) | **None** |
+| LinkedIn (First Play) | **None** |
+| MLH Fellowship | **None** |
+| NASA OSTEM | **None** |
+| Capital One | **None** |
+| Bloomberg | **None** |
+**This is a loop-coverage gap, not a reason to hand-write Program notes for the missing eight** — per [[00_Execution]], the retired `Programs-to-Create.md` pattern (hand-typing from a target list) doesn't come back just because the loop hasn't surfaced these yet. If any of these are genuinely time-sensitive (Wave 1 programs open Aug 1 per [[10_Areas/Career/Internships/Programs/Serious/2026-HRT-Sophomore]]'s own timing), the right fix is checking why the loop's eight sources aren't catching them — company-specific early-talent programs (Explore, First Play, Launch, ASDI, OSTEM) often post on dedicated early-careers subdomains that a general listings aggregator (SimplifyJobs, vanshb03, zshah101) may not crawl, and none of the eight sources are Greenhouse/Ashby-hosted for these specific companies (per the verified-token list above). **Next step, not yet done:** check whether any of these eight companies' early-talent programs post through Greenhouse or Ashby (in which case a token addition closes the gap directly) before assuming a ninth source is needed.
+## When A Source Runs Dry — The Alternative Ladder
+1. **SimplifyJobs/JGCL feel thin** → the four newer sources (vanshb03, zshah101, Greenhouse, Ashby) already diversify past them; check `List/Resources` for which one specifically slowed.
+2. **Greenhouse/Ashby seed list feels stale** → Task F from `Runs/Claude Code Prompts.md` Prompt 2 (seed-list diversification) is the direct next step — verified-live token additions only.
+3. **All eight existing sources feel exhausted** → Lever gets built for real (needs a second confirmed target company first).
+4. **Even that feels thin** → a genuinely new research pass against `public-apis`-style directories, same verification discipline as every source above (live-checked before any code is written).
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+python3 -c "
+from core.identity import extract_ats_job_id
+print(extract_ats_job_id('https://careers.google.com/jobs/results/12345'))
+print(extract_ats_job_id('https://random-startup.com/careers/jobs/results/12345'))
+"
+  ```
+  ```
+None
+12345
+  ```
+- `Read` — `/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Runs/Claude Code Prompts.md`
+- `Bash`:
+  ```bash
+wc -l "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
+tail -5 "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
+  ```
+  ```
+111 /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Runs/Claude Code Prompts.md
+Tests: fixture-based against the real Conagra and Manhattan Associates dossier content (read directly from the vault, don't re-fetch) — assert no duplicated paragraph survives, assert chrome lines are split, assert a posting with real stated section headers renders them as `###` headings, assert a posting with no internal structure at all stays as one clean block (no invented sections).
+
+## Verification
+Run the full test suite, report the exact pass count. Report Tasks A-I individually. For B, C, D, and F specifically, re-run the real fixture cases (Databricks, Conagra, Mosaic, Aquatic/Google/Virtu/Palantir, Optiver) through the fixed code and confirm the expected outcome (reject, reject, reject, correctly-deduped-or-merged, reject) rather than just asserting the regex/logic looks right. For G and H, show the actual rendered frontmatter of a real test dossier before/after. For I, show a real before/after diff of the Conagra fixture's body content. State plainly which tasks were actually run against real data vs. only reviewed for correctness — don't claim a task works if its real fixture case was never actually exercised.
+```
+  ```
+- `Edit` — `/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Runs/Claude Code Prompts.md`
+  ```diff
+  - Tests: fixture-based against the real Conagra and Manhattan Associates dossier content (read directly from the vault, don't re-fetch) — assert no duplicated paragraph survives, assert chrome lines are split, assert a posting with real stated section headers renders them as `###` headings, assert a posting with no internal structure at all stays as one clean block (no invented sections).
+
+## Verification
+Run the full test suite, report the exact pass count. Report Tasks A-I individually. For B, C, D, and F specifically, re-run the real fixture cases (Databricks, Conagra, Mosaic, Aquatic/Google/Virtu/Palantir, Optiver) through the fixed code and confirm the expected outcome (reject, reject, reject, correctly-deduped-or-merged, reject) rather than just asserting the regex/logic looks right. For G and H, show the actual rendered frontmatter of a real test dossier before/after. For I, show a real before/after diff of the Conagra fixture's body content. State plainly which tasks were actually run against real data vs. only reviewed for correctness — don't claim a task works if its real fixture case was never actually exercised.
+```
+  + Tests: fixture-based against the real Conagra and Manhattan Associates dossier content (read directly from the vault, don't re-fetch) — assert no duplicated paragraph survives, assert chrome lines are split, assert a posting with real stated section headers renders them as `###` headings, assert a posting with no internal structure at all stays as one clean block (no invented sections).
+
+## Verification
+Run the full test suite, report the exact pass count. Report Tasks A-I individually. For B, C, D, and F specifically, re-run the real fixture cases (Databricks, Conagra, Mosaic, Aquatic/Google/Virtu/Palantir, Optiver) through the fixed code and confirm the expected outcome (reject, reject, reject, correctly-deduped-or-merged, reject) rather than just asserting the regex/logic looks right. For G and H, show the actual rendered frontmatter of a real test dossier before/after. For I, show a real before/after diff of the Conagra fixture's body content. State plainly which tasks were actually run against real data vs. only reviewed for correctness — don't claim a task works if its real fixture case was never actually exercised.
+```
+
+## Prompt 4 — Run 2026-07-30, Reviewed In Detail 2026-07-30
+**Executed for real** — 303/303 tests pass (258 baseline + 45 new). Independently re-verified 2026-07-30 by reading every diff directly (not just the run's own summary) and executing the trickiest pieces by hand: Tasks A, B, C, E, F, G, I confirmed genuinely correct — E in particular was re-run against the real Google fixture directly (`extract_content()` on `tests/fixtures/posting_google_careers.md` produces zero unrelated job titles, confirmed by hand), and a suspected interaction between Task I's paragraph-dedup and Task E's listing-shell-reset (dedup could in principle strip a line the reset logic depends on) was traced and confirmed *not* to be a real bug against the actual fixture. **Two real, reproducible gaps found in Tasks D and H, described below** — nothing else in Prompt 4 needs rework. Nothing has been committed yet (confirmed via `git status`) — this run and Prompt 5 below can land in the same commit sequence once both are done.
+
+## Prompting Guide In Use (unchanged from Prompt 4's revision) — Extra Note For This Prompt
+Same guide, `xhigh` effort, generous `max_tokens`. One more point applied specifically here: **ask, don't infer, on anything resembling a value judgment.** Prompt 5 involves a real preference call (which companies are "preferred") that is the human's to make, not the model's to guess — every task below is written so the code only *wires up* a preference the human states in `core/profile.yaml`, never invents or expands that list on its own initiative. If a task below reads as underspecified on where the preference data comes from, that's deliberate — flag it back rather than filling the gap with a guessed FAANG/Fortune-100 list.
+
+## Prompt 5 — Company Niche Preference, Competitive Selection Per Push, Loss-Tracked Exclusion
+```
+You are working in gupta-builds/internship-research-loop. Context: Prompt 4 (Tasks A-I: per-bucket capacity notification, product/rotational-role rejection, narrowed cybersecurity keyword matching, URL/job-ID cross-source dedup, Google careers-page extraction fix, PhD-only content gate, dossier MOC/company interlinking, move-to-Viewed on removal, structured readable body content) has been run and independently code-reviewed — 303/303 tests pass, nothing committed yet. Two real, reproducible gaps were found in that review; fix both FIRST, before any of Prompt 5's own work, and confirm the fix with a real repro before moving on — this is not optional preamble, it's the literal instruction: verify Prompt 4, fix what's broken, only then start Prompt 5's real work.
+
+### Fix First — Two Real Gaps From The Prompt 4 Review
+
+**Fix 1 — `extract_ats_job_id()`'s Google pattern has no domain anchor (`core/identity.py`).** Unlike the Greenhouse/Lever/Ashby patterns (each scoped to their own domain string), the Google pattern `r"careers/(?:applications/)?jobs/results/(\d+)"` matches that path shape on ANY domain. Reproduce it yourself first: `extract_ats_job_id("https://random-startup.com/careers/jobs/results/12345")` currently returns `"12345"` — a real, unrelated company's posting with a coincidentally-matching numeric ID collapses into the identical `cross_source_key` as a real Google posting and would be silently rejected as a duplicate. Fix: anchor the pattern to Google's actual domain (`google\.com` appears before the `careers/` segment in every real example seen — `www.google.com/about/careers/applications/jobs/results/...`), matching the domain-scoping discipline the other three patterns already follow. Add a regression test using the exact unrelated-domain URL above, asserting it no longer extracts a job id (or extracts one only when the domain is actually google.com).
+
+**Fix 2 — `move_dossier_to_viewed()` has no filename-collision handling (`vault_writer/writer.py`).** `dossier_filename()` already solves exactly this problem for the original per-bucket write path (`(2)`, `(3)` suffixing on a name collision) — but bucket-scoped collision checks at write time only look within one bucket folder, so two dossiers with the identical filename can legitimately exist in two different bucket folders simultaneously (a pre-Fix-1 duplicate, or two genuinely different postings that happen to share a company+title string). If `recheck.py` later moves both into the single flat `Viewed/` folder, the second move currently overwrites the first silently — real, if narrow, data loss with zero test coverage. Fix: before writing to `vault_root / VIEWED_SUBPATH / path.name`, check for an existing file at that path and apply the same `(2)`, `(3)`-style suffixing `dossier_filename()` already implements (reuse that logic/helper directly, don't duplicate it) rather than overwriting. Add a regression test: two dossiers named identically (construct this directly, don't rely on a real collision existing in the current vault), moved to `Viewed/` in sequence, both end up present with distinct filenames.
+
+Report both fixes with a before/after repro (the exact failing case above, now passing) before moving to Task J.
+
+### Task Order
+No task strictly blocks another except: **K before L** (the debate comparator in L reads the preference weights K adds to `core/profile.yaml`) and **L before M** (M wires the comparator into the existing per-bucket budget from Prompt 4's Task A, so the comparator needs to exist first). Suggested order: Fix 1, Fix 2 → J → K → L → M → N → O, but only K→L and L→M are hard dependencies.
+
+### Files Touched, By Task
+| File | Task |
+| --- | --- |
+| `core/identity.py` | Fix 1 |
+| `vault_writer/writer.py` | Fix 2 |
+| `core/profile.yaml` | K |
+| `core/classify.py` or a new `core/niche.py` (your call — see Task K) | K, L |
+| `run_pipeline.py` | L, M, N (comparator wiring, loss-tracking state, MOC-sort field) |
+| `10_Areas/Career/Internships/List/Dossiers MOC.md` (vault) | N (Dataview sort only, not a code file) |
+
+## Task J — Where the real preference data comes from (read this before K)
+**Do not invent a FAANG/Fortune-100/YC-backed list.** A real, human-vetted starting point already exists in the vault: `20_Progress/Internship/Building System/Research Loop - Resources.md`'s "Named-Program Coverage Check (2026-07-29)" section names 11 real target companies/programs the human has already identified as worth prioritizing — Jane Street (FTTP), Two Sigma (First-Year), D.E. Shaw, Citadel (Launch), Google (ASDI), Microsoft (Explore), LinkedIn (First Play), MLH Fellowship, NASA OSTEM, Capital One, Bloomberg — and states plainly that only 3 of 11 have any dossier coverage at all, none confirmed as the specific named program. **Use this real list as the seed for `preferred_companies` in Task K, cite this exact source in the code comment (same citation discipline as every other rule in this codebase), and treat it as a starting point the human will edit directly in `core/profile.yaml`, not a final answer.** Read the vault CLAUDE.md's `[[30_Order/Workflows/Internship Pipeline]]` Step 2 ("Screen") reasoning too — company preference is explicitly named there as a human judgment call, never automated; this task is building the *plumbing* for that judgment to take effect at write-priority time, not automating the judgment itself.
+
+## Task K — `preferred_companies` in `core/profile.yaml`
+Add a new field, same style/shape as the existing `terms_weight` (a dict, not a flat list, so it's ready for tiered weighting from the start — matching this file's existing convention of "a weight, not a second pass/fail gate"):
+```yaml
+preferred_companies:
+  "Jane Street": high
+  "Two Sigma": high
+  "D.E. Shaw": high
+  "Citadel": high
+  "Google": high
+  "Microsoft": high
+  "LinkedIn": high
+  "MLH": high
+  "NASA": high
+  "Capital One": high
+  "Bloomberg": high
+```
+(Seeded from Task J's real source, all at one tier for now — the human will re-tier or add/remove entries directly; don't invent a multi-tier scheme not asked for.) Write a `company_matches_preference(company: str, preferred: dict) -> str | None` helper (returns the matched preference tier or `None`) in `core/identity.py` (alongside the other identity/matching helpers) — normalize the same way `cross_source_key()`'s `norm()` does (case/punctuation-insensitive), so "D.E. Shaw" and "DE Shaw" both match. This is a **pure string match against an already-fetched field** (`listing.company`) — no new network call, no new API, nothing to verify live before building, unlike every *source* addition this project has previously required real-data verification for (this is config wiring, not a new data source).
+
+## Task L — The "debate": a deterministic pairwise comparator, replacing `_prioritize_and_cap`'s recency-only sort
+**This must stay zero-LLM — no exception, this is the single easiest place in this whole feature to reach for an actual model call ("have Claude judge which is better") and it is explicitly forbidden here, same rule as everywhere else in this codebase's unattended path (see the repo's own `CLAUDE.md`).** "Debating between two internships" is implemented as a real comparator function taking exactly two candidates and returning which one wins — used via `functools.cmp_to_key()` to produce a full deterministic ranking in one efficient sort, which is mathematically the same outcome as running every pairwise comparison, just without the wasted O(n²) redundant comparisons a literal round-robin would do. Write `debate_compare(a, b, preferred_companies: dict) -> int` (standard `cmp` semantics: negative if `a` should rank first) with this exact priority order, each stage only breaking ties left by the stage above it — do not blend them into one weighted numeric score, keep them as clearly separable comparison stages so a human reading the function can see exactly why any two candidates were ordered the way they were:
+1. **Preferred-company tier** — a `"high"`-tier match ranks above no match (ties within the same tier fall through to the next stage). Uses Task K's `company_matches_preference()`.
+2. **Bucket fill-need** — if two candidates are headed for different buckets, the bucket further from filling this run's per-bucket budget (Prompt 4 Task A's `MAX_NEW_WRITES_PER_RUN`) ranks first, so a bucket that's about to go unfilled this run doesn't lose its only strong candidate to another bucket's tie-break. (Same-bucket comparisons skip this stage entirely — it only matters cross-bucket.)
+3. **Recency** — most-recently-posted-first, the existing rule, unchanged, as the final tie-break.
+Replace `_prioritize_and_cap`'s current `sorted(items, key=lambda item: item[1].date_posted or 0, reverse=True)` with the comparator-based sort, per bucket, keeping everything else about that function's structure (per-bucket budget scoping, deferred list) unchanged. Tests: construct at least one real-shaped pairwise case for each of the three stages independently (a preferred-vs-non-preferred pair with identical dates; two same-tier candidates in different buckets where one bucket's budget is nearly exhausted; two candidates with everything else equal except date), asserting the comparator orders each pair correctly in isolation before testing it inside the full per-bucket sort.
+
+## Task M — Per-push limit stays Prompt 4's existing mechanism — don't build a second one
+The "strict limit for per push to Jarvis" already exists: Prompt 4 Task A's per-bucket `MAX_NEW_WRITES_PER_RUN` dict. Task L's comparator changes *which* candidates fill those slots — it does not need, and should not get, a second/parallel limit mechanism layered on top. If real data after this ships suggests the per-bucket numbers themselves (currently 3/3/3/1) need retuning now that preference is part of selection, that's a one-line constant change to make later against real observed data, not something to redesign speculatively now.
+
+## Task N — Loss tracking and the excluded list
+A candidate that loses this run's per-bucket comparator sort (falls outside the top-N budget slots) is already "deferred" under Prompt 4's existing mechanism (never marked seen, naturally re-offered next run — no new state needed for that part). New for this task: track how many consecutive runs a given uid has been deferred, in `state/debate_losses.json` (uid → count, same load/save pattern as `state/capacity_notified.json` from Prompt 4 Task A). Each run: increment the counter for every deferred uid still in the candidate pool; a uid that gets written this run (it won its comparison) is removed from this file entirely (it's in `seen_ids.json` now, moot). **When a uid's counter reaches 5** (tunable constant, named clearly — chosen to give a real posting several genuine chances across multiple hourly runs before conceding it structurally can't out-rank the field, not an arbitrary guess dressed as one; retune from real data once this has run for a while, same as every other tunable in this codebase), move its uid to `state/excluded_uids.json` and remove it from `state/debate_losses.json`. `fetch_and_filter()`/`dedup_new()` should skip any uid already in the excluded set entirely (saves the Firecrawl content-fetch too, not just the write) — but **this is not a silent, permanent, unrecoverable exclusion**: append one line to a plain markdown log the first time a uid is excluded (new file, `10_Areas/Career/Internships/List/Excluded — Losing The Debate.md`, same append-only pattern as `Run Log.md`'s weekly rollup — company, title, url, date excluded, why) so a human can review what got excluded and manually decide to promote one by hand if they disagree — this codebase's whole design philosophy is that a human makes the final call on genuinely borderline cases, and losing a deterministic comparator five times in a row is exactly the kind of thing that should stay reviewable, not final. Tests: a uid deferred 4 times is still in the candidate pool on run 5; a uid deferred 5 times is excluded and skipped on run 6 (never fetched, confirm via a mock that the fetch function isn't even called for it); a uid that wins on attempt 3 never gets excluded.
+
+## Task O — Niche visibility, without another folder migration
+**Do not restructure `BUCKET_FOLDERS` or add a fifth priority subfolder for this.** The four-bucket system just stabilized after Prompt 4 and a manual vault reorg — re-migrating it again this soon for a feature that can be expressed as a field is not worth the churn. Instead: add a `preference_tier` frontmatter field to `build_frontmatter()` (the matched tier from Task K's `company_matches_preference()`, or `null`) — required field like every other one (add to `vault_writer/validate.py`'s `REQUIRED_FRONTMATTER_FIELDS`, same fail-closed discipline as the rest of this file). In the vault (not code — a direct markdown edit to `10_Areas/Career/Internships/List/Dossiers MOC.md`, same as the capacity notification added 2026-07-29), add `SORT preference_tier DESC, company ASC` to each bucket's existing Dataview table so preferred-company dossiers surface first within their existing bucket, no new folder needed. If a real, later need for a dedicated folder surfaces (not hypothetical), that's an explicit separate ask to the human, not something to build ahead of that need.
+
+## Task P — Resource check: this feature needs none, state that plainly
+Confirm explicitly in your final report: Tasks K-O introduce zero new network calls, zero new API usage, and zero new Firecrawl fetches — the entire mechanism is string-matching an already-fetched `company` field against a human-maintained config dict, plus bookkeeping in two small JSON state files. If a future ask wants live company-tier lookup (e.g. auto-detecting "is this company YC-backed" instead of a human-curated list), that is a materially different, higher-cost feature requiring its own real-data verification pass (same discipline as every source addition in this project's history) — explicitly out of scope here, don't fold it in silently.
+
+## Verification
+Run the full test suite, report the exact pass count. Report the two Fix-First items with real before/after repros. Report Tasks J-P individually — for K, show the actual `core/profile.yaml` diff; for L, show all three comparator-stage test cases passing in isolation plus the full per-bucket sort test; for N, show the 4-losses-still-in-pool / [REDACTED] / [REDACTED] cases explicitly; for O, show the real rendered frontmatter of a test dossier with a preference match. State plainly which parts were exercised against real data (the real Task J company list, a real comparator run) versus synthetic test fixtures — this feature has less "real broken data" to point at than Prompt 4 did (nothing has failed live yet, by design, since this is new behavior), so be explicit about what "real" means for each task here specifically. Nothing should be committed without being asked first, same as always.
+```
+  ```
+- `Edit` — `/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Runs/Claude Code Prompts.md`
+  ```diff
+  - next: "Run the revised Prompt 4 (Tasks A-I) against gupta-builds/internship-research-loop — needs read access to the real vault (Firecrawl-fetched fixtures live there, not in the repo) to pull the Conagra/Manhattan Associates/Optiver/Virtu/Palantir real content named throughout. Then wipe this file and write the next batch."
+---
+  + next: "Prompt 4 ran 2026-07-30, reviewed in detail same day (303/303 tests, two real gaps found in Tasks D/H). Run Prompt 5 next — starts with fixing those two gaps, then company-niche preference + comparator-based push selection + loss-tracked exclusion list. Nothing committed yet for either prompt."
+---
+  ```
+- `Edit` — `/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/System - Build Log.md`
+  ```diff
+  - next: "Run the revised Prompt 4 (Tasks A-I) in [[20_Progress/Internship/Building System/Runs/Claude Code Prompts]] against gupta-builds/internship-research-loop — still not executed as of 2026-07-29, see that day's entry below."
+---
+  + next: "Prompt 4 ran and was code-reviewed 2026-07-30 (two real gaps found). Prompt 5 (company-niche preference, comparator-based push selection, loss-tracked exclusion) written same day, starts by fixing those two gaps first. Neither prompt's code is committed yet."
+---
+  ```
+- `Read` — `/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/System - Build Log.md`
+- `Edit` — `/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/System - Build Log.md`
+  ```diff
+  - **Not done this session, deliberately**: no repo code touched — this was a research/verification/planning pass per explicit instruction, followed by writing the next prompt. Niche-specific/FAANG-Fortune100/YC-backed targeting (raised in the same audit that surfaced these bugs) is explicitly sequenced *after* Prompt 4 ships and one clean cycle is observed — pointing a wider intake funnel at an unfixed classification/dedup/degree-gate layer would make every bug above worse, not better.
+  + **Not done this session, deliberately**: no repo code touched — this was a research/verification/planning pass per explicit instruction, followed by writing the next prompt. Niche-specific/FAANG-Fortune100/YC-backed targeting (raised in the same audit that surfaced these bugs) is explicitly sequenced *after* Prompt 4 ships and one clean cycle is observed — pointing a wider intake funnel at an unfixed classification/dedup/degree-gate layer would make every bug above worse, not better.
+## 2026-07-30 — Prompt 4 Run And Independently Code-Reviewed; Prompt 5 Written
+Prompt 4 (Tasks A-I) run for real against the repo: 303/303 tests pass (258 baseline + 45 new), nothing committed. **Independently re-verified by reading every diff directly** (not just the run's own summary) and executing the hardest pieces by hand — `extract_content()` run against the real Google fixture confirms Task E genuinely works; a suspected interaction between Task I's paragraph-dedup and Task E's shell-reset was traced and confirmed safe against the real fixture, not just assumed. **Seven of nine tasks (A, B, C, E, F, G, I) confirmed correct as shipped.** Two real, reproducible gaps found:
+1. Task D's `extract_ats_job_id()` Google pattern has no domain anchor (unlike Greenhouse/Lever/Ashby's, each scoped to their own domain) — `extract_ats_job_id("https://random-startup.com/careers/jobs/results/12345")` returns a job id, meaning an unrelated company's posting could collapse into the same cross-source key as a real Google posting on a coincidental digit match. Reproduced directly.
+2. Task H's `move_dossier_to_viewed()` has no filename-collision handling on the `Viewed/` destination — `dossier_filename()` already solves this exact problem at write time, but bucket-scoped collision checks don't prevent two identically-named dossiers existing in two different buckets; a later double-move to `Viewed/` would silently overwrite one. No test coverage existed for this case.
+**Prompt 5 written** (company-niche preference, competitive per-push selection, loss-tracked exclusion), starting explicitly with fixing both gaps above before any new work. Real seed data used for the preference list instead of a guessed FAANG list — the "Named-Program Coverage Check" already in [[20_Progress/Internship/Building System/Research Loop - Resources]] (11 real target companies, only 3 with any dossier coverage). Debate/selection mechanism designed as a deterministic three-stage comparator (preference tier → bucket fill-need → recency), explicitly zero-LLM per this codebase's own hard rule — flagged loudly in the prompt since "debate" is exactly the kind of framing a fresh session might misread as license to call an LLM. Loss tracking excludes a uid after 5 consecutive losses, but stays human-reviewable (an append-only markdown log, not silent/permanent) — matches this codebase's founding principle that a human makes the final call on borderline cases. No folder migration for niche visibility — a `preference_tier` field + a Dataview sort change on the existing MOC, not a fifth bucket.
+  ```
+
 ## Actions Taken
 - Files created: /home/anant_gupta/projects/work/internship-research-loop/.claude/agents/contact-researcher.md, /home/anant_gupta/projects/work/internship-research-loop/.claude/skills/promote-dossier/reference/note-templates.md, /home/anant_gupta/projects/work/internship-research-loop/.claude/skills/promote-dossier/SKILL.md, /home/anant_gupta/projects/work/internship-research-loop/.claude/agents/loop-verifier.md, /home/anant_gupta/projects/work/internship-research-loop/.claude/skills/review-loop-change/SKILL.md, /home/anant_gupta/projects/work/internship-research-loop/.claude/settings.json, /home/anant_gupta/projects/work/internship-research-loop/CLAUDE.md, /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/30_Order/Standards/Internship Notes Standard.md
 - Files modified: /home/anant_gupta/projects/work/internship-research-loop/.claude/agents/contact-researcher.md, /home/anant_gupta/projects/work/internship-research-loop/.claude/skills/promote-dossier/reference/note-templates.md, /home/anant_gupta/projects/work/internship-research-loop/.claude/skills/promote-dossier/SKILL.md, /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers MOC.md, /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Runs/Claude Code Prompts.md, /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/System - Build Log.md
 - Files deleted: (none)
-- Commands run: echo "=== repo root ===" && ls -la && echo "=== core/ ===" && ls -la core/ 2>/dev/null && echo "=== priority.py exists? ===" && test -f core/priority.py && echo YES || echo NO && echo "=== enrich.py ===" && find . -iname "enrich.py" && echo "=== git log ===" && git log --oneline -20, echo "=== search for priority anywhere ===" && grep -rl "priority" --include="*.py" . | grep -v .venv | grep -v __pycache__ echo "=== jarvis-checkout dir ===" && ls -la jarvis-checkout/ echo "=== is jarvis-checkout a git repo / submodule? ===" && cat .gitmodules 2>/dev/null; git -C jarvis-checkout status 2>&1 | head -5 echo "=== search repo for any Jarvis vault path references ===" && grep -rn "Jarvis" --include="*.py" --include="*.yaml" --include="*.md" . | grep -v .venv | grep -v __pycache__ | head -30, echo "=== jarvis-checkout remote ===" && git -C jarvis-checkout remote -v echo "=== jarvis-checkout full status ===" && git -C jarvis-checkout status echo "=== jarvis-checkout top-level dirs ===" && ls jarvis-checkout/ 2>/dev/null; find jarvis-checkout -maxdepth 1 2>/dev/null echo "=== .gitignore mentions jarvis-checkout? ===" && grep -n "jarvis" .gitignore -i, echo "=== run_pipeline.py priority context ===" && grep -n -i "priority" run_pipeline.py echo "=== enrich.py content ===" && cat enrich.py | head -60 echo "=== search for Programs/Serious Considering Contacts Tracker ===" && grep -rn -i "Programs/Serious\|Programs/Considering\|Contacts/Each\|Tracker/Each\|Each One" . --include="*.py" --include="*.md" --include="*.yaml" 2>/dev/null | grep -v .venv, echo "=== git log ===" && git log --oneline -10 && echo "=== git status ===" && git status && echo "=== core/ ===" && ls -la core/ && echo "=== priority.py? ===" && test -f core/priority.py && echo YES || echo NO, echo "=== jarvis-checkout ===" && ls -la jarvis-checkout/ && find jarvis-checkout -maxdepth 3 2>/dev/null echo "=== git diff stat ===" && git diff --stat HEAD, echo "=== core/classify.py ===" && cat core/classify.py echo "=== core/relevance.py ===" && cat core/relevance.py, git diff HEAD -- enrich.py echo "=====VAULT_WRITER TEMPLATE=====" git diff HEAD -- vault_writer/templates/dossier.md.j2 echo "=====VAULT_WRITER WRITER=====" git diff HEAD -- vault_writer/writer.py, echo "=== does repo already have CLAUDE.md? ===" && find . -iname "CLAUDE.md" -not -path "./.venv/*" echo "=== .claude dir ===" && ls -la .claude/ echo "=== profile.yaml diff ===" && git diff HEAD -- core/profile.yaml echo "=== .github workflows ===" && ls .github/workflows/ 2>/dev/null && find .github -type f, cat .claude/settings.local.json echo "=== run tests ===" source .venv/bin/activate 2>/dev/null; python -m pytest -q 2>&1 | tail -20, gh repo view gupta-builds/internship-research-loop --json name,defaultBranchRef 2>&1 | head -5 gh api user -q .login 2>&1, ls state/ logs/ && echo "=== seen_ids sample ===" && head -c 300 state/seen_ids.json && echo && echo "=== runs.jsonl tail ===" && tail -3 logs/runs.jsonl 2>/dev/null echo "=== workflows ===" && cat .github/workflows/run.yml, cat enrich.py echo "=====VALIDATE=====" cat vault_writer/validate.py, find ~/.claude/skills -maxdepth 2 -iname "SKILL.md" | head -5 echo "---" cat ~/.claude/skills/graphify/SKILL.md 2>/dev/null | head -40 echo "=== any local project skill examples elsewhere on disk? ===" find / -maxdepth 6 -path "*/.claude/skills/*/SKILL.md" 2>/dev/null | grep -v "^/home/anant_gupta/.claude/skills" | head -10, find ~/.claude/agents -maxdepth 1 -iname "*.md" 2>/dev/null | head -5 find / -maxdepth 8 -path "*/.claude/agents/*.md" 2>/dev/null | grep -v "^/home/anant_gupta/.claude/agents" | head -10 echo "=== check plugin agents for example frontmatter ===" find / -path "*agents*" -iname "*.md" 2>/dev/null | grep -iv "node_modules\|/.venv/\|/.git/" | grep -i "code-reviewer\|explore" | head -10, find /home/anant_gupta -maxdepth 10 -path "*/.claude/agents/*.md" 2>/dev/null | head -20, mkdir -p .claude/agents .claude/skills/promote-dossier/reference .claude/skills/review-loop-change, cat .github/workflows/recheck.yml echo "=====test.yml=====" cat .github/workflows/test.yml echo "=== state/dossier_uids.json exists? ===" && ls state/, cat ~/.claude/settings.json 2>/dev/null | head -60 echo "=== any other settings.json examples with permissions block ===" find /home/anant_gupta/projects -maxdepth 4 -path "*/.claude/settings.json" 2>/dev/null | head -5, test -f /home/anant_gupta/projects/work/internship-research-loop/.claude/settings.json && echo EXISTS || echo MISSING, python3 -m json.tool .claude/settings.json > /dev/null && echo "valid JSON", cat README.md, python -m pytest -q 2>&1 | tail -5, source .venv/bin/activate && python -m pytest -q 2>&1 | tail -5, cd /home/anant_gupta/projects/work/internship-research-loop git fetch origin 2>&1 echo "=== local vs origin/master ===" git log --oneline -5 origin/master echo "=== current branch status ===" git status echo "=== is local master behind/ahead of origin ===" git rev-list --left-right --count origin/master...HEAD, cd /home/anant_gupta/projects/work/internship-research-loop git diff --stat HEAD origin/master echo "=== do incoming commits touch any file I have modified locally? ===" comm -12 <(git diff --stat HEAD origin/master --name-only | sort) <(git status --porcelain | awk '{print $2}' | sort), cd /home/anant_gupta/projects/work/internship-research-loop git diff HEAD --stat -- ingestion/ vault_writer/ tests/test_writer.py tests/test_filter.py echo "=== ingestion/freehire.py head ===" head -20 ingestion/freehire.py, cd /home/anant_gupta/projects/work/internship-research-loop git pull --ff-only origin master echo "=== post-pull status ===" git status --short | head -5 git log --oneline -3, cd /home/anant_gupta/projects/work/internship-research-loop git add core/filter.py core/profile.yaml core/classify.py core/relevance.py \ enrich.py \ ingestion/normalize.py ingestion/posting_page.py ingestion/sources.py ingestion/freehire.py \ recheck.py run_pipeline.py \ vault_writer/templates/dossier.md.j2 vault_writer/validate.py vault_writer/writer.py \ tests/fixtures/josegael.json tests/fixtures/simplifyjobs.json tests/fixtures/vanshb03.json tests/fixtures/zshah101.json \ tests/fixtures/freehire.json tests/fixtures/posting_ashby_ctgt.md \ tests/test_enrich.py tests/test_filter.py tests/test_posting_page.py tests/test_recheck.py \ tests/test_run_pipeline.py tests/test_sources.py tests/test_writer.py tests/test_classify.py tests/test_relevance.py tests/test_freehire.py git status --short, cd /home/anant_gupta/projects/work/internship-research-loop git commit -m "$(cat <<'EOF' Priority-bucket classification, CS-relevance gate, widened contact research Adds core/classify.py (Layer 2.5b, zero-LLM keyword bucketing into AI/ML, CyS & Finance, Fullstack, Other) and core/relevance.py (Layer 2.5, two-stage CS/software-relevance gate: cheap title-only reject before fetch, content -confirmed adjacent-field check after). vault_writer/writer.py and the dossier template now sort writes into priority-bucket subfolders under List/Dossiers/, drop the unused uid/category/promoted frontmatter fields in favor of next (matching the vault's own note convention), and add a dossier_uids.json manifest for idempotent re-writes and recheck.py's removal-checking. Widens enrich.py's contact search to recruiter/university-recruiting queries and LinkedIn search-snippet hits (site:linkedin.com, snippet text only — never scrapes or logs into linkedin.com, per its own hard line). Adds ingestion/freehire.py as an 8th discovery source (scoped to companies with no reachable Greenhouse/Ashby/Lever token) and wires Greenhouse/Ashby/ AIJobs into recheck.py's removal checks. 258/258 tests passing. EOF )" git log --oneline -3, cd /home/anant_gupta/projects/work/internship-research-loop source .venv/bin/activate && python -m pytest -q 2>&1 | tail -3 git add .claude/ CLAUDE.md git status --short, cd /home/anant_gupta/projects/work/internship-research-loop git commit -m "$(cat <<'EOF' Add promote-dossier skill, contact-researcher/loop-verifier agents, review-loop-change skill .claude/skills/promote-dossier/ — turns one List/Dossiers entry into a Program note + Contacts/Each One note + Tracker/Each One note (Internship Pipeline.md Step 3), human-consent-gated before any write. Templates copied verbatim from the vault's own Program Template.md/Contact Template.md; Tracker/Each One has no pre-existing vault template so its shape is authored from the pipeline doc's own field description. Requires the Jarvis vault present in the same working environment (git checkout sibling to this repo, or the jarvis MCP tools) — documented explicitly rather than assumed, per this being the first interactive (human-in-the-loop) writer this pipeline has ever had, distinct from run_pipeline.py/recheck.py's non-interactive scoped-PAT writes. .claude/agents/contact-researcher.md — exploratory subagent invoked by promote-dossier's Step 3, using enrich.py's widened search primitives (recruiter/university-recruiting search, GitHub org members, engineering blog bylines, LinkedIn search-snippets). Never fabricates a contact; reports "nothing found" honestly. .claude/agents/loop-verifier.md — standalone pipeline health check (tests, scheduled-run history via gh api, vault-vs-run-log dossier counts, seen_ids/vault divergence, auto-filed issues), the automated version of this project's prior manual audits (2026-07-19, 2026-07-25). .claude/skills/review-loop-change/ — checks a diff against this repo's four established conventions (zero-LLM unattended path, permissive-by-default filtering, fail-closed write-gate ordering, cited-real-data rule comments) before it ships. Built as a skill rather than an agent — reasoning is in the skill file's own "why a skill" section. .claude/settings.json — pytest/safe-git-reads/gh-reads allowed without prompting; git push and gh secret modification explicitly require confirmation every time (permissions.ask), never silently allowed or denied. CLAUDE.md — documents the three note-template contracts (required fields, always present even as null) and the explicit agent-vs-script judgment call for each of contact research / promotion / verification / review. Verified live against a real dossier (Appian — Software Engineering Intern): promote-dossier run end-to-end including the write step, contact-researcher found real sourced contacts, and a real gap this surfaced (structured frontmatter fields left null while the same fact was already narrated in body prose — eligible_classes, Tracker's date_created) is fixed in this commit, not left for later. 258/258 tests passing (no pipeline code touched by this commit). EOF )" git log --oneline -5, cd /home/anant_gupta/projects/work/internship-research-loop git push origin master git log --oneline -5 origin/master 2>&1 || git fetch origin && git log --oneline -5 origin/master, cat /home/anant_gupta/projects/work/internship-research-loop/grade_resume.py | head -25 echo "=== jarvis-checkout populated now? ===" ls -la /home/anant_gupta/projects/work/internship-research-loop/jarvis-checkout/ 2>/dev/null echo "=== check /mnt/d for a Jarvis vault ===" ls /mnt/d/Users/_Anant/ 2>/dev/null find /mnt/d -maxdepth 3 -iname "*jarvis*" 2>/dev/null echo "=== check /mnt for other drives ===" ls /mnt/ 2>/dev/null, echo "=== does the literal DEFAULT_RESUME path exist? ===" ls -la "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Resumes/" 2>&1 echo "=== what's actually in /mnt/d/Users/_Anant/10_Areas/ ===" ls "/mnt/d/Users/_Anant/10_Areas/" 2>&1 echo "=== search for a folder literally named Jarvis anywhere under /mnt/d ===" find /mnt/d -maxdepth 5 -iname "Jarvis" -type d 2>/dev/null echo "=== does /mnt/d/Users/_Anant/10_Areas/Career/Internships exist (the vault path used throughout this repo)? ===" ls "/mnt/d/Users/_Anant/10_Areas/Career/Internships/" 2>&1 | head -20, JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" echo "=== vault root ===" && ls "$JARVIS" echo "=== 30_Order/Standards ===" && find "$JARVIS/30_Order" -iname "*standard*" 2>/dev/null echo "=== 20_Progress/Internship/Building System ===" && ls "$JARVIS/20_Progress/Internship/Building System/" 2>/dev/null echo "=== Runs dir ===" && find "$JARVIS" -maxdepth 4 -iname "Runs" -type d 2>/dev/null find "$JARVIS" -iname "*Claude Code Prompts*" 2>/dev/null echo "=== Dossiers dir ===" && ls "$JARVIS/10_Areas/Career/Internships/List/Dossiers/" | head -30 echo "=== count dossiers ===" && ls "$JARVIS/10_Areas/Career/Internships/List/Dossiers/" | grep -c "\.md$" echo "=== is there a Viewed subfolder already? ===" && ls "$JARVIS/10_Areas/Career/Internships/List/Dossiers/Viewed/" 2>&1 echo "=== is there a Dossiers MOC already? ===" && find "$JARVIS/10_Areas/Career/Internships" -iname "*MOC*" 2>/dev/null, JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" echo "=== recursive dossier count per bucket ===" for d in "1 - AI & ML" "2 - Fullstack" "3 - CyS & Finance" "Other"; do echo "$d: $(find "$JARVIS/10_Areas/Career/Internships/List/Dossiers/$d" -maxdepth 1 -iname "*.md" 2>/dev/null | wc -l)" done echo "Viewed: $(find "$JARVIS/10_Areas/Career/Internships/List/Dossiers/Viewed" -maxdepth 1 -iname "*.md" 2>/dev/null | wc -l)" echo "flat root: $(find "$JARVIS/10_Areas/Career/Internships/List/Dossiers" -maxdepth 1 -iname "*.md" 2>/dev/null | wc -l)" echo "TOTAL recursive: $(find "$JARVIS/10_Areas/Career/Internships/List/Dossiers" -iname "*.md" 2>/dev/null | wc -l)", JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" echo "=== sample dossiers from each bucket (filenames) ===" find "$JARVIS/10_Areas/Career/Internships/List/Dossiers/1 - AI & ML" -iname "*.md" | head -5 echo "---" find "$JARVIS/10_Areas/Career/Internships/List/Dossiers/Other" -iname "*.md" | head -5 echo "=== the one flat-root dossier still there ===" find "$JARVIS/10_Areas/Career/Internships/List/Dossiers" -maxdepth 1 -iname "*.md", JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" echo "=== Internship Notes Standard.md ===" && wc -c "$JARVIS/30_Order/Standards/Internship Notes Standard.md" && ls -la "$JARVIS/30_Order/Standards/Internship Notes Standard.md" echo "=== Removed Dossiers MOC.md ===" && wc -c "$JARVIS/10_Areas/Career/Internships/List/Dossiers/Viewed/Removed Dossiers MOC.md" echo "=== Dossiers-to-Create.md ===" && wc -l "$JARVIS/10_Areas/Career/Internships/List/Dossiers-to-Create.md" cat "$JARVIS/10_Areas/Career/Internships/List/Dossiers-to-Create.md", JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" cat "$JARVIS/10_Areas/Career/Internships/List/Dossiers/Dossiers-to-Create.md", JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" echo "=== Programs MOC frontmatter ===" && head -20 "$JARVIS/10_Areas/Career/Internships/Programs/Programs MOC.md" echo "=== Contacts MOC frontmatter ===" && head -20 "$JARVIS/10_Areas/Career/Internships/Contacts/Contacts MOC.md" echo "=== a real Program note frontmatter (Appian, since it was actually promoted) ===" && find "$JARVIS/10_Areas/Career/Internships/Programs" -iname "*ppian*" echo "=== Source of Truth (head) ===" && head -40 "$JARVIS/20_Progress/Internship/Building System/Source of Truth.md", cd /home/anant_gupta/projects/work/internship-research-loop grep -n "MAX_NEW_WRITES_PER_RUN" run_pipeline.py echo "=== core/identity.py cross_source_key ===" && cat core/identity.py echo "=== profile.yaml degrees_allow ===" && grep -n "degrees" core/profile.yaml echo "=== core/relevance.py current stage1 patterns ===" && grep -n "_STAGE1_REJECT_RE" -A 8 core/relevance.py echo "=== core/classify.py CYS_FINANCE_RE ===" && grep -n "_CYS_FINANCE_RE" -A 5 core/classify.py
-- Tool call tally: Agent (2), AskUserQuestion (2), Bash (43), Edit (16), mcp__jarvis__vault_list (11), mcp__jarvis__vault_read (10), mcp__jarvis__vault_write (5), mcp__jarvis-fs__list_allowed_directories (1), Read (22), Skill (1), TaskCreate (6), TaskUpdate (12), ToolSearch (4), Write (8)
+- Commands run: echo "=== repo root ===" && ls -la && echo "=== core/ ===" && ls -la core/ 2>/dev/null && echo "=== priority.py exists? ===" && test -f core/priority.py && echo YES || echo NO && echo "=== enrich.py ===" && find . -iname "enrich.py" && echo "=== git log ===" && git log --oneline -20, echo "=== search for priority anywhere ===" && grep -rl "priority" --include="*.py" . | grep -v .venv | grep -v __pycache__ echo "=== jarvis-checkout dir ===" && ls -la jarvis-checkout/ echo "=== is jarvis-checkout a git repo / submodule? ===" && cat .gitmodules 2>/dev/null; git -C jarvis-checkout status 2>&1 | head -5 echo "=== search repo for any Jarvis vault path references ===" && grep -rn "Jarvis" --include="*.py" --include="*.yaml" --include="*.md" . | grep -v .venv | grep -v __pycache__ | head -30, echo "=== jarvis-checkout remote ===" && git -C jarvis-checkout remote -v echo "=== jarvis-checkout full status ===" && git -C jarvis-checkout status echo "=== jarvis-checkout top-level dirs ===" && ls jarvis-checkout/ 2>/dev/null; find jarvis-checkout -maxdepth 1 2>/dev/null echo "=== .gitignore mentions jarvis-checkout? ===" && grep -n "jarvis" .gitignore -i, echo "=== run_pipeline.py priority context ===" && grep -n -i "priority" run_pipeline.py echo "=== enrich.py content ===" && cat enrich.py | head -60 echo "=== search for Programs/Serious Considering Contacts Tracker ===" && grep -rn -i "Programs/Serious\|Programs/Considering\|Contacts/Each\|Tracker/Each\|Each One" . --include="*.py" --include="*.md" --include="*.yaml" 2>/dev/null | grep -v .venv, echo "=== git log ===" && git log --oneline -10 && echo "=== git status ===" && git status && echo "=== core/ ===" && ls -la core/ && echo "=== priority.py? ===" && test -f core/priority.py && echo YES || echo NO, echo "=== jarvis-checkout ===" && ls -la jarvis-checkout/ && find jarvis-checkout -maxdepth 3 2>/dev/null echo "=== git diff stat ===" && git diff --stat HEAD, echo "=== core/classify.py ===" && cat core/classify.py echo "=== core/relevance.py ===" && cat core/relevance.py, git diff HEAD -- enrich.py echo "=====VAULT_WRITER TEMPLATE=====" git diff HEAD -- vault_writer/templates/dossier.md.j2 echo "=====VAULT_WRITER WRITER=====" git diff HEAD -- vault_writer/writer.py, echo "=== does repo already have CLAUDE.md? ===" && find . -iname "CLAUDE.md" -not -path "./.venv/*" echo "=== .claude dir ===" && ls -la .claude/ echo "=== profile.yaml diff ===" && git diff HEAD -- core/profile.yaml echo "=== .github workflows ===" && ls .github/workflows/ 2>/dev/null && find .github -type f, cat .claude/settings.local.json echo "=== run tests ===" source .venv/bin/activate 2>/dev/null; python -m pytest -q 2>&1 | tail -20, gh repo view gupta-builds/internship-research-loop --json name,defaultBranchRef 2>&1 | head -5 gh api user -q .login 2>&1, ls state/ logs/ && echo "=== seen_ids sample ===" && head -c 300 state/seen_ids.json && echo && echo "=== runs.jsonl tail ===" && tail -3 logs/runs.jsonl 2>/dev/null echo "=== workflows ===" && cat .github/workflows/run.yml, cat enrich.py echo "=====VALIDATE=====" cat vault_writer/validate.py, find ~/.claude/skills -maxdepth 2 -iname "SKILL.md" | head -5 echo "---" cat ~/.claude/skills/graphify/SKILL.md 2>/dev/null | head -40 echo "=== any local project skill examples elsewhere on disk? ===" find / -maxdepth 6 -path "*/.claude/skills/*/SKILL.md" 2>/dev/null | grep -v "^/home/anant_gupta/.claude/skills" | head -10, find ~/.claude/agents -maxdepth 1 -iname "*.md" 2>/dev/null | head -5 find / -maxdepth 8 -path "*/.claude/agents/*.md" 2>/dev/null | grep -v "^/home/anant_gupta/.claude/agents" | head -10 echo "=== check plugin agents for example frontmatter ===" find / -path "*agents*" -iname "*.md" 2>/dev/null | grep -iv "node_modules\|/.venv/\|/.git/" | grep -i "code-reviewer\|explore" | head -10, find /home/anant_gupta -maxdepth 10 -path "*/.claude/agents/*.md" 2>/dev/null | head -20, mkdir -p .claude/agents .claude/skills/promote-dossier/reference .claude/skills/review-loop-change, cat .github/workflows/recheck.yml echo "=====test.yml=====" cat .github/workflows/test.yml echo "=== state/dossier_uids.json exists? ===" && ls state/, cat ~/.claude/settings.json 2>/dev/null | head -60 echo "=== any other settings.json examples with permissions block ===" find /home/anant_gupta/projects -maxdepth 4 -path "*/.claude/settings.json" 2>/dev/null | head -5, test -f /home/anant_gupta/projects/work/internship-research-loop/.claude/settings.json && echo EXISTS || echo MISSING, python3 -m json.tool .claude/settings.json > /dev/null && echo "valid JSON", cat README.md, python -m pytest -q 2>&1 | tail -5, source .venv/bin/activate && python -m pytest -q 2>&1 | tail -5, cd /home/anant_gupta/projects/work/internship-research-loop git fetch origin 2>&1 echo "=== local vs origin/master ===" git log --oneline -5 origin/master echo "=== current branch status ===" git status echo "=== is local master behind/ahead of origin ===" git rev-list --left-right --count origin/master...HEAD, cd /home/anant_gupta/projects/work/internship-research-loop git diff --stat HEAD origin/master echo "=== do incoming commits touch any file I have modified locally? ===" comm -12 <(git diff --stat HEAD origin/master --name-only | sort) <(git status --porcelain | awk '{print $2}' | sort), cd /home/anant_gupta/projects/work/internship-research-loop git diff HEAD --stat -- ingestion/ vault_writer/ tests/test_writer.py tests/test_filter.py echo "=== ingestion/freehire.py head ===" head -20 ingestion/freehire.py, cd /home/anant_gupta/projects/work/internship-research-loop git pull --ff-only origin master echo "=== post-pull status ===" git status --short | head -5 git log --oneline -3, cd /home/anant_gupta/projects/work/internship-research-loop git add core/filter.py core/profile.yaml core/classify.py core/relevance.py \ enrich.py \ ingestion/normalize.py ingestion/posting_page.py ingestion/sources.py ingestion/freehire.py \ recheck.py run_pipeline.py \ vault_writer/templates/dossier.md.j2 vault_writer/validate.py vault_writer/writer.py \ tests/fixtures/josegael.json tests/fixtures/simplifyjobs.json tests/fixtures/vanshb03.json tests/fixtures/zshah101.json \ tests/fixtures/freehire.json tests/fixtures/posting_ashby_ctgt.md \ tests/test_enrich.py tests/test_filter.py tests/test_posting_page.py tests/test_recheck.py \ tests/test_run_pipeline.py tests/test_sources.py tests/test_writer.py tests/test_classify.py tests/test_relevance.py tests/test_freehire.py git status --short, cd /home/anant_gupta/projects/work/internship-research-loop git commit -m "$(cat <<'EOF' Priority-bucket classification, CS-relevance gate, widened contact research Adds core/classify.py (Layer 2.5b, zero-LLM keyword bucketing into AI/ML, CyS & Finance, Fullstack, Other) and core/relevance.py (Layer 2.5, two-stage CS/software-relevance gate: cheap title-only reject before fetch, content -confirmed adjacent-field check after). vault_writer/writer.py and the dossier template now sort writes into priority-bucket subfolders under List/Dossiers/, drop the unused uid/category/promoted frontmatter fields in favor of next (matching the vault's own note convention), and add a dossier_uids.json manifest for idempotent re-writes and recheck.py's removal-checking. Widens enrich.py's contact search to recruiter/university-recruiting queries and LinkedIn search-snippet hits (site:linkedin.com, snippet text only — never scrapes or logs into linkedin.com, per its own hard line). Adds ingestion/freehire.py as an 8th discovery source (scoped to companies with no reachable Greenhouse/Ashby/Lever token) and wires Greenhouse/Ashby/ AIJobs into recheck.py's removal checks. 258/258 tests passing. EOF )" git log --oneline -3, cd /home/anant_gupta/projects/work/internship-research-loop source .venv/bin/activate && python -m pytest -q 2>&1 | tail -3 git add .claude/ CLAUDE.md git status --short, cd /home/anant_gupta/projects/work/internship-research-loop git commit -m "$(cat <<'EOF' Add promote-dossier skill, contact-researcher/loop-verifier agents, review-loop-change skill .claude/skills/promote-dossier/ — turns one List/Dossiers entry into a Program note + Contacts/Each One note + Tracker/Each One note (Internship Pipeline.md Step 3), human-consent-gated before any write. Templates copied verbatim from the vault's own Program Template.md/Contact Template.md; Tracker/Each One has no pre-existing vault template so its shape is authored from the pipeline doc's own field description. Requires the Jarvis vault present in the same working environment (git checkout sibling to this repo, or the jarvis MCP tools) — documented explicitly rather than assumed, per this being the first interactive (human-in-the-loop) writer this pipeline has ever had, distinct from run_pipeline.py/recheck.py's non-interactive scoped-PAT writes. .claude/agents/contact-researcher.md — exploratory subagent invoked by promote-dossier's Step 3, using enrich.py's widened search primitives (recruiter/university-recruiting search, GitHub org members, engineering blog bylines, LinkedIn search-snippets). Never fabricates a contact; reports "nothing found" honestly. .claude/agents/loop-verifier.md — standalone pipeline health check (tests, scheduled-run history via gh api, vault-vs-run-log dossier counts, seen_ids/vault divergence, auto-filed issues), the automated version of this project's prior manual audits (2026-07-19, 2026-07-25). .claude/skills/review-loop-change/ — checks a diff against this repo's four established conventions (zero-LLM unattended path, permissive-by-default filtering, fail-closed write-gate ordering, cited-real-data rule comments) before it ships. Built as a skill rather than an agent — reasoning is in the skill file's own "why a skill" section. .claude/settings.json — pytest/safe-git-reads/gh-reads allowed without prompting; git push and gh secret modification explicitly require confirmation every time (permissions.ask), never silently allowed or denied. CLAUDE.md — documents the three note-template contracts (required fields, always present even as null) and the explicit agent-vs-script judgment call for each of contact research / promotion / verification / review. Verified live against a real dossier (Appian — Software Engineering Intern): promote-dossier run end-to-end including the write step, contact-researcher found real sourced contacts, and a real gap this surfaced (structured frontmatter fields left null while the same fact was already narrated in body prose — eligible_classes, Tracker's date_created) is fixed in this commit, not left for later. 258/258 tests passing (no pipeline code touched by this commit). EOF )" git log --oneline -5, cd /home/anant_gupta/projects/work/internship-research-loop git push origin master git log --oneline -5 origin/master 2>&1 || git fetch origin && git log --oneline -5 origin/master, cat /home/anant_gupta/projects/work/internship-research-loop/grade_resume.py | head -25 echo "=== jarvis-checkout populated now? ===" ls -la /home/anant_gupta/projects/work/internship-research-loop/jarvis-checkout/ 2>/dev/null echo "=== check /mnt/d for a Jarvis vault ===" ls /mnt/d/Users/_Anant/ 2>/dev/null find /mnt/d -maxdepth 3 -iname "*jarvis*" 2>/dev/null echo "=== check /mnt for other drives ===" ls /mnt/ 2>/dev/null, echo "=== does the literal DEFAULT_RESUME path exist? ===" ls -la "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Resumes/" 2>&1 echo "=== what's actually in /mnt/d/Users/_Anant/10_Areas/ ===" ls "/mnt/d/Users/_Anant/10_Areas/" 2>&1 echo "=== search for a folder literally named Jarvis anywhere under /mnt/d ===" find /mnt/d -maxdepth 5 -iname "Jarvis" -type d 2>/dev/null echo "=== does /mnt/d/Users/_Anant/10_Areas/Career/Internships exist (the vault path used throughout this repo)? ===" ls "/mnt/d/Users/_Anant/10_Areas/Career/Internships/" 2>&1 | head -20, JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" echo "=== vault root ===" && ls "$JARVIS" echo "=== 30_Order/Standards ===" && find "$JARVIS/30_Order" -iname "*standard*" 2>/dev/null echo "=== 20_Progress/Internship/Building System ===" && ls "$JARVIS/20_Progress/Internship/Building System/" 2>/dev/null echo "=== Runs dir ===" && find "$JARVIS" -maxdepth 4 -iname "Runs" -type d 2>/dev/null find "$JARVIS" -iname "*Claude Code Prompts*" 2>/dev/null echo "=== Dossiers dir ===" && ls "$JARVIS/10_Areas/Career/Internships/List/Dossiers/" | head -30 echo "=== count dossiers ===" && ls "$JARVIS/10_Areas/Career/Internships/List/Dossiers/" | grep -c "\.md$" echo "=== is there a Viewed subfolder already? ===" && ls "$JARVIS/10_Areas/Career/Internships/List/Dossiers/Viewed/" 2>&1 echo "=== is there a Dossiers MOC already? ===" && find "$JARVIS/10_Areas/Career/Internships" -iname "*MOC*" 2>/dev/null, JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" echo "=== recursive dossier count per bucket ===" for d in "1 - AI & ML" "2 - Fullstack" "3 - CyS & Finance" "Other"; do echo "$d: $(find "$JARVIS/10_Areas/Career/Internships/List/Dossiers/$d" -maxdepth 1 -iname "*.md" 2>/dev/null | wc -l)" done echo "Viewed: $(find "$JARVIS/10_Areas/Career/Internships/List/Dossiers/Viewed" -maxdepth 1 -iname "*.md" 2>/dev/null | wc -l)" echo "flat root: $(find "$JARVIS/10_Areas/Career/Internships/List/Dossiers" -maxdepth 1 -iname "*.md" 2>/dev/null | wc -l)" echo "TOTAL recursive: $(find "$JARVIS/10_Areas/Career/Internships/List/Dossiers" -iname "*.md" 2>/dev/null | wc -l)", JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" echo "=== sample dossiers from each bucket (filenames) ===" find "$JARVIS/10_Areas/Career/Internships/List/Dossiers/1 - AI & ML" -iname "*.md" | head -5 echo "---" find "$JARVIS/10_Areas/Career/Internships/List/Dossiers/Other" -iname "*.md" | head -5 echo "=== the one flat-root dossier still there ===" find "$JARVIS/10_Areas/Career/Internships/List/Dossiers" -maxdepth 1 -iname "*.md", JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" echo "=== Internship Notes Standard.md ===" && wc -c "$JARVIS/30_Order/Standards/Internship Notes Standard.md" && ls -la "$JARVIS/30_Order/Standards/Internship Notes Standard.md" echo "=== Removed Dossiers MOC.md ===" && wc -c "$JARVIS/10_Areas/Career/Internships/List/Dossiers/Viewed/Removed Dossiers MOC.md" echo "=== Dossiers-to-Create.md ===" && wc -l "$JARVIS/10_Areas/Career/Internships/List/Dossiers-to-Create.md" cat "$JARVIS/10_Areas/Career/Internships/List/Dossiers-to-Create.md", JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" cat "$JARVIS/10_Areas/Career/Internships/List/Dossiers/Dossiers-to-Create.md", JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" echo "=== Programs MOC frontmatter ===" && head -20 "$JARVIS/10_Areas/Career/Internships/Programs/Programs MOC.md" echo "=== Contacts MOC frontmatter ===" && head -20 "$JARVIS/10_Areas/Career/Internships/Contacts/Contacts MOC.md" echo "=== a real Program note frontmatter (Appian, since it was actually promoted) ===" && find "$JARVIS/10_Areas/Career/Internships/Programs" -iname "*ppian*" echo "=== Source of Truth (head) ===" && head -40 "$JARVIS/20_Progress/Internship/Building System/Source of Truth.md", cd /home/anant_gupta/projects/work/internship-research-loop grep -n "MAX_NEW_WRITES_PER_RUN" run_pipeline.py echo "=== core/identity.py cross_source_key ===" && cat core/identity.py echo "=== profile.yaml degrees_allow ===" && grep -n "degrees" core/profile.yaml echo "=== core/relevance.py current stage1 patterns ===" && grep -n "_STAGE1_REJECT_RE" -A 8 core/relevance.py echo "=== core/classify.py CYS_FINANCE_RE ===" && grep -n "_CYS_FINANCE_RE" -A 5 core/classify.py, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== git log ===" && git log --oneline -15 echo "=== git status ===" && git status echo "=== pytest ===" && source .venv/bin/activate 2>/dev/null; python -m pytest -q 2>&1 | tail -15, cd /home/anant_gupta/projects/work/internship-research-loop git diff run_pipeline.py, cd /home/anant_gupta/projects/work/internship-research-loop sed -n '1,20p' run_pipeline.py | grep -n "import\|classify" grep -n "^from\|^import" run_pipeline.py, cd /home/anant_gupta/projects/work/internship-research-loop git diff core/relevance.py, cd /home/anant_gupta/projects/work/internship-research-loop git diff core/classify.py echo "===== identity.py =====" git diff core/identity.py, cd /home/anant_gupta/projects/work/internship-research-loop grep -n "careers\|google\|extract_ats_job_id\|jobid" tests/test_identity.py, cd /home/anant_gupta/projects/work/internship-research-loop python3 -c " from core.identity import extract_ats_job_id, cross_source_key # unrelated hypothetical company using the same URL path shape, no google.com domain fake_url = 'https://careers.totallydifferentcompany.com/careers/jobs/results/85564713261245126' print('extracted id:', extract_ats_job_id(fake_url)) print('cross_source_key A (Google, real):', cross_source_key('Google', 'Software Engineering Intern', 'https://www.google.com/about/careers/applications/jobs/results/85564713261245126')) print('cross_source_key B (unrelated company, coincidental same numeric path):', cross_source_key('Totally Different Company', 'Totally Unrelated Role', fake_url)) " , cd /home/anant_gupta/projects/work/internship-research-loop git diff ingestion/posting_page.py, cd /home/anant_gupta/projects/work/internship-research-loop cat tests/fixtures/posting_google_careers.md 2>/dev/null | head -60 echo "=== relevant tests in test_posting_page.py ===" grep -n "def test_.*listing\|def test_.*dedupe\|def test_.*google\|def test_.*shell" tests/test_posting_page.py, cd /home/anant_gupta/projects/work/internship-research-loop python3 -c " from ingestion.posting_page import extract_content text = open('tests/fixtures/posting_google_careers.md').read() result = extract_content(text) print(result[:500]) print('---') print('contains unrelated job title (Regulatory):', 'Regulatory and Litigation' in result) print('contains real posting heading text (Master):', 'Master' in result) " , cd /home/anant_gupta/projects/work/internship-research-loop sed -n '145,260p' ingestion/posting_page.py, cd /home/anant_gupta/projects/work/internship-research-loop git diff vault_writer/writer.py, cd /home/anant_gupta/projects/work/internship-research-loop grep -n "def test_move_dossier\|def test_.*viewed\|collision" tests/test_writer.py echo "=== recheck.py diff ===" git diff recheck.py, cd /home/anant_gupta/projects/work/internship-research-loop git diff vault_writer/validate.py, cd /home/anant_gupta/projects/work/internship-research-loop grep -n "_prioritize_and_cap(" run_pipeline.py grep -n "def test_task_a\|def test_.*bucket\|def test_.*capacity\|def test_.*prioritize" tests/test_run_pipeline.py | head -30, cd /home/anant_gupta/projects/work/internship-research-loop git diff tests/test_relevance.py | head -120, cd /home/anant_gupta/projects/work/internship-research-loop sed -n '170,215p' tests/test_writer.py, cd /home/anant_gupta/projects/work/internship-research-loop cat core/profile.yaml echo "=== Research Loop - Resources.md (vault) ===" cat "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Research Loop - Resources.md" 2>/dev/null | head -40, JARVIS="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" sed -n '40,90p' "$JARVIS/20_Progress/Internship/Building System/Research Loop - Resources.md", cd /home/anant_gupta/projects/work/internship-research-loop python3 -c " from core.identity import extract_ats_job_id print(extract_ats_job_id('https://careers.google.com/jobs/results/12345')) print(extract_ats_job_id('https://random-startup.com/careers/jobs/results/12345')) ", wc -l "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Runs/Claude Code Prompts.md" tail -5 "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
+- Tool call tally: Agent (2), AskUserQuestion (2), Bash (64), Edit (20), mcp__jarvis__vault_list (11), mcp__jarvis__vault_read (10), mcp__jarvis__vault_write (5), mcp__jarvis-fs__list_allowed_directories (1), Read (24), Skill (1), TaskCreate (6), TaskUpdate (12), ToolSearch (4), Write (8)
 

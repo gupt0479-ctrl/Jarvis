@@ -7,7 +7,7 @@ title: "Define V1 scope for AI brain hub"
 started_at: 2026-07-11T18:00:26
 ended_at: 2026-07-12T04:46:30
 duration_minutes: 646
-exported_at: 2026-07-30T16:47:46.9270578+04:00
+exported_at: 2026-08-11T12:13:12
 project: tradingview
 cwd: '/home/anant_gupta/projects/hub/tradingview'
 session_id: 7f2e5a03-a8b9-4499-8b78-d79643583190

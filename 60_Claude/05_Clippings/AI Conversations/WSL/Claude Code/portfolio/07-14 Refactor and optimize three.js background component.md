@@ -7,7 +7,7 @@ title: "Refactor and optimize three.js background component"
 started_at: 2026-07-14T14:30:42
 ended_at: 2026-07-14T15:36:08
 duration_minutes: 65
-exported_at: 2026-07-30T16:47:46.9270578+04:00
+exported_at: 2026-08-11T12:13:12
 project: portfolio
 cwd: '/home/anant_gupta/projects/hub/portfolio'
 session_id: cc2142df-b79b-401d-926e-9a92b72555dc

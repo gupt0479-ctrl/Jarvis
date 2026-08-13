@@ -7,12 +7,12 @@ title: "Build production quality-momentum strategy pack with four gates"
 started_at: 2026-07-10T19:20:39
 ended_at: 2026-07-10T21:01:48
 duration_minutes: 101
-exported_at: 2026-07-30T16:47:46.9270578+04:00
+exported_at: 2026-08-11T12:13:12
 project: tradingview
 cwd: '/home/anant_gupta/projects/hub/tradingview'
 session_id: 4a65e4da-78f8-4bf4-82e7-908787f5f6ff
 status: raw
-turn_count: 6
+turn_count: 8
 tools_used:
   Bash: 52
   Edit: 20
@@ -222,34 +222,6 @@ Now the offline test suite for the pack.
 Now writing the live study runner.
 
 Now the full-suite verification plus the guardrail sweep required before merging.
-
-Adding the new pack to the CI canaries:
-
-Full suite still running (new gate tests add ~4 min). Waiting for completion.
-
-One failure in the property suite — investigating whether it's mine or another midnight-clock flake:
-
-The repo convention is already `deadline=None` on all other property tests — this one just missed it:
-
-Final full-suite verification run before committing:
-
-Full suite green: **464 passed, 0 failed** (baseline was 448 + 1 flake). Committing and opening the PR.
-
-PR opened: https://github.com/gupta-builds/TradingView/pull/1. Watching CI before wrapping up:
-
-**Done — the first production strategy pack is landed on `feat/quality-momentum-strategy-pack`, PR #1 is open with all CI checks green (pytest 3.11 + 3.12, guardrails, CodeRabbit), and the live study ran honestly: on the ~274 sessions of free-tier history the out-of-sample gate failed closed, so the spec is not demo-eligible — exactly the intended fail-closed outcome, not a defect.**
-
-What landed:
-
-- **Strategy module** — `src/research_data/strategies/quality_momentum.py`: a 50/50 composite of 12-1 momentum percentile and the quality_fcf score, top-K equal-weight tilt, 21-session rebalance, 90-day fundamentals reporting lag, all literature defaults with citations (Jegadeesh-Titman 1993, Novy-Marx 2013, AFP 2019). ETFs and equities with no computable quality sub-signal surface as INSUFFICIENT_DATA and are never selectable; a cross-section of one holds cash at exactly 0.0; costs go through the existing 5 bps/side gate cost model with two-sided turnover accounting. The real `hook_ref` is `research_data.strategies.quality_momentum:quality_momentum_tilt_hook`, and the stale reference in the brain tests now points at it.
-- **Offline proof** — 464 tests pass (baseline was 448). New tests cover series alignment, a prefix-invariance no-lookahead check, ETF/missing-FCF eligibility rules, thin-history fail-closed recording, and a **full four-gate pass at unchanged literature defaults** on 1300 synthetic sessions, plus a closed-loop test that runs the entire citation → `anant` approval → production hook → gates → promotion → paper-replay → journal-lesson cycle.
-- **Live study runner** — `scripts/run_quality_momentum_study.py` (manual, zero network). Against the real `data/market.duckdb` it registered and approved spec `[REDACTED]`, ran the hook over 21 post-warm-up sessions (latest holdings: NVDA, AAPL, GOOGL), recorded the OOS gate failure as a brain TestRunRecord (train=14/oos=7, needs 60 each), and wrote a paper replay journal: strategy net +0.43% vs VOO +1.62% over the window; the NVDA replay exit realized −2.60% vs VOO +1.92% same period. I backed up the DB to the scratchpad before the write run. Walk-forward needs roughly 4 years of history, so live gates will keep failing closed until the data deepens — that's by design, and I did not touch any gate parameter.
-- **Docs** — `Docs/PHASE2_STRATEGY_PACK.md` (formula, citations, free-tier limitation, how to run), module-map update in `YEAR_AHEAD_BASE.md`, lessons in `fable5_run_memory.md`. Also two pre-existing flake fixes: the today-date model test now uses the validator's UTC clock (it flaked after local midnight on this UTC+4 machine), and the duplicate-pk property test gets `deadline=None` like every other property test.
-
-What I need from you:
-
-1. **Merge PR #1** when you're happy with it: https://github.com/gupta-builds/TradingView/pull/1 (CI is already green; I left merging to you per the workflow).
-2. Optional: when you personally want the promotion decision on the books, rerun `python scripts/run_quality_momentum_study.py --record-decision` — I deliberately did not record one on your behalf; the failed batch would record as a HOLD at UNPROVEN.
 
 **Tool calls:**
 
@@ -2505,6 +2477,61 @@ tests/                 # offline by default; property tests prefixed test_proper
 Command running in background with ID: bttth07ps. Output is being written to: /tmp/claude-1001/-home-anant-gupta-projects-hub-tradingview/[REDACTED]/tasks/bttth07ps.output. You will be notified when it completes. To check interim output, use Read on that file path.
   ```
 - `Skill` — `{"skill":"guardrail-check"}`
+
+## You
+
+Base directory for this skill: /home/anant_gupta/projects/hub/tradingview/.claude/skills/guardrail-check
+
+# guardrail-check
+
+Mechanical sweep for the hard rules in `design.md` ("Guardrails to Preserve", "Non-Goals") and `CLAUDE.md`. This is grep-based triage, not judgment — hand anything found to the `guardrail-auditor` agent (or the user) for a real review; don't silently fix or dismiss matches.
+
+## Checks to run
+
+1. **Execution / certainty language** in source, docstrings, CLI strings, fixtures, and Docs:
+   `grep -rniE "\b(buy now|sell now|guaranteed|risk-free|can't lose)\b" src/ tests/ Docs/ README.md CLAUDE.md 2>/dev/null`
+   Also check bare `\bBUY\b|\bSELL\b` outside of test names/comments discussing the *rule itself*.
+2. **Forbidden action labels** — any string literal that looks like an action/recommendation field should be one of `WATCH HOLD ACCUMULATE REDUCE AVOID INSUFFICIENT_DATA`. Grep for quoted action-like strings and check against this list.
+3. **Secrets** — `grep -rniE "(api[_-]?key|secret|token|password)\s*=\s*['\"][A-Za-z0-9]" src/ tests/ config/` and confirm no real-looking key material; confirm `.env` is listed in `.gitignore` and `git check-ignore .env` succeeds.
+4. **Banned dependencies** — check `pyproject.toml` / any `requirements*.txt` for broker/order-routing SDKs (e.g. `alpaca-trade-api`, `ib_insync`, `ccxt`) or options/futures/crypto-specific packages. None should be present in this phase.
+5. **Out-of-scope asset/venue paths** — grep for `intraday`, `tick`, `options`, `futures`, `crypto`, `margin`, `leverage`, `scrape` (case-insensitive) across `src/` and flag any hit for human review (some may be legitimate comments about what's excluded — read context before flagging).
+6. **LLM calls in the ingestion path** — grep `src/research_data/{models,config,storage,normalization,calendar,quality,read_api}.py` (and `cli.py`/`evidence.py`/`benchmark.py` once they exist) for `openai`, `anthropic`, `requests.post.*chat`, or similar — none should appear.
+
+Report every match with file:line and a one-line verdict (real violation / false positive with reason). End with a pass/fail summary.
+
+
+## Claude
+
+Adding the new pack to the CI canaries:
+
+Full suite still running (new gate tests add ~4 min). Waiting for completion.
+
+One failure in the property suite — investigating whether it's mine or another midnight-clock flake:
+
+The repo convention is already `deadline=None` on all other property tests — this one just missed it:
+
+Final full-suite verification run before committing:
+
+Full suite green: **464 passed, 0 failed** (baseline was 448 + 1 flake). Committing and opening the PR.
+
+PR opened: https://github.com/gupta-builds/TradingView/pull/1. Watching CI before wrapping up:
+
+**Done — the first production strategy pack is landed on `feat/quality-momentum-strategy-pack`, PR #1 is open with all CI checks green (pytest 3.11 + 3.12, guardrails, CodeRabbit), and the live study ran honestly: on the ~274 sessions of free-tier history the out-of-sample gate failed closed, so the spec is not demo-eligible — exactly the intended fail-closed outcome, not a defect.**
+
+What landed:
+
+- **Strategy module** — `src/research_data/strategies/quality_momentum.py`: a 50/50 composite of 12-1 momentum percentile and the quality_fcf score, top-K equal-weight tilt, 21-session rebalance, 90-day fundamentals reporting lag, all literature defaults with citations (Jegadeesh-Titman 1993, Novy-Marx 2013, AFP 2019). ETFs and equities with no computable quality sub-signal surface as INSUFFICIENT_DATA and are never selectable; a cross-section of one holds cash at exactly 0.0; costs go through the existing 5 bps/side gate cost model with two-sided turnover accounting. The real `hook_ref` is `research_data.strategies.quality_momentum:quality_momentum_tilt_hook`, and the stale reference in the brain tests now points at it.
+- **Offline proof** — 464 tests pass (baseline was 448). New tests cover series alignment, a prefix-invariance no-lookahead check, ETF/missing-FCF eligibility rules, thin-history fail-closed recording, and a **full four-gate pass at unchanged literature defaults** on 1300 synthetic sessions, plus a closed-loop test that runs the entire citation → `anant` approval → production hook → gates → promotion → paper-replay → journal-lesson cycle.
+- **Live study runner** — `scripts/run_quality_momentum_study.py` (manual, zero network). Against the real `data/market.duckdb` it registered and approved spec `[REDACTED]`, ran the hook over 21 post-warm-up sessions (latest holdings: NVDA, AAPL, GOOGL), recorded the OOS gate failure as a brain TestRunRecord (train=14/oos=7, needs 60 each), and wrote a paper replay journal: strategy net +0.43% vs VOO +1.62% over the window; the NVDA replay exit realized −2.60% vs VOO +1.92% same period. I backed up the DB to the scratchpad before the write run. Walk-forward needs roughly 4 years of history, so live gates will keep failing closed until the data deepens — that's by design, and I did not touch any gate parameter.
+- **Docs** — `Docs/PHASE2_STRATEGY_PACK.md` (formula, citations, free-tier limitation, how to run), module-map update in `YEAR_AHEAD_BASE.md`, lessons in `fable5_run_memory.md`. Also two pre-existing flake fixes: the today-date model test now uses the validator's UTC clock (it flaked after local midnight on this UTC+4 machine), and the duplicate-pk property test gets `deadline=None` like every other property test.
+
+What I need from you:
+
+1. **Merge PR #1** when you're happy with it: https://github.com/gupta-builds/TradingView/pull/1 (CI is already green; I left merging to you per the workflow).
+2. Optional: when you personally want the promotion decision on the books, rerun `python scripts/run_quality_momentum_study.py --record-decision` — I deliberately did not record one on your behalf; the failed batch would record as a HOLD at UNPROVEN.
+
+**Tool calls:**
+
 - `Bash` — `echo "=== 1. execution/certainty language ===" && grep -rniE "\b(buy now|sell now|guaranteed|risk-free|can't lose)\b" src/ tests/ Docs/ README.md CLAUDE.md scripts/ 2>/dev/null; echo "--- bare BUY/SELL ---" && grep -rnE "\bBUY\b|\bSELL\b" src/ scripts/ Docs/ 2>/dev/null; echo "=== 3. secrets ===" && grep -rniE "(api[_-]?key|secret|token|password)\s*=\s*['\"][A-Za-z0-9]" src/ tests/ config/ scripts/ 2>/dev/null; git check-ignore .env && echo ".env ignored OK"`
   ```
 === 1. execution/certainty language ===

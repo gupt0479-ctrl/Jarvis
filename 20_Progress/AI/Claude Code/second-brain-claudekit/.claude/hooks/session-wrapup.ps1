@@ -1,11 +1,12 @@
-#!/usr/bin/env pwsh
+﻿#!/usr/bin/env pwsh
 # session-wrapup.ps1
 # Stop hook — reminds you to run /compress if no session log was written today.
 
 param()
 
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 $vaultRoot  = $PSScriptRoot | Split-Path -Parent | Split-Path -Parent
-$sessionDir = Join-Path $vaultRoot "60_Claude" "Sessions"
+$sessionDir = Join-Path $vaultRoot "60_Claude/Sessions"
 $today      = Get-Date -Format "yyyy-MM-dd"
 $logFile    = Join-Path $sessionDir "$today-session.md"
 

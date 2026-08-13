@@ -7,7 +7,7 @@ title: "Independent audit of internship research loop"
 started_at: 2026-07-19T09:37:58
 ended_at: 2026-07-25T17:40:32
 duration_minutes: 9123
-exported_at: 2026-07-30T16:47:46.9270578+04:00
+exported_at: 2026-08-11T12:13:12
 project: internship-research-loop
 cwd: '/home/anant_gupta/projects/work/internship-research-loop'
 session_id: 27282fd2-49bd-45d9-bd18-39e7bab52d5f

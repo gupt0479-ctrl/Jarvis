@@ -7,7 +7,7 @@ title: "Build Fable 5 TradingView year-ahead research base"
 started_at: 2026-07-10T15:22:04
 ended_at: 2026-07-10T18:01:44
 duration_minutes: 160
-exported_at: 2026-07-30T16:47:46.9270578+04:00
+exported_at: 2026-08-11T12:13:12
 project: tradingview
 cwd: '/home/anant_gupta/projects/hub/tradingview'
 session_id: 92f7e8da-1704-4be4-9ed9-25c0398c4d75

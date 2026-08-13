@@ -6,7 +6,7 @@ source_os: windows
 title: "Audit and organize Claude folder ingestions and implementations"
 started_at: 2026-07-27T17:29:33
 ended_at: 2026-07-29T22:45:08
-exported_at: 2026-07-31T21:03:21
+exported_at: 2026-08-11T13:34:28
 duration_minutes: 3195.6
 project: Jarvis
 cwd: 'D:\Users\_Anant\10_Areas\Documents\Jarvis'

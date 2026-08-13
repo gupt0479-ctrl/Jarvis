@@ -52,7 +52,14 @@ Jarvis context-pack policy:
     exit 0
 }
 
-if ($eventName -eq "SessionEnd") {
+if ($eventName -eq "SessionEnd" -or $eventName -eq "Stop") {
+    # Stop fires after every turn (far more reliable than SessionEnd, which
+    # depends on a clean process exit that doesn't always happen). Running
+    # the same export path on both events means a session is never lost to
+    # an ungraceful exit - the last Stop-triggered export already has it,
+    # and export-claude-session.ps1's marker-staleness check (2026-08-11)
+    # makes re-running safe: it updates the same note in place as the
+    # session grows rather than creating a duplicate or skipping it.
     $isJarvis = Test-IsInsideJarvis -Path $cwd
     $transcriptPath = [string]$hookInput.transcript_path
     $sessionId = [string]$hookInput.session_id
@@ -107,10 +114,16 @@ if ($eventName -eq "SessionEnd") {
     # normal session end instead - "eventually consistent" within one real
     # Claude Code use, not instant, but fully automatic.
     #
+    # SessionEnd only, not Stop - Stop fires after every turn, and a full
+    # enumeration of the Cowork sandbox tree that often has no bearing on
+    # this session's own turns is unnecessary overhead per turn. Cowork
+    # sessions aren't affected by how many turns this session takes.
+    #
     # No shared cowork index file either - every candidate transcript found
     # this sweep is handed to export-claude-session.ps1, which checks its own
     # per-session marker (keyed on the transcript's own basename, grouped by
     # month) and returns instantly for anything already exported.
+    if ($eventName -eq "SessionEnd") {
     try {
         $coworkRoot = Join-Path $env:APPDATA "Claude\local-agent-mode-sessions"
         if (Test-Path -LiteralPath $coworkRoot) {
@@ -137,6 +150,7 @@ if ($eventName -eq "SessionEnd") {
         }
     } catch {
         # fail open
+    }
     }
 }
 

@@ -55,7 +55,7 @@ Add to `.claude/settings.json`:
         "hooks": [
           {
             "type": "command",
-            "command": "powershell -ExecutionPolicy Bypass -File .claude/hooks/session-wrapup.ps1"
+            "command": "pwsh -ExecutionPolicy Bypass -File .claude/hooks/session-wrapup.ps1"
           }
         ]
       }

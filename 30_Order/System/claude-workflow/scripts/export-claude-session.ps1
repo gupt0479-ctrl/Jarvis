@@ -333,9 +333,35 @@ function Export-Session {
     Ensure-ProjectScaffold -ProjectDir $projectDir
 
     $markerPath = Join-Path $projectDir ".exported\$SessionIdIn.done"
+    $reuseOutputName = $null
     if (Test-Path -LiteralPath $markerPath) {
-        $result.Status = "dup"
-        return $result
+        $markerTime = (Get-Item -LiteralPath $markerPath).LastWriteTimeUtc
+        $transcriptTime = (Get-Item -LiteralPath $tpath).LastWriteTimeUtc
+        if ($transcriptTime -le $markerTime) {
+            $result.Status = "dup"
+            return $result
+        }
+        # Transcript grew since the last export (e.g. a Stop-hook export
+        # caught this session mid-conversation) - re-render in place instead
+        # of skipping. Reuse the marker's own stored filename so a title
+        # change between renders (ai-title arriving late, or a slug from an
+        # early turn getting replaced) never orphans a stale duplicate note.
+        $storedName = Get-Content -LiteralPath $markerPath -Raw -ErrorAction SilentlyContinue
+        if ($storedName) { $reuseOutputName = $storedName.Trim() }
+        if (-not $reuseOutputName) {
+            # Marker predates the filename-content change above and is an
+            # empty touch file - fall back to finding the existing note by
+            # its own session_id frontmatter, so a stale marker can never
+            # spawn a "-2" duplicate instead of updating the real note.
+            $existingMatch = Get-ChildItem -LiteralPath $projectDir -Filter "*.md" -File -ErrorAction SilentlyContinue |
+                Where-Object { $_.Name -notlike "00 - *" } |
+                Where-Object {
+                    $head = Get-Content -LiteralPath $_.FullName -TotalCount 20 -ErrorAction SilentlyContinue
+                    $head -match "^session_id: $([regex]::Escape($SessionIdIn))$"
+                } |
+                Select-Object -First 1
+            if ($existingMatch) { $reuseOutputName = $existingMatch.Name }
+        }
     }
 
     # Raw source: junction for Claude Code (one junction per project, mirrors
@@ -530,7 +556,7 @@ function Export-Session {
         $titleLabel = $aiTitles[$aiTitles.Count - 1]
     }
     else {
-        $firstRealUserTurn = $turns | Where-Object { $_.role -eq 'user' -and $_.text -and -not ($_.text.TrimStart().StartsWith('<')) } | Select-Object -First 1
+        $firstRealUserTurn = $turns | Where-Object { $_.role -eq 'user' -and $_.text -and -not ($_.text.TrimStart().StartsWith('<')) -and -not ($_.text.TrimStart().StartsWith('Base directory for this skill:')) } | Select-Object -First 1
         if ($firstRealUserTurn) {
             $slug = New-SlugFromText $firstRealUserTurn.text
             $titleLabel = if ($slug) { $slug } else { "Session $($createdDate.ToString('HHmmss'))" }
@@ -576,15 +602,24 @@ function Export-Session {
 
     # Filename: MM-DD {title}.md - no redundant app-name segment, the
     # per-project/per-month folder already identifies source app + project.
-    $mmdd = $createdDate.ToString("MM-dd")
-    $baseName = "$mmdd $(Sanitize-Filename $titleLabel)"
-    $candidate = Join-Path $projectDir "$baseName.md"
-    $n = 2
-    while (Test-Path -LiteralPath $candidate) {
-        $candidate = Join-Path $projectDir "$baseName-$n.md"
-        $n++
+    # A re-render of a session already exported once (marker-staleness check
+    # above) reuses its exact prior filename instead of computing a fresh
+    # candidate - a title change between renders updates the existing note
+    # in place, it never spawns a second one.
+    if ($reuseOutputName -and (Test-Path -LiteralPath (Join-Path $projectDir $reuseOutputName))) {
+        $outputPath = Join-Path $projectDir $reuseOutputName
     }
-    $outputPath = $candidate
+    else {
+        $mmdd = $createdDate.ToString("MM-dd")
+        $baseName = "$mmdd $(Sanitize-Filename $titleLabel)"
+        $candidate = Join-Path $projectDir "$baseName.md"
+        $n = 2
+        while (Test-Path -LiteralPath $candidate) {
+            $candidate = Join-Path $projectDir "$baseName-$n.md"
+            $n++
+        }
+        $outputPath = $candidate
+    }
 
     $sourceAppTag = if ($SourceAppIn -eq "Cowork") { "cowork" } else { "claude-code" }
     $titleEscaped = ($titleLabel -replace '\\', '\\' -replace '"', '\"')
@@ -685,7 +720,10 @@ function Export-Session {
     [void]$sb.AppendLine("")
 
     Set-Content -LiteralPath $outputPath -Value $sb.ToString() -Encoding UTF8
-    New-Item -ItemType File -Path $markerPath -Force | Out-Null
+    # Marker content is the note's own relative filename, not an empty touch
+    # file - a later re-render (session grew since last export) reads this
+    # back to overwrite the same note instead of guessing a fresh name.
+    Set-Content -LiteralPath $markerPath -Value (Split-Path -Leaf $outputPath) -Encoding UTF8
 
     $result.Status = "written"
     return $result
@@ -713,7 +751,16 @@ if ($BackfillAll -or $TranscriptPath) {
                     try { $o = $l | ConvertFrom-Json } catch { continue }
                     if ($o.cwd) { $cwd = [string]$o.cwd; break }
                 }
-                $r = Export-Session -TranscriptPathIn $tpath -SessionIdIn $sid -CwdIn $cwd -SourceAppIn "ClaudeCode"
+                try {
+                    $r = Export-Session -TranscriptPathIn $tpath -SessionIdIn $sid -CwdIn $cwd -SourceAppIn "ClaudeCode"
+                }
+                catch {
+                    # One session's failure (e.g. the note file locked by
+                    # Obsidian/another process mid-write) must never abort
+                    # the rest of the backfill batch.
+                    $r = [ordered]@{ Status = "error"; ProjectDir = $null; Project = "unknown" }
+                    Write-Warning "Export failed for session $sid : $_"
+                }
                 $key = "ClaudeCode:$($r.Project)"
                 if (-not $stats.ContainsKey($key)) { $stats[$key] = @{ seen = 0; written = 0; junk = 0; dup = 0; error = 0 } }
                 $stats[$key].seen++
@@ -729,7 +776,13 @@ if ($BackfillAll -or $TranscriptPath) {
                 Where-Object { (Split-Path $_ -Parent) -like "*-outputs" }
             foreach ($f in $files) {
                 $sid = [System.IO.Path]::GetFileNameWithoutExtension($f)
-                $r = Export-Session -TranscriptPathIn $f -SessionIdIn $sid -CwdIn $null -SourceAppIn "Cowork"
+                try {
+                    $r = Export-Session -TranscriptPathIn $f -SessionIdIn $sid -CwdIn $null -SourceAppIn "Cowork"
+                }
+                catch {
+                    $r = [ordered]@{ Status = "error"; ProjectDir = $null; Project = "unknown" }
+                    Write-Warning "Export failed for Cowork session $sid : $_"
+                }
                 $key = "Cowork:$($r.Project)"
                 if (-not $stats.ContainsKey($key)) { $stats[$key] = @{ seen = 0; written = 0; junk = 0; dup = 0; error = 0 } }
                 $stats[$key].seen++

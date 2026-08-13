@@ -6,7 +6,7 @@ source_os: windows
 title: "Plan personal productivity automations for next month"
 started_at: 2026-07-28T14:37:06
 ended_at: 2026-07-29T10:38:51
-exported_at: 2026-07-31T21:03:31
+exported_at: 2026-08-12T15:00:13
 duration_minutes: 1201.8
 project: Jarvis
 cwd: 'D:\Users\_Anant\10_Areas\Documents\Jarvis'
