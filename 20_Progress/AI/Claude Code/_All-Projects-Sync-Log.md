@@ -1317,3 +1317,93 @@ One line per manifest entry per run of `sync-all.sh`, appended automatically. Re
 2026-08-14 04:19:37 +0400  OpsPilot  OK
 2026-08-14 04:19:37 +0400  The Plan  OK
 2026-08-14 04:19:37 +0400  .claude_wsl  OK
+2026-08-14 08:39:22 +0400  second-brain-claudekit  OK
+2026-08-14 08:39:22 +0400  .claude_windows  OK
+2026-08-14 08:39:22 +0400  CausalOps  OK
+2026-08-14 08:39:22 +0400  Jarvis  OK
+2026-08-14 08:39:22 +0400  Portfolio  OK
+2026-08-14 08:39:22 +0400  Trading View  OK
+2026-08-14 08:39:22 +0400  Resq  OK
+2026-08-14 08:39:22 +0400  OpsPilot  OK
+2026-08-14 08:39:22 +0400  The Plan  OK
+2026-08-14 08:39:22 +0400  .claude_wsl  OK
+2026-08-14 08:49:39 +0400  second-brain-claudekit  OK
+2026-08-14 08:49:39 +0400  .claude_windows  OK
+2026-08-14 08:49:39 +0400  CausalOps  OK
+2026-08-14 08:49:39 +0400  Jarvis  OK
+2026-08-14 08:49:39 +0400  Portfolio  OK
+2026-08-14 08:49:39 +0400  Trading View  OK
+2026-08-14 08:49:39 +0400  Resq  OK
+2026-08-14 08:49:39 +0400  OpsPilot  OK
+2026-08-14 08:49:39 +0400  The Plan  OK
+2026-08-14 08:49:39 +0400  .claude_wsl  OK
+2026-08-14 09:04:40 +0400  second-brain-claudekit  OK
+2026-08-14 09:04:40 +0400  .claude_windows  OK
+2026-08-14 09:04:40 +0400  CausalOps  OK
+2026-08-14 09:04:40 +0400  Jarvis  OK
+2026-08-14 09:04:40 +0400  Portfolio  OK
+2026-08-14 09:04:40 +0400  Trading View  OK
+2026-08-14 09:04:40 +0400  Resq  OK
+2026-08-14 09:04:40 +0400  OpsPilot  OK
+2026-08-14 09:04:40 +0400  The Plan  OK
+2026-08-14 09:04:40 +0400  .claude_wsl  OK
+2026-08-14 09:19:39 +0400  second-brain-claudekit  OK
+2026-08-14 09:19:39 +0400  .claude_windows  OK
+2026-08-14 09:19:39 +0400  CausalOps  OK
+2026-08-14 09:19:39 +0400  Jarvis  OK
+2026-08-14 09:19:39 +0400  Portfolio  OK
+2026-08-14 09:19:39 +0400  Trading View  OK
+2026-08-14 09:19:39 +0400  Resq  OK
+2026-08-14 09:19:39 +0400  OpsPilot  OK
+2026-08-14 09:19:39 +0400  The Plan  OK
+2026-08-14 09:19:39 +0400  .claude_wsl  OK
+2026-08-14 09:34:39 +0400  second-brain-claudekit  OK
+2026-08-14 09:34:39 +0400  .claude_windows  OK
+2026-08-14 09:34:39 +0400  CausalOps  OK
+2026-08-14 09:34:39 +0400  Jarvis  OK
+2026-08-14 09:34:39 +0400  Portfolio  OK
+2026-08-14 09:34:39 +0400  Trading View  OK
+2026-08-14 09:34:39 +0400  Resq  OK
+2026-08-14 09:34:39 +0400  OpsPilot  OK
+2026-08-14 09:34:39 +0400  The Plan  OK
+2026-08-14 09:34:39 +0400  .claude_wsl  OK
+2026-08-14 09:49:39 +0400  second-brain-claudekit  OK
+2026-08-14 09:49:39 +0400  .claude_windows  OK
+2026-08-14 09:49:39 +0400  CausalOps  OK
+2026-08-14 09:49:39 +0400  Jarvis  OK
+2026-08-14 09:49:39 +0400  Portfolio  OK
+2026-08-14 09:49:39 +0400  Trading View  OK
+2026-08-14 09:49:39 +0400  Resq  OK
+2026-08-14 09:49:39 +0400  OpsPilot  OK
+2026-08-14 09:49:39 +0400  The Plan  OK
+2026-08-14 09:49:39 +0400  .claude_wsl  OK
+2026-08-14 10:05:18 +0400  second-brain-claudekit  OK
+2026-08-14 10:05:18 +0400  .claude_windows  OK
+2026-08-14 10:05:18 +0400  CausalOps  OK
+2026-08-14 10:05:18 +0400  Jarvis  OK
+2026-08-14 10:05:18 +0400  Portfolio  OK
+2026-08-14 10:05:18 +0400  Trading View  OK
+2026-08-14 10:05:18 +0400  Resq  OK
+2026-08-14 10:05:18 +0400  OpsPilot  OK
+2026-08-14 10:05:18 +0400  The Plan  OK
+2026-08-14 10:05:18 +0400  .claude_wsl  OK
+2026-08-14 10:19:39 +0400  second-brain-claudekit  OK
+2026-08-14 10:19:39 +0400  .claude_windows  OK
+2026-08-14 10:19:39 +0400  CausalOps  OK
+2026-08-14 10:19:39 +0400  Jarvis  OK
+2026-08-14 10:19:39 +0400  Portfolio  OK
+2026-08-14 10:19:39 +0400  Trading View  OK
+2026-08-14 10:19:39 +0400  Resq  OK
+2026-08-14 10:19:39 +0400  OpsPilot  OK
+2026-08-14 10:19:39 +0400  The Plan  OK
+2026-08-14 10:19:39 +0400  .claude_wsl  OK
+2026-08-14 10:34:39 +0400  second-brain-claudekit  OK
+2026-08-14 10:34:39 +0400  .claude_windows  OK
+2026-08-14 10:34:39 +0400  CausalOps  OK
+2026-08-14 10:34:39 +0400  Jarvis  OK
+2026-08-14 10:34:39 +0400  Portfolio  OK
+2026-08-14 10:34:39 +0400  Trading View  OK
+2026-08-14 10:34:39 +0400  Resq  OK
+2026-08-14 10:34:39 +0400  OpsPilot  OK
+2026-08-14 10:34:39 +0400  The Plan  OK
+2026-08-14 10:34:39 +0400  .claude_wsl  OK
