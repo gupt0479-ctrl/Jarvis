@@ -1271,3 +1271,18 @@ Ask-mode research/alignment across TradingView vault + `research_data` repo, the
 - Why it matters: the questionnaire session repeatedly caught real gaps between what Cursor's draft decisions assumed and what the actual `research_data` repo code does (DSR trial-counting scope, citation id stability, gate-constant wiring, packet redundancy, etc.) — this note is the durable record so the next Fable/Cursor session doesn't re-derive it
 - Open questions: G1–G3 (Cursor/Fable split) not yet answered; live smoke-test symbol (leaning NVDA) not formally confirmed
 - Next action: close G-series, then write the Fable 5 AI-hub implementer prompt
+
+## [2026-08-15] degree | APAS refresh + Spring'27 graduation math
+
+Anant pasted his live APAS report (prepared 08/14/26, Fall'26 in progress) plus the CS four-year plan and an old Spring'26 transcript PDF. Asked to refresh the degree notes assuming every graded class (including Fall'26) lands as an A, and to work out what Spring'27 would need to look like to finish both the CS degree and the Entrepreneurship minor.
+
+**Changes made:**
+- `40_Resources/UMN/The Plan/APAS.md` — patched by heading (Credits, Classes table, Lib ed requirements, Major Requirements, Elective Credits) with the current numbers: 76 earned + 18 in progress (F26) = 94/120, needs 26 more; GPA 3.338 / tech GPA 3.157, noted both go to 4.0 under the all-A hypothesis. Major: needs 18 more credits, 3 more upper-division. Technical Electives: needs 20 more, 8 more must be CSCI-designated. CS Core fully closes out once F26 posts. Elective Credits: needs 6 more, cross-linked to the minor's remaining electives. Classes table extended through SP26/SI26/F26.
+- `40_Resources/UMN/The Plan/Entrepreneurship Minor.md` — appended a "Status (Aug 2026)" section under the existing heading (list of eligible courses untouched): core is done/in-progress (MGMT 3001 + MGMT 3015, 7 credits), 10 elective credits still needed, flagged `MGMT 4171W` as a double-duty pick (minor elective + closes the degree's last upper-division WI gap).
+- `20_Progress/Degree/Fall'26 Syllabus.md` — filled in the `Classes` and `Grading Criteria` sections (grading rubrics not yet available, said so honestly instead of fabricating), added a new top-level `Spring'27 — Path to Graduation` section with the full credit math and three concrete paths to graduation (overload Spring'27, add credits to Fall'26 now, or split the minor into Summer'27), plus candidate/backup courses pulled from APAS's own technical-elective and minor-elective lists. Frontmatter `status` seed→sprout, `updated` set.
+
+**Key finding:** finishing the CS major (20 more Technical Elective credits + 1 more upper-division WI course) and the Entrepreneurship minor (10 more elective credits) together is ~30 credits of genuinely new coursework after Fall'26 — doesn't fit one semester at the stated 18–22 credit/semester pace. Wrote up three explicit options rather than forcing a clean answer.
+
+**Tool gotcha found:** `jarvis__vault_patch` on a `frontmatter` target with an array `value` containing wikilink strings (e.g. `["[[APAS]]", "[[Note]]"]`) serializes the whole array into a single quoted YAML string instead of a proper block list — silently breaks the field's type. Had to `vault_write` the full file to restore a real YAML list. Avoid patching wikilink-array frontmatter fields via `vault_patch` until this is confirmed fixed; use `vault_write` with hand-written YAML instead.
+
+**Next:** Anant to confirm with advisor Jacquelyn Rupp whether a Spring'27 overload is possible and whether the minor can post after the major's conferral term; check the Spring 2027 registration guide once published for actual course offerings.

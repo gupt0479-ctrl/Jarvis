@@ -1,6 +1,26 @@
 {
   "recentFiles": [
     {
+      "basename": "Fall'26 Syllabus",
+      "path": "20_Progress/Degree/Fall'26 Syllabus.md"
+    },
+    {
+      "basename": "APAS",
+      "path": "40_Resources/UMN/The Plan/APAS.md"
+    },
+    {
+      "basename": "Community College",
+      "path": "40_Resources/UMN/The Plan/Community College.md"
+    },
+    {
+      "basename": "Entrepreneurship Minor",
+      "path": "40_Resources/UMN/The Plan/Entrepreneurship Minor.md"
+    },
+    {
+      "basename": "Spring'26 Syllabus",
+      "path": "40_Resources/UMN/The Plan/Spring'26 Syllabus.md"
+    },
+    {
       "basename": "L8's Principal's Engineering Workflow Trasncript",
       "path": "60_Claude/05_Clippings/Videos/L8's Principal's Engineering Workflow Trasncript.md"
     },
@@ -179,26 +199,6 @@
     {
       "basename": "For Evergreen",
       "path": "30_Order/Templates/Frontmatter/For Evergreen.md"
-    },
-    {
-      "basename": "For Everything",
-      "path": "30_Order/Templates/Frontmatter/For Everything.md"
-    },
-    {
-      "basename": "For Progress",
-      "path": "30_Order/Templates/Frontmatter/For Progress.md"
-    },
-    {
-      "basename": "For Inputs",
-      "path": "30_Order/Templates/Frontmatter/For Inputs.md"
-    },
-    {
-      "basename": "For Transcript",
-      "path": "30_Order/Templates/Frontmatter/For Transcript.md"
-    },
-    {
-      "basename": "For Thoughts",
-      "path": "30_Order/Templates/Frontmatter/For Thoughts.md"
     }
   ],
   "omittedPaths": [],

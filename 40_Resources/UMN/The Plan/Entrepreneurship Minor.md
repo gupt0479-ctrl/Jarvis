@@ -66,3 +66,9 @@ next: "[[APAS]]"
 	- SMGT 3421 - Business of Sport (3 Cr.)  
 	- SMGT 3632 - Sport Sales and Fundraising (3 Cr.)  
 	- SSM 4504W - Sustainable Products Systems Management (3 Cr.) Writing Intensive
+
+### Status (Aug 2026)
+Core: both required courses done or in progress — MGMT 3001 (Spring'26, A-) + MGMT 3015 (Fall'26, in progress). That's 7 of the 7+ required credits, 2 of 2 courses.
+Electives: 0 of the required 10 credits taken yet. None of the classes already on the transcript are on this elective list.
+If Fall'26 lands as planned: the minor needs exactly 10 more credits, all picked from the list above.
+First pick to consider: `MGMT 4171W` (Entrepreneurship in Action I, 4 Cr., Writing Intensive) — upper-division WI, which also closes the CS degree's last "1 more upper-division WI course" gap (see [[APAS]]). Two requirements, one class.
