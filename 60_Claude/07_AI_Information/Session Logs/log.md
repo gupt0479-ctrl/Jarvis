@@ -1286,3 +1286,18 @@ Anant pasted his live APAS report (prepared 08/14/26, Fall'26 in progress) plus 
 **Tool gotcha found:** `jarvis__vault_patch` on a `frontmatter` target with an array `value` containing wikilink strings (e.g. `["[[APAS]]", "[[Note]]"]`) serializes the whole array into a single quoted YAML string instead of a proper block list — silently breaks the field's type. Had to `vault_write` the full file to restore a real YAML list. Avoid patching wikilink-array frontmatter fields via `vault_patch` until this is confirmed fixed; use `vault_write` with hand-written YAML instead.
 
 **Next:** Anant to confirm with advisor Jacquelyn Rupp whether a Spring'27 overload is possible and whether the minor can post after the major's conferral term; check the Spring 2027 registration guide once published for actual course offerings.
+
+## [2026-08-15] degree | correction pass — CSCI 4521, Fall'27 target, "treat F26 as complete" framing
+
+Follow-up to the same-day APAS refresh. Anant had live-edited `APAS.md` and `Fall'26 Syllabus.md` in Obsidian in between — added a CSCI 4521 row to the APAS classes table and to the Fall'26 Classes list (21 credits, was 18), and trimmed Fall'26 Syllabus's `MOC`/`Resources` sections out. Re-read both files fresh before patching to pick up his edits (per [[user-concurrent-editing]] memory).
+
+**Corrected math (CSCI 4521 = 3cr, confirmed by 21 - 18 = 3 and matches Anant's own row):** major credits in-progress 11→14, needs 18→15 more. Upper-Division Major Credits: 5+14=19/19 — exactly complete, CSCI 4521 is what closes it. Technical Electives in-progress 3→6 (both CSCI-designated), needs 20→17 more, CSCI-designated-remaining 8→5. Elective Credits bucket unaffected (CSCI 4521 is a major credit, not general elective). Total distinct remaining after F26 for major+minor: 27 credits (17 tech electives + 10 minor electives), down from 30.
+
+**Reframing per explicit instruction:** stopped hedging requirement-level items with "once F26 posts" — Computer Science Core, Upper-Division Major Credits, Diversified Core/Designated Themes, and the Upper Division Math Oriented Requirement are now written as flatly complete (F26 treated as done for planning). Individual F26 course rows keep the `IP` tag so the real grading status stays visible. Writing Intensive (still needs 1 more upper-division course) was deliberately NOT marked complete — F26 doesn't resolve it, said so explicitly rather than overstate progress.
+
+**Changes made:**
+- `APAS.md` — Credits intro, Lib ed requirements, Major Requirements patched with the corrected numbers and "complete" framing.
+- `Entrepreneurship Minor.md` — Status block tightened to match, added a Fall'27 graduation-target pointer to Fall'26 Syllabus.
+- `20_Progress/Degree/Fall'26 Syllabus.md` — Classes list fixed (CSCI 4521 description was blank, count said "five"/"5 classes", now "six"/"6 classes"). Renamed and fully rewrote "Spring'27 — Path to Graduation" → "Path to Graduation — Fall'27 Target": drops the overload/split-term hedging (no longer needed — 27 credits fits two semesters comfortably at 18–22cr each), lays out Spring'27 (heavy) + Fall'27 (light, final) + optional Summer'27 to ease the minor electives. Left an explicit pointer to the not-yet-written `[[Most Out of College]]` note (unresolved link, intentional — Anant wants a planning conversation first).
+
+**Next:** Anant wants a conversation (not more file-writing yet) about the next 2 years of coursework aimed at an AI/ML engineering path, using the 17 remaining Technical Elective credits deliberately instead of generically. `Most Out of College` note gets written only after that conversation concludes.
