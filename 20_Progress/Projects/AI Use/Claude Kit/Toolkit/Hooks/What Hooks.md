@@ -2,7 +2,7 @@
 type: evergreen
 status: sprout
 created: 2026-08-10
-updated: 2026-08-10
+updated: 2026-08-19
 tags:
   - evergreen
   - claude-kit
@@ -19,6 +19,7 @@ second-brain-claudekit's `.claude/hooks/`, both wired in its `settings.json`, bo
 - **after-edit-log.ps1** — `PostToolUse` (`Write|Edit|MultiEdit`) — appends a log line to `60_Claude/Sessions/_today-edits.md` on every edit.
 - **session-wrapup.ps1** — `Stop` — reminds to run `/compress` if no session log was written that session.
 Both were the source of a real incident (`_docs/Repo-Map.md`'s "50_Claude recreation bug") — hardcoded a pre-rename path, silently recreated a deleted folder the moment the hook re-armed after a git restore. Fixed 2026-08-08. Worth remembering when writing any hook here: a hardcoded path survives a folder rename as a silent bug, not a loud one.
+**As of 2026-08-19, the top-level `hooks/` folder is empty**, verified by direct listing. Its three original files (`auto-link.md`, `daily-summary.md`, `post-note-create.md`, all traced to the first scaffold commit `d35f0b7`) were confirmed zero-provenance and relocated to `tested-tools/hooks/native-scaffold/` — see [[20_Progress/Projects/AI Use/Claude Kit/Tool Map|Tool Map]]'s native-scaffold batch row. `hooks/` is now per-destination-project staging (`hooks/<ProjectName>/`, created only when real content lands for that project), not a flat draft area.
 ## Live in Jarvis
 Verified directly against `.claude/settings.json` and `.claude/settings.local.json` at the vault root, not against `10_Areas/AI/Claude Code.md`'s table, which claims two wired hooks — that claim is only half true right now.
 - **jarvis-write-guard.ps1** — `PreToolUse` (`Write|Edit|MultiEdit`) — **actually registered**, confirmed in `.claude/settings.json`. Enforces the Write Contract: denies vault-root files, `50_Archive/`, `.obsidian/`, `05_Clippings/`, `.cursor/`, `.kiro/`, `.git/`; allowlists daily-ops paths. Fails open on a JSON parse error.

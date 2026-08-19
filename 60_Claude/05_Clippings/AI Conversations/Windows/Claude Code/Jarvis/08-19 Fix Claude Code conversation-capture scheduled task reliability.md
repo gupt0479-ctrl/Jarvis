@@ -6,7 +6,7 @@ source_os: windows
 title: "Fix Claude Code conversation-capture scheduled task reliability"
 started_at: 2026-08-19T10:07:28
 ended_at: 2026-08-19T11:15:27
-exported_at: 2026-08-19T11:30:02
+exported_at: 2026-08-19T19:26:57
 duration_minutes: 68
 project: Jarvis
 cwd: 'D:\Users\_Anant\10_Areas\Documents\Jarvis'

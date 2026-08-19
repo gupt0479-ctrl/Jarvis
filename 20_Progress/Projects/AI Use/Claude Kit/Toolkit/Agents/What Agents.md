@@ -2,7 +2,7 @@
 type: evergreen
 status: sprout
 created: 2026-08-10
-updated: 2026-08-10
+updated: 2026-08-19
 tags:
   - evergreen
   - claude-kit
@@ -20,7 +20,7 @@ second-brain-claudekit's own `.claude/agents/` holds three, unchanged since the 
 - **vault-curator** — keeps that repo's own PARA notes linked, clean, deduplicated.
 - **research-distiller** — turns rough captures into compact evergreen notes inside that repo.
 - **weekly-reviewer** — runs its end-of-week review and writes the weekly summary.
-A separate top-level `agents/` folder in the repo (`connector.md`, `researcher.md`, `reviewer.md`, `writer.md`) is a staging area for drafts, not promoted content — see [[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Agents/How to Use Agents|How to Use Agents]] before treating anything there as ready to use.
+**As of 2026-08-19, the top-level `agents/` folder is empty**, and its role changed — verified by direct listing, not carried over from the old description. It used to hold four flat drafts (`connector.md`, `researcher.md`, `reviewer.md`, `writer.md`, all traced to the repo's first scaffold commit `d35f0b7`); those were confirmed zero-provenance (no match against any repo in `sandbox/` or `tested-tools/`) and relocated to `tested-tools/agents/native-scaffold/` — see [[20_Progress/Projects/AI Use/Claude Kit/Tool Map|Tool Map]]'s native-scaffold batch row. `agents/` is no longer a flat draft-then-promote staging area at all; it's now per-destination-project staging (`agents/<ProjectName>/`, created only when real content lands for that project — per `60_Claude/vault-rules/pipeline-conventions.md`). See [[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Agents/How to Use Agents|How to Use Agents]] for what that means in practice.
 ## Live in Jarvis
 Verified against `.claude/agents/` at the vault root, not the 2026-07-05 snapshot in `20_Progress/AI/Claude Code/Jarvis/`, which [[20_Progress/AI/Claude Code/MOC]] already flags stale. Five agents, all Jarvis-native — none sourced from claudekit's sandbox:
 - **research-distiller** — deep source ingestion; the only agent with Bash + WebFetch access.

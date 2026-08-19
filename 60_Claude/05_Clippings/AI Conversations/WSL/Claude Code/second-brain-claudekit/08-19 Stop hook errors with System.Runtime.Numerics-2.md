@@ -7,7 +7,7 @@ title: "Stop hook errors with System.Runtime.Numerics"
 started_at: 2026-08-19T05:05:57
 ended_at: 2026-08-19T07:03:51
 duration_minutes: 118
-exported_at: 2026-08-19T12:15:02
+exported_at: 2026-08-19T14:45:02
 project: second-brain-claudekit
 cwd: '/home/anant_gupta/projects/ai/claude/second-brain-claudekit'
 session_id: 2ba02d7b-422b-438e-8e55-83fc437a73c7

@@ -2,7 +2,7 @@
 type: action
 status: active
 created: 2026-08-09
-updated: 2026-08-09
+updated: 2026-08-19
 tags:
   - action
   - ai
@@ -32,8 +32,9 @@ Correct [[60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution]]'s frontmatt
 Turn the manual read-and-write-down ingestion method, named as unbuilt in `_Notes Created From Ingestion.md`'s own text, into an actual skill instead of repeating it by hand next time.
 Delete or fill the 0-byte `60_Claude/20_Distilled_Notes/Sources - Plan/Video Ingestion Implementation.md` placeholder.
 ## Conversation capture
-Check whether the WSL `SessionEnd` hook is still registered — WSL Claude Code capture under `60_Claude/05_Clippings/AI Conversations/WSL/` has produced nothing since 2026-07-30, the day [[60_Claude/07_AI_Information/AI Conversation - Summaries/WSL Claude Code — Wiring Gap]] says it was wired.
-Check whether the Cowork sweep is still firing on Windows `SessionEnd` — `60_Claude/05_Clippings/AI Conversations/Windows/Cowork/` has produced nothing since 2026-07-24 despite Windows Claude Code sessions ending on Aug 3, 7, and 8.
+**Resolved 2026-08-19** — the WSL `SessionEnd`-hook-reliability question below is closed by a separate, parallel effort (a `pwsh`/.NET assembly-load crash in every Stop/SessionEnd hook, root-caused and fixed by wrapping hook commands with `2>/dev/null; exit 0` at the settings.json layer; native scheduled-task retry added; a real scheduled backfill safety net built for both platforms). Not taken on that effort's own word — independently verified here by reading `60_Claude/05_Clippings/AI Conversations/00 - Capture Health.md` directly: both the Windows and WSL backfill tables show consecutive `OK (exit 0)` runs through 2026-08-19T10:30 (Windows) / 10:15 (WSL), "No current failure streak" on both. The original symptom (WSL capture producing nothing since 2026-07-30) is fixed by the backfill mechanism itself, which now catches whatever the event hooks miss — checked, not assumed.
+~~Check whether the WSL `SessionEnd` hook is still registered — WSL Claude Code capture under `60_Claude/05_Clippings/AI Conversations/WSL/` has produced nothing since 2026-07-30, the day [[60_Claude/07_AI_Information/AI Conversation - Summaries/WSL Claude Code — Wiring Gap]] says it was wired.~~
+Check whether the Cowork sweep is still firing on Windows `SessionEnd` — `60_Claude/05_Clippings/AI Conversations/Windows/Cowork/` has produced nothing since 2026-07-24 despite Windows Claude Code sessions ending on Aug 3, 7, and 8. **Not verified this pass** — the Capture Health dashboard tracks Windows/WSL Claude Code backfill only, not Cowork; left open.
 Wire the `export-ai-session` skill to actually write into the four existing empty subfolders (`Claude Code/`, `Cowork/`, `Cursor/`, `Kiro/`) under `60_Claude/07_AI_Information/AI Conversation - Summaries/`, or delete the subfolders and confirm summaries stay flat — right now neither the code nor the docs say which.
 Run `export-ai-session` at least once against the Windows Claude Code and Cowork raw transcripts sitting in `60_Claude/05_Clippings/AI Conversations/` — zero distilled summaries exist for either source despite weeks of raw capture.
 Update `60_Claude/05_Clippings/AI Conversations/README.md`, which documents `Claude App/` and `OpenCode/` folders that don't exist on disk.

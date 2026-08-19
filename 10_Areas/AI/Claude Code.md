@@ -2,7 +2,7 @@
 type: evergreen
 status: sprout
 created: 2026-07-03
-updated: 2026-07-03
+updated: 2026-08-19
 tags:
   - ai
   - tool-guide
@@ -25,7 +25,8 @@ It runs in two homes on this machine. The Windows home (`C:\Users\Anant Gupta\.c
 | TradingView | Research + strategy engine work (see 2026-06-25 session log) | dump folder empty — setup lives in the project repo |
 The Resq pattern is worth copying: its `.claude/` holds the project canon (PRD, current-state, architecture, playbooks) and the Kiro agent (`resq.json`) mounts those same files as `file://` resources. One context layer, two tools reading it — no duplication.
 ## Jarvis setup
-### Skills (14 commands via `.claude/commands/`)
+### Skills (19 commands via `.claude/commands/`)
+Table corrected 2026-08-19 against the diff already identified in [[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Commands/What Commands|What Commands]] — this table was dated 2026-07-03 and had drifted: missing seven commands built 2026-07-29, and still listing `organize-csci2033`, which is no longer present in the live `commands/` folder.
 | Command | What it does |
 | --- | --- |
 | `/startday` | Fills today's daily note from the Summer OS plans + session history, patches the dashboard focus fields (directory skill: `startday/SKILL.md` + `reference.md`) |
@@ -39,10 +40,16 @@ The Resq pattern is worth copying: its `.claude/` holds the project canon (PRD, 
 | `/weekly-review` | Answers the 7 weekly questions, writes the weekly note |
 | `/lint-claude-layer` | Lints 60_Claude for broken links and orphans |
 | `/ops` | Vault health operations (see `ops-reference.md`) |
-| `/organize-csci2033` | Course-note merge workflow |
 | `/tag-month` | Creates missing monthly checkpoint git tags |
 | `/mcp-hub` | MCP server reference (skill file only, no command) |
-Only `startday`, `closeday`, and `ingesting-clipping` follow the directory standard from [[Jarvis OS — North Star]] Part 5.1 (SKILL.md ≤500 lines + reference.md + scripts/). The other eleven are still flat prose files — convert them as they get used, most-used first.
+| `/challenge` | Pressure-tests a belief, plan, or decision — premortem, red-team, blindspots, invert |
+| `/excalidraw-diagram` | Builds a diagram on the live Excalidraw canvas, exports it into the vault as a native Obsidian Excalidraw file |
+| `/ideas` | Generates a grounded idea report — tools to build, people to meet, topics to investigate |
+| `/llm-council` | Runs a high-stakes, genuinely uncertain decision through a 5-advisor council with peer review and chairman synthesis |
+| `/note-to-actions` | Turns a note into a link-dense map of concrete next steps |
+| `/strategy` | Runs a project, trade, or resource-allocation decision through SWOT, WARGAME, PARETO, and LEVERAGE |
+| `/transcript-to-brief` | Turns a transcript into a structured brief |
+Only `startday`, `closeday`, and `ingesting-clipping` follow the directory standard from [[Jarvis OS — North Star]] Part 5.1 (SKILL.md ≤500 lines + reference.md + scripts/). The rest are still flat prose files — convert them as they get used, most-used first.
 ### Agents (5, in `.claude/agents/`)
 All five now carry proper frontmatter (`name`, `description` in the "Use proactively… MUST BE USED…" pattern, `tools` allowlist, `model: claude-sonnet-4-6`):
 - `research-distiller` — deep source ingestion; the only agent with Bash + WebFetch (needs `extract_pdf.py` and `gh api`)
@@ -56,7 +63,8 @@ All five now carry proper frontmatter (`name`, `description` in the "Use proacti
 | `jarvis-session-continuity.ps1` | SessionStart + SessionEnd | Injects the context-pack read order at start; continuity at end |
 | `jarvis-write-guard.ps1` | PreToolUse (Write\|Edit\|MultiEdit) | Write Contract: denies vault-root files, `50_Archive/`, `.obsidian/`, `05_Clippings/`, `.cursor/`, `.kiro/`, `.git/`; allowlists the daily-ops paths (Daily/, Plans/, Templates/, skills, agents, dashboard, session log, Claude OS) so the daily loop can never be blocked |
 Both scripts live in `30_Order/System/claude-workflow/hooks/` — the vault owns the code, `.claude/settings.json` just points at it. Fail-open by design: a JSON parse error exits 0 rather than blocking real work.
-### MCP servers (5, in `.mcp.json`)
+### MCP servers (6, in `.mcp.json`)
+Corrected 2026-08-19 per the diff already identified in [[20_Progress/Projects/AI Use/Claude Kit/Toolkit/MCPs/What MCPs|What MCPs]] — this table was missing `excalidraw`.
 | Server | Command | Provides |
 | --- | --- | --- |
 | obsidian | `uvx mcp-obsidian` | Vault read/write through the Obsidian Local REST API (patch-by-heading, periodic notes) |
@@ -64,6 +72,7 @@ Both scripts live in `30_Order/System/claude-workflow/hooks/` — the vault owns
 | git | `uvx mcp-server-git` | Git operations on the vault repo |
 | fetch | `uvx mcp-server-fetch` | Web fetch |
 | jarvis-memory | `python 30_Order/System/jarvis-memory/server.py` | Custom: `jarvis_status`, `jarvis_search`, `jarvis_reindex` over a SQLite registry — the seed of the semantic index in North Star Part 5.4 |
+| excalidraw | `30_Order/System/excalidraw-mcp` | Drives the live diagram canvas |
 The obsidian server needs the Local REST API plugin running (it is, `startupType: instant` in lazy-plugins). jarvis-memory verification status: see [[Claude OS]] MCP table.
 ## WSL home — what's installed there
 - `graphify` skill (any input → knowledge graph, `/graphify`)
