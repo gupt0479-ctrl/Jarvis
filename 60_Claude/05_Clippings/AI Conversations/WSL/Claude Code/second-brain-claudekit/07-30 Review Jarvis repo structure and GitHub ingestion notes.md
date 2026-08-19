@@ -7,7 +7,7 @@ title: "Review Jarvis repo structure and GitHub ingestion notes"
 started_at: 2026-07-30T07:04:09
 ended_at: 2026-08-08T15:52:25
 duration_minutes: 13488
-exported_at: 2026-08-11T12:13:12
+exported_at: 2026-08-19T10:05:03
 project: second-brain-claudekit
 cwd: '/home/anant_gupta/projects/ai/claude/second-brain-claudekit'
 session_id: b885feba-7315-4fcb-9bd8-c0bfbe4bc168

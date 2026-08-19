@@ -26,14 +26,17 @@ vault/
     hooks/          # automation hooks (after-edit-log.ps1, session-wrapup.ps1)
     settings.json   # Claude Code settings (autoCompact: false, hook bindings)
     settings.local.json  # machine-local overrides (not committed)
-  commands/         # global commands usable in any project (preserve, compress, resume)
-                    # also includes: capture, brainstorm, connect, research, review, etc.
-  agents/           # DRAFT agents, staged before distribution into .claude/agents/ or elsewhere in Jarvis
-  hooks/            # DRAFT hooks, staged the same way
-  skills/           # DRAFT skills, staged the same way (currently empty — no drafts yet)
+  agents/<ProjectName>/    # per-destination-project staging — real, in-progress artifacts for a specific project
+  commands/<ProjectName>/  # same, for commands. Create a project subfolder only when real content lands.
+  hooks/<ProjectName>/     # same, for hooks
+  docs/<ProjectName>/      # same, for per-project docs
+  skills/           # source-repo staging (unchanged role — not per-project)
+  instructions/<repo>/  # CLAUDE.md/AGENTS.md/PRD.md-shaped files copied from a sandbox/ candidate, pattern worth reviewing
+  tests/<type>/<repo>/  # evidence a specific tool was actually run — script or dated real-output log
   _docs/             # PRD, Architecture, Design, Sync, Jarvis, Promotion-Criteria — see below
   sandbox/          # real clones of external tools, stage 1 of the qualification pipeline
-  tested-tools/    # tools that cleared sandbox/, under second review before promotion
+  tested-tools/     # tools that cleared sandbox/, under second review before promotion
+    _future/<repo>/ # cleared the tested-tools/ bar, no current project needs it yet — see FOR-WHAT.md
   00_Daily/         # daily notes (YYYY-MM-DD)
   10_Areas/         # ongoing areas of responsibility
   20_Projects/      # active projects (one folder per project)
@@ -44,11 +47,11 @@ vault/
     Summaries/      # weekly and monthly rollups
     Patterns/       # reusable prompts, frameworks, checklists
     Templates/      # ALL templates — vault notes, session artifacts, and future skill/agent/command templates
-    vault-rules/    # naming, linking, folder, and tagging conventions — read before drafting in agents/commands/hooks/skills/
+    vault-rules/    # naming, linking, folder, and tagging conventions, plus pipeline-conventions.md (sandbox/tested-tools/staging structure)
   _attachments/     # images, PDFs, assets
 ```
 
-Before writing anything in the staging folders (`agents/`, `commands/`, `hooks/`, `skills/`), read `60_Claude/vault-rules/` first — content drafted there without checking current folder-naming conventions has drifted before (see `_docs/Repo-Map.md`'s naming-convention-drift finding).
+As of 2026-08-19, `agents/`, `commands/`, `hooks/`, `docs/` are per-destination-project staging, not a generic draft-then-promote area — see `60_Claude/vault-rules/pipeline-conventions.md` and `_docs/How to/using-staged-artifacts.md`. Before writing anything in a staging folder, read `60_Claude/vault-rules/` first — content drafted there without checking current folder-naming conventions has drifted before (see `_docs/Repo-Map.md`'s naming-convention-drift finding).
 
 ## Behavioral Rules
 
@@ -86,19 +89,7 @@ Do not put session-specific context in `CLAUDE.md`. That file is for rules, not 
 
 ## Available Commands
 
-### Global (copy to `~/.claude/commands/` for use in any project)
-| Command | Purpose |
-|---|---|
-| `/preserve` | Update CLAUDE.md with a new stable rule |
-| `/compress` | Write a structured session log to `60_Claude/Sessions/` |
-| `/resume` | Load context from last session log |
-| `/capture` | Dump a raw idea into the inbox |
-| `/brainstorm` | Free-form ideation, saves atomic notes |
-| `/connect` | Find conceptual links between notes |
-| `/research` | Deep-dive research → literature notes + MOC |
-| `/review` | Weekly/monthly vault review |
-| `/summarize` | Progressive-summarise a note |
-| `/inbox-process` | Process inbox one note at a time |
+**As of 2026-08-19, the top-level `commands/` folder is empty** (per-destination-project staging now — see Vault Structure above). The CPR commands (`/preserve`, `/compress`, `/resume`) that used to live here went through the qualification pipeline for real; the resulting, evidence-backed versions live in `tested-tools/commands/cpr-compress-preserve-resume/` (see that folder's `VERDICT.md`) and are not yet promoted into this repo's own `.claude/commands/`. The other 8 commands (`/capture`, `/brainstorm`, `/connect`, `/research`, `/review`, `/summarize`, `/inbox-process`, plus `/journal`) were confirmed zero-provenance native scaffold and moved to `tested-tools/commands/native-scaffold/` — none of them is currently live as a slash command in this repo.
 
 ### Vault-specific (live in `.claude/commands/`)
 | Command | Purpose |

@@ -8,7 +8,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "pwsh -ExecutionPolicy Bypass -File .claude/hooks/after-edit-log.ps1"
+            "command": "pwsh -ExecutionPolicy Bypass -File .claude/hooks/after-edit-log.ps1 2>/dev/null; exit 0"
           }
         ]
       }
@@ -18,7 +18,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "pwsh -ExecutionPolicy Bypass -File .claude/hooks/session-wrapup.ps1"
+            "command": "pwsh -ExecutionPolicy Bypass -File .claude/hooks/session-wrapup.ps1 2>/dev/null; exit 0"
           }
         ]
       }

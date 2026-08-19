@@ -1,6 +1,26 @@
 {
   "recentFiles": [
     {
+      "basename": "Prompts",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Claude Code/Prompts.md"
+    },
+    {
+      "basename": "Folder Map",
+      "path": "10_Areas/AI/Setup/Folder Map.md"
+    },
+    {
+      "basename": "GitHub Ingestion Implementation",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/GitHub Ingestion Implementation.md"
+    },
+    {
+      "basename": "00_Execution",
+      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
+    },
+    {
+      "basename": "The AI Hub",
+      "path": "20_Progress/Projects/AI Use/The AI Hub.md"
+    },
+    {
       "basename": "APAS",
       "path": "40_Resources/UMN/The Plan/APAS.md"
     },
@@ -69,10 +89,6 @@
       "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Code Review.md"
     },
     {
-      "basename": "00_Execution",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
-    },
-    {
       "basename": "What Skills",
       "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Skills/What Skills.md"
     },
@@ -103,10 +119,6 @@
     {
       "basename": "For AI",
       "path": "30_Order/Templates/Frontmatter/For AI.md"
-    },
-    {
-      "basename": "The AI Hub",
-      "path": "20_Progress/Projects/AI Use/The AI Hub.md"
     },
     {
       "basename": "Field OS Template",
@@ -187,18 +199,6 @@
     {
       "basename": "Action Standard",
       "path": "30_Order/Standards/Action Standard.md"
-    },
-    {
-      "basename": "For Brainstorm",
-      "path": "30_Order/Templates/Frontmatter/For Brainstorm.md"
-    },
-    {
-      "basename": "For Classes",
-      "path": "30_Order/Templates/Frontmatter/For Classes.md"
-    },
-    {
-      "basename": "For Evergreen",
-      "path": "30_Order/Templates/Frontmatter/For Evergreen.md"
     }
   ],
   "omittedPaths": [],
