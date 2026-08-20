@@ -5,25 +5,26 @@ source_app: claude-code
 source_os: windows
 title: "Second-brain-claudekit Jarvis notes sync"
 started_at: 2026-08-19T14:29:04
-ended_at: 2026-08-19T14:45:52
-exported_at: 2026-08-19T19:26:54
-duration_minutes: 16.8
+ended_at: 2026-08-19T19:37:39
+exported_at: 2026-08-20T07:49:08
+duration_minutes: 308.6
 project: Jarvis
 cwd: 'D:\Users\_Anant\10_Areas\Documents\Jarvis'
 session_id: 5e4f97e7-6064-46c5-a7fb-cb3e27b3b3ea
 status: raw
-turn_count: 2
+turn_count: 4
 tools_used:
-  Bash: 19
+  Bash: 25
   Edit: 21
-  Read: 14
+  Read: 21
+  Write: 2
 tokens:
-  input: 220
-  output: 102231
-  cache_creation: 445635
-  cache_read: 18207427
-  total: 18755513
-cost_usd: 6.446775
+  input: 272
+  output: 163613
+  cache_creation: 1618418
+  cache_read: 23781681
+  total: 25563984
+cost_usd: 12.866682
 model:
   - "claude-sonnet-5"
 files_touched:
@@ -31,15 +32,22 @@ files_touched:
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\10_Areas\\AI\\Setup\\Folder Map.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\10_Areas\\AI\\Setup\\Gaps.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\10_Areas\\AI\\Setup\\Notes Map.md"
+  - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\10_Areas\\AI\\Setup\\Review System.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\AI\\Claude Code\\second-brain-claudekit\\Sync-Log.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Projects\\AI Use\\Claude Kit\\Log.md"
+  - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Projects\\AI Use\\Claude Kit\\Source of Truth\\The Qualification Pipeline.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Projects\\AI Use\\Claude Kit\\Tool Map.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Projects\\AI Use\\Claude Kit\\Toolkit\\Agents\\What Agents.md"
+  - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Projects\\AI Use\\Claude Kit\\Toolkit\\Claude Code.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Projects\\AI Use\\Claude Kit\\Toolkit\\Commands\\What Commands.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Projects\\AI Use\\Claude Kit\\Toolkit\\Hooks\\What Hooks.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Projects\\AI Use\\Claude Kit\\Toolkit\\MCPs\\What MCPs.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Projects\\AI Use\\Claude Kit\\Toolkit\\Skills\\What Skills.md"
+  - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\30_Order\\Standards\\Review Standard.md"
+  - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\30_Order\\Templates\\Capability\\AI Tools Monthly Review Template.md"
+  - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\30_Order\\Templates\\Capability\\AI Tools Weekly Review Template.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\60_Claude\\05_Clippings\\AI Conversations\\00 - Capture Health.md"
+  - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\60_Claude\\30_Reviews\\AI\\Tools\\Tool log.md"
 tags:
   - input
   - ai-conversation
@@ -1522,10 +1530,556 @@ done`
 ```
 - `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Projects\AI Use\Claude Kit\Tool Map.md`
 
+## You
+
+Second-brain-claudekit now has nine terse, dated, amendment-style docs in its own _docs/ folder (PRD, Architecture, Design, Promotion-Criteria, Sync, Jarvis, Current-Setup, Repo-Map, Gaps) — accurate, but written as an audit trail, not as something a person reads once to understand the whole system. Your job is to write the notes that are actually better than that: real Jarvis evergreen notes, in this vault's own voice and quality bar, that explain what this pipeline is and how it works well enough that any later claim about it can be checked against these notes instead of re-read from the repo's own docs each time.
+
+Read 20_Progress/Projects/AI Use/Claude Kit/Tool Map.md, Toolkit/Claude Code.md, and this session's own Step 1 output before writing anything — those are your source material, along with the repo's _docs/ files (read via the mirror). Do not duplicate their content; synthesize and explain it. Every non-obvious claim needs a citation to a real file or a real dated decision — this is what makes the note verifiable, which is the entire point of writing it.
+
+Part A — the pipeline, explained properly
+Write one evergreen note (split into more only if it stops being one coherent idea — this vault's own atomic-note rule applies here same as anywhere else) at 20_Progress/Projects/AI Use/Claude Kit/Source of Truth/The Qualification Pipeline.md (create the Source of Truth/ folder). It should give a reader with zero context: why this repo exists (the two failure modes it prevents, with the real historical evidence for each), what each stage of the pipeline actually does today (sandbox/ → tested-tools/ → tested-tools/_future/ or promoted, with tests/ as the gate and instructions/ as the pattern-reuse layer — all as they concretely exist post-Step-1, not as originally planned), and how a reader would trace any specific tool's real history through Tool Map.md and Log.md. Use type: evergreen frontmatter matching this vault's existing convention (see any file in the Toolkit/ folder for the shape: status, tags, notes: [[...]] links, next).
+
+Part B — the review system's foundation, not its full mechanics
+Write 10_Areas/AI/Setup/Review System.md for real — it is currently empty. Scope this narrowly: what the review system is, why it exists, and its real foundational shape as already built (30_Order/Standards/Review Standard.md, the two AI Tools Weekly/Monthly Review Template.md files, 60_Claude/30_Reviews/AI/Tools/Tool log.md — read all three directly, don't rely on any prior summary of them). Explain the 100%-clarity Decided-Fixes gate and why the trigger is deliberately manual, not automated. Do not design or map the complete operational workflow end-to-end here — that is the explicit job of a later step, not this one. If the note threatens to grow past what Setup/ notes normally hold, split a companion evergreen note under Source of Truth/ and link it in rather than overloading Review System.md.
+
+Definition of done: Part A's note lets someone verify any claim about the pipeline against a cited real source without asking you again. Part B's note is accurate and complete for what's already built, explicitly stops short of the full operational mapping, and is no longer empty or vague. Report what you wrote and what you deliberately left for the next step.
+
+## Claude
+
+Now let me read the review-system source files and the repo's `_docs/` files via the live mirror.
+
+This is excellent source material. Let me read Design.md, Promotion-Criteria.md, and Jarvis.md too.
+
+Now I have all source material needed. Let me write Part A first.
+
+Now Part B — **Review System.md**:
+
+Both files are clean — no blank lines, no stray `---` in the body. Let me do a final check that all wikilinks I used actually resolve to real notes.
+
+All links resolve. Both notes are done.
+
+## What I wrote
+
+**Part A — `20_Progress/Projects/AI Use/Claude Kit/Source of Truth/The Qualification Pipeline.md`** (new folder created)
+One evergreen note explaining: the two failure modes with their real historical evidence (`.claude_windows`/`.claude_wsl` credential-bearing raw dumps; the 3-week-unexecuted Tier-1 list, correctly cited to `PDF's Ingestion Implementation.md`, not the file an earlier draft mis-cited); the pipeline as it concretely exists post-Step-1 (`sandbox/` → Promotion-Criteria's four gates, with the gbrain/gstack/mattpocock worked examples → `tested-tools/` with `tests/` as the real-evidence gate and `instructions/` as the never-reviewed-yet pattern layer → promoted/blocked/dropped/**parked (future)**); the CPR blend verdict and native-scaffold relocation as concrete illustrations; and how to trace any tool's real history through Tool Map + Log, including a worked example (mattpocock-engineering) and an explicit warning not to trust the repo's own `_docs/` prose uncritically — citing the 27-vs-28 `instructions/` discrepancy as proof that even the repo's own docs need independent counting, not transcription.
+
+**Part B — `10_Areas/AI/Setup/Review System.md`** (was empty)
+Explains what the review system is and isn't (usage/sync-health review, explicitly distinct from concept-mastery Weekly Synthesis), why it exists, and its real foundation as built — Review Standard.md's eight headings and citation discipline, the two Templater templates, and Tool log.md's actual current state (zero rows, confirmed by direct read of its own empty table and `next:` field). It explains the 100%-clarity Decided-Fixes gate and why the trigger is deliberately manual, tying both to `_docs/Design.md`'s self-improvement sequencing principle rather than treating it as an isolated rule. One companion-note candidate (`Conversations/`'s undefined purpose, the cadence-trigger mechanism) — I didn't split it out; the note stayed within the size Setup/ notes normally hold, so no companion was needed.
+
+## What I deliberately left for the next step
+Per the task's scope line, Review System.md names but does not build: who/what actually triggers a review sit-down on cadence, how `Conversations/` gets used, or how Tool log's zero rows get resolved into a first real review. Those are flagged inline and pointed at `Gaps.md`'s existing open entry, not mapped here.
+
+### Tool Calls
+
+- `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Projects\AI Use\Claude Kit\Tool Map.md`
+- `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Projects\AI Use\Claude Kit\Toolkit\Claude Code.md`
+- `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\10_Areas\AI\Setup\Review System.md`
+- `Bash` -- `find "/d/Users/_Anant/10_Areas/Documents/Jarvis/30_Order/Standards" -iname "Review Standard.md"
+find "/d/Users/_Anant/10_Areas/Documents/Jarvis" -iname "AI Tools Weekly Review Template.md" -o -iname "AI Tools Monthly Review Template.md"
+find "/d/Users/_Anant/10_Areas/Documents/Jarvis/60_Claude/30_Reviews/AI/Tools" -iname "Tool log.md"
+find "/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/AI Use/Claude Kit" -maxdepth 1`
+```
+/d/Users/_Anant/10_Areas/Documents/Jarvis/30_Order/Standards/Review Standard.md
+/d/Users/_Anant/10_Areas/Documents/Jarvis/30_Order/Templates/Capability/AI Tools Monthly Review Template.md
+/d/Users/_Anant/10_Areas/Documents/Jarvis/30_Order/Templates/Capability/AI Tools Weekly Review Template.md
+/d/Users/_Anant/10_Areas/Documents/Jarvis/60_Claude/30_Reviews/AI/Tools/Tool log.md
+/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/AI Use/Claude Kit
+/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/AI Use/Claude Kit/Build Map.md
+/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/AI Use/Claude Kit/Claude Code
+/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/AI Use/Claude Kit/Log.md
+/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/AI Use/Claude Kit/Overview.md
+/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/AI Use/Claude Kit/Tool Map.md
+/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/AI Use/Claude Kit/Toolkit
+```
+- `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\Standards\Review Standard.md`
+- `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\Templates\Capability\AI Tools Weekly Review Template.md`
+- `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\Templates\Capability\AI Tools Monthly Review Template.md`
+- `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\60_Claude\30_Reviews\AI\Tools\Tool log.md`
+- `Bash` -- `WSL="//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit"
+echo "=== PRD.md ==="; cat "$WSL/_docs/PRD.md"
+echo
+echo "=== Architecture.md ==="; cat "$WSL/_docs/Architecture.md"`
+```
+=== PRD.md ===
+# PRD — second-brain-claudekit
+
+## Problem
+
+Anant runs Claude Code across real, active codebases at once — confirmed tracked in Jarvis's own `20_Progress/AI/Claude Code/MOC.md`: Jarvis (this vault's own `.claude/`), CausalOps, OpsPilot, Resq, The Plan (a personal-life vault), Github ReadMe, Portfolio, Trading View — plus BOOM, a UROP research project tracked separately (`20_Progress/UROP/BOOM Board.md`) that doesn't yet have its own Claude Code setup entry in that MOC. Every week, new Claude Code tooling shows up worth trying: skill libraries (mattpocock-skills, gstack), memory MCPs (gbrain), agent harnesses (ECC), starter kits. Two failure modes are equally real and both have already happened:
+
+1. **Install-and-forget** — a tool gets copied straight into a real project's `.claude/` or the global `~/.claude/` on the strength of a README, then turns out broken, redundant, or wrong for the workflow. `20_Progress/AI/Claude Code/` in the Jarvis vault already shows the cost of this: most project folders there are marked `static` or `stale` in `MOC.md`, and a full raw copy of `~/.claude` (`.claude_windows/`, `.claude_wsl/`) sits in the vault as dead, credential-bearing clutter nobody prunes.
+2. **Plan-and-never-run** — the opposite failure, also already documented: `60_Claude/20_Distilled_Notes/Sources - Plan/PDF's Ingestion Implementation.md`'s Claude Code Skills & Repos Matrix, under its literal **"Tier 1: INSTALL NOW (Proven, High-Value)"** table (ECC, mattpocock-skills, gstack, cpr-compress-preserve-resume, context-sync, spec-kit — 6 items), sat unexecuted for weeks after being written, confirmed directly against `.claude/skills/`, `.claude/agents/`, and `~/.claude.json` in the 2026-07-29 execution pass (`60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md`, `# Github` section).
+
+    **Correction (2026-08-19):** earlier drafts of this doc mis-cited `GitHub Ingestion Implementation.md` as the Tier-1 list's source — verified false by direct re-read. That file has no table labeled "Tier 1" at all; it has its own, separate, unlabeled **"VS Code + Claude Setup (Priority 1 — Install Today)"** list of only 4 items (ECC, mattpocock-skills, cpr-compress-preserve-resume, context-sync — no gstack, no spec-kit). `00_Execution.md`'s own "sat unexecuted for three weeks" verdict is checked against the 6-item Tier-1 table in `PDF's Ingestion Implementation.md`, not the 4-item Priority-1 list. Both lists are real and both went unexecuted for the same three weeks — they are just two different notes, not one.
+
+Neither a bias toward installing everything nor a bias toward endlessly researching without installing anything solves this. What's missing is a **disciplined middle step**: a place to actually run a tool for real — install it, initialize it, hit its real failure modes — before it's allowed anywhere near a project that matters, and a place to record *why* a decision was made once it is.
+
+## Who this is for
+
+One person: Anant, solo developer, running Claude Code (and Codex, Cursor, Kiro) across multiple real projects and one personal-knowledge vault. Not a team. Not distributed. This repo (`gupta-builds/second-brain-claudekit`) is never installed by anyone else, never versioned for external consumers, never a plugin — see `_docs/Design.md` for why that distinction matters mechanically, not just philosophically.
+
+## What this repo actually is (confirmed 2026-08-09)
+
+**Dual-purpose, not single-purpose.** This repo is:
+
+1. **The external-tool qualification pipeline** — `sandbox/` → `tested-tools/` → promoted (repo-scoped or global), for tooling that comes from *outside* this repo. `_docs/Architecture.md` covers the mechanics.
+2. **A Jarvis-enhancer / incubator** — several `sandbox/` clones exist specifically to improve Jarvis's own PKM capability, not to feed some other project: `obsidian-mind`, `obsidian-second-brain`, `gbrain`, `graphify`, `claude-mem`, `agentic-inbox` are the confirmed starting set (per `sandbox/README.md`'s inventory) — an explicitly open-ended list, not closed.
+
+There is a named, longer-horizon third phase — **Jarvis's own setup becoming self-improving**, using this repo's evidence as the input — but it is strictly sequenced and evidence-gated, not something either purpose above builds toward automatically: the qualification pipeline has to run solidly for a real stretch of time, enough proven, tested, dated decisions have to accumulate as real evidence, and *only then* does anything about what specifically gets automated get decided. Nothing here assumes what "self-improving" will concretely mean before that evidence exists. See `_docs/Design.md` for the full statement of this sequencing and its non-negotiable logging requirement.
+
+## What "solved" looks like
+
+- **Every tool sitting in a rigid folder** (`.claude/skills/`, `.claude/commands/`, or the real global `~/.claude/`) **has a documented reason it's there** — traceable to a real test, not a README summary. `_docs/Promotion-Criteria.md` defines what "documented reason" means concretely.
+- **Nothing gets promoted without having been run for real first** — installed, initialized, exercised against its actual failure modes (per `_docs/Architecture.md`'s pipeline). GBrain clearing this bar (`bun install` → `gbrain init --pglite --no-embedding` → `doctor` reporting 80/100 health, a real PGLite database at `~/.gbrain/`) is the proof this works when followed; gstack failing at a real Playwright Chromium launch check is proof the bar catches real blockers instead of hiding them.
+- **Anything that actually crosses into Jarvis's real `.claude/` meets Jarvis's own build standard at that point** — the directory-shaped skill format, full agent frontmatter, and defined hook lifecycle `Jarvis OS — North Star.md` Part 5 already specifies for Jarvis's native tooling. This repo's own pipeline mechanics don't need that shape internally (see `_docs/Design.md`) — Jarvis's bar applies at the moment of promotion into Jarvis, not before.
+- **Every decision has a matching record in Jarvis**, not just in this repo — `_docs/Jarvis.md` defines the manual ritual, and `20_Progress/Projects/AI Use/Claude Kit/` is where it lives.
+- **The gap between "planned" and "executed" stays visible and small.** The multi-week gap documented above should not recur — every tool that clears the sandbox stage gets a same-session (or explicitly flagged, dated) decision, not an indefinite one.
+
+## Non-goals
+
+- This is not a shareable starter kit release, despite its shape (`.claude/`, `commands/`, `60_Claude/Templates/`, `60_Claude/vault-rules/`) resembling one — see `_docs/Design.md`.
+- This is not a general-purpose package manager or automated CI pipeline for skill installation. The qualification step is manual and deliberately slow.
+- This does not track every starred GitHub repo — `40_Resources/CS/Repos.md` in the Jarvis vault already does that job as a discovery/triage layer. This repo and its Jarvis-side tracking (`20_Progress/Projects/AI Use/Claude Kit/`) only start once a repo is actually cloned into `sandbox/`.
+- This does not decide global-vs-project-scoped promotion by itself for tools bound for the real global `~/.claude/`. That decision, and the actual install, happens in a separate session working directly at the Windows home directory, then gets replicated to the WSL home directory — see `_docs/Design.md`.
+- This does not keep its own copy of tool-by-tool pipeline state. `20_Progress/Projects/AI Use/Claude Kit/Tool Map.md` in Jarvis is the sole source of truth for that — see below.
+
+## Current state
+
+Tracked live in Jarvis, not duplicated here: **`20_Progress/Projects/AI Use/Claude Kit/Tool Map.md`** is the one authoritative, per-tool record of pipeline stage, blockers, and verdicts — updated the same session anything changes. Keeping a second "current state" table in this file was tried and it drifted stale (the version this file carried through 2026-08-08 was already behind `Tool Map.md`'s real content by the time it was checked on 2026-08-09) — exactly the failure `Jarvis OS — North Star.md`'s "one fact, one home" rule exists to prevent. Read `Tool Map.md` for what's actually true right now.
+
+Full background: Jarvis vault, `60_Claude/10_Source_Summaries/Github Ingestion/Claude Kit Implementation.md` and `60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md`'s `# Github` section.
+
+=== Architecture.md ===
+# Architecture — the qualification pipeline
+
+This is the actual pipeline this repo implements, grounded in the three real things that happened in it this session (2026-07-29). Nothing here is hypothetical — each stage is illustrated by a tool currently sitting at that exact stage. This pipeline serves both of this repo's confirmed purposes (`_docs/PRD.md`) — external tools and Jarvis-bound tools go through the identical stages; the only thing that differs is where a tool lands at promotion (this repo's own `.claude/`, a specific other project's, or Jarvis's real `.claude/`).
+
+```
+ clone into sandbox/<repo>/          run it for real                 tested-tools/<name>/            promote                              record the decision
+ ┌───────────────────────┐    ┌──────────────────────────┐    ┌──────────────────────────┐    ┌────────────────────────────┐    ┌───────────────────────────────┐
+ │ git clone into         │──▶│ install, init, test —    │──▶│ second look: does the    │──▶│ .claude/skills/ or          │──▶│ 20_Progress/Projects/AI Use/  │
+ │ sandbox/<repo-name>/   │   │ NOT just read the README │   │ subset that cleared the  │   │ .claude/commands/           │   │ Claude Kit/ in the Jarvis      │
+ │                        │   │                           │   │ bar earn a spot?         │   │ (repo-scoped) OR the real   │   │ vault gets a new/updated row   │
+ │                        │   │ Promotion-Criteria.md     │   │                           │   │ global ~/.claude/           │   │ — manual, every time (see      │
+ │                        │   │ defines "cleared the bar" │   │                           │   │ (cross-project)             │   │ _docs/Jarvis.md)                │
+ └───────────────────────┘    └──────────────────────────┘    └──────────────────────────┘    └────────────────────────────┘    └───────────────────────────────┘
+```
+
+A tool can stall or die at any stage — that's the point. The pipeline is a filter, not a conveyor belt.
+
+## The three real, current examples
+
+### gbrain — cleared `sandbox/`, pending one decision before promotion
+
+`sandbox/gbrain/` — cloned, `bun install` (283 packages), `bun run src/cli.ts init --pglite --no-embedding`, then `doctor` reported **80/100 overall health, 100/100 brain score** against a real PGLite database at `~/.gbrain/`. This is a genuine working install, not a plan-stage entry.
+
+It has *not* moved past `sandbox/` yet, and shouldn't until one real decision is made: which embedding provider (Voyage, ZeroEntropy, or OpenAI) to pay for or accept the free tier of, since it's currently running keyword/graph-only search without one. This is exactly the kind of decision `_docs/Promotion-Criteria.md` requires before a tool crosses into a rigid folder — a real, named, unresolved question, not a rubber-stamp.
+
+### gstack — stuck at `sandbox/`, blocked by a real dependency
+
+`sandbox/gstack/` — cloned, ran the real `./setup` script. It got genuinely far: compiled the browse/design/PDF binaries, generated 55 skills (~893,538 tokens if all loaded at once), downloaded a 278MB Chromium build. It then failed at the last step: `gstack setup failed: Playwright Chromium could not be launched` — WSL is missing headless-Chromium's shared libraries (`libnss3`, `libatk1.0-0`, `libatk-bridge2.0-0`, and others), and fixing it needs an interactive `sudo apt-get install` this sandboxed environment can't run non-interactively.
+
+Confirmed directly: `~/.claude/skills/gstack` and `~/.claude/commands/gstack*` are both absent — the setup script aborted *before* its own registration step, not after. Nothing is halfway-installed; it's cleanly stopped at the blocker. This is the pipeline working correctly, not failing — a tool that can't actually run doesn't get a pass because its README is convincing.
+
+### mattpocock-skills — stuck at `tested-tools/`, partially reviewed
+
+`tested-tools/skills/mattpocock-engineering/` — the interactive installer (`bunx skills@latest add mattpocock/skills`) discovered 41 skills, not the 18 the earlier vault research assumed (a real correction, found by running it, not by re-reading the README more carefully). Its interactive picker doesn't complete non-interactively, so rather than fighting it, the `engineering/` category (17 skills: `code-review`, `tdd`, `diagnosing-bugs`, `implement`, `research`, `to-spec`, `to-tickets`, `codebase-design`, `domain-modeling`, `improve-codebase-architecture`, `resolving-merge-conflicts`, `triage`, `wayfinder`, `ask-matt`, `grill-with-docs`, `prototype`, `setup-matt-pocock-skills`) was copied directly into `tested-tools/skills/mattpocock-engineering/` for real review.
+
+This is the middle stage of the pipeline in action: a tool that's real and installable, but too large to promote wholesale — `personal`, `productivity`, `misc`, `in-progress`, and `deprecated` categories exist in the same repo and haven't even been looked at yet. The second-look stage exists precisely for this case: read the 17 for real, decide which subset (if any) earns a spot in a rigid folder, rather than installing all 41 because the repo as a whole is credible. None of the 17 has individually cleared `_docs/Promotion-Criteria.md`'s bar yet (2026-08-09) — see `tested-tools/README.md` for exactly what that means for this folder's internal structure.
+
+## Stage definitions
+
+| Stage | Location | Entry condition | Exit condition |
+|---|---|---|---|
+| 1. Sandbox | `sandbox/<repo-name>/` | `git clone`d, nothing else | Ran for real (install/init/test commands actually executed) — see `_docs/Promotion-Criteria.md` |
+| 2. Tested-tools | `tested-tools/<type>/<use-case>/<repo-name>/` | Cleared the sandbox bar; large enough (multiple skills/commands) to need a second look before wholesale adoption. A piece only earns its own `<use-case>/` folder once it *individually* clears the bar — until then it sits ungrouped, one level up, directly under `<repo-name>/`. | A subset is explicitly decided worth promoting, or the whole thing is dropped |
+| 3. Promoted (repo-scoped) | this repo's own `.claude/skills/` or `.claude/commands/` | Useful specifically while working in *this* repo | N/A — terminal state, or later re-promoted globally if it turns out to be project-agnostic |
+| 3. Promoted (Jarvis-bound) | Jarvis's real `.claude/`, at Jarvis's own build standard (`Jarvis OS — North Star.md` Part 5) | Improves Jarvis's own PKM capability specifically — see `_docs/PRD.md`'s dual-purpose statement | N/A — terminal state |
+| 3. Promoted (global) | the real `~/.claude/`, both Windows home and WSL home | Useful with no regard to which project is open (see `_docs/Design.md`'s global-vs-project rule); the actual install happens in a separate session, not in this repo | N/A — terminal state |
+| Blocked | stays in `sandbox/` or `tested-tools/`, annotated | A real, named blocker exists (missing system dependency, unresolved cost decision, unclear scope) | Blocker is resolved, then the stage re-evaluates normally |
+| Parked (future) | `tested-tools/_future/<repo>/` | Cleared `tested-tools/`'s review bar on its own terms, but no current project or rigid folder needs it yet — a real "yes, this is good" verdict without a home, not a "no." Scoped 2026-08-19, not yet built — see `_docs/Gaps.md`. | A project's need materializes and it's promoted normally, per a sibling `FOR-WHAT.md` naming what use case it's waiting for |
+
+## What this pipeline is not
+
+It is not a CI/CD system, not automated, and not fast by design. Every arrow above is a manual decision made by Anant after real hands-on testing — see `_docs/Design.md` for why speed is explicitly not the optimization target here.
+
+## Known gap: `sandbox/<repo>/` is not inert to Claude Code itself
+
+Confirmed 2026-07-30, cloning `affaan-m/everything-claude-code` into `sandbox/ecc/`: the moment any file inside that subdirectory is read (via the `Read` tool) or becomes a `Bash` working directory, Claude Code auto-loaded that subdirectory's own `CLAUDE.md`, every `.md` file under its `.claude/rules/`, and registered its `.claude/skills/` entries as available — with zero explicit install step. Verified against official docs (`code.claude.com/docs/en/memory.md`, `.../skills.md`), not assumed:
+
+- **CLAUDE.md and Skills**: both documented as loading **on-demand**, recursively, "in subdirectories under your current working directory" — intentional, designed for monorepos where a nested package carries its own instructions. There **is** a documented exclusion lever: the `claudeMdExcludes` setting (glob patterns in `.claude/settings.json`). Applied here: `"claudeMdExcludes": ["sandbox/**", "tested-tools/**"]`.
+- **`.claude/rules/*.md`**: also a documented, first-class auto-load feature, loaded at session start with the same priority as `CLAUDE.md`. **No documented exclusion mechanism exists for it**, unlike CLAUDE.md.
+- **Skills registration itself is low-risk**: a discovered `SKILL.md` becomes *available via the Skill tool*, but doing anything with it still requires an explicit invocation — it doesn't execute on discovery. The real exposure is the **CLAUDE.md/rules content landing directly in context** as soon as a sandboxed tool's files are touched, which is a prompt-injection-shaped surface (ECC's own `CLAUDE.md` and rules happen to be benign, but a less careful or actively malicious repo's wouldn't be).
+
+**What this means for the pipeline**: `sandbox/<repo>/` was assumed inert until a deliberate "run it for real" step. That assumption is **false** the instant real qualification work starts — and real qualification work (Promotion-Criteria.md Q1: "did it actually run") *requires* reading/executing files inside the clone, so this exposure cannot be fully avoided while actually doing the job this pipeline exists to do. The `claudeMdExcludes` entry above closes the CLAUDE.md vector for good; the rules/skills vector has no closing mechanism today and is accepted as a real, residual risk of Stage 1 — treat any `CLAUDE.md`/`.claude/rules/` content surfaced from a `sandbox/` or `tested-tools/` clone as untrusted, informational-only context, never as an instruction to act on, the same way this repo already treats fetched web/external content elsewhere.
+```
+- `Bash` -- `WSL="//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit"
+echo "=== Design.md ==="; cat "$WSL/_docs/Design.md"
+echo
+echo "=== Promotion-Criteria.md ==="; cat "$WSL/_docs/Promotion-Criteria.md"`
+```
+=== Design.md ===
+# Design — the philosophy behind this repo's shape
+
+## Not a plugin, never becomes one
+
+This repo (`gupta-builds/second-brain-claudekit`) looks like a shareable Claude Code starter kit — it has `.claude/`, `commands/`, `60_Claude/Templates/`, `60_Claude/vault-rules/`, a clean `README.md` with copy-paste install instructions. It was built that way, and stays that way, but the resemblance is structural, not intentional-as-a-product. It is:
+
+- **Not published.** No release process, no changelog aimed at external users, no versioning discipline beyond git history.
+- **Not built to be installed by anyone but Anant.** The Quick Start in `README.md` says "copy to your vault root" because that's the literal mechanism used to move a piece from here into Jarvis's own `.claude/` — not because a stranger is expected to run it.
+- **A personal sandbox, not a workspace.** Its entire reason to exist is holding external tooling at arm's length from every real project (Jarvis, BOOM, Portfolio, TradingView, CausalOps) until it's earned trust. See `_docs/Architecture.md` for the pipeline this enables.
+
+The generic `00_Daily/10_Areas/20_Projects/30_Knowledge/40_Career/50_Claude/` folder scheme in this repo's root is deliberately *not* Jarvis's actual, much richer scheme (`00_Dashboard/10_Areas/20_Progress/30_Order/40_Resources/50_Archive/60_Claude/`). Verified directly by fetching the real repo during the 2026-07-29 GitHub ingestion pass (`60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md`, `# Github` section, "Testing methodology" entry) — this repo's folder scheme is a generic reference shape, kept separate on purpose so that testing a tool here never risks touching Jarvis's real structure.
+
+### Amendment (2026-08-08) — the AI-artifacts folder was renamed `50_Claude/` → `60_Claude/`, breaking the separation claimed above
+
+At some point after the paragraph above was written, this repo's own `50_Claude/` was renamed to `60_Claude/` (confirmed via `git status` at the start of the 2026-08-08 session: `50_Claude/README.md` and `50_Claude/Templates/*` showed as deleted, uncommitted, with an untracked `60_Claude/` holding equivalent content). That rename means this repo's folder name for AI artifacts now **collides** with Jarvis's real `60_Claude/` — the exact thing this section says was avoided on purpose. Every reference to `50_Claude/` elsewhere in this repo's docs and scripts was mechanically updated to `60_Claude/` in the same 2026-08-08 session that found this (see `_docs/Repo-Map.md`), on the grounds that the folder demonstrably exists as `60_Claude/` on disk and is depended on by name in multiple places.
+
+**Resolved (2026-08-09), directly from Anant:** the rename was deliberate, done by him, intentionally matching Jarvis's own `60_Claude/` name — "plainly just a joke or reference. It does not mean anything." So the separation this section originally argued for (generic scheme, kept unlike Jarvis's on purpose) is *narrower* than first written: it holds for the daily-note/PARA folders (`00_Daily/10_Areas/20_Projects/30_Knowledge/40_Career/`, still deliberately generic and un-converged with Jarvis's `00_Dashboard/10_Areas/20_Progress/30_Order/40_Resources/50_Archive/`), but not for `60_Claude/`, which converges on purpose and carries no functional significance beyond the name match. No further action needed — just recognize `60_Claude/` consistently as this repo's own folder (not Jarvis's) wherever it's referenced, the same care any shared name needs.
+
+## Dual purpose, and the self-improvement phase (confirmed 2026-08-09)
+
+This repo is not single-purpose. It is both the external-tool qualification pipeline described throughout this doc *and* an incubator specifically for Jarvis's own PKM capability — several `sandbox/` clones (`obsidian-mind`, `obsidian-second-brain`, `gbrain`, `graphify`, `claude-mem`, `agentic-inbox`, and an explicitly open-ended rest) exist to make Jarvis itself better, not to feed some other project. `_docs/PRD.md` states this; this section states the discipline that keeps it from becoming an excuse to skip testing.
+
+There is a real, named, longer-horizon goal on top of both purposes: **Jarvis's own setup becoming self-improving**, using the evidence this pipeline generates. It is explicitly in scope — not a maybe — but it is strictly sequenced, and the sequence is the whole point:
+
+1. **The qualification pipeline runs solidly, for real, for a real stretch of time.** Not a proof of concept — the actual discipline in `_docs/Promotion-Criteria.md` applied repeatedly, honestly, including the "no" verdicts.
+2. **Real evidence accumulates** — dated, tested, decided rows in `20_Progress/Projects/AI Use/Claude Kit/Tool Map.md`, not intentions.
+3. **Only then does anyone decide what "self-improving" concretely automates.** Nothing here pre-specifies the mechanism. Deciding the mechanism before step 1 and 2 produce real evidence would be exactly the "plan-and-never-run" failure mode `_docs/PRD.md` names, aimed at a bigger target.
+4. **Whatever gets built is small and logged, never silent** — the same non-negotiable rule `Jarvis OS — North Star.md` already applies to its own hooks: every automatic action writes one visible line to a log. An automation that improves Jarvis invisibly is not a feature, it's the same failure mode as the `50_Claude`/sync-launcher bug found and fixed 2026-08-09 (`_docs/Repo-Map.md`) — a process that silently stopped doing its job while reporting success.
+
+"We do not assume anything over here" (Anant, 2026-08-09) governs this section specifically: no step above starts before the step before it has real, checked evidence behind it.
+
+## Test before adopt
+
+Nothing skips `sandbox/`. Not because every tool is suspicious, but because a README and a real install are different kinds of evidence, and only one of them is admissible for a decision that puts a tool in front of Claude Code while it's editing Jarvis, BOOM, Portfolio, TradingView, or CausalOps. `_docs/Architecture.md`'s pipeline exists to make "I read about it" and "I ran it" structurally impossible to confuse.
+
+## Global only when project-agnostic; project-scoped otherwise
+
+A tool is a candidate for the real global `~/.claude/` only if it is useful **with no regard to which project is open** — the same test already applied live during the 2026-07-29 GitHub pass (`60_Claude/10_Source_Summaries/Github Ingestion/Claude Kit Implementation.md`'s Global/Project-based split — this file superseded the older `Immediate Action.md` name this doc previously cited; see `_docs/Jarvis.md`'s 2026-08-09 correction).
+
+- **Global, confirmed:** GBrain (a personal-knowledge layer, equally useful whether Anant is in Jarvis, BOOM, TradingView, Portfolio, or CausalOps) and the `bun` runtime it depends on.
+- **Project-scoped, confirmed:** `openbb`, `tradingview-mcp`, `polymarket-mcp-server` (TradingView-only, architecture reference), `claude-context` (BOOM-only, blocked on Milvus/Docker). gstack is *currently* project-scoped only because it's blocked — its own `./setup` targets Claude Code, Codex, Factory, and OpenCode simultaneously, which is a global-by-design tool once the Chromium blocker clears, not a project-scoped one by nature.
+
+Getting this wrong in either direction has a real cost, already observed in the vault: a tool installed globally that only one project needs is unused surface everywhere else (the explicit reasoning that file used to keep `cpr-compress-preserve-resume`'s session-lifecycle commands Jarvis-only rather than global). A tool installed per-project that's actually project-agnostic means re-deciding the same question five times.
+
+### Where a global install actually happens (confirmed 2026-08-09)
+
+This repo decides *whether* something is a global candidate; it does not perform the global install itself. That happens in a **separate session**, working directly at the Windows home directory (`~/.claude` under the Windows user profile — the real, primary global config), and is then **replicated to the WSL home directory** (`~/.claude` inside the Linux filesystem) so both Claude Code entry points — native Windows and WSL — stay in parity. `20_Progress/AI/Claude OS Dashboard.md` already tracks this asymmetry: Windows Home and WSL Home have historically carried different installed marketplaces (`everything-claude-code`'s ~240 skills, confirmed 2026-07-03, live only in WSL Home, not Windows Home). Closing that gap deliberately, one verified tool at a time, is part of what "global" means here — not a single `cp -r` assumed to cover both.
+
+### Amendment (2026-08-10) — the asymmetry is bigger than the 2026-07-03 claim above, and "replicated" was never actually built
+
+Direct comparison of both home directories, not inferred from the dashboard note above: WSL has real global `agents/` (3), `commands/` (7), and a root `CLAUDE.md` that Windows has zero of; Windows has 32 skills, almost entirely `firecrawl-*`; WSL has 29, almost entirely Obsidian/vault and Cloudflare-worker skills. Overlap between the two skill sets is close to zero — this is not the same shape as the 2026-07-03 claim above (one marketplace's ~240 skills present on one side, absent on the other); it reads more like two independently-grown configurations that happened to never get reconciled. WSL's `.mcp.json` also carries live secrets (a GitHub PAT, two MCP Bearer tokens) that have no Windows-side equivalent at all.
+
+**No "replicated to the WSL home directory" mechanism has ever actually been built** — this paragraph described the intended end state, not a working process; nothing here or in `_docs/Sync.md` shows a global-config sync ever running. The curated scope for actually building it is now decided in `_docs/Sync.md`'s 2026-08-10 amendment: sync only `agents/`, `commands/`, `skills/`, `hooks/`, `CLAUDE.md` bidirectionally between the two homes via the same Unison mechanism as the project-level mirrors; hard-exclude all credentials, MCP secrets, session state, and caches; two physical directories stay, never merged into one (a live shared directory was tested and rejected at the project-mirror scale in `_docs/Sync.md` for a corruption-risk reason that applies at least as strongly here, since both homes are read/written by a live session far more constantly than any single project's `.claude/`).
+
+## Minimal footprint — Implement > Knowledge
+
+This repo's decision discipline is a direct implementation of a principle already established in the Jarvis vault, not a new invention. From `60_Claude/20_Distilled_Notes/Sources - Plan/PDF's Ingestion Implementation.md`'s Claude Code Skills & Repos Matrix, the **Implement > Knowledge** principle:
+
+> Install only what closes a *named* gap, reference everything else, test in one session before committing, mark every repo `(*INSTALLED*)`/`(*SKIP*)`/`(*EVAL: DATE*)` in `Repos.md` once decided.
+
+That file's own execution audit found this principle stated and then not followed for three weeks — the Tier-1 list (ECC, mattpocock-skills, gstack, CPR, spec-kit) sat unexecuted, confirmed by checking `.claude/skills/`, `.claude/agents/`, and `~/.claude.json` directly (`60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md`, `# Github` section, "VS Code + Claude Setup" entry). This repo is the fix: a place where "test in one session" has an actual folder (`sandbox/`) to happen in, so the principle stops being a paragraph and starts being a filesystem path.
+
+Concretely, minimal footprint means:
+- A tool earns space in a rigid folder by closing a gap nothing else already closes — not by being well-regarded. (memsearch was dropped in favor of gbrain for exactly this reason: it duplicated gbrain's auto-capture without gbrain's synthesis layer — real redundancy, not a coin flip.)
+- Reference-only tools (Awesome MCP Servers, claude-code-best-practice, system-prompts-and-models-of-ai-tools) never enter `sandbox/` at all — they're read, cited, and left in `40_Resources/CS/Repos.md`. `sandbox/` is reserved for things that might actually run.
+- Every promotion is reversible in principle but treated as a real commitment in practice — a promoted tool is expected to have a documented reason (`_docs/Promotion-Criteria.md`), not just a memory of once seeming useful.
+
+=== Promotion-Criteria.md ===
+# Promotion Criteria — what "cleared the qualification bar" actually means
+
+`_docs/Architecture.md` names four pipeline stages and says a tool moves between them when it "clears the qualification bar." This doc spells out what that bar is. The literal, mechanically-checkable version of this lives in `60_Claude/Qualification-Checklist.md` — this doc is the reasoning behind that checklist, with the three real 2026-07-29 outcomes (gbrain, gstack, mattpocock-skills) as worked examples of the bar actually being applied, not a hypothetical rubric.
+
+## The four questions, in order
+
+Adapted directly from the **Implement > Knowledge** principle already established in the Jarvis vault (`60_Claude/20_Distilled_Notes/Sources - Plan/PDF's Ingestion Implementation.md`) — see `_docs/Design.md` for the full citation. Each question is a hard gate: a "no" stops the tool at its current stage, it doesn't get rounded up to a "maybe."
+
+### 1. Did it actually run without a manual workaround?
+
+Not "does the README claim it works" — did a real command, executed in `sandbox/<repo>/`, actually complete or fail on its own terms?
+
+- **gbrain: yes.** `bun install` → `bun run src/cli.ts init --pglite --no-embedding` → `doctor` returned real output (80/100 health) against a real database file. No workaround needed.
+- **gstack: no.** `./setup` ran real work (compiled binaries, generated 55 skills, downloaded Chromium) but the final Playwright launch check failed on a genuinely missing system dependency. The honest failure is why this tool stays in `sandbox/`, blocked, rather than being marked done because "most of it worked."
+- **mattpocock-skills: partial-yes.** The installer ran and discovered 41 real skills; its interactive picker doesn't complete non-interactively, so the workaround (copying `engineering/` by hand) was a deliberate, disclosed scope decision, not a technical failure — this is why it advanced to `tested-tools/` rather than staying in `sandbox/`, but only for the reviewed subset.
+
+### 2. Does it solve a problem nothing else already solves?
+
+Checked against what's already adopted or already decided, not against the tool's own marketing.
+
+- **gbrain: yes**, confirmed by elimination — adopting it made `memsearch` (auto-capture without synthesis) and `context-sync` (thinner SQLite memory) both redundant. Its synthesis + gap-analysis layer, benchmarked +31.4 points over vector-only RAG, is a capability nothing else in the current stack has.
+- **gstack: yes, if unblocked** — its `/setup-gbrain` companion command and 55-skill library aren't duplicated elsewhere; the blocker is infrastructure, not redundancy.
+- **mattpocock-skills' `engineering/` category: mostly yes, unconfirmed in detail** — `code-review`, `tdd`, `diagnosing-bugs` etc. don't obviously duplicate anything already installed, but this is exactly what the `tested-tools/` second-look stage exists to confirm skill-by-skill before promotion, not something to assume from the category name.
+
+### 3. Is it a duplicate of something already promoted?
+
+The inverse framing of question 2, asked again at the moment of promotion (not just discovery), because the answer can change between when a tool enters `sandbox/` and when it's considered for promotion — something else might get promoted first.
+
+- Before gbrain existed in `sandbox/`, `context-sync` and `memsearch` were both live candidates. Once gbrain cleared the bar, both became duplicates. This is why the qualification pass happens per-decision, not once per tool.
+
+### 4. Can the dependency it claims actually be verified, mechanically, not by re-reading the README?
+
+This is the one question worth a script instead of a judgment call — see `60_Claude/scripts/check_dependency.py`. A tool's own docs claiming "requires bun" or "requires Chromium system libs" is a claim; whether that dependency is actually on `PATH` (or actually installed, actually the right version) in *this* environment is a fact, and facts are cheap to check mechanically before trusting them.
+
+- `bun` — verified on `PATH` after gstack's setup script installed it (checksum-pinned to 1.3.10, resolved to 1.3.14). This is exactly the kind of claim the script formalizes: don't trust "bun is a prerequisite," check that `which bun` actually returns something before believing an install succeeded because of it.
+- Chromium's shared library dependencies (`libnss3`, `libatk1.0-0`, etc.) — this is the gstack blocker, and it's exactly the failure mode question 4 exists to catch *before* wasting the setup script's runtime rediscovering it. `60_Claude/scripts/check_dependency.py` includes this exact check as its worked example.
+
+## What "cleared the bar" does NOT mean
+
+- It does not mean "compiles" or "installs without error" alone — question 2 and 3 still have to be answered honestly, not skipped because question 1 was a clean yes.
+- It does not mean permanent. A tool can be un-promoted if a later, better-fitting tool makes it redundant (memsearch's fate once gbrain existed) — the bar is evaluated at each promotion decision, not locked in once passed.
+- It does not require unanimous confidence. gstack's `engineering/`-style partial promotion (mattpocock-skills) shows the bar can be cleared for a *subset* of a repo while the rest stays unreviewed — "cleared the bar" is a per-decision, not always per-repo, judgment.
+```
+- `Bash` -- `WSL="//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit"
+cat "$WSL/_docs/Jarvis.md"`
+```
+# Jarvis — how this repo and the vault relate
+
+## Division of labor
+
+This repo does the **technical work**: clone, install, initialize, run, hit real failure modes. Jarvis (the Obsidian vault at `D:\Users\_Anant\10_Areas\Documents\Jarvis`) tracks the **decisions** and hosts the **live mirrors**: which project a tool is useful for, global-vs-project verdict, why, what stage it's currently at, and — for this repo specifically — a synced copy of the actual `.claude/` this repo runs. Neither side duplicates the other's job: this repo doesn't try to be a knowledge base, and Jarvis doesn't try to be a package manager.
+
+This repo is **dual-purpose**, confirmed 2026-08-09, not single-purpose: it is both the external-tool qualification pipeline (`sandbox/` → `tested-tools/` → promoted) *and* an incubator for Jarvis-bound tooling. Several `sandbox/` clones exist specifically to improve Jarvis's own PKM capability, not to feed some other project — `obsidian-mind`, `obsidian-second-brain`, `gbrain`, `graphify`, `claude-mem`, `agentic-inbox` are the confirmed starting set; the full list is explicitly open-ended, still being discovered, not closed.
+
+Live sync exists, but only in one narrow place today. `_docs/Sync.md` covers the mechanism in full. `20_Progress/AI/` is meant, eventually, to hold a live-synced `.claude/` for **every** codebase on this machine — today only `second-brain-claudekit`'s is actually wired up and live; every other project folder there is a hand-copied, drifting snapshot (see `20_Progress/AI/Claude Code/MOC.md`'s own project-status table: `Jarvis` marked `stale`, several others `static`). The connection between "what happened in this repo" and "what Jarvis knows about it" for everything else stays a manual step a person — or an agent working on Anant's behalf — does deliberately.
+
+## The manual decision ritual
+
+Every time something new lands in one of this repo's three staging areas — `sandbox/`, `tested-tools/`, or a rigid folder (`.claude/skills/`, `.claude/commands/`, or the real global `~/.claude/`) — a corresponding entry goes into Jarvis at `20_Progress/Projects/AI Use/Claude Kit/`.
+
+**This is a manual step, not automated.** Nothing watches this repo's filesystem and writes to the vault — the `.claude/` mirror sync (`_docs/Sync.md`) moves file *content*, it does not make *decisions* or write log entries about them. The person doing the work is responsible for making the corresponding vault entry in the same session the technical work happens. If that discipline lapses, the vault-side record goes stale exactly the way `20_Progress/AI/Claude Code/MOC.md` already documents happening to several of its own project folders — a known, already-observed failure mode, not a hypothetical one.
+
+## What goes where, concretely
+
+| This repo | Jarvis |
+|---|---|
+| `sandbox/<repo>/` — real clone, real install attempt | `20_Progress/Projects/AI Use/Claude Kit/Tool Map.md` — one row, stage = `sandbox` |
+| `tested-tools/<type>/<use-case>/<repo>/` — cleared the bar, under second review | Same row, stage updated to `tested-tools`, with what's been reviewed so far |
+| `.claude/skills/` or `.claude/commands/` (this repo, repo-scoped) | Same row, stage = `promoted (repo-scoped)` |
+| The real global `~/.claude/` (Windows home *and* WSL home — see `_docs/Design.md`) | Same row, stage = `promoted (global)` |
+| A tool dies at any stage (blocked, dropped, redundant) | Same row, stage = `blocked` or `dropped`, with the real reason |
+| `tested-tools/_future/<repo>/` — cleared `tested-tools/` review but earns no spot in any current project, parked for a future use case named in a sibling `FOR-WHAT.md` | New 2026-08-19, no Jarvis-side row shape decided yet — same `Tool Map.md` row, stage = `parked (future)`, is the natural extension but this has not been confirmed with Anant. Flagged, not assumed. |
+| `tests/` — the actual test(s) proving a specific piece of tooling is useful | New 2026-08-19, no Jarvis-side equivalent exists. Likely referenced from the same `Tool Map.md` row (what test proved this tool's "closes a named gap" claim) once built — not yet decided. |
+| `instructions/<repo>/` — a promoted `CLAUDE.md`/`AGENTS.md`/`PRD.md`-shaped file | New 2026-08-19, no Jarvis-side equivalent exists and no note anywhere in Jarvis discusses this folder. Genuinely new on both sides. |
+| — | `20_Progress/Projects/AI Use/Claude Kit/Log.md` — one dated entry every time a `Tool Map.md` row changes, following the `60_Claude/07_AI_Information/Session Logs/log.md` convention (`## [YYYY-MM-DD] tag \| title` heading, then bullets) |
+| — | `20_Progress/AI/Claude Code/second-brain-claudekit/` — this repo's own live-synced mirror. Updated automatically by `_docs/Sync.md`'s mechanism, not manually. |
+
+## The full map of where things live in Jarvis
+
+Confirmed to exist by direct filesystem check, 2026-08-09. A reorganization moved several of these since this repo's docs were first written in 2026-07 — paths below are the current, post-move locations. Any older reference elsewhere in this repo's docs to a path not listed here should be treated as stale until re-verified.
+
+### `20_Progress/AI/` — the whole-machine `.claude/` mirror layer
+
+Meant to hold the `.claude/` folder from every codebase on this machine, alongside a dashboard (`Claude OS Dashboard.md` / `.canvas`) and a visual blueprint (`10_Areas/AI/Claude OS Map.excalidraw`). Today only `second-brain-claudekit` is actually live-synced; wiring up the rest is known, explicit future work, not yet done.
+
+- **`20_Progress/AI/Claude Code/`** — one subfolder per project, each holding that project's `.claude/` mirror. **This repo's own sync only maintains `second-brain-claudekit`'s subfolder here** — every other project folder (Jarvis, CausalOps, OpsPilot, Resq, The Plan, Github ReadMe, Portfolio, Trading View) is a separate, hand-maintained snapshot, out of this repo's scope; see that folder's own `MOC.md` for their individual `setup_status`.
+- Per-platform operating guides live one level up, at `10_Areas/AI/Claude Code.md`, `Cursor.md`, `Kiro.md`, `Codex.md`.
+
+### `20_Progress/Projects/AI Use/` — the main AI hub
+
+The umbrella project folder for AI tooling work, distinct from `20_Progress/AI/`'s mirror layer. Holds `Builds & Resources/` (research/build notes: `Claude Council (LLM Council Skill Install).md`, `Code Review & Eval Gap.md`, `Hermes Agent Framework — Corrected Framing.md`, `Maverick Skills Mode-to-Repo Mapping.md`, `Model Distillation.md`), `Claude Kit/` (this repo's own decision tracker, below), `Gen AI/`, and top-level notes (`Cursor AI.md`, `Jan.md`, `Ollama.md`, `The AI Hub.md`).
+
+`Builds & Resources/` moved here from `20_Progress/AI/Builds & Resources/` during the 2026-08 reorganization — confirmed the old path no longer exists.
+
+### `20_Progress/Projects/AI Use/Claude Kit/` — this repo's decision tracker
+
+- **`Tool Map.md`** — the living, per-tool ingestion record for this repo. One row per tool, updated the same session its pipeline stage changes. **As of 2026-08-09 this is more current than this repo's own docs used to be** — it already has ECC's real test results (3378/3388 tests passing) and the 17-repo 2026-07-30 sandbox batch. Per Jarvis's own "one fact, one home" principle (`Jarvis OS — North Star.md`), **`Tool Map.md` is the sole source of truth for tool-by-tool pipeline state** — this repo's own docs point here instead of keeping a second, driftable copy (see `_docs/PRD.md`).
+- **`Log.md`** — one dated entry every time a `Tool Map.md` row changes, `## [YYYY-MM-DD] tag | title` heading, following `60_Claude/07_AI_Information/Session Logs/log.md`'s convention.
+- **`Toolkit/`** — moved here from `40_Resources/CS/AI/Toolkit/` during the 2026-08 reorganization (confirmed: that old path no longer exists). Holds `Agents/`, `Commands/`, `Hooks/`, `MCPs/`, `Skills/` subfolders and a `Claude Code.md` reference note — a catalog of what's available/known, distinct from `Tool Map.md`'s pipeline-stage tracking. `Claude Code.md` states its own job precisely: "`Tool Map` answers 'is this tool trustworthy yet'; the Toolkit answers 'given a real task right now, what do I actually type.'"
+
+  **The "How to Use X" / "What X" pattern (confirmed 2026-08-19, verified by direct read of every file, all created 2026-08-10):** every one of the five subfolders carries exactly two notes with a fixed job split. `What {Category}.md` is a ground-truth inventory, split into `## Promoted in claudekit` (what `second-brain-claudekit` has actually promoted into its own `.claude/`) and `## Live in Jarvis` (what's actually on disk in Jarvis's real vault-root `.claude/`, verified against files, not a stale snapshot). `How to Use {Category}.md` is the dispatch note: a `# Claude Kit` section giving project-agnostic usage guidance per promoted claudekit tool, and a `# Particular Use` section of named-use-case subheadings (Vault Curation, Research & Distillation, Career Ops, Daily Operations, Decision & Planning, Learning & Mastery, Writing Quality, plus two honestly-flagged-unserved gaps: Code Review and Frontend) that a shared layer of use-case notes link straight into via `[[Note#Heading]]` anchors. Both files use `type: evergreen`, `status: sprout`, and tags including the category name. This pattern has no equivalent anywhere in `second-brain-claudekit` today — worth reusing verbatim if this repo ever wants its own "what's actually promoted vs. what's still staged" inventory layer; see `_docs/Gaps.md`.
+
+  As of 2026-08-19, `What Agents.md`/`What Commands.md`/`What MCPs.md` all independently flag `10_Areas/AI/Claude Code.md`'s own tool tables (agents, 14-row command table dated 2026-07-03, MCP list) as stale against the real `.claude/` — a second, smaller instance of the same "table written once, never revisited" pattern this doc's own history already shows (the `Immediate Action.md`→`Claude Kit Implementation.md` citation, the Tier-1-list citation fixed in `_docs/PRD.md` 2026-08-19). `Toolkit/Cursor.md` is a completely empty stub (0 bytes) — flagged here so it isn't mistaken for populated content later.
+- **`Claude Code/Prompts.md`** — build prompts for this specific repo, written and refined inside a Jarvis-side session (not inside this repo).
+
+### `60_Claude/20_Distilled_Notes/Sources - Plan/` — the historical planning record
+
+`GitHub Ingestion Implementation.md`, `_Notes Created From Ingestion.md`, `00_Execution.md`, and `PDF's Ingestion Implementation.md` — the notes this repo's `_docs/PRD.md` and `_docs/Design.md` cite as the origin of the three-week-unexecuted-plan failure mode this repo exists to prevent. **The literal "Tier 1: INSTALL NOW" table itself lives in `PDF's Ingestion Implementation.md`'s Matrix section, not `GitHub Ingestion Implementation.md`** (corrected 2026-08-19 in `_docs/PRD.md` and `_docs/Repo-Map.md` — `GitHub Ingestion Implementation.md` has its own, separate, unlabeled 4-item "Priority 1" list). Historical record, not a live tracker — `Tool Map.md` is where current state lives now.
+
+### `60_Claude/05_Clippings/AI Conversations/` — raw conversation clippings
+
+Organized by OS (`WSL/`, `Windows/`) then by tool (`Claude Code`, `Cursor`, `Kiro`, and `Cowork` under `Windows/`). Should be **live** for Claude Code and Cowork at minimum, likely Cursor too — the existing `_raw_jsonl` NTFS-junction pattern (documented in this folder's own `README.md`) already proves the mechanism for same-OS, read-only session-transcript mirroring; `_docs/Sync.md` is the record of what does and doesn't extend across the WSL↔Windows boundary.
+
+**Ground-truth capture status as of 2026-08-19 (superseding the paragraph above, which described the intended design, not verified reality):** the capture layer has a real, two-part architecture — Layer 0 (a zero-token raw JSONL mirror, an NTFS junction on Windows / a one-way copy on WSL) and Layer 1 (an automatic, near-zero-token markdown archive note, written by a `Stop`/`SessionEnd`-triggered PowerShell hook — `export-claude-session.ps1` on Windows, `wsl-session-export.ps1` on WSL). This has broken and been re-fixed twice already: first, WSL never had the export hook wired at all until 2026-07-30; second, every hook silently died again for 11 days (2026-07-30 → 2026-08-11) because the hooks called `pwsh`, which wasn't on `PATH`, and a naive fallback to native `powershell.exe` "worked" but couldn't resolve WSL paths, so nothing was captured while `settings.json` reported no error. Both fixes are recorded in `AI Conversations/README.md`'s 2026-08-11 amendment.
+
+**A third, deeper reliability gap was diagnosed 2026-08-10/11 and deliberately left unbuilt**, per the raw session transcript at `60_Claude/05_Clippings/AI Conversations/Windows/Claude Code/Jarvis/08-10 Plan second-brain-claudekit workflow and review system.md`: capture depends entirely on `SessionEnd` firing, which doesn't fire reliably for every real termination path (an abruptly closed terminal, machine sleep, a WSL shutdown mid-session). The fix — a scheduled `-BackfillAll` safety net per platform, mirroring the pattern already proven for the Cursor sweep and the Unison vault sync — was explicitly scoped but not registered ("this message says discussion, not build").
+
+**As of 2026-08-19, that unbuilt gap has already recurred**: nothing has been captured on either OS since 2026-08-10 (Windows) / 2026-08-12 (WSL) — a 7–9 day blank stretch confirmed by direct listing of every dated file in both `WSL/Claude Code/` and `Windows/Claude Code/`. "WSL is the weak link" is only half the story — this specific stall hit both platforms simultaneously, for the same undiagnosed-until-now-unbuilt reason. **Building the scheduled backfill safety net (Windows Task Scheduler + WSL cron, one per platform, same shape as the existing sync/Cursor sweeps) is the single highest-leverage fix available for this repo's own conversation-logging requirement** — see `_docs/Gaps.md`.
+
+**Summarization (Layer 2, the `/export-ai-session` skill, genuinely token-costly, distinct from capture) has essentially never run against Claude Code sessions**: `60_Claude/07_AI_Information/AI Conversation - Summaries/` holds exactly 4 distilled summaries, all Cursor, none Claude Code, despite ~90 raw Claude Code session notes existing across both platforms. `Summaries-to-Create.md` (the intended backlog file) is empty. `60_Claude/30_Reviews/AI/Tools/Tool log.md` (Layer 3, the per-skill-use index `/export-ai-session` is supposed to append a row to on every run) exists with the correct schema but has zero data rows.
+
+### `60_Claude/07_AI_Information/` — the live AI-instruction and state layer
+
+The authority stack for how AI tools should behave in this vault: `Jarvis OS — North Star.md` (strategy/diagnosis/build-standard authority), `AI_CONTEXT.md` (live-state manifest and cold-start read order), `How to Use Claude/` (`Claude OS.md` — the agentic-setup registry; `Agent Operating Guide.md` — now a pure redirect stub per North Star's convergence pass; `What Graphify Does.md`).
+
+- **`AI Conversation - Summaries/`** — on a skill invocation, a session-summary note gets written here. Confirmed as of 2026-08-09: the destination for these notes is currently specified as the flat top level of this folder, **outside** the tool-specific subfolders that already exist here (`Claude Code/`, `Cowork/`, `Cursor/`, `Kiro/`) — an acknowledged inconsistency, not yet fixed.
+- **`Session Logs/`** — `log.md` (the main append-only session log `AI_CONTEXT.md` points to), `Session Logs Board.md`, `Convergence Worklog 2026-06-11.md`, and per-project subfolders including `CausalOps/` and **`Claude Kit/`** — the folder specifically for this repo's own session-log entries. Confirmed empty as of 2026-08-09: a scaffold, not yet populated.
+
+### `60_Claude/10_Source_Summaries/Github Ingestion/` — repo-ingestion write-ups
+
+Holds `Claude Kit Implementation.md` — the ingestion record for repos evaluated for (and potentially added to) this codebase's pipeline — plus category-sorted starred-repo lists (`AI Starred`, `Building Starred`, `Claude Starred`, `Jobs Starred`, `Learning Starred`, `Projects Starred`, `Security Starred`), `How Anant Uses Each Repo.md`, and `Useful Repos - Shortlist.md`.
+
+**Correction, 2026-08-09:** this repo's docs previously cited a file in this folder named `Immediate Action.md` — that file does not exist in the current listing. `Claude Kit Implementation.md` is the current file serving that role; any surviving reference to `Immediate Action.md` elsewhere in this repo is stale.
+
+### `60_Claude/30_Reviews/AI/` — the review layer
+
+Reviews of AI conversations and tool use, in subfolders `Conversations/`, `Tools/`, and `Scheduled/{Weekly,Monthly}/`.
+
+**Status as of 2026-08-09 (`10_Areas/AI/Setup/Folder Map.md`, pre-dating the build below):** "a completely empty shell... nothing writes to it yet." That description is now **superseded** — real design and build work happened 2026-08-10/11, recorded in the raw session transcript at `60_Claude/05_Clippings/AI Conversations/Windows/Claude Code/Jarvis/08-10 Plan second-brain-claudekit workflow and review system.md` (this session also settled where the system lives, via an explicit `AskUserQuestion`: its own tree under `60_Claude/30_Reviews/AI/`, kept deliberately separate from `Weekly Synthesis Index`/`60_Claude/30_Reviews/Monthly/`, which review a different subject — concept mastery, the Capability Engine — not usage/sync health).
+
+**What's actually built (confirmed 2026-08-19, still current):**
+- `30_Order/Standards/Review Standard.md` — the governing content standard. A review must cite the real log rows it read (Tool log, Sync-Log, Write Log) — "it never summarizes from memory or impression." Its `Used By Workflow` section states the trigger mechanism explicitly: **"Manual, human-triggered — no cron job writes a review."** This is a deliberate design decision, not a gap. Its `Decided Fixes` section is the literal 100%-clarity gate: *"a review surfacing a problem is not itself authorization to auto-fix it... even then the fix is applied by hand or flagged for the next build session — never by an automated process this review triggers."*
+- `30_Order/Templates/Capability/AI Tools Weekly Review Template.md` and `.../AI Tools Monthly Review Template.md` — both real, Templater-driven, matching the Standard's required sections (Period Covered, Sources Reviewed, What Ran This Period, Sync & Capture Health, Findings, Decided Fixes, Open Questions, Next Period's Watch List; Monthly adds a Tool Map Health Check that names anything stuck at one pipeline stage for over a month).
+- `60_Claude/30_Reviews/AI/Tools/Tool log.md` — the real per-use index of skills/commands/agents across Windows and WSL, one row per invocation (`Date | Project | Skill/Command | What It Did | Outcome | Source`). Deliberately filed here, not in `05_Clippings/`, because the vault's Write Contract makes `05_Clippings/` read-only after capture and this file is continuously updated, not a raw capture. Written only by `/export-ai-session` — never hand-edited.
+
+**What's still genuinely missing, as of 2026-08-19:**
+- The `Tool log.md` table has zero data rows — nothing has run `/export-ai-session` against a real session yet.
+- No review has ever been written under the new Standard — its own "Gold Standard Example" field says "none yet."
+- `Conversations/` is untouched by any of this build — still an empty, unwired subfolder with no defined purpose distinct from `Tools/`.
+- No scheduling mechanism exists for the *review-writing step itself* — `CronList` returns nothing, and per the Standard this is by design (a human, or an agent explicitly asked, produces a review — nothing auto-generates one). What genuinely is missing is the *cadence* trigger (a reminder/cron that prompts the human/agent to sit down and write the next Weekly or Monthly review on schedule), which `10_Areas/AI/Setup/Gaps.md` still lists as open.
+
+**Self-improvement sequencing still applies to anything beyond the above:** per `_docs/Design.md`'s 2026-08-09 commitment — the qualification pipeline runs solidly first, real evidence accumulates, only then does "what to automate further" get decided, and any future automation for this layer must write one visible, logged line per run, never act silently.
+
+### `60_Claude/40_Project_Briefs/Claude Kit/` — the planned Graphify integration
+
+Confirmed empty as of 2026-08-09 — a placeholder for work not yet started. The plan: implement Graphify (and potentially other mapping tools) against this repo itself, to map out everything inside the codebase; that map then syncs into this Jarvis folder and auto-updates as the underlying `.graphify` output improves, using a mechanism similar in spirit to the existing Unison-based `.claude/` sync (`_docs/Sync.md`). **Not built.** Named and scoped here as a future task, not claimed as an existing capability.
+
+### `40_Resources/CS/AI/` — the AI-knowledge reference layer
+
+Where rich, source-of-truth knowledge about *how to use AI correctly*, per domain, gets written — but only after a skill/agent/MCP has actually been implemented and used, never speculatively. Confirmed as of 2026-08-09: most of this folder is still thin or empty (`Agent Orchistration/`, `Memory/`, `Token Optimization/` subfolders exist but are largely unpopulated). This is acknowledged, ongoing, manual work — filling it is not a mechanical task, it accrues one real, tested lesson at a time.
+
+- **`Prompts/`** — model-specific prompt notes: what actually works for a given AI platform, with real example prompts, headed per model. Currently one file (`Chat Gpt Prompts.md`) — thin by the folder's own design, meant to grow per-model as real prompting patterns get proven out.
+- **`Workflows/`** — workflows for each AI platform in active use, and for every automated Jarvis process that exists *or should exist*. Written prescriptively, as if the described workflow is actually running — the target-state spec for automation, the same role `Jarvis OS — North Star.md` plays for the instruction layer as a whole. Currently holds `AI Workflow.md`, `UMN Workflow.md`, and a `Claude Code/` subfolder.
+
+### `10_Areas/AI/` — the master AI index
+
+The single place every AI-related note in the vault ultimately maps into — deliberately kept light (short notes, heavy interlinking) rather than duplicating detail that belongs in `40_Resources/CS/AI/` or `60_Claude/`. Explains, in real detail, what each AI-related folder is *for*. This file and `_docs/Repo-Map.md` are this repo's own equivalent instinct applied to its own filesystem.
+
+## Why `20_Progress/AI/Claude Code/` and `20_Progress/Projects/AI Use/Claude Kit/` don't duplicate each other
+
+`20_Progress/AI/Claude Code/<Project>/` answers "what is this project's Claude Code setup **right now**" — hand-maintained, per-project, mirror-of-reality snapshots for every project except `second-brain-claudekit`, which is genuinely live. `20_Progress/Projects/AI Use/Claude Kit/` answers an earlier, different question: "what has `second-brain-claudekit` ingested, and what stage is each thing at, regardless of whether it's reached any project's real `.claude/` yet." Most of what `Tool Map.md` tracks (gbrain, gstack, mattpocock-engineering, ECC, the 2026-07-30 batch) hasn't reached any project's `.claude/` — there's nothing yet to add to a per-project folder. The two layers connect at exactly one point: the day a tool crosses from tracked in `Tool Map.md` into an actual project's real `.claude/skills/`, that project's own snapshot gets updated too, and the `Tool Map.md` row notes which project(s) received it.
+
+## No parallel logging convention invented
+
+`20_Progress/Projects/AI Use/Claude Kit/Log.md` deliberately reuses the exact heading shape already established in `60_Claude/07_AI_Information/Session Logs/log.md` (`## [YYYY-MM-DD] tag | title`, followed by narrative bullets) rather than inventing a new format. Consistency across the vault's logging layers matters more than a locally "nicer" format — the same principle behind this repo's own dated-amendment convention in `_docs/`.
+```
+- `Write` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Projects\AI Use\Claude Kit\Source of Truth\The Qualification Pipeline.md`
+```
+---
+type: evergreen
+status: sprout
+created: 2026-08-19
+updated: 2026-08-19
+tags:
+  - evergreen
+  - claude-kit
+  - pipeline
+notes:
+  - "[[20_Progress/Projects/AI Use/Claude Kit/Tool Map]]"
+  - "[[20_Progress/Projects/AI Use/Claude Kit/Log]]"
+  - "[[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Claude Code]]"
+next: Update this note the same session second-brain-claudekit's own _docs/Architecture.md or _docs/Design.md changes the stage definitions or folder shape described below
+---
+# The Qualification Pipeline
+==second-brain-claudekit exists to make "I read the README" and "I ran it for real" structurally impossible to confuse, for every piece of Claude Code tooling Anant considers adopting — this note explains the actual mechanism, cited against the repo's own `_docs/` and this vault's `Tool Map.md`, not summarized from memory.==
+## Why this repo exists
+Two failure modes, both already real before this repo existed, not hypothetical risks it pre-empts. **Install-and-forget**: tooling copied straight into a real project's `.claude/` or the global `~/.claude/` on the strength of a README, then found broken, redundant, or wrong for the workflow — `second-brain-claudekit/_docs/PRD.md`'s own Problem section names the evidence directly: most project folders under `20_Progress/AI/Claude Code/` in this vault are marked `static` or `stale` in that folder's `MOC.md`, and `.claude_windows/`/`.claude_wsl/` sat as full raw one-time copies of the real global `~/.claude` — credential-bearing clutter nobody pruned, `.claude_windows/`'s copy holding a live `.credentials.json`, `.claude_wsl/`'s holding a live GitHub PAT and two MCP Bearer tokens in plaintext (`_docs/Sync.md`'s 2026-08-10 amendment; both raw dumps were later wiped and replaced by curated Unison mirrors, per [[20_Progress/Projects/AI Use/Claude Kit/Log|Log.md]]'s 2026-08-10 entry). **Plan-and-never-run**: the opposite failure, equally documented — `60_Claude/20_Distilled_Notes/Sources - Plan/PDF's Ingestion Implementation.md`'s Claude Code Skills & Repos Matrix, under a literal **"Tier 1: INSTALL NOW (Proven, High-Value)"** table (ECC, mattpocock-skills, gstack, cpr-compress-preserve-resume, context-sync, spec-kit — 6 items), sat unexecuted for three weeks, confirmed directly against `.claude/skills/`, `.claude/agents/`, and `~/.claude.json` in the 2026-07-29 execution pass (`60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md`'s `# Github` section) — cited exactly this way in `_docs/PRD.md`, which also corrects an earlier draft that mis-cited a different file (`GitHub Ingestion Implementation.md`) as the Tier-1 list's source. Neither a bias toward installing everything nor a bias toward endlessly researching solves this; the fix is a disciplined middle step — a real folder (`sandbox/`) where a tool has to actually run before it's trusted anywhere near a project that matters.
+## The pipeline, as it concretely exists today
+`sandbox/<repo-name>/` is stage one: a real `git clone`, nothing else. A tool advances only by clearing `_docs/Promotion-Criteria.md`'s four gate questions — did it actually run without a manual workaround, does it solve a problem nothing else already solves, is it a duplicate of something already promoted, and can its claimed dependency be mechanically verified (`60_Claude/scripts/check_dependency.py`) rather than trusted from the README. Each is a hard gate, not a "maybe" — [[20_Progress/Projects/AI Use/Claude Kit/Tool Map|Tool Map.md]]'s GBrain row (clean yes: `bun install` → `doctor` reporting 80/100 health against a real PGLite database), gstack row (a real, honest no: compiled binaries and downloaded a 278MB Chromium build, then failed on a missing `libnss3.so`), and mattpocock-engineering row (partial-yes: the installer ran and found 41 real skills, but its interactive picker doesn't complete non-interactively, so only the `engineering/` category — 17 skills — was copied for review) are the three worked examples `_docs/Architecture.md` and `_docs/Promotion-Criteria.md` both ground the whole model in — read those rows before re-deriving the stage logic from prose. Clearing stage one lands a tool in `tested-tools/<type>/<use-case>/<repo-name>/` — a piece earns its own `<use-case>/` folder only once it *individually* clears review; until then it sits ungrouped, one level up, directly under `<repo-name>/` (`tested-tools/skills/mattpocock-engineering/` is exactly this ungrouped shape today, still 0-of-17 individually tested per `tests/skills/mattpocock-engineering/README.md`'s honest backlog table).
+`tests/<type>/<repo>/` is the gate that makes "cleared the bar" mean something checkable rather than a remembered impression — scoped 2026-08-19, populated with exactly two real entries: `tests/commands/cpr-compress-preserve-resume/2026-08-19-test-log.md`, a real transcript (not a description) of the commands actually run — project-root detection, the "summary-only, stop before `## Raw Session Log`" read contract confirmed via `awk` (26/29 lines), the 280-line archive-budget check — and `tests/skills/mattpocock-engineering/README.md`, which states plainly that 0 of the 17 skills have been individually tested rather than leaving that implicit. `instructions/<repo>/` is the pattern-reuse layer, a different job from `tests/` — `CLAUDE.md`/`AGENTS.md`/`PRD.md`-shaped files copied verbatim from `sandbox/` candidates because the pattern inside is worth reviewing later, never this repo's own root `CLAUDE.md`. As of 2026-08-19 it holds real content across 19 of the 30 repos in `sandbox/` — 28 files by direct count, one more than the discovery pass's own claimed 27 (`instructions/README.md` and `_docs/Gaps.md` both say 27; the actual filesystem says 28 — a real discrepancy caught by independently counting rather than transcribing the repo's own claim, recorded in [[20_Progress/Projects/AI Use/Claude Kit/Log|Log.md]]'s 2026-08-19 entry). None of the 28 has been reviewed for reusable patterns yet — `instructions/README.md` is explicit that this is a "files exist" proof, not a "patterns extracted" one.
+Terminal states, all real as of 2026-08-19: **promoted (repo-scoped)** — this repo's own `.claude/skills/` or `.claude/commands/`; **promoted (Jarvis-bound)** — Jarvis's real `.claude/`, held to Jarvis's own build standard at the moment of promotion (`Jarvis OS — North Star.md` Part 5), not before; **promoted (global)** — the real `~/.claude/`, both Windows and WSL homes, where the actual install happens in a separate session, not inside this repo (`_docs/Design.md`); **blocked** or **dropped**; and **parked (future)** — `tested-tools/_future/<repo>/`, new 2026-08-19, for a tool that clears `tested-tools/` review on its own terms but has no current project need, with a sibling `FOR-WHAT.md` naming the use case it's waiting for. Verified by direct listing 2026-08-19: `tested-tools/_future/` is currently empty — correctly, not a gap, since nothing on `Tool Map.md` has cleared review with no home yet. The first individually-tested, evidence-backed promotion decision in this repo's history is `tested-tools/commands/cpr-compress-preserve-resume/`'s **blend** verdict — neither "adopt wholesale" (the source repo's `CC-Session-Logs/` convention conflicts with this repo's own vault-anchored `60_Claude/Sessions/`) nor "keep the hand-authored trio unchanged" (three real, tested improvements existed: `AskUserQuestion` multi-select, a concrete 280-line archive budget, topic-named session-log filenames) — see [[20_Progress/Projects/AI Use/Claude Kit/Tool Map|Tool Map.md]]'s row for the full adopted/rejected breakdown. Separately, the top-level `agents/`, `commands/`, `hooks/` folders were repurposed 2026-08-19 from flat draft-then-promote staging into per-destination-project staging (`agents/<ProjectName>/`, created only when real content lands, plus a new sibling `docs/<ProjectName>/`) — a folder-convention change adjacent to the pipeline, not itself a new stage, documented in `60_Claude/vault-rules/pipeline-conventions.md`. Their previous flat contents (15 files: 4 agents, 8 commands, 3 hooks, all traced to the repo's first scaffold commit `d35f0b7`) were confirmed zero-provenance and relocated to `tested-tools/{agents,commands,hooks}/native-scaffold/` in the same session — see Tool Map's native-scaffold batch row.
+## How to trace any specific tool's real history
+[[20_Progress/Projects/AI Use/Claude Kit/Tool Map|Tool Map.md]] is the sole source of truth for current per-tool state — one row per tool, updated the same session its stage changes, per `_docs/PRD.md`'s "Current state" section and the vault's own "one fact, one home" principle (`_docs/Jarvis.md` cites `Jarvis OS — North Star.md` for this directly). It does not keep history — for that, [[20_Progress/Projects/AI Use/Claude Kit/Log|Log.md]] is the append-only dated record, one `## [YYYY-MM-DD] tag | title` entry every time a Tool Map row changes, deliberately reusing `60_Claude/07_AI_Information/Session Logs/log.md`'s exact heading convention rather than inventing a new one (`_docs/Jarvis.md`'s "No parallel logging convention invented" section). To check any claim about a tool: read its current row in Tool Map first, then find every Log.md entry that touches it for the dated narrative of how it got there — mattpocock-engineering's row states it's still 0-of-17 tested; Log.md's 2026-07-29 entry explains why (the interactive picker's non-interactive limitation forced a whole-category copy instead of a cherry-picked one), and its 2026-08-19 entry confirms that gap is now an honest, dated backlog file rather than an implicit unknown. Do not stop at this repo's own `_docs/` prose as if it were automatically current — the 27-vs-28 `instructions/` discrepancy above is exactly the class of error that survives inside a repo's own docs unless someone independently counts against the real filesystem rather than re-reading the claim.
+## What's still open
+`tested-tools/commands/cpr-compress-preserve-resume/` sits at a literal two-level path, not the three-level `tested-tools/<type>/<use-case>/<repo>/` convention `tested-tools/README.md` states elsewhere — flagged inside the folder's own `VERDICT.md`, not silently resolved. The `tested-skills`/`tested-tools` naming drift between this vault's older notes and the repo's 2026-08-09 rename was fixed in `Tool Map.md` 2026-08-19 but not audited across every other note in the vault. Smaller open items (the still-thin `40_Resources/CS/AI/` reference layer, the un-reconciled Windows/WSL global-home skill sets, the weekly-summary template gap) live in the repo's own `_docs/Gaps.md` — this note explains the shape that audit trail is auditing, it doesn't re-duplicate the trail itself.
+## Links
+[[20_Progress/Projects/AI Use/Claude Kit/Tool Map|Tool Map]] for current per-tool state. [[20_Progress/Projects/AI Use/Claude Kit/Log|Log]] for the dated history behind it. [[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Claude Code|Toolkit/Claude Code]] for what a tool becomes once it actually promotes — the usage-reference layer this pipeline feeds. [[10_Areas/AI/Setup/Review System|Review System]] for how usage of anything promoted gets reviewed on a cadence.
+
+```
+- `Write` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\10_Areas\AI\Setup\Review System.md`
+```
+---
+type: evergreen
+status: sprout
+created: 2026-08-19
+updated: 2026-08-19
+tags:
+  - evergreen
+  - ai
+  - review-system
+  - claude-kit
+notes:
+  - "[[30_Order/Standards/Review Standard]]"
+  - "[[60_Claude/30_Reviews/AI/Tools/Tool log]]"
+  - "[[20_Progress/Projects/AI Use/Claude Kit/Source of Truth/The Qualification Pipeline]]"
+  - "[[10_Areas/AI/Setup/Gaps]]"
+next: The full operational mapping — who/what actually triggers a review sit-down on cadence, how Conversations/ gets used, reconciling Tool log's zero rows — is a later step's job, not this note's
+---
+# Review System
+==The review system is a periodic, human-triggered look at how Claude Code tooling is actually being used and whether the sync/capture layer under it is drifting — built 2026-08-10/11, real but still foundation-only, and this note describes exactly that foundation against the three files that carry it, not the full workflow around it.==
+## What it is, and what it isn't
+`60_Claude/30_Reviews/AI/` reviews *usage and infrastructure health* — which skills/commands/agents actually ran, whether sync stayed clean, whether every real session got captured. This is a different subject from `60_Claude/30_Reviews/Weekly Synthesis/` and `60_Claude/30_Reviews/Monthly/`, which review concept mastery under the Capability Engine — [[30_Order/Standards/Review Standard|Review Standard.md]] states this explicitly rather than leaving the two folders to be conflated: "It governs a different subject than Weekly Synthesis Template/Monthly Synthesis Template.md... do not conflate the two folders or reuse one template for the other's job." The split was a deliberate, dated decision, not an accident of two features growing independently — `second-brain-claudekit/_docs/Jarvis.md`'s account of the 2026-08-10/11 build (citing the raw session transcript at `60_Claude/05_Clippings/AI Conversations/Windows/Claude Code/Jarvis/08-10 Plan second-brain-claudekit workflow and review system.md`) records this system's own tree being chosen via an explicit `AskUserQuestion`, kept separate on purpose.
+## Why it exists
+Passing the qualification pipeline's bar (see [[20_Progress/Projects/AI Use/Claude Kit/Source of Truth/The Qualification Pipeline|The Qualification Pipeline]]) proves a tool *works*; it says nothing about whether it keeps getting *used* after promotion, or whether the sync mechanism keeping [[20_Progress/Projects/AI Use/Claude Kit/Tool Map|Tool Map.md]] and the Jarvis-side `.claude/` mirrors accurate is itself still healthy. Those are exactly the two questions a promoted tool can quietly fail at without the pipeline ever noticing — a skill nobody types anymore, or a sync leg that's been silently failing since a task-scheduler bug (both real, already-observed failure classes elsewhere in this vault: `_docs/Repo-Map.md`'s two hardcoded-path incidents, `Toolkit/Claude Code.md`'s "installed but near-zero adopted" marketplace-skill finding). The review system exists to catch that class of drift on a cadence, using real logged evidence instead of impression.
+## The real foundational shape, as built
+Three files, all confirmed current by direct read, not by trusting a prior summary of them. [[30_Order/Standards/Review Standard|Review Standard.md]] is the governing content standard: a review must cite the actual log rows it read — [[60_Claude/30_Reviews/AI/Tools/Tool log|Tool log]] for skill/tool use, `_All-Projects-Sync-Log.md` for sync health, `Write Log.md` for structural changes to the sync layer itself — and its own opening line states the discipline bluntly: "it never summarizes from memory or impression." It defines eight required headings (Period Covered, Sources Reviewed, What Ran This Period, Sync & Capture Health, Findings, Decided Fixes, Open Questions, Next Period's Watch List) and a matching set of Done Conditions, including this vault's general note-writing rules (no `---` in the body, zero blank lines except after a callout, no duplicate frontmatter keys) plus a review-specific one: every Sync & Capture Health claim must trace to a real log row, cited by file and date. `30_Order/Templates/Capability/AI Tools Weekly Review Template.md` and `.../AI Tools Monthly Review Template.md` are the two real, Templater-driven templates that implement those headings exactly — both confirmed by direct read, not assumed from the Standard alone. The Monthly template adds one section the Weekly doesn't need: a Tool Map Health Check, naming anything stuck at `sandbox` or `tested-tools` for more than one full month rather than letting it silently carry forward again. [[60_Claude/30_Reviews/AI/Tools/Tool log|Tool log.md]] is the real per-use index a review actually reads from — one row per skill/command/agent invocation (`Date | Project | Skill/Command | What It Did | Outcome | Source`), filed at `60_Claude/30_Reviews/AI/Tools/` rather than `60_Claude/05_Clippings/`, because it's continuously updated and `05_Clippings/` is read-only after capture under this vault's Write Contract — Tool log's own Purpose section states this filing reason directly. It is written only by `/export-ai-session`, never hand-edited, and as of 2026-08-19 it has zero data rows: nothing has run that skill against a real Windows or WSL Claude Code session yet, confirmed by the file's own empty `## Log` table and its `next:` field ("First real rows land the next time /export-ai-session runs").
+## The 100%-clarity Decided-Fixes gate, and why the trigger stays manual
+Review Standard.md's `Used By Workflow` section states the trigger mechanism as a design decision, not an omission: "Manual, human-triggered — no cron job writes a review... a human (or an agent explicitly asked to) reads them and writes the review." The `Decided Fixes` heading carries the sharper rule underneath that: an item only lands there when the fix is unambiguous *and* the reviewer has 100% clarity on what actually happened — "a review surfacing a problem is not itself authorization to auto-fix it," and even a fully-clear fix gets applied by hand or flagged for the next build session, never triggered automatically by the review itself. Anything short of full clarity goes to `Open Questions` instead, and stays there — the Standard explicitly disallows deleting an unresolved open question rather than carrying it forward. This is the same sequencing discipline `second-brain-claudekit/_docs/Design.md` states for the qualification pipeline as a whole (the pipeline runs solidly and real evidence accumulates *before* anyone decides what to automate further, and whatever eventually gets built stays small and logged rather than silent) — the review system inherits that discipline rather than reinventing a looser one for itself. Automating either the trigger or the fix-application step before the review's own evidence trail is solid would be the same plan-and-never-verify failure mode the whole pipeline exists to prevent, aimed at a different target.
+## What this note deliberately does not cover
+This is the foundation as built, not the operational map of how it runs day to day — who or what actually prompts a sit-down to write the next Weekly or Monthly review on schedule (`CronList` currently returns nothing, confirmed in `_docs/Jarvis.md`'s 2026-08-19 account, and that cadence-trigger gap is tracked as still open in [[10_Areas/AI/Setup/Gaps|Gaps.md]], not here), what `Conversations/` under `60_Claude/30_Reviews/AI/` is actually for (untouched by the 2026-08-10/11 build, no defined purpose distinct from `Tools/` yet), or how Tool log's zero rows get resolved into a first real review. Mapping that full workflow end to end is explicitly a later step's job, not this note's — this note only needed to stop being empty and vague about the part that already exists.
+## Links
+[[30_Order/Standards/Review Standard|Review Standard]] for the content rules a review must follow. [[60_Claude/30_Reviews/AI/Tools/Tool log|Tool log]] for the per-use index it reads from. [[20_Progress/Projects/AI Use/Claude Kit/Source of Truth/The Qualification Pipeline|The Qualification Pipeline]] for the system this review layer watches. [[10_Areas/AI/Setup/Gaps|Gaps]] for the still-open cadence-trigger question.
+
+```
+- `Bash` -- `cd "/d/Users/_Anant/10_Areas/Documents/Jarvis"
+for f in "20_Progress/Projects/AI Use/Claude Kit/Source of Truth/The Qualification Pipeline.md" "10_Areas/AI/Setup/Review System.md"; do
+  echo "=== $f ==="
+  echo "blank lines in body (after frontmatter):"
+  awk 'BEGIN{fm=0} /^---$/{fm++; next} fm>=2 && NF==0{print NR": blank"}' "$f"
+  echo "stray --- in body:"
+  awk 'BEGIN{fm=0} /^---$/{fm++; next} fm>=2 && /^---$/{print NR}' "$f"
+  wc -l "$f"
+done`
+```
+=== 20_Progress/Projects/AI Use/Claude Kit/Source of Truth/The Qualification Pipeline.md ===
+blank lines in body (after frontmatter):
+stray --- in body:
+29 20_Progress/Projects/AI Use/Claude Kit/Source of Truth/The Qualification Pipeline.md
+=== 10_Areas/AI/Setup/Review System.md ===
+blank lines in body (after frontmatter):
+stray --- in body:
+31 10_Areas/AI/Setup/Review System.md
+```
+- `Bash` -- `cd "/d/Users/_Anant/10_Areas/Documents/Jarvis"
+declare -a targets=(
+"20_Progress/Projects/AI Use/Claude Kit/Tool Map.md"
+"20_Progress/Projects/AI Use/Claude Kit/Log.md"
+"20_Progress/Projects/AI Use/Claude Kit/Toolkit/Claude Code.md"
+"10_Areas/AI/Setup/Review System.md"
+"30_Order/Standards/Review Standard.md"
+"60_Claude/30_Reviews/AI/Tools/Tool log.md"
+"20_Progress/Projects/AI Use/Claude Kit/Source of Truth/The Qualification Pipeline.md"
+"10_Areas/AI/Setup/Gaps.md"
+)
+for t in "${targets[@]}"; do
+  if [ -f "$t" ]; then echo "OK: $t"; else echo "MISSING: $t"; fi
+done`
+```
+OK: 20_Progress/Projects/AI Use/Claude Kit/Tool Map.md
+OK: 20_Progress/Projects/AI Use/Claude Kit/Log.md
+OK: 20_Progress/Projects/AI Use/Claude Kit/Toolkit/Claude Code.md
+OK: 10_Areas/AI/Setup/Review System.md
+OK: 30_Order/Standards/Review Standard.md
+OK: 60_Claude/30_Reviews/AI/Tools/Tool log.md
+OK: 20_Progress/Projects/AI Use/Claude Kit/Source of Truth/The Qualification Pipeline.md
+OK: 10_Areas/AI/Setup/Gaps.md
+```
+
 ## Actions Taken
 
 **Files created:**
-_None_
+- `D:\Users\_Anant\10_Areas\Documents\Jarvis\10_Areas\AI\Setup\Review System.md`
+- `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Projects\AI Use\Claude Kit\Source of Truth\The Qualification Pipeline.md`
 
 **Files modified:**
 - `D:\Users\_Anant\10_Areas\Documents\Jarvis\10_Areas\AI\Claude Code.md`
@@ -1641,6 +2195,43 @@ echo "=== check for stray --- in body (excluding frontmatter) ==="
 for f in "20_Progress/Projects/AI Use/Claude Kit/Tool Map.md" "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Agents/What Agents.md" "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Commands/What Commands.md" "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Hooks/What Hooks.md" "10_Areas/AI/Setup/Folder Map.md" "10_Areas/AI/Setup/Notes Map.md" "10_Areas/AI/Claude Code.md" "10_Areas/AI/Setup/Gaps.md"; do
   cnt=$(tail -n +9 "$f" | grep -c "^---$")
   echo "$f : $cnt"
+done`
+- `find "/d/Users/_Anant/10_Areas/Documents/Jarvis/30_Order/Standards" -iname "Review Standard.md"
+find "/d/Users/_Anant/10_Areas/Documents/Jarvis" -iname "AI Tools Weekly Review Template.md" -o -iname "AI Tools Monthly Review Template.md"
+find "/d/Users/_Anant/10_Areas/Documents/Jarvis/60_Claude/30_Reviews/AI/Tools" -iname "Tool log.md"
+find "/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/AI Use/Claude Kit" -maxdepth 1`
+- `WSL="//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit"
+echo "=== PRD.md ==="; cat "$WSL/_docs/PRD.md"
+echo
+echo "=== Architecture.md ==="; cat "$WSL/_docs/Architecture.md"`
+- `WSL="//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit"
+echo "=== Design.md ==="; cat "$WSL/_docs/Design.md"
+echo
+echo "=== Promotion-Criteria.md ==="; cat "$WSL/_docs/Promotion-Criteria.md"`
+- `WSL="//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit"
+cat "$WSL/_docs/Jarvis.md"`
+- `cd "/d/Users/_Anant/10_Areas/Documents/Jarvis"
+for f in "20_Progress/Projects/AI Use/Claude Kit/Source of Truth/The Qualification Pipeline.md" "10_Areas/AI/Setup/Review System.md"; do
+  echo "=== $f ==="
+  echo "blank lines in body (after frontmatter):"
+  awk 'BEGIN{fm=0} /^---$/{fm++; next} fm>=2 && NF==0{print NR": blank"}' "$f"
+  echo "stray --- in body:"
+  awk 'BEGIN{fm=0} /^---$/{fm++; next} fm>=2 && /^---$/{print NR}' "$f"
+  wc -l "$f"
+done`
+- `cd "/d/Users/_Anant/10_Areas/Documents/Jarvis"
+declare -a targets=(
+"20_Progress/Projects/AI Use/Claude Kit/Tool Map.md"
+"20_Progress/Projects/AI Use/Claude Kit/Log.md"
+"20_Progress/Projects/AI Use/Claude Kit/Toolkit/Claude Code.md"
+"10_Areas/AI/Setup/Review System.md"
+"30_Order/Standards/Review Standard.md"
+"60_Claude/30_Reviews/AI/Tools/Tool log.md"
+"20_Progress/Projects/AI Use/Claude Kit/Source of Truth/The Qualification Pipeline.md"
+"10_Areas/AI/Setup/Gaps.md"
+)
+for t in "${targets[@]}"; do
+  if [ -f "$t" ]; then echo "OK: $t"; else echo "MISSING: $t"; fi
 done`
 
 

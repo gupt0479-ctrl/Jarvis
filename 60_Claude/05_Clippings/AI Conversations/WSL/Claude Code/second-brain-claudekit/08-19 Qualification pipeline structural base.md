@@ -5,35 +5,35 @@ source_app: claude-code
 source_os: wsl
 title: "Qualification pipeline structural base"
 started_at: 2026-08-19T06:59:06
-ended_at: 2026-08-19T07:23:34
-duration_minutes: 24
-exported_at: 2026-08-19T14:45:02
+ended_at: 2026-08-19T16:05:18
+duration_minutes: 546
+exported_at: 2026-08-19T21:07:36
 project: second-brain-claudekit
 cwd: '/home/anant_gupta/projects/ai/claude/second-brain-claudekit'
 session_id: 305124c8-922f-4d5b-92bb-5a7f5785b3c0
 status: raw
-turn_count: 4
+turn_count: 6
 tools_used:
   Agent: 1
-  AskUserQuestion: 1
-  Bash: 41
-  Edit: 14
+  AskUserQuestion: 2
+  Bash: 74
+  Edit: 34
   ListAgents: 1
   mcp__github__search_repositories: 1
   mcp__jarvis__search_simple: 1
   mcp__jarvis__vault_list: 7
   mcp__jarvis__vault_read: 5
-  Read: 25
+  Read: 41
   ToolSearch: 2
   WebSearch: 1
-  Write: 17
+  Write: 30
 tokens:
-  input: 412
-  output: 187799
-  cache_creation: 910776
-  cache_read: 39889870
-  total: 40988857
-cost_usd: 13.499892
+  input: 706
+  output: 308394
+  cache_creation: 2052134
+  cache_read: 97500099
+  total: 99861333
+cost_usd: 30.793908
 model:
   - claude-sonnet-5
 files_touched:
@@ -74,6 +74,25 @@ files_touched:
   - "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/CLAUDE.md"
   - "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/README.md"
   - "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/How to/conversation-capture.md"
+  - "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-manifest.json"
+  - "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-all.sh"
+  - "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/vault-rules/write-contract.md"
+  - "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/30_Order/Standards/Evergreen Standard.md"
+  - "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/30_Order/Standards/Review Standard.md"
+  - "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/.claude/agents/vault-curator.md"
+  - "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/.claude/hooks/after-edit-log.md"
+  - "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools/skills/mattpocock-engineering/triage/SKILL.md"
+  - "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/README.md"
+  - "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/Agent Standard.md"
+  - "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/Skill Standard.md"
+  - "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/Command Standard.md"
+  - "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/Hook Standard.md"
+  - "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/Instructions Standard.md"
+  - "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/Tested-Tool Promotion Standard.md"
+  - "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/agent-template.md"
+  - "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/skill-template.md"
+  - "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/command-template.md"
+  - "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/hook-template.md"
 tags:
   - input
   - ai-conversation
@@ -2933,10 +2952,2002 @@ One more thing to flag: the background fork I'd sent to summarize a Jarvis vault
 
 Nothing else changes: the Phase 1–7 report I gave above stands as the accurate account of this session's work.
 
+## You
+
+You are correcting and completing second-brain-claudekit's base-layout work. A prior session got several things right — verify this, don't just trust it: agents/, commands/, hooks/ provenance was resolved for real (the CPR pattern actually tested, verdict "blend" in tested-tools/commands/cpr-compress-preserve-resume/VERDICT.md; the other 15 zero-provenance files relocated to tested-tools/{agents,commands,hooks}/native-scaffold/); tests/ was backfilled for both; tested-tools/_future/ was correctly left empty. It got three things wrong or too thin, which is this session's actual job to fix:
+
+1. instructions/ was built on a wrong premise and needs to be cleared and rebuilt correctly.
+2. 60_Claude/vault-rules/ has no real operational write-safety rules for this repo — only generic PARA note-writing convention.
+3. 60_Claude/ has no Standards/ folder and no templates for authoring a new agent, skill, command, or hook.
+
+Read _docs/Repo-Map.md and _docs/Gaps.md first for full context on what's already real in this repo. Ground rule for the whole session: verify every claim against a real file before writing anything that depends on it — this repo's own docs have already drifted stale from trusted-but-unverified claims more than once (see _docs/Repo-Map.md's incident log); don't repeat that pattern here.
+
+## Phase 0 — confirm what's already correct, don't redo it
+
+Confirm each of these still exists as described: tested-tools/commands/cpr-compress-preserve-resume/ (with VERDICT.md), tested-tools/{agents,commands,hooks}/native-scaffold/ (15 files total), tests/commands/cpr-compress-preserve-resume/, tests/skills/mattpocock-engineering/, and tested-tools/_future/ (empty, correctly — nothing has cleared the bar with no project home yet). If any of these are missing or meaningfully different from this description, stop and report before touching anything else — that's a signal something changed that needs investigating, not a green light to silently rebuild it differently.
+
+## Phase 1 — instructions/, corrected
+
+Everything currently in instructions/ is wrong and must be cleared out: it holds one subfolder per sandbox/ candidate (adx, ecc, gbrain, and so on) with CLAUDE.md/AGENTS.md files copied from repos being evaluated for ingestion. That was a misreading of the original intent. Remove all of it. Before deleting, check whether any of it has standalone reference value; if so, note where it might belong instead (most likely nowhere new is needed — it was extracted from repos already sitting in sandbox/ with their own files intact) rather than defaulting to keeping a copy somewhere just in case.
+
+instructions/ is for the real projects Anant actively works on — never for sandbox/ candidates. It holds exactly the instruction-shaped markdown files (CLAUDE.md, AGENTS.md, PRD.md, and similar) that already exist for each real project, one subfolder per project: instructions/CausalOps/CLAUDE.md, instructions/CausalOps/AGENTS.md, and so on — the same per-destination-project convention already established for agents/, commands/, hooks/, docs/.
+
+The authoritative list of real projects and exactly which instruction files each one has is 60_Claude/scripts/sync-manifest.json — read it fresh; do not use any project list given to you secondhand, including any list in this prompt. For every entry with "kind": "project", filter its paths array down to the markdown instruction files specifically (CLAUDE.md, AGENTS.md, PRD.md, README.md-as-instructions, and similar — not .claude/agents, .claude/commands, .claude/hooks, .claude/skills, or other non-instruction subpaths), and copy the real, current content of each from that entry's source path (most are directly readable from this WSL session — check each one; fall back to the entry's mirror path in Jarvis only if source isn't reachable) into instructions/<ProjectName>/<file>.
+
+This is meant to become a live-synced folder, the same way agents/, commands/, hooks/, docs/ already are for their own content — but sync-manifest.json and sync-all.sh currently only sync each project's source and its Jarvis mirror, never into this repo's own instructions/. Do not wire this up silently. Design the concrete extension (most likely a new field on each manifest entry naming which of its paths also mirror into instructions/<name>/, plus the corresponding sync-all.sh logic), write the design down in _docs/Sync.md, then use AskUserQuestion to confirm the design with Anant before modifying sync-manifest.json or sync-all.sh for real — that script runs unattended on a 15-minute schedule against real project repos, and a wrong edit there has a bigger blast radius than anything else in this session.
+
+## Phase 2 — a real write contract for this repo
+
+60_Claude/vault-rules/ (folder-structure.md, naming-conventions.md, linking-strategy.md, tagging-system.md, pipeline-conventions.md) describes generic PARA note-writing convention. What's actually missing is Jarvis's kind of document: a write contract — golden rules, a "where does this go" routing table, and an explicit "never write to" list — scoped to this repo's own filesystem instead of vault notes.
+
+Read Jarvis's real one in full first: the Jarvis vault root's AGENTS.md, "Write Contract" section (Golden rules, "Where does this note go?", "Never write to"). Do not invent a shape for this repo's version — adapt that real one's structure directly: golden rules for this repo (for example: never create a new top-level folder without checking it against _docs/Repo-Map.md first; when unsure where something goes, say so and ask rather than guessing a location), a routing table built from what's actually true about this repo's folders today (an agent for a specific project → agents/<Project>/; a candidate skill from a sandbox/ repo → skills/<repo>/; an instruction file for a real project → instructions/<Project>/; a promoted, cleared-the-bar artifact → tested-tools/<type>/<use-case>/<repo>/; and so on — work out the complete table, don't guess a partial one), and a "never write to" list (sandbox/<repo>/'s own files once cloned — read-only, tested-tools/ content that isn't yours to overwrite without going back through the pipeline, and anything else that's genuinely off-limits). Write this as 60_Claude/vault-rules/write-contract.md.
+
+## Phase 3 — Standards/ and artifact-authoring templates
+
+60_Claude/ has no Standards/ folder today, and no template for authoring a new agent, skill, command, or hook from scratch — only vault-note templates and one pipeline template (for-what.md) exist.
+
+Read Jarvis's real 30_Order/Standards/ folder in full — it holds one Standard.md per content type (Action, Brief, Concept, Evergreen, MOC, Project, Review, Source Summary, and others), each defining what "correct" looks like for that type. Read at least Evergreen Standard.md and Review Standard.md in full to understand the real shape a Standard takes here: a concrete, checkable definition with a "Used By Workflow" section and clear Done Conditions — not a vague style guide.
+
+Build 60_Claude/Standards/ in this repo with the same shape, one Standard.md per artifact type this repo actually produces: Agent Standard.md, Skill Standard.md, Command Standard.md, Hook Standard.md, Instructions Standard.md, and a Tested-Tool Promotion Standard.md (this last one should mostly point back to _docs/Promotion-Criteria.md and 60_Claude/Qualification-Checklist.md rather than duplicate them — cross-reference, don't repeat). Pair each with a real authoring template in 60_Claude/Templates/ (agent-template.md, skill-template.md, command-template.md, hook-template.md) — an actual skeleton someone would start from, not a placeholder. While in 60_Claude/Templates/, confirm the existing vault-note templates (area-note, daily-note, idea-note, and so on) are genuinely still right for notes this repo actually writes inside Obsidian; if any are clearly unused or wrong for this repo's real purpose, say so rather than silently leaving them.
+
+## Phase 4 — do not build the review folder
+
+60_Claude/ is also missing a review folder — this repo's own equivalent of Jarvis's 60_Claude/30_Reviews/AI/, for reviewing this repo's own pipeline activity. Do not build it in this session. It depends on the Jarvis-side review-system work (the three-step Jarvis prompt in this same note) finishing first. Note its absence in _docs/Gaps.md as explicitly deferred, with the real reason, and stop there.
+
+## Phase 5 — close the loop, honestly
+
+Update _docs/Repo-Map.md and _docs/Gaps.md: document that instructions/ was rebuilt on a corrected premise (briefly state what was wrong the first time, so it doesn't happen again), add write-contract.md, Standards/, and the new artifact-authoring templates to the folder inventory, and record the instructions/ live-sync design as designed-but-not-wired, with the real reason (confirmed with Anant first, per Phase 1). Update CLAUDE.md's and README.md's folder-structure diagrams to match. Run git status, check the full diff for anything that looks like a secret or an accidental deletion, then stop and report — do not commit unless asked.
+
+Apply every instruction above to everything it names, not a sample — every project in sync-manifest.json, every artifact type in Standards/. If you're about to skip something because it's probably the same as the last one, check that one specifically first.
+
+## Claude
+
+Starting with Phase 0 — verifying what the prior session claims are actually true on disk before building anything on top of them.
+
+Untracked, never committed — safe to remove directly.
+
+Now reading `sync-manifest.json` fresh — this is the authoritative project list, not anything secondhand.
+
+All 8 project sources are reachable. Now checking each project's actual instruction files exist at the manifest-specified paths.
+
+Design premise check before writing it down: the prompt frames this as extending an *existing* live-sync pattern already used by `agents/`, `commands/`, `hooks/`, `docs/`. I verified that's not true — none of those folders have any sync mechanism today; they're populated manually. I'll note that correction and design `instructions/` as the first of its kind, not an extension of something already live.
+
+Now appending a new dated design amendment to `_docs/Sync.md`.
+
+Now confirming the design with you before touching `sync-manifest.json` or `sync-all.sh` for real.
+
+Now validating the JSON and confirming all 8 project entries got the field (and the 2 `kind: home` entries didn't).
+
+Correct — all 8 project entries have `instructions_paths`, both `home` entries correctly omit it. Now implementing the cp logic in `sync-all.sh`.
+
+Now testing just the new `instructions_paths` copy logic in isolation, against the real manifest data, without triggering any Unison sync against live project mirrors.
+
+Fixing the `instructions/` section, which describes exactly the wrong premise this session corrected.
+
+Now writing the write contract, adapted directly from Jarvis's real one.
+
+Now the 4 authoring templates that pair with those Standards.
+
+Phase 3 done. Now Phase 4 — deferring the review folder — then Phase 5, closing the loop across all the docs.
+
+Now updating CLAUDE.md's Vault Structure diagram to reflect this session's changes (Standards/, write-contract.md, corrected `instructions/` line, new templates).
+
+Now Phase 5 — closing the loop in `_docs/Gaps.md` and `_docs/Repo-Map.md`.
+
+Now scanning the diff for secrets or anything sensitive, especially since I copied real content from `Jarvis`, `CausalOps`, `Resq`, `OpsPilot`, etc. into `instructions/`.
+
+Everything checks out. All 5 phases complete, verified, and clean.
+
+## Report
+
+**Phase 0 — verified, not redone.** All five claimed artifacts checked directly against disk: `tested-tools/commands/cpr-compress-preserve-resume/` (with `VERDICT.md`), `tested-tools/{agents,commands,hooks}/native-scaffold/` (15 files), both `tests/` entries, and `tested-tools/_future/` (empty). All accurate — nothing rebuilt.
+
+**Phase 1 — `instructions/` corrected.**
+- Confirmed the wrong premise for real: the old build held `sandbox/` *evaluation-candidate* copies (adx, ecc, gbrain, 16 others); every one of those files still exists untouched in its real `sandbox/<repo>/` location, so the copy added nothing. Cleared it entirely.
+- Read `sync-manifest.json` fresh (not any list handed to me) — 8 real `"kind": "project"` entries. Verified every source path reachable and every file real before copying: 17 instruction files across CausalOps, Jarvis, Portfolio, Trading View, Resq, OpsPilot, The Plan, and second-brain-claudekit itself.
+- Designed the live-sync extension in `_docs/Sync.md`, explicitly correcting the prompt's premise that `agents/`/`commands/`/`hooks/`/`docs/` are already live-synced — verified they aren't; nothing syncs into any of them today. Confirmed the design with you via `AskUserQuestion` (build it; include the self-entry) before touching `sync-manifest.json`/`sync-all.sh`. Then actually tested the new `instructions_paths` logic — extracted it into a standalone harness, ran it against the real manifest into a scratch directory, `diff -rq`'d it byte-identical against the real `instructions/` tree.
+
+**Phase 2 — write contract.** Read Jarvis's real `AGENTS.md` Write Contract in full, adapted its exact shape into `60_Claude/vault-rules/write-contract.md` for this repo's own filesystem — golden rules, a full routing table, a real never-write-to list. Along the way, found and documented that `00_Daily/`/`10_Areas/`/`20_Projects/`/`30_Knowledge/`/`40_Career/` have never actually existed as real folders in this repo (confirmed via `git log`), and that `docs/` had gone missing since the prior session (recreated it).
+
+**Phase 3 — Standards/ and templates.** Read Jarvis's real `Evergreen Standard.md`/`Review Standard.md` in full, built `60_Claude/Standards/` with the same shape for all 6 artifact types, paired with 4 new authoring templates. Checked the 7 existing vault-note templates against real git history — confirmed genuinely unused in this repo (not wrong, just never instantiated here) — documented rather than silently left.
+
+**Phase 4 — review folder deferred**, with the real reason recorded in `_docs/Gaps.md` §6: Jarvis's own review system is built but has zero data rows, so building on top of it now would repeat the exact plan-and-never-run failure this pipeline exists to prevent.
+
+**Phase 5 — closed the loop.** `_docs/Repo-Map.md` and `_docs/Gaps.md` both updated with dated, evidenced entries for everything above; `CLAUDE.md` and `README.md` folder diagrams updated to match.
+
+Full diff scanned for secrets and accidental deletions — clean. Nothing committed.
+
+**Tool calls:**
+
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit
+echo "=== tested-tools/commands/cpr-compress-preserve-resume/ ==="
+ls -la tested-tools/commands/cpr-compress-preserve-resume/ 2>&1
+echo
+echo "=== native-scaffold counts ==="
+echo "agents:"; ls tested-tools/agents/native-scaffold/ 2>&1
+echo "commands:"; ls tested-tools/commands/native-scaffold/ 2>&1
+echo "hooks:"; ls tested-tools/hooks/native-scaffold/ 2>&1
+echo
+echo "=== tests/ ==="
+find tests -type f 2>&1
+echo
+echo "=== tested-tools/_future/ ==="
+ls -la tested-tools/_future/ 2>&1
+  ```
+  ```
+=== tested-tools/commands/cpr-compress-preserve-resume/ ===
+total 28
+drwxr-xr-x 2 anant_gupta anant_gupta 4096 Aug 19 11:04 .
+drwxr-xr-x 4 anant_gupta anant_gupta 4096 Aug 19 11:11 ..
+-rw-r--r-- 1 anant_gupta anant_gupta 8012 Aug 19 11:03 VERDICT.md
+-rw-r--r-- 1 anant_gupta anant_gupta 2373 Aug 19 11:04 compress.md
+-rw-r--r-- 1 anant_gupta anant_gupta 2531 Aug 19 11:04 preserve.md
+-rw-r--r-- 1 anant_gupta anant_gupta 2178 Aug 19 11:04 resume.md
+
+=== native-scaffold counts ===
+agents:
+connector.md
+researcher.md
+reviewer.md
+writer.md
+commands:
+brainstorm.md
+capture.md
+connect.md
+inbox-process.md
+journal.md
+research.md
+review.md
+summarize.md
+hooks:
+auto-link.md
+daily-summary.md
+post-note-create.md
+
+=== tests/ ===
+tests/commands/cpr-compress-preserve-resume/2026-08-19-test-log.md
+tests/skills/mattpocock-engineering/README.md
+
+=== tested-tools/_future/ ===
+total 8
+drwxr-xr-x 2 anant_gupta anant_gupta 4096 Aug 19 09:29 .
+drwxr-xr-x 7 anant_gupta anant_gupta 4096 Aug 19 11:11 ..
+  ```
+- `Read` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Repo-Map.md`
+- `Read` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Gaps.md`
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit
+find instructions -type f | sort
+echo "---"
+cat instructions/README.md 2>/dev/null
+  ```
+  ```
+instructions/Agent-Reach/CLAUDE.md
+instructions/README.md
+instructions/adx/AGENTS.md
+instructions/agent-skills/AGENTS.md
+instructions/agent-skills/CLAUDE.md
+instructions/andrej-karpathy-skills/CLAUDE.md
+instructions/claude-code-best-practice/CLAUDE.md
+instructions/claude-context/AGENTS.md
+instructions/claude-context/CLAUDE.md
+instructions/claude-mem/CLAUDE.md
+instructions/ecc/AGENTS.md
+instructions/ecc/CLAUDE.md
+instructions/gbrain/AGENTS.md
+instructions/gbrain/CLAUDE.md
+instructions/graphify/AGENTS.md
+instructions/gstack/AGENTS.md
+instructions/gstack/CLAUDE.md
+instructions/last30days-skill/AGENTS.md
+instructions/last30days-skill/CLAUDE.md
+instructions/llm-council/CLAUDE.md
+instructions/memsearch/CLAUDE.md
+instructions/obsidian-mind/AGENTS.md
+instructions/obsidian-mind/CLAUDE.md
+instructions/obsidian-second-brain/CLAUDE.md
+instructions/promptfoo/AGENTS.md
+instructions/promptfoo/CLAUDE.md
+instructions/skills/AGENTS.md
+instructions/skills/CLAUDE.md
+instructions/spec-kit/AGENTS.md
+---
+---
+created: 2026-08-19
+type: index
+tags: [instructions, qualification-pipeline]
+---
+
+# instructions — patterns worth reviewing or reusing
+
+Convention: `60_Claude/vault-rules/pipeline-conventions.md`'s `instructions/<repo-name>/<file>` section. Holds instruction-shaped files (`CLAUDE.md`, `AGENTS.md`, `PRD.md`) copied from `sandbox/` candidates because the pattern inside is worth reviewing — never this repo's own root `CLAUDE.md`.
+
+## Discovery pass, 2026-08-19
+
+```bash
+find sandbox/ -maxdepth 2 -iname 'CLAUDE.md' -o -iname 'AGENTS.md' -o -iname 'PRD.md'
+```
+
+27 real hits across 19 of the 30 repos in `sandbox/` (plus `sandbox/cpr-compress-preserve-resume/`, checked separately — none). No `PRD.md` was found anywhere; every hit is a `CLAUDE.md` and/or `AGENTS.md`. Copied verbatim, one subfolder per source repo:
+
+`Agent-Reach`, `adx`, `agent-skills`, `andrej-karpathy-skills`, `claude-code-best-practice`, `claude-context`, `claude-mem`, `ecc`, `gbrain`, `graphify`, `gstack`, `last30days-skill`, `llm-council`, `memsearch`, `obsidian-mind`, `obsidian-second-brain`, `promptfoo`, `skills` (mattpocock), `spec-kit`.
+
+This is a real discovery pass, not a read-and-summarize — none of the copied content has been reviewed for patterns worth reusing yet. That review is separate, future work; this folder only proves the files exist and were actually found, per `_docs/Gaps.md`'s original instruction: "if nothing is found, leave the folder empty and say so — don't manufacture an example." Something was found, so this documents what and how.
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit
+for repo in Agent-Reach adx agent-skills andrej-karpathy-skills claude-code-best-practice claude-context claude-mem ecc gbrain graphify gstack last30days-skill llm-council memsearch obsidian-mind obsidian-second-brain promptfoo skills spec-kit; do
+  f=$(find "sandbox/$repo" -maxdepth 1 \( -iname 'CLAUDE.md' -o -iname 'AGENTS.md' \) 2>/dev/null | wc -l)
+  echo "$repo: $f instruction file(s) still present in sandbox/"
+done
+  ```
+  ```
+Agent-Reach: 1 instruction file(s) still present in sandbox/
+adx: 1 instruction file(s) still present in sandbox/
+agent-skills: 2 instruction file(s) still present in sandbox/
+andrej-karpathy-skills: 1 instruction file(s) still present in sandbox/
+claude-code-best-practice: 1 instruction file(s) still present in sandbox/
+claude-context: 2 instruction file(s) still present in sandbox/
+claude-mem: 1 instruction file(s) still present in sandbox/
+ecc: 2 instruction file(s) still present in sandbox/
+gbrain: 2 instruction file(s) still present in sandbox/
+graphify: 1 instruction file(s) still present in sandbox/
+gstack: 2 instruction file(s) still present in sandbox/
+last30days-skill: 2 instruction file(s) still present in sandbox/
+llm-council: 1 instruction file(s) still present in sandbox/
+memsearch: 1 instruction file(s) still present in sandbox/
+obsidian-mind: 2 instruction file(s) still present in sandbox/
+obsidian-second-brain: 1 instruction file(s) still present in sandbox/
+promptfoo: 2 instruction file(s) still present in sandbox/
+skills: 2 instruction file(s) still present in sandbox/
+spec-kit: 1 instruction file(s) still present in sandbox/
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit
+git status --porcelain instructions/ | head -5
+echo "total tracked files in instructions/:"
+git ls-files instructions/ | wc -l
+  ```
+  ```
+?? instructions/
+total tracked files in instructions/:
+0
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit
+rm -rf instructions/*
+ls -la instructions/
+  ```
+  ```
+total 8
+drwxr-xr-x  2 anant_gupta anant_gupta 4096 Aug 19 19:28 .
+drwxr-xr-x 14 anant_gupta anant_gupta 4096 Aug 19 14:11 ..
+  ```
+- `Read` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-manifest.json`
+- `Bash`:
+  ```bash
+for d in \
+  "/home/anant_gupta/projects/ai/claude/second-brain-claudekit" \
+  "/home/anant_gupta/projects/hub/CausalOps" \
+  "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" \
+  "/home/anant_gupta/projects/hub/portfolio" \
+  "/home/anant_gupta/projects/hub/tradingview" \
+  "/home/anant_gupta/projects/hackathon/Resq" \
+  "/home/anant_gupta/projects/hackathon/opspilot" \
+  "/mnt/d/Users/_Anant/10_Areas/Documents/The Plan" \
+  ; do
+  if [ -d "$d" ]; then echo "OK   $d"; else echo "MISS $d"; fi
+done
+  ```
+  ```
+OK   /home/anant_gupta/projects/ai/claude/second-brain-claudekit
+OK   /home/anant_gupta/projects/hub/CausalOps
+OK   /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis
+OK   /home/anant_gupta/projects/hub/portfolio
+OK   /home/anant_gupta/projects/hub/tradingview
+OK   /home/anant_gupta/projects/hackathon/Resq
+OK   /home/anant_gupta/projects/hackathon/opspilot
+OK   /mnt/d/Users/_Anant/10_Areas/Documents/The Plan
+  ```
+- `Bash`:
+  ```bash
+echo "=== second-brain-claudekit ==="
+ls -la "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/CLAUDE.md" 2>&1
+echo
+echo "=== CausalOps ==="
+ls -la "/home/anant_gupta/projects/hub/CausalOps/CLAUDE.md" "/home/anant_gupta/projects/hub/CausalOps/AGENTS.md" 2>&1
+echo
+echo "=== Jarvis ==="
+ls -la "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/CLAUDE.md" "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/AGENTS.md" 2>&1
+echo
+echo "=== Portfolio ==="
+ls -la "/home/anant_gupta/projects/hub/portfolio/.claude/CLAUDE.md" "/home/anant_gupta/projects/hub/portfolio/.claude/cosmic-frontend.mdc" 2>&1
+echo
+echo "=== Trading View ==="
+ls -la "/home/anant_gupta/projects/hub/tradingview/CLAUDE.md" "/home/anant_gupta/projects/hub/tradingview/AGENTS.md" 2>&1
+echo
+echo "=== Resq ==="
+ls -la "/home/anant_gupta/projects/hackathon/Resq/.claude/PRD.md" "/home/anant_gupta/projects/hackathon/Resq/.claude/README.md" "/home/anant_gupta/projects/hackathon/Resq/AGENTS.md" 2>&1
+echo
+echo "=== OpsPilot ==="
+ls -la "/home/anant_gupta/projects/hackathon/opspilot/.claude/PRD.md" "/home/anant_gupta/projects/hackathon/opspilot/.claude/README.md" "/home/anant_gupta/projects/hackathon/opspilot/CLAUDE.md" "/home/anant_gupta/projects/hackathon/opspilot/AGENTS.md" 2>&1
+echo
+echo "=== The Plan ==="
+ls -la "/mnt/d/Users/_Anant/10_Areas/Documents/The Plan/CLAUDE.md" "/mnt/d/Users/_Anant/10_Areas/Documents/The Plan/AGENTS.md" 2>&1
+  ```
+  ```
+=== second-brain-claudekit ===
+-rw-r--r-- 1 anant_gupta anant_gupta 10051 Aug 19 11:19 /home/anant_gupta/projects/ai/claude/second-brain-claudekit/CLAUDE.md
+
+=== CausalOps ===
+-rw-r--r-- 1 anant_gupta anant_gupta 3304 May 29 12:20 /home/anant_gupta/projects/hub/CausalOps/AGENTS.md
+-rw-r--r-- 1 anant_gupta anant_gupta 9828 Jul  9 12:32 /home/anant_gupta/projects/hub/CausalOps/CLAUDE.md
+
+=== Jarvis ===
+-rwxrwxrwx 1 anant_gupta anant_gupta 6196 Jul  7 15:03 /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/AGENTS.md
+-rwxrwxrwx 1 anant_gupta anant_gupta 7889 Aug 10 10:59 /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/CLAUDE.md
+
+=== Portfolio ===
+-rw-r--r-- 1 anant_gupta anant_gupta 8703 Jun  6 02:39 /home/anant_gupta/projects/hub/portfolio/.claude/CLAUDE.md
+-rw-r--r-- 1 anant_gupta anant_gupta 8030 Jun  9 13:30 /home/anant_gupta/projects/hub/portfolio/.claude/cosmic-frontend.mdc
+
+=== Trading View ===
+-rw-r--r-- 1 anant_gupta anant_gupta 3271 Jul 12 13:39 /home/anant_gupta/projects/hub/tradingview/AGENTS.md
+-rw-r--r-- 1 anant_gupta anant_gupta 6708 Jul 10 22:54 /home/anant_gupta/projects/hub/tradingview/CLAUDE.md
+
+=== Resq ===
+-rw-r--r-- 1 anant_gupta anant_gupta 9684 May  4 04:18 /home/anant_gupta/projects/hackathon/Resq/.claude/PRD.md
+-rw-r--r-- 1 anant_gupta anant_gupta 2011 May  4 04:18 /home/anant_gupta/projects/hackathon/Resq/.claude/README.md
+-rw-r--r-- 1 anant_gupta anant_gupta 1526 May  4 04:18 /home/anant_gupta/projects/hackathon/Resq/AGENTS.md
+
+=== OpsPilot ===
+-rw-r--r-- 1 anant_gupta anant_gupta 44289 Apr 20 22:34 /home/anant_gupta/projects/hackathon/opspilot/.claude/PRD.md
+-rw-r--r-- 1 anant_gupta anant_gupta  1146 Apr 20 22:34 /home/anant_gupta/projects/hackathon/opspilot/.claude/README.md
+-rw-r--r-- 1 anant_gupta anant_gupta   330 Apr 20 22:34 /home/anant_gupta/projects/hackathon/opspilot/AGENTS.md
+-rw-r--r-- 1 anant_gupta anant_gupta  2481 Apr 20 22:34 /home/anant_gupta/projects/hackathon/opspilot/CLAUDE.md
+
+=== The Plan ===
+-rwxrwxrwx 1 anant_gupta anant_gupta  527 May 28 19:49 /mnt/d/Users/_Anant/10_Areas/Documents/The Plan/AGENTS.md
+-rwxrwxrwx 1 anant_gupta anant_gupta 4887 Apr 27 01:24 /mnt/d/Users/_Anant/10_Areas/Documents/The Plan/CLAUDE.md
+  ```
+- `Bash` — `head -20 "/home/anant_gupta/projects/hub/portfolio/.claude/cosmic-frontend.mdc"`
+  ```
+---
+description: Cosmic portfolio design system and Three.js/R3F rules. Active for all UI component, section, and animation work.
+globs:
+  - "src/components/**/*.tsx"
+  - "src/app/globals.css"
+  - "src/app/layout.tsx"
+  - "src/app/(portfolio)/**"
+alwaysApply: false
+---
+
+# Cosmic Portfolio — Design System & R3F Rules
+
+**Identity:** floating command center in space. Dark translucent cards. Violet/cyan accents. Everything floats. Never flat, never white, never raw THREE.js outside R3F.
+
+---
+
+## Color Tokens (never deviate)
+
+| Name | Value |
+|------|-------|
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit
+mkdir -p instructions/second-brain-claudekit instructions/CausalOps instructions/Jarvis instructions/Portfolio "instructions/Trading View" instructions/Resq instructions/OpsPilot "instructions/The Plan"
+
+cp "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/CLAUDE.md" instructions/second-brain-claudekit/CLAUDE.md
+
+cp "/home/anant_gupta/projects/hub/CausalOps/CLAUDE.md" instructions/CausalOps/CLAUDE.md
+cp "/home/anant_gupta/projects/hub/CausalOps/AGENTS.md" instructions/CausalOps/AGENTS.md
+
+cp "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/CLAUDE.md" instructions/Jarvis/CLAUDE.md
+cp "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/AGENTS.md" instructions/Jarvis/AGENTS.md
+
+cp "/home/anant_gupta/projects/hub/portfolio/.claude/CLAUDE.md" instructions/Portfolio/CLAUDE.md
+cp "/home/anant_gupta/projects/hub/portfolio/.claude/cosmic-frontend.mdc" instructions/Portfolio/cosmic-frontend.mdc
+
+cp "/home/anant_gupta/projects/hub/tradingview/CLAUDE.md" "instructions/Trading View/CLAUDE.md"
+cp "/home/anant_gupta/projects/hub/tradingview/AGENTS.md" "instructions/Trading View/AGENTS.md"
+
+cp "/home/anant_gupta/projects/hackathon/Resq/.claude/PRD.md" instructions/Resq/PRD.md
+cp "/home/anant_gupta/projects/hackathon/Resq/.claude/README.md" instructions/Resq/README.md
+cp "/home/anant_gupta/projects/hackathon/Resq/AGENTS.md" instructions/Resq/AGENTS.md
+
+cp "/home/anant_gupta/projects/hackathon/opspilot/.claude/PRD.md" instructions/OpsPilot/PRD.md
+cp "/home/anant_gupta/projects/hackathon/opspilot/.claude/README.md" instructions/OpsPilot/README.md
+cp "/home/anant_gupta/projects/hackathon/opspilot/CLAUDE.md" instructions/OpsPilot/CLAUDE.md
+cp "/home/anant_gupta/projects/hackathon/opspilot/AGENTS.md" instructions/OpsPilot/AGENTS.md
+
+cp "/mnt/d/Users/_Anant/10_Areas/Documents/The Plan/CLAUDE.md" "instructions/The Plan/CLAUDE.md"
+cp "/mnt/d/Users/_Anant/10_Areas/Documents/The Plan/AGENTS.md" "instructions/The Plan/AGENTS.md"
+
+find instructions -type f | sort
+  ```
+  ```
+instructions/CausalOps/AGENTS.md
+instructions/CausalOps/CLAUDE.md
+instructions/Jarvis/AGENTS.md
+instructions/Jarvis/CLAUDE.md
+instructions/OpsPilot/AGENTS.md
+instructions/OpsPilot/CLAUDE.md
+instructions/OpsPilot/PRD.md
+instructions/OpsPilot/README.md
+instructions/Portfolio/CLAUDE.md
+instructions/Portfolio/cosmic-frontend.mdc
+instructions/Resq/AGENTS.md
+instructions/Resq/PRD.md
+instructions/Resq/README.md
+instructions/The Plan/AGENTS.md
+instructions/The Plan/CLAUDE.md
+instructions/Trading View/AGENTS.md
+instructions/Trading View/CLAUDE.md
+instructions/second-brain-claudekit/CLAUDE.md
+  ```
+- `Read` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-all.sh`
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit
+echo "=== does sync-manifest.json or sync-all.sh reference top-level agents/, commands/, hooks/, docs/ staging? ==="
+grep -n "agents/<\|commands/<\|hooks/<\|docs/<\|instructions_target\|staging" 60_Claude/scripts/sync-manifest.json 60_Claude/scripts/sync-all.sh 2>/dev/null
+echo "exit: $?"
+echo
+echo "=== current content of top-level agents/, commands/, hooks/, docs/ (are they populated by anything?) ==="
+find agents commands hooks docs -type f 2>/dev/null
+echo "(none = still empty, per-project subfolders created only when real content lands)"
+echo
+echo "=== pipeline-conventions.md's actual claim about these folders ==="
+grep -n -A3 "per-destination-project staging" 60_Claude/vault-rules/pipeline-conventions.md | head -20
+  ```
+  ```
+=== does sync-manifest.json or sync-all.sh reference top-level agents/, commands/, hooks/, docs/ staging? ===
+exit: 1
+
+=== current content of top-level agents/, commands/, hooks/, docs/ (are they populated by anything?) ===
+(none = still empty, per-project subfolders created only when real content lands)
+
+=== pipeline-conventions.md's actual claim about these folders ===
+29:## Top-level `agents/`, `commands/`, `hooks/`, `docs/` — per-destination-project staging
+30-
+31-As of 2026-08-19, these four top-level folders are **not** a generic draft-then-promote area (that was their original, now-retired role — see `_docs/Repo-Map.md`'s Phase 1 resolution). They stage real, in-progress artifacts for a specific destination project, one subfolder per project name:
+32-
+  ```
+- `Read` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Sync.md`
+- `Bash` — `tail -5 /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Sync.md`
+  ```
+- **Two directories stay, each synced only for the config-shaped subset that should be identical:** `agents/`, `commands/`, `skills/`, `hooks/`, `CLAUDE.md`, bidirectional, same Unison mechanism as every project mirror.
+- **Hard-excluded, permanently, no exceptions:** `.credentials.json`, `.mcp.json` (secrets), `history.jsonl`, `sessions/`, `session-env/`, `cache/`, `backups/`, `file-history/`, `shell-snapshots/`, `projects/` (session transcripts — already covered by the separate conversation-capture pipeline in `60_Claude/05_Clippings/AI Conversations/`), and `plugins/` (marketplace `installLocation` paths are baked in as OS-absolute paths and don't survive a file copy — a plugin has to be installed per-OS through its own manager, not synced as files).
+- **Deferred, not decided:** whether any part of `settings.json`/`settings.local.json` is portable. They mix real config (hook definitions, `statusLine`) with OS-specific content (hook commands pointing at `.ps1` files that only exist on one side) — this needs its own pass once the rest of the home-directory sync is built and proven, not a blanket include or exclude decided here.
+- **`20_Progress/AI/Claude Code/.claude_windows/` and `.claude_wsl/` are retired as sync targets, not repurposed.** Both are raw one-time dumps containing a live `.credentials.json` each — reusing them as-is would mean syncing credentials by accident. The curated home-directory mirrors get built fresh (most likely reusing those same two folder names after being wiped clean, rather than inventing new ones — final call left to whoever builds this).
+- **The Claude desktop app's own data directory (`%APPDATA%\Claude` on Windows) is ignored entirely** — confirmed to be ~90% disposable Electron/Chromium runtime cache, and the one part with real signal (`local-agent-mode-sessions`, the Cowork session store) is already covered by the existing conversation-capture pipeline. Not part of this sync in any form.
+  ```
+- `Edit` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Sync.md`
+  ```diff
+  - - **The Claude desktop app's own data directory (`%APPDATA%\Claude` on Windows) is ignored entirely** — confirmed to be ~90% disposable Electron/Chromium runtime cache, and the one part with real signal (`local-agent-mode-sessions`, the Cowork session store) is already covered by the existing conversation-capture pipeline. Not part of this sync in any form.
+  + - **The Claude desktop app's own data directory (`%APPDATA%\Claude` on Windows) is ignored entirely** — confirmed to be ~90% disposable Electron/Chromium runtime cache, and the one part with real signal (`local-agent-mode-sessions`, the Cowork session store) is already covered by the existing conversation-capture pipeline. Not part of this sync in any form.
+
+## Amendment (2026-08-19) — design for syncing real project instruction files into this repo's own `instructions/`, designed but not built
+
+**Premise correction first, because the request that prompted this design assumed something false:** the ask was to extend `instructions/` "the same way `agents/`, `commands/`, `hooks/`, `docs/` already are" live-synced. Checked directly against `sync-manifest.json` and `sync-all.sh` before writing anything — **neither file references those four top-level folders at all**, and all four are currently empty on disk. They are manually populated per-destination-project staging folders (`60_Claude/vault-rules/pipeline-conventions.md`: "Create a project subfolder only when real content lands"), not synced from anywhere. So this design is not "extend an existing pattern" — it would be **the first automated sync into any of this repo's five top-level staging folders** (`agents/`, `commands/`, `hooks/`, `docs/`, `instructions/`). Worth knowing before deciding to build it, since it's a bigger step than the request as originally framed.
+
+### What `instructions/` needs, and why it's not just "add it to the existing per-project Unison pair"
+
+Every existing manifest entry syncs one `SOURCE` (a real project) to one `MIRROR` (its Jarvis-side folder) — a single Unison pair per project, bidirectional except where `force_source` pins a winner. `instructions/<ProjectName>/` in *this* repo is a **third location**, not either end of an existing pair, and it needs different semantics from that pair:
+
+- **One-way only, source → `instructions/`, never the reverse.** `instructions/` exists so a session working in *this* repo can read a real project's actual `CLAUDE.md`/`AGENTS.md`/etc. without leaving the repo — it is a reference copy, not an editing surface. A two-way sync would risk a stray edit made while working in `second-brain-claudekit` silently flowing back into a real project's real instruction file on the next unattended 15-minute run — unacceptable, and a sharper version of the exact risk `force_source` was already built to guard against for the Jarvis mirror.
+- **A different destination shape than the source.** Several projects' instruction files live nested (`Portfolio/.claude/CLAUDE.md`, `Resq/.claude/PRD.md`) while `instructions/<Project>/` is flat (`instructions/Portfolio/CLAUDE.md`, `instructions/Resq/PRD.md`) — matching the existing flat convention already used by `agents/<Project>/`, `commands/<Project>/`, etc. Unison syncs matching directory trees; it's the wrong tool for a flatten-on-copy. A plain one-way file copy is simpler and is what a "read the real file when it's reachable" job actually needs — no conflict resolution, no directory-tree matching, because there's only ever one direction and one shape.
+
+### Concrete design
+
+1. **New optional field per manifest entry, `"instructions_paths"`** — an array naming which of that entry's existing `paths` are the markdown instruction files (a literal subset, not a new path list to maintain separately). Example, for `CausalOps`:
+   ```json
+   "paths": [".claude/agents", ".claude/commands", ".claude/hooks", "CLAUDE.md", "AGENTS.md"],
+   "instructions_paths": ["CLAUDE.md", "AGENTS.md"]
+   ```
+   Entries with no instruction-shaped paths (the two `"kind": "home"` entries, `.claude_windows`/`.claude_wsl`) simply omit the field — `instructions/` is scoped to `"kind": "project"` entries only, per the original ask.
+
+2. **New `sync-all.sh` logic, additive, after the existing per-entry Unison block:** for each name in `instructions_paths`, resolve `$SOURCE/<path>`, and if it exists, `cp -f` it to `$REPO_ROOT/instructions/<Name>/<basename of path>` (creating the directory if needed). If the source file is missing, log a warning line to the entry's own `Sync-Log.md` and continue — never abort the whole entry's run over one missing instruction file, matching the script's existing per-entry-failure-doesn't-block-others design. `$REPO_ROOT` is `$SCRIPT_DIR/../..`, resolved the same self-locating way `SCRIPT_DIR`/`MANIFEST` already are — never hardcoded, per this script's own stated design lesson at the top of the file.
+
+3. **Not Unison, deliberately.** Reaching for Unison here would mean either faking a matching directory structure just to satisfy it, or fighting its conflict-resolution model for a job that has no conflicts by design (one-way only). A `cp -f` is the correct-sized tool for "copy this one file if it exists, always overwrite the destination, never look at the destination's own state."
+
+4. **Open, not decided here — needs Anant's answer before this is built:** whether `second-brain-claudekit`'s own manifest entry participates. Its `SOURCE` is this repo itself, so its `instructions_paths` copy (`CLAUDE.md` → `instructions/second-brain-claudekit/CLAUDE.md`) would be a same-repo self-copy — mechanically harmless (a scheduled `cp` of one file into a subfolder of the same repo it lives in), but structurally unlike every other entry, where source and destination are genuinely different repos. Flagged rather than assumed either way.
+
+**Status: designed, not built.** No edit has been made to `sync-manifest.json` or `sync-all.sh` for this — that script runs unattended on a 15-minute schedule against real project repos including this one, so the design above was confirmed with Anant via `AskUserQuestion` before any live-file edit, per this session's own instructions. See `_docs/Repo-Map.md`'s open items for the confirmed answer and current build status.
+  ```
+- `AskUserQuestion` — `{"questions":[{"question":"Correction first: agents/, commands/, hooks/, docs/ are NOT currently live-synced by anything — they're manually populated, empty today. So wiring instructions/ into sync-all.sh would be the first automated sync into any of this repo's staging folders, not an extension of an existing pattern. Design (in _docs/Sync.md): a new instructions_paths field per manifest entry (subset of its paths that are instruction files) + one-way cp logic in sync-all.sh (source → instructions/<Project>/, never the reverse, since a two-way sync risks a stray edit here silently overwriting a real project's real CLAUDE.md on the next unattended run). Proceed with this design?","header":"Sync design","multiSelect":false,"options":[{"label":"Build it as designed (Recommended)","description":"Add instructions_paths field to sync-manifest.json and the one-way cp logic to sync-all.sh now, wired into the existing 15-minute scheduled run."},{"label":"Leave designed, don't wire it up","description":"Keep _docs/Sync.md's design section as the record, but don't touch sync-manifest.json or sync-all.sh this session — instructions/ stays a one-time manual copy for now."},{"label":"Different mechanism","description":"The one-way cp approach isn't right — describe what you'd want instead (e.g. two-way, a separate script, a different trigger)."}]},{"question":"If you proceed with the sync design: should second-brain-claudekit's own manifest entry participate? Its source is this repo itself, so this would copy this repo's own root CLAUDE.md into instructions/second-brain-claudekit/CLAUDE.md — a same-repo self-copy, structurally different from every other project entry (which copy a genuinely separate repo's file in).","header":"Self-entry","multiSelect":false,"options":[{"label":"Include it (Recommended)","description":"Apply the same instructions_paths field to second-brain-claudekit's entry too, for consistency — every project entry behaves the same way, no special-cased exception."},{"label":"Exclude it","description":"Skip second-brain-claudekit's own entry — instructions/ is meant for referencing OTHER real projects while working in this repo; this repo's own CLAUDE.md is already right there at the root, a copy of itself adds no value."}]}]}`
+- `Edit` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-manifest.json`
+  ```diff
+  -       "paths": [
+        ".claude/agents",
+        ".claude/commands",
+        ".claude/hooks",
+        ".claude/settings.json",
+        "CLAUDE.md"
+      ],
+      "needs_fat": true,
+      "force_source": true,
+  +       "paths": [
+        ".claude/agents",
+        ".claude/commands",
+        ".claude/hooks",
+        ".claude/settings.json",
+        "CLAUDE.md"
+      ],
+      "instructions_paths": ["CLAUDE.md"],
+      "needs_fat": true,
+      "force_source": true,
+  ```
+- `Edit` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-manifest.json`
+  ```diff
+  -       "paths": [
+        ".claude/agents",
+        ".claude/commands",
+        ".claude/hooks",
+        "CLAUDE.md",
+        "AGENTS.md"
+      ],
+      "needs_fat": true
+    },
+    {
+      "name": "Jarvis",
+  +       "paths": [
+        ".claude/agents",
+        ".claude/commands",
+        ".claude/hooks",
+        "CLAUDE.md",
+        "AGENTS.md"
+      ],
+      "instructions_paths": ["CLAUDE.md", "AGENTS.md"],
+      "needs_fat": true
+    },
+    {
+      "name": "Jarvis",
+  ```
+- `Edit` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-manifest.json`
+  ```diff
+  -         "CLAUDE.md",
+        "AGENTS.md"
+      ],
+      "needs_fat": true
+    },
+    {
+      "name": "Portfolio",
+  +         "CLAUDE.md",
+        "AGENTS.md"
+      ],
+      "instructions_paths": ["CLAUDE.md", "AGENTS.md"],
+      "needs_fat": true
+    },
+    {
+      "name": "Portfolio",
+  ```
+- `Edit` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-manifest.json`
+  ```diff
+  -         ".claude/CLAUDE.md",
+        ".claude/cosmic-frontend.mdc"
+      ],
+      "needs_fat": true
+    },
+    {
+      "name": "Trading View",
+  +         ".claude/CLAUDE.md",
+        ".claude/cosmic-frontend.mdc"
+      ],
+      "instructions_paths": [".claude/CLAUDE.md", ".claude/cosmic-frontend.mdc"],
+      "needs_fat": true
+    },
+    {
+      "name": "Trading View",
+  ```
+- `Edit` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-manifest.json`
+  ```diff
+  -         ".claude/settings.json",
+        "CLAUDE.md",
+        "AGENTS.md"
+      ],
+      "needs_fat": true
+    },
+    {
+      "name": "Resq",
+  +         ".claude/settings.json",
+        "CLAUDE.md",
+        "AGENTS.md"
+      ],
+      "instructions_paths": ["CLAUDE.md", "AGENTS.md"],
+      "needs_fat": true
+    },
+    {
+      "name": "Resq",
+  ```
+- `Edit` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-manifest.json`
+  ```diff
+  -         ".claude/settings.json",
+        "AGENTS.md"
+      ],
+      "needs_fat": true
+    },
+    {
+      "name": "OpsPilot",
+  +         ".claude/settings.json",
+        "AGENTS.md"
+      ],
+      "instructions_paths": [".claude/PRD.md", ".claude/README.md", "AGENTS.md"],
+      "needs_fat": true
+    },
+    {
+      "name": "OpsPilot",
+  ```
+- `Edit` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-manifest.json`
+  ```diff
+  -         "CLAUDE.md",
+        "AGENTS.md"
+      ],
+      "needs_fat": true
+    },
+    {
+      "name": "The Plan",
+  +         "CLAUDE.md",
+        "AGENTS.md"
+      ],
+      "instructions_paths": [".claude/PRD.md", ".claude/README.md", "CLAUDE.md", "AGENTS.md"],
+      "needs_fat": true
+    },
+    {
+      "name": "The Plan",
+  ```
+- `Edit` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-manifest.json`
+  ```diff
+  -         "CLAUDE.md",
+        "AGENTS.md"
+      ],
+      "needs_fat": true
+    },
+    {
+      "name": ".claude_wsl",
+  +         "CLAUDE.md",
+        "AGENTS.md"
+      ],
+      "instructions_paths": ["CLAUDE.md", "AGENTS.md"],
+      "needs_fat": true
+    },
+    {
+      "name": ".claude_wsl",
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit
+python3 -c "import json; d=json.load(open('60_Claude/scripts/sync-manifest.json')); print('JSON OK')
+for p in d['projects']:
+    print(p['name'], p.get('kind'), p.get('instructions_paths'))"
+  ```
+  ```
+JSON OK
+second-brain-claudekit project ['CLAUDE.md']
+.claude_windows home None
+CausalOps project ['CLAUDE.md', 'AGENTS.md']
+Jarvis project ['CLAUDE.md', 'AGENTS.md']
+Portfolio project ['.claude/CLAUDE.md', '.claude/cosmic-frontend.mdc']
+Trading View project ['CLAUDE.md', 'AGENTS.md']
+Resq project ['.claude/PRD.md', '.claude/README.md', 'AGENTS.md']
+OpsPilot project ['.claude/PRD.md', '.claude/README.md', 'CLAUDE.md', 'AGENTS.md']
+The Plan project ['CLAUDE.md', 'AGENTS.md']
+.claude_wsl home None
+  ```
+- `Edit` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-all.sh`
+  ```diff
+  - SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+MANIFEST="$SCRIPT_DIR/sync-manifest.json"
+UNISON_BIN="${UNISON_BIN:-$HOME/.local/bin/unison}"
+COMBINED_LOG="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/_All-Projects-Sync-Log.md"
+  + SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+MANIFEST="$SCRIPT_DIR/sync-manifest.json"
+REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+UNISON_BIN="${UNISON_BIN:-$HOME/.local/bin/unison}"
+COMBINED_LOG="/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/_All-Projects-Sync-Log.md"
+  ```
+- `Read` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-all.sh`
+- `Edit` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-all.sh`
+  ```diff
+  -   ENTRY_STATUS=$?
+  [ "$ENTRY_STATUS" -gt "$WORST_STATUS" ] && WORST_STATUS="$ENTRY_STATUS"
+  case "$ENTRY_STATUS" in
+    0) SUMMARY_LINES+=("$TIMESTAMP  $NAME  OK") ;;
+    1) SUMMARY_LINES+=("$TIMESTAMP  $NAME  CONFLICTS") ;;
+    2) SUMMARY_LINES+=("$TIMESTAMP  $NAME  TRANSFER ERRORS") ;;
+    *) SUMMARY_LINES+=("$TIMESTAMP  $NAME  FATAL exit=$ENTRY_STATUS") ;;
+  esac
+done < <(jq -r '.projects[] | [.name, .source, .mirror, (.needs_fat|tostring), .status, ((.force_source // false)|tostring)] | @tsv' "$MANIFEST")
+  +   ENTRY_STATUS=$?
+  [ "$ENTRY_STATUS" -gt "$WORST_STATUS" ] && WORST_STATUS="$ENTRY_STATUS"
+  case "$ENTRY_STATUS" in
+    0) SUMMARY_LINES+=("$TIMESTAMP  $NAME  OK") ;;
+    1) SUMMARY_LINES+=("$TIMESTAMP  $NAME  CONFLICTS") ;;
+    2) SUMMARY_LINES+=("$TIMESTAMP  $NAME  TRANSFER ERRORS") ;;
+    *) SUMMARY_LINES+=("$TIMESTAMP  $NAME  FATAL exit=$ENTRY_STATUS") ;;
+  esac
+
+  # instructions/<Name>/ — one-way reference copy, source -> this repo, never
+  # the reverse (see _docs/Sync.md's 2026-08-19 amendment for why this is a
+  # plain `cp`, not a Unison pair: instructions/ is read-only reference
+  # content, and a two-way sync here would risk a stray local edit silently
+  # overwriting a real project's real instruction file on the next
+  # unattended run). Independent of the Unison result above — a conflict or
+  # transfer error in the .claude/ sync doesn't block this copy, and a
+  # missing instruction file here doesn't affect WORST_STATUS.
+  mapfile -t INSTR_PATHS < <(jq -r --arg n "$NAME" '.projects[] | select(.name==$n) | (.instructions_paths // [])[]' "$MANIFEST")
+  if [ "${#INSTR_PATHS[@]}" -gt 0 ]; then
+    INSTR_DIR="$REPO_ROOT/instructions/$NAME"
+    mkdir -p "$INSTR_DIR"
+    for IP in "${INSTR_PATHS[@]}"; do
+      SRC_FILE="$SOURCE/$IP"
+      DEST_FILE="$INSTR_DIR/$(basename "$IP")"
+      if [ -f "$SRC_FILE" ]; then
+        cp -f "$SRC_FILE" "$DEST_FILE"
+        echo "$TIMESTAMP  instructions/  OK  $IP -> $(basename "$IP")" >> "$ENTRY_LOG"
+      else
+        echo "$TIMESTAMP  instructions/  WARN  source missing: $SRC_FILE" >> "$ENTRY_LOG"
+      fi
+    done
+  fi
+done < <(jq -r '.projects[] | [.name, .source, .mirror, (.needs_fat|tostring), .status, ((.force_source // false)|tostring)] | @tsv' "$MANIFEST")
+  ```
+- `Bash` — `which unison "$HOME/.local/bin/unison" 2>&1; ls -la "$HOME/.local/bin/unison" 2>&1`
+  ```
+/home/anant_gupta/.local/bin/unison
+/home/anant_gupta/.local/bin/unison
+-rwxr-xr-x 1 anant_gupta anant_gupta 3176112 Jul 30 12:38 /home/anant_gupta/.local/bin/unison
+  ```
+- `Bash` — `bash -n /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-all.sh && echo "SYNTAX OK"`
+  ```
+SYNTAX OK
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit
+MANIFEST="60_Claude/scripts/sync-manifest.json"
+REPO_ROOT="$(pwd)"
+TEST_DEST="/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/305124c8-922f-4d5b-92bb-5a7f5785b3c0/scratchpad/instr-sync-test"
+rm -rf "$TEST_DEST"; mkdir -p "$TEST_DEST"
+
+while IFS=$'\t' read -r NAME SOURCE; do
+  mapfile -t INSTR_PATHS < <(jq -r --arg n "$NAME" '.projects[] | select(.name==$n) | (.instructions_paths // [])[]' "$MANIFEST")
+  if [ "${#INSTR_PATHS[@]}" -gt 0 ]; then
+    INSTR_DIR="$TEST_DEST/$NAME"
+    mkdir -p "$INSTR_DIR"
+    for IP in "${INSTR_PATHS[@]}"; do
+      SRC_FILE="$SOURCE/$IP"
+      DEST_FILE="$INSTR_DIR/$(basename "$IP")"
+      if [ -f "$SRC_FILE" ]; then
+        cp -f "$SRC_FILE" "$DEST_FILE"
+        echo "OK    $NAME  $IP -> $(basename "$IP")"
+      else
+        echo "WARN  $NAME  source missing: $SRC_FILE"
+      fi
+    done
+  fi
+done < <(jq -r '.projects[] | [.name, .source] | @tsv' "$MANIFEST")
+
+echo
+echo "=== resulting tree ==="
+find "$TEST_DEST" -type f | sort
+  ```
+  ```
+OK    second-brain-claudekit  CLAUDE.md -> CLAUDE.md
+OK    CausalOps  CLAUDE.md -> CLAUDE.md
+OK    CausalOps  AGENTS.md -> AGENTS.md
+OK    Jarvis  CLAUDE.md -> CLAUDE.md
+OK    Jarvis  AGENTS.md -> AGENTS.md
+OK    Portfolio  .claude/CLAUDE.md -> CLAUDE.md
+OK    Portfolio  .claude/cosmic-frontend.mdc -> cosmic-frontend.mdc
+OK    Trading View  CLAUDE.md -> CLAUDE.md
+OK    Trading View  AGENTS.md -> AGENTS.md
+OK    Resq  .claude/PRD.md -> PRD.md
+OK    Resq  .claude/README.md -> README.md
+OK    Resq  AGENTS.md -> AGENTS.md
+OK    OpsPilot  .claude/PRD.md -> PRD.md
+OK    OpsPilot  .claude/README.md -> README.md
+OK    OpsPilot  CLAUDE.md -> CLAUDE.md
+OK    OpsPilot  AGENTS.md -> AGENTS.md
+OK    The Plan  CLAUDE.md -> CLAUDE.md
+OK    The Plan  AGENTS.md -> AGENTS.md
+
+=== resulting tree ===
+/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/[REDACTED]/scratchpad/instr-sync-test/CausalOps/AGENTS.md
+/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/[REDACTED]/scratchpad/instr-sync-test/CausalOps/CLAUDE.md
+/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/[REDACTED]/scratchpad/instr-sync-test/Jarvis/AGENTS.md
+/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/[REDACTED]/scratchpad/instr-sync-test/Jarvis/CLAUDE.md
+/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/[REDACTED]/scratchpad/instr-sync-test/OpsPilot/AGENTS.md
+/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/[REDACTED]/scratchpad/instr-sync-test/OpsPilot/CLAUDE.md
+/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/[REDACTED]/scratchpad/instr-sync-test/OpsPilot/PRD.md
+/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/[REDACTED]/scratchpad/instr-sync-test/OpsPilot/README.md
+/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/[REDACTED]/scratchpad/instr-sync-test/Portfolio/CLAUDE.md
+/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/[REDACTED]/scratchpad/instr-sync-test/Portfolio/cosmic-frontend.mdc
+/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/[REDACTED]/scratchpad/instr-sync-test/Resq/AGENTS.md
+/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/[REDACTED]/scratchpad/instr-sync-test/Resq/PRD.md
+/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/[REDACTED]/scratchpad/instr-sync-test/Resq/README.md
+/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/[REDACTED]/scratchpad/instr-sync-test/The Plan/AGENTS.md
+/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/[REDACTED]/scratchpad/instr-sync-test/The Plan/CLAUDE.md
+/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/[REDACTED]/scratchpad/instr-sync-test/Trading View/AGENTS.md
+/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/[REDACTED]/scratchpad/instr-sync-test/Trading View/CLAUDE.md
+/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/[REDACTED]/scratchpad/instr-sync-test/second-brain-claudekit/CLAUDE.md
+  ```
+- `Bash`:
+  ```bash
+diff -rq "/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/305124c8-922f-4d5b-92bb-5a7f5785b3c0/scratchpad/instr-sync-test" "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions"
+echo "diff exit: $?"
+  ```
+  ```
+diff exit: 0
+  ```
+- `Write` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/README.md`
+  ```
+---
+created: 2026-08-19
+type: index
+tags: [instructions, real-projects]
+---
+
+# instructions — real project instruction files, mirrored for reference
+
+## Corrected 2026-08-19 — this folder was built on the wrong premise once already
+
+The first version of this folder (built earlier the same day) held one subfolder per `sandbox/` candidate repo (`adx/`, `ecc/`, `gbrain/`, and 16 others) — `CLAUDE.md`/`AGENTS.md` files copied from tools being *evaluated* for ingestion, on the theory that they were "patterns worth reviewing." That was a misreading: every one of those files already lives, untouched, inside the source repo at `sandbox/<repo>/` — copying them again into `instructions/` added a second location for the same fact with no distinguishing value, the "one fact, one home" failure this repo's own docs (`_docs/Repo-Map.md`) already name as a recurring problem. Cleared out entirely, verified first that no copy held standalone value the original `sandbox/` file didn't already have.
+
+## What this folder actually is
+
+The instruction-shaped files (`CLAUDE.md`, `AGENTS.md`, `PRD.md`, and similar) that already exist for each **real project** Anant actively works on — never a `sandbox/` evaluation candidate. One subfolder per project, flat (`instructions/<ProjectName>/<file>`), matching the same per-destination-project convention already used by `agents/<Project>/`, `commands/<Project>/`, `hooks/<Project>/`, `docs/<Project>/`.
+
+The authoritative project list is `60_Claude/scripts/sync-manifest.json`'s `"kind": "project"` entries (`"kind": "home"` entries — `.claude_windows`, `.claude_wsl` — have no instruction files of their own and are excluded). As of 2026-08-19: `second-brain-claudekit`, `CausalOps`, `Jarvis`, `Portfolio`, `Trading View`, `Resq`, `OpsPilot`, `The Plan`.
+
+## Live-synced, one-way
+
+Each manifest entry now carries an `instructions_paths` field (a subset of its existing `paths`), and `sync-all.sh` copies those files — one-way, source → `instructions/<Name>/`, never the reverse — on every scheduled run, alongside its existing per-project Unison sync. Design and reasoning: `_docs/Sync.md`'s 2026-08-19 amendment. This is deliberately a plain file copy, not a Unison pair: `instructions/` is read-only reference content for a session working in *this* repo, and a two-way sync would risk a stray local edit silently overwriting a real project's real instruction file on the next unattended run.
+
+If a source file goes missing (renamed, deleted upstream), the sync logs a warning to that project's `Sync-Log.md` and continues — it does not fail the whole run.
+
+  ```
+- `Read` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/vault-rules/pipeline-conventions.md`
+- `Edit` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/vault-rules/pipeline-conventions.md`
+  ```diff
+  - ## `instructions/<repo-name>/<file>`
+
+Holds instruction-shaped files — `CLAUDE.md`, `AGENTS.md`, `PRD.md`, or equivalent — copied from a `sandbox/` candidate specifically because the pattern inside it is worth reviewing or reusing. One subfolder per source repo, named the same way as `sandbox/<repo-name>/`. **Never this repo's own root `CLAUDE.md`** — that file documents this repo, it isn't a pattern borrowed from elsewhere. Populated only by a real discovery pass across `sandbox/` (e.g. `find sandbox/ -maxdepth 2 -iname 'CLAUDE.md' -o -iname 'AGENTS.md' -o -iname 'PRD.md'`), never by guessing what a repo probably has.
+  + ## `instructions/<ProjectName>/<file>`
+
+**Corrected 2026-08-19** — an earlier version of this section described `instructions/<repo-name>/<file>` as holding files copied from `sandbox/` evaluation candidates. That was wrong: every such file already lives, unchanged, inside its source repo at `sandbox/<repo>/` — a second copy added no distinguishing value. See `instructions/README.md`'s own "Corrected 2026-08-19" section for the full account.
+
+Holds the instruction-shaped files (`CLAUDE.md`, `AGENTS.md`, `PRD.md`, or equivalent) that already exist for each **real project** Anant actively works on — never a `sandbox/` candidate. One subfolder per project, flat (`instructions/<ProjectName>/<file>`), matching the same per-destination-project convention as `agents/<ProjectName>/`, `commands/<ProjectName>/`, `hooks/<ProjectName>/`, `docs/<ProjectName>/` above. The authoritative project list is `60_Claude/scripts/sync-manifest.json`'s `"kind": "project"` entries — read it fresh, don't rely on a cached list.
+
+**Live-synced, one-way, since 2026-08-19.** Each manifest entry carries an `instructions_paths` field (a subset of its `paths` naming the instruction-shaped ones); `sync-all.sh` copies those files, source → `instructions/<Name>/`, on every scheduled run — never the reverse, since this folder is read-only reference content, not an editing surface. Full design: `_docs/Sync.md`'s 2026-08-19 amendment.
+  ```
+- `Bash` — `grep -n "^#" "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/AGENTS.md" | head -60`
+  ```
+14:# Jarvis Agent Guide
+18:## Priority Files
+30:## Folder Roles
+33:## Write Contract
+37:### Golden rules
+47:### Where does this note go?
+67:### Never write to
+75:## Working Rules
+85:## Retrieval Rules
+91:## Safety
+  ```
+- `Bash` — `sed -n '33,75p' "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/AGENTS.md"`
+  ```
+## Write Contract
+
+Every agent follows this, regardless of which tool is driving. Full version: [[40_Resources/Obsidian/Jarvis Vault Architecture]].
+
+### Golden rules
+
+1. **Never create a new top-level file or folder at the vault root.** Root holds only `00_Dashboard.md`, `AGENTS.md`, `CLAUDE.md`, `HUMAN_WRITING.md`, and the numbered folders `10_Areas`–`60_Claude`. This is the single most damaging mistake an agent can make.
+2. **When unsure where a note goes, write it to `60_Claude/00_Inbox/`.** Unsure is the trigger to use the Inbox, never to invent a location.
+3. **Read `30_Order/` before writing** — its `Templates/` and `Workflows/` are the structural half of [[HUMAN_WRITING]].
+4. **Search before creating.** Extend an existing canonical note instead of duplicating.
+5. **Preserve frontmatter and wikilinks. Patch by heading.**
+
+6. **No personal-life content in Jarvis.** Jarvis is the execution/technical workshop — course work, projects, career mechanics, business/project income. Health, personal finance, relationships, reflective/confessional journaling, and identity-as-a-person content live in The Plan (`00_Live/`). `10_Areas/Life/Truths of Life/` is the one exception, and it's scoped narrowly to builder-identity evidence (what the work says about me as an engineer), never personal reflection — see the scope rule in that folder's notes.
+
+### Where does this note go?
+
+| If the note is… | Write it to… | Standards doc to read first |
+| --- | --- | --- |
+| Raw clip, paste, web capture, video, imported source | `60_Claude/05_Clippings/` |  |
+| Quick AI output you're unsure how to file | `60_Claude/00_Inbox/` |  |
+| Summary of one source | `60_Claude/10_Source_Summaries/` | [[Source Summary Standard]] |
+| Reusable distilled knowledge (a concept, not a source) | `60_Claude/20_Distilled_Notes/` → promote to `40_Resources/` or `10_Areas/` once stable | [[Evergreen Standard]] |
+| Stable reference material (guide, cheat sheet, plugin doc, link) | `40_Resources/` + backlink to its `10_Areas/` domain |  |
+| Active project, internship, research, mentorship work | `20_Progress/` under the matching project | [[Project Standard]] |
+| Canonical fact about a life domain | `10_Areas/` — patch by heading; no new top-level files without instruction |  |
+| Synthesized project brief | `60_Claude/40_Project_Briefs/` |  |
+| Reusable output artifact (story, bullet, prompt) | `60_Claude/35_Outputs/` with `source_concepts:` provenance |  |
+| Daily / weekly / monthly review | `60_Claude/50_Reviews/` |  |
+| Dashboard or index | `60_Claude/44_Indexes/` |  |
+| Session log entry | append to `60_Claude/07_AI_Information/Session Logs/log.md` |  |
+| New template, writing workflow, or CLI tool | `30_Order/` (only when explicitly building one) |  |
+| Visualization for a concept / project / source | `10_Areas/Excalidraw/` |  |
+| Information about the whole vault for any AI tool | `60_Claude/07_AI_Information/` |  |
+
+### Never write to
+
+- The vault root — no new files or folders directly inside `D:\Users\_Anant\10_Areas\Documents\Jarvis\`.
+- `50_Archive/` — never read, never write.
+- `60_Claude/05_Clippings/` after capture — raw sources are read-only.
+- `40_Resources/` in bulk — curated hub; add one backlinked entry at a time, never a batch of AI distillations.
+- `.obsidian/`, `.claude/`, `.cursor/`, `.kiro/`, `.codex`, `.git/` — settings and tooling only, never notes.
+
+## Working Rules
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit
+ls -d */ 2>/dev/null | sort
+echo "---"
+ls -d _docs/*/ 2>/dev/null
+echo "---"
+ls -d 60_Claude/*/ 2>/dev/null
+  ```
+  ```
+60_Claude/
+_docs/
+agents/
+commands/
+hooks/
+instructions/
+sandbox/
+skills/
+tested-tools/
+tests/
+---
+_docs/How to/
+---
+60_Claude/Sessions/
+60_Claude/Templates/
+60_Claude/scripts/
+60_Claude/vault-rules/
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit
+ls -la | grep '^d'
+echo "--- docs/ specifically ---"
+ls -la docs/ 2>&1
+echo "--- 60_Claude/ full ---"
+ls -la 60_Claude/
+  ```
+  ```
+drwxr-xr-x 14 anant_gupta anant_gupta  4096 Aug 19 14:11 .
+drwxr-xr-x  6 anant_gupta anant_gupta  4096 Aug  7 16:16 ..
+drwxr-xr-x  6 anant_gupta anant_gupta  4096 Aug 19 10:48 .claude
+drwxr-xr-x 10 anant_gupta anant_gupta  4096 Aug 19 19:28 .git
+drwxr-xr-x  6 anant_gupta anant_gupta  4096 Aug 19 11:12 60_Claude
+drwxr-xr-x  3 anant_gupta anant_gupta  4096 Aug 19 19:32 _docs
+drwxr-xr-x  2 anant_gupta anant_gupta  4096 Aug 19 11:09 agents
+drwxr-xr-x  2 anant_gupta anant_gupta  4096 Aug 19 11:10 commands
+drwxr-xr-x  2 anant_gupta anant_gupta  4096 Aug 19 11:09 hooks
+drwxr-xr-x 10 anant_gupta anant_gupta  4096 Aug 19 19:54 instructions
+drwxr-xr-x 34 anant_gupta anant_gupta  4096 Aug 19 11:00 sandbox
+drwxr-xr-x  2 anant_gupta anant_gupta  4096 Jul 29 20:56 skills
+drwxr-xr-x  7 anant_gupta anant_gupta  4096 Aug 19 11:11 tested-tools
+drwxr-xr-x  4 anant_gupta anant_gupta  4096 Aug 19 11:13 tests
+--- docs/ specifically ---
+ls: cannot access 'docs/': No such file or directory
+--- 60_Claude/ full ---
+total 36
+drwxr-xr-x  6 anant_gupta anant_gupta 4096 Aug 19 11:12 .
+drwxr-xr-x 14 anant_gupta anant_gupta 4096 Aug 19 14:11 ..
+-rw-r--r--  1 anant_gupta anant_gupta 5659 Aug  9 13:47 Qualification-Checklist.md
+-rw-r--r--  1 anant_gupta anant_gupta 2644 Aug 19 11:12 README.md
+drwxr-xr-x  2 anant_gupta anant_gupta 4096 Aug 19 09:50 Sessions
+drwxr-xr-x  2 anant_gupta anant_gupta 4096 Aug 19 11:13 Templates
+drwxr-xr-x  2 anant_gupta anant_gupta 4096 Aug 19 19:53 scripts
+drwxr-xr-x  2 anant_gupta anant_gupta 4096 Aug 19 19:54 vault-rules
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit
+git log --all --oneline -- 00_Daily 10_Areas 20_Projects 30_Knowledge 40_Career _attachments docs 2>&1 | head -20
+echo "---"
+git ls-files | grep -E "^(00_Daily|10_Areas|20_Projects|30_Knowledge|40_Career|_attachments|docs)/" | head -20
+echo "(none = these were never real tracked folders in this repo)"
+  ```
+  ```
+---
+(none = these were never real tracked folders in this repo)
+  ```
+- `Bash`:
+  ```bash
+mkdir -p /home/anant_gupta/projects/ai/claude/second-brain-claudekit/docs
+echo "recreated docs/ (was empty+untracked, evidently lost between sessions — empty dirs don't survive git operations without a placeholder)"
+  ```
+  ```
+recreated docs/ (was empty+untracked, evidently lost between sessions — empty dirs don't survive git operations without a placeholder)
+  ```
+- `Write` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/vault-rules/write-contract.md`
+  ```
+---
+created: 2026-08-19
+type: vault-rule
+tags: [write-contract, filesystem-safety]
+---
+
+# Write Contract
+
+Adapted directly from Jarvis's own real Write Contract (`AGENTS.md`, "Write Contract" section, read in full before writing this) — same shape (Golden rules → routing table → never-write-to list), scoped to this repo's own filesystem instead of vault notes. Every session working in this repo follows this, regardless of which tool is driving.
+
+## Golden rules
+
+1. **Never create a new top-level folder without checking it against `_docs/Repo-Map.md` first.** Repo-Map is the ground-truth inventory of what exists and why — a new top-level folder that isn't already named there is very likely wrong, or at minimum needs Repo-Map updated in the same session it's created.
+2. **When unsure where something goes, say so and ask — never guess a location.** Unsure is the trigger to surface the question (directly, or via `AskUserQuestion` for a real ambiguous call), not to invent a folder or drop content wherever seems closest.
+3. **Read `60_Claude/vault-rules/` before drafting in any staging folder** (`agents/`, `commands/`, `hooks/`, `docs/`, `instructions/`, `skills/`) — `pipeline-conventions.md` and this file are the structural half of how this repo stays navigable.
+4. **Search before creating.** Check `_docs/Repo-Map.md`, `tested-tools/README.md`, and the relevant staging folder itself before adding new content — extend or correct what's there instead of duplicating it in a second location. `instructions/`'s 2026-08-19 rebuild (`instructions/README.md`) is the concrete cautionary example: an entire folder was built once on a premise that duplicated content already sitting in `sandbox/` with no distinguishing value, then had to be cleared and rebuilt.
+5. **A pipeline-stage folder (`sandbox/`, `tested-tools/`) is a claim about real, run-for-real work — never write content there that hasn't actually been tested per `_docs/Promotion-Criteria.md`.** Don't manufacture a passing test, a verdict, or a "reviewed" status that didn't happen.
+6. **Every promotion decision gets a dated, evidenced record** (a `VERDICT.md` or equivalent, per `tested-tools/commands/cpr-compress-preserve-resume/VERDICT.md`'s template) — never a silent file move with no reasoning attached.
+
+## Where does this go?
+
+| If the thing is… | Write it to… | Read first |
+|---|---|---|
+| A brand-new external tool to evaluate | `sandbox/<repo-name>/` (real `git clone`) | `_docs/Architecture.md` |
+| Evidence a specific tool/command/skill was actually run | `tests/<type>/<repo-name>/` | `_docs/How to/tests-and-promotion.md` |
+| An artifact that cleared the bar, individually tested | `tested-tools/<type>/<use-case>/<repo-name>/` | `_docs/Promotion-Criteria.md`, `60_Claude/Qualification-Checklist.md` |
+| An artifact/repo reviewed as a batch, not yet individually tested | `tested-tools/<type>/<repo-name>/` (no `<use-case>/` layer yet) | same as above |
+| An artifact with no real external source (confirmed zero-provenance) | `tested-tools/<type>/native-scaffold/` | `tested-tools/commands/native-scaffold/` for the precedent |
+| A tool that cleared `tested-tools/` review, no current project needs it | `tested-tools/_future/<repo-name>/` + a sibling `FOR-WHAT.md` | `60_Claude/Templates/for-what.md` |
+| A real, in-progress agent for one destination project | `agents/<ProjectName>/` | `60_Claude/vault-rules/pipeline-conventions.md` |
+| A real, in-progress command for one destination project | `commands/<ProjectName>/` | same |
+| A real, in-progress hook for one destination project | `hooks/<ProjectName>/` | same |
+| Docs for one destination project | `docs/<ProjectName>/` | same |
+| An instruction file (`CLAUDE.md`/`AGENTS.md`/`PRD.md`) for a real project Anant works on | `instructions/<ProjectName>/` — **but this is now live-synced one-way from the real project; don't hand-edit it, edit the source project instead** | `instructions/README.md`, `_docs/Sync.md` |
+| A candidate skill staged from a source repo, not yet a specific project's | `skills/<repo-name>/` | `60_Claude/vault-rules/pipeline-conventions.md` |
+| A new artifact-authoring Standard (what "correct" looks like for a type) | `60_Claude/Standards/` | `60_Claude/Standards/README.md` |
+| A new authoring template (agent/skill/command/hook skeleton) | `60_Claude/Templates/` | existing templates there, for the established shape |
+| A reusable prompt, framework, or checklist distilled from a session | `60_Claude/Patterns/` | |
+| A structured session log | `60_Claude/Sessions/` (via `/compress`) | `CLAUDE.md`'s Session Memory section |
+| A weekly/monthly rollup | `60_Claude/Summaries/` | |
+| A new or amended vault-rule/convention | `60_Claude/vault-rules/` | this file, `pipeline-conventions.md` |
+| A doc about this repo's own reasoning, architecture, or a dated finding | `_docs/` | `_docs/Repo-Map.md`'s dated-amendment style |
+| An operating "how do I actually do X" doc for this repo's own pipeline | `_docs/How to/` | `_docs/How to/README.md` |
+| A vault note (daily, area, project, knowledge, career) | **Not applicable in this repo today** — `00_Daily/`, `10_Areas/`, `20_Projects/`, `30_Knowledge/`, `40_Career/` are documented as the reference vault shape this kit produces once copied to a real Obsidian vault (`CLAUDE.md`, `README.md`), but none of them are real, populated folders in this repo itself (confirmed 2026-08-19 — `git log` shows zero tracked files under any of them, ever). Don't create one speculatively; if a real one is ever needed here, that's a decision to surface, not assume. | `60_Claude/vault-rules/folder-structure.md` |
+
+## Never write to
+
+- **`sandbox/<repo>/`'s own files, once cloned.** Read-only. Testing means running commands inside it or against it, never editing its source — a modified clone is no longer evidence of how the real, unmodified tool behaves. If a real fix is needed to make a tool testable, that's a note in its test log, not a silent patch to the clone.
+- **`tested-tools/` content, without going back through the pipeline.** A promoted artifact's folder isn't yours to hand-edit directly — a real change means a new test, a new dated verdict (or an amendment to the existing one), the same discipline that got it there the first time. Silent edits are exactly the "one fact drifts from its own record" failure `_docs/Repo-Map.md`'s incident log already shows happening more than once.
+- **`instructions/<ProjectName>/`.** Live-synced one-way from each real project's actual source files — any local edit here is silently overwritten by the next scheduled sync run and never reaches the real project either. Edit the source project directly.
+- **`.git/`, `.claude/settings.local.json`.** Tooling/machine-local state, never content.
+- **Any `_archive/` location** (`.claude/_archive/`, or a future archived folder). Archived means done — read for history, don't resurrect or edit in place; if something archived needs to come back, that's a deliberate, visible move, not a quiet edit.
+
+## Why this exists
+
+This repo's own docs have already drifted stale from trusted-but-unverified claims more than once (`_docs/Repo-Map.md`'s incident log: the `50_Claude` recreation bug, the Jarvis sync silently breaking, `instructions/`'s own wrong-premise rebuild). A written routing table and a real never-write-to list turn "where does this go" and "is this mine to edit" from a guess made fresh each session into a checkable answer.
+
+  ```
+- `Bash` — `ls "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/30_Order/Standards/" 2>&1`
+  ```
+Action Standard.md
+Brief Standard.md
+Concept Standard.md
+Course Week Standard.md
+Daily Workflow Standard.md
+Evergreen Standard.md
+Internship Notes Standard.md
+MOC Standard.md
+Project Standard.md
+Review Standard.md
+Source Summary Standard.md
+  ```
+- `Read` — `/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/30_Order/Standards/Evergreen Standard.md`
+- `Read` — `/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/30_Order/Standards/Review Standard.md`
+- `Read` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/.claude/agents/vault-curator.md`
+- `Read` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/.claude/hooks/after-edit-log.md`
+- `Bash` — `find /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools/skills -maxdepth 2 -name "SKILL.md" | head -1`
+  ```
+(Bash completed with no output)
+  ```
+- `Bash` — `find /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools/skills -name "SKILL.md" | head -3`
+  ```
+/home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools/skills/mattpocock-engineering/triage/SKILL.md
+/home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools/skills/mattpocock-engineering/setup-matt-pocock-skills/SKILL.md
+/home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools/skills/mattpocock-engineering/research/SKILL.md
+  ```
+- `Read` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools/skills/mattpocock-engineering/triage/SKILL.md`
+- `Bash` — `mkdir -p /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards`
+  ```
+(Bash completed with no output)
+  ```
+- `Write` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/README.md`
+  ```
+---
+created: 2026-08-19
+type: index
+tags: [standards]
+---
+
+# Standards
+
+One `Standard.md` per artifact type this repo actually produces, same shape as Jarvis's real `30_Order/Standards/` (read in full before writing these — `Evergreen Standard.md` and `Review Standard.md` specifically): a concrete, checkable definition of what "correct" looks like, not a style guide. Each pairs with a real authoring template in `60_Claude/Templates/`.
+
+| Standard | Governs | Template |
+|---|---|---|
+| [Agent Standard.md](Agent%20Standard.md) | `.claude/agents/*.md` and `agents/<Project>/*.md` | `60_Claude/Templates/agent-template.md` |
+| [Skill Standard.md](Skill%20Standard.md) | `skills/<repo>/<name>/SKILL.md` (directory-shaped skills) | `60_Claude/Templates/skill-template.md` |
+| [Command Standard.md](Command%20Standard.md) | `.claude/commands/*.md` and `commands/<Project>/*.md` | `60_Claude/Templates/command-template.md` |
+| [Hook Standard.md](Hook%20Standard.md) | `.claude/hooks/*.md` (+ their `.ps1`) and `hooks/<Project>/*.md` | `60_Claude/Templates/hook-template.md` |
+| [Instructions Standard.md](Instructions%20Standard.md) | `instructions/<Project>/*.md` | N/A — these are copied from real projects, not authored here |
+| [Tested-Tool Promotion Standard.md](Tested-Tool%20Promotion%20Standard.md) | Any artifact's move through `sandbox/` → `tested-tools/` → promoted | N/A — cross-references `_docs/Promotion-Criteria.md` and `60_Claude/Qualification-Checklist.md` rather than duplicating them |
+
+No review-writing Standard exists here yet — deliberately deferred, see `_docs/Gaps.md`'s "Review folder" entry.
+
+  ```
+- `Write` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/Agent Standard.md`
+  ```
+---
+created: 2026-08-19
+type: standard
+tags: [standards, agent]
+---
+
+# Agent Standard
+
+**A good sub-agent has one focused mandate stated in its first paragraph, a bounded tool list that can't do more than the mandate needs, and an explicit "what you do not do" section — vagueness here is what turns a sub-agent into a second copy of the main session instead of a specialist.**
+
+Governs `.claude/agents/*.md` (this repo's own promoted agents) and `agents/<ProjectName>/*.md` (staged, in-progress agents for a specific destination project).
+
+## Maps To
+
+Template: `60_Claude/Templates/agent-template.md`
+
+## Used By Workflow
+
+An agent file is written when a repeatable, bounded task needs a specialist persona distinct from the main session — never written speculatively "in case it's useful." Staged first in `agents/<ProjectName>/` if it's for a destination project other than this repo, or in `sandbox/`/`tested-tools/` first if it originates from an external source and hasn't cleared the qualification bar yet (`_docs/Promotion-Criteria.md`).
+
+## Per-Section Standard
+
+### Frontmatter
+`name` (kebab-case, matches the filename), `description` (one sentence, states what the agent does — this is what a session reads to decide whether to invoke it), `tools` (the literal, comma-separated tool list this agent may use — never omitted, never left as "all tools" unless the mandate genuinely needs unrestricted access).
+> Common mistake: a `description` that restates the agent's name instead of saying what it does ("The vault curator agent" vs. "Curates the Obsidian vault — merges duplicate ideas, adds links, and maintains note quality").
+
+### Core Mandate
+One short paragraph: what this agent's job is, and — as important — what it is not. `vault-curator`'s real example: "Your job is hygiene, not content creation."
+
+### Rules
+Numbered, concrete, each one enforceable by reading the agent's own output — not aspirational ("be careful") but checkable ("Never modify `created`, `type`, or `tags` fields without explicit instruction").
+
+### Workflow When Invoked
+The actual sequence of steps the agent follows, in order. This is what makes the agent's behavior predictable across invocations rather than reinvented each time.
+
+### What You Do Not Do
+An explicit negative-space list. This is the section most agent files skip and the one that most determines whether the agent stays a specialist or scope-creeps into doing the main session's job.
+> Common mistake: omitting this section entirely. A mandate without a stated boundary drifts the first time a task is ambiguous.
+
+## Done Conditions
+
+- `tools` in frontmatter is the real, minimal list the mandate needs — not copy-pasted from another agent.
+- The mandate is stated in the first paragraph, in one or two sentences.
+- At least one "what you do not do" item exists.
+- Every rule is specific enough that a reader could judge, from a transcript, whether the agent followed it.
+
+## Gold Standard Example
+
+`.claude/agents/vault-curator.md` — focused mandate ("hygiene, not content creation"), a bounded 4-tool list, six checkable rules, and a real "What You Do Not Do" section (no new content, no deletion, no rewriting).
+
+  ```
+- `Write` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/Skill Standard.md`
+  ```
+---
+created: 2026-08-19
+type: standard
+tags: [standards, skill]
+---
+
+# Skill Standard
+
+**A skill is a directory, not a file — `SKILL.md` is the entry point Claude reads first, and any reference doc it links out to (a format guide, a checklist, a domain doc) lives beside it in the same folder, loaded only when the skill actually needs it.**
+
+Governs `skills/<repo-name>/<skill-name>/` (staged, source-repo skills) — the directory-shaped format `_docs/Jarvis.md` names as Jarvis's own real promotion build-standard for skills crossing into a rigid folder.
+
+## Maps To
+
+Template: `60_Claude/Templates/skill-template.md`
+
+## Used By Workflow
+
+A skill is staged here after cloning its source repo into `sandbox/` and confirming it's real, working content (`_docs/Promotion-Criteria.md` question 1) — never authored from scratch speculatively. `tested-tools/skills/mattpocock-engineering/`'s 17-skill batch is the working precedent: copied for real review, individually tested per-skill before any one of them earns a `<use-case>/` folder (`60_Claude/Qualification-Checklist.md`).
+
+## Per-Section Standard
+
+### Frontmatter
+`name` (kebab-case, matches the containing folder name), `description` (states what the skill does and, ideally, when to reach for it — this is the string a session's skill-selection logic reads), optional `disable-model-invocation: true` for a skill that should only run when explicitly named, never auto-triggered.
+
+### Opening paragraph
+What the skill actually does, in plain terms, before any structure. A reader (human or Claude) should know from the first two sentences whether this skill applies to the task at hand.
+
+### Reference docs section
+If the skill links to sibling files (`AGENT-BRIEF.md`, `OUT-OF-SCOPE.md`, a format spec), list them explicitly near the top with a one-line description of what each covers — this is what keeps a multi-file skill navigable instead of a pile of same-level markdown files with no map.
+
+### The body
+Whatever structure the skill's actual job needs — a state machine, a checklist, a decision tree. No fixed shape beyond: concrete enough that following it produces the same behavior twice.
+
+## Done Conditions
+
+- `SKILL.md` exists at the skill's own folder root; nothing critical to using the skill lives only in a sibling file with no pointer from `SKILL.md`.
+- `description` in frontmatter is specific enough to distinguish this skill from a same-category sibling (not "helps with code review" for a skill that's actually about diagnosing bugs).
+- Every sibling reference file is either linked from `SKILL.md` or genuinely load-on-demand supporting material (not orphaned).
+
+## Gold Standard Example
+
+`tested-tools/skills/mattpocock-engineering/triage/` — `SKILL.md` states the mandate in two sentences, links its two reference docs (`AGENT-BRIEF.md`, `OUT-OF-SCOPE.md`) with one-line descriptions, then defines the actual state machine.
+
+  ```
+- `Write` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/Command Standard.md`
+  ```
+---
+created: 2026-08-19
+type: standard
+tags: [standards, command]
+---
+
+# Command Standard
+
+**A command is a numbered procedure, not a description of a feature — every step should be specific enough that running the same command twice on similar input produces the same shape of output, and every user-facing prompt inside it should say exactly how the user is expected to answer.**
+
+Governs `.claude/commands/*.md` (this repo's own promoted commands) and `commands/<ProjectName>/*.md` (staged, in-progress commands for a specific destination project).
+
+## Maps To
+
+Template: `60_Claude/Templates/command-template.md`
+
+## Used By Workflow
+
+A command is written when a task is repeated often enough to deserve a `/name` shortcut with a fixed procedure — never written for a one-off. Real, evidenced examples of a command actually clearing the qualification bar: `tested-tools/commands/cpr-compress-preserve-resume/` (blended from a real external repo, verdict documented in its `VERDICT.md`).
+
+## Per-Section Standard
+
+### Frontmatter
+`description` (one sentence — what running this command does). Optionally: `allowed-tools` (the literal tool list this command's steps are permitted to use — tightens what could otherwise run unbounded during the command; the real CPR commands use this), `model` (only if a specific model tier is genuinely required, not by default — this repo's own commands leave it unpinned so they inherit the session's actual model).
+> Common mistake: pinning `model: opus` (or any specific model) without a stated reason — it forces a cost/availability tradeoff on every future invocation that nobody explicitly chose. `tested-tools/commands/cpr-compress-preserve-resume/VERDICT.md` documents exactly this tradeoff being deliberately declined when adapting the real CPR repo's commands.
+
+### Numbered Steps
+The actual procedure, in execution order. Each step is an instruction Claude follows, not a description of what the feature does in the abstract. Where the step involves asking the user something, specify the exact question and, if the answer should be structured (multi-select, confirm-or-override), say so explicitly — don't leave "ask the user" vague enough that two runs ask differently.
+
+### Output shape
+If the command produces a file or a structured message, show the literal template/format inline (a fenced code block with placeholders), not a prose description of what fields it should have.
+
+## Done Conditions
+
+- Every step is concrete enough that following it twice on similar input produces comparably-shaped output.
+- Any user-facing question the command asks is written out verbatim, not paraphrased ("ask what to preserve" vs. the actual question text and options).
+- If the command writes a file, the exact destination path (with any templated parts like `{{date}}`) is stated, not implied.
+
+## Gold Standard Example
+
+`tested-tools/commands/cpr-compress-preserve-resume/compress.md` — numbered steps with the literal `AskUserQuestion` call spelled out (question text, options, multiSelect), the exact output file-naming template, and a stated `allowed-tools` list.
+
+  ```
+- `Write` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/Hook Standard.md`
+  ```
+---
+created: 2026-08-19
+type: standard
+tags: [standards, hook]
+---
+
+# Hook Standard
+
+**A hook must never block or crash the session it's attached to — every real side effect is wrapped so a failure degrades to "did nothing" rather than "broke the trigger event," and the trigger, the exact fields it reads, and the registration snippet are all stated explicitly, not left implicit in the script.**
+
+Governs `.claude/hooks/*.md` (+ the `.ps1`/script they document) and `hooks/<ProjectName>/*.md` for staged, in-progress hooks.
+
+## Maps To
+
+Template: `60_Claude/Templates/hook-template.md`
+
+## Used By Workflow
+
+A hook is written when a repo needs an automatic action on a real Claude Code lifecycle event (`PostToolUse`, `Stop`, `SessionEnd`, etc.) — never for something a command could do on explicit request instead. This repo's own real, live-consequential lesson: a hook that hardcoded a path (`50_Claude/Sessions/...`) silently broke and recreated a stray folder the moment it fired again after a folder rename (`_docs/Repo-Map.md`'s Incident log) — every new hook gets checked against that failure mode before being trusted.
+
+## Per-Section Standard
+
+### Trigger
+The exact Claude Code lifecycle event this hook fires on (`PostToolUse`, `Stop`, `SessionEnd`, etc.), and the matcher if one narrows it (e.g. `Write|Edit|MultiEdit`). Stated as a fact, not implied by the filename.
+
+### Purpose
+One or two sentences: what this hook is for, and what would be missing without it.
+
+### What It Does
+The actual sequence of side effects, numbered, in the order they happen — including any conditional logic (archive-if-stale, create-if-missing).
+
+### Implementation
+The real script, inline or referenced, with the actual event fields it reads called out explicitly (this repo's hooks read `$env:CLAUDE_TOOL_NAME`/`$env:CLAUDE_FILE_PATH`; know and state which fields a new hook actually needs, don't guess).
+> Common mistake, confirmed as a real incident in this repo: hardcoding a folder path inside the script instead of deriving it (`$PSScriptRoot | Split-Path -Parent | Split-Path -Parent`, or equivalent) — a hardcoded path silently breaks the next time a parent folder is renamed, and because hooks are fire-and-forget by design, that break can go unnoticed for days.
+
+### Registration
+The literal `.claude/settings.json` snippet needed to wire this hook in — copy-pasteable, not described in prose.
+
+### Failure handling
+State explicitly how this hook fails safe: never a non-zero exit that blocks the triggering action, errors caught and swallowed (or wrapped with `2>/dev/null; exit 0` at the settings.json command layer — the real fix this repo's own `pwsh` crash bug required, documented in `_docs/How to/conversation-capture.md`), and no dependency on state that might not exist yet without a guard.
+
+## Done Conditions
+
+- The trigger and matcher are stated as literal facts, not inferred from the hook's name.
+- No hardcoded path to anything that could be renamed — self-locating, the same lesson `sync-all.sh`'s own header comment states for itself.
+- A failure mode is named and shown to fail safe (never blocks the session).
+- The `.claude/settings.json` registration snippet is included verbatim.
+
+## Gold Standard Example
+
+`.claude/hooks/after-edit-log.md` — trigger, purpose, numbered behavior, real PowerShell implementation with self-locating paths (`$PSScriptRoot | Split-Path -Parent | Split-Path -Parent`), and the exact `settings.json` registration block.
+
+  ```
+- `Write` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/Instructions Standard.md`
+  ```
+---
+created: 2026-08-19
+type: standard
+tags: [standards, instructions]
+---
+
+# Instructions Standard
+
+**A file in `instructions/` is never authored here — it's a live, one-way mirror of a real project's own real instruction file, and the only thing this repo controls about it is which of a project's real paths get mirrored, never the content.**
+
+Governs `instructions/<ProjectName>/*.md` — this is the one artifact type in this repo with no authoring template, because authoring one here would be the exact wrong-premise mistake this folder already made and had to correct once (`instructions/README.md`'s "Corrected 2026-08-19" section).
+
+## Maps To
+
+No template. If a real project doesn't have a `CLAUDE.md`/`AGENTS.md`/`PRD.md` of its own yet, the fix is to write one in that project's own repo — never to draft a placeholder here and copy it in.
+
+## Used By Workflow
+
+Populated by `sync-all.sh`'s `instructions_paths` logic (one-way copy, source → `instructions/<Name>/`, every scheduled run — `_docs/Sync.md`'s 2026-08-19 amendment) or, for a project not yet wired into `sync-manifest.json`, by a real, direct copy from that project's actual current file — never by guessing what a project's instruction file probably says.
+
+## Per-File Standard
+
+There is no per-section content standard — the content standard is whatever the source project's own file actually says. What this repo is responsible for:
+
+- **Correct source path.** `sync-manifest.json`'s `instructions_paths` field must name a path that's actually in that entry's `paths` array and actually exists in the source project — verified before adding, not assumed (`instructions/README.md`'s "As of 2026-08-19" project list was built by checking every path against the real filesystem, not by trusting the manifest's shape alone).
+- **Flat destination naming.** `instructions/<ProjectName>/<basename>` — even when the source path is nested (`Portfolio/.claude/CLAUDE.md` → `instructions/Portfolio/CLAUDE.md`), matching the flat convention every other per-destination-project staging folder already uses.
+- **Never hand-edited.** A local edit here is silently overwritten by the next sync run and never reaches the real project — if the content is wrong, the fix is in the source project, not here.
+
+## Done Conditions
+
+- Every file under `instructions/<ProjectName>/` traces to a real, current file in that project's real source repo — checkable by re-running the same `instructions_paths` lookup against the manifest and diffing.
+- No `instructions/<repo-name>/` subfolder exists for anything that isn't a real project Anant actively works on (i.e., never for a `sandbox/` evaluation candidate — that was the exact mistake this folder made once).
+
+## Gold Standard Example
+
+`instructions/CausalOps/` — `CLAUDE.md` and `AGENTS.md`, both real, current copies of CausalOps's own root files, named flat, sourced from a real `instructions_paths` entry in `sync-manifest.json`.
+
+  ```
+- `Write` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/Tested-Tool Promotion Standard.md`
+  ```
+---
+created: 2026-08-19
+type: standard
+tags: [standards, promotion]
+---
+
+# Tested-Tool Promotion Standard
+
+**A promotion decision is a dated, evidenced document, not a file move — this Standard states the shape that document takes; the bar it has to clear is defined once, in `_docs/Promotion-Criteria.md`, and not repeated here.**
+
+Governs the move of any artifact through `sandbox/` → `tested-tools/` → a rigid folder (`.claude/`, or promoted into a real project), for every artifact type this repo's Standards cover (agent, skill, command, hook).
+
+## Cross-references — read these, this doc does not restate them
+
+- **The four qualifying questions** ("did it actually run," "does it close a named gap," "is it a duplicate," "can the dependency be verified") — `_docs/Promotion-Criteria.md`.
+- **The literal, run-through-it-every-time checklist** — `60_Claude/Qualification-Checklist.md`.
+- **The three-level `tested-tools/<type>/<use-case>/<repo>/` folder convention**, and when a piece stays ungrouped one level up — `60_Claude/vault-rules/pipeline-conventions.md`.
+
+## Maps To
+
+No separate template — `tested-tools/commands/cpr-compress-preserve-resume/VERDICT.md` is the reference example of the actual document shape (see below).
+
+## Used By Workflow
+
+Written the same session a real promotion decision is made — never after the fact, never before the real testing (`tests/<type>/<repo-name>/`, per `_docs/How to/tests-and-promotion.md`) has actually happened.
+
+## Per-Section Standard for a `VERDICT.md`
+
+### Frontmatter
+`decided` (date), `decision` (one of: `adopt` / `keep` / `blend` / `drop`), `source-repo` (URL, if external), `sandbox-path`, `destination` (which project, or "Jarvis-only," or "global — pending Windows-home install").
+
+### The four questions, answered in order
+Each of `_docs/Promotion-Criteria.md`'s four questions gets its own heading, answered with real evidence (a command actually run, a real diff, a real cross-check against what's already adopted) — never a restated claim from the tool's own README.
+> Common mistake: answering "did it run" by describing what the tool's docs say it does. The answer has to cite something that was actually executed in this session or a cited prior one.
+
+### Decision
+State the decision plainly, then justify it against the four answers above — not a new argument, a synthesis of what was just shown.
+
+### What's kept / changed / dropped (if the decision is `blend`)
+A table or list, feature-by-feature, of what was adopted from each source and why — this is what makes a `blend` decision auditable instead of a vague "took the good parts."
+
+## Done Conditions
+
+- Every claim in the four-questions section cites a real, checkable action (a command, a diff, a file) — not a paraphrase of documentation.
+- The decision (`adopt`/`keep`/`blend`/`drop`) is stated in one word, unambiguous, findable without reading the whole document.
+- If `blend`, every kept/changed/dropped item names *why*, not just *what*.
+- Any known convention mismatch (e.g. landing at a two-level path instead of the documented three-level one) is flagged in the document itself, not silently resolved or silently ignored.
+
+## Gold Standard Example
+
+`tested-tools/commands/cpr-compress-preserve-resume/VERDICT.md` — this repo's first evidenced promotion decision, explicitly named as the template for the shape above.
+
+  ```
+- `Write` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/agent-template.md`
+  ```
+---
+name: {{agent-name}}
+description: {{one sentence — what this agent does, read by sessions deciding whether to invoke it}}
+tools: {{Read, Edit, Write, Bash, ...}}
+---
+
+# {{Agent Display Name}}
+
+{{One or two sentences: the agent's core mandate. State what it does AND what it explicitly doesn't — see Standard.}}
+
+## Core Mandate
+
+{{Short paragraph. What is this agent's one job?}}
+
+## Rules
+
+1. **{{Rule name.}}** {{Concrete, checkable — a reader should be able to judge from a transcript whether this was followed.}}
+2. **{{Rule name.}}** {{...}}
+
+## Workflow When Invoked
+
+1. {{Step}}
+2. {{Step}}
+3. {{Step}}
+
+## What You Do Not Do
+
+- {{Explicit negative-space item}}
+- {{Explicit negative-space item}}
+
+<!-- Before promoting this file, check it against 60_Claude/Standards/Agent Standard.md's Done Conditions. -->
+
+  ```
+- `Write` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/skill-template.md`
+  ```
+---
+name: {{skill-name}}
+description: {{what this skill does, and when to reach for it — this is what a session's skill-selection logic reads}}
+---
+<!--
+This file is SKILL.md — it belongs inside its own folder:
+  skills/<repo-name>/{{skill-name}}/SKILL.md
+Any reference doc it needs lives beside it in the same folder, listed below,
+never loaded unless the skill actually needs it. See
+60_Claude/Standards/Skill Standard.md before promoting this out of staging.
+-->
+
+# {{Skill Display Name}}
+
+{{Two or three sentences: what this skill does, in plain terms. A reader should know from this paragraph whether it applies to the task at hand.}}
+
+## Reference docs
+
+<!-- Delete this section if the skill is genuinely self-contained. -->
+- [{{DOC-NAME.md}}]({{DOC-NAME.md}}) — {{one line: what it covers}}
+
+## {{The skill's actual body — a checklist, a state machine, a decision tree}}
+
+{{Concrete enough that following it twice produces the same behavior.}}
+
+  ```
+- `Write` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/command-template.md`
+  ```
+---
+description: {{one sentence — what running this command does}}
+allowed-tools: {{Read, Write, Bash, AskUserQuestion, ... — omit if genuinely unrestricted}}
+---
+
+{{One-line summary of what this command does, in imperative voice.}}
+
+## Steps
+
+1. {{First step — concrete instruction, not a description of the feature.}}
+2. {{If this step asks the user something, write the exact question and options here — don't leave it to be improvised differently each run.}}
+3. {{...}}
+
+## Output
+
+<!-- If this command writes a file, show the literal template inline and the exact destination path (with any {{templated}} parts). -->
+
+```markdown
+{{literal output template, if applicable}}
+```
+
+<!-- Before promoting this file, check it against 60_Claude/Standards/Command Standard.md's Done Conditions. Only pin `model:` in frontmatter if there's a real, stated reason — see that Standard's note on this. -->
+
+  ```
+- `Write` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/hook-template.md`
+  ```
+# Hook: {{Hook Display Name}}
+
+**Trigger:** {{exact Claude Code lifecycle event — PostToolUse / Stop / SessionEnd / etc.}}{{ — matcher: `{{matcher}}`, if narrowed}}
+
+**Purpose:** {{One or two sentences: what this hook is for, and what's missing without it.}}
+
+## What It Does
+
+{{Numbered sequence of the real side effects, in order, including any conditional logic.}}
+
+1. {{Step}}
+2. {{Step}}
+
+## Implementation
+
+<!--
+State explicitly which Claude Code event fields this hook actually reads
+(e.g. $env:CLAUDE_TOOL_NAME, $env:CLAUDE_FILE_PATH). Derive any path this
+hook needs — never hardcode a path that could be renamed. See
+60_Claude/Standards/Hook Standard.md's "common mistake" note: a hardcoded
+path silently broke a real hook in this repo once (_docs/Repo-Map.md's
+Incident log).
+-->
+
+```powershell
+# .claude/hooks/{{filename}}.ps1
+param()
+
+$vaultRoot = $PSScriptRoot | Split-Path -Parent | Split-Path -Parent
+# ... self-locating, never hardcoded ...
+```
+
+## Claude Code Hook Configuration
+
+<!-- The literal, copy-pasteable settings.json snippet. -->
+
+```json
+{
+  "hooks": {
+    "{{TriggerName}}": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pwsh -ExecutionPolicy Bypass -File .claude/hooks/{{filename}}.ps1 2>/dev/null; exit 0"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+## Failure handling
+
+{{State explicitly how this hook fails safe. The `2>/dev/null; exit 0` wrapper above is this repo's own real, verified fix for a pwsh crash that was silently killing every Stop/SessionEnd hook — see _docs/How to/conversation-capture.md. Keep it unless there's a specific reason a given hook needs real errors to surface.}}
+
+## Notes
+
+- {{Anything else worth knowing — e.g. what consumes this hook's output, whether its output file should be gitignored.}}
+
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit
+ls 60_Claude/Templates/
+echo "---"
+git log --all --diff-filter=A --name-only -- '*.md' 2>/dev/null | grep -E "^(00_Daily|10_Areas|20_Projects|30_Knowledge|40_Career)/" | head
+echo "(none = confirmed: no vault note of these types was ever created in this repo's git history)"
+  ```
+  ```
+agent-template.md
+area-note.md
+command-template.md
+daily-note.md
+for-what.md
+hook-template.md
+idea-note.md
+literature-note.md
+meeting-note.md
+pattern-note.md
+person-note.md
+project-note.md
+session-log.md
+skill-template.md
+weekly-summary.md
+---
+(none = confirmed: no vault note of these types was ever created in this repo's git history)
+  ```
+- `Read` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/CLAUDE.md`
+- `Edit` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/CLAUDE.md`
+  ```diff
+  -   skills/           # source-repo staging (unchanged role — not per-project)
+  instructions/<repo>/  # CLAUDE.md/AGENTS.md/PRD.md-shaped files copied from a sandbox/ candidate, pattern worth reviewing
+  tests/<type>/<repo>/  # evidence a specific tool was actually run — script or dated real-output log
+  _docs/             # PRD, Architecture, Design, Sync, Jarvis, Promotion-Criteria — see below
+  sandbox/          # real clones of external tools, stage 1 of the qualification pipeline
+  tested-tools/     # tools that cleared sandbox/, under second review before promotion
+    _future/<repo>/ # cleared the tested-tools/ bar, no current project needs it yet — see FOR-WHAT.md
+  00_Daily/         # daily notes (YYYY-MM-DD)
+  10_Areas/         # ongoing areas of responsibility
+  20_Projects/      # active projects (one folder per project)
+  30_Knowledge/     # evergreen notes, literature notes, research
+  40_Career/        # career notes, job search, professional development
+  60_Claude/        # AI-generated artifacts (sessions, summaries, patterns, templates)
+    Sessions/       # structured session logs from /compress
+    Summaries/      # weekly and monthly rollups
+    Patterns/       # reusable prompts, frameworks, checklists
+    Templates/      # ALL templates — vault notes, session artifacts, and future skill/agent/command templates
+    vault-rules/    # naming, linking, folder, and tagging conventions, plus pipeline-conventions.md (sandbox/tested-tools/staging structure)
+  _attachments/     # images, PDFs, assets
+```
+
+As of 2026-08-19, `agents/`, `commands/`, `hooks/`, `docs/` are per-destination-project staging, not a generic draft-then-promote area — see `60_Claude/vault-rules/pipeline-conventions.md` and `_docs/How to/using-staged-artifacts.md`. Before writing anything in a staging folder, read `60_Claude/vault-rules/` first — content drafted there without checking current folder-naming conventions has drifted before (see `_docs/Repo-Map.md`'s naming-convention-drift finding).
+  +   skills/           # source-repo staging (unchanged role — not per-project)
+  instructions/<ProjectName>/  # CLAUDE.md/AGENTS.md/PRD.md of a REAL project Anant works on — live-synced one-way, never sandbox/ candidates
+  tests/<type>/<repo>/  # evidence a specific tool was actually run — script or dated real-output log
+  _docs/             # PRD, Architecture, Design, Sync, Jarvis, Promotion-Criteria, How to/ — see below
+  sandbox/          # real clones of external tools, stage 1 of the qualification pipeline — read-only once cloned
+  tested-tools/     # tools that cleared sandbox/, under second review before promotion
+    _future/<repo>/ # cleared the tested-tools/ bar, no current project needs it yet — see FOR-WHAT.md
+  00_Daily/, 10_Areas/, 20_Projects/, 30_Knowledge/, 40_Career/  # reference vault shape this kit produces once copied to a real Obsidian vault —
+                    # not real, populated folders in THIS repo (confirmed 2026-08-19, see write-contract.md)
+  60_Claude/        # AI-generated artifacts (sessions, summaries, patterns, templates) + this repo's own pipeline machinery
+    Sessions/       # structured session logs from /compress
+    Summaries/      # weekly and monthly rollups
+    Patterns/       # reusable prompts, frameworks, checklists
+    Standards/      # one Standard.md per artifact type this repo produces — what "correct" looks like, checkable
+    Templates/      # every template — vault notes, session artifacts, and artifact-authoring templates (agent/skill/command/hook)
+    vault-rules/    # naming/linking/folder/tagging conventions, pipeline-conventions.md, write-contract.md (routing table + never-write-to list)
+  _attachments/     # images, PDFs, assets
+```
+
+As of 2026-08-19, `agents/`, `commands/`, `hooks/`, `docs/` are per-destination-project staging, not a generic draft-then-promote area — see `60_Claude/vault-rules/pipeline-conventions.md` and `_docs/How to/using-staged-artifacts.md`. Before writing anything anywhere in this repo, read `60_Claude/vault-rules/write-contract.md` — it has the full routing table and a never-write-to list; content drafted without checking current conventions has drifted before (see `_docs/Repo-Map.md`'s naming-convention-drift finding, and `instructions/`'s own 2026-08-19 wrong-premise rebuild).
+  ```
+- `Read` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/README.md`
+- `Edit` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/README.md`
+  ```diff
+  -   agents/<ProjectName>/       ← per-destination-project staging (real, in-progress artifacts for one project)
+  commands/<ProjectName>/     ← same, for commands
+  hooks/<ProjectName>/        ← same, for hooks
+  docs/<ProjectName>/         ← same, for docs
+  skills/                     ← source-repo staging (currently empty)
+  instructions/<repo>/        ← CLAUDE.md/AGENTS.md/PRD.md-shaped files copied from a sandbox/ candidate
+  tests/<type>/<repo>/        ← evidence a specific tool was actually run
+
+  00_Daily/                   ← daily notes (YYYY-MM-DD)
+  10_Areas/                   ← areas of responsibility
+  20_Projects/                ← active projects
+  30_Knowledge/               ← evergreen notes, literature, research
+  40_Career/                  ← career notes
+  60_Claude/                  ← AI-generated artifacts
+    Sessions/                 ← session logs from /compress
+    Summaries/                ← weekly/monthly rollups
+    Patterns/                 ← reusable prompts and frameworks
+    Templates/                ← every template — vault notes, session artifacts, future skill/agent/command templates
+    vault-rules/              ← vault conventions (naming, linking, folders, tags)
+```
+  +   agents/<ProjectName>/       ← per-destination-project staging (real, in-progress artifacts for one project)
+  commands/<ProjectName>/     ← same, for commands
+  hooks/<ProjectName>/        ← same, for hooks
+  docs/<ProjectName>/         ← same, for docs
+  skills/                     ← source-repo staging (currently empty)
+  instructions/<ProjectName>/ ← CLAUDE.md/AGENTS.md/PRD.md of a REAL project — live-synced one-way, never sandbox/ candidates
+  tests/<type>/<repo>/        ← evidence a specific tool was actually run
+
+  00_Daily/, 10_Areas/, 20_Projects/, 30_Knowledge/, 40_Career/
+                              ← reference vault shape this kit produces once copied to a real Obsidian vault —
+                                not real, populated folders in this repo itself (see write-contract.md)
+  60_Claude/                  ← AI-generated artifacts + this repo's own pipeline machinery
+    Sessions/                 ← session logs from /compress
+    Summaries/                ← weekly/monthly rollups
+    Patterns/                 ← reusable prompts and frameworks
+    Standards/                ← one Standard.md per artifact type — what "correct" looks like, checkable
+    Templates/                ← every template — vault notes, session artifacts, artifact-authoring templates
+    vault-rules/               ← vault conventions, pipeline-conventions.md, write-contract.md (routing table + never-write-to list)
+```
+  ```
+- `Read` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Gaps.md`
+- `Edit` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Gaps.md`
+  ```diff
+  - # Gaps — what's actually wrong in this repo right now
+
+**Update, 2026-08-19 (later same day):** the session that laid out `agents/`, `commands/`, `hooks/`, `docs/`, `instructions/`, `tests/`, and `tested-tools/_future/` for real (per `_docs/Repo-Map.md`) closed several items below — each is marked `[RESOLVED 2026-08-19]` with what actually changed, in place, rather than rewritten out from under the original research-only pass. Items not marked stay open, with a reason.
+  + # Gaps — what's actually wrong in this repo right now
+
+**Update, 2026-08-19 (a third pass, later still):** a follow-on session corrected three things the pass below got wrong or left too thin. Full account in `_docs/Repo-Map.md`'s folder table and this doc's own new section 5 below — short version:
+
+1. **`instructions/` was rebuilt on a corrected premise.** The 2026-08-19 pass right below this note built `instructions/<repo-name>/<file>` to hold `CLAUDE.md`/`AGENTS.md` copied from `sandbox/` *evaluation candidates* (`adx`, `ecc`, `gbrain`, 16 others). That was wrong — every one of those files already lives untouched in its source repo at `sandbox/<repo>/`, so the copy added a second location for the same fact with no distinguishing value. Cleared out (verified first that nothing had standalone value worth keeping elsewhere), rebuilt correctly: `instructions/<ProjectName>/` now holds the real instruction files of the real projects Anant actively works on (per `sync-manifest.json`'s `"kind": "project"` entries), live-synced one-way via a new `instructions_paths` field + `sync-all.sh` logic, confirmed with Anant via `AskUserQuestion` before the manifest/script were touched. See `instructions/README.md`.
+2. **`60_Claude/vault-rules/` had no operational write-safety rules for this repo's own filesystem** — only the generic PARA note-writing convention. Added `60_Claude/vault-rules/write-contract.md`, adapted directly from Jarvis's own real Write Contract (`AGENTS.md`): golden rules, a full "where does this go" routing table, and a real never-write-to list.
+3. **`60_Claude/` had no `Standards/` folder and no artifact-authoring templates.** Added `60_Claude/Standards/` (one `Standard.md` per artifact type — Agent, Skill, Command, Hook, Instructions, Tested-Tool Promotion — adapted directly from Jarvis's real `30_Order/Standards/` shape) and four new templates in `60_Claude/Templates/` (`agent-template.md`, `skill-template.md`, `command-template.md`, `hook-template.md`).
+
+A fourth, smaller finding from the same pass: the 7 generic PARA vault-note templates (`area-note`, `daily-note`, etc.) have never actually produced a real note anywhere in this repo's git history — confirmed by `git log --all --diff-filter=A` against `00_Daily/`, `10_Areas/`, `20_Projects/`, `30_Knowledge/`, `40_Career/`, all of which turn out not to exist as real, populated folders in this repo at all (only as the documented *reference* shape this kit produces once copied to someone's real Obsidian vault — `_docs/Design.md` already said this repo "is never installed by anyone but Anant," this is the concrete filesystem confirmation of that). The templates aren't wrong for their stated purpose; they're just unused *by this repo itself*, which is a different, narrower claim than "unused." Not deleted — they're still correct output for anyone who does copy this kit to a real vault.
+
+**Update, 2026-08-19 (later same day):** the session that laid out `agents/`, `commands/`, `hooks/`, `docs/`, `instructions/`, `tests/`, and `tested-tools/_future/` for real (per `_docs/Repo-Map.md`) closed several items below — each is marked `[RESOLVED 2026-08-19]` with what actually changed, in place, rather than rewritten out from under the original research-only pass. Items not marked stay open, with a reason.
+  ```
+- `Read` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Gaps.md`
+- `Edit` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Gaps.md`
+  ```diff
+  - **[RESOLVED 2026-08-19]** `60_Claude/vault-rules/pipeline-conventions.md` written — covers all five items named above: `sandbox/<repo-name>/` naming, the `tested-tools/<type>/<use-case>/<repo>/` three-level convention plus `tested-tools/_future/<repo>/FOR-WHAT.md`, the per-destination-project staging convention for `agents/`/`commands/`/`hooks/`/`docs/`, and the `instructions/`/`tests/` conventions (both folders also populated for real in the same session — see `_docs/Repo-Map.md`).
+
+## Cross-references
+  + **[RESOLVED 2026-08-19]** `60_Claude/vault-rules/pipeline-conventions.md` written — covers all five items named above: `sandbox/<repo-name>/` naming, the `tested-tools/<type>/<use-case>/<repo>/` three-level convention plus `tested-tools/_future/<repo>/FOR-WHAT.md`, the per-destination-project staging convention for `agents/`/`commands/`/`hooks/`/`docs/`, and the `instructions/`/`tests/` conventions (both folders also populated for real in the same session — see `_docs/Repo-Map.md`).
+
+**[RESOLVED 2026-08-19, third pass]** `pipeline-conventions.md`'s own `instructions/` section carried the same wrong premise the folder itself did — corrected in place, now describing the real-project/live-sync shape. `60_Claude/vault-rules/write-contract.md` also added — the operational write-safety layer this section's "Net assessment" didn't originally call for by name but is the natural sibling to `pipeline-conventions.md` once the repo has real staging folders with real never-touch zones (`sandbox/<repo>/` once cloned, `tested-tools/` content outside the pipeline, `instructions/` now that it's sync-owned).
+
+## 5. `60_Claude/` still has no `Standards/` folder or artifact-authoring templates — [RESOLVED 2026-08-19, third pass]
+
+`60_Claude/Templates/` held vault-note templates and one pipeline template (`for-what.md`), but nothing for authoring a new agent, skill, command, or hook from scratch, and no `Standards/` folder defining what "correct" looks like for any of them — the same gap `pipeline-conventions.md`'s "Net assessment" already named for structural conventions, just one layer down at the level of an individual artifact's own content quality.
+
+**Resolved:** `60_Claude/Standards/` built — `Agent Standard.md`, `Skill Standard.md`, `Command Standard.md`, `Hook Standard.md`, `Instructions Standard.md`, `Tested-Tool Promotion Standard.md` — each adapted directly from Jarvis's real `30_Order/Standards/` shape (read `Evergreen Standard.md` and `Review Standard.md` in full first, per instruction): a concrete, checkable definition with Per-Section Standard, Done Conditions, and a Gold Standard Example drawn from a real file already in this repo. Paired templates added to `60_Claude/Templates/`: `agent-template.md`, `skill-template.md`, `command-template.md`, `hook-template.md`.
+
+## 6. Review folder — explicitly deferred, not built
+
+`60_Claude/` is also missing its own equivalent of Jarvis's `60_Claude/30_Reviews/AI/` — a place to review *this repo's own* pipeline activity (sandbox→tested-tools throughput, promotion cadence, sync/capture health for this repo specifically). **Deliberately not built this session.** Real reason: it depends on the Jarvis-side review-system work finishing first — Jarvis's own `60_Claude/30_Reviews/AI/` (`Review Standard.md`, both templates, `Tool log.md`'s schema) is real and built (`_docs/Jarvis.md`, `_docs/How to/review-system.md`) but has zero data rows and no review has ever been written under it yet. Building this repo's own review layer on top of an unexercised upstream system would be designing against an unproven shape — the same "plan-and-never-run" failure mode this repo's whole pipeline exists to prevent (`_docs/PRD.md`), just one level removed. Revisit once Jarvis's own review system has at least one real Weekly review written against it.
+
+## Cross-references
+  ```
+- `Edit` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Gaps.md`
+  ```diff
+  - ## Cross-references
+
+- `_docs/Repo-Map.md` — folder-by-folder ground truth, updated 2026-08-19 with `instructions/`, `tests/`, `tested-tools/_future/`, and the corrected `60_Claude/scripts/` count.
+- `_docs/Jarvis.md` — the Toolkit "How to Use X"/"What X" pattern, the real review-system build state, and the real conversation-capture state, all updated 2026-08-19 with direct citations.
+- `_docs/PRD.md` — Tier-1 install list citation corrected 2026-08-19 (the real source is `PDF's Ingestion Implementation.md`'s Matrix table, not `GitHub Ingestion Implementation.md`).
+  + ## Cross-references
+
+- `_docs/Repo-Map.md` — folder-by-folder ground truth, updated 2026-08-19 with `instructions/`, `tests/`, `tested-tools/_future/`, and the corrected `60_Claude/scripts/` count; updated again the same day (third pass) with the `instructions/` rebuild, `write-contract.md`, and `Standards/`.
+- `_docs/Jarvis.md` — the Toolkit "How to Use X"/"What X" pattern, the real review-system build state, and the real conversation-capture state, all updated 2026-08-19 with direct citations.
+- `_docs/PRD.md` — Tier-1 install list citation corrected 2026-08-19 (the real source is `PDF's Ingestion Implementation.md`'s Matrix table, not `GitHub Ingestion Implementation.md`).
+- `_docs/Sync.md` — 2026-08-19 amendment: the `instructions_paths` live-sync design (one-way, source → `instructions/<Project>/`), confirmed with Anant before `sync-manifest.json`/`sync-all.sh` were edited for real.
+- `60_Claude/Standards/README.md` — index of the six new Standards and their paired templates.
+  ```
+- `Bash` — `ls -la /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Repo-Map.md`
+  ```
+-rw-r--r-- 1 anant_gupta anant_gupta 29559 Aug 19 11:22 /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Repo-Map.md
+  ```
+- `Edit` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Repo-Map.md`
+  ```diff
+  - | `instructions/` | **[RESOLVED 2026-08-19]** Populated for real: a discovery pass (`find sandbox/ -maxdepth 2 -iname 'CLAUDE.md' -o -iname 'AGENTS.md' -o -iname 'PRD.md'`) found 27 real hits across 19 of the 30 `sandbox/` repos, copied verbatim into `instructions/<repo-name>/<file>`. No `PRD.md` was found anywhere. See `instructions/README.md` for the full list and `60_Claude/vault-rules/pipeline-conventions.md` for the convention. | Convention: never this repo's own root `CLAUDE.md` — only patterns borrowed from `sandbox/` candidates. |
+  + | `instructions/` | **[REBUILT 2026-08-19, corrected premise]** The first build (same day, described below for history) was wrong: it copied `CLAUDE.md`/`AGENTS.md` from `sandbox/` *evaluation candidates* — content that already lived, unchanged, in the source repo, adding a second location for the same fact with zero distinguishing value. Cleared out, verified nothing had standalone value first, rebuilt correctly: `instructions/<ProjectName>/` now holds the real instruction files of the real projects Anant actively works on, per `sync-manifest.json`'s `"kind": "project"` entries (`second-brain-claudekit`, `CausalOps`, `Jarvis`, `Portfolio`, `Trading View`, `Resq`, `OpsPilot`, `The Plan` — 8 projects, 17 real files). **Live-synced, one-way**, since the same session: each manifest entry now carries an `instructions_paths` field, and `sync-all.sh` copies those files (source → `instructions/<Name>/`, never the reverse) on every scheduled run — confirmed with Anant via `AskUserQuestion` before the manifest/script were edited. See `instructions/README.md` and `_docs/Sync.md`'s 2026-08-19 amendment.<br><br>*Original (wrong) build, kept for history:* a discovery pass (`find sandbox/ -maxdepth 2 -iname 'CLAUDE.md' -o -iname 'AGENTS.md' -o -iname 'PRD.md'`) found 27 real hits across 19 of the 30 `sandbox/` repos, copied verbatim into `instructions/<repo-name>/<file>`. | Convention (corrected): never a `sandbox/` candidate — only real projects, per `instructions/README.md`. |
+  ```
+- `Edit` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Repo-Map.md`
+  ```diff
+  - | `60_Claude/` | AI-generated artifacts and the qualification-pipeline machinery. `README.md`, `Qualification-Checklist.md`, `Sessions/` (session logs + the rolling `_today-edits.md` edit log), `Templates/` (now **every** template in the repo — see Templates Merge below), `vault-rules/` (moved in 2026-08-08 — see Vault-Rules Move below), `scripts/` — **10 files as of 2026-08-19, not 5**: the legacy single-project pair (`sync-jarvis.sh`, `sync-jarvis-silent.vbs`, `register-jarvis-sync-task.ps1`) plus the multi-project engine that superseded it 2026-08-10 (`sync-all.sh`, `sync-all-silent.vbs`, `register-sync-task.ps1`, `sync-manifest.json`), plus `install_unison.sh`, `check_dependency.py`, `update-sandbox.sh`. | Renamed from `50_Claude/` by Anant, deliberately matching Jarvis's own `60_Claude/` name — confirmed 2026-08-09 to carry no meaning beyond the name match ("plainly just a joke or reference"). See `_docs/Design.md`'s amendment. **This row itself was stale until 2026-08-19** — see `_docs/Gaps.md` for the full audit; it had never been updated after the multi-project sync engine landed 2026-08-10, so it undercounted the scripts folder by 5 files for over a week. |
+  + | `60_Claude/` | AI-generated artifacts and the qualification-pipeline machinery. `README.md`, `Qualification-Checklist.md`, `Sessions/` (session logs + the rolling `_today-edits.md` edit log), `Templates/` (every template in the repo, including 4 new artifact-authoring templates as of 2026-08-19 — see below), `Standards/` (**new 2026-08-19**), `vault-rules/` (moved in 2026-08-08; `write-contract.md` added 2026-08-19 — see below), `scripts/` — 10 files (see the two sync engines below). | Renamed from `50_Claude/` by Anant, deliberately matching Jarvis's own `60_Claude/` name — confirmed 2026-08-09 to carry no meaning beyond the name match ("plainly just a joke or reference"). See `_docs/Design.md`'s amendment. |
+| `60_Claude/Standards/` | **New 2026-08-19.** One `Standard.md` per artifact type this repo produces — `Agent Standard.md`, `Skill Standard.md`, `Command Standard.md`, `Hook Standard.md`, `Instructions Standard.md`, `Tested-Tool Promotion Standard.md` — each adapted directly from Jarvis's real `30_Order/Standards/` shape (`Evergreen Standard.md`/`Review Standard.md` read in full first): a concrete, checkable definition (Per-Section Standard, Done Conditions, a real Gold Standard Example already in this repo), not a style guide. Paired templates in `60_Claude/Templates/`. | See `60_Claude/Standards/README.md`. No review-writing Standard yet — deliberately deferred, `_docs/Gaps.md` §6. |
+| `60_Claude/vault-rules/write-contract.md` | **New 2026-08-19.** Adapted directly from Jarvis's real Write Contract (`AGENTS.md`, "Write Contract" section): golden rules, a full "where does this go" routing table covering every real folder in this repo, and a real never-write-to list (`sandbox/<repo>/` once cloned, `tested-tools/` content outside the pipeline, `instructions/<Project>/` now that it's sync-owned, `.git/`, any `_archive/`). Also documents, as a real finding: `00_Daily/`/`10_Areas/`/`20_Projects/`/`30_Knowledge/`/`40_Career/` have never existed as real, populated folders in this repo — confirmed via `git log --all --diff-filter=A`, zero files ever added under any of them. They're the documented reference shape this kit produces once copied to a real vault, not live folders here. | See `60_Claude/vault-rules/write-contract.md`. |
+  ```
+- `Bash` — `tail -5 /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Repo-Map.md`
+  ```
+- [x] **`60_Claude/vault-rules/pipeline-conventions.md` written 2026-08-19** — covers `sandbox/<repo-name>/` naming, the `tested-tools/<type>/<use-case>/<repo>/` three-level convention plus `tested-tools/_future/<repo>/FOR-WHAT.md`, the per-destination-project staging convention, and the `instructions/`/`tests/` conventions. `60_Claude/Templates/for-what.md` also written.
+- [x] **`60_Claude/README.md`'s `scripts/` row and `_docs/Sync.md`'s framing fixed 2026-08-19** — `sync-all.sh` named as the live multi-project engine, `sync-jarvis.sh` as legacy/rollback-only, in both places. `check_dependency.py` re-confirmed to already have presets for both dependency claims tested for real (`bun` for gbrain, Chromium shared libs for gstack) — no new presets needed.
+- [x] **`_docs/How to/` written 2026-08-19** — `README.md`, `review-system.md`, `conversation-capture.md`, `using-staged-artifacts.md`, `tests-and-promotion.md`, citing `_docs/Jarvis.md` and `_docs/Gaps.md` rather than re-researching Jarvis from scratch. `conversation-capture.md` re-verified the real, current capture state directly against the live Jarvis vault (via `mcp__jarvis__vault_read`/`vault_list`) rather than assuming the 2026-08-19-dated `_docs/Gaps.md` snapshot was still current — found and cited a second, parallel session's real fix (a `pwsh`/.NET assembly-load crash in every Stop/SessionEnd hook, fixed by wrapping hook commands with `2>/dev/null; exit 0` at the settings.json layer) plus a third session's scheduled-backfill-safety-net build, both confirmed live via the real `00 - Capture Health.md` dashboard note (Windows and WSL backfills both showing consecutive OK/exit-0 runs as of today).
+- [x] **CLAUDE.md and README.md updated 2026-08-19** to stop describing the now-retired flat `agents/`/`commands/`/`hooks/` staging shape and the now-moved CPR/native-scaffold commands as if they were still live at their old paths — direct consequence of the folder repurposing above, fixed in the same session that caused the staleness rather than left for a future session to notice.
+- [ ] **Convention mismatch, not resolved:** `tested-tools/commands/cpr-compress-preserve-resume/` was created at a literal two-level path (no `<use-case>/` layer) per this session's explicit instructions, even though `_docs/Repo-Map.md`/`tested-tools/README.md`'s three-level convention and `60_Claude/Qualification-Checklist.md` say an individually-tested piece earns its own `<use-case>/` folder. Flagged in `VERDICT.md` itself rather than silently resolved — a future pass should either rename it under a `session-continuity/` use-case layer, or explicitly amend the convention to allow two levels when one tool *is* the use case.
+  ```
+- `Edit` — `/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Repo-Map.md`
+  ```diff
+  - - [ ] **Convention mismatch, not resolved:** `tested-tools/commands/cpr-compress-preserve-resume/` was created at a literal two-level path (no `<use-case>/` layer) per this session's explicit instructions, even though `_docs/Repo-Map.md`/`tested-tools/README.md`'s three-level convention and `60_Claude/Qualification-Checklist.md` say an individually-tested piece earns its own `<use-case>/` folder. Flagged in `VERDICT.md` itself rather than silently resolved — a future pass should either rename it under a `session-continuity/` use-case layer, or explicitly amend the convention to allow two levels when one tool *is* the use case.
+  + - [ ] **Convention mismatch, not resolved:** `tested-tools/commands/cpr-compress-preserve-resume/` was created at a literal two-level path (no `<use-case>/` layer) per this session's explicit instructions, even though `_docs/Repo-Map.md`/`tested-tools/README.md`'s three-level convention and `60_Claude/Qualification-Checklist.md` say an individually-tested piece earns its own `<use-case>/` folder. Flagged in `VERDICT.md` itself rather than silently resolved — a future pass should either rename it under a `session-continuity/` use-case layer, or explicitly amend the convention to allow two levels when one tool *is* the use case.
+
+## 2026-08-19, third pass — corrections and additions
+
+Phase 0 of this pass verified every claim from the prior 2026-08-19 session before building on it (`tested-tools/commands/cpr-compress-preserve-resume/` with `VERDICT.md`, the 15-file `native-scaffold/` split, both `tests/` entries, `tested-tools/_future/` empty) — all confirmed accurate, none needed redoing.
+
+- [x] **`instructions/` rebuilt on a corrected premise 2026-08-19.** The prior build held `sandbox/` evaluation-candidate copies (`adx/`, `ecc/`, `gbrain/`, 16 others) — verified every one of those files still exists, unmodified, in its real `sandbox/<repo>/` location, so the copy in `instructions/` added no distinguishing value. Cleared entirely, rebuilt per the real project list in `60_Claude/scripts/sync-manifest.json` (read fresh, not from any secondhand list) — 8 projects, 17 real instruction files, each verified to exist at its manifest-declared source path before copying. See the folder table above and `instructions/README.md`.
+- [x] **`instructions/` wired into the live sync, 2026-08-19.** Design written in `_docs/Sync.md`'s 2026-08-19 amendment first (premise-corrected: `agents/`/`commands/`/`hooks/`/`docs/` are NOT currently live-synced by anything, verified directly against `sync-manifest.json`/`sync-all.sh` — this is the first automated sync into any of this repo's staging folders, not an extension of an existing one). Confirmed with Anant via `AskUserQuestion` (build it as designed; include `second-brain-claudekit`'s own self-entry) before `sync-manifest.json` (new `instructions_paths` field, all 8 project entries) and `sync-all.sh` (new one-way `cp -f` logic, source → `instructions/<Name>/`, independent of the existing Unison sync's result) were edited. Tested by extracting the identical jq+cp logic into a standalone harness run against the real manifest, writing to a scratch destination, then `diff -rq`'d byte-identical against the real `instructions/` tree — not just claimed to work.
+- [x] **`60_Claude/vault-rules/write-contract.md` written 2026-08-19** — adapted directly from Jarvis's real Write Contract. Golden rules, a full routing table covering every real folder in this repo, a real never-write-to list. Also surfaced a real, previously-undocumented fact: `00_Daily/`, `10_Areas/`, `20_Projects/`, `30_Knowledge/`, `40_Career/` have never existed as real, populated folders in this repo (`git log --all --diff-filter=A` shows zero files ever added under any of them) — they're the documented reference shape this kit produces once copied to a real vault, not live folders here. `docs/` was also found missing (present in the prior session, evidently lost as an empty untracked directory between sessions) and recreated.
+- [x] **`60_Claude/Standards/` and 4 new artifact-authoring templates built 2026-08-19** — `Agent Standard.md`, `Skill Standard.md`, `Command Standard.md`, `Hook Standard.md`, `Instructions Standard.md`, `Tested-Tool Promotion Standard.md`, each adapted directly from Jarvis's real `30_Order/Standards/` shape (`Evergreen Standard.md`/`Review Standard.md` read in full first). Paired templates: `60_Claude/Templates/{agent,skill,command,hook}-template.md`. The 7 existing generic PARA vault-note templates were checked against this repo's real git history and confirmed never used here — not deleted (still correct for their stated purpose, copying this kit to a real vault), but the "unused in this repo" fact is now documented rather than silently left implicit.
+- [ ] **Review folder — deliberately not built.** `60_Claude/`'s own equivalent of Jarvis's `60_Claude/30_Reviews/AI/` depends on the Jarvis-side review system finishing first — that system is built but has zero data rows and no review has ever been written under it yet (`_docs/Jarvis.md`). Building this repo's own review layer against an unexercised upstream shape would repeat the exact "plan-and-never-run" failure mode this repo's pipeline exists to prevent. See `_docs/Gaps.md` §6.
+- [ ] **Still uncommitted**, now with this pass's work added on top of everything the prior 2026-08-19 sessions left uncommitted. Not committed — no instruction to do so this session either.
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit
+echo "=== git status ==="
+git status --porcelain=v1
+echo
+echo "=== counts ==="
+git status --porcelain=v1 | awk '{print $1}' | sort | uniq -c
+  ```
+  ```
+=== git status ===
+RM commands/compress.md -> .claude/_archive/superseded-commands/compress.md
+R  commands/preserve.md -> .claude/_archive/superseded-commands/preserve.md
+RM commands/resume.md -> .claude/_archive/superseded-commands/resume.md
+ M .claude/agents/vault-curator.md
+ M .claude/agents/weekly-reviewer.md
+ M .claude/commands/context.md
+ M .claude/commands/ghost.md
+ M .claude/commands/graduate.md
+ M .claude/commands/ideas.md
+ M .claude/commands/today.md
+ M .claude/commands/trace.md
+ M .claude/hooks/after-edit-log.md
+ M .claude/hooks/after-edit-log.ps1
+ M .claude/hooks/session-wrapup.md
+ M .claude/hooks/session-wrapup.ps1
+ M .claude/settings.json
+ D 50_Claude/README.md
+ D 50_Claude/Templates/pattern-note.md
+ D 50_Claude/Templates/session-log.md
+ D 50_Claude/Templates/weekly-summary.md
+R  templates/area-note.md -> 60_Claude/Templates/area-note.md
+R  templates/daily-note.md -> 60_Claude/Templates/daily-note.md
+R  templates/idea-note.md -> 60_Claude/Templates/idea-note.md
+R  templates/literature-note.md -> 60_Claude/Templates/literature-note.md
+R  templates/meeting-note.md -> 60_Claude/Templates/meeting-note.md
+R  templates/person-note.md -> 60_Claude/Templates/person-note.md
+R  templates/project-note.md -> 60_Claude/Templates/project-note.md
+RM vault-rules/folder-structure.md -> 60_Claude/vault-rules/folder-structure.md
+RM vault-rules/linking-strategy.md -> 60_Claude/vault-rules/linking-strategy.md
+RM vault-rules/naming-conventions.md -> 60_Claude/vault-rules/naming-conventions.md
+R  vault-rules/tagging-system.md -> 60_Claude/vault-rules/tagging-system.md
+ M CLAUDE.md
+ M README.md
+R  agents/connector.md -> tested-tools/agents/native-scaffold/connector.md
+R  agents/researcher.md -> tested-tools/agents/native-scaffold/researcher.md
+R  agents/reviewer.md -> tested-tools/agents/native-scaffold/reviewer.md
+R  agents/writer.md -> tested-tools/agents/native-scaffold/writer.md
+RM commands/brainstorm.md -> tested-tools/commands/native-scaffold/brainstorm.md
+RM commands/capture.md -> tested-tools/commands/native-scaffold/capture.md
+R  commands/connect.md -> tested-tools/commands/native-scaffold/connect.md
+RM commands/inbox-process.md -> tested-tools/commands/native-scaffold/inbox-process.md
+RM commands/journal.md -> tested-tools/commands/native-scaffold/journal.md
+RM commands/research.md -> tested-tools/commands/native-scaffold/research.md
+RM commands/review.md -> tested-tools/commands/native-scaffold/review.md
+R  commands/summarize.md -> tested-tools/commands/native-scaffold/summarize.md
+RM hooks/auto-link.md -> tested-tools/hooks/native-scaffold/auto-link.md
+RM hooks/daily-summary.md -> tested-tools/hooks/native-scaffold/daily-summary.md
+RM hooks/post-note-create.md -> tested-tools/hooks/native-scaffold/post-note-create.md
+?? .claude/_archive/session-logs/
+?? .claude/_archive/superseded-commands/README.md
+?? 60_Claude/Qualification-Checklist.md
+?? 60_Claude/README.md
+?? 60_Claude/Sessions/
+?? 60_Claude/Standards/
+?? 60_Claude/Templates/agent-template.md
+?? 60_Claude/Templates/command-template.md
+?? 60_Claude/Templates/for-what.md
+?? 60_Claude/Templates/hook-template.md
+?? 60_Claude/Templates/pattern-note.md
+?? 60_Claude/Templates/session-log.md
+?? 60_Claude/Templates/skill-template.md
+?? 60_Claude/Templates/weekly-summary.md
+?? 60_Claude/scripts/
+?? 60_Claude/vault-rules/pipeline-conventions.md
+?? 60_Claude/vault-rules/write-contract.md
+?? _docs/
+?? instructions/
+?? sandbox/
+?? tested-tools/README.md
+?? tested-tools/commands/cpr-compress-preserve-resume/
+?? tested-tools/skills/
+?? tests/
+
+=== counts ===
+     24 ??
+      4 D
+     15 M
+     15 R
+     14 RM
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit
+echo "=== secret-pattern scan across everything new/changed ==="
+grep -rEln "sk-ant-[A-Za-z0-9_-]{10,}|sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|ghp_[A-Za-z0-9]{20,}|-----BEGIN [A-Z ]*PRIVATE KEY-----|password[[:space:]]*[:=]|api[_-]?key[[:space:]]*[:=]" \
+  instructions/ 60_Claude/ _docs/ .claude/_archive/ tests/ CLAUDE.md README.md .claude/settings.json 60_Claude/scripts/sync-manifest.json 60_Claude/scripts/sync-all.sh 2>/dev/null
+echo "exit: $?"
+  ```
+  ```
+=== secret-pattern scan across everything new/changed ===
+exit: 1
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit
+grep -rEliln "token|secret|credential|bearer" instructions/ 2>/dev/null
+echo "---files listed above, checking context---"
+grep -rEn "token|secret|credential|bearer" instructions/ 2>/dev/null | head -20
+  ```
+  ```
+instructions/CausalOps/AGENTS.md
+instructions/Portfolio/cosmic-frontend.mdc
+instructions/Portfolio/CLAUDE.md
+instructions/Trading View/CLAUDE.md
+instructions/OpsPilot/PRD.md
+instructions/Jarvis/AGENTS.md
+instructions/CausalOps/CLAUDE.md
+---files listed above, checking context---
+instructions/Trading View/CLAUDE.md:43:| `storage.py` | DuckDB schema init (`init_db`), batch upsert (`batch_insert_ohlcv`), ingestion run recording, raw payload file writer (`write_raw_payload`), secret redaction (`redact_secrets`) |
+instructions/Trading View/CLAUDE.md:54:→ raw_market_payloads table (hash-keyed, secrets redacted)
+instructions/Trading View/CLAUDE.md:93:- No secrets in source, fixtures, logs, or stored metadata; `.env` stays out of git.
+instructions/Portfolio/CLAUDE.md:42:### Color tokens
+instructions/Portfolio/CLAUDE.md:276:| Certifications | `// credentials` |
+instructions/Jarvis/AGENTS.md:93:- This vault contains local plugin configuration. Do not surface or copy secrets from plugin data files.
+instructions/Jarvis/AGENTS.md:94:- Prefer env vars and ignored local config for credentials, never vault notes.
+instructions/Portfolio/cosmic-frontend.mdc:104:| Certifications | `// credentials` |
+instructions/CausalOps/CLAUDE.md:22:Integration tests verified live with real Supabase credentials: `pytest tests/memory/ -v` passes 21/21 with zero skips, including a real `fastmcp.Client` round trip through the MCP protocol layer (`test_mcp_bridge.py`) and the coordinator-level round trip (`test_end_to_end.py`).
+instructions/CausalOps/CLAUDE.md:92:# Supabase — server (secrets — never use anon key in Python backend)
+instructions/CausalOps/CLAUDE.md:128:# Smoke test (zero LLM tokens)
+instructions/CausalOps/CLAUDE.md:197:pytest tests/              # full suite (integration tests skip without credentials)
+instructions/CausalOps/CLAUDE.md:198:pytest tests/ -m "not integration and not kafka"   # unit tests only, zero credentials
+instructions/CausalOps/CLAUDE.md:203:Unit tests (no credentials): test_extractor.py, test_mcp_tools.py
+instructions/OpsPilot/PRD.md:695:- Encrypt secrets via hosted platform environment variables
+instructions/CausalOps/AGENTS.md:63:- Do not add hidden live integrations, credentials, background services, or
+instructions/CausalOps/AGENTS.md:65:- Do not write generated data, secrets, or run artifacts into Git.
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit
+echo "=== instructions/ final ==="
+find instructions -type f | sort
+echo
+echo "=== 60_Claude/Standards/ ==="
+ls "60_Claude/Standards/"
+echo
+echo "=== 60_Claude/Templates/ (new ones) ==="
+ls 60_Claude/Templates/ | grep -E "template|for-what"
+echo
+echo "=== docs/ exists? ==="
+ls -la docs/
+  ```
+  ```
+=== instructions/ final ===
+instructions/CausalOps/AGENTS.md
+instructions/CausalOps/CLAUDE.md
+instructions/Jarvis/AGENTS.md
+instructions/Jarvis/CLAUDE.md
+instructions/OpsPilot/AGENTS.md
+instructions/OpsPilot/CLAUDE.md
+instructions/OpsPilot/PRD.md
+instructions/OpsPilot/README.md
+instructions/Portfolio/CLAUDE.md
+instructions/Portfolio/cosmic-frontend.mdc
+instructions/README.md
+instructions/Resq/AGENTS.md
+instructions/Resq/PRD.md
+instructions/Resq/README.md
+instructions/The Plan/AGENTS.md
+instructions/The Plan/CLAUDE.md
+instructions/Trading View/AGENTS.md
+instructions/Trading View/CLAUDE.md
+instructions/second-brain-claudekit/CLAUDE.md
+
+=== 60_Claude/Standards/ ===
+Agent Standard.md
+Command Standard.md
+Hook Standard.md
+Instructions Standard.md
+README.md
+Skill Standard.md
+Tested-Tool Promotion Standard.md
+
+=== 60_Claude/Templates/ (new ones) ===
+agent-template.md
+command-template.md
+for-what.md
+hook-template.md
+skill-template.md
+
+=== docs/ exists? ===
+total 8
+drwxr-xr-x  2 anant_gupta anant_gupta 4096 Aug 19 19:55 .
+drwxr-xr-x 15 anant_gupta anant_gupta 4096 Aug 19 19:59 ..
+  ```
+
 ## Actions Taken
-- Files created: /tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/305124c8-922f-4d5b-92bb-5a7f5785b3c0/scratchpad/cpr-test/CLAUDE.md, /tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/305124c8-922f-4d5b-92bb-5a7f5785b3c0/scratchpad/cpr-test/CC-Session-Logs/19-08-2026-11_05-cpr-qualification-test.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools/commands/cpr-compress-preserve-resume/VERDICT.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools/commands/cpr-compress-preserve-resume/compress.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools/commands/cpr-compress-preserve-resume/preserve.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools/commands/cpr-compress-preserve-resume/resume.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/.claude/_archive/superseded-commands/README.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/vault-rules/pipeline-conventions.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/for-what.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tests/skills/mattpocock-engineering/README.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tests/commands/cpr-compress-preserve-resume/2026-08-19-test-log.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/README.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/How to/review-system.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/How to/using-staged-artifacts.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/How to/tests-and-promotion.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/How to/README.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/How to/conversation-capture.md
-- Files modified: /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools/README.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/check_dependency.py, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/README.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Sync.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/CLAUDE.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/README.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/How to/conversation-capture.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Repo-Map.md
+- Files created: /tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/305124c8-922f-4d5b-92bb-5a7f5785b3c0/scratchpad/cpr-test/CLAUDE.md, /tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/305124c8-922f-4d5b-92bb-5a7f5785b3c0/scratchpad/cpr-test/CC-Session-Logs/19-08-2026-11_05-cpr-qualification-test.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools/commands/cpr-compress-preserve-resume/VERDICT.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools/commands/cpr-compress-preserve-resume/compress.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools/commands/cpr-compress-preserve-resume/preserve.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools/commands/cpr-compress-preserve-resume/resume.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/.claude/_archive/superseded-commands/README.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/vault-rules/pipeline-conventions.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/for-what.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tests/skills/mattpocock-engineering/README.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tests/commands/cpr-compress-preserve-resume/2026-08-19-test-log.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/README.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/How to/review-system.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/How to/using-staged-artifacts.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/How to/tests-and-promotion.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/How to/README.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/How to/conversation-capture.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/vault-rules/write-contract.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/README.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/Agent Standard.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/Skill Standard.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/Command Standard.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/Hook Standard.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/Instructions Standard.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/Tested-Tool Promotion Standard.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/agent-template.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/skill-template.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/command-template.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/hook-template.md
+- Files modified: /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools/README.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/check_dependency.py, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/README.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Sync.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/CLAUDE.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/README.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/How to/conversation-capture.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Repo-Map.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-manifest.json, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-all.sh, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/vault-rules/pipeline-conventions.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Gaps.md
 - Files deleted: (none)
-- Commands run: git log --oneline -5 && echo "---726f6de commit msg---" && git show --stat 726f6de | head -50, git log --format='%H %ad %s' --date=short -- commands/compress.md commands/preserve.md commands/resume.md, git status --porcelain=v1 | head -60, git show --stat d35f0b7 | head -80, ls sandbox/ 2>/dev/null; echo "---"; cat sandbox/README.md 2>/dev/null | head -100, grep -rn "cpr-compress-preserve-resume\|CPR" _docs/ 60_Claude/ README.md CLAUDE.md 2>/dev/null | grep -v "\.git/", cat _docs/PRD.md 2>/dev/null | head -150, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit/sandbox && git clone --depth 1 https://github.com/EliaAlberti/cpr-compress-preserve-resume.git 2>&1 | tail -20, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit/sandbox/cpr-compress-preserve-resume && find . -type f -not -path './.git/*' | sort, SCRATCH="/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/[REDACTED]/scratchpad/cpr-test" mkdir -p "$SCRATCH/.claude/commands" cp /home/anant_gupta/projects/ai/claude/second-brain-claudekit/sandbox/cpr-compress-preserve-resume/commands/*.md "$SCRATCH/.claude/commands/" ls -la "$SCRATCH/.claude/commands/", SCRATCH="/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/[REDACTED]/scratchpad/cpr-test" cd "$SCRATCH" # compress.md Step 5: detect project root by walking up looking for CLAUDE.md or .git pwd ls -la CLAUDE.md 2>&1 mkdir -p "$SCRATCH/CC-Session-Logs/" ls -la "$SCRATCH/CC-Session-Logs/", SCRATCH="/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/[REDACTED]/scratchpad/cpr-test" echo "--- resume.md Step 3: list session logs ---" ls -1 "$SCRATCH/CC-Session-Logs/"*.md 2>/dev/null | wc -l echo "--- resume.md Step 4/9: summary-only read (stop at ## Raw Session Log) ---" awk '/^## Raw Session Log/{exit} {print}' "$SCRATCH/CC-Session-Logs/[REDACTED].md" | wc -l echo "total file lines:" wc -l < "$SCRATCH/CC-Session-Logs/[REDACTED].md" echo "--- preserve.md Step 6: CLAUDE.md line count ---" wc -l "$SCRATCH/CLAUDE.md" echo "--- preserve.md Step 3: read CLAUDE.md structure ---" grep -c '^##' "$SCRATCH/CLAUDE.md", find /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools -type d | sort; echo "---"; find /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools -type f | sort, mkdir -p /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools/commands/cpr-compress-preserve-resume, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit echo "=== agents/ ===" for f in agents/connector.md agents/researcher.md agents/reviewer.md agents/writer.md; do echo "--- $f ---"; cat "$f"; echo; done, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit echo "=== commands/ (d35f0b7 origin) ===" for f in commands/brainstorm.md commands/capture.md commands/connect.md commands/inbox-process.md commands/journal.md commands/research.md commands/review.md commands/summarize.md; do echo "--- $f ---"; cat "$f"; echo; done, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit echo "=== hooks/ ===" for f in hooks/auto-link.md hooks/daily-summary.md hooks/post-note-create.md; do echo "--- $f ---"; cat "$f"; echo; done, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit echo "Checking distinctive phrases against sandbox/ and tested-tools/ (excluding the cpr clone and mattpocock skills which are already known/reviewed):" for phrase in "Connector sub-agent" "MOC threshold" "brainstorm mode" "Progressive summarisation" "Post Note Create" "Auto-Link" "Weekly Review Workflow" "idea-note.md" "spaced-repetition-strengthens-memory"; do echo "--- '$phrase' ---" grep -rl "$phrase" sandbox/ tested-tools/ --include="*.md" 2>/dev/null | grep -v "^agents/\|^commands/\|^hooks/\|^tested-tools/commands/cpr-compress-preserve-resume" done echo "done", cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit git status --porcelain -- agents/ commands/brainstorm.md commands/capture.md commands/connect.md commands/inbox-process.md commands/journal.md commands/research.md commands/review.md commands/summarize.md hooks/, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit mkdir -p tested-tools/agents/native-scaffold tested-tools/commands/native-scaffold tested-tools/hooks/native-scaffold git mv agents/connector.md tested-tools/agents/native-scaffold/connector.md git mv agents/researcher.md tested-tools/agents/native-scaffold/researcher.md git mv agents/reviewer.md tested-tools/agents/native-scaffold/reviewer.md git mv agents/writer.md tested-tools/agents/native-scaffold/writer.md git mv commands/brainstorm.md tested-tools/commands/native-scaffold/brainstorm.md git mv commands/capture.md tested-tools/commands/native-scaffold/capture.md git mv commands/connect.md tested-tools/commands/native-scaffold/connect.md git mv commands/inbox-process.md tested-tools/commands/native-scaffold/inbox-process.md git mv commands/journal.md tested-tools/commands/native-scaffold/journal.md git mv commands/research.md tested-tools/commands/native-scaffold/research.md git mv commands/review.md tested-tools/commands/native-scaffold/review.md git mv commands/summarize.md tested-tools/commands/native-scaffold/summarize.md git mv hooks/auto-link.md tested-tools/hooks/native-scaffold/auto-link.md git mv hooks/daily-summary.md tested-tools/hooks/native-scaffold/daily-summary.md git mv hooks/post-note-create.md tested-tools/hooks/native-scaffold/post-note-create.md echo "--- remaining agents/ commands/ hooks/ ---" ls agents/ commands/ hooks/ 2>&1, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit find .claude/_archive -type f 2>/dev/null echo "---" cat .claude/_archive/README.md 2>/dev/null, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit mkdir -p .claude/_archive/superseded-commands git mv commands/compress.md .claude/_archive/superseded-commands/compress.md git mv commands/preserve.md .claude/_archive/superseded-commands/preserve.md git mv commands/resume.md .claude/_archive/superseded-commands/resume.md ls commands/ 2>&1 echo "---" ls .claude/_archive/superseded-commands/, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit find agents commands hooks docs skills -maxdepth 1 2>&1 echo "--- README content if any ---" for f in agents/README.md commands/README.md hooks/README.md; do if [ -f "$f" ]; then echo "=== $f ==="; cat "$f"; fi done, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit git ls-files skills/ agents/ commands/ hooks/ echo "---" ls -la skills/ agents/ commands/ hooks/, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit mkdir -p docs ls -la docs/ echo "Phase 1 status:" git status --porcelain -- agents commands hooks docs skills tested-tools .claude/_archive | head -60, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit ls tested-tools/agents/ tested-tools/commands/ tested-tools/hooks/, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit ls -la tested-tools/agents/ tested-tools/commands/ tested-tools/hooks/, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit rm tested-tools/agents/.gitkeep tested-tools/commands/.gitkeep tested-tools/hooks/.gitkeep echo done, ls /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/vault-rules/ /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/ /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/, mkdir -p /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tests/skills/mattpocock-engineering mkdir -p /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tests/commands/cpr-compress-preserve-resume echo done, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit find sandbox/ -maxdepth 2 \( -iname 'CLAUDE.md' -o -iname 'AGENTS.md' -o -iname 'PRD.md' \) 2>/dev/null | sort, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit mkdir -p instructions while IFS= read -r f; do repo=$(echo "$f" | cut -d/ -f2) fname=$(basename "$f") mkdir -p "instructions/$repo" cp "$f" "instructions/$repo/$fname" done < <(find sandbox/ -maxdepth 2 \( -iname 'CLAUDE.md' -o -iname 'AGENTS.md' -o -iname 'PRD.md' \) 2>/dev/null) find instructions -type f | sort, ls -la /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools/_future/ 2>&1, mkdir -p "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/How to" echo done, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit ls -la "_docs/How to/" echo "---" find "_docs/How to" -newer "_docs/How to/review-system.md" -type f 2>/dev/null, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit git status --porcelain | wc -l echo "---" git status --porcelain | head -80, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit ls -la _docs/Repo-Map.md _docs/Gaps.md echo "---" wc -l _docs/Repo-Map.md _docs/Gaps.md, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit echo "=== git status ===" git status --porcelain=v1 echo echo "=== count by type ===" git status --porcelain=v1 | awk '{print $1}' | sort | uniq -c, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit echo "=== grep for common secret patterns across new content ===" grep -rEn "sk-ant-[A-Za-z0-9_-]{10,}|sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|ghp_[A-Za-z0-9]{20,}|-----BEGIN [A-Z ]*PRIVATE KEY-----" \ instructions/ tested-tools/ 60_Claude/ _docs/ .claude/_archive/ tests/ CLAUDE.md README.md .claude/settings.json 2>/dev/null echo "exit: $?", cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit git diff -- .claude/settings.json | head -60, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit echo "=== top-level staging folders ===" ls -la agents commands hooks docs skills 2>&1 echo echo "=== _docs/How to/ ===" ls "_docs/How to/" echo echo "=== tested-tools/ top ===" find tested-tools -maxdepth 2 -type d | sort
-- Tool call tally: Agent (1), AskUserQuestion (1), Bash (41), Edit (14), ListAgents (1), mcp__github__search_repositories (1), mcp__jarvis__search_simple (1), mcp__jarvis__vault_list (7), mcp__jarvis__vault_read (5), Read (25), ToolSearch (2), WebSearch (1), Write (17)
+- Commands run: git log --oneline -5 && echo "---726f6de commit msg---" && git show --stat 726f6de | head -50, git log --format='%H %ad %s' --date=short -- commands/compress.md commands/preserve.md commands/resume.md, git status --porcelain=v1 | head -60, git show --stat d35f0b7 | head -80, ls sandbox/ 2>/dev/null; echo "---"; cat sandbox/README.md 2>/dev/null | head -100, grep -rn "cpr-compress-preserve-resume\|CPR" _docs/ 60_Claude/ README.md CLAUDE.md 2>/dev/null | grep -v "\.git/", cat _docs/PRD.md 2>/dev/null | head -150, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit/sandbox && git clone --depth 1 https://github.com/EliaAlberti/cpr-compress-preserve-resume.git 2>&1 | tail -20, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit/sandbox/cpr-compress-preserve-resume && find . -type f -not -path './.git/*' | sort, SCRATCH="/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/[REDACTED]/scratchpad/cpr-test" mkdir -p "$SCRATCH/.claude/commands" cp /home/anant_gupta/projects/ai/claude/second-brain-claudekit/sandbox/cpr-compress-preserve-resume/commands/*.md "$SCRATCH/.claude/commands/" ls -la "$SCRATCH/.claude/commands/", SCRATCH="/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/[REDACTED]/scratchpad/cpr-test" cd "$SCRATCH" # compress.md Step 5: detect project root by walking up looking for CLAUDE.md or .git pwd ls -la CLAUDE.md 2>&1 mkdir -p "$SCRATCH/CC-Session-Logs/" ls -la "$SCRATCH/CC-Session-Logs/", SCRATCH="/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/[REDACTED]/scratchpad/cpr-test" echo "--- resume.md Step 3: list session logs ---" ls -1 "$SCRATCH/CC-Session-Logs/"*.md 2>/dev/null | wc -l echo "--- resume.md Step 4/9: summary-only read (stop at ## Raw Session Log) ---" awk '/^## Raw Session Log/{exit} {print}' "$SCRATCH/CC-Session-Logs/[REDACTED].md" | wc -l echo "total file lines:" wc -l < "$SCRATCH/CC-Session-Logs/[REDACTED].md" echo "--- preserve.md Step 6: CLAUDE.md line count ---" wc -l "$SCRATCH/CLAUDE.md" echo "--- preserve.md Step 3: read CLAUDE.md structure ---" grep -c '^##' "$SCRATCH/CLAUDE.md", find /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools -type d | sort; echo "---"; find /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools -type f | sort, mkdir -p /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools/commands/cpr-compress-preserve-resume, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit echo "=== agents/ ===" for f in agents/connector.md agents/researcher.md agents/reviewer.md agents/writer.md; do echo "--- $f ---"; cat "$f"; echo; done, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit echo "=== commands/ (d35f0b7 origin) ===" for f in commands/brainstorm.md commands/capture.md commands/connect.md commands/inbox-process.md commands/journal.md commands/research.md commands/review.md commands/summarize.md; do echo "--- $f ---"; cat "$f"; echo; done, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit echo "=== hooks/ ===" for f in hooks/auto-link.md hooks/daily-summary.md hooks/post-note-create.md; do echo "--- $f ---"; cat "$f"; echo; done, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit echo "Checking distinctive phrases against sandbox/ and tested-tools/ (excluding the cpr clone and mattpocock skills which are already known/reviewed):" for phrase in "Connector sub-agent" "MOC threshold" "brainstorm mode" "Progressive summarisation" "Post Note Create" "Auto-Link" "Weekly Review Workflow" "idea-note.md" "spaced-repetition-strengthens-memory"; do echo "--- '$phrase' ---" grep -rl "$phrase" sandbox/ tested-tools/ --include="*.md" 2>/dev/null | grep -v "^agents/\|^commands/\|^hooks/\|^tested-tools/commands/cpr-compress-preserve-resume" done echo "done", cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit git status --porcelain -- agents/ commands/brainstorm.md commands/capture.md commands/connect.md commands/inbox-process.md commands/journal.md commands/research.md commands/review.md commands/summarize.md hooks/, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit mkdir -p tested-tools/agents/native-scaffold tested-tools/commands/native-scaffold tested-tools/hooks/native-scaffold git mv agents/connector.md tested-tools/agents/native-scaffold/connector.md git mv agents/researcher.md tested-tools/agents/native-scaffold/researcher.md git mv agents/reviewer.md tested-tools/agents/native-scaffold/reviewer.md git mv agents/writer.md tested-tools/agents/native-scaffold/writer.md git mv commands/brainstorm.md tested-tools/commands/native-scaffold/brainstorm.md git mv commands/capture.md tested-tools/commands/native-scaffold/capture.md git mv commands/connect.md tested-tools/commands/native-scaffold/connect.md git mv commands/inbox-process.md tested-tools/commands/native-scaffold/inbox-process.md git mv commands/journal.md tested-tools/commands/native-scaffold/journal.md git mv commands/research.md tested-tools/commands/native-scaffold/research.md git mv commands/review.md tested-tools/commands/native-scaffold/review.md git mv commands/summarize.md tested-tools/commands/native-scaffold/summarize.md git mv hooks/auto-link.md tested-tools/hooks/native-scaffold/auto-link.md git mv hooks/daily-summary.md tested-tools/hooks/native-scaffold/daily-summary.md git mv hooks/post-note-create.md tested-tools/hooks/native-scaffold/post-note-create.md echo "--- remaining agents/ commands/ hooks/ ---" ls agents/ commands/ hooks/ 2>&1, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit find .claude/_archive -type f 2>/dev/null echo "---" cat .claude/_archive/README.md 2>/dev/null, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit mkdir -p .claude/_archive/superseded-commands git mv commands/compress.md .claude/_archive/superseded-commands/compress.md git mv commands/preserve.md .claude/_archive/superseded-commands/preserve.md git mv commands/resume.md .claude/_archive/superseded-commands/resume.md ls commands/ 2>&1 echo "---" ls .claude/_archive/superseded-commands/, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit find agents commands hooks docs skills -maxdepth 1 2>&1 echo "--- README content if any ---" for f in agents/README.md commands/README.md hooks/README.md; do if [ -f "$f" ]; then echo "=== $f ==="; cat "$f"; fi done, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit git ls-files skills/ agents/ commands/ hooks/ echo "---" ls -la skills/ agents/ commands/ hooks/, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit mkdir -p docs ls -la docs/ echo "Phase 1 status:" git status --porcelain -- agents commands hooks docs skills tested-tools .claude/_archive | head -60, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit ls tested-tools/agents/ tested-tools/commands/ tested-tools/hooks/, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit ls -la tested-tools/agents/ tested-tools/commands/ tested-tools/hooks/, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit rm tested-tools/agents/.gitkeep tested-tools/commands/.gitkeep tested-tools/hooks/.gitkeep echo done, ls /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/vault-rules/ /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/ /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/, mkdir -p /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tests/skills/mattpocock-engineering mkdir -p /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tests/commands/cpr-compress-preserve-resume echo done, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit find sandbox/ -maxdepth 2 \( -iname 'CLAUDE.md' -o -iname 'AGENTS.md' -o -iname 'PRD.md' \) 2>/dev/null | sort, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit mkdir -p instructions while IFS= read -r f; do repo=$(echo "$f" | cut -d/ -f2) fname=$(basename "$f") mkdir -p "instructions/$repo" cp "$f" "instructions/$repo/$fname" done < <(find sandbox/ -maxdepth 2 \( -iname 'CLAUDE.md' -o -iname 'AGENTS.md' -o -iname 'PRD.md' \) 2>/dev/null) find instructions -type f | sort, ls -la /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools/_future/ 2>&1, mkdir -p "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/How to" echo done, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit ls -la "_docs/How to/" echo "---" find "_docs/How to" -newer "_docs/How to/review-system.md" -type f 2>/dev/null, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit git status --porcelain | wc -l echo "---" git status --porcelain | head -80, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit ls -la _docs/Repo-Map.md _docs/Gaps.md echo "---" wc -l _docs/Repo-Map.md _docs/Gaps.md, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit echo "=== git status ===" git status --porcelain=v1 echo echo "=== count by type ===" git status --porcelain=v1 | awk '{print $1}' | sort | uniq -c, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit echo "=== grep for common secret patterns across new content ===" grep -rEn "sk-ant-[A-Za-z0-9_-]{10,}|sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|ghp_[A-Za-z0-9]{20,}|-----BEGIN [A-Z ]*PRIVATE KEY-----" \ instructions/ tested-tools/ 60_Claude/ _docs/ .claude/_archive/ tests/ CLAUDE.md README.md .claude/settings.json 2>/dev/null echo "exit: $?", cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit git diff -- .claude/settings.json | head -60, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit echo "=== top-level staging folders ===" ls -la agents commands hooks docs skills 2>&1 echo echo "=== _docs/How to/ ===" ls "_docs/How to/" echo echo "=== tested-tools/ top ===" find tested-tools -maxdepth 2 -type d | sort, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit echo "=== tested-tools/commands/cpr-compress-preserve-resume/ ===" ls -la tested-tools/commands/cpr-compress-preserve-resume/ 2>&1 echo echo "=== native-scaffold counts ===" echo "agents:"; ls tested-tools/agents/native-scaffold/ 2>&1 echo "commands:"; ls tested-tools/commands/native-scaffold/ 2>&1 echo "hooks:"; ls tested-tools/hooks/native-scaffold/ 2>&1 echo echo "=== tests/ ===" find tests -type f 2>&1 echo echo "=== tested-tools/_future/ ===" ls -la tested-tools/_future/ 2>&1, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit find instructions -type f | sort echo "---" cat instructions/README.md 2>/dev/null, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit for repo in Agent-Reach adx agent-skills andrej-karpathy-skills claude-code-best-practice claude-context claude-mem ecc gbrain graphify gstack last30days-skill llm-council memsearch obsidian-mind obsidian-second-brain promptfoo skills spec-kit; do f=$(find "sandbox/$repo" -maxdepth 1 \( -iname 'CLAUDE.md' -o -iname 'AGENTS.md' \) 2>/dev/null | wc -l) echo "$repo: $f instruction file(s) still present in sandbox/" done, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit git status --porcelain instructions/ | head -5 echo "total tracked files in instructions/:" git ls-files instructions/ | wc -l, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit rm -rf instructions/* ls -la instructions/, for d in \ "/home/anant_gupta/projects/ai/claude/second-brain-claudekit" \ "/home/anant_gupta/projects/hub/CausalOps" \ "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis" \ "/home/anant_gupta/projects/hub/portfolio" \ "/home/anant_gupta/projects/hub/tradingview" \ "/home/anant_gupta/projects/hackathon/Resq" \ "/home/anant_gupta/projects/hackathon/opspilot" \ "/mnt/d/Users/_Anant/10_Areas/Documents/The Plan" \ ; do if [ -d "$d" ]; then echo "OK $d"; else echo "MISS $d"; fi done, echo "=== second-brain-claudekit ===" ls -la "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/CLAUDE.md" 2>&1 echo echo "=== CausalOps ===" ls -la "/home/anant_gupta/projects/hub/CausalOps/CLAUDE.md" "/home/anant_gupta/projects/hub/CausalOps/AGENTS.md" 2>&1 echo echo "=== Jarvis ===" ls -la "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/CLAUDE.md" "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/AGENTS.md" 2>&1 echo echo "=== Portfolio ===" ls -la "/home/anant_gupta/projects/hub/portfolio/.claude/CLAUDE.md" "/home/anant_gupta/projects/hub/portfolio/.claude/cosmic-frontend.mdc" 2>&1 echo echo "=== Trading View ===" ls -la "/home/anant_gupta/projects/hub/tradingview/CLAUDE.md" "/home/anant_gupta/projects/hub/tradingview/AGENTS.md" 2>&1 echo echo "=== Resq ===" ls -la "/home/anant_gupta/projects/hackathon/Resq/.claude/PRD.md" "/home/anant_gupta/projects/hackathon/Resq/.claude/README.md" "/home/anant_gupta/projects/hackathon/Resq/AGENTS.md" 2>&1 echo echo "=== OpsPilot ===" ls -la "/home/anant_gupta/projects/hackathon/opspilot/.claude/PRD.md" "/home/anant_gupta/projects/hackathon/opspilot/.claude/README.md" "/home/anant_gupta/projects/hackathon/opspilot/CLAUDE.md" "/home/anant_gupta/projects/hackathon/opspilot/AGENTS.md" 2>&1 echo echo "=== The Plan ===" ls -la "/mnt/d/Users/_Anant/10_Areas/Documents/The Plan/CLAUDE.md" "/mnt/d/Users/_Anant/10_Areas/Documents/The Plan/AGENTS.md" 2>&1, head -20 "/home/anant_gupta/projects/hub/portfolio/.claude/cosmic-frontend.mdc", cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit mkdir -p instructions/second-brain-claudekit instructions/CausalOps instructions/Jarvis instructions/Portfolio "instructions/Trading View" instructions/Resq instructions/OpsPilot "instructions/The Plan" cp "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/CLAUDE.md" instructions/second-brain-claudekit/CLAUDE.md cp "/home/anant_gupta/projects/hub/CausalOps/CLAUDE.md" instructions/CausalOps/CLAUDE.md cp "/home/anant_gupta/projects/hub/CausalOps/AGENTS.md" instructions/CausalOps/AGENTS.md cp "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/CLAUDE.md" instructions/Jarvis/CLAUDE.md cp "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/AGENTS.md" instructions/Jarvis/AGENTS.md cp "/home/anant_gupta/projects/hub/portfolio/.claude/CLAUDE.md" instructions/Portfolio/CLAUDE.md cp "/home/anant_gupta/projects/hub/portfolio/.claude/cosmic-frontend.mdc" instructions/Portfolio/cosmic-frontend.mdc cp "/home/anant_gupta/projects/hub/tradingview/CLAUDE.md" "instructions/Trading View/CLAUDE.md" cp "/home/anant_gupta/projects/hub/tradingview/AGENTS.md" "instructions/Trading View/AGENTS.md" cp "/home/anant_gupta/projects/hackathon/Resq/.claude/PRD.md" instructions/Resq/PRD.md cp "/home/anant_gupta/projects/hackathon/Resq/.claude/README.md" instructions/Resq/README.md cp "/home/anant_gupta/projects/hackathon/Resq/AGENTS.md" instructions/Resq/AGENTS.md cp "/home/anant_gupta/projects/hackathon/opspilot/.claude/PRD.md" instructions/OpsPilot/PRD.md cp "/home/anant_gupta/projects/hackathon/opspilot/.claude/README.md" instructions/OpsPilot/README.md cp "/home/anant_gupta/projects/hackathon/opspilot/CLAUDE.md" instructions/OpsPilot/CLAUDE.md cp "/home/anant_gupta/projects/hackathon/opspilot/AGENTS.md" instructions/OpsPilot/AGENTS.md cp "/mnt/d/Users/_Anant/10_Areas/Documents/The Plan/CLAUDE.md" "instructions/The Plan/CLAUDE.md" cp "/mnt/d/Users/_Anant/10_Areas/Documents/The Plan/AGENTS.md" "instructions/The Plan/AGENTS.md" find instructions -type f | sort, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit echo "=== does sync-manifest.json or sync-all.sh reference top-level agents/, commands/, hooks/, docs/ staging? ===" grep -n "agents/<\|commands/<\|hooks/<\|docs/<\|instructions_target\|staging" 60_Claude/scripts/sync-manifest.json 60_Claude/scripts/sync-all.sh 2>/dev/null echo "exit: $?" echo echo "=== current content of top-level agents/, commands/, hooks/, docs/ (are they populated by anything?) ===" find agents commands hooks docs -type f 2>/dev/null echo "(none = still empty, per-project subfolders created only when real content lands)" echo echo "=== pipeline-conventions.md's actual claim about these folders ===" grep -n -A3 "per-destination-project staging" 60_Claude/vault-rules/pipeline-conventions.md | head -20, tail -5 /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Sync.md, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit python3 -c "import json; d=json.load(open('60_Claude/scripts/sync-manifest.json')); print('JSON OK') for p in d['projects']: print(p['name'], p.get('kind'), p.get('instructions_paths'))", which unison "$HOME/.local/bin/unison" 2>&1; ls -la "$HOME/.local/bin/unison" 2>&1, bash -n /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-all.sh && echo "SYNTAX OK", cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit MANIFEST="60_Claude/scripts/sync-manifest.json" REPO_ROOT="$(pwd)" TEST_DEST="/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/[REDACTED]/scratchpad/instr-sync-test" rm -rf "$TEST_DEST"; mkdir -p "$TEST_DEST" while IFS=$'\t' read -r NAME SOURCE; do mapfile -t INSTR_PATHS < <(jq -r --arg n "$NAME" '.projects[] | select(.name==$n) | (.instructions_paths // [])[]' "$MANIFEST") if [ "${#INSTR_PATHS[@]}" -gt 0 ]; then INSTR_DIR="$TEST_DEST/$NAME" mkdir -p "$INSTR_DIR" for IP in "${INSTR_PATHS[@]}"; do SRC_FILE="$SOURCE/$IP" DEST_FILE="$INSTR_DIR/$(basename "$IP")" if [ -f "$SRC_FILE" ]; then cp -f "$SRC_FILE" "$DEST_FILE" echo "OK $NAME $IP -> $(basename "$IP")" else echo "WARN $NAME source missing: $SRC_FILE" fi done fi done < <(jq -r '.projects[] | [.name, .source] | @tsv' "$MANIFEST") echo echo "=== resulting tree ===" find "$TEST_DEST" -type f | sort, diff -rq "/tmp/claude-1001/-home-anant-gupta-projects-ai-claude-second-brain-claudekit/[REDACTED]/scratchpad/instr-sync-test" "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions" echo "diff exit: $?", grep -n "^#" "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/AGENTS.md" | head -60, sed -n '33,75p' "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/AGENTS.md", cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit ls -d */ 2>/dev/null | sort echo "---" ls -d _docs/*/ 2>/dev/null echo "---" ls -d 60_Claude/*/ 2>/dev/null, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit ls -la | grep '^d' echo "--- docs/ specifically ---" ls -la docs/ 2>&1 echo "--- 60_Claude/ full ---" ls -la 60_Claude/, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit git log --all --oneline -- 00_Daily 10_Areas 20_Projects 30_Knowledge 40_Career _attachments docs 2>&1 | head -20 echo "---" git ls-files | grep -E "^(00_Daily|10_Areas|20_Projects|30_Knowledge|40_Career|_attachments|docs)/" | head -20 echo "(none = these were never real tracked folders in this repo)", mkdir -p /home/anant_gupta/projects/ai/claude/second-brain-claudekit/docs echo "recreated docs/ (was empty+untracked, evidently lost between sessions — empty dirs don't survive git operations without a placeholder)", ls "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/30_Order/Standards/" 2>&1, find /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools/skills -maxdepth 2 -name "SKILL.md" | head -1, find /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools/skills -name "SKILL.md" | head -3, mkdir -p /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit ls 60_Claude/Templates/ echo "---" git log --all --diff-filter=A --name-only -- '*.md' 2>/dev/null | grep -E "^(00_Daily|10_Areas|20_Projects|30_Knowledge|40_Career)/" | head echo "(none = confirmed: no vault note of these types was ever created in this repo's git history)", ls -la /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Repo-Map.md, tail -5 /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Repo-Map.md, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit echo "=== git status ===" git status --porcelain=v1 echo echo "=== counts ===" git status --porcelain=v1 | awk '{print $1}' | sort | uniq -c, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit echo "=== secret-pattern scan across everything new/changed ===" grep -rEln "sk-ant-[A-Za-z0-9_-]{10,}|sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|ghp_[A-Za-z0-9]{20,}|-----BEGIN [A-Z ]*PRIVATE KEY-----|password[[:space:]]*[:=]|api[_-]?key[[:space:]]*[:=]" \ instructions/ 60_Claude/ _docs/ .claude/_archive/ tests/ CLAUDE.md README.md .claude/settings.json 60_Claude/scripts/sync-manifest.json 60_Claude/scripts/sync-all.sh 2>/dev/null echo "exit: $?", cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit grep -rEliln "token|secret|credential|bearer" instructions/ 2>/dev/null echo "---files listed above, checking context---" grep -rEn "token|secret|credential|bearer" instructions/ 2>/dev/null | head -20, cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit echo "=== instructions/ final ===" find instructions -type f | sort echo echo "=== 60_Claude/Standards/ ===" ls "60_Claude/Standards/" echo echo "=== 60_Claude/Templates/ (new ones) ===" ls 60_Claude/Templates/ | grep -E "template|for-what" echo echo "=== docs/ exists? ===" ls -la docs/
+- Tool call tally: Agent (1), AskUserQuestion (2), Bash (74), Edit (34), ListAgents (1), mcp__github__search_repositories (1), mcp__jarvis__search_simple (1), mcp__jarvis__vault_list (7), mcp__jarvis__vault_read (5), Read (41), ToolSearch (2), WebSearch (1), Write (30)
 

@@ -31,27 +31,25 @@ vault/
   hooks/<ProjectName>/     # same, for hooks
   docs/<ProjectName>/      # same, for per-project docs
   skills/           # source-repo staging (unchanged role — not per-project)
-  instructions/<repo>/  # CLAUDE.md/AGENTS.md/PRD.md-shaped files copied from a sandbox/ candidate, pattern worth reviewing
+  instructions/<ProjectName>/  # CLAUDE.md/AGENTS.md/PRD.md of a REAL project Anant works on — live-synced one-way, never sandbox/ candidates
   tests/<type>/<repo>/  # evidence a specific tool was actually run — script or dated real-output log
-  _docs/             # PRD, Architecture, Design, Sync, Jarvis, Promotion-Criteria — see below
-  sandbox/          # real clones of external tools, stage 1 of the qualification pipeline
+  _docs/             # PRD, Architecture, Design, Sync, Jarvis, Promotion-Criteria, How to/ — see below
+  sandbox/          # real clones of external tools, stage 1 of the qualification pipeline — read-only once cloned
   tested-tools/     # tools that cleared sandbox/, under second review before promotion
     _future/<repo>/ # cleared the tested-tools/ bar, no current project needs it yet — see FOR-WHAT.md
-  00_Daily/         # daily notes (YYYY-MM-DD)
-  10_Areas/         # ongoing areas of responsibility
-  20_Projects/      # active projects (one folder per project)
-  30_Knowledge/     # evergreen notes, literature notes, research
-  40_Career/        # career notes, job search, professional development
-  60_Claude/        # AI-generated artifacts (sessions, summaries, patterns, templates)
+  00_Daily/, 10_Areas/, 20_Projects/, 30_Knowledge/, 40_Career/  # reference vault shape this kit produces once copied to a real Obsidian vault —
+                    # not real, populated folders in THIS repo (confirmed 2026-08-19, see write-contract.md)
+  60_Claude/        # AI-generated artifacts (sessions, summaries, patterns, templates) + this repo's own pipeline machinery
     Sessions/       # structured session logs from /compress
     Summaries/      # weekly and monthly rollups
     Patterns/       # reusable prompts, frameworks, checklists
-    Templates/      # ALL templates — vault notes, session artifacts, and future skill/agent/command templates
-    vault-rules/    # naming, linking, folder, and tagging conventions, plus pipeline-conventions.md (sandbox/tested-tools/staging structure)
+    Standards/      # one Standard.md per artifact type this repo produces — what "correct" looks like, checkable
+    Templates/      # every template — vault notes, session artifacts, and artifact-authoring templates (agent/skill/command/hook)
+    vault-rules/    # naming/linking/folder/tagging conventions, pipeline-conventions.md, write-contract.md (routing table + never-write-to list)
   _attachments/     # images, PDFs, assets
 ```
 
-As of 2026-08-19, `agents/`, `commands/`, `hooks/`, `docs/` are per-destination-project staging, not a generic draft-then-promote area — see `60_Claude/vault-rules/pipeline-conventions.md` and `_docs/How to/using-staged-artifacts.md`. Before writing anything in a staging folder, read `60_Claude/vault-rules/` first — content drafted there without checking current folder-naming conventions has drifted before (see `_docs/Repo-Map.md`'s naming-convention-drift finding).
+As of 2026-08-19, `agents/`, `commands/`, `hooks/`, `docs/` are per-destination-project staging, not a generic draft-then-promote area — see `60_Claude/vault-rules/pipeline-conventions.md` and `_docs/How to/using-staged-artifacts.md`. Before writing anything anywhere in this repo, read `60_Claude/vault-rules/write-contract.md` — it has the full routing table and a never-write-to list; content drafted without checking current conventions has drifted before (see `_docs/Repo-Map.md`'s naming-convention-drift finding, and `instructions/`'s own 2026-08-19 wrong-premise rebuild).
 
 ## Behavioral Rules
 
