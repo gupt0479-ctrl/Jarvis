@@ -1,6 +1,6 @@
 {
   "autoCompact": false,
-  "claudeMdExcludes": ["sandbox/**", "tested-tools/**"],
+  "claudeMdExcludes": ["sandbox/**", "tested-tools/**", "instructions/**"],
   "hooks": {
     "PostToolUse": [
       {

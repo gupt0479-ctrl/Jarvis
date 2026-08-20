@@ -2887,3 +2887,153 @@ One line per manifest entry per run of `sync-all.sh`, appended automatically. Re
 2026-08-20 07:49:34 +0400  OpsPilot  OK
 2026-08-20 07:49:34 +0400  The Plan  OK
 2026-08-20 07:49:34 +0400  .claude_wsl  OK
+2026-08-20 08:04:34 +0400  second-brain-claudekit  OK
+2026-08-20 08:04:34 +0400  .claude_windows  OK
+2026-08-20 08:04:34 +0400  CausalOps  OK
+2026-08-20 08:04:34 +0400  Jarvis  OK
+2026-08-20 08:04:34 +0400  Portfolio  OK
+2026-08-20 08:04:34 +0400  Trading View  OK
+2026-08-20 08:04:34 +0400  Resq  OK
+2026-08-20 08:04:34 +0400  OpsPilot  OK
+2026-08-20 08:04:34 +0400  The Plan  OK
+2026-08-20 08:04:34 +0400  .claude_wsl  OK
+2026-08-20 08:19:34 +0400  second-brain-claudekit  OK
+2026-08-20 08:19:34 +0400  .claude_windows  OK
+2026-08-20 08:19:34 +0400  CausalOps  OK
+2026-08-20 08:19:34 +0400  Jarvis  OK
+2026-08-20 08:19:34 +0400  Portfolio  OK
+2026-08-20 08:19:34 +0400  Trading View  OK
+2026-08-20 08:19:34 +0400  Resq  OK
+2026-08-20 08:19:34 +0400  OpsPilot  OK
+2026-08-20 08:19:34 +0400  The Plan  OK
+2026-08-20 08:19:34 +0400  .claude_wsl  OK
+2026-08-20 08:34:34 +0400  second-brain-claudekit  OK
+2026-08-20 08:34:34 +0400  .claude_windows  OK
+2026-08-20 08:34:34 +0400  CausalOps  OK
+2026-08-20 08:34:34 +0400  Jarvis  OK
+2026-08-20 08:34:34 +0400  Portfolio  OK
+2026-08-20 08:34:34 +0400  Trading View  OK
+2026-08-20 08:34:34 +0400  Resq  OK
+2026-08-20 08:34:34 +0400  OpsPilot  OK
+2026-08-20 08:34:34 +0400  The Plan  OK
+2026-08-20 08:34:34 +0400  .claude_wsl  OK
+2026-08-20 08:49:34 +0400  second-brain-claudekit  OK
+2026-08-20 08:49:34 +0400  .claude_windows  OK
+2026-08-20 08:49:34 +0400  CausalOps  OK
+2026-08-20 08:49:34 +0400  Jarvis  OK
+2026-08-20 08:49:34 +0400  Portfolio  OK
+2026-08-20 08:49:34 +0400  Trading View  OK
+2026-08-20 08:49:34 +0400  Resq  OK
+2026-08-20 08:49:34 +0400  OpsPilot  OK
+2026-08-20 08:49:34 +0400  The Plan  OK
+2026-08-20 08:49:34 +0400  .claude_wsl  OK
+2026-08-20 09:50:50 +0400  second-brain-claudekit  OK
+2026-08-20 09:50:50 +0400  .claude_windows  OK
+2026-08-20 09:50:50 +0400  CausalOps  OK
+2026-08-20 09:50:50 +0400  Jarvis  OK
+2026-08-20 09:50:50 +0400  Portfolio  OK
+2026-08-20 09:50:50 +0400  Trading View  OK
+2026-08-20 09:50:50 +0400  Resq  OK
+2026-08-20 09:50:50 +0400  OpsPilot  OK
+2026-08-20 09:50:50 +0400  The Plan  OK
+2026-08-20 09:50:50 +0400  .claude_wsl  OK
+2026-08-20 10:04:34 +0400  second-brain-claudekit  OK
+2026-08-20 10:04:34 +0400  .claude_windows  OK
+2026-08-20 10:04:34 +0400  CausalOps  OK
+2026-08-20 10:04:34 +0400  Jarvis  OK
+2026-08-20 10:04:34 +0400  Portfolio  OK
+2026-08-20 10:04:34 +0400  Trading View  OK
+2026-08-20 10:04:34 +0400  Resq  OK
+2026-08-20 10:04:34 +0400  OpsPilot  OK
+2026-08-20 10:04:34 +0400  The Plan  OK
+2026-08-20 10:04:34 +0400  .claude_wsl  OK
+2026-08-20 10:19:34 +0400  second-brain-claudekit  OK
+2026-08-20 10:19:34 +0400  .claude_windows  OK
+2026-08-20 10:19:34 +0400  CausalOps  OK
+2026-08-20 10:19:34 +0400  Jarvis  OK
+2026-08-20 10:19:34 +0400  Portfolio  OK
+2026-08-20 10:19:34 +0400  Trading View  OK
+2026-08-20 10:19:34 +0400  Resq  OK
+2026-08-20 10:19:34 +0400  OpsPilot  OK
+2026-08-20 10:19:34 +0400  The Plan  OK
+2026-08-20 10:19:34 +0400  .claude_wsl  OK
+2026-08-20 10:34:34 +0400  second-brain-claudekit  OK
+2026-08-20 10:34:34 +0400  .claude_windows  OK
+2026-08-20 10:34:34 +0400  CausalOps  OK
+2026-08-20 10:34:34 +0400  Jarvis  OK
+2026-08-20 10:34:34 +0400  Portfolio  OK
+2026-08-20 10:34:34 +0400  Trading View  OK
+2026-08-20 10:34:34 +0400  Resq  OK
+2026-08-20 10:34:34 +0400  OpsPilot  OK
+2026-08-20 10:34:34 +0400  The Plan  OK
+2026-08-20 10:34:34 +0400  .claude_wsl  OK
+2026-08-20 10:49:34 +0400  second-brain-claudekit  OK
+2026-08-20 10:49:34 +0400  .claude_windows  OK
+2026-08-20 10:49:34 +0400  CausalOps  OK
+2026-08-20 10:49:34 +0400  Jarvis  OK
+2026-08-20 10:49:34 +0400  Portfolio  OK
+2026-08-20 10:49:34 +0400  Trading View  OK
+2026-08-20 10:49:34 +0400  Resq  OK
+2026-08-20 10:49:34 +0400  OpsPilot  OK
+2026-08-20 10:49:34 +0400  The Plan  OK
+2026-08-20 10:49:34 +0400  .claude_wsl  OK
+2026-08-20 11:04:34 +0400  second-brain-claudekit  OK
+2026-08-20 11:04:34 +0400  .claude_windows  OK
+2026-08-20 11:04:34 +0400  CausalOps  OK
+2026-08-20 11:04:34 +0400  Jarvis  OK
+2026-08-20 11:04:34 +0400  Portfolio  OK
+2026-08-20 11:04:34 +0400  Trading View  OK
+2026-08-20 11:04:34 +0400  Resq  OK
+2026-08-20 11:04:34 +0400  OpsPilot  OK
+2026-08-20 11:04:34 +0400  The Plan  OK
+2026-08-20 11:04:34 +0400  .claude_wsl  OK
+2026-08-20 11:19:34 +0400  second-brain-claudekit  OK
+2026-08-20 11:19:34 +0400  .claude_windows  OK
+2026-08-20 11:19:34 +0400  CausalOps  OK
+2026-08-20 11:19:34 +0400  Jarvis  OK
+2026-08-20 11:19:34 +0400  Portfolio  OK
+2026-08-20 11:19:34 +0400  Trading View  OK
+2026-08-20 11:19:34 +0400  Resq  OK
+2026-08-20 11:19:34 +0400  OpsPilot  OK
+2026-08-20 11:19:34 +0400  The Plan  OK
+2026-08-20 11:19:34 +0400  .claude_wsl  OK
+2026-08-20 11:34:34 +0400  second-brain-claudekit  OK
+2026-08-20 11:34:34 +0400  .claude_windows  OK
+2026-08-20 11:34:34 +0400  CausalOps  OK
+2026-08-20 11:34:34 +0400  Jarvis  OK
+2026-08-20 11:34:34 +0400  Portfolio  OK
+2026-08-20 11:34:34 +0400  Trading View  OK
+2026-08-20 11:34:34 +0400  Resq  OK
+2026-08-20 11:34:34 +0400  OpsPilot  OK
+2026-08-20 11:34:34 +0400  The Plan  OK
+2026-08-20 11:34:34 +0400  .claude_wsl  OK
+2026-08-20 12:40:53 +0400  second-brain-claudekit  OK
+2026-08-20 12:40:53 +0400  .claude_windows  OK
+2026-08-20 12:40:53 +0400  CausalOps  OK
+2026-08-20 12:40:53 +0400  Jarvis  OK
+2026-08-20 12:40:53 +0400  Portfolio  OK
+2026-08-20 12:40:53 +0400  Trading View  OK
+2026-08-20 12:40:53 +0400  Resq  OK
+2026-08-20 12:40:53 +0400  OpsPilot  OK
+2026-08-20 12:40:53 +0400  The Plan  OK
+2026-08-20 12:40:53 +0400  .claude_wsl  OK
+2026-08-20 12:49:34 +0400  second-brain-claudekit  OK
+2026-08-20 12:49:34 +0400  .claude_windows  OK
+2026-08-20 12:49:34 +0400  CausalOps  OK
+2026-08-20 12:49:34 +0400  Jarvis  OK
+2026-08-20 12:49:34 +0400  Portfolio  OK
+2026-08-20 12:49:34 +0400  Trading View  OK
+2026-08-20 12:49:34 +0400  Resq  OK
+2026-08-20 12:49:34 +0400  OpsPilot  OK
+2026-08-20 12:49:34 +0400  The Plan  OK
+2026-08-20 12:49:34 +0400  .claude_wsl  OK
+2026-08-20 13:04:34 +0400  second-brain-claudekit  OK
+2026-08-20 13:04:34 +0400  .claude_windows  OK
+2026-08-20 13:04:34 +0400  CausalOps  OK
+2026-08-20 13:04:34 +0400  Jarvis  OK
+2026-08-20 13:04:34 +0400  Portfolio  OK
+2026-08-20 13:04:34 +0400  Trading View  OK
+2026-08-20 13:04:34 +0400  Resq  OK
+2026-08-20 13:04:34 +0400  OpsPilot  OK
+2026-08-20 13:04:34 +0400  The Plan  OK
+2026-08-20 13:04:34 +0400  .claude_wsl  OK

@@ -29,7 +29,6 @@ vault/
   agents/<ProjectName>/    # per-destination-project staging — real, in-progress artifacts for a specific project
   commands/<ProjectName>/  # same, for commands. Create a project subfolder only when real content lands.
   hooks/<ProjectName>/     # same, for hooks
-  docs/<ProjectName>/      # same, for per-project docs
   skills/           # source-repo staging (unchanged role — not per-project)
   instructions/<ProjectName>/  # CLAUDE.md/AGENTS.md/PRD.md of a REAL project Anant works on — live-synced one-way, never sandbox/ candidates
   tests/<type>/<repo>/  # evidence a specific tool was actually run — script or dated real-output log
@@ -49,7 +48,7 @@ vault/
   _attachments/     # images, PDFs, assets
 ```
 
-As of 2026-08-19, `agents/`, `commands/`, `hooks/`, `docs/` are per-destination-project staging, not a generic draft-then-promote area — see `60_Claude/vault-rules/pipeline-conventions.md` and `_docs/How to/using-staged-artifacts.md`. Before writing anything anywhere in this repo, read `60_Claude/vault-rules/write-contract.md` — it has the full routing table and a never-write-to list; content drafted without checking current conventions has drifted before (see `_docs/Repo-Map.md`'s naming-convention-drift finding, and `instructions/`'s own 2026-08-19 wrong-premise rebuild).
+As of 2026-08-19, `agents/`, `commands/`, `hooks/` are per-destination-project staging, not a generic draft-then-promote area — see `60_Claude/vault-rules/pipeline-conventions.md` and `_docs/How to/using-staged-artifacts.md`. Before writing anything anywhere in this repo, read `60_Claude/vault-rules/write-contract.md` — it has the full routing table and a never-write-to list; content drafted without checking current conventions has drifted before (see `_docs/Repo-Map.md`'s naming-convention-drift finding, and `instructions/`'s own 2026-08-19 wrong-premise rebuild).
 
 ## Behavioral Rules
 

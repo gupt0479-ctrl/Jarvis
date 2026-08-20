@@ -2,7 +2,7 @@
 type: index
 status: active
 created: 2026-07-29
-updated: 2026-08-19
+updated: 2026-08-20
 tags:
   - claude-code
   - ai-use
@@ -20,23 +20,25 @@ next: Add a row here the same session anything new lands in second-brain-claudek
 
 This tracks a different layer than `20_Progress/AI/Claude Code/<Project>/Setup.md` — those are per-project, hand-maintained inventories of what's *actually deployed* in a real project's `.claude/`. Most rows below haven't reached that stage yet; this file exists precisely to track the stage *before* that. See `second-brain-claudekit/_docs/Jarvis.md` for the full division of labor.
 
-**Pipeline stages** (full definitions: `second-brain-claudekit/_docs/Architecture.md`): `sandbox` → `tested-tools` → `promoted (repo-scoped)` / `promoted (global)`, or `blocked` / `dropped` / `undecided` / **`parked (future)`** at any point. `tested-tools` is the current name — the repo renamed `tested-skills/` → `tested-tools/` on 2026-08-09; this vault's own vocabulary was still calling it `tested-skills` until this pass caught the drift (real, still-unreconciled naming drift the other direction too — see `second-brain-claudekit/_docs/Gaps.md`). `parked (future)` is new as of 2026-08-19: a tool that clears `tested-tools/` review but has no current project need lands in `tested-tools/_future/<repo>/` with a `FOR-WHAT.md` naming the use case it's waiting for, per `60_Claude/vault-rules/pipeline-conventions.md`. Verified 2026-08-19 by direct listing: `tested-tools/_future/` is currently empty — correctly, not as a gap; nothing on this page has cleared review with no home yet.
+**Pipeline stages** (full definitions: `second-brain-claudekit/_docs/Architecture.md`): `sandbox` → `tested-tools` → `promoted (repo-scoped)` / `promoted (global)`, or `blocked` / `dropped` / `undecided` / **`parked (future)`** at any point. `tested-tools` is the current name — the repo renamed `tested-skills/` → `tested-tools/` on 2026-08-09; this vault's own vocabulary was still calling it `tested-skills` until the 2026-08-19 pass caught the drift, and this terminology has held correctly since (re-verified 2026-08-20 by direct read of this file — no `tested-skills` reference remains outside historical mentions of the rename itself). `parked (future)` is new as of 2026-08-19: a tool that clears `tested-tools/` review but has no current project need lands in `tested-tools/_future/<repo>/` with a `FOR-WHAT.md` naming the use case it's waiting for, per `60_Claude/vault-rules/pipeline-conventions.md`. Verified 2026-08-19 by direct listing: `tested-tools/_future/` is currently empty — correctly, not as a gap; nothing on this page has cleared review with no home yet.
+
+**Verified 2026-08-20, against the real repo directly (`wsl.exe`, not the Jarvis mirror or any prior session's report of it):** the repo's own adversarial-review fixes are real and present in the working tree — `claudeMdExcludes` now reads `["sandbox/**", "tested-tools/**", "instructions/**"]` (extended to cover the `instructions/` auto-load vector found the same day, per `_docs/Architecture.md`'s 2026-08-20 amendment); `_docs/Repo-Map.md` is now internally consistent (its own top-of-file summary matches the 8-project `sync-manifest.json` roster); the `second-brain-claudekit` self-mirror was removed from `instructions/` (confirmed: no `instructions/second-brain-claudekit/` folder exists, and its manifest entry carries no `instructions_paths`). **But the repo is still uncommitted** — `git log` shows the last real commit at 2026-04-03, and `git status` shows all of the above sitting as uncommitted working-tree changes, same as every prior session since. A claim that this round "committed the work for the first time since April" does not match the repo's real state; `_docs/Repo-Map.md`'s own line 129 already says so ("Still uncommitted... no instruction to do so this session either").
 
 ## Tools
 
 ### GBrain
 - **What:** Personal-knowledge MCP with synthesis + gap-analysis (not just retrieval), PGLite-backed, no Docker.
 - **Useful for:** Every project — Jarvis, BOOM, Portfolio, TradingView, CausalOps. A memory layer is not project-specific by nature.
-- **Global vs. project-scoped:** **Global candidate**, confirmed — useful with no regard to which project is open (`second-brain-claudekit/Docs/Design.md`'s global test).
+- **Global vs. project-scoped:** **Global candidate**, confirmed — useful with no regard to which project is open (`second-brain-claudekit/_docs/Design.md`'s global test).
 - **Pipeline stage:** `sandbox/gbrain/` — installed and tested for real. `bun install` (283 packages) → `bun run src/cli.ts init --pglite --no-embedding` → `doctor` reported **80/100 overall health, 100/100 brain score**, real PGLite database at `~/.gbrain/`.
-- **Why not promoted yet:** One real, named, unresolved decision — which embedding provider (Voyage, ZeroEntropy, or OpenAI) to use for full semantic search. Currently running keyword/graph-only. Not a technical blocker, a cost/vendor decision.
+- **Embedding provider decided 2026-08-20: OpenAI.** Asked directly (`AskUserQuestion`) after the decision sat pending three weeks. Not yet executed — still running keyword/graph-only as of this note. Next: wire an OpenAI API key into `bun run src/cli.ts init`'s embedding config, re-run `doctor`, confirm the health score reflects real semantic search before moving this row to `tested-tools/` or promoting.
 - **Displaces:** Makes `memsearch` (auto-capture, no synthesis) and `context-sync` (thinner SQLite memory) both redundant once adopted — see [[40_Resources/CS/Repos]]'s entries for both.
 - **Paired with:** gstack's own `/setup-gbrain` command (below) — same author, designed as a matched pair, not two independent tools.
 
 ### gstack
 - **What:** ~34 slash commands + 55 generated skills (Playwright-based browse/design/PDF tooling), from the same author as GBrain.
 - **Useful for:** Global by design — its own `./setup` targets Claude Code, Codex, Factory, and OpenCode simultaneously.
-- **Global vs. project-scoped:** Global by design once unblocked. Currently project-based *only because it's blocked*, not by architecture — see `second-brain-claudekit/Docs/Design.md`.
+- **Global vs. project-scoped:** Global by design once unblocked. Currently project-based *only because it's blocked*, not by architecture — see `second-brain-claudekit/_docs/Design.md`.
 - **Pipeline stage:** Stuck in `sandbox/gstack/`, **blocked**. `./setup` compiled the browse/design/PDF binaries, generated 55 skills (~893,538 tokens if all loaded at once), downloaded a 278MB Chromium build — then failed: `gstack setup failed: Playwright Chromium could not be launched`. Missing WSL system libraries (confirmed via `50_Claude/scripts/check_dependency.py --preset gstack` in the repo: `libnss3.so` missing, everything else present).
 - **Fix required (not done, needs an interactive terminal):**
   ```bash
@@ -74,7 +76,7 @@ This tracks a different layer than `20_Progress/AI/Claude Code/<Project>/Setup.m
 - **Useful for:** Undetermined at the whole-repo level — real testing has started but the "does this close a named gap nothing else already closes" question (Promotion-Criteria.md Q2/Q3) hasn't been answered for any specific component yet.
 - **Global vs. project-scoped:** Not decided.
 - **Pipeline stage:** `sandbox/ecc/` — real `git clone` (2026-07-30, in addition to the pre-existing WSL clone at `~/projects/ai/claude/everything-claude-code/`, kept separate rather than reused, per this repo's own "nothing skips sandbox/" rule). `npm install --no-audit --no-fund` completed clean (210 packages — the repo is markdown-heavy, not dependency-heavy: 3 runtime deps, 8 devDeps). `node tests/run-all.js` (the repo's own documented test command) run for a real pass/fail signal.
-- **Real finding, new to this pipeline:** merely cloning ECC into `sandbox/ecc/` caused Claude Code to auto-load its `CLAUDE.md`, `.claude/rules/*.md`, and register a `.claude/skills/everything-claude-code` skill into the active session — no explicit install step required. This means `Docs/Architecture.md`'s assumption that `sandbox/` is inert until deliberately run is **false** for any tool shipping its own `CLAUDE.md`/rules/skills — Claude Code's own config auto-discovery already "runs" part of it just by existing on disk inside the project. Flagged for a correction to `Docs/Architecture.md`.
+- **Real finding, new to this pipeline:** merely cloning ECC into `sandbox/ecc/` caused Claude Code to auto-load its `CLAUDE.md`, `.claude/rules/*.md`, and register a `.claude/skills/everything-claude-code` skill into the active session — no explicit install step required. This means `_docs/Architecture.md`'s assumption that `sandbox/` is inert until deliberately run is **false** for any tool shipping its own `CLAUDE.md`/rules/skills — Claude Code's own config auto-discovery already "runs" part of it just by existing on disk inside the project. This was flagged for a correction to `_docs/Architecture.md`; confirmed 2026-08-20 that the correction landed — `_docs/Architecture.md`'s "Known, currently-unmitigated risk" section now documents this auto-load behavior directly.
 - **Scope discipline (per Docs/Design.md, Implement > Knowledge):** ECC's catalog (67 agents/281 skills/94 commands) is large enough that wholesale install (`./install.sh --profile full`) would itself be the anti-pattern this repo's philosophy exists to prevent. The real next decision is which specific named gap(s), if any, ECC's components close that nothing already-adopted (gbrain, mattpocock-engineering, this repo's own `/challenge` `/ideas` `/strategy` `/llm-council` skills) already closes — not "install all of it because the catalog is large." Not yet decided.
 - **Next:** Identify 2-4 specific ECC components (an agent, a skill, a hook pattern) worth reviewing individually against a real gap, rather than evaluating all 442 components at once.
 
@@ -133,7 +135,7 @@ This tracks a different layer than `20_Progress/AI/Claude Code/<Project>/Setup.m
 - **What:** Claude Code best-practice / learning reference guide.
 - **Useful for:** Learning reference — not expected to install as runtime tooling.
 - **Global vs. project-scoped:** N/A (reference).
-- **Pipeline stage:** `sandbox/claude-code-best-practice/` — clone only (2026-07-30). Note: `Docs/Design.md` previously said reference-only repos stay out of sandbox; explicitly requested in on 2026-07-30.
+- **Pipeline stage:** `sandbox/claude-code-best-practice/` — clone only (2026-07-30). Note: `_docs/Design.md` previously said reference-only repos stay out of sandbox; explicitly requested in on 2026-07-30.
 - **Upstream:** https://github.com/shanraisshan/claude-code-best-practice
 
 ##### system-prompts-and-models-of-ai-tools + CL4R1T4S
@@ -185,5 +187,26 @@ This tracks a different layer than `20_Progress/AI/Claude Code/<Project>/Setup.m
 - **Pipeline stage:** `sandbox/OpenBB/` — clone only (2026-07-30). Large shallow clone (~345M).
 - **Upstream:** https://github.com/OpenBB-finance/OpenBB
 
+## Sandbox triage — 2026-08-20 (the 17 clones that sat dormant three weeks)
+Verified directly (`find <repo> -maxdepth 0 -printf` on every directory in `sandbox/`, plus a `node_modules`/`.venv` check) rather than trusting the "clone-only" label: all 17 repos from the 2026-07-30 batch still have a directory mtime of exactly 2026-07-30 and zero installed dependencies — genuinely untouched since the clone, not just under-documented. One-line decision per repo, so none stays silently unexamined:
+
+- **agent-skills** (Addy Osmani) — **Drop.** No use case was ever named for it in three weeks; a generic skills collection with nothing to gap-check it against. Re-clone only if a specific skill inside it gets named as filling a real gap.
+- **andrej-karpathy-skills** — **Drop.** Same reasoning as agent-skills — no named gap, never compared against anything adopted.
+- **claude-skills-llm-council** + **llm-council** (Karpathy original) — **Drop.** This repo's own `/llm-council` skill is live and in routine use; three weeks with zero side-by-side comparison is itself the signal that this isn't a real priority. Revisit only if the existing skill shows a concrete limitation worth comparing against.
+- **last30days-skill** — **Drop.** No named gap; overlaps with the already-live `/trace-topic` and `/ideas` skills.
+- **spec-kit** — **Still worth evaluating.** Tied to a real gap (spec-driven dev workflow) and previously flagged Tier-1 in `_docs/PRD.md`'s history. Next: run `specify init` in a scratch project, compare against the existing brainstorming/writing-plans workflow before deciding.
+- **claude-context** (Zilliz) — **Still worth evaluating**, tagged "to use" from the start. Next: run its real install/index command against one real project and check whether semantic code search adds anything over Grep/Glob.
+- **graphify** — **Drop from sandbox.** A local `~/.claude/skills/graphify/SKILL.md` already exists (dated 2026-06-12, six weeks before this clone) — the sandbox copy is redundant with an already-installed skill, confirmed by direct listing. If the global skill needs updating, that's a direct edit, not a sandbox pipeline question.
+- **claude-code-best-practice** — **Drop.** Reference-only, no runtime role, unread for three weeks. Free to re-clone at zero cost if a real need for it shows up.
+- **system-prompts-and-models-of-ai-tools** + **CL4R1T4S** — **Drop.** Reference-only prompt corpora for a comparison that was never run; re-clonable whenever an actual eval/red-team need arises.
+- **agentscope** — **Drop.** "Clone for study" only, never opened in three weeks.
+- **promptfoo** — **Still worth evaluating**, tagged "to use" from the start. Next: run one real eval against an existing skill/command (`/challenge` or `/llm-council`) to test whether it earns a spot — it's a large clone (~417M), don't let size alone justify carrying it unused much longer.
+- **hiring-agent** — **Still worth evaluating**, tied to the real, recurring internship-research-loop use case. Next: run it once against a real internship search pass and compare its output to the current manual process.
+- **autoresearch** (Karpathy) — **Drop.** "Implement against real use cases" was the original framing, but no real use case was named in three weeks; re-clone when one is.
+- **TradingAgents** — **Still worth evaluating**, tied to the real TradingView project. Next: needs a TradingView-side session to pair it against real strategy work, not a second-brain-claudekit session.
+- **OpenBB** — **Still worth evaluating**, same TradingView tie as TradingAgents — bundle both reviews into one TradingView-side session rather than two separate passes.
+
+Net: 9 dropped, 6 still worth evaluating with a named next step. Dropped repos are not deleted from disk — "drop" means off the active evaluation list, not erased; delete on a separate, explicit pass if disk space becomes a real concern.
+
 ## Not yet in `sandbox/` at all
-Everything else in [[40_Resources/CS/Repos]] not named above — still starred, still where earlier GitHub ingestion left it. The 2026-07-30 batch (agent-skills through OpenBB, 17 new clones) is now in `sandbox/` as clone-only; none have been run for real yet. Update clones with `second-brain-claudekit/50_Claude/scripts/update-sandbox.sh`; inventory lives in `sandbox/README.md`.
+Everything else in [[40_Resources/CS/Repos]] not named above — still starred, still where earlier GitHub ingestion left it. Update clones with `second-brain-claudekit/60_Claude/scripts/update-sandbox.sh` (path corrected 2026-08-20 — the repo's `50_Claude/` → `60_Claude/` rename was fixed in the script's own comments back on 2026-08-08 but this note still pointed at the old path); inventory lives in `sandbox/README.md`.

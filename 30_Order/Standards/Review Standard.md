@@ -2,7 +2,7 @@
 type: evergreen
 status: sprout
 created: 2026-08-11
-updated: 2026-08-11
+updated: 2026-08-20
 tags:
   - system
   - standards
@@ -52,4 +52,4 @@ What to specifically check next time — a tool recently promoted, a sync leg re
 - No `---` in the body; zero blank lines except after a callout; no duplicate frontmatter keys.
 - Passes [[HUMAN_WRITING]]'s core test: no sentence that could be pasted into a generic status-report template unchanged.
 ## Gold Standard Example
-None yet — the first real Weekly review against this Standard becomes the example once written.
+[[60_Claude/30_Reviews/AI/Scheduled/Weekly/AI Tools Weekly Review — 2026-W34|AI Tools Weekly Review — 2026-W34]] (written 2026-08-20) — the first real Weekly review against this Standard. Notable for what it surfaced at real volume rather than in the abstract: the Tool log had sat empty for its entire nine-day existence until this review forced the pipeline to actually run once, and the one real session available to review used no nameable skill/command at all, which the row-shape design hadn't anticipated. Worth rereading if a future review pass feels like it's just filling in a template — that's the failure mode this example is meant to counter.

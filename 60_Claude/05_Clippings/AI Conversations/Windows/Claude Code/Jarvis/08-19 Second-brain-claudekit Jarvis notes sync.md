@@ -5,34 +5,36 @@ source_app: claude-code
 source_os: windows
 title: "Second-brain-claudekit Jarvis notes sync"
 started_at: 2026-08-19T14:29:04
-ended_at: 2026-08-19T19:37:39
-exported_at: 2026-08-20T07:49:08
-duration_minutes: 308.6
+ended_at: 2026-08-20T10:32:20
+exported_at: 2026-08-20T12:45:39
+duration_minutes: 1203.3
 project: Jarvis
 cwd: 'D:\Users\_Anant\10_Areas\Documents\Jarvis'
 session_id: 5e4f97e7-6064-46c5-a7fb-cb3e27b3b3ea
 status: raw
-turn_count: 4
+turn_count: 8
 tools_used:
-  Bash: 25
+  Bash: 34
   Edit: 21
-  Read: 21
+  Read: 23
   Write: 2
 tokens:
-  input: 272
-  output: 163613
-  cache_creation: 1618418
-  cache_read: 23781681
-  total: 25563984
-cost_usd: 12.866682
+  input: 322
+  output: 208757
+  cache_creation: 2864420
+  cache_read: 30627020
+  total: 33700519
+cost_usd: 19.671298
 model:
   - "claude-sonnet-5"
 files_touched:
+  - "C:\\Users\\Anant Gupta\\.claude\\projects\\D--Users--Anant-10-Areas-Documents-Jarvis\\5e4f97e7-6064-46c5-a7fb-cb3e27b3b3ea\\tool-results\\bfbhxd58c.txt"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\10_Areas\\AI\\Claude Code.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\10_Areas\\AI\\Setup\\Folder Map.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\10_Areas\\AI\\Setup\\Gaps.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\10_Areas\\AI\\Setup\\Notes Map.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\10_Areas\\AI\\Setup\\Review System.md"
+  - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\AI\\Claude Code\\second-brain-claudekit\\CLAUDE.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\AI\\Claude Code\\second-brain-claudekit\\Sync-Log.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Projects\\AI Use\\Claude Kit\\Log.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Projects\\AI Use\\Claude Kit\\Source of Truth\\The Qualification Pipeline.md"
@@ -2075,6 +2077,729 @@ OK: 20_Progress/Projects/AI Use/Claude Kit/Source of Truth/The Qualification Pip
 OK: 10_Areas/AI/Setup/Gaps.md
 ```
 
+## You
+
+Based on your understanding from this session and everything inside jarvis about claudekit. What do you think my next steps should be? What should i be focusing on? Do an adversary on the main documents listed out for claudekit. Go through each and every important note that has good content in it. After having a very deep understanding and doing an adeversary on the main idea/plan. Let's do a postmortem of everything that's built so far and about to built. I want to be aware of all the mistakes possible and fault's that are already present inside this process. Make me aware of each and everything possible. Make no mistakes, do the task correctly only after grabbing extreme knowledge on claudekit and future plans for it. Do the research first, do not write anything anywhere. Provide me with the results over here in chat.
+
+## Claude
+
+This is a major finding already — the repo was substantially rebuilt again after my session yesterday, including a full reversal of what `instructions/` means. Let me dig into what happened and why.
+
+I did the full research pass — re-read every `_docs/` file fresh (several had changed again since yesterday, including in the last few hours before this message), checked `.claude/settings.json`, `sync-manifest.json`, git history, and file timestamps directly rather than trusting any doc's self-description. I did not write anything anywhere. Here's what I found.
+
+## The single most important thing I found: your own pipeline just repeated its own failure mode, and my Jarvis notes are already stale because of it
+
+Between when I finished writing yesterday's notes and now, **a third session touched this repo on the same calendar day** (2026-08-19, ~19:52–20:01) and completely reversed what `instructions/` means:
+
+- **Build 1** (earlier 2026-08-19): `instructions/<repo>/` = `CLAUDE.md`/`AGENTS.md` copied from 19 `sandbox/` *evaluation candidates* — this is what I verified and wrote into `Tool Map.md`, `Log.md`, and `The Qualification Pipeline.md` yesterday.
+- **Build 3** (~20 minutes to my read yesterday): that premise was declared wrong — "every one of those files already lives, untouched, in the source repo at `sandbox/<repo>/` — copying them again added a second location for the same fact with no distinguishing value" (`instructions/README.md`). The folder was **wiped and rebuilt** to mean something entirely different: `instructions/<ProjectName>/` now holds real, live-synced-one-way copies of Anant's 8 actual working projects' instruction files (Jarvis, CausalOps, OpsPilot, Resq, Portfolio, Trading View, The Plan, second-brain-claudekit itself), driven by a new `instructions_paths` field in `sync-manifest.json`.
+
+That sync already ran for real this morning (2026-08-20 08:34, confirmed by file mtimes) — it's live. But it means **every specific claim I wrote yesterday about `instructions/`** (19 repos, 28 files, sandbox-candidate patterns, the "27 vs 28" discrepancy I caught) **describes a folder that no longer exists in that shape.** I'm flagging this to you directly rather than quietly fixing it, since you asked for research only.
+
+The irony: this is your own two-failure-modes framing (`_docs/PRD.md`) recurring **one level up**. `instructions/` v1 was built, then had to be torn out because nobody checked "does this duplicate something that already has a home" before building it — the exact discipline `_docs/Design.md`'s "minimal footprint" section demands of every *tool* promotion, not applied to the pipeline's *own* folder design.
+
+## Adversarial pass on the main documents
+
+I read `PRD.md`, `Architecture.md`, `Design.md`, `Promotion-Criteria.md`, `Sync.md`, `Jarvis.md`, `Repo-Map.md`, `Gaps.md`, `write-contract.md`, `Standards/README.md`, `CLAUDE.md`, `sync-manifest.json`, and `.claude/settings.json` directly — not summaries of them. Findings, ranked by how much they matter:
+
+**1. `claudeMdExcludes` doesn't cover the new `instructions/` folder — a real, currently-live gap nobody has named.** `.claude/settings.json` excludes exactly `["sandbox/**", "tested-tools/**"]` from Claude Code's auto-load-on-read behavior. `Architecture.md` documents *why* this exclusion exists: any `CLAUDE.md` under a directory Claude Code reads gets auto-loaded into context, no explicit step required. `instructions/` now contains **real, complete copies of 8 different projects' actual `CLAUDE.md`/`AGENTS.md` files** — including Jarvis's own behavioral rules and OpsPilot's PRD — and none of that path is excluded. This isn't the "malicious third-party repo" risk `Architecture.md` worried about; it's a *different* risk the rebuild introduced without noticing: a session working in second-brain-claudekit that reads a file under `instructions/Jarvis/CLAUDE.md` will have Jarvis's own vault rules auto-loaded into a second-brain-claudekit session, muddying which project's instructions actually govern that session. Not one of the four docs written during tonight's rebuild (`instructions/README.md`, `write-contract.md`, `Gaps.md`, `Repo-Map.md`) mentions this. I checked `settings.json` directly to confirm — it's real and current as of right now.
+
+**2. `Repo-Map.md` — the file explicitly positioned as "ground-truth... don't let it decay into another stale doc" — currently contradicts itself, after three same-day self-audit passes.** Its own opening pipeline diagram (line 12) still reads `tested-skills/<name>/`, while its own folder table twenty lines later correctly says `tested-tools/`. Its own opening paragraph (line 7) still lists the project roster as "Jarvis, BOOM, Portfolio, TradingView, CausalOps" — five projects — while its own folder table and `sync-manifest.json` (which I read directly) list eight live projects and BOOM isn't tracked in the pipeline at all. Three audit passes happened in this file today and none of them caught its own top-of-file summary being wrong. This is good evidence that "the doc says it's ground truth" and "the doc is actually internally consistent" are not the same claim — worth remembering before trusting any single `_docs/` file's self-description again.
+
+**3. Real throughput, measured, not narrated: in three weeks (2026-07-29 → today), from 30 real `sandbox/` clones, exactly zero tools have reached a promoted state.** One tool (`cpr-compress-preserve-resume`) has a decided verdict (blend) but is **still sitting in `tested-tools/`, not installed into `.claude/commands/`.** gbrain cleared `sandbox/` on 2026-07-29 and has been one embedding-provider decision away from promotion for three weeks straight — the same PRD that names "plan-and-never-run" as failure mode #2 has let its own best candidate sit un-decided for exactly that long. 17 of the 30 sandbox clones (agent-skills, spec-kit, claude-context, graphify, promptfoo, etc.) have had zero activity since the initial clone on 2026-07-30. Meanwhile the *documentation layer* — `_docs/`, `Standards/`, `write-contract.md`, `pipeline-conventions.md`, three Repo-Map passes, a Gaps.md now in its third revision — has had enormous, continuous investment. The ratio of "words written about the pipeline" to "tools that made it through the pipeline" is badly lopsided.
+
+**4. Scope creep: `Standards/` and `write-contract.md` (built tonight) solve a problem the PRD never named.** `PRD.md`'s problem statement is specifically about *external* tools — install-and-forget or plan-and-never-run. Tonight's build added `Agent Standard.md`, `Skill Standard.md`, `Command Standard.md`, `Hook Standard.md`, and matching authoring templates — infrastructure for **authoring new artifacts from scratch** inside this repo, mirrored directly off Jarvis's own `30_Order/Standards/`. That's a legitimate need in the abstract (the CPR blend verdict did involve real rewriting), but it's also exactly the kind of scope expansion the "minimal footprint" principle in `Design.md` (own words: "a tool earns space by closing a gap nothing else already closes — not by being well-regarded") should have been applied to *before* building it, and nothing in tonight's `Gaps.md` entry shows that question being asked. The repo increasingly mirrors Jarvis's own structure (`60_Claude/`, now `Standards/`, now `write-contract.md`) — worth asking directly whether a one-person sandbox repo needs its own Write Contract, or whether that's the "joke naming collision" (`Design.md`'s own phrase for `50_Claude→60_Claude`) quietly turning into real, maintained duplication.
+
+**5. Demonstrated, not hypothetical, fragility from staying uncommitted.** `Repo-Map.md`'s own third-pass entry admits: `docs/` — a folder built earlier the same day — **was found missing at the start of the third pass and had to be recreated**, because an empty, untracked directory leaves no trace in git and nothing else records its existence. This is not a risk I'm inferring; it's a failure that already happened, in the last 24 hours, to this exact repo. Git status (checked live via `wsl.exe git status`, not assumed) shows the *entire* pipeline build — every rename, every new folder, everything since commit `726f6de` on 2026-04-03 — is still uncommitted. Zero commits in almost five months, three-plus weeks of dense, multi-session structural work sitting only in the working tree.
+
+**6. The review system is fully built and has never been exercised once.** `Review Standard.md`, both templates, `Tool log.md`'s schema — all real, all correct as artifacts. `Tool log.md` has zero data rows (confirmed by reading the file directly — its own `## Log` table is empty, its own `next:` field says "First real rows land the next time `/export-ai-session` runs"). No Weekly or Monthly review has ever been written under the new Standard — its own "Gold Standard Example" field literally says "None yet." You have a fully-specified review process with a 100%-clarity gate on fixes, and nothing has ever gone through it to find out if the process actually works at the volume it'll see.
+
+**7. Minor but real: the rebuild's own fix duplicates its own repo's file.** `sync-manifest.json`'s `second-brain-claudekit` entry includes `instructions_paths: ["CLAUDE.md"]` — meaning the repo now live-syncs its *own* root `CLAUDE.md` into `instructions/second-brain-claudekit/CLAUDE.md`, a second copy of the same file inside the same repo. This is the same "one fact, one home" violation that got `instructions/` v1 torn out hours earlier, just smaller and arguably harmless (it's a read-only mirror of the repo's own current file, not a stale hand-copy). Still worth a conscious "yes, and here's why that's fine" rather than leaving it as an unexamined inconsistency.
+
+## Postmortem — concrete incidents already on record (verified, not narrated)
+
+These already happened and are documented in the repo's own incident log, cross-checked by me against `git status`/timestamps rather than taken on faith:
+
+- **The `50_Claude` recreation bug** (2026-08-08): a hardcoded path in a hook script silently recreated a deleted folder the instant the hook re-armed after a git restore.
+- **The Jarvis sync silently died for a week** (found 2026-08-09): a VBS launcher's fire-and-forget `sh.Run(cmd, 0, False)` call meant Task Scheduler reported success (`LastTaskResult: 0`) every 15 minutes while the actual sync failed instantly on a stale hardcoded path. Nothing caught this until someone checked the mirror's actual contents against the "it's working" signal.
+- **The multi-project sync popped a visible console window and silently failed with `STATUS_CONTROL_C_EXIT`** (2026-08-10) — same root cause class (a launcher assumed hidden ≠ actually non-blocking).
+- **Conversation capture broke twice**, once for 11 days (`pwsh` not on `PATH`, silent fallback to a `powershell.exe` that couldn't resolve WSL paths) and once for 7–9 days (`SessionEnd` doesn't fire reliably), each time with `settings.json` reporting no error.
+- **`instructions/` v1 built same-day, then torn out** (above).
+- **`docs/` silently vanished between sessions** (above) — the newest and, to me, the clearest single piece of evidence that "uncommitted for 5 months" is not a neutral fact.
+
+The pattern across every one of these: **a mechanism reports success while silently failing**, and the only thing that ever catches it is someone manually re-verifying against real state later. That's a real, recurring class of bug in this system, not five unrelated incidents.
+
+## What I think you should actually focus on next
+
+In priority order, and I'm giving you my honest read, not a hedge:
+
+1. **Commit the repo.** This is the highest-leverage, lowest-effort fix available. Five months, zero commits, one demonstrated silent-loss incident already. Nothing else on this list matters if the underlying work can vanish.
+2. **Close the `claudeMdExcludes` gap for `instructions/`** before you next work a real session inside second-brain-claudekit — it's a two-second edit to `.claude/settings.json` and it closes a real, currently-live instruction-bleed risk.
+3. **Stop building pipeline infrastructure and push gbrain through the last decision.** It's been sandbox-clear for three weeks over one named, bounded question (which embedding provider). That's the single highest-value real promotion sitting on the table, and it's the thing that would actually prove the pipeline works end to end for the first time.
+4. **Fix `Repo-Map.md`'s self-contradictions** (the `tested-skills` diagram line, the five-project roster) — it's the file everything else cites as ground truth; it shouldn't need a fourth pass to notice its own top two paragraphs are wrong.
+5. **Decide, explicitly, whether `Standards/`/`write-contract.md` earn their keep** against the same bar every external tool has to clear — "does this close a problem nothing else already solves" — rather than having been built because Jarvis has the equivalent shape. If yes, fine, but make that a stated decision, not an unexamined mirror.
+6. **Reconcile `tested-skills`/`tested-tools` vocabulary** in Jarvis's own remaining notes (I only fixed `Tool Map.md` yesterday) and re-verify anything I wrote about `instructions/` before treating it as current — I'd flag `Tool Map.md`, `Log.md`, and `The Qualification Pipeline.md`'s `instructions/` sections as now-stale on that one point specifically.
+7. **Either run the review system once for real, or stop investing in it.** A fully-built, zero-times-exercised process is a liability disguised as progress — you won't know if the 100%-clarity gate or the template shapes actually work under real data until you force one real Weekly review through it.
+
+I did not touch any file this session. Say the word if you want me to act on any of this — starting with #1 and #2 would be my recommendation for where to spend the next ten minutes.
+
+### Tool Calls
+
+- `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\AI\Claude Code\second-brain-claudekit\CLAUDE.md`
+- `Bash` -- `WSL="//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit"
+echo "=== root listing ==="; ls -la "$WSL"
+echo "=== instructions/ ==="; find "$WSL/instructions" -maxdepth 2 | sort
+echo "=== 60_Claude/ ==="; find "$WSL/60_Claude" -maxdepth 3 | sort
+echo "=== _docs/ ==="; find "$WSL/_docs" -maxdepth 2 | sort`
+```
+=== root listing ===
+total 24
+drwxr-xr-x 15 Anant Gupta 197121     0 Aug 19 19:59 .
+drwxr-xr-x  6 Anant Gupta 197121     0 Aug  7 16:16 ..
+drwxr-xr-x  6 Anant Gupta 197121     0 Aug 19 10:48 .claude
+drwxr-xr-x 10 Anant Gupta 197121     0 Aug 19 20:01 .git
+-rw-r--r--  1 Anant Gupta 197121   275 Apr  4 04:04 .gitignore
+drwxr-xr-x  3 Anant Gupta 197121     0 Aug 19 20:01 _docs
+drwxr-xr-x  7 Anant Gupta 197121     0 Aug 19 19:56 60_Claude
+drwxr-xr-x  2 Anant Gupta 197121     0 Aug 19 11:09 agents
+-rw-r--r--  1 Anant Gupta 197121 10347 Aug 19 19:59 CLAUDE.md
+drwxr-xr-x  2 Anant Gupta 197121     0 Aug 19 11:10 commands
+drwxr-xr-x  2 Anant Gupta 197121     0 Aug 19 19:55 docs
+drwxr-xr-x  2 Anant Gupta 197121     0 Aug 19 11:09 hooks
+drwxr-xr-x 10 Anant Gupta 197121     0 Aug 19 19:54 instructions
+-rw-r--r--  1 Anant Gupta 197121  7609 Aug 19 19:59 README.md
+drwxr-xr-x 34 Anant Gupta 197121     0 Aug 19 11:00 sandbox
+drwxr-xr-x  2 Anant Gupta 197121     0 Jul 29 20:56 skills
+drwxr-xr-x  7 Anant Gupta 197121     0 Aug 19 11:11 tested-tools
+drwxr-xr-x  4 Anant Gupta 197121     0 Aug 19 11:13 tests
+=== instructions/ ===
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/CausalOps
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/CausalOps/AGENTS.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/CausalOps/CLAUDE.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/Jarvis
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/Jarvis/AGENTS.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/Jarvis/CLAUDE.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/OpsPilot
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/OpsPilot/AGENTS.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/OpsPilot/CLAUDE.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/OpsPilot/PRD.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/OpsPilot/README.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/Portfolio
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/Portfolio/CLAUDE.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/Portfolio/cosmic-frontend.mdc
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/README.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/Resq
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/Resq/AGENTS.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/Resq/PRD.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/Resq/README.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/second-brain-claudekit
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/second-brain-claudekit/CLAUDE.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/The Plan
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/The Plan/AGENTS.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/The Plan/CLAUDE.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/Trading View
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/Trading View/AGENTS.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/Trading View/CLAUDE.md
+=== 60_Claude/ ===
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Qualification-Checklist.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/README.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/check_dependency.py
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/install_unison.sh
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/register-jarvis-sync-task.ps1
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/register-sync-task.ps1
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-all.sh
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-all-silent.vbs
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-jarvis.sh
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-jarvis-silent.vbs
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-manifest.json
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/update-sandbox.sh
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Sessions
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Sessions/_today-edits.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Sessions/2026-07-30-edits.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Sessions/2026-08-09-edits.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Sessions/2026-08-11-edits.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/Agent Standard.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/Command Standard.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/Hook Standard.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/Instructions Standard.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/README.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/Skill Standard.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Standards/Tested-Tool Promotion Standard.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/agent-template.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/area-note.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/command-template.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/daily-note.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/for-what.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/hook-template.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/idea-note.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/literature-note.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/meeting-note.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/pattern-note.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/person-note.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/project-note.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/session-log.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/skill-template.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/Templates/weekly-summary.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/vault-rules
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/vault-rules/folder-structure.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/vault-rules/linking-strategy.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/vault-rules/naming-conventions.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/vault-rules/pipeline-conventions.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/vault-rules/tagging-system.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/vault-rules/write-contract.md
+=== _docs/ ===
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Architecture.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Current-Setup.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Design.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Gaps.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/How to
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/How to/conversation-capture.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/How to/README.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/How to/review-system.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/How to/tests-and-promotion.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/How to/using-staged-artifacts.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Jarvis.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/PRD.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Promotion-Criteria.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Repo-Map.md
+//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Sync.md
+```
+- `Bash` -- `WSL="//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit"
+echo "=== write-contract.md ==="; cat "$WSL/60_Claude/vault-rules/write-contract.md"
+echo
+echo "=== Standards/README.md ==="; cat "$WSL/60_Claude/Standards/README.md"`
+```
+=== write-contract.md ===
+---
+created: 2026-08-19
+type: vault-rule
+tags: [write-contract, filesystem-safety]
+---
+
+# Write Contract
+
+Adapted directly from Jarvis's own real Write Contract (`AGENTS.md`, "Write Contract" section, read in full before writing this) — same shape (Golden rules → routing table → never-write-to list), scoped to this repo's own filesystem instead of vault notes. Every session working in this repo follows this, regardless of which tool is driving.
+
+## Golden rules
+
+1. **Never create a new top-level folder without checking it against `_docs/Repo-Map.md` first.** Repo-Map is the ground-truth inventory of what exists and why — a new top-level folder that isn't already named there is very likely wrong, or at minimum needs Repo-Map updated in the same session it's created.
+2. **When unsure where something goes, say so and ask — never guess a location.** Unsure is the trigger to surface the question (directly, or via `AskUserQuestion` for a real ambiguous call), not to invent a folder or drop content wherever seems closest.
+3. **Read `60_Claude/vault-rules/` before drafting in any staging folder** (`agents/`, `commands/`, `hooks/`, `docs/`, `instructions/`, `skills/`) — `pipeline-conventions.md` and this file are the structural half of how this repo stays navigable.
+4. **Search before creating.** Check `_docs/Repo-Map.md`, `tested-tools/README.md`, and the relevant staging folder itself before adding new content — extend or correct what's there instead of duplicating it in a second location. `instructions/`'s 2026-08-19 rebuild (`instructions/README.md`) is the concrete cautionary example: an entire folder was built once on a premise that duplicated content already sitting in `sandbox/` with no distinguishing value, then had to be cleared and rebuilt.
+5. **A pipeline-stage folder (`sandbox/`, `tested-tools/`) is a claim about real, run-for-real work — never write content there that hasn't actually been tested per `_docs/Promotion-Criteria.md`.** Don't manufacture a passing test, a verdict, or a "reviewed" status that didn't happen.
+6. **Every promotion decision gets a dated, evidenced record** (a `VERDICT.md` or equivalent, per `tested-tools/commands/cpr-compress-preserve-resume/VERDICT.md`'s template) — never a silent file move with no reasoning attached.
+
+## Where does this go?
+
+| If the thing is… | Write it to… | Read first |
+|---|---|---|
+| A brand-new external tool to evaluate | `sandbox/<repo-name>/` (real `git clone`) | `_docs/Architecture.md` |
+| Evidence a specific tool/command/skill was actually run | `tests/<type>/<repo-name>/` | `_docs/How to/tests-and-promotion.md` |
+| An artifact that cleared the bar, individually tested | `tested-tools/<type>/<use-case>/<repo-name>/` | `_docs/Promotion-Criteria.md`, `60_Claude/Qualification-Checklist.md` |
+| An artifact/repo reviewed as a batch, not yet individually tested | `tested-tools/<type>/<repo-name>/` (no `<use-case>/` layer yet) | same as above |
+| An artifact with no real external source (confirmed zero-provenance) | `tested-tools/<type>/native-scaffold/` | `tested-tools/commands/native-scaffold/` for the precedent |
+| A tool that cleared `tested-tools/` review, no current project needs it | `tested-tools/_future/<repo-name>/` + a sibling `FOR-WHAT.md` | `60_Claude/Templates/for-what.md` |
+| A real, in-progress agent for one destination project | `agents/<ProjectName>/` | `60_Claude/vault-rules/pipeline-conventions.md` |
+| A real, in-progress command for one destination project | `commands/<ProjectName>/` | same |
+| A real, in-progress hook for one destination project | `hooks/<ProjectName>/` | same |
+| Docs for one destination project | `docs/<ProjectName>/` | same |
+| An instruction file (`CLAUDE.md`/`AGENTS.md`/`PRD.md`) for a real project Anant works on | `instructions/<ProjectName>/` — **but this is now live-synced one-way from the real project; don't hand-edit it, edit the source project instead** | `instructions/README.md`, `_docs/Sync.md` |
+| A candidate skill staged from a source repo, not yet a specific project's | `skills/<repo-name>/` | `60_Claude/vault-rules/pipeline-conventions.md` |
+| A new artifact-authoring Standard (what "correct" looks like for a type) | `60_Claude/Standards/` | `60_Claude/Standards/README.md` |
+| A new authoring template (agent/skill/command/hook skeleton) | `60_Claude/Templates/` | existing templates there, for the established shape |
+| A reusable prompt, framework, or checklist distilled from a session | `60_Claude/Patterns/` | |
+| A structured session log | `60_Claude/Sessions/` (via `/compress`) | `CLAUDE.md`'s Session Memory section |
+| A weekly/monthly rollup | `60_Claude/Summaries/` | |
+| A new or amended vault-rule/convention | `60_Claude/vault-rules/` | this file, `pipeline-conventions.md` |
+| A doc about this repo's own reasoning, architecture, or a dated finding | `_docs/` | `_docs/Repo-Map.md`'s dated-amendment style |
+| An operating "how do I actually do X" doc for this repo's own pipeline | `_docs/How to/` | `_docs/How to/README.md` |
+| A vault note (daily, area, project, knowledge, career) | **Not applicable in this repo today** — `00_Daily/`, `10_Areas/`, `20_Projects/`, `30_Knowledge/`, `40_Career/` are documented as the reference vault shape this kit produces once copied to a real Obsidian vault (`CLAUDE.md`, `README.md`), but none of them are real, populated folders in this repo itself (confirmed 2026-08-19 — `git log` shows zero tracked files under any of them, ever). Don't create one speculatively; if a real one is ever needed here, that's a decision to surface, not assume. | `60_Claude/vault-rules/folder-structure.md` |
+
+## Never write to
+
+- **`sandbox/<repo>/`'s own files, once cloned.** Read-only. Testing means running commands inside it or against it, never editing its source — a modified clone is no longer evidence of how the real, unmodified tool behaves. If a real fix is needed to make a tool testable, that's a note in its test log, not a silent patch to the clone.
+- **`tested-tools/` content, without going back through the pipeline.** A promoted artifact's folder isn't yours to hand-edit directly — a real change means a new test, a new dated verdict (or an amendment to the existing one), the same discipline that got it there the first time. Silent edits are exactly the "one fact drifts from its own record" failure `_docs/Repo-Map.md`'s incident log already shows happening more than once.
+- **`instructions/<ProjectName>/`.** Live-synced one-way from each real project's actual source files — any local edit here is silently overwritten by the next scheduled sync run and never reaches the real project either. Edit the source project directly.
+- **`.git/`, `.claude/settings.local.json`.** Tooling/machine-local state, never content.
+- **Any `_archive/` location** (`.claude/_archive/`, or a future archived folder). Archived means done — read for history, don't resurrect or edit in place; if something archived needs to come back, that's a deliberate, visible move, not a quiet edit.
+
+## Why this exists
+
+This repo's own docs have already drifted stale from trusted-but-unverified claims more than once (`_docs/Repo-Map.md`'s incident log: the `50_Claude` recreation bug, the Jarvis sync silently breaking, `instructions/`'s own wrong-premise rebuild). A written routing table and a real never-write-to list turn "where does this go" and "is this mine to edit" from a guess made fresh each session into a checkable answer.
+
+=== Standards/README.md ===
+---
+created: 2026-08-19
+type: index
+tags: [standards]
+---
+
+# Standards
+
+One `Standard.md` per artifact type this repo actually produces, same shape as Jarvis's real `30_Order/Standards/` (read in full before writing these — `Evergreen Standard.md` and `Review Standard.md` specifically): a concrete, checkable definition of what "correct" looks like, not a style guide. Each pairs with a real authoring template in `60_Claude/Templates/`.
+
+| Standard | Governs | Template |
+|---|---|---|
+| [Agent Standard.md](Agent%20Standard.md) | `.claude/agents/*.md` and `agents/<Project>/*.md` | `60_Claude/Templates/agent-template.md` |
+| [Skill Standard.md](Skill%20Standard.md) | `skills/<repo>/<name>/SKILL.md` (directory-shaped skills) | `60_Claude/Templates/skill-template.md` |
+| [Command Standard.md](Command%20Standard.md) | `.claude/commands/*.md` and `commands/<Project>/*.md` | `60_Claude/Templates/command-template.md` |
+| [Hook Standard.md](Hook%20Standard.md) | `.claude/hooks/*.md` (+ their `.ps1`) and `hooks/<Project>/*.md` | `60_Claude/Templates/hook-template.md` |
+| [Instructions Standard.md](Instructions%20Standard.md) | `instructions/<Project>/*.md` | N/A — these are copied from real projects, not authored here |
+| [Tested-Tool Promotion Standard.md](Tested-Tool%20Promotion%20Standard.md) | Any artifact's move through `sandbox/` → `tested-tools/` → promoted | N/A — cross-references `_docs/Promotion-Criteria.md` and `60_Claude/Qualification-Checklist.md` rather than duplicating them |
+
+No review-writing Standard exists here yet — deliberately deferred, see `_docs/Gaps.md`'s "Review folder" entry.
+```
+- `Bash` -- `WSL="//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit"
+echo "=== instructions/README.md (current) ==="; cat "$WSL/instructions/README.md"
+echo
+echo "=== git log ==="
+wsl.exe -e bash -lc "cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit && git log --oneline -15 && echo --- && git log --format='%ai %s' -15" 2>&1`
+```
+=== instructions/README.md (current) ===
+---
+created: 2026-08-19
+type: index
+tags: [instructions, real-projects]
+---
+
+# instructions — real project instruction files, mirrored for reference
+
+## Corrected 2026-08-19 — this folder was built on the wrong premise once already
+
+The first version of this folder (built earlier the same day) held one subfolder per `sandbox/` candidate repo (`adx/`, `ecc/`, `gbrain/`, and 16 others) — `CLAUDE.md`/`AGENTS.md` files copied from tools being *evaluated* for ingestion, on the theory that they were "patterns worth reviewing." That was a misreading: every one of those files already lives, untouched, inside the source repo at `sandbox/<repo>/` — copying them again into `instructions/` added a second location for the same fact with no distinguishing value, the "one fact, one home" failure this repo's own docs (`_docs/Repo-Map.md`) already name as a recurring problem. Cleared out entirely, verified first that no copy held standalone value the original `sandbox/` file didn't already have.
+
+## What this folder actually is
+
+The instruction-shaped files (`CLAUDE.md`, `AGENTS.md`, `PRD.md`, and similar) that already exist for each **real project** Anant actively works on — never a `sandbox/` evaluation candidate. One subfolder per project, flat (`instructions/<ProjectName>/<file>`), matching the same per-destination-project convention already used by `agents/<Project>/`, `commands/<Project>/`, `hooks/<Project>/`, `docs/<Project>/`.
+
+The authoritative project list is `60_Claude/scripts/sync-manifest.json`'s `"kind": "project"` entries (`"kind": "home"` entries — `.claude_windows`, `.claude_wsl` — have no instruction files of their own and are excluded). As of 2026-08-19: `second-brain-claudekit`, `CausalOps`, `Jarvis`, `Portfolio`, `Trading View`, `Resq`, `OpsPilot`, `The Plan`.
+
+## Live-synced, one-way
+
+Each manifest entry now carries an `instructions_paths` field (a subset of its existing `paths`), and `sync-all.sh` copies those files — one-way, source → `instructions/<Name>/`, never the reverse — on every scheduled run, alongside its existing per-project Unison sync. Design and reasoning: `_docs/Sync.md`'s 2026-08-19 amendment. This is deliberately a plain file copy, not a Unison pair: `instructions/` is read-only reference content for a session working in *this* repo, and a two-way sync would risk a stray local edit silently overwriting a real project's real instruction file on the next unattended run.
+
+If a source file goes missing (renamed, deleted upstream), the sync logs a warning to that project's `Sync-Log.md` and continues — it does not fail the whole run.
+
+=== git log ===
+ef464d2 Merge pull request #1 from gupt0479-ctrl/copilot/create-second-brain-claude-kit
+726f6de Add AI-optimized vault structure: .claude/ commands/agents/hooks, CPR commands, 3 agents, 2 hooks, 50_Claude scaffold
+d35f0b7 Scaffold full second-brain-claudekit structure with CLAUDE.md, commands, agents, hooks, templates, vault-rules
+bb2a554 Initial commit
+---
+2026-04-03 18:59:54 -0500 Merge pull request #1 from gupt0479-ctrl/copilot/create-second-brain-claude-kit
+2026-04-03 23:57:49 +0000 Add AI-optimized vault structure: .claude/ commands/agents/hooks, CPR commands, 3 agents, 2 hooks, 50_Claude scaffold
+2026-04-03 23:44:36 +0000 Scaffold full second-brain-claudekit structure with CLAUDE.md, commands, agents, hooks, templates, vault-rules
+2026-04-03 18:36:30 -0500 Initial commit
+```
+- `Bash` -- `WSL="//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit"
+echo "=== _docs/Gaps.md ==="; cat "$WSL/_docs/Gaps.md"`
+```
+=== _docs/Gaps.md ===
+# Gaps — what's actually wrong in this repo right now
+
+**Update, 2026-08-19 (a third pass, later still):** a follow-on session corrected three things the pass below got wrong or left too thin. Full account in `_docs/Repo-Map.md`'s folder table and this doc's own new section 5 below — short version:
+
+1. **`instructions/` was rebuilt on a corrected premise.** The 2026-08-19 pass right below this note built `instructions/<repo-name>/<file>` to hold `CLAUDE.md`/`AGENTS.md` copied from `sandbox/` *evaluation candidates* (`adx`, `ecc`, `gbrain`, 16 others). That was wrong — every one of those files already lives untouched in its source repo at `sandbox/<repo>/`, so the copy added a second location for the same fact with no distinguishing value. Cleared out (verified first that nothing had standalone value worth keeping elsewhere), rebuilt correctly: `instructions/<ProjectName>/` now holds the real instruction files of the real projects Anant actively works on (per `sync-manifest.json`'s `"kind": "project"` entries), live-synced one-way via a new `instructions_paths` field + `sync-all.sh` logic, confirmed with Anant via `AskUserQuestion` before the manifest/script were touched. See `instructions/README.md`.
+2. **`60_Claude/vault-rules/` had no operational write-safety rules for this repo's own filesystem** — only the generic PARA note-writing convention. Added `60_Claude/vault-rules/write-contract.md`, adapted directly from Jarvis's own real Write Contract (`AGENTS.md`): golden rules, a full "where does this go" routing table, and a real never-write-to list.
+3. **`60_Claude/` had no `Standards/` folder and no artifact-authoring templates.** Added `60_Claude/Standards/` (one `Standard.md` per artifact type — Agent, Skill, Command, Hook, Instructions, Tested-Tool Promotion — adapted directly from Jarvis's real `30_Order/Standards/` shape) and four new templates in `60_Claude/Templates/` (`agent-template.md`, `skill-template.md`, `command-template.md`, `hook-template.md`).
+
+A fourth, smaller finding from the same pass: the 7 generic PARA vault-note templates (`area-note`, `daily-note`, etc.) have never actually produced a real note anywhere in this repo's git history — confirmed by `git log --all --diff-filter=A` against `00_Daily/`, `10_Areas/`, `20_Projects/`, `30_Knowledge/`, `40_Career/`, all of which turn out not to exist as real, populated folders in this repo at all (only as the documented *reference* shape this kit produces once copied to someone's real Obsidian vault — `_docs/Design.md` already said this repo "is never installed by anyone but Anant," this is the concrete filesystem confirmation of that). The templates aren't wrong for their stated purpose; they're just unused *by this repo itself*, which is a different, narrower claim than "unused." Not deleted — they're still correct output for anyone who does copy this kit to a real vault.
+
+**Update, 2026-08-19 (later same day):** the session that laid out `agents/`, `commands/`, `hooks/`, `docs/`, `instructions/`, `tests/`, and `tested-tools/_future/` for real (per `_docs/Repo-Map.md`) closed several items below — each is marked `[RESOLVED 2026-08-19]` with what actually changed, in place, rather than rewritten out from under the original research-only pass. Items not marked stay open, with a reason.
+
+Written 2026-08-19, after a research-only pass across every note Anant pointed to in Jarvis (`20_Progress/Projects/AI Use/Claude Kit/Toolkit/`, `20_Progress/Projects/AI Use/Builds & Resources/`, `10_Areas/AI/Setup/`, `60_Claude/20_Distilled_Notes/Sources - Plan/`, `60_Claude/30_Reviews/AI/`, `60_Claude/05_Clippings/AI Conversations/`, `60_Claude/07_AI_Information/AI Conversation - Summaries/`) plus a direct audit of this repo's own `60_Claude/` folder. Mirrors Jarvis's own `10_Areas/AI/Setup/Gaps.md` convention on purpose — a plain, dated, no-spin list, updated as items close rather than rewritten from scratch. This doc does not propose fixes beyond naming them; nothing in `60_Claude/`, `instructions/`, `tests/`, or `tested-tools/_future/` was touched to produce it — read-only research, per instruction.
+
+## 1. What's going wrong in `60_Claude/` right now
+
+**The folder's own ground-truth doc had drifted stale inside itself.** `_docs/Repo-Map.md`'s folder-by-folder table (written 2026-08-08, "current as of 2026-08-08") said `scripts/` held 5 files. By 2026-08-10, two sessions later, the same doc's own "Open items" checklist recorded that a second, superseding sync engine (`sync-all.sh` + `sync-manifest.json` + `sync-all-silent.vbs` + `register-sync-task.ps1`) had been built and gone live — but the folder table itself was never revisited. Two true statements sat in the same file, one flatly contradicting the other, for 9 days, until this pass caught and fixed it. This is the exact "one fact, one home" failure Jarvis's own `Jarvis OS — North Star.md` principle exists to prevent, just recurring inside this repo's own docs instead of the vault.
+
+**[PARTIALLY RESOLVED 2026-08-19]** `60_Claude/README.md`'s `scripts/` row now names `sync-all.sh` as the live multi-project engine and `sync-jarvis.sh` as legacy/rollback-only (see "What script needs updating" below — same fix). `_docs/Repo-Map.md`'s folder table was not re-touched this pass (its `scripts/` row already lists all 10 files correctly per its own 2026-08-19 update, cited at the top of this doc) — the drift described above is historical, already fixed before this doc was even written.
+
+**The repo has 10+ days of uncommitted work sitting in the working tree.** `git status` right now shows the same renames and deletions `_docs/Repo-Map.md` already documents as executed 2026-08-08/09 (`50_Claude/` deletions, `templates/`→`60_Claude/Templates/`, `vault-rules/`→`60_Claude/vault-rules/`, plus a batch of `.claude/` and top-level command/hook edits) — still uncommitted as of 2026-08-19. This lines up exactly with the conversation-capture gap found below: no session appears to have touched this repo's files between roughly 2026-08-09 and today. Not committed here without an explicit instruction; flagged as current, verified fact.
+
+**[STILL OPEN 2026-08-19]** Still uncommitted — this session added substantially more uncommitted work on top (Phases 1-6: `tested-tools/`, `tests/`, `instructions/`, the `_docs/How to/` set, `60_Claude/vault-rules/pipeline-conventions.md`, and more). Not committed without an explicit instruction to do so, per this session's own closing instructions — reported as open, working-tree state at the end of this session's own report instead.
+
+**This repo's own conversation-logging pipeline is stalled, not running.** This isn't a `60_Claude/` file problem directly — the capture mechanism lives in Jarvis-side/global hook config, not in this repo's `.claude/hooks/` — but it directly determines whether any of this repo's sessions get recorded at all. Per `_docs/Jarvis.md`'s updated "AI Conversations" section: nothing has been captured on either Windows or WSL since 2026-08-10/12, a 7–9 day blank stretch. The diagnosed root cause (`SessionEnd` doesn't fire reliably for every real session-termination path, and no scheduled backfill safety net exists to catch what it misses) was found and explicitly left unbuilt on 2026-08-11. It has now recurred exactly as predicted. **This is the single most consequential open gap for this repo's own "0 token cost, works at all times" requirement** — everything downstream (the Tool log, distilled summaries, the review system) depends on capture actually happening.
+
+**[RESOLVED 2026-08-19, later the same day]** Fixed in a separate, parallel Jarvis-side session — re-verified live (not assumed) by reading that session's own transcript directly via `mcp__jarvis__vault_read`. Native scheduled-task retry (`RestartCount=3`/`RestartInterval=PT2M`) enabled on both backfill tasks, a new failure-visibility dashboard note (`00 - Capture Health.md`) built and verified against real production runs, the TaskScheduler Operational event log enabled, Windows Defender exclusions applied, and a related gap (global Windows `settings.json` missing the `jarvis-session-continuity.ps1` hook) closed and verified end-to-end with a real headless test session. Full writeup: `_docs/How to/conversation-capture.md`.
+
+**`60_Claude/30_Reviews/AI/` in Jarvis (the review layer this repo's docs point to) was real and built 2026-08-10/11, but this repo's own docs never said so.** Before this pass, `_docs/Jarvis.md` described it as "empty shell... automation does not exist yet" — true as of 2026-08-09, false by 2026-08-11. `_docs/Jarvis.md` is now corrected; see its "review layer" section for the concrete design (Review Standard, two templates, `Tool log.md`'s schema — deliberately manual/human-triggered by design, not a gap, but with zero data rows so far).
+
+**[RESOLVED 2026-08-19]** `_docs/How to/review-system.md` now exists as the operating-instructions companion to `_docs/Jarvis.md`'s research — restates the trigger, the 100%-clarity gate, and explicitly names the still-open question (what this repo's own pipeline activity should feed into `Tool log.md`) rather than leaving it implicit.
+
+**Terminology drift between this repo and Jarvis was never reconciled.** Jarvis's own `Tool Map.md` — the doc both sides agree is the sole source of truth for tool-pipeline state — still calls the second stage `tested-skills`, while this repo (post-2026-08-09 rename) calls the same folder `tested-tools`. Neither side has updated to match the other. Not fixed here (fixing it means either renaming this repo's folder again or editing a live Jarvis note — both out of scope for a research-only pass), just named so it doesn't get silently assumed-consistent later.
+
+**[STILL OPEN 2026-08-19]** Not touched this session either — still requires a decision (rename this repo's folder again, or edit a live Jarvis note) that wasn't part of this session's scope.
+
+## 2. What script needs updating
+
+Not the scripts' logic — nothing found in this pass suggests `sync-all.sh`, `sync-jarvis.sh`, `check_dependency.py`, or `update-sandbox.sh` are currently broken. What needs updating is the **documentation describing them**, which undersells or misdescribes what's actually live:
+
+- `60_Claude/README.md`'s `scripts/` row just says "`check_dependency.py`... plus the Jarvis sync scripts" — doesn't name `sync-all.sh` as the live multi-project engine or `sync-jarvis.sh` as the legacy, kept-for-rollback-only predecessor. A reader has no way to tell which one actually runs today without reading `_docs/Sync.md`'s amendments in full.
+
+  **[RESOLVED 2026-08-19]** `60_Claude/README.md`'s `scripts/` row rewritten to name `sync-all.sh` + `sync-manifest.json` + `sync-all-silent.vbs` + `register-sync-task.ps1` as the live engine and `sync-jarvis.sh` + `sync-jarvis-silent.vbs` + `register-jarvis-sync-task.ps1` as legacy/rollback-only, explicitly.
+
+- `_docs/Sync.md`'s main narrative (everything before the final 2026-08-10 amendment) is written entirely around `sync-jarvis.sh` as "the actual mechanism now in use" — true when written, superseded since. The multi-project rollout is mentioned only in the last amendment, easy to miss on a skim. Not rewritten in this pass (out of scope — no doc content was to be authored beyond what directly answers this audit and the Jarvis-context updates), but flagged as the next thing to fix if `_docs/Sync.md` gets touched again.
+
+  **[PARTIALLY RESOLVED 2026-08-19]** A "Current state" callout was added directly under `_docs/Sync.md`'s title, pointing to the live engine and explicitly warning a skim not to stop at the (now-legacy) narrative below it. The historical narrative itself was deliberately left unedited, matching this doc's own self-correcting-via-amendment style — a full rewrite is still open if anyone wants the narrative itself restructured, not just flagged.
+
+- No script exists yet to mechanically verify the `instructions/`/`tests/`/`tested-tools/_future/` scope described below — none is needed yet either, since none of those folders has real content to check.
+
+  **[STILL PARTIALLY TRUE 2026-08-19]** `instructions/` and `tests/` now have real content (27 files across 19 repos; two real test entries) — see `_docs/Repo-Map.md`. `tested-tools/_future/` re-confirmed still empty, correctly. No mechanical verification script was written for any of these — still an open item if one is ever wanted, not blocking anything today.
+
+## 3. What template needs updating
+
+`60_Claude/Templates/` holds 10 templates: 7 generic PARA vault-note templates (`area-note`, `daily-note`, `idea-note`, `literature-note`, `meeting-note`, `person-note`, `project-note`) and 3 AI-session-artifact templates (`pattern-note`, `session-log`, `weekly-summary`). All 10 are generic and self-consistent — nothing found in this pass says any of them is factually wrong.
+
+The gap is a missing template, not a wrong one: **`60_Claude/Templates/weekly-summary.md`'s shape (What Moved / Wins / Blockers / Repeated Ideas / Open Loops / Next Week's Top 3) has no relationship to the actual review shape Jarvis just built** — `30_Order/Templates/Capability/AI Tools Weekly Review Template.md`'s real sections are Period Covered, Sources Reviewed (a checklist naming which real logs were opened), What Ran This Period, Sync & Capture Health (real OK/failed counts), Findings, Decided Fixes (gated — only 100%-clarity items), Open Questions, Next Period's Watch List. These serve genuinely different subjects (this repo's own engineering-session rollups vs. Jarvis's usage/sync-health reviews), so `weekly-summary.md` isn't wrong for its own purpose — but if this repo ever wants its own equivalent of Jarvis's citation-disciplined review template (e.g. to review this repo's own `sandbox/`→`tested-tools/` pipeline activity), no template here currently provides that shape. Not added in this pass — naming the gap, not building it.
+
+No template exists anywhere in this repo for the new `tested-tools/_future/<repo>/FOR-WHAT.md` pattern Anant described 2026-08-19. That pattern is meant to repeat identically across every parked repo, which is exactly the kind of thing a template should back — currently nothing does.
+
+**[RESOLVED 2026-08-19]** `60_Claude/Templates/for-what.md` created — the weekly-summary.md/Jarvis-review mismatch named above is unresolved still (no instruction to build it this session), but the `FOR-WHAT.md` template gap is closed.
+
+## 4. Vault-rules are thin — what's missing
+
+`60_Claude/vault-rules/` (`folder-structure.md`, `naming-conventions.md`, `linking-strategy.md`, `tagging-system.md`) covers exactly one subject well: the generic PARA note-taking layer (`00_Daily/`, `10_Areas/`, `20_Projects/`, `30_Knowledge/`, `40_Career/`). It covers **zero** subjects specific to this repo's actual reason for existing — the qualification pipeline itself. This is the literal thinness: `CLAUDE.md` tells anyone drafting in `agents/`, `commands/`, `hooks/`, `skills/` to "read `60_Claude/vault-rules/` first," but nothing in that folder says anything about how those staging folders, `sandbox/`, or `tested-tools/` should be named, structured, or organized. That knowledge currently exists only in `tested-tools/README.md`, `_docs/Architecture.md`, and `_docs/Promotion-Criteria.md` — none of which is `vault-rules/`, and none of which a fresh session is pointed at by the same instruction that names `vault-rules/`.
+
+Concretely missing, confirmed absent from all four existing files:
+- Any naming/structure convention for `sandbox/<repo-name>/` (currently just "whatever `git clone` produces" — true today, but never actually stated as the rule).
+- The `tested-tools/<type>/<use-case>/<repo>/` three-level convention, which exists only in `tested-tools/README.md` today — not cross-referenced from `vault-rules/` at all, despite being exactly the kind of structural convention that folder exists to hold.
+- Any convention for the top-level staging folders (`agents/`, `commands/`, `hooks/`, `skills/`) beyond "draft here, promote later" — no naming scheme, no per-source-repo subfolder convention, nothing.
+- The brand-new `instructions/` folder (per-codebase subfolder holding `CLAUDE.md`/`AGENTS.md`/`PRD.md`-shaped files) and `tests/` folder (the gate proving a tool's usefulness before promotion) — both scoped for the first time 2026-08-19 (see `_docs/Repo-Map.md`), neither has any convention written anywhere yet, `vault-rules/` included.
+- The `tested-tools/_future/<repo>/FOR-WHAT.md` pattern — same story: scoped 2026-08-19, no convention written down.
+
+**Net assessment:** `vault-rules/` is not wrong, it's answering a question ("how do I write a good vault note") that isn't this repo's central question ("how do I stage, test, and promote a piece of external tooling"). A fifth file — something like `60_Claude/vault-rules/pipeline-conventions.md` — is the natural home for all five missing conventions above, so that "read `60_Claude/vault-rules/` first" actually covers what a session drafting in `agents/`, `commands/`, `hooks/`, `skills/`, `instructions/`, or `tested-tools/_future/` needs. Not written in this pass — this doc only names the gap, per instruction to research and document, not build.
+
+**[RESOLVED 2026-08-19]** `60_Claude/vault-rules/pipeline-conventions.md` written — covers all five items named above: `sandbox/<repo-name>/` naming, the `tested-tools/<type>/<use-case>/<repo>/` three-level convention plus `tested-tools/_future/<repo>/FOR-WHAT.md`, the per-destination-project staging convention for `agents/`/`commands/`/`hooks/`/`docs/`, and the `instructions/`/`tests/` conventions (both folders also populated for real in the same session — see `_docs/Repo-Map.md`).
+
+**[RESOLVED 2026-08-19, third pass]** `pipeline-conventions.md`'s own `instructions/` section carried the same wrong premise the folder itself did — corrected in place, now describing the real-project/live-sync shape. `60_Claude/vault-rules/write-contract.md` also added — the operational write-safety layer this section's "Net assessment" didn't originally call for by name but is the natural sibling to `pipeline-conventions.md` once the repo has real staging folders with real never-touch zones (`sandbox/<repo>/` once cloned, `tested-tools/` content outside the pipeline, `instructions/` now that it's sync-owned).
+
+## 5. `60_Claude/` still has no `Standards/` folder or artifact-authoring templates — [RESOLVED 2026-08-19, third pass]
+
+`60_Claude/Templates/` held vault-note templates and one pipeline template (`for-what.md`), but nothing for authoring a new agent, skill, command, or hook from scratch, and no `Standards/` folder defining what "correct" looks like for any of them — the same gap `pipeline-conventions.md`'s "Net assessment" already named for structural conventions, just one layer down at the level of an individual artifact's own content quality.
+
+**Resolved:** `60_Claude/Standards/` built — `Agent Standard.md`, `Skill Standard.md`, `Command Standard.md`, `Hook Standard.md`, `Instructions Standard.md`, `Tested-Tool Promotion Standard.md` — each adapted directly from Jarvis's real `30_Order/Standards/` shape (read `Evergreen Standard.md` and `Review Standard.md` in full first, per instruction): a concrete, checkable definition with Per-Section Standard, Done Conditions, and a Gold Standard Example drawn from a real file already in this repo. Paired templates added to `60_Claude/Templates/`: `agent-template.md`, `skill-template.md`, `command-template.md`, `hook-template.md`.
+
+## 6. Review folder — explicitly deferred, not built
+
+`60_Claude/` is also missing its own equivalent of Jarvis's `60_Claude/30_Reviews/AI/` — a place to review *this repo's own* pipeline activity (sandbox→tested-tools throughput, promotion cadence, sync/capture health for this repo specifically). **Deliberately not built this session.** Real reason: it depends on the Jarvis-side review-system work finishing first — Jarvis's own `60_Claude/30_Reviews/AI/` (`Review Standard.md`, both templates, `Tool log.md`'s schema) is real and built (`_docs/Jarvis.md`, `_docs/How to/review-system.md`) but has zero data rows and no review has ever been written under it yet. Building this repo's own review layer on top of an unexercised upstream system would be designing against an unproven shape — the same "plan-and-never-run" failure mode this repo's whole pipeline exists to prevent (`_docs/PRD.md`), just one level removed. Revisit once Jarvis's own review system has at least one real Weekly review written against it.
+
+## Cross-references
+
+- `_docs/Repo-Map.md` — folder-by-folder ground truth, updated 2026-08-19 with `instructions/`, `tests/`, `tested-tools/_future/`, and the corrected `60_Claude/scripts/` count; updated again the same day (third pass) with the `instructions/` rebuild, `write-contract.md`, and `Standards/`.
+- `_docs/Jarvis.md` — the Toolkit "How to Use X"/"What X" pattern, the real review-system build state, and the real conversation-capture state, all updated 2026-08-19 with direct citations.
+- `_docs/PRD.md` — Tier-1 install list citation corrected 2026-08-19 (the real source is `PDF's Ingestion Implementation.md`'s Matrix table, not `GitHub Ingestion Implementation.md`).
+- `_docs/Sync.md` — 2026-08-19 amendment: the `instructions_paths` live-sync design (one-way, source → `instructions/<Project>/`), confirmed with Anant before `sync-manifest.json`/`sync-all.sh` were edited for real.
+- `60_Claude/Standards/README.md` — index of the six new Standards and their paired templates.
+```
+- `Bash` -- `WSL="//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit"
+echo "=== sync-manifest.json ==="; cat "$WSL/60_Claude/scripts/sync-manifest.json"`
+```
+=== sync-manifest.json ===
+{
+  "_comment": "Single source of truth for every Unison-synced Claude Code config pair. Read by sync-all.sh, which locates this file relative to its own directory \u2014 never hardcode this path anywhere else. See _docs/Sync.md for the full design history and _docs/Repo-Map.md for open items.",
+  "projects": [
+    {
+      "name": "second-brain-claudekit",
+      "kind": "project",
+      "status": "live",
+      "source": "/home/anant_gupta/projects/ai/claude/second-brain-claudekit",
+      "mirror": "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/second-brain-claudekit",
+      "paths": [
+        ".claude/agents",
+        ".claude/commands",
+        ".claude/hooks",
+        ".claude/settings.json",
+        "CLAUDE.md"
+      ],
+      "instructions_paths": ["CLAUDE.md"],
+      "needs_fat": true,
+      "force_source": true,
+      "_force_source_note": "Jarvis mirror is view-only by convention (2026-08-11 decision) - force_source makes it mechanically enforced too: on any genuine conflict, this repo (the source) always wins, never silently skipped-and-stuck the way an equal-trust pair would be. Non-conflicting edits still propagate normally in both directions - this only changes conflict resolution, not day-to-day sync behavior."
+    },
+    {
+      "name": ".claude_windows",
+      "kind": "home",
+      "status": "live",
+      "source": "/mnt/c/Users/Anant Gupta/.claude",
+      "mirror": "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/.claude_windows",
+      "paths": [
+        "agents",
+        "commands",
+        "skills",
+        "hooks",
+        "CLAUDE.md"
+      ],
+      "needs_fat": true
+    },
+    {
+      "name": "CausalOps",
+      "kind": "project",
+      "status": "live",
+      "source": "/home/anant_gupta/projects/hub/CausalOps",
+      "mirror": "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/CausalOps",
+      "paths": [
+        ".claude/agents",
+        ".claude/commands",
+        ".claude/hooks",
+        "CLAUDE.md",
+        "AGENTS.md"
+      ],
+      "instructions_paths": ["CLAUDE.md", "AGENTS.md"],
+      "needs_fat": true
+    },
+    {
+      "name": "Jarvis",
+      "kind": "project",
+      "status": "live",
+      "source": "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis",
+      "mirror": "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/Jarvis",
+      "paths": [
+        ".claude/agents",
+        ".claude/commands",
+        ".claude/skills",
+        ".claude/context",
+        ".claude/rules",
+        ".claude/settings.json",
+        "CLAUDE.md",
+        "AGENTS.md"
+      ],
+      "instructions_paths": ["CLAUDE.md", "AGENTS.md"],
+      "needs_fat": true
+    },
+    {
+      "name": "Portfolio",
+      "kind": "project",
+      "status": "live",
+      "source": "/home/anant_gupta/projects/hub/portfolio",
+      "mirror": "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/Portfolio",
+      "paths": [
+        ".claude/agents",
+        ".claude/commands",
+        ".claude/docs",
+        ".claude/CLAUDE.md",
+        ".claude/cosmic-frontend.mdc"
+      ],
+      "instructions_paths": [".claude/CLAUDE.md", ".claude/cosmic-frontend.mdc"],
+      "needs_fat": true
+    },
+    {
+      "name": "Trading View",
+      "kind": "project",
+      "status": "live",
+      "source": "/home/anant_gupta/projects/hub/tradingview",
+      "mirror": "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/Trading View",
+      "paths": [
+        ".claude/agents",
+        ".claude/hooks",
+        ".claude/skills",
+        ".claude/settings.json",
+        "CLAUDE.md",
+        "AGENTS.md"
+      ],
+      "instructions_paths": ["CLAUDE.md", "AGENTS.md"],
+      "needs_fat": true
+    },
+    {
+      "name": "Resq",
+      "kind": "project",
+      "status": "live",
+      "source": "/home/anant_gupta/projects/hackathon/Resq",
+      "mirror": "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/Resq",
+      "paths": [
+        ".claude/PRD.md",
+        ".claude/README.md",
+        ".claude/context",
+        ".claude/playbooks",
+        ".claude/decisions",
+        ".claude/checklists",
+        ".claude/settings.json",
+        "AGENTS.md"
+      ],
+      "instructions_paths": [".claude/PRD.md", ".claude/README.md", "AGENTS.md"],
+      "needs_fat": true
+    },
+    {
+      "name": "OpsPilot",
+      "kind": "project",
+      "status": "live",
+      "source": "/home/anant_gupta/projects/hackathon/opspilot",
+      "mirror": "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/OpsPilot",
+      "paths": [
+        ".claude/PRD.md",
+        ".claude/README.md",
+        ".claude/context",
+        ".claude/playbooks",
+        ".claude/workflows",
+        ".claude/decisions",
+        ".claude/checklists",
+        "CLAUDE.md",
+        "AGENTS.md"
+      ],
+      "instructions_paths": [".claude/PRD.md", ".claude/README.md", "CLAUDE.md", "AGENTS.md"],
+      "needs_fat": true
+    },
+    {
+      "name": "The Plan",
+      "kind": "project",
+      "status": "live",
+      "source": "/mnt/d/Users/_Anant/10_Areas/Documents/The Plan",
+      "mirror": "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/The Plan",
+      "paths": [
+        ".claude/agents",
+        ".claude/skills",
+        ".claude/settings.json",
+        "CLAUDE.md",
+        "AGENTS.md"
+      ],
+      "instructions_paths": ["CLAUDE.md", "AGENTS.md"],
+      "needs_fat": true
+    },
+    {
+      "name": ".claude_wsl",
+      "kind": "home",
+      "status": "live",
+      "source": "/home/anant_gupta/.claude",
+      "mirror": "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/.claude_wsl",
+      "paths": [
+        "agents",
+        "commands",
+        "skills",
+        "hooks",
+        "CLAUDE.md"
+      ],
+      "needs_fat": true
+    }
+  ]
+}
+```
+- `Bash` -- `WSL="//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit"
+echo "=== files touched after 19:50 (the third pass) ==="
+find "$WSL" -type f -newermt "2026-08-19 19:50" ! -path "*/.git/*" -printf "%T@ %p\n" 2>/dev/null | sort -n | sed "s|$WSL/||"
+`
+```
+Command did not complete within its 120s timeout and was moved to the background (ID: b892m08cn). Output is being written to: C:\Users\ANANTG~1\AppData\Local\Temp\claude\[REDACTED]\[REDACTED]\tasks\b892m08cn.output. You will be notified when it completes. To check interim output, use Read on that file path.
+```
+- `Bash` -- `wsl.exe -e bash -lc "cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit && find . -maxdepth 4 -type f -newermt '2026-08-19 19:50' -not -path './.git/*' -not -path './sandbox/*' -printf '%TY-%Tm-%Td %TH:%TM %p\n' | sort" 2>&1`
+```
+2026-08-19 19:52 ./60_Claude/scripts/sync-manifest.json
+2026-08-19 19:53 ./60_Claude/scripts/sync-all.sh
+2026-08-19 19:54 ./60_Claude/vault-rules/pipeline-conventions.md
+2026-08-19 19:54 ./instructions/README.md
+2026-08-19 19:55 ./60_Claude/vault-rules/write-contract.md
+2026-08-19 19:56 ./60_Claude/Standards/README.md
+2026-08-19 19:57 ./60_Claude/Standards/Agent Standard.md
+2026-08-19 19:57 ./60_Claude/Standards/Command Standard.md
+2026-08-19 19:57 ./60_Claude/Standards/Hook Standard.md
+2026-08-19 19:57 ./60_Claude/Standards/Skill Standard.md
+2026-08-19 19:58 ./60_Claude/Standards/Instructions Standard.md
+2026-08-19 19:58 ./60_Claude/Standards/Tested-Tool Promotion Standard.md
+2026-08-19 19:58 ./60_Claude/Templates/agent-template.md
+2026-08-19 19:58 ./60_Claude/Templates/command-template.md
+2026-08-19 19:58 ./60_Claude/Templates/skill-template.md
+2026-08-19 19:59 ./60_Claude/Templates/hook-template.md
+2026-08-19 19:59 ./CLAUDE.md
+2026-08-19 19:59 ./README.md
+2026-08-19 20:00 ./_docs/Gaps.md
+2026-08-19 20:01 ./60_Claude/Sessions/_today-edits.md
+2026-08-19 20:01 ./_docs/Repo-Map.md
+2026-08-20 08:34 ./instructions/CausalOps/AGENTS.md
+2026-08-20 08:34 ./instructions/CausalOps/CLAUDE.md
+2026-08-20 08:34 ./instructions/Jarvis/AGENTS.md
+2026-08-20 08:34 ./instructions/Jarvis/CLAUDE.md
+2026-08-20 08:34 ./instructions/OpsPilot/AGENTS.md
+2026-08-20 08:34 ./instructions/OpsPilot/CLAUDE.md
+2026-08-20 08:34 ./instructions/OpsPilot/PRD.md
+2026-08-20 08:34 ./instructions/OpsPilot/README.md
+2026-08-20 08:34 ./instructions/Portfolio/CLAUDE.md
+2026-08-20 08:34 ./instructions/Portfolio/cosmic-frontend.mdc
+2026-08-20 08:34 ./instructions/Resq/AGENTS.md
+2026-08-20 08:34 ./instructions/Resq/PRD.md
+2026-08-20 08:34 ./instructions/Resq/README.md
+2026-08-20 08:34 ./instructions/The Plan/AGENTS.md
+2026-08-20 08:34 ./instructions/The Plan/CLAUDE.md
+2026-08-20 08:34 ./instructions/Trading View/AGENTS.md
+2026-08-20 08:34 ./instructions/Trading View/CLAUDE.md
+2026-08-20 08:34 ./instructions/second-brain-claudekit/CLAUDE.md
+```
+- `Bash` -- `WSL="//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit"
+cat "$WSL/_docs/Repo-Map.md"`
+```
+<persisted-output>
+Output too large (35KB). Full output saved to: C:\Users\Anant Gupta\.claude\projects\[REDACTED]\[REDACTED]\tool-results\bfbhxd58c.txt
+
+Preview (first 2KB):
+# Repo Map — second-brain-claudekit
+
+Ground-truth inventory and history of this repo. Established 2026-08-08 by walking every folder on disk and cross-checking every doc's claims against actual file content and `git log` — not by trusting CLAUDE.md/README.md's descriptions at face value. This is the source of truth for "what is this repo, and why does each folder exist." Update it when the repo's shape changes; don't let it decay into another stale doc like the ones it replaced.
+
+## What this project actually is
+
+One person (Anant) runs Claude Code across five real projects (Jarvis, BOOM, Portfolio, TradingView, CausalOps) plus this repo. New Claude Code tooling — skill libraries, memory MCPs, agent harnesses — shows up constantly. This repo exists to stop two failure modes that have both already happened for real: installing a tool straight into a real project on the strength of a README (`20_Progress/AI/Claude Code/` in Jarvis already shows the wreckage of this — stale project folders, a dead credential-bearing raw copy of `~/.claude`), and the opposite, planning installs that never get executed (a Tier-1 install list sat unexecuted for three weeks, per `_docs/PRD.md`).
+
+The fix is a manual, deliberately slow, five-stage pipeline (`_docs/Architecture.md`):
+
+```
+sandbox/<repo>/  →  run it for real  →  tested-skills/<name>/  →  promote (repo-scoped .claude/ or global ~/.claude/)  →  record the decision in Jarvis
+```
+
+...
+</persisted-output>
+```
+- `Read` -- `C:\Users\Anant Gupta\.claude\projects\D--Users--Anant-10-Areas-Documents-Jarvis\5e4f97e7-6064-46c5-a7fb-cb3e27b3b3ea\tool-results\bfbhxd58c.txt`
+- `Bash` -- `WSL="//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit"
+echo "=== .claude/settings.json ==="; cat "$WSL/.claude/settings.json"`
+```
+=== .claude/settings.json ===
+{
+  "autoCompact": false,
+  "claudeMdExcludes": ["sandbox/**", "tested-tools/**"],
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pwsh -ExecutionPolicy Bypass -File .claude/hooks/after-edit-log.ps1 2>/dev/null; exit 0"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pwsh -ExecutionPolicy Bypass -File .claude/hooks/session-wrapup.ps1 2>/dev/null; exit 0"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+## You
+
+<task-notification>
+<task-id>b892m08cn</task-id>
+<tool-use-id>[REDACTED]</tool-use-id>
+<output-file>C:\Users\ANANTG~1\AppData\Local\Temp\claude\[REDACTED]\[REDACTED]\tasks\b892m08cn.output</output-file>
+<status>completed</status>
+<summary>Background command "Identify exactly which files the third same-day pass touched, by mtime" completed (exit code 0)</summary>
+</task-notification>
+
+## Claude
+
+That background `find` command from earlier has finished — it was superseded by the faster native WSL query I ran instead, so there's nothing new to act on here. No action needed; still waiting on you for direction on the postmortem findings above (starting with committing the repo and closing the `claudeMdExcludes` gap, if you want me to proceed).
+
 ## Actions Taken
 
 **Files created:**
@@ -2233,5 +2958,32 @@ declare -a targets=(
 for t in "${targets[@]}"; do
   if [ -f "$t" ]; then echo "OK: $t"; else echo "MISSING: $t"; fi
 done`
+- `WSL="//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit"
+echo "=== root listing ==="; ls -la "$WSL"
+echo "=== instructions/ ==="; find "$WSL/instructions" -maxdepth 2 | sort
+echo "=== 60_Claude/ ==="; find "$WSL/60_Claude" -maxdepth 3 | sort
+echo "=== _docs/ ==="; find "$WSL/_docs" -maxdepth 2 | sort`
+- `WSL="//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit"
+echo "=== write-contract.md ==="; cat "$WSL/60_Claude/vault-rules/write-contract.md"
+echo
+echo "=== Standards/README.md ==="; cat "$WSL/60_Claude/Standards/README.md"`
+- `WSL="//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit"
+echo "=== instructions/README.md (current) ==="; cat "$WSL/instructions/README.md"
+echo
+echo "=== git log ==="
+wsl.exe -e bash -lc "cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit && git log --oneline -15 && echo --- && git log --format='%ai %s' -15" 2>&1`
+- `WSL="//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit"
+echo "=== _docs/Gaps.md ==="; cat "$WSL/_docs/Gaps.md"`
+- `WSL="//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit"
+echo "=== sync-manifest.json ==="; cat "$WSL/60_Claude/scripts/sync-manifest.json"`
+- `WSL="//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit"
+echo "=== files touched after 19:50 (the third pass) ==="
+find "$WSL" -type f -newermt "2026-08-19 19:50" ! -path "*/.git/*" -printf "%T@ %p\n" 2>/dev/null | sort -n | sed "s|$WSL/||"
+`
+- `wsl.exe -e bash -lc "cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit && find . -maxdepth 4 -type f -newermt '2026-08-19 19:50' -not -path './.git/*' -not -path './sandbox/*' -printf '%TY-%Tm-%Td %TH:%TM %p\n' | sort" 2>&1`
+- `WSL="//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit"
+cat "$WSL/_docs/Repo-Map.md"`
+- `WSL="//wsl$/Ubuntu/home/anant_gupta/projects/ai/claude/second-brain-claudekit"
+echo "=== .claude/settings.json ==="; cat "$WSL/.claude/settings.json"`
 
 
