@@ -16,7 +16,7 @@ tags:
 - [ ] All four Weekly reviews from this month
 - [ ] [[60_Claude/30_Reviews/AI/Tools/Tool log|Tool log]] (full month)
 - [ ] [[20_Progress/AI/Claude Code/_All-Projects-Sync-Log|_All-Projects-Sync-Log]] (full month)
-- [ ] [[20_Progress/AI/Claude Code/Write Log|Write Log]] (full month)
+- [ ] [[20_Progress/Projects/AI Use/Claude Kit/Log|Claude Kit/Log]] (full month)
 - [ ] [[20_Progress/Projects/AI Use/Claude Kit/Tool Map|Tool Map]]
 ## What Ran This Month
 | Skill/Command | Uses | Trend vs. last month |

@@ -28,7 +28,7 @@ next: null
 | `60_Claude/30_Reviews/AI/Tools/Tool log.md` | Which skill/command/agent was used, when, on what, and whether it worked cleanly — the first stop, not the raw sessions |
 | `60_Claude/05_Clippings/AI Conversations/WSL/Claude Code/<project>/` and `Windows/Claude Code/<project>/` | The actual session transcript for a Tool log row that needs more depth |
 | `20_Progress/AI/Claude Code/_All-Projects-Sync-Log.md` | Whether this repo's own sync (and every other project's) is actually running clean |
-| `20_Progress/AI/Claude Code/Write Log.md` | Structural changes to the sync/mirror layer itself, chronological |
+| `20_Progress/Projects/AI Use/Claude Kit/Log.md` | Structural changes to the sync/mirror layer itself, chronological — absorbed `Write Log.md`'s scope 2026-08-20 when that file was retired |
 | `20_Progress/Projects/AI Use/Claude Kit/Tool Map.md` | Pipeline stage for every tool this repo has ever sandboxed — check before assuming something needs re-evaluating from scratch |
 | `60_Claude/30_Reviews/AI/Scheduled/Weekly/` and `.../Monthly/` | Already-synthesized findings — check before re-deriving something a review already covered |
 

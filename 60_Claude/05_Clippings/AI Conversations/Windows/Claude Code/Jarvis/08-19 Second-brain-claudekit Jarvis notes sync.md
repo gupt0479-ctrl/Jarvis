@@ -6,7 +6,7 @@ source_os: windows
 title: "Second-brain-claudekit Jarvis notes sync"
 started_at: 2026-08-19T14:29:04
 ended_at: 2026-08-20T10:32:20
-exported_at: 2026-08-20T12:45:39
+exported_at: 2026-08-20T16:37:02
 duration_minutes: 1203.3
 project: Jarvis
 cwd: 'D:\Users\_Anant\10_Areas\Documents\Jarvis'

@@ -22,7 +22,7 @@ notes:
   - "[[20_Progress/AI/Claude Code/second-brain-claudekit/Setup]]"
   - "[[20_Progress/Projects/AI Use/Claude Kit/Tool Map]]"
   - "[[20_Progress/AI/Claude Code/Management]]"
-  - "[[20_Progress/AI/Claude Code/Write Log]]"
+  - "[[20_Progress/Projects/AI Use/Claude Kit/Log]]"
   - "[[20_Progress/AI/Claude Code/Sync - Unison]]"
 next: All candidate projects onboarded 2026-08-10; only remaining sync work is the deferred settings.json/settings.local.json portability question
 ---
@@ -35,7 +35,7 @@ Every project folder under `20_Progress/AI/Claude Code/` now has a `Setup.md` th
 `.claude_windows/` and `.claude_wsl/` are no longer raw unmanaged mirrors — both rebuilt clean 2026-08-10 as curated, live-synced mirrors of the real Windows and WSL home directories (see their own `Setup.md`s), replacing raw one-time dumps that had accumulated thousands of files each, including live credentials and (on the WSL side) a plaintext GitHub token.
 **`The Plan` was a real correction, not a re-run of an old plan.** Earlier research (2026-07-30, and again earlier in this same session) concluded no repo backed it, because that research only checked `~/projects` on WSL. Direct inspection 2026-08-10 found it's a genuine Windows-side sibling Obsidian vault (`D:\Users\_Anant\10_Areas\Documents\The Plan`, git remote `gupta-builds/Obsidian-SecondBrain`) with its own real `.claude/` — now onboarded the same way as every other project. `Github ReadMe` got the same re-check and stayed `dead` — confirmed, not assumed, that no matching repo exists anywhere.
 
-**Current status and sync health**: [[20_Progress/AI/Claude Code/Management|Management.md]] (live snapshot: sync status, active blockers, recent findings) and [[20_Progress/AI/Claude Code/Write Log|Write Log.md]] (append-only chronological record of every change to this layer) are the two files to check first, before opening any individual project's Setup.md. The multi-project sync rollout plan (which projects are mapped vs. actually live-synced) lives in [[20_Progress/AI/Claude Code/Sync - Unison]].
+**Current status and sync health**: [[20_Progress/AI/Claude Code/Management|Management.md]] (live snapshot: sync status, active blockers, recent findings) is the file to check first, before opening any individual project's Setup.md. The append-only chronological record of changes to this layer now lives in [[20_Progress/Projects/AI Use/Claude Kit/Log|Claude Kit/Log.md]] — [[20_Progress/AI/Claude Code/Write Log|Write Log.md]] carried that role until 2026-08-20, when it was retired and folded in after 21 days of unmaintained silence (kept for historical reference, not deleted). The multi-project sync rollout plan (which projects are mapped vs. actually live-synced) lives in [[20_Progress/AI/Claude Code/Sync - Unison]].
 ## Projects
 | Project | Status | Last Updated | Setup |
 |---|---|---|---|

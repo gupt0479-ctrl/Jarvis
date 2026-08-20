@@ -10,12 +10,12 @@ notes:
   - "[[30_Order/Templates/Capability/AI Tools Weekly Review Template]]"
   - "[[30_Order/Templates/Capability/AI Tools Monthly Review Template]]"
   - "[[60_Claude/30_Reviews/AI/Tools/Tool log]]"
-  - "[[20_Progress/AI/Claude Code/Write Log]]"
+  - "[[20_Progress/Projects/AI Use/Claude Kit/Log]]"
   - "[[20_Progress/AI/Claude Code/_All-Projects-Sync-Log]]"
   - "[[HUMAN_WRITING]]"
 ---
 # Review Standard
-==A review cites the actual log rows it read — Tool log, Sync-Log, Write Log — it never summarizes from memory or impression.==
+==A review cites the actual log rows it read — Tool log, Sync-Log, Claude Kit Log — it never summarizes from memory or impression.==
 This is the content standard for `60_Claude/30_Reviews/AI/Scheduled/{Weekly,Monthly}/` reviews — how Claude Code, Cowork, and the sync layer are actually being used and whether anything synced/captured is drifting. It governs a different subject than [[30_Order/Templates/Capability/Weekly Synthesis Template|Weekly Synthesis Template]]/`Monthly Synthesis Template.md`, which review concept mastery (the Capability Engine) — do not conflate the two folders or reuse one template for the other's job.
 ## Maps To
 - Templates: [[30_Order/Templates/Capability/AI Tools Weekly Review Template|AI Tools Weekly Review Template]], [[30_Order/Templates/Capability/AI Tools Monthly Review Template|AI Tools Monthly Review Template]]
@@ -25,7 +25,7 @@ This is the content standard for `60_Claude/30_Reviews/AI/Scheduled/{Weekly,Mont
 ### Period Covered
 The exact date range, matched to the template's own cadence (calendar week for Weekly, calendar month for Monthly). No partial or rolling windows without saying so explicitly.
 ### Sources Reviewed
-Name every log actually opened this pass: [[60_Claude/30_Reviews/AI/Tools/Tool log|Tool log]] (skill/tool use), [[20_Progress/AI/Claude Code/_All-Projects-Sync-Log|_All-Projects-Sync-Log]] (sync health across every project mirror), [[20_Progress/AI/Claude Code/Write Log|Write Log]] (structural changes to the sync layer itself), and the raw `AI Conversations/` session notes for anything the Tool log flags as worth a closer look.
+Name every log actually opened this pass: [[60_Claude/30_Reviews/AI/Tools/Tool log|Tool log]] (skill/tool use), [[20_Progress/AI/Claude Code/_All-Projects-Sync-Log|_All-Projects-Sync-Log]] (sync health across every project mirror), [[20_Progress/Projects/AI Use/Claude Kit/Log|Claude Kit/Log]] (structural changes to the Claude Code tracking layer — absorbed `Write Log.md`'s scope when that file was retired 2026-08-20), and the raw `AI Conversations/` session notes for anything the Tool log flags as worth a closer look.
 > [!WARNING]
 > Listing a log here that wasn't actually opened. If a log wasn't checked this pass, say so — "Sync-Log not reviewed this week" is honest; a missing citation for a claim about sync health is not.
 ### What Ran This Period

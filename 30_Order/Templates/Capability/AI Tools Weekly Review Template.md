@@ -15,7 +15,7 @@ tags:
 ## Sources Reviewed
 - [ ] [[60_Claude/30_Reviews/AI/Tools/Tool log|Tool log]]
 - [ ] [[20_Progress/AI/Claude Code/_All-Projects-Sync-Log|_All-Projects-Sync-Log]]
-- [ ] [[20_Progress/AI/Claude Code/Write Log|Write Log]]
+- [ ] [[20_Progress/Projects/AI Use/Claude Kit/Log|Claude Kit/Log]]
 - [ ] Raw `AI Conversations/` session notes (only if the Tool log flags something)
 ## What Ran This Period
 | Skill/Command | Uses | Notes |

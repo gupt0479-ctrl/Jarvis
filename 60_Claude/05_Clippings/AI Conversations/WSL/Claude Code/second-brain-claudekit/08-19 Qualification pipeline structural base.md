@@ -7,7 +7,7 @@ title: "Qualification pipeline structural base"
 started_at: 2026-08-19T06:59:06
 ended_at: 2026-08-20T07:21:39
 duration_minutes: 1463
-exported_at: 2026-08-20T12:40:55
+exported_at: 2026-08-20T13:15:03
 project: second-brain-claudekit
 cwd: '/home/anant_gupta/projects/ai/claude/second-brain-claudekit'
 session_id: 305124c8-922f-4d5b-92bb-5a7f5785b3c0

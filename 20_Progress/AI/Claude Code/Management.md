@@ -10,14 +10,14 @@ tags:
   - claude-kit
 notes:
   - "[[20_Progress/AI/Claude Code/MOC]]"
-  - "[[20_Progress/AI/Claude Code/Write Log]]"
+  - "[[20_Progress/Projects/AI Use/Claude Kit/Log]]"
   - "[[20_Progress/AI/Claude Code/Sync - Unison]]"
   - "[[Tool Map]]"
 next: Get Anant's per-project go-ahead for the multi-project sync rollout (Sync - Unison.md, Step 0), then this file's blocker list shrinks by one row
 ---
 # Claude Code — Management
 
-The single current-status page for everything happening across this vault's Claude Code tooling — sync health, active blockers, and recent findings. [[20_Progress/AI/Claude Code/Write Log]] is the append-only chronological record this page summarizes; this page is the living, overwritten-in-place snapshot. [[20_Progress/AI/Claude Code/MOC]] is the per-project file inventory; [[Tool Map]] is the second-brain-claudekit tool-pipeline tracker (gbrain/gstack/mattpocock/ECC). None of the four duplicate each other — this one answers "what's the state right now," today.
+The single current-status page for everything happening across this vault's Claude Code tooling — sync health, active blockers, and recent findings. [[20_Progress/Projects/AI Use/Claude Kit/Log|Claude Kit/Log.md]] is the append-only chronological record this page summarizes — [[20_Progress/AI/Claude Code/Write Log]] carried that role until it was retired and folded into Claude Kit/Log.md 2026-08-20, after 21 days of unmaintained silence. This page is the living, overwritten-in-place snapshot. [[20_Progress/AI/Claude Code/MOC]] is the per-project file inventory; [[Tool Map]] is the second-brain-claudekit tool-pipeline tracker (gbrain/gstack/mattpocock/ECC). None of these duplicate each other — this one answers "what's the state right now," today.
 
 ## Sync status
 
@@ -52,4 +52,4 @@ The single current-status page for everything happening across this vault's Clau
   5. `.claude/README.md` documents `SessionStart`/`SessionEnd` hooks not present in the real `settings.json` (only a `PreToolUse` write-guard is registered).
 
 ## Links
-[[20_Progress/AI/Claude Code/MOC]] · [[20_Progress/AI/Claude Code/Write Log]] · [[20_Progress/AI/Claude Code/Sync - Unison]] · [[Tool Map]] · [[20_Progress/Projects/AI Use/Claude Kit/Log]]
+[[20_Progress/AI/Claude Code/MOC]] · [[20_Progress/Projects/AI Use/Claude Kit/Log]] · [[20_Progress/AI/Claude Code/Sync - Unison]] · [[Tool Map]] · [[20_Progress/AI/Claude Code/Write Log|Write Log (retired)]]
