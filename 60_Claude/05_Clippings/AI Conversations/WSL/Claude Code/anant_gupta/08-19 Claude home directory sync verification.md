@@ -7,7 +7,7 @@ title: "Claude home directory sync verification"
 started_at: 2026-08-19T05:50:14
 ended_at: 2026-08-19T06:52:28
 duration_minutes: 62
-exported_at: 2026-08-20T15:14:36
+exported_at: 2026-08-20T18:15:08
 project: anant_gupta
 cwd: '/home/anant_gupta'
 session_id: c8b6169d-de73-4ebf-8158-018d9edd0150

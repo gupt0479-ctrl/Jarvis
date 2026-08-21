@@ -1,0 +1,191 @@
+# Sync — can Jarvis mirror this repo's `.claude/` live?
+
+**Current state (read this first, added 2026-08-19):** everything below through the "2026-08-09" amendment narrates `sync-jarvis.sh` as the mechanism — accurate for the dates it was written, but superseded 2026-08-10 by the manifest-driven multi-project engine (`60_Claude/scripts/sync-all.sh` + `sync-manifest.json` + `sync-all-silent.vbs` + `register-sync-task.ps1`, one Windows Scheduled Task `ClaudeKit-Sync-All`, 15-min interval). That's what actually runs today; `sync-jarvis.sh` and its `SecondBrainClaudekit-JarvisSync` task are disabled, kept only for rollback. See the two 2026-08-10 amendments near the bottom of this file for the actual build/test evidence, and `_docs/Repo-Map.md`'s "Open items" for what's live vs. still-candidate per project. Left the narrative below unedited, in keeping with this doc's own self-correcting-via-amendment style — this note exists so a skim doesn't stop at the first (now-legacy) verdict.
+
+## The question
+
+Anant wants `20_Progress/AI/Claude Code/` in the Jarvis vault to reflect this repo's (and any project's) real `.claude/` setup in something close to real time — the same way `60_Claude/05_Clippings/AI Conversations/Windows/Claude Code/_raw_jsonl/` is an NTFS junction to `~/.claude/projects` for session transcripts (`60_Claude/05_Clippings/AI Conversations/README.md`). This doc tests whether the same mechanism works for a *live, two-way* config folder, not just a read-only session-log mirror.
+
+## Answer: **No** — blocked by Windows symlink/junction security defaults, not by a design choice
+
+Tested for real on 2026-07-29, both directions, cleaned up after. The short version: the existing `_raw_jsonl` junction works because both of its endpoints are Windows-native NTFS paths with no WSL boundary in between. This repo lives inside WSL2's Linux filesystem (`~/projects/ai/claude/second-brain-claudekit`, ext4 inside the WSL VM), while the Jarvis vault lives on the Windows `D:` drive — so *any* live link between them has to cross the WSL↔Windows boundary via `\\wsl.localhost\Ubuntu\...`, and that boundary is where every attempt failed.
+
+### Why the existing precedent doesn't transfer
+
+`_raw_jsonl` → `~/.claude/projects` links two things that are *both already Windows-side*: the Windows-native Claude Code install's own config directory (under the Windows user profile) and the vault on the same NTFS volume. It's a plain local-to-local NTFS junction. No WSL, no UNC path, no elevation required — this is precisely why it already works and required no special permissions.
+
+### Attempt 1 — Windows-side symlink pointing into WSL
+
+```powershell
+New-Item -ItemType SymbolicLink `
+  -Path 'D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\AI\Claude Code\_sync_test_link' `
+  -Target '\\wsl.localhost\Ubuntu\home\anant_gupta\projects\ai\claude\second-brain-claudekit\.claude'
+```
+
+Result: `New-Item : Administrator privilege required for this operation` (`NewItemSymbolicLinkElevationRequired`). Creating *any* Windows symlink requires either Administrator elevation or Developer Mode enabled with the right privilege granted to the account — neither is available in this sandboxed session, and this specific case (local path → remote/UNC target) hit the requirement.
+
+A directory **junction** (`mklink /D` without `/J`, or `/J` itself) was also tried via `cmd.exe`: junctions categorically cannot target UNC paths at all — `UNC paths are not supported` — this is a hard OS limitation, not a permissions problem, so junctions are ruled out for this direction regardless of elevation.
+
+### Attempt 2 — WSL-side symlink pointing back at Windows
+
+```bash
+cd "/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code"
+ln -s /home/anant_gupta/projects/ai/claude/second-brain-claudekit/.claude _sync_test_link_wsl
+```
+
+This *succeeds* from the Linux side — `ln -s` returns exit 0, `ls -la` shows a normal-looking symlink, and reading through it from WSL works fine (DrvFs happily resolves it for WSL's own processes). But a native Windows process cannot follow it at all. Checked directly with PowerShell:
+
+```
+Get-Item '...\_sync_test_link_wsl' | Format-List *
+  Attributes    : Archive, ReparsePoint
+  Target        : {}
+  PSIsContainer : False
+  Length        : 0
+Get-Content '...\_sync_test_link_wsl\_sync_test.md'
+  ERROR: Cannot find path '...\_sync_test_link_wsl\_sync_test.md' because it does not exist.
+```
+
+Windows sees a reparse point but cannot resolve it as a directory or traverse into it — regardless of whether the symlink target was written in POSIX form (`/home/anant_gupta/...`) or Windows UNC form (`\\wsl.localhost\Ubuntu\home\anant_gupta\...`; both were tried, both failed identically).
+
+The reason is a documented Windows default, confirmed directly on this machine:
+
+```
+> fsutil behavior query symlinkevaluation
+Local-to-local symbolic link evaluation is: ENABLED
+Local-to-remote symbolic link evaluation is: ENABLED
+Remote-to-local symbolic link evaluation is: DISABLED
+Remote-to-remote symbolic link evaluation is: DISABLED
+```
+
+A symlink created by a WSL process against a DrvFs-mounted Windows drive is treated by Windows as a remote-origin reparse point, and remote-to-local/remote-to-remote evaluation is disabled by default. Enabling it (`fsutil behavior set symlinkevaluation R2R:1` or similar) also requires Administrator — not attempted, since it wasn't available either way in this session.
+
+Both test artifacts (`_sync_test_link`, `_sync_test_link_wsl`, `_sync_test_link_wsl2`, and the `.claude/_sync_test.md` file used to verify content flow) were removed immediately after testing. Nothing from this experiment was left in the vault or the repo.
+
+## What this means practically
+
+- **A live, two-way link across the WSL↔Windows boundary is not achievable without Administrator access this session doesn't have**, on either side of the link.
+- **If the repo instead lived on a Windows-visible path** (e.g., cloned under `/mnt/d/...` instead of WSL's own ext4 home), a plain Windows-to-Windows junction would work exactly like `_raw_jsonl` does today — untested here, and a real trade-off: git/bun/node operations are measurably slower across the DrvFs 9P boundary than on native WSL ext4, which is why this repo (and most WSL dev work) intentionally lives in the Linux filesystem, not on `/mnt/d`. Moving it just to enable a junction would very likely cost more in day-to-day tool speed than it saves in sync convenience.
+- **A live link would also be a real safety risk even if it worked**, independent of the mechanism problem — this is worth stating regardless of the technical outcome. `.claude/` is a folder Claude Code itself reads and writes *during a live session* (settings, session state, hook output). A vault-side file watcher (Obsidian's own indexer, a sync plugin) touching those same files concurrently — locking, partial reads mid-write, or an editor auto-formatting a file Claude Code is mid-write on — is a real corruption vector, not a hypothetical one. The one existing precedent for mirroring `.claude` content into this vault, `20_Progress/AI/Claude Code/.claude_windows/` and `.claude_wsl/`, is instructive here: it's a full one-time raw copy of `~/.claude` (not a live link) that has decayed into ~7,300 untracked, unmanaged files — including a live `.credentials.json` in `.claude_windows/`. `MOC.md` explicitly excludes both from tracking for exactly this reason. A live link would only make a version of the same problem worse (continuous rather than one-time), not better.
+
+## Verdict: partial — read-only, same-OS mirroring works; live, cross-boundary config sync does not
+
+- **Read-only, same-OS junction (the `_raw_jsonl` pattern)**: works, already proven, applicable to anything that's Windows-native on both ends (e.g., a future Windows-side Claude Code install's own config).
+- **Live, two-way sync of a WSL-resident `.claude/` folder into the Jarvis vault**: does not work today, for a specific, confirmed reason (Windows symlink creation requires elevation this session doesn't have; the WSL-side workaround produces an unresolvable reparse point due to Windows' remote-symlink-evaluation defaults, which also require elevation to change).
+- **The actual mechanism now in use** (superseded by the 2026-07-30 part 2 amendment below): a real, tested, scripted sync via Unison — `50_Claude/scripts/sync-jarvis.sh` — not the manual copy ritual originally assumed here. `_docs/Jarvis.md`'s manual-update description still applies to the *decision layer* (`20_Progress/Projects/AI Use/Claude Kit/`) and to every other project's `Setup.md` snapshot in `20_Progress/AI/Claude Code/`, which remain hand-maintained.
+
+## Amendment (2026-07-30) — the conclusion above is scoped too narrowly if read as "no sync is possible"
+
+Flagged correctly from a separate session working in this same repo: everything above only tested **symlink/junction creation**, which is the one operation that hits Windows' elevation requirement. It does not mean cross-boundary sync in general is blocked. Confirmed directly, and true throughout this entire document's own research process: **plain file reads across `/mnt/d/...` from WSL require zero elevation** — every read in this doc, and in the rest of this session's work in the Jarvis vault, went through that exact path with no permission prompt. Writes across the same boundary are the same story (this doc's own test artifacts were created and deleted on `/mnt/d` with no elevation needed — only the *symlink* reparse-point creation hit the wall, not ordinary file I/O).
+
+So the precise, corrected verdict is: **a live filesystem link is blocked by Windows security defaults; a scripted, triggered sync (read Jarvis's `.claude/` via `/mnt/d`, diff, report, write) is not blocked by anything found in this experiment and is realistic to build without any elevation at all.** That mechanism-design decision is tracked in `CLAUDE.md`'s qualification workflow going forward rather than re-litigated here — this doc's job is the symlink finding, not the final sync architecture.
+
+## If this gets revisited later
+
+Two untested paths worth trying, in order of likely payoff, *only* if Anant is at an elevated PowerShell prompt himself (not from this sandbox):
+1. Enable Developer Mode (`Settings → Privacy & Security → For developers`) and retry `New-Item -ItemType SymbolicLink` targeting `\\wsl.localhost\...` — Developer Mode is specifically documented to grant `SeCreateSymbolicLinkPrivilege` to standard accounts, which may resolve Attempt 1 without full Administrator.
+2. If Attempt 1 works, decide separately (per the corruption-risk paragraph above) whether linking a *live* `.claude/` folder is actually worth the risk, versus linking a narrower, read-mostly subset (e.g., just `.claude/commands/` and `.claude/agents/`, which change far less often mid-session than `settings.local.json` or session state).
+
+## Amendment (2026-07-30, part 2) — `rclone bisync` vs. Unison, researched and tested; Unison built
+
+The part-1 amendment above concluded a *scripted, triggered* sync was realistic. The next question was which tool: `rclone bisync` (the original plan) or Unison (suggested mid-session as possibly better). Researched concretely before building anything, per instruction — not swapped on a hunch.
+
+### Why Unison wins for this specific pairing
+
+- **Both replicas are local paths from one WSL process.** Unison's own manual (`bcpierce00/unison`, fetched and read directly, not assumed) documents `unison path/to/dir1 path/to/dir2` as a first-class mode — a single instance synchronizing two local directories, no ssh, no remote, no client/server handshake. That maps exactly onto this repo (ext4) and the Jarvis mirror (`/mnt/d` via DrvFs) both being ordinary paths inside one WSL filesystem namespace. `rclone bisync` can technically do local-to-local too, but its whole design center is cloud remotes (`remote:path` syntax) retrofitted for this case.
+- **No version-matching risk.** Unison's ssh/remote mode requires both ends to run the *same* Unison version (a known historical pain point) — irrelevant here since there's only ever one process and one binary involved, not two negotiating over a network.
+- **Safer default conflict handling.** Confirmed in the manual and empirically (see test below): in `-batch` mode, a path changed on *both* sides since the last sync is **skipped and reported**, not resolved. Nothing is overwritten without a human choosing a side. `rclone bisync`'s documented default is "newer wins," which silently picks a file based on mtime — a real risk for a config folder someone might hand-edit in the vault.
+- **Zero cost, real package.** Available as `unison` in Ubuntu's `noble/universe` repo (`apt-cache policy unison` → candidate `2.53+1`), and as an official statically-linked binary from `bcpierce00/unison`'s GitHub releases for cases without root (this sandbox's case — see below).
+
+### What actually got built and tested (not simulated)
+
+1. **Install, no root available.** This sandboxed shell's `sudo` is non-functional (`sudo: a password is required`, no passwordless sudo configured) — installing via `apt-get install unison` was not possible here. Downloaded the official static binary instead: `unison-2.54.0-ubuntu-22.04-x86_64-static.tar.gz` from `github.com/bcpierce00/unison/releases`, extracted, installed to `~/.local/bin/unison` (already on `PATH`, no root needed). Verified: `unison -version` → `unison version 2.54.0 (ocaml 4.14.3)`. Scripted as `50_Claude/scripts/install_unison.sh` so this is reproducible, not a one-off manual step.
+2. **Real first sync.** Created `20_Progress/AI/Claude Code/second-brain-claudekit/` in Jarvis (previously didn't exist) and ran `50_Claude/scripts/sync-jarvis.sh`, syncing exactly `.claude/agents`, `.claude/commands`, `.claude/hooks`, `.claude/settings.json`, and root `CLAUDE.md` (via Unison's `-path` preference — restricts sync to literal listed subpaths of the two roots, so `_docs/`, `sandbox/`, `tested-skills/`, `50_Claude/`, `.git/`, and `.claude/settings.local.json` are never touched; no ignore-regex needed). **First attempt failed for real**: every file errored with `Failed to set permissions ... the permissions was set to rwxrwxrwx instead` — DrvFs can't represent real POSIX permission bits, and Unison's default behavior is to chmod after copying. Fixed with Unison's `-fat` flag (documented for exactly this filesystem class: disables chmod, treats names case-insensitively, skips symlinks — all correct for an NTFS-via-DrvFs target, not a workaround). Re-ran: `Synchronization complete (5 items transferred, 0 skipped, 0 failed)`, exit 0. Verified `CLAUDE.md` byte-identical on both sides with `diff`.
+3. **Real bidirectional test.** Appended a marker line directly to `.claude/commands/today.md` on the **Jarvis side**, ran the sync script again: Unison detected the Jarvis-side change and copied it into the repo side (`[END] Updating file .claude/commands/today.md`, exit 0). Confirmed with `tail` on the repo-side file — the marker was there. This is the actual reverse direction (vault → repo), not assumed from the manual.
+4. **Real conflict test.** Reset both sides to identical, then edited the *same file* differently on each side (`<!-- REPO-SIDE edit -->` vs `<!-- JARVIS-SIDE edit -->`) without syncing in between, then ran the sync script: output was `changed <-?-> changed .claude/commands/today.md` / `skipped: .claude/commands/today.md (contents changed on both sides)`, exit code 1. Verified afterward with `tail` on both files: **both edits were still intact, untouched** — no silent overwrite either direction. This is the exact behavior the "why Unison wins" argument above claimed; it wasn't just read in the manual, it was reproduced.
+5. Cleaned up all test edits afterward (`git checkout` on the repo side, overwrote the Jarvis side back to match) and ran one more sync to confirm a clean, no-op state (`exit 0`, no output).
+
+### What this means practically
+
+- `50_Claude/scripts/sync-jarvis.sh` and `50_Claude/scripts/install_unison.sh` are real, working, and exercised end-to-end in this session — not a plan.
+- Every run appends a line to `20_Progress/AI/Claude Code/second-brain-claudekit/Sync-Log.md` (timestamp, OK/CONFLICTS/ERRORS/FATAL label, exit code, and full Unison output on anything other than a clean run) — this is a real log with a real failure and a real success already in it from this session's testing.
+- A `flock`-based lock file (`/tmp/second-brain-claudekit-jarvis-sync.lock`) prevents two overlapping runs, matching the documented cron/Unison overlap risk.
+- **Trigger (wired 2026-07-30):** Windows Scheduled Task `SecondBrainClaudekit-JarvisSync` runs every 15 minutes via a hidden `wscript` launcher (`50_Claude/scripts/sync-jarvis-silent.vbs`, Windows copy under `30_Order/System/claude-workflow/scripts/`) so no console pops up. Re-register with `50_Claude/scripts/register-jarvis-sync-task.ps1` (same script also lives next to the Windows VBS copy). Sync behavior is unchanged — only the window is hidden; `Sync-Log.md` still records every run.
+- **Still a plan**: wiring any project other than this repo (Jarvis, BOOM, Portfolio, TradingView, CausalOps) into the same `-path`-list pattern. The mechanism generalizes trivially (same script, different `REPO_ROOT`/`JARVIS_MIRROR`/`-path` list per project) but each one needs its own real path confirmed before being added — not assumed.
+
+## Amendment (2026-08-09) — the "live" sync was silently dead for over a week; found and fixed
+
+The trigger described above as "wired 2026-07-30" was not actually syncing anything by the time it was checked again on 2026-08-09, despite Windows reporting it as healthy (`Get-ScheduledTask`/`Get-ScheduledTaskInfo`: `State: Ready`, `LastTaskResult: 0`, firing on schedule).
+
+**Root cause, confirmed by direct inspection:** `sync-jarvis-silent.vbs` (both this repo's copy, now at `60_Claude/scripts/sync-jarvis-silent.vbs`, and the live Windows-side copy at `30_Order/System/claude-workflow/scripts/sync-jarvis-silent.vbs`, which Task Scheduler actually executes) hardcoded the pre-rename path `.../50_Claude/scripts/sync-jarvis.sh`. That path stopped existing once the repo's `50_Claude/` became `60_Claude/`. The launcher's `sh.Run(cmd, 0, False)` call is fire-and-forget — `False` means it does not wait for or check the launched command's result — so `wscript.exe` itself always exited 0 regardless of whether the inner `wsl.exe bash -lc "<nonexistent path>"` command succeeded. Every 15 minutes, the task fired, the bash command failed instantly on a path that didn't exist, and nothing was ever logged, because the failure happened before `sync-jarvis.sh`'s own log-writing logic ever got a chance to run. Direct evidence of how long this had been broken: `Sync-Log.md` had no entries between `2026-08-06 16:31:36` and `2026-08-09 00:39:04`, and the Jarvis-side mirror's hook script still carried a bug (the old `50_Claude` hardcoded session-log path, itself a near-identical class of stale-path bug — see `_docs/Repo-Map.md`'s Incident section) that had already been fixed in the real repo hours earlier the same session.
+
+**Fixed 2026-08-09:** both `.vbs` copies updated to the `60_Claude` path; `register-jarvis-sync-task.ps1` re-run (copies the fixed launcher to the Windows side and re-registers the task); `sync-jarvis.sh` run manually to confirm end-to-end — it created a correct `.claude/` folder in the Jarvis mirror and `Sync-Log.md` received a genuine new entry. Verified, not assumed.
+
+**Known leftover, not yet resolved:** the Jarvis mirror also contains a folder named `Da Shit/` (`agents/`, `commands/`, `hooks/`, `settings.json`) sitting alongside the now-correct `.claude/` folder the fix just created. This was not a mistake or a joke folder — **Obsidian hides dot-folders from its file explorer**, so a literal `.claude/` mirror is invisible inside the vault; renaming the synced folder to something without a leading dot is the only way to see it in Obsidian. `Da Shit/` was a manual, one-time rename done for exactly that reason, but the sync script itself was never updated to produce that name automatically — so every automated run since has kept re-creating the invisible `.claude/` folder instead.
+
+**Direction, confirmed 2026-08-09, not yet built:** the sync should produce the renamed, visible folder itself (name confirmed as `Da Shit/`, kept as the standing convention project-to-project) instead of literal `.claude/`, and this pattern — conversations plus a renamed, visible `.claude/` mirror, both on the 15-minute automated cycle — should extend to **every** project under `20_Progress/AI/Claude Code/`, not just this repo. Both the second-brain-claudekit-specific fix and the multi-project rollout are explicitly deferred: "design the multi-project pattern first" before touching this repo's script again, and the multi-project rollout itself is a separate, later initiative, not part of this session's work. Per-project crucial documents (`AGENTS.md`, `PRD.md`, `CLAUDE.md`, and similar) are written as siblings of the renamed folder, directly in the project's own Jarvis folder — never nested inside it.
+
+## Amendment (2026-08-10) — the `Da Shit` rename is reversed: every mirror keeps the literal `.claude/` name
+
+Direct instruction from Anant, superseding the 2026-08-09 direction above: **do not rename the synced folder.** Every project mirror under `20_Progress/AI/Claude Code/<Project>/` keeps the literal `.claude/` name, matching the source repo exactly — no `Da Shit/`, no per-project rename convention at all. Reasoning, stated directly: a rename step is one more thing the sync script has to get right on every run, across every project, forever — real error surface for a cosmetic Obsidian-sidebar convenience. Obsidian hiding dot-folders from its file explorer is an accepted tradeoff, not a problem to engineer around; the folder is still fully readable and writable by Claude Code, Unison, and any tool that isn't Obsidian's own file-tree UI — only the sidebar view is affected.
+
+**What this changes concretely:**
+- The multi-project rollout (manifest + driver script design, `_docs/Repo-Map.md`'s open item) produces literal `.claude/` in every project's mirror folder, no rename logic anywhere in the driver.
+- `second-brain-claudekit/Da Shit/` in the Jarvis mirror (`agents/`, `commands/`, `hooks/`, `settings.json`, frozen since 2026-07-30) is confirmed dead and safe to delete — it is fully superseded by the correctly-named `.claude/` folder the 2026-08-09 fix already produces next to it. Deletion happens as part of the multi-project rollout work, not deferred further.
+- The sibling-documents rule from the paragraph above still holds, just reworded without "the renamed folder": `CLAUDE.md`, `AGENTS.md`, and any other per-project instruction doc are written as siblings of `.claude/` (never nested inside it) in the project's own Jarvis folder — e.g. `20_Progress/AI/Claude Code/CausalOps/.claude/` next to `20_Progress/AI/Claude Code/CausalOps/CLAUDE.md` and `CausalOps/AGENTS.md`. Each project folder additionally carries a `Setup.md`, written and maintained entirely from the Jarvis side — **not part of the sync in any direction**, never listed in the manifest's `paths`, permanently excluded. It exists purely to describe, for a Jarvis reader, what's actually in that project's mirror; nothing about it is derived from or fed back into the repo.
+- Every project confirmed with a real root `AGENTS.md` (CausalOps, Trading View, Resq, confirmed 2026-08-10 by direct listing) gets `AGENTS.md` added to its manifest `paths` list alongside `CLAUDE.md` — the original manifest draft in Jarvis's `Sync - Unison.md` only listed `CLAUDE.md` per project and needs that addition before any project goes live.
+
+## Amendment (2026-08-10) — home-directory sync scope decided: curated subset, two directories kept, never merged into one
+
+Separate from the per-project mirrors above: the global `~/.claude` (WSL) and `C:\Users\Anant Gupta\.claude` (Windows) directories were compared directly, not assumed similar. They diverge substantially — WSL has real global `agents/` (3: `obsidian-architect`, `obsidian-researcher`, `obsidian-session-archivist`), `commands/` (7), and a root `CLAUDE.md` that Windows has none of; Windows has 32 skills, almost entirely `firecrawl-*`, with close to zero filename overlap against WSL's 29. WSL's `.mcp.json` additionally carries live secrets (a GitHub PAT, two Bearer tokens for local MCP servers) that Windows' global config doesn't have at all — Windows almost certainly gets its MCP access at the project level instead.
+
+**Decided, not to be revisited without a real reason:**
+- **No single shared physical directory.** Confirmed by the same class of test as the Attempt 1/2 findings above: a WSL-side symlink pointing `~/.claude` at the Windows path would technically resolve for WSL's own processes, but routes every WSL Claude Code session's config I/O through DrvFs (slower, per `_docs/Design.md`), and creates a real concurrent-write corruption risk if a Windows-native session and a WSL session are both live at once and touch the same physical session/credential files — the same corruption vector this doc already rejected the live-link idea over, just at the home-directory scale instead of the project scale.
+- **Two directories stay, each synced only for the config-shaped subset that should be identical:** `agents/`, `commands/`, `skills/`, `hooks/`, `CLAUDE.md`, bidirectional, same Unison mechanism as every project mirror.
+- **Hard-excluded, permanently, no exceptions:** `.credentials.json`, `.mcp.json` (secrets), `history.jsonl`, `sessions/`, `session-env/`, `cache/`, `backups/`, `file-history/`, `shell-snapshots/`, `projects/` (session transcripts — already covered by the separate conversation-capture pipeline in `60_Claude/05_Clippings/AI Conversations/`), and `plugins/` (marketplace `installLocation` paths are baked in as OS-absolute paths and don't survive a file copy — a plugin has to be installed per-OS through its own manager, not synced as files).
+- **Deferred, not decided:** whether any part of `settings.json`/`settings.local.json` is portable. They mix real config (hook definitions, `statusLine`) with OS-specific content (hook commands pointing at `.ps1` files that only exist on one side) — this needs its own pass once the rest of the home-directory sync is built and proven, not a blanket include or exclude decided here.
+- **`20_Progress/AI/Claude Code/.claude_windows/` and `.claude_wsl/` are retired as sync targets, not repurposed.** Both are raw one-time dumps containing a live `.credentials.json` each — reusing them as-is would mean syncing credentials by accident. The curated home-directory mirrors get built fresh (most likely reusing those same two folder names after being wiped clean, rather than inventing new ones — final call left to whoever builds this).
+- **The Claude desktop app's own data directory (`%APPDATA%\Claude` on Windows) is ignored entirely** — confirmed to be ~90% disposable Electron/Chromium runtime cache, and the one part with real signal (`local-agent-mode-sessions`, the Cowork session store) is already covered by the existing conversation-capture pipeline. Not part of this sync in any form.
+
+## Amendment (2026-08-19) — design for syncing real project instruction files into this repo's own `instructions/`, designed but not built
+
+**Premise correction first, because the request that prompted this design assumed something false:** the ask was to extend `instructions/` "the same way `agents/`, `commands/`, `hooks/`, `docs/` already are" live-synced (`docs/` here was itself a naming error for `_docs/`, caught and removed 2026-08-20 — see `_docs/Repo-Map.md`'s standing rule and `60_Claude/vault-rules/write-contract.md`'s golden rule 7). Checked directly against `sync-manifest.json` and `sync-all.sh` before writing anything — **neither file references `agents/`, `commands/`, or `hooks/` at all**, and all three are currently empty on disk. They are manually populated per-destination-project staging folders (`60_Claude/vault-rules/pipeline-conventions.md`: "Create a project subfolder only when real content lands"), not synced from anywhere. So this design is not "extend an existing pattern" — it would be **the first automated sync into any of this repo's staging folders** (`agents/`, `commands/`, `hooks/`, `instructions/`). Worth knowing before deciding to build it, since it's a bigger step than the request as originally framed.
+
+### What `instructions/` needs, and why it's not just "add it to the existing per-project Unison pair"
+
+Every existing manifest entry syncs one `SOURCE` (a real project) to one `MIRROR` (its Jarvis-side folder) — a single Unison pair per project, bidirectional except where `force_source` pins a winner. `instructions/<ProjectName>/` in *this* repo is a **third location**, not either end of an existing pair, and it needs different semantics from that pair:
+
+- **One-way only, source → `instructions/`, never the reverse.** `instructions/` exists so a session working in *this* repo can read a real project's actual `CLAUDE.md`/`AGENTS.md`/etc. without leaving the repo — it is a reference copy, not an editing surface. A two-way sync would risk a stray edit made while working in `second-brain-claudekit` silently flowing back into a real project's real instruction file on the next unattended 15-minute run — unacceptable, and a sharper version of the exact risk `force_source` was already built to guard against for the Jarvis mirror.
+- **A different destination shape than the source.** Several projects' instruction files live nested (`Portfolio/.claude/CLAUDE.md`, `Resq/.claude/PRD.md`) while `instructions/<Project>/` is flat (`instructions/Portfolio/CLAUDE.md`, `instructions/Resq/PRD.md`) — matching the existing flat convention already used by `agents/<Project>/`, `commands/<Project>/`, etc. Unison syncs matching directory trees; it's the wrong tool for a flatten-on-copy. A plain one-way file copy is simpler and is what a "read the real file when it's reachable" job actually needs — no conflict resolution, no directory-tree matching, because there's only ever one direction and one shape.
+
+### Concrete design
+
+1. **New optional field per manifest entry, `"instructions_paths"`** — an array naming which of that entry's existing `paths` are the markdown instruction files (a literal subset, not a new path list to maintain separately). Example, for `CausalOps`:
+   ```json
+   "paths": [".claude/agents", ".claude/commands", ".claude/hooks", "CLAUDE.md", "AGENTS.md"],
+   "instructions_paths": ["CLAUDE.md", "AGENTS.md"]
+   ```
+   Entries with no instruction-shaped paths (the two `"kind": "home"` entries, `.claude_windows`/`.claude_wsl`) simply omit the field — `instructions/` is scoped to `"kind": "project"` entries only, per the original ask.
+
+2. **New `sync-all.sh` logic, additive, after the existing per-entry Unison block:** for each name in `instructions_paths`, resolve `$SOURCE/<path>`, and if it exists, `cp -f` it to `$REPO_ROOT/instructions/<Name>/<basename of path>` (creating the directory if needed). If the source file is missing, log a warning line to the entry's own `Sync-Log.md` and continue — never abort the whole entry's run over one missing instruction file, matching the script's existing per-entry-failure-doesn't-block-others design. `$REPO_ROOT` is `$SCRIPT_DIR/../..`, resolved the same self-locating way `SCRIPT_DIR`/`MANIFEST` already are — never hardcoded, per this script's own stated design lesson at the top of the file.
+
+3. **Not Unison, deliberately.** Reaching for Unison here would mean either faking a matching directory structure just to satisfy it, or fighting its conflict-resolution model for a job that has no conflicts by design (one-way only). A `cp -f` is the correct-sized tool for "copy this one file if it exists, always overwrite the destination, never look at the destination's own state."
+
+4. **Open, not decided here — needs Anant's answer before this is built:** whether `second-brain-claudekit`'s own manifest entry participates. Its `SOURCE` is this repo itself, so its `instructions_paths` copy (`CLAUDE.md` → `instructions/second-brain-claudekit/CLAUDE.md`) would be a same-repo self-copy — mechanically harmless (a scheduled `cp` of one file into a subfolder of the same repo it lives in), but structurally unlike every other entry, where source and destination are genuinely different repos. Flagged rather than assumed either way.
+
+**Status: designed and built 2026-08-19**, confirmed with Anant via `AskUserQuestion` before any live-file edit — `instructions_paths` added to all 8 project entries in `sync-manifest.json`, the one-way `cp -f` logic added to `sync-all.sh`, tested by running the identical jq+cp logic against the real manifest into a scratch destination and `diff -rq`-confirming it byte-identical against the real `instructions/` tree. See `_docs/Repo-Map.md`'s open items.
+
+### Amendment (2026-08-20) — `second-brain-claudekit`'s own entry removed from `instructions_paths` scope
+
+An adversarial review caught a real "one fact, one home" violation this design introduced: `second-brain-claudekit`'s manifest entry had `"instructions_paths": ["CLAUDE.md"]`, which copied *this repo's own root `CLAUDE.md`* into `instructions/second-brain-claudekit/CLAUDE.md` — a second, same-repo copy of a file already sitting at the repo root, zero navigation cost away, kept in sync with itself by a scheduled job for no functional benefit. This is the same class of duplication `instructions/` was torn out and rebuilt for once already (`instructions/README.md`'s "Corrected 2026-08-19" section), just smaller in scope.
+
+The only argument for keeping it was consistency — every project entry behaves identically, no special-cased exception, so `ls instructions/` shows every live project including this one. Weighed against a real, if small, duplication cost for zero functional benefit (the content is identical and already trivially reachable), consistency-for-its-own-sake doesn't win. **Removed:** `instructions_paths` deleted from `second-brain-claudekit`'s manifest entry; `instructions/second-brain-claudekit/` deleted. `sync-all.sh` needs no change — its `instructions_paths` loop already no-ops cleanly for an entry with no such field (`(.instructions_paths // [])[]`, and the `${#INSTR_PATHS[@]} -gt 0` guard). 7 real projects now mirror into `instructions/`, not 8.
+
+## Amendment (2026-08-20, part 2) — the exclusion above is reversed; `agents/`, `commands/`, `hooks/`, `skills/` get the same one-way mirror `instructions/` already had
+
+Direct instruction from Anant, superseding the "removed" amendment immediately above: **every one of the 10 manifest entries gets full, consistent treatment, `second-brain-claudekit` included** — the small same-repo duplication cost loses to "no entry is a silent special case." `instructions_paths` re-added to `second-brain-claudekit`'s manifest entry (`CLAUDE.md`, `README.md`, `_docs`) and `instructions/second-brain-claudekit/` rebuilt. `.claude_wsl` also gained an `instructions_paths` of `["CLAUDE.md"]` — its prior exclusion ("`kind: home` entries have no instruction files of their own," 2026-08-19 design section above) was empirically false: `~/.claude/CLAUDE.md` is real, 226 bytes, not a placeholder. `.claude_windows` still has no field — it has no real `CLAUDE.md` or `README.md` today, so there's nothing to copy, not a scope exclusion.
+
+Separately, this session extended the same "real discovery pass, one-way `cp`, source → this repo, never the reverse" model — proven for `instructions/` in the design above — to the repo's other four staging folders, closing the gap the 2026-08-19 design section explicitly flagged ("neither file references `agents/`, `commands/`, or `hooks/` at all... not synced from anywhere"). `sync-all.sh` now derives the category from each entry's existing `paths` list itself (any path whose basename is `agents`, `commands`, `hooks`, or `skills`) rather than a second manifest field to maintain in parallel — one list stays the source of truth. A category is only created in this repo when the real source directory exists and has real content; an absent or empty one is left alone, not represented as an empty placeholder folder. Symlinks are stripped post-copy (`.claude_windows/skills`' `firecrawl-*` links point at an external, machine-specific path) — same "skip symlinks" behavior `-fat` already applies to the Unison leg.
+
+**Real collision found and fixed during the first run:** `Resq` and `OpsPilot` each have both a root `README.md` and a nested `.claude/README.md`; the original basename-only destination logic let the second `cp` silently clobber the first (confirmed by re-reading the resulting file's byte count against both real sources before trusting the copy). Fixed by prefixing the nested path's destination with `claude-` whenever two paths in the same entry's `instructions_paths` share a basename — `README.md` (root) and `claude-README.md` (nested) now both survive. This class of bug — two sources sharing a destination name — applies only to `instructions_paths` (single-file destinations); the new `agents/`/`commands/`/`hooks/`/`skills/` mirror copies a whole directory per category per entry, so no equivalent collision is possible there.
+
+**What this does *not* do:** these five folders remain a one-way copy *into* this repo, source → repo, same direction and same non-editing-surface convention as `instructions/`. Nothing pushes repo content back out — not into the Jarvis mirror beyond what the existing per-entry Unison `paths` sync already does independently (same real project, same real `.claude/agents` etc., reached by a different, pre-existing leg), and not into any real project's actual live `.claude/` (that "third hop" — promoting repo-staged content into a project's live config — is a separate, still-deferred question, unrelated to this build).

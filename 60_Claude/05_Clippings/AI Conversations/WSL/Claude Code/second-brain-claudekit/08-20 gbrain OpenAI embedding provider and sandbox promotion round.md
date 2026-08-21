@@ -7,7 +7,7 @@ title: "gbrain OpenAI embedding provider and sandbox promotion round"
 started_at: 2026-08-20T09:13:44
 ended_at: 2026-08-20T10:59:33
 duration_minutes: 106
-exported_at: 2026-08-20T15:14:36
+exported_at: 2026-08-20T18:15:08
 project: second-brain-claudekit
 cwd: '/home/anant_gupta/projects/ai/claude/second-brain-claudekit'
 session_id: f55926c7-e569-4930-b2b8-3c3604acbd13

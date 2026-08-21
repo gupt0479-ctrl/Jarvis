@@ -13,10 +13,10 @@ notes:
   - "[[20_Progress/AI/Claude Code/Sync - Unison]]"
   - "[[20_Progress/Projects/AI Use/Claude Kit/Claude Code/Claudekit Session
     Context]]"
-next: "Round 5, 2026-08-20 — logging-layer fixes. Codebase: fresh session, cwd =
-  second-brain-claudekit (verify HEAD ef6fa60 first). Jarvis: fresh Windows
-  session. Independent of each other this round. Both replace everything above
-  them."
+next: "Round 6, corrected, 2026-08-20. Both are independent, fresh sessions.
+  Codebase: cwd = second-brain-claudekit, verify HEAD cea5ab0. Jarvis: cwd =
+  Jarvis vault root, Windows. tests/ refinement and the third sync hop (Jarvis
+  -> real project .claude/) are both explicitly out of scope for this round."
 ---
 # Claude Kit — Build Prompts
 ==Only prompts live in this note, each inside a fenced block, ready to paste into a fresh session. Everything else — context, background, open questions — lives in [[20_Progress/Projects/AI Use/Claude Kit/Claude Code/Claudekit Session Context]]. Rewritten 2026-08-19; this note's prior content (dated 2026-08-11) is preserved there, not lost.==
@@ -25,66 +25,74 @@ next: "Round 5, 2026-08-20 — logging-layer fixes. Codebase: fresh session, cwd
 
 # Claudekit
 
-**Round 5, 2026-08-20 — fresh session.** Round 4 landed clean: HEAD `ef6fa60`, 8 commits total, gbrain wired and promoted (decision), 3 dormant clones executed for real. A full logging audit (this session, both sides) found the real work from those 3 clones never got written to `tests/`, despite the convention existing and working for `cpr-compress-preserve-resume`. This round backfills that, plus two smaller housekeeping items.
+**Round 6, corrected, 2026-08-20 — fresh session.** The previous version of this round's prompt was wrong about `skills/` (treated it as source-repo staging; it's actually live-synced, same as `agents/`, `commands/`, `hooks/`, `instructions/`) and only designed the live-sync leg instead of wiring it. Never ran — this replaces it, not round 7. HEAD should still be `cea5ab0` unless something else has landed since.
 
 Paste into a fresh Claude Code session, cwd = `~/projects/ai/claude/second-brain-claudekit`, `high` or `xhigh` effort.
 
 ```
-Confirm git log shows HEAD at ef6fa60 before doing anything — if it's different, stop and report rather than assuming this description still holds.
+Confirm HEAD with git log before starting; report if it's not cea5ab0 rather than assuming this description still matches.
 
-A logging audit just found that tests/ — the convention this repo uses to record real commands and real output proving a tool was actually run, not just described — was followed for tested-tools/commands/cpr-compress-preserve-resume/ but NOT for the three dormant clones executed for real last round. That work is not lost; it's real and already reported. Write it down properly now, using the exact real detail already established (do not re-run these tools to rediscover it unless something below is genuinely unclear):
+The corrected model, confirmed directly by Anant, governs everything in this session:
 
-## 1. Backfill tests/ for the three round-4 executions
+sandbox/<repo>/ -> tested for real -> tested-tools/<type>/... or tested-tools/_future/<repo>/. NEITHER of these is ever live-synced with Jarvis. Moving something from tested-tools/ into a live folder is a manual, per-item, human decision -- you do not take this step for any specific piece of content in this session unless explicitly told to for that exact item. This session is about fixing the SYNC MECHANISM for content already decided ready, not promoting anything new.
 
-- tests/skills/spec-kit/2026-08-20-test-log.md — real command: uv tool install specify-cli, then scaffold --integration claude. Real result: 10 real skill files installed. Match the shape of tests/commands/cpr-compress-preserve-resume/2026-08-19-test-log.md (read it first for the exact format).
-- tests/mcp-servers/promptfoo/2026-08-20-test-log.md (or wherever the type/repo convention puts it — check tested-tools/ for how promptfoo was categorized) — real command: an eval run against this repo's own /challenge command. Real result: 1 of 2 cases passed; the failure is a genuine finding, not noise — an llm-rubric grader caught a generic, unsupported counter-evidence claim in /challenge's own output. Write down the actual failing case and grader reasoning if you can still find it in promptfoo's own output/config files on disk; if that output no longer exists, say so explicitly rather than reconstructing it from memory.
-- tests/mcp-servers/claude-context/2026-08-20-test-log.md — real command: indexed against real Zilliz Cloud credentials. Real result: hit a real named blocker (cluster state STOPPED), required a human resume, retry succeeded — 108 files, 1,369 chunks indexed. Record the blocker and the resolution as the actual finding, the same way Architecture.md records gstack's Chromium blocker — a real, checkable reason, not a vague "had an issue."
+Once something is explicitly decided ready, it lives in agents/<Project>/, commands/<Project>/, hooks/<Project>/, skills/<Project>/, and instructions/<Project>/ -- all five are live-synced with Jarvis via 60_Claude/scripts/sync-manifest.json and sync-all.sh. Jarvis mirrors these read-only.
 
-For each: verify the referenced tool actually is where the test log claims (skim tested-tools/ or wherever it landed) before writing — don't write a test log for a promotion state that turns out not to match reality.
+Ten real entries need full, correct, live-synced coverage: second-brain-claudekit (this repo itself), CausalOps, Jarvis, Portfolio, Trading View, Resq, OpsPilot, The Plan, .claude_windows, .claude_wsl. Read 60_Claude/scripts/sync-manifest.json directly and confirm this list and each entry's current paths before doing anything else -- the specifics below are from an earlier direct read and may have drifted.
 
-## 2. Verify the edit-log hook actually captured today's work
+## 1. Fix the manifest for real, not just design it
 
-60_Claude/Sessions/_today-edits.md is written by after-edit-log.ps1 on every file edit. Given 4 full rounds of work happened today across multiple sessions, check whether it plausibly captured all of it (compare its entry count against the real number of files touched per git show --stat on each of today's commits) or whether some sessions' edits are missing from it — multiple fresh sessions each need the hook wired correctly to fire, and that's not guaranteed. If entries are missing, say so and name which commits/files aren't represented; don't silently patch the log to look complete.
+- Remove .claude/settings.json from every entry that has it (confirmed earlier: second-brain-claudekit, Jarvis, Trading View, Resq, The Plan -- verify this list is still accurate against your own fresh read). Settings and secrets are never synced, no exceptions, confirm this is true for all 10 entries, not just the 5 already flagged.
+- Add README.md to every one of the 10 entries' paths list. This was missed entirely until now.
+- second-brain-claudekit's own entry: add _docs/** (the real files there today: PRD.md, Architecture.md, Design.md, Promotion-Criteria.md, Sync.md, Jarvis.md, Repo-Map.md, Gaps.md, Current-Setup.md, Repo-Map-Archive.md, Gaps-Archive.md -- confirm this list is current, it may have grown) so Jarvis finally has visibility into this repo's own governing docs.
+- For .claude_windows and .claude_wsl specifically: confirm their current paths (agents, commands, skills, hooks, CLAUDE.md per the last direct read) are complete and correct -- these are the two global home directories and Anant has flagged them as currently too thin; make sure nothing real is missing from what should sync (check the actual home directory contents if reachable from this WSL session -- ~/.claude for WSL directly, /mnt/c/Users/"Anant Gupta"/.claude for the Windows one).
 
-## 3. Decide the _docs/Gaps.md and _docs/Repo-Map.md growth question
+## 2. Build out all five live-sync folders for every one of the 10 entries, for real
 
-Both files now carry dated section after dated section, resolved items kept in place rather than pruned (e.g. Gaps.md's "[RESOLVED 2026-08-19, third pass]" entries). This has real audit-trail value but will keep growing indefinitely. Use AskUserQuestion: keep everything in place as a permanent audit trail (current behavior), or archive resolved sections older than N rounds into a separate Gaps-Archive.md / Repo-Map-Archive.md once they're no longer actionable. Apply whichever answer you get; if archiving, do it now for anything already resolved as of this round.
+For each of the 10 entries, based on what its manifest paths actually contain (do not assume every project has every category -- read each entry's real paths list and derive the correct category list per entry, some projects won't have all five):
 
-Update _docs/Gaps.md with what this round found and fixed. Commit in logically separated commits, same discipline as before — review the diff for secrets first (none expected this round, but check anyway). Report what you found for item 2 specifically, even if the answer is "it's fine."
+- If the entry has an agents-shaped path: confirm/build agents/<EntryName>/ with real content matching what's actually promoted for that entry today (if nothing is promoted yet for that project, the folder is correctly empty -- do not invent placeholder content).
+- Same pattern for commands/<EntryName>/, hooks/<EntryName>/, skills/<EntryName>/.
+- instructions/<EntryName>/ gets every real instruction-shaped file for that entry -- CLAUDE.md, AGENTS.md, PRD.md, README.md (once added per item 1), and any nested .claude/-internal instruction file (Portfolio's .claude/CLAUDE.md and OpsPilot's .claude/PRD.md + .claude/README.md are the two already-known nonstandard cases -- confirm these are correctly represented, not skipped because they're nested).
+- instructions/second-brain-claudekit/ specifically: this was wrongly excluded before on the reasoning that it would duplicate root CLAUDE.md. That reasoning is overridden -- every one of the 10 entries gets full, consistent treatment, this repo included. Build it with CLAUDE.md and the full _docs/ set from item 1.
+
+Use a real discovery pass (list each entry's actual synced content, either via the Jarvis mirror or the real source path where directly reachable from this WSL session) -- do not guess what's promoted for a project from memory.
+
+## 3. Do not touch the third hop
+
+Jarvis mirrors reaching each real project's actual live repo is still an open question from a prior round, not answered yet. Do not wire anything that pushes content from a Jarvis mirror into a real project's actual .claude/ in this session, regardless of what you find. This session's scope ends at repo -> Jarvis mirror.
+
+## 4. Close the loop
+
+Update _docs/Gaps.md and _docs/Repo-Map.md with the real, complete state of all 10 entries after this session -- which categories exist for each, and confirm settings.json is gone from all 10. Note explicitly that tests/ needs a real refinement pass and is deferred to its own future session, not attempted here. Review the diff for secrets before committing (this session specifically touches sync-manifest.json and home-directory paths -- be careful). Commit in logically separated commits.
+
+Apply every instruction above to all 10 entries, not a sample -- if you're tempted to handle 3 or 4 fully and wave at the rest, stop and do all 10.
 ```
 
 # Jarvis
 
-**Round 5, 2026-08-20.** A full audit of every log-like file in Jarvis relevant to this pipeline (Claude Kit/Log.md, Tool log.md, Write Log.md, _All-Projects-Sync-Log.md, the main Session Log, the Capture Health dashboard, this week's real Weekly Review) found one clear pattern: fully-automated logs (sync log: 3,043 entries, effectively zero real gaps; the edit-log hook) are reliable; manual or memory-triggered ones aren't. Write Log.md — 21 days silent, was never wired to any automation, and duplicates Claude Kit/Log.md's exact heading convention and subject — is the clearest case. This round fixes the logging layer itself, not the pipeline's tool decisions.
+**Round 6, corrected, 2026-08-20.** Same correction as the codebase prompt: `skills/` is live-synced, not source-repo staging; `.claude_windows`/`.claude_wsl` need real depth, not just a mirror folder that exists. Never ran — replaces the previous version, not round 7.
 
 Paste into a fresh Claude Code session, cwd = the Jarvis vault root (Windows), Sonnet 5, `high` or `xhigh` effort.
 
 ```
-A logging audit of this vault's Claude-Kit-relevant logs found real, fixable problems in the logging layer itself. Verify each finding below against the real file before acting on it — this round exists because trusting a log's own claimed convention without checking its actual entries was already wrong once (Write Log.md's header claims it's used "alongside Claude Kit/Log.md," but it has 6 entries, all from 2026-07-30, and zero since).
+The corrected model, confirmed directly by Anant: sandbox/ -> tested for real -> tested-tools/ (never live-synced) -> an explicit, per-item human decision -> agents/<Project>/, commands/<Project>/, hooks/<Project>/, skills/<Project>/, instructions/<Project>/ in second-brain-claudekit (all five live-synced) -> Jarvis mirrors these read-only under 20_Progress/AI/Claude Code/<Project>/. Ten entries: second-brain-claudekit, CausalOps, Jarvis, Portfolio, Trading View, Resq, OpsPilot, The Plan, .claude_windows, .claude_wsl.
 
-## 1. Retire Write Log.md — don't leave it as a silent duplicate
+## 1. Build real depth for the two home-directory mirrors
 
-20_Progress/AI/Claude Code/Write Log.md has been silent for 21 days and was never wired to any hook or script (confirmed by grepping every script under 30_Order/System/claude-workflow/ and .claude/ for a reference to it — zero matches). It duplicates Claude Kit/Log.md's exact `## [YYYY-MM-DD] tag | title` heading convention and subject matter. Use AskUserQuestion: fold it into Claude Kit/Log.md permanently (mark Write Log.md's frontmatter status: retired, add one line pointing to where its job now lives, keep the file for historical reference — never delete without confirmation, per this vault's own AGENTS.md rule) or keep it separate but actually wire something to write to it (name what, concretely, since nothing has for 3 weeks). Apply whichever answer you get. Update every note that currently cites Write Log.md as a going concern.
+20_Progress/AI/Claude Code/.claude_windows/ and .claude_wsl/ are confirmed too thin as of today. List their real current contents directly. Compare against what should be there (agents, commands, skills, hooks, and now README.md per the parallel codebase-side fix -- confirm second-brain-claudekit's sync-manifest.json paths for these two entries once reachable, or work from real mirror contents if not). For whatever's genuinely thin or missing, build it out properly: the same "What Agents.md / How to Use Agents.md" depth the Toolkit/ folder already has for project-scoped tools, applied to these two home-directory-scoped entries specifically -- what's actually installed globally on each OS, distinguished clearly from project-scoped tooling, since a global skill and a project skill are different things and have been getting conflated. Real content only -- if something is genuinely sparse because nothing global has been promoted yet for one of the two, say that plainly rather than padding it.
 
-## 2. Fix or retire the broken Session Logs Board
+## 2. Verify all 10 mirrors, not just the two home directories
 
-60_Claude/07_AI_Information/Session Logs/Session Logs Board.md is a Dataview board querying FROM "60_Claude/10_Session_Logs" — a folder that has never existed (the real folder is 60_Claude/07_AI_Information/Session Logs/). It has zero backlinks and has presumably shown an empty or broken result since 2026-04-08. Fix the query path to point at the real folder, or retire the board if it's no longer wanted — check whether anything actually references or relies on it first (search the vault for "Session Logs Board" before deciding).
+For CausalOps, Jarvis, Portfolio, Trading View, Resq, OpsPilot, The Plan, and second-brain-claudekit: confirm each mirror folder's real content is current (cross-check against _All-Projects-Sync-Log.md's most recent entry per project, same method as before). Specifically confirm second-brain-claudekit's mirror now includes real content once the parallel codebase-side session adds _docs/** and expands its live-sync folders -- if you can't find evidence that landed yet, say so rather than assuming it did.
 
-## 3. Clean up concurrent-write litter, and note the race it's evidence of
+## 3. Confirm settings.json is gone everywhere
 
-20_Progress/Projects/AI Use/Claude Kit/ had stray Log.md.tmp.237231.* and Tool Map.md.tmp.237231.* files from concurrent sessions writing to the same notes at the same time — the same class of race that caused round 4's commit-status contradiction. Confirm whether these still exist; if so, remove them (they're write-in-progress artifacts, not content). Then check whether Gaps.md's "name the exact commit/artifact a dependent round is waiting on" rule (added last round) is sufficient to prevent this specific kind of collision too, or whether concurrent sessions writing to the same vault note needs its own explicit rule (e.g. check the note's own recent mtime before appending, not just before reading) — add one if it's missing.
+A parallel codebase session is removing .claude/settings.json from 5 manifest entries and confirming its absence from the other 5. Check whether any of the 10 mirror folders here still physically holds a settings.json copy from before that fix -- remove it if so, this is the one exception to "never edit inside a Jarvis mirror."
 
-## 4. Resolve the Session Logs/Claude Kit/ discrepancy
+## 4. Record the corrected model as the real, dated source of truth
 
-Both Claude Kit/Log.md and Write Log.md's headers claim to follow "the same heading convention as the main Session Log," implying second-brain-claudekit activity should also be traceable through 60_Claude/07_AI_Information/Session Logs/log.md — but a direct check found only one entry there touching this pipeline in its entire ~95-entry history, and no Claude Kit/ subfolder exists under Session Logs/ at all (not empty — genuinely absent). Either this repo's activity is meant to route through the main Session Log and currently doesn't (fix it, or set up the missing subfolder for real), or the header claims are aspirational and should be corrected to say plainly that Claude Kit/Log.md is this pipeline's actual, sufficient record and the main Session Log isn't meant to duplicate it. Pick one, based on what's actually true about how this vault's logging is meant to work — don't guess; check how other tracked projects (CausalOps, Portfolio) handle this same question, since they're a real precedent to check against rather than reasoning about this pipeline in isolation.
+The model at the top of this prompt is the actual, confirmed architecture -- write it into Log.md as a dated entry, explicitly correcting anything a prior session may have recorded about skills/ being source-repo staging or the sync leg being merely "designed" rather than live. Cross-reference from Tool Map.md and 20_Progress/AI/Claude Code/MOC.md.
 
-## 5. Make Tool log.md's trigger less memory-dependent
-
-Tool log.md sat with an empty table for 9 days after creation before /export-ai-session was run against it even once. The mechanism that works elsewhere in this exact system is a scheduled backfill (the conversation-capture pipeline's 30-minute safety net, the sync engine's 15-minute cron) — something that runs whether or not a human remembers. Design a real, scoped equivalent for Tool log.md: a periodic (not necessarily as frequent — daily or every few days is probably right for this) scheduled run of /export-ai-session's backfill mode against unlogged sessions, so entries land without depending on someone remembering. If a genuine blocker prevents this (the skill isn't designed for non-interactive/scheduled invocation, for example), name the specific blocker instead of building around it silently.
-
-## 6. Write a short Log Standard
-
-30_Order/Standards/ has one Standard.md per content type but none for logs specifically, and this audit is the first time the vault's actual logging reliability has been checked systematically rather than assumed. Write 30_Order/Standards/Log Standard.md, modeled on the same shape as the existing Standards (a concrete, checkable definition, not a style essay): what makes a log worth creating (a real, ongoing, dateable stream of events — not a one-time note), when to prefer extending an existing log over creating a new one (the Write Log/Claude Kit Log duplication is the worked example), and the core lesson from this round — prefer automated or scheduled triggers over pure memory, and if a log must be memory-triggered, name who's responsible for remembering, explicitly, rather than leaving it implicit.
-
-Add a dated Log.md entry summarizing this round. Report every AskUserQuestion answer you got, and the real current state of items 2-5 after you checked them (not before).
+Report the real state of all 10 mirrors, what you built for the two home directories, and confirm item 3's cleanup.
 ```

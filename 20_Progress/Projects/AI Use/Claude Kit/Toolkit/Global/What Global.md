@@ -1,0 +1,40 @@
+---
+type: evergreen
+status: sprout
+created: 2026-08-20
+updated: 2026-08-20
+tags:
+  - evergreen
+  - claude-kit
+  - global
+notes:
+  - "[[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Global/How to Use Global]]"
+  - "[[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Claude Code]]"
+  - "[[20_Progress/AI/Claude Code/.claude_windows/Setup]]"
+  - "[[20_Progress/AI/Claude Code/.claude_wsl/Setup]]"
+  - "[[20_Progress/AI/Claude Code/Sync - Unison]]"
+next: Re-check this note whenever either home directory's real agents/commands/skills/hooks change, or when the two homes' reconciliation question (Sync - Unison.md) finally gets decided
+---
+# What Global
+==A global agent/command/hook/skill lives in a Claude Code **home directory** (`~/.claude` on WSL, `C:\Users\Anant Gupta\.claude` on Windows) and is available in every session regardless of which project's own `.claude/` is open — a fundamentally different scope than the per-project tooling the other five Toolkit categories track. Verified by direct listing on both platforms, 2026-08-20: the two homes are almost entirely disjoint, and one of the two is currently near-empty.==
+This note is the home-directory counterpart to [[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Agents/What Agents|What Agents]], [[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Commands/What Commands|What Commands]], [[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Hooks/What Hooks|What Hooks]], and [[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Skills/What Skills|What Skills]] — those four track what's promoted into second-brain-claudekit's own `.claude/` and what's live at Jarvis's vault-root `.claude/`, both **project-scoped**: real only when that specific project is open. This note tracks the layer above both of those: what's installed on the machine itself. Its Jarvis-side mirrors are `20_Progress/AI/Claude Code/.claude_wsl/` and `.claude_windows/`, kept live via the same `sync-all.sh` manifest driver as every other project in [[20_Progress/AI/Claude Code/MOC]] — real, current mirrors, not snapshots, per the last confirmed sync run (2026-08-20 16:00:03 +0400, `OK` both entries).
+## WSL home (`~/.claude`, real machine: `anant_gupta@Ubuntu`)
+The rich side. Verified 2026-08-20 by direct `ls` against the live home directory and a line-for-line diff against the mirror's `skills/` listing (zero difference, 28 entries each).
+- **Agents (3):** `obsidian-architect` (Opus, vault-structure/MOC/frontmatter audits), `obsidian-researcher` (Sonnet, autonomous vault search+synthesis), `obsidian-session-archivist` (Sonnet, writes session context back into the vault). All three are genuinely global — nothing in any of them is Jarvis-CLAUDE.md-specific, they're invocable from any WSL project.
+- **Commands (7):** `obsidian-daily-review`, `obsidian-session-review` (context-loading reviews), `second-brain-capture`, `second-brain-compress`, `second-brain-graduate`, `second-brain-resume`, `second-brain-review` (a capture→process→archive note lifecycle, independent of and older than this vault's own `/ingest-clipping`+`/distill-note`+`/closeday` skills).
+- **Hooks (3):** `wsl-session-export.ps1` is not a small utility — it's the actual production pipeline behind the AI Conversation Archive (wired to both `SessionEnd` and `Stop`, full tool-call reconstruction with secret redaction, per-model cost accounting, idempotent re-render on transcript growth, `-BackfillAll` mode), writing into `60_Claude/05_Clippings/AI Conversations/WSL/Claude Code/<project>/`. `after-edit-log.ps1` (`PostToolUse`, appends every edited file path to a daily log, fail-open). `session-wrapup.ps1` (`Stop`, prints a one-line "no log yet today" reminder, fail-open).
+- **Skills (28 top-level):** `graphify`, `agents-sdk`, `sandbox-sdk`, seven Cloudflare/Workers references (`cloudflare`, `cloudflare-email-service`, `cloudflare-one`, `cloudflare-one-migrations`, `durable-objects`, `turnstile-spin`, `web-perf`, `wrangler`), and fourteen Obsidian/vault skills (`obsidian-class-biol1012`, `obsidian-class-csci3923`, `obsidian-class-csci4041`, `obsidian-class-mgmt3001`, `obsidian-class-ocaml`, `obsidian-class-umn-hub`, `obsidian-project-arc`, `obsidian-project-career`, `obsidian-project-guitar`, `obsidian-project-mentorship`, `obsidian-project-portfolio`, `obsidian-project-projects`, `obsidian-remember`, `obsidian-review`, `obsidian-search`), plus `second-brain-obsidian-integration`. **Correction to `.claude_wsl/Setup.md` (dated 2026-08-10):** that file claims "29... including `learned`" — direct listing today shows 28, no `learned` folder exists. Either it was removed in the last 10 days or the original count was off by one; either way, 28 is the real, current number.
+- **`CLAUDE.md`:** one standing rule — any input triggers the `graphify` skill.
+**Real finding, not previously documented anywhere in this pipeline: these WSL-global agents and commands are stale relative to the vault's own reorg.** Read directly, not assumed: `obsidian-researcher.md` and `obsidian-session-archivist.md` both instruct searching/writing to `10_UMN/`, `00_Inbox/Headway/`, and `50_Archive/copilot/copilot-conversations/` — none of these three paths exist in the vault today (verified by direct `find`). The real locations are `40_Resources/UMN` for course material and `10_Areas/Life/Enumerate/Daily/` for daily notes (per this vault's own frontmatter type guide); `60_Claude/00_Inbox/` does still exist, `60_Claude/50_Reviews/` (cited by `second-brain-review.md`) does not. These three files predate the vault's PARA reorg and have not been touched since. **Not fixed here** — editing them would sync back into the live WSL home directory a real session depends on, per [[20_Progress/AI/Claude Code/Sync - Unison]]'s own stated caution about this exact risk; this is Anant's call, not a silent fix.
+## Windows home (`C:\Users\Anant Gupta\.claude`)
+The thin side, and genuinely thin, not under-documented — verified directly 2026-08-20 via `Get-ChildItem`, matching what `.claude_windows/Setup.md` (2026-08-10) already found ten days ago, unchanged since:
+- **Agents:** none. No `agents/` directory exists at all.
+- **Commands:** the `commands/` directory exists but is empty.
+- **Hooks:** none. No `hooks/` directory exists.
+- **Skills:** exactly one real skill, `export-ai-session/SKILL.md`. Everything else `ls skills/` shows (31 `firecrawl-*` names) is a **Windows junction** pointing at `C:\Users\Anant Gupta\.agents\skills\<name>` — a separate install location entirely, not part of Claude Code's own global config. Unison's `-fat` flag correctly skips junctions (`links=false`), so the mirror will never show those 31 names as real content, and that's correct behavior, not a sync gap.
+- **`CLAUDE.md`:** does not exist.
+**There is nothing padded into this section because there is nothing more to report.** If Windows-side global tooling gets built out later, this section is where that addition belongs.
+## What this means in practice
+A skill or command that lives in only one home directory is not available in a session running on the other OS. Concretely today: `/second-brain-capture` and the three `obsidian-*` agents work in a WSL Claude Code session and do not exist at all in a Windows Claude Code session; `export-ai-session` is the one piece of global tooling genuinely shared in spirit across both (present as real content on Windows, and — separately — WSL's own conversation-capture hook does the equivalent job natively rather than by sharing the skill file). This is the same disjoint-content gap [[20_Progress/AI/Claude Code/Sync - Unison]] flagged as an open, undecided reconciliation question on 2026-08-10 — still open today, not resolved by this audit.
+## Links
+[[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Global/How to Use Global]] for when to reach for each real piece of this. [[20_Progress/AI/Claude Code/.claude_wsl/Setup]] and [[20_Progress/AI/Claude Code/.claude_windows/Setup]] for the sync-mechanism-level detail this note doesn't repeat.
