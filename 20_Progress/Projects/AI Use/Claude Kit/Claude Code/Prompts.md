@@ -13,11 +13,10 @@ notes:
   - "[[20_Progress/AI/Claude Code/Sync - Unison]]"
   - "[[20_Progress/Projects/AI Use/Claude Kit/Claude Code/Claudekit Session
     Context]]"
-next: "Round 7, 2026-08-21 — fixes the live instructions/_docs/_docs/ bug and
-  closes out the sync-build phase. Codebase: fresh session, verify the
-  _docs/_docs/ state before starting. Jarvis: fresh Windows session, checks for
-  the codebase fix rather than assuming it landed. After this round: next phase
-  is tests/ refinement and the review system — not written yet."
+next: "Round 8, 2026-08-21 — instructions/ scope corrected for the third time,
+  mechanism fixed so it can't recur. Codebase: fresh session. Jarvis: fresh
+  Windows session, short, verification-only. After this: tests/ refinement is
+  the next real phase."
 ---
 # Claude Kit — Build Prompts
 ==Only prompts live in this note, each inside a fenced block, ready to paste into a fresh session. Everything else — context, background, open questions — lives in [[20_Progress/Projects/AI Use/Claude Kit/Claude Code/Claudekit Session Context]]. Rewritten 2026-08-19; this note's prior content (dated 2026-08-11) is preserved there, not lost.==
@@ -26,64 +25,54 @@ next: "Round 7, 2026-08-21 — fixes the live instructions/_docs/_docs/ bug and
 
 # Claudekit
 
-**Round 7, 2026-08-21 — fresh session.** Round 6 landed for real: sync-manifest.json fixed, 577 files populated across all 10 entries' five live-sync folders. But it introduced a live, self-compounding bug: `instructions/second-brain-claudekit/_docs/_docs/` — a nested duplicate that grows one level deeper every ~15-minute sync. This round fixes the bug's root cause, not just its symptom, and locks in the definitive, final shape of `instructions/<repo>/` so this stops being re-litigated.
+**Round 8, 2026-08-21 — fresh session.** Round 7 fixed the self-nesting bug but kept the wrong scope: `_docs` as a directory-shaped `instructions_paths` entry, flattened wholesale into `instructions/second-brain-claudekit/`. That was never the intent. `instructions/<repo>/` is a small, curated set of main files only — `CLAUDE.md`, `AGENTS.md`, `README.md`, `PRD.md`, `Architecture.md` (now confirmed at this repo's root, not in `_docs/`) — never an entire internal-documentation directory. This is the fourth time this folder's scope has needed correcting; this round makes the mechanism itself incapable of the mistake, not just the current data.
 
 Paste into a fresh Claude Code session, cwd = `~/projects/ai/claude/second-brain-claudekit`, `high` or `xhigh` effort.
 
 ```
-Confirm git status shows instructions/second-brain-claudekit/_docs/ and _docs/_docs/ as uncommitted before starting -- if that's not the current state, stop and report rather than assuming this description still holds.
+Read sync-manifest.json fresh before anything else. The final rule, confirmed directly by Anant: instructions_paths (whatever the exact field is called — confirm from the real file) may only ever list explicit file paths, never a directory. A "main file" is a single top-level instruction/context document -- CLAUDE.md, AGENTS.md, README.md, PRD.md, Architecture.md, or a real equivalent -- never an entire folder of internal reasoning docs (this repo's own _docs/, or a project's .claude/context, .claude/playbooks, .claude/decisions, .claude/checklists, .claude/workflows -- all directory-shaped, all the same class of mistake).
 
-The final, definitive rule for instructions/<repo>/, confirmed directly by Anant -- encode this everywhere it needs to live, not just fix the immediate bug:
+## 1. Simplify sync-all.sh: remove directory-flattening entirely
 
-instructions/<repo>/ is FLAT. No subfolders, ever. It holds every real source-of-truth markdown file for that repo -- CLAUDE.md, AGENTS.md, README.md, PRD.md, Architecture.md, and any other governing doc -- regardless of whether it originally lives at the repo's root, inside a docs-style subfolder, or nested inside .claude/. Every file lands as instructions/<repo>/<filename>.md, never in a nested path. If a nested .claude/-internal file would collide in name with a root-level file (the Resq/OpsPilot case already solved in round 6), prefix the nested one claude-<filename>.md -- keep that exact convention, it's already proven and working.
+Round 7 added logic to sync-all.sh that resolves a directory-shaped instructions_paths entry into its real files and flattens them. Delete that logic. instructions_paths should only ever process explicit file entries -- copy each one flat into instructions/<repo>/<basename>.md, keeping the existing claude-<filename>.md prefix for a nested-vs-root name collision. If a directory-shaped entry is ever found in the manifest going forward, that's a data error to fix in the manifest, not something the script should try to handle gracefully.
 
-## 1. Fix the live bug's root cause, not just its symptom
+## 2. Fix second-brain-claudekit's own entry
 
-sync-manifest.json's second-brain-claudekit entry lists "_docs" as a whole directory in instructions_paths. sync-all.sh's copy step doesn't flatten or clear the destination when a path entry is a directory -- so instead of copying _docs/PRD.md to instructions/second-brain-claudekit/PRD.md, it nests the whole folder, and nests it again on every subsequent run. Fix sync-all.sh's copy logic generally: when a path entry resolves to a directory, enumerate its real files (*.md, at minimum) and copy each one flat -- basename only, directly into instructions/<repo>/ -- and always overwrite/replace the destination file rather than accumulating into it. This has to be a real mechanism fix, since any future directory-shaped path entry for any of the 10 projects would hit the same bug otherwise, not something specific to _docs.
+Remove _docs entirely from its instructions_paths. Confirm the real current root files (expected: CLAUDE.md, README.md, PRD.md, Architecture.md -- verify this list directly, don't assume) and set instructions_paths to exactly those, as explicit file entries.
 
-## 2. Clean up and rebuild instructions/second-brain-claudekit/ correctly
+## 3. Audit all 10 entries for the same mistake
 
-Remove instructions/second-brain-claudekit/_docs/ entirely (both the one level and the nested _docs/_docs/ inside it -- these are sync artifacts, currently uncommitted, safe to remove outright, not archive). Re-run the corrected sync logic from item 1 (or manually reproduce its output once, to confirm it's right) so instructions/second-brain-claudekit/ ends up flat: CLAUDE.md, README.md, AGENTS.md (if it exists -- check), and every real file currently in _docs/ (confirm the current list directly rather than trusting an earlier one -- it has grown before) sitting directly in that folder, no subfolder.
+Check every entry's instructions_paths for any directory-shaped entry. Resq and OpsPilot are the known suspects (.claude/context, .claude/playbooks, .claude/decisions, .claude/checklists, .claude/workflows all appear in their general paths lists -- confirm whether any of those also ended up in instructions_paths specifically, not just the general sync paths). Remove any directory entry found; keep only genuine main files (CLAUDE.md, AGENTS.md, README.md, PRD.md/README.md nested under .claude/ where that's the real pattern, per the already-established collision-prefix convention).
 
-## 3. Audit all 10 entries for the same class of bug
+## 4. Rebuild every affected instructions/<repo>/ folder
 
-Round 6's report said every other manifest entry lists individual files, not directories, in its paths -- confirm this directly rather than trusting that report. Check every one of the 10 instructions/<repo>/ folders for any accidental nested subfolder from the same root cause. Fix any found the same way as item 2.
+For second-brain-claudekit and any other entry fixed in item 3: delete whatever landed there from a directory flatten that shouldn't have happened, and re-populate from the corrected, file-only instructions_paths list. Confirm the result is small and curated -- if any instructions/<repo>/ folder still has more than a handful of files after this, that's a signal something's still wrong, go back and check.
 
-## 4. Write the definitive instructions/ definition down, in concrete detail, for good
+## 5. Write the definitive, final rule -- for real this time
 
-Update _docs/Sync.md, 60_Claude/vault-rules/write-contract.md, and 60_Claude/vault-rules/pipeline-conventions.md with the exact rule stated at the top of this prompt -- flat structure, what counts as a source-of-truth file, the claude- collision-prefix convention, and the fact that a directory-shaped manifest path gets flattened, never nested. This has been asked for and re-explained multiple times now; write it precisely enough that it doesn't need re-explaining again.
+Update _docs/Sync.md, 60_Claude/vault-rules/write-contract.md, and 60_Claude/vault-rules/pipeline-conventions.md with one unambiguous statement: instructions/<repo>/ holds only explicit main files (CLAUDE.md, AGENTS.md, README.md, PRD.md, Architecture.md, and real equivalents) -- never a directory's contents, never an internal-documentation folder, no matter how relevant that folder seems. This scope has been corrected three times already; state it precisely enough that a fourth correction shouldn't be needed.
 
-## 5. Close the loop
+## 6. Close the loop
 
-Update _docs/Gaps.md and _docs/Repo-Map.md with the real fix. Review the diff for secrets before committing (this touches sync-all.sh and every instructions/<repo>/ folder -- check all of them, not just second-brain-claudekit's). Commit in logically separated commits.
+Update _docs/Gaps.md and _docs/Repo-Map.md with the real fix across all 10 entries. Review the diff for secrets before committing. Commit in logically separated commits.
 
-Apply items 1 and 3 as real mechanism fixes covering all 10 entries -- not a patch that only happens to fix second-brain-claudekit's specific case.
+Apply items 1-4 to all 10 entries, not just second-brain-claudekit -- the mechanism fix in item 1 should make this structurally impossible to get wrong again, verify that it actually does.
 ```
 
 # Jarvis
 
-**Round 7, 2026-08-21.** The sync-mechanism build is closing out — a parallel codebase round is fixing the last real bug (a self-nesting `instructions/second-brain-claudekit/_docs/` duplicate) and locking in the final, definitive `instructions/<repo>/` shape: flat, every source-of-truth markdown regardless of origin nesting, `claude-` prefix on any nested/root name collision. This round verifies that lands cleanly on the Jarvis side, writes a real closing summary of the whole sync build, and gets Jarvis's own notes consistent with the same final definition — the last step before this pipeline moves on to `tests/` and the review system.
+**Round 8, 2026-08-21.** Short and verification-only — the sync-build phase is closing out and the next real work is `tests/`. Don't add new scope here.
 
 Paste into a fresh Claude Code session, cwd = the Jarvis vault root (Windows), Sonnet 5, `high` or `xhigh` effort.
 
 ```
-A parallel codebase-side round is fixing a real, self-compounding bug: instructions/second-brain-claudekit/ had nested itself into instructions/second-brain-claudekit/_docs/_docs/, growing one level deeper every ~15-minute sync, because sync-manifest.json listed _docs as a whole directory and the copy step never flattened or cleared the destination. The fix makes instructions/<repo>/ flat everywhere, for all 10 entries -- every source-of-truth markdown file (CLAUDE.md, AGENTS.md, README.md, PRD.md, Architecture.md, and similar) lands as instructions/<repo>/<filename>.md directly, regardless of whether it originated at repo root, in a docs-style subfolder, or nested inside .claude/ -- with a claude-<filename>.md prefix on any nested file that would otherwise collide in name with a root-level one.
+A parallel codebase round is fixing instructions/<repo>/'s scope for the third time: it should only ever hold explicit main files (CLAUDE.md, AGENTS.md, README.md, PRD.md, Architecture.md), never an entire directory's contents (this repo's own _docs/ was wrongly flattened in there; Resq/OpsPilot's .claude/context, .claude/playbooks, .claude/decisions, .claude/checklists, .claude/workflows are being audited for the same mistake). sync-all.sh's directory-flattening logic is being removed entirely, not patched, so this class of bug becomes structurally impossible.
 
-## 1. Verify the fix landed cleanly on this side
+1. Verify it landed, for real -- check the actual repo (via the WSL UNC path or the mirror, whichever is genuinely current) for instructions/second-brain-claudekit/: it should hold a small handful of files (CLAUDE.md, README.md, PRD.md, Architecture.md), nothing from _docs/. If it still shows the old, over-populated state, or you can't confirm either way, say so plainly rather than assuming the fix landed.
 
-Check whether second-brain-claudekit's Jarvis mirror (20_Progress/AI/Claude Code/second-brain-claudekit/) reflects the corrected, flat instructions/ structure -- no nested _docs/ subfolder, real files directly present. If the codebase session hasn't finished or the sync hasn't run yet, say so explicitly rather than assuming it's already correct; don't guess based on when this prompt was written.
+2. Add one closing line to Log.md's sync-build entry from last round, noting this was the third and (per the mechanism fix) final correction to instructions/'s scope, with the real verification result from item 1.
 
-## 2. Audit every one of the 10 mirrors for the same class of bug
+3. Confirm this pipeline is actually ready to move to tests/ next: read tests/'s current real content (still just the two entries from 2026-08-19/20 last checked) and confirm _docs/Gaps.md still correctly flags it as needing a real refinement pass. Don't start that work here -- just confirm the handoff is accurate before the next round picks it up.
 
-The root cause (a directory-shaped sync path never getting flattened) could theoretically have hit any of the 10 entries, not just second-brain-claudekit's _docs case, if any other entry has a directory-shaped instructions-relevant path. Check all 10 mirror folders under 20_Progress/AI/Claude Code/ for any accidental nested subfolder inside what should be a flat instructions-equivalent structure. Report what you find -- this is a real check, not a formality, since round 6's own report only confirmed this for the manifest's paths lists, not for what actually landed on disk.
-
-## 3. Write the closing summary -- the sync build is done, name it as done
-
-This pipeline has spent multiple rounds (2026-08-20 through 2026-08-21) building the live-sync mechanism between second-brain-claudekit's staging folders, Jarvis's mirrors, and (still explicitly unwired) each real project's actual config. That phase of work is now functionally complete. Write one clear, dated Log.md entry that closes it out: what the sync mechanism actually does today (the corrected model -- sandbox/ -> tested-tools/ -> an explicit human decision -> the five live-sync folders -> Jarvis mirrors, read-only), what's still deliberately unwired (the third hop into a real project's live .claude/, still an open question), and that the next phase of this pipeline's work is tests/ (which needs a real refinement pass, already flagged, not attempted yet) and the review system (already has a real Weekly Review as its first Gold Standard Example, per an earlier round). This entry is the actual handoff marker between phases -- write it so a session starting fresh on the tests/reviews phase can read this one entry and know exactly where things stand, without re-reading every round's individual report.
-
-## 4. Bring Jarvis's own notes in line with the final instructions/ definition
-
-Toolkit/Claude Code.md, 10_Areas/AI/Setup/Folder Map.md, and any other Jarvis note that describes instructions/'s structure should match the final rule exactly (flat, every source-of-truth file regardless of origin, the claude- collision prefix) -- check each for drift and fix any that still describe an older or vaguer version of this folder's shape.
-
-Report what you found in items 1-2 (real, not assumed), confirm item 3's entry exists, and list which notes item 4 actually touched.
+Report item 1's real finding first -- that's the one that matters most this round.
 ```

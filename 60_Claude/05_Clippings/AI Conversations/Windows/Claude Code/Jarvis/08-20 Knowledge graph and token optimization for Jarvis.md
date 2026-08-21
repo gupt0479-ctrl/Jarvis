@@ -5,32 +5,32 @@ source_app: claude-code
 source_os: windows
 title: "Knowledge graph and token optimization for Jarvis"
 started_at: 2026-08-20T17:14:01
-ended_at: 2026-08-21T15:43:19
-exported_at: 2026-08-21T16:00:02
-duration_minutes: 1349.3
+ended_at: 2026-08-21T17:27:42
+exported_at: 2026-08-21T17:30:02
+duration_minutes: 1453.7
 project: Jarvis
 cwd: 'D:\Users\_Anant\10_Areas\Documents\Jarvis'
 session_id: 65cec07d-8f30-41ab-977f-92f7dd752714
 status: raw
-turn_count: 8
+turn_count: 10
 tools_used:
-  AskUserQuestion: 8
-  Bash: 27
+  AskUserQuestion: 10
+  Bash: 28
   Glob: 6
   Grep: 5
   mcp__jarvis-memory__jarvis_status: 1
   PowerShell: 1
-  Read: 29
+  Read: 33
   ToolSearch: 2
-  WebSearch: 5
+  WebSearch: 9
   Write: 2
 tokens:
-  input: 284
-  output: 246062
-  cache_creation: 1276178
-  cache_read: 23093354
-  total: 24615878
-cost_usd: 12.184571
+  input: 328
+  output: 309433
+  cache_creation: 1492871
+  cache_read: 30701887
+  total: 32504519
+cost_usd: 15.206847
 model:
   - "claude-sonnet-5"
 files_touched:
@@ -41,7 +41,9 @@ files_touched:
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\.obsidian\\community-plugins.json"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\00_Dashboard.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\10_Areas\\Career\\Certifications\\Certifications Strategy.md"
+  - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\10_Areas\\Career\\Engineer Edge Roadmap.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\AI\\Claude Code\\Sync - Unison.md"
+  - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Internship\\Preperation\\System Design\\System Design Practice.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Projects\\AI Use\\Claude Kit\\Tool Map.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\30_Order\\Standards\\Evergreen Standard.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\30_Order\\System\\claude-workflow\\hooks"
@@ -49,6 +51,7 @@ files_touched:
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\30_Order\\System\\claude-workflow\\hooks\\jarvis-write-guard.ps1"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\40_Resources\\CS\\AI\\Gen AI Meeting.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\40_Resources\\CS\\AI\\Workflows\\AI Workflow.md"
+  - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\40_Resources\\CS\\Links.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\40_Resources\\Obsidian\\Jarvis Vault Architecture.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\40_Resources\\Obsidian\\Plugins\\Plugin Gaps Recommendations and Verification.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\40_Resources\\Obsidian\\Plugins\\Plugin Inventory and Configuration Map.md"
@@ -57,6 +60,7 @@ files_touched:
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\60_Claude\\07_AI_Information\\AI_CONTEXT.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\60_Claude\\07_AI_Information\\Jarvis OS — North Star.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\60_Claude\\07_AI_Information\\Jarvis Writing and Formatting.md"
+  - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\60_Claude\\10_Source_Summaries\\Github Ingestion\\Useful Repos - Shortlist.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\60_Claude\\20_Distilled_Notes\\Distilled Notes Board.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\60_Claude\\20_Distilled_Notes\\Ingestion Pipeline Audit — Clippings, Summaries & Implementation (2026-07-27).md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\60_Claude\\20_Distilled_Notes\\Jarvis Systems Audit - Retrieval, Sync, and Plugins (2026-08-21).md"
@@ -1056,6 +1060,58 @@ That gives a real answer to **where**. For **what**, here's a rough shape - thre
 - **Tier 1 - the mechanisms this vault already runs on:** embeddings and semantic search, what RAG actually requires to be real RAG, agents vs. workflows, tool use/function calling, what MCP is mechanically, prompt caching, hooks as deterministic automation around a nondeterministic model.
 - **Tier 2 - the craft:** prompt engineering vs. context engineering (a real distinction, not synonyms), and only then vibe-coding discipline - which is where "the how" you mentioned finally belongs.
 
+I have a real anchor now, not a generic curriculum. `00_Execution.md` and the `Tool Map.md` (both extremely detailed, both touched as recently as today, 2026-08-20) already name dozens of concrete AI tools and mechanisms your own sessions have evaluated - and in several places, the notes themselves already draw a real distinction without ever explaining the mechanism behind it. That's the "extremely concrete" starting point.
+
+**One disambiguation first, because it matters for scoping "harness engineering":** your vault already uses "harness" in two different senses, and I want to know which one you mean before I build the index around it.
+- `Engineer Edge Roadmap.md` uses "Failure Harness" (Days 31-60) to mean a reliability/chaos-testing scaffold around a shipped system - structured logging, forced bad-output tests, error states.
+- `Tool Map.md` describes ECC as "a cross-harness agent operating system" - here "harness" means the scaffolding that wraps a raw model API into a working coding agent: tool definitions, context assembly, permissions, memory. Claude Code, Cursor, and ECC are all harnesses in this sense.
+
+Given the vibe-coding context, I'd guess you mean the second one - but confirming rather than assuming.
+
+**The topic index, built from what's actually sitting unexplained in your own notes:**
+
+**A. The base vocabulary** (needed before anything else lands): tokens, context windows, what inference vs. training actually are.
+
+**B. Retrieval and memory** - directly named and unresolved in your own notes: `PageIndex` is described as "vectorless, reasoning-based RAG" versus `claude-context`'s vector-embedding RAG - two different mechanisms, never explained. `gbrain` claims "synthesis plus gap-analysis, not just retrieval" over plain RAG - what does that mean mechanically? This is also where `jarvis-memory`'s own semantic-search gap lives.
+
+**C. Knowledge graphs** - `00_Execution.md`'s own GitHub pass states outright that `Graphify` "builds a structural/relational graph, not embeddings" and that graphs and embeddings are "complementary, not competing" - but never explains why, or what a knowledge graph structurally is.
+
+**D. Harness engineering** (your named focus, pending the disambiguation above): what a harness actually assembles - tools, system prompt, context, permissions; the agents-vs-workflows distinction from Anthropic's own canonical post; where subagents, hooks, and MCP fit as the concrete pieces; why multi-agent coordination (beads, AgentScope) is correctly marked "not yet" in your own notes.
+
+**E. Evaluation** - `promptfoo`'s real run against your own `/challenge` command ("1 of 2 test cases passed," an `llm-rubric` grader catching a generic counter-example a manual read missed) is sitting in your vault as a live example of LLM-as-judge evaluation, unexplained as a concept.
+
+**F. Craft** - prompt engineering vs. context engineering as a real distinction, plus the security layer already named (`CL4R1T4S`, `bumblebee`, `AgentShield`).
+
+Starting with A. Three terms that get used interchangeably in casual conversation but are three separate mechanisms: **tokenization**, **embeddings**, and the **context window**.
+
+## Tokens - not words, not characters
+
+A token is a chunk of text from a fixed vocabulary the model was given once, at training time, and never changes again. Claude's vocabulary has on the order of 100,000 entries. Building that vocabulary is a separate, one-time process called **Byte-Pair Encoding (BPE)**: start with every individual byte/character as its own token, then repeatedly find the most frequent adjacent pair of tokens in a huge text corpus and merge it into one new token. Do that tens of thousands of times and you end up with a vocabulary where common words are one token (`the`, `is`), less common words split into a few pieces (`token`, `iz`, `ation`), and anything truly novel falls back to individual characters.
+
+This single fact explains a real failure mode you've probably seen: ask a model to count the letters in "strawberry" and it can get it wrong. It's not being careless - it never sees individual letters. It sees whatever tokens BPE happened to split that word into, so a letter-counting task requires it to reason about sub-token structure it has no direct access to. Same root cause behind LLMs being worse at arithmetic on large numbers than you'd expect: digits get grouped into multi-digit tokens inconsistently, so the model isn't doing place-value math, it's pattern-matching over token sequences that don't line up cleanly with place value.
+
+## Embeddings - meaning as geometry
+
+Once text is tokenized into a sequence of IDs, each ID gets converted into a vector - a long list of numbers, thousands of dimensions - called an **embedding**. This vector is learned during training so that tokens used in similar contexts end up close together in that high-dimensional space. This is the actual mechanism behind semantic search: `claude-context`'s embedding index in your `Tool Map.md` isn't matching keywords, it's converting your query into the same kind of vector and finding which stored chunks sit nearest to it geometrically. "Nearest" here is a real distance calculation (cosine similarity, usually), not a metaphor.
+
+## The context window - a fixed budget, not a metaphor
+
+Inside the model, every token in your conversation - system prompt, your messages, tool results, the model's own prior output - sits in one sequence the model processes together via **self-attention**: each token's representation gets updated based on a weighted relationship to every other token currently in that sequence. The **context window** is the hard cap on how many tokens can be in that sequence at once. This is not a soft guideline. Once you're at the cap, something has to leave for something new to enter.
+
+This is the exact mechanism behind everything we found in the audit tonight. The North Star doc's line "the context window is a public good" is this fact stated as a design principle: every vendor-cache file a tool reads, every duplicated instruction doc, every stale note dumped into a prompt is tokens spent that can't be spent on your actual question. It is not a metaphorical budget. It is a literal fixed-size array.
+
+## Training vs. inference - the split that explains "does it remember me"
+
+**Training** is the process that sets the billions of numbers (weights) inside the model, done by running gradient descent over trillions of tokens so that "predict the next token correctly" gets progressively better. This happens once (pretraining, extremely expensive, months on huge GPU clusters), then again more narrowly (fine-tuning and alignment, teaching it to follow instructions and refuse harmful requests).
+
+**Inference** is what happens every single time you send a message. The weights are frozen. Nothing about the model changes. It runs your token sequence forward through those same frozen weights and produces a probability distribution over the next token, samples one, appends it, and repeats until it stops. That is the entire mechanism - iterated next-token prediction over a frozen network. No conversation you have "teaches" the model anything. If a system appears to remember you across sessions - `gbrain`'s PGLite database, Jarvis's own memory files at `C:\Users\Anant Gupta\.claude\projects\...\memory\` - that memory lives outside the model entirely, as stored text that gets re-read back into a future context window. The model itself never learns; the surrounding system re-feeds it.
+
+## Prompt caching - why this matters for tonight's whole conversation
+
+Because inference reprocesses the entire context sequence, and because a long conversation like this one re-sends nearly the same prefix (system prompt, CLAUDE.md, tool definitions) on every single turn, providers can cache the already-computed attention state for an unchanged prefix and skip recomputing it - cheaper and faster, but only up to the first point where something actually changed. Edit or insert something earlier in the context and everything after that point invalidates. This is the direct mechanical reason a stable, front-loaded context pack (the North Star's own proposal) is cheap, while a context that gets reshuffled every turn is not.
+
+That's the base vocabulary. Before moving to harness engineering (both senses) - does this depth land right, or should I go one level deeper into the actual attention math (the Q/K/V and softmax mechanism) before we move on?
+
 ### Tool Calls
 
 - `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\Standards\Evergreen Standard.md`
@@ -1204,6 +1260,68 @@ D:\Users\_Anant\10_Areas\Documents\Jarvis\60_Claude\20_Distilled_Notes\Sources -
 - `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Projects\AI Use\Claude Kit\Tool Map.md`
 - `Grep` -- pattern `^#{1,3} ` path `D:\Users\_Anant\10_Areas\Documents\Jarvis\10_Areas\Career\Engineer Edge Roadmap.md`
 - `Grep` -- pattern `### 3\. AI Engineering|### Days 31-60: Failure Harness` path `D:\Users\_Anant\10_Areas\Documents\Jarvis\10_Areas\Career\Engineer Edge Roadmap.md`
+- `AskUserQuestion` -- `{"questions":[{"question":"Which sense of \"harness\" did you mean for \"harness engineering\"?","header":"Harness meaning","options":[{"label":"Agent harness (Tool Map sense)","description":"The scaffolding around a raw model - tools, context assembly, permissions, memory - what Claude Code/Cursor/ECC actually are."},{"label":"Failure harness (Roadmap sense)","description":"Reliability/chaos-testing scaffold around a shipped AI feature - logging, forced failure cases, observability."},{"label":"Both, as two related topics","description":"Cover both meanings explicitly since the vault already conflates the same word for two different things - worth resolving, not just picking one."}]},{"question":"Given this index (A-F), where do we start?","header":"Starting topic","options":[{"label":"A - base vocabulary first","description":"Tokens, context windows, training vs inference - the minimum shared vocabulary everything else depends on."},{"label":"D - harness engineering first","description":"Jump straight to your named focus; pull in A\u0027s vocabulary only as needed mid-explanation."}]}]}`
+
+## You
+
+Great job providing me with concrete definitions but this is in the terminal and only a few terminologies. I provided you with all the files and folders because i want to learn from those resources provided. There is so much already provided to you. I want to work alongside claude code to further expand and improve my learning inside obsidian (jarvis). But i do not wish to learn from you, I just want to further extend my knowledge from you. So, let's come up with a much better index for all the resources listed out in this vault and already mentioned to you. I want an index to expand my ai learning. I do not want to learn from a terminal from the start. Let's start with concrete already published research and courses. There are certifications out there and listed in my vault too. I want proof, notes and concrete information for my learning process. Let's create a syllabus for this is what I mean. This is going to be a very in depth syllabus for my learning journey to ai. I do not wish to learn everything, certainly not from a detailed textbook. We already are going to do that in UMN courses (soon 2027). What I want to do before that is take almost a cheat manner to learn quickly about everything - just touching the top and understanding the basics. I want to get my basics extremely strong before diving in depth (textbooks). Where do I learn from? What courses do i do? What repos do i follow? What information do you need to create an in depth syllabus with multiple links and interlinks to notes? What is needed to study? The index just provided was a starting point but is not even close to being detailed and has very less content in it. I want at least a 4 month learning syllabus that is going to be enhanced as time passes. So, focus on the basics first. Make sure to find concrete information, completely search and deep research jarvis and the links provided. Go through each and everything mentioned to you already and other information necessary. I want to do this correctly, in a very systematic manner. First, starting with the syllabus. Do not make mistakes, keep asking questions where confused. Do not make assumptions, research and go through each and every note in detail. Do the task at hand correctly. Do not create the syllabus yet, tell me how exactly will you create the syllabus, what sources, answer all the questions. Only after having extremely rich context and content. Write the syllabus then, so for now - do the research, ask questions and make sure that we are on the right path.
+
+## Claude
+
+I did the research pass — vault first, then fresh web verification of the strongest candidates. No syllabus yet, as asked. Here's the methodology, the concrete anchors found, and the questions I actually need answered before writing it.
+
+## How I'll build it
+
+Three-layer construction, not a generic "best AI courses" list:
+1. **Anchor in what's already vetted in this vault** - `Certifications Strategy.md`'s locked decisions, `Useful Repos - Shortlist.md`'s per-repo verdicts, `40_Resources/CS/Links.md`'s bookmarked courses, and `Tool Map.md`'s fresher (2026-08-20) re-verification of several of the same repos. Where the vault already made a call, the syllabus inherits it rather than re-deciding.
+2. **Verify currency against the live web**, not the vault note's date - several of these were checked 2026-05-29 or earlier; I re-verified the load-bearing ones just now.
+3. **Sequence by your stated goal**: breadth-first, basics-strong, "cheat sheet before textbook," each module producing a real artifact (a notebook, a small working RAG pipeline, a completed course module) - not passive video-watching, since you said proof and notes, not just links.
+
+## What I found - real, verified just now, not from memory
+
+**Anthropic Academy** - not in your vault at all yet, and probably should be the spine. Launched 2026-03-02, ~18 free courses across three tracks: AI Fluency (non-technical), product training, and developer deep-dives (API, MCP, Claude Code, Subagents, Cowork, Agent Skills). Free, self-paced, free LinkedIn-postable certificates, official Anthropic content on the exact tools you use daily. [Anthropic Academy overview](https://beginnersinai.org/anthropic-academy-courses/)
+
+**Learn Harness Engineering** (walkinglabs.github.io) - already bookmarked in `40_Resources/CS/Links.md` under Guides, never followed up on. Confirmed real and well-structured: a harness is defined as "everything in the engineering infrastructure outside the model weights," broken into five subsystems - instructions, tools, environment, state, feedback. Theoretical lectures plus 7 hands-on projects. This is the direct answer to the agent-harness half of your named focus. [Course home](https://walkinglabs.github.io/learn-harness-engineering/en/) · [Lecture 2 - What a Harness Actually Is](https://walkinglabs.github.io/learn-harness-engineering/en/lectures/[REDACTED]/)
+
+**DataTalksClub LLM Zoomcamp** - already in your vault as a source summary, called "THE GOAT" in `Links.md`. Confirmed: 10 weeks, free, hands-on, covers RAG, vector search, embeddings, agents, function calling, evaluation, monitoring, hybrid search, reranking. The 2026 live cohort already ran (June-summer) - self-paced access with no certificate is the realistic path now. [Course repo](https://github.com/DataTalksClub/llm-zoomcamp) · [DataTalks.Club course page](https://datatalks.club/courses/llm-zoomcamp/)
+
+**Karpathy's Neural Networks: Zero to Hero** - matches "builder depth" directly: backpropagation and micrograd built from scratch, tokenization and BPE built from scratch (the exact mechanism I taught tonight), up through building a GPT. Requires working Python and basic calculus, which you have. [Course home](https://karpathy.ai/zero-to-hero.html)
+
+**3Blue1Brown's neural network series** - the standard visual companion to Karpathy's course, consistently paired with it in every roadmap I found.
+
+**Already in your vault, not yet cross-referenced with each other**: `ai-dev-tools-zoomcamp` (MCP, Claude Code, coding agents - DataTalksClub), `Certifications Strategy.md`'s locked table (GitHub Foundations in progress, Microsoft AI-900 proceed, Anthropic Certified AI Engineer/DeepLearning.AI/DataTalksClub flagged-not-researched), `AI Engineer Roadmap - roadmap.sh` (already ingested, called "genuinely high quality"), `applied-ml` (Eugene Yan's production-ML case studies), `system-design-primer`.
+
+**Already in the vault, not external at all**: `Engineer Edge Roadmap.md`'s own "Failure Harness" (Days 31-60) is the vault's existing content for the *other* sense of harness - reliability/chaos-testing. The syllabus should link to it, not duplicate it.
+
+## Questions I need answered before writing this correctly
+
+The merge decision means I need the full shape of `Engineer Edge Roadmap.md` before proposing how the syllabus actually integrates into it, not just the two sections I've read. Pulling the whole file now, still research, not writing.
+
+### Tool Calls
+
+- `Bash` -- `find "D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Internship\Preperation\System Design" -type f -name "*.md" 2>/dev/null
+echo ---
+find "D:\Users\_Anant\10_Areas\Documents\Jarvis\60_Claude\10_Source_Summaries\Github Ingestion" -iname "*zoomcamp*" -o -iname "*applied-ml*" -o -iname "*system-design-primer*" 2>/dev/null`
+```
+D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Internship\Preperation\System Design/System Design Practice.md
+---
+D:\Users\_Anant\10_Areas\Documents\Jarvis\60_Claude\10_Source_Summaries\Github Ingestion/AI Starred/applied-ml.md
+D:\Users\_Anant\10_Areas\Documents\Jarvis\60_Claude\10_Source_Summaries\Github Ingestion/Jobs Starred/system-design-primer.md
+D:\Users\_Anant\10_Areas\Documents\Jarvis\60_Claude\10_Source_Summaries\Github Ingestion/Learning Starred/ai-dev-tools-zoomcamp.md
+D:\Users\_Anant\10_Areas\Documents\Jarvis\60_Claude\10_Source_Summaries\Github Ingestion/Learning Starred/data-engineering-zoomcamp.md
+D:\Users\_Anant\10_Areas\Documents\Jarvis\60_Claude\10_Source_Summaries\Github Ingestion/Learning Starred/llm-zoomcamp.md
+D:\Users\_Anant\10_Areas\Documents\Jarvis\60_Claude\10_Source_Summaries\Github Ingestion/Learning Starred/machine-learning-zoomcamp.md
+D:\Users\_Anant\10_Areas\Documents\Jarvis\60_Claude\10_Source_Summaries\Github Ingestion/Learning Starred/mlops-zoomcamp.md
+```
+- `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\40_Resources\CS\Links.md`
+- `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\60_Claude\10_Source_Summaries\Github Ingestion\Useful Repos - Shortlist.md`
+- `WebSearch` -- `{"query":"\"Learn Harness Engineering\" walkinglabs.github.io"}`
+- `WebSearch` -- `{"query":"DataTalksClub LLM Zoomcamp 2026 free course RAG curriculum"}`
+- `WebSearch` -- `{"query":"Anthropic Academy free courses Claude 2026"}`
+- `WebSearch` -- `{"query":"Andrej Karpathy Neural Networks Zero to Hero course 3Blue1Brown neural network series beginner"}`
+- `AskUserQuestion` -- `{"questions":[{"question":"Engineer Edge Roadmap already has a live 90-day plan with its own AI Engineering arena (RAG, chunking, retrieval, evaluation, grounding). Should the 4-month syllabus run alongside it as a separate track, or should it be woven into/replace that arena so there\u0027s one plan, not two competing ones?","header":"Roadmap overlap","options":[{"label":"Separate track","description":"Keep Engineer Edge Roadmap focused on the portfolio-project 90 days; the syllabus is a distinct, parallel learning track."},{"label":"Merge into the Roadmap","description":"Fold the syllabus\u0027s AI-fundamentals content into Engineer Edge Roadmap\u0027s existing AI Engineering arena so there\u0027s one source of truth."}]},{"question":"DataTalksClub zoomcamps and Karpathy\u0027s course are hands-on (Python, Docker, building things from scratch). Your \"cheat sheet\" framing suggested touching the top quickly. Which mode should the 4-month syllabus actually run in?","header":"Depth vs speed","options":[{"label":"Hands-on, build real things","description":"Actually run the notebooks, build a small RAG pipeline, build micrograd - slower but matches \u0027builder depth\u0027 from earlier."},{"label":"Fast survey, light building","description":"Read/watch for the mental model, do only the smallest exercises - true to the \u0027cheat sheet, basics only\u0027 framing, defer heavy building to UMN/later."}]},{"question":"Should Anthropic Academy\u0027s free certificates get added to Certifications Strategy.md\u0027s tracked table (which currently applies a strict \u0027ATS insurance only\u0027 filter), or treated as pure learning material outside that certification-ROI discipline?","header":"Certs vs learning","options":[{"label":"Add to Certifications Strategy","description":"Track them the same way as GitHub Foundations/AI-900 - subject to the same ROI filter."},{"label":"Keep separate","description":"Anthropic Academy is learning material for this syllabus, not a career-signal certification decision - don\u0027t mix the two systems."}]},{"question":"Roughly how many hours per week realistically exist for this syllabus, given the existing daily LeetCode/study habits and the 90-day roadmap already running?","header":"Weekly time budget","options":[{"label":"3-5 hrs/week","description":"Light addition on top of existing commitments - a slow, steady 4-month pace."},{"label":"6-10 hrs/week","description":"A real secondary priority, meaningful weekly progress."},{"label":"10+ hrs/week","description":"Near-primary focus for these 4 months, existing habits adjust around it."}]}]}`
+- `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\10_Areas\Career\Engineer Edge Roadmap.md`
+- `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Internship\Preperation\System Design\System Design Practice.md`
 
 ## Actions Taken
 
@@ -1257,5 +1375,8 @@ echo ---
 find "D:\Users\_Anant\10_Areas\Documents\Jarvis\40_Resources\CS\Repos" -maxdepth 2 -type d 2>/dev/null
 echo ---
 find "D:\Users\_Anant\10_Areas\Documents\Jarvis\60_Claude\20_Distilled_Notes\Sources - Plan" -maxdepth 1 -type f -name "*.md" 2>/dev/null`
+- `find "D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Internship\Preperation\System Design" -type f -name "*.md" 2>/dev/null
+echo ---
+find "D:\Users\_Anant\10_Areas\Documents\Jarvis\60_Claude\10_Source_Summaries\Github Ingestion" -iname "*zoomcamp*" -o -iname "*applied-ml*" -o -iname "*system-design-primer*" 2>/dev/null`
 
 

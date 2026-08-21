@@ -840,3 +840,127 @@ Synchronization complete at 12:44:48  (0 items transferred, 1 skipped, 0 failed)
 2026-08-21 16:04:33 +0400  agents/  OK  .claude/agents -> agents/second-brain-claudekit
 2026-08-21 16:04:33 +0400  commands/  OK  .claude/commands -> commands/second-brain-claudekit
 2026-08-21 16:04:33 +0400  hooks/  OK  .claude/hooks -> hooks/second-brain-claudekit
+2026-08-21 16:13:19 +0400  OK  exit=0
+2026-08-21 16:13:19 +0400  instructions/  OK  CLAUDE.md -> CLAUDE.md
+2026-08-21 16:13:19 +0400  instructions/  OK  README.md -> README.md
+2026-08-21 16:13:19 +0400  instructions/  OK  _docs/Current-Setup.md -> Current-Setup.md
+2026-08-21 16:13:19 +0400  instructions/  OK  _docs/Design.md -> Design.md
+2026-08-21 16:13:19 +0400  instructions/  OK  _docs/Gaps-Archive.md -> Gaps-Archive.md
+2026-08-21 16:13:19 +0400  instructions/  OK  _docs/Gaps.md -> Gaps.md
+2026-08-21 16:13:19 +0400  instructions/  OK  _docs/How to/README.md -> how-to-README.md
+2026-08-21 16:13:19 +0400  instructions/  OK  _docs/How to/conversation-capture.md -> conversation-capture.md
+2026-08-21 16:13:19 +0400  instructions/  OK  _docs/How to/review-system.md -> review-system.md
+2026-08-21 16:13:19 +0400  instructions/  OK  _docs/How to/tests-and-promotion.md -> tests-and-promotion.md
+2026-08-21 16:13:19 +0400  instructions/  OK  _docs/How to/using-staged-artifacts.md -> using-staged-artifacts.md
+2026-08-21 16:13:19 +0400  instructions/  OK  _docs/Jarvis.md -> Jarvis.md
+2026-08-21 16:13:19 +0400  instructions/  OK  _docs/Promotion-Criteria.md -> Promotion-Criteria.md
+2026-08-21 16:13:19 +0400  instructions/  OK  _docs/Repo-Map-Archive.md -> Repo-Map-Archive.md
+2026-08-21 16:13:19 +0400  instructions/  OK  _docs/Repo-Map.md -> Repo-Map.md
+2026-08-21 16:13:19 +0400  instructions/  OK  _docs/Sync.md -> Sync.md
+2026-08-21 16:13:19 +0400  agents/  OK  .claude/agents -> agents/second-brain-claudekit
+2026-08-21 16:13:19 +0400  commands/  OK  .claude/commands -> commands/second-brain-claudekit
+2026-08-21 16:13:19 +0400  hooks/  OK  .claude/hooks -> hooks/second-brain-claudekit
+2026-08-21 16:34:33 +0400  OK  exit=0
+2026-08-21 16:34:33 +0400  instructions/  OK  CLAUDE.md -> CLAUDE.md
+2026-08-21 16:34:33 +0400  instructions/  OK  README.md -> README.md
+2026-08-21 16:34:33 +0400  instructions/  OK  _docs/Current-Setup.md -> Current-Setup.md
+2026-08-21 16:34:33 +0400  instructions/  OK  _docs/Design.md -> Design.md
+2026-08-21 16:34:33 +0400  instructions/  OK  _docs/Gaps-Archive.md -> Gaps-Archive.md
+2026-08-21 16:34:33 +0400  instructions/  OK  _docs/Gaps.md -> Gaps.md
+2026-08-21 16:34:33 +0400  instructions/  OK  _docs/How to/README.md -> how-to-README.md
+2026-08-21 16:34:33 +0400  instructions/  OK  _docs/How to/conversation-capture.md -> conversation-capture.md
+2026-08-21 16:34:33 +0400  instructions/  OK  _docs/How to/review-system.md -> review-system.md
+2026-08-21 16:34:33 +0400  instructions/  OK  _docs/How to/tests-and-promotion.md -> tests-and-promotion.md
+2026-08-21 16:34:33 +0400  instructions/  OK  _docs/How to/using-staged-artifacts.md -> using-staged-artifacts.md
+2026-08-21 16:34:33 +0400  instructions/  OK  _docs/Jarvis.md -> Jarvis.md
+2026-08-21 16:34:33 +0400  instructions/  OK  _docs/Promotion-Criteria.md -> Promotion-Criteria.md
+2026-08-21 16:34:33 +0400  instructions/  OK  _docs/Repo-Map-Archive.md -> Repo-Map-Archive.md
+2026-08-21 16:34:33 +0400  instructions/  OK  _docs/Repo-Map.md -> Repo-Map.md
+2026-08-21 16:34:33 +0400  instructions/  OK  _docs/Sync.md -> Sync.md
+2026-08-21 16:34:33 +0400  agents/  OK  .claude/agents -> agents/second-brain-claudekit
+2026-08-21 16:34:33 +0400  commands/  OK  .claude/commands -> commands/second-brain-claudekit
+2026-08-21 16:34:33 +0400  hooks/  OK  .claude/hooks -> hooks/second-brain-claudekit
+2026-08-21 16:49:34 +0400  OK  exit=0
+2026-08-21 16:49:34 +0400  instructions/  OK  CLAUDE.md -> CLAUDE.md
+2026-08-21 16:49:34 +0400  instructions/  OK  README.md -> README.md
+2026-08-21 16:49:34 +0400  instructions/  OK  _docs/Current-Setup.md -> Current-Setup.md
+2026-08-21 16:49:34 +0400  instructions/  OK  _docs/Design.md -> Design.md
+2026-08-21 16:49:34 +0400  instructions/  OK  _docs/Gaps-Archive.md -> Gaps-Archive.md
+2026-08-21 16:49:34 +0400  instructions/  OK  _docs/Gaps.md -> Gaps.md
+2026-08-21 16:49:34 +0400  instructions/  OK  _docs/How to/README.md -> how-to-README.md
+2026-08-21 16:49:34 +0400  instructions/  OK  _docs/How to/conversation-capture.md -> conversation-capture.md
+2026-08-21 16:49:34 +0400  instructions/  OK  _docs/How to/review-system.md -> review-system.md
+2026-08-21 16:49:34 +0400  instructions/  OK  _docs/How to/tests-and-promotion.md -> tests-and-promotion.md
+2026-08-21 16:49:34 +0400  instructions/  OK  _docs/How to/using-staged-artifacts.md -> using-staged-artifacts.md
+2026-08-21 16:49:34 +0400  instructions/  OK  _docs/Jarvis.md -> Jarvis.md
+2026-08-21 16:49:34 +0400  instructions/  OK  _docs/Promotion-Criteria.md -> Promotion-Criteria.md
+2026-08-21 16:49:34 +0400  instructions/  OK  _docs/Repo-Map-Archive.md -> Repo-Map-Archive.md
+2026-08-21 16:49:34 +0400  instructions/  OK  _docs/Repo-Map.md -> Repo-Map.md
+2026-08-21 16:49:34 +0400  instructions/  OK  _docs/Sync.md -> Sync.md
+2026-08-21 16:49:34 +0400  agents/  OK  .claude/agents -> agents/second-brain-claudekit
+2026-08-21 16:49:34 +0400  commands/  OK  .claude/commands -> commands/second-brain-claudekit
+2026-08-21 16:49:34 +0400  hooks/  OK  .claude/hooks -> hooks/second-brain-claudekit
+2026-08-21 17:04:34 +0400  OK  exit=0
+2026-08-21 17:04:34 +0400  instructions/  OK  CLAUDE.md -> CLAUDE.md
+2026-08-21 17:04:34 +0400  instructions/  OK  README.md -> README.md
+2026-08-21 17:04:34 +0400  instructions/  OK  _docs/Current-Setup.md -> Current-Setup.md
+2026-08-21 17:04:34 +0400  instructions/  OK  _docs/Design.md -> Design.md
+2026-08-21 17:04:34 +0400  instructions/  OK  _docs/Gaps-Archive.md -> Gaps-Archive.md
+2026-08-21 17:04:34 +0400  instructions/  OK  _docs/Gaps.md -> Gaps.md
+2026-08-21 17:04:34 +0400  instructions/  OK  _docs/How to/README.md -> how-to-README.md
+2026-08-21 17:04:34 +0400  instructions/  OK  _docs/How to/conversation-capture.md -> conversation-capture.md
+2026-08-21 17:04:34 +0400  instructions/  OK  _docs/How to/review-system.md -> review-system.md
+2026-08-21 17:04:34 +0400  instructions/  OK  _docs/How to/tests-and-promotion.md -> tests-and-promotion.md
+2026-08-21 17:04:34 +0400  instructions/  OK  _docs/How to/using-staged-artifacts.md -> using-staged-artifacts.md
+2026-08-21 17:04:34 +0400  instructions/  OK  _docs/Jarvis.md -> Jarvis.md
+2026-08-21 17:04:34 +0400  instructions/  OK  _docs/Promotion-Criteria.md -> Promotion-Criteria.md
+2026-08-21 17:04:34 +0400  instructions/  OK  _docs/Repo-Map-Archive.md -> Repo-Map-Archive.md
+2026-08-21 17:04:34 +0400  instructions/  OK  _docs/Repo-Map.md -> Repo-Map.md
+2026-08-21 17:04:34 +0400  instructions/  OK  _docs/Sync.md -> Sync.md
+2026-08-21 17:04:34 +0400  agents/  OK  .claude/agents -> agents/second-brain-claudekit
+2026-08-21 17:04:34 +0400  commands/  OK  .claude/commands -> commands/second-brain-claudekit
+2026-08-21 17:04:34 +0400  hooks/  OK  .claude/hooks -> hooks/second-brain-claudekit
+2026-08-21 17:19:33 +0400  OK  exit=0
+2026-08-21 17:19:33 +0400  instructions/  OK  CLAUDE.md -> CLAUDE.md
+2026-08-21 17:19:33 +0400  instructions/  OK  README.md -> README.md
+2026-08-21 17:19:33 +0400  instructions/  OK  _docs/Current-Setup.md -> Current-Setup.md
+2026-08-21 17:19:33 +0400  instructions/  OK  _docs/Design.md -> Design.md
+2026-08-21 17:19:33 +0400  instructions/  OK  _docs/Gaps-Archive.md -> Gaps-Archive.md
+2026-08-21 17:19:33 +0400  instructions/  OK  _docs/Gaps.md -> Gaps.md
+2026-08-21 17:19:33 +0400  instructions/  OK  _docs/How to/README.md -> how-to-README.md
+2026-08-21 17:19:33 +0400  instructions/  OK  _docs/How to/conversation-capture.md -> conversation-capture.md
+2026-08-21 17:19:33 +0400  instructions/  OK  _docs/How to/review-system.md -> review-system.md
+2026-08-21 17:19:33 +0400  instructions/  OK  _docs/How to/tests-and-promotion.md -> tests-and-promotion.md
+2026-08-21 17:19:33 +0400  instructions/  OK  _docs/How to/using-staged-artifacts.md -> using-staged-artifacts.md
+2026-08-21 17:19:33 +0400  instructions/  OK  _docs/Jarvis.md -> Jarvis.md
+2026-08-21 17:19:33 +0400  instructions/  OK  _docs/Promotion-Criteria.md -> Promotion-Criteria.md
+2026-08-21 17:19:33 +0400  instructions/  OK  _docs/Repo-Map-Archive.md -> Repo-Map-Archive.md
+2026-08-21 17:19:33 +0400  instructions/  OK  _docs/Repo-Map.md -> Repo-Map.md
+2026-08-21 17:19:33 +0400  instructions/  OK  _docs/Sync.md -> Sync.md
+2026-08-21 17:19:33 +0400  agents/  OK  .claude/agents -> agents/second-brain-claudekit
+2026-08-21 17:19:33 +0400  commands/  OK  .claude/commands -> commands/second-brain-claudekit
+2026-08-21 17:19:33 +0400  hooks/  OK  .claude/hooks -> hooks/second-brain-claudekit
+2026-08-21 17:34:35 +0400  OK  exit=0
+2026-08-21 17:34:35 +0400  instructions/  OK  CLAUDE.md -> CLAUDE.md
+2026-08-21 17:34:35 +0400  instructions/  OK  README.md -> README.md
+2026-08-21 17:34:35 +0400  instructions/  OK  PRD.md -> PRD.md
+2026-08-21 17:34:35 +0400  instructions/  OK  Architecture.md -> Architecture.md
+2026-08-21 17:34:35 +0400  agents/  OK  .claude/agents -> agents/second-brain-claudekit
+2026-08-21 17:34:35 +0400  commands/  OK  .claude/commands -> commands/second-brain-claudekit
+2026-08-21 17:34:35 +0400  hooks/  OK  .claude/hooks -> hooks/second-brain-claudekit
+2026-08-21 17:49:34 +0400  OK  exit=0
+2026-08-21 17:49:34 +0400  instructions/  OK  CLAUDE.md -> CLAUDE.md
+2026-08-21 17:49:34 +0400  instructions/  OK  README.md -> README.md
+2026-08-21 17:49:34 +0400  instructions/  OK  PRD.md -> PRD.md
+2026-08-21 17:49:34 +0400  instructions/  OK  Architecture.md -> Architecture.md
+2026-08-21 17:49:34 +0400  agents/  OK  .claude/agents -> agents/second-brain-claudekit
+2026-08-21 17:49:34 +0400  commands/  OK  .claude/commands -> commands/second-brain-claudekit
+2026-08-21 17:49:34 +0400  hooks/  OK  .claude/hooks -> hooks/second-brain-claudekit
+2026-08-21 19:54:21 +0400  OK  exit=0
+2026-08-21 19:54:21 +0400  instructions/  OK  CLAUDE.md -> CLAUDE.md
+2026-08-21 19:54:21 +0400  instructions/  OK  README.md -> README.md
+2026-08-21 19:54:21 +0400  instructions/  OK  PRD.md -> PRD.md
+2026-08-21 19:54:21 +0400  instructions/  OK  Architecture.md -> Architecture.md
+2026-08-21 19:54:21 +0400  agents/  OK  .claude/agents -> agents/second-brain-claudekit
+2026-08-21 19:54:21 +0400  commands/  OK  .claude/commands -> commands/second-brain-claudekit
+2026-08-21 19:54:21 +0400  hooks/  OK  .claude/hooks -> hooks/second-brain-claudekit
