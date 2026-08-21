@@ -1,0 +1,83 @@
+---
+company: AMD
+title: Data Analyst Intern/Co-op
+url: https://careers.amd.com/jobs/90895?icims=1
+source: SimplifyJobs
+terms:
+  - Spring 2027
+  - Summer 2027
+  - Fall 2027
+locations:
+  - San Jose, CA
+  - Santa Clara, CA
+target_year: []
+date_posted: '2026-08-21'
+date_found: '2026-08-21'
+matched_reason: Spring 2027, Summer 2027, AI/ML/Data
+status: unreviewed
+next:
+tags:
+  - internship
+  - auto-discovered
+---
+# Data Analyst Intern/Co-op
+Found 2026-08-21 via SimplifyJobs.
+> [!NOTE] Other: genuine software engineering role, no bucket-specific signal matched.
+## Posting (fetched 2026-08-21)
+# 2027 Undergrad Data Analyst Intern/co-op
+JOB\_DESCRIPTION.SHARE.HTML
+CAROUSEL\_PARAGRAPH
+JOB\_DESCRIPTION.SHARE.HTML
+- Santa Clara, California; San Jose, California
+- Student / Intern / Temp
+- 90895
+- USD $64,064.00/Yr.
+- USD $96,096.00/Yr.
+mail\_outline
+Get future jobs matching this search
+LoginorRegister
+## Job Description
+**ADVANCE YOUR CAREER. ADVANCE THE WORLD.**
+At AMD, we believe technology has the power to solve the world’s most important challenges. From advancing healthcare and scientific discovery to powering AI and the technologies people rely on every day, innovation at AMD is shaping the future.
+Whether you’re designing next-gen processors, enabling AI breakthroughs, or bringing leading edge products to market, every role at AMD contributes to something bigger — technology that moves the world forward. Join us and, together, we’ll advance your career.
+As an AMD Co-op, you’ll be placed at the epicenter of the AI ecosystem, working alongside experts and industry pioneers. You’ll do important work, learn new skills, expand your network, and gain real-world experience on projects that impact millions of end-users worldwide. Whether you’re an undergrad or a PhD student, your contributions matter—and your experience here will be a launchpad for what comes next.
+**Job Details:**
+- **Locations:** San Jose, CA or Santa Clara, CA
+- **Onsite/Hybrid:** This role requires the student to work full time (40 hours a week), in either a hybrid or onsite work structure throughout the duration of the co-op/intern term
+**Duration:**
+- **Spring/Summer Co-op**: January 15, 2027 - August 13, 2027
+- **Summer Internship:**
+- Semester Students: May 24, 2027 - August 13, 2027
+- Quarter Students: June 21, 2027 - September 10, 2027
+- **Summer/Fall Co-op**:
+- Semester Students: May 24, 2027 - December 10, 2027
+- Quarter Students: June 21, 2027 - December 10, 2027
+**WHAT YOU WILL BE DOING:**
+We are seekinga highly motivated Data Analyst intern/co-op to join our team and work on data, statistical analysis, performance analysis, quality assurance, and data interpretation. In this role –
+- Your responsibility will be to analyze and organize raw data to craft proofs of concepts, prototype, and implement solutions using relevant analysis methods and visualization techniques
+- We will involve you in data analysis assignments and report results. Additionally, we would train to build data for prescriptive and predictive modeling to generate business foresights
+- We will assign tasks for building reports, presentation and crafting dashboards using data visualization tools
+**WHO WE ARE LOOKING FOR:**
+- You are currently enrolled in a United States based University into a Undergrad program majoring in Data Analytics, Data Engineering, Computer Engineering, Electrical Engineer, Computer Science or a related field
+- If you have knowledge / experience with any of the following technical skills (or related areas) and are enthusiastic about this role, we strongly encourage you to apply –
+- Python, SQL, R, Java
+- Data processing, data engineering and/or data science
+- Kubernetes, Tableu, PowerBi, data analytics
+- Microsoft cloud services like Azure and AKS
+- Snowflake, Oracle, SQL server data platform
+- Software development (including design, implementation, testing, and other related work)
+- Database design and data modeling
+**_Note:_** _By submitting your application, you are indicating your interest in AMD intern positions. We are recruiting for multiple positions, and if your experience aligns with any of our intern opportunities, a recruiter will contact you._
+**This role is not eligible for visa sponsorship.**
+_Benefits offered are described:_ [AMD benefits at a glance](https://www.amd.com/en/corporate/careers/benefits.html).
+_AMD does not accept unsolicited resumes from headhunters, recruitment agencies, or fee-based recruitment services. AMD and its subsidiaries are equal opportunity, inclusive employers and will consider all applicants without regard to age, ancestry, color, marital status, medical condition, mental or physical disability, national origin, race, religion, political and/or third-party affiliation, sex, pregnancy, sexual orientation, gender identity, military or veteran status, or any other characteristic protected by law.   We encourage applications from all qualified candidates and will accommodate applicants’ needs under the respective laws throughout all stages of the recruitment and selection process._
+_AMD may use Artificial Intelligence to help screen, assess or select applicants for this position.  AMD’s “Responsible AI Policy” is available [here.](https://www.amd.com/en/legal/responsible-ai-use-policy.html)_
+_This posting is for an existing vacancy._
+## Not ready to apply?
+Let’s stay in touch!
+Job Chat
+Chip
+Hi, thank you for your interest in AMD! I'm CHIP, a virtual assistant with Advanced Micro Devices. Would you like to:
+1 - Search for jobs
+2 - Ask questions about AMD
+Learn more about AMD by chatting with us!
