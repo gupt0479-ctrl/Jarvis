@@ -1,0 +1,19 @@
+---
+source_file: "tests/test_run_pipeline.py"
+type: "code"
+community: "test_run_pipeline.py"
+location: "L118"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/test_run_pipelinepy
+---
+
+# test_prioritize_and_cap_orders_preferred_company_first_within_bucket()
+
+## Connections
+- [[Task L integration two 'Other'-bucket candidates, non-preferred one     posted]] - `rationale_for` [EXTRACTED]
+- [[_listing_with_date()]] - `calls` [EXTRACTED]
+- [[test_run_pipeline.py]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/test_run_pipelinepy

@@ -1,0 +1,17 @@
+---
+source_file: "tests/test_sources.py"
+type: "code"
+community: "test_sources.py"
+location: "L79"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/test_sourcespy
+---
+
+# _gh_response()
+
+## Connections
+- [[test_sources.py]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/test_sourcespy

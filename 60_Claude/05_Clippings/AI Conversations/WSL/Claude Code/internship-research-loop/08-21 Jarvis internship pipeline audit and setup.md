@@ -5,33 +5,34 @@ source_app: claude-code
 source_os: wsl
 title: "Jarvis internship pipeline audit and setup"
 started_at: 2026-08-21T13:12:27
-ended_at: 2026-08-21T13:36:28
-duration_minutes: 24
-exported_at: 2026-08-21T17:45:03
+ended_at: 2026-08-21T17:05:07
+duration_minutes: 233
+exported_at: 2026-08-21T21:15:05
 project: internship-research-loop
 cwd: '/home/anant_gupta/projects/work/internship-research-loop'
 session_id: bebacdad-914c-4c86-b1a2-93b41c665f1c
 status: raw
-turn_count: 4
+turn_count: 6
 tools_used:
   Artifact: 1
-  Bash: 13
+  Bash: 25
   Edit: 1
   mcp__jarvis__search_simple: 1
   mcp__jarvis__vault_list: 20
   mcp__jarvis__vault_read: 10
   mcp__jarvis-fs__list_allowed_directories: 1
-  Read: 4
+  Read: 5
   Skill: 1
-  ToolSearch: 2
+  ToolSearch: 3
+  WebFetch: 1
   Write: 5
 tokens:
-  input: 184
-  output: 180999
-  cache_creation: 584675
-  cache_read: 10527564
-  total: 11293422
-cost_usd: 6.254571
+  input: 240
+  output: 257222
+  cache_creation: 1355515
+  cache_read: 15961519
+  total: 17574496
+cost_usd: 11.187064
 model:
   - claude-sonnet-5
 files_touched:
@@ -44,6 +45,7 @@ files_touched:
   - "/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/bebacdad-914c-4c86-b1a2-93b41c665f1c/scratchpad/cysfin.txt"
   - "/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/bebacdad-914c-4c86-b1a2-93b41c665f1c/scratchpad/other.txt"
   - "/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/bebacdad-914c-4c86-b1a2-93b41c665f1c/scratchpad/pipeline-triage.html"
+  - "/home/anant_gupta/projects/work/internship-research-loop/core/debate.py"
 tags:
   - input
   - ai-conversation
@@ -1622,10 +1624,1441 @@ Video Production and Social Media Intern (Spring 2027) - Zipline.md
   ```
 - `Artifact` — `{"file_path":"/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/pipeline-triage.html","title":"Pipeline Triage","description":"A live, evidence-cited status check of the internship pipeline — dossier counts vs. the decided cap, the promotion funnel, and a today-only action plan.","favicon":"🚦"}`
 
+## You
+
+The artifact created and issues found are a good starting point for today. Let's make sure that we do everything listed out in the artifact today and some more things. Our main goal today is to remove the dossiers that are not needed, filter dossiers, update the profile based on the dossiers that we remove. Make sure that the codeabse is perfectly ready for use and self improving per application that we decide to apply for. Applying is not for today - for tomorrow. We focus on filtering and making sure that everything is working perfectly over here. Add a few more resources over here so that we can do the job in more depth. The internship finding process needs much more resources and something that constantly keeps updating insternships, we make a record of all the internships that we have viewed. Making sure that we do not waste time on the same internship. All the flagged insternships are a great starting point for dossier cleanup. 50 applications is happening (idealistic), we are going to convert all the dossiers we are filtering today to programs and applying for it immediately. That's how we will apply for 50 internships. It's just a skill, outreach and netwroking. Ready to run (hopefully all correct), will find out more errors while the process rolls. But for now, this is going to be a session where I want you to write me prompts to another session so that we can finish work more efficiently and quickly. The artifact also keeps getting updated per build that is run. Making sure that we cross things out, change content to actual reality, add a few things, remove a few and most of all filter dossiers. Let's begin with the prompting for a new session now. Refer to this prompting guide for writing prompts: "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/[REDACTED]", we will be working sonnet 5 on hard effort. The first prompt should fix the git status we are currently at - review the changes done in detail (over here), then think of writing a commit message. Pull the changes needed. Fix the broken github action (due to changing my region maybe - was flying). Before writing the prompt review each and every file folder that was added - if there are any necessary changes required - make them in the prompt you write. Do not make any changes over here at all. This session is only going to be for promptng and research. If needed distribute the commits to several commits. The task should be completed in steps as explained above, make no mistakes. Do your research correctly, review the changes made and only then write the prompt. First step is to maintain a very clean github workflow. Go ahead and write the prompt with no mistakes.
+
+## Claude
+
+Understood — this session stays research-and-prompt-writing only, no edits here. Let me review the actual diffs, the new debate.py feature, current test status, and the GitHub Actions health before drafting the prompt. I'll also pull the Anthropic prompting guide to calibrate the prompt structure.
+
+This is a major finding — the uncommitted diff isn't messy WIP, it's a complete, well-documented feature (bucket-capacity notifications, a "debate" comparator for prioritization, debate-loss exclusion, a PhD-only exclusion gate) sitting on stale HEAD. I need to know whether origin/master already has this or something conflicting before I can tell the next session how to reconcile safely.
+
+I've now confirmed everything needed: local `HEAD` (3fd4b88, 07-30) is the exact merge-base with `origin/master` (18c0327, today) — zero divergent local commits, and **origin's 413 commits touch only `logs/` and `state/`, zero code or workflow files**. The uncommitted working tree is a complete, well-documented feature set (bucket-capacity notifications, the "debate" prioritizer, debate-loss exclusion, PhD-only gate, ATS-job-id dedup, recheck-to-Viewed instead of delete, content-extraction fixes) — **all 329 tests pass against it right now**. The three open GitHub issues are self-resolved `429 Too Many Requests` blips from GitHub's own raw-content host on Aug 17–18 (not a region/flying issue — Actions runs on GitHub's cloud, not your device); every run since, including one 40 minutes ago, succeeded. This de-risks the whole task: it's "commit and push good work," not "debug broken code." I worked out a dependency-safe 5-commit split, with exact file/function boundaries and where four files need `git add -p` hunk-splitting.
+
+Here's the prompt for the new session:
+
+---BEGIN PROMPT---
+
+You're picking up `internship-research-loop` (`/home/anant_gupta/projects/work/internship-research-loop`), a zero-LLM GitHub Actions pipeline that discovers internship postings and writes them as dossiers into an Obsidian vault (a separate repo, `gupta-builds/Jarvis`, reached via `gh`/git push, not filesystem access from here). Read `CLAUDE.md` in this repo first — it states the load-bearing conventions (zero-LLM in the unattended path, permissive-by-default filtering, fail-closed write-gate ordering, cite-real-data-in-comments) that this task must not violate.
+
+**Your job this session is exclusively git hygiene and CI health — a clean, well-sequenced commit history and a verified-working pipeline. Do not touch dossier content, `core/profile.yaml`'s filter thresholds beyond what's already staged, or anything in the Jarvis vault. That work is scoped to separate follow-up sessions.**
+
+## Situation
+
+The local checkout is 413 commits behind `origin/master` and also has substantial uncommitted work sitting on that stale base: modifications across `core/classify.py`, `core/identity.py`, `core/profile.yaml`, `core/relevance.py`, `core/run_log.py`, `ingestion/posting_page.py`, `recheck.py`, `run_pipeline.py`, `vault_writer/validate.py`, `vault_writer/writer.py`, matching test files, plus four new untracked files (`core/debate.py`, `tests/test_debate.py`, `tests/test_debate_losses.py`, `tests/fixtures/posting_google_careers.md`).
+
+I already did the risk analysis so you don't have to redo it from scratch — **but re-verify each claim below against live state before acting on it, since time has passed and the automated hourly workflow keeps committing to this repo**:
+
+1. `git merge-base HEAD origin/master` equals local `HEAD` (`3fd4b88`) — the local branch has no divergent commits, it's a pure ancestor of `origin/master` (`18c0327` as of my check, dated today). A `git pull` will fast-forward cleanly.
+2. `git diff --name-only 3fd4b88..origin/master` touches **only** `logs/` and `state/` — zero commits to `run_pipeline.py`, `core/`, `ingestion/`, `vault_writer/`, `recheck.py`, or `.github/workflows/` happened upstream since this checkout went stale. The uncommitted working-tree diff has **zero file-level overlap risk** with what pulling will bring in.
+3. `.venv/bin/python -m pytest tests/ -q` passes **329/329** against the full uncommitted working tree as it sits right now, before any commit. This is finished, tested work, not broken WIP — treat it that way.
+4. The uncommitted `run_pipeline.py`/`core/debate.py` work implements exactly what the vault's `20_Progress/Internship/Building System/Source of Truth.md` (`next:` field, last updated 2026-07-26) called "the dossier count-limit spec, still not in code" — plus additional cited features (a deterministic "debate" comparator for write-priority ordering, a debate-loss exclusion mechanism, `preference_tier` dossier frontmatter). Every non-trivial rule in the diff is cited against a real posting/date in an adjacent comment, matching this repo's own convention — don't second-guess or "clean up" that reasoning, just ship it as written. In particular: the per-bucket 50-dossier cap and global 201 total are enforced as a **notification, never a write refusal** — this is a deliberate, explicitly-justified design decision in the code's own comments (false-exclusion is worse than a full folder). Do not change it to a hard block.
+5. The 3 open GitHub issues on `gupta-builds/internship-research-loop` (#1, #2, #3) are all `HTTPError: 429 Too Many Requests` / `ConnectionResetError` against `raw.githubusercontent.com`, dated 2026-08-17/18 — GitHub's own rate limiting on the *runner's* requests, not anything caused by network conditions on the user's own device (GitHub Actions runs on GitHub's cloud infrastructure regardless of where the user is). Every scheduled run since, including the most recent one, succeeded. There is currently nothing actually broken in the workflow config (`.github/workflows/*.yml` is byte-identical to `origin/master`) — the user suspected a "broken GitHub Action," but the evidence says it already self-resolved. **Re-run `gh run list --repo gupta-builds/internship-research-loop --limit 10` and `gh issue list --repo gupta-builds/internship-research-loop --state open` yourself before concluding this** — if you find something actually still broken, investigate and fix that for real rather than assuming my read still holds.
+
+## Steps, in order
+
+**1. Get current.** `git fetch origin`, confirm the merge-base claim above still holds, then `git pull` (should fast-forward cleanly, no conflicts expected per the analysis above — if it's not a clean fast-forward, stop and figure out why before proceeding, don't force anything).
+
+**2. Commit the staged work as 5 separate, dependency-ordered commits.** Each commit must leave the repo in a fully working state — **run `.venv/bin/python -m pytest tests/ -q` after staging each commit's changes and confirm all tests pass before actually running `git commit`**. Use `git add -p` for the four files noted as needing an intra-file split; use `git add <file>` for whole-file commits. If `git add -p`'s hunk boundaries don't cleanly separate along the lines below (a hunk mixes code belonging to two different commits), don't force a bad split — either fold that file into whichever adjacent commit is the better fit, or use `git add -p`'s `e` (edit) option to split the hunk by hand. Getting the sequencing and passing tests right at every step matters far more than hitting this exact plan.
+
+  - **Commit 1 — "Dedup & relevance accuracy fixes"**: `core/classify.py` (whole file — narrowed `threat` regex), `core/relevance.py` (whole file — rotational-analyst/PM-intern reject patterns, chemical/industrial adjacent-field hints), `ingestion/posting_page.py` **only** the `phd_only_exclusion`/`_PHD_ONLY_RE` addition (NOT the `extract_content` pipeline changes further down — those are commit 2), `core/identity.py` **only** `_ATS_JOB_ID_PATTERNS`/`extract_ats_job_id`/`_norm_company`/the `cross_source_key(company, title, url="")` signature change (NOT `company_matches_preference` at the end of the file — that's commit 3), `vault_writer/validate.py` **only** the `check_cross_source_duplicate` call-site change to pass `listing.url` (NOT the `REQUIRED_FRONTMATTER_FIELDS` addition — that's commit 3). Bring the matching slices of `tests/test_classify.py`, `tests/test_relevance.py`, `tests/test_identity.py`, `tests/test_validate.py`, `tests/test_posting_page.py`.
+
+  - **Commit 2 — "Posting content extraction: dedup, ATS-label splitting, section headings, chrome stripping"**: the rest of `ingestion/posting_page.py`'s diff (`_dedupe_paragraphs`, `_ATS_LABEL_RUN_ON_RE`, `_LISTING_SHELL_RESET_RE`, `_BOLD_SECTION_RE`/`_SECTION_KEYWORD_RE`, `_FOLLOW_US_HEADING_RE`/`_LINK_BULLET_RE`, `_strip_trailing_social_chrome`, the `extract_content` body changes), the new `tests/fixtures/posting_google_careers.md`, the matching slice of `tests/test_posting_page.py`.
+
+  - **Commit 3 — "Preference-tier frontmatter + Dossiers MOC interlinking"**: `core/profile.yaml` (whole file — `preferred_companies`), `core/identity.py`'s `company_matches_preference` (the piece deferred from commit 1), `vault_writer/writer.py` **only** `DOSSIERS_MOC_LINK`, `_TAG_ILLEGAL_CHARS`/`company_slug`, `dump_frontmatter`, and `build_frontmatter`'s `notes`/`preference_tier` fields (NOT `move_dossier_to_viewed` and friends at the end of the file — that's commit 5), `vault_writer/validate.py`'s `REQUIRED_FRONTMATTER_FIELDS` addition (deferred from commit 1). Bring the matching slices of `tests/test_writer.py`, `tests/test_validate.py`.
+
+  - **Commit 4 — "Dossier resource-limit notifications + debate-based write prioritization + debate-loss exclusion"**: `core/debate.py` (new, whole file), `run_pipeline.py` (entire diff — this one genuinely doesn't separate cleanly across its three sub-features, they're interleaved through `run_once()`; commit it whole rather than forcing a fake split), `core/run_log.py` (whole file — `_append_markdown_line` refactor, `append_excluded_log`). Bring `tests/test_debate.py`, `tests/test_debate_losses.py` (both new), and the matching slice of `tests/test_run_pipeline.py`. This commit depends on commit 3 already existing (`render_dossier`'s `preferred_companies` param) — must land after it.
+
+  - **Commit 5 — "recheck.py: move closed dossiers to Viewed/, never delete"**: `recheck.py` (entire diff), `vault_writer/writer.py`'s remaining piece (`move_dossier_to_viewed`, `REMOVED_DOSSIERS_MOC_LINK`, `VIEWED_SUBPATH`). Bring the matching slice of `tests/test_run_pipeline.py`/`tests/test_writer.py`. Depends on commit 3 (`dump_frontmatter`, `DOSSIERS_MOC_LINK`) already existing.
+
+  Write each commit message in this repo's own real style — short, imperative, specific (see `git log --oneline` for examples like "Fix the 5 root causes behind dossier bloat" or "Phase 6: three hard criteria codified"). No generic "misc fixes" or "wip." Commit directly to `master` — this repo has no branch/PR convention, confirm that's still true via `git log` before assuming it.
+
+**3. Push, handling the race with the hourly automated commits.** This repo's own `run.yml`/`recheck.yml` push to this same repo on a schedule, so `origin/master` may have moved again since step 1. `git pull` (should still fast-forward — the automated commits only touch `logs/`/`state/`) immediately before `git push`. If push is rejected, pull again and retry once; don't force-push.
+
+**4. Verify the shipped code actually works live**, not just in `pytest`. Either wait for the next scheduled run or trigger one directly: `gh workflow run run.yml --repo gupta-builds/internship-research-loop`, then `gh run watch` (or poll `gh run list`) until it completes, then `gh run view <id> --log` (or check the newest line of `logs/runs.jsonl` after pulling) to confirm it succeeded and that the new fields (`bucket_at_capacity`, `dossier_total`, `newly_excluded_count`) show up in the run record as expected. This is the pipeline's real, normal hourly behavior — running it isn't a special action, just confirm it lands cleanly with the new code.
+
+**5. Close the 3 stale GitHub issues** (assuming step 0's re-verification confirms they're genuinely resolved) with a short comment each pointing to a specific successful run since, then close. If your fresh check finds something *actually* still broken, fix the real cause instead — don't close an issue that's still live.
+
+## Explicitly out of scope for this session
+
+Do not: touch any dossier file in the vault, edit `core/profile.yaml`'s filter/eligibility rules beyond the `preferred_companies` dict already staged, add new features beyond what's already written in the working tree, rebase or rewrite any existing history, force-push, or update vault documentation (`Source of Truth.md`, `System - Build Log.md`) — that's scoped to a later session once this one's confirmed clean.
+
+## Report back
+
+When done, give me: the final `git log --oneline -10`, confirmation the push succeeded and matches `origin/master`, the result of the live workflow run you triggered/watched (success/failure, and what `bucket_at_capacity`/`dossier_total` showed), the state of the 3 issues, and anything you found during your own re-verification that contradicted what I told you above — I'd rather know I was wrong about something than have you silently work around it.
+
+---END PROMPT---
+
+That's prompt #1. Once you've run it (or want me to keep going), tell me and I'll write the next one — dossier filtering + profile self-improvement is the natural second prompt, and I'd scope that one around the 31-title junk list and per-application flagging you already have from the artifact, plus what "self-improving per application" should actually mean given there's zero application-outcome data yet to learn from.
+
+**Tool calls:**
+
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+echo "=== git diff --stat ==="
+git diff --stat
+echo "=== untracked file sizes ==="
+wc -l core/debate.py tests/test_debate.py tests/test_debate_losses.py tests/fixtures/posting_google_careers.md 2>&1
+  ```
+  ```
+=== git diff --stat ===
+ core/classify.py           |  12 ++-
+ core/identity.py           |  71 +++++++++++-
+ core/profile.yaml          |  28 +++++
+ core/relevance.py          |  56 ++++++++--
+ core/run_log.py            |  33 +++++-
+ ingestion/posting_page.py  | 134 ++++++++++++++++++++++-
+ recheck.py                 |  36 ++++---
+ run_pipeline.py            | 262 +++++++++++++++++++++++++++++++++++++++++----
+ tests/test_classify.py     |  22 ++++
+ tests/test_identity.py     | 121 ++++++++++++++++++++-
+ tests/test_posting_page.py | 171 ++++++++++++++++++++++++++++-
+ tests/test_relevance.py    |  61 +++++++++++
+ tests/test_run_pipeline.py | 130 +++++++++++++++++++++-
+ tests/test_validate.py     |  26 +++++
+ tests/test_writer.py       | 160 ++++++++++++++++++++++++++-
+ vault_writer/validate.py   |   5 +-
+ vault_writer/writer.py     | 118 ++++++++++++++++++--
+ 17 files changed, 1374 insertions(+), 72 deletions(-)
+=== untracked file sizes ===
+   83 core/debate.py
+  112 tests/test_debate.py
+  127 tests/test_debate_losses.py
+   39 tests/fixtures/posting_google_careers.md
+  361 total
+  ```
+- `ToolSearch` — `{"query":"WebFetch","max_results":2}`
+- `WebFetch` — `{"url":"https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/[REDACTED]","prompt":"Extract the full guidance on how to write effective prompts for Claude Sonnet 5: recommended prompt structure, use of XML tags, specificity/context guidance, how to phrase multi-step or agentic tasks, examples given, and any dos/don'ts. Quote key structural recommendations verbatim."}`
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+git diff core/run_pipeline.py
+  ```
+  ```
+Exit code 128
+fatal: ambiguous argument 'core/run_pipeline.py': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+git diff -- run_pipeline.py
+  ```
+  ```
+diff --git a/run_pipeline.py b/run_pipeline.py
+index 0259507..aaf83bc 100644
+--- a/run_pipeline.py
++++ b/run_pipeline.py
+@@ -8,17 +8,20 @@ Invoked by .github/workflows/run.yml as `python run_pipeline.py`.
+ import json
+ import os
+ import subprocess
++from functools import cmp_to_key
+ 
+ import requests
+ from datetime import datetime, timedelta, timezone
+ from pathlib import Path
+ 
+ from core.classify import BUCKET_FOLDERS, classification_callout, classify
++from core.debate import compute_bucket_urgency, debate_compare
+ from core.filter import load_profile, matches
+ from core.git_ops import GitPushError, commit_and_push_with_retry
+ from core.identity import compute_uid
+ from core.relevance import stage1_reject, stage2_confirm
+ from core.run_log import (
++    append_excluded_log,
+     append_run_log,
+     append_weekly_rollup,
+     format_weekly_rollup,
+@@ -29,7 +32,7 @@ from core.identity import cross_source_key
+ from core.schema_drift import SchemaDriftError
+ from core.schema_drift import check_all as check_schema_drift
+ from ingestion.freehire import fetch_freehire
+-from ingestion.posting_page import extract_content, fetch_posting_markdown, opt_exclusion
++from ingestion.posting_page import extract_content, fetch_posting_markdown, opt_exclusion, phd_only_exclusion
+ from ingestion.sources import (
+     fetch_ai_jobs,
+     fetch_ashby,
+@@ -40,7 +43,7 @@ from ingestion.sources import (
+     fetch_zshah101,
+ )
+ from vault_writer.validate import check_format_compliance, validate
+-from vault_writer.writer import render_dossier, scan_dossiers, write_dossier
++from vault_writer.writer import DOSSIER_SUBPATH, render_dossier, scan_dossiers, write_dossier
+ 
+ SOURCES = (
+     ("SimplifyJobs", fetch_simplify),
+@@ -63,20 +66,150 @@ SOURCES = (
+ # exists across all 6 sources (Greenhouse sometimes has one via metadata, the
+ # other 5 sources never do) — most-recently-posted first is the prioritization
+ # that's actually available everywhere, not a compromise on the chosen rule.
+-MAX_NEW_WRITES_PER_RUN = 18
++#
++# Revised 2026-07-29 (Task A): split per bucket instead of one flat number —
++# a tunable dict, not magic numbers spread through the function. Still caps
++# at roughly 10/run to protect Firecrawl budget and review throughput; a
++# bucket with 0 eligible candidates this run never lets another bucket borrow
++# its unused slots (each bucket only draws from its own ordered queue).
++MAX_NEW_WRITES_PER_RUN = {"AI/ML": 3, "Fullstack": 3, "CyS & Finance": 3, "Other": 1}
++
++# Per-bucket vault capacity, per the original design (Dossiers-to-Create.md,
++# Source of Truth.md) — but per the user's explicit 2026-07-29 override, this
++# is a NOTIFICATION mechanism, never a write refusal: the false-exclusion-
++# worse-than-false-inclusion asymmetry that governs every other gate in this
++# codebase applies here too (a hard-refusal cap would silently drop a real,
++# currently-open posting for no benefit — the scarce resource is human review
++# attention, not vault storage). See run_once()'s bucket_at_capacity handling.
++BUCKET_CAPACITY = 50
++# Global total across List/Dossiers/ excluding Viewed/. 150/170 are logged in
++# the run record only (informational); 190/200 additionally file a GitHub
++# issue the first time each is crossed (same "notify once" state as buckets).
++GLOBAL_INFO_THRESHOLDS = (150, 170)
++GLOBAL_ISSUE_THRESHOLDS = (190, 200)
++CAPACITY_STATE_FILENAME = "capacity_notified.json"
++
++
++def _prioritize_and_cap(new_listings: list, budget: dict, preferred_companies: dict = None) -> tuple:
++    """Scoped per-bucket per the tunable budget dict — each bucket fills only
++    from its own ordered queue, so an empty bucket this run can't let another
++    bucket's items borrow its slots. Bucket is the same degraded-signal
++    classify() (title/category only, no fetched content yet)
++    validate_and_write() itself falls back to before a posting's content is
++    fetched — pacing doesn't need the refined, content-informed bucket, only
++    the final written folder does. Returns (this_run, deferred) — deferred
++    items are simply not passed to validate_and_write and therefore never
++    marked seen, so dedup_new() naturally re-offers them next run without any
++    extra state to manage.
++
++    Ordering within each bucket is now the Task L "debate" comparator
++    (preferred-company tier -> bucket fill-need -> recency) instead of a bare
++    recency sort — preferred_companies=None degrades to the original
++    recency-only order (every candidate ties at stage 1, and stage 2 never
++    fires within a single bucket's own list regardless, so recency alone
++    decides), which is also exactly what every pre-Task-L caller/test gets
++    for free."""
++    by_bucket = {}
++    for uid, listing in new_listings:
++        bucket, _ = classify(listing.title, listing.category, "")
++        by_bucket.setdefault(bucket, []).append((uid, listing))
++
++    bucket_urgency = compute_bucket_urgency(new_listings, budget)
++    cmp_key = cmp_to_key(lambda x, y: debate_compare(x, y, preferred_companies or {}, bucket_urgency))
++
++    this_run, deferred = [], []
++    for bucket, items in by_bucket.items():
++        ordered = sorted(items, key=cmp_key)
++        limit = budget.get(bucket, 0)
++        this_run.extend(ordered[:limit])
++        deferred.extend(ordered[limit:])
++    return this_run, deferred
++
++
++def count_dossiers_by_bucket(vault_root) -> dict:
++    """Real per-bucket file counts in the vault checkout — Viewed/ isn't one
++    of BUCKET_FOLDERS' values, so it's excluded automatically, matching the
++    Standard's '201 total excluding Viewed/' scope."""
++    vault_root = Path(vault_root)
++    counts = {}
++    for bucket, folder in BUCKET_FOLDERS.items():
++        d = vault_root / DOSSIER_SUBPATH / folder
++        counts[bucket] = len(list(d.glob("*.md"))) if d.is_dir() else 0
++    return counts
++
++
++def load_capacity_notified(state_dir) -> dict:
++    path = Path(state_dir) / CAPACITY_STATE_FILENAME
++    if not path.exists():
++        return {"buckets": [], "global": []}
++    return json.loads(path.read_text())
+ 
+ 
+-def _prioritize_and_cap(new_listings: list, limit: int) -> tuple:
+-    """Most-recently-posted first; missing date_posted sorts last, never first
+-    (an unknown post date must not win priority over a known-recent one).
+-    Returns (this_run, deferred) — deferred items are simply not passed to
+-    validate_and_write and therefore never marked seen, so dedup_new()
+-    naturally re-offers them next run without any extra state to manage."""
+-    ordered = sorted(new_listings, key=lambda item: item[1].date_posted or 0, reverse=True)
+-    return ordered[:limit], ordered[limit:]
++def save_capacity_notified(state_dir, notified: dict) -> None:
++    path = Path(state_dir) / CAPACITY_STATE_FILENAME
++    path.parent.mkdir(parents=True, exist_ok=True)
++    path.write_text(json.dumps(notified, indent=2, sort_keys=True) + "\n")
+ 
+ RUN_LOG_MD_SUBPATH = Path("10_Areas/Career/Internships/List/Run Log.md")
+ 
++# Task N (Prompt 5) — a candidate that loses the debate comparator's sort
++# (falls outside its bucket's budget, i.e. ends up in _prioritize_and_cap's
++# "deferred" list) accumulates a loss count across runs. 5 was chosen to give
++# a real posting several genuine chances across multiple hourly runs before
++# conceding it structurally can't out-rank the field — not an arbitrary
++# guess dressed as one, but still a tunable to retune from real data once
++# this has run for a while, same as every other tunable in this codebase.
++MAX_DEBATE_LOSSES = 5
++DEBATE_LOSSES_FILENAME = "debate_losses.json"
++EXCLUDED_UIDS_FILENAME = "excluded_uids.json"
++EXCLUDED_LOG_SUBPATH = Path("10_Areas/Career/Internships/List/Excluded — Losing The Debate.md")
++
++
++def load_debate_losses(state_dir) -> dict:
++    path = Path(state_dir) / DEBATE_LOSSES_FILENAME
++    if not path.exists():
++        return {}
++    return json.loads(path.read_text())
++
++
++def save_debate_losses(state_dir, losses: dict) -> None:
++    path = Path(state_dir) / DEBATE_LOSSES_FILENAME
++    path.parent.mkdir(parents=True, exist_ok=True)
++    path.write_text(json.dumps(losses, indent=2, sort_keys=True) + "\n")
++
++
++def load_excluded_uids(state_dir) -> set:
++    path = Path(state_dir) / EXCLUDED_UIDS_FILENAME
++    if not path.exists():
++        return set()
++    return set(json.loads(path.read_text()))
++
++
++def save_excluded_uids(state_dir, excluded: set) -> None:
++    path = Path(state_dir) / EXCLUDED_UIDS_FILENAME
++    path.parent.mkdir(parents=True, exist_ok=True)
++    path.write_text(json.dumps(sorted(excluded), indent=2) + "\n")
++
++
++def update_debate_losses(losses: dict, deferred: list, written_uids: list) -> tuple:
++    """Returns (updated_losses, newly_excluded: [(uid, listing), ...]).
++    Increments the loss count for every deferred uid (a candidate that lost
++    this run's per-bucket comparator sort); removes any uid that won (got
++    written) this run entirely — it's in seen_ids.json now, its loss history
++    is moot. A uid whose count reaches MAX_DEBATE_LOSSES is returned in
++    newly_excluded and removed from losses — callers add it to the excluded
++    set and log it; this function only does the counting."""
++    losses = dict(losses)
++    for uid in written_uids:
++        losses.pop(uid, None)
++    newly_excluded = []
++    for uid, listing in deferred:
++        losses[uid] = losses.get(uid, 0) + 1
++        if losses[uid] >= MAX_DEBATE_LOSSES:
++            newly_excluded.append((uid, listing))
++            del losses[uid]
++    return losses, newly_excluded
++
+ # A required_fields or format_compliance rejection means OUR normalizer/writer
+ # produced something malformed — a real bug, worth an issue. url_liveness and
+ # not_duplicate rejections are routine (a stale posting, an already-seen item)
+@@ -106,26 +239,39 @@ def build_matched_reason(listing, profile: dict) -> str:
+     return "matched"
+ 
+ 
+-def fetch_and_filter(profile: dict, http_get=None) -> dict:
+-    """Returns {source_name: {"fetch_count": int, "matched": [Listing, ...]}}."""
++def fetch_and_filter(profile: dict, http_get=None, excluded_ids: frozenset = frozenset()) -> dict:
++    """Returns {source_name: {"fetch_count": int, "matched": [Listing, ...]}}.
++    excluded_ids (Task N, Prompt 5) drops a uid that already lost the debate
++    comparator MAX_DEBATE_LOSSES consecutive times here, before it's even
++    counted as matched — the earliest seam available, so an excluded uid
++    never reaches the Firecrawl content-fetch in validate_and_write either."""
+     results = {}
+     for name, fetch_fn in SOURCES:
+         listings = fetch_fn(http_get)
+         results[name] = {
+             "fetch_count": len(listings),
+-            "matched": [l for l in listings if matches(l, profile) and not stage1_reject(l.title, l.raw_text)],
++            "matched": [
++                l for l in listings
++                if matches(l, profile) and not stage1_reject(l.title, l.raw_text)
++                and compute_uid(l) not in excluded_ids
++            ],
+         }
+     return results
+ 
+ 
+-def dedup_new(matched_by_source: dict, seen_ids: set):
+-    """Returns ([(uid, listing), ...] for genuinely new items, already_seen_count)."""
++def dedup_new(matched_by_source: dict, seen_ids: set, excluded_ids: frozenset = frozenset()):
++    """Returns ([(uid, listing), ...] for genuinely new items, already_seen_count).
++    excluded_ids is also checked here (belt-and-suspenders with
++    fetch_and_filter's own check above) so nothing slips through if a caller
++    ever builds matched_by_source some other way."""
+     new = []
+     already_seen = 0
+     seen_this_run = set()
+     for _name, info in matched_by_source.items():
+         for listing in info["matched"]:
+             uid = compute_uid(listing)
++            if uid in excluded_ids:
++                continue
+             if uid in seen_ids or uid in seen_this_run:
+                 already_seen += 1
+                 continue
+@@ -158,7 +304,8 @@ def validate_and_write(new_listings, profile: dict, jarvis_dir, seen_ids: set, d
+     # diverged from seen_ids after the 2026-07-18 manual cleanup), plus
+     # whatever this run writes — first source in SOURCES order wins.
+     dossier_keys = {
+-        cross_source_key(fm.get("company", ""), fm.get("title", "")) for fm in scan_dossiers(jarvis_dir)
++        cross_source_key(fm.get("company", ""), fm.get("title", ""), fm.get("url", ""))
++        for fm in scan_dossiers(jarvis_dir)
+     }
+     written_uids = []
+     rejections = []
+@@ -168,7 +315,8 @@ def validate_and_write(new_listings, profile: dict, jarvis_dir, seen_ids: set, d
+             rejections.append({"uid": uid, "check": "opt_eligibility",
+                               "reason": f"{cached['signal']} (cached {cached['checked']})"})
+             continue
+-        markdown = render_dossier(listing, uid, date_found, build_matched_reason(listing, profile))
++        markdown = render_dossier(listing, uid, date_found, build_matched_reason(listing, profile),
++                                  preferred_companies=profile.get("preferred_companies"))
+         result = validate(listing, uid, markdown, seen_ids, http_head=http_head, dossier_keys=dossier_keys)
+         if not result.passed:
+             rejections.append({"uid": uid, "check": result.check, "reason": result.reason})
+@@ -198,11 +346,16 @@ def validate_and_write(new_listings, profile: dict, jarvis_dir, seen_ids: set, d
+                     opt_cache[uid] = {"verdict": "excluded", "signal": opt_signal, "checked": date_found}
+                     rejections.append({"uid": uid, "check": "opt_eligibility", "reason": opt_signal})
+                     continue
++                degree_signal = phd_only_exclusion(page_md)
++                if degree_signal:
++                    rejections.append({"uid": uid, "check": "degree_eligibility", "reason": degree_signal})
++                    continue
+                 opt_cache[uid] = {"verdict": "eligible", "signal": None, "checked": date_found}
+                 bucket, signal = classify(listing.title, listing.category, posting_content)
+                 enriched = render_dossier(listing, uid, date_found,
+                                           build_matched_reason(listing, profile), posting_content,
+-                                          classification_callout(bucket, signal))
++                                          classification_callout(bucket, signal),
++                                          preferred_companies=profile.get("preferred_companies"))
+                 # The gate validated the thin render; re-check format on the
+                 # enriched one — an extraction bug degrades to thin, never
+                 # writes malformed markdown into the vault.
+@@ -211,7 +364,7 @@ def validate_and_write(new_listings, profile: dict, jarvis_dir, seen_ids: set, d
+         write_dossier(jarvis_dir, uid, markdown, listing.title, listing.company, BUCKET_FOLDERS[bucket],
+                      state_dir=state_dir)
+         written_uids.append(uid)
+-        dossier_keys.add(cross_source_key(listing.company, listing.title))
++        dossier_keys.add(cross_source_key(listing.company, listing.title, listing.url))
+     return written_uids, rejections
+ 
+ 
+@@ -250,12 +403,17 @@ def run_once(
+         "errors": [],
+         "halted": False,
+         "halt_reason": None,
++        "bucket_at_capacity": [],
++        "dossier_total": 0,
++        "newly_excluded_count": 0,
+     }
+ 
++    excluded_ids = load_excluded_uids(state_dir) if state_dir is not None else set()
++
+     try:
+         check_schema_drift(http_get)
+         seen_ids = load_seen_ids(state_path)
+-        matched_by_source = fetch_and_filter(profile, http_get)
++        matched_by_source = fetch_and_filter(profile, http_get, excluded_ids=excluded_ids)
+     except (SchemaDriftError, requests.RequestException) as exc:
+         # RequestException too — a deleted repo, DNS failure, or 5xx used to
+         # crash the process before any run-log record or issue existed (the
+@@ -275,11 +433,13 @@ def run_once(
+         record["fetch_counts"][name] = info["fetch_count"]
+         record["filter_match_counts"][name] = len(info["matched"])
+ 
+-    new_listings, already_seen_count = dedup_new(matched_by_source, seen_ids)
++    new_listings, already_seen_count = dedup_new(matched_by_source, seen_ids, excluded_ids=excluded_ids)
+     record["new_count"] = len(new_listings)
+     record["already_seen_count"] = already_seen_count
+ 
+-    this_run, deferred = _prioritize_and_cap(new_listings, MAX_NEW_WRITES_PER_RUN)
++    this_run, deferred = _prioritize_and_cap(
++        new_listings, MAX_NEW_WRITES_PER_RUN, preferred_companies=profile.get("preferred_companies")
++    )
+     record["deferred_count"] = len(deferred)
+ 
+     opt_cache = {}
+@@ -294,6 +454,62 @@ def run_once(
+         Path(opt_cache_path).write_text(json.dumps(opt_cache, indent=2, sort_keys=True) + "\n")
+     record["rejections"] = rejections
+ 
++    # Task N (Prompt 5): count this run's debate loss for every deferred
++    # candidate; a uid that won (got written) has its loss history dropped
++    # entirely. A uid crossing MAX_DEBATE_LOSSES moves to the excluded set
++    # and gets one line in a reviewable markdown log — not a silent,
++    # permanent exclusion.
++    if state_dir is not None:
++        debate_losses = load_debate_losses(state_dir)
++        debate_losses, newly_excluded = update_debate_losses(debate_losses, deferred, written_uids)
++        save_debate_losses(state_dir, debate_losses)
++        record["newly_excluded_count"] = len(newly_excluded)
++        if newly_excluded:
++            excluded_ids = load_excluded_uids(state_dir)
++            excluded_ids.update(uid for uid, _listing in newly_excluded)
++            save_excluded_uids(state_dir, excluded_ids)
++            for uid, listing in newly_excluded:
++                line = (
++                    f"- **{listing.company}** — {listing.title} — [{listing.url}]({listing.url}) — "
++                    f"excluded {now.date().isoformat()} — lost the debate {MAX_DEBATE_LOSSES} consecutive runs"
++                )
++                append_excluded_log(
++                    Path(jarvis_dir) / EXCLUDED_LOG_SUBPATH, line, created_date=now.date().isoformat(),
++                    max_losses=MAX_DEBATE_LOSSES,
++                )
++
++    # Task A resource-limit notification (Standard §5): a bucket at/over
++    # capacity or the global total crossing a threshold is surfaced, never a
++    # write refusal — the writes above already happened regardless.
++    bucket_counts = count_dossiers_by_bucket(jarvis_dir)
++    record["bucket_at_capacity"] = sorted(b for b, c in bucket_counts.items() if c >= BUCKET_CAPACITY)
++    record["dossier_total"] = sum(bucket_counts.values())
++
++    notified = load_capacity_notified(state_dir) if state_dir is not None else {"buckets": [], "global": []}
++    newly_notified = False
++    for bucket in record["bucket_at_capacity"]:
++        if bucket not in notified["buckets"]:
++            notified["buckets"].append(bucket)
++            newly_notified = True
++            issue_fn(
++                issue_repo,
++                f"Bucket '{bucket}' at/over its {BUCKET_CAPACITY}-dossier notification threshold ({timestamp})",
++                f"'{bucket}' now has {bucket_counts[bucket]} dossiers in List/Dossiers/ — this is a "
++                "notification, not a write refusal (a full bucket is a signal to review more urgently, "
++                "not a reason to lose a real posting). New matches keep writing into this bucket.",
++            )
++    for threshold in GLOBAL_ISSUE_THRESHOLDS:
++        if record["dossier_total"] >= threshold and threshold not in notified["global"]:
++            notified["global"].append(threshold)
++            newly_notified = True
++            issue_fn(
++                issue_repo,
++                f"Total dossier count crossed {threshold} ({timestamp})",
++                f"List/Dossiers/ (excluding Viewed/) now has {record['dossier_total']} dossiers total.",
++            )
++    if state_dir is not None and newly_notified:
++        save_capacity_notified(state_dir, notified)
++
+     if should_run_weekly_rollup(now):
+         week_start = now - timedelta(days=7)
+         recent = load_recent_runs(runs_log_path, since=week_start)
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+echo "=== does core/debate.py exist on origin/master? ==="
+git cat-file -e origin/master:core/debate.py 2>&1 && echo "EXISTS on origin" || echo "DOES NOT EXIST on origin"
+echo "=== does origin/master's run_pipeline.py have MAX_NEW_WRITES_PER_RUN as dict or int? ==="
+git show origin/master:run_pipeline.py 2>&1 | grep -n "MAX_NEW_WRITES_PER_RUN\|BUCKET_CAPACITY\|debate\|phd_only" | head -20
+echo "=== merge-base between local HEAD and origin/master ==="
+git merge-base HEAD origin/master
+git log --oneline -1 HEAD
+git log --oneline -1 origin/master
+echo "=== would run_pipeline.py conflict on merge? (dry run) ==="
+git merge-tree "$(git merge-base HEAD origin/master)" HEAD origin/master -- run_pipeline.py 2>&1 | head -5
+echo "=== diff between origin/master's run_pipeline.py and local working tree ==="
+diff <(git show origin/master:run_pipeline.py) run_pipeline.py > /tmp/rp_vs_origin.diff 2>&1
+wc -l /tmp/rp_vs_origin.diff
+  ```
+  ```
+=== does core/debate.py exist on origin/master? ===
+fatal: path 'core/debate.py' exists on disk, but not in 'origin/master'
+DOES NOT EXIST on origin
+=== does origin/master's run_pipeline.py have MAX_NEW_WRITES_PER_RUN as dict or int? ===
+66:MAX_NEW_WRITES_PER_RUN = 18
+282:    this_run, deferred = _prioritize_and_cap(new_listings, MAX_NEW_WRITES_PER_RUN)
+=== merge-base between local HEAD and origin/master ===
+[REDACTED]
+3fd4b88 Update state + logs — 2026-07-30
+18c0327 Update state + logs — 2026-08-21
+=== would run_pipeline.py conflict on merge? (dry run) ===
+usage: git merge-tree [--write-tree] [<options>] <branch1> <branch2>
+   or: git merge-tree [--trivial-merge] <base-tree> <branch1> <branch2>
+
+    --write-tree          do a real merge instead of a trivial merge
+    --trivial-merge       do a trivial merge only
+=== diff between origin/master's run_pipeline.py and local working tree ===
+299 /tmp/rp_vs_origin.diff
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+echo "=== files changed on origin since merge-base (top-level dirs only) ==="
+git diff --stat 3fd4b88..origin/master -- run_pipeline.py recheck.py core/ ingestion/ vault_writer/ tests/ 2>&1
+echo "=== full list of changed file PATHS (not vault content) on origin since 07-30, excluding state/logs/jarvis-vault-content ==="
+git diff --name-only 3fd4b88..origin/master | grep -v "^logs/\|^state/" | sort
+echo "=== count of commits touching code (non-state/log) paths since merge-base ==="
+git log 3fd4b88..origin/master --oneline -- run_pipeline.py recheck.py core/ ingestion/ vault_writer/ tests/ .github/ | wc -l
+  ```
+  ```
+=== files changed on origin since merge-base (top-level dirs only) ===
+=== full list of changed file PATHS (not vault content) on origin since 07-30, excluding state/logs/jarvis-vault-content ===
+=== count of commits touching code (non-state/log) paths since merge-base ===
+0
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+git diff -- core/profile.yaml core/classify.py core/identity.py core/run_log.py vault_writer/validate.py
+  ```
+  ```
+diff --git a/core/classify.py b/core/classify.py
+index 3aea600..2ce956a 100644
+--- a/core/classify.py
++++ b/core/classify.py
+@@ -32,9 +32,19 @@ _AI_ML_RE = re.compile(
+     r"|computer vision|\bnlp\b|natural language|embeddings?|pytorch|tensorflow"
+     r"|neural network|data scientist|ml engineer|ai engineer|ai.enabled)\b", re.I,
+ )
++# 'threat' narrowed 2026-07-29: real false positive, Mosaic Company
++# "Operations & Automation Engineering Co-op/Intern" (chemical-plant
++# PLC/DCS/SCADA role, zero cybersecurity content) matched bare 'threat' on a
++# workplace-safety disclaimer ("without posing a direct threat to the safety
++# of his or her own self"). Requiring co-occurrence with a real
++# security-context word within 30 chars catches genuine cybersecurity usage
++# ("threat model", "threat actor", "threat intelligence", "threat detection")
++# without matching safety-boilerplate/weather/insider-threat-to-unrelated-
++# things mentions of the bare word.
+ _CYS_FINANCE_RE = re.compile(
+     r"\b(security engineer|cybersecurity|application security|appsec"
+-    r"|penetration test|infosec|threat|vulnerability|quant(itative)? developer"
++    r"|penetration test|infosec|threat.{0,30}(model|actor|intelligence|detection)|vulnerability"
++    r"|quant(itative)? developer"
+     r"|quantitative (research|trading)|trading systems?|fintech|risk engine"
+     r"|payments? (engineer|infrastructure)|blockchain|crypto|defi)\b", re.I,
+ )
+diff --git a/core/identity.py b/core/identity.py
+index 86447f1..da8d83f 100644
+--- a/core/identity.py
++++ b/core/identity.py
+@@ -5,10 +5,48 @@ source:raw_id. (The content-hash fallback existed only for zapplyjobs,
+ removed as a source 2026-07-18.)
+ 
+ cross_source_key() is the secondary dedup identity: the same program listed
+-by two different sources gets two different uids but one company+title key.
++by two different sources gets two different uids but one cross-source key.
+ """
+ import re
+ 
++# Real, confirmed 2026-07-29 — four real duplicate incidents the old
++# normalized-company+title key missed because either string varied across
++# sources: Aquatic vs Aquatic Capital Management (company-name variant),
++# Google BS/MS Summer 2027 SWE intern (title-string variant, same numeric job
++# id in both URLs), Virtu Financial's genuine triple duplicate (three
++# different title strings, identical greenhouse.io/virtu/jobs/8624410002 URL
++# across SimplifyJobs/zshah101/vanshb03), and Palantir's "Intel" FDSE role
++# duplicated across two different buckets (same Lever job id via SimplifyJobs
++# and zshah101). A URL-embedded ATS job id is a stronger identity signal than
++# company+title text in every one of these — extract it when present, fall
++# back to the normalized-text key only when the URL carries no recognizable id.
++_ATS_JOB_ID_PATTERNS = (
++    re.compile(r"greenhouse\.io/[^/]+/jobs/(\d+)", re.I),
++    re.compile(r"lever\.co/[^/]+/([0-9a-f-]{36})", re.I),
++    re.compile(r"ashbyhq\.com/[^/]+/([0-9a-f-]{36})", re.I),
++    # Google's own careers site embeds a long numeric id after .../jobs/results/
++    # — anchored to google.com (real examples: www.google.com/about/careers/
++    # applications/jobs/results/...), matching the domain-scoping discipline
++    # the other three patterns already follow. Real bug, confirmed 2026-07-30:
++    # without the domain anchor, this pattern matched the same path shape on
++    # ANY domain (e.g. a random unrelated company's own careers page happening
++    # to use a numeric job id at .../careers/jobs/results/<id>), which would
++    # silently collapse an unrelated posting into the same cross_source_key
++    # as a real Google posting and reject it as a duplicate.
++    re.compile(r"google\.com/.*?careers/(?:applications/)?jobs/results/(\d+)", re.I),
++)
++
++
++def extract_ats_job_id(url: str) -> str:
++    """The ATS-native job id embedded in url, or None if url is from a
++    source/ATS with no recognizable id in its URL shape (e.g. Freehire's
++    Telegram links, Workday's slug-only URLs)."""
++    for pattern in _ATS_JOB_ID_PATTERNS:
++        m = pattern.search(url or "")
++        if m:
++            return m.group(1)
++    return None
++
+ 
+ def compute_uid(listing) -> str:
+     if not listing.raw_id:
+@@ -16,9 +54,38 @@ def compute_uid(listing) -> str:
+     return f"{listing.source}:{listing.raw_id}"
+ 
+ 
+-def cross_source_key(company: str, title: str) -> str:
++# Not cross_source_key()'s space-preserving norm() reused verbatim: that one
++# collapses punctuation to a single space (needed to keep title text
++# word-tokenized — "Intern Co-op" vs "Intern/Co-op" must still split into the
++# same words). A company name is a short identifier, not sentence-shaped
++# text, and the real case this needs to catch ("D.E. Shaw" vs "DE Shaw")
++# fails under that space-preserving version — "d e shaw" != "de shaw". Fold
++# out all non-alphanumeric characters entirely instead, so both collapse to
++# the identical "deshaw".
++def _norm_company(s: str) -> str:
++    return re.sub(r"[^a-z0-9]", "", s.lower())
++
++
++def cross_source_key(company: str, title: str, url: str = "") -> str:
++    job_id = extract_ats_job_id(url)
++    if job_id:
++        return f"jobid:{job_id}"
+     # Punctuation-insensitive: "Intern Co-op" and "Intern/Co-op" are the same
+     # posting (real Marmon dup that slipped past a whitespace-only key,
+     # caught in the 2026-07-18 dossier audit).
+     norm = lambda s: re.sub(r"[^a-z0-9]+", " ", s.lower()).strip()
+     return f"{norm(company)}|{norm(title)}"
++
++
++def company_matches_preference(company: str, preferred: dict) -> str:
++    """The matched preference tier (e.g. 'high'), or None if company isn't in
++    preferred. Same punctuation/case-insensitive normalization as
++    cross_source_key()'s norm(), so 'D.E. Shaw' and 'DE Shaw' both match —
++    preferred_companies (core/profile.yaml) is a human-maintained config dict,
++    not derived from live data, so this is a pure string match with no new
++    network call or source to verify (Prompt 5 Task K)."""
++    target = _norm_company(company)
++    for name, tier in (preferred or {}).items():
++        if _norm_company(name) == target:
++            return tier
++    return None
+diff --git a/core/profile.yaml b/core/profile.yaml
+index 21c3c97..c73d41b 100644
+--- a/core/profile.yaml
++++ b/core/profile.yaml
+@@ -47,3 +47,31 @@ locations_allow: us_remote
+ # 592, ("PhD",) 586, empty 4676 — fetched 2026-07-18). Permissive: empty degrees
+ # data passes; non-empty must intersect this list.
+ degrees_allow: ["Bachelor's"]
++# Preference weight for the debate comparator (Prompt 5 Task L), not a filter
++# gate — a non-matching company still passes everything above unaffected.
++# Seeded from the real, human-vetted target list in the vault's
++# `20_Progress/Internship/Building System/Research Loop - Resources.md`
++# "Named-Program Coverage Check (2026-07-29)" section: 11 named early-talent
++# programs the human already identified as worth prioritizing, of which only
++# 3/11 have ANY dossier coverage today and none confirmed as the specific
++# named program (Jane Street FTTP, Two Sigma First-Year, D.E. Shaw, Citadel
++# Launch, Google ASDI, Microsoft Explore, LinkedIn First Play, MLH
++# Fellowship, NASA OSTEM, Capital One, Bloomberg). This is a starting point
++# for the human to re-tier or add/remove entries directly, not a final
++# answer — company preference is an explicit human judgment call per
++# `30_Order/Workflows/Internship Pipeline.md`'s Step 2 ("Screen"), and this
++# dict only wires that judgment into write-priority ordering, it doesn't
++# automate the judgment itself. All seeded at one tier for now; a
++# multi-tier scheme wasn't asked for.
++preferred_companies:
++  "Jane Street": high
++  "Two Sigma": high
++  "D.E. Shaw": high
++  "Citadel": high
++  "Google": high
++  "Microsoft": high
++  "LinkedIn": high
++  "MLH": high
++  "NASA": high
++  "Capital One": high
++  "Bloomberg": high
+diff --git a/core/run_log.py b/core/run_log.py
+index d9af0fd..dc9a5b6 100644
+--- a/core/run_log.py
++++ b/core/run_log.py
+@@ -66,14 +66,39 @@ Weekly rollup from the internship-research-loop automation, appended automatical
+ """
+ 
+ 
+-def append_weekly_rollup(run_log_md_path, line: str, created_date: str) -> None:
+-    path = Path(run_log_md_path)
++def _append_markdown_line(path, line: str, header: str) -> None:
++    path = Path(path)
+     path.parent.mkdir(parents=True, exist_ok=True)
+     if not path.exists():
+-        header = _HEADER_TEMPLATE.format(created=created_date).rstrip("\n") + "\n"
+-        path.write_text(header + line + "\n")
++        path.write_text(header.rstrip("\n") + "\n" + line + "\n")
+         return
+     existing = path.read_text()
+     if not existing.endswith("\n"):
+         existing += "\n"
+     path.write_text(existing + line + "\n")
++
++
++def append_weekly_rollup(run_log_md_path, line: str, created_date: str) -> None:
++    _append_markdown_line(run_log_md_path, line, _HEADER_TEMPLATE.format(created=created_date))
++
++
++_EXCLUDED_LOG_HEADER_TEMPLATE = """---
++type: dashboard
++status: active
++created: {created}
++tags:
++  - internship
++  - automation
++  - debate
++---
++# Excluded — Losing The Debate
++A posting lands here the first time it loses the per-bucket debate comparator's sort {max_losses} consecutive runs — not a silent, permanent exclusion, a reviewable one. If you disagree with the comparator's call on any of these, promote the posting by hand; this log exists so that decision has something concrete to look at. Appended automatically, never rewritten.
++"""
++
++
++def append_excluded_log(excluded_log_md_path, line: str, created_date: str, max_losses: int) -> None:
++    """Task N (Prompt 5) — one line per uid the first time it's excluded,
++    same append-only pattern as append_weekly_rollup above."""
++    _append_markdown_line(
++        excluded_log_md_path, line, _EXCLUDED_LOG_HEADER_TEMPLATE.format(created=created_date, max_losses=max_losses)
++    )
+diff --git a/vault_writer/validate.py b/vault_writer/validate.py
+index c892aed..2cf0365 100644
+--- a/vault_writer/validate.py
++++ b/vault_writer/validate.py
+@@ -12,7 +12,8 @@ from core.identity import cross_source_key
+ REQUIRED_LISTING_FIELDS = ("company", "title", "url", "source", "uid")
+ REQUIRED_FRONTMATTER_FIELDS = (
+     "company", "title", "url", "source", "terms", "locations",
+-    "target_year", "date_posted", "date_found", "matched_reason", "status", "next", "tags",
++    "target_year", "date_posted", "date_found", "matched_reason", "status", "next", "notes",
++    "preference_tier", "tags",
+ )
+ 
+ 
+@@ -71,7 +72,7 @@ def check_cross_source_duplicate(listing, dossier_keys) -> ValidationResult:
+     """Same program via two sources = two different uids but one normalized
+     company+title key (MLH Fellowship landed twice pre-cleanup). Routine
+     rejection, not systemic — first source in write order wins."""
+-    key = cross_source_key(listing.company, listing.title)
++    key = cross_source_key(listing.company, listing.title, listing.url)
+     if key in dossier_keys:
+         return ValidationResult(False, "cross_source_duplicate", f"company+title already in vault: {key}")
+     return ValidationResult(True, "cross_source_duplicate")
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+git diff -- core/relevance.py ingestion/posting_page.py recheck.py vault_writer/writer.py
+  ```
+  ```
+diff --git a/core/relevance.py b/core/relevance.py
+index 9cddae9..7041b02 100644
+--- a/core/relevance.py
++++ b/core/relevance.py
+@@ -43,12 +43,34 @@ def _norm(s: str) -> str:
+ # (real Walleye Capital title) must NOT match "risk analyst" — "Technology"
+ # sits between the two words in both real titles, breaking the adjacency
+ # these patterns require.
++# Product/program-management and business-rotational patterns added 2026-07-29
++# from two real recurring incidents: Databricks "Product Management Intern
++# (Summer 2027)" (AIJobs, found 2026-07-26 — explicitly PM work, "learn how to
++# be a successful PM," despite listing "computer science" as an acceptable
++# major, and classified AI/ML only because "Machine Learning" is one of
++# Databricks' internal team names, not because the role does ML work) and
++# Conagra Brands "Demand Science Rotational Analyst" (SimplifyJobs,
++# 2026-07-27, still live at List/Dossiers/Other/ as of this writing — a 2-year
++# business rotational program across Behavioral Science/Demand
++# Forecasting/Demand Planning/Advanced Analytics with zero programming
++# content; its own stated requirement is "a general understanding of
++# business, financial concepts, and theory behind processes"). The rotational
++# pattern requires "rotational" not be immediately preceded by "engineering "/
++# "software " so a genuine software-engineering-track rotational program still
++# passes (checked explicitly in tests/test_relevance.py).
++_ROTATIONAL_ANALYST_RE = re.compile(
++    r"(?<!engineering )(?<!software )\brotational (analyst|program)\b", re.I,
++)
+ _STAGE1_REJECT_RE = re.compile(
+     r"\b(financial analyst|risk analyst|performance analyst"
+     r"|tax (associate|preparer|accountant)"
+     r"|investor relations"
+     r"|sports performance (analyst|analytics)|academy performance (analyst|analysis)"
+-    r"|human resources intern|hr intern|marketing intern|business development intern)\b",
++    r"|human resources intern|hr intern|marketing intern|business development intern"
++    r"|product management intern|product manager intern"
++    r"|program management intern|technical program manager intern"
++    r"|demand (planning|science) (analyst|rotational)"
++    r"|business analyst intern)\b",
+     re.I,
+ )
+ 
+@@ -56,7 +78,8 @@ _STAGE1_REJECT_RE = re.compile(
+ def stage1_reject(title: str, raw_text: str) -> bool:
+     """True if this listing's title/raw_text is unambiguously non-software —
+     reject without ever fetching the page."""
+-    return bool(_STAGE1_REJECT_RE.search(f"{title} {raw_text}"))
++    haystack = f"{title} {raw_text}"
++    return bool(_STAGE1_REJECT_RE.search(haystack)) or bool(_ROTATIONAL_ANALYST_RE.search(haystack))
+ 
+ 
+ # Adjacent-field company/title hint — NOT a reject signal on its own (Jane
+@@ -64,9 +87,20 @@ def stage1_reject(title: str, raw_text: str) -> bool:
+ # ML roles all pass real content checks below). Only postings that hit this
+ # hint need their fetched content checked at all; everything else already
+ # cleared stage 1 and passes through unconditionally.
++# chemical/plant/PLC-DCS-SCADA added 2026-07-29: real false-positive, Mosaic
++# (The Mosaic Company, agricultural/mining) "Operations & Automation
++# Engineering Co-op/Intern" — a chemical-plant industrial-automation role
++# (PLC/DCS/SCADA controls, Bachelor's in Chemical Engineering required,
++# physical labor requirements, "basic computer skills" as a minor bullet)
++# passed stage 2 unconditionally because neither "chemical" nor "automation"
++# hit the old hint list, so its content (no Python/Java/C++/git/algorithm
++# anywhere) was never checked at all — it only got flagged downstream by
++# classify.py's now-fixed bare-'threat' match on an unrelated workplace-safety
++# disclaimer. Adding these hints routes it through the real software-signal
++# content check below, which correctly rejects it.
+ _ADJACENT_FIELD_COMPANY_HINT_RE = re.compile(
+     r"\b(space|aerospace|robotics|astro|satellite|defense|automotive|firmware"
+-    r"|embedded|hardware)\b", re.I,
++    r"|embedded|hardware|chemical|industrial|plant operations|\bplc\b|\bdcs\b|\bscada\b)\b", re.I,
+ )
+ 
+ # Real content signals confirmed against live vault dossiers 2026-07-26: Bosch
+@@ -89,9 +123,17 @@ _SOFTWARE_CONTENT_SIGNAL_RE = re.compile(
+ def stage2_confirm(title: str, company: str, posting_content: str) -> bool:
+     """Called only when posting_content is non-empty. True = passes (either
+     not adjacent-field at all, or adjacent-field AND content shows real
+-    software work). False = adjacent-field company/title with no software
+-    signal in the actual content — genuinely non-technical despite passing
+-    stage 1 (e.g. a hardware-manufacturing floor role at a space company)."""
+-    if not _ADJACENT_FIELD_COMPANY_HINT_RE.search(f"{title} {company}"):
++    software work). False = adjacent-field with no software signal in the
++    actual content — genuinely non-technical despite passing stage 1 (e.g. a
++    hardware-manufacturing floor role at a space company).
++
++    The hint check also scans posting_content, not just title+company: real
++    bug, Mosaic Company's "Operations & Automation Engineering Co-op/Intern"
++    (2026-07-29) — its chemical-plant/PLC-DCS-SCADA signal appears only in
++    the fetched content ("Bachelor's degree in Chemical Engineering",
++    "PLC, DCS, and SCADA control systems"), never in the title or company
++    name, so a title+company-only hint check never routed it through the
++    software-signal confirmation below at all."""
++    if not _ADJACENT_FIELD_COMPANY_HINT_RE.search(f"{title} {company} {posting_content}"):
+         return True
+     return bool(_SOFTWARE_CONTENT_SIGNAL_RE.search(posting_content))
+diff --git a/ingestion/posting_page.py b/ingestion/posting_page.py
+index 43dff97..32aa5bd 100644
+--- a/ingestion/posting_page.py
++++ b/ingestion/posting_page.py
+@@ -87,6 +87,43 @@ def opt_exclusion(text: str):
+     return m.group(0) if m else None
+ 
+ 
++# Built from the real Optiver "Quantitative Research Intern, PhD (Summer
++# 2027)" posting (Greenhouse job id 8451781002 — the same posting manually
++# deleted from the vault once already, then resurfaced, 2026-07-29): its
++# structured degrees field is empty (Greenhouse carries none), so
++# core/filter.py's degrees_eligible() waved it through on missing-data
++# permissiveness. Its real content states the requirement as "Currently
++# enrolled in a PhD program in Statistics, Computer Science, ..." rather than
++# a blunt "PhD required" — the enrolled-in/pursuing-a-phd-program phrasing is
++# the literal shape this real posting uses, so it's included as an explicit
++# equivalent alongside "PhD required"/"PhD only"/"doctoral candidates only".
++# Permissive by default like every other gate here: never fires on "PhD
++# preferred", and the window guard below never fires when a Bachelor's/
++# Master's is also named nearby (checked against the real Aquatic Capital
++# Management, Appian, and Manhattan Associates postings, all of which list
++# PhD only as one of several acceptable degrees and must keep passing).
++_PHD_ONLY_RE = re.compile(
++    r"\bphd\s+(?:is\s+)?(?:required|only)\b"
++    r"|\bdoctoral candidates?\s+only\b"
++    r"|\b(?:currently\s+)?(?:enrolled in|pursuing)\s+an?\s+(?:phd|doctoral)\s+(?:program|degree)\b",
++    re.I,
++)
++
++
++def phd_only_exclusion(text: str):
++    """The matched PhD-exclusivity phrase, or None if the posting shows no
++    explicit signal that only PhD candidates are eligible. Never fires when a
++    Bachelor's/Master's is also named near the match — that's a posting
++    listing PhD as one of several acceptable degrees, not a PhD-only one."""
++    m = _PHD_ONLY_RE.search(text)
++    if not m:
++        return None
++    window = text[max(0, m.start() - 80): m.end() + 80]
++    if re.search(r"bachelor|master|\bbs\b|\bms\b", window, re.I):
++        return None
++    return m.group(0)
++
++
+ def fetch_posting_markdown(url: str, api_key: str, http_post=None) -> str:
+     """Page markdown via Firecrawl (JS-rendered — ATS pages are SPAs).
+     Raises requests exceptions on failure; callers treat any failure as
+@@ -109,19 +146,105 @@ _NOISE = re.compile(
+     r"^(\[?!\[|\[back to jobs|\[apply\]|apply\b|select\.\.\.|✱|.*✱\s*$|resume/cv|full name|email\b"
+     r"|phone\b|current location|current company|linkedin url|github url|portfolio url|loading$"
+     r"|no location found|couldn't auto-read|analyzing resume|success!$|file exceeds|-{3,}$"
+-    r"|cookie|jobs powered by|©|powered by\s|\[.*\]\(https?://[^)]*\)\s*$)", re.I)
++    r"|cookie|jobs powered by|©|powered by\s|\[.*\]\(https?://[^)]*\)\s*$|read more$)", re.I)
++
++# Real, distinct bug from the Ashby application-URL one — confirmed 2026-07-26
++# on both Google dossiers sourced via Freehire (BS and MS tracks): Google's
++# careers site returns a *search-results listing page* shell (~20 unrelated
++# job titles, "Back to jobs search" nav, "N jobs matched", pagination) ahead
++# of the specific posting's own content in the SAME fetched markdown — not a
++# wrong-URL problem like Ashby's /application suffix, the real posting text is
++# right there further down. classify() fired on an unrelated listed job's
++# title as a result. Whenever one of these listing-shell markers appears,
++# everything gathered so far is shell noise — reset and wait for the next
++# real heading, which lands on the actual posting content once the shell ends.
++_LISTING_SHELL_RESET_RE = re.compile(
++    r"^(_arrow_back_|back to jobs search|##?\s*jobs search results|[\d,]+\s+jobs matched"
++    r"|showing \d+ to \d+ of|_navigate_next_)", re.I,
++)
++
++# ATS UI labels jammed against their values with no separator, real examples
++# from the Conagra Brands fixture (List/Dossiers/Other/Demand Science
++# Rotational Analyst - Conagra Brands.md): "locationsChicago, Illinois",
++# "time typeFull time", "posted onPosted Today", "job requisition idReq-039400".
++_ATS_LABEL_RUN_ON_RE = re.compile(
++    r"^(locations|time type|posted on|job requisition id|time left to apply)(?=\S)", re.M,
++)
++
++# A posting's own section names, real shape confirmed against the Appian
++# ("**Basic Qualifications**", "**Benefits**") and Conagra ("**Compensation**",
++# "**Our Benefits**") fixtures: a fully-bolded standalone line naming one of
++# these sections. Deliberately narrow — only fires when the *whole* line is
++# one bold span ending in a real section keyword, so inline bold emphasis
++# ("our values of **Intensity** and **Excellence**...") and non-section bold
++# lines ("**Why should you kick off your career with Conagra?**") are left as
++# flattened prose, per the "don't invent section boundaries" rule.
++_BOLD_SECTION_RE = re.compile(r"^\*\*([^*]+?)\*\*:?$")
++_SECTION_KEYWORD_RE = re.compile(r"(responsibilities|qualifications|requirements|benefits|compensation)$", re.I)
++
++# Real, from the Manhattan Associates fixture (List/Dossiers/1 - AI & ML/A.I.
++# Developer Co-Op (Boston, MA) - Manhattan Associates.md): a "Follow Us"
++# heading followed by a bulleted LinkedIn/X/Facebook link list, pure chrome.
++_FOLLOW_US_HEADING_RE = re.compile(r"^#{1,6}\s*follow us\s*$", re.I)
++# Real Manhattan Associates link shape includes a markdown title after the
++# URL ('[LinkedIn](https://...4376?trk=tyah "LinkedIn")') — the optional
++# quoted-title group handles that, not just a bare '(url)'.
++_LINK_BULLET_RE = re.compile(r'^-\s*\[.+\]\(https?://\S+?(?:\s+"[^"]*")?\)\s*$')
++
++
++def _dedupe_paragraphs(markdown: str, min_len: int = 40) -> str:
++    """Drops a paragraph line that repeats verbatim later in the same fetch,
++    keeping the first occurrence — real example: the Conagra fixture's whole
++    'About Us' paragraph appears twice. Real fetched markdown from this
++    pipeline's sources renders each prose paragraph as one continuous line
++    (confirmed against the Manhattan Associates/Appian/Optiver fixtures), so
++    line-level comparison catches this without needing blank-line block
++    boundaries the source markdown may not consistently have. min_len guards
++    against deduping short, legitimately-repeated lines (labels, headings)
++    that aren't real paragraph content."""
++    seen, kept = set(), []
++    for line in markdown.splitlines():
++        key = line.strip()
++        if len(key) >= min_len:
++            if key in seen:
++                continue
++            seen.add(key)
++        kept.append(line)
++    return "\n".join(kept)
++
++
++def _strip_trailing_social_chrome(lines: list) -> list:
++    out, skip_links = [], False
++    for line in lines:
++        if _FOLLOW_US_HEADING_RE.match(line.strip()):
++            skip_links = True
++            continue
++        if skip_links and _LINK_BULLET_RE.match(line.strip()):
++            continue
++        skip_links = False
++        out.append(line)
++    return out
+ 
+ 
+ def extract_content(markdown: str, limit: int = CONTENT_LIMIT) -> str:
+     """The posting's substantive text: from the first real heading up to the
+     application-form/EEO chrome, minus nav/form/boilerplate lines. Verbatim
+-    lines, never a summary. Blank lines and '---' rules dropped to satisfy
+-    the vault's format conventions (see validate.check_format_compliance)."""
++    lines, never a summary — but deduped (no repeated paragraph), chrome-split
++    (ATS UI labels get their own line), and structured (a source's own bolded
++    section names become real '###' headings) per the Internship Notes
++    Standard §2. Blank lines and '---' rules dropped to satisfy the vault's
++    format conventions (see validate.check_format_compliance)."""
++    markdown = _dedupe_paragraphs(markdown)
++    markdown = _ATS_LABEL_RUN_ON_RE.sub(lambda m: m.group(1) + "\n", markdown)
++
+     out, started = [], False
+     for line in markdown.splitlines():
+         s = line.strip()
+         if _CUT_MARKERS.match(s):
+             break
++        if _LISTING_SHELL_RESET_RE.match(s):
++            started, out = False, []
++            continue
+         if not started:
+             if s.startswith("#") and len(s) > 4:
+                 started = True
+@@ -129,7 +252,10 @@ def extract_content(markdown: str, limit: int = CONTENT_LIMIT) -> str:
+                 continue
+         if not s or _NOISE.match(s):
+             continue
++        section = _BOLD_SECTION_RE.match(s)
++        if section and _SECTION_KEYWORD_RE.search(section.group(1).strip()):
++            s = f"### {section.group(1).strip()}"
+         out.append(s)
+         if len("\n".join(out)) > limit:
+             break
+-    return "\n".join(out)
++    return "\n".join(_strip_trailing_social_chrome(out))
+diff --git a/recheck.py b/recheck.py
+index e760606..d26252d 100644
+--- a/recheck.py
++++ b/recheck.py
+@@ -2,10 +2,11 @@
+ """Daily post-write liveness recheck. Scans the dossier files actually present
+ in the vault checkout (file existence is the truth — seen_ids.json diverged
+ from the vault after the 2026-07-18 manual cleanup and stays untouched here),
+-cross-refs each against its source's live feed, and removes any dossier whose
+-posting is now inactive or gone from the feed entirely. Runs on its own daily
+-cron (.github/workflows/recheck.yml) — postings don't close often enough to
+-justify rechecking every hour.
++cross-refs each against its source's live feed, and moves any dossier whose
++posting is now inactive or gone from the feed entirely into Viewed/ (never
++deletes — Internship Notes Standard §4: a closed posting's history is real
++information). Runs on its own daily cron (.github/workflows/recheck.yml) —
++postings don't close often enough to justify rechecking every hour.
+ 
+     JARVIS_DIR=... python recheck.py [--dry-run]
+ """
+@@ -27,7 +28,7 @@ from ingestion.sources import (
+     fetch_zshah101,
+ )
+ from run_pipeline import file_github_issue
+-from vault_writer.writer import load_dossier_uids, scan_dossiers
++from vault_writer.writer import load_dossier_uids, move_dossier_to_viewed, scan_dossiers
+ 
+ # 2026-07-25: was still SimplifyJobs/JGCL only after the 4-source batch shipped
+ # earlier the same day — dossiers from vanshb03/zshah101/Greenhouse/Ashby were
+@@ -107,34 +108,39 @@ def main():
+         "halt_reason": None,
+     }
+ 
+-    # ponytail: crude mass-deletion brake — a truncated/glitched feed must not
+-    # wipe the vault. Threshold is arbitrary but safe; tune if it ever trips wrongly.
++    # ponytail: crude mass-move brake — a truncated/glitched feed must not
++    # empty the vault into Viewed/. Threshold is arbitrary but safe; tune if it
++    # ever trips wrongly. Same protective logic as before this was a move
++    # instead of a delete — the risk (a feed glitch wiping real dossiers out
++    # of the live buckets) is identical either way.
+     if len(removals) > max(5, len(dossiers) // 2):
+         record["halted"] = True
+-        record["halt_reason"] = f"would remove {len(removals)} of {len(dossiers)} dossiers — feed glitch?"
++        record["halt_reason"] = f"would move {len(removals)} of {len(dossiers)} dossiers to Viewed/ — feed glitch?"
+         if not args.dry_run:
+             _commit_log(record, now)
+             file_github_issue(
+                 ISSUE_REPO,
+-                f"Recheck halted: mass-deletion brake at {now.isoformat()}",
+-                f"{record['halt_reason']}\n\nNothing was removed. Removal list:\n"
++                f"Recheck halted: mass-move brake at {now.isoformat()}",
++                f"{record['halt_reason']}\n\nNothing was moved. Removal list:\n"
+                 + "\n".join(f"- `{r['uid']}`: {r['reason']}" for r in removals),
+             )
+         print(record["halt_reason"])
+         sys.exit(1)
+ 
+     for r in removals:
+-        print(f"{'would remove' if args.dry_run else 'removing'}: {r['uid']} — {r['reason']}")
++        print(f"{'would move' if args.dry_run else 'moving'}: {r['uid']} — {r['reason']}")
+     if args.dry_run:
+-        print(f"dry run: {len(removals)} of {len(dossiers)} would be removed")
++        print(f"dry run: {len(removals)} of {len(dossiers)} would be moved to Viewed/")
+         return
+ 
+     if removals:
+         for r in removals:
+-            Path(r["path"]).unlink()
++            move_dossier_to_viewed(
++                jarvis_dir, r["path"], r["reason"], now.date().isoformat(), state_dir=STATE_DIR
++            )
+         try:
+             commit_and_push_with_retry(
+-                jarvis_dir, f"Remove {len(removals)} closed posting(s) — recheck {now.date().isoformat()}"
++                jarvis_dir, f"Move {len(removals)} closed posting(s) to Viewed/ — recheck {now.date().isoformat()}"
+             )
+         except GitPushError as exc:
+             record["errors"].append(f"Jarvis push failed: {exc}")
+@@ -144,7 +150,7 @@ def main():
+                 f"Removals were made in the checkout but the push failed after retry:\n\n```\n{exc}\n```",
+             )
+     _commit_log(record, now)
+-    print(f"removed {len(removals)} of {len(dossiers)} dossiers; {len(errors)} fetch error(s)")
++    print(f"moved {len(removals)} of {len(dossiers)} dossiers to Viewed/; {len(errors)} fetch error(s)")
+     if record["errors"]:
+         sys.exit(1)
+ 
+diff --git a/vault_writer/writer.py b/vault_writer/writer.py
+index 0ded6ff..040747a 100644
+--- a/vault_writer/writer.py
++++ b/vault_writer/writer.py
+@@ -13,6 +13,8 @@ from pathlib import Path
+ import yaml
+ from jinja2 import Environment, FileSystemLoader
+ 
++from core.identity import company_matches_preference
++
+ TEMPLATE_DIR = Path(__file__).parent / "templates"
+ DOSSIER_SUBPATH = Path("10_Areas/Career/Internships/List/Dossiers")
+ DOSSIER_UIDS_FILENAME = "dossier_uids.json"
+@@ -45,12 +47,33 @@ def _iso_date(epoch) -> str:
+     return datetime.fromtimestamp(epoch, tz=timezone.utc).date().isoformat() if epoch else None
+ 
+ 
+-def build_frontmatter(listing, uid: str, date_found: str, matched_reason: str) -> dict:
++DOSSIERS_MOC_LINK = "[[10_Areas/Career/Internships/List/Dossiers MOC]]"
++
++_TAG_ILLEGAL_CHARS = re.compile(r'[\\/:*?"<>|]')
++
++
++def company_slug(company: str) -> str:
++    """Same slugification as dossier_filename(): lowercase, spaces to
++    hyphens, illegal chars stripped — so 'Aquatic Capital Management' and
++    ' aquatic capital management ' both produce company/aquatic-capital-management,
++    per the Standard's same-company clustering rule (§1)."""
++    s = _TAG_ILLEGAL_CHARS.sub("", company).strip().lower()
++    return re.sub(r"\s+", "-", s)
++
++
++def build_frontmatter(listing, uid: str, date_found: str, matched_reason: str,
++                      preferred_companies: dict = None) -> dict:
+     """uid and category are deliberately not rendered — uid stays available
+     internally via the dossier_uids.json manifest (see write_dossier), and
+     category was never surfaced to the reader anywhere else in the note.
+     `next:` (not `promoted:`) matches every other note type's convention
+-    across the vault."""
++    across the vault. `notes:` (always the Dossiers MOC link) and the
++    `company/<slug>` tag are the Internship Notes Standard §1 interlinking
++    requirement — `notes` sits right after `next`, right before `tags`.
++    `preference_tier` (Prompt 5 Task O) is the matched core/profile.yaml
++    preferred_companies tier, or null — required like every other field
++    here, not omitted when there's no match (fail-closed, same discipline
++    as REQUIRED_FRONTMATTER_FIELDS everywhere else in this file)."""
+     return {
+         "company": listing.company,
+         "title": listing.title,
+@@ -64,16 +87,25 @@ def build_frontmatter(listing, uid: str, date_found: str, matched_reason: str) -
+         "matched_reason": matched_reason,
+         "status": "unreviewed",
+         "next": None,
+-        "tags": ["internship", "auto-discovered"],
++        "notes": [DOSSIERS_MOC_LINK],
++        "preference_tier": company_matches_preference(listing.company, preferred_companies or {}),
++        "tags": ["internship", "auto-discovered", f"company/{company_slug(listing.company)}"],
+     }
+ 
+ 
+-def render_dossier(listing, uid: str, date_found: str, matched_reason: str, posting_content: str = "",
+-                   classification_callout: str = "") -> str:
+-    frontmatter = build_frontmatter(listing, uid, date_found, matched_reason)
+-    frontmatter_yaml = yaml.dump(
++def dump_frontmatter(frontmatter: dict) -> str:
++    """Shared YAML rendering (None as blank scalar, indented list items) so
++    every dossier-writing code path — including recheck.py's removal-time
++    frontmatter patch — serializes identically."""
++    return yaml.dump(
+         frontmatter, Dumper=_FrontmatterDumper, sort_keys=False, default_flow_style=False, allow_unicode=True
+     )
++
++
++def render_dossier(listing, uid: str, date_found: str, matched_reason: str, posting_content: str = "",
++                   classification_callout: str = "", preferred_companies: dict = None) -> str:
++    frontmatter = build_frontmatter(listing, uid, date_found, matched_reason, preferred_companies)
++    frontmatter_yaml = dump_frontmatter(frontmatter)
+     markdown = _template.render(
+         frontmatter_yaml=frontmatter_yaml,
+         company=listing.company,
+@@ -168,3 +200,75 @@ def write_dossier(vault_root, uid: str, markdown: str, role: str, company: str,
+         manifest[str(path.relative_to(vault_root))] = uid
+         save_dossier_uids(state_dir, manifest)
+     return path
++
++
++REMOVED_DOSSIERS_MOC_LINK = "[[10_Areas/Career/Internships/List/Dossiers/Viewed/Removed Dossiers MOC]]"
++VIEWED_SUBPATH = DOSSIER_SUBPATH / "Viewed"
++
++
++def move_dossier_to_viewed(vault_root, path, reason: str, removed_date: str, state_dir=None) -> Path:
++    """Moves a closed-posting dossier into Viewed/ instead of deleting it
++    (Internship Notes Standard §4) — the posting closing is real information
++    (hiring cadence, why a later duplicate should be rejected, a record of
++    what this pipeline actually saw), not something to throw away. Appends
++    the Removed Dossiers MOC link to the existing notes: list (never
++    replacing the original Dossiers MOC / company links already there), sets
++    status: removed (the field's first real transition away from its static
++    'unreviewed'), and records removed_date/removed_reason. Updates
++    dossier_uids.json to the new path so the next write_dossier() idempotency
++    check for this uid isn't left pointing at a file that moved."""
++    vault_root = Path(vault_root)
++    path = Path(path)
++    text = path.read_text(encoding="utf-8")
++    m = re.match(r"^---\n(.*?)\n---\n(.*)$", text, re.DOTALL)
++    frontmatter = yaml.safe_load(m.group(1)) or {}
++    body = m.group(2)
++
++    notes = list(frontmatter.get("notes") or [])
++    if DOSSIERS_MOC_LINK not in notes:
++        notes.append(DOSSIERS_MOC_LINK)
++    if REMOVED_DOSSIERS_MOC_LINK not in notes:
++        notes.append(REMOVED_DOSSIERS_MOC_LINK)
++    frontmatter["notes"] = notes
++    frontmatter["status"] = "removed"
++    frontmatter["removed_date"] = removed_date
++    frontmatter["removed_reason"] = reason
++
++    # Fix 2, Prompt 5 review (2026-07-30): two dossiers with identical
++    # filenames can legitimately coexist in two different bucket folders
++    # (bucket-scoped collision checks at write time only look within one
++    # bucket) — moving both into the single flat Viewed/ folder must not let
++    # the second overwrite the first. Reuse dossier_filename()'s existing
++    # '(2)', '(3)'-suffixing collision logic rather than duplicating it: it
++    # already takes a bare "role - company" base and a set of existing names,
++    # so split path.stem back into role/company at the ' - ' this pipeline's
++    # own filenames always use.
++    viewed_dir = vault_root / VIEWED_SUBPATH
++    viewed_dir.mkdir(parents=True, exist_ok=True)
++    existing_names = {p.name for p in viewed_dir.glob("*.md")}
++    stem = path.stem
++    role, sep, company = stem.rpartition(" - ")
++    if sep:
++        new_name = dossier_filename(role, company, existing_names)
++    else:
++        # No ' - ' separator to split on (a hand-renamed or malformed
++        # filename) — fall back to suffixing the whole stem directly, same
++        # collision-avoidance behavior dossier_filename() provides, just
++        # without a role/company split to build on.
++        new_name = path.name
++        n = 2
++        while new_name in existing_names:
++            new_name = f"{stem} ({n}){path.suffix}"
++            n += 1
++    new_path = viewed_dir / new_name
++    new_path.write_text("---\n" + dump_frontmatter(frontmatter) + "---\n" + body)
++    path.unlink()
++
++    if state_dir is not None:
++        manifest = load_dossier_uids(state_dir)
++        old_rel = str(path.relative_to(vault_root))
++        uid = manifest.pop(old_rel, None)
++        if uid is not None:
++            manifest[str(new_path.relative_to(vault_root))] = uid
++            save_dossier_uids(state_dir, manifest)
++    return new_path
+  ```
+- `Read` — `/home/anant_gupta/projects/work/internship-research-loop/core/debate.py`
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+echo "=== .github/workflows/*.yml (local, likely stale too but check for state filenames) ==="
+grep -rn "capacity_notified\|debate_losses\|excluded_uids\|FIRECRAWL\|secrets\." .github/workflows/*.yml
+echo "=== origin's workflow files vs local (any diff) ==="
+diff <(git show origin/master:.github/workflows/run.yml) .github/workflows/run.yml
+diff <(git show origin/master:.github/workflows/recheck.yml) .github/workflows/recheck.yml
+diff <(git show origin/master:.github/workflows/test.yml) .github/workflows/test.yml 2>&1
+  ```
+  ```
+=== .github/workflows/*.yml (local, likely stale too but check for state filenames) ===
+.github/workflows/run.yml:22:          token: ${{ secrets.JARVIS_PUSH_TOKEN }}
+.github/workflows/run.yml:42:          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}  # discovery-time posting fetch; absent = thin dossiers, never a failure
+.github/workflows/recheck.yml:22:          token: ${{ secrets.JARVIS_PUSH_TOKEN }}
+=== origin's workflow files vs local (any diff) ===
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+ls .venv/bin/python 2>&1 || echo "no venv"
+if [ -f .venv/bin/python ]; then
+  .venv/bin/python -m pytest tests/ -q 2>&1 | tail -60
+else
+  python3 -m pytest tests/ -q 2>&1 | tail -60
+fi
+  ```
+  ```
+.venv/bin/python
+........................................................................ [ 21%]
+........................................................................ [ 43%]
+........................................................................ [ 65%]
+........................................................................ [ 87%]
+.........................................                                [100%]
+329 passed in 1.36s
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+head -20 vault_writer/templates/*.j2 vault_writer/templates/*.jinja 2>/dev/null
+ls vault_writer/templates/
+echo "=== check template uses frontmatter_yaml directly ==="
+grep -n "frontmatter_yaml\|preference_tier\|notes" vault_writer/templates/* 2>/dev/null
+  ```
+  ```
+==> vault_writer/templates/dossier.md.j2 <==
+---
+{{ frontmatter_yaml }}---
+# {{ title }}
+{% if posting_content -%}
+Found {{ date_found }} via {{ source }}.
+{% if classification_callout -%}
+{{ classification_callout }}
+{% endif -%}
+## Posting (fetched {{ date_found }})
+{{ posting_content }}
+{%- else -%}
+Found {{ date_found }} via {{ source }}. No posting content fetched.
+{% if classification_callout -%}
+{{ classification_callout }}
+{% endif -%}
+{%- endif %}
+dossier.md.j2
+=== check template uses frontmatter_yaml directly ===
+2:{{ frontmatter_yaml }}---
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+echo "=== find real feature-shaped commit messages in history (not 'Update state + logs' or 'Recheck log') ==="
+git log origin/master --oneline | grep -v "^[a-f0-9]* Update state + logs\|^[a-f0-9]* Recheck log" | head -30
+  ```
+  ```
+=== find real feature-shaped commit messages in history (not 'Update state + logs' or 'Recheck log') ===
+9cc30ec Add promote-dossier skill, contact-researcher/loop-verifier agents, review-loop-change skill
+5c9a409 Priority-bucket classification, CS-relevance gate, widened contact research
+d0d6cd4 Two new discovery sources: Freehire, AIJobs
+a21b2fa Four new discovery sources: vanshb03, zshah101, Greenhouse, Ashby
+e10d06a PRD: three-criteria scope, content-carrying dossiers, verified 2026-07-18 state
+69f76dc Phase 6: three hard criteria codified — Winter 2027 term, OPT gate, discovery-time content
+7a84be1 Fix the 5 root causes behind dossier bloat (2026-07-18 vault audit)
+697c110 Phase 4: locations_allow filter, Layer 5 enrich.py, Layer 6 grade_resume.py
+6c285ca README: phase 3 is live
+cdcbc4e Fix (for real this time): stage the .gitignore content, not just the rm
+573bfd5 Fix: exclude jarvis-checkout/ from this repo's own git tracking
+2c58414 Phase 3: activate the scheduled run against gupta-builds/Jarvis
+c88b76c Phase 3 code: schema-drift check, git push-retry, run log, orchestration
+02b63c6 Phase 3 step 0: reconcile plan review, fix real zapply parsing bug
+0737dfc Verification pass: fix dead config, close test gaps, pin deps
+fd772b7 Phase 2: vault_writer — dossier template + four-check write gate
+f01e663 Fix CI: use python -m pytest so repo root lands on sys.path
+9e585b2 Phase 1: ingestion, filter, identity — tested against real fixtures
+  ```
+- `Bash`:
+  ```bash
+gh issue view 1 --repo gupta-builds/internship-research-loop --json title,body,createdAt,state 2>&1
+echo "---"
+gh issue view 2 --repo gupta-builds/internship-research-loop --json title,body,createdAt,state 2>&1
+echo "=== current time check: latest run again, freshest ==="
+gh run list --repo gupta-builds/internship-research-loop --limit 5 2>&1
+  ```
+  ```
+{"body":"Schema drift or source fetch failure — nothing was fetched, filtered, or written this run.\n\n```\nHTTPError: 429 Client Error: Too Many Requests for url: https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json\n```","createdAt":"2026-08-17T15:16:34Z","state":"OPEN","title":"Run halted (HTTPError) at 2026-08-17T15:16:21.079968+00:00"}
+---
+{"body":"Schema drift or source fetch failure — nothing was fetched, filtered, or written this run.\n\n```\nHTTPError: 429 Client Error: Too Many Requests for url: https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json\n```","createdAt":"2026-08-17T16:15:46Z","state":"OPEN","title":"Run halted (HTTPError) at 2026-08-17T16:15:32.395149+00:00"}
+=== current time check: latest run again, freshest ===
+completed	success	run	run	master	schedule	32502393689	3m44s	2026-08-21T16:20:13Z
+completed	success	run	run	master	schedule	32497314098	40s	2026-08-21T15:23:16Z
+completed	success	run	run	master	schedule	32491957893	30s	2026-08-21T14:24:20Z
+completed	success	run	run	master	schedule	32487815837	38s	2026-08-21T13:37:29Z
+completed	success	run	run	master	schedule	32481855747	41s	2026-08-21T12:25:55Z
+  ```
+
 ## Actions Taken
 - Files created: /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/bebacdad-914c-4c86-b1a2-93b41c665f1c/scratchpad/aiml.txt, /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/bebacdad-914c-4c86-b1a2-93b41c665f1c/scratchpad/fullstack.txt, /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/bebacdad-914c-4c86-b1a2-93b41c665f1c/scratchpad/cysfin.txt, /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/bebacdad-914c-4c86-b1a2-93b41c665f1c/scratchpad/other.txt, /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/bebacdad-914c-4c86-b1a2-93b41c665f1c/scratchpad/pipeline-triage.html
 - Files modified: /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/bebacdad-914c-4c86-b1a2-93b41c665f1c/scratchpad/pipeline-triage.html
 - Files deleted: (none)
-- Commands run: git status && echo "---LOG---" && git log --oneline -20 && echo "---DIFF STAT---" && git diff --stat, git fetch origin --quiet 2>&1 | tail -5; echo "---"; git log origin/master --oneline -15; echo "---LAST LOCAL VS REMOTE DATE---"; git log -1 --format=%cd; git log origin/master -1 --format=%cd, cat /home/anant_gupta/projects/work/internship-research-loop/state/seen_ids.json 2>/dev/null | python3 -c "import json,sys; d=json.load(sys.stdin); print('seen_ids count:', len(d) if isinstance(d,list) else len(d.keys()))" 2>&1 echo "---" ls /home/anant_gupta/projects/work/internship-research-loop/logs/ 2>/dev/null echo "---runs.jsonl tail---" tail -5 /home/anant_gupta/projects/work/internship-research-loop/logs/runs.jsonl 2>/dev/null echo "---rechecks.jsonl tail---" tail -5 /home/anant_gupta/projects/work/internship-research-loop/logs/rechecks.jsonl 2>/dev/null, ls -la /home/anant_gupta/projects/work/ 2>/dev/null; echo "---"; find / -maxdepth 4 -iname "Jarvis" -type d 2>/dev/null, ls -la /home/anant_gupta/projects/work/gupta-builds/ 2>/dev/null, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad for f in aiml fullstack cysfin other; do echo -n "$f: "; wc -l < $f.txt; done echo "total:"; cat aiml.txt fullstack.txt cysfin.txt other.txt | wc -l echo "--- company frequency (top 25) ---" cat aiml.txt fullstack.txt cysfin.txt other.txt | sed -E 's/\.md$//' | awk -F' - ' '{print $NF}' | sort | uniq -c | sort -rn | head -30, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== MAX_NEW_WRITES / cap-related in run_pipeline.py ===" grep -n -i "MAX_NEW_WRITES\|cap\|limit\|201\|50\b" run_pipeline.py | head -40 echo "=== cs_relevance in core/relevance.py or classify.py ===" grep -n -i "def \|cs_relevance\|relevant" core/relevance.py | head -30 echo "=== classify.py functions ===" grep -n "^def " core/classify.py, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== bucket_at_capacity notification handling in run_pipeline.py ===" sed -n '480,515p' run_pipeline.py echo "=== recent runs.jsonl bucket_at_capacity mentions ===" tail -1 logs/runs.jsonl | python3 -c "import json,sys; d=json.load(sys.stdin); print('bucket_at_capacity:', d.get('bucket_at_capacity')); print('written_count:', d.get('written_count')); print('timestamp:', d.get('timestamp'))" echo "=== gh issues (if gh cli available and authed) ===" gh issue list --repo gupta-builds/internship-research-loop --state all --limit 20 2>&1 | head -30, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== recent workflow runs ===" gh run list --repo gupta-builds/internship-research-loop --limit 15 2>&1 echo "=== issue #3 body ===" gh issue view 3 --repo gupta-builds/internship-research-loop 2>&1 | head -30 echo "=== capacity_notified.json on origin/master ===" git show origin/master:state/capacity_notified.json 2>&1, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== state dir on origin/master ===" git ls-tree origin/master -- state/ 2>&1 echo "=== issue 3 body (plain) ===" gh issue view 3 --repo gupta-builds/internship-research-loop --json title,body,createdAt,state 2>&1, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad cat aiml.txt fullstack.txt cysfin.txt other.txt > all_dossiers.txt # Conservative "near-certain non-SWE by title alone" denylist — a human should still eyeball this list, but every title here has zero software/CS/data-eng signal. grep -iE "Accounting|Aerodynamic|Community Engagement|Construction Management|Construction Manager|Civil and Structural|Mechanical Engineer|Materials? Planning|Quality & Manufacturing|Supply Chain (Business|Data Analyst)|Strategic Engagements|Video Production|Geoscience|Thermal Application|Sustainability Engineer|System Administrator|Global Supply Management|Operations Experience|Business Analytics Intern|Reporting Analyst" all_dossiers.txt | sort | tee near_certain_junk.txt | wc -l echo "--- sample of that list ---" head -20 near_certain_junk.txt echo "--- companies these belong to ---" sed -E 's/\.md$//' near_certain_junk.txt | awk -F' - ' '{print $NF}' | sort | uniq -c | sort -rn, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad for c in "Jane Street" "Two Sigma" "D.E. Shaw\|DE Shaw" "Citadel" "Google" "Microsoft" "LinkedIn" "MLH" "NASA" "Capital One" "Bloomberg"; do n=$(grep -ic "$c" all_dossiers.txt) echo "$c: $n" done, cat /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/near_certain_junk.txt
-- Tool call tally: Artifact (1), Bash (13), Edit (1), mcp__jarvis__search_simple (1), mcp__jarvis__vault_list (20), mcp__jarvis__vault_read (10), mcp__jarvis-fs__list_allowed_directories (1), Read (4), Skill (1), ToolSearch (2), Write (5)
+- Commands run: git status && echo "---LOG---" && git log --oneline -20 && echo "---DIFF STAT---" && git diff --stat, git fetch origin --quiet 2>&1 | tail -5; echo "---"; git log origin/master --oneline -15; echo "---LAST LOCAL VS REMOTE DATE---"; git log -1 --format=%cd; git log origin/master -1 --format=%cd, cat /home/anant_gupta/projects/work/internship-research-loop/state/seen_ids.json 2>/dev/null | python3 -c "import json,sys; d=json.load(sys.stdin); print('seen_ids count:', len(d) if isinstance(d,list) else len(d.keys()))" 2>&1 echo "---" ls /home/anant_gupta/projects/work/internship-research-loop/logs/ 2>/dev/null echo "---runs.jsonl tail---" tail -5 /home/anant_gupta/projects/work/internship-research-loop/logs/runs.jsonl 2>/dev/null echo "---rechecks.jsonl tail---" tail -5 /home/anant_gupta/projects/work/internship-research-loop/logs/rechecks.jsonl 2>/dev/null, ls -la /home/anant_gupta/projects/work/ 2>/dev/null; echo "---"; find / -maxdepth 4 -iname "Jarvis" -type d 2>/dev/null, ls -la /home/anant_gupta/projects/work/gupta-builds/ 2>/dev/null, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad for f in aiml fullstack cysfin other; do echo -n "$f: "; wc -l < $f.txt; done echo "total:"; cat aiml.txt fullstack.txt cysfin.txt other.txt | wc -l echo "--- company frequency (top 25) ---" cat aiml.txt fullstack.txt cysfin.txt other.txt | sed -E 's/\.md$//' | awk -F' - ' '{print $NF}' | sort | uniq -c | sort -rn | head -30, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== MAX_NEW_WRITES / cap-related in run_pipeline.py ===" grep -n -i "MAX_NEW_WRITES\|cap\|limit\|201\|50\b" run_pipeline.py | head -40 echo "=== cs_relevance in core/relevance.py or classify.py ===" grep -n -i "def \|cs_relevance\|relevant" core/relevance.py | head -30 echo "=== classify.py functions ===" grep -n "^def " core/classify.py, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== bucket_at_capacity notification handling in run_pipeline.py ===" sed -n '480,515p' run_pipeline.py echo "=== recent runs.jsonl bucket_at_capacity mentions ===" tail -1 logs/runs.jsonl | python3 -c "import json,sys; d=json.load(sys.stdin); print('bucket_at_capacity:', d.get('bucket_at_capacity')); print('written_count:', d.get('written_count')); print('timestamp:', d.get('timestamp'))" echo "=== gh issues (if gh cli available and authed) ===" gh issue list --repo gupta-builds/internship-research-loop --state all --limit 20 2>&1 | head -30, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== recent workflow runs ===" gh run list --repo gupta-builds/internship-research-loop --limit 15 2>&1 echo "=== issue #3 body ===" gh issue view 3 --repo gupta-builds/internship-research-loop 2>&1 | head -30 echo "=== capacity_notified.json on origin/master ===" git show origin/master:state/capacity_notified.json 2>&1, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== state dir on origin/master ===" git ls-tree origin/master -- state/ 2>&1 echo "=== issue 3 body (plain) ===" gh issue view 3 --repo gupta-builds/internship-research-loop --json title,body,createdAt,state 2>&1, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad cat aiml.txt fullstack.txt cysfin.txt other.txt > all_dossiers.txt # Conservative "near-certain non-SWE by title alone" denylist — a human should still eyeball this list, but every title here has zero software/CS/data-eng signal. grep -iE "Accounting|Aerodynamic|Community Engagement|Construction Management|Construction Manager|Civil and Structural|Mechanical Engineer|Materials? Planning|Quality & Manufacturing|Supply Chain (Business|Data Analyst)|Strategic Engagements|Video Production|Geoscience|Thermal Application|Sustainability Engineer|System Administrator|Global Supply Management|Operations Experience|Business Analytics Intern|Reporting Analyst" all_dossiers.txt | sort | tee near_certain_junk.txt | wc -l echo "--- sample of that list ---" head -20 near_certain_junk.txt echo "--- companies these belong to ---" sed -E 's/\.md$//' near_certain_junk.txt | awk -F' - ' '{print $NF}' | sort | uniq -c | sort -rn, cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad for c in "Jane Street" "Two Sigma" "D.E. Shaw\|DE Shaw" "Citadel" "Google" "Microsoft" "LinkedIn" "MLH" "NASA" "Capital One" "Bloomberg"; do n=$(grep -ic "$c" all_dossiers.txt) echo "$c: $n" done, cat /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/scratchpad/near_certain_junk.txt, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== git diff --stat ===" git diff --stat echo "=== untracked file sizes ===" wc -l core/debate.py tests/test_debate.py tests/test_debate_losses.py tests/fixtures/posting_google_careers.md 2>&1, cd /home/anant_gupta/projects/work/internship-research-loop git diff core/run_pipeline.py, cd /home/anant_gupta/projects/work/internship-research-loop git diff -- run_pipeline.py, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== does core/debate.py exist on origin/master? ===" git cat-file -e origin/master:core/debate.py 2>&1 && echo "EXISTS on origin" || echo "DOES NOT EXIST on origin" echo "=== does origin/master's run_pipeline.py have MAX_NEW_WRITES_PER_RUN as dict or int? ===" git show origin/master:run_pipeline.py 2>&1 | grep -n "MAX_NEW_WRITES_PER_RUN\|BUCKET_CAPACITY\|debate\|phd_only" | head -20 echo "=== merge-base between local HEAD and origin/master ===" git merge-base HEAD origin/master git log --oneline -1 HEAD git log --oneline -1 origin/master echo "=== would run_pipeline.py conflict on merge? (dry run) ===" git merge-tree "$(git merge-base HEAD origin/master)" HEAD origin/master -- run_pipeline.py 2>&1 | head -5 echo "=== diff between origin/master's run_pipeline.py and local working tree ===" diff <(git show origin/master:run_pipeline.py) run_pipeline.py > /tmp/rp_vs_origin.diff 2>&1 wc -l /tmp/rp_vs_origin.diff, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== files changed on origin since merge-base (top-level dirs only) ===" git diff --stat 3fd4b88..origin/master -- run_pipeline.py recheck.py core/ ingestion/ vault_writer/ tests/ 2>&1 echo "=== full list of changed file PATHS (not vault content) on origin since 07-30, excluding state/logs/jarvis-vault-content ===" git diff --name-only 3fd4b88..origin/master | grep -v "^logs/\|^state/" | sort echo "=== count of commits touching code (non-state/log) paths since merge-base ===" git log 3fd4b88..origin/master --oneline -- run_pipeline.py recheck.py core/ ingestion/ vault_writer/ tests/ .github/ | wc -l, cd /home/anant_gupta/projects/work/internship-research-loop git diff -- core/profile.yaml core/classify.py core/identity.py core/run_log.py vault_writer/validate.py, cd /home/anant_gupta/projects/work/internship-research-loop git diff -- core/relevance.py ingestion/posting_page.py recheck.py vault_writer/writer.py, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== .github/workflows/*.yml (local, likely stale too but check for state filenames) ===" grep -rn "capacity_notified\|debate_losses\|excluded_uids\|FIRECRAWL\|secrets\." .github/workflows/*.yml echo "=== origin's workflow files vs local (any diff) ===" diff <(git show origin/master:.github/workflows/run.yml) .github/workflows/run.yml diff <(git show origin/master:.github/workflows/recheck.yml) .github/workflows/recheck.yml diff <(git show origin/master:.github/workflows/test.yml) .github/workflows/test.yml 2>&1, cd /home/anant_gupta/projects/work/internship-research-loop ls .venv/bin/python 2>&1 || echo "no venv" if [ -f .venv/bin/python ]; then .venv/bin/python -m pytest tests/ -q 2>&1 | tail -60 else python3 -m pytest tests/ -q 2>&1 | tail -60 fi, cd /home/anant_gupta/projects/work/internship-research-loop head -20 vault_writer/templates/*.j2 vault_writer/templates/*.jinja 2>/dev/null ls vault_writer/templates/ echo "=== check template uses frontmatter_yaml directly ===" grep -n "frontmatter_yaml\|preference_tier\|notes" vault_writer/templates/* 2>/dev/null, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== find real feature-shaped commit messages in history (not 'Update state + logs' or 'Recheck log') ===" git log origin/master --oneline | grep -v "^[a-f0-9]* Update state + logs\|^[a-f0-9]* Recheck log" | head -30, gh issue view 1 --repo gupta-builds/internship-research-loop --json title,body,createdAt,state 2>&1 echo "---" gh issue view 2 --repo gupta-builds/internship-research-loop --json title,body,createdAt,state 2>&1 echo "=== current time check: latest run again, freshest ===" gh run list --repo gupta-builds/internship-research-loop --limit 5 2>&1
+- Tool call tally: Artifact (1), Bash (25), Edit (1), mcp__jarvis__search_simple (1), mcp__jarvis__vault_list (20), mcp__jarvis__vault_read (10), mcp__jarvis-fs__list_allowed_directories (1), Read (5), Skill (1), ToolSearch (3), WebFetch (1), Write (5)
 

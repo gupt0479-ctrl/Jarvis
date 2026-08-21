@@ -1,0 +1,20 @@
+---
+source_file: "tests/test_run_pipeline.py"
+type: "code"
+community: "test_writer.py"
+location: "L204"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/test_writerpy
+---
+
+# test_dedup_new_dedupes_within_the_same_run()
+
+## Connections
+- [[If the exact same uid were somehow matched twice in one run, it should     only]] - `rationale_for` [EXTRACTED]
+- [[_simplify_raw()]] - `calls` [EXTRACTED]
+- [[normalize_simplify()]] - `calls` [EXTRACTED]
+- [[test_run_pipeline.py]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/test_writerpy

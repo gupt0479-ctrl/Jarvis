@@ -1,0 +1,88 @@
+---
+source_file: "run_pipeline.py"
+type: "code"
+community: "recheck.py"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/recheckpy
+---
+
+# run_pipeline.py
+
+## Connections
+- [[GitPushError]] - `imports` [EXTRACTED]
+- [[Phase 3 orchestration schema-drift check - fetch - filter - dedup - validat]] - `rationale_for` [EXTRACTED]
+- [[SchemaDriftError]] - `imports` [EXTRACTED]
+- [[_prioritize_and_cap()]] - `contains` [EXTRACTED]
+- [[append_excluded_log()]] - `imports` [EXTRACTED]
+- [[append_run_log()]] - `imports` [EXTRACTED]
+- [[append_weekly_rollup()]] - `imports` [EXTRACTED]
+- [[build_matched_reason()]] - `contains` [EXTRACTED]
+- [[check_all()]] - `imports` [EXTRACTED]
+- [[check_format_compliance()]] - `imports` [EXTRACTED]
+- [[classification_callout()]] - `imports` [EXTRACTED]
+- [[classify()]] - `imports` [EXTRACTED]
+- [[classify.py]] - `imports_from` [EXTRACTED]
+- [[commit_and_push_with_retry()]] - `imports` [EXTRACTED]
+- [[compute_bucket_urgency()]] - `imports` [EXTRACTED]
+- [[compute_uid()]] - `imports` [EXTRACTED]
+- [[count_dossiers_by_bucket()]] - `contains` [EXTRACTED]
+- [[cross_source_key()]] - `imports` [EXTRACTED]
+- [[datetime_2]] - `imports_from` [EXTRACTED]
+- [[debate.py]] - `imports_from` [EXTRACTED]
+- [[debate_compare()]] - `imports` [EXTRACTED]
+- [[dedup_new()]] - `contains` [EXTRACTED]
+- [[extract_content()]] - `imports` [EXTRACTED]
+- [[fetch_ai_jobs()]] - `imports` [EXTRACTED]
+- [[fetch_and_filter()]] - `contains` [EXTRACTED]
+- [[fetch_ashby()]] - `imports` [EXTRACTED]
+- [[fetch_freehire()]] - `imports` [EXTRACTED]
+- [[fetch_greenhouse()]] - `imports` [EXTRACTED]
+- [[fetch_josegael()]] - `imports` [EXTRACTED]
+- [[fetch_posting_markdown()]] - `imports` [EXTRACTED]
+- [[fetch_simplify()]] - `imports` [EXTRACTED]
+- [[fetch_vanshb03()]] - `imports` [EXTRACTED]
+- [[fetch_zshah101()]] - `imports` [EXTRACTED]
+- [[file_github_issue()]] - `contains` [EXTRACTED]
+- [[filter.py]] - `imports_from` [EXTRACTED]
+- [[format_weekly_rollup()]] - `imports` [EXTRACTED]
+- [[freehire.py]] - `imports_from` [EXTRACTED]
+- [[git_ops.py]] - `imports_from` [EXTRACTED]
+- [[identity.py]] - `imports_from` [EXTRACTED]
+- [[load_capacity_notified()]] - `contains` [EXTRACTED]
+- [[load_debate_losses()]] - `contains` [EXTRACTED]
+- [[load_excluded_uids()]] - `contains` [EXTRACTED]
+- [[load_profile()]] - `imports` [EXTRACTED]
+- [[load_recent_runs()]] - `imports` [EXTRACTED]
+- [[load_seen_ids()]] - `contains` [EXTRACTED]
+- [[matches()]] - `imports` [EXTRACTED]
+- [[opt_exclusion()]] - `imports` [EXTRACTED]
+- [[phd_only_exclusion()]] - `imports` [EXTRACTED]
+- [[posting_page.py]] - `imports_from` [EXTRACTED]
+- [[recheck.py]] - `imports_from` [EXTRACTED]
+- [[relevance.py]] - `imports_from` [EXTRACTED]
+- [[render_dossier()]] - `imports` [EXTRACTED]
+- [[run_log.py]] - `imports_from` [EXTRACTED]
+- [[run_once()]] - `contains` [EXTRACTED]
+- [[save_capacity_notified()]] - `contains` [EXTRACTED]
+- [[save_debate_losses()]] - `contains` [EXTRACTED]
+- [[save_excluded_uids()]] - `contains` [EXTRACTED]
+- [[save_seen_ids()]] - `contains` [EXTRACTED]
+- [[scan_dossiers()]] - `imports` [EXTRACTED]
+- [[schema_drift.py]] - `imports_from` [EXTRACTED]
+- [[should_run_weekly_rollup()]] - `imports` [EXTRACTED]
+- [[sources.py]] - `imports_from` [EXTRACTED]
+- [[stage1_reject()]] - `imports` [EXTRACTED]
+- [[stage2_confirm()]] - `imports` [EXTRACTED]
+- [[test_debate_losses.py]] - `imports` [EXTRACTED]
+- [[test_run_pipeline.py]] - `imports` [EXTRACTED]
+- [[update_debate_losses()]] - `contains` [EXTRACTED]
+- [[validate()]] - `imports` [EXTRACTED]
+- [[validate.py]] - `imports_from` [EXTRACTED]
+- [[validate_and_write()]] - `contains` [EXTRACTED]
+- [[write_dossier()]] - `imports` [EXTRACTED]
+- [[writer.py]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/recheckpy

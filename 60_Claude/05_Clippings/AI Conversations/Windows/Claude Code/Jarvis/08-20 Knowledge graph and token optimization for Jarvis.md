@@ -5,32 +5,33 @@ source_app: claude-code
 source_os: windows
 title: "Knowledge graph and token optimization for Jarvis"
 started_at: 2026-08-20T17:14:01
-ended_at: 2026-08-21T17:27:42
-exported_at: 2026-08-21T17:30:02
-duration_minutes: 1453.7
+ended_at: 2026-08-21T21:10:35
+exported_at: 2026-08-21T21:30:02
+duration_minutes: 1676.6
 project: Jarvis
 cwd: 'D:\Users\_Anant\10_Areas\Documents\Jarvis'
 session_id: 65cec07d-8f30-41ab-977f-92f7dd752714
 status: raw
 turn_count: 10
 tools_used:
-  AskUserQuestion: 10
+  AskUserQuestion: 12
   Bash: 28
+  Edit: 11
   Glob: 6
   Grep: 5
   mcp__jarvis-memory__jarvis_status: 1
   PowerShell: 1
-  Read: 33
+  Read: 35
   ToolSearch: 2
   WebSearch: 9
-  Write: 2
+  Write: 3
 tokens:
-  input: 328
-  output: 309433
-  cache_creation: 1492871
-  cache_read: 30701887
-  total: 32504519
-cost_usd: 15.206847
+  input: 394
+  output: 356928
+  cache_creation: 2629523
+  cache_read: 42818815
+  total: 45805660
+cost_usd: 22.651923
 model:
   - "claude-sonnet-5"
 files_touched:
@@ -61,6 +62,7 @@ files_touched:
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\60_Claude\\07_AI_Information\\Jarvis OS — North Star.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\60_Claude\\07_AI_Information\\Jarvis Writing and Formatting.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\60_Claude\\10_Source_Summaries\\Github Ingestion\\Useful Repos - Shortlist.md"
+  - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\60_Claude\\20_Distilled_Notes\\40_Resources CS AI - Restructure Plan (2026-08-21).md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\60_Claude\\20_Distilled_Notes\\Distilled Notes Board.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\60_Claude\\20_Distilled_Notes\\Ingestion Pipeline Audit — Clippings, Summaries & Implementation (2026-07-27).md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\60_Claude\\20_Distilled_Notes\\Jarvis Systems Audit - Retrieval, Sync, and Plugins (2026-08-21).md"
@@ -1297,6 +1299,36 @@ Three-layer construction, not a generic "best AI courses" list:
 
 The merge decision means I need the full shape of `Engineer Edge Roadmap.md` before proposing how the syllabus actually integrates into it, not just the two sections I've read. Pulling the whole file now, still research, not writing.
 
+Full read of `Engineer Edge Roadmap.md` done, plus `System Design Practice.md`. One thing surfaced that blocks the merge design, and it's not something I can resolve by assuming.
+
+**The Roadmap's own dates don't work.** Frontmatter says `deadline: 2026-08-31` - ten days from now. But the note's own `next:` field still says "Start Days 1-30: Traceable MVP" - meaning per its own last update (2026-07-29), the 90-day plan created back on 2026-04-26 has not actually started. `System Design Practice.md`, which the Roadmap's own Arena 1 depends on, says the same thing in its own words: "Not yet run for real... no drill session logged yet." This is the same execution-gap pattern the earlier audit found everywhere else tonight - GitHub install queue planned twice, run zero times; `/challenge` and `/strategy` skills queued repeatedly, never built. The Roadmap is now a third instance of the identical pattern: well-designed, unexecuted, and now also chronologically broken (90 days cannot fit in the 10 days remaining before its own deadline).
+
+I don't want to design a 4-month syllabus merge into a plan whose own dates are already false - that just adds a fourth thing to the "planned, not run" pile. Before I can propose how this actually merges structurally:
+
+I now have what I'd call extremely rich context - vault-verified sources, a confirmed integration point, depth mode, time budget, and certification handling. One placement question remains before I write anything, because the scope shifted mid-conversation and I don't want to guess.
+
+**Two different deliverables have been on the table tonight, and I need to know if both are still live:**
+1. The original ask, from before we got into AI fundamentals: a note in `60_Claude/20_Distilled_Notes` describing what needs to be done to restructure `40_Resources/CS/AI`'s existing rough tool-list notes (`Gen AI Meeting.md`, `AI Workflow.md`).
+2. What's emerged since: the 4-month syllabus itself, which you've now decided lives merged into `Engineer Edge Roadmap.md` (dates reset to start today) and `Certifications Strategy.md` (Anthropic Academy added).
+
+These aren't the same file and don't have to be the same deliverable.
+
+I have everything needed now. Here's what I'm about to produce, so you can redirect before I start writing:
+
+1. **`Engineer Edge Roadmap.md`** - dates reset to start 2026-08-21, Arena 3 (AI Engineering) rebuilt as a real 4-month, ~6-10 hr/week syllabus with named modules (base vocabulary → retrieval/RAG via DataTalksClub LLM Zoomcamp → knowledge graphs → agent-harness engineering via Learn Harness Engineering → evaluation → craft/security), each module hands-on with a real build artifact, anchored in Anthropic Academy as the spine and cross-linked to the vault sources already found tonight (Tool Map, Certifications Strategy, Useful Repos - Shortlist). Failure Harness (Days 31-60) stays linked, not duplicated.
+2. **`Certifications Strategy.md`** - Anthropic Academy added to the tracked table under the existing ATS-insurance discipline.
+3. **A new Distilled Notes plan note** - what needs to happen to `40_Resources/CS/AI`'s rough tool-list notes, not touching that folder itself.
+
+Writing all three now.
+
+All three deliverables are written:
+
+1. **`Certifications Strategy.md`** - Anthropic Academy added as a confirmed free target; DataTalksClub moved from "flagged, not researched" to "confirmed, self-paced," with a log entry recording the research trail.
+2. **`Engineer Edge Roadmap.md`** - dates reset (Day 1 = today, deadline now 2026-12-21), Arena 3 rebuilt with the full 17-week syllabus table (base vocabulary → RAG → knowledge graphs → harness engineering, both senses → evaluation → craft/security → consolidation), each week naming a real resource and a real build artifact. The old 90-Day Plan is now the 17-Week Plan, rescaled, with a new Weeks 14-17 phase that shares the syllabus's own capstone rather than inventing a second one.
+3. **A new Distilled Notes plan** (`40_Resources CS AI - Restructure Plan (2026-08-21).md`) - names the six module notes that should eventually live in `40_Resources/CS/AI`, states the after-not-before rule (write a module's concept note only once that week's syllabus work actually happened, not from a course description), and what happens to the existing rough tool-list notes. `40_Resources/CS/AI` itself was not touched.
+
+That closes out tonight's session: the systems audit, the syllabus, and the restructure plan are all written and cross-linked to each other and to tonight's session-recap note. Nothing else was queued for writing - the earlier "Fix now / Decide / Build" queue from the audit note is still open and separate from this.
+
 ### Tool Calls
 
 - `Bash` -- `find "D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Internship\Preperation\System Design" -type f -name "*.md" 2>/dev/null
@@ -1322,15 +1354,264 @@ D:\Users\_Anant\10_Areas\Documents\Jarvis\60_Claude\10_Source_Summaries\Github I
 - `AskUserQuestion` -- `{"questions":[{"question":"Engineer Edge Roadmap already has a live 90-day plan with its own AI Engineering arena (RAG, chunking, retrieval, evaluation, grounding). Should the 4-month syllabus run alongside it as a separate track, or should it be woven into/replace that arena so there\u0027s one plan, not two competing ones?","header":"Roadmap overlap","options":[{"label":"Separate track","description":"Keep Engineer Edge Roadmap focused on the portfolio-project 90 days; the syllabus is a distinct, parallel learning track."},{"label":"Merge into the Roadmap","description":"Fold the syllabus\u0027s AI-fundamentals content into Engineer Edge Roadmap\u0027s existing AI Engineering arena so there\u0027s one source of truth."}]},{"question":"DataTalksClub zoomcamps and Karpathy\u0027s course are hands-on (Python, Docker, building things from scratch). Your \"cheat sheet\" framing suggested touching the top quickly. Which mode should the 4-month syllabus actually run in?","header":"Depth vs speed","options":[{"label":"Hands-on, build real things","description":"Actually run the notebooks, build a small RAG pipeline, build micrograd - slower but matches \u0027builder depth\u0027 from earlier."},{"label":"Fast survey, light building","description":"Read/watch for the mental model, do only the smallest exercises - true to the \u0027cheat sheet, basics only\u0027 framing, defer heavy building to UMN/later."}]},{"question":"Should Anthropic Academy\u0027s free certificates get added to Certifications Strategy.md\u0027s tracked table (which currently applies a strict \u0027ATS insurance only\u0027 filter), or treated as pure learning material outside that certification-ROI discipline?","header":"Certs vs learning","options":[{"label":"Add to Certifications Strategy","description":"Track them the same way as GitHub Foundations/AI-900 - subject to the same ROI filter."},{"label":"Keep separate","description":"Anthropic Academy is learning material for this syllabus, not a career-signal certification decision - don\u0027t mix the two systems."}]},{"question":"Roughly how many hours per week realistically exist for this syllabus, given the existing daily LeetCode/study habits and the 90-day roadmap already running?","header":"Weekly time budget","options":[{"label":"3-5 hrs/week","description":"Light addition on top of existing commitments - a slow, steady 4-month pace."},{"label":"6-10 hrs/week","description":"A real secondary priority, meaningful weekly progress."},{"label":"10+ hrs/week","description":"Near-primary focus for these 4 months, existing habits adjust around it."}]}]}`
 - `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\10_Areas\Career\Engineer Edge Roadmap.md`
 - `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Internship\Preperation\System Design\System Design Practice.md`
+- `AskUserQuestion` -- `{"questions":[{"question":"Engineer Edge Roadmap\u0027s 90-day plan (started 2026-04-26, deadline 2026-08-31) hasn\u0027t actually started per its own next: field. How should the merge handle this?","header":"Roadmap reset","options":[{"label":"Reset the Roadmap\u0027s dates","description":"Treat today as Day 1 of a redefined plan - the syllabus\u0027s 4-month calendar becomes the new operating timeline, old dates get replaced."},{"label":"Roadmap stays separate, unfixed","description":"Don\u0027t touch the Roadmap\u0027s broken dates as part of this - just design the syllabus content to slot into Arena 3 conceptually; scheduling is a different problem to fix separately."}]}]}`
+- `AskUserQuestion` -- `{"questions":[{"question":"Is the original 40_Resources/CS/AI cleanup-plan note still wanted separately, or has the syllabus (into Engineer Edge Roadmap + Certifications Strategy) superseded that ask entirely?","header":"Deliverable scope","options":[{"label":"Both, separately","description":"Write the syllabus into Roadmap/Certifications Strategy AND a separate Distilled Notes plan for restructuring 40_Resources/CS/AI\u0027s rough tool-list notes."},{"label":"Syllabus only, supersedes it","description":"The syllabus is the real deliverable now; drop the original 40_Resources/CS/AI cleanup-note ask - it was superseded by where this conversation went."}]}]}`
+- `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\10_Areas\Career\Certifications\Certifications Strategy.md`
+- `Edit` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\10_Areas\Career\Certifications\Certifications Strategy.md`
+```diff
+- created: 2026-07-29
+updated: 2026-07-29
+related_progress:
+  - "[[Engineer Edge Roadmap]]"
+  - "[[40_Resources/CS/Links]]"
+tags:
+  - "#progress"
+  - "#career"
+next: "Research Anthropic Certified AI Engineer, DeepLearning.AI Specialization, and DataTalks before starting any of them"
++ created: 2026-07-29
+updated: 2026-08-21
+related_progress:
+  - "[[Engineer Edge Roadmap]]"
+  - "[[40_Resources/CS/Links]]"
+tags:
+  - "#progress"
+  - "#career"
+next: "Research Anthropic Certified AI Engineer and DeepLearning.AI Specialization — DataTalksClub is now scoped and confirmed, see table below"
+```
+- `Edit` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\10_Areas\Career\Certifications\Certifications Strategy.md`
+```diff
+- | Anthropic Certified AI Engineer | **Flagged, not researched** | One of the three most promising next targets |
+| DeepLearning.AI Specialization | **Flagged, not researched** | One of the three most promising next targets |
+| DataTalksClub | **Flagged, not researched** | One of the three most promising next targets — also load-bearing for `llm-zoomcamp` per [[GitHub Ingestion Implementation]] |
+| NVIDIA AI Certification | **Genuinely open** | From `40_Resources/CS/Links` — unreconciled either way |
+| Google Cloud Gen-AI Leader cert | **Genuinely open** | From `40_Resources/CS/Links` — unreconciled either way |
+## Open Questions
+- [ ] Is AWS AI & ML Scholars Program a prerequisite for AWS Certified AI Practitioner, or a parallel track to Cloud Practitioner Essentials? Unanswered since this file's own original Decision Gate — still unanswered.
+- [ ] Research Anthropic Certified AI Engineer, DeepLearning.AI Specialization, and DataTalksClub before starting any — this is the actual next research task, not a certification to start yet.
+- [ ] Reconcile NVIDIA AI Certification and Google Cloud Gen-AI Leader cert from `40_Resources/CS/Links` — decide keep, drop, or defer.
++ | Anthropic Certified AI Engineer | **Flagged, not researched** | Paid, harder exam-style credential — distinct from Anthropic Academy below, not yet researched |
+| DeepLearning.AI Specialization | **Flagged, not researched** | One of the three most promising next targets |
+| DataTalksClub (LLM Zoomcamp) | **Confirmed, self-paced** | Verified 2026-08-21: free, 10 weeks, RAG/vector search/embeddings/agents/eval/monitoring. The 2026 live cohort (June-summer) already ran — no certificate or peer review available now, self-paced access only. Scoped into [[Engineer Edge Roadmap]]'s Arena 3 syllabus, Weeks 3-5. |
+| Anthropic Academy | **Add — start immediately** | New find, 2026-08-21: free, official, ~18 self-paced courses (AI Fluency, product training, developer deep-dives — API, MCP, Claude Code, Subagents, Cowork, Agent Skills), launched 2026-03-02, free completion certificates. Directly on the tools already in daily use here. Threaded through [[Engineer Edge Roadmap]]'s Arena 3 syllabus in small weekly increments rather than one block. |
+| NVIDIA AI Certification | **Genuinely open** | From `40_Resources/CS/Links` — unreconciled either way |
+| Google Cloud Gen-AI Leader cert | **Genuinely open** | From `40_Resources/CS/Links` — unreconciled either way |
+## Open Questions
+- [ ] Is AWS AI & ML Scholars Program a prerequisite for AWS Certified AI Practitioner, or a parallel track to Cloud Practitioner Essentials? Unanswered since this file's own original Decision Gate — still unanswered.
+- [ ] Research Anthropic Certified AI Engineer and DeepLearning.AI Specialization before starting either — DataTalksClub and Anthropic Academy are now confirmed and scoped, this is the remaining research task.
+- [ ] Reconcile NVIDIA AI Certification and Google Cloud Gen-AI Leader cert from `40_Resources/CS/Links` — decide keep, drop, or defer.
+```
+- `Edit` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\10_Areas\Career\Certifications\Certifications Strategy.md`
+```diff
+- ## Log
+- **2026-07-29:** Created note from [[00_Execution]]'s resolved Certifications Strategy verdict — first content in this folder.
++ ## Log
+- **2026-07-29:** Created note from [[00_Execution]]'s resolved Certifications Strategy verdict — first content in this folder.
+- **2026-08-21:** Verified DataTalksClub (LLM Zoomcamp) directly against the live course repo and site — confirmed real, free, 10 weeks, self-paced only now. Added Anthropic Academy as a new free, official, certificate-bearing find, distinct from the still-unresearched Anthropic Certified AI Engineer. Both scoped into [[Engineer Edge Roadmap]]'s rebuilt Arena 3 syllabus in the same session. Full research trail: [[Jarvis Systems Audit - Retrieval, Sync, and Plugins (2026-08-21)]] and the AI-fundamentals syllabus note in `60_Claude/20_Distilled_Notes/`.
+```
+- `Edit` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\10_Areas\Career\Engineer Edge Roadmap.md`
+```diff
+- created: 2026-04-26
+status: sprout
+deadline: 2026-08-31
+related_progress:
+  - "[[Career Strategy]]"
+  - "[[20_Progress/Projects/Research/BOOM/BOOM Systems Engineering Bullet]]"
+  - "[[20_Progress/Projects/Research/BOOM/Observability-First ML Pipeline Brief]]"
+  - "[[Portfolio]]"
+tags:
+  - "#progress"
+  - "#career"
+  - "#systems"
+  - "#ai"
+next: "Start Days 1-30: Traceable MVP (see 90-Day Plan below)"
++ created: 2026-04-26
+status: sprout
+updated: 2026-08-21
+deadline: 2026-12-21
+related_progress:
+  - "[[Career Strategy]]"
+  - "[[20_Progress/Projects/Research/BOOM/BOOM Systems Engineering Bullet]]"
+  - "[[20_Progress/Projects/Research/BOOM/Observability-First ML Pipeline Brief]]"
+  - "[[Portfolio]]"
+  - "[[10_Areas/Career/Certifications/Certifications Strategy]]"
+tags:
+  - "#progress"
+  - "#career"
+  - "#systems"
+  - "#ai"
+next: "Start Week 1 of the reset 17-Week Plan (see below) — base-vocabulary syllabus module plus the Traceable MVP build both begin 2026-08-21"
+```
+- `Edit` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\10_Areas\Career\Engineer Edge Roadmap.md`
+```diff
+- created: 2026-04-26
+updated: 2026-07-29
+deadline: 2026-08-31
+related_progress:
+  - "[[Career Strategy]]"
+  - "[[20_Progress/Projects/Research/BOOM/BOOM Systems Engineering Bullet]]"
+  - "[[20_Progress/Projects/Research/BOOM/Observability-First ML Pipeline Brief]]"
+  - "[[Portfolio]]"
+tags:
+  - "#progress"
+  - "#career"
+  - "#systems"
+  - "#ai"
+next: "Start Days 1-30: Traceable MVP (see 90-Day Plan below)"
++ created: 2026-04-26
+updated: 2026-08-21
+deadline: 2026-12-21
+related_progress:
+  - "[[Career Strategy]]"
+  - "[[20_Progress/Projects/Research/BOOM/BOOM Systems Engineering Bullet]]"
+  - "[[20_Progress/Projects/Research/BOOM/Observability-First ML Pipeline Brief]]"
+  - "[[Portfolio]]"
+  - "[[10_Areas/Career/Certifications/Certifications Strategy]]"
+tags:
+  - "#progress"
+  - "#career"
+  - "#systems"
+  - "#ai"
+next: "Start Week 1 of the reset 17-Week Plan (see below) — base-vocabulary syllabus module plus the Traceable MVP build both begin 2026-08-21"
+```
+- `Edit` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\10_Areas\Career\Engineer Edge Roadmap.md`
+```diff
+- ### 3. AI Engineering
+Build AI features as systems, not magic boxes. For Learning Tracker or Portfolio AI Twin:
+- define what the model is allowed to answer
+- store source documents cleanly
+- chunk and embed intentionally
+- retrieve with metadata filters
+- show citations or source snippets
+- persist conversations
+- evaluate bad answers
+- log latency, cost, model, prompt version, and retrieval hits
+AI projects become stronger when you can answer:
+- What happens when retrieval returns weak context?
+- How do you know the answer is grounded?
+- What do you do when the model is confidently wrong?
+- What data should never be sent to the model?
++ ### 3. AI Engineering
+Build AI features as systems, not magic boxes. For Learning Tracker or Portfolio AI Twin:
+- define what the model is allowed to answer
+- store source documents cleanly
+- chunk and embed intentionally
+- retrieve with metadata filters
+- show citations or source snippets
+- persist conversations
+- evaluate bad answers
+- log latency, cost, model, prompt version, and retrieval hits
+AI projects become stronger when you can answer:
+- What happens when retrieval returns weak context?
+- How do you know the answer is grounded?
+- What do you do when the model is confidently wrong?
+- What data should never be sent to the model?
+#### The 17-Week AI Fundamentals Syllabus
+This checklist above assumes you already know how to do RAG, chunking, and evaluation well. This syllabus is the part that was missing: the actual mechanism behind each of those, hands-on, before the checklist gets run for real. Reset 2026-08-21 — full research trail and source verification in [[Jarvis Systems Audit - Retrieval, Sync, and Plugins (2026-08-21)]] and the syllabus-design note in `60_Claude/20_Distilled_Notes/`. Runs 6-10 hrs/week, concurrently with the build phases below, same Weekly Operating System. Builder depth throughout — build the thing, don't just read about it.
+Anthropic Academy (free, official, ~18 self-paced courses, certificates — see [[10_Areas/Career/Certifications/Certifications Strategy]]) threads through every week in small increments rather than its own block — a course or two whenever a week's module touches the tool it covers (MCP week pairs with Anthropic Academy's MCP course, Claude Code/Subagents weeks pair with those courses).
+| Weeks | Module | Core resource | Build artifact |
+|---|---|---|---|
+| 1-2 | Base vocabulary — tokens, context windows, training vs. inference, embeddings, attention | Karpathy's [Neural Networks: Zero to Hero](https://karpathy.ai/zero-to-hero.html), Lecture 1 (micrograd) + 3Blue1Brown's neural network series for visual intuition | Build micrograd from the lecture by hand; write a one-page note explaining tokens/context window/inference in your own words, checked against what was taught in this session's transcript |
+| 3-5 | Retrieval and memory — RAG, vector search, embeddings, evaluation, monitoring | [DataTalksClub LLM Zoomcamp](https://github.com/DataTalksClub/llm-zoomcamp), Modules 1-3, self-paced | A working RAG pipeline over a real folder of Jarvis source summaries — not a toy dataset |
+| 6-7 | Knowledge graphs — structural/relational graphs vs. embeddings, why they answer different questions | The `graphify` skill already installed at `~/.claude/skills/graphify` (per [[20_Progress/Projects/AI Use/Claude Kit/Tool Map]]) — run it against a real codebase | A graph export plus a short note contrasting what the graph found vs. what the Week 3-5 RAG pipeline found on the same material |
+| 8-11 | Harness engineering — agent-harness sense: instructions, tools, environment, state, feedback | [Learn Harness Engineering](https://walkinglabs.github.io/learn-harness-engineering/en/) (already bookmarked, never followed up on) — lectures plus its 7 hands-on projects | Complete at least 2 of the 7 course projects. The reliability/chaos-testing sense of "harness" is not separate content — it's Arena 2's Failure Harness, Weeks 5-9 below, explicitly linked here, not duplicated |
+| 12-13 | Evaluation — LLM-as-judge, test suites, red-teaming | `promptfoo`, already partially run this session against `/challenge` (1 of 2 test cases passed, per [[20_Progress/Projects/AI Use/Claude Kit/Tool Map]]) | A real eval suite (10+ cases, an `llm-rubric` grader) against the Week 3-5 RAG pipeline |
+| 14-15 | Craft — prompt engineering vs. context engineering as a real distinction; security basics | `system-prompts-and-models-of-ai-tools` and `CL4R1T4S` (reference, already starred per [[Useful Repos - Shortlist]]); `bumblebee` scan | A written context-engineering pass on one real Jarvis skill (e.g. `/challenge`), with before/after token counts |
+| 16-17 | Consolidation | Anthropic Academy developer track finished; every artifact above packaged per Arena 4's Proof and Communication requirements | Portfolio-ready writeup of the whole syllabus, cross-linked from [[10_Areas/Career/Certifications/Certifications Strategy]] |
+Open, not yet decided: whether the Week 8-11 harness-engineering artifact should be built against Learning Tracker directly (making it dual-purpose with the 17-Week build phases below) or as a standalone exercise first. Default to standalone first — don't let an unfinished course project block the main build.
+```
+- `Edit` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\10_Areas\Career\Engineer Edge Roadmap.md`
+```diff
+- ## 90-Day Plan
+### Days 1-30: Traceable MVP
++ ## 17-Week Plan
+Reset 2026-08-21. Day 1 is today, not 2026-04-26 — the original 90-day arc created that day never actually started, per this file's own `next:` field, which still said "Start Days 1-30" as of 2026-07-29. Rather than patch the old dates in place, the whole timeline resets against the AI Fundamentals Syllabus above, which runs the same 17 weeks concurrently under the existing Weekly Operating System below. The original 90 days of build-phase content below rescale into Weeks 1-13 unchanged in substance; Weeks 14-17 are new, and match the syllabus's own Weeks 14-17 consolidation phase rather than inventing a second, separate capstone.
+### Weeks 1-4: Traceable MVP
+```
+- `Edit` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\10_Areas\Career\Engineer Edge Roadmap.md`
+```diff
+- ### Days 31-60: Failure Harness
++ ### Weeks 5-9: Failure Harness
+```
+- `Edit` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\10_Areas\Career\Engineer Edge Roadmap.md`
+```diff
+- ### Days 61-90: Interview-Grade System
++ ### Weeks 10-13: Interview-Grade System
+```
+- `Edit` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\10_Areas\Career\Engineer Edge Roadmap.md`
+```diff
+- System design drill:
+> Redesign this for 10,000 users and explain what you would change first.
+## Weekly Operating System
++ System design drill:
+> Redesign this for 10,000 users and explain what you would change first.
+### Weeks 14-17: Syllabus Capstone
+Not a second, separate capstone — this is the same Weeks 14-17 consolidation phase already defined in the AI Fundamentals Syllabus table above (Arena 3). Package every syllabus artifact (micrograd, the RAG pipeline, the graph export, the harness-engineering projects, the eval suite, the context-engineering pass) per Arena 4's five-artifact standard, alongside whatever Learning Tracker package came out of Weeks 10-13. Finish the Anthropic Academy developer track in this window if it isn't done already.
+## Weekly Operating System
+```
+- `Edit` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\10_Areas\Career\Engineer Edge Roadmap.md`
+```diff
+- | Mentor/network asks       | 1/week |
+| Interview stories created | 1/week |
++ | Mentor/network asks       | 1/week |
+| Interview stories created | 1/week |
+| Syllabus hours logged     | 6-10/week |
+```
+- `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\10_Areas\Career\Engineer Edge Roadmap.md`
+- `Write` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\60_Claude\20_Distilled_Notes\40_Resources CS AI - Restructure Plan (2026-08-21).md`
+```
+---
+type: evergreen
+status: sprout
+created: 2026-08-21
+tags:
+  - plan
+  - ai
+  - resources
+notes:
+  - "[[Engineer Edge Roadmap]]"
+  - "[[10_Areas/Career/Certifications/Certifications Strategy]]"
+  - "[[Jarvis Systems Audit - Retrieval, Sync, and Plugins (2026-08-21)]]"
+  - "[[40_Resources/Obsidian/Jarvis Vault Architecture]]"
+  - "[[Evergreen Standard]]"
+next: "Write the first module note (tokens/context-window/inference) once Weeks 1-2 of the syllabus in Engineer Edge Roadmap actually run"
+---
+# 40_Resources/CS/AI - Restructure Plan (2026-08-21)
+A plan, not a rewrite. Per explicit instruction this session, `40_Resources/CS/AI` itself was not touched - this note only states what should happen there, so the actual restructuring is a deliberate future pass, not something done blind tonight.
+## What is there now and why it falls short
+`Gen AI Meeting.md` and `AI Workflow.md` were read in full this session. Both are tool-list and workflow-template dumps from a March-July 2026 course: `Gen AI Meeting.md` names over 40 tools (Bolt, Lyser, WAPI, VAPI, N8N, Chronicle, Kite) with one-line descriptions each; `AI Workflow.md` is a which-tool-for-which-task schedule with copy-paste prompt templates. Neither explains what a token actually is, why embeddings let you search by meaning, what makes something genuinely RAG versus prompt-stuffing, or what actually distinguishes an agent from a workflow. This matches [[HUMAN_WRITING]]'s own definition of the gap between a tool list and a concept note: a tool list says what exists, a concept note explains the mechanism. These notes are not wrong or slop by [[HUMAN_WRITING]]'s standard - they are an honest record of a course - but they are the wrong shape for what `40_Resources/CS/AI` is supposed to hold, per [[40_Resources/Obsidian/Jarvis Vault Architecture]]'s definition of `40_Resources` as "your private search engine," not a course-notes archive.
+## What changed tonight that this plan builds on
+Two things now exist that did not exist before this session, and the restructure should build on them rather than duplicate them:
+1. **A real, hands-on, 17-week AI fundamentals syllabus** now lives in [[Engineer Edge Roadmap]]'s Arena 3, reset to start 2026-08-21. It names six concrete modules - base vocabulary, retrieval and memory, knowledge graphs, harness engineering, evaluation, craft/security - each with a verified external resource and a real build artifact. This is the map; `40_Resources/CS/AI` should become the place the concept explanations that back each module actually live, not a second copy of the syllabus itself.
+2. **A worked example of the target depth already exists in this session's own transcript** - the base-vocabulary teaching on tokens, embeddings, the context window, training versus inference, and prompt caching, done at builder depth with mechanism, contrast, and a real vault-grounded consequence for each term. That transcript is the gold-standard bar for what a module note in `40_Resources/CS/AI` should read like, the same way [[Evergreen Standard]] names a gold-standard note for every other content type in this vault.
+## The proposed shape
+One evergreen note per syllabus module, filed under `40_Resources/CS/AI`, each following [[Evergreen Standard]] (Core Claim, Mechanism, Why This Matters Here, Failure Modes, Evidence, Related) rather than a tool-list shape:
+- `Tokens, Context Windows, and Inference.md` - the Week 1-2 module, mechanism-first, the transcript above as the starting draft
+- `Retrieval and RAG.md` - the Week 3-5 module, written once the DataTalksClub LLM Zoomcamp modules are actually run, not before - concept notes here should come from real understanding, not from reading a course description
+- `Knowledge Graphs vs. Embeddings.md` - the Week 6-7 module
+- `Harness Engineering.md` - the Week 8-11 module, explicitly covering both senses of "harness" surfaced this session (agent-harness and reliability/failure-harness), with a cross-link to [[Engineer Edge Roadmap]]'s Arena 2 rather than a duplicate explanation
+- `Evaluation and LLM-as-Judge.md` - the Week 12-13 module
+- `Prompt Engineering vs. Context Engineering.md` - the Week 14-15 module
+Each note gets written **after** its syllabus week actually runs, not in advance - a concept note drafted from a course's marketing description rather than real use would be exactly the fake-confidence failure [[HUMAN_WRITING]] warns against ("never make a note sound finished if the underlying understanding is partial").
+## What happens to the existing rough notes
+Not deleted. `Gen AI Meeting.md` and `AI Workflow.md` hold real tool references (`MCP`, `Ollama`, `OpenRouter`, the Custom-GPT workflow) that are still individually useful even though the notes as a whole are the wrong shape. Once the six module notes above exist, mine both files for any tool reference not already covered elsewhere, fold each surviving reference into the `Related` or `Evidence` section of whichever new module note it belongs to, then mark the two original files `status: archived` with a superseded banner pointing at the new structure - the same pattern already used elsewhere in this vault for retired notes (see the `History Depth Blocker` and `Phase 2b — Promotion Study` supersede banners in the TradingView project).
+## Priority queue
+**Fix now:** nothing - this is a plan, not a backlog of quick fixes.
+**Decide:** whether `Prompts/Chat Gpt Prompts.md`, `Token Optimization/Claude Optimization Master Setup.md`, and `Token Optimization/Claude Pro Workflow.md` (the three files under `40_Resources/CS/AI` not read this session) belong in this same restructure or are a separate, already-adequate track - read them before assuming either way.
+**Build, in order, one module at a time:** write `Tokens, Context Windows, and Inference.md` after Weeks 1-2 of the syllabus actually run -> write `Retrieval and RAG.md` after Weeks 3-5 -> continue through the remaining four modules on the same after-not-before rule -> once all six exist, run the archive pass on `Gen AI Meeting.md` and `AI Workflow.md` described above.
+**Low priority:** nothing deferred - this whole plan is sequenced behind the syllabus actually running, not behind anything else in the vault.
+
+```
 
 ## Actions Taken
 
 **Files created:**
 - `C:\Users\Anant Gupta\.claude\CLAUDE.md`
+- `D:\Users\_Anant\10_Areas\Documents\Jarvis\60_Claude\20_Distilled_Notes\40_Resources CS AI - Restructure Plan (2026-08-21).md`
 - `D:\Users\_Anant\10_Areas\Documents\Jarvis\60_Claude\20_Distilled_Notes\Jarvis Systems Audit - Retrieval, Sync, and Plugins (2026-08-21).md`
 
 **Files modified:**
-_None_
+- `D:\Users\_Anant\10_Areas\Documents\Jarvis\10_Areas\Career\Certifications\Certifications Strategy.md`
+- `D:\Users\_Anant\10_Areas\Documents\Jarvis\10_Areas\Career\Engineer Edge Roadmap.md`
 
 **Files deleted (heuristic, from Bash commands):**
 _None detected_
