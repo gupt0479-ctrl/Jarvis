@@ -4,9 +4,9 @@ input_kind: ai-conversation
 source_app: claude-code
 source_os: windows
 title: "Plan second-brain-claudekit workflow and review system"
-started_at: 2026-08-10T15:02:31
-ended_at: 2026-08-11T14:08:45
-exported_at: 2026-08-12T15:00:12
+started_at: 2026-08-10T13:32:31
+ended_at: 2026-08-11T12:38:45
+exported_at: 2026-08-21T15:30:03
 duration_minutes: 1386.2
 project: Jarvis
 cwd: 'D:\Users\_Anant\10_Areas\Documents\Jarvis'

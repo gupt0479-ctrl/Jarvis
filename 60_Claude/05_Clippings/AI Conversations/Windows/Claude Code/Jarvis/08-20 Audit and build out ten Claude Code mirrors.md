@@ -5,30 +5,30 @@ source_app: claude-code
 source_os: windows
 title: "Audit and build out ten Claude Code mirrors"
 started_at: 2026-08-20T16:55:40
-ended_at: 2026-08-20T17:42:36
-exported_at: 2026-08-20T17:53:35
-duration_minutes: 46.9
+ended_at: 2026-08-21T14:16:59
+exported_at: 2026-08-21T14:30:04
+duration_minutes: 1281.3
 project: Jarvis
 cwd: 'D:\Users\_Anant\10_Areas\Documents\Jarvis'
 session_id: b327d2fa-1065-4886-9fba-3ef9b141135d
 status: raw
-turn_count: 4
+turn_count: 8
 tools_used:
-  Bash: 33
-  Edit: 9
+  Bash: 36
+  Edit: 19
   PowerShell: 4
-  Read: 29
+  Read: 31
   TaskCreate: 5
   TaskUpdate: 6
   ToolSearch: 1
   Write: 3
 tokens:
-  input: 65317
-  output: 162677
-  cache_creation: 806713
-  cache_read: 25083876
-  total: 26118583
-cost_usd: 10.001031
+  input: 65371
+  output: 198031
+  cache_creation: 1333152
+  cache_read: 32225155
+  total: 33821709
+cost_usd: 13.888691
 model:
   - "claude-sonnet-5"
 files_touched:
@@ -1215,6 +1215,210 @@ skills/Trading View
 - `TaskUpdate` -- `{"taskId":"3","status":"completed"}`
 - `TaskUpdate` -- `{"taskId":"4","status":"in_progress"}`
 
+## You
+
+Continue from where you left off.
+
+## Claude
+
+No response requested.
+
+## You
+
+The corrected model, confirmed directly by Anant: sandbox/ -> tested for real -> tested-tools/ (never live-synced) -> an explicit, per-item human decision -> agents/<Project>/, commands/<Project>/, hooks/<Project>/, skills/<Project>/, instructions/<Project>/ in second-brain-claudekit (all five live-synced) -> Jarvis mirrors these read-only under 20_Progress/AI/Claude Code/<Project>/. Ten entries: second-brain-claudekit, CausalOps, Jarvis, Portfolio, Trading View, Resq, OpsPilot, The Plan, .claude_windows, .claude_wsl.
+
+## 1. Build real depth for the two home-directory mirrors
+
+20_Progress/AI/Claude Code/.claude_windows/ and .claude_wsl/ are confirmed too thin as of today. List their real current contents directly. Compare against what should be there (agents, commands, skills, hooks, and now README.md per the parallel codebase-side fix -- confirm second-brain-claudekit's sync-manifest.json paths for these two entries once reachable, or work from real mirror contents if not). For whatever's genuinely thin or missing, build it out properly: the same "What Agents.md / How to Use Agents.md" depth the Toolkit/ folder already has for project-scoped tools, applied to these two home-directory-scoped entries specifically -- what's actually installed globally on each OS, distinguished clearly from project-scoped tooling, since a global skill and a project skill are different things and have been getting conflated. Real content only -- if something is genuinely sparse because nothing global has been promoted yet for one of the two, say that plainly rather than padding it.
+
+## 2. Verify all 10 mirrors, not just the two home directories
+
+For CausalOps, Jarvis, Portfolio, Trading View, Resq, OpsPilot, The Plan, and second-brain-claudekit: confirm each mirror folder's real content is current (cross-check against _All-Projects-Sync-Log.md's most recent entry per project, same method as before). Specifically confirm second-brain-claudekit's mirror now includes real content once the parallel codebase-side session adds _docs/** and expands its live-sync folders -- if you can't find evidence that landed yet, say so rather than assuming it did.
+
+## 3. Confirm settings.json is gone everywhere
+
+A parallel codebase session is removing .claude/settings.json from 5 manifest entries and confirming its absence from the other 5. Check whether any of the 10 mirror folders here still physically holds a settings.json copy from before that fix -- remove it if so, this is the one exception to "never edit inside a Jarvis mirror."
+
+## 4. Record the corrected model as the real, dated source of truth
+
+The model at the top of this prompt is the actual, confirmed architecture -- write it into Log.md as a dated entry, explicitly correcting anything a prior session may have recorded about skills/ being source-repo staging or the sync leg being merely "designed" rather than live. Cross-reference from Tool Map.md and 20_Progress/AI/Claude Code/MOC.md.
+
+Report the real state of all 10 mirrors, what you built for the two home directories, and confirm item 3's cleanup.
+
+## Claude
+
+Now cross-referencing from `20_Progress/AI/Claude Code/MOC.md`.
+
+The sync task's failure from yesterday was transient — checking now (a day later), everything has caught up. Let me correct the notes I wrote yesterday so they don't leave a stale "currently failing" claim standing.
+
+All four items are done. Here's the real state:
+
+**All 10 mirrors — current and healthy.** Sync log shows continuous `OK` runs through today (2026-08-21 14:04:33). Yesterday's audit caught the sync task mid-failure (a 16:36:56 attempt returned non-zero, no new log lines for ~1.5 hrs) — re-checked today, it was transient and self-recovered; no repeat, and the manifest fix that had landed underneath it (`README.md`/`_docs` added, `settings.json` dropped, commit `b5cf0ed`) has now fully propagated: second-brain-claudekit's mirror has both `README.md` and `_docs/`; Jarvis, CausalOps, Portfolio, Trading View, Resq, OpsPilot all got their `README.md`. The Plan, `.claude_wsl`, and `.claude_windows` correctly show no `README.md` — verified against each real source, none actually has one to sync.
+
+**Item 3 (settings.json) — confirmed clean.** Removed the 5 stale copies (Jarvis, Resq, second-brain-claudekit, The Plan, Trading View) once I verified the codebase-side fix had actually committed. Re-checked today: absent from all 10 mirrors.
+
+**Item 1 (home-directory depth) — built.** New `Toolkit/Global/What Global.md` + `How to Use Global.md`, matching the existing Agents/Commands/Skills/Hooks depth. Real findings, not padding:
+- WSL home: 3 agents, 7 commands, 3 hooks, 28 skills (not 29 — corrected a stale count) — all real, but the agents/commands reference pre-reorg vault paths (`10_UMN/`, `00_Inbox/Headway/`) that no longer exist. Flagged, not fixed (editing them would sync back into a live WSL home).
+- Windows home: genuinely thin — zero agents, zero hooks, empty `commands/`, one real skill (`export-ai-session`); the other 31 "skills" are junctions to a separate location, correctly excluded by sync.
+- Cross-linked into the Toolkit MOC, Daily Operations, and Vault Curation.
+
+**Item 4 (corrected model) — recorded.** New dated entry in `Claude Kit/Log.md`, cross-referenced from `Tool Map.md` and `Claude Code/MOC.md`. It explicitly corrects two stale claims in `Folder Map.md`: one saying only second-brain-claudekit was ever switched live (the 2026-08-10 rollout made all 10 live), and one saying `agents/commands/hooks/skills/` were still empty staging folders (they're now populated with real per-project content).
+
+### Tool Calls
+
+- `Read` -- `/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/AI Use/Claude Kit/Log.md`
+- `Edit` -- `/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/AI Use/Claude Kit/Log.md`
+```diff
+- ## [2026-08-20] audit | Logging-layer audit — Write Log retired, Session Logs Board retired, Tool log's real blocker named, Log Standard written
++ ## [2026-08-20] correction | The real pipeline model recorded as dated source of truth — two Folder Map claims corrected, sync task caught mid-failure, settings.json cleanup landed
+- **The corrected model, confirmed directly by Anant, recorded here as the dated source of truth:** `sandbox/` → tested for real → `tested-tools/` (never live-synced to any project) → an explicit, per-item human decision → `agents/<Project>/`, `commands/<Project>/`, `hooks/<Project>/`, `skills/<Project>/`, `instructions/<Project>/` in second-brain-claudekit (all five genuinely live-synced folders) → Jarvis mirrors these read-only under `20_Progress/AI/Claude Code/<Project>/`. Ten manifest entries, all `status: live`: second-brain-claudekit, CausalOps, Jarvis, Portfolio, Trading View, Resq, OpsPilot, The Plan, `.claude_windows`, `.claude_wsl`.
+- **Explicit correction to [[10_Areas/AI/Setup/Folder Map|Folder Map.md]], caught this session, not carried forward silently:** that note's "Claude Kit sync layer" section said "nothing beyond second-brain-claudekit has been switched live; that requires a per-project go-ahead that has not been given yet" and "`agents/`/`commands/`/`hooks/` all three are currently empty... `skills/` keeps its original staging role, still empty" — both describe the state *before* the 2026-07-30 rollout plan was actually executed on 2026-08-10. Real, dated evidence says otherwise: [[20_Progress/AI/Claude Code/MOC]]'s table has marked all ten entries `live-synced` since 2026-08-10, `_All-Projects-Sync-Log.md` shows all ten logging `OK` together on a ~15-minute cadence since then, and direct listing today (`wsl.exe`, not a Windows mirror) shows `agents/`, `commands/`, `hooks/`, `skills/`, `instructions/` all populated with real per-destination-project subfolders (`agents/second-brain-claudekit/`, `skills/Jarvis/`, `skills/.claude_wsl/`, etc.) — not an empty staging convention. A second stale line in the same file's "Per-tool operational registry" section ("Only `second-brain-claudekit` (above) is live; the other eight... are frozen one-time exports") was the same error, fixed the same pass. Both corrections appended in place in `Folder Map.md`, dated, not silently overwritten.
+- **Sync mechanism caught mid-failure, not assumed healthy from the last log line.** `_All-Projects-Sync-Log.md`'s last successful run across all ten entries is 2026-08-20 16:00:03 +0400 (`OK`). Direct check of the real Windows Scheduled Task (`Get-ScheduledTaskInfo ClaudeKit-Sync-All`) shows a later attempt at 16:36:56 returned a non-zero `LastTaskResult` and produced zero new lines in the log — the task is currently in a failed state, next attempt scheduled 17:49:33. The five other project source repos (CausalOps, Portfolio, Trading View, Resq, OpsPilot) have had no commits since this gap opened (verified directly, all last-committed weeks to months ago), so no real content is currently at risk from the stall — but second-brain-claudekit's own manifest changed underneath it mid-session (see below) and has not yet propagated. **Not fixed here** — diagnosing/restarting the scheduled task wasn't in this session's authorization, flagged for Anant.
+- **The parallel codebase-side settings.json fix landed for real, verified by commit, not by re-reading the same manifest twice.** First read of `60_Claude/scripts/sync-manifest.json` this session showed the old schema (`repo_root`/`mirror_path` keys), with `.claude/settings.json` still present in 5 of 10 `paths` lists (second-brain-claudekit, Jarvis, Trading View, Resq, The Plan) and absent from the other 5 — matching what the mirrors physically held at the time, so nothing was cleaned up on that first pass. A second read, prompted by finding `_docs/` already existed in the real repo (mtime minutes old), caught the actual fix mid-flight: commit `b5cf0ed` ("Fix sync-manifest.json: drop settings.json, add README.md/_docs coverage") had just landed, removing `settings.json` from every entry's `paths` and adding `README.md` (all ten) and `_docs` (second-brain-claudekit, plus a new `instructions_paths` field on most entries). **Cleaned up the now-stale mirror-side copies this pass, the one authorized exception to never editing inside a Jarvis mirror:** deleted `.claude/settings.json` from the `Jarvis`, `Resq`, `second-brain-claudekit`, `The Plan`, and `Trading View` mirror folders — safe to delete rather than wait for Unison, since a path dropped from the manifest is simply never scanned again in either direction, not reconciled as a deletion. Confirmed absent from all 10 mirrors after cleanup. The mirrors have **not** yet received the new `README.md`/`_docs` content the same commit adds — that's blocked on the sync task's own failure above, not a separate gap.
+- **Built out the two home-directory mirrors' missing depth**, per Anant's explicit instruction that a global skill and a project skill were getting conflated: new [[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Global/What Global|What Global]] / [[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Global/How to Use Global|How to Use Global]] pair, matching the existing Agents/Commands/Hooks/Skills category depth in `Toolkit/`. Real content, verified directly against both live home directories the same day: WSL home (`~/.claude`) has 3 agents, 7 commands, 3 hooks, 28 skills (not 29 — corrected `.claude_wsl/Setup.md`'s stale count, no `learned` folder exists), all real but with a genuine, previously-undocumented finding — the three WSL-global agents/commands reference pre-reorg vault paths (`10_UMN/`, `00_Inbox/Headway/`, `50_Archive/copilot/`) that no longer exist, not fixed here since editing them syncs back into a live WSL home a real session depends on. Windows home (`C:\Users\Anant Gupta\.claude`) is genuinely thin, not under-documented: zero agents, zero hooks, an empty `commands/` folder, and exactly one real skill (`export-ai-session`) — the other 31 names under `skills/` are Windows junctions to a separate `.agents/skills/` location, correctly excluded by Unison's `-fat` flag. `Claude Code.md` (the Toolkit MOC), `Daily Operations.md`, and `Vault Curation.md` all updated to cross-link the new category in rather than leave it an orphaned pair.
+- Updated: [[10_Areas/AI/Setup/Folder Map|Folder Map.md]] (two corrections above), [[20_Progress/Projects/AI Use/Claude Kit/Tool Map|Tool Map.md]] and [[20_Progress/AI/Claude Code/MOC]] (cross-referenced to this entry), `.claude_wsl/Setup.md` (skill-count correction), `Toolkit/Claude Code.md`, `Toolkit/Daily Operations.md`, `Toolkit/Vault Curation.md`.
+
+## [2026-08-20] audit | Logging-layer audit — Write Log retired, Session Logs Board retired, Tool log's real blocker named, Log Standard written
+```
+- `Read` -- `/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/AI Use/Claude Kit/Tool Map.md`
+- `Edit` -- `/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/AI Use/Claude Kit/Tool Map.md`
+```diff
+- The two checks aren't in conflict: a separate, concurrent codebase session made and landed these commits in the roughly 20-minute window between the first check and the second. The lesson isn't "always distrust a commit claim" — it's that commit state in an actively-worked repo is a moving target, and a claim should be checked at the moment it matters, not assumed to still hold from an earlier check in the same round.
+
++ The two checks aren't in conflict: a separate, concurrent codebase session made and landed these commits in the roughly 20-minute window between the first check and the second. The lesson isn't "always distrust a commit claim" — it's that commit state in an actively-worked repo is a moving target, and a claim should be checked at the moment it matters, not assumed to still hold from an earlier check in the same round.
+
+**The corrected sync/pipeline model and a caught-mid-flight manifest fix (`b5cf0ed`, dropping `settings.json` and adding `README.md`/`_docs` coverage across all 10 manifest entries) are recorded as a dated entry in [[20_Progress/Projects/AI Use/Claude Kit/Log|Log.md]]'s 2026-08-20 "correction" entry** — includes two stale claims caught and fixed in [[10_Areas/AI/Setup/Folder Map|Folder Map.md]] (the sync rollout being partial, `agents/`/`commands/`/`hooks/`/`skills/` being empty staging), the sync task caught mid-failure (last successful run 16:00:03, a 16:36:56 attempt failed), and the mirror-side settings.json cleanup. Read that entry before assuming this page's pipeline-stage language ("live-synced," "staging") describes anything other than the current, verified state.
+
+```
+- `Edit` -- `/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/MOC.md`
+```diff
+- **Current status and sync health**: [[20_Progress/AI/Claude Code/Management|Management.md]] (live snapshot: sync status, active blockers, recent findings) is the file to check first, before opening any individual project's Setup.md. The append-only chronological record of changes to this layer now lives in [[20_Progress/Projects/AI Use/Claude Kit/Log|Claude Kit/Log.md]] — [[20_Progress/AI/Claude Code/Write Log|Write Log.md]] carried that role until 2026-08-20, when it was retired and folded in after 21 days of unmaintained silence (kept for historical reference, not deleted). The multi-project sync rollout plan (which projects are mapped vs. actually live-synced) lives in [[20_Progress/AI/Claude Code/Sync - Unison]].
++ **Current status and sync health**: [[20_Progress/AI/Claude Code/Management|Management.md]] (live snapshot: sync status, active blockers, recent findings) is the file to check first, before opening any individual project's Setup.md. The append-only chronological record of changes to this layer now lives in [[20_Progress/Projects/AI Use/Claude Kit/Log|Claude Kit/Log.md]] — [[20_Progress/AI/Claude Code/Write Log|Write Log.md]] carried that role until 2026-08-20, when it was retired and folded in after 21 days of unmaintained silence (kept for historical reference, not deleted). The multi-project sync rollout plan (which projects are mapped vs. actually live-synced) lives in [[20_Progress/AI/Claude Code/Sync - Unison]].
+**2026-08-20 audit, recorded in [[20_Progress/Projects/AI Use/Claude Kit/Log|Log.md]]'s dated "correction" entry:** all ten rows below re-verified real and current as of the last successful sync (2026-08-20 16:00:03 +0400, all `OK`) — but the sync task itself is currently in a failed state (a 16:36:56 attempt returned non-zero, next attempt 17:49:33), so second-brain-claudekit's own real repo has since moved ahead of its mirror here (a manifest fix landed, `README.md`/`_docs` not yet propagated). Stray `.claude/settings.json` copies removed from the `Jarvis`, `Resq`, `second-brain-claudekit`, `The Plan`, and `Trading View` mirrors this same pass, matching the source manifest's own removal of that path. `.claude_windows/` and `.claude_wsl/` now have real Toolkit-level depth documentation at [[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Global/What Global|Toolkit/Global]], distinguishing global (home-directory) tooling from the project-scoped tooling this MOC otherwise tracks.
+```
+- `Edit` -- `/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/MOC.md`
+```diff
+- created: 2026-07-05
+updated: 2026-08-10
++ created: 2026-07-05
+updated: 2026-08-20
+```
+- `Edit` -- `/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/.claude_wsl/Setup.md`
+```diff
+- created: 2026-08-10
+updated: 2026-08-10
++ created: 2026-08-10
+updated: 2026-08-20
+```
+- `Edit` -- `/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/AI Use/Claude Kit/Toolkit/Claude Code.md`
+```diff
+- created: 2026-08-10
+updated: 2026-08-10
++ created: 2026-08-10
+updated: 2026-08-20
+```
+- `Edit` -- `/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/AI Use/Claude Kit/Toolkit/Daily Operations.md`
+```diff
+- created: 2026-08-10
+updated: 2026-08-10
++ created: 2026-08-10
+updated: 2026-08-20
+```
+- `Edit` -- `/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/AI Use/Claude Kit/Toolkit/Vault Curation.md`
+```diff
+- created: 2026-08-10
+updated: 2026-08-10
++ created: 2026-08-10
+updated: 2026-08-20
+```
+- `Bash` -- `echo "=== current time ==="
+date
+echo "=== sync log tail ==="
+tail -n 12 "/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/_All-Projects-Sync-Log.md"
+echo "=== settings.json check across all 10 ==="
+for d in "second-brain-claudekit" "CausalOps" "Jarvis" "Portfolio" "Trading View" "Resq" "OpsPilot" "The Plan" ".claude_windows" ".claude_wsl"; do
+  f=$(find "/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/$d" -iname "settings.json" 2>/dev/null)
+  if [ -n "$f" ]; then echo "STILL PRESENT: $d -> $f"; else echo "absent: $d"; fi
+done`
+```
+=== current time ===
+Fri, Aug 21, 2026  2:12:06 PM
+=== sync log tail ===
+2026-08-21 13:49:34 +0400  The Plan  OK
+2026-08-21 13:49:34 +0400  .claude_wsl  OK
+2026-08-21 14:04:33 +0400  second-brain-claudekit  OK
+2026-08-21 14:04:33 +0400  .claude_windows  OK
+2026-08-21 14:04:33 +0400  CausalOps  OK
+2026-08-21 14:04:33 +0400  Jarvis  OK
+2026-08-21 14:04:33 +0400  Portfolio  OK
+2026-08-21 14:04:33 +0400  Trading View  OK
+2026-08-21 14:04:33 +0400  Resq  OK
+2026-08-21 14:04:33 +0400  OpsPilot  OK
+2026-08-21 14:04:33 +0400  The Plan  OK
+2026-08-21 14:04:33 +0400  .claude_wsl  OK
+=== settings.json check across all 10 ===
+absent: second-brain-claudekit
+absent: CausalOps
+absent: Jarvis
+absent: Portfolio
+absent: Trading View
+absent: Resq
+absent: OpsPilot
+absent: The Plan
+absent: .claude_windows
+absent: .claude_wsl
+```
+- `Bash` -- `BASE="/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code"
+for d in "second-brain-claudekit" "CausalOps" "Jarvis" "Portfolio" "Trading View" "Resq" "OpsPilot" "The Plan" ".claude_windows" ".claude_wsl"; do
+  if [ -f "$BASE/$d/README.md" ]; then echo "HAS README: $d"; else echo "no README: $d"; fi
+done
+echo "=== _docs in second-brain-claudekit mirror ==="
+ls "$BASE/second-brain-claudekit/" 2>&1`
+```
+HAS README: second-brain-claudekit
+HAS README: CausalOps
+no README: Jarvis
+HAS README: Portfolio
+HAS README: Trading View
+HAS README: Resq
+HAS README: OpsPilot
+no README: The Plan
+no README: .claude_windows
+no README: .claude_wsl
+=== _docs in second-brain-claudekit mirror ===
+_docs
+CLAUDE.md
+README.md
+Setup.md
+Sync-Log.md
+```
+- `Bash` -- `BASE="/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code"
+echo "Jarvis .claude/README.md present in mirror:"; [ -f "$BASE/Jarvis/.claude/README.md" ] && echo yes || echo no
+echo "--- real source checks ---"
+wsl.exe -d Ubuntu -- bash -lc "ls /mnt/d/Users/_Anant/10_Areas/Documents/'The Plan'/README.md 2>&1; ls ~/.claude/README.md 2>&1"
+echo "--- windows home README ---"
+powershell.exe -NoProfile -Command "Test-Path 'C:\Users\Anant Gupta\.claude\README.md'"`
+```
+Jarvis .claude/README.md present in mirror:
+yes
+--- real source checks ---
+ls: cannot access '/mnt/d/Users/_Anant/10_Areas/Documents/The Plan/README.md': No such file or directory
+ls: cannot access '/home/anant_gupta/.claude/README.md': No such file or directory
+--- windows home README ---
+False
+```
+- `Edit` -- `/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/AI Use/Claude Kit/Log.md`
+```diff
+- - Updated: [[10_Areas/AI/Setup/Folder Map|Folder Map.md]] (two corrections above), [[20_Progress/Projects/AI Use/Claude Kit/Tool Map|Tool Map.md]] and [[20_Progress/AI/Claude Code/MOC]] (cross-referenced to this entry), `.claude_wsl/Setup.md` (skill-count correction), `Toolkit/Claude Code.md`, `Toolkit/Daily Operations.md`, `Toolkit/Vault Curation.md`.
++ - Updated: [[10_Areas/AI/Setup/Folder Map|Folder Map.md]] (two corrections above), [[20_Progress/Projects/AI Use/Claude Kit/Tool Map|Tool Map.md]] and [[20_Progress/AI/Claude Code/MOC]] (cross-referenced to this entry), `.claude_wsl/Setup.md` (skill-count correction), `Toolkit/Claude Code.md`, `Toolkit/Daily Operations.md`, `Toolkit/Vault Curation.md`.
+- **Follow-up, 2026-08-21: the sync-task failure above was transient, not a persisting break.** Re-checked a day later — `_All-Projects-Sync-Log.md` shows continuous `OK` runs through 2026-08-21 14:04:33, no repeat of the 16:36:56 failure. The `README.md`/`_docs` content the manifest fix added has now propagated for real: second-brain-claudekit's mirror has both `README.md` and `_docs/`; `Jarvis`, `CausalOps`, `Portfolio`, `Trading View`, `Resq`, `OpsPilot` all have their `README.md` too. `The Plan`, `.claude_wsl`, and `.claude_windows` correctly show no `README.md` — verified directly against each real source, none of the three actually has a top-level `README.md` to sync, so absence there is accurate, not a lagging sync. `settings.json` cleanup from the prior day's pass still holds — re-confirmed absent from all 10 mirrors.
+```
+- `Edit` -- `/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/MOC.md`
+```diff
+- **2026-08-20 audit, recorded in [[20_Progress/Projects/AI Use/Claude Kit/Log|Log.md]]'s dated "correction" entry:** all ten rows below re-verified real and current as of the last successful sync (2026-08-20 16:00:03 +0400, all `OK`) — but the sync task itself is currently in a failed state (a 16:36:56 attempt returned non-zero, next attempt 17:49:33), so second-brain-claudekit's own real repo has since moved ahead of its mirror here (a manifest fix landed, `README.md`/`_docs` not yet propagated). Stray `.claude/settings.json` copies removed from the `Jarvis`, `Resq`, `second-brain-claudekit`, `The Plan`, and `Trading View` mirrors this same pass, matching the source manifest's own removal of that path. `.claude_windows/` and `.claude_wsl/` now have real Toolkit-level depth documentation at [[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Global/What Global|Toolkit/Global]], distinguishing global (home-directory) tooling from the project-scoped tooling this MOC otherwise tracks.
++ **2026-08-20 audit, recorded in [[20_Progress/Projects/AI Use/Claude Kit/Log|Log.md]]'s dated "correction" entry:** all ten rows below re-verified real and current. A same-day sync-task failure (16:36:56 attempt, non-zero result) turned out transient — re-checked 2026-08-21, the task has been running clean since, and second-brain-claudekit's manifest fix (`README.md`/`_docs` added, `settings.json` dropped) has fully propagated. Stray `.claude/settings.json` copies removed from the `Jarvis`, `Resq`, `second-brain-claudekit`, `The Plan`, and `Trading View` mirrors, matching the source manifest's own removal of that path — re-confirmed absent everywhere 2026-08-21. `.claude_windows/` and `.claude_wsl/` now have real Toolkit-level depth documentation at [[20_Progress/Projects/AI Use/Claude Kit/Toolkit/Global/What Global|Toolkit/Global]], distinguishing global (home-directory) tooling from the project-scoped tooling this MOC otherwise tracks.
+```
+
 ## Actions Taken
 
 **Files created:**
@@ -1224,6 +1428,9 @@ skills/Trading View
 **Files modified:**
 - `/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/AI/Setup/Folder Map.md`
 - `/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/.claude_wsl/Setup.md`
+- `/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/MOC.md`
+- `/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/AI Use/Claude Kit/Log.md`
+- `/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/AI Use/Claude Kit/Tool Map.md`
 - `/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/AI Use/Claude Kit/Toolkit/Claude Code.md`
 - `/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/AI Use/Claude Kit/Toolkit/Daily Operations.md`
 - `/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/AI Use/Claude Kit/Toolkit/Vault Curation.md`
@@ -1322,5 +1529,26 @@ wsl.exe -d Ubuntu -- bash -lc "cd ~/projects/hackathon/opspilot && git log -1 --
 - `grep -rl "staging" "/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/AI" "/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/AI Use" 2>/dev/null`
 - `grep -n -i "staging\|skills/" "/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Projects/AI Use/Claude Kit/Source of Truth/The Qualification Pipeline.md" | head -30`
 - `grep -n -i "staging\|source-repo\|per-destination" "/d/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/AI/Setup/Folder Map.md" | head -30`
+- `echo "=== current time ==="
+date
+echo "=== sync log tail ==="
+tail -n 12 "/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/_All-Projects-Sync-Log.md"
+echo "=== settings.json check across all 10 ==="
+for d in "second-brain-claudekit" "CausalOps" "Jarvis" "Portfolio" "Trading View" "Resq" "OpsPilot" "The Plan" ".claude_windows" ".claude_wsl"; do
+  f=$(find "/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code/$d" -iname "settings.json" 2>/dev/null)
+  if [ -n "$f" ]; then echo "STILL PRESENT: $d -> $f"; else echo "absent: $d"; fi
+done`
+- `BASE="/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code"
+for d in "second-brain-claudekit" "CausalOps" "Jarvis" "Portfolio" "Trading View" "Resq" "OpsPilot" "The Plan" ".claude_windows" ".claude_wsl"; do
+  if [ -f "$BASE/$d/README.md" ]; then echo "HAS README: $d"; else echo "no README: $d"; fi
+done
+echo "=== _docs in second-brain-claudekit mirror ==="
+ls "$BASE/second-brain-claudekit/" 2>&1`
+- `BASE="/d/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/AI/Claude Code"
+echo "Jarvis .claude/README.md present in mirror:"; [ -f "$BASE/Jarvis/.claude/README.md" ] && echo yes || echo no
+echo "--- real source checks ---"
+wsl.exe -d Ubuntu -- bash -lc "ls /mnt/d/Users/_Anant/10_Areas/Documents/'The Plan'/README.md 2>&1; ls ~/.claude/README.md 2>&1"
+echo "--- windows home README ---"
+powershell.exe -NoProfile -Command "Test-Path 'C:\Users\Anant Gupta\.claude\README.md'"`
 
 

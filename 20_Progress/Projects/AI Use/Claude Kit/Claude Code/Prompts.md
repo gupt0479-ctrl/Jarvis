@@ -2,7 +2,7 @@
 type: input
 status: active
 created: 2026-08-11
-updated: 2026-08-20
+updated: 2026-08-21
 tags:
   - claude-kit
   - prompts
@@ -13,10 +13,11 @@ notes:
   - "[[20_Progress/AI/Claude Code/Sync - Unison]]"
   - "[[20_Progress/Projects/AI Use/Claude Kit/Claude Code/Claudekit Session
     Context]]"
-next: "Round 6, corrected, 2026-08-20. Both are independent, fresh sessions.
-  Codebase: cwd = second-brain-claudekit, verify HEAD cea5ab0. Jarvis: cwd =
-  Jarvis vault root, Windows. tests/ refinement and the third sync hop (Jarvis
-  -> real project .claude/) are both explicitly out of scope for this round."
+next: "Round 7, 2026-08-21 — fixes the live instructions/_docs/_docs/ bug and
+  closes out the sync-build phase. Codebase: fresh session, verify the
+  _docs/_docs/ state before starting. Jarvis: fresh Windows session, checks for
+  the codebase fix rather than assuming it landed. After this round: next phase
+  is tests/ refinement and the review system — not written yet."
 ---
 # Claude Kit — Build Prompts
 ==Only prompts live in this note, each inside a fenced block, ready to paste into a fresh session. Everything else — context, background, open questions — lives in [[20_Progress/Projects/AI Use/Claude Kit/Claude Code/Claudekit Session Context]]. Rewritten 2026-08-19; this note's prior content (dated 2026-08-11) is preserved there, not lost.==
@@ -25,74 +26,64 @@ next: "Round 6, corrected, 2026-08-20. Both are independent, fresh sessions.
 
 # Claudekit
 
-**Round 6, corrected, 2026-08-20 — fresh session.** The previous version of this round's prompt was wrong about `skills/` (treated it as source-repo staging; it's actually live-synced, same as `agents/`, `commands/`, `hooks/`, `instructions/`) and only designed the live-sync leg instead of wiring it. Never ran — this replaces it, not round 7. HEAD should still be `cea5ab0` unless something else has landed since.
+**Round 7, 2026-08-21 — fresh session.** Round 6 landed for real: sync-manifest.json fixed, 577 files populated across all 10 entries' five live-sync folders. But it introduced a live, self-compounding bug: `instructions/second-brain-claudekit/_docs/_docs/` — a nested duplicate that grows one level deeper every ~15-minute sync. This round fixes the bug's root cause, not just its symptom, and locks in the definitive, final shape of `instructions/<repo>/` so this stops being re-litigated.
 
 Paste into a fresh Claude Code session, cwd = `~/projects/ai/claude/second-brain-claudekit`, `high` or `xhigh` effort.
 
 ```
-Confirm HEAD with git log before starting; report if it's not cea5ab0 rather than assuming this description still matches.
+Confirm git status shows instructions/second-brain-claudekit/_docs/ and _docs/_docs/ as uncommitted before starting -- if that's not the current state, stop and report rather than assuming this description still holds.
 
-The corrected model, confirmed directly by Anant, governs everything in this session:
+The final, definitive rule for instructions/<repo>/, confirmed directly by Anant -- encode this everywhere it needs to live, not just fix the immediate bug:
 
-sandbox/<repo>/ -> tested for real -> tested-tools/<type>/... or tested-tools/_future/<repo>/. NEITHER of these is ever live-synced with Jarvis. Moving something from tested-tools/ into a live folder is a manual, per-item, human decision -- you do not take this step for any specific piece of content in this session unless explicitly told to for that exact item. This session is about fixing the SYNC MECHANISM for content already decided ready, not promoting anything new.
+instructions/<repo>/ is FLAT. No subfolders, ever. It holds every real source-of-truth markdown file for that repo -- CLAUDE.md, AGENTS.md, README.md, PRD.md, Architecture.md, and any other governing doc -- regardless of whether it originally lives at the repo's root, inside a docs-style subfolder, or nested inside .claude/. Every file lands as instructions/<repo>/<filename>.md, never in a nested path. If a nested .claude/-internal file would collide in name with a root-level file (the Resq/OpsPilot case already solved in round 6), prefix the nested one claude-<filename>.md -- keep that exact convention, it's already proven and working.
 
-Once something is explicitly decided ready, it lives in agents/<Project>/, commands/<Project>/, hooks/<Project>/, skills/<Project>/, and instructions/<Project>/ -- all five are live-synced with Jarvis via 60_Claude/scripts/sync-manifest.json and sync-all.sh. Jarvis mirrors these read-only.
+## 1. Fix the live bug's root cause, not just its symptom
 
-Ten real entries need full, correct, live-synced coverage: second-brain-claudekit (this repo itself), CausalOps, Jarvis, Portfolio, Trading View, Resq, OpsPilot, The Plan, .claude_windows, .claude_wsl. Read 60_Claude/scripts/sync-manifest.json directly and confirm this list and each entry's current paths before doing anything else -- the specifics below are from an earlier direct read and may have drifted.
+sync-manifest.json's second-brain-claudekit entry lists "_docs" as a whole directory in instructions_paths. sync-all.sh's copy step doesn't flatten or clear the destination when a path entry is a directory -- so instead of copying _docs/PRD.md to instructions/second-brain-claudekit/PRD.md, it nests the whole folder, and nests it again on every subsequent run. Fix sync-all.sh's copy logic generally: when a path entry resolves to a directory, enumerate its real files (*.md, at minimum) and copy each one flat -- basename only, directly into instructions/<repo>/ -- and always overwrite/replace the destination file rather than accumulating into it. This has to be a real mechanism fix, since any future directory-shaped path entry for any of the 10 projects would hit the same bug otherwise, not something specific to _docs.
 
-## 1. Fix the manifest for real, not just design it
+## 2. Clean up and rebuild instructions/second-brain-claudekit/ correctly
 
-- Remove .claude/settings.json from every entry that has it (confirmed earlier: second-brain-claudekit, Jarvis, Trading View, Resq, The Plan -- verify this list is still accurate against your own fresh read). Settings and secrets are never synced, no exceptions, confirm this is true for all 10 entries, not just the 5 already flagged.
-- Add README.md to every one of the 10 entries' paths list. This was missed entirely until now.
-- second-brain-claudekit's own entry: add _docs/** (the real files there today: PRD.md, Architecture.md, Design.md, Promotion-Criteria.md, Sync.md, Jarvis.md, Repo-Map.md, Gaps.md, Current-Setup.md, Repo-Map-Archive.md, Gaps-Archive.md -- confirm this list is current, it may have grown) so Jarvis finally has visibility into this repo's own governing docs.
-- For .claude_windows and .claude_wsl specifically: confirm their current paths (agents, commands, skills, hooks, CLAUDE.md per the last direct read) are complete and correct -- these are the two global home directories and Anant has flagged them as currently too thin; make sure nothing real is missing from what should sync (check the actual home directory contents if reachable from this WSL session -- ~/.claude for WSL directly, /mnt/c/Users/"Anant Gupta"/.claude for the Windows one).
+Remove instructions/second-brain-claudekit/_docs/ entirely (both the one level and the nested _docs/_docs/ inside it -- these are sync artifacts, currently uncommitted, safe to remove outright, not archive). Re-run the corrected sync logic from item 1 (or manually reproduce its output once, to confirm it's right) so instructions/second-brain-claudekit/ ends up flat: CLAUDE.md, README.md, AGENTS.md (if it exists -- check), and every real file currently in _docs/ (confirm the current list directly rather than trusting an earlier one -- it has grown before) sitting directly in that folder, no subfolder.
 
-## 2. Build out all five live-sync folders for every one of the 10 entries, for real
+## 3. Audit all 10 entries for the same class of bug
 
-For each of the 10 entries, based on what its manifest paths actually contain (do not assume every project has every category -- read each entry's real paths list and derive the correct category list per entry, some projects won't have all five):
+Round 6's report said every other manifest entry lists individual files, not directories, in its paths -- confirm this directly rather than trusting that report. Check every one of the 10 instructions/<repo>/ folders for any accidental nested subfolder from the same root cause. Fix any found the same way as item 2.
 
-- If the entry has an agents-shaped path: confirm/build agents/<EntryName>/ with real content matching what's actually promoted for that entry today (if nothing is promoted yet for that project, the folder is correctly empty -- do not invent placeholder content).
-- Same pattern for commands/<EntryName>/, hooks/<EntryName>/, skills/<EntryName>/.
-- instructions/<EntryName>/ gets every real instruction-shaped file for that entry -- CLAUDE.md, AGENTS.md, PRD.md, README.md (once added per item 1), and any nested .claude/-internal instruction file (Portfolio's .claude/CLAUDE.md and OpsPilot's .claude/PRD.md + .claude/README.md are the two already-known nonstandard cases -- confirm these are correctly represented, not skipped because they're nested).
-- instructions/second-brain-claudekit/ specifically: this was wrongly excluded before on the reasoning that it would duplicate root CLAUDE.md. That reasoning is overridden -- every one of the 10 entries gets full, consistent treatment, this repo included. Build it with CLAUDE.md and the full _docs/ set from item 1.
+## 4. Write the definitive instructions/ definition down, in concrete detail, for good
 
-Use a real discovery pass (list each entry's actual synced content, either via the Jarvis mirror or the real source path where directly reachable from this WSL session) -- do not guess what's promoted for a project from memory.
+Update _docs/Sync.md, 60_Claude/vault-rules/write-contract.md, and 60_Claude/vault-rules/pipeline-conventions.md with the exact rule stated at the top of this prompt -- flat structure, what counts as a source-of-truth file, the claude- collision-prefix convention, and the fact that a directory-shaped manifest path gets flattened, never nested. This has been asked for and re-explained multiple times now; write it precisely enough that it doesn't need re-explaining again.
 
-## 3. Do not touch the third hop
+## 5. Close the loop
 
-Jarvis mirrors reaching each real project's actual live repo is still an open question from a prior round, not answered yet. Do not wire anything that pushes content from a Jarvis mirror into a real project's actual .claude/ in this session, regardless of what you find. This session's scope ends at repo -> Jarvis mirror.
+Update _docs/Gaps.md and _docs/Repo-Map.md with the real fix. Review the diff for secrets before committing (this touches sync-all.sh and every instructions/<repo>/ folder -- check all of them, not just second-brain-claudekit's). Commit in logically separated commits.
 
-## 4. Close the loop
-
-Update _docs/Gaps.md and _docs/Repo-Map.md with the real, complete state of all 10 entries after this session -- which categories exist for each, and confirm settings.json is gone from all 10. Note explicitly that tests/ needs a real refinement pass and is deferred to its own future session, not attempted here. Review the diff for secrets before committing (this session specifically touches sync-manifest.json and home-directory paths -- be careful). Commit in logically separated commits.
-
-Apply every instruction above to all 10 entries, not a sample -- if you're tempted to handle 3 or 4 fully and wave at the rest, stop and do all 10.
+Apply items 1 and 3 as real mechanism fixes covering all 10 entries -- not a patch that only happens to fix second-brain-claudekit's specific case.
 ```
 
 # Jarvis
 
-**Round 6, corrected, 2026-08-20.** Same correction as the codebase prompt: `skills/` is live-synced, not source-repo staging; `.claude_windows`/`.claude_wsl` need real depth, not just a mirror folder that exists. Never ran — replaces the previous version, not round 7.
+**Round 7, 2026-08-21.** The sync-mechanism build is closing out — a parallel codebase round is fixing the last real bug (a self-nesting `instructions/second-brain-claudekit/_docs/` duplicate) and locking in the final, definitive `instructions/<repo>/` shape: flat, every source-of-truth markdown regardless of origin nesting, `claude-` prefix on any nested/root name collision. This round verifies that lands cleanly on the Jarvis side, writes a real closing summary of the whole sync build, and gets Jarvis's own notes consistent with the same final definition — the last step before this pipeline moves on to `tests/` and the review system.
 
 Paste into a fresh Claude Code session, cwd = the Jarvis vault root (Windows), Sonnet 5, `high` or `xhigh` effort.
 
 ```
-The corrected model, confirmed directly by Anant: sandbox/ -> tested for real -> tested-tools/ (never live-synced) -> an explicit, per-item human decision -> agents/<Project>/, commands/<Project>/, hooks/<Project>/, skills/<Project>/, instructions/<Project>/ in second-brain-claudekit (all five live-synced) -> Jarvis mirrors these read-only under 20_Progress/AI/Claude Code/<Project>/. Ten entries: second-brain-claudekit, CausalOps, Jarvis, Portfolio, Trading View, Resq, OpsPilot, The Plan, .claude_windows, .claude_wsl.
+A parallel codebase-side round is fixing a real, self-compounding bug: instructions/second-brain-claudekit/ had nested itself into instructions/second-brain-claudekit/_docs/_docs/, growing one level deeper every ~15-minute sync, because sync-manifest.json listed _docs as a whole directory and the copy step never flattened or cleared the destination. The fix makes instructions/<repo>/ flat everywhere, for all 10 entries -- every source-of-truth markdown file (CLAUDE.md, AGENTS.md, README.md, PRD.md, Architecture.md, and similar) lands as instructions/<repo>/<filename>.md directly, regardless of whether it originated at repo root, in a docs-style subfolder, or nested inside .claude/ -- with a claude-<filename>.md prefix on any nested file that would otherwise collide in name with a root-level one.
 
-## 1. Build real depth for the two home-directory mirrors
+## 1. Verify the fix landed cleanly on this side
 
-20_Progress/AI/Claude Code/.claude_windows/ and .claude_wsl/ are confirmed too thin as of today. List their real current contents directly. Compare against what should be there (agents, commands, skills, hooks, and now README.md per the parallel codebase-side fix -- confirm second-brain-claudekit's sync-manifest.json paths for these two entries once reachable, or work from real mirror contents if not). For whatever's genuinely thin or missing, build it out properly: the same "What Agents.md / How to Use Agents.md" depth the Toolkit/ folder already has for project-scoped tools, applied to these two home-directory-scoped entries specifically -- what's actually installed globally on each OS, distinguished clearly from project-scoped tooling, since a global skill and a project skill are different things and have been getting conflated. Real content only -- if something is genuinely sparse because nothing global has been promoted yet for one of the two, say that plainly rather than padding it.
+Check whether second-brain-claudekit's Jarvis mirror (20_Progress/AI/Claude Code/second-brain-claudekit/) reflects the corrected, flat instructions/ structure -- no nested _docs/ subfolder, real files directly present. If the codebase session hasn't finished or the sync hasn't run yet, say so explicitly rather than assuming it's already correct; don't guess based on when this prompt was written.
 
-## 2. Verify all 10 mirrors, not just the two home directories
+## 2. Audit every one of the 10 mirrors for the same class of bug
 
-For CausalOps, Jarvis, Portfolio, Trading View, Resq, OpsPilot, The Plan, and second-brain-claudekit: confirm each mirror folder's real content is current (cross-check against _All-Projects-Sync-Log.md's most recent entry per project, same method as before). Specifically confirm second-brain-claudekit's mirror now includes real content once the parallel codebase-side session adds _docs/** and expands its live-sync folders -- if you can't find evidence that landed yet, say so rather than assuming it did.
+The root cause (a directory-shaped sync path never getting flattened) could theoretically have hit any of the 10 entries, not just second-brain-claudekit's _docs case, if any other entry has a directory-shaped instructions-relevant path. Check all 10 mirror folders under 20_Progress/AI/Claude Code/ for any accidental nested subfolder inside what should be a flat instructions-equivalent structure. Report what you find -- this is a real check, not a formality, since round 6's own report only confirmed this for the manifest's paths lists, not for what actually landed on disk.
 
-## 3. Confirm settings.json is gone everywhere
+## 3. Write the closing summary -- the sync build is done, name it as done
 
-A parallel codebase session is removing .claude/settings.json from 5 manifest entries and confirming its absence from the other 5. Check whether any of the 10 mirror folders here still physically holds a settings.json copy from before that fix -- remove it if so, this is the one exception to "never edit inside a Jarvis mirror."
+This pipeline has spent multiple rounds (2026-08-20 through 2026-08-21) building the live-sync mechanism between second-brain-claudekit's staging folders, Jarvis's mirrors, and (still explicitly unwired) each real project's actual config. That phase of work is now functionally complete. Write one clear, dated Log.md entry that closes it out: what the sync mechanism actually does today (the corrected model -- sandbox/ -> tested-tools/ -> an explicit human decision -> the five live-sync folders -> Jarvis mirrors, read-only), what's still deliberately unwired (the third hop into a real project's live .claude/, still an open question), and that the next phase of this pipeline's work is tests/ (which needs a real refinement pass, already flagged, not attempted yet) and the review system (already has a real Weekly Review as its first Gold Standard Example, per an earlier round). This entry is the actual handoff marker between phases -- write it so a session starting fresh on the tests/reviews phase can read this one entry and know exactly where things stand, without re-reading every round's individual report.
 
-## 4. Record the corrected model as the real, dated source of truth
+## 4. Bring Jarvis's own notes in line with the final instructions/ definition
 
-The model at the top of this prompt is the actual, confirmed architecture -- write it into Log.md as a dated entry, explicitly correcting anything a prior session may have recorded about skills/ being source-repo staging or the sync leg being merely "designed" rather than live. Cross-reference from Tool Map.md and 20_Progress/AI/Claude Code/MOC.md.
+Toolkit/Claude Code.md, 10_Areas/AI/Setup/Folder Map.md, and any other Jarvis note that describes instructions/'s structure should match the final rule exactly (flat, every source-of-truth file regardless of origin, the claude- collision prefix) -- check each for drift and fix any that still describe an older or vaguer version of this folder's shape.
 
-Report the real state of all 10 mirrors, what you built for the two home directories, and confirm item 3's cleanup.
+Report what you found in items 1-2 (real, not assumed), confirm item 3's entry exists, and list which notes item 4 actually touched.
 ```

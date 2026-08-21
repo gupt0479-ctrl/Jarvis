@@ -7,7 +7,7 @@ title: "Sync manifest and live-sync folder coverage for 10 entries"
 started_at: 2026-08-20T12:55:31
 ended_at: 2026-08-20T13:41:51
 duration_minutes: 46
-exported_at: 2026-08-20T18:15:08
+exported_at: 2026-08-21T14:45:01
 project: second-brain-claudekit
 cwd: '/home/anant_gupta/projects/ai/claude/second-brain-claudekit'
 session_id: ac5c3b34-4d22-4ae6-9151-f68d424d9ec4

@@ -28,8 +28,19 @@ Added to `_docs/Design.md`'s minimal-footprint section 2026-08-20: no new top-le
 - `60_Claude/Templates/weekly-summary.md`'s shape has no relationship to Jarvis's own real AI-tools review template. Two different subjects (engineering-session rollups vs. usage/sync-health reviews) — not wrong, just a real gap if this repo ever wants its own citation-disciplined pipeline review.
 - **`tests/` needs a real refinement pass.** Flagged explicitly 2026-08-20 (sixth pass) as out of scope for that session (which was sync-mechanism-only) and deferred to a future session, not attempted.
 - **The "third hop" is still an open question, not answered.** Whether/how content ever flows from a Jarvis mirror (or this repo's `agents/`/`commands/`/`hooks/`/`skills/`/`instructions/` staging folders) into a real project's actual live `.claude/` is deliberately unwired — every live-sync leg built so far stops at "repo ← real project's current state" or "Jarvis mirror ↔ real project's current state," never "repo/Jarvis → a project's live config."
+- **`second-brain-claudekit`'s own root `Architecture.md`/`PRD.md` moved out of `_docs/` to the repo root** (uncommitted, as of 2026-08-21, unrelated to the sync fix below). `instructions_paths` for this entry (`["CLAUDE.md", "README.md", "_docs"]`) doesn't name them at the root, so they no longer flow into `instructions/second-brain-claudekit/` at all. Not resolved here — flagged so it isn't silently lost.
 
 ---
+
+## 2026-08-21 — `instructions/<repo>/` directory-flatten bug fixed at the mechanism, all 10 entries audited
+
+Real bug, not just a `second-brain-claudekit` cosmetic issue: `sync-all.sh`'s `instructions_paths` copy step did `cp -rf` unconditionally. For a *file* path entry that's correct; for a *directory* path entry (`second-brain-claudekit`'s own `"_docs"` — the only directory-shaped entry across all 10 manifest entries, confirmed directly) it nested the source directory inside the same-named destination directory on every run after the first, since the destination already existed: `instructions/second-brain-claudekit/_docs/_docs/`, compounding to `_docs/_docs/_docs/` on the next run had it not been caught now.
+
+**Fixed as a general mechanism, not a one-off patch:** `sync-all.sh` now resolves every `instructions_paths` entry to concrete files first (a directory entry is flattened via `find ... -name '*.md'`, recursively), then `cp -f`'s each one directly into `instructions/<Name>/` by basename — never `cp -r`, so a directory entry can never nest again, for any of the 10 entries now or any future one. The Resq/OpsPilot `claude-` collision-prefix convention (2026-08-20 part-2) is preserved exactly but generalized to derive the prefix from the real parent folder rather than a hardcoded literal — needed because the flatten surfaced a *second*, real collision the old hardcoded logic would have named wrong: `second-brain-claudekit`'s own `_docs/How to/README.md` flattens to `README.md`, colliding with its root `README.md`, correctly resolved as `how-to-README.md`.
+
+**Audited all 10 `instructions/<repo>/` folders directly** (`find -mindepth 2 -type d`) — no other entry has a nested subfolder from this or any other cause. `second-brain-claudekit` was the only one affected, and its `_docs/` (both the one-level and nested copies) was deleted outright and rebuilt flat from the corrected logic — 16 files, no subfolders, `CLAUDE.md`/`README.md` byte-confirmed unchanged.
+
+**The definitive rule is now written down in three places** so it stops needing re-explanation: `_docs/Sync.md`'s 2026-08-21 amendment (full incident + fix), `60_Claude/vault-rules/pipeline-conventions.md` (the `instructions/<ProjectName>/` section), and `60_Claude/vault-rules/write-contract.md`'s never-write-to entry for this folder.
 
 ## 2026-08-20 (sixth pass) — sync mechanism fixed for real, across all 10 manifest entries
 
