@@ -5469,9 +5469,9 @@
       "height": 60
     },
     {
-      "id": "n_prd_current_status_verified_2026_07_18",
+      "id": "n_prd_current_status_verified_2026_08_22",
       "type": "file",
-      "file": "Current Status (verified 2026-07-18).md",
+      "file": "Current Status (verified 2026-08-22).md",
       "x": 2060,
       "y": 2080,
       "width": 180,
@@ -6535,6 +6535,78 @@
     }
   ],
   "edges": [
+    {
+      "id": "e_prd_prd_internship_research_loop_prd",
+      "fromNode": "n_prd",
+      "toNode": "n_prd_internship_research_loop_prd",
+      "label": "contains [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_internship_research_loop_prd_prd_architecture_summary",
+      "fromNode": "n_prd_internship_research_loop_prd",
+      "toNode": "n_prd_architecture_summary",
+      "label": "contains [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_internship_research_loop_prd_prd_current_status_verified_2026_08_22",
+      "fromNode": "n_prd_internship_research_loop_prd",
+      "toNode": "n_prd_current_status_verified_2026_08_22",
+      "label": "contains [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_internship_research_loop_prd_prd_explicitly_out_of_scope",
+      "fromNode": "n_prd_internship_research_loop_prd",
+      "toNode": "n_prd_explicitly_out_of_scope",
+      "label": "contains [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_internship_research_loop_prd_prd_goal",
+      "fromNode": "n_prd_internship_research_loop_prd",
+      "toNode": "n_prd_goal",
+      "label": "contains [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_internship_research_loop_prd_prd_in_scope_built_phases_1_6_complete_and_live",
+      "fromNode": "n_prd_internship_research_loop_prd",
+      "toNode": "n_prd_in_scope_built_phases_1_6_complete_and_live",
+      "label": "contains [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_internship_research_loop_prd_prd_open_backlog",
+      "fromNode": "n_prd_internship_research_loop_prd",
+      "toNode": "n_prd_open_backlog",
+      "label": "contains [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_internship_research_loop_prd_prd_problem",
+      "fromNode": "n_prd_internship_research_loop_prd",
+      "toNode": "n_prd_problem",
+      "label": "contains [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_internship_research_loop_prd_prd_risks",
+      "fromNode": "n_prd_internship_research_loop_prd",
+      "toNode": "n_prd_risks",
+      "label": "contains [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_internship_research_loop_prd_prd_source_of_truth",
+      "fromNode": "n_prd_internship_research_loop_prd",
+      "toNode": "n_prd_source_of_truth",
+      "label": "contains [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_internship_research_loop_prd_prd_success_metrics",
+      "fromNode": "n_prd_internship_research_loop_prd",
+      "toNode": "n_prd_success_metrics",
+      "label": "contains [EXTRACTED]"
+    },
+    {
+      "id": "e_prd_internship_research_loop_prd_prd_user",
+      "fromNode": "n_prd_internship_research_loop_prd",
+      "toNode": "n_prd_user",
+      "label": "contains [EXTRACTED]"
+    },
     {
       "id": "e_core_classify_core_classify_classification_callout",
       "fromNode": "n_core_classify",
@@ -7662,78 +7734,6 @@
       "fromNode": "n_core_identity_extract_ats_job_id",
       "toNode": "n_tests_test_identity_test_extract_ats_job_id_google_careers_results_url",
       "label": "calls [EXTRACTED]"
-    },
-    {
-      "id": "e_core_identity_extract_ats_job_id_tests_test_identity_test_extract_ats_job_id_google_pattern_is_domain_anchored",
-      "fromNode": "n_core_identity_extract_ats_job_id",
-      "toNode": "n_tests_test_identity_test_extract_ats_job_id_google_pattern_is_domain_anchored",
-      "label": "calls [EXTRACTED]"
-    },
-    {
-      "id": "e_core_identity_extract_ats_job_id_tests_test_identity_test_extract_ats_job_id_greenhouse",
-      "fromNode": "n_core_identity_extract_ats_job_id",
-      "toNode": "n_tests_test_identity_test_extract_ats_job_id_greenhouse",
-      "label": "calls [EXTRACTED]"
-    },
-    {
-      "id": "e_core_identity_extract_ats_job_id_tests_test_identity_test_extract_ats_job_id_lever_ignores_apply_suffix",
-      "fromNode": "n_core_identity_extract_ats_job_id",
-      "toNode": "n_tests_test_identity_test_extract_ats_job_id_lever_ignores_apply_suffix",
-      "label": "calls [EXTRACTED]"
-    },
-    {
-      "id": "e_core_identity_extract_ats_job_id_tests_test_identity_test_extract_ats_job_id_none_when_no_recognizable_id",
-      "fromNode": "n_core_identity_extract_ats_job_id",
-      "toNode": "n_tests_test_identity_test_extract_ats_job_id_none_when_no_recognizable_id",
-      "label": "calls [EXTRACTED]"
-    },
-    {
-      "id": "e_core_identity_compute_uid_run_pipeline",
-      "fromNode": "n_core_identity_compute_uid",
-      "toNode": "n_run_pipeline",
-      "label": "imports [EXTRACTED]"
-    },
-    {
-      "id": "e_core_identity_compute_uid_run_pipeline_dedup_new",
-      "fromNode": "n_core_identity_compute_uid",
-      "toNode": "n_run_pipeline_dedup_new",
-      "label": "calls [EXTRACTED]"
-    },
-    {
-      "id": "e_core_identity_compute_uid_run_pipeline_fetch_and_filter",
-      "fromNode": "n_core_identity_compute_uid",
-      "toNode": "n_run_pipeline_fetch_and_filter",
-      "label": "calls [EXTRACTED]"
-    },
-    {
-      "id": "e_core_identity_compute_uid_tests_test_debate_losses",
-      "fromNode": "n_core_identity_compute_uid",
-      "toNode": "n_tests_test_debate_losses",
-      "label": "imports [EXTRACTED]"
-    },
-    {
-      "id": "e_core_identity_compute_uid_tests_test_debate_losses_test_dedup_new_skips_excluded_uid",
-      "fromNode": "n_core_identity_compute_uid",
-      "toNode": "n_tests_test_debate_losses_test_dedup_new_skips_excluded_uid",
-      "label": "calls [EXTRACTED]"
-    },
-    {
-      "id": "e_core_identity_compute_uid_tests_test_debate_losses_test_fetch_and_filter_skips_excluded_uid",
-      "fromNode": "n_core_identity_compute_uid",
-      "toNode": "n_tests_test_debate_losses_test_fetch_and_filter_skips_excluded_uid",
-      "label": "calls [EXTRACTED]"
-    },
-    {
-      "id": "e_core_identity_compute_uid_tests_test_debate_losses_test_run_once_never_fetches_an_already_excluded_uid",
-      "fromNode": "n_core_identity_compute_uid",
-      "toNode": "n_tests_test_debate_losses_test_run_once_never_fetches_an_already_excluded_uid",
-      "label": "calls [EXTRACTED]"
-    },
-    {
-      "id": "e_core_identity_compute_uid_tests_test_identity",
-      "fromNode": "n_core_identity_compute_uid",
-      "toNode": "n_tests_test_identity",
-      "label": "imports [EXTRACTED]"
     }
   ]
 }

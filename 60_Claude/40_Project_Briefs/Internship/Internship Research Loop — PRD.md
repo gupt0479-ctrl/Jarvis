@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 - [[Architecture (Summary)]] - `contains` [EXTRACTED]
-- [[Current Status (verified 2026-07-18)]] - `contains` [EXTRACTED]
+- [[Current Status (verified 2026-08-22)]] - `contains` [EXTRACTED]
 - [[Explicitly Out Of Scope]] - `contains` [EXTRACTED]
 - [[Goal]] - `contains` [EXTRACTED]
 - [[In Scope — Built (Phases 1–6, complete and live)]] - `contains` [EXTRACTED]

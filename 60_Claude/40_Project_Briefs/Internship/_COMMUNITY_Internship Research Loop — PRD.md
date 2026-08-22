@@ -9,7 +9,7 @@ members: 13
 
 ## Members
 - [[Architecture (Summary)]] - document - PRD.md
-- [[Current Status (verified 2026-07-18)]] - document - PRD.md
+- [[Current Status (verified 2026-08-22)]] - document - PRD.md
 - [[Explicitly Out Of Scope]] - document - PRD.md
 - [[Goal]] - document - PRD.md
 - [[In Scope — Built (Phases 1–6, complete and live)]] - document - PRD.md
