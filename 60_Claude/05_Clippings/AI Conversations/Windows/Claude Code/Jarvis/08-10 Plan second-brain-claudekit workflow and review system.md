@@ -6,7 +6,7 @@ source_os: windows
 title: "Plan second-brain-claudekit workflow and review system"
 started_at: 2026-08-10T13:32:31
 ended_at: 2026-08-11T12:38:45
-exported_at: 2026-08-21T21:00:04
+exported_at: 2026-08-22T12:56:25
 duration_minutes: 1386.2
 project: Jarvis
 cwd: 'D:\Users\_Anant\10_Areas\Documents\Jarvis'
