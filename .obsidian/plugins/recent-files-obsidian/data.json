@@ -1,20 +1,72 @@
 {
   "recentFiles": [
     {
-      "basename": "Prefix-Invariance & No-Lookahead Proof",
-      "path": "60_Claude/40_Project_Briefs/TradingView/Communities/Prefix-Invariance & No-Lookahead Proof.md"
+      "basename": "AI Operations Intern - Naukr AI - Acds",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/AI Operations Intern - Naukr AI - Acds.md"
+    },
+    {
+      "basename": "AI Network Automation Engineer Intern, Global Physical Network Infra - ByteDance",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/AI Network Automation Engineer Intern, Global Physical Network Infra - ByteDance.md"
+    },
+    {
+      "basename": "AI Intern - Montenson",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/AI Intern - Montenson.md"
+    },
+    {
+      "basename": "AI Engineer Intern - Enterprise Technology Services - American Express",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/AI Engineer Intern - Enterprise Technology Services - American Express.md"
+    },
+    {
+      "basename": "AI and Data Engineering Summer Scholar Intern - Government & Public Services - Deloitte",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/AI and Data Engineering Summer Scholar Intern - Government & Public Services - Deloitte.md"
+    },
+    {
+      "basename": "Agentic AI Intern - American Fidelity",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Agentic AI Intern - American Fidelity.md"
+    },
+    {
+      "basename": "Agent Evaluation & Evolution Machine Learning Engineer Intern - Applied Machine Learning Ark - ByteDance",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Agent Evaluation & Evolution Machine Learning Engineer Intern - Applied Machine Learning Ark - ByteDance.md"
+    },
+    {
+      "basename": "A.I. Developer Co-Op (Boston, MA) - Manhattan Associates",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/A.I. Developer Co-Op (Boston, MA) - Manhattan Associates.md"
+    },
+    {
+      "basename": "Internship Notes Standard",
+      "path": "30_Order/Standards/Internship Notes Standard.md"
+    },
+    {
+      "basename": "Ingestion Pipeline Audit — Clippings, Summaries & Implementation (2026-07-27)",
+      "path": "60_Claude/20_Distilled_Notes/Ingestion Pipeline Audit — Clippings, Summaries & Implementation (2026-07-27).md"
+    },
+    {
+      "basename": "graph",
+      "path": "60_Claude/40_Project_Briefs/Internship/graph.canvas"
+    },
+    {
+      "basename": "Resources",
+      "path": "10_Areas/Career/Internships/List/Resources.md"
+    },
+    {
+      "basename": "Claude Code Prompts",
+      "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
+    },
+    {
+      "basename": "What was Viewed",
+      "path": "10_Areas/Career/Internships/List/Dossiers/Viewed/What was Viewed.md"
     },
     {
       "basename": "Prompts",
       "path": "20_Progress/Projects/AI Use/Claude Kit/Claude Code/Prompts.md"
     },
     {
-      "basename": "Session Handoff — Graphify Deletion Incident (2026-08-22)",
-      "path": "60_Claude/40_Project_Briefs/Internship/Session Handoff — Graphify Deletion Incident (2026-08-22).md"
+      "basename": "Prefix-Invariance & No-Lookahead Proof",
+      "path": "60_Claude/40_Project_Briefs/TradingView/Communities/Prefix-Invariance & No-Lookahead Proof.md"
     },
     {
-      "basename": "Claude Code Prompts",
-      "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
+      "basename": "Session Handoff — Graphify Deletion Incident (2026-08-22)",
+      "path": "60_Claude/40_Project_Briefs/Internship/Session Handoff — Graphify Deletion Incident (2026-08-22).md"
     },
     {
       "basename": "Graphify Workflow",
@@ -147,58 +199,6 @@
     {
       "basename": "Jarvis OS Dashboard",
       "path": "10_Areas/Jarvis OS Dashboard.canvas"
-    },
-    {
-      "basename": "For AI",
-      "path": "30_Order/Templates/Frontmatter/For AI.md"
-    },
-    {
-      "basename": "Field OS Template",
-      "path": "30_Order/Templates/Capability/Field OS Template.md"
-    },
-    {
-      "basename": "Monthly Synthesis Template",
-      "path": "30_Order/Templates/Capability/Monthly Synthesis Template.md"
-    },
-    {
-      "basename": "Weekly Synthesis Template",
-      "path": "30_Order/Templates/Capability/Weekly Synthesis Template.md"
-    },
-    {
-      "basename": "Synthesis Template",
-      "path": "30_Order/Templates/Capability/Synthesis Template.md"
-    },
-    {
-      "basename": "Question Bank Template",
-      "path": "30_Order/Templates/Capability/Question Bank Template.md"
-    },
-    {
-      "basename": "Output Template",
-      "path": "30_Order/Templates/Capability/Output Template.md"
-    },
-    {
-      "basename": "MOC Template",
-      "path": "30_Order/Templates/Capability/MOC Template.md"
-    },
-    {
-      "basename": "Deep Dive Template",
-      "path": "30_Order/Templates/Capability/Deep Dive Template.md"
-    },
-    {
-      "basename": "Depth Ladder Template",
-      "path": "30_Order/Templates/Capability/Depth Ladder Template.md"
-    },
-    {
-      "basename": "Source Summary Standard",
-      "path": "30_Order/Standards/Source Summary Standard.md"
-    },
-    {
-      "basename": "Review Standard",
-      "path": "30_Order/Standards/Review Standard.md"
-    },
-    {
-      "basename": "Project Standard",
-      "path": "30_Order/Standards/Project Standard.md"
     }
   ],
   "omittedPaths": [],

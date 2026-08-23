@@ -5,9 +5,9 @@ source_app: claude-code
 source_os: wsl
 title: "Jarvis internship pipeline audit and setup"
 started_at: 2026-08-21T13:12:27
-ended_at: 2026-08-22T11:07:22
-duration_minutes: 1315
-exported_at: 2026-08-23T11:02:17
+ended_at: 2026-08-23T11:12:48
+duration_minutes: 2760
+exported_at: 2026-08-23T15:15:02
 project: internship-research-loop
 cwd: '/home/anant_gupta/projects/work/internship-research-loop'
 session_id: bebacdad-914c-4c86-b1a2-93b41c665f1c
