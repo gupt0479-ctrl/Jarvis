@@ -26,7 +26,7 @@ tags:
 notes:
   - '[[10_Areas/Career/Internships/List/Dossiers MOC]]'
   - '[[10_Areas/Career/Internships/List/Dossiers/Viewed/Removed Dossiers MOC]]'
-removed_date: '2026-08-22'
+removed_date: '2026-08-23'
 removed_reason: 'active: false upstream'
 ---
 # Data Internship - Data & AI Program
