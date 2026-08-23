@@ -1,12 +1,12 @@
 ---
 source_file: "vault_writer/writer.py"
 type: "code"
-community: "recheck.py"
+community: "revalidate.py"
 location: "L157"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/recheckpy
+  - community/revalidatepy
 ---
 
 # scan_dossiers()
@@ -22,4 +22,4 @@ tags:
 - [[validate_and_write()]] - `calls` [EXTRACTED]
 - [[writer.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/recheckpy
+#graphify/code #graphify/EXTRACTED #community/revalidatepy

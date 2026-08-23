@@ -1,12 +1,12 @@
 ---
 source_file: "core/debate.py"
 type: "rationale"
-community: "test_render_dossier_shows_real_rendered_frontmatter_with_preference_match"
+community: "test_write_dossier_creates_missing_dossiers_dir"
 location: "L1"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/test_render_dossier_shows_real_rendered_frontmatter_with_preference_match
+  - community/test_write_dossier_creates_missing_dossiers_dir
 ---
 
 # Layer 3.5 — the "debate": a deterministic pairwise comparator that decides which
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[debate.py]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/test_render_dossier_shows_real_rendered_frontmatter_with_preference_match
+#graphify/rationale #graphify/EXTRACTED #community/test_write_dossier_creates_missing_dossiers_dir

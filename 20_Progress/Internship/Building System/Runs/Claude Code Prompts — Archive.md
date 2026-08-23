@@ -344,3 +344,34 @@ Task 4: Program/Contact/Applying Standard recommendation stands — Prompt 9's a
 
 Task 5: Both items re-flagged, no new decision given at the time — the Viewed/ semantic conflict and the "review" note-type ambiguity. (Both resolved by the human immediately after this report — see Prompts 12/13.)
 ```
+
+
+## Prompt 12 — Codebase: Ship The Two Decided Design Changes, Finish The Deferred Cleanup (written 2026-08-23, run 2026-08-23)
+Full text: see the conversation. Reserved additive preferred-company slot per bucket, `MAX_DEBATE_LOSSES` 5→48, American Express individual verification, Zipline 49-dossier re-fetch (confirmed unblocked — `FIRECRAWL_API_KEY` was in `~/.bashrc` all along).
+
+**Result:**
+```
+All committed separately, pre-existing unrelated CLAUDE.md/graphify-out changes left untouched. 372 tests passing throughout.
+
+Task A (288b390): additive reserved slot in _prioritize_and_cap, never carved from existing budget. 3 tests: losing preferred candidate wins via reserved slot; no-preferred bucket unchanged; 3-way preferred recency tie-break.
+
+Task B (23e52db): MAX_DEBATE_LOSSES 5→48, citing comment updated with the 2026-08-21 287-exclusion burst. Existing tests rewritten to reference the constant, not hardcoded values.
+
+Task C (3b99251): American Express — 18 entries (not ~20), 15 distinct, 3 genuine duplicate pairs (same numeric job ID under egug.fa.us2.oraclecloud.com, differently punctuated titles). Added an Oracle Cloud HCM ATS-id pattern, domain+path anchored, 2 tests.
+
+Task D (vault-only, no commit): Zipline's 49 dossiers fully re-verified with live Firecrawl content. 12 kept (genuine SWE-relevant — Computational Physics, Controls Engineer ×2, Enterprise Systems SWE ×2, Long Range Platform Embedded Firmware, Perception, Software Engineer Intern (Sp), Software Systems Validation ×2, System Test Automation ×2), 37 removed (confirmed non-technical by real content, moved to Obsidian trash not permanently deleted).
+```
+
+## Prompt 13 — Jarvis: Implement The Two Decided Vault Changes (written 2026-08-23, run 2026-08-23)
+Full text: see the conversation. Rewrite `Viewed/What was Viewed.md` per the "keep existing design" decision; build a real, lightweight Step 2 (Screen) artifact per the "yes, real lightweight artifact" decision, choice of implementation left to the executing session weighed against the `company/<slug>`-tag precedent.
+
+**Result:**
+```
+Task 1: Viewed/What was Viewed.md rewritten — Viewed/ holds closed-never-applied postings (Standard §4, recheck.py's real behavior), points at Applying/Now.md + Tracker/Each One/Applied+Result/ for the "have I applied" need, both empty since zero real applications exist yet. Cited Prompts 8 and 9 (Archive) as the two independent sources for this read. Added a live dataview of Viewed/'s real contents; kept the original "organize by month once big" instinct, redirected at the correct purpose.
+
+Task 2: Chose frontmatter fields (screened_date/screened_decision/screened_reason on the dossier), not a separate note type. Explicit reasoning: the company/<slug>-tag-over-hub-note precedent applies with more force here (per-dossier, potentially hundreds of times, vs. per-company). A Screen call is a short state-transition fact (same shape as §4's removed_date/removed_reason), not a growing research artifact the way a Program note is. status left untouched (Screen is orthogonal to unreviewed/removed/promoted, not merged in). Contact reachability deliberately gets no field, matching Pipeline Step 2's existing "noted, never a gate" rule.
+
+Task 3: New §7 in Internship Notes Standard.md (field spec + the precedent-weighing reasoning + "not retroactive"/"not yet automated"). Internship Pipeline.md's Step 2 now points at the real fields.
+
+Flagged, not touched (per scope): Viewed/Removed Dossiers MOC.md — the note every removed dossier's notes: field is required to link to — is itself still empty. Noted for a later prompt. Nothing from Prompt 12 described as shipped anywhere in this work.
+```

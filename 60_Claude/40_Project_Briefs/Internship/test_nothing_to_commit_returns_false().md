@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_git_ops.py"
 type: "code"
-community: "recheck.py"
+community: "commit_and_push_with_retry"
 location: "L61"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/recheckpy
+  - community/commit_and_push_with_retry
 ---
 
 # test_nothing_to_commit_returns_false()
@@ -15,4 +15,4 @@ tags:
 - [[commit_and_push_with_retry()]] - `calls` [EXTRACTED]
 - [[test_git_ops.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/recheckpy
+#graphify/code #graphify/EXTRACTED #community/commit_and_push_with_retry

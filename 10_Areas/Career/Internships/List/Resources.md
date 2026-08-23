@@ -2,7 +2,7 @@
 type: evergreen
 status: active
 created: 2026-07-26
-updated: 2026-07-26
+updated: 2026-08-24
 notes:
   - "[[20_Progress/Internship/Building System/Research Loop - Resources]]"
   - "[[10_Areas/Career/Internships/List/Dossiers/Dossiers-to-Create]]"
@@ -20,14 +20,14 @@ A source isn't exhausted when its raw entry count is low — SimplifyJobs has 14
 ## Per-Source Table
 | Source | Last checked | Raw scale | Eligible-match trend | Exhaustion signal? | Alternative if exhausted |
 | --- | --- | --- | --- | --- | --- |
-| SimplifyJobs | 2026-07-25 | 14,900+ entries | High volume, most rejected on category/timing, not scarcity | No | — |
-| Jose-Gael-Cruz-Lopez | 2026-07-25 | ~112 entries | Small and thin by design | Watch — smallest source | Already de-prioritized relative to the other five |
-| vanshb03 | 2026-07-25 | 274 entries | Re-checked live, unchanged count from prior check | No | — |
-| zshah101 | 2026-07-25 | 214 entries | Re-checked live, unchanged count from prior check | No | — |
-| Greenhouse (7 tokens) | 2026-07-25 | 7 verified-live company boards | Fixed seed list — ceiling is the token list, not the API | **Yes, structurally** — bounded by hand-verified tokens | Task F: verified-live token expansion (see Runs/Claude Code Prompts) |
-| Ashby (5 tokens) | 2026-07-25 | 5 verified-live company boards | Same structural ceiling as Greenhouse | **Yes, structurally** | Same — Task F |
-| freehire | 2026-07-26 | 4,270,639 postings, 187,542 companies | **Confirmed live** as of 2026-07-26 — not yet in `recheck.py`'s `FEEDS`, worth confirming why | No | Lever, if this ever thins out |
-| artificialintelligencejobs.co | 2026-07-26 | 17,507 jobs, 184 explicit `Intern` | **Confirmed live**, in `recheck.py`'s `FEEDS` | No | — |
+| SimplifyJobs | 2026-08-24 | 290K+ fetched, 1.5% match rate, **137 live dossiers** | High volume, most rejected on category/timing, not scarcity — match rate stayed near this low all along, it's the source's normal shape, not new decay | No | — |
+| Jose-Gael-Cruz-Lopez | 2026-08-24 | **0 live dossiers**, despite 76 real matches logged over the last 20 runs | Matches are happening upstream but not landing as vault dossiers — real, unexplained gap | **Open question, under investigation** — in progress as of 2026-08-24, see [[20_Progress/Internship/Building System/Runs/Claude Code Prompts]]'s Prompt 14 entry; not resolved either way yet | Already de-prioritized relative to the other sources |
+| vanshb03 | 2026-08-24 | 26.6% match rate, **74 live dossiers** | Steady producer, second-highest match rate of the eight sources | No | — |
+| zshah101 | 2026-08-24 | 12.1% match rate, **68 live dossiers** | Steady | No | — |
+| Greenhouse (7 tokens) | 2026-08-24 | 53.6% match rate (small pre-curated set), **16 live dossiers** | Fixed seed list — ceiling is the token list, not the API | **Yes, structurally** — bounded by hand-verified tokens | Task F: verified-live token expansion (see Runs/Claude Code Prompts) |
+| Ashby (5 tokens) | 2026-08-24 | **0 live dossiers** | Same structural ceiling as Greenhouse | **Yes, structurally** | Same — Task F |
+| freehire | 2026-08-24 | 28.6% match rate but only **2 live dossiers** — tiny absolute volume | High rate, low absolute yield — real open question whether this source earns its integration cost at this volume | **Watch** — open question, see Prompt 14 entry above, not resolved either way yet | Lever, if this ever thins out |
+| artificialintelligencejobs.co (AIJobs) | 2026-08-24 | 25.6% match rate, **11 live dossiers** | Steady | No | — |
 > [!IMPORTANT]
 > This table is hand-updated from real checks (`gh api`, live fetches, a `loop-verifier` run) — never estimated. If a number here hasn't been refreshed in over two weeks, treat it as stale, not current.
 ## Real Backlog Event (2026-07-25)

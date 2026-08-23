@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_git_ops.py"
 type: "code"
-community: "recheck.py"
+community: "commit_and_push_with_retry"
 location: "L56"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/recheckpy
+  - community/commit_and_push_with_retry
 ---
 
 # _log_messages()
@@ -18,4 +18,4 @@ tags:
 - [[test_retries_once_on_rejected_push_and_succeeds()]] - `calls` [EXTRACTED]
 - [[test_simple_push_succeeds_without_race()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/recheckpy
+#graphify/code #graphify/EXTRACTED #community/commit_and_push_with_retry

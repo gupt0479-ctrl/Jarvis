@@ -2,7 +2,7 @@
 type: project
 status: active
 created: 2026-07-26
-updated: 2026-07-29
+updated: 2026-08-24
 related_progress:
   - "[[Source of Truth]]"
   - "[[10_Areas/Career/Internships/List/Resources]]"
@@ -10,7 +10,7 @@ tags:
   - internship
   - automation
   - resources
-next: "Freehire and AIJobs are now live (confirmed 2026-07-26) — next is the count-limit throttle and confirming recheck.py's Freehire gap in FEEDS."
+next: "Named-Program Coverage Check re-run 2026-08-24 — next is checking Greenhouse/Ashby token coverage for the six still-uncovered companies (Citadel, LinkedIn, MLH, NASA, Capital One, Bloomberg)."
 ---
 # Research Loop — Resources
 ==The main list of every data source this loop uses or has evaluated, what each one actually provides, and the planned alternative once a source runs dry or breaks.== This is the planning-level note — what exists, what's next in line. `10_Areas/Career/Internships/List/Resources` is the operational companion: how much has actually been drawn from each source and live exhaustion signals.
@@ -35,22 +35,22 @@ next: "Freehire and AIJobs are now live (confirmed 2026-07-26) — next is the c
 - **Intern Dock** — a snapshot page, no API.
 ## Ruled Out
 zapplyjobs (removed 2026-07-18 — entries are program/resource pages, not deadline-bearing postings). General job-board aggregators from `public-apis`' Jobs category (Adzuna, Careerjet, Jooble, Reed, ZipRecruiter) — same low-signal-for-internships problem as zapplyjobs, not internship-specific enough to be worth the integration.
-## Named-Program Coverage Check (2026-07-29) — Real Gap, Not Yet Fixed
-Per [[00_Execution]]'s Web pass, [[Internship Tracking Dashboard — 2027 Calendar, Programs, & Application Pipeline]] named ~11 target early-talent programs. Checked directly against `List/Dossiers/` (frontmatter `company:` field, not just body-text mentions of the name — a JD that merely links to LinkedIn or namechecks Google isn't a real hit): **only 3 of 11 companies have any dossier at all, and even those aren't confirmed to be the specific named program.**
+## Named-Program Coverage Check (refreshed 2026-08-24) — Real Gap, Partly Closing
+Per [[00_Execution]]'s Web pass, [[Internship Tracking Dashboard — 2027 Calendar, Programs, & Application Pipeline]] named ~11 target early-talent programs. Re-checked directly against `List/Dossiers/` (frontmatter `company:` field, excluding `Viewed/`, not just body-text mentions of the name — a JD that merely links to LinkedIn or namechecks Google isn't a real hit): **5 of 11 companies now have a dossier, up from 3 at the 2026-07-29 check — but still none confirmed to be the specific named program.**
 | Company / Program | Dossier Coverage |
 |---|---|
-| Jane Street (FTTP) | 11 Jane Street dossiers exist (SWE, ML Engineer, ML Researcher, Hardware, Network, etc.) — none confirmed as the specific FTTP program by name; likely generic postings, not the named pipeline |
-| Two Sigma (First-Year) | **None** |
-| D.E. Shaw | 1 dossier (`Software Developer Intern - DE Shaw`) — generic, not confirmed as a named early-talent pipeline |
+| Jane Street (FTTP) | 11 Jane Street dossiers exist (SWE, ML Engineer, ML Researcher, Hardware, Network, etc.) — unchanged since 2026-07-29; none confirmed as the specific FTTP program by name; likely generic postings, not the named pipeline |
+| Two Sigma (First-Year) | 1 dossier now exists (`AI Research Scientist Intern - 2027 Summer - Two Sigma`) — **new since the 2026-07-29 check (was None)**; checked its body text for "First-Year," no mention found — generic posting, not confirmed as the named pipeline |
+| D.E. Shaw | 1 dossier (`Software Developer Intern - DE Shaw`) — unchanged, still generic, not confirmed as a named early-talent pipeline |
 | Citadel (Launch) | **None** |
-| Google (ASDI) | 3 Google dossiers exist, all generic "Software Engineering Intern" postings — no ASDI-specific mention found |
-| Microsoft (Explore) | **None** |
+| Google (ASDI) | 3 Google dossiers exist (unchanged) — all generic "Software Engineering Intern" postings, checked body text for "ASDI," no mention found |
+| Microsoft (Explore) | 6 dossiers now exist — **new since the 2026-07-29 check (was None)**: AIML & LLM, CoreAI, Cloud & Distributed Backend, Fullstack Product, Data Platform/Analytics, Security & Identity. Checked body text for "Explore" on all six — the only hits are JS/UI config noise embedded in the fetched page (`explore opportunities`-style chrome), not the named program; still generic, unconfirmed |
 | LinkedIn (First Play) | **None** |
 | MLH Fellowship | **None** |
 | NASA OSTEM | **None** |
-| Capital One | **None** |
+| Capital One | **None live** — 2 dossiers existed as of the last check (Cyber Security Intern, Software Engineer Intern) but both closed upstream and moved to `Viewed/` on 2026-08-23 (`removed_reason: "active: false upstream"`) — real churn, not a coverage gain |
 | Bloomberg | **None** |
-**This is a loop-coverage gap, not a reason to hand-write Program notes for the missing eight** — per [[00_Execution]], the retired `Programs-to-Create.md` pattern (hand-typing from a target list) doesn't come back just because the loop hasn't surfaced these yet. If any of these are genuinely time-sensitive (Wave 1 programs open Aug 1 per [[10_Areas/Career/Internships/Programs/Serious/2026-HRT-Sophomore]]'s own timing), the right fix is checking why the loop's eight sources aren't catching them — company-specific early-talent programs (Explore, First Play, Launch, ASDI, OSTEM) often post on dedicated early-careers subdomains that a general listings aggregator (SimplifyJobs, vanshb03, zshah101) may not crawl, and none of the eight sources are Greenhouse/Ashby-hosted for these specific companies (per the verified-token list above). **Next step, not yet done:** check whether any of these eight companies' early-talent programs post through Greenhouse or Ashby (in which case a token addition closes the gap directly) before assuming a ninth source is needed.
+**This is a loop-coverage gap, not a reason to hand-write Program notes for the missing six** — per [[00_Execution]], the retired `Programs-to-Create.md` pattern (hand-typing from a target list) doesn't come back just because the loop hasn't surfaced these yet. If any of these are genuinely time-sensitive (Wave 1 programs open Aug 1 per [[10_Areas/Career/Internships/Programs/Serious/2026-HRT-Sophomore]]'s own timing), the right fix is checking why the loop's sources aren't catching them by name — company-specific early-talent programs (First-Year, Launch, First Play, OSTEM) often post on dedicated early-careers subdomains that a general listings aggregator (SimplifyJobs, vanshb03, zshah101) may not crawl, and none of the sources are Greenhouse/Ashby-hosted for these specific companies (per the verified-token list above). Two Sigma and Microsoft now have generic-role coverage, which narrows the gap to "is this posting the named pipeline" rather than "does the company have any coverage at all" — worth re-checking body text again once the loop's per-source yield changes (see [[20_Progress/Internship/Building System/Runs/Claude Code Prompts]]'s Prompt 14 entry, in progress as of 2026-08-24). **Next step, not yet done:** check whether any of the six still-uncovered companies' early-talent programs post through Greenhouse or Ashby (in which case a token addition closes the gap directly) before assuming a ninth source is needed.
 ## When A Source Runs Dry — The Alternative Ladder
 1. **SimplifyJobs/JGCL feel thin** → the four newer sources (vanshb03, zshah101, Greenhouse, Ashby) already diversify past them; check `List/Resources` for which one specifically slowed.
 2. **Greenhouse/Ashby seed list feels stale** → Task F from `Runs/Claude Code Prompts.md` Prompt 2 (seed-list diversification) is the direct next step — verified-live token additions only.

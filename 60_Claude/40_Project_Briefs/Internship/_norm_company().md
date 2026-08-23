@@ -2,7 +2,7 @@
 source_file: "core/identity.py"
 type: "code"
 community: "test_render_dossier_shows_real_rendered_frontmatter_with_preference_match"
-location: "L79"
+location: "L93"
 tags:
   - graphify/code
   - graphify/EXTRACTED

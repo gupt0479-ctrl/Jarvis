@@ -1,0 +1,19 @@
+---
+source_file: "tests/test_run_pipeline.py"
+type: "code"
+community: "test_writer.py"
+location: "L158"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/test_writerpy
+---
+
+# test_prioritize_and_cap_grants_reserved_slot_to_preferred_company_losing_the_debate()
+
+## Connections
+- [[Task A (2026-08-23) two preferred companies compete for a 1-slot     budget — s]] - `rationale_for` [EXTRACTED]
+- [[_listing_with_date()]] - `calls` [EXTRACTED]
+- [[test_run_pipeline.py]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/test_writerpy

@@ -183,13 +183,6 @@
       }
     },
     {
-      "query": "tag:#community/test_freehire.py",
-      "color": {
-        "a": 1,
-        "rgb": 11565729
-      }
-    },
-    {
       "query": "tag:#community/plan_removals",
       "color": {
         "a": 1,

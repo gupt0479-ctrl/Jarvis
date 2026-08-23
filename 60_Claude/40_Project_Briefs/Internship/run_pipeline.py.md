@@ -26,6 +26,7 @@ tags:
 - [[classify()]] - `imports` [EXTRACTED]
 - [[classify.py]] - `imports_from` [EXTRACTED]
 - [[commit_and_push_with_retry()]] - `imports` [EXTRACTED]
+- [[company_matches_preference()]] - `imports` [EXTRACTED]
 - [[compute_bucket_urgency()]] - `imports` [EXTRACTED]
 - [[compute_uid()]] - `imports` [EXTRACTED]
 - [[count_dossiers_by_bucket()]] - `contains` [EXTRACTED]

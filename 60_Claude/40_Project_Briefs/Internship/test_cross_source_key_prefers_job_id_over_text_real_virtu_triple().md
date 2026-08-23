@@ -2,7 +2,7 @@
 source_file: "tests/test_identity.py"
 type: "code"
 community: "test_render_dossier_shows_real_rendered_frontmatter_with_preference_match"
-location: "L156"
+location: "L175"
 tags:
   - graphify/code
   - graphify/EXTRACTED

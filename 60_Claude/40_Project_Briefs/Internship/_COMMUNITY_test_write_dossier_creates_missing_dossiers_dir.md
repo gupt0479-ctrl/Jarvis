@@ -1,14 +1,15 @@
 ---
 type: community
-members: 39
+members: 42
 ---
 
 # test_write_dossier_creates_missing_dossiers_dir
 
-**Members:** 39 nodes
+**Members:** 42 nodes
 
 ## Members
 - [[Layer 2.5b — priority-bucket classification for listings that already passed cor]] - rationale - core/classify.py
+- [[Layer 3.5 — the debate a deterministic pairwise comparator that decides which]] - rationale - core/debate.py
 - [[No numeric label ('Priority 123') — the folder location already     encodes th]] - rationale - core/classify.py
 - [[Real committed fixture Poshmark 'Cloud Platform Engineer Intern,     Growth' (t]] - rationale - tests/test_classify.py
 - [[Real committed fixture plain 'Software Engineer Intern', category     Software]] - rationale - tests/test_classify.py
@@ -21,6 +22,7 @@ members: 39
 - [[Two non-preferred candidates (stage 1 ties), different buckets, one     bucket's]] - rationale - tests/test_debate.py
 - [[Two preferred companies with different dates — stage 1 ties (both     'high'), r]] - rationale - tests/test_debate.py
 - [[_candidate()]] - code - tests/test_debate.py
+- [[_preference_rank()]] - code - core/debate.py
 - [[_prioritize_and_cap()]] - code - run_pipeline.py
 - [[bucket_urgency=None (the default) skips stage 2 entirely, falling     straight t]] - rationale - tests/test_debate.py
 - [[classification_callout()]] - code - core/classify.py
@@ -28,6 +30,7 @@ members: 39
 - [[classify.py]] - code - core/classify.py
 - [[compute_bucket_urgency()]] - code - core/debate.py
 - [[coreclassify.py — real examples throughout, same fixtures as test_relevance.py]] - rationale - tests/test_classify.py
+- [[debate.py]] - code - core/debate.py
 - [[debate_compare()]] - code - core/debate.py
 - [[test_classification_callout_format_has_no_numeric_label()]] - code - tests/test_classify.py
 - [[test_classification_callout_other_bucket_has_no_signal_but_still_no_number()]] - code - tests/test_classify.py
@@ -56,14 +59,14 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
+- 9 edges to [[_COMMUNITY_recheck.py]]
 - 9 edges to [[_COMMUNITY_write_dossier]]
-- 8 edges to [[_COMMUNITY_recheck.py]]
-- 6 edges to [[_COMMUNITY_test_render_dossier_shows_real_rendered_frontmatter_with_preference_match]]
-- 2 edges to [[_COMMUNITY_writer.py]]
+- 4 edges to [[_COMMUNITY_test_render_dossier_shows_real_rendered_frontmatter_with_preference_match]]
+- 2 edges to [[_COMMUNITY_render_dossier]]
 
 ## Top bridge nodes
-- [[test_debate.py]] - degree 16, connects to 3 communities
-- [[classify()]] - degree 15, connects to 3 communities
-- [[debate_compare()]] - degree 14, connects to 2 communities
+- [[test_debate.py]] - degree 16, connects to 2 communities
+- [[classify()]] - degree 15, connects to 2 communities
+- [[debate.py]] - degree 10, connects to 2 communities
 - [[classification_callout()]] - degree 7, connects to 2 communities
-- [[compute_bucket_urgency()]] - degree 7, connects to 2 communities
+- [[_prioritize_and_cap()]] - degree 7, connects to 2 communities

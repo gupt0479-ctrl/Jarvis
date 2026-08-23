@@ -14,6 +14,7 @@ tags:
 ## Connections
 - [[Scoped per-bucket per the tunable budget dict — each bucket fills only     from]] - `rationale_for` [EXTRACTED]
 - [[classify()]] - `calls` [EXTRACTED]
+- [[company_matches_preference()]] - `calls` [EXTRACTED]
 - [[compute_bucket_urgency()]] - `calls` [EXTRACTED]
 - [[debate_compare()]] - `calls` [EXTRACTED]
 - [[run_once()]] - `calls` [EXTRACTED]

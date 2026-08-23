@@ -70,17 +70,16 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 16 edges to [[_COMMUNITY_render_dossier]]
-- 12 edges to [[_COMMUNITY_recheck.py]]
+- 17 edges to [[_COMMUNITY_render_dossier]]
+- 9 edges to [[_COMMUNITY_recheck.py]]
+- 4 edges to [[_COMMUNITY_revalidate.py]]
 - 3 edges to [[_COMMUNITY_test_render_dossier_shows_real_rendered_frontmatter_with_preference_match]]
 - 2 edges to [[_COMMUNITY_test_writer.py]]
 - 1 edge to [[_COMMUNITY_write_dossier]]
-- 1 edge to [[_COMMUNITY_revalidate.py]]
-- 1 edge to [[_COMMUNITY_writer.py]]
 
 ## Top bridge nodes
 - [[writer.py]] - degree 22, connects to 4 communities
 - [[test_writer.py]] - degree 33, connects to 3 communities
 - [[write_dossier()]] - degree 18, connects to 2 communities
+- [[move_dossier_to_viewed()]] - degree 13, connects to 2 communities
 - [[build_frontmatter()]] - degree 11, connects to 2 communities
-- [[move_dossier_to_viewed()]] - degree 13, connects to 1 community

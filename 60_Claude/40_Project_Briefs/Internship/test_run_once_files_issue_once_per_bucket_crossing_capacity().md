@@ -2,7 +2,7 @@
 source_file: "tests/test_run_pipeline.py"
 type: "code"
 community: "test_writer.py"
-location: "L552"
+location: "L601"
 tags:
   - graphify/code
   - graphify/EXTRACTED

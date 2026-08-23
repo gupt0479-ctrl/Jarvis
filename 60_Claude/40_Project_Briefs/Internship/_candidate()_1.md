@@ -14,8 +14,8 @@ tags:
 ## Connections
 - [[Listing]] - `calls` [EXTRACTED]
 - [[test_debate_losses.py]] - `contains` [EXTRACTED]
-- [[test_deferred_4_times_still_in_pool_not_excluded()]] - `calls` [EXTRACTED]
-- [[test_deferred_5th_time_excludes_and_removes_from_losses()]] - `calls` [EXTRACTED]
+- [[test_deferred_nth_time_excludes_and_removes_from_losses()]] - `calls` [EXTRACTED]
+- [[test_deferred_up_to_threshold_minus_one_still_in_pool_not_excluded()]] - `calls` [EXTRACTED]
 - [[test_wins_on_attempt_3_never_excluded()]] - `calls` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/test_writerpy

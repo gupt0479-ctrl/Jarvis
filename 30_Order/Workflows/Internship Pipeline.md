@@ -67,6 +67,7 @@ Before committing real hours, every dossier or manual find passes the same fit t
 - **Personal fit** — does it map to something you've built or want to build, worth learning, a real use of current skills?
 - **Contact reachability** — noted on the note, never a gate. A black-box ATS with no findable contact doesn't disqualify a role that passes the two tests above.
 - **Pay is not evaluated here, or anywhere in this pipeline.**
+**Record the call, don't just make it (decided 2026-08-23).** This was the one step in the pipeline with no artifact — a mental check that left no trace. Record the decision directly on the dossier: `screened_date`, `screened_decision` (`pass`/`reject`), `screened_reason` (the specific goal-push or personal-fit signal, not a bare "passed"). Full field spec and the reasoning for putting this on the dossier itself rather than a separate note: [[30_Order/Standards/Internship Notes Standard]] §7.
 ## Step 3 — Commit (Programs + Contacts + Tracker)
 When something passes the fit test, promote it in one sitting:
 - **Programs/Serious/<name>.md or Programs/Considering/<name>.md — identical template, identical research depth in both. The split is preference/timing only (pursuing now vs. later/undecided), never rigor — don't write a thinner note for Considering.

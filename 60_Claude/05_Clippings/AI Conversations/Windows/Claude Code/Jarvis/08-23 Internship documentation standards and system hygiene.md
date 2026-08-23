@@ -5,28 +5,28 @@ source_app: claude-code
 source_os: windows
 title: "Internship documentation standards and system hygiene"
 started_at: 2026-08-23T15:54:55
-ended_at: 2026-08-23T17:28:31
-exported_at: 2026-08-23T23:09:01
-duration_minutes: 93.6
+ended_at: 2026-08-23T23:57:07
+exported_at: 2026-08-24T01:30:03
+duration_minutes: 482.2
 project: Jarvis
 cwd: 'D:\Users\_Anant\10_Areas\Documents\Jarvis'
 session_id: ff269c7e-28e8-431c-b30b-039d57b05f76
 status: raw
-turn_count: 4
+turn_count: 6
 tools_used:
   Bash: 4
-  Edit: 29
+  Edit: 32
   Glob: 35
-  Grep: 6
-  Read: 45
-  Write: 1
+  Grep: 8
+  Read: 49
+  Write: 2
 tokens:
-  input: 336
-  output: 248949
-  cache_creation: 1067944
-  cache_read: 31655670
-  total: 32972899
-cost_usd: 13.093072
+  input: 376
+  output: 279548
+  cache_creation: 1902397
+  cache_read: 36921855
+  total: 39104176
+cost_usd: 17.790191
 model:
   - "claude-sonnet-5"
 files_touched:
@@ -42,6 +42,7 @@ files_touched:
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\10_Areas\\Career\\Internships\\List\\Dossiers\\2 - Fullstack\\Summer 2027 Software Engineering Internship - Western Digital.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\10_Areas\\Career\\Internships\\List\\Dossiers\\3 - CyS & Finance\\Software Engineer Intern - Jane Street.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\10_Areas\\Career\\Internships\\List\\Dossiers\\3 - CyS & Finance\\Trading Automation and Operations Intern (Summer 2027) - Optiver.md"
+  - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\10_Areas\\Career\\Internships\\List\\Dossiers\\Viewed\\Removed Dossiers MOC.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\10_Areas\\Career\\Internships\\List\\Dossiers\\Viewed\\What was Viewed.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\10_Areas\\Career\\Internships\\List\\Excluded — Losing The Debate.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\10_Areas\\Career\\Internships\\Programs\\Considering\\Software Engineering Intern - Appian.md"
@@ -49,6 +50,7 @@ files_touched:
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\10_Areas\\Career\\Internships\\Tracker\\Internship - Dashboard.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\10_Areas\\Career\\Internships\\Tracker\\Tracker.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Internship\\Building System\\Runs\\Claude Code Prompts — Archive.md"
+  - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Internship\\Building System\\Runs\\Claude Code Prompts.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Internship\\Building System\\Source of Truth.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Internship\\Building System\\System - Build Log.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\30_Order\\Standards\\Internship Notes Standard.md"
@@ -694,9 +696,153 @@ f6e056e7 auto: 2026-08-23 15:24 | 21 files
 ## [2026-08-23] build | Internship Standards catch-up
 ```
 
+## You
+
+**Prompt 12 is running in parallel in a different session — its code changes (the reserved preferred slot, the raised loss threshold) are not live yet when you run this. Don't describe them as already shipped; if you reference them at all, say "decided 2026-08-23, implementation in progress" and cite this file's Prompt 12 entry, not a finished state.**
+
+**Two real decisions were made by the human 2026-08-23. Implement both:**
+
+### Task 1 — Rewrite `Viewed/What was Viewed.md`
+**Decision:** keep the existing, already-shipped design. `Viewed/` holds closed postings that were never applied to (per `Internship Notes Standard.md` §4 and `recheck.py`'s real behavior) — that doesn't change. Rewrite the note to describe this correctly, and point to `Applying/Now.md` and `Tracker/Each One/Applied+Result/` as the actual "what have I applied to, so I don't repeat it" view the original note was reaching for — both already exist, both are currently empty (zero real applications submitted yet), which is why the need felt unmet. Cite that two independent audit sessions (Prompts 8 and 9, in the Archive) reached this same conclusion independently.
+
+### Task 2 — A real, lightweight artifact for pipeline Step 2 (Screen)
+**Decision:** yes, build something real for the fit-test step — it's the one step in the whole 9-step pipeline with no artifact today. **Genuinely undecided by me, your call to make with reasoning, not mine to dictate:** should this be (a) a required frontmatter field added to the dossier itself (e.g. `screened: {date, decision: yes/no, reason}`), or (b) a separate, minimal note type/file per screened dossier? This vault has an existing, directly-relevant precedent worth weighing: `Internship Notes Standard.md` explicitly chose a `company/<slug>` **tag** over a separate company-hub **note**, reasoning that a new file per occurrence is exactly the kind of accumulating-cost pattern this codebase avoids elsewhere (cited in that Standard's §1). A Screen decision happens for every dossier that gets a real look — potentially hundreds — which is the same shape of scale concern. Weigh that precedent explicitly in your choice; you don't have to follow it if there's a real reason a genuinely separate note serves this better (e.g. if a Screen decision needs its own space for real notes/reasoning too long for a frontmatter field), but state your reasoning either way rather than defaulting silently.
+
+### Task 3 — Update the Standards to describe what you built in Task 2
+Extend `Internship Notes Standard.md` (if you chose the frontmatter-field approach) or write a new Standard doc (if you chose a separate note type) — match the citation/depth discipline every other section in that Standard already uses. Update `30_Order/Workflows/Internship Pipeline.md`'s Step 2 description to reference the real mechanism now, not "the fit test" as an undocumented mental check.
+
+### Explicitly out of scope
+No code changes to `internship-research-loop`. No describing Prompt 12's code changes as live. No further unilateral decisions on anything not explicitly decided above — if something else looks ambiguous while doing this work, flag it rather than guess, same as every prompt before this one.
+
+### Report back
+Task 1: confirm the rewrite and its citations. Task 2: which approach you chose and why, weighed explicitly against the `company/<slug>` precedent. Task 3: what changed in the Standards/Pipeline doc.
+
+
+## Claude
+
+Now writing Task 1 — the corrected `What was Viewed.md`:
+
+All three tasks are done.
+
+**Task 1 — `Viewed/What was Viewed.md` rewritten.** Kept the existing, already-shipped design: `Viewed/` holds closed-never-applied postings, per `Internship Notes Standard.md` §4 and `recheck.py`'s real move-on-closure behavior. The rewrite explains why the old draft said "applied for" instead, and points at `Applying/Now.md` and `Tracker/Each One/Applied+Result/` as the actual answer to "have I already applied to this" — both already exist, both empty right now because zero real applications have gone out yet, which is exactly why the need felt unmet. Cited **Prompt 8** (flagged the conflict without resolving it) and **Prompt 9** (reached the same read independently from the codebase side) — both in the Archive note, as instructed. Added a live dataview of what's actually in `Viewed/` and kept the original note's "this'll get big, organize by month" instinct, redirected at the correct purpose.
+
+**Task 2 — Chose frontmatter fields, not a separate note.** `screened_date` / `screened_decision` (`pass`/`reject`) / `screened_reason` on the dossier itself. Weighed explicitly against the `company/<slug>` precedent: that precedent avoided a note-per-company because of accumulating file cost at scale; a Screen decision happens per-dossier, potentially hundreds of times — the same argument applies with *more* force, not less. Beyond volume, a Screen call is structurally a short state-transition fact (same shape as §4's `removed_date`/`removed_reason`, added at one moment on a note that already exists), not a growing research artifact the way a Program note is — building a whole new note type would overstate the weight of what's supposed to be a fast two-question gut check. Kept `status` untouched (Screen pass/reject is orthogonal to the existing unreviewed/removed/promoted lifecycle, not merged into it, to avoid blurring two different kinds of facts). Contact reachability deliberately gets no structured field, since Pipeline Step 2 already says it's "noted, never a gate."
+
+**Task 3 — Standards/Pipeline updated.** New §7 in `Internship Notes Standard.md` (field spec, the precedent-weighing reasoning, "not retroactive," "not yet automated" — same footing as §1-§4). `Internship Pipeline.md`'s Step 2 now points at real fields instead of describing an undocumented mental check.
+
+**Flagged, not touched (per scope):** `Viewed/Removed Dossiers MOC.md` — the note every removed dossier's `notes:` field is required to link to — is itself still empty. Not part of this prompt's ask, noted for later. Nothing from Prompt 12 (reserved preferred-company slot, `MAX_DEBATE_LOSSES` 5→48) is described as shipped anywhere in this work — it doesn't come up in either task, so it isn't cited at all. Session logged.
+
+### Tool Calls
+
+- `Grep` -- pattern `Prompt 12` path `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Internship\Building System`
+- `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\10_Areas\Career\Internships\List\Dossiers\Viewed\What was Viewed.md`
+- `Grep` -- pattern `Prompt 12` path `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Internship\Building System\Runs\Claude Code Prompts.md`
+- `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Internship\Building System\Runs\Claude Code Prompts.md`
+- `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\10_Areas\Career\Internships\List\Dossiers\Viewed\Removed Dossiers MOC.md`
+- `Write` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\10_Areas\Career\Internships\List\Dossiers\Viewed\What was Viewed.md`
+```
+---
+type: evergreen
+status: active
+created: 2026-08-23
+tags:
+  - internship
+  - moc
+  - automation
+notes:
+  - "[[30_Order/Standards/Internship Notes Standard]]"
+  - "[[10_Areas/Career/Internships/List/Dossiers/Viewed/Removed Dossiers MOC]]"
+  - "[[20_Progress/Internship/Applying/Now]]"
+next:
+---
+# What Was Viewed
+==Rewritten 2026-08-23 to match the system's actual, already-shipped design instead of a since-corrected earlier draft.== `Viewed/` holds postings this pipeline saw and screened out because the posting itself closed - not internships that were applied to. Per [[30_Order/Standards/Internship Notes Standard]] §4 and `recheck.py`'s real behavior: a dossier moves here only when `recheck.py` finds its posting is no longer live upstream (`removed_reason: "active: false upstream"` or `"absent from live feed"`), never because a human applied to it. `Viewed/` is a human triage bin - seen, not used - and it is never a pipeline write target for new dossiers.
+
+## Why This Note Used To Say Something Different
+An earlier draft of this note described `Viewed/` as holding "internships that have been applied for already... so that we do not repeat the same internships." That was a real, understandable need - but the wrong folder for it, and two independent audit sessions found the same mismatch independently rather than one session guessing at a fix: [[20_Progress/Internship/Building System/Runs/Claude Code Prompts — Archive]]'s Prompt 8 (2026-08-23, vault-side Standards work) flagged the conflict without resolving it; Prompt 9 (2026-08-23, the six-fork dossier audit) reached the same read from the codebase side while confirming `recheck.py`'s actual, shipped move-to-`Viewed/` behavior. Neither session touched this note or `Viewed/` itself - the human decided 2026-08-23 to keep the existing design and rewrite this note instead, which is what this rewrite does.
+
+## Where "Applied, Don't Repeat" Actually Lives
+The need the old draft was reaching for is already served by two notes that already exist in this vault - they're just empty right now because zero real applications have been submitted yet, which is exactly why the need felt unmet:
+- **[[20_Progress/Internship/Applying/Now]]** - the exhaustive live list of every internship currently mid-application. This is the fastest "have I already gone after this one" check.
+- **`10_Areas/Career/Internships/Tracker/Each One/Applied/` and `Result/`** - per [[30_Order/Standards/Internship Notes Standard]]'s sibling [[30_Order/Standards/Tracking Standard]], a Tracker note moves from `Current/` to `Applied/` the moment a real application goes out, and to `Result/` once an outcome lands. Once real applications start, checking either folder answers "did I already apply to this company/role" directly - no need to search `Viewed/` for it.
+
+## What Actually Belongs Here
+```dataview
+TABLE company, title as "Role", removed_reason as "Why It Closed", removed_date as "Closed"
+FROM "10_Areas/Career/Internships/List/Dossiers/Viewed"
+WHERE company
+SORT removed_date DESC
+```
+Real signal worth reading over time: a company that closes postings unusually fast after they're found is useful evidence about that company's hiring cadence for next cycle, and a duplicate-looking posting reappearing later is evidence for the exclusion/dedup logic tracked in [[20_Progress/Internship/Building System/Source of Truth]] - not a reason to re-screen it by hand. If this folder grows past a size where a flat view stops being useful, organize by month the same way `List/YYYY-MM Found.md` already does for discovery - that part of the original note's ambition was sound, it was just pointed at the wrong purpose.
+
+```
+- `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\Standards\Internship Notes Standard.md`
+- `Edit` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\Standards\Internship Notes Standard.md`
+```diff
+- ## Done When
+- Every dossier's `notes:` field resolves (Dossiers MOC, plus Removed Dossiers MOC for anything in `Viewed/`) — no broken/missing links.
+- A same-company second dossier shares its `company/<slug>` tag with the first, verifiable via Obsidian's tag search.
+- A spot-read of five random dossiers shows no duplicated paragraphs and no jammed-together UI-chrome lines.
+- A bucket crossing 50 shows up on `Dossiers MOC.md` without opening `logs/runs.jsonl`.
+- A closed posting's dossier is findable in `Viewed/`, not gone.
++ ## 7. Screen decision — recorded on the dossier itself, not a separate note
+Decided 2026-08-23. Step 2 (Screen) of [[30_Order/Workflows/Internship Pipeline]] - the fit test every dossier passes before Step 3 (Commit) - was the one step in the whole 9-step pipeline with no artifact of its own: a mental check that left no trace on the note it was applied to. This closes that gap the same way §4 closed the removal gap: additional frontmatter fields on the existing dossier, not a new file.
+
+**Chosen over a separate note type, weighed explicitly against this Standard's own §1 precedent.** §1 chose a `company/<slug>` tag over a per-company hub note specifically because a new file per occurrence is exactly the accumulating-maintenance-cost pattern this codebase's zero-LLM/deterministic ethos avoids elsewhere. A Screen decision happens for every dossier that gets a real look - potentially hundreds, a higher volume than same-company clustering ever was, since clustering only needed one hub note per *company* while Screen would need one note per *dossier* if built as a separate file. The same reasoning applies with more force here, not less. Beyond the volume argument, a Screen decision is also structurally closer to §4's `removed_date`/`removed_reason`/`status: removed` pattern than to anything a separate note would suit: it's a short, single state-transition fact recorded at one moment, on a note that already exists, not a growing body of research that needs its own space to accumulate (that's what the Program note becomes at Step 3, once something actually passes). A separate note would overstate the weight of what's supposed to be a fast, two-question gut check, not a research artifact.
+
+**Fields** (added to the dossier's existing frontmatter at Screen time, not part of `build_frontmatter()`'s automated-write order in §1 - these are added by whoever runs Step 2, same as §4's `removed_*` fields are added by `recheck.py` at move time, not at initial write):
+- `screened_date` - the real date the fit test was actually applied.
+- `screened_decision` - `pass` or `reject`. Deliberately not folded into the existing `status` field - `status` already carries `unreviewed` → `removed`/`promoted` as its own lifecycle (§4), and a Screen rejection is a different kind of fact (a human judgment call, not a posting-closed signal) that would blur those two meanings together if merged. A dossier can carry `screened_decision: pass` and still sit at `status: unreviewed` until it's actually promoted - Screen passing is not the same as committing.
+- `screened_reason` - the *specific* signal that drove the call (which goal-push or personal-fit criterion from Pipeline Step 2, in one clause), never a bare "passed"/"rejected" - the same required-richness rule §6 already states for `matched_reason`, extended here rather than reinvented.
+
+**Contact reachability stays unrecorded here on purpose.** Pipeline Step 2 is explicit that contact reachability is "noted, never a gate" - it doesn't drive the pass/reject call, so it doesn't need its own structured field; if it's genuinely relevant to a specific decision, it belongs in the prose of `screened_reason` or waits for the real Contact note Step 3 creates once something is actually promoted.
+
+**Not retroactive.** Existing dossiers don't get backfilled with empty `screened_*` fields - same convention as §4's `removed_*` fields, added going forward at the moment Screen actually happens to a given dossier, not required on notes that predate this section.
+
+**Not yet automated.** No code in `internship-research-loop` writes these fields today - this section defines the shape for a human (or Claude, assisting one) to record a real Screen decision by hand, the same way `/promote-dossier` is the actual mechanism behind §1-§4's fields even though this Standard describes the shape independent of automation state. Whether a future skill or dashboard view should read/write these fields automatically is a real, separate build question, not decided here.
+
+## Done When
+- Every dossier's `notes:` field resolves (Dossiers MOC, plus Removed Dossiers MOC for anything in `Viewed/`) — no broken/missing links.
+- A same-company second dossier shares its `company/<slug>` tag with the first, verifiable via Obsidian's tag search.
+- A spot-read of five random dossiers shows no duplicated paragraphs and no jammed-together UI-chrome lines.
+- A bucket crossing 50 shows up on `Dossiers MOC.md` without opening `logs/runs.jsonl`.
+- A closed posting's dossier is findable in `Viewed/`, not gone.
+- A dossier that's been through Step 2 carries `screened_date`/`screened_decision`/`screened_reason` - no more silent, untraceable fit-test judgment calls.
+```
+- `Edit` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\Workflows\Internship Pipeline.md`
+```diff
+- ## Step 2 — Screen (the fit test)
+Before committing real hours, every dossier or manual find passes the same fit test, regardless of which priority folder it landed in (including `Other` — that folder gets the same scrutiny, not less):
+- **Goal-push** — does this role move you toward the systems-minded AI engineer direction in [[Engineer Edge Roadmap]]? Bias against roles that don't.
+- **Personal fit** — does it map to something you've built or want to build, worth learning, a real use of current skills?
+- **Contact reachability** — noted on the note, never a gate. A black-box ATS with no findable contact doesn't disqualify a role that passes the two tests above.
+- **Pay is not evaluated here, or anywhere in this pipeline.**
++ ## Step 2 — Screen (the fit test)
+Before committing real hours, every dossier or manual find passes the same fit test, regardless of which priority folder it landed in (including `Other` — that folder gets the same scrutiny, not less):
+- **Goal-push** — does this role move you toward the systems-minded AI engineer direction in [[Engineer Edge Roadmap]]? Bias against roles that don't.
+- **Personal fit** — does it map to something you've built or want to build, worth learning, a real use of current skills?
+- **Contact reachability** — noted on the note, never a gate. A black-box ATS with no findable contact doesn't disqualify a role that passes the two tests above.
+- **Pay is not evaluated here, or anywhere in this pipeline.**
+**Record the call, don't just make it (decided 2026-08-23).** This was the one step in the pipeline with no artifact — a mental check that left no trace. Record the decision directly on the dossier: `screened_date`, `screened_decision` (`pass`/`reject`), `screened_reason` (the specific goal-push or personal-fit signal, not a bare "passed"). Full field spec and the reasoning for putting this on the dossier itself rather than a separate note: [[30_Order/Standards/Internship Notes Standard]] §7.
+```
+- `Edit` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\60_Claude\07_AI_Information\Session Logs\log.md`
+```diff
+- # Session Log
+## [2026-08-23] build | Prompt 9 audit recorded
++ # Session Log
+## [2026-08-23] build | Prompt 13 — Viewed/ rewritten, Screen decision gets a real artifact
+- Implements two real human decisions from 2026-08-23 (Prompt 13 in [[20_Progress/Internship/Building System/Runs/Claude Code Prompts]]). Prompt 12 (codebase — reserved preferred-company slot, `MAX_DEBATE_LOSSES` 5→48) ran in parallel and is **not** referenced here as shipped — cited only as "decided 2026-08-23, implementation in progress" where it came up.
+- **[[10_Areas/Career/Internships/List/Dossiers/Viewed/What was Viewed]] rewritten** — kept the existing shipped design (closed-never-applied, per `Internship Notes Standard.md` §4 and `recheck.py`'s real behavior), explained why an earlier draft said "applied for" instead, and pointed at `Applying/Now.md` + `Tracker/Each One/Applied+Result/` as the actual "don't repeat an application" view — both already exist, both empty since zero real applications have gone out yet. Cited Prompts 8 and 9 (Archive) as two independent sessions that reached the same read.
+- **Screen (Pipeline Step 2) gets a real artifact — new [[30_Order/Standards/Internship Notes Standard]] §7.** Chose frontmatter fields on the dossier itself (`screened_date`/`screened_decision`/`screened_reason`) over a separate note type, weighed explicitly against §1's own `company/<slug>`-tag-over-hub-note precedent — the volume argument (one Screen decision per dossier, potentially hundreds) is stronger than the one that motivated §1, and a Screen call is a short state-transition fact like §4's `removed_*` fields, not a growing research artifact like a Program note. `status` left untouched (Screen pass/reject is orthogonal to the existing unreviewed/removed/promoted lifecycle, not merged into it). Not retroactive, not yet automated — a recording convention, same footing as §1-§4 before any code writes to it. [[30_Order/Workflows/Internship Pipeline]]'s Step 2 updated to point at it.
+- **Noticed, not fixed (out of scope this prompt)**: `Viewed/Removed Dossiers MOC.md` — the note every removed dossier's `notes:` field links to per Standard §1/§4 — is itself still empty.
+
+## [2026-08-23] build | Prompt 9 audit recorded
+```
+
 ## Actions Taken
 
 **Files created:**
+- `D:\Users\_Anant\10_Areas\Documents\Jarvis\10_Areas\Career\Internships\List\Dossiers\Viewed\What was Viewed.md`
 - `D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\Standards\Tracking Standard.md`
 
 **Files modified:**
