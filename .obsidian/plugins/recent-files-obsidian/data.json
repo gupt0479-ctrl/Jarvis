@@ -1,12 +1,36 @@
 {
   "recentFiles": [
     {
-      "basename": "Claude Code Prompts",
-      "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
+      "basename": "Prefix-Invariance & No-Lookahead Proof",
+      "path": "60_Claude/40_Project_Briefs/TradingView/Communities/Prefix-Invariance & No-Lookahead Proof.md"
     },
     {
       "basename": "Prompts",
       "path": "20_Progress/Projects/AI Use/Claude Kit/Claude Code/Prompts.md"
+    },
+    {
+      "basename": "Session Handoff — Graphify Deletion Incident (2026-08-22)",
+      "path": "60_Claude/40_Project_Briefs/Internship/Session Handoff — Graphify Deletion Incident (2026-08-22).md"
+    },
+    {
+      "basename": "Claude Code Prompts",
+      "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
+    },
+    {
+      "basename": "Graphify Workflow",
+      "path": "40_Resources/CS/AI/Workflows/Claude Code/Graphify Workflow.md"
+    },
+    {
+      "basename": "40_Project_Briefs Board",
+      "path": "60_Claude/40_Project_Briefs/40_Project_Briefs Board.md"
+    },
+    {
+      "basename": "How to use Graphify",
+      "path": "60_Claude/40_Project_Briefs/How to use Graphify.md"
+    },
+    {
+      "basename": "Vault-Audit-2026-05-29",
+      "path": "60_Claude/30_Reviews/Vault-Audit-2026-05-29.md"
     },
     {
       "basename": "00_Execution",
@@ -175,30 +199,6 @@
     {
       "basename": "Project Standard",
       "path": "30_Order/Standards/Project Standard.md"
-    },
-    {
-      "basename": "MOC Standard",
-      "path": "30_Order/Standards/MOC Standard.md"
-    },
-    {
-      "basename": "Internship Notes Standard",
-      "path": "30_Order/Standards/Internship Notes Standard.md"
-    },
-    {
-      "basename": "Evergreen Standard",
-      "path": "30_Order/Standards/Evergreen Standard.md"
-    },
-    {
-      "basename": "Daily Workflow Standard",
-      "path": "30_Order/Standards/Daily Workflow Standard.md"
-    },
-    {
-      "basename": "Course Week Standard",
-      "path": "30_Order/Standards/Course Week Standard.md"
-    },
-    {
-      "basename": "Concept Standard",
-      "path": "30_Order/Standards/Concept Standard.md"
     }
   ],
   "omittedPaths": [],

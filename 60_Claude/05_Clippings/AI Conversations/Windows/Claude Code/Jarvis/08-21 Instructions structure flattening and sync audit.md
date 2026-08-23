@@ -6,7 +6,7 @@ source_os: windows
 title: "Instructions structure flattening and sync audit"
 started_at: 2026-08-21T14:16:11
 ended_at: 2026-08-21T20:41:40
-exported_at: 2026-08-22T12:56:01
+exported_at: 2026-08-23T11:02:39
 duration_minutes: 385.5
 project: Jarvis
 cwd: 'D:\Users\_Anant\10_Areas\Documents\Jarvis'

@@ -14,7 +14,6 @@
   "userIgnoreFilters": [
     "50_Archive/",
     "30_Order/System/excalidraw-mcp/node_modules/",
-    "60_Claude/40_Project_Briefs/TradingView/",
     "60_Claude/00_Inbox/copilot/"
   ]
 }

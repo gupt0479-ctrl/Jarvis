@@ -6,7 +6,7 @@ source_os: windows
 title: "Knowledge graph and token optimization for Jarvis"
 started_at: 2026-08-20T17:14:01
 ended_at: 2026-08-21T21:10:35
-exported_at: 2026-08-22T12:55:58
+exported_at: 2026-08-23T11:02:36
 duration_minutes: 1676.6
 project: Jarvis
 cwd: 'D:\Users\_Anant\10_Areas\Documents\Jarvis'

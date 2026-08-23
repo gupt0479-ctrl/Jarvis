@@ -17,7 +17,7 @@ notes:
   - "[[40_Resources/Obsidian/Vault Operating System]]"
   - "[[Claude Pro Workflow]]"
   - "[[Jarvis Three-Month Research Engine Master Plan]]"
-  - "[[60_Claude/40_Project_Briefs/Vault-Audit-2026-05-29]]"
+  - "[[Vault-Audit-2026-05-29]]"
 ---
 
 # MCP Hub Index

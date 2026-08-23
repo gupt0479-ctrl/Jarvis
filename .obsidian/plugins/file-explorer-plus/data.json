@@ -752,6 +752,20 @@
         "type": "FILES",
         "pattern": "60_Claude/05_Clippings/AI Conversations/Windows/Claude Code/Tool log.md",
         "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "60_Claude/40_Project_Briefs/How to use Graphify.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Global/How to Use Global.md",
+        "patternType": "STRICT"
       }
     ],
     "frontMatter": [

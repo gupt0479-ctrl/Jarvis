@@ -14,7 +14,7 @@ notes:
   - "[[CLAUDE.md]]"
   - "[[AI_CONTEXT]]"
   - "[[HUMAN_WRITING]]"
-  - "[[60_Claude/40_Project_Briefs/Vault-Audit-2026-05-29]]"
+  - "[[Vault-Audit-2026-05-29]]"
   - "[[00_Dashboard]]"
 next: "Build the missing pieces: 30_Order writing-workflow docs + a 07_AI_Information vault map, then reference both from CLAUDE.md / AGENTS.md / HUMAN_WRITING.md"
 ---
@@ -282,6 +282,6 @@ Cheapest, highest-leverage first. This is about writing the *missing structure*,
 - [[AGENTS]] — root behavioral rules; should embed this note's Write Contract verbatim so MCP-only agents inherit it.
 - [[CLAUDE.md]] — Claude-specific workflow, skills, and agents.
 - [[AI_CONTEXT]] — the manifest that points all tools at the files above; lives in `07_AI_Information`.
-- [[60_Claude/40_Project_Briefs/Vault-Audit-2026-05-29]] — the instruction-spine health audit and 3-month build roadmap. Complementary: it audits the instructions and tooling; this note defines the folders.
+- [[Vault-Audit-2026-05-29]] — the instruction-spine health audit and 3-month build roadmap. Complementary: it audits the instructions and tooling; this note defines the folders.
 
 *Rewritten by Claude (Cowork session) 2026-05-31 to match the reorganized vault. This is the placement contract — when reality and this note disagree, fix one of them deliberately, never silently.*

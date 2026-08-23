@@ -57,6 +57,7 @@ As of 2026-08-19, `agents/`, `commands/`, `hooks/` are per-destination-project s
 - **Always suggest at least one backlink** when finishing a note.
 - **Never delete content without confirmation.** Archive instead.
 - **Prefer Markdown** over rich formatting. Keep notes portable.
+- **When authoring or reviewing an agent, skill, command, hook, or instruction file, consult Anthropic's docs as source of truth first** — `60_Claude/vault-rules/anthropic-docs-reference.md` for the mechanism (live `llms.txt`, never a local mirror).
 - **Do not auto-compact sessions.** `autoCompact` is disabled. Run `/compress` explicitly to log a session.
 - When I say *"capture this"* or *"note that"*, immediately write a new note to `00_Daily/` using the `idea` template.
 - When I say *"daily"* or *"today"*, run `/today`.

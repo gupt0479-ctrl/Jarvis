@@ -759,7 +759,7 @@ Updated `40_Resources/CS/Repos.md` with `## Claude Starred` section containing w
 Full vault audit done in Cowork session. Read the spine (CLAUDE.md, AGENTS.md, HUMAN_WRITING.md, AI_CONTEXT.md at `60_Claude/7_AI_Information/`, 00_Dashboard.md, log tail, Vault Operating System, Claude Pro Workflow), every `.claude/skills/*.md` (12 files), every `.claude/agents/*.md` (4 files), `.claude/rules/human-writing.md`, `.claude/context/workspace-context.md`, the 30_Order/Templates inventory (33 templates), key project briefs (Master Plan, Multi-Agent PKM, Claude Optimization Master Setup), and the W22 Weekly Synthesis.
 
 **Created:**
-- [[60_Claude/40_Project_Briefs/Vault-Audit-2026-05-29]] — spine health, instruction-file table with quality scores, conflicts/contradictions list, missing files list, 3-month roadmap (May 29 → Sept 1, with monthly themes Foundation/MCP Hub → Brain → Research Engine), MCP hub gap analysis per external tool. Includes orientation message at top for future cold-start Claude.
+- [[Vault-Audit-2026-05-29]] — spine health, instruction-file table with quality scores, conflicts/contradictions list, missing files list, 3-month roadmap (May 29 → Sept 1, with monthly themes Foundation/MCP Hub → Brain → Research Engine), MCP hub gap analysis per external tool. Includes orientation message at top for future cold-start Claude.
 - [[40_Resources/Obsidian/MCP-Hub-Index]] — single-page orientation note for any external agent. Folder map, naming conventions, what NOT to touch, how to navigate, what the vault is building toward Sept 1.
 - [[60_Claude/05_Clippings/AI Conversations/README]] — raw conversation archive folder, immutable, frontmatter schema. **Unblocks Master Plan Week 2 deliverable (5+ weeks overdue).**
 - [[60_Claude/07_AI_Information/AI Conversation - Summaries/README]] — distilled conversation summary folder with workflow + summary shape.
@@ -1307,3 +1307,59 @@ Follow-up to the same-day APAS refresh. Anant had live-edited `APAS.md` and `Fal
 - `20_Progress/Degree/Fall'26 Syllabus.md` — Classes list fixed (CSCI 4521 description was blank, count said "five"/"5 classes", now "six"/"6 classes"). Renamed and fully rewrote "Spring'27 — Path to Graduation" → "Path to Graduation — Fall'27 Target": drops the overload/split-term hedging (no longer needed — 27 credits fits two semesters comfortably at 18–22cr each), lays out Spring'27 (heavy) + Fall'27 (light, final) + optional Summer'27 to ease the minor electives. Left an explicit pointer to the not-yet-written `[[Most Out of College]]` note (unresolved link, intentional — Anant wants a planning conversation first).
 
 **Next:** Anant wants a conversation (not more file-writing yet) about the next 2 years of coursework aimed at an AI/ML engineering path, using the 17 remaining Technical Elective credits deliberately instead of generically. `Most Out of College` note gets written only after that conversation concludes.
+
+## [2026-08-22] write | graphify documentation — four new notes, one existing-flag closed
+
+Built and mapped `internship-research-loop` with graphify this session (711 nodes, 45 communities, `--mode deep`), live-synced as an Obsidian sub-vault into `60_Claude/40_Project_Briefs/Internship/` via three git hooks (`post-commit`/`post-checkout` from `graphify hook install`, plus a custom `post-merge` since this repo's real automation commits from GitHub Actions runners, not this machine). Anant then asked for graphify itself to be documented properly, researched from the real source (GitHub `Graphify-Labs/graphify` README/ARCHITECTURE.md/CHANGELOG.md/how-it-works.md, not guessed) before writing anything.
+
+**Four notes created**, all previously-empty stub files Anant had already touched at the exact target paths named in his prompt:
+- `60_Claude/40_Project_Briefs/How to use Graphify.md` — the reusable operating procedure (first-build steps, already-mapped steps, the automatic-vs-manual decision table).
+- `60_Claude/40_Project_Briefs/Graphify — Internship Research Loop Implementation.md` — the concrete, repo-specific record: what's actually installed, evidence for each `.gitignore` decision, the version-gap finding (pinned 0.9.4 vs. latest 0.9.48), and the missing-merge-driver gap.
+- `40_Resources/CS/AI/Workflows/Claude Code/Graphify Workflow.md` — the full mechanism/command reference (three-pass pipeline, confidence-tag rubric, team-setup workflow straight from the README).
+- `40_Resources/CS/Concepts/Helpful Tools/Graphify.md` — the concept-level "what is it, why, where to reach for it" note, including the OSS-CLI-vs-graphify-Enterprise distinction (two different products share the graphify name; `graphify.com/docs` documents the commercial waitlist product, not the OSS CLI this vault actually uses).
+
+**Existing gap closed:** `40_Resources/CS/Repos.md` line 37 had carried `==detailed commands and usage needs to be written==` next to the Graphify entry since it was starred — removed now that the real note exists, and the `[[graphify]]` link resolves to the new Concepts note by basename.
+
+**Why it matters:** this was the first tool documented in the new `Helpful Tools/` folder, and the first graphify note written anywhere in the vault despite the tool already being in active use (Portfolio and CausalOps both have their own graphify output, referenced only in passing before this).
+
+**Open questions:**
+- Whether `graphify hook install`'s git merge driver actually landed on `internship-research-loop` — flagged as unverified, not confirmed either way.
+- Whether to standardize the pinned graphify version across every machine (`uv tool install graphifyy` vs. the current `pip --break-system-packages` install) given the version-drift finding.
+
+**Next:** apply the same `How to use Graphify` procedure to the next codebase that needs mapping; treat any deviation from the procedure as a signal the note itself needs updating.
+
+## [2026-08-22] verify | graphify setup + notes audit — two confirmed, named, version-gated bugs
+
+Anant asked for a full verification pass on everything from the graphify build/documentation session: the `graphify-out/` folder, the git hooks, and all four new notes — no assumptions, check facts against real sources. Turned up two real problems, both traced to specific fixed bugs rather than left as vague "something seems off."
+
+**Confirmed bug 1 — merge driver never installed.** `.git/config` has no `[merge "graphify"]`, no `.gitattributes` exists, despite `graphify hook status` reporting both hooks "installed." Root cause found in the real `CHANGELOG.md`: `graphify hook install` announced merge-driver support in 0.7.0 but it silently did nothing until bug #1902 fixed it in 0.9.17. `internship-research-loop` is pinned at 0.9.4 — inside the broken window. Re-running `hook install` alone won't fix it post-upgrade; the installer no-ops when its marker is already present, so it needs `hook uninstall` then a fresh `hook install`.
+
+**Confirmed bug 2 — 350 orphaned notes in the vault mirror.** `60_Claude/40_Project_Briefs/Internship/` has 976 `.md` files but the ownership manifest tracks only 627 and the current graph has 697 nodes. Verified the 350-file gap is genuine graphify debris, not user content: all 350 last-modified within this session's own build window, and the one real pre-existing user note (`promote-dossier note templates.md`) is correctly excluded from the orphan set — the ownership guard works, but the *pruning* behavior doesn't exist yet at 0.9.4. Same root fix, same release: bug #1896, also landed in 0.9.17. Sanity-checked against Portfolio's own graphify setup on this machine (also no merge driver, also pre-dates this pattern) — not an Internship-specific fluke.
+
+**Also fixed:** added `.claudeignore` (`graph.json`, `graphify-out/`) to `internship-research-loop` — recommended in the Workflow note but never actually applied to the repo last session.
+
+**Notes updated** (all three previously-written ones, with the confirmed facts replacing hedged "unverified" language): `Graphify — Internship Research Loop Implementation.md` (two new sections with exact evidence), `Graphify Workflow.md` (troubleshooting entries generalized for any repo), `How to use Graphify.md` (a three-command health check + revised open items). Every edit re-passed the vault's own quality gate (frontmatter dupes, blank-line rules, wikilink resolution) via direct script checks, not by eye.
+
+**Deliberately not done, pending Anant's call:** the graphify upgrade itself (risk: a concurrently-busy peer session on this machine might be mid-invocation on the shared `graphify` binary) and deleting the 350 confirmed-orphaned files (vault safety rule: never delete notes without explicit instruction, even at high confidence).
+
+**Next:** Anant to decide timing on the upgrade (`uv tool install graphifyy`, then `hook uninstall`/`hook install` fresh) and how to handle the 350 orphaned files — delete, move to inbox, or wait for a clean re-export post-upgrade.
+
+## [2026-08-22] resolve | graphify upgrade + orphan cleanup, plus a near-miss worth recording honestly
+
+Anant approved both pending items from the prior entry: upgrade now, delete the 350 orphans now. Executed, then hit a real scare mid-cleanup that's worth logging accurately rather than smoothing over.
+
+**Upgrade:** `uv tool upgrade graphifyy` (0.7.10 → 0.9.48 — the machine had a stale `uv tool`-registered 0.7.10 alongside a separate `pip` 0.9.4 copy that was actually winning on `PATH`; the upgrade replaced the `~/.local/bin/graphify` shim cleanly). `graphify hook uninstall` + fresh `graphify hook install` on `internship-research-loop` — merge driver now genuinely registered (`.git/config` has `[merge "graphify"]`, `.gitattributes` has the merge line, `graphify hook status` confirms). The custom jarvis-sync hook blocks survived the uninstall/reinstall cycle intact.
+
+**Orphan cleanup, and the near-miss:** recomputed the 350-file orphan list fresh, ran a safety assert excluding the one file believed to be real user content (`promote-dossier note templates.md`), deleted the 350. The assert didn't fire — correct, since (unknown at the time) that file was never in the delete list to begin with — but the file was then found missing from disk anyway, and the session concluded `Jarvis/.git` didn't exist (from a `ls -la .git | head -3` that got truncated to just `.`/`..` and was wrongly read as "no git repo"), so it flagged a possible unrecoverable loss and stopped to ask.
+
+**Correction, from a Windows-side session:** `Jarvis/.git` is real, with a normal hourly auto-commit history. The "lost" file — verified via `git show 36564f44:...`, independently re-verified in this session, not just taken on trust — carried `graphify/EXTRACTED` frontmatter and a `source_file` pointer into `internship-research-loop`: graphify output, a duplicate of two other still-present notes, not the hand-authored file it was believed to be. The manifest-ownership bug was real; the "lost real content" conclusion was not.
+
+**Closed out correctly this time:** `git status` on the vault confirmed exactly 350 `D` entries; a 12-file random sample checked against `36564f44` came back 100% genuine `graphify/EXTRACTED`/`INFERRED` duplicates (9 per-node notes with real `source_file` pointers, 3 `_COMMUNITY_*` overview notes correctly referencing dedup-suffixed members); committed deliberately in the vault's own repo rather than left for the hourly auto-commit to absorb unreviewed (commit `f75662ac`, "Prune 350 orphaned graphify duplicate notes from Internship mirror").
+
+**Root cause, read directly from `export.py` (both the broken and fixed copies):** `to_obsidian` persists `.graphify_obsidian_manifest.json` as `{"files": sorted(set(_written))}` — only the current run's write set, never merged with history. Pre-0.9.17, nothing ever reconciled that against the old manifest, so any forgotten file became permanently invisible debris, protected forever by the same guard meant to protect real user notes. 0.9.17 added the missing `stale = _owned - written - skipped` prune step — but it can only prune what's still in `_owned` at the moment it runs, so pre-existing orphans (like these 350) always need one manual pass, even after upgrading. Going forward this should self-heal, with one residual gap: no lock file guards the manifest read-modify-write the way `graph.json` has its own `.rebuild.lock`, so genuinely concurrent exports could still race.
+
+**All three graphify notes updated** to reflect resolution (not just findings): the "Confirmed" sections became "Resolved" sections with the fix details, `How to use Graphify`'s health-check section now explains the 0.9.17 self-healing behavior and points at vault git history as the first place to check before assuming data loss, and `Graphify Workflow` carries the full code-level mechanism for anyone hitting this on a different repo.
+
+**Lesson worth keeping, stated plainly:** when something in a vault looks like it might be gone, check `git status`/`git log` at the actual vault root before concluding there's no version control or reaching for the Recycle Bin — a truncated `head -3` on a git-internals listing produced a false "no repo" conclusion here, and cost real back-and-forth that a complete `ls -la .git` would have avoided.
+
+**Next:** none outstanding from this incident. Re-run the health check (file count vs. manifest vs. node count) after any future period of heavy concurrent-session graphify activity, not on a fixed schedule.

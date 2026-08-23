@@ -2,7 +2,7 @@
 type: evergreen
 status: sprout
 created: 2026-05-05
-updated: 2026-07-29
+updated: 2026-08-22
 tags:
   - evergreen
   - github
@@ -34,7 +34,7 @@ Claude Code tooling, memory, agent infrastructure.
 - [Polymarket MCP](https://github.com/caiovicentino/polymarket-mcp-server) — 45-tool MCP for Claude Desktop via Polymarket's CLOB API; demo mode read-only; full mode requires polygon wallet and unavailable to US persons under ToS. (*REFERENCE ONLY: 2026-07-29 — demo-mode confirmed correctly scoped; use as the architecture reference for a read-only market-data MCP against TradingView's own providers, don't install live for actual trading*) → [[polymarket-mcp-server]]
 - [Free Claude Code](https://github.com/Alishahryar1/free-claude-code) — proxy server that reroutes Claude Code API calls to NVIDIA NIM, OpenRouter, or local models (*NEED AN ON & OFF BUTTON* **OR** *AN ALTERNATIVE*) → [[free-claude-code]]
 ### Memory & Context
-- [Graphify](https://github.com/safishamsi/graphify) — Claude Code skill that builds a NetworkX knowledge graph from any folder and exports an Obsidian vault (*USING, UNDERSTAND BETTER*) - ==detailed commands and usage needs to be written== → [[graphify]]
+- [Graphify](https://github.com/Graphify-Labs/graphify) — Claude Code skill that builds a NetworkX knowledge graph from any folder and exports an Obsidian vault (*USING* — full command reference and operating procedure now written, see [[40_Resources/CS/Concepts/Helpful Tools/Graphify|Graphify]]) → [[graphify]]
 - [Claude Context](https://github.com/zilliztech/claude-context) — MCP server that indexes a codebase into Milvus for semantic code search; claims ~40% token reduction. (*INSTALL: QUEUED — BOOM project-scoped only, not global; complementary to Graphify (structure) not competing, real blocker is the Milvus/Docker dependency*) → [[claude-context]]
 - [CL4R1T4S](https://github.com/elder-plinius/CL4R1T4S) — Best resource for making the most out of guard railed models. - ==not written== → [[CL4R1T4S]]
 ### Other

@@ -5,17 +5,17 @@ source_app: claude-code
 source_os: wsl
 title: "Review codebase structure and document architecture decisions"
 started_at: 2026-08-19T05:06:52
-ended_at: 2026-08-21T13:06:03
-duration_minutes: 3359
-exported_at: 2026-08-22T03:59:01
+ended_at: 2026-08-22T11:07:30
+duration_minutes: 4681
+exported_at: 2026-08-23T11:02:17
 project: second-brain-claudekit
 cwd: '/home/anant_gupta/projects/ai/claude/second-brain-claudekit'
 session_id: b66810e1-f132-4b56-8186-10913605a22a
 status: raw
-turn_count: 34
+turn_count: 36
 tools_used:
   Agent: 5
-  Bash: 15
+  Bash: 16
   Edit: 10
   mcp__jarvis__search_simple: 1
   mcp__jarvis__vault_get_document_map: 3
@@ -31,12 +31,12 @@ tools_used:
   WebFetch: 1
   Write: 1
 tokens:
-  input: 496
-  output: 750253
-  cache_creation: 8893009
-  cache_read: 54853523
-  total: 64497281
-cost_usd: 54.046263
+  input: 504
+  output: 760915
+  cache_creation: 9896463
+  cache_read: 55966431
+  total: 66624313
+cost_usd: 58.389296
 model:
   - claude-sonnet-5
 files_touched:
@@ -2207,10 +2207,162 @@ Both Round 8 prompts are in `Prompts.md`.
 - `mcp__jarvis__vault_patch` — `{"path":"20_Progress/Projects/AI Use/Claude Kit/Claude Code/Prompts.md","targetType":"frontmatter","target":"next","operation":"replace","value":"Round 8, 2026-08-21 — instructions/ scope corrected for the third time, mechanism fixed so it can't recur. Codebase: fresh session. Jarvis: fresh Windows session, short, verification-only. After this: tests/ refinement is the next real phase."}`
 - `mcp__jarvis__vault_patch` — `{"path":"20_Progress/Projects/AI Use/Claude Kit/Claude Code/Prompts.md","targetType":"frontmatter","target":"updated","operation":"replace","value":"2026-08-21"}`
 
+## You
+
+Codebase: ```Done, in four separate commits. Same pre-existing unrelated changes remain untouched.
+
+Summary:
+1. sync-all.sh simplified: removed the round-7 directory-flattening logic entirely. instructions_paths now only ever processes explicit files (cp -f by basename, literal claude- prefix for a nested-vs-root collision). A directory entry now fails loudly (FAIL logged, non-zero cp exit) instead of being handled — verified this directly against a real directory.
+2. sync-manifest.json fixed: second-brain-claudekit's instructions_paths changed from ["CLAUDE.md", "README.md", "_docs"] to ["CLAUDE.md", "README.md", "PRD.md", "Architecture.md"] — its four real root files, confirmed directly.
+3. All 10 entries re-audited fresh: every instructions_paths value is now an explicit file (.md/.mdc); Resq/OpsPilot's directory paths remain correctly confined to their general paths and were confirmed absent from instructions_paths. Only second-brain-claudekit needed fixing.
+4. instructions/second-brain-claudekit/ rebuilt: down from 16 files to exactly 4 (CLAUDE.md, README.md, PRD.md, Architecture.md), each byte-confirmed against its root source. Every other instructions/<repo>/ folder is already small (2–5 files) and untouched.
+5. Documentation rewritten in _docs/Sync.md, pipeline-conventions.md, and write-contract.md stating the final rule: explicit main files only, never a directory, and the script deliberately doesn't try to handle a directory entry gracefully. _docs/Gaps.md/_docs/Repo-Map.md closed the loop, explicitly marking the round-7 flatten fix as superseded.```. Jarvis: ```Item 1 — landed for real this time. Four new commits since the last check (b48480c, f6cafb3, 1c95223, ff59f4f, all 2026-08-21 17:27–17:28): sync-all.sh's directory-flattening logic is gone — a directory-shaped instructions_paths entry now fails loudly into Sync-Log.md rather than copying anything. instructions/second-brain-claudekit/ holds exactly 4 files: Architecture.md, CLAUDE.md, PRD.md, README.md — nothing from _docs/. Checked all 10 manifest entries directly; every instructions_paths list is now explicit files only, no bare directory anywhere (Resq/OpsPilot included, unchanged and clean).
+
+Item 2 — closing line added to the sync-build entry in Log.md, confirming the third fix landed with the verification evidence above. The previously flagged gap (Architecture.md/PRD.md not flowing in from repo root) is correctly noted as untouched by this fix, still open.
+
+Item 3 — re-confirmed unchanged: tests/ has 5 real entries (spec-kit, promptfoo, claude-context, cpr-compress-preserve-resume, mattpocock-engineering's 0-of-17 backlog note), and _docs/Gaps.md still correctly flags tests/ as needing a real refinement pass, deferred since 2026-08-20, not attempted. Handoff is accurate — ready for the next round to pick up.```. We have completed this setup. Let's take a pause before writing the round 9 promots. Recollect what was built and where to go from here on. Do we progress to the tests from here on? What is out next priority?
+
+## Claude
+
+## Recap — what's actually been built (verified against HEAD `ff59f4f`, not memory)
+
+**The pipeline itself, now real:**
+```
+sandbox/<repo>/  →  tested for real  →  tested-tools/<type>/...  or  tested-tools/_future/<repo>/
+                                              (never live-synced; promotion is manual, per-item, human-only)
+                                                        ↓ explicit decision
+        agents/<Project>/, commands/<Project>/, hooks/<Project>/, skills/<Project>/, instructions/<Project>/
+                                        (all five live-synced, all 10 real entries, verified working)
+                                                        ↓
+                          Jarvis mirrors (read-only, "nothing edited inside Jarvis")
+                                                        ↓ [third hop — still deliberately unwired]
+                                        each real project's actual live .claude/
+```
+
+**Eight rounds, condensed:** the initial base-layout + adversarial-review pass (7 real findings fixed, first commits ever); `agents/`/`commands/`/`hooks/` resolved for real (CPR pattern actually tested against its real upstream repo — verdict "blend" — the other 15 files confirmed zero-provenance and relocated); gbrain's OpenAI embedding wired and verified, reaching this pipeline's first-ever "cleared, global candidate" verdict; a full logging audit that retired a dead duplicate log, fixed a broken dashboard, and made `Tool log.md`'s trigger real; the sync mechanism itself built out, broken twice on `skills/`'s scope and `instructions/`'s scope, and corrected each time — the last one (round 8) removed the *mechanism* that caused the mistake rather than patching the data, so `instructions_paths` can't silently regress again.
+
+**One thing I didn't build and want to flag:** `60_Claude/vault-rules/anthropic-docs-reference.md` exists on disk, dated today, and `CLAUDE.md` now has a new rule pointing at it ("consult Anthropic's docs as source of truth first"). Neither came from any round I wrote. Worth confirming that was intentional on your end — I'm not treating it as broken, just noting it's outside what I have visibility into.
+
+## What's still open (from `_docs/Gaps.md`, current)
+
+1. **gbrain is cleared but not actually promoted** — the global `~/.claude/` install is explicitly a separate session's job, still not done.
+2. **`tests/` needs a real refinement pass** — flagged in rounds 5, 6, 7, and 8, deferred every time.
+3. **The third hop** (Jarvis mirror → a real project's live config) — still an open question, not answered, not urgent.
+4. **`hiring-agent`'s next step** — one of the six dormant-clone next-steps, never attempted.
+5. The review folder in `60_Claude/` — correctly still parked behind Jarvis's review-system precondition.
+
+## Do we progress to tests/? Yes — that's the explicit, four-times-deferred commitment, and round 8 just closed its precondition (live sync is now verified working end-to-end). That's the honest next step.
+
+One thing worth deciding before I write round 9, though: the **standing gate** ("no net-new pipeline meta-infrastructure until a real tool is promoted") is still technically unmet — gbrain has a verdict but isn't installed anywhere real yet. `tests/`'s refinement is exempt from that gate (it's tool-verification work, not new process scaffolding), so there's no blocker to starting it. But gbrain sitting one step from being this pipeline's actual first promotion, after everything that's been built to make that possible, feels like unfinished business worth closing in the same breath rather than letting it age the way the embedding-provider decision did for three weeks.
+
+**Tool calls:**
+
+- `Bash` — `echo "=== HEAD ===" && git log --oneline -5 && echo "=== _docs/Gaps.md ===" && cat _docs/Gaps.md && echo "=== anthropic-docs-reference.md exists? ===" && ls -la 60_Claude/vault-rules/anthropic-docs-reference.md 2>&1`
+  ```
+=== HEAD ===
+ff59f4f Document the final instructions/<repo>/ rule: explicit main files only, ever
+1c95223 Rebuild instructions/second-brain-claudekit/ to hold only the 4 main files
+f6cafb3 Fix second-brain-claudekit's manifest entry: explicit files, not "_docs"
+b48480c Revert sync-all.sh: remove directory-flattening, fail loudly on a directory entry instead
+73714af Document the definitive instructions/<repo>/ flat-structure rule
+=== _docs/Gaps.md ===
+# Gaps — what's actually wrong in this repo right now
+
+Mirrors Jarvis's own `10_Areas/AI/Setup/Gaps.md` convention on purpose — a plain, dated, no-spin list of what's currently wrong, thin, or missing, updated as items close rather than rewritten from scratch.
+
+**Archived 2026-08-20 (fifth pass):** everything previously marked `[RESOLVED ...]` was moved to `_docs/Gaps-Archive.md`, per Anant's explicit choice via `AskUserQuestion` ("archive resolved sections now" over "keep everything in place as a permanent audit trail"). Nothing was deleted — the archive holds the full original text. This file now holds only what's still genuinely open or standing, so it stops growing indefinitely with settled history. Two real corrections were made in the process, not just a mechanical move: the "10+ days uncommitted work" finding was stale (the repo has been committed since 2026-08-20, `git log`/`git status` re-verified directly) and the "tested-skills vs tested-tools terminology drift" finding was stale (Jarvis's own `Tool Map.md` frontmatter now confirms it's been resolved since 2026-08-19) — both corrected and archived as resolved rather than carried forward as open when they no longer are.
+
+---
+
+## 🔴 TOP PRIORITY — real promotion throughput, still the core problem, now measurably moving
+
+Originally flagged 2026-08-20: three-plus weeks of dense structural work went into this repo's own pipeline machinery while zero sandbox clones had reached a promoted state. **Update, 2026-08-20 (fourth and fifth passes):** this has started moving for real, not just been re-described:
+
+- **gbrain: the embedding-provider decision that had blocked it since 2026-07-29 is made and executed.** OpenAI is wired and verified working (real doctor output, real semantic search hit). Promotion decision recorded: **cleared, global candidate** — `tested-tools/mcp-servers/gbrain/VERDICT.md`. This is the first tool in this repo's pipeline to reach a real, evidenced "cleared" verdict. **Still not actually promoted** — the global `~/.claude/` install is explicitly a separate session's job (per `_docs/Design.md`), so the underlying imbalance (zero tools installed into any real `.claude/`) is not yet fully closed, just one real step closer.
+- **3 of the 6 dormant clones with a recorded next step were actually executed** (spec-kit, promptfoo, claude-context — see `tests/skills/spec-kit/`, `tests/cli-tools/promptfoo/`, `tests/mcp-servers/claude-context/` for full transcripts). None of the three has a promotion decision yet — real next-step execution, not a verdict.
+- **Still open:** `hiring-agent`'s next step (a real internship-search pass) not attempted. `TradingAgents`/`OpenBB` remain out of scope for this repo (TradingView-side session, per Jarvis's own triage). Of the 21 originally-dormant clones, most are still either dropped (9, a real decision, not neglect) or genuinely untouched beyond the triage note. The structural imbalance this flag exists to track — pipeline machinery vastly outpacing real promotions — is real progress, not resolved.
+
+## 🔴 STANDING GATE — no further net-new pipeline meta-infrastructure until a real tool is promoted
+
+Added to `_docs/Design.md`'s minimal-footprint section 2026-08-20: no new top-level staging folder, new Standard, new convention doc, or new automated sync leg gets built in this repo until at least one real tool reaches a promoted state (installed into this repo's own `.claude/`, a real project's `.claude/`, or Jarvis's real `.claude/`). The actual work of testing, verdict-writing, and promoting a specific tool is exempt — it's the thing this gate exists to force forward. (`tested-tools/mcp-servers/` and `tests/cli-tools/` — both new type buckets added this round — fall under that exemption: real, tool-specific verdict/test-log homes, not new process scaffolding.)
+
+## Review folder — still deliberately not built
+
+`60_Claude/` has no equivalent of Jarvis's `60_Claude/30_Reviews/AI/` for reviewing this repo's own pipeline activity. Deliberately parked: it depends on the Jarvis-side review system having at least one real Weekly review written against it first (still zero data rows as of the last check). Revisit once that precondition is met — building against an unexercised upstream shape would repeat the exact "plan-and-never-run" failure mode this repo's pipeline exists to prevent.
+
+## Minor, low-priority open items
+
+- No script mechanically verifies the `instructions/`/`tests/`/`tested-tools/_future/` scope — not blocking anything today, still nobody's asked for it.
+- `60_Claude/Templates/weekly-summary.md`'s shape has no relationship to Jarvis's own real AI-tools review template. Two different subjects (engineering-session rollups vs. usage/sync-health reviews) — not wrong, just a real gap if this repo ever wants its own citation-disciplined pipeline review.
+- **`tests/` needs a real refinement pass.** Flagged explicitly 2026-08-20 (sixth pass) as out of scope for that session (which was sync-mechanism-only) and deferred to a future session, not attempted.
+- **The "third hop" is still an open question, not answered.** Whether/how content ever flows from a Jarvis mirror (or this repo's `agents/`/`commands/`/`hooks/`/`skills/`/`instructions/` staging folders) into a real project's actual live `.claude/` is deliberately unwired — every live-sync leg built so far stops at "repo ← real project's current state" or "Jarvis mirror ↔ real project's current state," never "repo/Jarvis → a project's live config."
+---
+
+## 2026-08-21 (part 2) — the flatten fix below was itself wrong; `instructions_paths` restricted to explicit files only, for good
+
+The part-1 fix (immediately below) treated a directory-shaped `instructions_paths` entry as something `sync-all.sh` should gracefully handle — it built flatten logic so `second-brain-claudekit`'s own `"_docs"` entry would resolve to real files instead of nesting. **That premise was wrong**, corrected same-day, directly by Anant: `instructions_paths` exists to name a project's **main files** (`CLAUDE.md`/`AGENTS.md`/`README.md`/`PRD.md`/`Architecture.md`/real equivalents) — never an internal-docs folder, no matter how relevant its contents. The manifest entry was the bug; building tolerance for it into the script was solving the wrong layer.
+
+**Reverted and simplified:** the recursive-flatten/parent-folder-prefix logic is deleted from `sync-all.sh`. The `instructions_paths` loop is back to its original simple shape (one file in, one file out, `cp -f` by basename, literal `claude-` collision prefix for a nested-vs-root name clash) — with one hardening kept: `cp -f`, never `cp -r`, so a directory entry that somehow lands in the manifest again fails loudly (`FAIL` in the entry's `Sync-Log.md`) instead of being handled at all. Verified directly that `cp -f` against a real directory reproduces this loud failure.
+
+**`second-brain-claudekit`'s entry fixed at the source, not patched around:** `"_docs"` removed from `instructions_paths`. Real root files confirmed directly (`find . -maxdepth 1 -type f`): `CLAUDE.md`, `README.md`, `PRD.md`, `Architecture.md`. `instructions_paths` is now exactly `["CLAUDE.md", "README.md", "PRD.md", "Architecture.md"]` — four explicit files. This also resolves the "moved to repo root, no longer flows into `instructions/`" gap flagged in the prior pass — `Architecture.md`/`PRD.md` are now named explicitly, so their repo-root location is exactly what feeds `instructions/second-brain-claudekit/`.
+
+**All 10 entries re-audited fresh, not from the part-1 audit's memory:** every `instructions_paths` value is confirmed an explicit file (`.md`/`.mdc` extension, no bare directory name) across all 10 manifest entries. Resq/OpsPilot's `.claude/context`, `.claude/playbooks`, `.claude/decisions`, `.claude/checklists`, `.claude/workflows` remain in their general `paths` (correctly — Unison still syncs them) but were confirmed, again directly, never present in either entry's `instructions_paths`. Only `second-brain-claudekit` needed a fix.
+
+**`instructions/second-brain-claudekit/` rebuilt again:** every file the part-1 flatten had produced (`Current-Setup.md`, `Design.md`, `Gaps-Archive.md`, `Gaps.md`, `Jarvis.md`, `Promotion-Criteria.md`, `Repo-Map-Archive.md`, `Repo-Map.md`, `Sync.md`, `conversation-capture.md`, `how-to-README.md`, `review-system.md`, `tests-and-promotion.md`, `using-staged-artifacts.md`) deleted. Folder now holds exactly 4 files — `CLAUDE.md`, `README.md`, `PRD.md`, `Architecture.md` — each byte-confirmed identical to its real root source. No other `instructions/<repo>/` folder needed touching.
+
+**Definitive rule rewritten (fourth correction, meant to be the last one):** `_docs/Sync.md`'s 2026-08-21 part-2 amendment, `60_Claude/vault-rules/pipeline-conventions.md`, and `60_Claude/vault-rules/write-contract.md` all now state plainly that `instructions_paths`/`instructions/<repo>/` holds explicit main files only, never a directory, and that the script deliberately does not try to handle a directory entry gracefully — it fails loudly instead, which is the only mechanism-level guarantee left that this can't quietly regress a fifth time.
+
+## 2026-08-21 (part 1, superseded above) — `instructions/<repo>/` directory-flatten bug "fixed" at the mechanism, all 10 entries audited
+
+Real bug, not just a `second-brain-claudekit` cosmetic issue: `sync-all.sh`'s `instructions_paths` copy step did `cp -rf` unconditionally. For a *file* path entry that's correct; for a *directory* path entry (`second-brain-claudekit`'s own `"_docs"` — the only directory-shaped entry across all 10 manifest entries, confirmed directly) it nested the source directory inside the same-named destination directory on every run after the first, since the destination already existed: `instructions/second-brain-claudekit/_docs/_docs/`, compounding to `_docs/_docs/_docs/` on the next run had it not been caught now.
+
+**Fixed as a general mechanism, not a one-off patch:** `sync-all.sh` now resolves every `instructions_paths` entry to concrete files first (a directory entry is flattened via `find ... -name '*.md'`, recursively), then `cp -f`'s each one directly into `instructions/<Name>/` by basename — never `cp -r`, so a directory entry can never nest again, for any of the 10 entries now or any future one. The Resq/OpsPilot `claude-` collision-prefix convention (2026-08-20 part-2) is preserved exactly but generalized to derive the prefix from the real parent folder rather than a hardcoded literal — needed because the flatten surfaced a *second*, real collision the old hardcoded logic would have named wrong: `second-brain-claudekit`'s own `_docs/How to/README.md` flattens to `README.md`, colliding with its root `README.md`, correctly resolved as `how-to-README.md`.
+
+**Audited all 10 `instructions/<repo>/` folders directly** (`find -mindepth 2 -type d`) — no other entry has a nested subfolder from this or any other cause. `second-brain-claudekit` was the only one affected, and its `_docs/` (both the one-level and nested copies) was deleted outright and rebuilt flat from the corrected logic — 16 files, no subfolders, `CLAUDE.md`/`README.md` byte-confirmed unchanged.
+
+**The definitive rule is now written down in three places** so it stops needing re-explanation: `_docs/Sync.md`'s 2026-08-21 amendment (full incident + fix), `60_Claude/vault-rules/pipeline-conventions.md` (the `instructions/<ProjectName>/` section), and `60_Claude/vault-rules/write-contract.md`'s never-write-to entry for this folder.
+
+## 2026-08-20 (sixth pass) — sync mechanism fixed for real, across all 10 manifest entries
+
+Scope was explicitly the sync mechanism for content already decided ready — not promoting anything new, and not touching the "third hop" (Jarvis mirror → a real project's live `.claude/`, still an open question, added to the minor-items list above). Confirmed the 10-entry list directly against `sync-manifest.json` first (`second-brain-claudekit`, `.claude_windows`, `CausalOps`, `Jarvis`, `Portfolio`, `Trading View`, `Resq`, `OpsPilot`, `The Plan`, `.claude_wsl`) rather than trusting an earlier summary of it.
+
+**Manifest fixed for real:** `.claude/settings.json` confirmed removed from all 10 (only 5 ever had it); `README.md` added to all 10 `paths` lists at each entry's real location; `second-brain-claudekit` gained `README.md` + `_docs` so Jarvis finally sees this repo's own governing docs; `.claude_windows`/`.claude_wsl` paths re-verified against real home-directory contents — `.claude_wsl` was already accurate, `.claude_windows` is genuinely thin (no `agents/`, no `hooks/`, empty `commands/`, no `CLAUDE.md`) and nothing real was found missing from its list, so the manifest wasn't the problem there, the underlying content just doesn't exist yet.
+
+**All five live-sync folders built for real, for all 10 entries.** `sync-all.sh` gained a new one-way mirror block for `agents/`, `commands/`, `hooks/`, `skills/` (deriving the category from each entry's existing `paths`, same model already proven for `instructions/`, no new field to maintain in parallel). A category folder is only created where real, non-empty content exists — Resq and OpsPilot correctly have none of the four, matching their real `.claude/`. `instructions/second-brain-claudekit/`'s prior "one fact, one home" self-exclusion is reversed per direct instruction: every entry gets consistent treatment now.
+
+**Real bug found and fixed while building, not just designed around:** the first run of the `instructions/` copy for Resq and OpsPilot silently lost each project's nested `.claude/README.md` — both projects also have a distinct root `README.md`, and the original basename-only destination naming let the second `cp` overwrite the first without warning. Caught by checking the resulting file's byte count against both real sources before trusting the copy, not assumed correct. Fixed: a nested path's destination gets a `claude-` prefix when it collides with another path's basename in the same entry's list. Re-ran and confirmed both files now present with correct, distinct content. Full account: `_docs/Sync.md`'s 2026-08-20 part-2 amendment.
+
+Everything copied into `agents/`, `commands/`, `hooks/`, `skills/`, `instructions/` this pass was grepped for secret-shaped content (API keys, tokens, private keys, credential/`.env`-shaped filenames) before any git operation — clean.
+
+## 2026-08-20 (fifth pass) — new findings this round
+
+**`60_Claude/Sessions/_today-edits.md`'s edit-log hook is firing but its content is 100% unusable, by construction, not intermittently.** `.claude/hooks/after-edit-log.ps1` reads `$env:CLAUDE_TOOL_NAME` and `$env:CLAUDE_FILE_PATH` — but Claude Code's actual `PostToolUse` hook contract passes tool context as a JSON payload on **stdin**, not environment variables. These two env vars are never set, so the script's fallback branch (`"unknown"`) fires on literally every invocation. Confirmed by reading the file: 51 rows for 2026-08-20, every single one reading `- HH:mm | unknown | unknown`. The hook's *timing* data is real (rows span 10:55 through 14:37 with no multi-hour gap, so no session today appears to have gone completely silent), but its *content* has never once recorded a real tool name or file path — this is a total, 100%-reproducible bug that will keep producing empty rows for every future session too until the script is changed to read stdin instead. **Not fixed this pass** — this was a verify-and-report task, not a fix task; the fix (read and parse the stdin JSON payload per Claude Code's real hook contract) is straightforward and known, left for a session that's actually scoped to touch this hook.
+
+A raw row-count comparison against `git show --stat` on today's 8 commits (181 files touched, before this round's own uncommitted work) is not a clean test of *coverage* even once the content bug is fixed — `Write|Edit|MultiEdit` is the hook's only trigger, and a real fraction of those 181 files were plausibly touched via `git mv`, build/install tooling, or Bash-authored heredocs rather than the Write/Edit tool, none of which would ever fire this hook regardless of health. So: the hook is wired correctly (`.claude/settings.json`'s `PostToolUse` matcher is intact, `2>/dev/null; exit 0` crash-guard present) and fires reliably across sessions, but has recorded zero usable content all day, and no stronger completeness claim than that can honestly be made from this file alone.
+
+**`tests/` backfilled for the three round-4 dormant-clone executions.** Real test logs written for spec-kit, promptfoo, and claude-context (`tests/skills/spec-kit/2026-08-20-test-log.md`, `tests/cli-tools/promptfoo/2026-08-20-test-log.md`, `tests/mcp-servers/claude-context/2026-08-20-test-log.md`) — these tools were genuinely run for real last round (already reported), just not logged under `tests/` at the time, unlike `tested-tools/commands/cpr-compress-preserve-resume/`'s matching test log. `promptfoo` and `claude-context` needed new `tests/` type buckets (`cli-tools/`, and a second occupant of `mcp-servers/`) since neither fits the existing `agents/commands/hooks/skills` taxonomy — same reasoning as `tested-tools/mcp-servers/gbrain/`.
+
+**`_docs/Gaps.md` and `_docs/Repo-Map.md` archived.** Both had grown into permanent, ever-lengthening scrolls of dated sections with resolved items left in place. Asked Anant directly (`AskUserQuestion`): archive now, or keep everything in place. **Answer: archive now.** `_docs/Gaps-Archive.md` and `_docs/Repo-Map-Archive.md` created holding everything previously resolved, verbatim; both live files trimmed to what's still open or standing, with a pointer at the top of each.
+
+## Cross-references
+
+- `_docs/Gaps-Archive.md` — everything resolved as of the fourth pass and earlier, moved here verbatim 2026-08-20.
+- `_docs/Repo-Map.md` / `_docs/Repo-Map-Archive.md` — folder-by-folder ground truth (live) and its own resolved-history archive, both updated 2026-08-20.
+- `_docs/Jarvis.md` — the Toolkit "How to Use X"/"What X" pattern, the real review-system build state, and the real conversation-capture state.
+- `_docs/Sync.md` — the `instructions_paths` live-sync design, the 2026-08-20 part-2 extension to `agents/`/`commands/`/`hooks/`/`skills/`, and the collision bug found and fixed in the same pass.
+- `60_Claude/Standards/README.md` — index of the six Standards and their paired templates.
+- `_docs/Design.md` — the named-gap justification for `Standards/`/`write-contract.md`/templates, and the standing "no net-new pipeline meta-infrastructure until a real promotion" gate.
+- `_docs/Architecture.md` — the `claudeMdExcludes` gap/fix history and the sandbox auto-load risk.
+- `60_Claude/vault-rules/write-contract.md` — golden rules and the failure-visible-check discipline.
+- `tested-tools/mcp-servers/gbrain/VERDICT.md`, `tests/skills/spec-kit/`, `tests/cli-tools/promptfoo/`, `tests/mcp-servers/claude-context/` — this round's real, evidenced tool-pipeline work.
+=== anthropic-docs-reference.md exists? ===
+-rw-r--r-- 1 anant_gupta anant_gupta 3278 Aug 22 15:01 60_Claude/vault-rules/anthropic-docs-reference.md
+  ```
+
 ## Actions Taken
 - Files created: /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Gaps.md
 - Files modified: /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/PRD.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Repo-Map.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Jarvis.md, /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/Architecture.md
 - Files deleted: (none)
-- Commands run: ls -la "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/How to", echo "--- 60_Claude tree ---" && find 60_Claude -maxdepth 3 -not -path '*/.git*' | sort && echo "--- tested-tools tree ---" && find tested-tools -maxdepth 4 | sort && echo "--- tests ---" && find tests -maxdepth 3 && echo "--- instructions ---" && find instructions -maxdepth 3 && echo "--- skills ---" && find skills -maxdepth 3 && echo "--- sandbox top level ---" && ls sandbox | head -50, ls -la tested-tools/_future/ 2>&1; echo "---"; ls -la sandbox/README.md tested-tools/README.md 2>&1, git status --porcelain=v1 | head -80, grep -n "sync-jarvis\|sync-all" /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/README.md /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/*.md 2>/dev/null | grep -v "^Binary", grep -rn "Tier-1\|Tier 1" /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/*.md, git log --oneline -- agents/ commands/ hooks/ | tail -20 && echo "--- scaffold commit files ---" && git show --stat d35f0b7 -- agents/ commands/ hooks/ | head -40, git show --stat 726f6de | head -40, echo "=== git status (short) ===" && git status --porcelain=v1 | head -60 && echo "=== new top-level dirs ===" && for d in instructions tests "tested-tools/_future" "tested-tools/agents" "tested-tools/commands" "tested-tools/hooks"; do echo "-- $d --"; find "$d" -maxdepth 3 2>/dev/null; done && echo "=== _docs/How to ===" && ls "_docs/How to" 2>/dev/null && echo "=== 60_Claude vault-rules + templates ===" && ls 60_Claude/vault-rules 60_Claude/Templates, cat "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-manifest.json" 2>/dev/null | head -100, cat "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-manifest.json" 2>/dev/null | tail -60, echo "=== git log --oneline -20 ===" && git log --oneline -20 && echo "=== git status --porcelain (count) ===" && git status --porcelain=v1 | wc -l && echo "=== git status --porcelain (first 40) ===" && git status --porcelain=v1 | head -40 && echo "=== is sandbox gitignored? ===" && git check-ignore -v sandbox/ 2>&1 || echo "NOT IGNORED" && echo "=== .gitignore content ===" && cat .gitignore 2>/dev/null, git log --oneline -3 && echo "---" && git status --porcelain=v1 | wc -l, echo "=== 60_Claude/Sessions ===" && find 60_Claude/Sessions -type f -exec ls -la {} \; 2>/dev/null && echo "=== git log full (all commits, dates) ===" && git log --pretty=format:"%h %ad %s" --date=iso -20 && echo "" && echo "=== tests/ tree with dates ===" && find tests -type f -exec ls -la {} \; 2>/dev/null && echo "=== VERDICT.md files ===" && find . -iname "VERDICT.md" -not -path "./sandbox/*" 2>/dev/null && echo "=== _docs/Gaps.md structure (headings) ===" && grep -n "^#" _docs/Gaps.md && echo "=== _docs/Repo-Map.md Incident/Open items headings ===" && grep -n "^##" _docs/Repo-Map.md, git log --oneline -3 && echo "---settings.json occurrences in manifest---" && python3 -c " import json d = json.load(open('60_Claude/scripts/sync-manifest.json')) for p in d['projects']: flagged = [x for x in p.get('paths', []) if 'settings' in x.lower()] print(p['name'], '->', p.get('status'), '| settings paths:', flagged if flagged else 'none') "
-- Tool call tally: Agent (5), Bash (15), Edit (10), mcp__jarvis__search_simple (1), mcp__jarvis__vault_get_document_map (3), mcp__jarvis__vault_list (17), mcp__jarvis__vault_patch (33), mcp__jarvis__vault_read (4), mcp__jarvis__vault_write (2), Read (20), ScheduleWakeup (1), TaskCreate (11), TaskUpdate (16), ToolSearch (4), WebFetch (1), Write (1)
+- Commands run: ls -la "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/How to", echo "--- 60_Claude tree ---" && find 60_Claude -maxdepth 3 -not -path '*/.git*' | sort && echo "--- tested-tools tree ---" && find tested-tools -maxdepth 4 | sort && echo "--- tests ---" && find tests -maxdepth 3 && echo "--- instructions ---" && find instructions -maxdepth 3 && echo "--- skills ---" && find skills -maxdepth 3 && echo "--- sandbox top level ---" && ls sandbox | head -50, ls -la tested-tools/_future/ 2>&1; echo "---"; ls -la sandbox/README.md tested-tools/README.md 2>&1, git status --porcelain=v1 | head -80, grep -n "sync-jarvis\|sync-all" /home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/README.md /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/*.md 2>/dev/null | grep -v "^Binary", grep -rn "Tier-1\|Tier 1" /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/*.md, git log --oneline -- agents/ commands/ hooks/ | tail -20 && echo "--- scaffold commit files ---" && git show --stat d35f0b7 -- agents/ commands/ hooks/ | head -40, git show --stat 726f6de | head -40, echo "=== git status (short) ===" && git status --porcelain=v1 | head -60 && echo "=== new top-level dirs ===" && for d in instructions tests "tested-tools/_future" "tested-tools/agents" "tested-tools/commands" "tested-tools/hooks"; do echo "-- $d --"; find "$d" -maxdepth 3 2>/dev/null; done && echo "=== _docs/How to ===" && ls "_docs/How to" 2>/dev/null && echo "=== 60_Claude vault-rules + templates ===" && ls 60_Claude/vault-rules 60_Claude/Templates, cat "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-manifest.json" 2>/dev/null | head -100, cat "/home/anant_gupta/projects/ai/claude/second-brain-claudekit/60_Claude/scripts/sync-manifest.json" 2>/dev/null | tail -60, echo "=== git log --oneline -20 ===" && git log --oneline -20 && echo "=== git status --porcelain (count) ===" && git status --porcelain=v1 | wc -l && echo "=== git status --porcelain (first 40) ===" && git status --porcelain=v1 | head -40 && echo "=== is sandbox gitignored? ===" && git check-ignore -v sandbox/ 2>&1 || echo "NOT IGNORED" && echo "=== .gitignore content ===" && cat .gitignore 2>/dev/null, git log --oneline -3 && echo "---" && git status --porcelain=v1 | wc -l, echo "=== 60_Claude/Sessions ===" && find 60_Claude/Sessions -type f -exec ls -la {} \; 2>/dev/null && echo "=== git log full (all commits, dates) ===" && git log --pretty=format:"%h %ad %s" --date=iso -20 && echo "" && echo "=== tests/ tree with dates ===" && find tests -type f -exec ls -la {} \; 2>/dev/null && echo "=== VERDICT.md files ===" && find . -iname "VERDICT.md" -not -path "./sandbox/*" 2>/dev/null && echo "=== _docs/Gaps.md structure (headings) ===" && grep -n "^#" _docs/Gaps.md && echo "=== _docs/Repo-Map.md Incident/Open items headings ===" && grep -n "^##" _docs/Repo-Map.md, git log --oneline -3 && echo "---settings.json occurrences in manifest---" && python3 -c " import json d = json.load(open('60_Claude/scripts/sync-manifest.json')) for p in d['projects']: flagged = [x for x in p.get('paths', []) if 'settings' in x.lower()] print(p['name'], '->', p.get('status'), '| settings paths:', flagged if flagged else 'none') ", echo "=== HEAD ===" && git log --oneline -5 && echo "=== _docs/Gaps.md ===" && cat _docs/Gaps.md && echo "=== anthropic-docs-reference.md exists? ===" && ls -la 60_Claude/vault-rules/anthropic-docs-reference.md 2>&1
+- Tool call tally: Agent (5), Bash (16), Edit (10), mcp__jarvis__search_simple (1), mcp__jarvis__vault_get_document_map (3), mcp__jarvis__vault_list (17), mcp__jarvis__vault_patch (33), mcp__jarvis__vault_read (4), mcp__jarvis__vault_write (2), Read (20), ScheduleWakeup (1), TaskCreate (11), TaskUpdate (16), ToolSearch (4), WebFetch (1), Write (1)
 

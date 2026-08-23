@@ -7,7 +7,7 @@ title: "Flatten instructions/ directory structure and fix sync-all.sh"
 started_at: 2026-08-21T11:13:49
 ended_at: 2026-08-21T13:44:27
 duration_minutes: 151
-exported_at: 2026-08-22T03:59:01
+exported_at: 2026-08-22T13:45:03
 project: second-brain-claudekit
 cwd: '/home/anant_gupta/projects/ai/claude/second-brain-claudekit'
 session_id: 2858ab11-7513-4815-9750-0229629a9c27
