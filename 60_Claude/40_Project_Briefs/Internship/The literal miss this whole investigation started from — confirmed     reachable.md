@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_freehire.py"
 type: "rationale"
-community: "write_dossier"
+community: "test_freehire.py"
 location: "L41"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/write_dossier
+  - community/test_freehirepy
 ---
 
 # The literal miss this whole investigation started from — confirmed     reachable
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[test_google_ground_truth_posting_matches()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/write_dossier
+#graphify/rationale #graphify/EXTRACTED #community/test_freehirepy

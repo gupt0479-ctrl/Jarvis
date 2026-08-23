@@ -2,7 +2,7 @@
 source_file: "ingestion/posting_page.py"
 type: "code"
 community: "writer.py"
-location: "L127"
+location: "L149"
 tags:
   - graphify/code
   - graphify/EXTRACTED

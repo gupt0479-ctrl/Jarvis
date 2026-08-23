@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_identity.py"
 type: "code"
-community: "test_writer.py"
+community: "normalize_simplify"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_writerpy
+  - community/normalize_simplify
 ---
 
 # _load()
@@ -18,4 +18,4 @@ tags:
 - [[test_uids_stable_across_recomputation()]] - `calls` [EXTRACTED]
 - [[test_uids_unique_across_distinct_listings()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_writerpy
+#graphify/code #graphify/EXTRACTED #community/normalize_simplify

@@ -16,10 +16,10 @@ tags:
   - applying
 next:
 ---
-# <% tp.file.title %>
+# [Role] - [Company]
 ==Created only once real application activity starts — not at commit time.== Source-of-truth responsibility transfers here from the paired Tracker note once this exists; see `Applying/Applications-to-Create.md`.
 ## Goal
-Get an offer from <% tp.file.title %>. One sentence on what winning looks like for this specific program.
+Get an offer from [Role] - [Company]. One sentence on what winning looks like for this specific program.
 ## Current State
 Where this application actually stands right now — funnel stage, what's blocking it, what you're waiting on.
 > [!NOTE]
@@ -35,4 +35,4 @@ The single next physical action. Mirrors `next:` above.
 ## Open Questions
 - [ ] 
 ## Log
-- **<% tp.date.now("YYYY-MM-DD") %>:** Created note.
+- **YYYY-MM-DD:** Created note.

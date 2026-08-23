@@ -1,11 +1,11 @@
 ---
 type: community
-members: 40
+members: 42
 ---
 
 # test_write_dossier_creates_missing_dossiers_dir
 
-**Members:** 40 nodes
+**Members:** 42 nodes
 
 ## Members
 - [[Layer 2.5b — priority-bucket classification for listings that already passed cor]] - rationale - core/classify.py
@@ -16,12 +16,14 @@ members: 40
 - [[Real false positive Mosaic Company 'Operations & Automation     Engineering Co-]] - rationale - tests/test_classify.py
 - [[Returns (bucket_name, signal) — signal is the specific real phrase     that drov]] - rationale - core/classify.py
 - [[Same bucket for both candidates — stage 2 is explicitly a no-op here     per spe]] - rationale - tests/test_debate.py
+- [[Scoped per-bucket per the tunable budget dict — each bucket fills only     from]] - rationale - run_pipeline.py
 - [[Standard cmp semantics negative if a should rank first, positive if     b shoul]] - rationale - core/debate.py
 - [[Task L — the deterministic pairwise 'debate' comparator. Each stage is tested in]] - rationale - tests/test_debate.py
 - [[Two non-preferred candidates (stage 1 ties), different buckets, one     bucket's]] - rationale - tests/test_debate.py
 - [[Two preferred companies with different dates — stage 1 ties (both     'high'), r]] - rationale - tests/test_debate.py
 - [[_candidate()]] - code - tests/test_debate.py
 - [[_preference_rank()]] - code - core/debate.py
+- [[_prioritize_and_cap()]] - code - run_pipeline.py
 - [[bucket_urgency=None (the default) skips stage 2 entirely, falling     straight t]] - rationale - tests/test_debate.py
 - [[classification_callout()]] - code - core/classify.py
 - [[classify()]] - code - core/classify.py
@@ -57,14 +59,14 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 10 edges to [[_COMMUNITY_recheck.py]]
-- 9 edges to [[_COMMUNITY_write_dossier]]
+- 11 edges to [[_COMMUNITY_recheck.py]]
+- 7 edges to [[_COMMUNITY_write_dossier]]
 - 3 edges to [[_COMMUNITY_test_render_dossier_shows_real_rendered_frontmatter_with_preference_match]]
-- 2 edges to [[_COMMUNITY_render_dossier]]
+- 2 edges to [[_COMMUNITY_test_freehire.py]]
 
 ## Top bridge nodes
-- [[test_debate.py]] - degree 16, connects to 2 communities
-- [[classify()]] - degree 15, connects to 2 communities
+- [[test_debate.py]] - degree 16, connects to 3 communities
+- [[test_classify.py]] - degree 15, connects to 2 communities
 - [[debate.py]] - degree 10, connects to 2 communities
-- [[classification_callout()]] - degree 7, connects to 2 communities
-- [[test_classify.py]] - degree 15, connects to 1 community
+- [[classify()]] - degree 15, connects to 1 community
+- [[debate_compare()]] - degree 14, connects to 1 community

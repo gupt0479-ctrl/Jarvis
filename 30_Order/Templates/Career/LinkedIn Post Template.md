@@ -1,7 +1,7 @@
 ---
 type: output
 status: draft
-created: <% tp.date.now("YYYY-MM-DD") %>
+created:
 source_concepts: []
 posted_date:
 posted_url:
@@ -9,7 +9,7 @@ tags:
   - linkedin
   - output
 ---
-# <% tp.file.title %>
+# [Post Title]
 ## Draft
 The actual post text, ready to paste.
 ## Why This Post

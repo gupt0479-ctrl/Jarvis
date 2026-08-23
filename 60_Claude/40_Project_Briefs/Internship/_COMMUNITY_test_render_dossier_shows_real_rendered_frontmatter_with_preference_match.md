@@ -54,16 +54,19 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 13 edges to [[_COMMUNITY_test_writer.py]]
-- 5 edges to [[_COMMUNITY_write_dossier]]
-- 4 edges to [[_COMMUNITY_render_dossier]]
+- 9 edges to [[_COMMUNITY_normalize_simplify]]
+- 4 edges to [[_COMMUNITY_write_dossier]]
+- 4 edges to [[_COMMUNITY_recheck.py]]
 - 3 edges to [[_COMMUNITY_test_write_dossier_creates_missing_dossiers_dir]]
-- 3 edges to [[_COMMUNITY_recheck.py]]
-- 3 edges to [[_COMMUNITY_build_frontmatter]]
+- 3 edges to [[_COMMUNITY_test_writer.py]]
+- 3 edges to [[_COMMUNITY_validate.py]]
+- 3 edges to [[_COMMUNITY_plan_removals_1]]
+- 1 edge to [[_COMMUNITY_test_debate_losses.py]]
+- 1 edge to [[_COMMUNITY_test_freehire.py]]
 
 ## Top bridge nodes
-- [[identity.py]] - degree 13, connects to 5 communities
-- [[test_identity.py]] - degree 32, connects to 3 communities
+- [[identity.py]] - degree 13, connects to 7 communities
+- [[test_identity.py]] - degree 32, connects to 4 communities
 - [[cross_source_key()]] - degree 15, connects to 3 communities
 - [[company_matches_preference()]] - degree 12, connects to 2 communities
 - [[test_missing_raw_id_raises()]] - degree 4, connects to 2 communities

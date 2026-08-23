@@ -2,7 +2,7 @@
 type: evergreen
 status: sprout
 created: 2026-07-16
-updated: 2026-07-29
+updated: 2026-08-23
 tags:
   - system
   - workflow
@@ -12,7 +12,7 @@ notes:
   - "[[00_Workflows Index]]"
   - "[[40_Resources/Obsidian/Jarvis Vault Architecture]]"
   - "[[10_Areas/Career/Internships/Internships Hub]]"
-  - "[[Internship Pipeline - Design Rationale]]"
+  - "[[Internship - Design Rationale]]"
 next:
 ---
 # Internship Pipeline
@@ -57,6 +57,9 @@ across all of it:  Tracker/Internship - Dashboard.md (whole-process) + Tracker/T
 ```
 ## Step 1 — Find (List + Dossiers)
 Two paths in now. Automated: `internship-research-loop` writes screened matches straight into `List/Dossiers/`, sorted into priority subfolders (`1 - AI & ML/`, `2 - Fullstack/`, `3 - CyS & Finance/`, `Other/`) with a one-line reason at the top of each note — see [[Source of Truth]] for exactly what the loop screens for before a dossier ever lands. Manual: anything you come across yourself — a career fair conversation, LinkedIn, Handshake — still gets one row in this month's `List/YYYY-MM Found.md` (use [[List Monthly Log Template]]), and can move to Step 2 without ever having been a dossier. Neither is a commitment. Most dossiers and most rows never get promoted, and that's fine.
+**Which candidates actually get written, shipped 2026-08-21:** each bucket only writes 3 AI/ML, 3 Fullstack, 3 CyS & Finance, 1 Other per push, ordered by a deterministic **debate comparator** — preferred-company tier (a `preference_tier` field, per `core/profile.yaml`'s `preferred_companies`) → bucket fill-need → recency. A candidate that loses the comparator's sort 5 consecutive runs moves to [[10_Areas/Career/Internships/List/Excluded — Losing The Debate]] — a reviewable, append-only log, never a silent permanent drop; if the comparator's call looks wrong on any entry there, promote it by hand. Each priority bucket also carries a 50-dossier capacity notification (visible on [[10_Areas/Career/Internships/List/Dossiers MOC]]'s live capacity table) and the global total logs/files a GitHub issue at set thresholds — a notification, never a write refusal. Full spec: [[Source of Truth]].
+**Closed postings move, they don't vanish.** `recheck.py` moves a dossier for a posting that's gone dead to `10_Areas/Career/Internships/List/Dossiers/Viewed/` instead of deleting it — its MOC and `company/<slug>` links stay, plus a link to `Removed Dossiers MOC`. `Viewed/` is a human triage bin, never a pipeline write target for new dossiers. Full rule: [[30_Order/Standards/Internship Notes Standard]] §4.
+**Audited, not the same as bug-free.** All of the above is live and firing, but a 2026-08-23 audit found real implementation gaps still sitting in it (content-extraction leaks, lingering duplicates, location/relevance-gate gaps, a `Viewed/` re-processing bug, a debate-comparator design gap) — fixes are queued, not yet shipped. Current, cited status: [[Source of Truth]].
 **Manual web clips (refined 2026-07-29):** a web-clipped internship (a full posting captured into `60_Claude/05_Clippings/Web/Internships/`, not just a row in the monthly log) skips the dossier-as-screening-artifact phase entirely and goes straight to a Program note in `Serious/` or `Considering/`, run through the same Step 2 fit test below. Once that Program note exists, the original clipping moves into `List/Dossiers/<priority folder>/`, rewritten in the loop's own dossier template (frontmatter + `## Posting` body) without losing any of its original content — this makes it a record of where the internship came from, not a screening artifact, since screening already happened via the Program note. Both the dossier and the Program note get marked manually found (`source: manual` / `list_origin: manual-web-find (Anant)`), never as loop-discovered. First real run of this refined rule: the four backlogged `Internships/` clippings (Uber, Nuro, Deepgram, Western Digital) on 2026-07-29 — see [[10_Areas/Career/Internships/Programs/Serious/2027-Uber-SWE-CareerPrep]] and its three siblings.
 ## Step 2 — Screen (the fit test)
 Before committing real hours, every dossier or manual find passes the same fit test, regardless of which priority folder it landed in (including `Other` — that folder gets the same scrutiny, not less):
@@ -98,7 +101,7 @@ When an outcome lands, update the Applying note's `status` to `Offer`, `Rejected
 ## Cheats
 `Cheats/` is where anything that actually worked gets written down — a tactic, a shortcut, a system, using [[Cheat Template]]. It grows only from real results, not speculation, and it is explicitly not being redesigned preemptively: the instruction behind this folder is to use it as-is until it produces a real blocker, then fix that blocker, not to polish it now.
 ## Step 1 Is Automated — Steps 2+ Are Manual By Design
-Step 1 (Find) is live: `gupta-builds/internship-research-loop` (GitHub Actions, hourly, eight sources as of 2026-07-26) writes directly into `List/Dossiers/`'s priority subfolders — see [[Source of Truth]] for what it actually screens for. **Steps 2 through 9 remain entirely manual by design.** They were never exercised against real automated output until 2026-07-26, when Step 3 ran for real for the first time (the Appian promotion, via the `/promote-dossier` skill) — one real run, not a proven-at-scale pipeline. Don't treat one successful promotion as evidence the whole downstream flow is solid yet.
+Step 1 (Find) is live: `gupta-builds/internship-research-loop` (GitHub Actions, hourly, eight sources as of 2026-07-26) writes directly into `List/Dossiers/`'s priority subfolders — see [[Source of Truth]] for what it actually screens for. The full resource-limit spec (debate comparator, capacity notifications, recheck-to-`Viewed/`) shipped 2026-08-21 and is confirmed live against a real `run.yml` trigger the same day, not just committed. **Steps 2 through 9 remain entirely manual by design.** Step 3 has now run for real four times, not once: the Appian promotion (2026-07-26, via the `/promote-dossier` skill) plus three manual-web-find promotions straight to Program notes (Uber, Western Digital, Deepgram, all 2026-07-29 — see Step 1's manual-web-clip note above). All four are still pre-application — none has an Applying note yet, so Steps 4 through 9 remain unexercised against real activity. Don't treat four promotions as evidence the whole downstream flow is proven at scale.
 ## Frontmatter Quick Reference
 
 | Note | Type | Lives in |

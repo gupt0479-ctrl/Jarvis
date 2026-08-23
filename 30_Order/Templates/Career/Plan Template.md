@@ -1,8 +1,8 @@
 ---
 type: plan
 status: seed
-created: <% tp.date.now("YYYY-MM-DD") %>
-updated: <% tp.date.now("YYYY-MM-DD") %>
+created:
+updated:
 deadline:
 review_cadence:
 tags:
@@ -10,7 +10,7 @@ tags:
 notes: []
 next:
 ---
-# <% tp.file.title %>
+# [Plan Name]
 ==One sentence stating what this plan gets you and by when — if you can't write this sentence yet, the plan isn't ready to create.== Full process for using this template: [[10_Areas/Life/Plans/Plans-to-Create|Plans-to-Create]]. Cadence and staleness rules: [[30_Order/Standards/Daily Workflow Standard|Daily Workflow Standard]].
 ## Goal
 One or two sentences. One metric that proves the goal was hit, not a vibe. If the goal needs a paragraph to explain, it isn't scoped yet — cut it down before filling in the rest of this template.

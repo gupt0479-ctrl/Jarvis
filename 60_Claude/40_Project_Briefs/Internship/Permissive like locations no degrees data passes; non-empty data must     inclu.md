@@ -2,7 +2,7 @@
 source_file: "core/filter.py"
 type: "rationale"
 community: "write_dossier"
-location: "L96"
+location: "L116"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED

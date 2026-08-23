@@ -1,12 +1,12 @@
 ---
 source_file: "ingestion/normalize.py"
 type: "code"
-community: "write_dossier"
+community: "test_freehire.py"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/write_dossier
+  - community/test_freehirepy
 ---
 
 # normalize.py
@@ -37,4 +37,4 @@ tags:
 - [[test_validate.py]] - `imports_from` [EXTRACTED]
 - [[test_writer.py]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/write_dossier
+#graphify/code #graphify/EXTRACTED #community/test_freehirepy

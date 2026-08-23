@@ -19,6 +19,7 @@ tags:
 - [[test_absent_from_feed_is_removed()]] - `calls` [EXTRACTED]
 - [[test_active_false_upstream_is_removed()]] - `calls` [EXTRACTED]
 - [[test_all_active_removes_nothing()]] - `calls` [EXTRACTED]
+- [[test_already_removed_dossier_is_not_re_swept()]] - `calls` [EXTRACTED]
 - [[test_dossier_with_no_manifest_entry_is_skipped_not_removed()]] - `calls` [EXTRACTED]
 - [[test_failed_fetch_skips_that_sources_dossiers_entirely()]] - `calls` [EXTRACTED]
 - [[test_recheck.py]] - `imports` [EXTRACTED]

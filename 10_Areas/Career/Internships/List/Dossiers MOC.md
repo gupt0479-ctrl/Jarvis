@@ -9,9 +9,10 @@ tags:
 notes:
   - "[[10_Areas/Career/Internships/List/Dossiers/Dossiers-to-Create]]"
   - "[[Source of Truth]]"
+  - "[[60_Claude/30_Reviews/Internship Loop/Internship Loop Reviews MOC]]"
 ---
 # Dossiers — Map of Content
-==Everything currently in `List/Dossiers/`, live, by priority folder.== See [[10_Areas/Career/Internships/List/Dossiers/Dossiers-to-Create]] for the gate that gets a posting here at all. Nothing here is hand-edited into existence — this note only reads what the loop already wrote.
+==Everything currently in `List/Dossiers/`, live, by priority folder.== See [[10_Areas/Career/Internships/List/Dossiers/Dossiers-to-Create]] for the gate that gets a posting here at all. Nothing here is hand-edited into existence — this note only reads what the loop already wrote. For whether what it wrote is actually correct, see [[60_Claude/30_Reviews/Internship Loop/Internship Loop Reviews MOC|Internship Loop Reviews MOC]] — the weekly review sampling this folder for gate/classification/Standard conformance.
 ## ⚠️ Capacity Notification
 Live-computed, not code-maintained — this section reads the real folder counts every time this note renders, so a bucket crossing its threshold shows up here without anyone having to push a change. See [[30_Order/Standards/Internship Notes Standard]] §5: crossing 50 is a notification, never a silent write-refusal.
 ```dataviewjs

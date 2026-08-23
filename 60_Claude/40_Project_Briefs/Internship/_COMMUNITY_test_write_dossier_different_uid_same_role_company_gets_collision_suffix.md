@@ -52,14 +52,13 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 4 edges to [[_COMMUNITY_recheck.py]]
-- 2 edges to [[_COMMUNITY_test_writer.py]]
-- 1 edge to [[_COMMUNITY_render_dossier]]
-- 1 edge to [[_COMMUNITY_write_dossier]]
+- 5 edges to [[_COMMUNITY_recheck.py]]
+- 2 edges to [[_COMMUNITY_normalize_simplify]]
+- 1 edge to [[_COMMUNITY_test_freehire.py]]
 
 ## Top bridge nodes
 - [[test_relevance.py]] - degree 22, connects to 2 communities
-- [[stage2_confirm()]] - degree 11, connects to 2 communities
 - [[stage1_reject()]] - degree 14, connects to 1 community
+- [[stage2_confirm()]] - degree 11, connects to 1 community
 - [[relevance.py]] - degree 6, connects to 1 community
 - [[test_stage1_does_not_reject_real_tax_technology_intern()]] - degree 5, connects to 1 community

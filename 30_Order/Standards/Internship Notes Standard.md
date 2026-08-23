@@ -2,7 +2,7 @@
 type: evergreen
 status: sprout
 created: 2026-07-29
-updated: 2026-07-29
+updated: 2026-08-23
 tags:
   - internship
   - standard
@@ -50,6 +50,17 @@ Mirrors the "Backfill" rule already proven necessary for Program notes (`.claude
 
 ## 5. Resource limits — a notification, not a silent hard stop
 Per [[20_Progress/Internship/Building System/Source of Truth]] and [[10_Areas/Career/Internships/List/Dossiers/Dossiers-to-Create]]: 50 files per priority bucket, 201 total (`List/Dossiers/` excluding `Viewed/`), designed 2026-07-26, still not in code as of this writing. **Clarified 2026-07-29**: hitting a bucket's threshold is a **notification**, surfaced in two places — the vault side (a visible warning on `Dossiers MOC.md` / the Tracker dashboard, so a human opening the vault sees it without reading logs) and the codebase side (a run-log field, and a filed GitHub issue on first crossing — not a hard refusal to write). The point is forcing a human review decision to happen, not silently discarding a real, currently-open posting the same way an exclusion gate would. See [[20_Progress/Internship/Building System/Runs/Claude Code Prompts]] for the exact build spec.
+
+## 6. Field semantics — dates, target_year, the `next` chain, `matched_reason`
+Four fields that read as inconsistent or broken if you don't know the rule behind them. Checked directly against real dossier frontmatter (395 files, 2026-08-23) rather than assumed.
+
+**`date_posted` vs `date_found`.** `date_found` is the date this pipeline discovered/wrote the dossier - effectively "date added to vault." The pipeline sets it itself at write time, so it should always be accurate, and a 395-file sweep confirms it is: every dossier carries a real, present `date_found`. `date_posted` is the upstream source's own claimed posting date, and **must stay null when the source didn't actually provide one** - never defaulted, never guessed. This is real and observed, not hypothetical: both manual-find dossiers sampled (Western Digital, Deepgram) carry `date_posted:` empty, while every loop-discovered dossier sampled (Appian, Uber, Jane Street, Optiver) carries a real ISO date. A null `date_posted` next to a populated `date_found` is the expected shape for a manual find, not a data-loss bug.
+
+**`target_year: []` empty is the expected case, not a bug.** `core/profile.yaml`'s `accept_unrestricted: true` means a posting with no class-year field at all still passes the write gate by permissive design (see [[20_Progress/Internship/Building System/Source of Truth]]'s hard-gate asymmetry: a false exclusion loses a real opportunity for nothing, a false inclusion costs one screening read). A 200-file sample taken directly from real dossier frontmatter (2026-08-23) found `target_year: []` on every single one, with zero exceptions - most postings simply don't state a structured class-year field the extractor can read. Whether that's *always* correct or occasionally hides a real extraction miss on a posting that did state a year is a codebase-side question (grep the real fetched posting body against the frontmatter, not something checkable from the vault side) - this section documents the designed, expected case only.
+
+**The `next` chain.** A Dossier's `next` stays null until promoted, then names the Program note it became (confirmed against the real promoted dossiers: Appian's `next:` is empty since it's still `unreviewed`; Uber's and Deepgram's `next:` point at their Program notes with a plain-text note of when/why). A Program's `next` stays null until an Applying note exists for it, then names that Applying note. Each note in the chain only ever points forward to the next note that actually exists - never a placeholder for a note that hasn't been created yet.
+
+**`matched_reason` required richness.** Should name the *specific* rules a posting satisfied - which term matched, the location signal, the degree signal, the OPT-check outcome, the CS-relevance signal type - not the bare literal string `matched`. This is a real, current, and widespread gap: every loop-discovered dossier sampled directly (Appian, Jane Street, Optiver - three different sources) carries `matched_reason: matched` verbatim, with the real specific signal only appearing in the `> [!NOTE]` callout below the frontmatter, not in the field itself. Manual-find dossiers already do this correctly (Uber's `matched_reason` names the promotion date and target Program note). Implementing this for loop-discovered dossiers means changing `build_matched_reason()` - codebase work, not a vault-side fix.
 
 ## Done When
 - Every dossier's `notes:` field resolves (Dossiers MOC, plus Removed Dossiers MOC for anything in `Viewed/`) — no broken/missing links.

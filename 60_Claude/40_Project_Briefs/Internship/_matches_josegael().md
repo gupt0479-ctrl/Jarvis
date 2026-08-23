@@ -2,7 +2,7 @@
 source_file: "core/filter.py"
 type: "code"
 community: "write_dossier"
-location: "L153"
+location: "L173"
 tags:
   - graphify/code
   - graphify/EXTRACTED

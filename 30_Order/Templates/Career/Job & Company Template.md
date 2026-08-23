@@ -8,7 +8,7 @@ tags:
   - job-company
 next:
 ---
-# <% tp.file.title %>
+# [Company] - [Position]
 ==Interview-prep-grade research — deeper than the Program note, created only once you're actually ready to apply, not at commit time.== See `Programs/Programs-to-Create.md` for when this gets created and the `[Company]/` subfolder rule past two positions at the same company.
 ## Company Mission & Why It Points Toward My Goal
 What the company actually says its mission is, and — concretely, not generically — how pursuing this role moves toward the direction in [[Engineer Edge Roadmap]]. Not "is this a good company" — "why this one, for me."

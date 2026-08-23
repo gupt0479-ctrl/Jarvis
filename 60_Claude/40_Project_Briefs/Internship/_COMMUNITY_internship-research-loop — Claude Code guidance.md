@@ -1,14 +1,15 @@
 ---
 type: community
-members: 6
+members: 7
 ---
 
 # internship-research-loop — Claude Code guidance
 
-**Members:** 6 nodes
+**Members:** 7 nodes
 
 ## Members
 - [[Agent vs. more Python — the actual judgment call for each]] - document - CLAUDE.md
+- [[Auto-mode classifier notes (this repo only)]] - document - CLAUDE.md
 - [[CLAUDE]] - document - CLAUDE.md
 - [[Conventions this codebase enforces — read before touching core, ingestion, vault_writer, run_pipeline.py, or recheck.py]] - document - CLAUDE.md
 - [[Note-template contracts (for `promote-dossier` and any future vault-writing code)]] - document - CLAUDE.md

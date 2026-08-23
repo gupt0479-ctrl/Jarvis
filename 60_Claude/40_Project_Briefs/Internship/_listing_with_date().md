@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_run_pipeline.py"
 type: "code"
-community: "test_writer.py"
+community: "_listing_with_date"
 location: "L92"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_writerpy
+  - community/_listing_with_date
 ---
 
 # _listing_with_date()
@@ -22,4 +22,4 @@ tags:
 - [[test_prioritize_and_cap_without_preferred_companies_keeps_recency_only_order()]] - `calls` [EXTRACTED]
 - [[test_run_pipeline.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_writerpy
+#graphify/code #graphify/EXTRACTED #community/_listing_with_date

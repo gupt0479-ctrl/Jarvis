@@ -1,8 +1,196 @@
 {
   "recentFiles": [
     {
-      "basename": "AI Operations Intern - Naukr AI - Acds",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/AI Operations Intern - Naukr AI - Acds.md"
+      "basename": "Claude Code Prompts",
+      "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
+    },
+    {
+      "basename": "Excluded — Losing The Debate",
+      "path": "10_Areas/Career/Internships/List/Excluded — Losing The Debate.md"
+    },
+    {
+      "basename": "2026-07 Found",
+      "path": "10_Areas/Career/Internships/List/2026-07 Found.md"
+    },
+    {
+      "basename": "Internship - Design Rationale",
+      "path": "30_Order/Workflows/Internship - Design Rationale.md"
+    },
+    {
+      "basename": "Internship Pipeline",
+      "path": "30_Order/Workflows/Internship Pipeline.md"
+    },
+    {
+      "basename": "Program Template",
+      "path": "30_Order/Templates/Career/Program Template.md"
+    },
+    {
+      "basename": "Tracking Template",
+      "path": "30_Order/Templates/Career/Tracking Template.md"
+    },
+    {
+      "basename": "Plan Template",
+      "path": "30_Order/Templates/Career/Plan Template.md"
+    },
+    {
+      "basename": "List Monthly Log Template",
+      "path": "30_Order/Templates/Career/List Monthly Log Template.md"
+    },
+    {
+      "basename": "LinkedIn Post Template",
+      "path": "30_Order/Templates/Career/LinkedIn Post Template.md"
+    },
+    {
+      "basename": "Job & Company Template",
+      "path": "30_Order/Templates/Career/Job & Company Template.md"
+    },
+    {
+      "basename": "Contact Template",
+      "path": "30_Order/Templates/Career/Contact Template.md"
+    },
+    {
+      "basename": "Cheat Template",
+      "path": "30_Order/Templates/Career/Cheat Template.md"
+    },
+    {
+      "basename": "Applying Template",
+      "path": "30_Order/Templates/Career/Applying Template.md"
+    },
+    {
+      "basename": "Tracking Standard",
+      "path": "30_Order/Standards/Tracking Standard.md"
+    },
+    {
+      "basename": "Internship Notes Standard",
+      "path": "30_Order/Standards/Internship Notes Standard.md"
+    },
+    {
+      "basename": "Full Stack Web Development Co-op - Spring 2027 - Draper",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Full Stack Web Development Co-op - Spring 2027 - Draper.md"
+    },
+    {
+      "basename": "GPUAI Application System Software Engineer Intern - ByteDance",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/GPUAI Application System Software Engineer Intern - ByteDance.md"
+    },
+    {
+      "basename": "Graduate Level Co-op – Data Scientist – Plymouth, MN – Summer 2027 - Philips",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Graduate Level Co-op – Data Scientist – Plymouth, MN – Summer 2027 - Philips.md"
+    },
+    {
+      "basename": "Image Processing Co-op - Specter Aerospace",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Image Processing Co-op - Specter Aerospace.md"
+    },
+    {
+      "basename": "Forward Deployed Software Engineer Intern - Commercial - Palantir",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Forward Deployed Software Engineer Intern - Commercial - Palantir.md"
+    },
+    {
+      "basename": "Data Science Intern - Notion",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Science Intern - Notion.md"
+    },
+    {
+      "basename": "Data Science PhD Intern, 2027 - Google",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Science PhD Intern, 2027 - Google.md"
+    },
+    {
+      "basename": "Forward Deployed Software Engineer Intern - Intel - Palantir",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Forward Deployed Software Engineer Intern - Intel - Palantir.md"
+    },
+    {
+      "basename": "Data Science Machine Learning Intern - Castleton Commodities International",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Science Machine Learning Intern - Castleton Commodities International.md"
+    },
+    {
+      "basename": "Data Science Intern - Information Technology - Vanguard",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Science Intern - Information Technology - Vanguard.md"
+    },
+    {
+      "basename": "Data Science Intern - Fully Remote US - HireVue",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Science Intern - Fully Remote US - HireVue.md"
+    },
+    {
+      "basename": "Data Lake Infrastructure and Data Analytics Research Engineer Intern - Applied Machine Learning Ark - ByteDance",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Lake Infrastructure and Data Analytics Research Engineer Intern - Applied Machine Learning Ark - ByteDance.md"
+    },
+    {
+      "basename": "Data Engineer Intern - Data - LPL Financial Holdings",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Engineer Intern - Data - LPL Financial Holdings.md"
+    },
+    {
+      "basename": "Campus Undergraduate Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- Charlotte, NC - American Express",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Campus Undergraduate Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- Charlotte, NC - American Express.md"
+    },
+    {
+      "basename": "Campus Undergraduate Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- Sunrise, FL - American Express",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Campus Undergraduate Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- Sunrise, FL - American Express.md"
+    },
+    {
+      "basename": "College to Corporate IT Internship - Data Science (PA) - Vanguard",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/College to Corporate IT Internship - Data Science (PA) - Vanguard.md"
+    },
+    {
+      "basename": "Data Analytics - Data Science Intern - Northwell Health",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Analytics - Data Science Intern - Northwell Health.md"
+    },
+    {
+      "basename": "Data Science Intern - College to Corporate IT - Vanguard",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Science Intern - College to Corporate IT - Vanguard.md"
+    },
+    {
+      "basename": "Data Lake Infrastructure & Data Analytics Research Engineer Intern - Applied Machine Learning Ark - ByteDance",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Lake Infrastructure & Data Analytics Research Engineer Intern - Applied Machine Learning Ark - ByteDance.md"
+    },
+    {
+      "basename": "Campus Undergraduate Summer Internship Program - 2027 AI Engineer I, Enterprise Technology Services- Phoenix, AZ - American Express",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Campus Undergraduate Summer Internship Program - 2027 AI Engineer I, Enterprise Technology Services- Phoenix, AZ - American Express.md"
+    },
+    {
+      "basename": "Campus Graduate Masters Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- New York, NY - American Express",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Campus Graduate Masters Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- New York, NY - American Express.md"
+    },
+    {
+      "basename": "Campus Graduate Masters Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- Charlotte, NC - American Express",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Campus Graduate Masters Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- Charlotte, NC - American Express.md"
+    },
+    {
+      "basename": "Campus AI Research Engineer (Intern) - Jump Trading",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Campus AI Research Engineer (Intern) - Jump Trading.md"
+    },
+    {
+      "basename": "Campus AI Research Engineer - Deep Learning (Intern) - Jump Trading",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Campus AI Research Engineer - Deep Learning (Intern) - Jump Trading.md"
+    },
+    {
+      "basename": "Business Systems Analyst Intern - W.W. Grainger",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Business Systems Analyst Intern - W.W. Grainger.md"
+    },
+    {
+      "basename": "Applied Machine Learning Production Engineer Intern - AML Production Engineer - ByteDance",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Applied Machine Learning Production Engineer Intern - AML Production Engineer - ByteDance.md"
+    },
+    {
+      "basename": "Autonomous Driving – Internship in Machine Learning - Robert Bosch Venture Capital",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Autonomous Driving – Internship in Machine Learning - Robert Bosch Venture Capital.md"
+    },
+    {
+      "basename": "Campus AI Research Engineer – Research Automation (Intern) - Jump Trading",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Campus AI Research Engineer – Research Automation (Intern) - Jump Trading.md"
+    },
+    {
+      "basename": "Agentic AI Intern - American Fidelity",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Agentic AI Intern - American Fidelity.md"
+    },
+    {
+      "basename": "AI and Data Engineering Summer Scholar Intern - Government & Public Services - Deloitte",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/AI and Data Engineering Summer Scholar Intern - Government & Public Services - Deloitte.md"
+    },
+    {
+      "basename": "Analytics and Quantitative Modeling Intern - Analytics & Quantitative Modeling - KeyBank",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Analytics and Quantitative Modeling Intern - Analytics & Quantitative Modeling - KeyBank.md"
+    },
+    {
+      "basename": "AI-First Engineering Intern - Xsolla",
+      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/AI-First Engineering Intern - Xsolla.md"
     },
     {
       "basename": "AI Network Automation Engineer Intern, Global Physical Network Infra - ByteDance",
@@ -11,194 +199,6 @@
     {
       "basename": "AI Intern - Montenson",
       "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/AI Intern - Montenson.md"
-    },
-    {
-      "basename": "AI Engineer Intern - Enterprise Technology Services - American Express",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/AI Engineer Intern - Enterprise Technology Services - American Express.md"
-    },
-    {
-      "basename": "AI and Data Engineering Summer Scholar Intern - Government & Public Services - Deloitte",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/AI and Data Engineering Summer Scholar Intern - Government & Public Services - Deloitte.md"
-    },
-    {
-      "basename": "Agentic AI Intern - American Fidelity",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Agentic AI Intern - American Fidelity.md"
-    },
-    {
-      "basename": "Agent Evaluation & Evolution Machine Learning Engineer Intern - Applied Machine Learning Ark - ByteDance",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Agent Evaluation & Evolution Machine Learning Engineer Intern - Applied Machine Learning Ark - ByteDance.md"
-    },
-    {
-      "basename": "A.I. Developer Co-Op (Boston, MA) - Manhattan Associates",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/A.I. Developer Co-Op (Boston, MA) - Manhattan Associates.md"
-    },
-    {
-      "basename": "Internship Notes Standard",
-      "path": "30_Order/Standards/Internship Notes Standard.md"
-    },
-    {
-      "basename": "Ingestion Pipeline Audit — Clippings, Summaries & Implementation (2026-07-27)",
-      "path": "60_Claude/20_Distilled_Notes/Ingestion Pipeline Audit — Clippings, Summaries & Implementation (2026-07-27).md"
-    },
-    {
-      "basename": "graph",
-      "path": "60_Claude/40_Project_Briefs/Internship/graph.canvas"
-    },
-    {
-      "basename": "Resources",
-      "path": "10_Areas/Career/Internships/List/Resources.md"
-    },
-    {
-      "basename": "Claude Code Prompts",
-      "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
-    },
-    {
-      "basename": "What was Viewed",
-      "path": "10_Areas/Career/Internships/List/Dossiers/Viewed/What was Viewed.md"
-    },
-    {
-      "basename": "Prompts",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Claude Code/Prompts.md"
-    },
-    {
-      "basename": "Prefix-Invariance & No-Lookahead Proof",
-      "path": "60_Claude/40_Project_Briefs/TradingView/Communities/Prefix-Invariance & No-Lookahead Proof.md"
-    },
-    {
-      "basename": "Session Handoff — Graphify Deletion Incident (2026-08-22)",
-      "path": "60_Claude/40_Project_Briefs/Internship/Session Handoff — Graphify Deletion Incident (2026-08-22).md"
-    },
-    {
-      "basename": "Graphify Workflow",
-      "path": "40_Resources/CS/AI/Workflows/Claude Code/Graphify Workflow.md"
-    },
-    {
-      "basename": "40_Project_Briefs Board",
-      "path": "60_Claude/40_Project_Briefs/40_Project_Briefs Board.md"
-    },
-    {
-      "basename": "How to use Graphify",
-      "path": "60_Claude/40_Project_Briefs/How to use Graphify.md"
-    },
-    {
-      "basename": "Vault-Audit-2026-05-29",
-      "path": "60_Claude/30_Reviews/Vault-Audit-2026-05-29.md"
-    },
-    {
-      "basename": "00_Execution",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md"
-    },
-    {
-      "basename": "GitHub Ingestion Implementation",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/GitHub Ingestion Implementation.md"
-    },
-    {
-      "basename": "Folder Map",
-      "path": "10_Areas/AI/Setup/Folder Map.md"
-    },
-    {
-      "basename": "AI Tools Weekly Review — 2026-W34",
-      "path": "60_Claude/30_Reviews/AI/Scheduled/Weekly/AI Tools Weekly Review — 2026-W34.md"
-    },
-    {
-      "basename": "The AI Hub",
-      "path": "20_Progress/Projects/AI Use/The AI Hub.md"
-    },
-    {
-      "basename": "APAS",
-      "path": "40_Resources/UMN/The Plan/APAS.md"
-    },
-    {
-      "basename": "Fall'26 Syllabus",
-      "path": "20_Progress/Degree/Fall'26 Syllabus.md"
-    },
-    {
-      "basename": "Community College",
-      "path": "40_Resources/UMN/The Plan/Community College.md"
-    },
-    {
-      "basename": "Entrepreneurship Minor",
-      "path": "40_Resources/UMN/The Plan/Entrepreneurship Minor.md"
-    },
-    {
-      "basename": "Spring'26 Syllabus",
-      "path": "40_Resources/UMN/The Plan/Spring'26 Syllabus.md"
-    },
-    {
-      "basename": "L8's Principal's Engineering Workflow Trasncript",
-      "path": "60_Claude/05_Clippings/Videos/L8's Principal's Engineering Workflow Trasncript.md"
-    },
-    {
-      "basename": "Write Log",
-      "path": "20_Progress/AI/Claude Code/Write Log.md"
-    },
-    {
-      "basename": "_All-Projects-Sync-Log",
-      "path": "20_Progress/AI/Claude Code/_All-Projects-Sync-Log.md"
-    },
-    {
-      "basename": "Tool log",
-      "path": "60_Claude/05_Clippings/AI Conversations/Windows/Claude Code/Tool log.md"
-    },
-    {
-      "basename": "Log",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Log.md"
-    },
-    {
-      "basename": "What MCPs",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/MCPs/What MCPs.md"
-    },
-    {
-      "basename": "How to Use Hooks",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Hooks/How to Use Hooks.md"
-    },
-    {
-      "basename": "How to Use Commands",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Commands/How to Use Commands.md"
-    },
-    {
-      "basename": "How to Use Agents",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Agents/How to Use Agents.md"
-    },
-    {
-      "basename": "Claude Code",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Claude Code.md"
-    },
-    {
-      "basename": "Career Ops",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Career Ops.md"
-    },
-    {
-      "basename": "Code Review",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Code Review.md"
-    },
-    {
-      "basename": "What Skills",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Skills/What Skills.md"
-    },
-    {
-      "basename": "Github Skills",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Toolkit/Skills/Github Skills.md"
-    },
-    {
-      "basename": "Claude Council (LLM Council Skill Install)",
-      "path": "20_Progress/Projects/AI Use/Builds & Resources/Claude Council (LLM Council Skill Install).md"
-    },
-    {
-      "basename": "_Notes Created From Ingestion",
-      "path": "60_Claude/20_Distilled_Notes/Sources - Plan/_Notes Created From Ingestion.md"
-    },
-    {
-      "basename": "Internship Pipeline - Design Rationale",
-      "path": "30_Order/Workflows/Internship Pipeline - Design Rationale.md"
-    },
-    {
-      "basename": "2026-08-10",
-      "path": "10_Areas/Life/Enumerate/Daily/2026-08-10.md"
-    },
-    {
-      "basename": "Jarvis OS Dashboard",
-      "path": "10_Areas/Jarvis OS Dashboard.canvas"
     }
   ],
   "omittedPaths": [],

@@ -1,15 +1,15 @@
 ---
 type: evergreen
 status: sprout
-created: <% tp.date.now("YYYY-MM-DD") %>
-updated: <% tp.date.now("YYYY-MM-DD") %>
+created:
+updated:
 tags:
   - cheat
   - internship
 notes: []
 next:
 ---
-# <% tp.file.title %>
+# [Tactic Name]
 ## What It Is
 ==The one-sentence version of the trick or shortcut.==
 ## Why It Works

@@ -13,6 +13,7 @@ tags:
 
 ## Connections
 - [[Agent vs. more Python — the actual judgment call for each]] - `contains` [EXTRACTED]
+- [[Auto-mode classifier notes (this repo only)]] - `contains` [EXTRACTED]
 - [[CLAUDE]] - `contains` [EXTRACTED]
 - [[Conventions this codebase enforces — read before touching core, ingestion, vault_writer, run_pipeline.py, or recheck.py]] - `contains` [EXTRACTED]
 - [[Note-template contracts (for `promote-dossier` and any future vault-writing code)]] - `contains` [EXTRACTED]

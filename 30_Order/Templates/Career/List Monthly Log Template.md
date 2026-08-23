@@ -2,15 +2,15 @@
 type: input
 input_kind: listing
 status: active
-created: <% tp.date.now("YYYY-MM-DD") %>
-updated: <% tp.date.now("YYYY-MM-DD") %>
-month: <% tp.date.now("YYYY-MM") %>
+created:
+updated:
+month:
 tags:
   - internship
   - list
 next:
 ---
-# <% tp.file.title %>
+# [YYYY-MM] Found
 Generated view, not hand-typed — every row is a dossier file in `List/Dossiers/`, written either by you (manual quick-add) or the research loop (automated find). This file just queries them for this month. See [[Internship Pipeline]].
 ## Postings
 ```dataview

@@ -2,7 +2,7 @@
 source_file: "tests/test_posting_page.py"
 type: "code"
 community: "writer.py"
-location: "L122"
+location: "L155"
 tags:
   - graphify/code
   - graphify/EXTRACTED

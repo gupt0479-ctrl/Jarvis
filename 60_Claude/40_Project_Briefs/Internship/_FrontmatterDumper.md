@@ -1,12 +1,12 @@
 ---
 source_file: "vault_writer/writer.py"
 type: "code"
-community: "build_frontmatter"
+community: "plan_removals"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/build_frontmatter
+  - community/plan_removals
 ---
 
 # _FrontmatterDumper
@@ -17,4 +17,4 @@ tags:
 - [[dump_frontmatter()]] - `indirect_call` [INFERRED]
 - [[writer.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/build_frontmatter
+#graphify/code #graphify/EXTRACTED #community/plan_removals

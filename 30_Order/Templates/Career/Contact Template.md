@@ -12,7 +12,7 @@ tags:
   - contact
 next:
 ---
-# <% tp.file.title %>
+# [Role] - [Company]
 ## Facts
 What you actually know about this person and why they're relevant to *this specific* internship — not a generic bio. Every fact below needs a source; a fact with no source is a guess, not a fact.
 ### Contact
@@ -25,6 +25,6 @@ How is this person actually related to the company — what's their real role, w
 > Drafting help only. No message here sends itself — every draft is reviewed and sent by hand.
 ## Conversation Log
 Dated entries, newest at the bottom.
-- **<% tp.date.now("YYYY-MM-DD") %>:** Note created.
+- **YYYY-MM-DD:** Note created.
 ## Next Action
 The single next move — send, follow up, or wait.

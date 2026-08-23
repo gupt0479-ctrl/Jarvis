@@ -19,6 +19,7 @@ tags:
 - [[test_absent_from_feed_is_removed()]] - `contains` [EXTRACTED]
 - [[test_active_false_upstream_is_removed()]] - `contains` [EXTRACTED]
 - [[test_all_active_removes_nothing()]] - `contains` [EXTRACTED]
+- [[test_already_removed_dossier_is_not_re_swept()]] - `contains` [EXTRACTED]
 - [[test_dossier_with_no_manifest_entry_is_skipped_not_removed()]] - `contains` [EXTRACTED]
 - [[test_failed_fetch_skips_that_sources_dossiers_entirely()]] - `contains` [EXTRACTED]
 

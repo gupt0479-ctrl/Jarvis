@@ -18,7 +18,7 @@ tags:
   - internship
   - program
 ---
-# <% tp.file.title %>
+# [Role] - [Company]
 ==Static research only== — comp, eligibility, deadlines, traps, prep. Live status (applied, interview, offer) lives on the matching note in `20_Progress/Internship/Applying/`, linked via `applying_note` above.
 ## Program Overview
 What the role is, who runs it, what makes it worth the hours to prepare for. Related to my resume and profile. How exactly would it help me?
