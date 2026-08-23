@@ -1,12 +1,12 @@
 ---
 source_file: "vault_writer/writer.py"
 type: "code"
-community: "plan_removals"
+community: "build_frontmatter"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/plan_removals
+  - community/build_frontmatter
 ---
 
 # writer.py
@@ -27,6 +27,7 @@ tags:
 - [[move_dossier_to_viewed()]] - `contains` [EXTRACTED]
 - [[recheck.py]] - `imports_from` [EXTRACTED]
 - [[render_dossier()]] - `contains` [EXTRACTED]
+- [[revalidate.py]] - `imports_from` [EXTRACTED]
 - [[run_pipeline.py]] - `imports_from` [EXTRACTED]
 - [[save_dossier_uids()]] - `contains` [EXTRACTED]
 - [[scan_dossiers()]] - `contains` [EXTRACTED]
@@ -34,4 +35,4 @@ tags:
 - [[test_writer.py]] - `imports_from` [EXTRACTED]
 - [[write_dossier()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/plan_removals
+#graphify/code #graphify/EXTRACTED #community/build_frontmatter

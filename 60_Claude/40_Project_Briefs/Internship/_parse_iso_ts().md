@@ -1,12 +1,12 @@
 ---
 source_file: "ingestion/normalize.py"
 type: "code"
-community: "test_freehire.py"
+community: "write_dossier"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_freehirepy
+  - community/write_dossier
 ---
 
 # _parse_iso_ts()
@@ -19,4 +19,4 @@ tags:
 - [[normalize_greenhouse()]] - `calls` [EXTRACTED]
 - [[normalize_zshah101()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_freehirepy
+#graphify/code #graphify/EXTRACTED #community/write_dossier

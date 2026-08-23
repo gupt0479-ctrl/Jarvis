@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_debate_losses.py"
 type: "code"
-community: "normalize_simplify"
+community: "test_writer.py"
 location: "L84"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/normalize_simplify
+  - community/test_writerpy
 ---
 
 # test_fetch_and_filter_skips_excluded_uid()
@@ -17,4 +17,4 @@ tags:
 - [[normalize_simplify()]] - `calls` [EXTRACTED]
 - [[test_debate_losses.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/normalize_simplify
+#graphify/code #graphify/EXTRACTED #community/test_writerpy

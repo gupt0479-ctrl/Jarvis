@@ -1,12 +1,12 @@
 ---
 source_file: "ingestion/normalize.py"
 type: "code"
-community: "recheck.py"
+community: "write_dossier"
 location: "L139"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/recheckpy
+  - community/write_dossier
 ---
 
 # normalize_ashby()
@@ -20,4 +20,4 @@ tags:
 - [[test_filter.py]] - `imports` [EXTRACTED]
 - [[test_normalize_ashby_maps_fields()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/recheckpy
+#graphify/code #graphify/EXTRACTED #community/write_dossier

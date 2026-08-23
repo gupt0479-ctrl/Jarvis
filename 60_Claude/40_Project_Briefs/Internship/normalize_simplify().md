@@ -1,12 +1,12 @@
 ---
 source_file: "ingestion/normalize.py"
 type: "code"
-community: "normalize_simplify"
+community: "test_writer.py"
 location: "L42"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/normalize_simplify
+  - community/test_writerpy
 ---
 
 # normalize_simplify()
@@ -49,4 +49,4 @@ tags:
 - [[test_validate_and_write_seeds_dedup_keys_from_existing_vault_files()]] - `calls` [EXTRACTED]
 - [[test_writer.py]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/normalize_simplify
+#graphify/code #graphify/EXTRACTED #community/test_writerpy

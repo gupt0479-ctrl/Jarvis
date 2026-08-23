@@ -5,9 +5,9 @@ source_app: claude-code
 source_os: wsl
 title: "Internship dossier audit and filter-rule reconciliation"
 started_at: 2026-08-23T11:53:47
-ended_at: 2026-08-23T13:15:06
-duration_minutes: 81
-exported_at: 2026-08-23T17:15:03
+ended_at: 2026-08-23T14:13:15
+duration_minutes: 139
+exported_at: 2026-08-23T19:18:42
 project: internship-research-loop
 cwd: '/home/anant_gupta/projects/work/internship-research-loop'
 session_id: 40a420c0-8439-4d86-afe3-7030dfd044da
@@ -16,21 +16,26 @@ turn_count: 26
 tools_used:
   Agent: 6
   AskUserQuestion: 1
-  Bash: 4
+  Bash: 26
+  Edit: 12
   ListAgents: 3
-  mcp__jarvis__vault_list: 4
-  mcp__jarvis__vault_read: 3
+  mcp__jarvis__search_query: 8
+  mcp__jarvis__vault_delete: 43
+  mcp__jarvis__vault_list: 5
+  mcp__jarvis__vault_read: 112
   mcp__jarvis-fs__list_allowed_directories: 1
-  Read: 15
+  Read: 22
   SendMessage: 4
-  ToolSearch: 2
+  ToolSearch: 4
+  WebFetch: 1
+  Write: 1
 tokens:
-  input: 176
-  output: 189168
-  cache_creation: 436852
-  cache_read: 11395841
-  total: 12022037
-cost_usd: 5.898435
+  input: 702
+  output: 1225180
+  cache_creation: 11301664
+  cache_read: 96519864
+  total: 109047410
+cost_usd: 76.743659
 model:
   - claude-sonnet-5
 files_touched:
@@ -49,6 +54,10 @@ files_touched:
   - "/home/anant_gupta/projects/work/internship-research-loop/core/debate.py"
   - "/home/anant_gupta/projects/work/internship-research-loop/tests/test_posting_page.py"
   - "/home/anant_gupta/projects/work/internship-research-loop/tests/test_recheck.py"
+  - "/home/anant_gupta/projects/work/internship-research-loop/tests/test_relevance.py"
+  - "/home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/posting_zipline_open_roles.md"
+  - "/home/anant_gupta/projects/work/internship-research-loop/tests/test_filter.py"
+  - "/home/anant_gupta/projects/work/internship-research-loop/tests/test_identity.py"
 tags:
   - input
   - ai-conversation
@@ -694,6 +703,40 @@ Per phase: what was fixed (with test counts), what was removed (count per catego
 
 ## Claude
 
+There's a `.venv` in the repo already.
+
+Good, baseline is green (329 tests). Now let's implement Phase 1, item by item, each as its own commit.
+
+Now the safety-net board-index detector in `extract_content()`, for when the URL fix still doesn't yield real content:
+
+All new tests pass on the first try. Let's run the full suite before committing.
+
+333 passed (329 + 4 new). Committing Phase 1 item 1.
+
+Good — only my three files staged, the pre-existing unrelated modifications are untouched.
+
+Now a regression test in `tests/test_recheck.py`:
+
+334 passed. Committing Phase 1 item 2.
+
+Now the tests, extending the existing parametrized rejection list with real cited examples:
+
+340 passed. Committing Phase 1 item 3.
+
+Now let's run these against the implementation and see what actually happens.
+
+All 30 pass, confirming the hand-analysis was correct. Full suite:
+
+Now the implementation:
+
+Now the tests:
+
+All pass. Let's also sanity-check this new pattern doesn't accidentally break existing non-Workday URL extraction, then run the full suite.
+
+358 passed (355 + 3 new). Committing Phase 1 item 5 — the last Phase 1 fix.
+
+This is a large, consequential batch (43 real dossier deletions in your live vault). Given they default to trash (recoverable via Obsidian's deleted-files, not permanent), and every one is verified against the now-fixed code or a confirmed real URL match, I'm proceeding with the itemized plan you approved. Executing now.
+
 **Tool calls:**
 
 - `Bash` — `find tests -type f -name "*.py" | sort && echo "---" && wc -l core/debate.py ingestion/posting_page.py 2>/dev/null`
@@ -729,11 +772,1275 @@ tests/test_writer.py
 - `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Aerodynamics Intern (Spring 2027) - Zipline.md"}`
 - `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Perception Intern (Summer 2027) - Zipline.md"}`
 - `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Software Engineer Intern - Spring 2027 - Zipline.md"}`
+- `ToolSearch` — `{"query":"select:WebFetch","max_results":3}`
+- `WebFetch` — `{"url":"https://www.zipline.com/open-roles/7904002003","prompt":"Does this page show the specific job posting for \"Aerodynamics Intern (Spring 2027)\" with a real job description (responsibilities, qualifications), or does it show a generic list/index of many unrelated open roles? Quote the first heading and first paragraph of body text you see."}`
+- `Read` — `/home/anant_gupta/projects/work/internship-research-loop/tests/test_relevance.py`
+- `Bash` — `python3 -m pytest -q 2>&1 | tail -20`
+  ```
+/usr/bin/python3: No module named pytest
+  ```
+- `Bash` — `cat requirements.txt; echo "---"; which python3; python3 --version; echo "---venvs---"; find / -maxdepth 4 -iname "*venv*" -type d 2>/dev/null | grep -v proc; echo "---pip show pytest global---"; pip3 show pytest 2>&1 | head -5; echo "---"; ls -la .venv 2>/dev/null; cat .github/workflows/test.yml 2>/dev/null`
+  ```
+requests==2.34.2
+pyyaml==6.0.3
+pytest==9.1.1
+jinja2==3.1.6
+---
+/usr/bin/python3
+Python 3.12.3
+---venvs---
+/usr/lib/python3.12/venv
+---pip show pytest global---
+WARNING: Package(s) not found: pytest
+---
+total 24
+drwxr-xr-x  5 anant_gupta anant_gupta 4096 Jul 16 21:52 .
+drwxr-xr-x 17 anant_gupta anant_gupta 4096 Aug 22 14:39 ..
+drwxr-xr-x  2 anant_gupta anant_gupta 4096 Jul 16 21:52 bin
+drwxr-xr-x  3 anant_gupta anant_gupta 4096 Jul 16 21:52 include
+drwxr-xr-x  3 anant_gupta anant_gupta 4096 Jul 16 21:52 lib
+lrwxrwxrwx  1 anant_gupta anant_gupta    3 Jul 16 21:52 lib64 -> lib
+-rw-r--r--  1 anant_gupta anant_gupta  201 Jul 16 21:52 pyvenv.cfg
+name: test
+on: [push, pull_request]
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python -m pytest tests/ -v
+  ```
+- `Bash` — `.venv/bin/python -m pytest -q 2>&1 | tail -20`
+  ```
+........................................................................ [ 21%]
+........................................................................ [ 43%]
+........................................................................ [ 65%]
+........................................................................ [ 87%]
+.........................................                                [100%]
+329 passed in 4.80s
+  ```
+- `Bash` — `git status --short && git log --oneline -5`
+  ```
+ M CLAUDE.md
+ M graphify-out/GRAPH_REPORT.md
+ M graphify-out/graph.html
+ M graphify-out/graph.json
+ M graphify-out/manifest.json
+?? .claudeignore
+?? .gitattributes
+266d2f0 pre-push: note the graphify hook-chain sanity check (2026-08-22)
+07da09a Update state + logs — 2026-08-22
+f050597 PRD.md: sync to real shipped state (2026-08-22)
+2e9ba00 Add a local pre-push test gate
+89fd543 Add graphify knowledge graph output, gitignore its churn
+  ```
+- `Edit` — `/home/anant_gupta/projects/work/internship-research-loop/ingestion/posting_page.py`
+  ```diff
+  - import re
+from urllib.parse import urlparse
+
+import requests
+  + import re
+from urllib.parse import parse_qs, urlparse
+
+import requests
+  ```
+- `Edit` — `/home/anant_gupta/projects/work/internship-research-loop/ingestion/posting_page.py`
+  ```diff
+  - _ASHBY_APPLICATION_SUFFIX_RE = re.compile(r"/application/?$")
+
+
+def _content_fetch_url(url: str) -> str:
+    """The URL to actually fetch for posting content — strips an Ashby
+    application-form suffix so the fetch lands on the real posting page.
+    listing.url itself (used for display/apply) is never touched, only the
+    URL passed to Firecrawl here."""
+    parsed = urlparse(url)
+    if parsed.netloc == "jobs.ashbyhq.com" and _ASHBY_APPLICATION_SUFFIX_RE.search(parsed.path):
+        return url[: url.rindex("/application")]
+    return url
+  + _ASHBY_APPLICATION_SUFFIX_RE = re.compile(r"/application/?$")
+
+# Real bug, confirmed 2026-08-23 (2026-08-23 dossier audit): every AIJobs-sourced
+# Zipline dossier stores listing.url as the query-param form
+# "zipline.com/open-roles?gh_jid=<id>" — a client-side-filtered SPA route that
+# Firecrawl fetches as Zipline's entire unfiltered /open-roles job board (100+
+# unrelated titles), not the one job's content (confirmed against the real
+# stored fetched content of "Aerodynamics Intern (Spring 2027)", "Perception
+# Intern (Summer 2027)", and "Software Engineer Intern - Spring 2027" — all
+# three are byte-for-byte the same board-index dump). The board's own job links
+# use a *different* URL shape for the same id — the path form
+# "zipline.com/open-roles/<id>" — and a live fetch of that path form (WebFetch,
+# 2026-08-23) returns the specific job's title in the page's own <title>
+# element (unlike the query form, which never does), confirming it's the real
+# per-job route; a plain non-JS fetch still can't see the rendered body, but
+# Firecrawl's `waitFor: 8000` below already exists precisely to render
+# JS-heavy ATS pages like this one, same as every other successfully-extracted
+# dossier in this pipeline.
+_ZIPLINE_OPEN_ROLES_QUERY_RE = re.compile(r"^/open-roles/?$")
+
+
+def _content_fetch_url(url: str) -> str:
+    """The URL to actually fetch for posting content — rewrites known
+    board-index-only URL shapes to their real per-posting route. listing.url
+    itself (used for display/apply) is never touched, only the URL passed to
+    Firecrawl here."""
+    parsed = urlparse(url)
+    if parsed.netloc == "jobs.ashbyhq.com" and _ASHBY_APPLICATION_SUFFIX_RE.search(parsed.path):
+        return url[: url.rindex("/application")]
+    if parsed.netloc in ("zipline.com", "www.zipline.com") and _ZIPLINE_OPEN_ROLES_QUERY_RE.match(parsed.path):
+        job_id = (parse_qs(parsed.query).get("gh_jid") or [None])[0]
+        if job_id:
+            return f"{parsed.scheme}://{parsed.netloc}/open-roles/{job_id}"
+    return url
+  ```
+- `Edit` — `/home/anant_gupta/projects/work/internship-research-loop/ingestion/posting_page.py`
+  ```diff
+  - _LISTING_SHELL_RESET_RE = re.compile(
+    r"^(_arrow_back_|back to jobs search|##?\s*jobs search results|[\d,]+\s+jobs matched"
+    r"|showing \d+ to \d+ of|_navigate_next_)", re.I,
+)
+  + 
+# Zipline's /open-roles board (see _ZIPLINE_OPEN_ROLES_QUERY_RE above) renders
+# a "## Open roles" heading (real fetched dossiers show it twice, back to
+# back) followed by "Search\nFilter by\nLocation\nDepartments" widget chrome
+# before the job-link rows — a distinct enough shape from a real posting's own
+# heading that it's safe to treat the same way as the Google listing-shell
+# case below: reset and wait for the next real heading. Unlike Google's case,
+# Zipline's board has no further real per-job heading afterward (confirmed
+# against the same three real dossiers cited above), so this correctly
+# degrades the dossier to thin (extract_content returns "") rather than
+# passing stage2_confirm on an unrelated title elsewhere on the same page —
+# safety net for if the URL rewrite above ever still lands on the board.
+_LISTING_SHELL_RESET_RE = re.compile(
+    r"^(_arrow_back_|back to jobs search|##?\s*jobs search results|[\d,]+\s+jobs matched"
+    r"|showing \d+ to \d+ of|_navigate_next_|#+\s*open roles\s*$)", re.I,
+)
+  ```
+- `Write` — `/home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/posting_zipline_open_roles.md`
+  ```
+## Open roles
+
+## Open roles
+
+Search
+
+Filter by
+
+Location
+
+Departments
+
+[**Accounting Intern (Spring 2027)** \
+\
+2027 Internships\
+\
+South San Francisco, California, USA](https://www.zipline.com/open-roles/7893921003)
+
+[**Aerodynamics Intern (Spring 2027)** \
+\
+2027 Internships\
+\
+South San Francisco, California, USA](https://www.zipline.com/open-roles/7904002003)
+
+[**Aerodynamics Manager** \
+\
+Hardware\
+\
+South San Francisco, California, USA](https://www.zipline.com/open-roles/7810042003)
+
+[**Director of Software Engineering – Marketplace** \
+\
+Customer Experience\
+\
+South San Francisco, California, USA](https://www.zipline.com/open-roles/7815718003)
+
+[**Autonomy Droid Perception SWE - Offboard Systems** \
+\
+Flight SW\
+\
+South San Francisco, California, USA](https://www.zipline.com/open-roles/7805425003)
+
+  ```
+- `Edit` — `/home/anant_gupta/projects/work/internship-research-loop/tests/test_posting_page.py`
+  ```diff
+  - def test_content_fetch_url_leaves_ashby_non_application_urls_alone():
+    url = "https://jobs.ashbyhq.com/ctgt/[REDACTED]"
+    assert _content_fetch_url(url) == url
+  + def test_content_fetch_url_leaves_ashby_non_application_urls_alone():
+    url = "https://jobs.ashbyhq.com/ctgt/[REDACTED]"
+    assert _content_fetch_url(url) == url
+
+
+# --- Zipline SPA board-index bug (2026-08-23 dossier audit) ---
+
+def test_content_fetch_url_rewrites_real_zipline_query_url_to_path_form():
+    """Real listing.url shape stored on every AIJobs-sourced Zipline dossier
+    ('Aerodynamics Intern (Spring 2027)', gh_jid=7904002003) — the query form
+    resolves to the generic /open-roles board; the board's own job links use
+    the path form for the same id, confirmed live (WebFetch, 2026-08-23) to
+    carry the specific job's title in the page's own <title>, unlike the
+    query form."""
+    url = "https://www.zipline.com/open-roles?gh_jid=7904002003"
+    assert _content_fetch_url(url) == "https://www.zipline.com/open-roles/7904002003"
+
+
+def test_content_fetch_url_leaves_zipline_path_urls_alone():
+    url = "https://www.zipline.com/open-roles/7904002003"
+    assert _content_fetch_url(url) == url
+
+
+def test_content_fetch_url_leaves_zipline_urls_without_job_id_alone():
+    assert _content_fetch_url("https://www.zipline.com/open-roles") == "https://www.zipline.com/open-roles"
+
+
+def test_extract_content_treats_real_zipline_board_index_as_unconfirmed():
+    """Real fetched content, verbatim from three separate live Zipline
+    dossiers ('Aerodynamics Intern (Spring 2027)', 'Perception Intern (Summer
+    2027)', 'Software Engineer Intern - Spring 2027') — all three are
+    byte-for-byte the same board-index dump regardless of the actual role.
+    Must degrade to '' (thin dossier), not pass stage2_confirm on an
+    unrelated title elsewhere on the shared page."""
+    md = (FIXTURES / "posting_zipline_open_roles.md").read_text(encoding="utf-8")
+    assert extract_content(md) == ""
+  ```
+- `Bash` — `.venv/bin/python -m pytest tests/test_posting_page.py -q 2>&1 | tail -40`
+  ```
+.....................................                                    [100%]
+37 passed in 0.32s
+  ```
+- `Bash` — `.venv/bin/python -m pytest -q 2>&1 | tail -10`
+  ```
+........................................................................ [ 21%]
+........................................................................ [ 43%]
+........................................................................ [ 64%]
+........................................................................ [ 86%]
+.............................................                            [100%]
+333 passed in 3.03s
+  ```
+- `Bash` — `git add ingestion/posting_page.py tests/test_posting_page.py tests/fixtures/posting_zipline_open_roles.md && git status --short`
+  ```
+ M CLAUDE.md
+ M graphify-out/GRAPH_REPORT.md
+ M graphify-out/graph.html
+ M graphify-out/graph.json
+ M graphify-out/manifest.json
+M  ingestion/posting_page.py
+A  tests/fixtures/posting_zipline_open_roles.md
+M  tests/test_posting_page.py
+?? .claudeignore
+?? .gitattributes
+  ```
+- `Bash`:
+  ```bash
+git commit -m "$(cat <<'EOF'
+Fix Zipline SPA board-index content-extraction bug
+
+listing.url for every AIJobs-sourced Zipline dossier used the query-param
+form (zipline.com/open-roles?gh_jid=<id>), which Firecrawl fetches as the
+entire unfiltered /open-roles job board rather than the one job's content —
+confirmed against the real stored fetched content of three live dossiers,
+all byte-for-byte identical regardless of the actual role. stage2_confirm
+then passed every one of these on an unrelated real job title present
+elsewhere on the shared board page.
+
+Rewrite the query form to the board's own path-form job URL before fetching
+(confirmed live via WebFetch to carry the specific job's title in its page
+<title>, unlike the query form), and add a board-index-shape detector to
+extract_content() as a safety net so a page that still can't be rendered
+degrades to a thin dossier instead of a false stage2 pass.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+EOF
+)"
+  ```
+  ```
+[graphify hook] launching background rebuild (log: /home/anant_gupta/.cache/graphify-rebuild.log)
+[master ceeea7d] Fix Zipline SPA board-index content-extraction bug
+ 3 files changed, 114 insertions(+), 6 deletions(-)
+ create mode 100644 tests/fixtures/posting_zipline_open_roles.md
+  ```
+- `Read` — `/home/anant_gupta/projects/work/internship-research-loop/recheck.py`
+- `Edit` — `/home/anant_gupta/projects/work/internship-research-loop/recheck.py`
+  ```diff
+  -     manifest entry (written before the manifest existed, or hand-edited into
+    the vault, e.g. Software Engineer - Ellipsis Labs.md) is skipped too —
+    unknown means leave alone, not removable."""
+    removals = []
+    jarvis_dir = Path(jarvis_dir)
+    for fm in dossiers:
+        uid = uid_by_path.get(str(fm["_path"].relative_to(jarvis_dir)))
+        if uid is None:
+            continue
+  +     manifest entry (written before the manifest existed, or hand-edited into
+    the vault, e.g. Software Engineer - Ellipsis Labs.md) is skipped too —
+    unknown means leave alone, not removable. A dossier already moved to
+    Viewed/ (status: removed) is skipped too — real, reproducible bug found
+    2026-08-23: scan_dossiers() globs Viewed/ along with every live bucket (by
+    design, for cross-source dedup), so a dossier that stayed closed kept
+    getting swept up here again on every subsequent run and re-moved via
+    move_dossier_to_viewed(), which — finding the base filename already taken
+    by itself — wrote a new '(2)', '(3)', ... suffixed copy and deleted the
+    original every single day. Confirmed live: all 4 real dossiers in Viewed/
+    as of 2026-08-23 already carried a spurious '(2)' suffix from this."""
+    removals = []
+    jarvis_dir = Path(jarvis_dir)
+    for fm in dossiers:
+        if fm.get("status") == "removed":
+            continue
+        uid = uid_by_path.get(str(fm["_path"].relative_to(jarvis_dir)))
+        if uid is None:
+            continue
+  ```
+- `Edit` — `/home/anant_gupta/projects/work/internship-research-loop/tests/test_recheck.py`
+  ```diff
+  - def test_dossier_with_no_manifest_entry_is_skipped_not_removed():
+    """A dossier written before dossier_uids.json existed (or hand-edited into
+    the vault) has no manifest entry — unknown means leave alone."""
+    orphan = _fm("SimplifyJobs:orphan")
+    feeds = {"SimplifyJobs": {"aaa": True, "bbb": True}, "Jose-Gael-Cruz-Lopez": {"ccc": True}}
+    assert plan_removals(DOSSIERS + [orphan], feeds, UID_BY_PATH, JARVIS_DIR) == []
+  + def test_dossier_with_no_manifest_entry_is_skipped_not_removed():
+    """A dossier written before dossier_uids.json existed (or hand-edited into
+    the vault) has no manifest entry — unknown means leave alone."""
+    orphan = _fm("SimplifyJobs:orphan")
+    feeds = {"SimplifyJobs": {"aaa": True, "bbb": True}, "Jose-Gael-Cruz-Lopez": {"ccc": True}}
+    assert plan_removals(DOSSIERS + [orphan], feeds, UID_BY_PATH, JARVIS_DIR) == []
+
+
+def test_already_removed_dossier_is_not_re_swept():
+    """Real, reproducible bug found 2026-08-23: scan_dossiers() globs Viewed/
+    along with every live bucket, so a dossier that stayed closed across
+    multiple daily recheck runs kept getting re-moved — move_dossier_to_viewed
+    found the base filename already taken (by itself) and wrote a spurious
+    '(2)', '(3)', ... suffixed copy each time. All 4 real dossiers in Viewed/
+    as of 2026-08-23 already carried a '(2)' suffix from this. A dossier
+    already carrying status: removed must be skipped entirely, same as an
+    unknown-manifest dossier."""
+    already_removed = _fm("SimplifyJobs:aaa")
+    already_removed["status"] = "removed"
+    dossiers = [already_removed, _fm("SimplifyJobs:bbb"), _fm("Jose-Gael-Cruz-Lopez:ccc")]
+    feeds = {"SimplifyJobs": {"bbb": True}, "Jose-Gael-Cruz-Lopez": {"ccc": True}}
+    removals = plan_removals(dossiers, feeds, UID_BY_PATH, JARVIS_DIR)
+    assert removals == []
+  ```
+- `Bash` — `.venv/bin/python -m pytest tests/test_recheck.py -q 2>&1 | tail -20`
+  ```
+......                                                                   [100%]
+6 passed in 0.46s
+  ```
+- `Bash` — `.venv/bin/python -m pytest -q 2>&1 | tail -6`
+  ```
+........................................................................ [ 21%]
+........................................................................ [ 43%]
+........................................................................ [ 64%]
+........................................................................ [ 86%]
+..............................................                           [100%]
+334 passed in 2.11s
+  ```
+- `Bash`:
+  ```bash
+git add recheck.py tests/test_recheck.py && git commit -m "$(cat <<'EOF'
+recheck.py: stop re-sweeping already-removed dossiers in Viewed/
+
+plan_removals() globbed Viewed/ along with every live bucket (scan_dossiers'
+own by-design behavior, kept for cross-source dedup) but never checked
+status == "removed" — a dossier that stayed closed got swept up and
+re-moved by move_dossier_to_viewed() on every subsequent daily run, which
+found its own base filename already taken and wrote a spurious '(2)', '(3)',
+... suffixed copy each time, deleting the original. Confirmed live: all 4
+real dossiers in Viewed/ as of 2026-08-23 already carried a spurious '(2)'
+suffix from this.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+EOF
+)"
+  ```
+  ```
+[graphify hook] launching background rebuild (log: /home/anant_gupta/.cache/graphify-rebuild.log)
+[master 2eb6bab] recheck.py: stop re-sweeping already-removed dossiers in Viewed/
+ 2 files changed, 28 insertions(+), 1 deletion(-)
+  ```
+- `Bash` — `grep -n "location_eligible\|_NON_US\|_entry_is_us_or_remote" tests/test_filter.py | head -40`
+  ```
+6:from core.filter import _matches_josegael, degrees_eligible, load_profile, location_eligible, matches
+125:    assert location_eligible([loc]) is True, loc
+138:    assert location_eligible([loc]) is False, loc
+142:    assert location_eligible([]) is True  # zapplyjobs carries no locations at all
+146:    assert location_eligible(["London, UK", "Boston, MA"]) is True
+  ```
+- `Read` — `/home/anant_gupta/projects/work/internship-research-loop/tests/test_filter.py`
+- `mcp__jarvis__search_query` — `{"query":{"and":[{"glob":["10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/*",{"var":"path"}]},{"regexp":["(?i)(poland|israel|netherlands)",{"var":"content"}]}]}}`
+- `mcp__jarvis__search_query` — `{"query":{"and":[{"glob":["10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/*",{"var":"path"}]},{"regexp":["Poland|Israel|Netherlands",{"var":"content"}]}]}}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Quantitative Research Internship (2027 Start) - Optiver.md","targetType":"frontmatter","target":"locations"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/HardwareSilicon Engineering PhD Intern, 2027 - Google.md","targetType":"frontmatter","target":"locations"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Science PhD Intern, 2027 - Google.md","targetType":"frontmatter","target":"locations"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineer Intern, AIML & LLM - Microsoft.md","targetType":"frontmatter","target":"locations"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Applications Intern - AI and Machine Learning - TMEIC Corporation Americas.md","targetType":"frontmatter","target":"locations"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Graduate Level Co-op – Data Scientist – Plymouth, MN – Summer 2027 - Philips.md","targetType":"frontmatter","target":"locations"}`
+- `Edit` — `/home/anant_gupta/projects/work/internship-research-loop/core/filter.py`
+  ```diff
+  - # Every foreign token actually observed in live data, plus a few obvious neighbors.
+# ponytail: denylist can't name every country — a new foreign token passes until
+# added here; acceptable because a US signal is never falsely rejected.
+_NON_US = re.compile(
+    r"\b(canada|can|uk|united kingdom|germany|india|france|spain|singapore|europe"
+    r"|south america|united arab emirates|mexico|japan|china|ireland|australia)\b"
+)
+# ',' or '.' before the state code tolerates real dirty data ('Dallas. TX');
+# case-insensitive via upper() tolerates 'Carlsbad, Ca'.
+_STATE_SUFFIX = re.compile(r"[.,]\s*([A-Za-z]{2})$")
+
+
+def _entry_is_us_or_remote(loc: str) -> bool:
+    l = _norm(loc)
+    m = _STATE_SUFFIX.search(loc.strip())
+    if m and m.group(1).upper() in _US_STATES:
+        return True
+    if l.split(",")[-1].strip() in _US_STATE_NAMES:
+        return True  # 'New Mexico' before the denylist sees 'mexico'
+    return not _NON_US.search(l)
+  + # Every foreign token actually observed in live data, plus a few obvious neighbors.
+# ponytail: denylist can't name every country — a new foreign token passes until
+# added here; acceptable because a US signal is never falsely rejected.
+# netherlands/hong kong/poland/israel added 2026-08-23 (dossier audit) — three
+# real dossiers passed with no US signal at all despite an affirmative foreign
+# country token already present in their stored locations field: Optiver
+# "Quantitative Research Internship (2027 Start)" and "FPGA Internship (2027
+# Start)" (["Amsterdam, North Holland, Netherlands"]), Google "HardwareSilicon
+# Engineering PhD Intern, 2027" (["Tel Aviv, Israel"]), Google "Data Science
+# PhD Intern, 2027" (["Warsaw, Poland"]), Marshall Wace "Technology Intern -
+# Hong Kong - 2027" (["Hong Kong"]).
+_NON_US = re.compile(
+    r"\b(canada|can|uk|united kingdom|germany|india|france|spain|singapore|europe"
+    r"|south america|united arab emirates|mexico|japan|china|ireland|australia"
+    r"|netherlands|hong kong|poland|israel)\b"
+)
+# ',' or '.' before the state code tolerates real dirty data ('Dallas. TX');
+# case-insensitive via upper() tolerates 'Carlsbad, Ca'.
+_STATE_SUFFIX = re.compile(r"[.,]\s*([A-Za-z]{2})$")
+
+# Bare foreign city names carrying no country/state token at all — the
+# _NON_US regex above only ever sees a country word, so a location field
+# that's just the bare city name slips through entirely. Real dossier, same
+# 2026-08-23 audit: Marshall Wace "Technology Intern - London - 2027" stores
+# locations as exactly ["London"], no "UK"/"United Kingdom" anywhere. Checked
+# as an exact whole-string match (not a substring) so a real US city sharing
+# the name — e.g. "New London, CT" — is never caught by this.
+_NON_US_BARE_CITIES = {"london"}
+
+
+def _entry_is_us_or_remote(loc: str) -> bool:
+    l = _norm(loc)
+    m = _STATE_SUFFIX.search(loc.strip())
+    if m and m.group(1).upper() in _US_STATES:
+        return True
+    if l.split(",")[-1].strip() in _US_STATE_NAMES:
+        return True  # 'New Mexico' before the denylist sees 'mexico'
+    if l in _NON_US_BARE_CITIES:
+        return False
+    return not _NON_US.search(l)
+  ```
+- `Edit` — `/home/anant_gupta/projects/work/internship-research-loop/tests/test_filter.py`
+  ```diff
+  - @pytest.mark.parametrize(
+    "loc",
+    [
+        "Toronto, ON, Canada", "Toronto, ON, CAN", "Ontario, Canada",
+        "London, UK", "Remote in Canada", "Remote in UK", "Remote in Germany",
+        "Remote in India", "Bangalore, India", "Singapore", "Europe",
+        "Dubai - United Arab Emirates", "Munich, Germany",
+    ],
+)
+def test_location_affirmatively_foreign_is_rejected(loc):
+    assert location_eligible([loc]) is False, loc
+  + @pytest.mark.parametrize(
+    "loc",
+    [
+        "Toronto, ON, Canada", "Toronto, ON, CAN", "Ontario, Canada",
+        "London, UK", "Remote in Canada", "Remote in UK", "Remote in Germany",
+        "Remote in India", "Bangalore, India", "Singapore", "Europe",
+        "Dubai - United Arab Emirates", "Munich, Germany",
+        # real, from the 2026-08-23 dossier audit's _NON_US denylist-gap finding
+        "Amsterdam, North Holland, Netherlands",  # Optiver "Quantitative Research Internship (2027 Start)"
+        "Tel Aviv, Israel",  # Google "HardwareSilicon Engineering PhD Intern, 2027"
+        "Warsaw, Poland",  # Google "Data Science PhD Intern, 2027"
+        "Hong Kong",  # Marshall Wace "Technology Intern - Hong Kong - 2027"
+        "London",  # Marshall Wace "Technology Intern - London - 2027" — bare city, no country token
+    ],
+)
+def test_location_affirmatively_foreign_is_rejected(loc):
+    assert location_eligible([loc]) is False, loc
+
+
+def test_location_new_london_ct_is_not_caught_by_bare_london_fallback():
+    """The bare-city fallback added for 'London' alone must be an exact
+    whole-string match, not a substring — a real US city sharing the name
+    ('New London, CT') must still pass."""
+    assert location_eligible(["New London, CT"]) is True
+  ```
+- `Bash` — `.venv/bin/python -m pytest tests/test_filter.py -q 2>&1 | tail -30`
+  ```
+........................................................................ [ 72%]
+............................                                             [100%]
+100 passed in 0.11s
+  ```
+- `Bash` — `.venv/bin/python -m pytest -q 2>&1 | tail -6`
+  ```
+........................................................................ [ 21%]
+........................................................................ [ 42%]
+........................................................................ [ 63%]
+........................................................................ [ 84%]
+....................................................                     [100%]
+340 passed in 1.11s
+  ```
+- `Bash`:
+  ```bash
+git add core/filter.py tests/test_filter.py && git commit -m "$(cat <<'EOF'
+filter.py: close _NON_US denylist gaps (Netherlands, Hong Kong, Poland, Israel, bare "London")
+
+Five real dossiers passed location_eligible() with an affirmative foreign
+signal already present in their stored locations field, because the
+denylist never named their country/city: Optiver "Quantitative Research
+Internship (2027 Start)" and "FPGA Internship (2027 Start)" (Netherlands),
+Google "HardwareSilicon Engineering PhD Intern, 2027" (Israel), Google "Data
+Science PhD Intern, 2027" (Poland), Marshall Wace "Technology Intern - Hong
+Kong - 2027" and "Technology Intern - London - 2027" (the latter stores
+locations as exactly ["London"], no country token at all — added a bare-city
+fallback, exact-match only so "New London, CT" still passes).
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+EOF
+)"
+  ```
+  ```
+[graphify hook] launching background rebuild (log: /home/anant_gupta/.cache/graphify-rebuild.log)
+[master c397413] filter.py: close _NON_US denylist gaps (Netherlands, Hong Kong, Poland, Israel, bare "London")
+ 2 files changed, 34 insertions(+), 1 deletion(-)
+  ```
+- `mcp__jarvis__vault_list` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Cybersecurity Analyst Intern - Jane Street.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Information Security Engineer Intern - Appian.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/FPGA Internship (2027 Start) - Optiver.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Data Intern - Key Technology & Services - Data Track - KeyBank.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Technology Intern - FTI Consulting.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Technology and Operations Intern - Data - Truist Bank.md"}`
+- `mcp__jarvis__search_query` — `{"query":{"regexp":["KeyBank|FTI Consulting|Truist|CNO Financial|Walleye Capital|Dimensional Fund|Vertiv|\\bUHY\\b",{"var":"frontmatter.company"}]}}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Technology Intern - Walleye Capital.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Risk Technology Analyst Intern - Walleye Capital.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Investment Data Science Intern - Walleye Capital.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Global Client Group Operations Insights Intern - Undergraduate & Master's - Dimensional Fund Advisors.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Quantic – Quantitative Developer Intern (Summer 2027) - Walleye Capital Internships.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Quantic - PhD Quantitative Researcher Intern (Summer 2027) - Walleye Capital Internships.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Analytics and Quantitative Modeling Intern - Analytics & Quantitative Modeling - KeyBank.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Investment Data Science Intern - Walleye Capital.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Data Analyst Intern - Continental Resources.md"}`
+- `mcp__jarvis__search_query` — `{"query":{"regexp":["[Rr]eporting [Aa]nalyst",{"var":"frontmatter.title"}]}}`
+- `mcp__jarvis__search_query` — `{"query":{"regexp":["[Pp]lanning [Aa]nalytics|[Ss]ales [Dd]ata [Aa]nalytics",{"var":"frontmatter.title"}]}}`
+- `mcp__jarvis__search_query` — `{"query":{"regexp":["[Ff]inance\\s*&\\s*[Aa]ccounting|[Gg]eoscience",{"var":"frontmatter.title"}]}}`
+- `Read` — `/home/anant_gupta/projects/work/internship-research-loop/core/relevance.py`
+- `Edit` — `/home/anant_gupta/projects/work/internship-research-loop/core/relevance.py`
+  ```diff
+  - # Adjacent-field company/title hint — NOT a reject signal on its own (Jane
+# Street "Hardware Engineer (FPGA/ASIC) Intern" and Bosch/Magna's automotive
+# ML roles all pass real content checks below). Only postings that hit this
+# hint need their fetched content checked at all; everything else already
+# cleared stage 1 and passes through unconditionally.
+# chemical/plant/PLC-DCS-SCADA added 2026-07-29: real false-positive, Mosaic
+# (The Mosaic Company, agricultural/mining) "Operations & Automation
+# Engineering Co-op/Intern" — a chemical-plant industrial-automation role
+# (PLC/DCS/SCADA controls, Bachelor's in Chemical Engineering required,
+# physical labor requirements, "basic computer skills" as a minor bullet)
+# passed stage 2 unconditionally because neither "chemical" nor "automation"
+# hit the old hint list, so its content (no Python/Java/C++/git/algorithm
+# anywhere) was never checked at all — it only got flagged downstream by
+# classify.py's now-fixed bare-'threat' match on an unrelated workplace-safety
+# disclaimer. Adding these hints routes it through the real software-signal
+# content check below, which correctly rejects it.
+_ADJACENT_FIELD_COMPANY_HINT_RE = re.compile(
+    r"\b(space|aerospace|robotics|astro|satellite|defense|automotive|firmware"
+    r"|embedded|hardware|chemical|industrial|plant operations|\bplc\b|\bdcs\b|\bscada\b)\b", re.I,
+)
+  + # Adjacent-field company/title hint — NOT a reject signal on its own (Jane
+# Street "Hardware Engineer (FPGA/ASIC) Intern" and Bosch/Magna's automotive
+# ML roles all pass real content checks below). Only postings that hit this
+# hint need their fetched content checked at all; everything else already
+# cleared stage 1 and passes through unconditionally.
+# chemical/plant/PLC-DCS-SCADA added 2026-07-29: real false-positive, Mosaic
+# (The Mosaic Company, agricultural/mining) "Operations & Automation
+# Engineering Co-op/Intern" — a chemical-plant industrial-automation role
+# (PLC/DCS/SCADA controls, Bachelor's in Chemical Engineering required,
+# physical labor requirements, "basic computer skills" as a minor bullet)
+# passed stage 2 unconditionally because neither "chemical" nor "automation"
+# hit the old hint list, so its content (no Python/Java/C++/git/algorithm
+# anywhere) was never checked at all — it only got flagged downstream by
+# classify.py's now-fixed bare-'threat' match on an unrelated workplace-safety
+# disclaimer. Adding these hints routes it through the real software-signal
+# content check below, which correctly rejects it.
+#
+# 'space'/'defense' dropped 2026-08-23 (dossier audit): both were confirmed
+# real false positives on ordinary English, not industry usage — Jane
+# Street "Cybersecurity Analyst Intern" ("we consider ourselves to be tapped
+# into developments in the broader cybersecurity **space**") and Appian
+# "Information Security Engineer Intern" ("modern cloud architecture
+# **defense**") both wrongly required a software-signal match on real,
+# genuine security-engineering content. Unlike 'threat' (tightened with a
+# co-occurrence window built from real cited phrasing —
+# threat.{0,30}(model|actor|intelligence|detection)), no real dossier in the
+# current vault has a genuine space- or defense-industry posting with
+# fetched content to build an equally evidence-based replacement pattern
+# from (Varda Space Industries/Astranis postings never reached the fetch
+# stage — they lost the debate first, per the same audit's Task 4 finding).
+# Dropped rather than guessed at a plausible-looking pattern with no
+# citation; 'aerospace'/'satellite'/'astro' below still catch genuine
+# space-adjacent postings by company/title. Add 'space'/'defense' back with
+# a real citation if a genuine live false-negative ever surfaces.
+#
+# Company hints added 2026-08-23 (dossier audit, Task 7 (a)#4): each of
+# these companies had a real dossier pass stage2_confirm unconditionally
+# despite genuinely non-technical content (Excel/PowerPoint/BI/consulting
+# work, zero real programming), because none of their industries hit any
+# existing hint word — KeyBank "Data Intern - Key Technology & Services -
+# Data Track" (matched classify.py on a bare "Vulnerability" team-name
+# mention), FTI Consulting "Technology Intern" x2 (matched on "Cybersecurity"
+# inside a preferred-majors list; real duties are e-discovery/digital-
+# forensics consulting), Truist Bank "Technology and Operations Intern -
+# Data" (same "Cybersecurity"-in-majors-list pattern), Vertiv (Product
+# Management/Planning Analytics/Sales Data Analytics/Thermal Application
+# Engineer interns — pure BI/PM, Excel/PowerPoint only), UHY "Data
+# Operations Intern" (audit support, Excel only), CNO Financial Group
+# "Reporting Analyst Intern" (requirements-gathering/testing-triage, no
+# coding), Dimensional Fund Advisors (its "...Data and Tools..." posting is
+# Excel-only — verified its sibling "...Operations Insights..." posting
+# still passes on real "SQL, Python" content, so gating the whole company is
+# safe), Continental Resources "Geoscience Intern" (Excel-only geology role
+# — verified the company's other posting, "Data Analyst Intern", still
+# passes on real "SQL, R, Python" content). Walleye Capital is deliberately
+# NOT company-gated: verified 5 of its 6 other real dossiers pass on real
+# signal (Python/unit-test mentions), but "Investment Data Science Intern"
+# has none in its fetched content despite being a genuine role — gating the
+# whole company would have wrongly failed it, so only its one confirmed-bad
+# sibling is caught below by title phrase instead.
+_ADJACENT_FIELD_COMPANY_HINT_RE = re.compile(
+    r"\b(aerospace|robotics|astro|satellite|automotive|firmware"
+    r"|embedded|hardware|chemical|industrial|plant operations|\bplc\b|\bdcs\b|\bscada\b"
+    r"|fti consulting|truist|vertiv|\buhy\b|cno financial|dimensional fund"
+    r"|keybank|continental resources|finance\s*&\s*accounting|finance and accounting)\b", re.I,
+)
+  ```
+- `Read` — `/home/anant_gupta/projects/work/internship-research-loop/tests/test_relevance.py`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Data Operations Intern - UHY.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Reporting Analyst Intern - CNO Financial Group.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Planning Analytics Intern - Summer 2027 - Vertiv.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Finance & Accounting Intern (Summer 2027) - Walleye Capital Internships.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Global Client Group Intern - Data and Tools - Undergraduate and Master's - Dimensional Fund Advisors.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Geoscience Intern - Continental Resources.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Thermal Application Engineer Intern - Summer 2027 - Vertiv.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Sales Data Analytics Intern - Summer 2027 - Vertiv.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Sales Data Analytics Intern - Vertiv.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Operations Intern - Summer 2027 - Vertiv.md"}`
+- `Read` — `/home/anant_gupta/projects/work/internship-research-loop/tests/test_relevance.py`
+- `Edit` — `/home/anant_gupta/projects/work/internship-research-loop/tests/test_relevance.py`
+  ```diff
+  - def [REDACTED]():
+    """No adjacent-field hint at all — already cleared stage 1, content
+    (even empty) never gates it."""
+    assert stage2_confirm("Software Engineer Intern", "Acme Corp", "") is True
+  + def [REDACTED]():
+    """No adjacent-field hint at all — already cleared stage 1, content
+    (even empty) never gates it."""
+    assert stage2_confirm("Software Engineer Intern", "Acme Corp", "") is True
+
+
+# --- 2026-08-23 dossier audit: 'space'/'defense' false positives, new
+# generic-business/finance/BI company hints (Task 7 (a)#4, (f)#2) ---
+
+# Real content, trimmed, from the live "Cybersecurity Analyst Intern - Jane
+# Street.md" dossier (source vanshb03, fetched 2026-07-25). Bare 'space' in
+# "the broader cybersecurity space" wrongly triggered the old hint list, and
+# this real content has no _SOFTWARE_CONTENT_SIGNAL_RE match at all (no
+# python/sql/database/etc — just "a strong programmer", "code", "tools"),
+# so the old code incorrectly required (and failed to find) a software
+# signal on a genuine security-engineering role.
+JANE_STREET_CYBERSECURITY_CONTENT = (
+    "Our Cybersecurity Analysts are responsible for being on the front lines of guarding the firm "
+    "from cyber threats through investigations and incident response, as well as building tools and "
+    "automation to streamline, automate, and enhance workflows. Our Cybersecurity team is a skilled "
+    "group of programmers and security experts who are dedicated to keeping the firm safe. We "
+    "consider ourselves to be tapped into developments in the broader cybersecurity space. You should "
+    "be a strong programmer who can demonstrate high potential and an aptitude for learning."
+)
+
+# Real content, trimmed, from the live "Information Security Engineer Intern
+# - Appian.md" dossier (source vanshb03, fetched 2026-07-27). Bare 'defense'
+# in "modern cloud architecture defense" wrongly triggered the old hint
+# list, same no-signal-word problem as the Jane Street case above.
+APPIAN_INFOSEC_CONTENT = (
+    "Appian's Information Security team operates at the heart of our Enterprise-Grade Orchestration "
+    "ecosystem. We continuously evaluate the evolving cyber threat landscape, assess security risks, "
+    "and enforce modern security frameworks. As an Information Security Intern at Appian, you will "
+    "actively contribute to live security operations, modern cloud architecture defense, and "
+    "compliance automation, gaining hands-on exposure to cutting-edge cloud infrastructure, automated "
+    "governance, and enterprise threat analysis."
+)
+
+
+def [REDACTED]():
+    assert stage2_confirm(
+        "Cybersecurity Analyst Intern", "Jane Street", JANE_STREET_CYBERSECURITY_CONTENT
+    ) is True
+
+
+def [REDACTED]():
+    assert stage2_confirm(
+        "Information Security Engineer Intern", "Appian", APPIAN_INFOSEC_CONTENT
+    ) is True
+
+
+# Real content, trimmed, from the live "Technology Intern - FTI Consulting.md"
+# dossier (source SimplifyJobs, fetched 2026-07-28) — e-discovery/digital-
+# forensics/document-review consulting, zero programming content, matched
+# classify.py's CyS & Finance bucket only on "Cybersecurity" appearing in a
+# preferred-majors list.
+FTI_CONSULTING_CONTENT = (
+    "Our technology interns work with corporations, governments and law firms to meet critical legal "
+    "and regulatory needs, including investigations, e-discovery, information governance, digital "
+    "forensics, data privacy, document review consulting as well as project management. Preferred "
+    "majors: Business, Computer Forensics, Cybersecurity, Data Analytics, Data Science, Digital "
+    "Forensics, Economics, Information Technology Management, Management Information Systems, Law."
+)
+
+
+def [REDACTED]():
+    assert stage2_confirm("Technology Intern", "FTI Consulting", FTI_CONSULTING_CONTENT) is False
+
+
+# Real content, trimmed, from the live "Technology and Operations Intern -
+# Data - Truist Bank.md" dossier (source SimplifyJobs, fetched 2026-08-18) —
+# generic bank rotational, business-acumen/leadership-development duties.
+# Deliberately includes the real "Software Development" team-name mention:
+# even with 'truist' now hinted, this still passes on that literal phrase
+# (a coincidental, real limitation of the keyword-only signal check this
+# fix doesn't close — see the 2026-08-23 audit's Phase 1/2 report).
+TRUIST_CONTENT = (
+    "The Technology, Data, and Operations Internship Program is a summer intern program that "
+    "provides future leaders of Truist with a strong foundation within technology and the financial "
+    "services industry as a whole. Participants will gain experience within Software Development, "
+    "Cybersecurity, AI & Data, and Operations teams. Build business acumen and leadership skills."
+)
+
+
+def [REDACTED]():
+    """Real, documented limitation: adding 'truist' to the hint list doesn't
+    flip this dossier to a reject, because its real content happens to
+    literally say 'Software Development' as one of several team names an
+    intern is exposed to, not as a real duty description — a false pass the
+    keyword-only signal check can't distinguish. Recorded here as the actual
+    behavior, not the hoped-for one."""
+    assert stage2_confirm("Technology and Operations Intern - Data", "Truist Bank", TRUIST_CONTENT) is True
+
+
+# Real content, trimmed, from "Planning Analytics Intern - Summer 2027 -
+# Vertiv.md" (source SimplifyJobs, fetched 2026-08-14) — pure BI/dashboard
+# work, no programming requirement anywhere.
+VERTIV_PLANNING_ANALYTICS_CONTENT = (
+    "This internship offers an excellent opportunity to gain hands-on experience in various aspects "
+    "of data analysis and business intelligence within our organization. Develop and maintain "
+    "dashboards, charts, and reports to visually represent data insights. Must be pursuing a degree "
+    "in Data Science, Statistics, Computer Science, or a related field."
+)
+
+# Real content, trimmed, from "Operations Intern - Summer 2027 - Vertiv.md"
+# (source SimplifyJobs, fetched 2026-08-13) — genuinely different from the
+# other Vertiv postings above despite the shared company: explicit required
+# Python/SQL/data-pipeline skills. Confirms the company hint discriminates
+# correctly within the same company rather than blanket-failing it.
+VERTIV_OPERATIONS_CONTENT = (
+    "Build data structure and data lake intake method to support future analytics tools use. "
+    "Proficiency in Python, including experience with libraries such as Pandas, NumPy, or similar "
+    "data manipulation tools. Foundational understanding of SQL and relational database concepts. "
+    "Familiarity with Microsoft Fabric, Azure Data Factory, or similar Data Pipeline (ETL/ELT) tools."
+)
+
+
+def [REDACTED]():
+    assert stage2_confirm(
+        "Planning Analytics Intern - Summer 2027", "Vertiv", VERTIV_PLANNING_ANALYTICS_CONTENT
+    ) is False
+
+
+def [REDACTED]():
+    """A genuinely technical Vertiv posting must still pass even though the
+    company is now hinted — the hint only routes content through the real
+    signal check, it isn't itself a reject."""
+    assert stage2_confirm(
+        "Operations Intern - Summer 2027", "Vertiv", VERTIV_OPERATIONS_CONTENT
+    ) is True
+
+
+# Real content, trimmed, from "Data Operations Intern - UHY.md" (source
+# SimplifyJobs, fetched 2026-08-11) — audit support, Excel-only.
+UHY_CONTENT = (
+    "The Data Operations Intern supports the Shared Resources team in compiling, manipulating, and "
+    "analyzing client data. Use Excel and firm-provided analytic tools to help organize and review "
+    "financial information. Convert client-provided reports (such as PDFs) into Excel to support "
+    "audit and data analysis workflows. Strong knowledge of Excel."
+)
+
+
+def [REDACTED]():
+    assert stage2_confirm("Data Operations Intern", "UHY", UHY_CONTENT) is False
+
+
+# Real content, trimmed, from "Reporting Analyst Intern - CNO Financial
+# Group.md" (source SimplifyJobs, fetched 2026-08-20) — requirements-
+# gathering/testing-triage, no coding.
+CNO_CONTENT = (
+    "CNO Financial Group is hiring a Reporting Analyst Intern. Core responsibilities and deliverables: "
+    "Participate in requirements elicitation meetings. Document the requirements using different "
+    "techniques. Collaborate with business and development teams. Triage testing defects as related "
+    "to requirements."
+)
+
+
+def [REDACTED]():
+    assert stage2_confirm("Reporting Analyst Intern", "CNO Financial Group", CNO_CONTENT) is False
+
+
+# Real content, trimmed, from the two live sibling Walleye Capital dossiers
+# — "Finance & Accounting Intern (Summer 2027)" (bad, Greenhouse, fetched
+# 2026-08-19) and "Investment Data Science Intern" (good, SimplifyJobs,
+# fetched 2026-07-17). Walleye Capital is deliberately NOT company-gated
+# (verified 5 of its 6 other real dossiers pass on real Python/unit-test
+# signal, but Investment Data Science Intern has none despite being a
+# genuine role) — only the confirmed-bad sibling is caught, by title phrase.
+WALLEYE_FINANCE_ACCOUNTING_CONTENT = (
+    "The Finance & Accounting team plays a critical role in supporting the firm's financial "
+    "operations, overseeing financial reporting, budgeting, forecasting, and analysis. Help improve "
+    "and maintain financial models, reporting processes, and internal FP&A tools. Support financial "
+    "statement preparation and analysis."
+)
+WALLEYE_DATA_SCIENCE_CONTENT = (
+    "As an intern, you'll engage in high-impact projects focused on alternative data research "
+    "supporting long/short discretionary investment strategies. Learn and implement core data "
+    "science and data engineering workflows on the firm's Cloud and Linux infrastructure. Clean, "
+    "transform, and join large structured and unstructured datasets."
+)
+
+
+def [REDACTED]():
+    assert stage2_confirm(
+        "Finance & Accounting Intern (Summer 2027)", "Walleye Capital Internships",
+        WALLEYE_FINANCE_ACCOUNTING_CONTENT,
+    ) is False
+
+
+def [REDACTED]():
+    """Not company-gated (see module note above) and no signal-word match
+    in its own real content either — passes today via the 'no hint at all'
+    path, same as before this fix. A real, permissive-by-design outcome,
+    not a bug: no evidence exists that this role is non-technical."""
+    assert stage2_confirm(
+        "Investment Data Science Intern", "Walleye Capital", WALLEYE_DATA_SCIENCE_CONTENT
+    ) is True
+
+
+# Real content, trimmed, from the two live sibling Continental Resources
+# dossiers — "Geoscience Intern" (bad) and "Data Analyst Intern" (good,
+# also the Task 7 (a)#2 Workday cross-source-duplicate example) — both
+# fetched 2026-08-19.
+CONTINENTAL_GEOSCIENCE_CONTENT = (
+    "Geoscience Interns will be involved in generating geologic interpretations of current CLR "
+    "development assets and/or exploration prospects. Generate sequence stratigraphic models, "
+    "various subsurface and petrophysical maps, production analysis, geosteering interpretations "
+    "and mud log analysis. Proficient with Microsoft Office."
+)
+CONTINENTAL_DATA_ANALYST_CONTENT = (
+    "The Data Analyst Intern will collaborate with Engineering teams to solve problems, automate "
+    "processes and improve business performance using the plethora of data, analytics and artificial "
+    "intelligence capabilities available at Continental. Basic proficiency in coding languages "
+    "including SQL, R, Python, HTML and analytics software."
+)
+
+
+def [REDACTED]():
+    assert stage2_confirm(
+        "Geoscience Intern", "Continental Resources", CONTINENTAL_GEOSCIENCE_CONTENT
+    ) is False
+
+
+def [REDACTED]():
+    assert stage2_confirm(
+        "Data Analyst Intern", "Continental Resources", CONTINENTAL_DATA_ANALYST_CONTENT
+    ) is True
+
+
+# Real content, trimmed, from the two live sibling Dimensional Fund Advisors
+# dossiers — "...Data and Tools..." (bad) and "...Operations Insights..."
+# (good), both fetched 2026-08-18.
+DIMENSIONAL_DATA_AND_TOOLS_CONTENT = (
+    "The GCG Operations Intern (Data & Tools) will support several sales enablement and asset "
+    "reporting initiatives. Collect and analyze data to support various sales goals and campaigns. "
+    "Strong knowledge of Excel and general computer skills with the ability to learn additional "
+    "computer applications as needed."
+)
+DIMENSIONAL_OPERATIONS_INSIGHTS_CONTENT = (
+    "The GCG Operations Intern (Insights) will support several sales enablement initiatives. Assist "
+    "with developing business intelligence capabilities utilizing Power BI and Snowflake. Strong "
+    "computer skills (advanced Excel, SQL, Python, etc.)."
+)
+
+
+def [REDACTED]():
+    assert stage2_confirm(
+        "Global Client Group Intern - Data and Tools", "Dimensional Fund Advisors",
+        DIMENSIONAL_DATA_AND_TOOLS_CONTENT,
+    ) is False
+
+
+def [REDACTED]():
+    assert stage2_confirm(
+        "Global Client Group Operations Insights Intern", "Dimensional Fund Advisors",
+        DIMENSIONAL_OPERATIONS_INSIGHTS_CONTENT,
+    ) is True
+
+
+def [REDACTED]():
+    """Same documented limitation as Truist above: KeyBank's real content
+    (from 'Data Intern - Key Technology & Services - Data Track') lists
+    Python/SQL/JavaScript among many tools interns MIGHT be exposed to, not
+    as required skills for this specific role — a coincidental literal
+    match the keyword-only signal check can't tell apart from a real
+    requirement. Recorded as the actual behavior."""
+    content = (
+        "KTS Operations, spanning Origination through Default Management, Deposit Operations, ACH, "
+        "Wire & Check Payment Operations. Opportunities to use industry leading software (examples "
+        "include: Tableau, ServiceNow, Visual Studio, Jira, Automation Anywhere, Jenkins, PowerShell, "
+        "HTML, C#, Python, SQL, JavaScript). Experience in Excel, PowerPoint, Project."
+    )
+    assert stage2_confirm(
+        "Data Intern - Key Technology & Services - Data Track", "KeyBank", content
+    ) is True
+  ```
+- `Bash` — `.venv/bin/python -m pytest tests/test_relevance.py -q 2>&1 | tail -60`
+  ```
+..............................                                           [100%]
+30 passed in 0.07s
+  ```
+- `Bash` — `.venv/bin/python -m pytest -q 2>&1 | tail -8`
+  ```
+........................................................................ [ 20%]
+........................................................................ [ 40%]
+........................................................................ [ 60%]
+........................................................................ [ 81%]
+...................................................................      [100%]
+355 passed in 1.32s
+  ```
+- `Bash`:
+  ```bash
+git add core/relevance.py tests/test_relevance.py && git commit -m "$(cat <<'EOF'
+relevance.py: tighten space/defense false positives, extend adjacent-field hints to non-technical business/finance/BI companies
+
+Drop bare 'space'/'defense' from _ADJACENT_FIELD_COMPANY_HINT_RE — both were
+confirmed real false positives on ordinary English (Jane Street "the broader
+cybersecurity space", Appian "modern cloud architecture defense"), and no
+real dossier in the current vault has genuine space/defense-industry
+fetched content to build an evidence-based co-occurrence replacement from
+(those postings lost the debate before ever being fetched). Dropped rather
+than guessed at an uncited pattern.
+
+Add company hints for FTI Consulting, Truist, Vertiv, UHY, CNO Financial,
+Dimensional Fund Advisors, KeyBank, and Continental Resources, plus a title
+hint for Walleye Capital's "Finance & Accounting Intern" — each closes a
+real dossier that passed stage2_confirm unconditionally despite genuinely
+non-technical content, because none of their industries hit any existing
+hint word. Every addition was checked against every known good dossier at
+the same company using real fetched content before shipping: Walleye
+Capital is deliberately NOT company-gated (its "Investment Data Science
+Intern" has no signal-word match despite being a genuine role), and
+KeyBank/Truist's specific known-bad dossiers still pass even after gating —
+their real content happens to literally mention Python/SQL/"Software
+Development" as a tool/team-name aside, not a real requirement, a
+documented limitation of the keyword-only signal check this fix doesn't
+close.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+EOF
+)"
+  ```
+  ```
+[graphify hook] launching background rebuild (log: /home/anant_gupta/.cache/graphify-rebuild.log)
+[master fbf934a] relevance.py: tighten space/defense false positives, extend adjacent-field hints to non-technical business/finance/BI companies
+ 2 files changed, 319 insertions(+), 2 deletions(-)
+  ```
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Technology Intern - Technology - FTI Consulting.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Data Analyst Intern (Summer 2027) - Continental Resources.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__search_query` — `{"query":{"regexp":["Medtronic",{"var":"frontmatter.company"}]}}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/2 - Fullstack/Software Engineering Intern - Medtronic.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/2 - Fullstack/Software Engineer Intern - Medtronic.md","targetType":"frontmatter","target":"url"}`
+- `Read` — `/home/anant_gupta/projects/work/internship-research-loop/tests/test_identity.py`
+- `Edit` — `/home/anant_gupta/projects/work/internship-research-loop/core/identity.py`
+  ```diff
+  -     re.compile(r"google\.com/.*?careers/(?:applications/)?jobs/results/(\d+)", re.I),
+)
+  +     re.compile(r"google\.com/.*?careers/(?:applications/)?jobs/results/(\d+)", re.I),
+    # Workday requisition id, added 2026-08-23 (dossier audit) — real
+    # confirmed duplicate pairs: FTI Consulting "Technology Intern" (same
+    # requisition JR260339, one URL under the ...FTIConsultingCareers site,
+    # the other under ...FTIConsultingCareersPrivate, one with a trailing
+    # -1), Medtronic "Software Engineer(ing) Intern" (same requisition
+    # R73630, one under ...medtroniccareers, the other under
+    # ...redeploymentmedtroniccareers, one with -1), Continental Resources
+    # "Data Analyst Intern" (same requisition R02591, identical URL apart
+    # from the trailing -1). The id is always the last underscore-delimited
+    # path segment, sometimes followed by a '-N' variant suffix — greedy
+    # '.+_' lands on that last underscore regardless of earlier underscores
+    # in the site-path segment (e.g. 'CLR_Careers'), and '-N' is captured
+    # separately so it's excluded from the id, unifying both variants.
+    re.compile(r"myworkdayjobs\.com/.+_([A-Za-z]+\d+)(?:-\d+)?/?$", re.I),
+)
+  ```
+- `Edit` — `/home/anant_gupta/projects/work/internship-research-loop/tests/test_identity.py`
+  ```diff
+  - def test_extract_ats_job_id_lever_ignores_apply_suffix():
+    """Real Palantir 'Intel' FDSE duplicate: SimplifyJobs' URL carries a
+    trailing /apply, zshah101's doesn't — same Lever job id either way."""
+    with_apply = "https://jobs.lever.co/palantir/[REDACTED]/apply"
+    without_apply = "https://jobs.lever.co/palantir/[REDACTED]"
+    assert extract_ats_job_id(with_apply) == "[REDACTED]"
+    assert extract_ats_job_id(with_apply) == extract_ats_job_id(without_apply)
+  + def test_extract_ats_job_id_lever_ignores_apply_suffix():
+    """Real Palantir 'Intel' FDSE duplicate: SimplifyJobs' URL carries a
+    trailing /apply, zshah101's doesn't — same Lever job id either way."""
+    with_apply = "https://jobs.lever.co/palantir/[REDACTED]/apply"
+    without_apply = "https://jobs.lever.co/palantir/[REDACTED]"
+    assert extract_ats_job_id(with_apply) == "[REDACTED]"
+    assert extract_ats_job_id(with_apply) == extract_ats_job_id(without_apply)
+
+
+# --- Workday requisition id — three real 2026-08-23 duplicate incidents ---
+
+def test_extract_ats_job_id_workday_unifies_real_fti_consulting_duplicate():
+    """Real FTI Consulting 'Technology Intern' duplicate: same requisition
+    JR260339 posted under two different Workday site-path segments, one
+    with a trailing -1 variant suffix."""
+    a = "https://fticonsulting.wd108.myworkdayjobs.com/FTIConsultingCareers/job/United-States/[REDACTED]"
+    b = "https://fticonsulting.wd108.myworkdayjobs.com/FTIConsultingCareersPrivate/job/United-States/[REDACTED]"
+    assert extract_ats_job_id(a) == "JR260339"
+    assert extract_ats_job_id(a) == extract_ats_job_id(b)
+
+
+def test_extract_ats_job_id_workday_unifies_real_medtronic_duplicate():
+    """Real Medtronic 'Software Engineer(ing) Intern' duplicate: same
+    requisition R73630 under ...medtroniccareers vs
+    ...redeploymentmedtroniccareers, one with a trailing -1."""
+    a = "https://medtronic.wd1.myworkdayjobs.com/en-US/medtroniccareers/job/Fridley-Minnesota-United-States-of-America/[REDACTED]"
+    b = "https://medtronic.wd1.myworkdayjobs.com/redeploymentmedtroniccareers/job/Fridley-Minnesota-United-States-of-America/[REDACTED]"
+    assert extract_ats_job_id(a) == "R73630"
+    assert extract_ats_job_id(a) == extract_ats_job_id(b)
+
+
+def test_extract_ats_job_id_workday_unifies_real_continental_resources_duplicate():
+    """Real Continental Resources 'Data Analyst Intern' duplicate: same
+    URL apart from a trailing -1, and the site-path segment itself
+    ('CLR_Careers') has its own underscore — the id must still resolve to
+    the LAST underscore-delimited segment, not that one."""
+    a = "https://clr.wd5.myworkdayjobs.com/CLR_Careers/job/Oklahoma-City-OK/[REDACTED]"
+    b = "https://clr.wd5.myworkdayjobs.com/CLR_Careers/job/Oklahoma-City-OK/[REDACTED]"
+    assert extract_ats_job_id(a) == "R02591"
+    assert extract_ats_job_id(a) == extract_ats_job_id(b)
+  ```
+- `Bash` — `.venv/bin/python -m pytest tests/test_identity.py -q 2>&1 | tail -30`
+  ```
+.......................                                                  [100%]
+23 passed in 0.05s
+  ```
+- `Bash` — `.venv/bin/python -m pytest -q 2>&1 | tail -8`
+  ```
+........................................................................ [ 20%]
+........................................................................ [ 40%]
+........................................................................ [ 60%]
+........................................................................ [ 80%]
+......................................................................   [100%]
+358 passed in 1.35s
+  ```
+- `Bash`:
+  ```bash
+git add core/identity.py tests/test_identity.py && git commit -m "$(cat <<'EOF'
+identity.py: add Workday requisition-id ATS pattern for cross-source dedup
+
+_ATS_JOB_ID_PATTERNS only covered greenhouse/lever/ashby/google — Workday
+postings (a large share of this pipeline's sources) fell back to the
+company+title text key, defeated by trivial wording differences. Three real
+confirmed duplicate pairs: FTI Consulting "Technology Intern" (requisition
+JR260339 under two different Workday site-path segments), Medtronic
+"Software Engineer(ing) Intern" (requisition R73630, same pattern), and
+Continental Resources "Data Analyst Intern" (requisition R02591, identical
+URL apart from a trailing -1 variant suffix). The id is always the last
+underscore-delimited path segment; captured separately from an optional
+'-N' suffix so both variants of the same requisition unify.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+EOF
+)"
+  ```
+  ```
+[graphify hook] launching background rebuild (log: /home/anant_gupta/.cache/graphify-rebuild.log)
+[master 084e3da] identity.py: add Workday requisition-id ATS pattern for cross-source dedup
+ 2 files changed, 47 insertions(+)
+  ```
+- `mcp__jarvis__search_query` — `{"query":{"regexp":["Replit|Melius|Notion|Quadrillion|Chicago Trading|Aquatic Capital|Freeform|\\bAtoms\\b|American Express|Deepgram",{"var":"frontmatter.company"}]}}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineering Intern - Replit.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineering Intern (Summer 2027) - Replit.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineer Intern - Summer 2027 - Replit.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineer Intern - Winter 2027 - Notion.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineer Intern - Notion.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineer Intern (Summer 2027) - Notion.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Science Intern - Notion.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineering Intern [SpringSummer 2027] - Melius.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineer Intern - Melius.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineering- Internship (Fall 2026-Summer 2027) - Deepgram.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineering Internship - Deepgram.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineer Intern - Chicago Trading Company.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Software Engineering Internship - Summer 2027 - Chicago Trading Company.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Quant Trading Intern - Chicago Trading Company.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineer, Intern (Summer 2027) - Aquatic Capital Management.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Quantitative Researcher, Intern (Summer 2027) - Aquatic Capital Management.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Software Engineer Intern - Aquatic Capital Management.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Software Engineering Intern - Freeform.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Software Engineering Intern (Summer 2027) - Freeform.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Software Engineer Intern - Atoms.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Software Engineer Intern - Summer 2027 - Atoms.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Software Engineer Intern - Winter 2027 - Atoms.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Software Engineer Intern - DV Trading.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Software Engineer Intern - Summer 2027 (DV Commodities) - DV Trading.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Software Engineer Intern, Commodities - DV Group.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Software Engineering Intern - HPR.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Software Engineering Intern - Summer 2027 - HPR (Hyannis Port Research).md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Software Engineer Intern - HPR (Hyannis Port Research).md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineering Intern - Replit.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineering Intern (Summer 2027) - Replit.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineer Intern - Summer 2027 - Replit.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineer Intern - Notion.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineer Intern (Summer 2027) - Notion.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineering Intern [SpringSummer 2027] - Melius.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineer Intern - Melius.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineering- Internship (Fall 2026-Summer 2027) - Deepgram.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineering Internship - Deepgram.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineer Intern - Chicago Trading Company.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Software Engineering Internship - Summer 2027 - Chicago Trading Company.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineer, Intern (Summer 2027) - Aquatic Capital Management.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Software Engineer Intern - Aquatic Capital Management.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Software Engineering Intern - Freeform.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Software Engineering Intern (Summer 2027) - Freeform.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Software Engineer Intern - Atoms.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Software Engineer Intern - Summer 2027 - Atoms.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Software Engineer Intern - DV Trading.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Software Engineer Intern - Summer 2027 (DV Commodities) - DV Trading.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Software Engineer Intern, Commodities - DV Group.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Software Engineering Intern - HPR.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Software Engineering Intern - Summer 2027 - HPR (Hyannis Port Research).md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Software Engineer Intern - DV Trading.md","targetType":"frontmatter","target":"date_found"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Software Engineer Intern - Summer 2027 (DV Commodities) - DV Trading.md","targetType":"frontmatter","target":"date_found"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/2027 Internship - Frontend & User Experience - Virtu Financial.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Frontend & User Experience Intern - Virtu Financial.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Frontend Developer Internship - Virtu Financial.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/2027 Internship - Quantitative Trading - Virtu Financial.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Quantitative Trading Intern - Virtu.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Software Engineer Intern - Software Engineer - Virtu Financial.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Software Engineer Intern - Virtu Financial.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Software Engineer Intern - PDT Partners.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Software Engineering Intern - PDT Partners.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Summer 2027 Software Engineering Intern - PDT Partners.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/2 - Fullstack/Summer 2027 Internship - Software Engineering - General Matter.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/2 - Fullstack/Software Engineering Intern - General Matter.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/2 - Fullstack/Software Engineering Intern (Summer 2027) - Quadrillion.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/2 - Fullstack/Software Engineering Intern - Quadrillion.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineering Intern - Quadrillion Labs.md","targetType":"frontmatter","target":"url"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/2 - Fullstack/Software Engineer Intern - Medtronic.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/2 - Fullstack/Software Engineering Intern - Medtronic.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Data Analyst Intern (Summer 2027) - Continental Resources.md","targetType":"frontmatter","target":"source"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineering Intern - Quadrillion Labs.md","targetType":"frontmatter","target":"source"}`
+- `ToolSearch` — `{"query":"select:mcp__jarvis__vault_delete","max_results":3}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Product Management Intern - Vertiv.md","targetType":"frontmatter","target":"title"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Product Management Intern, MBA - Vertiv.md","targetType":"frontmatter","target":"title"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Quantitative Trading Internship (2027 Start) - Optiver.md","targetType":"frontmatter","target":"locations"}`
+- `Bash`:
+  ```bash
+.venv/bin/python -c "
+from core.relevance import stage1_reject
+from core.filter import location_eligible
+print('PM Intern:', stage1_reject('Product Management Intern', ''))
+print('PM Intern MBA:', stage1_reject('Product Management Intern, MBA', ''))
+print('Optiver NL:', location_eligible(['Amsterdam, North Holland, Netherlands']))
+print('HK:', location_eligible(['Hong Kong']))
+print('London bare:', location_eligible(['London']))
+print('Israel:', location_eligible(['Tel Aviv, Israel']))
+print('Poland:', location_eligible(['Warsaw, Poland']))
+"
+
+  ```
+  ```
+PM Intern: True
+PM Intern MBA: True
+Optiver NL: False
+HK: False
+London bare: False
+Israel: False
+Poland: False
+  ```
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Data Operations Intern - UHY.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Reporting Analyst Intern - CNO Financial Group.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Planning Analytics Intern - Summer 2027 - Vertiv.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Sales Data Analytics Intern - Summer 2027 - Vertiv.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Sales Data Analytics Intern - Vertiv.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Thermal Application Engineer Intern - Summer 2027 - Vertiv.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Product Management Intern - Vertiv.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Product Management Intern, MBA - Vertiv.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Finance & Accounting Intern (Summer 2027) - Walleye Capital Internships.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Geoscience Intern - Continental Resources.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Global Client Group Intern - Data and Tools - Undergraduate and Master's - Dimensional Fund Advisors.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Technology Intern - FTI Consulting.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Technology Intern - Technology - FTI Consulting.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Quantitative Research Internship (2027 Start) - Optiver.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/HardwareSilicon Engineering PhD Intern, 2027 - Google.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Science PhD Intern, 2027 - Google.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/FPGA Internship (2027 Start) - Optiver.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Quantitative Trading Internship (2027 Start) - Optiver.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Technology Intern - Hong Kong - 2027 - Marshall Wace Internship Programmes.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Technology Intern - London - 2027 - Marshall Wace Internship Programmes.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineering Intern - Replit.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineering Intern (Summer 2027) - Replit.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineer Intern (Summer 2027) - Notion.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineering Intern [SpringSummer 2027] - Melius.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineering- Internship (Fall 2026-Summer 2027) - Deepgram.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Software Engineering Internship - Summer 2027 - Chicago Trading Company.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineer, Intern (Summer 2027) - Aquatic Capital Management.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Software Engineering Intern (Summer 2027) - Freeform.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Software Engineer Intern - Summer 2027 - Atoms.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Software Engineer Intern - DV Trading.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Software Engineer Intern, Commodities - DV Group.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Software Engineering Intern - Summer 2027 - HPR (Hyannis Port Research).md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/2027 Internship - Frontend & User Experience - Virtu Financial.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Frontend & User Experience Intern - Virtu Financial.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/2027 Internship - Quantitative Trading - Virtu Financial.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Software Engineer Intern - Software Engineer - Virtu Financial.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Software Engineer Intern - PDT Partners.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Software Engineering Intern - PDT Partners.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/2 - Fullstack/Summer 2027 Internship - Software Engineering - General Matter.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/2 - Fullstack/Software Engineering Intern (Summer 2027) - Quadrillion.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineering Intern - Quadrillion Labs.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/2 - Fullstack/Software Engineering Intern - Medtronic.md"}`
+- `mcp__jarvis__vault_delete` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other/Data Analyst Intern (Summer 2027) - Continental Resources.md"}`
 
 ## Actions Taken
-- Files created: (none)
-- Files modified: (none)
+- Files created: /home/anant_gupta/projects/work/internship-research-loop/tests/fixtures/posting_zipline_open_roles.md
+- Files modified: /home/anant_gupta/projects/work/internship-research-loop/ingestion/posting_page.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_posting_page.py, /home/anant_gupta/projects/work/internship-research-loop/recheck.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_recheck.py, /home/anant_gupta/projects/work/internship-research-loop/core/filter.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_filter.py, /home/anant_gupta/projects/work/internship-research-loop/core/relevance.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_relevance.py, /home/anant_gupta/projects/work/internship-research-loop/core/identity.py, /home/anant_gupta/projects/work/internship-research-loop/tests/test_identity.py
 - Files deleted: (none)
-- Commands run: echo "--- repo root ---" && ls && echo "--- core ---" && ls core/ && echo "--- ingestion ---" && ls ingestion/ && echo "--- vault_writer ---" && ls vault_writer/ && echo "--- look for sibling vault ---" && ls ../ | grep -i jarvis, ls internship-research-loop 2>/dev/null; echo "---"; ls jarvis-checkout | head -30; echo "---find internships list---"; find jarvis-checkout -iname "*Internship*" -maxdepth 6 -type d, ls -la jarvis-checkout && cat jarvis-checkout/.git 2>/dev/null; echo "---"; find jarvis-checkout -maxdepth 2, find tests -type f -name "*.py" | sort && echo "---" && wc -l core/debate.py ingestion/posting_page.py 2>/dev/null
-- Tool call tally: Agent (6), AskUserQuestion (1), Bash (4), ListAgents (3), mcp__jarvis__vault_list (4), mcp__jarvis__vault_read (3), mcp__jarvis-fs__list_allowed_directories (1), Read (15), SendMessage (4), ToolSearch (2)
+- Commands run: echo "--- repo root ---" && ls && echo "--- core ---" && ls core/ && echo "--- ingestion ---" && ls ingestion/ && echo "--- vault_writer ---" && ls vault_writer/ && echo "--- look for sibling vault ---" && ls ../ | grep -i jarvis, ls internship-research-loop 2>/dev/null; echo "---"; ls jarvis-checkout | head -30; echo "---find internships list---"; find jarvis-checkout -iname "*Internship*" -maxdepth 6 -type d, ls -la jarvis-checkout && cat jarvis-checkout/.git 2>/dev/null; echo "---"; find jarvis-checkout -maxdepth 2, find tests -type f -name "*.py" | sort && echo "---" && wc -l core/debate.py ingestion/posting_page.py 2>/dev/null, python3 -m pytest -q 2>&1 | tail -20, cat requirements.txt; echo "---"; which python3; python3 --version; echo "---venvs---"; find / -maxdepth 4 -iname "*venv*" -type d 2>/dev/null | grep -v proc; echo "---pip show pytest global---"; pip3 show pytest 2>&1 | head -5; echo "---"; ls -la .venv 2>/dev/null; cat .github/workflows/test.yml 2>/dev/null, .venv/bin/python -m pytest -q 2>&1 | tail -20, git status --short && git log --oneline -5, .venv/bin/python -m pytest tests/test_posting_page.py -q 2>&1 | tail -40, .venv/bin/python -m pytest -q 2>&1 | tail -10, git add ingestion/posting_page.py tests/test_posting_page.py tests/fixtures/posting_zipline_open_roles.md && git status --short, git commit -m "$(cat <<'EOF' Fix Zipline SPA board-index content-extraction bug listing.url for every AIJobs-sourced Zipline dossier used the query-param form (zipline.com/open-roles?gh_jid=<id>), which Firecrawl fetches as the entire unfiltered /open-roles job board rather than the one job's content — confirmed against the real stored fetched content of three live dossiers, all byte-for-byte identical regardless of the actual role. stage2_confirm then passed every one of these on an unrelated real job title present elsewhere on the shared board page. Rewrite the query form to the board's own path-form job URL before fetching (confirmed live via WebFetch to carry the specific job's title in its page <title>, unlike the query form), and add a board-index-shape detector to extract_content() as a safety net so a page that still can't be rendered degrades to a thin dossier instead of a false stage2 pass. Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> EOF )", .venv/bin/python -m pytest tests/test_recheck.py -q 2>&1 | tail -20, .venv/bin/python -m pytest -q 2>&1 | tail -6, git add recheck.py tests/test_recheck.py && git commit -m "$(cat <<'EOF' recheck.py: stop re-sweeping already-removed dossiers in Viewed/ plan_removals() globbed Viewed/ along with every live bucket (scan_dossiers' own by-design behavior, kept for cross-source dedup) but never checked status == "removed" — a dossier that stayed closed got swept up and re-moved by move_dossier_to_viewed() on every subsequent daily run, which found its own base filename already taken and wrote a spurious '(2)', '(3)', ... suffixed copy each time, deleting the original. Confirmed live: all 4 real dossiers in Viewed/ as of 2026-08-23 already carried a spurious '(2)' suffix from this. Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> EOF )", grep -n "location_eligible\|_NON_US\|_entry_is_us_or_remote" tests/test_filter.py | head -40, .venv/bin/python -m pytest tests/test_filter.py -q 2>&1 | tail -30, git add core/filter.py tests/test_filter.py && git commit -m "$(cat <<'EOF' filter.py: close _NON_US denylist gaps (Netherlands, Hong Kong, Poland, Israel, bare "London") Five real dossiers passed location_eligible() with an affirmative foreign signal already present in their stored locations field, because the denylist never named their country/city: Optiver "Quantitative Research Internship (2027 Start)" and "FPGA Internship (2027 Start)" (Netherlands), Google "HardwareSilicon Engineering PhD Intern, 2027" (Israel), Google "Data Science PhD Intern, 2027" (Poland), Marshall Wace "Technology Intern - Hong Kong - 2027" and "Technology Intern - London - 2027" (the latter stores locations as exactly ["London"], no country token at all — added a bare-city fallback, exact-match only so "New London, CT" still passes). Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> EOF )", .venv/bin/python -m pytest tests/test_relevance.py -q 2>&1 | tail -60, .venv/bin/python -m pytest -q 2>&1 | tail -8, git add core/relevance.py tests/test_relevance.py && git commit -m "$(cat <<'EOF' relevance.py: tighten space/defense false positives, extend adjacent-field hints to non-technical business/finance/BI companies Drop bare 'space'/'defense' from _ADJACENT_FIELD_COMPANY_HINT_RE — both were confirmed real false positives on ordinary English (Jane Street "the broader cybersecurity space", Appian "modern cloud architecture defense"), and no real dossier in the current vault has genuine space/defense-industry fetched content to build an evidence-based co-occurrence replacement from (those postings lost the debate before ever being fetched). Dropped rather than guessed at an uncited pattern. Add company hints for FTI Consulting, Truist, Vertiv, UHY, CNO Financial, Dimensional Fund Advisors, KeyBank, and Continental Resources, plus a title hint for Walleye Capital's "Finance & Accounting Intern" — each closes a real dossier that passed stage2_confirm unconditionally despite genuinely non-technical content, because none of their industries hit any existing hint word. Every addition was checked against every known good dossier at the same company using real fetched content before shipping: Walleye Capital is deliberately NOT company-gated (its "Investment Data Science Intern" has no signal-word match despite being a genuine role), and KeyBank/Truist's specific known-bad dossiers still pass even after gating — their real content happens to literally mention Python/SQL/"Software Development" as a tool/team-name aside, not a real requirement, a documented limitation of the keyword-only signal check this fix doesn't close. Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> EOF )", .venv/bin/python -m pytest tests/test_identity.py -q 2>&1 | tail -30, git add core/identity.py tests/test_identity.py && git commit -m "$(cat <<'EOF' identity.py: add Workday requisition-id ATS pattern for cross-source dedup _ATS_JOB_ID_PATTERNS only covered greenhouse/lever/ashby/google — Workday postings (a large share of this pipeline's sources) fell back to the company+title text key, defeated by trivial wording differences. Three real confirmed duplicate pairs: FTI Consulting "Technology Intern" (requisition JR260339 under two different Workday site-path segments), Medtronic "Software Engineer(ing) Intern" (requisition R73630, same pattern), and Continental Resources "Data Analyst Intern" (requisition R02591, identical URL apart from a trailing -1 variant suffix). The id is always the last underscore-delimited path segment; captured separately from an optional '-N' suffix so both variants of the same requisition unify. Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> EOF )", .venv/bin/python -c " from core.relevance import stage1_reject from core.filter import location_eligible print('PM Intern:', stage1_reject('Product Management Intern', '')) print('PM Intern MBA:', stage1_reject('Product Management Intern, MBA', '')) print('Optiver NL:', location_eligible(['Amsterdam, North Holland, Netherlands'])) print('HK:', location_eligible(['Hong Kong'])) print('London bare:', location_eligible(['London'])) print('Israel:', location_eligible(['Tel Aviv, Israel'])) print('Poland:', location_eligible(['Warsaw, Poland'])) " 
+- Tool call tally: Agent (6), AskUserQuestion (1), Bash (26), Edit (12), ListAgents (3), mcp__jarvis__search_query (8), mcp__jarvis__vault_delete (43), mcp__jarvis__vault_list (5), mcp__jarvis__vault_read (112), mcp__jarvis-fs__list_allowed_directories (1), Read (22), SendMessage (4), ToolSearch (4), WebFetch (1), Write (1)
 

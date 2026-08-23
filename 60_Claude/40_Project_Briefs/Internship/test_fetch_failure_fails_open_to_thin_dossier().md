@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_run_pipeline.py"
 type: "code"
-community: "normalize_simplify"
+community: "test_writer.py"
 location: "L478"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/normalize_simplify
+  - community/test_writerpy
 ---
 
 # test_fetch_failure_fails_open_to_thin_dossier()
@@ -18,4 +18,4 @@ tags:
 - [[normalize_simplify()]] - `calls` [EXTRACTED]
 - [[test_run_pipeline.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/normalize_simplify
+#graphify/code #graphify/EXTRACTED #community/test_writerpy

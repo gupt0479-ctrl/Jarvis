@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_run_pipeline.py"
 type: "code"
-community: "normalize_simplify"
+community: "test_writer.py"
 location: "L204"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/normalize_simplify
+  - community/test_writerpy
 ---
 
 # test_dedup_new_dedupes_within_the_same_run()
@@ -17,4 +17,4 @@ tags:
 - [[normalize_simplify()]] - `calls` [EXTRACTED]
 - [[test_run_pipeline.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/normalize_simplify
+#graphify/code #graphify/EXTRACTED #community/test_writerpy

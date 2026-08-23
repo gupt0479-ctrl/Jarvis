@@ -1,11 +1,11 @@
 ---
 type: community
-members: 68
+members: 76
 ---
 
 # write_dossier
 
-**Members:** 68 nodes
+**Members:** 76 nodes
 
 ## Members
 - [[Bare, year-less Spring stays ambiguous (could be excluded Spring 2026     or w]] - rationale - tests/test_filter.py
@@ -13,6 +13,7 @@ members: 68
 - [[Guards against silent test evaporation pytest.mark.parametrize collects     zer]] - rationale - tests/test_filter.py
 - [[Layer 2 — pure field matching against each feed's own schema. No LLM, determinis]] - rationale - core/filter.py
 - [[Listing]] - code - ingestion/normalize.py
+- [[Map each source's raw shape to one internal Listing dataclass.]] - rationale - ingestion/normalize.py
 - [[Permissive like locations no degrees data passes; non-empty data must     inclu]] - rationale - core/filter.py
 - [[Real case Ellipsis Labs' live 'Software Engineer - 2027 Interns' posting     ne]] - rationale - tests/test_filter.py
 - [[Real case Marshall Wace's live 'Technology Intern - 2027' postings state     th]] - rationale - tests/test_filter.py
@@ -28,13 +29,18 @@ members: 68
 - [[_matches_vanshb03()]] - code - core/filter.py
 - [[_matches_zshah101()]] - code - core/filter.py
 - [[_norm()]] - code - core/filter.py
+- [[_parse_iso_ts()]] - code - ingestion/normalize.py
+- [[_strip_html()]] - code - ingestion/normalize.py
 - [[_target_years()]] - code - core/filter.py
 - [[_text_has_any()]] - code - core/filter.py
 - [[degrees_eligible()]] - code - core/filter.py
 - [[filter.py]] - code - core/filter.py
 - [[location_eligible()]] - code - core/filter.py
 - [[matches()]] - code - core/filter.py
+- [[normalize.py]] - code - ingestion/normalize.py
 - [[normalize_ai_jobs()]] - code - ingestion/normalize.py
+- [[normalize_ashby()]] - code - ingestion/normalize.py
+- [[normalize_greenhouse()]] - code - ingestion/normalize.py
 - [[normalize_josegael()]] - code - ingestion/normalize.py
 - [[normalize_vanshb03()]] - code - ingestion/normalize.py
 - [[normalize_zshah101()]] - code - ingestion/normalize.py
@@ -64,6 +70,8 @@ members: 68
 - [[test_location_us_or_ambiguous_is_eligible()]] - code - tests/test_filter.py
 - [[test_matches_rejects_foreign_only_listing_end_to_end()]] - code - tests/test_filter.py
 - [[test_normalize_ai_jobs_maps_fields_and_matches_real_intern_record()]] - code - tests/test_filter.py
+- [[test_normalize_ashby_maps_fields()]] - code - tests/test_filter.py
+- [[test_normalize_greenhouse_strips_html_and_maps_fields()]] - code - tests/test_filter.py
 - [[test_simplify_matches_spring_2027_only()]] - code - tests/test_filter.py
 - [[test_simplify_should_match()]] - code - tests/test_filter.py
 - [[test_simplify_should_reject()]] - code - tests/test_filter.py
@@ -85,17 +93,19 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 16 edges to [[_COMMUNITY_recheck.py]]
-- 16 edges to [[_COMMUNITY_test_freehire.py]]
-- 10 edges to [[_COMMUNITY_normalize_simplify]]
-- 7 edges to [[_COMMUNITY_test_write_dossier_creates_missing_dossiers_dir]]
-- 4 edges to [[_COMMUNITY_test_render_dossier_shows_real_rendered_frontmatter_with_preference_match]]
-- 3 edges to [[_COMMUNITY_test_writer.py]]
-- 2 edges to [[_COMMUNITY_test_debate_losses.py]]
+- 18 edges to [[_COMMUNITY_recheck.py]]
+- 17 edges to [[_COMMUNITY_test_writer.py]]
+- 9 edges to [[_COMMUNITY_test_write_dossier_creates_missing_dossiers_dir]]
+- 9 edges to [[_COMMUNITY_test_freehire.py]]
+- 6 edges to [[_COMMUNITY_test_render_dossier_shows_real_rendered_frontmatter_with_preference_match]]
+- 3 edges to [[_COMMUNITY_revalidate.py]]
+- 1 edge to [[_COMMUNITY_test_write_dossier_different_uid_same_role_company_gets_collision_suffix]]
+- 1 edge to [[_COMMUNITY_render_dossier]]
+- 1 edge to [[_COMMUNITY_build_frontmatter]]
 
 ## Top bridge nodes
-- [[Listing]] - degree 24, connects to 6 communities
-- [[filter.py]] - degree 21, connects to 5 communities
-- [[normalize_josegael()]] - degree 18, connects to 5 communities
-- [[test_filter.py]] - degree 55, connects to 3 communities
-- [[normalize_zshah101()]] - degree 12, connects to 3 communities
+- [[normalize.py]] - degree 24, connects to 8 communities
+- [[filter.py]] - degree 22, connects to 6 communities
+- [[Listing]] - degree 24, connects to 4 communities
+- [[normalize_josegael()]] - degree 18, connects to 3 communities
+- [[test_filter.py]] - degree 55, connects to 2 communities

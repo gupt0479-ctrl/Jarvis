@@ -1,12 +1,12 @@
 ---
 source_file: "vault_writer/writer.py"
 type: "rationale"
-community: "recheck.py"
+community: "revalidate.py"
 location: "L158"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/recheckpy
+  - community/revalidatepy
 ---
 
 # Frontmatter dicts of every dossier file actually present in the vault     checko
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[scan_dossiers()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/recheckpy
+#graphify/rationale #graphify/EXTRACTED #community/revalidatepy

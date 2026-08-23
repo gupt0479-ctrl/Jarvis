@@ -1,12 +1,12 @@
 ---
 source_file: "core/identity.py"
 type: "code"
-community: "normalize_simplify"
-location: "L51"
+community: "test_writer.py"
+location: "L65"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/normalize_simplify
+  - community/test_writerpy
 ---
 
 # compute_uid()
@@ -38,4 +38,4 @@ tags:
 - [[test_validate_and_write_rejects_dead_url()]] - `calls` [EXTRACTED]
 - [[test_validate_and_write_seeds_dedup_keys_from_existing_vault_files()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/normalize_simplify
+#graphify/code #graphify/EXTRACTED #community/test_writerpy

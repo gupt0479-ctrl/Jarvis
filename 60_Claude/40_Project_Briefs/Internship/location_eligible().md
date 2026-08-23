@@ -13,8 +13,10 @@ tags:
 
 ## Connections
 - [[_entry_is_us_or_remote()]] - `calls` [EXTRACTED]
+- [[check_dossier()]] - `calls` [EXTRACTED]
 - [[filter.py]] - `contains` [EXTRACTED]
 - [[matches()]] - `calls` [EXTRACTED]
+- [[revalidate.py]] - `imports` [EXTRACTED]
 - [[test_filter.py]] - `imports` [EXTRACTED]
 - [[test_location_affirmatively_foreign_is_rejected()]] - `calls` [EXTRACTED]
 - [[test_location_new_london_ct_is_not_caught_by_bare_london_fallback()]] - `calls` [EXTRACTED]

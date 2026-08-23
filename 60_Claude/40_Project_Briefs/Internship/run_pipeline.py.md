@@ -64,6 +64,7 @@ tags:
 - [[recheck.py]] - `imports_from` [EXTRACTED]
 - [[relevance.py]] - `imports_from` [EXTRACTED]
 - [[render_dossier()]] - `imports` [EXTRACTED]
+- [[revalidate.py]] - `imports_from` [EXTRACTED]
 - [[run_log.py]] - `imports_from` [EXTRACTED]
 - [[run_once()]] - `contains` [EXTRACTED]
 - [[save_capacity_notified()]] - `contains` [EXTRACTED]

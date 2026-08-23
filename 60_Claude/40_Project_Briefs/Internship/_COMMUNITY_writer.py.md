@@ -66,11 +66,12 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 8 edges to [[_COMMUNITY_recheck.py]]
+- 5 edges to [[_COMMUNITY_recheck.py]]
+- 3 edges to [[_COMMUNITY_render_dossier]]
 
 ## Top bridge nodes
-- [[extract_content()]] - degree 16, connects to 1 community
+- [[extract_content()]] - degree 16, connects to 2 communities
+- [[phd_only_exclusion()]] - degree 8, connects to 2 communities
+- [[opt_exclusion()]] - degree 7, connects to 2 communities
 - [[posting_page.py]] - degree 10, connects to 1 community
-- [[phd_only_exclusion()]] - degree 8, connects to 1 community
-- [[opt_exclusion()]] - degree 7, connects to 1 community
 - [[fetch_posting_markdown()]] - degree 7, connects to 1 community

@@ -13,8 +13,10 @@ tags:
 
 ## Connections
 - [[True if this listing's titleraw_text is unambiguously non-software —     reject]] - `rationale_for` [EXTRACTED]
+- [[check_dossier()]] - `calls` [EXTRACTED]
 - [[fetch_and_filter()]] - `calls` [EXTRACTED]
 - [[relevance.py]] - `contains` [EXTRACTED]
+- [[revalidate.py]] - `imports` [EXTRACTED]
 - [[run_pipeline.py]] - `imports` [EXTRACTED]
 - [[test_relevance.py]] - `imports` [EXTRACTED]
 - [[test_stage1_does_not_reject_engineering_track_rotational_program()]] - `calls` [EXTRACTED]

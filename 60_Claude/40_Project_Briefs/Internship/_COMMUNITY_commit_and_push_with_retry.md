@@ -37,12 +37,13 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 9 edges to [[_COMMUNITY_recheck.py]]
+- 8 edges to [[_COMMUNITY_recheck.py]]
 - 3 edges to [[_COMMUNITY_test_writer.py]]
 - 1 edge to [[_COMMUNITY_vault_root]]
+- 1 edge to [[_COMMUNITY_revalidate.py]]
 
 ## Top bridge nodes
+- [[commit_and_push_with_retry()]] - degree 14, connects to 2 communities
 - [[git_ops.py]] - degree 8, connects to 2 communities
 - [[GitPushError]] - degree 8, connects to 2 communities
-- [[commit_and_push_with_retry()]] - degree 14, connects to 1 community
 - [[Exception]] - degree 2, connects to 1 community

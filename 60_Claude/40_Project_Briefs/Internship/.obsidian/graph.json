@@ -106,7 +106,7 @@
       }
     },
     {
-      "query": "tag:#community/plan_removals",
+      "query": "tag:#community/revalidate.py",
       "color": {
         "a": 1,
         "rgb": 15583560
@@ -183,31 +183,17 @@
       }
     },
     {
-      "query": "tag:#community/normalize_simplify",
+      "query": "tag:#community/test_freehire.py",
       "color": {
         "a": 1,
         "rgb": 11565729
       }
     },
     {
-      "query": "tag:#community/test_freehire.py",
+      "query": "tag:#community/plan_removals",
       "color": {
         "a": 1,
         "rgb": 16752039
-      }
-    },
-    {
-      "query": "tag:#community/test_debate_losses.py",
-      "color": {
-        "a": 1,
-        "rgb": 10253663
-      }
-    },
-    {
-      "query": "tag:#community/_listing_with_date",
-      "color": {
-        "a": 1,
-        "rgb": 12234924
       }
     },
     {
@@ -215,20 +201,6 @@
       "color": {
         "a": 1,
         "rgb": 5142951
-      }
-    },
-    {
-      "query": "tag:#community/validate.py",
-      "color": {
-        "a": 1,
-        "rgb": 15896107
-      }
-    },
-    {
-      "query": "tag:#community/plan_removals",
-      "color": {
-        "a": 1,
-        "rgb": 14767961
       }
     }
   ]

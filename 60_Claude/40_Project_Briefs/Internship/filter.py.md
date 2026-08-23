@@ -27,6 +27,7 @@ tags:
 - [[load_profile()]] - `contains` [EXTRACTED]
 - [[location_eligible()]] - `contains` [EXTRACTED]
 - [[matches()]] - `contains` [EXTRACTED]
+- [[revalidate.py]] - `imports_from` [EXTRACTED]
 - [[run_pipeline.py]] - `imports_from` [EXTRACTED]
 - [[test_debate.py]] - `imports_from` [EXTRACTED]
 - [[test_filter.py]] - `imports_from` [EXTRACTED]

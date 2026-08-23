@@ -2,7 +2,7 @@
 source_file: "tests/test_identity.py"
 type: "rationale"
 community: "test_render_dossier_shows_real_rendered_frontmatter_with_preference_match"
-location: "L169"
+location: "L202"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED

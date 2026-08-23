@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_run_pipeline.py"
 type: "code"
-community: "_listing_with_date"
+community: "test_writer.py"
 location: "L136"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/_listing_with_date
+  - community/test_writerpy
 ---
 
 # test_prioritize_and_cap_without_preferred_companies_keeps_recency_only_order()
@@ -16,4 +16,4 @@ tags:
 - [[preferred_companies=None (the default) must reproduce the exact     pre-Task-L r]] - `rationale_for` [EXTRACTED]
 - [[test_run_pipeline.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/_listing_with_date
+#graphify/code #graphify/EXTRACTED #community/test_writerpy

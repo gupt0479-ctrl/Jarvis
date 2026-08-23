@@ -1,12 +1,12 @@
 ---
 source_file: "run_pipeline.py"
 type: "rationale"
-community: "recheck.py"
+community: "render_dossier"
 location: "L285"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/recheckpy
+  - community/render_dossier
 ---
 
 # Renders + validates each new listing; writes the ones that pass into     the Jar
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[validate_and_write()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/recheckpy
+#graphify/rationale #graphify/EXTRACTED #community/render_dossier

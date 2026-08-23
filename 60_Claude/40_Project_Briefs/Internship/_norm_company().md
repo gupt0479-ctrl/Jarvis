@@ -1,12 +1,12 @@
 ---
 source_file: "core/identity.py"
 type: "code"
-community: "test_render_dossier_shows_real_rendered_frontmatter_with_preference_match"
-location: "L65"
+community: "build_frontmatter"
+location: "L79"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_render_dossier_shows_real_rendered_frontmatter_with_preference_match
+  - community/build_frontmatter
 ---
 
 # _norm_company()
@@ -15,4 +15,4 @@ tags:
 - [[company_matches_preference()]] - `calls` [EXTRACTED]
 - [[identity.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_render_dossier_shows_real_rendered_frontmatter_with_preference_match
+#graphify/code #graphify/EXTRACTED #community/build_frontmatter

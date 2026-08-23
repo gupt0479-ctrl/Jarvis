@@ -1,12 +1,12 @@
 ---
 source_file: "vault_writer/writer.py"
 type: "code"
-community: "plan_removals"
+community: "build_frontmatter"
 location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/plan_removals
+  - community/build_frontmatter
 ---
 
 # _represent_none()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[writer.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/plan_removals
+#graphify/code #graphify/EXTRACTED #community/build_frontmatter
