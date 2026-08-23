@@ -14,3 +14,4 @@ Weekly rollup from the internship-research-loop automation, appended automatical
 - **2026-07-26 to 2026-08-02**: 53 dossiers written, 1495 rejections (cross_source_duplicate: 764, opt_eligibility: 552, url_liveness: 179), 0 halted run(s), 86 run(s) total
 - **2026-08-02 to 2026-08-09**: 39 dossiers written, 1779 rejections (cross_source_duplicate: 85, cs_relevance: 47, opt_eligibility: 746, url_liveness: 901), 0 halted run(s), 101 run(s) total
 - **2026-08-09 to 2026-08-16**: 77 dossiers written, 2407 rejections (cross_source_duplicate: 546, cs_relevance: 9, opt_eligibility: 1429, url_liveness: 423), 0 halted run(s), 138 run(s) total
+- **2026-08-16 to 2026-08-23**: 173 dossiers written, 2255 rejections (cross_source_duplicate: 954, cs_relevance: 38, opt_eligibility: 681, url_liveness: 582), 3 halted run(s), 161 run(s) total
