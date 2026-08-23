@@ -309,3 +309,38 @@ Both behave exactly as the code predicts, no evidence of guessing or dropped dat
 2. Fix `recheck.py`'s `plan_removals()` to skip files already under `Viewed/` (or check `status != "removed"`) — stops the daily re-move/`(N)`-suffix bug in (c).
 3. A per-run alert when debate-loss exclusions spike well above the normal trickle (e.g. >20 in one run) — would have surfaced the 2026-08-21 burst as it happened.
 4. A direct check of whether Jose-Gael-Cruz-Lopez is still returning candidates in recent runs.
+
+
+## Prompt 10 — Codebase: Act On The Task 7 Audit (written 2026-08-23, run 2026-08-23)
+Full text: see the conversation that produced it. Four phases: fix the 5 root-cause bugs (Zipline SPA-detection, `recheck.py` Viewed/ re-sweep, `_NON_US` gaps, adjacent-field hint tightening with regression protection for known false positives, Workday ATS-id pattern), then act on affected dossiers (re-evaluate Zipline, remove confirmed non-technical/non-US, dedupe legacy duplicate groups, touch nothing borderline), one cheap JGCL health check, two new GitHub Actions features. Two items explicitly left for a human decision: preference-tier grading, `MAX_DEBATE_LOSSES` retuning.
+
+**Result:**
+```
+367 tests passing (up from 329), 7 commits, full suite green throughout.
+
+Phase 1 (5 commits, 38 new tests): Zipline SPA board-index bug (ceeea7d, 4 tests), recheck.py Viewed/ re-sweep bug (2eb6bab, 1 test), _NON_US denylist gaps (c397413, 6 tests), space/defense false-positive fix + business/finance/BI hints (fbf934a, 15 tests), Workday ATS-id pattern (084e3da, 3 tests). Notable finding: a company-wide gate for Walleye Capital would have wrongly failed a genuine "Data Science Intern" role with no signal-word match in real content — kept narrow. KeyBank/Truist's bad dossiers still pass even post-fix because their real content literally mentions Python/SQL as a tool-list/team-name aside, not a real requirement — a documented limitation of the keyword-only check, not something this fix closes.
+
+Phase 2 (44 dossiers removed, recoverable): 13 confirmed non-technical (UHY, CNO Financial, Vertiv ×5, Walleye Finance, Continental Resources Geoscience, Dimensional Fund "Data and Tools", FTI ×2), 7 non-US (Optiver ×2 Netherlands, Google ×2 Israel, Marshall Wace ×3 Hong Kong/London), 24 legacy cross-source duplicates (Virtu ×3 groups — 7 removed, one extra duplicate found during verification not in the original audit — plus PDT Partners, Replit, Notion, Melius, Deepgram, Chicago Trading Co. cross-bucket, Freeform, Atoms, DV Trading/Group, HPR, General Matter, Quadrillion cross-bucket 3-way, Medtronic, Continental Resources Data Analyst). Explicitly not removed, correcting the earlier audit's over-broad characterization: Vertiv "Operations Intern - Summer 2027" (real Python/SQL/data-pipeline requirements, genuinely fine). Left borderline, not removed: KeyBank/Truist (documented false-pass above). American Express's ~20 entries explicitly skipped — too much risk of conflating legitimately-different postings without individually verifying each URL, flagged for follow-up. Zipline's 49 dossiers untouched — the code fix shipped and tested, but re-evaluating existing dossiers needs a real Firecrawl fetch, and this session reported FIRECRAWL_API_KEY unavailable to it (later found to be a session environment-sourcing gap, not a real absence — it's in ~/.bashrc).
+
+Phase 3: Jose-Gael-Cruz-Lopez not degraded — fetches 4-5 real candidates on nearly every recent run; zero live dossiers today is explained by the already-documented 2026-07-18 manual vault cleanup (13 JGCL uids sit in seen_ids.json with no corresponding live file). Correctly a no-op.
+
+Phase 4 (2 commits): revalidate.py + .github/workflows/revalidate.yml (weekly re-validation against current rules, files a digest issue). should_alert_on_exclusion_spike() in run_pipeline.py, fires when exclusions exceed 20 in one run, citing the 2026-08-21 burst.
+
+Flagged, not implemented: preference-tier grading (Citadel's mechanism isn't broken, it's undifferentiated — a graded scheme vs. a diversity tiebreaker is a real design choice); MAX_DEBATE_LOSSES retuning (5 consecutive losses converts backlog into permanent exclusion fast, as the burst showed — the right number or a different mechanism is a design call).
+```
+
+## Prompt 11 — Jarvis: Sync Building System, 30_Order, Graphify Mirror (written 2026-08-23, run 2026-08-23)
+Full text: see the conversation that produced it. Five tasks: record the Task 7 audit in `System - Build Log.md`/`Source of Truth.md`; cross-reference Building System/30_Order docs against the graphify mirror for drift Prompt 9 wouldn't have caught; confirm the graphify-deletion incident stays closed; re-check whether Program/Contact/Applying Standards are still not needed; re-flag the still-open `Viewed/` conflict and "review" ambiguity.
+
+**Result:**
+```
+Task 1: System - Build Log.md got a ## 2026-08-23 entry with the audit's headline findings, full detail pointed at the Archive note. Source of Truth.md corrected only what the audit actually contradicts — Hard Gate §2 (location) and §4 (CS-relevance) each got a cited caveat that the design is right but the implementation has real gaps; Resource Limits got the debate-comparator design-gap paragraph and dedup status; Priority Classification got the Viewed/ re-sweep bug. The closing "What Closing The Loop Means Here" section was rewritten to say verification is stale as of 2026-08-23 rather than still claiming discovery is "independently verified solid." Everything else left untouched — nothing else was contradicted. Internship Pipeline.md got one added line so it doesn't read as already-fixed either.
+
+Task 2: Confirmed the graphify mirror is a pure structural mirror (function/file/test call-graph, no source text), static at 89fd543/f75662ac. Spot-checked names cited in Standards/Source of Truth docs — build_frontmatter(), opt_exclusion(), extract_content() (plus its real regression tests), validate.py, plan_removals(), debate.py/debate_compare(), location_eligible() all confirmed real nodes. A handful of cited constants (REQUIRED_FRONTMATTER_FIELDS, _NON_US, _ADJACENT_FIELD_COMPANY_HINT_RE, BUCKET_CAPACITY, MAX_DEBATE_LOSSES, dossier_uids.json) have no node — consistent with the mirror never node-ifying bare constants/JSON state, not a doc inaccuracy. Nothing further found beyond Prompt 9's own audit.
+
+Task 3: Deletion incident confirmed closed — verified f75662ac directly, content matches its message exactly. Exactly one commit has touched that folder since (f6e056e7), and it only rewrote graph.canvas (visual layout) — zero new node files added or removed. No new orphans. The underlying graphify manifest-writer bug still unfixed but flagged only, not touched.
+
+Task 4: Program/Contact/Applying Standard recommendation stands — Prompt 9's audit scope never touched those note types, no new evidence either way.
+
+Task 5: Both items re-flagged, no new decision given at the time — the Viewed/ semantic conflict and the "review" note-type ambiguity. (Both resolved by the human immediately after this report — see Prompts 12/13.)
+```

@@ -5,9 +5,9 @@ source_app: claude-code
 source_os: wsl
 title: "Internship dossier audit and filter-rule reconciliation"
 started_at: 2026-08-23T11:53:47
-ended_at: 2026-08-23T15:46:51
-duration_minutes: 233
-exported_at: 2026-08-23T19:46:50
+ended_at: 2026-08-23T15:54:40
+duration_minutes: 241
+exported_at: 2026-08-23T23:08:54
 project: internship-research-loop
 cwd: '/home/anant_gupta/projects/work/internship-research-loop'
 session_id: 40a420c0-8439-4d86-afe3-7030dfd044da
