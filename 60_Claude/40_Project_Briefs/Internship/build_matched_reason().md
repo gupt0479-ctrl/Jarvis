@@ -1,12 +1,12 @@
 ---
 source_file: "run_pipeline.py"
 type: "code"
-community: "render_dossier"
-location: "L233"
+community: "writer.py"
+location: "L250"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/render_dossier
+  - community/writerpy
 ---
 
 # build_matched_reason()
@@ -15,4 +15,4 @@ tags:
 - [[run_pipeline.py]] - `contains` [EXTRACTED]
 - [[validate_and_write()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/render_dossier
+#graphify/code #graphify/EXTRACTED #community/writerpy

@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_git_ops.py"
 type: "code"
-community: "commit_and_push_with_retry"
+community: "recheck.py"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/commit_and_push_with_retry
+  - community/recheckpy
 ---
 
 # _configure_identity()
@@ -16,4 +16,4 @@ tags:
 - [[remote_and_clones()]] - `calls` [EXTRACTED]
 - [[test_git_ops.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/commit_and_push_with_retry
+#graphify/code #graphify/EXTRACTED #community/recheckpy

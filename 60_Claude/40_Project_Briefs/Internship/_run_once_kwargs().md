@@ -16,6 +16,7 @@ tags:
 - [[_fake_http_head_all_live()]] - `indirect_call` [INFERRED]
 - [[test_run_once_defers_beyond_the_cap_and_leaves_it_for_next_run()]] - `calls` [EXTRACTED]
 - [[test_run_once_does_not_mark_seen_when_push_fails()]] - `calls` [EXTRACTED]
+- [[test_run_once_files_issue_on_exclusion_spike()]] - `calls` [INFERRED]
 - [[test_run_once_files_issue_on_systemic_rejection_not_routine_one()]] - `calls` [EXTRACTED]
 - [[test_run_once_files_issue_once_per_bucket_crossing_capacity()]] - `calls` [EXTRACTED]
 - [[test_run_once_global_total_thresholds()]] - `calls` [EXTRACTED]

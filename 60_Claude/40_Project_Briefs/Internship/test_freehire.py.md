@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_freehire.py"
 type: "code"
-community: "test_freehire.py"
+community: "write_dossier"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_freehirepy
+  - community/write_dossier
 ---
 
 # test_freehire.py
@@ -33,4 +33,4 @@ tags:
 - [[test_normalize_freehire_strips_tracking_param_and_splits_locations()]] - `contains` [EXTRACTED]
 - [[test_nuro_ground_truth_posting_rejects_no_year_anywhere()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_freehirepy
+#graphify/code #graphify/EXTRACTED #community/write_dossier

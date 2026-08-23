@@ -1,12 +1,12 @@
 ---
 source_file: "ingestion/freehire.py"
 type: "code"
-community: "test_freehire.py"
+community: "write_dossier"
 location: "L87"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_freehirepy
+  - community/write_dossier
 ---
 
 # fetch_freehire()
@@ -19,4 +19,4 @@ tags:
 - [[test_fetch_freehire_skips_a_dead_company_without_crashing()]] - `calls` [EXTRACTED]
 - [[test_freehire.py]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_freehirepy
+#graphify/code #graphify/EXTRACTED #community/write_dossier

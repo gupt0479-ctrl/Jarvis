@@ -1,12 +1,12 @@
 ---
 source_file: "core/git_ops.py"
 type: "rationale"
-community: "commit_and_push_with_retry"
+community: "recheck.py"
 location: "L1"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/commit_and_push_with_retry
+  - community/recheckpy
 ---
 
 # Commit-and-push with a retry-once-on-rejected-push loop.  The Jarvis vault has i
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[git_ops.py]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/commit_and_push_with_retry
+#graphify/rationale #graphify/EXTRACTED #community/recheckpy

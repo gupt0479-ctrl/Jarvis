@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_git_ops.py"
 type: "rationale"
-community: "commit_and_push_with_retry"
+community: "recheck.py"
 location: "L77"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/commit_and_push_with_retry
+  - community/recheckpy
 ---
 
 # The actual scenario this module exists for: 'theirs' (the vault's own     auto-c
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[test_retries_once_on_rejected_push_and_succeeds()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/commit_and_push_with_retry
+#graphify/rationale #graphify/EXTRACTED #community/recheckpy

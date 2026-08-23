@@ -1,12 +1,12 @@
 ---
 source_file: "ingestion/freehire.py"
 type: "code"
-community: "test_freehire.py"
+community: "write_dossier"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_freehirepy
+  - community/write_dossier
 ---
 
 # freehire.py
@@ -20,4 +20,4 @@ tags:
 - [[run_pipeline.py]] - `imports_from` [EXTRACTED]
 - [[test_freehire.py]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_freehirepy
+#graphify/code #graphify/EXTRACTED #community/write_dossier

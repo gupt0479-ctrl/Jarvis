@@ -1,12 +1,12 @@
 ---
 source_file: "core/git_ops.py"
 type: "code"
-community: "commit_and_push_with_retry"
+community: "recheck.py"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/commit_and_push_with_retry
+  - community/recheckpy
 ---
 
 # git_ops.py
@@ -21,4 +21,4 @@ tags:
 - [[test_git_ops.py]] - `imports_from` [EXTRACTED]
 - [[test_run_pipeline.py]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/commit_and_push_with_retry
+#graphify/code #graphify/EXTRACTED #community/recheckpy

@@ -2,7 +2,7 @@
 source_file: "run_pipeline.py"
 type: "code"
 community: "revalidate.py"
-location: "L371"
+location: "L388"
 tags:
   - graphify/code
   - graphify/EXTRACTED

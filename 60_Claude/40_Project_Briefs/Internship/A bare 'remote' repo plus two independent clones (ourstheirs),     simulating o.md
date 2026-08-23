@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_git_ops.py"
 type: "rationale"
-community: "commit_and_push_with_retry"
+community: "recheck.py"
 location: "L28"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/commit_and_push_with_retry
+  - community/recheckpy
 ---
 
 # A bare 'remote' repo plus two independent clones (ours/theirs),     simulating o
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[remote_and_clones()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/commit_and_push_with_retry
+#graphify/rationale #graphify/EXTRACTED #community/recheckpy

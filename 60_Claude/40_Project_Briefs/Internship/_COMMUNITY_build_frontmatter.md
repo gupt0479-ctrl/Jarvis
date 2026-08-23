@@ -1,42 +1,34 @@
 ---
 type: community
-members: 61
+members: 53
 ---
 
 # build_frontmatter
 
-**Members:** 61 nodes
+**Members:** 53 nodes
 
 ## Members
 - [[.increase_indent()]] - code - vault_writer/writer.py
 - [[Copy of the committed throwaway_vault skeleton in a scratch dir per test,     so]] - rationale - tests/test_writer.py
 - [[Dumps None as a blank scalar (matching the plan's `field` empty style     inste]] - rationale - vault_writer/writer.py
 - [[Fix 2, Prompt 5 review (2026-07-30) two dossiers with the identical     filenam]] - rationale - tests/test_writer.py
-- [[Layer 3 — stable dedup keys for a Listing.  Both remaining sources carry a stabl]] - rationale - core/identity.py
-- [[Layer 3.5 — the debate a deterministic pairwise comparator that decides which]] - rationale - core/debate.py
 - [[Moves a closed-posting dossier into Viewed instead of deleting it     (Internsh]] - rationale - vault_writer/writer.py
 - [[Real rendered frontmatter (not just the dict) — confirms preference_tier     act]] - rationale - tests/test_writer.py
 - [[Renders the fixed dossier template and writes it into a vault checkout.  Renderi]] - rationale - vault_writer/writer.py
 - [[Same role+company but a genuinely different uid must not overwrite —     only a]] - rationale - tests/test_writer.py
 - [[Same slugification as dossier_filename() lowercase, spaces to     hyphens, ille]] - rationale - vault_writer/writer.py
 - [[Shared YAML rendering (None as blank scalar, indented list items) so     every d]] - rationale - vault_writer/writer.py
-- [[The matched preference tier (e.g. 'high'), or None if company isn't in     prefe]] - rationale - core/identity.py
 - [[Two dossiers for the same company (varying casingwhitespace) must     produce t]] - rationale - tests/test_writer.py
 - [[Writes an already-rendered, already-validated dossier into its     priority-buck]] - rationale - vault_writer/writer.py
 - [[Role - Company.md', Windows-unsafe chars stripped (the vault lives     on a]] - rationale - vault_writer/writer.py
 - [[_FrontmatterDumper]] - code - vault_writer/writer.py
 - [[_iso_date()]] - code - vault_writer/writer.py
-- [[_norm_company()]] - code - core/identity.py
-- [[_preference_rank()]] - code - core/debate.py
 - [[_represent_none()]] - code - vault_writer/writer.py
 - [[_yaml_list()]] - code - vault_writer/writer.py
 - [[build_frontmatter()]] - code - vault_writer/writer.py
-- [[company_matches_preference()]] - code - core/identity.py
 - [[company_slug()]] - code - vault_writer/writer.py
-- [[debate.py]] - code - core/debate.py
 - [[dossier_filename()]] - code - vault_writer/writer.py
 - [[dump_frontmatter()]] - code - vault_writer/writer.py
-- [[identity.py]] - code - core/identity.py
 - [[listing's real company is 'Palantir' (testsfixturessimplifyjobs.json)     — no]] - rationale - tests/test_writer.py
 - [[listing()_1]] - code - tests/test_writer.py
 - [[load_dossier_uids()]] - code - vault_writer/writer.py
@@ -78,17 +70,17 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 19 edges to [[_COMMUNITY_render_dossier]]
-- 11 edges to [[_COMMUNITY_recheck.py]]
-- 7 edges to [[_COMMUNITY_test_render_dossier_shows_real_rendered_frontmatter_with_preference_match]]
-- 6 edges to [[_COMMUNITY_test_write_dossier_creates_missing_dossiers_dir]]
-- 5 edges to [[_COMMUNITY_test_writer.py]]
-- 4 edges to [[_COMMUNITY_revalidate.py]]
+- 16 edges to [[_COMMUNITY_render_dossier]]
+- 12 edges to [[_COMMUNITY_recheck.py]]
+- 3 edges to [[_COMMUNITY_test_render_dossier_shows_real_rendered_frontmatter_with_preference_match]]
+- 2 edges to [[_COMMUNITY_test_writer.py]]
 - 1 edge to [[_COMMUNITY_write_dossier]]
+- 1 edge to [[_COMMUNITY_revalidate.py]]
+- 1 edge to [[_COMMUNITY_writer.py]]
 
 ## Top bridge nodes
-- [[identity.py]] - degree 13, connects to 4 communities
+- [[writer.py]] - degree 22, connects to 4 communities
 - [[test_writer.py]] - degree 33, connects to 3 communities
-- [[writer.py]] - degree 22, connects to 3 communities
 - [[write_dossier()]] - degree 18, connects to 2 communities
-- [[move_dossier_to_viewed()]] - degree 13, connects to 2 communities
+- [[build_frontmatter()]] - degree 11, connects to 2 communities
+- [[move_dossier_to_viewed()]] - degree 13, connects to 1 community

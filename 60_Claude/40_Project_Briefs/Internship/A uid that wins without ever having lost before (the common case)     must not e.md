@@ -2,7 +2,7 @@
 source_file: "tests/test_debate_losses.py"
 type: "rationale"
 community: "test_writer.py"
-location: "L74"
+location: "L85"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED

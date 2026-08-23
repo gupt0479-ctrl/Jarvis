@@ -1,12 +1,12 @@
 ---
 source_file: "core/identity.py"
 type: "code"
-community: "render_dossier"
+community: "test_render_dossier_shows_real_rendered_frontmatter_with_preference_match"
 location: "L83"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/render_dossier
+  - community/test_render_dossier_shows_real_rendered_frontmatter_with_preference_match
 ---
 
 # cross_source_key()
@@ -28,4 +28,4 @@ tags:
 - [[validate.py]] - `imports` [EXTRACTED]
 - [[validate_and_write()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/render_dossier
+#graphify/code #graphify/EXTRACTED #community/test_render_dossier_shows_real_rendered_frontmatter_with_preference_match

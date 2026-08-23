@@ -1,13 +1,14 @@
 ---
 type: community
-members: 37
+members: 38
 ---
 
 # vault_root
 
-**Members:** 37 nodes
+**Members:** 38 nodes
 
 ## Members
+- [[Exception]] - code
 - [[Fixtures carry a test-only _case label; real upstream entries don't.]] - rationale - tests/test_schema_drift.py
 - [[Runs every check in order; raises SchemaDriftError from whichever     fails firs]] - rationale - core/schema_drift.py
 - [[Schema-drift check. Runs before the scheduled pipeline touches feeds for real f]] - rationale - core/schema_drift.py
@@ -55,10 +56,10 @@ SORT file.name ASC
 
 ## Connections to other communities
 - 5 edges to [[_COMMUNITY_recheck.py]]
-- 3 edges to [[_COMMUNITY_test_writer.py]]
-- 1 edge to [[_COMMUNITY_commit_and_push_with_retry]]
+- 4 edges to [[_COMMUNITY_test_writer.py]]
 
 ## Top bridge nodes
-- [[SchemaDriftError]] - degree 7, connects to 3 communities
 - [[schema_drift.py]] - degree 12, connects to 2 communities
+- [[SchemaDriftError]] - degree 7, connects to 2 communities
 - [[check_all()]] - degree 11, connects to 1 community
+- [[Exception]] - degree 2, connects to 1 community

@@ -1,12 +1,12 @@
 ---
 source_file: "core/identity.py"
 type: "code"
-community: "build_frontmatter"
+community: "test_render_dossier_shows_real_rendered_frontmatter_with_preference_match"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/build_frontmatter
+  - community/test_render_dossier_shows_real_rendered_frontmatter_with_preference_match
 ---
 
 # identity.py
@@ -26,4 +26,4 @@ tags:
 - [[validate.py]] - `imports_from` [EXTRACTED]
 - [[writer.py]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/build_frontmatter
+#graphify/code #graphify/EXTRACTED #community/test_render_dossier_shows_real_rendered_frontmatter_with_preference_match

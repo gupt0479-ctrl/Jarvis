@@ -1,12 +1,12 @@
 ---
 source_file: "recheck.py"
 type: "code"
-community: "revalidate.py"
+community: "recheck.py"
 location: "L93"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/revalidatepy
+  - community/recheckpy
 ---
 
 # main()
@@ -21,4 +21,4 @@ tags:
 - [[recheck.py]] - `contains` [EXTRACTED]
 - [[scan_dossiers()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/revalidatepy
+#graphify/code #graphify/EXTRACTED #community/recheckpy

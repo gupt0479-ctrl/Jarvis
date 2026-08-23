@@ -1,12 +1,12 @@
 ---
 source_file: "run_pipeline.py"
 type: "code"
-community: "render_dossier"
-location: "L283"
+community: "writer.py"
+location: "L300"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/render_dossier
+  - community/writerpy
 ---
 
 # validate_and_write()
@@ -29,4 +29,4 @@ tags:
 - [[validate()]] - `calls` [EXTRACTED]
 - [[write_dossier()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/render_dossier
+#graphify/code #graphify/EXTRACTED #community/writerpy

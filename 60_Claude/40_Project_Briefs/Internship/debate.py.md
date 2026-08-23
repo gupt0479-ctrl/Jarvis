@@ -1,12 +1,12 @@
 ---
 source_file: "core/debate.py"
 type: "code"
-community: "build_frontmatter"
+community: "test_render_dossier_shows_real_rendered_frontmatter_with_preference_match"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/build_frontmatter
+  - community/test_render_dossier_shows_real_rendered_frontmatter_with_preference_match
 ---
 
 # debate.py
@@ -23,4 +23,4 @@ tags:
 - [[run_pipeline.py]] - `imports_from` [EXTRACTED]
 - [[test_debate.py]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/build_frontmatter
+#graphify/code #graphify/EXTRACTED #community/test_render_dossier_shows_real_rendered_frontmatter_with_preference_match

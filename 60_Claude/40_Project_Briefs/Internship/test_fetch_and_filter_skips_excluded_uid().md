@@ -2,7 +2,7 @@
 source_file: "tests/test_debate_losses.py"
 type: "code"
 community: "test_writer.py"
-location: "L84"
+location: "L95"
 tags:
   - graphify/code
   - graphify/EXTRACTED

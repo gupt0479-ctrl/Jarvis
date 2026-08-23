@@ -73,6 +73,7 @@ tags:
 - [[save_seen_ids()]] - `contains` [EXTRACTED]
 - [[scan_dossiers()]] - `imports` [EXTRACTED]
 - [[schema_drift.py]] - `imports_from` [EXTRACTED]
+- [[should_alert_on_exclusion_spike()]] - `contains` [EXTRACTED]
 - [[should_run_weekly_rollup()]] - `imports` [EXTRACTED]
 - [[sources.py]] - `imports_from` [EXTRACTED]
 - [[stage1_reject()]] - `imports` [EXTRACTED]

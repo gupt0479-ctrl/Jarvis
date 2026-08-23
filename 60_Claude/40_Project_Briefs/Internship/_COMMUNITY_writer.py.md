@@ -1,11 +1,11 @@
 ---
 type: community
-members: 49
+members: 52
 ---
 
 # writer.py
 
-**Members:** 49 nodes
+**Members:** 52 nodes
 
 ## Members
 - [[A posting with no stated section names at all must not have section     boundari]] - rationale - tests/test_posting_page.py
@@ -22,6 +22,7 @@ members: 49
 - [[Real listing.url shape stored on every AIJobs-sourced Zipline dossier     ('Aero]] - rationale - tests/test_posting_page.py
 - [[Real shape from the AppianConagra fixtures a fully-bolded standalone     line]] - rationale - tests/test_posting_page.py
 - [[Real the Manhattan Associates 'A.I. Developer Co-Op' fixture ends     with a 'R]] - rationale - tests/test_posting_page.py
+- [[Renders + validates each new listing; writes the ones that pass into     the Jar]] - rationale - run_pipeline.py
 - [[The URL to actually fetch for posting content — rewrites known     board-index-o]] - rationale - ingestion/posting_page.py
 - [[The matched PhD-exclusivity phrase, or None if the posting shows no     explicit]] - rationale - ingestion/posting_page.py
 - [[The matched exclusion phrase, or None if the posting shows no explicit     negat]] - rationale - ingestion/posting_page.py
@@ -29,6 +30,7 @@ members: 49
 - [[_content_fetch_url()]] - code - ingestion/posting_page.py
 - [[_dedupe_paragraphs()]] - code - ingestion/posting_page.py
 - [[_strip_trailing_social_chrome()]] - code - ingestion/posting_page.py
+- [[build_matched_reason()]] - code - run_pipeline.py
 - [[extract_content()]] - code - ingestion/posting_page.py
 - [[fetch_posting_markdown()]] - code - ingestion/posting_page.py
 - [[opt_exclusion()]] - code - ingestion/posting_page.py
@@ -57,6 +59,7 @@ members: 49
 - [[test_phd_only_exclusion_rejects_explicit_equivalent_phrasing()]] - code - tests/test_posting_page.py
 - [[test_phd_only_exclusion_rejects_real_optiver_text()]] - code - tests/test_posting_page.py
 - [[test_posting_page.py]] - code - tests/test_posting_page.py
+- [[validate_and_write()]] - code - run_pipeline.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -66,12 +69,16 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 5 edges to [[_COMMUNITY_recheck.py]]
+- 9 edges to [[_COMMUNITY_recheck.py]]
 - 3 edges to [[_COMMUNITY_render_dossier]]
+- 2 edges to [[_COMMUNITY_test_write_dossier_creates_missing_dossiers_dir]]
+- 1 edge to [[_COMMUNITY_test_render_dossier_shows_real_rendered_frontmatter_with_preference_match]]
+- 1 edge to [[_COMMUNITY_test_write_dossier_different_uid_same_role_company_gets_collision_suffix]]
+- 1 edge to [[_COMMUNITY_build_frontmatter]]
 
 ## Top bridge nodes
-- [[extract_content()]] - degree 16, connects to 2 communities
-- [[phd_only_exclusion()]] - degree 8, connects to 2 communities
-- [[opt_exclusion()]] - degree 7, connects to 2 communities
+- [[validate_and_write()]] - degree 16, connects to 6 communities
+- [[extract_content()]] - degree 16, connects to 1 community
 - [[posting_page.py]] - degree 10, connects to 1 community
-- [[fetch_posting_markdown()]] - degree 7, connects to 1 community
+- [[phd_only_exclusion()]] - degree 8, connects to 1 community
+- [[opt_exclusion()]] - degree 7, connects to 1 community

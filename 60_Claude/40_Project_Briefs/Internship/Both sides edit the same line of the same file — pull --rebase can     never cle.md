@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_git_ops.py"
 type: "rationale"
-community: "commit_and_push_with_retry"
+community: "recheck.py"
 location: "L110"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/commit_and_push_with_retry
+  - community/recheckpy
 ---
 
 # Both sides edit the same line of the same file — pull --rebase can     never cle
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[test_raises_after_exhausting_retries_on_persistent_conflict()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/commit_and_push_with_retry
+#graphify/rationale #graphify/EXTRACTED #community/recheckpy

@@ -2,7 +2,7 @@
 source_file: "run_pipeline.py"
 type: "code"
 community: "recheck.py"
-location: "L376"
+location: "L393"
 tags:
   - graphify/code
   - graphify/EXTRACTED
@@ -34,6 +34,7 @@ tags:
 - [[save_debate_losses()]] - `calls` [EXTRACTED]
 - [[save_excluded_uids()]] - `calls` [EXTRACTED]
 - [[save_seen_ids()]] - `calls` [EXTRACTED]
+- [[should_alert_on_exclusion_spike()]] - `calls` [EXTRACTED]
 - [[should_run_weekly_rollup()]] - `calls` [EXTRACTED]
 - [[update_debate_losses()]] - `calls` [EXTRACTED]
 - [[validate_and_write()]] - `calls` [EXTRACTED]
