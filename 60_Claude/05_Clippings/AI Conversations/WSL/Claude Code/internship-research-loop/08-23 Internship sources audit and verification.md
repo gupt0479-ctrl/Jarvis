@@ -7,7 +7,7 @@ title: "Internship sources audit and verification"
 started_at: 2026-08-23T21:16:32
 ended_at: 2026-08-23T22:43:33
 duration_minutes: 87
-exported_at: 2026-08-24T13:45:03
+exported_at: 2026-08-24T19:45:03
 project: internship-research-loop
 cwd: '/home/anant_gupta/projects/work/internship-research-loop'
 session_id: 7eff89cd-15fc-4877-96d2-145ac8290e7c
