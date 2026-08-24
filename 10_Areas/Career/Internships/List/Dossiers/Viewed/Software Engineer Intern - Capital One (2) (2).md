@@ -21,7 +21,7 @@ tags:
 notes:
   - '[[10_Areas/Career/Internships/List/Dossiers MOC]]'
   - '[[10_Areas/Career/Internships/List/Dossiers/Viewed/Removed Dossiers MOC]]'
-removed_date: '2026-08-23'
+removed_date: '2026-08-24'
 removed_reason: 'active: false upstream'
 ---
 # Software Engineer Intern
