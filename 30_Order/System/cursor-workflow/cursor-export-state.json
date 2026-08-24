@@ -1,5 +1,8 @@
 {
-  "last_processed_updated_at": 1787491795666,
-  "last_run_at": "2026-08-24T04:08:47",
-  "last_counts": {}
+  "last_processed_updated_at": 1787564876691,
+  "last_run_at": "2026-08-24T13:53:48",
+  "last_counts": {
+    "written": 1,
+    "seen": 1
+  }
 }
