@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_filter.py"
 type: "code"
-community: "write_dossier"
-location: "L47"
+community: "test_filter.py"
+location: "L49"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/write_dossier
+  - community/test_filterpy
 ---
 
 # test_simplify_should_reject()
@@ -16,4 +16,4 @@ tags:
 - [[normalize_simplify()]] - `calls` [EXTRACTED]
 - [[test_filter.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/write_dossier
+#graphify/code #graphify/EXTRACTED #community/test_filterpy

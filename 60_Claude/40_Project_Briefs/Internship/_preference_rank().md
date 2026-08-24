@@ -1,12 +1,12 @@
 ---
 source_file: "core/debate.py"
 type: "code"
-community: "test_write_dossier_creates_missing_dossiers_dir"
+community: "test_render_dossier_shows_real_rendered_frontmatter_with_preference_match"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_write_dossier_creates_missing_dossiers_dir
+  - community/test_render_dossier_shows_real_rendered_frontmatter_with_preference_match
 ---
 
 # _preference_rank()
@@ -16,4 +16,4 @@ tags:
 - [[debate.py]] - `contains` [EXTRACTED]
 - [[debate_compare()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_write_dossier_creates_missing_dossiers_dir
+#graphify/code #graphify/EXTRACTED #community/test_render_dossier_shows_real_rendered_frontmatter_with_preference_match

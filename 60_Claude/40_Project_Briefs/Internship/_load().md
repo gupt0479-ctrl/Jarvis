@@ -1,18 +1,20 @@
 ---
 source_file: "tests/test_filter.py"
 type: "code"
-community: "write_dossier"
-location: "L22"
+community: "test_filter.py"
+location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/write_dossier
+  - community/test_filterpy
 ---
 
 # _load()
 
 ## Connections
 - [[test_active_false_rejects_any_source()]] - `calls` [EXTRACTED]
+- [[test_applyguy_not_specified_season_maps_to_no_term_data()]] - `calls` [EXTRACTED]
+- [[test_applyguy_prefers_listing_url_over_tracking_url()]] - `calls` [EXTRACTED]
 - [[test_filter.py]] - `contains` [EXTRACTED]
 - [[test_fixture_has_both_match_and_reject_cases()]] - `calls` [EXTRACTED]
 - [[test_josegael_bare_spring_still_rejects()]] - `calls` [EXTRACTED]
@@ -27,4 +29,4 @@ tags:
 - [[test_zshah101_citizens_only_real_anduril_entry()]] - `calls` [EXTRACTED]
 - [[test_zshah101_matches_spring_2027()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/write_dossier
+#graphify/code #graphify/EXTRACTED #community/test_filterpy

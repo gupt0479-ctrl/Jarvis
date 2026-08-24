@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_recheck.py"
 type: "code"
-community: "plan_removals"
+community: "commit_and_push_with_retry"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/plan_removals
+  - community/commit_and_push_with_retry
 ---
 
 # test_recheck.py
@@ -23,4 +23,4 @@ tags:
 - [[test_dossier_with_no_manifest_entry_is_skipped_not_removed()]] - `contains` [EXTRACTED]
 - [[test_failed_fetch_skips_that_sources_dossiers_entirely()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/plan_removals
+#graphify/code #graphify/EXTRACTED #community/commit_and_push_with_retry

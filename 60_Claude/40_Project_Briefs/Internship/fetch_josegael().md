@@ -1,12 +1,12 @@
 ---
 source_file: "ingestion/sources.py"
 type: "code"
-community: "recheck.py"
-location: "L73"
+community: "commit_and_push_with_retry"
+location: "L102"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/recheckpy
+  - community/commit_and_push_with_retry
 ---
 
 # fetch_josegael()
@@ -17,4 +17,4 @@ tags:
 - [[run_pipeline.py]] - `imports` [EXTRACTED]
 - [[sources.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/recheckpy
+#graphify/code #graphify/EXTRACTED #community/commit_and_push_with_retry

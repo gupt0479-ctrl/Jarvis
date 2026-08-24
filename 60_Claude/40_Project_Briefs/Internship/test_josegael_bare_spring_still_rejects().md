@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_filter.py"
 type: "code"
-community: "write_dossier"
-location: "L333"
+community: "test_filter.py"
+location: "L422"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/write_dossier
+  - community/test_filterpy
 ---
 
 # test_josegael_bare_spring_still_rejects()
@@ -18,4 +18,4 @@ tags:
 - [[normalize_josegael()]] - `calls` [EXTRACTED]
 - [[test_filter.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/write_dossier
+#graphify/code #graphify/EXTRACTED #community/test_filterpy

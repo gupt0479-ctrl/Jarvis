@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_run_pipeline.py"
 type: "code"
-community: "test_writer.py"
-location: "L571"
+community: "plan_removals"
+location: "L581"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_writerpy
+  - community/plan_removals
 ---
 
 # _seed_bucket()
@@ -19,4 +19,4 @@ tags:
 - [[test_run_once_reports_bucket_at_capacity_without_refusing_writes()]] - `calls` [EXTRACTED]
 - [[test_run_pipeline.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_writerpy
+#graphify/code #graphify/EXTRACTED #community/plan_removals

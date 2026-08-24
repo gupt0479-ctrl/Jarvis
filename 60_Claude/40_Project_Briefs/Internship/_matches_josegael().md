@@ -1,12 +1,12 @@
 ---
 source_file: "core/filter.py"
 type: "code"
-community: "write_dossier"
-location: "L173"
+community: "test_filter.py"
+location: "L179"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/write_dossier
+  - community/test_filterpy
 ---
 
 # _matches_josegael()
@@ -20,4 +20,4 @@ tags:
 - [[test_josegael_bare_spring_still_rejects()]] - `calls` [EXTRACTED]
 - [[test_josegael_season_rejects_wrong_cycles_real_entries()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/write_dossier
+#graphify/code #graphify/EXTRACTED #community/test_filterpy

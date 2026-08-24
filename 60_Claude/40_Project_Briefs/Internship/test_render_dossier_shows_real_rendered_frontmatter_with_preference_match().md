@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_writer.py"
 type: "code"
-community: "build_frontmatter"
+community: "filter.py"
 location: "L197"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/build_frontmatter
+  - community/filterpy
 ---
 
 # test_render_dossier_shows_real_rendered_frontmatter_with_preference_match()
@@ -17,4 +17,4 @@ tags:
 - [[render_dossier()]] - `calls` [EXTRACTED]
 - [[test_writer.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/build_frontmatter
+#graphify/code #graphify/EXTRACTED #community/filterpy

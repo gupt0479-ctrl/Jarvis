@@ -1,12 +1,12 @@
 ---
 source_file: "vault_writer/writer.py"
 type: "code"
-community: "build_frontmatter"
+community: "fetch_posting_markdown"
 location: "L96"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/build_frontmatter
+  - community/fetch_posting_markdown
 ---
 
 # dump_frontmatter()
@@ -18,4 +18,4 @@ tags:
 - [[render_dossier()]] - `calls` [EXTRACTED]
 - [[writer.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/build_frontmatter
+#graphify/code #graphify/EXTRACTED #community/fetch_posting_markdown

@@ -2,7 +2,7 @@
 source_file: "core/schema_drift.py"
 type: "code"
 community: "vault_root"
-location: "L30"
+location: "L36"
 tags:
   - graphify/code
   - graphify/EXTRACTED
@@ -14,6 +14,7 @@ tags:
 ## Connections
 - [[Exception]] - `inherits` [EXTRACTED]
 - [[_check_json_source()]] - `calls` [EXTRACTED]
+- [[check_applyguy_schema()]] - `calls` [EXTRACTED]
 - [[run_pipeline.py]] - `imports` [EXTRACTED]
 - [[schema_drift.py]] - `contains` [EXTRACTED]
 - [[test_run_once_halts_on_schema_drift_and_writes_nothing()]] - `calls` [EXTRACTED]

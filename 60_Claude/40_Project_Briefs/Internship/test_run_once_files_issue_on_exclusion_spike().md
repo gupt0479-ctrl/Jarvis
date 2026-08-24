@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_debate_losses.py"
 type: "code"
-community: "test_writer.py"
+community: "normalize.py"
 location: "L141"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_writerpy
+  - community/normalizepy
 ---
 
 # test_run_once_files_issue_on_exclusion_spike()
@@ -17,4 +17,4 @@ tags:
 - [[_run_once_kwargs()]] - `calls` [INFERRED]
 - [[test_debate_losses.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_writerpy
+#graphify/code #graphify/EXTRACTED #community/normalizepy

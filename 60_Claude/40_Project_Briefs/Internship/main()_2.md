@@ -1,12 +1,12 @@
 ---
 source_file: "recheck.py"
 type: "code"
-community: "revalidate.py"
-location: "L93"
+community: "commit_and_push_with_retry"
+location: "L97"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/revalidatepy
+  - community/commit_and_push_with_retry
 ---
 
 # main()
@@ -21,4 +21,4 @@ tags:
 - [[recheck.py]] - `contains` [EXTRACTED]
 - [[scan_dossiers()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/revalidatepy
+#graphify/code #graphify/EXTRACTED #community/commit_and_push_with_retry

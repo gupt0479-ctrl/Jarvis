@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_filter.py"
 type: "code"
-community: "write_dossier"
-location: "L147"
+community: "test_filter.py"
+location: "L149"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/write_dossier
+  - community/test_filterpy
 ---
 
 # test_location_new_london_ct_is_not_caught_by_bare_london_fallback()
@@ -16,4 +16,4 @@ tags:
 - [[location_eligible()]] - `calls` [EXTRACTED]
 - [[test_filter.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/write_dossier
+#graphify/code #graphify/EXTRACTED #community/test_filterpy

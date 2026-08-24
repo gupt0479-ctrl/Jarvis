@@ -1,12 +1,12 @@
 ---
 source_file: "core/relevance.py"
 type: "code"
-community: "test_write_dossier_different_uid_same_role_company_gets_collision_suffix"
+community: "matches"
 location: "L78"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_write_dossier_different_uid_same_role_company_gets_collision_suffix
+  - community/matches
 ---
 
 # stage1_reject()
@@ -17,6 +17,7 @@ tags:
 - [[fetch_and_filter()]] - `calls` [EXTRACTED]
 - [[relevance.py]] - `contains` [EXTRACTED]
 - [[revalidate.py]] - `imports` [EXTRACTED]
+- [[run_once()]] - `calls` [EXTRACTED]
 - [[run_pipeline.py]] - `imports` [EXTRACTED]
 - [[test_relevance.py]] - `imports` [EXTRACTED]
 - [[test_stage1_does_not_reject_engineering_track_rotational_program()]] - `calls` [EXTRACTED]
@@ -29,4 +30,4 @@ tags:
 - [[test_stage1_rejects_real_databricks_product_management_title()]] - `calls` [EXTRACTED]
 - [[test_stage1_rejects_real_investor_relations_title()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_write_dossier_different_uid_same_role_company_gets_collision_suffix
+#graphify/code #graphify/EXTRACTED #community/matches

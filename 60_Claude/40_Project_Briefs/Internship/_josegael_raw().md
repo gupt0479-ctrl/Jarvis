@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_run_pipeline.py"
 type: "code"
-community: "test_writer.py"
+community: "phd_only_exclusion"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_writerpy
+  - community/phd_only_exclusion
 ---
 
 # _josegael_raw()
@@ -18,4 +18,4 @@ tags:
 - [[test_fetch_and_filter_counts_and_matches()]] - `calls` [EXTRACTED]
 - [[test_run_pipeline.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_writerpy
+#graphify/code #graphify/EXTRACTED #community/phd_only_exclusion

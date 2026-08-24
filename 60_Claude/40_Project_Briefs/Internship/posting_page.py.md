@@ -18,6 +18,7 @@ tags:
 - [[_strip_trailing_social_chrome()]] - `contains` [EXTRACTED]
 - [[extract_content()]] - `contains` [EXTRACTED]
 - [[fetch_posting_markdown()]] - `contains` [EXTRACTED]
+- [[interndock.py]] - `imports_from` [EXTRACTED]
 - [[opt_exclusion()]] - `contains` [EXTRACTED]
 - [[phd_only_exclusion()]] - `contains` [EXTRACTED]
 - [[run_pipeline.py]] - `imports_from` [EXTRACTED]

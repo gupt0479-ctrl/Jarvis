@@ -2,7 +2,7 @@
 source_file: "core/schema_drift.py"
 type: "code"
 community: "vault_root"
-location: "L69"
+location: "L93"
 tags:
   - graphify/code
   - graphify/EXTRACTED
@@ -13,6 +13,7 @@ tags:
 
 ## Connections
 - [[Runs every check in order; raises SchemaDriftError from whichever     fails firs]] - `rationale_for` [EXTRACTED]
+- [[check_applyguy_schema()]] - `calls` [EXTRACTED]
 - [[check_josegael_schema()]] - `calls` [EXTRACTED]
 - [[check_simplify_schema()]] - `calls` [EXTRACTED]
 - [[check_vanshb03_schema()]] - `calls` [EXTRACTED]

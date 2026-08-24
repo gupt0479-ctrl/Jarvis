@@ -1,12 +1,12 @@
 ---
 source_file: "vault_writer/writer.py"
 type: "rationale"
-community: "build_frontmatter"
+community: "filter.py"
 location: "L56"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/build_frontmatter
+  - community/filterpy
 ---
 
 # Same slugification as dossier_filename(): lowercase, spaces to     hyphens, ille
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[company_slug()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/build_frontmatter
+#graphify/rationale #graphify/EXTRACTED #community/filterpy

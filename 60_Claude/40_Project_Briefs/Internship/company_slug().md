@@ -1,12 +1,12 @@
 ---
 source_file: "vault_writer/writer.py"
 type: "code"
-community: "build_frontmatter"
+community: "filter.py"
 location: "L55"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/build_frontmatter
+  - community/filterpy
 ---
 
 # company_slug()
@@ -21,4 +21,4 @@ tags:
 - [[test_writer.py]] - `imports` [EXTRACTED]
 - [[writer.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/build_frontmatter
+#graphify/code #graphify/EXTRACTED #community/filterpy

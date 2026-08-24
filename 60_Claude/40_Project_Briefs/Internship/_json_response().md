@@ -2,7 +2,7 @@
 source_file: "tests/test_schema_drift.py"
 type: "code"
 community: "vault_root"
-location: "L19"
+location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
@@ -12,6 +12,11 @@ tags:
 # _json_response()
 
 ## Connections
+- [[test_applyguy_schema_detects_dropped_listing_url_field()]] - `calls` [EXTRACTED]
+- [[test_applyguy_schema_detects_dropped_season_field()]] - `calls` [EXTRACTED]
+- [[test_applyguy_schema_detects_empty_jobs_list()]] - `calls` [EXTRACTED]
+- [[test_applyguy_schema_detects_wrong_shape()]] - `calls` [EXTRACTED]
+- [[test_applyguy_schema_passes_on_real_shape()]] - `calls` [EXTRACTED]
 - [[test_check_all_raises_on_first_failing_source()]] - `calls` [EXTRACTED]
 - [[test_josegael_schema_detects_dropped_permissive_field()]] - `calls` [EXTRACTED]
 - [[test_josegael_schema_detects_renamed_key()]] - `calls` [EXTRACTED]

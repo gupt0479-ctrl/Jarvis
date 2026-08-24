@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_run_pipeline.py"
 type: "code"
-community: "test_writer.py"
-location: "L224"
+community: "phd_only_exclusion"
+location: "L234"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_writerpy
+  - community/phd_only_exclusion
 ---
 
 # test_build_matched_reason_per_source()
@@ -18,4 +18,4 @@ tags:
 - [[normalize_simplify()]] - `calls` [EXTRACTED]
 - [[test_run_pipeline.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_writerpy
+#graphify/code #graphify/EXTRACTED #community/phd_only_exclusion

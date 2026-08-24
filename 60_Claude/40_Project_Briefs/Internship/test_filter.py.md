@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_filter.py"
 type: "code"
-community: "write_dossier"
+community: "test_filter.py"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/write_dossier
+  - community/test_filterpy
 ---
 
 # test_filter.py
@@ -22,13 +22,19 @@ tags:
 - [[matches()]] - `imports` [EXTRACTED]
 - [[normalize.py]] - `imports_from` [EXTRACTED]
 - [[normalize_ai_jobs()]] - `imports` [EXTRACTED]
+- [[normalize_applyguy()]] - `imports` [EXTRACTED]
 - [[normalize_ashby()]] - `imports` [EXTRACTED]
 - [[normalize_greenhouse()]] - `imports` [EXTRACTED]
 - [[normalize_josegael()]] - `imports` [EXTRACTED]
+- [[normalize_lever()]] - `imports` [EXTRACTED]
 - [[normalize_simplify()]] - `imports` [EXTRACTED]
 - [[normalize_vanshb03()]] - `imports` [EXTRACTED]
 - [[normalize_zshah101()]] - `imports` [EXTRACTED]
 - [[test_active_false_rejects_any_source()]] - `contains` [EXTRACTED]
+- [[test_applyguy_not_specified_season_maps_to_no_term_data()]] - `contains` [EXTRACTED]
+- [[test_applyguy_prefers_listing_url_over_tracking_url()]] - `contains` [EXTRACTED]
+- [[test_applyguy_should_match()]] - `contains` [EXTRACTED]
+- [[test_applyguy_should_reject()]] - `contains` [EXTRACTED]
 - [[test_ashby_bare_year_real_ellipsis_labs_case_passes()]] - `contains` [EXTRACTED]
 - [[test_ashby_matches_literal_term_in_description()]] - `contains` [EXTRACTED]
 - [[test_ashby_matches_spring_2027_literal_term()]] - `contains` [EXTRACTED]
@@ -46,6 +52,9 @@ tags:
 - [[test_josegael_should_reject()]] - `contains` [EXTRACTED]
 - [[test_josegael_whitespace_only_season_does_not_crash()]] - `contains` [EXTRACTED]
 - [[test_josegael_yearless_summer_passes_real_mlh_entry()]] - `contains` [EXTRACTED]
+- [[test_lever_bare_year_with_no_season_word_passes_permissively()]] - `contains` [EXTRACTED]
+- [[test_lever_matches_literal_term_in_description()]] - `contains` [EXTRACTED]
+- [[test_lever_rejects_explicit_wrong_year()]] - `contains` [EXTRACTED]
 - [[test_location_affirmatively_foreign_is_rejected()]] - `contains` [EXTRACTED]
 - [[test_location_new_london_ct_is_not_caught_by_bare_london_fallback()]] - `contains` [EXTRACTED]
 - [[test_location_no_data_is_unrestricted()]] - `contains` [EXTRACTED]
@@ -55,6 +64,8 @@ tags:
 - [[test_normalize_ai_jobs_maps_fields_and_matches_real_intern_record()]] - `contains` [EXTRACTED]
 - [[test_normalize_ashby_maps_fields()]] - `contains` [EXTRACTED]
 - [[test_normalize_greenhouse_strips_html_and_maps_fields()]] - `contains` [EXTRACTED]
+- [[test_normalize_lever_falls_back_to_hosted_url_when_no_apply_url()]] - `contains` [EXTRACTED]
+- [[test_normalize_lever_maps_fields_and_prefers_apply_url()]] - `contains` [EXTRACTED]
 - [[test_simplify_matches_spring_2027_only()]] - `contains` [EXTRACTED]
 - [[test_simplify_should_match()]] - `contains` [EXTRACTED]
 - [[test_simplify_should_reject()]] - `contains` [EXTRACTED]
@@ -68,4 +79,4 @@ tags:
 - [[test_zshah101_should_match()]] - `contains` [EXTRACTED]
 - [[test_zshah101_should_reject()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/write_dossier
+#graphify/code #graphify/EXTRACTED #community/test_filterpy

@@ -2,7 +2,7 @@
 source_file: "run_pipeline.py"
 type: "code"
 community: "recheck.py"
-location: "L212"
+location: "L222"
 tags:
   - graphify/code
   - graphify/EXTRACTED

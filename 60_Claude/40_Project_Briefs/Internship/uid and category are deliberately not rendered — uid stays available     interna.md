@@ -1,12 +1,12 @@
 ---
 source_file: "vault_writer/writer.py"
 type: "rationale"
-community: "build_frontmatter"
+community: "filter.py"
 location: "L66"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/build_frontmatter
+  - community/filterpy
 ---
 
 # uid and category are deliberately not rendered — uid stays available     interna
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[build_frontmatter()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/build_frontmatter
+#graphify/rationale #graphify/EXTRACTED #community/filterpy

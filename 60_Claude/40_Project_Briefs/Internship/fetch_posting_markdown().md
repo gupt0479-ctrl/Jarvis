@@ -14,6 +14,8 @@ tags:
 ## Connections
 - [[Page markdown via Firecrawl (JS-rendered — ATS pages are SPAs).     Raises reque]] - `rationale_for` [EXTRACTED]
 - [[_content_fetch_url()]] - `calls` [EXTRACTED]
+- [[fetch_interndock_drop()]] - `calls` [EXTRACTED]
+- [[interndock.py]] - `imports` [EXTRACTED]
 - [[posting_page.py]] - `contains` [EXTRACTED]
 - [[run_pipeline.py]] - `imports` [EXTRACTED]
 - [[test_fetch_posting_markdown_calls_firecrawl()]] - `calls` [EXTRACTED]

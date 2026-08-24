@@ -375,3 +375,38 @@ Task 3: New §7 in Internship Notes Standard.md (field spec + the precedent-weig
 
 Flagged, not touched (per scope): Viewed/Removed Dossiers MOC.md — the note every removed dossier's notes: field is required to link to — is itself still empty. Noted for a later prompt. Nothing from Prompt 12 described as shipped anywhere in this work.
 ```
+
+
+## Prompt 14 v2 — Codebase: New Discovery Sources, Refined With Real Yield Data + InternDock (written 2026-08-24, run 2026-08-24)
+Full text: see the conversation. Refined before ever running with real per-source yield numbers (fetched vs. matched over the last 20 runs) and two real InternDock URLs the human provided. Seven tasks: resolve JGCL's zero-yield question, diagnose Ashby/Freehire's low yield, evaluate InternDock as an ongoing source (contingent on a real discoverable index existing), verify a web-search claim about zshah101 having a richer API, build Lever if a second real company is found, investigate LinkedIn's Greenhouse board + 7 other named-priority companies, re-verify speedyapply/sndsh404 and sweep for new repos.
+
+**Result:**
+```
+2 commits, 372+ tests passing throughout (exact new count not restated in the summary — see the repo directly).
+
+Task 1 — JGCL: the SOURCES-tuple-tie-break hypothesis in the prompt was WRONG. Real cause, confirmed by live replay: JGCL's entire currently-matching pool is 3 postings (MLH Fellowship, White House HBCU Scholars Program, UNCF Scholarships Portal) — non-software scholarship/fellowship programs, already in seen_ids.json because they were written once then manually deleted during the 2026-08-23 dossier-audit session (46 vault_delete calls, auto-captured as "08-23 Internship dossier audit and filter-rule reconciliation," 241 min) — a human judged them not real matches, and seen_ids' own semantics mean they never get re-offered. Two more (TMCF, AAUW, also scholarships) already hit MAX_DEBATE_LOSSES and sit in excluded_uids.json. Conclusion: not a bug, JGCL's feed is just thin and skews toward non-CS scholarships for this persona. No code change.
+
+Task 2 — Ashby/Freehire: both confirmed working as designed. Ashby: live-checked all 9 seeded companies, genuinely only ~4 have open roles right now. Freehire: FREEHIRE_COMPANIES is deliberately just {google, uber} by design (documented, not an oversight); live fetch returned 6 postings, mostly non-US/non-eng, correctly filtered downstream. No bugs, no changes.
+
+Task 3 — InternDock: interndock.com/sitemap.xml is a real, live, plain-HTTP index with more drop-shaped slugs than the 2 originally found — this is a real ongoing source, not a one-time snapshot. Built ingestion/interndock.py: sitemap-based candidate detection + a posting parser built from real verbatim text (the actual link text is always "Apply", not the title — the original guessed format was wrong). Slug shape alone is unreliable (one drop-shaped slug is actually a prose article, not a listing) — the real gate is structural match-count within the fetched page. 6 new tests, all passing. Scope deliberately stopped at detection+parsing — full SOURCES wiring (id strategy, state file, cadence) flagged as needing its own design pass, not built yet.
+
+Task 4 — zshah101 RSS/API claim: confirmed TRUE (real RSS feed, docs/api/jobs.json, live dashboard) — but a prior session had already evaluated this exact tradeoff and deliberately chose data/jobs.json (497 raw entries, full truth) over the pre-filtered API (243 entries, someone else's filter applied first). That reasoning still holds today, gap is bigger not smaller. No change.
+
+Task 5 — Lever: found real dossier URLs for a second genuine Lever-hosted company (Belvedere Trading, plus Hermeus/Xsolla candidates surfaced, one ruled out as a nonprofit not a tech employer). Built fetch_lever/normalize_lever mirroring Greenhouse/Ashby's per-company pattern, wired into SOURCES and recheck.py's FEEDS. Live-verified end-to-end: 61 postings fetched, 3 real matches, cross-source dedup against existing Palantir dossiers confirmed working via the existing write gate.
+
+Task 6 — LinkedIn's Greenhouse board confirmed real but 0 intern postings anywhere in it — genuinely nothing there, not a detection failure. None of Two Sigma/Citadel/Capital One/Bloomberg/Microsoft/NASA/MLH have a reachable Greenhouse/Ashby/Lever token (confirmed via direct API probes) — all enterprise-scale, almost certainly on Workday-class ATSes this pipeline has no connector for. Correctly not built.
+
+Task 7 — speedyapply/sndsh404 both still structurally blocked (private Supabase backend; README + binary .xlsx only — re-confirmed, not stale). Found SuryaHarikrishnan/2027-internship-tracker (13,180 entries) but it's 100% re-aggregated from SimplifyJobs+vanshb03 already-integrated data — zero unique value, correctly skipped. Two genuinely new, real, structured candidates surfaced and NOT yet built: ApplyGuy/2027-Internships (real JSON, e.g. "Toyota of Cedar Park Keating LLC — Software Developer Intern," posted today) and dreamworkhq/Tech-Internships-2027 (real JSON, 720 entries, e.g. Fannie Mae Data Science Intern) — flagged for a future round.
+```
+
+## Prompt 15 — Jarvis: Refresh Both Resources Docs, Close The Removed Dossiers MOC Gap (written 2026-08-23, run 2026-08-24)
+Full text: see the conversation (unchanged from its original write-up). Three tasks: refresh `List/Resources.md`'s operational per-source table with real numbers, refresh `Research Loop - Resources.md`'s Named-Program Coverage Check, build `Viewed/Removed Dossiers MOC.md` for real.
+
+**Result:**
+```
+Task 1: List/Resources.md refreshed with real 2026-08-24 numbers — SimplifyJobs 137 live dossiers (was 138 pre-removal-batch, 1.5% match rate), vanshb03 74 (was 77, 26.6%), zshah101 68 (12.1%), Greenhouse 16 (53.6%, structurally capped), AIJobs 11 (25.6%), Freehire 2 (28.6% but tiny volume, flagged open), Ashby 0 live (structurally capped), Jose-Gael-Cruz-Lopez 0 live despite 76 real matches over 20 runs — flagged explicitly as "under investigation" at the time, pointing at Prompt 14 (since resolved — see above, not a bug).
+
+Task 2: Research Loop - Resources.md's Named-Program Coverage Check re-checked against real frontmatter. Coverage moved 3/11 → 5/11: Jane Street still 11 (unchanged), D.E. Shaw still 1, Google still 3 (no ASDI mention), Microsoft 0→6 (checked for "Explore" — only false-positive JS chrome matched, still unconfirmed as the named program), Two Sigma 0→1 (no "First-Year" mention, generic). Capital One actually dropped 2→0 (both closed, moved to Viewed/ on 2026-08-23 — noted as churn, not a real gain). Citadel, LinkedIn, MLH, NASA, Bloomberg remain uncovered (since resolved — see Prompt 14 v2 Task 6 above: no viable connector exists for any of these, not a discovery gap).
+
+Task 3: Viewed/Removed Dossiers MOC.md was a real 0-byte file despite 4 live dossiers linking to it. Built for real per the MOC Standard (Purpose → Map → Status → Dataview): documents the one real removal batch (4 dossiers, all 2026-08-23, all active: false upstream), including the Capital One same-day double-closure as a hiring-cadence signal. Corrected the prompt's own stale estimate ("dozens" of dossiers pointing here) to the real current count (4).
+```

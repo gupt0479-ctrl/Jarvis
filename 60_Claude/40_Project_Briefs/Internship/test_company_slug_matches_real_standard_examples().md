@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_writer.py"
 type: "code"
-community: "build_frontmatter"
+community: "filter.py"
 location: "L159"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/build_frontmatter
+  - community/filterpy
 ---
 
 # test_company_slug_matches_real_standard_examples()
@@ -15,4 +15,4 @@ tags:
 - [[company_slug()]] - `calls` [EXTRACTED]
 - [[test_writer.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/build_frontmatter
+#graphify/code #graphify/EXTRACTED #community/filterpy

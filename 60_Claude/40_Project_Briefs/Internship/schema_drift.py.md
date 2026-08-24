@@ -16,6 +16,7 @@ tags:
 - [[SchemaDriftError]] - `contains` [EXTRACTED]
 - [[_check_json_source()]] - `contains` [EXTRACTED]
 - [[check_all()]] - `contains` [EXTRACTED]
+- [[check_applyguy_schema()]] - `contains` [EXTRACTED]
 - [[check_josegael_schema()]] - `contains` [EXTRACTED]
 - [[check_simplify_schema()]] - `contains` [EXTRACTED]
 - [[check_vanshb03_schema()]] - `contains` [EXTRACTED]

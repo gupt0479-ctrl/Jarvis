@@ -1,12 +1,12 @@
 ---
 source_file: "core/filter.py"
 type: "code"
-community: "write_dossier"
+community: "test_filter.py"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/write_dossier
+  - community/test_filterpy
 ---
 
 # filter.py
@@ -15,6 +15,7 @@ tags:
 - [[Layer 2 — pure field matching against each feed's own schema. No LLM, determinis]] - `rationale_for` [EXTRACTED]
 - [[_entry_is_us_or_remote()]] - `contains` [EXTRACTED]
 - [[_has_wrong_cycle_season()]] - `contains` [EXTRACTED]
+- [[_matches_applyguy()]] - `contains` [EXTRACTED]
 - [[_matches_free_text_source()]] - `indirect_call` [INFERRED]
 - [[_matches_josegael()]] - `contains` [EXTRACTED]
 - [[_matches_simplify()]] - `contains` [EXTRACTED]
@@ -35,4 +36,4 @@ tags:
 - [[test_identity.py]] - `imports_from` [EXTRACTED]
 - [[test_run_pipeline.py]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/write_dossier
+#graphify/code #graphify/EXTRACTED #community/test_filterpy

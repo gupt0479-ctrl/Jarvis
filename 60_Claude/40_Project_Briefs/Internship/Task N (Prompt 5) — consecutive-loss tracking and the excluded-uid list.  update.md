@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_debate_losses.py"
 type: "rationale"
-community: "test_writer.py"
+community: "normalize.py"
 location: "L1"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/test_writerpy
+  - community/normalizepy
 ---
 
 # Task N (Prompt 5) — consecutive-loss tracking and the excluded-uid list.  update
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[test_debate_losses.py]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/test_writerpy
+#graphify/rationale #graphify/EXTRACTED #community/normalizepy

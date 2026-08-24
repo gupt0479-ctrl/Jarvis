@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_writer.py"
 type: "code"
-community: "build_frontmatter"
+community: "vault_root"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/build_frontmatter
+  - community/vault_root
 ---
 
 # vault_root()
@@ -15,4 +15,4 @@ tags:
 - [[Copy of the committed throwaway_vault skeleton in a scratch dir per test,     so]] - `rationale_for` [EXTRACTED]
 - [[test_writer.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/build_frontmatter
+#graphify/code #graphify/EXTRACTED #community/vault_root

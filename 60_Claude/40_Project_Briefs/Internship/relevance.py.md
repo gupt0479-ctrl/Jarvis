@@ -1,12 +1,12 @@
 ---
 source_file: "core/relevance.py"
 type: "code"
-community: "test_write_dossier_different_uid_same_role_company_gets_collision_suffix"
+community: "relevance.py"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_write_dossier_different_uid_same_role_company_gets_collision_suffix
+  - community/relevancepy
 ---
 
 # relevance.py
@@ -20,4 +20,4 @@ tags:
 - [[stage2_confirm()]] - `contains` [EXTRACTED]
 - [[test_relevance.py]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_write_dossier_different_uid_same_role_company_gets_collision_suffix
+#graphify/code #graphify/EXTRACTED #community/relevancepy

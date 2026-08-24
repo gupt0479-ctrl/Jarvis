@@ -1,12 +1,12 @@
 ---
 source_file: "ingestion/normalize.py"
 type: "code"
-community: "write_dossier"
+community: "test_filter.py"
 location: "L58"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/write_dossier
+  - community/test_filterpy
 ---
 
 # normalize_josegael()
@@ -31,4 +31,4 @@ tags:
 - [[test_validate_and_write_rejects_cross_source_duplicate()]] - `calls` [EXTRACTED]
 - [[test_validate_and_write_seeds_dedup_keys_from_existing_vault_files()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/write_dossier
+#graphify/code #graphify/EXTRACTED #community/test_filterpy

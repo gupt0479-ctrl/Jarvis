@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_run_pipeline.py"
 type: "code"
-community: "test_writer.py"
-location: "L441"
+community: "plan_removals"
+location: "L451"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_writerpy
+  - community/plan_removals
 ---
 
 # test_run_once_files_issue_on_systemic_rejection_not_routine_one()
@@ -15,4 +15,4 @@ tags:
 - [[_run_once_kwargs()]] - `calls` [EXTRACTED]
 - [[test_run_pipeline.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_writerpy
+#graphify/code #graphify/EXTRACTED #community/plan_removals

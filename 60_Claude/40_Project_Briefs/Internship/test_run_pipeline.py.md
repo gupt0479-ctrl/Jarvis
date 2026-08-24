@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_run_pipeline.py"
 type: "code"
-community: "test_writer.py"
+community: "plan_removals"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_writerpy
+  - community/plan_removals
 ---
 
 # test_run_pipeline.py
@@ -14,8 +14,11 @@ tags:
 ## Connections
 - [[GitPushError]] - `imports` [EXTRACTED]
 - [[SchemaDriftError]] - `imports` [EXTRACTED]
+- [[_applyguy_raw()]] - `contains` [EXTRACTED]
 - [[_fake_http_get()]] - `contains` [EXTRACTED]
+- [[_fake_http_get_only_interndock()]] - `contains` [EXTRACTED]
 - [[_fake_http_head_all_live()]] - `contains` [EXTRACTED]
+- [[_fake_interndock_sitemap_get()]] - `contains` [EXTRACTED]
 - [[_josegael_raw()]] - `contains` [EXTRACTED]
 - [[_listing_with_date()]] - `contains` [EXTRACTED]
 - [[_page_with()]] - `contains` [EXTRACTED]
@@ -42,6 +45,9 @@ tags:
 - [[test_debate_losses.py]] - `imports_from` [EXTRACTED]
 - [[test_dedup_new_dedupes_within_the_same_run()]] - `contains` [EXTRACTED]
 - [[test_dedup_new_splits_new_vs_already_seen()]] - `contains` [EXTRACTED]
+- [[test_discover_interndock_fails_open_on_sitemap_error()]] - `contains` [EXTRACTED]
+- [[test_discover_interndock_fetches_only_new_candidates_and_persists_state()]] - `contains` [EXTRACTED]
+- [[test_discover_interndock_returns_empty_when_fetch_fn_is_none()]] - `contains` [EXTRACTED]
 - [[test_eligible_posting_gets_content_section()]] - `contains` [EXTRACTED]
 - [[test_fetch_and_filter_counts_and_matches()]] - `contains` [EXTRACTED]
 - [[test_fetch_failure_fails_open_to_thin_dossier()]] - `contains` [EXTRACTED]
@@ -68,9 +74,10 @@ tags:
 - [[test_run_once_happy_path_marks_seen_and_writes_dossiers()]] - `contains` [EXTRACTED]
 - [[test_run_once_reports_bucket_at_capacity_without_refusing_writes()]] - `contains` [EXTRACTED]
 - [[test_run_once_second_run_does_not_rewrite_already_seen_items()]] - `contains` [EXTRACTED]
+- [[test_run_once_writes_interndock_listings_when_wired()]] - `contains` [EXTRACTED]
 - [[test_validate_and_write_happy_path()]] - `contains` [EXTRACTED]
 - [[test_validate_and_write_rejects_cross_source_duplicate()]] - `contains` [EXTRACTED]
 - [[test_validate_and_write_rejects_dead_url()]] - `contains` [EXTRACTED]
 - [[test_validate_and_write_seeds_dedup_keys_from_existing_vault_files()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_writerpy
+#graphify/code #graphify/EXTRACTED #community/plan_removals

@@ -1,12 +1,12 @@
 ---
 source_file: "core/filter.py"
 type: "code"
-community: "write_dossier"
-location: "L249"
+community: "test_filter.py"
+location: "L276"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/write_dossier
+  - community/test_filterpy
 ---
 
 # _target_years()
@@ -15,4 +15,4 @@ tags:
 - [[_matches_free_text_source()]] - `calls` [EXTRACTED]
 - [[filter.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/write_dossier
+#graphify/code #graphify/EXTRACTED #community/test_filterpy

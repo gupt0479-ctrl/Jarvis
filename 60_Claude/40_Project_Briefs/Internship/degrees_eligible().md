@@ -1,12 +1,12 @@
 ---
 source_file: "core/filter.py"
 type: "code"
-community: "write_dossier"
-location: "L115"
+community: "test_filter.py"
+location: "L121"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/write_dossier
+  - community/test_filterpy
 ---
 
 # degrees_eligible()
@@ -18,4 +18,4 @@ tags:
 - [[test_degrees_eligible()]] - `calls` [EXTRACTED]
 - [[test_filter.py]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/write_dossier
+#graphify/code #graphify/EXTRACTED #community/test_filterpy

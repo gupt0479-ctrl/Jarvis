@@ -1,17 +1,18 @@
 ---
 source_file: "core/filter.py"
 type: "code"
-community: "write_dossier"
+community: "test_filter.py"
 location: "L87"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/write_dossier
+  - community/test_filterpy
 ---
 
 # matches()
 
 ## Connections
+- [[_matches_applyguy()]] - `calls` [EXTRACTED]
 - [[_matches_josegael()]] - `calls` [EXTRACTED]
 - [[_matches_simplify()]] - `calls` [EXTRACTED]
 - [[_matches_vanshb03()]] - `calls` [EXTRACTED]
@@ -20,8 +21,11 @@ tags:
 - [[fetch_and_filter()]] - `calls` [EXTRACTED]
 - [[filter.py]] - `contains` [EXTRACTED]
 - [[location_eligible()]] - `calls` [EXTRACTED]
+- [[run_once()]] - `calls` [EXTRACTED]
 - [[run_pipeline.py]] - `imports` [EXTRACTED]
 - [[test_active_false_rejects_any_source()]] - `calls` [EXTRACTED]
+- [[test_applyguy_should_match()]] - `calls` [EXTRACTED]
+- [[test_applyguy_should_reject()]] - `calls` [EXTRACTED]
 - [[test_ashby_bare_year_real_ellipsis_labs_case_passes()]] - `calls` [EXTRACTED]
 - [[test_ashby_matches_literal_term_in_description()]] - `calls` [EXTRACTED]
 - [[test_ashby_matches_spring_2027_literal_term()]] - `calls` [EXTRACTED]
@@ -38,6 +42,9 @@ tags:
 - [[test_josegael_should_reject()]] - `calls` [EXTRACTED]
 - [[test_josegael_whitespace_only_season_does_not_crash()]] - `calls` [EXTRACTED]
 - [[test_josegael_yearless_summer_passes_real_mlh_entry()]] - `calls` [EXTRACTED]
+- [[test_lever_bare_year_with_no_season_word_passes_permissively()]] - `calls` [EXTRACTED]
+- [[test_lever_matches_literal_term_in_description()]] - `calls` [EXTRACTED]
+- [[test_lever_rejects_explicit_wrong_year()]] - `calls` [EXTRACTED]
 - [[test_matches_rejects_foreign_only_listing_end_to_end()]] - `calls` [EXTRACTED]
 - [[test_normalize_ai_jobs_maps_fields_and_matches_real_intern_record()]] - `calls` [EXTRACTED]
 - [[test_nuro_ground_truth_posting_rejects_no_year_anywhere()]] - `calls` [EXTRACTED]
@@ -53,4 +60,4 @@ tags:
 - [[test_zshah101_should_match()]] - `calls` [EXTRACTED]
 - [[test_zshah101_should_reject()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/write_dossier
+#graphify/code #graphify/EXTRACTED #community/test_filterpy

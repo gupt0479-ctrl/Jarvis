@@ -1,11 +1,11 @@
 ---
 source_file: ""
 type: "code"
-community: "recheck.py"
+community: "commit_and_push_with_retry"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/recheckpy
+  - community/commit_and_push_with_retry
 ---
 
 # datetime
@@ -14,4 +14,4 @@ tags:
 - [[_commit_log()]] - `references` [EXTRACTED]
 - [[recheck.py]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/recheckpy
+#graphify/code #graphify/EXTRACTED #community/commit_and_push_with_retry

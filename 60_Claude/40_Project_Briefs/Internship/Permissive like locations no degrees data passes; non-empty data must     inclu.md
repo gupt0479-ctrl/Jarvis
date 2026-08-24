@@ -1,12 +1,12 @@
 ---
 source_file: "core/filter.py"
 type: "rationale"
-community: "write_dossier"
-location: "L116"
+community: "test_filter.py"
+location: "L122"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/write_dossier
+  - community/test_filterpy
 ---
 
 # Permissive like locations: no degrees data passes; non-empty data must     inclu
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[degrees_eligible()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/write_dossier
+#graphify/rationale #graphify/EXTRACTED #community/test_filterpy

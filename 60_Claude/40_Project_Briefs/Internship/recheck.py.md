@@ -1,12 +1,12 @@
 ---
 source_file: "recheck.py"
 type: "code"
-community: "recheck.py"
+community: "commit_and_push_with_retry"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/recheckpy
+  - community/commit_and_push_with_retry
 ---
 
 # recheck.py
@@ -21,6 +21,7 @@ tags:
 - [[fetch_ashby()]] - `imports` [EXTRACTED]
 - [[fetch_greenhouse()]] - `imports` [EXTRACTED]
 - [[fetch_josegael()]] - `imports` [EXTRACTED]
+- [[fetch_lever()]] - `imports` [EXTRACTED]
 - [[fetch_simplify()]] - `imports` [EXTRACTED]
 - [[fetch_vanshb03()]] - `imports` [EXTRACTED]
 - [[fetch_zshah101()]] - `imports` [EXTRACTED]
@@ -37,4 +38,4 @@ tags:
 - [[test_recheck.py]] - `imports_from` [EXTRACTED]
 - [[writer.py]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/recheckpy
+#graphify/code #graphify/EXTRACTED #community/commit_and_push_with_retry

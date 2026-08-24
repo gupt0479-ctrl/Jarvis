@@ -1,12 +1,12 @@
 ---
 source_file: "core/filter.py"
 type: "code"
-community: "write_dossier"
+community: "test_filter.py"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/write_dossier
+  - community/test_filterpy
 ---
 
 # _norm()
@@ -14,6 +14,7 @@ tags:
 ## Connections
 - [[_entry_is_us_or_remote()]] - `calls` [EXTRACTED]
 - [[_has_wrong_cycle_season()]] - `calls` [EXTRACTED]
+- [[_matches_applyguy()]] - `calls` [EXTRACTED]
 - [[_matches_free_text_source()]] - `calls` [EXTRACTED]
 - [[_matches_josegael()]] - `calls` [EXTRACTED]
 - [[_matches_simplify()]] - `calls` [EXTRACTED]
@@ -22,4 +23,4 @@ tags:
 - [[_text_has_any()]] - `calls` [EXTRACTED]
 - [[filter.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/write_dossier
+#graphify/code #graphify/EXTRACTED #community/test_filterpy

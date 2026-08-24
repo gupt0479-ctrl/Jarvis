@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_writer.py"
 type: "code"
-community: "build_frontmatter"
+community: "filter.py"
 location: "L180"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/build_frontmatter
+  - community/filterpy
 ---
 
 # test_build_frontmatter_preference_tier_null_when_no_preferred_companies_given()
@@ -15,4 +15,4 @@ tags:
 - [[build_frontmatter()]] - `calls` [EXTRACTED]
 - [[test_writer.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/build_frontmatter
+#graphify/code #graphify/EXTRACTED #community/filterpy

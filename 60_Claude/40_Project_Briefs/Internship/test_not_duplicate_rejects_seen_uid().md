@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_validate.py"
 type: "code"
-community: "render_dossier"
+community: "normalize_josegael"
 location: "L90"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/render_dossier
+  - community/normalize_josegael
 ---
 
 # test_not_duplicate_rejects_seen_uid()
@@ -15,4 +15,4 @@ tags:
 - [[check_not_duplicate()]] - `calls` [EXTRACTED]
 - [[test_validate.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/render_dossier
+#graphify/code #graphify/EXTRACTED #community/normalize_josegael

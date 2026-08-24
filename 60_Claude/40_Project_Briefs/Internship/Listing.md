@@ -1,12 +1,12 @@
 ---
 source_file: "ingestion/normalize.py"
 type: "code"
-community: "write_dossier"
+community: "test_filter.py"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/write_dossier
+  - community/test_filterpy
 ---
 
 # Listing
@@ -14,12 +14,16 @@ tags:
 ## Connections
 - [[_candidate()]] - `calls` [EXTRACTED]
 - [[_candidate()_1]] - `calls` [EXTRACTED]
+- [[interndock.py]] - `imports` [EXTRACTED]
 - [[normalize.py]] - `contains` [EXTRACTED]
 - [[normalize_ai_jobs()]] - `references` [EXTRACTED]
+- [[normalize_applyguy()]] - `references` [EXTRACTED]
 - [[normalize_ashby()]] - `references` [EXTRACTED]
 - [[normalize_freehire()]] - `references` [EXTRACTED]
 - [[normalize_greenhouse()]] - `references` [EXTRACTED]
+- [[normalize_interndock()]] - `references` [EXTRACTED]
 - [[normalize_josegael()]] - `references` [EXTRACTED]
+- [[normalize_lever()]] - `references` [EXTRACTED]
 - [[normalize_simplify()]] - `references` [EXTRACTED]
 - [[normalize_vanshb03()]] - `references` [EXTRACTED]
 - [[normalize_zshah101()]] - `references` [EXTRACTED]
@@ -35,7 +39,10 @@ tags:
 - [[test_greenhouse_matches_spring_2027_literal_term()]] - `calls` [EXTRACTED]
 - [[test_greenhouse_rejects_explicit_wrong_year_in_content()]] - `calls` [EXTRACTED]
 - [[test_identity.py]] - `imports` [EXTRACTED]
+- [[test_lever_bare_year_with_no_season_word_passes_permissively()]] - `calls` [EXTRACTED]
+- [[test_lever_matches_literal_term_in_description()]] - `calls` [EXTRACTED]
+- [[test_lever_rejects_explicit_wrong_year()]] - `calls` [EXTRACTED]
 - [[test_missing_raw_id_raises()]] - `calls` [EXTRACTED]
 - [[test_run_once_files_issue_on_exclusion_spike()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/write_dossier
+#graphify/code #graphify/EXTRACTED #community/test_filterpy

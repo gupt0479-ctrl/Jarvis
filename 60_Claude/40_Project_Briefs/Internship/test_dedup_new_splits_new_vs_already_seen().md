@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_run_pipeline.py"
 type: "code"
-community: "test_writer.py"
-location: "L241"
+community: "phd_only_exclusion"
+location: "L251"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_writerpy
+  - community/phd_only_exclusion
 ---
 
 # test_dedup_new_splits_new_vs_already_seen()
@@ -16,4 +16,4 @@ tags:
 - [[compute_uid()]] - `calls` [EXTRACTED]
 - [[test_run_pipeline.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_writerpy
+#graphify/code #graphify/EXTRACTED #community/phd_only_exclusion

@@ -1,12 +1,12 @@
 ---
 source_file: "ingestion/normalize.py"
 type: "code"
-community: "write_dossier"
+community: "test_filter.py"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/write_dossier
+  - community/test_filterpy
 ---
 
 # normalize.py
@@ -17,11 +17,14 @@ tags:
 - [[_parse_iso_ts()]] - `contains` [EXTRACTED]
 - [[_strip_html()]] - `contains` [EXTRACTED]
 - [[freehire.py]] - `imports_from` [EXTRACTED]
+- [[interndock.py]] - `imports_from` [EXTRACTED]
 - [[normalize_ai_jobs()]] - `contains` [EXTRACTED]
+- [[normalize_applyguy()]] - `contains` [EXTRACTED]
 - [[normalize_ashby()]] - `contains` [EXTRACTED]
 - [[normalize_freehire()]] - `contains` [EXTRACTED]
 - [[normalize_greenhouse()]] - `contains` [EXTRACTED]
 - [[normalize_josegael()]] - `contains` [EXTRACTED]
+- [[normalize_lever()]] - `contains` [EXTRACTED]
 - [[normalize_simplify()]] - `contains` [EXTRACTED]
 - [[normalize_vanshb03()]] - `contains` [EXTRACTED]
 - [[normalize_zshah101()]] - `contains` [EXTRACTED]
@@ -37,4 +40,4 @@ tags:
 - [[test_validate.py]] - `imports_from` [EXTRACTED]
 - [[test_writer.py]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/write_dossier
+#graphify/code #graphify/EXTRACTED #community/test_filterpy

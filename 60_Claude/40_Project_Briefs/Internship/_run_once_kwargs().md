@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_run_pipeline.py"
 type: "code"
-community: "test_writer.py"
-location: "L359"
+community: "plan_removals"
+location: "L369"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_writerpy
+  - community/plan_removals
 ---
 
 # _run_once_kwargs()
@@ -26,6 +26,7 @@ tags:
 - [[test_run_once_never_fetches_an_already_excluded_uid()]] - `calls` [INFERRED]
 - [[test_run_once_reports_bucket_at_capacity_without_refusing_writes()]] - `calls` [EXTRACTED]
 - [[test_run_once_second_run_does_not_rewrite_already_seen_items()]] - `calls` [EXTRACTED]
+- [[test_run_once_writes_interndock_listings_when_wired()]] - `calls` [EXTRACTED]
 - [[test_run_pipeline.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_writerpy
+#graphify/code #graphify/EXTRACTED #community/plan_removals

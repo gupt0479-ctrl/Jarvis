@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_filter.py"
 type: "rationale"
-community: "write_dossier"
-location: "L28"
+community: "test_filter.py"
+location: "L30"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/write_dossier
+  - community/test_filterpy
 ---
 
 # Guards against silent test evaporation: pytest.mark.parametrize collects     zer
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[test_fixture_has_both_match_and_reject_cases()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/write_dossier
+#graphify/rationale #graphify/EXTRACTED #community/test_filterpy
