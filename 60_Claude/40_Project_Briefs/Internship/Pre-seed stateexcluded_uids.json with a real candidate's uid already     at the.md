@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_debate_losses.py"
 type: "rationale"
-community: "test_writer.py"
+community: "normalize_simplify"
 location: "L114"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/test_writerpy
+  - community/normalize_simplify
 ---
 
 # Pre-seed state/excluded_uids.json with a real candidate's uid already     at the
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[test_run_once_never_fetches_an_already_excluded_uid()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/test_writerpy
+#graphify/rationale #graphify/EXTRACTED #community/normalize_simplify

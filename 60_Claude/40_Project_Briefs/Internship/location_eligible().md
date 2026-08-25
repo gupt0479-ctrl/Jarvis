@@ -1,12 +1,12 @@
 ---
 source_file: "core/filter.py"
 type: "code"
-community: "test_filter.py"
+community: "write_dossier"
 location: "L81"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_filterpy
+  - community/write_dossier
 ---
 
 # location_eligible()
@@ -24,4 +24,4 @@ tags:
 - [[test_location_one_us_entry_among_foreign_is_enough()]] - `calls` [EXTRACTED]
 - [[test_location_us_or_ambiguous_is_eligible()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_filterpy
+#graphify/code #graphify/EXTRACTED #community/write_dossier

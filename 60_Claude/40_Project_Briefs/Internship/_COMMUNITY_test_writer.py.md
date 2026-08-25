@@ -1,34 +1,36 @@
 ---
 type: community
-members: 21
+members: 23
 ---
 
 # test_writer.py
 
-**Members:** 21 nodes
+**Members:** 23 nodes
 
 ## Members
-- [[If the exact same uid were somehow matched twice in one run, it should     only]] - rationale - tests/test_run_pipeline.py
-- [[Keys come from the dossier files actually in the checkout — a listing     whose]] - rationale - tests/test_run_pipeline.py
-- [[Pre-seed stateexcluded_uids.json with a real candidate's uid already     at the]] - rationale - tests/test_debate_losses.py
-- [[Same program via two sources (two distinct uids, one company+title) —     the se]] - rationale - tests/test_run_pipeline.py
-- [[_fake_http_head_all_live()]] - code - tests/test_run_pipeline.py
-- [[_page_with()]] - code - tests/test_run_pipeline.py
-- [[_simplify_raw()]] - code - tests/test_run_pipeline.py
-- [[compute_uid()]] - code - core/identity.py
-- [[normalize_simplify()]] - code - ingestion/normalize.py
-- [[test_dedup_new_dedupes_within_the_same_run()]] - code - tests/test_run_pipeline.py
-- [[test_dedup_new_skips_excluded_uid()]] - code - tests/test_debate_losses.py
-- [[test_eligible_posting_gets_content_section()]] - code - tests/test_run_pipeline.py
-- [[test_fetch_and_filter_skips_excluded_uid()]] - code - tests/test_debate_losses.py
-- [[test_fetch_failure_fails_open_to_thin_dossier()]] - code - tests/test_run_pipeline.py
-- [[test_opt_cache_short_circuits_before_fetch()]] - code - tests/test_run_pipeline.py
-- [[test_opt_exclusion_rejects_and_caches()]] - code - tests/test_run_pipeline.py
-- [[test_run_once_never_fetches_an_already_excluded_uid()]] - code - tests/test_debate_losses.py
-- [[test_validate_and_write_happy_path()]] - code - tests/test_run_pipeline.py
-- [[test_validate_and_write_rejects_cross_source_duplicate()]] - code - tests/test_run_pipeline.py
-- [[test_validate_and_write_rejects_dead_url()]] - code - tests/test_run_pipeline.py
-- [[test_validate_and_write_seeds_dedup_keys_from_existing_vault_files()]] - code - tests/test_run_pipeline.py
+- [[150170 stay informational-only (logged via dossier_total, no issue);     19020]] - rationale - tests/test_run_pipeline.py
+- [[A source going offline (DNS failure, deleted repo, 5xx) must produce a     logge]] - rationale - tests/test_run_pipeline.py
+- [[Real fixture set writes exactly 1 'Other'-bucket item per run under the     defa]] - rationale - tests/test_run_pipeline.py
+- [[The core guarantee a deferred item is not marked seen, so it's neither     lost]] - rationale - tests/test_run_pipeline.py
+- [[The critical ordering guarantee a validated, written dossier whose     push fai]] - rationale - tests/test_run_pipeline.py
+- [[_run_once_kwargs()]] - code - tests/test_run_pipeline.py
+- [[_seed_bucket()]] - code - tests/test_run_pipeline.py
+- [[test_count_dossiers_by_bucket_counts_real_files()]] - code - tests/test_run_pipeline.py
+- [[test_discover_interndock_fails_open_on_sitemap_error()]] - code - tests/test_run_pipeline.py
+- [[test_file_github_issue_calls_gh_with_expected_args()]] - code - tests/test_run_pipeline.py
+- [[test_load_save_seen_ids_round_trips()]] - code - tests/test_run_pipeline.py
+- [[test_load_seen_ids_missing_file_returns_empty_set()]] - code - tests/test_run_pipeline.py
+- [[test_run_once_defers_beyond_the_cap_and_leaves_it_for_next_run()]] - code - tests/test_run_pipeline.py
+- [[test_run_once_does_not_mark_seen_when_push_fails()]] - code - tests/test_run_pipeline.py
+- [[test_run_once_files_issue_on_systemic_rejection_not_routine_one()]] - code - tests/test_run_pipeline.py
+- [[test_run_once_files_issue_once_per_bucket_crossing_capacity()]] - code - tests/test_run_pipeline.py
+- [[test_run_once_global_total_thresholds()]] - code - tests/test_run_pipeline.py
+- [[test_run_once_halts_and_files_issue_on_fetch_network_failure()]] - code - tests/test_run_pipeline.py
+- [[test_run_once_halts_on_schema_drift_and_writes_nothing()]] - code - tests/test_run_pipeline.py
+- [[test_run_once_happy_path_marks_seen_and_writes_dossiers()]] - code - tests/test_run_pipeline.py
+- [[test_run_once_reports_bucket_at_capacity_without_refusing_writes()]] - code - tests/test_run_pipeline.py
+- [[test_run_once_second_run_does_not_rewrite_already_seen_items()]] - code - tests/test_run_pipeline.py
+- [[test_run_pipeline.py]] - code - tests/test_run_pipeline.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -38,22 +40,20 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 16 edges to [[_COMMUNITY_plan_removals]]
-- 11 edges to [[_COMMUNITY_test_render_dossier_shows_real_rendered_frontmatter_with_preference_match]]
-- 11 edges to [[_COMMUNITY_test_filter.py]]
-- 6 edges to [[_COMMUNITY_phd_only_exclusion]]
-- 5 edges to [[_COMMUNITY_normalize.py]]
-- 4 edges to [[_COMMUNITY_recheck.py]]
-- 3 edges to [[_COMMUNITY_test_posting_page.py]]
-- 2 edges to [[_COMMUNITY_render_dossier]]
-- 2 edges to [[_COMMUNITY_build_frontmatter]]
-- 1 edge to [[_COMMUNITY_commit_and_push_with_retry]]
-- 1 edge to [[_COMMUNITY_test_write_dossier_different_uid_same_role_company_gets_collision_suffix]]
-- 1 edge to [[_COMMUNITY_matches]]
+- 16 edges to [[_COMMUNITY_normalize_simplify]]
+- 11 edges to [[_COMMUNITY__fake_http_get]]
+- 9 edges to [[_COMMUNITY__listing_with_date]]
+- 6 edges to [[_COMMUNITY__fake_http_get_only_interndock]]
+- 3 edges to [[_COMMUNITY_write_dossier]]
+- 3 edges to [[_COMMUNITY_recheck.py]]
+- 3 edges to [[_COMMUNITY_commit_and_push_with_retry]]
+- 3 edges to [[_COMMUNITY_test_render_dossier_shows_real_rendered_frontmatter_with_preference_match]]
+- 3 edges to [[_COMMUNITY_vault_root]]
+- 2 edges to [[_COMMUNITY_test_debate_losses.py]]
 
 ## Top bridge nodes
-- [[normalize_simplify()]] - degree 36, connects to 11 communities
-- [[compute_uid()]] - degree 26, connects to 6 communities
-- [[_simplify_raw()]] - degree 18, connects to 3 communities
-- [[test_validate_and_write_rejects_cross_source_duplicate()]] - degree 7, connects to 2 communities
-- [[test_validate_and_write_seeds_dedup_keys_from_existing_vault_files()]] - degree 7, connects to 2 communities
+- [[test_run_pipeline.py]] - degree 67, connects to 10 communities
+- [[_run_once_kwargs()]] - degree 16, connects to 4 communities
+- [[_seed_bucket()]] - degree 6, connects to 1 community
+- [[test_run_once_defers_beyond_the_cap_and_leaves_it_for_next_run()]] - degree 4, connects to 1 community
+- [[test_run_once_does_not_mark_seen_when_push_fails()]] - degree 4, connects to 1 community

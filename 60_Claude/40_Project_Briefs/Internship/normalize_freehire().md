@@ -1,12 +1,12 @@
 ---
 source_file: "ingestion/normalize.py"
 type: "code"
-community: "write_dossier"
+community: "test_freehire.py"
 location: "L209"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/write_dossier
+  - community/test_freehirepy
 ---
 
 # normalize_freehire()
@@ -22,4 +22,4 @@ tags:
 - [[test_normalize_freehire_strips_tracking_param_and_splits_locations()]] - `calls` [EXTRACTED]
 - [[test_nuro_ground_truth_posting_rejects_no_year_anywhere()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/write_dossier
+#graphify/code #graphify/EXTRACTED #community/test_freehirepy

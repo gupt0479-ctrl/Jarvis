@@ -72,16 +72,16 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 11 edges to [[_COMMUNITY_test_writer.py]]
+- 11 edges to [[_COMMUNITY_normalize_simplify]]
 - 7 edges to [[_COMMUNITY_test_write_dossier_creates_missing_dossiers_dir]]
-- 6 edges to [[_COMMUNITY_test_filter.py]]
+- 6 edges to [[_COMMUNITY_write_dossier]]
 - 5 edges to [[_COMMUNITY_recheck.py]]
-- 3 edges to [[_COMMUNITY_plan_removals]]
-- 3 edges to [[_COMMUNITY_normalize_josegael]]
+- 3 edges to [[_COMMUNITY_test_writer.py]]
+- 3 edges to [[_COMMUNITY_validate.py]]
 - 2 edges to [[_COMMUNITY_build_frontmatter]]
-- 1 edge to [[_COMMUNITY_normalize.py]]
+- 1 edge to [[_COMMUNITY_test_debate_losses.py]]
 - 1 edge to [[_COMMUNITY_writer.py]]
-- 1 edge to [[_COMMUNITY_filter.py]]
+- 1 edge to [[_COMMUNITY_build_frontmatter_1]]
 
 ## Top bridge nodes
 - [[identity.py]] - degree 13, connects to 6 communities

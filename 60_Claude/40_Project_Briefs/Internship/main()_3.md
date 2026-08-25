@@ -1,12 +1,12 @@
 ---
 source_file: "revalidate.py"
 type: "code"
-community: "revalidate.py"
+community: "commit_and_push_with_retry"
 location: "L83"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/revalidatepy
+  - community/commit_and_push_with_retry
 ---
 
 # main()
@@ -16,4 +16,4 @@ tags:
 - [[find_regressions()]] - `calls` [EXTRACTED]
 - [[revalidate.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/revalidatepy
+#graphify/code #graphify/EXTRACTED #community/commit_and_push_with_retry

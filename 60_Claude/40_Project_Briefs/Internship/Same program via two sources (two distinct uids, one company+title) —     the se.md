@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_run_pipeline.py"
 type: "rationale"
-community: "test_writer.py"
+community: "normalize_simplify"
 location: "L307"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/test_writerpy
+  - community/normalize_simplify
 ---
 
 # Same program via two sources (two distinct uids, one company+title) —     the se
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[test_validate_and_write_rejects_cross_source_duplicate()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/test_writerpy
+#graphify/rationale #graphify/EXTRACTED #community/normalize_simplify

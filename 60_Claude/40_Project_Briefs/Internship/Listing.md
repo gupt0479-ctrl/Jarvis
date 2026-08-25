@@ -1,12 +1,12 @@
 ---
 source_file: "ingestion/normalize.py"
 type: "code"
-community: "test_filter.py"
+community: "write_dossier"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_filterpy
+  - community/write_dossier
 ---
 
 # Listing
@@ -45,4 +45,4 @@ tags:
 - [[test_missing_raw_id_raises()]] - `calls` [EXTRACTED]
 - [[test_run_once_files_issue_on_exclusion_spike()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_filterpy
+#graphify/code #graphify/EXTRACTED #community/write_dossier

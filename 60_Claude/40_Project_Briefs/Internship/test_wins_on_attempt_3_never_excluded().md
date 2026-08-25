@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_debate_losses.py"
 type: "code"
-community: "normalize.py"
+community: "test_debate_losses.py"
 location: "L49"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/normalizepy
+  - community/test_debate_lossespy
 ---
 
 # test_wins_on_attempt_3_never_excluded()
@@ -16,4 +16,4 @@ tags:
 - [[_candidate()_1]] - `calls` [EXTRACTED]
 - [[test_debate_losses.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/normalizepy
+#graphify/code #graphify/EXTRACTED #community/test_debate_lossespy

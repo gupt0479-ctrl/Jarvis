@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_filter.py"
 type: "code"
-community: "test_filter.py"
+community: "write_dossier"
 location: "L303"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_filterpy
+  - community/write_dossier
 ---
 
 # test_ashby_matches_literal_term_in_description()
@@ -16,4 +16,4 @@ tags:
 - [[matches()]] - `calls` [EXTRACTED]
 - [[test_filter.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_filterpy
+#graphify/code #graphify/EXTRACTED #community/write_dossier

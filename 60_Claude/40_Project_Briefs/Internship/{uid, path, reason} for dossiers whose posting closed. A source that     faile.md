@@ -1,12 +1,12 @@
 ---
 source_file: "recheck.py"
 type: "rationale"
-community: "commit_and_push_with_retry"
+community: "plan_removals"
 location: "L64"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/commit_and_push_with_retry
+  - community/plan_removals
 ---
 
 # [{uid, path, reason}] for dossiers whose posting closed. A source that     faile
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[plan_removals()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/commit_and_push_with_retry
+#graphify/rationale #graphify/EXTRACTED #community/plan_removals

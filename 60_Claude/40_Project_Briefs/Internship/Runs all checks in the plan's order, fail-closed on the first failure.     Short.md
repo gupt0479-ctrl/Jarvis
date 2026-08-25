@@ -1,12 +1,12 @@
 ---
 source_file: "vault_writer/validate.py"
 type: "rationale"
-community: "normalize_josegael"
+community: "validate.py"
 location: "L124"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/normalize_josegael
+  - community/validatepy
 ---
 
 # Runs all checks in the plan's order, fail-closed on the first failure.     Short
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[validate()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/normalize_josegael
+#graphify/rationale #graphify/EXTRACTED #community/validatepy

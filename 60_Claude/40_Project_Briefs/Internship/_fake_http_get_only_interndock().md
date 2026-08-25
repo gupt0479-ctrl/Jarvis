@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_run_pipeline.py"
 type: "code"
-community: "posting_page.py"
+community: "_fake_http_get_only_interndock"
 location: "L708"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/posting_pagepy
+  - community/_fake_http_get_only_interndock
 ---
 
 # _fake_http_get_only_interndock()
@@ -17,4 +17,4 @@ tags:
 - [[test_run_once_writes_interndock_listings_when_wired()]] - `indirect_call` [INFERRED]
 - [[test_run_pipeline.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/posting_pagepy
+#graphify/code #graphify/EXTRACTED #community/_fake_http_get_only_interndock

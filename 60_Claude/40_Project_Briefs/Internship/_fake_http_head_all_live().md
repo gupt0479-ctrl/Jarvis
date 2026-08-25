@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_run_pipeline.py"
 type: "code"
-community: "test_writer.py"
+community: "normalize_simplify"
 location: "L84"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/test_writerpy
+  - community/normalize_simplify
 ---
 
 # _fake_http_head_all_live()
@@ -22,4 +22,4 @@ tags:
 - [[test_validate_and_write_rejects_cross_source_duplicate()]] - `indirect_call` [INFERRED]
 - [[test_validate_and_write_seeds_dedup_keys_from_existing_vault_files()]] - `indirect_call` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/test_writerpy
+#graphify/code #graphify/INFERRED #community/normalize_simplify

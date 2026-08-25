@@ -48,20 +48,19 @@ SORT file.name ASC
 
 ## Connections to other communities
 - 13 edges to [[_COMMUNITY_render_dossier]]
-- 12 edges to [[_COMMUNITY_filter.py]]
-- 6 edges to [[_COMMUNITY_commit_and_push_with_retry]]
+- 12 edges to [[_COMMUNITY_build_frontmatter_1]]
 - 6 edges to [[_COMMUNITY_recheck.py]]
-- 3 edges to [[_COMMUNITY_fetch_posting_markdown]]
+- 4 edges to [[_COMMUNITY_write_dossier]]
+- 4 edges to [[_COMMUNITY_commit_and_push_with_retry]]
+- 3 edges to [[_COMMUNITY_dump_frontmatter]]
 - 2 edges to [[_COMMUNITY_test_render_dossier_shows_real_rendered_frontmatter_with_preference_match]]
-- 2 edges to [[_COMMUNITY_test_writer.py]]
-- 1 edge to [[_COMMUNITY_test_filter.py]]
-- 1 edge to [[_COMMUNITY_revalidate.py]]
+- 2 edges to [[_COMMUNITY_normalize_simplify]]
 - 1 edge to [[_COMMUNITY_writer.py]]
 - 1 edge to [[_COMMUNITY_vault_root_1]]
 
 ## Top bridge nodes
 - [[writer.py]] - degree 22, connects to 7 communities
 - [[test_writer.py]] - degree 33, connects to 5 communities
-- [[move_dossier_to_viewed()]] - degree 13, connects to 3 communities
+- [[move_dossier_to_viewed()]] - degree 13, connects to 4 communities
+- [[load_dossier_uids()]] - degree 9, connects to 3 communities
 - [[write_dossier()]] - degree 18, connects to 2 communities
-- [[load_dossier_uids()]] - degree 9, connects to 2 communities

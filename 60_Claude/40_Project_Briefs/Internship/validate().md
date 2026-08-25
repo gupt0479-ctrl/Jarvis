@@ -1,12 +1,12 @@
 ---
 source_file: "vault_writer/validate.py"
 type: "code"
-community: "normalize_josegael"
+community: "validate.py"
 location: "L123"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/normalize_josegael
+  - community/validatepy
 ---
 
 # validate()
@@ -27,4 +27,4 @@ tags:
 - [[validate.py]] - `contains` [EXTRACTED]
 - [[validate_and_write()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/normalize_josegael
+#graphify/code #graphify/EXTRACTED #community/validatepy

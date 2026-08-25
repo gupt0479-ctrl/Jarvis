@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_run_pipeline.py"
 type: "code"
-community: "test_posting_page.py"
+community: "_listing_with_date"
 location: "L168"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_posting_pagepy
+  - community/_listing_with_date
 ---
 
 # test_prioritize_and_cap_grants_reserved_slot_to_preferred_company_losing_the_debate()
@@ -16,4 +16,4 @@ tags:
 - [[_listing_with_date()]] - `calls` [EXTRACTED]
 - [[test_run_pipeline.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_posting_pagepy
+#graphify/code #graphify/EXTRACTED #community/_listing_with_date

@@ -5,28 +5,30 @@ source_app: claude-code
 source_os: wsl
 title: "Causalops performance review and runtime debugging"
 started_at: 2026-08-25T11:24:33
-ended_at: 2026-08-25T11:41:03
-duration_minutes: 16
-exported_at: 2026-08-25T19:15:03
+ended_at: 2026-08-25T18:04:36
+duration_minutes: 400
+exported_at: 2026-08-25T22:15:02
 project: CausalOps
 cwd: '/home/anant_gupta/projects/hub/CausalOps'
 session_id: bb86da26-0655-405a-b811-a19f3bc8c067
 status: raw
-turn_count: 4
+turn_count: 6
 tools_used:
-  Bash: 8
-  Read: 1
+  AskUserQuestion: 1
+  Bash: 16
+  Read: 2
 tokens:
-  input: 30
-  output: 14176
-  cache_creation: 129811
-  cache_read: 959375
-  total: 1103392
-cost_usd: 0.852939
+  input: 66
+  output: 45030
+  cache_creation: 391116
+  cache_read: 2398872
+  total: 2835084
+cost_usd: 2.49467
 model:
   - claude-sonnet-5
 files_touched:
   - "/home/anant_gupta/projects/hub/CausalOps/src/llm.py"
+  - "/home/anant_gupta/.cursor/plans/pr_25_darsh_replies_0c5a99a9.plan.md"
 tags:
   - input
   - ai-conversation
@@ -451,10 +453,354 @@ async def _process_spawn_message(
     message,
   ```
 
+## You
+
+```## Existing terminals
+
+| Terminal | What it is | Status |
+|---|---|---|
+| **21** | `docker-compose up --build` (Claude step 2) | Running — full stack |
+| **23** | `docker-compose logs -f --timestamps api worker mcp` (step 3) | Running — filtered log stream |
+| API health | `{"status":"ok"}` in **7ms** | Good |
+| Chat provider | **NVIDIA** `[REDACTED]` (`ChatNVIDIA`) | Key present |
+
+Claude’s steps 1–5 were already done by you. I analyzed your UI run from logs + artifact, then ran step 8 (variance).
+
+---
+
+## What happened on your UI run (`[REDACTED]`)
+
+Insider-threat scenario, **standard** mode, wall clock **~43s** (UI `0:43`). The “duration 2.52s” in the UI is **not** wall time.
+
+| UTC (docker) | Phase | What actually happened |
+|---|---|---|
+| 17:49:14.889 | POST `/run` | Accepted (UI said 429ms enqueue) |
+| 17:49:14→20 | gap ~5–6s | Memory retrieve: Gemini **embedding OK**, then Supabase **DNS fail** (swallowed) |
+| 17:49:20 | ORCHESTRATOR | Standard compact swarm — **no LLM planning** |
+| 17:49:24.287 | CHILD 1 start | Containment analyst |
+| 17:49:25.725 | CHILD 1 fail | NVIDIA **400 `guided_json`** (~1.4s) |
+| 17:49:25.855 | CHILD 2 start | Evidence analyst (**serial** — not same Kafka batch) |
+| 17:49:26.603 | CHILD 2 fail | Same **400** (~0.7s) |
+| 17:49:26 | EVALUATE | Local ranking of failed/unavailable memos |
+| 17:49:28.113→55.996 | **ESTIMATE** | **~27.9s** — DoWhy + 3 refuters on **demo SIEM fixture** |
+| 17:49:56 | REASONING | Instant, deterministic |
+| 17:49:57 | memory_write | Embed OK, Supabase DNS fail again (swallowed) |
+| 17:49:58 | COMPLETE | Artifact ready |
+
+So the ~43s breaks down roughly as:
+
+- **~28s** estimator (real compute)
+- **~6s** memory retrieve + swarm setup
+- **~2–3s** failed child LLM calls (fast 400s, not the 145s hang)
+- **~1–2s** evaluate / causal_fast / reason / write / UI fetch
+
+Both strategies show `[UNAVAILABLE … guided_json]`. ATE **−0.30** is from the **demo fixture**, not your insider-threat telemetry (`demo_fixture: true` in the artifact). Policy phase is skipped in standard mode (UI still shows the step).
+
+---
+
+## Variance run (Claude step 8)
+
+`[REDACTED]` — same `guided_json` failure, but children were **parallel** this time:
+
+| Phase | Time |
+|---|---|
+| swarm + both children | ~3.1s (both started within 50ms) |
+| **ESTIMATE** | **~34.9s** |
+| TOTAL SSE | **39.4s** |
+
+Kafka poll-window serialization **did not** reproduce here (unlike your UI run’s serial children, and unlike the earlier 285s run). With fail-fast 400s, serial vs parallel only costs ~1s; when LLM calls actually hang, that same serialization is the 285s bug.
+
+---
+
+## Bottom line for runtime work
+
+1. **You are not measuring real agent latency yet** — NVIDIA rejects `with_structured_output` / `guided_json`. Fix that before optimizing deep mode.
+2. **On this broken path, DoWhy (~28–35s) dominates** standard-mode wall time.
+3. **Spawn concurrency is flaky** (serial UI run vs parallel variance run) — still a real issue once LLM works.
+4. **Supabase DNS is dead** here — memory never persists; doesn’t fail the run.
+
+Artifact: `data/[REDACTED].json`. Keep terminal 23 open for the next UI run; the markers to watch are still `Enqueued`, `Child agent`, `guided_json`/`400`, and the gap between estimator start and `Causal estimator completed`.```. All your provided steps have been completed and this is an in depth analysis of what was run and still running. I am sort of lost on what was extremely time consuming here (darsh was talking about some run taking more than an hour). What run are we talking about over here? I am unfamilar with docker runs that take place, teach me along this process on what is going on. What exactly are looking for? What exactly should we run? What are we looking for? Here is a plan that was previously created by cursor that might be helpful to look at alongside the pr: "https://github.com/darshgarg7/CausalOps/pull/25", `/home/anant_gupta/.cursor/plans/[REDACTED].plan.md`. Take a look at everything that we have been conversing about over here and at the PR. What are we looking for exactly? Explain me in baby steps so that we cna reduce latency and close the existing PR. We need to make fixes for the existing PR based on the comments provided by darsh and after replying to everything (making necessary changes too). We will host another PR for latency specifically. That's the end goal just described. So, for this to be completed - dive very deep into causalops and explain me what to do step by step.
+
+## Claude
+
+I'll pull the actual PR review comments and the cursor plan first, then explain the whole picture in plain terms.
+
+## Docker 101 — what's actually running
+
+Five separate processes, each in its own container, all defined in `docker-compose.yml`:
+
+| Service | What it is | Port |
+|---|---|---|
+| `redpanda` | A Kafka-compatible message queue. Nothing talks to Postgres/HTTP here — services drop messages ("run this child agent") on a topic and other services pick them up. | 19092 |
+| `api` | FastAPI backend. Handles `/run`, `/health`, SSE streaming to the UI. | 8000 |
+| `worker` | Consumes `RUN_PARENT`/`RUN_CHILD` messages off Kafka and actually executes agent LLM calls. This is the thing whose polling loop we identified as buggy. | (none exposed) |
+| `frontend` | The React UI you click "Run" in. | 8080 |
+| `mcp` | Standalone memory-retrieval server for Claude Code/Desktop, not used by the product UI at all. | 8001 |
+
+`docker-compose up --build` starts all five and wires their networking together. `docker-compose logs -f <service>` tails one container's stdout — that's your only window into what's happening, since there's no dashboard.
+
+**Why a run "takes time" at all:** clicking Run in the UI → `api` writes a run record → `api` enqueues a Kafka message → `worker` picks it up, calls the LLM, writes a result → `api`'s SSE stream notices the result and pushes it to the browser. Every arrow in that chain is a network hop; the LLM call is the slow arrow.
+
+---
+
+## What run was Darsh talking about?
+
+Not the one we've measured. Everything you and I ran together was **standard mode** (~40s). Darsh's "over an hour" almost certainly means **deep mode**, which we haven't touched yet — and I found the mechanism that explains it:
+
+`docker-compose.yml` sets `CAUSALOPS_BARRIER_TIMEOUT_S: "1800"` — **30 minutes**. `src/coordinator/barriers.py:15` confirms that's the default too. `wait_for_barrier()` polls the run store until a condition is true, and if it never becomes true, it just... waits the full 1800s before raising `TimeoutError`.
+
+Deep mode (`src/coordinator/runner.py:54-59`) hits **two** of these barriers back to back: one after dispatching parent agents, one after dispatching children. Standard mode only hits one (children), and in our runs that one resolved in ~1-3s because the LLM calls failed *fast* (NVIDIA's `guided_json` 400 comes back in under 2s).
+
+The failure mode that actually eats 30+ minutes isn't "LLM is slow" — it's "the spawned Kafka message never completes at all" (worker crash mid-task, a spawn that never gets consumed, an exception that skips writing the completion result). When that happens, nothing is wrong with the LLM per se, the coordinator just sits there polling until the hard 30-minute deadline. Two stuck barriers in one deep-mode run = over an hour. That lines up with Darsh's report almost exactly.
+
+**This is a hypothesis, not yet confirmed** — we haven't run deep mode. Confirming it is the natural first task for the *new latency PR*, separate from PR #25.
+
+---
+
+## PR #25 — what it is, confirmed live against GitHub just now
+
+`darshgarg7/CausalOps#25` — "Persistent Semantic Memory and Retrieval Layer." **State: OPEN, CHANGES_REQUESTED, mergeable.** I pulled the live reviews/comments via `gh api` — they match the cursor plan at `/home/anant_gupta/.cursor/plans/[REDACTED].plan.md` exactly, nothing has changed since that plan was written. Copilot's 5 findings are already fixed (commit `68abd50b`) and Copilot confirmed the fixes. What's still open is **Darsh's 4 comments + his blocking review**:
+
+1. **Blocking review**: *"we cannot afford greater time/space complexity atm. All changes have to add meaningfully (test this) or reduce time/space complexity."*
+2. **`CLAUDE.md` L15**: *"We already have a runtime issue. How did you integrate MCP and test the final UX?"*
+3. **`CLAUDE.md` L85**: *"we use NVIDIA nemtron instead now"* — docs still say Gemini is the chat LLM.
+4. **SQL decay migration**: *"Does this method of handling memory increase overhead?"*
+5. (non-blocking, no action needed) *"good styling haha. got lost before"* on a renamed import.
+
+The cursor plan already has this fully scoped: 5 reply drafts (accurate, verified against the actual code — e.g. MCP genuinely isn't in the run path, `execute_run()` never calls it) plus 4 follow-up code changes on a new branch (`fix/pr-25-darsh-review`, off `plan/persistent-memory-mcp`):
+- Put `mcp` behind a compose `profiles: ["mcp"]` so it's not always-on
+- Cheapen the `search_similar_runs` RPC (HNSW candidate limit before the decay re-rank, drop fat JSONB from the return)
+- Fix stale `CLAUDE.md` docs (NVIDIA is chat, Gemini is embeddings-only)
+- Add `CAUSALOPS_ENABLE_MEMORY` kill switch
+
+Nothing from that plan has been posted or coded yet — it's all still pending your go-ahead.
+
+---
+
+## The two-PR roadmap you described
+
+**PR #25 (this one)** — close it out:
+1. Paste the 5 reply drafts into GitHub (I can hand you the exact text again, or post them for you if you want — that's a "visible to others" action, so I'll wait for your say-so either way)
+2. Branch `fix/pr-25-darsh-review`, make the 4 code changes above
+3. Re-run `pytest tests/ -m "not integration and not kafka"` + `pytest tests/memory/ -v` + `ruff check`
+4. Push, PR updates, ask Darsh to re-review
+
+**New PR (separate, latency-only)** — starts *after* #25 is closed:
+1. Actually run deep mode, watch `docker-compose logs -f --timestamps api worker mcp`, confirm/deny the 30-min-barrier hypothesis above
+2. Fix the Kafka `getmany(timeout_ms=500)` poll-window bug (3 call sites: `worker/consumer.py:158`, `worker/graph_consumer.py:97`, `bus/consumer.py:48`) so concurrency=3 actually parallelizes
+3. Decide the NVIDIA `guided_json` question — either fix structured-output compatibility or fall back to Gemini for chat, since right now every agent call fails and you're not measuring real latency
+4. Re-measure
+
+---
+
+Two decisions are yours before I touch anything — which do you want to do first?
+
+**Tool calls:**
+
+- `Read` — `/home/anant_gupta/.cursor/plans/pr_25_darsh_replies_0c5a99a9.plan.md`
+- `Bash` — `git remote -v`
+  ```
+origin	https://github.com/gupta-builds/CausalOps.git (fetch)
+origin	https://github.com/gupta-builds/CausalOps.git (push)
+upstream	https://github.com/darshgarg7/CausalOps.git (fetch)
+upstream	https://github.com/darshgarg7/CausalOps.git (push)
+  ```
+- `Bash` — `gh pr view 25 --repo darshgarg7/CausalOps --json number,title,state,reviewDecision,url,headRepositoryOwner,baseRefName,headRefName,mergeable 2>&1`
+  ```
+{"baseRefName":"main","headRefName":"plan/persistent-memory-mcp","headRepositoryOwner":{"id":"U_kgDOB9--Qg","name":"DG0111 (Darsh Garg)","login":"darshgarg7"},"mergeable":"MERGEABLE","number":25,"reviewDecision":"CHANGES_REQUESTED","state":"OPEN","title":"feat: Persistent Semantic Memory and Retrieval Layer","url":"https://github.com/darshgarg7/CausalOps/pull/25"}
+  ```
+- `Bash` — `gh pr view 25 --repo darshgarg7/CausalOps --comments 2>&1 | head -200`
+  ```
+GraphQL: Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/[REDACTED]/. (repository.pullRequest.projectCards)
+  ```
+- `Bash` — `git log --oneline plan/persistent-memory-mcp -5; echo "---branch---"; git branch -a | grep -i pr.25; echo "---current branch vs plan---"; git status -sb`
+  ```
+f7d24d5e test: avoid LLM credential import in memory e2e module
+68abd50b fix: address Copilot review findings + a latent test bug it led to
+7534effa fix: resolve CI lint failures (backend ruff, frontend prettier)
+4544c3fe feat(memory): persistent semantic memory layer, rebased onto current main
+3c05929c Update README
+---branch---
+---current branch vs plan---
+## plan/persistent-memory-mcp
+  ```
+- `Bash`:
+  ```bash
+echo "=== REVIEWS ==="; gh api repos/darshgarg7/CausalOps/pulls/25/reviews --jq '.[] | {user: .user.login, state: .state, body: .body, submitted_at: .submitted_at}' 2>&1
+echo ""
+echo "=== REVIEW COMMENTS (inline) ==="; gh api repos/darshgarg7/CausalOps/pulls/25/comments --jq '.[] | {user: .user.login, path: .path, line: .line, body: .body, in_reply_to: .in_reply_to_id}' 2>&1
+echo ""
+echo "=== ISSUE COMMENTS ==="; gh api repos/darshgarg7/CausalOps/issues/25/comments --jq '.[] | {user: .user.login, body: .body}' 2>&1
+  ```
+  ```
+=== REVIEWS ===
+{"body":"## Pull request overview\n\nImplements a persistent semantic memory layer for CausalOps runs (vector similarity + temporal decay + cross-run entity graph) backed by Supabase/pgvector, with a standalone FastMCP server for retrieval and write-back, and integrates memory retrieval/write phases into the coordinator execution pipeline. The PR also reconciles the branch with current `main` by completing the CausalOps rebrand across env vars/topics and updating the React UI imports/components accordingly.\n\n**Changes:**\n- Add Supabase schema + RPC functions for `memory_runs`, `memory_entities`, and `memory_entity_edges`, including pgvector + RLS hardening migrations.\n- Introduce `src/memory/*` (embedder, extractor, store, nodes, MCP server) and wire `memory_retrieve` / `memory_write` around `execute_run()` plus orchestrator prompt injection.\n- Complete rebrand/compat fixes across Kafka topics/env vars/tests/docs and update the frontend module paths/types.\n\n### Reviewed changes\n\nCopilot reviewed 91 out of 111 changed files in this pull request and generated 5 comments.\n\n\u003cdetails\u003e\n\u003csummary\u003eShow a summary per file\u003c/summary\u003e\n\n| File | Description |\r\n| ---- | ----------- |\r\n| tests/test_phase2d_hardening.py | Update env var/topic expectations to `CAUSALOPS_*` / `causalops.*`. |\r\n| tests/test_coordinator_runner.py | Adjust expected final phase to `memory_write`. |\r\n| tests/test_bus_kafka_system.py | Update topic registration + env var usage to CausalOps names. |\r\n| tests/test_benchmarking.py | Rename module docstring branding. |\r\n| tests/test_api_contracts.py | Rename module docstring branding. |\r\n| tests/memory/test_temporal_decay.py | New integration test for temporal decay math in similarity search. |\r\n| tests/memory/test_store.py | New integration tests for SupabaseMemoryStore read/write APIs. |\r\n| tests/memory/test_nodes.py | New integration tests for memory coordinator nodes + graceful degradation. |\r\n| tests/memory/test_mcp_tools.py | New unit tests for MCP tool wrappers and protocol listing/calls. |\r\n| tests/memory/test_mcp_bridge.py | New live MCP protocol round-trip integration test. |\r\n| tests/memory/test_extractor.py | New unit tests for deterministic entity extraction/edge building. |\r\n| tests/memory/test_end_to_end.py | New coordinator end-to-end integration test for memory round-trip. |\r\n| tests/conftest.py | Load `.env` for integration-gated credentials; delete memory creds for unit tests. |\r\n| supabase/migrations/[REDACTED].sql | Harden function search_path + add missing FK index. |\r\n| supabase/migrations/[REDACTED].sql | Enable RLS on memory tables. |\r\n| supabase/migrations/[REDACTED].sql | Create tables + indexes + RPC functions for memory layer. |\r\n| supabase/migrations/[REDACTED].sql | Enable pgvector extension in `extensions` schema. |\r\n| src/worker/main.py | Rebrand worker log line. |\r\n| src/worker/graph_consumer.py | Rebrand Kafka consumer group id. |\r\n| src/worker/dispatch.py | Rebrand module docstring topic name. |\r\n| src/worker/consumer.py | Rebrand env vars + group id; keep retry/concurrency knobs. |\r\n| src/schema.py | Add `memory_context` to GraphState schema contract. |\r\n| src/reasoning.py | Rebrand env var names used for thresholds/limits. |\r\n| src/paths.py | Rebrand data dir env var. |\r\n| src/memory/store.py | New Supabase-backed persistence + retrieval/query helpers. |\r\n| src/memory/nodes.py | New async nodes for retrieve/write phases (non-fatal at coordinator level). |\r\n| src/memory/mcp_server.py | New standalone FastMCP server exposing memory tools. |\r\n| src/memory/extractor.py | New deterministic entity extraction + edge building. |\r\n| src/memory/embedder.py | New Gemini embedding client wrapper (OpenAI-compatible base_url). |\r\n| src/memory/__init__.py | New package marker for `memory` module. |\r\n| src/main.py | Rebrand Streamlit entry point + engine function name. |\r\n| src/graph.py | Add memory nodes to reference LangGraph topology + doc note. |\r\n| src/graph_5d.py | Rebrand env var for 5D graph db path. |\r\n| src/evolution.py | Rebrand module docstring. |\r\n| src/evidence_adapters.py | Rebrand module docstring. |\r\n| src/engine.py | Rename public engine entrypoint to `run_causalops`. |\r\n| src/coordinator/store.py | Persist/serialize `memory_context` on RunRecord. |\r\n| src/coordinator/spawn.py | Rebrand spawn concurrency env var. |\r\n| src/coordinator/runner.py | Add `memory_retrieve` / `memory_write` phases bracketing execute_run(). |\r\n| src/coordinator/barriers.py | Rebrand barrier timeout env var. |\r\n| src/causal_discovery.py | Rebrand discovery env vars. |\r\n| src/bus/topics.py | Rebrand Kafka topic constants to `causalops.*`. |\r\n| src/bus/publish.py | Rebrand docstrings for publish functions. |\r\n| src/bus/producer.py | Rebrand producer thread name. |\r\n| src/bus/events.py | Rebrand docstrings for bus envelope/types. |\r\n| src/bus/dlq.py | Rebrand DLQ docstring. |\r\n| src/bus/context.py | Rebrand ContextVar name + docstring. |\r\n| src/bus/consumer.py | Rebrand SSE consumer group id prefix. |\r\n| src/bus/__init__.py | Rebrand package docstring. |\r\n| src/benchmarking.py | Rebrand module docstring. |\r\n| src/api.py | Rebrand API strings/env var names; update to `run_causalops`. |\r\n| src/agents.py | Inject retrieved memory context into orchestrator prompt + formatting helper. |\r\n| setup-claude-code.sh | New helper to scaffold Claude Code config + MCP config + commands. |\r\n| scripts/smoke_kafka_bus.sh | Rebrand topic expectation text. |\r\n| requirements.txt | Add Supabase/OpenAI/FastMCP deps and version pins. |\r\n| README.md | Document memory layer + env vars/services; update roadmap items. |\r\n| pyproject.toml | Include `memory*` package + add `integration` pytest marker. |\r\n| docker-compose.yml | Rebrand env vars + add standalone `mcp` service on port 8001. |\r\n| CLAUDE.md | New project instructions doc (including memory layer and execution path). |\r\n| app/vite.config.ts | Read Vite env from repo-root `.env`. |\r\n| app/src/styles.css | Rebrand theme comment. |\r\n| app/src/routes/index.tsx | Update imports/strings to CausalOps module paths + PDF naming. |\r\n| app/src/routes/__root.tsx | Rebrand page metadata strings. |\r\n| app/src/lib/scenario-builder.ts | Rebrand scenario schema identifiers. |\r\n| app/src/lib/run-history.ts | Rebrand storage key + types import. |\r\n| app/src/lib/pdf-export.ts | Rebrand PDF text + filename + types import. |\r\n| app/src/lib/execution-simulator.ts | Rebrand API/types module imports. |\r\n| app/src/lib/derived-metrics.ts | Rebrand types import. |\r\n| app/src/lib/derived-metrics.test.ts | Rebrand types import. |\r\n| app/src/lib/causalops-types.ts | New shared frontend types for run payloads/events. |\r\n| app/src/lib/causalops-schema.ts | Rebrand schema parsing/types import. |\r\n| app/src/lib/causalops-schema.test.ts | Update schema test import path. |\r\n| app/src/lib/causalops-api.ts | Rebrand API wrapper keys/errors + schema import/export. |\r\n| app/src/lib/agent-runtime.ts | Rebrand types import used by trace overlay. |\r\n| app/src/integrations/supabase/types.ts | Regenerated Supabase TS types including memory tables/RPCs. |\r\n| app/src/hooks/use-run-history.ts | Rebrand HistoryEntry/RunResponse types import. |\r\n| app/src/components/causalops/ValidationChecklist.tsx | New UI: pre-flight validation checklist component. |\r\n| app/src/components/causalops/StrategyCard.tsx | New UI: strategy card with metric bars + EU display. |\r\n| app/src/components/causalops/StrategiesGrid.tsx | New UI: ranked strategies grid wrapper. |\r\n| app/src/components/causalops/SpatiotemporalKGPanel.tsx | New UI: SSR-safe wrapper for KG panel client component. |\r\n| app/src/components/causalops/SpatiotemporalKGPanel.client.tsx | Rebrand API import for 5D graph fetch. |\r\n| app/src/components/causalops/ScoreBar.tsx | New UI: generic score/progress bar component. |\r\n| app/src/components/causalops/ScenarioLibrary.tsx | New UI: scenario template picker component. |\r\n| app/src/components/causalops/ScenarioField.tsx | New UI: collapsible structured input field component. |\r\n| app/src/components/causalops/ScenarioBuilder.tsx | Rebrand ExecutionMode types import. |\r\n| app/src/components/causalops/RunHistoryDrawer.tsx | Rebrand HistoryEntry types import. |\r\n| app/src/components/causalops/RefinementPanel.tsx | New UI: refinement suggestion list component. |\r\n| app/src/components/causalops/RefineDialog.tsx | New UI: dialog to apply/discard AI refined prompt. |\r\n| app/src/components/causalops/PromptToolbar.tsx | New UI: prompt template/scaffold/refine toolbar. |\r\n| app/src/components/causalops/PromptSuggestions.tsx | New UI: inline prompt suggestion chips. |\r\n| app/src/components/causalops/PromptScaffold.tsx | New UI: structured brief composer. |\r\n| app/src/components/causalops/PresenterMode.tsx | Rebrand types import + footer string. |\r\n| app/src/components/causalops/NodeInspector.tsx | Rebrand types import. |\r\n| app/src/components/causalops/MitreChips.tsx | New UI: MITRE technique multi-select chips + search popover. |\r\n| app/src/components/causalops/MetricsBar.tsx | Rebrand types import. |\r\n| app/src/components/causalops/KillChainPanel.tsx | New UI: kill-chain + detection evidence panel. |\r\n| app/src/components/causalops/InputPanel.tsx | New UI: main prompt input with scaffold/suggestions/refine flow. |\r\n| app/src/components/causalops/GraphWorkspace.tsx | Rebrand types import for causal graph. |\r\n| app/src/components/causalops/ExportPanel.tsx | Rebrand exported filenames. |\r\n| app/src/components/causalops/ExecutiveView.tsx | Rebrand types import. |\r\n| app/src/components/causalops/ExecutiveCausalCompact.tsx | Rebrand types import. |\r\n| app/src/components/causalops/ExecutionStream.tsx | Rebrand types import for events. |\r\n| app/src/components/causalops/ErrorPanel.tsx | Rebrand schema issue type import. |\r\n| app/src/components/causalops/CausalObservabilityPanel.tsx | New UI: agent/edge observability overlay panel. |\r\n| app/src/components/causalops/CausalGraphPanel.tsx | Rebrand graph types import. |\r\n| app/src/components/causalops/CausalGraph.tsx | Rebrand graph types import. |\r\n| app/src/components/causalops/CausalGraph.client.tsx | Rebrand graph types import. |\r\n| app/src/components/causalops/ApiSettingsDialog.tsx | Rebrand API wrapper import + dialog copy. |\r\n| .vscode/settings.json | Add port-forward label for MCP server port 8001. |\r\n| .gitignore | Ignore Claude/Cursor/Kiro dirs + `.mcp.json`; stop ignoring `.vscode/`. |\r\n| .env.example | Expand env example with CausalOps + Supabase + memory layer vars. |\n\u003c/details\u003e\n\n\n\n\n\n\n\n---\n\n💡 \u003ca href=\"/darshgarg7/CausalOps/new/main?filename=.github/instructions/*.instructions.md\" class=\"Link--inTextBlock\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eAdd Copilot custom instructions\u003c/a\u003e for smarter, more guided reviews. \u003ca href=\"https://docs.github.com/en/copilot/customizing-copilot/adding-repository-custom-instructions-for-github-copilot\" class=\"Link--inTextBlock\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eLearn how to get started\u003c/a\u003e.","state":"COMMENTED","submitted_at":"2026-07-09T09:13:50Z","user":"copilot-pull-request-reviewer[bot]"}
+{"body":"","state":"COMMENTED","submitted_at":"2026-07-09T09:36:12Z","user":"gupta-builds"}
+{"body":"","state":"COMMENTED","submitted_at":"2026-07-09T09:36:14Z","user":"gupta-builds"}
+{"body":"","state":"COMMENTED","submitted_at":"2026-07-09T09:36:15Z","user":"gupta-builds"}
+{"body":"","state":"COMMENTED","submitted_at":"2026-07-09T09:36:17Z","user":"gupta-builds"}
+{"body":"","state":"COMMENTED","submitted_at":"2026-07-09T09:36:18Z","user":"gupta-builds"}
+{"body":"","state":"COMMENTED","submitted_at":"2026-07-27T21:54:53Z","user":"darshgarg7"}
+{"body":"This is good. I like the changes, but we cannot afford greater time/space complexity atm. All changes made have to add meaningfully (test this) or reduce time/space complexity.","state":"CHANGES_REQUESTED","submitted_at":"2026-07-27T21:59:17Z","user":"darshgarg7"}
+
+=== REVIEW COMMENTS (inline) ===
+{"body":"This generated `.mcp.json` points to `http://localhost:8000/mcp`, but the PR description and docker-compose wiring say the MCP server is a standalone FastMCP process on port 8001 (SSE at `/sse`) and is never mounted inside `api.py`. As written, Claude Code will try to connect to a non-existent MCP endpoint.","in_reply_to":null,"line":93,"path":"setup-claude-code.sh","user":"Copilot"}
+{"body":"The generated `commands/test-memory.md` uses `POST http://localhost:8000/mcp/call-tool`, which implies an MCP HTTP bridge mounted on the FastAPI app. In this PR the MCP server runs standalone (`python -m memory.mcp_server`) and the README verification uses `http://localhost:8001/sse`, so these curl commands will not work as written and may confuse contributors.","in_reply_to":null,"line":null,"path":"setup-claude-code.sh","user":"Copilot"}
+{"body":"`_memory_configured()` treats any non-empty SUPABASE_* values as configured. With the repo’s `.env.example` placeholders (e.g. `SUPABASE_SERVICE_ROLE_KEY=your-service-role-key-here`), this will look “configured” and trigger noisy exception logs + network attempts on every run. It’s better to treat obvious placeholder values as unconfigured (same heuristic used in the tests’ `_has_credentials()`).","in_reply_to":null,"line":null,"path":"src/memory/nodes.py","user":"Copilot"}
+{"body":"`write_run()` upserts `memory_runs` on `run_id`, but always blindly inserts `memory_entity_edges`. If `write_run()` is called more than once for the same `run_id` (retries, reruns, tests, etc.), edges for that run will be duplicated and the cross-run graph will drift from reality. Make the edge write idempotent by deleting/replacing existing edges for the run before inserting the new set.","in_reply_to":null,"line":62,"path":"src/memory/store.py","user":"Copilot"}
+{"body":"`get_asset_timeline()` fetches *all* edges within the time window and then filters client-side via `_touches_asset()`. As `memory_entity_edges` grows, this becomes an expensive full-scan + large payload transfer for every request. Consider filtering in Postgres/PostgREST (e.g., resolve the asset entity ID first and query edges where `source_entity_id == asset_id` OR `target_entity_id == asset_id`).","in_reply_to":null,"line":145,"path":"src/memory/store.py","user":"Copilot"}
+{"body":"Fixed in 68abd50b — `.mcp.json` now spawns the server directly over stdio (matching how `mcp_server.py` actually runs), rather than pointing at a non-existent HTTP bridge.","in_reply_to":3550363909,"line":93,"path":"setup-claude-code.sh","user":"gupta-builds"}
+{"body":"Fixed in 68abd50b — `test-memory.md` now calls the real `mcp__causalops-memory__*` tools directly instead of curling an endpoint that was never built. While fixing this I found the whole file predates the standalone-MCP-server decision (Azure embedding references, stale package version checks, an \"api.py MCP mount\" scope line) — cleaned all of it up in the same commit.","in_reply_to":3550363953,"line":null,"path":"setup-claude-code.sh","user":"gupta-builds"}
+{"body":"Fixed in 68abd50b — `_memory_configured()` now uses the same placeholder-detection heuristic as the tests' `_has_credentials()` (`\"your-\" not in key`), so unedited `.env.example` placeholders correctly read as unconfigured.","in_reply_to":3550363988,"line":null,"path":"src/memory/nodes.py","user":"gupta-builds"}
+{"body":"Fixed in 68abd50b — `write_run()` now deletes existing edges for the run_id before inserting the current set. Verified live: two consecutive `write_run()` calls with identical input now produce 1 edge, not 2.","in_reply_to":3550364015,"line":62,"path":"src/memory/store.py","user":"gupta-builds"}
+{"body":"Fixed in 68abd50b — resolves the asset entity ID first, then filters `memory_entity_edges` server-side via `.or_()` instead of a full-scan + client-side filter. Removed the now-unused `_touches_asset()` helper. Verified live against a real asset (returns the match) and an unrelated one (returns empty), confirming it's a targeted query, not a full scan.","in_reply_to":3550364036,"line":145,"path":"src/memory/store.py","user":"gupta-builds"}
+{"body":"good styling haha. got lost before","in_reply_to":null,"line":3,"path":"app/src/components/causalops/CausalGraphPanel.tsx","user":"darshgarg7"}
+{"body":"We already have a runtime issue. How did you integrate MCP and test the final UX?","in_reply_to":null,"line":15,"path":"CLAUDE.md","user":"darshgarg7"}
+{"body":"we use NVIDIA nemtron instead now","in_reply_to":null,"line":85,"path":"CLAUDE.md","user":"darshgarg7"}
+{"body":"Does this method of handling memory increase overhead?","in_reply_to":null,"line":65,"path":"supabase/migrations/[REDACTED].sql","user":"darshgarg7"}
+
+=== ISSUE COMMENTS ===
+{"body":"@darshgarg7 - the PR description covers the headline feature, but leaves out the mechanical detail of two things this touches heavily: the Supabase work and the HiveMind → CausalOps rename. Wanted to give you a proper breakdown of both, plus a note on commit history, before you dig into the diff.\r\n\r\nCommit history note: pushed as a single commit (4544c3fe) rather than the original five, because reconciling with main's five new commits was safer to do as one squash-merge than replaying each original commit separately. Full rationale in the comment draft above.\r\n\r\nSupabase: all 4 migrations now tracked as code in supabase/migrations/ (previously only live, no local record) - pgvector, the 3-table schema + 2 RPC functions, RLS (intentional deny-all-except-service_role), and a new hardening migration fixing 2 real security advisories + 1 performance advisory Supabase's own linter flagged. Retention is a documented manual query, not automated.\r\n\r\nRename: full scope of HIVEMIND_* → CAUSALOPS_* across frontend components/libs and backend env vars, including 3 new env vars that landed on main after the rename (now consistent), and a silently-broken import (ScenarioBuilder.tsx) that auto-merged clean but would have shipped broken.","user":"gupta-builds"}
+{"body":"@copilot Thanks for the first pass — all 5 findings above were real (verified each against the actual code before fixing, not taken at face value) and are fixed in `68abd50b`. While re-testing one of those fixes I also found and fixed a 6th, separate bug your review didn't catch: `tests/memory/test_end_to_end.py` called `execute_run()` without an `execution_mode`, defaulting to `\"standard\"` — a code path added by `main`'s `execution_mode` work that this test's mocks never accounted for (`_seed_standard_swarm()` calls `publish_artifact()`, which wasn't mocked, and `_run_fast_causal_loop()` imports functions the test's faked `causal` module doesn't define). Fixed by pinning `execution_mode=\"deep\"` explicitly, matching `tests/test_coordinator_runner.py`'s own convention.\n\nPlease do a second, deeper pass specifically on the files this PR's merge-conflict resolution touched — not just the new memory-layer code. This branch was reconciled with 5 commits `main` had landed in the meantime (NVIDIA backend, `execution_mode`, 5D-first result workspace), and every one of these was a hand-resolved conflict, not a mechanical merge:\n\n- `src/coordinator/runner.py` — the memory phases were interleaved with the new `execution_mode` branching by hand. Please check both the `\"standard\"` and `\"deep\"` paths actually run correctly, not just one.\n- `app/src/routes/index.tsx` — imports/types were reconciled between the old `CausalGraphPanel`/`SpatiotemporalKGPanel` direct-render approach and the new `GraphWorkspace` wrapper component.\n- `app/src/components/causalops/GraphWorkspace.tsx` and `ExecutionStream.tsx` — relocated/merged from `main`'s new additions under the pre-rebrand `hivemind/` path.\n- `app/src/lib/execution-simulator.ts` — `ExecutionMode` type import reconciled.\n- `.env.example`, `docker-compose.yml`, `.gitignore` — hand-merged rather than taking either side wholesale; please check nothing from either original version got silently dropped.\n- `README.md` — large sections were manually relocated (a misplaced \"Future Enhancements\" list that had landed under the wrong heading due to the diff, a duplicate FAQ section that overlapped with `main`'s \"Answering the Hard Questions\") rather than auto-resolved.\n- Every file with a renamed `HIVEMIND_*` → `CAUSALOPS_*` env var, to confirm no reference was missed (`coordinator/barriers.py`, `coordinator/spawn.py`, `worker/consumer.py`, and the tests that set them).\n\nAnywhere you find something that looks like it was resolved mechanically rather than correctly — a stale reference, a dropped edge case, an import that resolves but doesn't make semantic sense — flag it the same way as the first pass. Appreciate the thoroughness.\n","user":"gupta-builds"}
+{"body":"\n\u003e @copilot Thanks for the first pass — all 5 findings above were real (verified each against the actual code before fixing, not taken at face value) and are fixed in `68abd50b`. While re-testing one o...\n\nSecond pass complete on the hand-merged files you listed. I found one additional issue: `tests/memory/test_end_to_end.py` imported `agents` at module import time, which eagerly initialized Azure credentials and broke CI test collection when creds were absent. Fixed in `f7d24d5` by removing that import and asserting against `memory_context` directly.\n\nValidation run after the fix:\n- `python -m pytest -q` ✅\n- `python -m pytest tests/test_coordinator_runner.py -q` ✅\n- `python -m pytest tests/test_bus_kafka_system.py tests/test_phase2d_hardening.py -q` ✅","user":"Copilot"}
+  ```
+- `Bash` — `grep -n "BARRIER_TIMEOUT\|async def.*barrier\|TimeoutError\|timeout" src/coordinator/barriers.py | head -30`
+  ```
+15:DEFAULT_BARRIER_TIMEOUT_S = 1800.0
+18:def _barrier_timeout_s() -> float:
+22:            float(os.getenv("CAUSALOPS_BARRIER_TIMEOUT_S", DEFAULT_BARRIER_TIMEOUT_S)),
+25:        return DEFAULT_BARRIER_TIMEOUT_S
+28:async def wait_for_barrier(
+33:    timeout_s: float | None = None,
+36:    """Poll run store until predicate is true or timeout."""
+39:    timeout = _barrier_timeout_s() if timeout_s is None else timeout_s
+40:    deadline = started_at + timeout
+48:    raise TimeoutError(
+49:        f"Barrier timeout for run {run_id} in phase {record.phase} "
+  ```
+- `Bash` — `grep -n "execution_mode\|parent_evolution\|child_evolution\|N_PARENTS\|num_parents\|orchestrator.*parents\|MAX_PARENTS\|deep" src/coordinator/runner.py src/agents.py 2>/dev/null | grep -i "deep\|parent\|child" | head -40`
+  ```
+src/agents.py:350:    if execution_mode == "deep":
+src/coordinator/runner.py:54:        if mode == "deep":
+src/coordinator/runner.py:56:            await _run_parent_evolution(record, run_store)
+src/coordinator/runner.py:59:            await _run_child_evolution(record, run_store)
+src/coordinator/runner.py:64:        if mode == "deep":
+src/coordinator/runner.py:84:        if mode == "deep":
+src/coordinator/runner.py:109:    deep-mode runs.
+src/coordinator/runner.py:143:    return "deep" if str(value).strip().lower() == "deep" else "standard"
+src/coordinator/runner.py:220:async def _run_parent_evolution(record: RunRecord, store: RunStore) -> None:
+src/coordinator/runner.py:227:    store.set_phase(record, "parent_evolution")
+src/coordinator/runner.py:280:async def _run_child_evolution(record: RunRecord, store: RunStore) -> None:
+src/coordinator/runner.py:287:    store.set_phase(record, "child_evolution")
+  ```
+- `Bash` — `sed -n '1,100p' src/coordinator/runner.py`
+  ```
+"""Coordinator state machine — replaces LangGraph graph.ainvoke in Phase 2a."""
+
+from __future__ import annotations
+
+import asyncio
+import logging
+from typing import Any
+
+from bus.events import ArtifactType
+from bus.helpers import bind_from_state
+from bus.publish import publish_artifact, publish_telemetry
+from coordinator.barriers import wait_for_barrier
+from coordinator.refutation import refutation_next_step
+from coordinator.spawn import enqueue_child_tasks, enqueue_parent_tasks
+from coordinator.store import RunRecord, RunStore, get_run_store
+from schema import AgentConfig, ChildConfig, DecisionMemo, ExecutionMode
+
+logger = logging.getLogger(__name__)
+
+
+async def execute_run(
+    *,
+    task_description: str,
+    evidence_records: list[dict[str, Any]] | None = None,
+    run_id: str,
+    correlation_id: str,
+    execution_mode: ExecutionMode = "standard",
+    store: RunStore | None = None,
+) -> dict[str, Any]:
+    """Run the full CausalOps workflow via coordinator + run store."""
+
+    mode = _normalize_execution_mode(execution_mode)
+    run_store = store or get_run_store()
+    try:
+        record = run_store.get_run(run_id)
+        record.status = "running"
+        record.phase = "running"
+        record.execution_mode = mode
+        if evidence_records is not None:
+            record.evidence_records = evidence_records
+        run_store.save(record)
+    except KeyError:
+        record = run_store.create_run(
+            run_id=run_id,
+            correlation_id=correlation_id,
+            task_description=task_description,
+            evidence_records=evidence_records,
+            execution_mode=mode,
+            status="running",
+        )
+
+    try:
+        await _run_memory_retrieve(record, run_store)
+        if mode == "deep":
+            await _run_orchestrator(record, run_store)
+            await _run_parent_evolution(record, run_store)
+            await _dispatch_parents(record, run_store)
+            await _gather_children(record, run_store)
+            await _run_child_evolution(record, run_store)
+        else:
+            await _seed_standard_swarm(record, run_store)
+
+        await _dispatch_children(record, run_store)
+        if mode == "deep":
+            await _run_evaluator(record, run_store)
+            await _run_causal_loop(record, run_store)
+        else:
+            await _run_fast_evaluator(record, run_store)
+            await _run_fast_causal_loop(record, run_store)
+        await _run_reasoner(record, run_store)
+
+        # Build 5D Spatiotemporal KG Graph.
+        #
+        # When Kafka is enabled the graph is continuously streamed in by the
+        # worker's graph consumer (graph_5d_stream) using real event times, so a
+        # batch rebuild here would only duplicate edges at synthetic timestamps.
+        # In inline/no-Kafka mode there is no stream, so reconstruct from the
+        # final record state as a backfill.
+        from bus.producer import kafka_enabled
+
+        if not kafka_enabled():
+            await asyncio.to_thread(_backfill_5d_graph, record)
+
+        if mode == "deep":
+            await _run_policy_learning(record, run_store)
+
+            if not kafka_enabled():
+                await asyncio.to_thread(_ingest_policy_optimization, record)
+
+        await _run_memory_write(record, run_store)
+
+        record.status = "completed"
+        run_store.save(record)
+    except Exception:
+        record.status = "failed"
+        run_store.save(record)
+        raise
+
+    return record.to_graph_state()
+  ```
+- `AskUserQuestion` — `{"questions":[{"question":"Which piece should I start on right now?","header":"Next step","options":[{"label":"PR #25 replies first","description":"I paste/post the 5 reply drafts to Darsh's comments, then branch fix/pr-25-darsh-review and make the 4 scoped code changes (MCP compose profile, cheaper decay RPC, doc fix, kill switch)."},{"label":"Confirm the barrier hypothesis first","description":"Run deep mode now, watch logs together, verify whether the 30-min barrier timeout is really what caused Darsh's hour-long run — before touching PR #25 at all."}],"multiSelect":false},{"question":"For the PR #25 replies specifically: should I post them to GitHub myself, or hand you the text to paste yourself?","header":"Reply posting","options":[{"label":"Hand me the text","description":"You paste each reply into GitHub yourself. Matches the cursor plan's original intent (\"nothing posted from here\")."},{"label":"Post them for me","description":"I use gh/mcp GitHub tools to post the 5 replies directly to the PR threads on your behalf."}]}]}`
+
 ## Actions Taken
 - Files created: (none)
 - Files modified: (none)
 - Files deleted: (none)
-- Commands run: cat docker-compose.yml 2>/dev/null | head -100, git status --short | head -50 && echo "---diff stat---" && git diff --stat HEAD, grep -oE '^[A-Z_]+=' .env | sort -u, grep -n "getmany\|SPAWN_CONCURRENCY\|timeout_ms" src/worker.py 2>/dev/null | head -20, grep -rn "guided_json\|with_structured_output\|ChatNVIDIA\|def get_llm\|def.*_llm" src/*.py 2>/dev/null | grep -v test | head -40, find src -iname "*worker*"; echo "---"; grep -rn "getmany\|SPAWN_CONCURRENCY" src/ 2>/dev/null | grep -v test, grep -n "logger\.\|logging\.\|time.perf_counter\|time.time()\|elapsed" src/coordinator/runner.py | head -60, sed -n '1,50p' src/worker/consumer.py
-- Tool call tally: Bash (8), Read (1)
+- Commands run: cat docker-compose.yml 2>/dev/null | head -100, git status --short | head -50 && echo "---diff stat---" && git diff --stat HEAD, grep -oE '^[A-Z_]+=' .env | sort -u, grep -n "getmany\|SPAWN_CONCURRENCY\|timeout_ms" src/worker.py 2>/dev/null | head -20, grep -rn "guided_json\|with_structured_output\|ChatNVIDIA\|def get_llm\|def.*_llm" src/*.py 2>/dev/null | grep -v test | head -40, find src -iname "*worker*"; echo "---"; grep -rn "getmany\|SPAWN_CONCURRENCY" src/ 2>/dev/null | grep -v test, grep -n "logger\.\|logging\.\|time.perf_counter\|time.time()\|elapsed" src/coordinator/runner.py | head -60, sed -n '1,50p' src/worker/consumer.py, git remote -v, gh pr view 25 --repo darshgarg7/CausalOps --json number,title,state,reviewDecision,url,headRepositoryOwner,baseRefName,headRefName,mergeable 2>&1, gh pr view 25 --repo darshgarg7/CausalOps --comments 2>&1 | head -200, git log --oneline plan/persistent-memory-mcp -5; echo "---branch---"; git branch -a | grep -i pr.25; echo "---current branch vs plan---"; git status -sb, echo "=== REVIEWS ==="; gh api repos/darshgarg7/CausalOps/pulls/25/reviews --jq '.[] | {user: .user.login, state: .state, body: .body, submitted_at: .submitted_at}' 2>&1 echo "" echo "=== REVIEW COMMENTS (inline) ==="; gh api repos/darshgarg7/CausalOps/pulls/25/comments --jq '.[] | {user: .user.login, path: .path, line: .line, body: .body, in_reply_to: .in_reply_to_id}' 2>&1 echo "" echo "=== ISSUE COMMENTS ==="; gh api repos/darshgarg7/CausalOps/issues/25/comments --jq '.[] | {user: .user.login, body: .body}' 2>&1, grep -n "BARRIER_TIMEOUT\|async def.*barrier\|TimeoutError\|timeout" src/coordinator/barriers.py | head -30, grep -n "execution_mode\|parent_evolution\|child_evolution\|N_PARENTS\|num_parents\|orchestrator.*parents\|MAX_PARENTS\|deep" src/coordinator/runner.py src/agents.py 2>/dev/null | grep -i "deep\|parent\|child" | head -40, sed -n '1,100p' src/coordinator/runner.py
+- Tool call tally: AskUserQuestion (1), Bash (16), Read (2)
 

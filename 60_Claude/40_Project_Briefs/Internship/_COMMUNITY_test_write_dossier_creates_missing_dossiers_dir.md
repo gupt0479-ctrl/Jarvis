@@ -56,7 +56,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 9 edges to [[_COMMUNITY_test_filter.py]]
+- 9 edges to [[_COMMUNITY_write_dossier]]
 - 8 edges to [[_COMMUNITY_recheck.py]]
 - 7 edges to [[_COMMUNITY_test_render_dossier_shows_real_rendered_frontmatter_with_preference_match]]
 - 2 edges to [[_COMMUNITY_writer.py]]

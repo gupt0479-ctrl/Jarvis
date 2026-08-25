@@ -44,14 +44,14 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 21 edges to [[_COMMUNITY_normalize_josegael]]
+- 21 edges to [[_COMMUNITY_validate.py]]
 - 13 edges to [[_COMMUNITY_build_frontmatter]]
-- 2 edges to [[_COMMUNITY_test_writer.py]]
+- 2 edges to [[_COMMUNITY_normalize_simplify]]
 - 2 edges to [[_COMMUNITY_recheck.py]]
 - 2 edges to [[_COMMUNITY_writer.py]]
-- 2 edges to [[_COMMUNITY_filter.py]]
-- 1 edge to [[_COMMUNITY_test_filter.py]]
-- 1 edge to [[_COMMUNITY_fetch_posting_markdown]]
+- 2 edges to [[_COMMUNITY_build_frontmatter_1]]
+- 1 edge to [[_COMMUNITY_write_dossier]]
+- 1 edge to [[_COMMUNITY_dump_frontmatter]]
 
 ## Top bridge nodes
 - [[render_dossier()]] - degree 32, connects to 5 communities

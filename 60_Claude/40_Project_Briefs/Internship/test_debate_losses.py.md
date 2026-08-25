@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_debate_losses.py"
 type: "code"
-community: "normalize.py"
+community: "test_debate_losses.py"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/normalizepy
+  - community/test_debate_lossespy
 ---
 
 # test_debate_losses.py
@@ -31,4 +31,4 @@ tags:
 - [[test_wins_on_attempt_3_never_excluded()]] - `contains` [EXTRACTED]
 - [[test_written_uid_not_in_losses_is_a_no_op_pop()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/normalizepy
+#graphify/code #graphify/EXTRACTED #community/test_debate_lossespy

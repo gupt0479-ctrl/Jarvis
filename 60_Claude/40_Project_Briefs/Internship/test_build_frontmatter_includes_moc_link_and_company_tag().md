@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_writer.py"
 type: "code"
-community: "filter.py"
+community: "build_frontmatter"
 location: "L146"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/filterpy
+  - community/build_frontmatter
 ---
 
 # test_build_frontmatter_includes_moc_link_and_company_tag()
@@ -16,4 +16,4 @@ tags:
 - [[company_slug()]] - `calls` [EXTRACTED]
 - [[test_writer.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/filterpy
+#graphify/code #graphify/EXTRACTED #community/build_frontmatter

@@ -68,27 +68,25 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 17 edges to [[_COMMUNITY_commit_and_push_with_retry]]
-- 13 edges to [[_COMMUNITY_test_filter.py]]
+- 20 edges to [[_COMMUNITY_write_dossier]]
+- 12 edges to [[_COMMUNITY_commit_and_push_with_retry]]
 - 8 edges to [[_COMMUNITY_test_write_dossier_creates_missing_dossiers_dir]]
 - 8 edges to [[_COMMUNITY_writer.py]]
 - 6 edges to [[_COMMUNITY_build_frontmatter]]
 - 5 edges to [[_COMMUNITY_test_render_dossier_shows_real_rendered_frontmatter_with_preference_match]]
-- 5 edges to [[_COMMUNITY_test_interndock.py]]
-- 4 edges to [[_COMMUNITY_test_writer.py]]
+- 5 edges to [[_COMMUNITY_test_write_dossier_different_uid_same_role_company_gets_collision_suffix]]
+- 5 edges to [[_COMMUNITY_interndock.py]]
+- 4 edges to [[_COMMUNITY_normalize_simplify]]
 - 4 edges to [[_COMMUNITY_vault_root]]
-- 4 edges to [[_COMMUNITY_revalidate.py]]
-- 3 edges to [[_COMMUNITY_write_dossier]]
-- 3 edges to [[_COMMUNITY_plan_removals]]
-- 3 edges to [[_COMMUNITY_matches]]
-- 2 edges to [[_COMMUNITY_normalize_josegael]]
+- 3 edges to [[_COMMUNITY_test_freehire.py]]
+- 3 edges to [[_COMMUNITY_test_writer.py]]
+- 2 edges to [[_COMMUNITY_plan_removals]]
+- 2 edges to [[_COMMUNITY_validate.py]]
 - 2 edges to [[_COMMUNITY_render_dossier]]
-- 1 edge to [[_COMMUNITY_relevance.py]]
-- 1 edge to [[_COMMUNITY_test_write_dossier_different_uid_same_role_company_gets_collision_suffix]]
-- 1 edge to [[_COMMUNITY_normalize.py]]
+- 1 edge to [[_COMMUNITY_test_debate_losses.py]]
 
 ## Top bridge nodes
-- [[run_pipeline.py]] - degree 84, connects to 18 communities
+- [[run_pipeline.py]] - degree 84, connects to 15 communities
 - [[run_once()]] - degree 30, connects to 6 communities
 - [[load_profile()]] - degree 9, connects to 5 communities
 - [[Path]] - degree 28, connects to 4 communities

@@ -1,12 +1,12 @@
 ---
 source_file: "run_pipeline.py"
 type: "code"
-community: "revalidate.py"
+community: "commit_and_push_with_retry"
 location: "L477"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/revalidatepy
+  - community/commit_and_push_with_retry
 ---
 
 # file_github_issue()
@@ -18,4 +18,4 @@ tags:
 - [[revalidate.py]] - `imports` [EXTRACTED]
 - [[run_pipeline.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/revalidatepy
+#graphify/code #graphify/EXTRACTED #community/commit_and_push_with_retry

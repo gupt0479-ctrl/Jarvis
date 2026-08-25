@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_run_pipeline.py"
 type: "code"
-community: "test_writer.py"
+community: "normalize_simplify"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_writerpy
+  - community/normalize_simplify
 ---
 
 # _simplify_raw()
@@ -31,4 +31,4 @@ tags:
 - [[test_validate_and_write_rejects_dead_url()]] - `calls` [EXTRACTED]
 - [[test_validate_and_write_seeds_dedup_keys_from_existing_vault_files()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_writerpy
+#graphify/code #graphify/EXTRACTED #community/normalize_simplify

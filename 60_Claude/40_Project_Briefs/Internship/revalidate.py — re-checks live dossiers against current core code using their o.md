@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_revalidate.py"
 type: "rationale"
-community: "revalidate.py"
+community: "commit_and_push_with_retry"
 location: "L1"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/revalidatepy
+  - community/commit_and_push_with_retry
 ---
 
 # revalidate.py — re-checks live dossiers against current core/ code using their o
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[test_revalidate.py]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/revalidatepy
+#graphify/rationale #graphify/EXTRACTED #community/commit_and_push_with_retry

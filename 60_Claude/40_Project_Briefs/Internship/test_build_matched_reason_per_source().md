@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_run_pipeline.py"
 type: "code"
-community: "phd_only_exclusion"
+community: "_fake_http_get"
 location: "L234"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/phd_only_exclusion
+  - community/_fake_http_get
 ---
 
 # test_build_matched_reason_per_source()
@@ -18,4 +18,4 @@ tags:
 - [[normalize_simplify()]] - `calls` [EXTRACTED]
 - [[test_run_pipeline.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/phd_only_exclusion
+#graphify/code #graphify/EXTRACTED #community/_fake_http_get

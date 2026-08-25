@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_debate_losses.py"
 type: "code"
-community: "normalize.py"
+community: "test_debate_losses.py"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/normalizepy
+  - community/test_debate_lossespy
 ---
 
 # _candidate()
@@ -18,4 +18,4 @@ tags:
 - [[test_deferred_up_to_threshold_minus_one_still_in_pool_not_excluded()]] - `calls` [EXTRACTED]
 - [[test_wins_on_attempt_3_never_excluded()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/normalizepy
+#graphify/code #graphify/EXTRACTED #community/test_debate_lossespy

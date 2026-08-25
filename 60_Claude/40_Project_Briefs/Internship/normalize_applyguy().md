@@ -1,12 +1,12 @@
 ---
 source_file: "ingestion/normalize.py"
 type: "code"
-community: "test_filter.py"
+community: "write_dossier"
 location: "L120"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_filterpy
+  - community/write_dossier
 ---
 
 # normalize_applyguy()
@@ -23,4 +23,4 @@ tags:
 - [[test_applyguy_should_reject()]] - `calls` [EXTRACTED]
 - [[test_filter.py]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_filterpy
+#graphify/code #graphify/EXTRACTED #community/write_dossier

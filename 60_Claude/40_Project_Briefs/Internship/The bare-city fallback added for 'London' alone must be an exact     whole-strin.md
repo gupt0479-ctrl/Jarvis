@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_filter.py"
 type: "rationale"
-community: "test_filter.py"
+community: "write_dossier"
 location: "L150"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/test_filterpy
+  - community/write_dossier
 ---
 
 # The bare-city fallback added for 'London' alone must be an exact     whole-strin
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[test_location_new_london_ct_is_not_caught_by_bare_london_fallback()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/test_filterpy
+#graphify/rationale #graphify/EXTRACTED #community/write_dossier

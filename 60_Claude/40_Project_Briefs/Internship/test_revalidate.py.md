@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_revalidate.py"
 type: "code"
-community: "revalidate.py"
+community: "commit_and_push_with_retry"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/revalidatepy
+  - community/commit_and_push_with_retry
 ---
 
 # test_revalidate.py
@@ -25,4 +25,4 @@ tags:
 - [[test_extract_posting_content_from_thin_dossier()]] - `contains` [EXTRACTED]
 - [[test_find_regressions_scans_real_vault_layout()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/revalidatepy
+#graphify/code #graphify/EXTRACTED #community/commit_and_push_with_retry

@@ -64,9 +64,9 @@ SORT file.name ASC
 
 ## Connections to other communities
 - 4 edges to [[_COMMUNITY_recheck.py]]
-- 3 edges to [[_COMMUNITY_plan_removals]]
+- 3 edges to [[_COMMUNITY_test_writer.py]]
 - 1 edge to [[_COMMUNITY_commit_and_push_with_retry]]
-- 1 edge to [[_COMMUNITY_test_filter.py]]
+- 1 edge to [[_COMMUNITY_write_dossier]]
 
 ## Top bridge nodes
 - [[schema_drift.py]] - degree 13, connects to 3 communities

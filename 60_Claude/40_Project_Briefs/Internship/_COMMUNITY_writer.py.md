@@ -70,12 +70,12 @@ SORT file.name ASC
 
 ## Connections to other communities
 - 8 edges to [[_COMMUNITY_recheck.py]]
-- 3 edges to [[_COMMUNITY_test_interndock.py]]
+- 3 edges to [[_COMMUNITY_interndock.py]]
 - 2 edges to [[_COMMUNITY_test_write_dossier_creates_missing_dossiers_dir]]
 - 2 edges to [[_COMMUNITY_render_dossier]]
 - 1 edge to [[_COMMUNITY_test_render_dossier_shows_real_rendered_frontmatter_with_preference_match]]
 - 1 edge to [[_COMMUNITY_test_write_dossier_different_uid_same_role_company_gets_collision_suffix]]
-- 1 edge to [[_COMMUNITY_normalize_josegael]]
+- 1 edge to [[_COMMUNITY_validate.py]]
 - 1 edge to [[_COMMUNITY_commit_and_push_with_retry]]
 - 1 edge to [[_COMMUNITY_build_frontmatter]]
 

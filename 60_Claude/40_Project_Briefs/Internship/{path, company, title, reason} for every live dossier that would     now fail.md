@@ -1,12 +1,12 @@
 ---
 source_file: "revalidate.py"
 type: "rationale"
-community: "revalidate.py"
+community: "commit_and_push_with_retry"
 location: "L65"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/revalidatepy
+  - community/commit_and_push_with_retry
 ---
 
 # [{path, company, title, reason}] for every live dossier that would     now fail
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[find_regressions()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/revalidatepy
+#graphify/rationale #graphify/EXTRACTED #community/commit_and_push_with_retry

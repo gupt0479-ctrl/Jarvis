@@ -1,12 +1,12 @@
 ---
 source_file: "recheck.py"
 type: "code"
-community: "commit_and_push_with_retry"
+community: "write_dossier"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/commit_and_push_with_retry
+  - community/write_dossier
 ---
 
 # recheck.py
@@ -38,4 +38,4 @@ tags:
 - [[test_recheck.py]] - `imports_from` [EXTRACTED]
 - [[writer.py]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/commit_and_push_with_retry
+#graphify/code #graphify/EXTRACTED #community/write_dossier

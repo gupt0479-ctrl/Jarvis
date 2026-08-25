@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_run_pipeline.py"
 type: "rationale"
-community: "test_writer.py"
+community: "normalize_simplify"
 location: "L331"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/test_writerpy
+  - community/normalize_simplify
 ---
 
 # Keys come from the dossier files actually in the checkout — a listing     whose
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[test_validate_and_write_seeds_dedup_keys_from_existing_vault_files()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/test_writerpy
+#graphify/rationale #graphify/EXTRACTED #community/normalize_simplify

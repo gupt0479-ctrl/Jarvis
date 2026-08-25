@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_run_pipeline.py"
 type: "code"
-community: "phd_only_exclusion"
+community: "_fake_http_get"
 location: "L44"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/phd_only_exclusion
+  - community/_fake_http_get
 ---
 
 # _fake_http_get()
@@ -23,4 +23,4 @@ tags:
 - [[test_run_once_defers_beyond_the_cap_and_leaves_it_for_next_run()]] - `indirect_call` [INFERRED]
 - [[test_run_pipeline.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/phd_only_exclusion
+#graphify/code #graphify/EXTRACTED #community/_fake_http_get

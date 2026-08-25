@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_filter.py"
 type: "code"
-community: "test_filter.py"
+community: "write_dossier"
 location: "L260"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_filterpy
+  - community/write_dossier
 ---
 
 # test_applyguy_prefers_listing_url_over_tracking_url()
@@ -17,4 +17,4 @@ tags:
 - [[test_filter.py]] - `contains` [EXTRACTED]
 - [[url is applyguy.ai's own utm-tagged redirect page; listingUrl is the     real em]] - `rationale_for` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_filterpy
+#graphify/code #graphify/EXTRACTED #community/write_dossier

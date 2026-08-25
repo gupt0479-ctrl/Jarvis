@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_run_pipeline.py"
 type: "code"
-community: "plan_removals"
+community: "test_writer.py"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/plan_removals
+  - community/test_writerpy
 ---
 
 # test_run_pipeline.py
@@ -80,4 +80,4 @@ tags:
 - [[test_validate_and_write_rejects_dead_url()]] - `contains` [EXTRACTED]
 - [[test_validate_and_write_seeds_dedup_keys_from_existing_vault_files()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/plan_removals
+#graphify/code #graphify/EXTRACTED #community/test_writerpy
