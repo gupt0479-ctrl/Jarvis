@@ -5,14 +5,14 @@ source_app: claude-code
 source_os: wsl
 title: "Activity header error and outline animation"
 started_at: 2026-08-25T13:28:27
-ended_at: 2026-08-25T17:32:45
-duration_minutes: 244
-exported_at: 2026-08-25T22:15:02
+ended_at: 2026-08-25T18:41:34
+duration_minutes: 313
+exported_at: 2026-08-25T23:15:02
 project: gupta-builds
 cwd: '/home/anant_gupta/projects/work/gupta-builds'
 session_id: bbeea6f3-9162-41fc-9e3c-88bf664f68d5
 status: raw
-turn_count: 14
+turn_count: 16
 tools_used:
   AskUserQuestion: 3
   Bash: 58
@@ -23,12 +23,12 @@ tools_used:
   WebSearch: 1
   Write: 2
 tokens:
-  input: 360
-  output: 202922
-  cache_creation: 568492
-  cache_read: 22232759
-  total: 23004533
-cost_usd: 8.75046
+  input: 364
+  output: 219180
+  cache_creation: 951734
+  cache_read: 22302779
+  total: 23474057
+cost_usd: 10.46002
 model:
   - claude-sonnet-5
 files_touched:
@@ -2311,6 +2311,143 @@ canny2_140 636 444 48
   ```
 (Bash completed with no output)
   ```
+
+## You
+
+Great, we have completed the ASCII portrait now. Let's move on to the second prompt.
+
+## Claude
+
+### Prompt 2 — contribution/activity card (new session)
+
+```
+This is the gupta-builds/gupta-builds GitHub profile README repo at
+/home/anant_gupta/projects/work/gupta-builds (origin: GitHub, branch main,
+live on a public profile page). Your job this session is ONLY the
+contribution/activity card described below — do not touch the ASCII
+portrait, the header banner sizing, the Stack section, the snake/
+"Contribution Trail" section or its heading, or general spacing anywhere
+else in the file. Those are separate, already-planned work.
+
+## What exists today (read before editing)
+
+Read README.md first to see current structure exactly, but for context:
+there's a `### Activity` section containing an `<img>` of
+assets-generated-elsewhere `activity-stats.svg` (three stat panels with
+rotating dashed rings — total contributions / current streak / longest
+streak). That whole section, heading included, needs to disappear and be
+replaced by the new card described below. It currently sits below a
+"Selected Work" section — the new card does NOT go there; it goes right
+after the ASCII portrait near the top of the file (see placement below).
+
+scripts/generate_activity.py already exists and fetches real GitHub data
+via GraphQL (contributionsCollection.contributionCalendar, grouped into
+`weeks`, each with `contributionDays` — date + contributionCount) using a
+GITHUB_TOKEN, and is wired into .github/workflows/snake.yml, which runs
+`python3 scripts/generate_activity.py dist` and pushes everything in
+dist/ to the `output` branch (that's how assets get served via
+raw.githubusercontent.com/gupta-builds/gupta-builds/output/<file>.svg —
+the current README image points there). Reuse this same data-fetching
+and publishing pipeline — don't invent a new one. You're redesigning what
+this script computes and draws, not the plumbing around it.
+
+## Reference image (attached) and what to match vs. exceed
+
+The user attached a reference screenshot: dark stat card, big "751
+contributions in the last year" + a sparkline/area chart on the LEFT half,
+"93 active days" / "125 best week" stacked on the RIGHT half (right-
+aligned, smaller text), and below the whole card a row of small text
+links: "andridrok · instagram · linkedin · email".
+
+Match that layout and those exact labels/positions (contributions +
+sparkline left, active days / best week right) — this was confirmed
+directly with the user, don't deviate from this arrangement.
+
+But the user was explicit: "the graph I showed you is clean but we can do
+much better." Don't clone it 1:1 — raise the polish. Concretely: use a
+smooth interpolated curve for the sparkline (a Catmull-Rom-to-cubic-Bezier
+conversion through the daily contribution counts is a few dozen lines of
+plain Python math, no library needed) rather than a jagged polyline, add a
+subtle gradient fill under the line fading to transparent, and use
+refined, consistent typography (this repo's established palette is
+background #0d1117, accent #a78bfa, muted label gray #8b949e — stay
+consistent with that, don't introduce a new palette). Consider a subtle
+animated draw-in for the sparkline path on load (this repo already has an
+established pattern of things animating in — the snake, the activity
+rings, the ASCII typewriter reveal — a stroke-dasharray line-draw
+animation would fit that pattern) — this is a suggestion, not a mandate;
+use your judgment on whether it reads as clean or as gimmicky at small
+size.
+
+## Hard technical constraint (already proven in this repo, don't relitigate)
+
+This SVG is embedded via `<img src="...">` pointing at a raw.githubusercontent.com
+URL. GitHub/browsers will run pure SVG/SMIL animation (`<animate>`,
+`<animateTransform>`) in that context — that's how the snake and the
+existing activity rings animate. They will NOT run `<script>` tags or
+JavaScript-driven charting in this context. Don't reach for a JS charting
+approach; stick to plain SVG paths/shapes plus SMIL if you want motion.
+
+## Data definitions (be precise, don't approximate)
+
+- "contributions in the last year" = totalContributions from the existing
+  GraphQL query (past 12 months, already what the old script computed).
+- "active days" = count of days in that calendar with contributionCount > 0.
+- "best week" = the calendar week (use the existing `weeks` grouping from
+  the GraphQL response — it's already grouped exactly like GitHub's own
+  calendar weeks, so don't recompute a rolling window) with the highest
+  total contributions across its 7 days.
+- Sparkline = daily contributionCount across the full year, in date order.
+
+## Links row — do not invent URLs
+
+Below the card, render the link row ("name/site · instagram · linkedin ·
+email") as REAL clickable HTML links (plain `<a>` tags in the README below
+the `<img>`, styled small and centered like the reference image) — an
+`<img>` can't have clickable regions, so this must be markup, not baked
+into the SVG. The README already has a website (anantgupta.dev) and email
+(gupt0479@umn.edu) from an existing badge row elsewhere in the file — you
+may reuse those. Instagram and LinkedIn URLs do NOT exist anywhere in this
+repo yet. Do not guess or invent handles/URLs for them — stop and ask the
+user for the actual Instagram and LinkedIn profile URLs before finishing
+this part.
+
+## Placement
+
+Final order at the top of the README should read: header banner -> ASCII
+portrait -> Typing SVG -> this new contribution card -> its link row.
+Concretely: move the existing Typing SVG block to sit immediately above
+this new card (it currently sits right after/near the ASCII portrait
+already — just make sure it ends up directly above, not below or
+separated by the removed Activity heading), and delete the old `###
+Activity` heading and its `<img>` entirely. Everything below that point in
+the file (badges, table, Stack, Selected Work, snake/Contribution Trail)
+stays exactly where it is — you're not reordering the rest of the page in
+this session.
+
+## Workflow
+
+1. Rework scripts/generate_activity.py: keep the GraphQL fetch, replace
+   the ring/panel rendering with the new sparkline+stats layout described
+   above.
+2. Render it locally (you'll need a GitHub token for the GraphQL call —
+   `gh auth token` works if the gh CLI is authenticated in this
+   environment) and rasterize the resulting SVG to a PNG preview (a
+   throwaway venv with Pillow's cairosvg, or similar) to actually look at
+   it before wiring it into the README — same discipline as the ASCII
+   portrait work: don't commit the first attempt blind, compare a couple
+   of variants (e.g. with/without the animated draw-in, different sparkline
+   heights) and pick the one that actually looks clean at README width.
+3. Wire the new `<img>` and the real link-row markup into README.md at
+   the placement described above, removing the old Activity section.
+4. This regenerates on every push via the existing snake.yml workflow —
+   you don't need to touch that workflow file unless the new script needs
+   a new input (it shouldn't).
+5. Show the user the rendered preview before pushing. Confirm before
+   pushing to main — this is a public, live GitHub profile repo.
+```
+
+Run that whenever you're ready, and let me know how it lands — I'll fold in your feedback before we do the final "basic UI fixes" prompt (header size, Stack repositioning, the Contribution Trail rename, month labels on the snake's bottom bar, and the general spacing cleanup).
 
 ## Actions Taken
 - Files created: /home/anant_gupta/projects/work/gupta-builds/scripts/generate_activity.py, /home/anant_gupta/projects/work/gupta-builds/scripts/generate_ascii_face.py
