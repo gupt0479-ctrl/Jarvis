@@ -5,27 +5,27 @@ source_app: claude-code
 source_os: wsl
 title: "Activity header error and outline animation"
 started_at: 2026-08-25T13:28:27
-ended_at: 2026-08-25T13:41:01
-duration_minutes: 13
-exported_at: 2026-08-25T17:41:00
+ended_at: 2026-08-25T13:53:32
+duration_minutes: 25
+exported_at: 2026-08-25T19:15:03
 project: gupta-builds
 cwd: '/home/anant_gupta/projects/work/gupta-builds'
 session_id: bbeea6f3-9162-41fc-9e3c-88bf664f68d5
 status: raw
-turn_count: 3
+turn_count: 6
 tools_used:
-  AskUserQuestion: 1
-  Bash: 22
-  Edit: 7
-  Read: 5
-  Write: 1
+  AskUserQuestion: 2
+  Bash: 46
+  Edit: 11
+  Read: 15
+  Write: 2
 tokens:
-  input: 128
-  output: 41464
-  cache_creation: 121682
-  cache_read: 5227025
-  total: 5390299
-cost_usd: 1.947029
+  input: 272
+  output: 102933
+  cache_creation: 208442
+  cache_read: 14271964
+  total: 14583611
+cost_usd: 4.718035
 model:
   - claude-sonnet-5
 files_touched:
@@ -33,6 +33,13 @@ files_touched:
   - "/home/anant_gupta/projects/work/gupta-builds/scripts/generate_activity.py"
   - "/tmp/activity-out/preview.png"
   - "/home/anant_gupta/projects/work/gupta-builds/.github/workflows/snake.yml"
+  - "/tmp/face_crop_preview.png"
+  - "/tmp/ascii_preview2.png"
+  - "/tmp/ascii_preview3.png"
+  - "/tmp/ascii_preview3.txt"
+  - "/home/anant_gupta/projects/work/gupta-builds/scripts/generate_ascii_face.py"
+  - "/tmp/ascii_face_static.png"
+  - "/tmp/ascii_face_frame.png"
 tags:
   - input
   - ai-conversation
@@ -725,10 +732,719 @@ fill='#e6e6e6'>9
 fill='#e6e6e6'>17
   ```
 
+## You
+
+[Image #3] - my face should be made in characters just like shown in this image. Remove this line from readme: "AGI-ready systems  ·  Self-Evolving Workflows  ·  Digital Workforces  ·  Full-stack Applications". The above rendering Readme Typing SVG should be brought much lower, just above that would be my face in characters that loads up slowly (characters written out) in a very clean manner. What image should you use to draw my image? Here it is: [Image #4]. Ignore the glass at the bottom of the image and lay out everything in characters.
+
+[image attached]
+
+[image attached]
+
+## You
+
+[Image: source: /home/anant_gupta/.claude/image-cache/[REDACTED]/3.png]
+
+[Image: source: /home/anant_gupta/.claude/image-cache/[REDACTED]/4.png]
+
+## Claude
+
+Good, the glass is fully excluded and the bust/shoulders are intact. Now let's build the ASCII-art converter matching image 3's character-density style.
+
+No triple single-quotes in the content. Switching to a single-quoted raw triple string avoids the collision.
+
+Now let's render a static preview with the clip removed to confirm the art renders correctly with proper monospace alignment and colors.
+
+Found a bug — `render()` passes the full height instead of the per-row cell height into the animation builder, which would make the reveal blow past the canvas almost instantly instead of animating row-by-row. Fixing it.
+
+Regenerating and re-verifying with a corrected mid-reveal frame test.
+
+Good, y-values are now sane (212 / 223 vs. canvas height ~425). Let's view the mid-reveal frame.
+
+Let's confirm the final structure of the top of the file.
+
+This matches the requested layout: header → ASCII face (loads in) → typing SVG (now lower) → badges. Tagline line removed.
+
+Now let's stage and commit, then push.
+
+Pushed. Summary of what changed:
+
+- **Removed** the `AGI-ready systems · Self-Evolving Workflows · Digital Workforces · Full-stack Applications` line.
+- **Added** an ASCII portrait (`assets/ascii-face.svg`) generated from your photo — the glass was cropped out, converted through a 70-level luminance ramp with the near-black background masked to blank space so only your silhouette renders (same technique as the reference image). It's placed right below the header banner and types itself in row-by-row via an animated clip-path reveal over ~9s, then holds — no infinite looping, and it's static content so it didn't need a CI pipeline like the snake/activity SVGs.
+- **Moved** the Typing SVG to sit just below the new portrait (pushed lower on the page as requested).
+
+Generated via `scripts/generate_ascii_face.py` if you ever want to tweak the reveal speed, font size, or re-paste a new ASCII block.
+
+**Tool calls:**
+
+- `Bash` — `python3 -c "import PIL; print(PIL.__version__)" 2>&1; python3 -c "from PIL import Image; print('ok')" 2>&1`
+  ```
+Exit code 1
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'PIL'
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'PIL'
+  ```
+- `Bash` — `/tmp/svgvenv/bin/pip install --quiet Pillow 2>&1 | tail -10 && /tmp/svgvenv/bin/python -c "from PIL import Image; print('ok')"`
+  ```
+ok
+  ```
+- `Bash`:
+  ```bash
+/tmp/svgvenv/bin/python -c "
+from PIL import Image
+img = Image.open('/home/anant_gupta/.claude/image-cache/bbeea6f3-9162-41fc-9e3c-88bf664f68d5/4.png')
+print(img.size, img.mode)
+"
+  ```
+  ```
+(502, 497) RGBA
+  ```
+- `Bash`:
+  ```bash
+/tmp/svgvenv/bin/python -c "
+from PIL import Image
+img = Image.open('/home/anant_gupta/.claude/image-cache/bbeea6f3-9162-41fc-9e3c-88bf664f68d5/4.png')
+crop = img.crop((0,0,502,400))
+crop.save('/tmp/face_crop_preview.png')
+print(crop.size)
+"
+  ```
+  ```
+(502, 400)
+  ```
+- `Read` — `/tmp/face_crop_preview.png`
+- `Bash`:
+  ```bash
+/tmp/svgvenv/bin/python3 << 'EOF'
+from PIL import Image
+
+RAMP = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. "
+
+def to_ascii(path, cols, char_aspect=0.5):
+    img = Image.open(path).convert("RGBA")
+    img = img.crop((0, 0, 502, 400))
+    w, h = img.size
+    cell_w = w / cols
+    cell_h = cell_w / char_aspect
+    rows = max(1, int(h / cell_h))
+    small = img.resize((cols, rows), Image.LANCZOS)
+    px = small.load()
+    lines = []
+    n = len(RAMP) - 1
+    for y in range(rows):
+        line = []
+        for x in range(cols):
+            r, g, b, a = px[x, y]
+            if a < 40:
+                line.append(" ")
+                continue
+            lum = (0.299*r + 0.587*g + 0.114*b) / 255.0
+            idx = int(lum * n)
+            line.append(RAMP[idx])
+        lines.append("".join(line))
+    return lines
+
+lines = to_ascii('/home/anant_gupta/.claude/image-cache/bbeea6f3-9162-41fc-9e3c-88bf664f68d5/4.png', cols=90)
+print(len(lines), "lines,", len(lines[0]) if lines else 0, "cols")
+with open('/tmp/ascii_preview.txt', 'w') as f:
+    f.write("\n".join(lines))
+EOF
+cat /tmp/ascii_preview.txt
+  ```
+  ```
+35 lines, 90 cols
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$@%%BB%B%%%%&#a#%@$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$@B8W8BBBB@@@@@@$$@B%B@$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$BB%88%B@BB@@$$$$$$$$$$$$$B%B$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$@%%88%%%%%BB@@$$$$$$$$$$@$$$$$@BBB$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$@8&88&8888&8B@$$$$@$$$$$$$$$$$$$$$$@B$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$%WW%B%BB%%BBB$$$$@@@@@$$$$$@$$@$$$$$$%@$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$B888W&&%8%@BB@@@@@@@@@@@$@$@@@@@$$$$$@%B$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$%B%8WMMW&&8%BBBB@@BB%8%%%8WB@@@@@@@%B&B$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$%8B%%8WWWWW8%B%&B@B@W#M#MM&W&8%%%8%%B8$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%W%B%WW&M&8&88o#@B$*dh*oo*oo#W8%%&88%$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$&8B8WWM*W&%WMWM&ohq0Zqbkkka#*oM%B%&$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$BM&*M&888&oa*opZLQ0ZqbkhpwwQJYOhBB$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$&dmwpa#[REDACTED]$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$[REDACTED]$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$[REDACTED]$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$[REDACTED]$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$[REDACTED]*M8$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%ooabbakwmmmwwmOZmpbakqbooa&$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$[REDACTED]$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$kbbpwmmmmwqpdhaakpwmpaokaaa$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$B8#okddpwmwpbo*o#*hdqwmOOpoobkaxk$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$BWodwOQCCUUZdkh*#[REDACTED]#B$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$@%&[REDACTED]<>QhdpwqwO0mkohbkb]YmmLJZpk*8@$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$%[REDACTED]\i!ChpdpmOOqaohpat]COwmCXUL0Zpk*&B$$$$$$$$$$$$$
+$$$$$$$$$@[REDACTED];[REDACTED]$$$$$$$$$
+$$$$$$$$$hJCQQUJJUYYYUYUXXYXXvzzzXUYYYUYXXcc?!,;Ubmqwmaadkw+~vULOOQQQCJJJCQQQQQ0mb#8$$$$$$
+$$$$$$$$$qCCUCXYUYXXYXYYXXYYXczzYXXcXYUYYYXX[I;,luZwwwopwk1I[[REDACTED]&$$$
+$$$$$$$$@OLCXYUzzzzzzczzzXYUXzzzXXYYXYYYYYXY)l;;>!10wpbqb/:+{[REDACTED]$$
+$$$$$$$$*JQQYcYvvcccvvcczzXYXXcvzYzXzzXXXXzUf+:^i+"{Z0OO|i>_][REDACTED]$$
+$$$$$$$@OJCCJXuzvvvcvzzzczXYXYzccXXXzzXXXXXJrii!I,+YLJL{>-iIi?[REDACTED]$$
+$$$$$$$pJCJUXXcvYvvvvczzvczzYYXXzXYUYzzzXzzUxi;!!?JLJJL/l;l~]fJLQLCJUCCLJJUzzczczYXULLY*$$
+$$$$$$oJCJUYczXvYUzuuczcccccXXXXXXYCJXzzzzzUu~?<>zLUJJJ0zx\-(|[REDACTED]$$
+$$$$$$[REDACTED]?--/0JCCLQJc\]}\)[REDACTED]&$$
+$$$$$BLJUXXXccUUYYQYvvuuvuuuvvvvvcucJOOLJXzXU/{<r0UCCu/[~~?[][[REDACTED]@$
+$$$$$[REDACTED]({?cLC(_-?+~++-[[REDACTED]$
+  ```
+- `Bash`:
+  ```bash
+/tmp/svgvenv/bin/python3 -c "
+from PIL import Image
+img = Image.open('/home/anant_gupta/.claude/image-cache/bbeea6f3-9162-41fc-9e3c-88bf664f68d5/4.png').convert('RGBA')
+for xy in [(5,5),(490,5),(5,390),(490,390),(250,250)]:
+    print(xy, img.getpixel(xy))
+"
+  ```
+  ```
+(5, 5) (0, 0, 0, 255)
+(490, 5) (0, 0, 0, 255)
+(5, 390) (0, 0, 0, 255)
+(490, 390) (15, 5, 9, 255)
+(250, 250) (57, 40, 30, 255)
+  ```
+- `Bash`:
+  ```bash
+/tmp/svgvenv/bin/python3 << 'EOF'
+from PIL import Image
+
+# classic 70-level ramp, sparse -> dense
+RAMP = " .'`^\",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$"
+
+def to_ascii(path, cols, char_aspect=0.48, bg_thresh=16, crop=(0,0,502,400)):
+    img = Image.open(path).convert("RGBA")
+    img = img.crop(crop)
+    w, h = img.size
+    cell_w = w / cols
+    cell_h = cell_w / char_aspect
+    rows = max(1, int(h / cell_h))
+    small = img.resize((cols, rows), Image.LANCZOS)
+    px = small.load()
+    lines = []
+    n = len(RAMP) - 1
+    for y in range(rows):
+        line = []
+        for x in range(cols):
+            r, g, b, a = px[x, y]
+            if max(r, g, b) < bg_thresh:
+                line.append(" ")
+                continue
+            lum = (0.299*r + 0.587*g + 0.114*b) / 255.0
+            idx = min(n, int(lum * n))
+            line.append(RAMP[idx])
+        lines.append("".join(line).rstrip())
+    return lines
+
+lines = to_ascii('/home/anant_gupta/.claude/image-cache/bbeea6f3-9162-41fc-9e3c-88bf664f68d5/4.png', cols=100)
+print(len(lines), "lines, max width", max(len(l) for l in lines))
+with open('/tmp/ascii_preview2.txt', 'w') as f:
+    f.write("\n".join(lines))
+EOF
+cat -A /tmp/ascii_preview2.txt | head -1 > /dev/null
+cat /tmp/ascii_preview2.txt
+  ```
+  ```
+38 lines, max width 99
+                                                `  `  ```^,;!I^
+                                             ",^               ``
+                                          ^^^                      `
+                                       ^  ^`                         ``
+                                  `""",^  ^^^
+                                `,"  ^^ ^^^
+                               ^""^ ^                                    '
+                               `  ,":"^"                                ^^
+                               `  `^"::,,,,           """"^":           ^^
+                                ^``  ^""",,^^  ^:    ^l::;::"::""^^^^^^ ^
+                                 ,"  ^:,";,"""^,!I ` "++!l!!!!lI:,   ""^^
+                                  "`'",,:I,"^^,:":"l<~[[]+<>i>iII!l;^  "
+                                   ",,I:"^^^^:ilIl+]{1}[]+>>i~-_[1\([! `
+                                    I+--~!;"l++~~-}{{{{{}-__-[]_}/)(}["
+                                    `}}[[?+!>_-?[{||1111{]+~-[}_1\[-}>
+                                    ~11{}{[??-[)|/t\)1{[?_>>_]]_{{[[>
+                                   >{{111)11))|\tft|1[?-_<>~~<[1(}_;
+                                   _)))|1][{((|||(){[]]?_<~~!i__~l:'
+                                    :i~~~+_+-}{}[[]??]]]-~~i!~+i;II
+                                      ;Il>~iIl~-----?]]?_<!i+-~llil`
+                                      `<!i>~+~+_---??-+>!!i_-_>Iiil:
+                                       ~~+_????--_+<>!l!>~-??+!I><l<-
+                                 ";!<_-~><~_+~>!I:;:;!~_--]}[+!Ii<i<X~
+                           "l<-[{)(((|(}_~<!:l<1J{;i>+??-?[}?~!l><<iC(+~>,
+                   ^,;!<_]{)(((())1}}1)\tf/|((\vhh(i+~-__-[}?>l!<~l1w(?-{|)?+<I^
+             "I>_?[{{1)))())(((|||1}[{1|\/\\\|\\Lko/i+~~_][[_il!<~imC)[-?}\\){}]+<l,
+           >}]{)1))11)))(((|\\\/tf||1})((\\\\|/|vpoWji_+__??~lli~ivox([?][}1||((1[[[?+>;^
+          ;)){[1((((\\\|\\\//\/\ffttt\(\|/|\//ttrqaMWr>-_+-?il><i|amt|1][}{}1(|(()}}}{}}]+i,
+          +))|)(/||\///\/|\//\\\ftt/\/\t/\|\\//ttwoM&Mv-[_-?I>-~?bhQt|)}[}1))11)(||(|()111}[?<;^
+          ?1)\\(\///t//t////\\|\ftt///\//\\\/\\\/0o##o*0(~?+i_~_m*qLf|{}}})|||)1\|/\//\\||)111}}_
+         ,){{|f\\jfffffjffft/\|//tff\\\|/\//////\YkM&awaat]?-_}O#kmCr\}[[{1|\\|1|)(\\///\\\((|(1\<
+         +(11)/jtjrjffjjttttt/\t/tjjttttfft/////)cqhWW##ox}11twpdbkbL(}}{{}1))(1()(\\/tt/\/|||\)(+
+        I()(((\tx\jjjjjffffff///\/ttf\\\/t//////(uo*kkak/})|{L*po#apC){{11))))()((|//tttt/\\|\)1\I
+       "1))(|/f\jf|ffjrjftffjff//\//t/\|\tttttt/|ndh*#k\1((()|OabqZCn()1)))(())1((|/tttttt\t|{}\]
+       ]))|\\ff/tj\(/rxjffffffftt/////\1)|//tttt|rkZmbu}((((({[|rZZYL|1))))()))1(||\t\/tt/\|}?|1i`
+      ,()||//fj\\//|)fxrjjjjjfjfftt///t|}[1|/ttt//0qmO))()1{1|nLmZJUJ|((|||\)(11|\//tt/ttt|[-/)->`
+      I|)|/t\tf/||\\{(fjrrjjrxrrjrjrjjxf|}[}1|/t/|XCqO{)(1|uJZpdwZZmO/||(|\\||1(||||\/\//|}?|1}[+"
+      ~()(\/\//\|))){}tfjjjjjrjffjjjjrrjt)}[[})\\\QCJwU))|0qwmqddppm0/|||\|\|()/|\\\\//\/1-/({){[l.
+  ```
+- `Bash` — `fc-list | grep -i "mono" | head -5`
+  ```
+/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf: DejaVu Sans Mono:style=Book
+/usr/share/fonts/truetype/ubuntu/UbuntuMono[wght].ttf: Ubuntu Mono:style=Regular
+/usr/share/fonts/truetype/ubuntu/UbuntuSansMono[wght].ttf: Ubuntu Sans Mono
+/usr/share/fonts/truetype/ubuntu/UbuntuSansMono[wght].ttf: Ubuntu Sans Mono:style=ExtraLight
+/usr/share/fonts/truetype/ubuntu/UbuntuMono-Italic[wght].ttf: Ubuntu Mono:style=Medium Italic
+  ```
+- `Bash`:
+  ```bash
+/tmp/svgvenv/bin/python3 << 'EOF'
+from PIL import Image, ImageDraw, ImageFont
+
+with open('/tmp/ascii_preview2.txt') as f:
+    lines = f.read().split("\n")
+
+font = ImageFont.truetype("/usr/share/fonts/truetype/ubuntu/UbuntuMono[wght].ttf", 10)
+cw, ch = 6, 12
+W = max(len(l) for l in lines) * cw + 20
+H = len(lines) * ch + 20
+img = Image.new("RGB", (W, H), (13, 17, 23))
+d = ImageDraw.Draw(img)
+for i, line in enumerate(lines):
+    d.text((10, 10 + i*ch), line, font=font, fill=(167,139,250))
+img.save('/tmp/ascii_preview2.png')
+print("done", W, H)
+EOF
+  ```
+  ```
+done 614 476
+  ```
+- `Read` — `/tmp/ascii_preview2.png`
+- `Bash`:
+  ```bash
+/tmp/svgvenv/bin/python3 -c "
+from PIL import Image
+img = Image.open('/home/anant_gupta/.claude/image-cache/bbeea6f3-9162-41fc-9e3c-88bf664f68d5/4.png').convert('RGBA')
+for xy in [(250,30),(280,20),(220,60)]:
+    print(xy, img.getpixel(xy))
+"
+  ```
+  ```
+(250, 30) (6, 6, 6, 255)
+(280, 20) (3, 3, 3, 255)
+(220, 60) (10, 10, 10, 255)
+  ```
+- `Bash`:
+  ```bash
+/tmp/svgvenv/bin/python3 << 'EOF'
+from PIL import Image, ImageDraw, ImageFont
+
+RAMP = " .'`^\",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$"
+
+def to_ascii(path, cols, char_aspect=0.46, bg_thresh=16, crop=(0,0,502,400)):
+    img = Image.open(path).convert("RGBA")
+    img = img.crop(crop)
+    w, h = img.size
+    cell_w = w / cols
+    cell_h = cell_w / char_aspect
+    rows = max(1, int(h / cell_h))
+    small = img.resize((cols, rows), Image.LANCZOS)
+    px = small.load()
+    lines = []
+    n = len(RAMP) - 1
+    for y in range(rows):
+        line = []
+        for x in range(cols):
+            r, g, b, a = px[x, y]
+            if max(r, g, b) < bg_thresh:
+                line.append(" ")
+                continue
+            lum = (0.299*r + 0.587*g + 0.114*b) / 255.0
+            idx = min(n, int(lum * n))
+            line.append(RAMP[idx])
+        lines.append("".join(line).rstrip())
+    return lines
+
+lines = to_ascii('/home/anant_gupta/.claude/image-cache/bbeea6f3-9162-41fc-9e3c-88bf664f68d5/4.png', cols=110)
+print(len(lines), "lines, max width", max(len(l) for l in lines))
+with open('/tmp/ascii_preview3.txt', 'w') as f:
+    f.write("\n".join(lines))
+
+font = ImageFont.truetype("/usr/share/fonts/truetype/ubuntu/UbuntuMono[wght].ttf", 9)
+cw, ch = 5.4, 10.6
+W = int(max(len(l) for l in lines) * cw + 20)
+H = int(len(lines) * ch + 20)
+img = Image.new("RGB", (W, H), (13, 17, 23))
+d = ImageDraw.Draw(img)
+for i, line in enumerate(lines):
+    d.text((10, 10 + i*ch), line, font=font, fill=(167,139,250))
+img.save('/tmp/ascii_preview3.png')
+print("done", W, H)
+EOF
+  ```
+  ```
+40 lines, max width 109
+done 608 444
+  ```
+- `Read` — `/tmp/ascii_preview3.png`
+- `Read` — `/home/anant_gupta/projects/work/gupta-builds/README.md`
+- `Read` — `/tmp/ascii_preview3.txt`
+- `Write` — `/home/anant_gupta/projects/work/gupta-builds/scripts/generate_ascii_face.py`
+  ```
+#!/usr/bin/env python3
+"""Render the ASCII-portrait SVG with a one-shot typewriter reveal.
+
+The ASCII art itself is baked in below (converted once from a source photo
+via a standard 70-level luminance ramp, background thresholded to blank).
+Re-derive it from a new photo by regenerating ASCII_ART with the same ramp
+and re-pasting here - no image processing happens at build time.
+"""
+import os
+
+ASCII_ART = r"""
+                                                     `  `` ````^:Iil^
+                                                 `,,`                ``
+                                              `^^`                        `
+                                           ^``^^^                           ``
+                                      `""""^  ^ ^
+                                    ^,^  ^"^^"^""^
+                                  ^",^  ^                                       `
+                                  `^`^:":  ^                                    ^
+                                  `  `^":::,"^"                   "^            ,
+                                   ^ `'^`,,,,,,"    ^      :;:;:,:,"^           ^
+                                   `^^   ^,,"","^"  "l"    l!I:I;;:II;::,^^""^`^
+                                    `;` `":,,l;""^",:II`^"^~[?~>>iii!l:,"   ^^^^
+                                      ^`'",",:,"^ ,;:^:I>]?}[]]~>>!i<ii~--<I  "
+                                       ;:IiI:^`^":i<ii>?}}11}[?~<<<_?][()j({+`
+                                        i]][?~>;:+-+~+?{{{{{{{}?__-[}_-|/[1][^
+                                        i1}[[]_<i~_?[{1\\)111{[?~<_[{_}|)??[I
+                                       ,}1){{1{[]?[1(\tf\(1{[?_~>>+?]_]1[}?:
+                                      "}{1111)11)((|/ttt|1[?--+>>~~>]1(1?>"
+                                      ,{)1)|1]][1((|||(1{}[]??+<~~!i++~!;,
+                                        ;i<~~~_++]{{[[[]??][]?_~<i!~+>IIl:
+                                          IIli~>lIi+-----?][]?_<!i+-+il!!I
+                                          ,<!i><++~+----???_~>!!>_-_<ll>!l"
+                                           +<~~_-????--+~~i!l!>~-??_>I!<>;+i
+                                      ";!>+~<+_??-+<iIII;;I>+_--]}[_>I!<<l]cl
+                               "I>_?}1))(|)?<i!l:,li[r>;l!<_??-?[}]+ili><i+L{~iI
+                        ^:Ii+]})(((()(1{{)(|//\1}[)\Jow-i~<-?-_?[}?<!li<~;|m)?-{)[+>!;^
+                ^;!>~-][{1)(|)(((((((){}}{)\/t/\/\\\rmap[>+~~+-]}}->ll>~~iqU)[--}//({[?+i;"
+            ^<~?{11)))11)))())(|||/\t|)1[})((\\|\||/|Jd#a)i_++-?]?+il!>+!Xar([?]][)||)11[]]-~i;^
+            [({]{1()))(||||\|\\/\//frt/t\1(||/|\\\\t|vphW*\i__++??<l!i<>\*Z/|}]][}[{(\||({[}}}[]-<I^
+           >)1)1{\|(||\\\\\\|///\\\tftt//\|/|/|\\//ttrqa#&#j~]?+??l!~_i{hkC\\)}[}{1111)((|(1111{{{}]+i:
+           +)1|\)\\\\\////t\\//\\\\ftft////ft\\\///\/two#MM*X}]+?_l~?~-qowJ/|1{[[})()){1||/|\\\|(()1{{}?~i
+           [11|/\)tt/ttttffttt/\||\ttft//\\|/|\\\/\//tQa##*b*qf+[~<-~?w#bZYt|}}}})(/|\))\(|\\///\\\()))1{)}
+          l({{)tj\trjjfffrfffttt/\//tfft\///ft///////|Yp*%Wbq*#\[[[?\mhhpZLx|}}}}{1|(|(1())\|////\\/||\|(1|l
+          }))))(tjtfrjjffjtttttt/\t\/ffjf/tttf///////)cbka#WWMU)1))rkwpbaakQ1}{{{{{)))(1)))\\/ttt/\\|||\|)(;
+         -()((|\\fx|fjrjjffftfjft//\///tt\|\\t/t/////(vaMakbkv[))|1v#koMapZv)1{{1))|))))((|\t/ftttt\/\\({|{
+        <()((|\ft\rt(tfjrjfttffjff//\//tt/|(\/tttttt/|ndpa*#c}|((((1uqmOZOYu()1))))|)))1()||t/tttt/\/\{[(|l
+       ,))(|\\tr/ttj|(\jnjfffffffftt//////\11(/\/tttt\jkmOpC})()(((1]{/JqCJC())))))|1)11(||\//\ttt/\|}-((-I'
+       ~|)|\//tjf|///|1/xrjjjjjjjjffftt///f\{[{(\/ttt//Cqmqj1())1{1/uQwmLUCY||(|||\|)(1)|\\//f/tttt(}_||]-l'
+       -()\\t\/ff\(|\\1)ffjrrjjjxrrjrrrrjjxf|{[}{)|//\(XJZdt{((1tzCmpbpmmmw0|||(|\\||({(|(|||/\\//|}-|([{?>`
+       }))|\/\///\())){]/fjjjjjjrjffjjjjjrrjt(}[[[}(\\|QCJOwj11fmqwmwddppqmL\|||||\\\)(/\\\\\\t\\/1-\\}(1}?:'
+""".strip("\n").split("\n")
+
+FONT_SIZE = 9
+CELL_W = FONT_SIZE * 0.6
+CELL_H = FONT_SIZE * 1.18
+PAD = 14
+DUR = 9  # seconds for the full reveal
+STEPS_PER_ROW = 3
+
+
+def escape(s):
+    return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def staircase_points(fw, ch, row, frac):
+    y0 = row * ch
+    y1 = (row + 1) * ch
+    x = frac * fw
+    pts = [(0, 0), (fw, 0), (fw, y0), (x, y0), (x, y1), (0, y1)]
+    return " ".join(f"{px:.2f},{py:.2f}" for px, py in pts)
+
+
+def build_reveal_animation(rows, fw, ch):
+    values, key_times = [], []
+    frames = []
+    for r in range(rows):
+        for step in range(STEPS_PER_ROW):
+            frames.append((r, step / STEPS_PER_ROW))
+    frames.append((rows - 1, 1.0))
+    n = len(frames)
+    for i, (r, f) in enumerate(frames):
+        values.append(staircase_points(fw, ch, r, f))
+        key_times.append(f"{i / (n - 1):.4f}")
+    return ";".join(values), ";".join(key_times)
+
+
+def render():
+    rows = len(ASCII_ART)
+    cols = max(len(line) for line in ASCII_ART)
+    fw, fh = cols * CELL_W, rows * CELL_H
+    width, height = fw + PAD * 2, fh + PAD * 2
+
+    text_rows = "\n".join(
+        f"    <text x='0' y='{(i + 1) * CELL_H - 2:.2f}' xml:space='preserve'>{escape(line)}</text>"
+        for i, line in enumerate(ASCII_ART)
+    )
+    values, key_times = build_reveal_animation(rows, fw, fh)
+
+    return f"""<svg xmlns='http://www.w3.org/2000/svg' width='{width:.0f}' height='{height:.0f}'
+     viewBox='0 0 {width:.0f} {height:.0f}'>
+  <rect width='{width:.0f}' height='{height:.0f}' rx='6' fill='#0d1117'/>
+  <defs>
+    <clipPath id='reveal'>
+      <polygon points='0,0'>
+        <animate attributeName='points' dur='{DUR}s' repeatCount='1' fill='freeze'
+                 calcMode='linear' keyTimes='{key_times}' values='{values}'/>
+      </polygon>
+    </clipPath>
+  </defs>
+  <g transform='translate({PAD:.0f} {PAD:.0f})' clip-path='url(#reveal)'
+     font-family='"JetBrains Mono", ui-monospace, monospace' font-size='{FONT_SIZE}px' fill='#a78bfa'>
+{text_rows}
+  </g>
+</svg>"""
+
+
+def main():
+    out_dir = os.path.join(os.path.dirname(__file__), "..", "assets")
+    os.makedirs(out_dir, exist_ok=True)
+    with open(os.path.join(out_dir, "ascii-face.svg"), "w") as f:
+        f.write(render())
+
+
+if __name__ == "__main__":
+    main()
+
+  ```
+- `Bash` — `python3 scripts/generate_ascii_face.py && wc -c assets/ascii-face.svg && head -c 400 assets/ascii-face.svg`
+  ```
+Exit code 1
+  File "/home/anant_gupta/projects/work/gupta-builds/scripts/generate_ascii_face.py", line 16
+    `""""^  ^ ^
+        ^
+SyntaxError: unterminated string literal (detected at line 16)
+  ```
+- `Bash` — `grep -n "'''" /tmp/ascii_preview3.txt; grep -n '"""' /tmp/ascii_preview3.txt`
+  ```
+5:                                      `""""^  ^ ^
+  ```
+- `Edit` — `/home/anant_gupta/projects/work/gupta-builds/scripts/generate_ascii_face.py`
+  ```diff
+  - ASCII_ART = r"""
+  + ASCII_ART = r'''
+  ```
+- `Edit` — `/home/anant_gupta/projects/work/gupta-builds/scripts/generate_ascii_face.py`
+  ```diff
+  -        }))|\/\///\())){]/fjjjjjjrjffjjjjjrrjt(}[[[}(\\|QCJOwj11fmqwmwddppqmL\|||||\\\)(/\\\\\\t\\/1-\\}(1}?:'
+""".strip("\n").split("\n")
+  +        }))|\/\///\())){]/fjjjjjjrjffjjjjjrrjt(}[[[}(\\|QCJOwj11fmqwmwddppqmL\|||||\\\)(/\\\\\\t\\/1-\\}(1}?:'
+'''.strip("\n").split("\n")
+  ```
+- `Bash` — `python3 scripts/generate_ascii_face.py && wc -c assets/ascii-face.svg && wc -l assets/ascii-face.svg`
+  ```
+16952 assets/ascii-face.svg
+54 assets/ascii-face.svg
+  ```
+- `Bash`:
+  ```bash
+python3 -c "
+import xml.dom.minidom as m
+d = m.parse('assets/ascii-face.svg')
+print('valid XML, root:', d.documentElement.tagName)
+"
+  ```
+  ```
+valid XML, root: svg
+  ```
+- `Bash`:
+  ```bash
+python3 -c "
+import re
+svg = open('assets/ascii-face.svg').read()
+# strip the clip-path attribute so cairosvg shows the full artwork unclipped
+svg2 = svg.replace(\"clip-path='url(#reveal)'\", \"\")
+open('/tmp/ascii_face_static.svg','w').write(svg2)
+"
+/tmp/svgvenv/bin/python -c "
+import cairosvg
+cairosvg.svg2png(url='/tmp/ascii_face_static.svg', write_to='/tmp/ascii_face_static.png', output_width=1200)
+print('ok')
+"
+  ```
+  ```
+ok
+  ```
+- `Read` — `/tmp/ascii_face_static.png`
+- `Bash`:
+  ```bash
+python3 -c "
+import sys
+sys.path.insert(0,'scripts')
+import generate_ascii_face as g
+
+rows = len(g.ASCII_ART)
+cols = max(len(l) for l in g.ASCII_ART)
+fw, fh = cols*g.CELL_W, rows*g.CELL_H
+pts = g.staircase_points(fw, fh, 20, 0.5)
+print(pts)
+svg = open('assets/ascii-face.svg').read()
+import re
+svg2 = re.sub(r\"<polygon points='0,0'>.*?</polygon>\", f\"<polygon points='{pts}'></polygon>\", svg, flags=re.S)
+open('/tmp/ascii_face_frame.svg','w').write(svg2)
+"
+/tmp/svgvenv/bin/python -c "
+import cairosvg
+cairosvg.svg2png(url='/tmp/ascii_face_frame.svg', write_to='/tmp/ascii_face_frame.png', output_width=1200)
+"
+  ```
+  ```
+0.00,0.00 588.60,0.00 588.60,8496.00 294.30,8496.00 294.30,8920.80 0.00,8920.80
+  ```
+- `Read` — `/home/anant_gupta/projects/work/gupta-builds/scripts/generate_ascii_face.py`
+- `Read` — `/home/anant_gupta/projects/work/gupta-builds/scripts/generate_ascii_face.py`
+- `Edit` — `/home/anant_gupta/projects/work/gupta-builds/scripts/generate_ascii_face.py`
+  ```diff
+  -     values, key_times = build_reveal_animation(rows, fw, fh)
+  +     values, key_times = build_reveal_animation(rows, fw, CELL_H)
+  ```
+- `Bash`:
+  ```bash
+python3 scripts/generate_ascii_face.py && python3 -c "
+import sys
+sys.path.insert(0,'scripts')
+import generate_ascii_face as g
+
+rows = len(g.ASCII_ART)
+cols = max(len(l) for l in g.ASCII_ART)
+fw = cols*g.CELL_W
+pts = g.staircase_points(fw, g.CELL_H, 20, 0.5)
+print('frame points:', pts)
+import re
+svg = open('assets/ascii-face.svg').read()
+svg2 = re.sub(r\"<polygon points='0,0'>.*?</polygon>\", f\"<polygon points='{pts}'></polygon>\", svg, flags=re.S)
+open('/tmp/ascii_face_frame.svg','w').write(svg2)
+"
+/tmp/svgvenv/bin/python -c "
+import cairosvg
+cairosvg.svg2png(url='/tmp/ascii_face_frame.svg', write_to='/tmp/ascii_face_frame.png', output_width=1200)
+"
+  ```
+  ```
+frame points: 0.00,0.00 588.60,0.00 588.60,212.40 294.30,212.40 294.30,223.02 0.00,223.02
+  ```
+- `Read` — `/tmp/ascii_face_frame.png`
+- `Bash`:
+  ```bash
+python3 -c "
+import xml.dom.minidom as m
+d = m.parse('assets/ascii-face.svg')
+print('valid XML')
+"
+wc -c assets/ascii-face.svg
+  ```
+  ```
+valid XML
+16188 assets/ascii-face.svg
+  ```
+- `Edit` — `/home/anant_gupta/projects/work/gupta-builds/README.md`
+  ```diff
+  - <div align="center">
+
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=14&duration=2800&pause=900&color=A78BFA&center=true&vCenter=true&width=600&lines=CS+%40+University+of+Minnesota+—+'28;Research+Engineer+%40+BOOM+Lab+·+Prof.+Michael+Coughlin;Multi-agent+AI+·+Causal+Inference+·+Distributed+Systems;Systems+that+reason+before+they+act.)](https://git.io/typing-svg)
+
+</div>
+
+<br/>
+
+<p align="center"><code>AGI-ready systems &nbsp;·&nbsp; Self-Evolving Workflows &nbsp;·&nbsp; Digital Workforces &nbsp;·&nbsp; Full-stack Applications</code></p>
+
+<p align="center">
+  + <div align="center">
+
+<img src="assets/ascii-face.svg" alt="ascii portrait"/>
+
+</div>
+
+<br/>
+
+<div align="center">
+
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=14&duration=2800&pause=900&color=A78BFA&center=true&vCenter=true&width=600&lines=CS+%40+University+of+Minnesota+—+'28;Research+Engineer+%40+BOOM+Lab+·+Prof.+Michael+Coughlin;Multi-agent+AI+·+Causal+Inference+·+Distributed+Systems;Systems+that+reason+before+they+act.)](https://git.io/typing-svg)
+
+</div>
+
+<br/>
+
+<p align="center">
+  ```
+- `Read` — `/home/anant_gupta/projects/work/gupta-builds/README.md`
+- `Bash` — `git status`
+  ```
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   README.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	assets/
+	scripts/__pycache__/
+	scripts/generate_ascii_face.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+  ```
+- `Bash` — `rm -rf scripts/__pycache__`
+  ```
+(Bash completed with no output)
+  ```
+- `Bash` — `git add README.md scripts/generate_ascii_face.py assets/ascii-face.svg && git status`
+  ```
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   README.md
+	new file:   assets/ascii-face.svg
+	new file:   scripts/generate_ascii_face.py
+  ```
+- `Bash`:
+  ```bash
+git commit -m "$(cat <<'EOF'
+Add typewriter-reveal ASCII portrait, drop tagline, move typing SVG lower
+
+Bakes the photo into a 70-level-ramp ASCII portrait (static SVG, no CI
+needed since it's not live data) that reveals row-by-row via an animated
+clip-path staircase on page load, then stays put. Placed above the typing
+SVG per request; the redundant tagline line is removed.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+EOF
+)"
+  ```
+  ```
+[main 7ebda83] Add typewriter-reveal ASCII portrait, drop tagline, move typing SVG lower
+ 3 files changed, 189 insertions(+), 2 deletions(-)
+ create mode 100644 assets/ascii-face.svg
+ create mode 100644 scripts/generate_ascii_face.py
+  ```
+- `AskUserQuestion` — `{"questions":[{"question":"Push this commit to main? It updates your live GitHub profile README with the new ASCII portrait and layout.","header":"Push changes","multiSelect":false,"options":[{"label":"Yes, push now (Recommended)","description":"Pushes the commit to origin/main, live on your GitHub profile immediately."},{"label":"Don't push yet","description":"Leave the commit local so you can review it first."}]}]}`
+- `Bash` — `git push origin main`
+  ```
+To https://github.com/gupta-builds/gupta-builds.git
+   b735164..7ebda83  main -> main
+  ```
+
 ## Actions Taken
-- Files created: /home/anant_gupta/projects/work/gupta-builds/scripts/generate_activity.py
-- Files modified: /home/anant_gupta/projects/work/gupta-builds/scripts/generate_activity.py, /home/anant_gupta/projects/work/gupta-builds/.github/workflows/snake.yml, /home/anant_gupta/projects/work/gupta-builds/README.md
+- Files created: /home/anant_gupta/projects/work/gupta-builds/scripts/generate_activity.py, /home/anant_gupta/projects/work/gupta-builds/scripts/generate_ascii_face.py
+- Files modified: /home/anant_gupta/projects/work/gupta-builds/scripts/generate_activity.py, /home/anant_gupta/projects/work/gupta-builds/.github/workflows/snake.yml, /home/anant_gupta/projects/work/gupta-builds/README.md, /home/anant_gupta/projects/work/gupta-builds/scripts/generate_ascii_face.py
 - Files deleted: (none)
-- Commands run: ls -la && echo --- && find . -iname "*activity*" -not -path "*/node_modules/*" -not -path "*/.git/*", find .github -type f | xargs -I{} echo {} && echo --- && cat .github/workflows/*.yml 2>/dev/null, git remote -v && echo --- && curl -sI "https://github-readme-activity-graph.vercel.app/graph?username=gupta-builds&bg_color=0d1117&color=a78bfa&line=6d28d9&point=a78bfa&area=true&area_color=1d0b4e&hide_border=true&radius=6&custom_title=Contribution%20Graph" | head -20 && echo --- && curl -s "https://streak-stats.demolab.com?user=gupta-builds&theme=github-dark-blue&hide_border=true&background=0D1117&ring=a78bfa&fire=a78bfa&currStreakLabel=a78bfa&sideLabels=8b949e&dates=8b949e" | head -50, curl -s "https://streak-stats.demolab.com?user=gupta-builds&theme=github-dark-blue&hide_border=true&background=0D1117&ring=a78bfa&fire=a78bfa&currStreakLabel=a78bfa&sideLabels=8b949e&dates=8b949e" > /tmp/streak.svg; wc -l /tmp/streak.svg; grep -n "ellipse\|circle\|stroke-dasharray\|ring" /tmp/streak.svg, find . -not -path "./.git/*" -type f | sort, mkdir -p /home/anant_gupta/projects/work/gupta-builds/scripts, (gh auth token 2>/dev/null || echo NO_GH_TOKEN), GITHUB_TOKEN=$(gh auth token) GITHUB_USER=gupta-builds python3 scripts/generate_activity.py /tmp/activity-out 2>&1 | tail -40; echo ---; cat /tmp/activity-out/activity-stats.svg 2>/dev/null | head -5; echo; wc -c /tmp/activity-out/activity-stats.svg 2>/dev/null, grep -oE "font-size='30px' fill='#e6e6e6'>[^<]*" /tmp/activity-out/activity-stats.svg, cd /tmp/activity-out && (command -v rsvg-convert && rsvg-convert -o preview.png activity-stats.svg) || (command -v inkscape && inkscape activity-stats.svg -o preview.png) || python3 -c " import cairosvg cairosvg.svg2png(url='activity-stats.svg', write_to='preview.png', output_width=840) " 2>&1 || echo NO_RENDERER, which google-chrome chromium chromium-browser npx node 2>/dev/null; pip show cairosvg 2>/dev/null; apt list --installed 2>/dev/null | grep -i rsvg, pip install --quiet --user cairosvg 2>&1 | tail -5, python3 -m venv /tmp/svgvenv 2>&1 | tail -5 && /tmp/svgvenv/bin/pip install --quiet cairosvg 2>&1 | tail -10, /tmp/svgvenv/bin/python -c " import cairosvg cairosvg.svg2png(url='/tmp/activity-out/activity-stats.svg', write_to='/tmp/activity-out/preview.png', output_width=1680) print('ok') ", GITHUB_TOKEN=$(gh auth token) GITHUB_USER=gupta-builds python3 scripts/generate_activity.py /tmp/activity-out && /tmp/svgvenv/bin/python -c " import cairosvg cairosvg.svg2png(url='/tmp/activity-out/activity-stats.svg', write_to='/tmp/activity-out/preview.png', output_width=1680) print('ok') ", python3 -m py_compile scripts/generate_activity.py && echo COMPILE_OK && git status && git diff, git add scripts/generate_activity.py .github/workflows/snake.yml README.md && git status, rm -rf scripts/__pycache__, git commit -m "$(cat <<'EOF' Replace dead activity-graph and static streak-stats with self-hosted animated SVG github-readme-activity-graph.vercel.app's deployment is disabled (402), which was the broken image. Generate our own stats SVG via GitHub GraphQL and push it through the existing snake pipeline, with a continuously rotating dashed ring around each number instead of a static one. Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> EOF )" git push origin main, sleep 8 && gh run list --workflow=snake.yml --limit 3, gh run watch 32854766223 --exit-status 2>&1 | tail -30, curl -s "https://raw.githubusercontent.com/gupta-builds/gupta-builds/output/activity-stats.svg" -o /tmp/live-activity.svg && wc -c /tmp/live-activity.svg && grep -oE "fill='#e6e6e6'>[^<]*" /tmp/live-activity.svg
-- Tool call tally: AskUserQuestion (1), Bash (22), Edit (7), Read (5), Write (1)
+- Commands run: ls -la && echo --- && find . -iname "*activity*" -not -path "*/node_modules/*" -not -path "*/.git/*", find .github -type f | xargs -I{} echo {} && echo --- && cat .github/workflows/*.yml 2>/dev/null, git remote -v && echo --- && curl -sI "https://github-readme-activity-graph.vercel.app/graph?username=gupta-builds&bg_color=0d1117&color=a78bfa&line=6d28d9&point=a78bfa&area=true&area_color=1d0b4e&hide_border=true&radius=6&custom_title=Contribution%20Graph" | head -20 && echo --- && curl -s "https://streak-stats.demolab.com?user=gupta-builds&theme=github-dark-blue&hide_border=true&background=0D1117&ring=a78bfa&fire=a78bfa&currStreakLabel=a78bfa&sideLabels=8b949e&dates=8b949e" | head -50, curl -s "https://streak-stats.demolab.com?user=gupta-builds&theme=github-dark-blue&hide_border=true&background=0D1117&ring=a78bfa&fire=a78bfa&currStreakLabel=a78bfa&sideLabels=8b949e&dates=8b949e" > /tmp/streak.svg; wc -l /tmp/streak.svg; grep -n "ellipse\|circle\|stroke-dasharray\|ring" /tmp/streak.svg, find . -not -path "./.git/*" -type f | sort, mkdir -p /home/anant_gupta/projects/work/gupta-builds/scripts, (gh auth token 2>/dev/null || echo NO_GH_TOKEN), GITHUB_TOKEN=$(gh auth token) GITHUB_USER=gupta-builds python3 scripts/generate_activity.py /tmp/activity-out 2>&1 | tail -40; echo ---; cat /tmp/activity-out/activity-stats.svg 2>/dev/null | head -5; echo; wc -c /tmp/activity-out/activity-stats.svg 2>/dev/null, grep -oE "font-size='30px' fill='#e6e6e6'>[^<]*" /tmp/activity-out/activity-stats.svg, cd /tmp/activity-out && (command -v rsvg-convert && rsvg-convert -o preview.png activity-stats.svg) || (command -v inkscape && inkscape activity-stats.svg -o preview.png) || python3 -c " import cairosvg cairosvg.svg2png(url='activity-stats.svg', write_to='preview.png', output_width=840) " 2>&1 || echo NO_RENDERER, which google-chrome chromium chromium-browser npx node 2>/dev/null; pip show cairosvg 2>/dev/null; apt list --installed 2>/dev/null | grep -i rsvg, pip install --quiet --user cairosvg 2>&1 | tail -5, python3 -m venv /tmp/svgvenv 2>&1 | tail -5 && /tmp/svgvenv/bin/pip install --quiet cairosvg 2>&1 | tail -10, /tmp/svgvenv/bin/python -c " import cairosvg cairosvg.svg2png(url='/tmp/activity-out/activity-stats.svg', write_to='/tmp/activity-out/preview.png', output_width=1680) print('ok') ", GITHUB_TOKEN=$(gh auth token) GITHUB_USER=gupta-builds python3 scripts/generate_activity.py /tmp/activity-out && /tmp/svgvenv/bin/python -c " import cairosvg cairosvg.svg2png(url='/tmp/activity-out/activity-stats.svg', write_to='/tmp/activity-out/preview.png', output_width=1680) print('ok') ", python3 -m py_compile scripts/generate_activity.py && echo COMPILE_OK && git status && git diff, git add scripts/generate_activity.py .github/workflows/snake.yml README.md && git status, rm -rf scripts/__pycache__, git commit -m "$(cat <<'EOF' Replace dead activity-graph and static streak-stats with self-hosted animated SVG github-readme-activity-graph.vercel.app's deployment is disabled (402), which was the broken image. Generate our own stats SVG via GitHub GraphQL and push it through the existing snake pipeline, with a continuously rotating dashed ring around each number instead of a static one. Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> EOF )" git push origin main, sleep 8 && gh run list --workflow=snake.yml --limit 3, gh run watch 32854766223 --exit-status 2>&1 | tail -30, curl -s "https://raw.githubusercontent.com/gupta-builds/gupta-builds/output/activity-stats.svg" -o /tmp/live-activity.svg && wc -c /tmp/live-activity.svg && grep -oE "fill='#e6e6e6'>[^<]*" /tmp/live-activity.svg, python3 -c "import PIL; print(PIL.__version__)" 2>&1; python3 -c "from PIL import Image; print('ok')" 2>&1, /tmp/svgvenv/bin/pip install --quiet Pillow 2>&1 | tail -10 && /tmp/svgvenv/bin/python -c "from PIL import Image; print('ok')", /tmp/svgvenv/bin/python -c " from PIL import Image img = Image.open('/home/anant_gupta/.claude/image-cache/[REDACTED]/4.png') print(img.size, img.mode) ", /tmp/svgvenv/bin/python -c " from PIL import Image img = Image.open('/home/anant_gupta/.claude/image-cache/[REDACTED]/4.png') crop = img.crop((0,0,502,400)) crop.save('/tmp/face_crop_preview.png') print(crop.size) ", /tmp/svgvenv/bin/python3 << 'EOF' from PIL import Image RAMP = "$@B%8&WM#*[REDACTED]/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. " def to_ascii(path, cols, char_aspect=0.5): img = Image.open(path).convert("RGBA") img = img.crop((0, 0, 502, 400)) w, h = img.size cell_w = w / cols cell_h = cell_w / char_aspect rows = max(1, int(h / cell_h)) small = img.resize((cols, rows), Image.LANCZOS) px = small.load() lines = [] n = len(RAMP) - 1 for y in range(rows): line = [] for x in range(cols): r, g, b, a = px[x, y] if a < 40: line.append(" ") continue lum = (0.299*r + 0.587*g + 0.114*b) / 255.0 idx = int(lum * n) line.append(RAMP[idx]) lines.append("".join(line)) return lines lines = to_ascii('/home/anant_gupta/.claude/image-cache/[REDACTED]/4.png', cols=90) print(len(lines), "lines,", len(lines[0]) if lines else 0, "cols") with open('/tmp/ascii_preview.txt', 'w') as f: f.write("\n".join(lines)) EOF cat /tmp/ascii_preview.txt, /tmp/svgvenv/bin/python3 -c " from PIL import Image img = Image.open('/home/anant_gupta/.claude/image-cache/[REDACTED]/4.png').convert('RGBA') for xy in [(5,5),(490,5),(5,390),(490,390),(250,250)]: print(xy, img.getpixel(xy)) ", /tmp/svgvenv/bin/python3 << 'EOF' from PIL import Image # classic 70-level ramp, sparse -> dense RAMP = " .'`^\",:;Il!i><~+_-?][}{1)(|\\/[REDACTED]*#MW&8%B@$" def to_ascii(path, cols, char_aspect=0.48, bg_thresh=16, crop=(0,0,502,400)): img = Image.open(path).convert("RGBA") img = img.crop(crop) w, h = img.size cell_w = w / cols cell_h = cell_w / char_aspect rows = max(1, int(h / cell_h)) small = img.resize((cols, rows), Image.LANCZOS) px = small.load() lines = [] n = len(RAMP) - 1 for y in range(rows): line = [] for x in range(cols): r, g, b, a = px[x, y] if max(r, g, b) < bg_thresh: line.append(" ") continue lum = (0.299*r + 0.587*g + 0.114*b) / 255.0 idx = min(n, int(lum * n)) line.append(RAMP[idx]) lines.append("".join(line).rstrip()) return lines lines = to_ascii('/home/anant_gupta/.claude/image-cache/[REDACTED]/4.png', cols=100) print(len(lines), "lines, max width", max(len(l) for l in lines)) with open('/tmp/ascii_preview2.txt', 'w') as f: f.write("\n".join(lines)) EOF cat -A /tmp/ascii_preview2.txt | head -1 > /dev/null cat /tmp/ascii_preview2.txt, fc-list | grep -i "mono" | head -5, /tmp/svgvenv/bin/python3 << 'EOF' from PIL import Image, ImageDraw, ImageFont with open('/tmp/ascii_preview2.txt') as f: lines = f.read().split("\n") font = ImageFont.truetype("/usr/share/fonts/truetype/ubuntu/UbuntuMono[wght].ttf", 10) cw, ch = 6, 12 W = max(len(l) for l in lines) * cw + 20 H = len(lines) * ch + 20 img = Image.new("RGB", (W, H), (13, 17, 23)) d = ImageDraw.Draw(img) for i, line in enumerate(lines): d.text((10, 10 + i*ch), line, font=font, fill=(167,139,250)) img.save('/tmp/ascii_preview2.png') print("done", W, H) EOF, /tmp/svgvenv/bin/python3 -c " from PIL import Image img = Image.open('/home/anant_gupta/.claude/image-cache/[REDACTED]/4.png').convert('RGBA') for xy in [(250,30),(280,20),(220,60)]: print(xy, img.getpixel(xy)) ", /tmp/svgvenv/bin/python3 << 'EOF' from PIL import Image, ImageDraw, ImageFont RAMP = " .'`^\",:;Il!i><~+_-?][}{1)(|\\/[REDACTED]*#MW&8%B@$" def to_ascii(path, cols, char_aspect=0.46, bg_thresh=16, crop=(0,0,502,400)): img = Image.open(path).convert("RGBA") img = img.crop(crop) w, h = img.size cell_w = w / cols cell_h = cell_w / char_aspect rows = max(1, int(h / cell_h)) small = img.resize((cols, rows), Image.LANCZOS) px = small.load() lines = [] n = len(RAMP) - 1 for y in range(rows): line = [] for x in range(cols): r, g, b, a = px[x, y] if max(r, g, b) < bg_thresh: line.append(" ") continue lum = (0.299*r + 0.587*g + 0.114*b) / 255.0 idx = min(n, int(lum * n)) line.append(RAMP[idx]) lines.append("".join(line).rstrip()) return lines lines = to_ascii('/home/anant_gupta/.claude/image-cache/[REDACTED]/4.png', cols=110) print(len(lines), "lines, max width", max(len(l) for l in lines)) with open('/tmp/ascii_preview3.txt', 'w') as f: f.write("\n".join(lines)) font = ImageFont.truetype("/usr/share/fonts/truetype/ubuntu/UbuntuMono[wght].ttf", 9) cw, ch = 5.4, 10.6 W = int(max(len(l) for l in lines) * cw + 20) H = int(len(lines) * ch + 20) img = Image.new("RGB", (W, H), (13, 17, 23)) d = ImageDraw.Draw(img) for i, line in enumerate(lines): d.text((10, 10 + i*ch), line, font=font, fill=(167,139,250)) img.save('/tmp/ascii_preview3.png') print("done", W, H) EOF, python3 scripts/generate_ascii_face.py && wc -c assets/ascii-face.svg && head -c 400 assets/ascii-face.svg, grep -n "'''" /tmp/ascii_preview3.txt; grep -n '"""' /tmp/ascii_preview3.txt, python3 scripts/generate_ascii_face.py && wc -c assets/ascii-face.svg && wc -l assets/ascii-face.svg, python3 -c " import xml.dom.minidom as m d = m.parse('assets/ascii-face.svg') print('valid XML, root:', d.documentElement.tagName) ", python3 -c " import re svg = open('assets/ascii-face.svg').read() # strip the clip-path attribute so cairosvg shows the full artwork unclipped svg2 = svg.replace(\"clip-path='url(#reveal)'\", \"\") open('/tmp/ascii_face_static.svg','w').write(svg2) " /tmp/svgvenv/bin/python -c " import cairosvg cairosvg.svg2png(url='/tmp/ascii_face_static.svg', write_to='/tmp/ascii_face_static.png', output_width=1200) print('ok') ", python3 -c " import sys sys.path.insert(0,'scripts') import generate_ascii_face as g rows = len(g.ASCII_ART) cols = max(len(l) for l in g.ASCII_ART) fw, fh = cols*g.CELL_W, rows*g.CELL_H pts = g.staircase_points(fw, fh, 20, 0.5) print(pts) svg = open('assets/ascii-face.svg').read() import re svg2 = re.sub(r\"<polygon points='0,0'>.*?</polygon>\", f\"<polygon points='{pts}'></polygon>\", svg, flags=re.S) open('/tmp/ascii_face_frame.svg','w').write(svg2) " /tmp/svgvenv/bin/python -c " import cairosvg cairosvg.svg2png(url='/tmp/ascii_face_frame.svg', write_to='/tmp/ascii_face_frame.png', output_width=1200) ", python3 scripts/generate_ascii_face.py && python3 -c " import sys sys.path.insert(0,'scripts') import generate_ascii_face as g rows = len(g.ASCII_ART) cols = max(len(l) for l in g.ASCII_ART) fw = cols*g.CELL_W pts = g.staircase_points(fw, g.CELL_H, 20, 0.5) print('frame points:', pts) import re svg = open('assets/ascii-face.svg').read() svg2 = re.sub(r\"<polygon points='0,0'>.*?</polygon>\", f\"<polygon points='{pts}'></polygon>\", svg, flags=re.S) open('/tmp/ascii_face_frame.svg','w').write(svg2) " /tmp/svgvenv/bin/python -c " import cairosvg cairosvg.svg2png(url='/tmp/ascii_face_frame.svg', write_to='/tmp/ascii_face_frame.png', output_width=1200) ", python3 -c " import xml.dom.minidom as m d = m.parse('assets/ascii-face.svg') print('valid XML') " wc -c assets/ascii-face.svg, git status, git add README.md scripts/generate_ascii_face.py assets/ascii-face.svg && git status, git commit -m "$(cat <<'EOF' Add typewriter-reveal ASCII portrait, drop tagline, move typing SVG lower Bakes the photo into a 70-level-ramp ASCII portrait (static SVG, no CI needed since it's not live data) that reveals row-by-row via an animated clip-path staircase on page load, then stays put. Placed above the typing SVG per request; the redundant tagline line is removed. Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> EOF )", git push origin main
+- Tool call tally: AskUserQuestion (2), Bash (46), Edit (11), Read (15), Write (2)
 
