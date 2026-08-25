@@ -7,7 +7,7 @@ title: "Mcp graphify CONNECTION_CLOSED error"
 started_at: 2026-08-25T10:12:21
 ended_at: 2026-08-25T10:33:25
 duration_minutes: 21
-exported_at: 2026-08-25T14:45:02
+exported_at: 2026-08-25T15:45:02
 project: CausalOps
 cwd: '/home/anant_gupta/projects/hub/CausalOps'
 session_id: 5f3dda03-0194-4eec-b548-2c32622f8db0
