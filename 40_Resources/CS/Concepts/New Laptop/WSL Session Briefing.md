@@ -140,3 +140,39 @@ Two Windows-side sessions (2026-08-25, 2026-08-26) fixed this laptop's native-Wi
 - **True and fixed:** npm cache was 7.1G → cleaned to 4.4G. uv cache cleared entirely (160M). pnpm store pruned 3.5G → 2.3G.
 - **True and NOT fixed (handing back):** `.wslconfig` has no `memory=`/`processors=` cap set at all (uncapped, not misplaced) — lives on C:, out of scope for a WSL-side session. Persistent WSL networking errors (`CheckConnection: getaddrinfo()/connect() failed`, every 15–90s in `dmesg`/`journalctl`) — likely tied to `.wslconfig`'s `networkingMode=mirrored`/`dnsTunneling`/`autoProxy`, also a C:-side fix, and the most plausible real source of any perceived WSL instability. No filesystem/systemd corruption was found anywhere (systemd healthy, 0 failed units, no OOM/panic) — repair-in-place was correct, a reimport would have been unnecessary risk.
 - **Attempted but blocked, needs a human call:** two repos (`~/projects/hackathon/opspilot-placeholder-backup`, `~/projects/hub/CausalOps`) looked like simple unpushed-commit pushes from `git status` alone, but both remotes have genuinely diverged (a different contributor's active history on opspilot; an apparent rename/rewrite on CausalOps). Left both alone rather than merge/rebase blindly — needs your judgment on which history is correct.
+
+## Windows-side follow-up (2026-08-26, after the WSL session's report above)
+
+**`.wslconfig` fixed** (`C:\Users\Anant Gupta\.wslconfig`, the file the WSL session correctly identified as out of its own scope): no VPN or corporate proxy was found on this machine (checked directly — no VPN software installed, Windows proxy off), so `autoProxy` had nothing to do and the KB5068861 mirrored+VPN bug doesn't apply here. Decided with the user: keep `networkingMode=mirrored` (its LAN/localhost benefits are worth keeping), drop `dnsTunneling` and `autoProxy` (both inert without a proxy/VPN, and `dnsTunneling` is the setting most often implicated in the `CheckConnection` log noise in community reports), and add explicit resource caps — this machine has 32GB RAM / 12 logical processors and had *zero* cap before. New file:
+```ini
+[wsl2]
+networkingMode=mirrored
+firewall=true
+memory=16GB
+processors=8
+```
+**This requires `wsl --shutdown` to take effect** — deliberately not run automatically by the Windows session, since it kills every running WSL process including whatever Claude Code session is active inside the distro. Confirm with the user before running it, or expect it if a session dies unexpectedly.
+
+**On the two blocked repos:**
+- `~/projects/hackathon/opspilot-placeholder-backup` — user confirmed: **delete it**, it's a placeholder/backup no longer needed. Not a git-history question, just remove the directory (confirm it really is disposable — check for any uncommitted work first — before `rm -rf`).
+- `~/projects/hub/CausalOps` — user confirmed: **no git action needed.** Its local history and worktree are intentional/correct as-is; the only outstanding work is new builds going forward, not resolving a divergence.
+
+**Chrome and pagefile** (unrelated to WSL, same session): Chrome's registered uninstall entry was in `HKLM\SOFTWARE\WOW6432Node\...\Uninstall`, not the plain `HKLM\...\Uninstall` path a first attempt checked — cross-hive registry searches for per-machine app uninstall entries need all three locations (`HKLM`, `HKLM\WOW6432Node`, `HKCU`) checked, not just one. Pagefile creation via `Set-WmiInstance`/`New-CimInstance` needs `-EnableAllPrivileges` (or the classic `[wmiclass]`/`CreateInstance()`/`Put()` COM pattern) even from an elevated shell — plain `Set-WmiInstance -Class Win32_PageFileSetting -Arguments @{...}` returns Access Denied without it, because the required `SeCreatePagefilePrivilege` isn't enabled on the WMI connection token by default.
+
+## Follow-Up: `.wslconfig` Fix Verification + Repo Decisions (2026-08-26, continued)
+
+**`.wslconfig` was rewritten on the Windows side** (`memory=16GB`, `processors=8`, `dnsTunneling`/`autoProxy` removed — no VPN/corporate proxy on this machine, both were inert) and WSL was restarted (`wsl --shutdown`). This session verified independently rather than trusting the config change alone.
+
+**Memory/CPU — confirmed applied:** `free -h` shows 15Gi total (consistent with the 16GB cap, WSL2 always reports slightly under the configured value), `nproc` shows 8. Matches the new `.wslconfig` exactly.
+
+**Networking errors — meaningfully improved, not yet conclusively proven fixed.** Previous session found `WSL (180) ERROR: CheckConnection: getaddrinfo()/connect() failed` firing continuously every 15–90 seconds with no end in sight. Post-restart, on an ~18-minute-old boot: only 9 occurrences total, all clustered in the first ~6 minutes (consistent with mirrored-networking routes settling after `wsl --shutdown`), then complete silence for the following ~12 minutes. That's a real, positive change — but 12 minutes of quiet isn't long enough to call this conclusively resolved after a bug that was previously continuous for an entire session. Recommend treating it as fixed-pending-confirmation: if the same pattern (errors only in the first few minutes post-boot, then silence) holds over a normal multi-hour work session, it's fixed. If sporadic errors resume later in a session, `dnsTunneling` removal specifically (the setting most often implicated in this exact log signature) may not have been the actual cause.
+
+**Repo decisions executed:**
+- `~/projects/hackathon/opspilot-placeholder-backup` — **deleted**, per your instruction. Pre-delete check confirmed nothing was actually at risk: the sole "ahead 1" commit was a trivial one-line-README "Initial commit" (author email `gupt0479@umn.edu`, from April — predates this session's identity fix and irrelevant now that the directory is gone), and `origin/main`'s own history already has its own separate "Initial commit from Create Next App" — i.e. the local commit wasn't unique work, just boilerplate. The one untracked file was a generated `package-lock.json`. No stash, nothing else pending.
+- `~/projects/hub/CausalOps` — **left untouched**, per your instruction. Local history and worktree are intentional; the earlier "diverged from remote" finding stands as informational only, not a problem to fix.
+
+**Still open, not this session's job to close:**
+- Several repos still carry uncommitted/untracked local changes and were never mine to touch: `hackathon/Resq`, `hub/tradingview`, `hub/GymMangment_app_demo`, `hub/portfolio`, `hub/DNA_BJJ_APP`, `hub/Assisto_website`, `work/internship-research-loop`, `work/gupta-builds` (stray `__pycache__`). Your call on each.
+- Networking fix confidence — see above, needs a longer real-world observation window than this session could provide.
+
+**End-to-end status vs. this note's original Phase 1 checklist:** every item has now been investigated, verified, and either fixed or explicitly handed back/left as a documented open item. Nothing remains silently unchecked.
