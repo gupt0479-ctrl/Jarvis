@@ -11,11 +11,16 @@ target_year: []
 date_posted: '2026-08-05'
 date_found: '2026-08-05'
 matched_reason: Summer 2027, Software
-status: unreviewed
+status: removed
 next:
 tags:
   - internship
   - auto-discovered
+notes:
+  - '[[10_Areas/Career/Internships/List/Dossiers MOC]]'
+  - '[[10_Areas/Career/Internships/List/Dossiers/Viewed/Removed Dossiers MOC]]'
+removed_date: '2026-08-26'
+removed_reason: 'active: false upstream'
 ---
 # Software Engineer Co-op - Software Engineering
 Found 2026-08-05 via SimplifyJobs.

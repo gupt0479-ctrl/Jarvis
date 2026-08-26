@@ -15,11 +15,16 @@ target_year: []
 date_posted: '2026-08-06'
 date_found: '2026-08-06'
 matched_reason: Winter 2027, Software
-status: unreviewed
+status: removed
 next:
 tags:
   - internship
   - auto-discovered
+notes:
+  - '[[10_Areas/Career/Internships/List/Dossiers MOC]]'
+  - '[[10_Areas/Career/Internships/List/Dossiers/Viewed/Removed Dossiers MOC]]'
+removed_date: '2026-08-26'
+removed_reason: 'active: false upstream'
 ---
 # Software Engineer Intern - Winter 2027
 Found 2026-08-06 via SimplifyJobs.
