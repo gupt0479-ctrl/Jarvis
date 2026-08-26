@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "Review System",
+      "path": "60_Claude/30_Reviews/Internship Loop/Review System.md"
+    },
+    {
+      "basename": "Internship Loop Reviews MOC",
+      "path": "60_Claude/30_Reviews/Internship Loop/Internship Loop Reviews MOC.md"
+    },
+    {
+      "basename": "Internship Loop Weekly Review — 2026-W34",
+      "path": "60_Claude/30_Reviews/Internship Loop/Scheduled/Weekly/Internship Loop Weekly Review — 2026-W34.md"
+    },
+    {
       "basename": "graph",
       "path": "60_Claude/40_Project_Briefs/Internship/graph.canvas"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "AI and Data Engineering Summer Scholar Intern - Government & Public Services - Deloitte",
       "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/AI and Data Engineering Summer Scholar Intern - Government & Public Services - Deloitte.md"
-    },
-    {
-      "basename": "Analytics and Quantitative Modeling Intern - Analytics & Quantitative Modeling - KeyBank",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Analytics and Quantitative Modeling Intern - Analytics & Quantitative Modeling - KeyBank.md"
-    },
-    {
-      "basename": "AI-First Engineering Intern - Xsolla",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/AI-First Engineering Intern - Xsolla.md"
-    },
-    {
-      "basename": "AI Network Automation Engineer Intern, Global Physical Network Infra - ByteDance",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/AI Network Automation Engineer Intern, Global Physical Network Infra - ByteDance.md"
     }
   ],
   "omittedPaths": [],

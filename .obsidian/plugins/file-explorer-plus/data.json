@@ -773,6 +773,13 @@
         "type": "FILES",
         "pattern": "10_Areas/Career/Internships/List/Dossiers/Viewed/What was Viewed.md",
         "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "60_Claude/30_Reviews/Internship Loop/Review System.md",
+        "patternType": "STRICT"
       }
     ],
     "frontMatter": [
