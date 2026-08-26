@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "graph",
+      "path": "60_Claude/40_Project_Briefs/Internship/graph.canvas"
+    },
+    {
+      "basename": "test_simplify_schema_detects_renamed_key()",
+      "path": "60_Claude/40_Project_Briefs/Internship/test_simplify_schema_detects_renamed_key().md"
+    },
+    {
       "basename": "Claude Code Prompts",
       "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
     },
@@ -191,10 +199,6 @@
     {
       "basename": "AI Network Automation Engineer Intern, Global Physical Network Infra - ByteDance",
       "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/AI Network Automation Engineer Intern, Global Physical Network Infra - ByteDance.md"
-    },
-    {
-      "basename": "AI Intern - Montenson",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/AI Intern - Montenson.md"
     }
   ],
   "omittedPaths": [],
