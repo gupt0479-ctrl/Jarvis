@@ -9,12 +9,25 @@ related_progress:
   - "[[Source of Truth]]"
   - "[[20_Progress/Internship/Building System/Research Loop - Improvement Plan]]"
   - "[[30_Order/Standards/Internship Notes Standard]]"
-  - "[[20_Progress/Internship/Building System/Runs/Discovery Step Postmortem — Write-Starvation Incident (2026-08-26)]]"
+  - "[[20_Progress/Internship/Building System/Runs/Discovery Step Postmortem —
+    Write-Starvation Incident (2026-08-26)]]"
 tags:
   - internship
   - career
   - system-design
-next: "URGENT (2026-08-26): a live write-starvation bug is squatting the entire write budget on structurally-doomed candidates while ~156 real ApplyGuy candidates climb toward permanent debate-loss exclusion (48 losses) within roughly a day — see [[20_Progress/Internship/Building System/Runs/Discovery Step Postmortem — Write-Starvation Incident (2026-08-26)]] before touching anything else in this repo. Prompt 17 (InternDock/ApplyGuy evaluation) has since shipped for real — both are live sources as of this postmortem — but that entry below is now stale on that point; the postmortem note is the current source of truth until this file is updated to match."
+next: "URGENT, still active (checked fresh 2026-08-27): the write-starvation bug
+  is confirmed still firing (written_count: 0 on the latest run, 269 new
+  matches, all deferred). The affected cluster has aged from 156 candidates at
+  20/48 debate losses to 154 at 24/48 — same cohort, tracking toward permanent
+  exclusion, timeline slightly longer than the original estimate (recompute,
+  don't reuse either number). None have crossed yet (excluded_uids.json still
+  388). See the Discovery Step Postmortem's \"Correction + Fresh Numbers\"
+  section — it also corrects one wrong claim from the original postmortem (the
+  2026-08-23 dossier-cleanup backlog was actually swept, verified directly) and
+  fixes a since-stale Source of Truth.md claim about InternDock. This file's own
+  dated entries below are unchanged and still accurate for what they cover — the
+  postmortem note is the current source of truth for what's happened since, not
+  a replacement for this log."
 ---
 # Internship System — Build Log
 ==The full chronological record of every real build session on this system, vault side and codebase side, since 2026-07-16.== [[30_Order/Workflows/Internship Pipeline]] is the lean operating procedure; this note is why each decision landed where it did and exactly what shipped versus what's still sitting uncommitted somewhere. Read this note, in order, to pick the work back up without re-deriving anything — that's its only job.

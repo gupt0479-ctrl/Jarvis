@@ -31,6 +31,7 @@ This file holds the next prompt(s) to run, and only that — it gets wiped and r
 ## Prompt 16: Sync Building System To The Real Post-Prompt-14v2 State
 **Run inside the Jarvis vault directly** (Windows, Sonnet 5, high effort). Vault-note work only.
 
+```
 **Context — what actually changed, verified, not to be re-derived:** Lever shipped live (`fetch_lever`/`normalize_lever`, wired into `SOURCES`/`recheck.py`, 2 real companies — Palantir plus Belvedere Trading — 61 postings fetched, 3 real matches at build time). InternDock got real detection+parsing code (`ingestion/interndock.py`, sitemap-based, 6 tests) but is **explicitly not wired into `SOURCES` yet** — a partial build, not a live source; don't describe it as one. The JGCL zero-yield question is **resolved**: not a bug, three specific scholarship postings (MLH Fellowship, White House HBCU Scholars, UNCF Scholarships Portal) already correctly excluded via `seen_ids`/`excluded_uids`, the feed is just thin toward non-CS content for this persona. LinkedIn's Greenhouse board and the other 7 named-priority companies (Two Sigma, Citadel, Capital One, Bloomberg, Microsoft, NASA, MLH) are **confirmed dead ends for direct-ATS coverage** — not a "not yet checked" gap, a "checked, no reachable Greenhouse/Ashby/Lever token exists, these are almost certainly on Workday-class ATSes this pipeline has no connector for" finding. Two new, real, unbuilt repo candidates exist (`ApplyGuy/2027-Internships`, `dreamworkhq/Tech-Internships-2027`) — real JSON confirmed, not yet integrated. The 2026-08-23 "46 `vault_delete` calls" that looked alarming when first reported is a real, already-tracked session (`60_Claude/05_Clippings/AI Conversations/WSL/Claude Code/internship-research-loop/08-23 Internship dossier audit and filter-rule reconciliation.md`) — confirm this yourself, but it does not need separate investigation as an untracked event.
 
 ### Task 1 — `System - Build Log.md`: add a `## 2026-08-24` entry
@@ -54,13 +55,13 @@ No code changes to `internship-research-loop`. No describing InternDock as a liv
 
 ### Report back
 Per task: what changed and where, with the specific old-vs-new claim for anything you corrected. Confirm the 46-deletion session check.
-
+```
 ---
-
 # Codebase
 ## Prompt 17: Finish InternDock's Wiring, Evaluate The Two New Repo Candidates
 **Fresh session**, `gupta-builds/internship-research-loop`. Read `CLAUDE.md` first. `ingestion/interndock.py` exists (sitemap-based detection + parser, 6 tests) but is not wired into `SOURCES` — verify this yourself, along with everything else below, before starting.
 
+```
 ### Task 1 — Design and ship InternDock's SOURCES wiring
 The prior session deliberately stopped short of this, correctly flagging it as needing its own design pass rather than a quick bolt-on. Real open questions to resolve, not guess at:
 - **Identity/uid strategy.** InternDock's postings don't carry a native id the way Greenhouse/Ashby/Lever do — the prior session found the visible link text is always literally "Apply" (not the title), so the uid can't come from link text. Check what the actual `href` URLs look like (they route to the real employer's own application page, per the fetched content already described) — is there a stable, extractable identifier in those URLs themselves (a job id, a slug), or does uid computation need to fall back to a content-hash-style approach the way the old zapplyjobs fallback did before it was removed? If it's the latter, that's worth naming explicitly as a real limitation, not silently reusing a pattern this codebase removed once already without re-justifying it.
@@ -79,3 +80,8 @@ Separate commits per source, real citations, fixture-based tests, full suite gre
 
 ### Report back
 Task 1: the identity/cadence/state design decisions made and why, confirmation InternDock is genuinely live in `SOURCES` (not just present in the codebase), real numbers from a live test run. Task 2/3: built or not, with real reasoning either way — a "didn't build, here's why" is exactly as valid a result as a new source, don't feel pressure to build both just because they were surfaced.
+```
+## Prompt 18
+```
+
+```

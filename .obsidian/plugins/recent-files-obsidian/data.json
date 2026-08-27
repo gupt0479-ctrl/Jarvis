@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "Links & Interlinks",
-      "path": "10_Areas/Career/Internships/Links & Interlinks.md"
+      "basename": "Claude Code Prompts",
+      "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
     },
     {
       "basename": "Review System",
       "path": "60_Claude/30_Reviews/Internship Loop/Review System.md"
+    },
+    {
+      "basename": "Links & Interlinks",
+      "path": "10_Areas/Career/Internships/Links & Interlinks.md"
     },
     {
       "basename": "Internship Loop Reviews MOC",
@@ -23,10 +27,6 @@
     {
       "basename": "test_simplify_schema_detects_renamed_key()",
       "path": "60_Claude/40_Project_Briefs/Internship/test_simplify_schema_detects_renamed_key().md"
-    },
-    {
-      "basename": "Claude Code Prompts",
-      "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
     },
     {
       "basename": "Excluded — Losing The Debate",

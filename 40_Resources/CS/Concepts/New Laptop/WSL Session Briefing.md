@@ -176,3 +176,36 @@ processors=8
 - Networking fix confidence — see above, needs a longer real-world observation window than this session could provide.
 
 **End-to-end status vs. this note's original Phase 1 checklist:** every item has now been investigated, verified, and either fixed or explicitly handed back/left as a documented open item. Nothing remains silently unchecked.
+
+## Final closure (2026-08-26, Windows-side verification of the WSL session's last report)
+
+**Pagefile (Windows-side, unrelated to WSL but closing the loop from the same session):** `Set-WmiInstance ... -EnableAllPrivileges` succeeded — `D:\pagefile.sys` confirmed with `InitialSize=0, MaximumSize=0` (system-managed). Needs a reboot to actually take effect; not yet rebooted as of this writing.
+
+**Chrome:** fully uninstalled and confirmed gone (`C:\Program Files\Google\Chrome` no longer exists). The registered uninstall entry was under `HKLM\SOFTWARE\WOW6432Node\...\Uninstall`, not the plain `HKLM\...\Uninstall` path — worth remembering for any future per-machine-installed-app uninstall on this machine, 32-bit-registered entries live under WOW6432Node even for modern 64-bit apps.
+
+**`opspilot-placeholder-backup`:** independently verified deleted (`test -d ~/projects/hackathon/opspilot-placeholder-backup` → `GONE`). The WSL session's own report of this was garbled in the copy/paste relay but the directory is confirmed gone.
+
+**`.wslconfig` networking:** WSL session reported "fixed pending confirmation" — 9 occurrences of the `CheckConnection` error in the first ~6 minutes post-restart (routes settling), then 12 minutes of silence before its report. This is a wait-and-see item, not an open task — if it resumes continuously later, revisit `dnsTunneling`/`networkingMode` again.
+
+**Corrected, complete uncommitted-work inventory** (the WSL session's list was accurate in spirit but several names got mangled in the copy/paste relay — this is a direct re-scan, all 21 WSL project repos checked):
+
+| Repo | Branch/tracking | Untracked | Modified/staged |
+|---|---|---|---|
+| `hub/tradingview` | main...origin/main | 13 | 0 |
+| `hub/GymMangment_app_demo` | main...origin/main | 1 | 0 |
+| `hub/portfolio` | post-frontend (no upstream tracked) | 26 | 55 |
+| `hub/DNA_BJJ_APP` | main...origin/main | 2 | 1 |
+| `hub/Assisto_website` | feature/assisto-spend-docs...origin/... | 28 | 45 |
+| `work/internship-research-loop` | master...origin/master, **behind 25** | 2 | 6 |
+| `work/gupta-builds` | main...origin/main | 1 | 0 |
+| `ai/lovable/boom-tracer` | main...origin/main | 0 | 1 |
+| `ai/claude/everything-claude-code` | main...origin/main | 1 | 0 |
+| `ai/claude/adx-worktree-throwaway-test` | master (no upstream) | 10 | 1 |
+| `ai/claude/second-brain-claudekit` | main...origin/main, **ahead 22** | 20 | 11 |
+| `hackathon/Resq` | main...origin/main | 0 | 4 |
+
+Nine other repos (`CausalOps`, `Learning-Tracker-Tool`, `boom`, `opspilot-lovable`, `Resq-lovable`, `safereach-lovable`, `jan`, `hackathon/safereach`, `hackathon/opspilot`) are clean.
+
+**This list is explicitly not something either Claude session should act on** — committing or pushing someone else's in-progress, unreviewed work is not this session's call to make (same judgment the WSL session already correctly applied to the two diverged repos). The two that stand out for the user's own attention first: `second-brain-claudekit` has 22 unpushed commits (real backup risk per Sin 10 — push it), and `internship-research-loop` is 25 commits behind its own origin (needs a pull/rebase decision before it drifts further).
+
+**Overall status:** the Windows-side and WSL-side coding-environment rebuild (VS Code settings, Python/uv, npm/pnpm/fnm, git identity both sides, `.mcp.json` both sides, Chrome removal, pagefile, `.wslconfig`) is complete and verified end-to-end. What's left is entirely the user's own: reboot to finalize the pagefile, review/commit the 12 repos above at their own pace, and keep an eye on whether the WSL networking errors actually stay gone.
