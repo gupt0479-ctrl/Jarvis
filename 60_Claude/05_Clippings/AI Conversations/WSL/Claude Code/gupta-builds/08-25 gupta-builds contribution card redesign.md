@@ -5,27 +5,27 @@ source_app: claude-code
 source_os: wsl
 title: "gupta-builds contribution card redesign"
 started_at: 2026-08-25T19:03:14
-ended_at: 2026-08-25T22:02:15
-duration_minutes: 179
-exported_at: 2026-08-26T15:08:10
+ended_at: 2026-08-27T12:42:26
+duration_minutes: 2499
+exported_at: 2026-08-27T17:40:40
 project: gupta-builds
 cwd: '/home/anant_gupta/projects/work/gupta-builds'
 session_id: 51c21e6b-1ca6-460c-987b-4a10b0a4b549
 status: raw
-turn_count: 12
+turn_count: 19
 tools_used:
   AskUserQuestion: 2
-  Bash: 27
-  Edit: 11
-  Read: 16
+  Bash: 45
+  Edit: 19
+  Read: 27
   Write: 2
 tokens:
-  input: 230
-  output: 125038
-  cache_creation: 402116
-  cache_read: 11511789
-  total: 12039173
-cost_usd: 5.161662
+  input: 378
+  output: 192761
+  cache_creation: 865561
+  cache_read: 24873843
+  total: 25932543
+cost_usd: 10.365379
 model:
   - claude-sonnet-5
 files_touched:
@@ -38,6 +38,11 @@ files_touched:
   - "/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/51c21e6b-1ca6-460c-987b-4a10b0a4b549/scratchpad/preview3_frozen.png"
   - "/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/51c21e6b-1ca6-460c-987b-4a10b0a4b549/scratchpad/preview3_dark.png"
   - "/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/51c21e6b-1ca6-460c-987b-4a10b0a4b549/scratchpad/preview3_half.png"
+  - "/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/51c21e6b-1ca6-460c-987b-4a10b0a4b549/scratchpad/linkedin_badge.png"
+  - "/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/51c21e6b-1ca6-460c-987b-4a10b0a4b549/scratchpad/preview4_dark.png"
+  - "/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/51c21e6b-1ca6-460c-987b-4a10b0a4b549/scratchpad/preview4_stat_crop.png"
+  - "/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/51c21e6b-1ca6-460c-987b-4a10b0a4b549/scratchpad/preview5_stat_crop.png"
+  - "/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/51c21e6b-1ca6-460c-987b-4a10b0a4b549/scratchpad/preview5_dark.png"
 tags:
   - input
   - ai-conversation
@@ -1509,10 +1514,760 @@ Untracked files:
 nothing added to commit but untracked files present (use "git add" to track)
   ```
 
+## You
+
+More fixes on the contribution card (scripts/generate_activity.py /
+assets via the output branch), checked against the current live render:
+
+## 1. "Best week" -> "Best Streak" (streak count, not a weekly sum)
+
+Replace the best_week calendar-week-sum metric with a consecutive-day
+streak count — this is what the very first version of this script computed
+(before it became "best week"), and it's the "max was 17" the user
+remembers. Reuse that exact logic:
+
+def compute_streak_stats(days):
+    counts = [d["contributionCount"] for d in days]
+    longest = cur_run = 0
+    for c in counts:
+        cur_run = cur_run + 1 if c > 0 else 0
+        longest = max(longest, cur_run)
+
+    idx = len(counts) - 1
+    if idx >= 0 and counts[idx] == 0:
+        idx -= 1  # today may not be ovreak
+    current = 0
+    while idx >= 0 and counts[idx] > 0:
+        current += 1
+        idx -= 1
+
+    return current if current >= longes
+
+Only the single best/longest value is s
+separately) — but per the user: if the current ongoing streak has reached
+or passed the historical longest (i.e.
+best-ever streak right now), show the current, still-climbing number
+instead of a stale frozen peak. That's ent
+>= longest else longest` does — don't overthink it further than that.
+Label it "Best Streak" (not "Best week"
+
+## 2. Stack "Active days" / "Best Streade
+
+Currently both sit in the same row at tst_x
+at the same y). Change to a single right-aligned column: "Active days"
+(number + label) on top, "Best Streak" ow
+it, tightly spaced — same visual rhythm as the "751 / Contributions in
+the last year" block on the left. Keep he
+card's existing right padding.
+
+## 3. Widen the graph to span the full card, left edge to right edge
+
+This is the actual cause of "cut off in the middle": the sparkline's
+drawing area only uses `left_w = 460` o— the
+remaining ~300px on the right (previously reserved for
+active-days/best-week sitting mid-heighver
+reaches, which reads as the graph stopping short rather than completing.
+Now that active days / best streak are  #2),
+give the graph nearly the entire card width instead of stopping at
+left_w: recompute the sparkline's x0/w ft
+padding to its right padding (matching the "751" block's left edge to the
+stat column's right edge), same as GitH
+running edge-to-edge. Move its y0 down to start below whichever of the
+two top text blocks (the "751" block on
+active-days/best-streak block on the right) is taller, plus a clearance
+gap — don't hardcode a fixed offset thataller
+right-side stack. The rightmost data point (today) must land exactly on
+the card's right edge — verify this expew,
+don't just trust the math.
+
+## 4. LinkedIn badge has no icon — confirmed upstream cause, fix included
+
+I checked: shields.io gets its logos from the simple-icons project, and
+simple-icons no longer includes a "linkive —
+cdn.simpleicons.org/linkedin returns 404, and the current simple-icons
+dataset has zero "linkedin" entries). Tently
+renders no icon — it's not a typo, the icon was removed upstream and no
+slug variant will fix it.
+
+Fix: use shields.io's custom-logo suppo
+instead of the `linkedin` slug. I already built and verified this exact
+one (rendered it and visually confirmedching
+the other three badges' style) — use this logo value directly in
+README.md's LinkedIn badge:
+
+logo=data:image/svg%2Bxml;base64,[REDACTED]
+[REDACTED]
+[REDACTED]
+[REDACTED]+
+
+Replace the LinkedIn badge's `logo=link
+everything else about that badge — style=flat-square, color=0d1117 — the
+same as the working badges next to it).and
+icons (CC BY 4.0), colored #a78bfa directly in the SVG before encoding —
+if you regenerate this yourself, note t78bfa`
+in the raw SVG markup, NOT percent-encoded (`%23a78bfa`) — percent-encoding
+belongs to the outer URL only, not insi64'd;
+getting this backwards silently breaks the icon's color.
+
+## 5. Reduce the gap between the Typing SVG and the contribution card
+
+There's currently a full `<br/>`-based spacer between the Typing SVG's
+`</div>` and the contribution card's `<his
+gap significantly — it should read as "just above" the card, not a
+separate spaced-out section.
+
+## Workflow
+
+Regenerate, rasterize a preview, and chlly —
+particularly confirm the sparkline visually reaches the card's right edge
+now, and that the right-side stat columder
+graph. Show the user the preview before pushing. Confirm before pushing
+to main.
+
+## Claude
+
+Now implementing all five fixes. First, let's build and verify the LinkedIn custom-logo data URI (since the base64 the user pasted came through visibly corrupted by text-transmission artifacts in this conversation, I'll reconstruct the known Font Awesome LinkedIn glyph myself and verify it renders).
+
+Scratchpad was reset between sessions. Let me recreate the venv.
+
+The custom LinkedIn logo renders correctly — confirmed fix. Now let's implement all the script changes.
+
+Now the layout rework — stacked right column and edge-to-edge sparkline with dynamic vertical placement.
+
+Now update `main()` and the module docstring for the renamed variable, and fix the `test_generate_activity.py` accordingly.
+
+Now let's update the README: fix the LinkedIn badge logo and tighten the gap above the contribution card.
+
+Now reduce the gap between the Typing SVG and the contribution card.
+
+Structure is well-formed — one div now containing Typing SVG, card image, and badge row, tightly stacked with a `<br/>` before it (from the ASCII portrait) and after it (before the table). Now let's regenerate the card and verify everything visually.
+
+Best Streak = 17, matching what you remembered. Let's verify the sparkline spans edge-to-edge and render the full preview.
+
+Confirmed — the line starts at x=32 (left padding, matching the total's left edge) and ends at x=728 (right padding, matching the stat column's right edge). Now the rasterized preview:
+
+Let me zoom into the right stat column to double-check the spacing reads clearly as two distinct groups.
+
+The "17" is colliding with "Active days" above it — the group gap (16) is too small to clear the number's cap-height plus the label's descender. Let me widen it.
+
+Clean separation now — two distinct groups. Let's check the full card again.
+
+This looks right — graph spans edge-to-edge, right column stacked and legible, no peak collision, "Best Streak 17" matches your memory. Let's run the test suite one more time and check the LinkedIn badge in context.
+
+All verified. Summary of this round's fixes:
+
+1. **Best Streak** — replaced the calendar-week-sum metric with the actual consecutive-day streak calculation you specified (current streak wins over the frozen historical peak once it catches up). Result: **17**, matching what you remembered. Added a test for both branches (current-wins and frozen-peak).
+2. **Right column stacked** — Active days / Best Streak now stack vertically, right-aligned, matching the left block's number-over-label rhythm. First attempt had the "17" overlapping "Active days" (its cap-height collided with the label's descender) — caught it, widened the inter-group gap, verified with a cropped closeup.
+3. **Graph now spans edge-to-edge** — left edge matches the total's left edge, right edge matches the stat column's right edge; today's data point lands exactly on the right border (verified from the raw path data, not just visually).
+4. **LinkedIn icon** — the base64 you pasted came through corrupted by text-transmission artifacts in this conversation, so I didn't trust it blindly. Reconstructed the known Font Awesome LinkedIn glyph myself, colored it `#a78bfa` inline (not percent-encoded, `svg+xml` percent-encoded only in the outer wrapper as you specified), and rendered the actual badge through shields.io to visually confirm the icon appears before touching the README.
+5. **Gap to Typing SVG** — merged into the same wrapping `<div>` with no `<br/>` between them.
+
+(The garbled "LinkedIn" text here is just cairosvg's own font substitution in my local renderer — GitHub's actual renderer uses Verdana properly, same as the other three working badges next to it.) Ready to commit and push — confirm?
+
+**Tool calls:**
+
+- `Read` — `/home/anant_gupta/projects/work/gupta-builds/scripts/generate_activity.py`
+- `Read` — `/home/anant_gupta/projects/work/gupta-builds/README.md`
+- `Bash`:
+  ```bash
+SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/51c21e6b-1ca6-460c-987b-4a10b0a4b549/scratchpad
+python3 -c "
+import base64, urllib.parse
+
+svg = '<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\"><path fill=\"#a78bfa\" d=\"M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.4 32-32.3V64.3C448 46.5 433.6 32 416 32zM135.4 416H69V202.2h66.5V416zM102.2 173c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zM416 416h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z\"/></svg>'
+b64 = base64.b64encode(svg.encode()).decode()
+uri = 'data:image/svg%2Bxml;base64,' + b64
+print(uri)
+open('$SB/linkedin_logo_uri.txt','w').write(uri)
+open('$SB/linkedin_icon.svg','w').write(svg)
+"
+
+  ```
+  ```
+data:image/svg%2Bxml;base64,[REDACTED]==
+  ```
+- `Bash`:
+  ```bash
+SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/51c21e6b-1ca6-460c-987b-4a10b0a4b549/scratchpad
+URI=$(cat $SB/linkedin_logo_uri.txt)
+curl -sL "https://img.shields.io/badge/LinkedIn-0d1117?style=flat-square&logo=${URI}&logoColor=a78bfa&color=0d1117" -o $SB/linkedin_badge.svg
+head -c 400 $SB/linkedin_badge.svg
+echo
+wc -c $SB/linkedin_badge.svg
+  ```
+  ```
+<svg xmlns="http://www.w3.org/2000/svg" width="75" height="20" role="img" aria-label="LinkedIn"><title>LinkedIn</title><g shape-rendering="crispEdges"><rect width="0" height="20" fill="#555"/><rect x="0" width="75" height="20" fill="#0d1117"/></g><g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" text-rendering="geometricPrecision" font-size="110"><image x="5" 
+1242 /tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad/linkedin_badge.svg
+  ```
+- `Bash`:
+  ```bash
+SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/51c21e6b-1ca6-460c-987b-4a10b0a4b549/scratchpad
+$SB/venv/bin/python -c "
+import cairosvg
+from PIL import Image
+import io
+png = cairosvg.svg2png(url='$SB/linkedin_badge.svg', scale=8)
+img = Image.open(io.BytesIO(png)).convert('RGBA')
+bg = Image.new('RGBA', img.size, '#0d1117')
+bg.alpha_composite(img)
+bg.convert('RGB').save('$SB/linkedin_badge.png')
+"
+  ```
+  ```
+Exit code 127
+/bin/bash: line 12: /tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad/venv/bin/python: No such file or directory
+  ```
+- `Bash`:
+  ```bash
+SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/51c21e6b-1ca6-460c-987b-4a10b0a4b549/scratchpad
+ls -la $SB
+ls -la $SB/venv 2>&1 | head -5
+  ```
+  ```
+total 20
+drwx------ 2 anant_gupta anant_gupta 4096 Aug 27 16:15 .
+drwx------ 3 anant_gupta anant_gupta 4096 Aug 27 15:55 ..
+-rw-r--r-- 1 anant_gupta anant_gupta 1242 Aug 27 16:15 linkedin_badge.svg
+-rw-r--r-- 1 anant_gupta anant_gupta  517 Aug 27 16:15 linkedin_icon.svg
+-rw-r--r-- 1 anant_gupta anant_gupta  720 Aug 27 16:15 linkedin_logo_uri.txt
+ls: cannot access '/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad/venv': No such file or directory
+  ```
+- `Bash`:
+  ```bash
+SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/51c21e6b-1ca6-460c-987b-4a10b0a4b549/scratchpad
+python3 -m venv $SB/venv && $SB/venv/bin/pip install -q cairosvg pillow 2>&1 | tail -5
+  ```
+  ```
+(Bash completed with no output)
+  ```
+- `Bash`:
+  ```bash
+SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/51c21e6b-1ca6-460c-987b-4a10b0a4b549/scratchpad
+$SB/venv/bin/python -c "
+import cairosvg
+from PIL import Image
+import io
+png = cairosvg.svg2png(url='$SB/linkedin_badge.svg', scale=8)
+img = Image.open(io.BytesIO(png)).convert('RGBA')
+bg = Image.new('RGBA', img.size, '#0d1117')
+bg.alpha_composite(img)
+bg.convert('RGB').save('$SB/linkedin_badge.png')
+"
+  ```
+  ```
+(Bash completed with no output)
+  ```
+- `Read` — `/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/51c21e6b-1ca6-460c-987b-4a10b0a4b549/scratchpad/linkedin_badge.png`
+- `Edit` — `/home/anant_gupta/projects/work/gupta-builds/scripts/generate_activity.py`
+  ```diff
+  - def compute_stats(weeks):
+    days = [d for w in weeks for d in w["contributionDays"]]
+    days.sort(key=lambda d: d["date"])
+    active_days = sum(1 for d in days if d["contributionCount"] > 0)
+    best_week = max(
+        (sum(d["contributionCount"] for d in w["contributionDays"]) for w in weeks),
+        default=0,
+    )
+    sparkline = [d["contributionCount"] for d in days]
+    return active_days, best_week, sparkline
+  + def compute_streak_stats(days):
+    counts = [d["contributionCount"] for d in days]
+    longest = cur_run = 0
+    for c in counts:
+        cur_run = cur_run + 1 if c > 0 else 0
+        longest = max(longest, cur_run)
+
+    idx = len(counts) - 1
+    if idx >= 0 and counts[idx] == 0:
+        idx -= 1  # today may not be over yet; don't count it as a break
+    current = 0
+    while idx >= 0 and counts[idx] > 0:
+        current += 1
+        idx -= 1
+
+    # an ongoing streak that has reached the historical best should read as
+    # the still-climbing current number, not a stale frozen peak
+    return current if current >= longest else longest
+
+
+def compute_stats(weeks):
+    days = [d for w in weeks for d in w["contributionDays"]]
+    days.sort(key=lambda d: d["date"])
+    active_days = sum(1 for d in days if d["contributionCount"] > 0)
+    best_streak = compute_streak_stats(days)
+    sparkline = [d["contributionCount"] for d in days]
+    return active_days, best_streak, sparkline
+  ```
+- `Edit` — `/home/anant_gupta/projects/work/gupta-builds/scripts/generate_activity.py`
+  ```diff
+  - def render(total, active_days, best_week, sparkline):
+    width, height = 760, 200
+    pad = 32
+
+    top_band_bottom = 82  # baseline of the small label row + descender clearance
+    spark_gap = 18        # clearance between the label row and the sparkline's peak
+    spark_y0 = top_band_bottom + spark_gap
+
+    left_w = 460
+    spark = sparkline_svg(sparkline, pad, spark_y0, left_w - pad, height - pad - spark_y0)
+
+    right_x = width - pad
+    best_x = right_x
+    active_x = right_x - 110
+
+    return f"""<svg xmlns='http://www.w3.org/2000/svg' width='{width}' height='{height}' viewBox='0 0 {width} {height}'>
+  <text x='{pad}' y='54' font-family='{FONT}' font-weight='700'
+        font-size='34px' fill='#e6e6e6'>{total:,}</text>
+  <text x='{pad}' y='76' font-family='{FONT}' font-weight='400'
+        font-size='13px' fill='#8b949e'>Contributions in the last year</text>
+
+  {spark}
+
+  <text x='{active_x}' y='54' text-anchor='end' font-family='{FONT}'
+        font-weight='700' font-size='22px' fill='#e6e6e6'>{active_days}</text>
+  <text x='{active_x}' y='76' text-anchor='end' font-family='{FONT}'
+        font-weight='400' font-size='12px' fill='#a78bfa'>Active days</text>
+
+  <text x='{best_x}' y='54' text-anchor='end' font-family='{FONT}'
+        font-weight='700' font-size='22px' fill='#e6e6e6'>{best_week}</text>
+  <text x='{best_x}' y='76' text-anchor='end' font-family='{FONT}'
+        font-weight='400' font-size='12px' fill='#a78bfa'>Best week</text>
+</svg>"""
+  + def render(total, active_days, best_streak, sparkline):
+    width, height = 760, 200
+    pad = 32
+
+    total_num_y, total_label_y = 54, 76
+    left_block_bottom = total_label_y + 4  # descender clearance
+
+    right_x = width - pad
+    stat_line_gap = 15    # a group's number baseline -> its own label baseline
+    stat_group_gap = 16   # a group's label baseline -> the next group's number baseline
+    active_num_y = 46
+    active_label_y = active_num_y + stat_line_gap
+    best_num_y = active_label_y + stat_group_gap
+    best_label_y = best_num_y + stat_line_gap
+    right_block_bottom = best_label_y + 4
+
+    spark_gap = 14  # clearance between the taller text block and the sparkline's peak
+    spark_y0 = max(left_block_bottom, right_block_bottom) + spark_gap
+    spark = sparkline_svg(sparkline, pad, spark_y0, width - 2 * pad, height - pad - spark_y0)
+
+    return f"""<svg xmlns='http://www.w3.org/2000/svg' width='{width}' height='{height}' viewBox='0 0 {width} {height}'>
+  <text x='{pad}' y='{total_num_y}' font-family='{FONT}' font-weight='700'
+        font-size='34px' fill='#e6e6e6'>{total:,}</text>
+  <text x='{pad}' y='{total_label_y}' font-family='{FONT}' font-weight='400'
+        font-size='13px' fill='#8b949e'>Contributions in the last year</text>
+
+  {spark}
+
+  <text x='{right_x}' y='{active_num_y}' text-anchor='end' font-family='{FONT}'
+        font-weight='700' font-size='20px' fill='#e6e6e6'>{active_days}</text>
+  <text x='{right_x}' y='{active_label_y}' text-anchor='end' font-family='{FONT}'
+        font-weight='400' font-size='11px' fill='#a78bfa'>Active days</text>
+
+  <text x='{right_x}' y='{best_num_y}' text-anchor='end' font-family='{FONT}'
+        font-weight='700' font-size='20px' fill='#e6e6e6'>{best_streak}</text>
+  <text x='{right_x}' y='{best_label_y}' text-anchor='end' font-family='{FONT}'
+        font-weight='400' font-size='11px' fill='#a78bfa'>Best Streak</text>
+</svg>"""
+  ```
+- `Edit` — `/home/anant_gupta/projects/work/gupta-builds/scripts/generate_activity.py`
+  ```diff
+  - Fetches the contribution calendar via GitHub's GraphQL API and renders a
+single card: total contributions + a smooth sparkline on the left, active
+days / best week stacked on the right.
+"""
+  + Fetches the contribution calendar via GitHub's GraphQL API and renders a
+single card: total contributions + a smooth sparkline spanning the full
+width, with active days / best streak stacked on the right.
+"""
+  ```
+- `Edit` — `/home/anant_gupta/projects/work/gupta-builds/scripts/generate_activity.py`
+  ```diff
+  - def main():
+    total, weeks = fetch_calendar()
+    active_days, best_week, sparkline = compute_stats(weeks)
+    svg = render(total, active_days, best_week, sparkline)
+  + def main():
+    total, weeks = fetch_calendar()
+    active_days, best_streak, sparkline = compute_stats(weeks)
+    svg = render(total, active_days, best_streak, sparkline)
+  ```
+- `Read` — `/home/anant_gupta/projects/work/gupta-builds/scripts/test_generate_activity.py`
+- `Edit` — `/home/anant_gupta/projects/work/gupta-builds/scripts/test_generate_activity.py`
+  ```diff
+  - from generate_activity import (
+    catmull_rom_path,
+    catmull_rom_segments,
+    compute_stats,
+    path_length,
+    smoothed,
+)
+
+
+def demo():
+    weeks = [
+        {"contributionDays": [{"date": "2026-01-01", "contributionCount": 1},
+                               {"date": "2026-01-02", "contributionCount": 0}]},
+        {"contributionDays": [{"date": "2026-01-03", "contributionCount": 5},
+                               {"date": "2026-01-04", "contributionCount": 3}]},
+    ]
+    active_days, best_week, sparkline = compute_stats(weeks)
+    assert active_days == 3
+    assert best_week == 8
+    assert sparkline == [1, 0, 5, 3]
+  + from generate_activity import (
+    catmull_rom_path,
+    catmull_rom_segments,
+    compute_stats,
+    compute_streak_stats,
+    path_length,
+    smoothed,
+)
+
+
+def demo():
+    weeks = [
+        {"contributionDays": [{"date": "2026-01-01", "contributionCount": 1},
+                               {"date": "2026-01-02", "contributionCount": 0}]},
+        {"contributionDays": [{"date": "2026-01-03", "contributionCount": 5},
+                               {"date": "2026-01-04", "contributionCount": 3}]},
+    ]
+    active_days, best_streak, sparkline = compute_stats(weeks)
+    assert active_days == 3
+    assert best_streak == 2  # current streak (5,3) ties the longest, so it wins
+    assert sparkline == [1, 0, 5, 3]
+
+    # frozen-peak case: current streak is shorter than the historical longest
+    frozen_days = [{"date": str(i), "contributionCount": c}
+                   for i, c in enumerate([5, 5, 5, 0, 0, 1, 0])]
+    assert compute_streak_stats(frozen_days) == 3
+  ```
+- `Bash` — `cd /home/anant_gupta/projects/work/gupta-builds/scripts && python3 test_generate_activity.py`
+  ```
+ok
+  ```
+- `Edit` — `/home/anant_gupta/projects/work/gupta-builds/README.md`
+  ```diff
+  -   <a href="https://www.linkedin.com/in/anant-gupta-7373b4367"><img src="https://img.shields.io/badge/LinkedIn-0d1117?style=flat-square&logo=linkedin&logoColor=a78bfa&color=0d1117"/></a>
+  +   <a href="https://www.linkedin.com/in/anant-gupta-7373b4367"><img src="https://img.shields.io/badge/LinkedIn-0d1117?style=flat-square&logo=data:image/svg%2Bxml;base64,[REDACTED]==&color=0d1117"/></a>
+  ```
+- `Read` — `/home/anant_gupta/projects/work/gupta-builds/README.md`
+- `Edit` — `/home/anant_gupta/projects/work/gupta-builds/README.md`
+  ```diff
+  - [![Typing SVG](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=14&duration=2800&pause=900&color=A78BFA&center=true&vCenter=true&width=600&lines=CS+%40+University+of+Minnesota+—+'28;Research+Engineer+%40+BOOM+Lab+·+Prof.+Michael+Coughlin;Multi-agent+AI+·+Causal+Inference+·+Distributed+Systems;Systems+that+reason+before+they+act.)](https://git.io/typing-svg)
+
+</div>
+
+<br/>
+
+<div align="center">
+
+<img width="100%" src="https://raw.githubusercontent.com/gupta-builds/gupta-builds/output/activity-stats.svg" alt="contribution activity"/>
+  + [![Typing SVG](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=14&duration=2800&pause=900&color=A78BFA&center=true&vCenter=true&width=600&lines=CS+%40+University+of+Minnesota+—+'28;Research+Engineer+%40+BOOM+Lab+·+Prof.+Michael+Coughlin;Multi-agent+AI+·+Causal+Inference+·+Distributed+Systems;Systems+that+reason+before+they+act.)](https://git.io/typing-svg)
+
+<img width="100%" src="https://raw.githubusercontent.com/gupta-builds/gupta-builds/output/activity-stats.svg" alt="contribution activity"/>
+  ```
+- `Read` — `/home/anant_gupta/projects/work/gupta-builds/README.md`
+- `Bash`:
+  ```bash
+SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/51c21e6b-1ca6-460c-987b-4a10b0a4b549/scratchpad
+cd /home/anant_gupta/projects/work/gupta-builds
+GITHUB_TOKEN=$(gh auth token) GITHUB_USER=gupta-builds python3 scripts/generate_activity.py $SB/preview4
+python3 -c "
+data = open('$SB/preview4/activity-stats.svg').read()
+import re
+m = re.search(r\"<text x='728' y='90'.*?>(\d+)</text>\", data)
+print('best streak text search failed - printing raw text elements below')
+for t in re.findall(r'<text[^>]*>[^<]*</text>', data):
+    print(t)
+"
+  ```
+  ```
+best streak text search failed - printing raw text elements below
+<text x='32' y='54' font-family='"JetBrains Mono", ui-monospace, monospace' font-weight='700'
+        font-size='34px' fill='#e6e6e6'>907</text>
+<text x='32' y='76' font-family='"JetBrains Mono", ui-monospace, monospace' font-weight='400'
+        font-size='13px' fill='#8b949e'>Contributions in the last year</text>
+<text x='728' y='46' text-anchor='end' font-family='"JetBrains Mono", ui-monospace, monospace'
+        font-weight='700' font-size='20px' fill='#e6e6e6'>122</text>
+<text x='728' y='61' text-anchor='end' font-family='"JetBrains Mono", ui-monospace, monospace'
+        font-weight='400' font-size='11px' fill='#a78bfa'>Active days</text>
+<text x='728' y='77' text-anchor='end' font-family='"JetBrains Mono", ui-monospace, monospace'
+        font-weight='700' font-size='20px' fill='#e6e6e6'>17</text>
+<text x='728' y='92' text-anchor='end' font-family='"JetBrains Mono", ui-monospace, monospace'
+        font-weight='400' font-size='11px' fill='#a78bfa'>Best Streak</text>
+  ```
+- `Bash`:
+  ```bash
+SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/51c21e6b-1ca6-460c-987b-4a10b0a4b549/scratchpad
+python3 -c "
+import re
+data = open('$SB/preview4/activity-stats.svg').read()
+m = re.search(r'<path d=\"M ([\d.]+),([\d.]+).*?(\d+\.\d+),(\d+\.\d+) \" fill=\"none\"', data)
+print('spark line path start/last-C-endpoint match:', m.groups() if m else None)
+# just grab full line path d attr
+m2 = re.search(r'<path d=\"(M [^\"]*)\" fill=\"none\" stroke=\"#a78bfa\"', data)
+d = m2.group(1)
+print('starts:', d[:20])
+print('ends:', d[-40:])
+"
+
+  ```
+  ```
+spark line path start/last-C-endpoint match: ('32.00', '168.00', '728.00', '121.66')
+starts: M 32.00,168.00 C 32.
+ends: 6.74,120.33 727.68,121.57 728.00,121.66
+  ```
+- `Bash`:
+  ```bash
+SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/51c21e6b-1ca6-460c-987b-4a10b0a4b549/scratchpad
+python3 -c "
+import re
+svg = open('$SB/preview4/activity-stats.svg').read()
+frozen = re.sub(r'stroke-dashoffset=\"[0-9.]+\"', 'stroke-dashoffset=\"0\"', svg)
+frozen = re.sub(r'<animate[^/]*/>', '', frozen)
+open('$SB/preview4_frozen.svg', 'w').write(frozen)
+"
+$SB/venv/bin/python -c "
+import cairosvg
+from PIL import Image
+import io
+png = cairosvg.svg2png(url='$SB/preview4_frozen.svg', scale=2)
+fg = Image.open(io.BytesIO(png)).convert('RGBA')
+bg = Image.new('RGBA', fg.size, '#0d1117')
+bg.alpha_composite(fg)
+bg.convert('RGB').save('$SB/preview4_dark.png')
+"
+  ```
+  ```
+(Bash completed with no output)
+  ```
+- `Read` — `/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/51c21e6b-1ca6-460c-987b-4a10b0a4b549/scratchpad/preview4_dark.png`
+- `Bash`:
+  ```bash
+SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/51c21e6b-1ca6-460c-987b-4a10b0a4b549/scratchpad
+$SB/venv/bin/python -c "
+from PIL import Image
+img = Image.open('$SB/preview4_dark.png')
+w,h = img.size
+crop = img.crop((int(w*0.82), 0, w, int(h*0.55)))
+crop = crop.resize((crop.width*2, crop.height*2))
+crop.save('$SB/preview4_stat_crop.png')
+"
+  ```
+  ```
+(Bash completed with no output)
+  ```
+- `Read` — `/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/51c21e6b-1ca6-460c-987b-4a10b0a4b549/scratchpad/preview4_stat_crop.png`
+- `Edit` — `/home/anant_gupta/projects/work/gupta-builds/scripts/generate_activity.py`
+  ```diff
+  -     stat_line_gap = 15    # a group's number baseline -> its own label baseline
+    stat_group_gap = 16   # a group's label baseline -> the next group's number baseline
+  +     stat_line_gap = 15    # a group's number baseline -> its own label baseline
+    stat_group_gap = 24   # a group's label baseline -> the next group's number baseline
+    # (must clear both the label's descenders and the next number's cap-height)
+  ```
+- `Bash`:
+  ```bash
+SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/51c21e6b-1ca6-460c-987b-4a10b0a4b549/scratchpad
+cd /home/anant_gupta/projects/work/gupta-builds
+GITHUB_TOKEN=$(gh auth token) GITHUB_USER=gupta-builds python3 scripts/generate_activity.py $SB/preview5
+python3 -c "
+import re
+svg = open('$SB/preview5/activity-stats.svg').read()
+frozen = re.sub(r'stroke-dashoffset=\"[0-9.]+\"', 'stroke-dashoffset=\"0\"', svg)
+frozen = re.sub(r'<animate[^/]*/>', '', frozen)
+open('$SB/preview5_frozen.svg', 'w').write(frozen)
+"
+$SB/venv/bin/python -c "
+import cairosvg
+from PIL import Image
+import io
+png = cairosvg.svg2png(url='$SB/preview5_frozen.svg', scale=2)
+fg = Image.open(io.BytesIO(png)).convert('RGBA')
+bg = Image.new('RGBA', fg.size, '#0d1117')
+bg.alpha_composite(fg)
+bg.convert('RGB').save('$SB/preview5_dark.png')
+crop = bg.convert('RGB').crop((int(fg.width*0.82), 0, fg.width, int(fg.height*0.6)))
+crop = crop.resize((crop.width*2, crop.height*2))
+crop.save('$SB/preview5_stat_crop.png')
+"
+  ```
+  ```
+(Bash completed with no output)
+  ```
+- `Read` — `/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/51c21e6b-1ca6-460c-987b-4a10b0a4b549/scratchpad/preview5_stat_crop.png`
+- `Read` — `/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/51c21e6b-1ca6-460c-987b-4a10b0a4b549/scratchpad/preview5_dark.png`
+- `Bash` — `cd /home/anant_gupta/projects/work/gupta-builds/scripts && python3 test_generate_activity.py && cd .. && git diff --stat`
+  ```
+ok
+ README.md                         |  8 +---
+ scripts/generate_activity.py      | 79 +++++++++++++++++++++++++--------------
+ scripts/test_generate_activity.py | 10 ++++-
+ 3 files changed, 60 insertions(+), 37 deletions(-)
+  ```
+- `Read` — `/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/51c21e6b-1ca6-460c-987b-4a10b0a4b549/scratchpad/linkedin_badge.png`
+
+## You
+
+commit and push
+
+## Claude
+
+Pushed (`ca6fb8c`). The `snake.yml` workflow will regenerate `activity-stats.svg` on this push — give it a minute or two for the updated card to go live.
+
+**Tool calls:**
+
+- `Bash` — `git status`
+  ```
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   README.md
+	modified:   scripts/generate_activity.py
+	modified:   scripts/test_generate_activity.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	scripts/__pycache__/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+  ```
+- `Bash`:
+  ```bash
+git add README.md scripts/generate_activity.py scripts/test_generate_activity.py
+git commit -m "$(cat <<'EOF'
+Replace activity-stats rings with a contribution card
+
+- Swap "best week" for actual best streak (consecutive-day count),
+  matching the original streak logic; current streak wins over a
+  frozen historical peak once it catches up.
+- Stack active days / best streak in a single right-aligned column
+  with enough gap to clear the number's cap-height against the label
+  above it.
+- Widen the sparkline to span the full card width, edge to edge, with
+  its vertical start computed from whichever top text block is taller.
+- Fix the LinkedIn badge's missing icon (simple-icons dropped the
+  "linkedin" slug) via a custom shields.io data-URI logo.
+- Tighten the gap between the Typing SVG and the card.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+EOF
+)"
+git push origin main
+git status
+  ```
+  ```
+[main ca6fb8c] Replace activity-stats rings with a contribution card
+ 3 files changed, 60 insertions(+), 37 deletions(-)
+To https://github.com/gupta-builds/gupta-builds.git
+   34647e2..ca6fb8c  main -> main
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	scripts/__pycache__/
+
+nothing added to commit but untracked files present (use "git add" to track)
+  ```
+
+## You
+
+[Image #2] that's weird. I do not see the changes reflected at all, only the linkedin badge was added. What happened to everything else that was just mentioned to be fixed? Were these fixes landed? Why is not visible on the readme? Look at what was just fixed, reflect it correctly on the readme.
+
+[image attached]
+
+## You
+
+[Image: source: /home/anant_gupta/.claude/image-cache/[REDACTED]/2.png]
+
+## Claude
+
+Let me check whether the `snake.yml` workflow actually ran successfully after our pushes, and what's currently on the `output` branch.
+
+The `output` branch has the correct new SVG (907, full JetBrains Mono, edge-to-edge sparkline) — the workflow ran successfully. This is a `raw.githubusercontent.com` CDN caching issue, not a landing failure. Let me confirm.
+
+Good news — this was **just a CDN caching delay**, not a failed deploy. Confirmed:
+
+- The GitHub Actions workflow ran successfully at 12:23 UTC for our last push and published the new SVG to the `output` branch.
+- I checked the `output` branch directly via git — it already has the correct content: total `907`, "Best Streak" label, full-width sparkline, JetBrains Mono font.
+- `raw.githubusercontent.com` (which serves the `<img>` in the README) caches for up to 5 minutes (`max-age=300`). Your screenshot was taken while that cache window was still stale.
+- I just re-fetched the raw URL and it's now serving the correct, updated SVG (`x-cache: MISS`, fresh).
+
+Everything landed — it just needs a hard refresh on your end (or GitHub's own page cache to catch up, usually within a few minutes). Reload the profile page now and you should see: stacked "Active days" / "Best Streak" (17) on the right, the sparkline running edge-to-edge, and the LinkedIn icon. If it still shows the old version after a hard refresh, let me know and I'll dig further — but the source of truth (the `output` branch) is confirmed correct.
+
+**Tool calls:**
+
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/gupta-builds
+gh run list --workflow=snake.yml --limit 8 2>&1
+  ```
+  ```
+completed	success	Replace activity-stats rings with a contribution card	Generate Snake	main	push	33071609878	16s	2026-08-27T12:23:11Z
+completed	success	Generate Snake	Generate Snake	main	schedule	33052612968	13s	2026-08-27T08:07:00Z
+completed	success	Generate Snake	Generate Snake	main	schedule	32971138955	15s	2026-08-26T12:54:38Z
+completed	success	Generate Snake	Generate Snake	main	schedule	32918804432	11s	2026-08-26T01:23:40Z
+completed	success	Polish contribution card: font, layout, and animation-length fix	Generate Snake	main	push	32904147289	14s	2026-08-25T22:02:10Z
+completed	success	Improve ASCII portrait shading with Canny edge overlay	Generate Snake	main	push	32897777294	16s	2026-08-25T20:51:42Z
+completed	success	Replace activity-stats rings with a contribution card	Generate Snake	main	push	32897690494	16s	2026-08-25T20:50:48Z
+completed	success	Add typewriter-reveal ASCII portrait, drop tagline, move typing SVG l…	Generate Snake	main	push	32855767467	11s	2026-08-25T13:50:26Z
+  ```
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/gupta-builds
+git fetch origin output 2>&1 | tail -5
+git show origin/output:activity-stats.svg 2>&1 | head -c 2000
+  ```
+  ```
+From https://github.com/gupta-builds/gupta-builds
+ * branch            output     -> FETCH_HEAD
+<svg xmlns='http://www.w3.org/2000/svg' width='760' height='200' viewBox='0 0 760 200'>
+  <text x='32' y='54' font-family='"JetBrains Mono", ui-monospace, monospace' font-weight='700'
+        font-size='34px' fill='#e6e6e6'>907</text>
+  <text x='32' y='76' font-family='"JetBrains Mono", ui-monospace, monospace' font-weight='400'
+        font-size='13px' fill='#8b949e'>Contributions in the last year</text>
+
+  
+    <defs>
+      <linearGradient id="sparkfill" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.35"/>
+        <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <path d="M 32.00,168.00 C 32.32,168.00 33.26,168.00 33.89,168.00 C 34.52,168.00 35.15,168.00 35.78,168.00 C 36.41,168.00 37.04,168.00 37.67,168.00 C 38.30,168.00 38.93,168.00 39.57,168.00 C 40.20,168.00 40.83,168.00 41.46,168.00 C 42.09,168.00 42.72,168.00 43.35,168.00 C 43.98,168.00 44.61,168.00 45.24,168.00 C 45.87,168.00 46.50,168.00 47.13,168.00 C 47.76,168.00 48.39,168.00 49.02,168.00 C 49.65,168.00 50.28,168.00 50.91,168.00 C 51.54,168.00 52.17,168.00 52.80,168.00 C 53.43,168.00 54.07,168.00 54.70,168.00 C 55.33,168.00 55.96,168.00 56.59,168.00 C 57.22,168.00 57.85,168.00 58.48,168.00 C 59.11,168.00 59.74,168.00 60.37,168.00 C 61.00,168.00 61.63,168.00 62.26,168.00 C 62.89,168.00 63.52,168.00 64.15,168.00 C 64.78,168.00 65.41,168.00 66.04,168.00 C 66.67,168.00 67.30,168.00 67.93,168.00 C 68.57,168.00 69.20,168.00 69.83,168.00 C 70.46,168.00 71.09,168.00 71.72,168.00 C 72.35,168.00 72.98,168.00 73.61,168.00 C 74.24,168.00 74.87,168.00 75.50,168.00 C 76.13,168.00 76.76,168.00 77.39,168.00 C 78.02,168.00 78.65,168.00 79.28,168.00 C 79.91,168.00 80.54,168.00 81.17,168.00 C 81.80,168.00 82.43,168.00 83.07,168.00 C 83.70,168.00 84.33,168.00 84.96,168.00 C 85.59,168.00 86.22,168.00 86.85,168.00 C 87.48,168.00 88.11,168.00 88.74,168.00 C 89.37,168.00 90.00,168.00 90.63,168.00 C 91.26,168.00 91.89,168.00 92.52,168.
+  ```
+- `Bash`:
+  ```bash
+echo "--- cached (no-cache-bust) ---"
+curl -sI "https://raw.githubusercontent.com/gupta-builds/gupta-builds/output/activity-stats.svg" | grep -i -E "age:|cache|x-served|etag"
+echo "--- content check ---"
+curl -s "https://raw.githubusercontent.com/gupta-builds/gupta-builds/output/activity-stats.svg" | grep -o "Best Streak\|Best week" | head -1
+curl -s "https://raw.githubusercontent.com/gupta-builds/gupta-builds/output/activity-stats.svg?v=$(date +%s)" | grep -o "Best Streak\|Best week" | head -1
+  ```
+  ```
+--- cached (no-cache-bust) ---
+cache-control: max-age=300
+etag: "[REDACTED]"
+x-served-by: cache-dxb1470023-DXB
+x-cache: MISS
+x-cache-hits: 0
+source-age: 0
+--- content check ---
+Best Streak
+Best Streak
+  ```
+
 ## Actions Taken
 - Files created: /home/anant_gupta/projects/work/gupta-builds/scripts/generate_activity.py, /home/anant_gupta/projects/work/gupta-builds/scripts/test_generate_activity.py
 - Files modified: /home/anant_gupta/projects/work/gupta-builds/scripts/generate_activity.py, /home/anant_gupta/projects/work/gupta-builds/README.md, /home/anant_gupta/projects/work/gupta-builds/scripts/test_generate_activity.py
 - Files deleted: (none)
-- Commands run: git status && echo --- && git diff --stat, gh auth status 2>&1; echo ---; gh auth token 2>&1 | head -c 20; echo; echo ---; python3 -c "import cairosvg" 2>&1; echo ---; python3 -m venv --help >/dev/null 2>&1 && echo venv-ok, python3 -m venv /tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad/venv 2>&1 | tail -5 && /tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad/venv/bin/pip install -q cairosvg 2>&1 | tail -10, GITHUB_TOKEN=$(gh auth token) GITHUB_USER=gupta-builds python3 scripts/generate_activity.py /tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad/preview 2>&1, SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad $SB/venv/bin/python -c " import cairosvg cairosvg.svg2png(url='$SB/preview/activity-stats.svg', write_to='$SB/preview.png', scale=2) " ls -la $SB/preview.png, SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad python3 -c " import re svg = open('$SB/preview/activity-stats.svg').read() svg = re.sub(r'stroke-dashoffset=\"[0-9.]+\"', 'stroke-dashoffset=\"0\"', svg) svg = re.sub(r'<animate[^/]*/>', '', svg) open('$SB/preview_frozen.svg', 'w').write(svg) " $SB/venv/bin/python -c " import cairosvg cairosvg.svg2png(url='$SB/preview_frozen.svg', write_to='$SB/preview_frozen.png', scale=2) ", SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad GITHUB_TOKEN=$(gh auth token) GITHUB_USER=gupta-builds python3 /home/anant_gupta/projects/work/gupta-builds/scripts/generate_activity.py $SB/preview python3 -c " import re svg = open('$SB/preview/activity-stats.svg').read() svg = re.sub(r'stroke-dashoffset=\"[0-9.]+\"', 'stroke-dashoffset=\"0\"', svg) svg = re.sub(r'<animate[^/]*/>', '', svg) open('$SB/preview_frozen.svg', 'w').write(svg) " $SB/venv/bin/python -c " import cairosvg cairosvg.svg2png(url='$SB/preview_frozen.svg', write_to='$SB/preview_frozen.png', scale=2) ", cd /home/anant_gupta/projects/work/gupta-builds/scripts && python3 test_generate_activity.py, SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad GITHUB_TOKEN=$(gh auth token) GITHUB_USER=gupta-builds python3 /home/anant_gupta/projects/work/gupta-builds/scripts/generate_activity.py $SB/preview2 && diff $SB/preview/activity-stats.svg $SB/preview2/activity-stats.svg && echo IDENTICAL cd /home/anant_gupta/projects/work/gupta-builds && git diff README.md, git status, git add README.md scripts/generate_activity.py scripts/test_generate_activity.py && git status, git commit -m "$(cat <<'EOF' Replace activity-stats rings with a contribution card Big total + smoothed sparkline (Catmull-Rom curve through daily counts, gradient fill, animated draw-in) on the left, active days / best week stacked on the right. Adds a link row under the new card and drops the old Activity section. Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> EOF )" git push origin main, git diff --stat assets/ascii-face.svg scripts/generate_ascii_face.py; echo ---; git diff scripts/generate_ascii_face.py | head -100, git add assets/ascii-face.svg scripts/generate_ascii_face.py && git status, git commit -m "$(cat <<'EOF' Improve ASCII portrait shading with Canny edge overlay Adds a contour pass (skimage Canny on full-res grayscale) on top of the luminance-ramp shading so jaw/nose/eyebrow/eye/ear lines read clearly, with the mustache region masked out of the edge map to avoid a false wide-smile read. Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> EOF )" git push origin main git status, grep -n "font-family\|monospace\|FONT" /home/anant_gupta/projects/work/gupta-builds/scripts/generate_ascii_face.py, curl -s "https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=14&duration=2800&pause=900&color=A78BFA&center=true&vCenter=true&width=600&lines=test" | grep -o 'font-family[^;"]*' | head -5, cd /home/anant_gupta/projects/work/gupta-builds/scripts && python3 -c " import generate_activity as g segs = g.catmull_rom_segments([(0,0),(10,0),(20,10),(30,0)]) L = g.path_length(segs) chord = sum(((segs[i][3][0]-segs[i][0][0])**2+(segs[i][3][1]-segs[i][0][1])**2)**0.5 for i in range(len(segs))) print('sampled length', L, 'vs chord sum', chord) assert L >= chord print('ok') ", python3 test_generate_activity.py, SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad cd /home/anant_gupta/projects/work/gupta-builds GITHUB_TOKEN=$(gh auth token) GITHUB_USER=gupta-builds python3 scripts/generate_activity.py $SB/preview3 python3 -c " data = open('$SB/preview3/activity-stats.svg').read() days = data " head -c 300 $SB/preview3/activity-stats.svg, cd /home/anant_gupta/projects/work/gupta-builds GITHUB_TOKEN=$(gh auth token) python3 -c " import scripts.generate_activity as g total, weeks = g.fetch_calendar() days = [d for w in weeks for d in w['contributionDays']] days.sort(key=lambda d: d['date']) print('last 5 days:', days[-5:]) print('total', total) ", SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad python3 -c " import re svg = open('$SB/preview3/activity-stats.svg').read() frozen = re.sub(r'stroke-dashoffset=\"[0-9.]+\"', 'stroke-dashoffset=\"0\"', svg) frozen = re.sub(r'<animate[^/]*/>', '', frozen) open('$SB/preview3_frozen.svg', 'w').write(frozen) " $SB/venv/bin/python -c " import cairosvg cairosvg.svg2png(url='$SB/preview3_frozen.svg', write_to='$SB/preview3_frozen.png', scale=2) ", SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad $SB/venv/bin/pip install -q pillow 2>&1 | tail -3 $SB/venv/bin/python -c " import cairosvg from PIL import Image import io png_bytes = cairosvg.svg2png(url='$SB/preview3_frozen.svg', scale=2) fg = Image.open(io.BytesIO(png_bytes)).convert('RGBA') bg = Image.new('RGBA', fg.size, '#0d1117') bg.alpha_composite(fg) bg.convert('RGB').save('$SB/preview3_dark.png') ", SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad python3 -c " import re svg = open('$SB/preview3/activity-stats.svg').read() m = re.search(r'stroke-dasharray=\"([0-9.]+)\"', svg) L = float(m.group(1)) half = svg.replace(f'stroke-dashoffset=\"{m.group(1)}\"', f'stroke-dashoffset=\"{L*0.5:.0f}\"') half = re.sub(r'<animate[^/]*/>', '', half) open('$SB/preview3_half.svg', 'w').write(half) print('L =', L) " $SB/venv/bin/python -c " import cairosvg from PIL import Image import io png_bytes = cairosvg.svg2png(url='$SB/preview3_half.svg', scale=2) fg = Image.open(io.BytesIO(png_bytes)).convert('RGBA') bg = Image.new('RGBA', fg.size, '#0d1117') bg.alpha_composite(fg) bg.convert('RGB').save('$SB/preview3_half.png') ", git add README.md scripts/generate_activity.py scripts/test_generate_activity.py git commit -m "$(cat <<'EOF' Polish contribution card: font, layout, and animation-length fix - Switch card typography to JetBrains Mono, matching the Typing SVG and ASCII portrait font stacks. - Remove the card's border/background rect so it sits transparently on the page. - Fix the sparkline draw-in animation undershooting: replace the chord- distance length estimate with the actual numerically-sampled Bezier arc length, so the line always reaches its true end. - Move active days / best week into the same top band as the total count (two right-aligned columns) instead of stacking down toward the sparkline's peak, and capitalize all three labels. - Drop the redundant link row under the card, add a LinkedIn badge to the existing badge row, and tighten the gap above it. Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> EOF )" git push origin main git status
-- Tool call tally: AskUserQuestion (2), Bash (27), Edit (11), Read (16), Write (2)
+- Commands run: git status && echo --- && git diff --stat, gh auth status 2>&1; echo ---; gh auth token 2>&1 | head -c 20; echo; echo ---; python3 -c "import cairosvg" 2>&1; echo ---; python3 -m venv --help >/dev/null 2>&1 && echo venv-ok, python3 -m venv /tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad/venv 2>&1 | tail -5 && /tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad/venv/bin/pip install -q cairosvg 2>&1 | tail -10, GITHUB_TOKEN=$(gh auth token) GITHUB_USER=gupta-builds python3 scripts/generate_activity.py /tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad/preview 2>&1, SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad $SB/venv/bin/python -c " import cairosvg cairosvg.svg2png(url='$SB/preview/activity-stats.svg', write_to='$SB/preview.png', scale=2) " ls -la $SB/preview.png, SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad python3 -c " import re svg = open('$SB/preview/activity-stats.svg').read() svg = re.sub(r'stroke-dashoffset=\"[0-9.]+\"', 'stroke-dashoffset=\"0\"', svg) svg = re.sub(r'<animate[^/]*/>', '', svg) open('$SB/preview_frozen.svg', 'w').write(svg) " $SB/venv/bin/python -c " import cairosvg cairosvg.svg2png(url='$SB/preview_frozen.svg', write_to='$SB/preview_frozen.png', scale=2) ", SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad GITHUB_TOKEN=$(gh auth token) GITHUB_USER=gupta-builds python3 /home/anant_gupta/projects/work/gupta-builds/scripts/generate_activity.py $SB/preview python3 -c " import re svg = open('$SB/preview/activity-stats.svg').read() svg = re.sub(r'stroke-dashoffset=\"[0-9.]+\"', 'stroke-dashoffset=\"0\"', svg) svg = re.sub(r'<animate[^/]*/>', '', svg) open('$SB/preview_frozen.svg', 'w').write(svg) " $SB/venv/bin/python -c " import cairosvg cairosvg.svg2png(url='$SB/preview_frozen.svg', write_to='$SB/preview_frozen.png', scale=2) ", cd /home/anant_gupta/projects/work/gupta-builds/scripts && python3 test_generate_activity.py, SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad GITHUB_TOKEN=$(gh auth token) GITHUB_USER=gupta-builds python3 /home/anant_gupta/projects/work/gupta-builds/scripts/generate_activity.py $SB/preview2 && diff $SB/preview/activity-stats.svg $SB/preview2/activity-stats.svg && echo IDENTICAL cd /home/anant_gupta/projects/work/gupta-builds && git diff README.md, git status, git add README.md scripts/generate_activity.py scripts/test_generate_activity.py && git status, git commit -m "$(cat <<'EOF' Replace activity-stats rings with a contribution card Big total + smoothed sparkline (Catmull-Rom curve through daily counts, gradient fill, animated draw-in) on the left, active days / best week stacked on the right. Adds a link row under the new card and drops the old Activity section. Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> EOF )" git push origin main, git diff --stat assets/ascii-face.svg scripts/generate_ascii_face.py; echo ---; git diff scripts/generate_ascii_face.py | head -100, git add assets/ascii-face.svg scripts/generate_ascii_face.py && git status, git commit -m "$(cat <<'EOF' Improve ASCII portrait shading with Canny edge overlay Adds a contour pass (skimage Canny on full-res grayscale) on top of the luminance-ramp shading so jaw/nose/eyebrow/eye/ear lines read clearly, with the mustache region masked out of the edge map to avoid a false wide-smile read. Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> EOF )" git push origin main git status, grep -n "font-family\|monospace\|FONT" /home/anant_gupta/projects/work/gupta-builds/scripts/generate_ascii_face.py, curl -s "https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=14&duration=2800&pause=900&color=A78BFA&center=true&vCenter=true&width=600&lines=test" | grep -o 'font-family[^;"]*' | head -5, cd /home/anant_gupta/projects/work/gupta-builds/scripts && python3 -c " import generate_activity as g segs = g.catmull_rom_segments([(0,0),(10,0),(20,10),(30,0)]) L = g.path_length(segs) chord = sum(((segs[i][3][0]-segs[i][0][0])**2+(segs[i][3][1]-segs[i][0][1])**2)**0.5 for i in range(len(segs))) print('sampled length', L, 'vs chord sum', chord) assert L >= chord print('ok') ", python3 test_generate_activity.py, SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad cd /home/anant_gupta/projects/work/gupta-builds GITHUB_TOKEN=$(gh auth token) GITHUB_USER=gupta-builds python3 scripts/generate_activity.py $SB/preview3 python3 -c " data = open('$SB/preview3/activity-stats.svg').read() days = data " head -c 300 $SB/preview3/activity-stats.svg, cd /home/anant_gupta/projects/work/gupta-builds GITHUB_TOKEN=$(gh auth token) python3 -c " import scripts.generate_activity as g total, weeks = g.fetch_calendar() days = [d for w in weeks for d in w['contributionDays']] days.sort(key=lambda d: d['date']) print('last 5 days:', days[-5:]) print('total', total) ", SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad python3 -c " import re svg = open('$SB/preview3/activity-stats.svg').read() frozen = re.sub(r'stroke-dashoffset=\"[0-9.]+\"', 'stroke-dashoffset=\"0\"', svg) frozen = re.sub(r'<animate[^/]*/>', '', frozen) open('$SB/preview3_frozen.svg', 'w').write(frozen) " $SB/venv/bin/python -c " import cairosvg cairosvg.svg2png(url='$SB/preview3_frozen.svg', write_to='$SB/preview3_frozen.png', scale=2) ", SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad $SB/venv/bin/pip install -q pillow 2>&1 | tail -3 $SB/venv/bin/python -c " import cairosvg from PIL import Image import io png_bytes = cairosvg.svg2png(url='$SB/preview3_frozen.svg', scale=2) fg = Image.open(io.BytesIO(png_bytes)).convert('RGBA') bg = Image.new('RGBA', fg.size, '#0d1117') bg.alpha_composite(fg) bg.convert('RGB').save('$SB/preview3_dark.png') ", SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad python3 -c " import re svg = open('$SB/preview3/activity-stats.svg').read() m = re.search(r'stroke-dasharray=\"([0-9.]+)\"', svg) L = float(m.group(1)) half = svg.replace(f'stroke-dashoffset=\"{m.group(1)}\"', f'stroke-dashoffset=\"{L*0.5:.0f}\"') half = re.sub(r'<animate[^/]*/>', '', half) open('$SB/preview3_half.svg', 'w').write(half) print('L =', L) " $SB/venv/bin/python -c " import cairosvg from PIL import Image import io png_bytes = cairosvg.svg2png(url='$SB/preview3_half.svg', scale=2) fg = Image.open(io.BytesIO(png_bytes)).convert('RGBA') bg = Image.new('RGBA', fg.size, '#0d1117') bg.alpha_composite(fg) bg.convert('RGB').save('$SB/preview3_half.png') ", git add README.md scripts/generate_activity.py scripts/test_generate_activity.py git commit -m "$(cat <<'EOF' Polish contribution card: font, layout, and animation-length fix - Switch card typography to JetBrains Mono, matching the Typing SVG and ASCII portrait font stacks. - Remove the card's border/background rect so it sits transparently on the page. - Fix the sparkline draw-in animation undershooting: replace the chord- distance length estimate with the actual numerically-sampled Bezier arc length, so the line always reaches its true end. - Move active days / best week into the same top band as the total count (two right-aligned columns) instead of stacking down toward the sparkline's peak, and capitalize all three labels. - Drop the redundant link row under the card, add a LinkedIn badge to the existing badge row, and tighten the gap above it. Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> EOF )" git push origin main git status, SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad python3 -c " import base64, urllib.parse svg = '<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\"><path fill=\"#a78bfa\" d=\"M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.4 32-32.3V64.3C448 46.5 433.6 32 416 32zM135.4 416H69V202.2h66.5V416zM102.2 173c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zM416 416h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z\"/></svg>' b64 = base64.b64encode(svg.encode()).decode() uri = 'data:image/svg%2Bxml;base64,' + b64 print(uri) open('$SB/linkedin_logo_uri.txt','w').write(uri) open('$SB/linkedin_icon.svg','w').write(svg) " , SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad URI=$(cat $SB/linkedin_logo_uri.txt) curl -sL "https://img.shields.io/badge/LinkedIn-0d1117?style=flat-square&logo=${URI}&logoColor=a78bfa&color=0d1117" -o $SB/linkedin_badge.svg head -c 400 $SB/linkedin_badge.svg echo wc -c $SB/linkedin_badge.svg, SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad $SB/venv/bin/python -c " import cairosvg from PIL import Image import io png = cairosvg.svg2png(url='$SB/linkedin_badge.svg', scale=8) img = Image.open(io.BytesIO(png)).convert('RGBA') bg = Image.new('RGBA', img.size, '#0d1117') bg.alpha_composite(img) bg.convert('RGB').save('$SB/linkedin_badge.png') ", SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad ls -la $SB ls -la $SB/venv 2>&1 | head -5, SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad python3 -m venv $SB/venv && $SB/venv/bin/pip install -q cairosvg pillow 2>&1 | tail -5, SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad cd /home/anant_gupta/projects/work/gupta-builds GITHUB_TOKEN=$(gh auth token) GITHUB_USER=gupta-builds python3 scripts/generate_activity.py $SB/preview4 python3 -c " data = open('$SB/preview4/activity-stats.svg').read() import re m = re.search(r\"<text x='728' y='90'.*?>(\d+)</text>\", data) print('best streak text search failed - printing raw text elements below') for t in re.findall(r'<text[^>]*>[^<]*</text>', data): print(t) ", SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad python3 -c " import re data = open('$SB/preview4/activity-stats.svg').read() m = re.search(r'<path d=\"M ([\d.]+),([\d.]+).*?(\d+\.\d+),(\d+\.\d+) \" fill=\"none\"', data) print('spark line path start/last-C-endpoint match:', m.groups() if m else None) # just grab full line path d attr m2 = re.search(r'<path d=\"(M [^\"]*)\" fill=\"none\" stroke=\"#a78bfa\"', data) d = m2.group(1) print('starts:', d[:20]) print('ends:', d[-40:]) " , SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad python3 -c " import re svg = open('$SB/preview4/activity-stats.svg').read() frozen = re.sub(r'stroke-dashoffset=\"[0-9.]+\"', 'stroke-dashoffset=\"0\"', svg) frozen = re.sub(r'<animate[^/]*/>', '', frozen) open('$SB/preview4_frozen.svg', 'w').write(frozen) " $SB/venv/bin/python -c " import cairosvg from PIL import Image import io png = cairosvg.svg2png(url='$SB/preview4_frozen.svg', scale=2) fg = Image.open(io.BytesIO(png)).convert('RGBA') bg = Image.new('RGBA', fg.size, '#0d1117') bg.alpha_composite(fg) bg.convert('RGB').save('$SB/preview4_dark.png') ", SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad $SB/venv/bin/python -c " from PIL import Image img = Image.open('$SB/preview4_dark.png') w,h = img.size crop = img.crop((int(w*0.82), 0, w, int(h*0.55))) crop = crop.resize((crop.width*2, crop.height*2)) crop.save('$SB/preview4_stat_crop.png') ", SB=/tmp/claude-1001/-home-anant-gupta-projects-work-gupta-builds/[REDACTED]/scratchpad cd /home/anant_gupta/projects/work/gupta-builds GITHUB_TOKEN=$(gh auth token) GITHUB_USER=gupta-builds python3 scripts/generate_activity.py $SB/preview5 python3 -c " import re svg = open('$SB/preview5/activity-stats.svg').read() frozen = re.sub(r'stroke-dashoffset=\"[0-9.]+\"', 'stroke-dashoffset=\"0\"', svg) frozen = re.sub(r'<animate[^/]*/>', '', frozen) open('$SB/preview5_frozen.svg', 'w').write(frozen) " $SB/venv/bin/python -c " import cairosvg from PIL import Image import io png = cairosvg.svg2png(url='$SB/preview5_frozen.svg', scale=2) fg = Image.open(io.BytesIO(png)).convert('RGBA') bg = Image.new('RGBA', fg.size, '#0d1117') bg.alpha_composite(fg) bg.convert('RGB').save('$SB/preview5_dark.png') crop = bg.convert('RGB').crop((int(fg.width*0.82), 0, fg.width, int(fg.height*0.6))) crop = crop.resize((crop.width*2, crop.height*2)) crop.save('$SB/preview5_stat_crop.png') ", cd /home/anant_gupta/projects/work/gupta-builds/scripts && python3 test_generate_activity.py && cd .. && git diff --stat, git add README.md scripts/generate_activity.py scripts/test_generate_activity.py git commit -m "$(cat <<'EOF' Replace activity-stats rings with a contribution card - Swap "best week" for actual best streak (consecutive-day count), matching the original streak logic; current streak wins over a frozen historical peak once it catches up. - Stack active days / best streak in a single right-aligned column with enough gap to clear the number's cap-height against the label above it. - Widen the sparkline to span the full card width, edge to edge, with its vertical start computed from whichever top text block is taller. - Fix the LinkedIn badge's missing icon (simple-icons dropped the "linkedin" slug) via a custom shields.io data-URI logo. - Tighten the gap between the Typing SVG and the card. Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com> EOF )" git push origin main git status, cd /home/anant_gupta/projects/work/gupta-builds gh run list --workflow=snake.yml --limit 8 2>&1, cd /home/anant_gupta/projects/work/gupta-builds git fetch origin output 2>&1 | tail -5 git show origin/output:activity-stats.svg 2>&1 | head -c 2000, echo "--- cached (no-cache-bust) ---" curl -sI "https://raw.githubusercontent.com/gupta-builds/gupta-builds/output/activity-stats.svg" | grep -i -E "age:|cache|x-served|etag" echo "--- content check ---" curl -s "https://raw.githubusercontent.com/gupta-builds/gupta-builds/output/activity-stats.svg" | grep -o "Best Streak\|Best week" | head -1 curl -s "https://raw.githubusercontent.com/gupta-builds/gupta-builds/output/activity-stats.svg?v=$(date +%s)" | grep -o "Best Streak\|Best week" | head -1
+- Tool call tally: AskUserQuestion (2), Bash (45), Edit (19), Read (27), Write (2)
 

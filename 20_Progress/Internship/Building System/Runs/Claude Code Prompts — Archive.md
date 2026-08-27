@@ -2,7 +2,7 @@
 type: reference
 status: tree
 created: 2026-08-22
-updated: 2026-08-22
+updated: 2026-08-27
 related_progress:
   - "[[Source of Truth]]"
   - "[[20_Progress/Internship/Building System/Research Loop - Improvement Plan]]"
@@ -409,4 +409,66 @@ Task 1: List/Resources.md refreshed with real 2026-08-24 numbers — SimplifyJob
 Task 2: Research Loop - Resources.md's Named-Program Coverage Check re-checked against real frontmatter. Coverage moved 3/11 → 5/11: Jane Street still 11 (unchanged), D.E. Shaw still 1, Google still 3 (no ASDI mention), Microsoft 0→6 (checked for "Explore" — only false-positive JS chrome matched, still unconfirmed as the named program), Two Sigma 0→1 (no "First-Year" mention, generic). Capital One actually dropped 2→0 (both closed, moved to Viewed/ on 2026-08-23 — noted as churn, not a real gain). Citadel, LinkedIn, MLH, NASA, Bloomberg remain uncovered (since resolved — see Prompt 14 v2 Task 6 above: no viable connector exists for any of these, not a discovery gap).
 
 Task 3: Viewed/Removed Dossiers MOC.md was a real 0-byte file despite 4 live dossiers linking to it. Built for real per the MOC Standard (Purpose → Map → Status → Dataview): documents the one real removal batch (4 dossiers, all 2026-08-23, all active: false upstream), including the Capital One same-day double-closure as a hiring-cadence signal. Corrected the prompt's own stale estimate ("dozens" of dossiers pointing here) to the real current count (4).
+```
+
+### Prompt 16 — Jarvis: Sync Building System To The Real Post-Prompt-14v2 State (written 2026-08-24, run 2026-08-24, archived 2026-08-27)
+No execution report was ever pasted back for this session — archived here from independent verification of live vault state against all 4 tasks, not from a human-provided report, per the explicit ask to clean this up before adding new content.
+
+Full text:
+```
+**Run inside the Jarvis vault directly** (Windows, Sonnet 5, high effort). Vault-note work only.
+
+**Context — what actually changed, verified, not to be re-derived:** Lever shipped live (`fetch_lever`/`normalize_lever`, wired into `SOURCES`/`recheck.py`, 2 real companies — Palantir plus Belvedere Trading — 61 postings fetched, 3 real matches at build time). InternDock got real detection+parsing code (`ingestion/interndock.py`, sitemap-based, 6 tests) but is **explicitly not wired into `SOURCES` yet** — a partial build, not a live source; don't describe it as one. The JGCL zero-yield question is **resolved**: not a bug, three specific scholarship postings (MLH Fellowship, White House HBCU Scholars, UNCF Scholarships Portal) already correctly excluded via `seen_ids`/`excluded_uids`, the feed is just thin toward non-CS content for this persona. LinkedIn's Greenhouse board and the other 7 named-priority companies (Two Sigma, Citadel, Capital One, Bloomberg, Microsoft, NASA, MLH) are **confirmed dead ends for direct-ATS coverage**. Two new, real, unbuilt repo candidates exist (`ApplyGuy/2027-Internships`, `dreamworkhq/Tech-Internships-2027`). The 2026-08-23 "46 `vault_delete` calls" is a real, already-tracked session, not an untracked event.
+
+Task 1 — `System - Build Log.md`: add a `## 2026-08-24` entry recording Lever, InternDock's partial build, the JGCL resolution, the LinkedIn/7-company dead-end finding, the two new unbuilt repo candidates, and confirmation the 2026-08-23 deletions are accounted for. Point at the Archive note rather than duplicating detail inline.
+
+Task 2 — `Source of Truth.md`: fix now-wrong claims. At minimum: any "eight sources" claim is now wrong (nine, with Lever) — a partial InternDock build should not count as a tenth live source. Correct the JGCL/LinkedIn-7-company framing if referenced with the older, vaguer wording.
+
+Task 3 — `Research Loop - Resources.md`: move Lever to the live sources table with real numbers; add InternDock as its own in-between status; re-confirm speedyapply/sndsh404 stay deliberately-not-built and add ApplyGuy/dreamworkhq as found-but-not-yet-evaluated; correct the JGCL entry to the real specific finding; rewrite the Named-Program Coverage Check framing — the month-old open question is now answered (no, none of the 8 named companies post through Greenhouse/Ashby).
+
+Task 4 — `10_Areas/Career/Internships/List/Resources.md`: resolve the JGCL "under investigation" flag to the real, closed finding.
+
+Explicitly out of scope: no code changes to internship-research-loop; no describing InternDock/ApplyGuy/dreamworkhq as more done than they were at the time.
+
+Report back: per task, what changed and where, with the specific old-vs-new claim for anything corrected.
+```
+
+**Result** (reconstructed 2026-08-27 from direct comparison of live vault state against all 4 tasks — no report was ever reviewed for this session, matching the handoff's own flag):
+```
+Task 1 — System - Build Log.md: a matching entry exists ("2026-08-24 — Prompt 14 v2: Lever Shipped, InternDock Partial, JGCL Resolved, LinkedIn/7-Company Dead End Confirmed"), covering the exact content this task asked for. Confirmed present via document-map heading check.
+
+Task 2 — Source of Truth.md: confirmed done at the time — the doc's sources section read "Nine Sources" as of 2026-08-24, per that section's own later self-correction ("the 'Nine' heading... was stale within a day of being written," added 2026-08-27 once Lever+InternDock+ApplyGuy pushed the real count to eleven). The eight→nine correction is confirmed as this task's real output; its own later staleness (nine→eleven) is expected drift already caught and fixed by a subsequent pass, not a failure of this task.
+
+Task 3 — Research Loop - Resources.md: confirmed done — live headings match exactly: "Live, Committed... (Lever added 2026-08-24)", "InternDock — Built, Not Yet Wired (2026-08-24)", "Found, Not Yet Evaluated For Build (2026-08-24)" (ApplyGuy/dreamworkhq), "Named-Program Coverage Check (refreshed 2026-08-24) — Coverage Gap Remains, Connector Question Now Closed".
+
+Task 4 — List/Resources.md: confirmed done — the JGCL flag is resolved; cross-referenced via this Archive's own Prompt 15 result text, which already carries a "(since resolved — see above, not a bug)" annotation reflecting this correction.
+
+All 4 tasks show real, matching artifacts in the live vault; nothing found contradicting the prompt's asks. Treated as fully executed.
+```
+
+### Prompt 17 — Codebase: Finish InternDock's Wiring, Evaluate The Two New Repo Candidates (written 2026-08-24, run 2026-08-24, archived 2026-08-27)
+No execution report was ever pasted back for this session either — archived here from direct git log/diff inspection of commit `1d27f5b` (2026-08-24 02:41), which carries its own detailed reasoning in the commit message.
+
+Full text:
+```
+**Fresh session**, `gupta-builds/internship-research-loop`. Read `CLAUDE.md` first. `ingestion/interndock.py` exists (sitemap-based detection + parser, 6 tests) but is not wired into `SOURCES` — verify this yourself before starting.
+
+Task 1 — Design and ship InternDock's SOURCES wiring. Real open questions to resolve, not guess at: identity/uid strategy (no native id the way Greenhouse/Ashby/Lever have — check the real `href` URLs for a stable identifier, or fall back to a content-hash approach, naming that explicitly as a real limitation if so); cadence/state (sitemap-based detection cadence is a real design decision — InternDock's own two known drops were ~6 weeks apart, don't assume hourly); volume/capacity interaction (a single drop is ~650-658 postings, far more than one run's write budget — confirm the existing per-bucket budget/deferred mechanism handles this gracefully). Build it, wire into SOURCES, add to recheck.py's FEEDS if applicable, fixture-based tests, full suite green.
+
+Task 2 — Evaluate ApplyGuy/2027-Internships (confirmed real JSON, example: "Toyota of Cedar Park Keating LLC — Software Developer Intern"). Verify the schema fresh, check scale/update frequency, decide with the same rigor as every existing source's original evaluation whether it's worth building. Build if yes; say so plainly if not.
+
+Task 3 — Evaluate dreamworkhq/Tech-Internships-2027 (confirmed real JSON, 720 entries, richer schema with salaryMin/salaryMax/aiRoleKind/postedAt/firstIndexedAt). Same evaluation discipline as Task 2.
+
+Discipline: separate commits per source, real citations, fixture-based tests, full suite green at every step.
+
+Report back: Task 1's identity/cadence/state decisions and why, confirmation InternDock is genuinely live in SOURCES, real numbers from a live test run. Task 2/3: built or not, with real reasoning either way.
+```
+
+**Result** (reconstructed 2026-08-27 from direct git inspection):
+```
+Task 1 — InternDock wired end-to-end, confirmed live via `grep fetch_interndock run_pipeline.py`. Real design decisions made: identity = the posting's own real Apply URL (not a content hash — every InternDock entry carries a real employer ATS link; `cross_source_key` already collapses these against direct Greenhouse/Ashby/Lever copies via its existing ATS-URL job-id regexes, no changes needed). Cadence/state: event-driven, not fixed — `state/interndock_seen_guides.json` persists which sitemap guide URLs have been Firecrawl-fetched, fetching each new one exactly once (real drops are ~6 weeks apart, so hourly sitemap.xml polling is free and the one paid Firecrawl call only fires when something's genuinely new). Doesn't fit the uniform SOURCES tuple (needs Firecrawl + persisted state) — it's a separate step in `run_once()`, inserted last so cross-source-duplicate ties resolve toward direct per-company sources; not wired into recheck.py's FEEDS (re-verifying would mean re-Firecrawling every seen drop page for marginal value). Volume-tested: a live-simulated 650-posting spike drains gracefully through the existing budget/debate mechanism (this_run=4, deferred=646, no crash, no silent drop) — but surfaced a real, separate finding not fixed here: 14/15 real fixture titles land in the "Other" bucket (budget 1/run) because `classify()` doesn't recognize generic "Software Engineering Intern" titles as Fullstack/AI-ML/CyS&Finance, a real future bottleneck flagged for a separate decision.
+
+Task 2 — ApplyGuy built and shipped. Confirmed live 2026-08-24: 202 real entries, own-sourced (not a re-scrape, unlike SuryaHarikrishnan/2027-internship-tracker, checked and rejected same-day), updates ~every 15 minutes, reaches Workday/Workable/Paylocity ATSes with zero other coverage. ~39% of entries (78/202) carry a literal "Not specified" season placeholder, deliberately mapped to empty terms at normalize time. Live-verified: 200 fetched, 137 real matches at build time — notably higher yield than every other source. Not wired into recheck.py's FEEDS (left open, no evidence either way on absence-from-feed reliability). 385 → 401 tests, full suite green.
+
+Task 3 — dreamworkhq/Tech-Internships-2027 evaluation: **never executed.** No commit, no code, no test, no mention anywhere in git history. Confirmed by direct search (`git log --all --grep`, grep across `ingestion/` and `tests/`) — this is a real, honest gap, not a "evaluated and declined" result. Still a real, open candidate (720 real entries, richer schema) if a future session wants it — not urgent given the write-starvation bottleneck this project is currently prioritizing over new source growth (see the 2026-08-26 postmortem and Prompts 18/19).
 ```
