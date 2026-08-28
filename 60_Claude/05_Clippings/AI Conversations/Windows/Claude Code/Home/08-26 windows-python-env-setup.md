@@ -6,7 +6,7 @@ source_os: windows
 title: "windows-python-env-setup"
 started_at: 2026-08-26T16:47:06
 ended_at: 2026-08-27T15:28:25
-exported_at: 2026-08-28T21:00:10
+exported_at: 2026-08-28T23:00:04
 duration_minutes: 1361.3
 project: Home
 cwd: 'C:\Users\Anant Gupta'

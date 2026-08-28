@@ -1,6 +1,30 @@
 {
   "recentFiles": [
     {
+      "basename": "Humanizer",
+      "path": "20_Progress/Internship/Building System/Humanizer.md"
+    },
+    {
+      "basename": "Cover Letter Alteration",
+      "path": "20_Progress/Internship/Building System/Cover Letter Alteration.md"
+    },
+    {
+      "basename": "Resume Alteration",
+      "path": "20_Progress/Internship/Building System/Resume Alteration.md"
+    },
+    {
+      "basename": "Claude Code Prompts",
+      "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
+    },
+    {
+      "basename": "Dossier Corrections",
+      "path": "20_Progress/Internship/Building System/Dossier Corrections.md"
+    },
+    {
+      "basename": "System - Build Log",
+      "path": "20_Progress/Internship/Building System/System - Build Log.md"
+    },
+    {
       "basename": "Deadline Tracker",
       "path": "10_Areas/Career/Internships/Tracker/Deadline Tracker.md"
     },
@@ -15,10 +39,6 @@
     {
       "basename": "No Deadline",
       "path": "10_Areas/Career/Internships/List/Dossiers/_Today/No Deadline.md"
-    },
-    {
-      "basename": "Claude Code Prompts",
-      "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
     },
     {
       "basename": "Links & Interlinks",
@@ -179,26 +199,6 @@
     {
       "basename": "Campus Undergraduate Summer Internship Program - 2027 AI Engineer I, Enterprise Technology Services- Phoenix, AZ - American Express",
       "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Campus Undergraduate Summer Internship Program - 2027 AI Engineer I, Enterprise Technology Services- Phoenix, AZ - American Express.md"
-    },
-    {
-      "basename": "Campus Graduate Masters Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- New York, NY - American Express",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Campus Graduate Masters Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- New York, NY - American Express.md"
-    },
-    {
-      "basename": "Campus Graduate Masters Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- Charlotte, NC - American Express",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Campus Graduate Masters Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- Charlotte, NC - American Express.md"
-    },
-    {
-      "basename": "Campus AI Research Engineer (Intern) - Jump Trading",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Campus AI Research Engineer (Intern) - Jump Trading.md"
-    },
-    {
-      "basename": "Campus AI Research Engineer - Deep Learning (Intern) - Jump Trading",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Campus AI Research Engineer - Deep Learning (Intern) - Jump Trading.md"
-    },
-    {
-      "basename": "Business Systems Analyst Intern - W.W. Grainger",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Business Systems Analyst Intern - W.W. Grainger.md"
     }
   ],
   "omittedPaths": [],

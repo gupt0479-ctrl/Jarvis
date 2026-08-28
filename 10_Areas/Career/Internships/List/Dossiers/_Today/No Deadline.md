@@ -291,3 +291,11 @@ Confirmed no-deadline dossiers (checked stored posting text and, where nothing w
 - [[10_Areas/Career/Internships/List/Dossiers/Other/Software Systems Validation Intern (Summer 2027) - Zipline]] — stored capture is a generic open-roles listing page, not the specific posting
 - [[10_Areas/Career/Internships/List/Dossiers/Other/System Test Automation Intern (Spring 2027) - Zipline]] — stored capture is a generic open-roles listing page, not the specific posting
 - [[10_Areas/Career/Internships/List/Dossiers/Other/System Test Automation Intern (Summer 2027) - Zipline]] — stored capture is a generic open-roles listing page, not the specific posting
+
+## External sources (Prompt 20 — no existing vault dossier, restored 2026-08-28 after Prompt 21's cleanup pass incorrectly removed these as "out of scope")
+- [Maximor AI — Software Engineer Intern](https://jobs.ashbyhq.com/maximor/3ff6e57d-5430-4836-b6f0-19044d8ee6d8)
+- [GlossGenius — Software Engineer Intern](https://job-boards.greenhouse.io/glossgenius/jobs/7978666003)
+- [Amazon — Software Development Engineer Intern, Annapurna Labs](https://www.amazon.jobs/en/jobs/10517567/software-development-engineer-intern-annapurna-labs-2027)
+- [Apple — Applied Data Solutions Program Internships](https://jobs.apple.com/en-us/details/200673612-0836/applied-data-solutions-program-internships-summer-2027)
+- [Whop — Software Engineer Intern](https://jobs.ashbyhq.com/whop/1d904ce7-a18d-4dc1-ad05-d4854ceac2a0)
+- [Ancestry — Software Engineer, Observability Co-op](https://ancestry.wd501.myworkdayjobs.com/en-US/careers/job/Draper-Utah/Software-Engineer---Observability--Co-op_R003434)

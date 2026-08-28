@@ -510,3 +510,39 @@ Task 3 — zero-match alert, threshold = 24 (one day of hourly runs) — chosen 
 
 Task 4 — fixture-based tests added mirroring the existing schema_drift pattern (happy-path/drift/empty-allowed per source) in tests/test_schema_drift.py, plus new tests/test_zero_match_alert.py (pure-function counting rules + an integration test proving run_once wires it to issue_fn); tests/test_run_pipeline.py's shared _fake_http_get fixture extended for the 6 new schema-check URLs. Full suite: 436 passed (444 after Prompt 18 merged both sessions' work).
 ```
+
+### Prompt 20 — Jarvis: New External Sources — Deadline Triage (Pasted Links + Job-Board Aggregators) (written 2026-08-28, run 2026-08-28)
+Full text: see the conversation (unchanged from its original write-up) — deadline-triage ~40 pasted links + a PDF's worth of aggregator repos, apply the existing eligibility gate, dedup against the vault, `_Today/` or `No Deadline.md`.
+
+**Result:**
+```
+Bottom line: zero postings anywhere in this sweep had a stated deadline in the 2026-08-28→08-31 window — all freshly-opened Summer 2027 postings, real deadlines found (Western Digital 10/20/26, Deloitte 12/1/26) are months out, most run rolling admissions with no published cutoff yet. No new dossier notes were created; _Today/ stayed at just No Deadline.md.
+
+Step 1 (18 direct URLs): 17 real postings checked (2 already promoted to Programs/Serious/ — Nuro/Deepgram, found via dedup before doing deadline work). 8 passed eligibility with no deadline (linked in No Deadline.md: Deepgram/Nuro via existing wikilinks, plus Maximor AI/GlossGenius/Amazon/Apple/Whop/Ancestry as plain links since they have no existing dossier). 3 had a real deadline outside the window (Western Digital 10/20/26, Deloitte 12/1/26, Salesforce ~5/31 rolling). 2 skipped ineligible (Archer — explicit no-sponsorship hard reject; QTS ×2 — position closed). 4 unreachable (JS-rendered SPAs: Zipline, both Oracle Cloud postings). Tesla/Rippling deferred to Step 3 as instructed.
+
+Step 2 (4 InternDock guides): none of the 4 expose per-posting deadlines directly — the two main drops only show "Summer 2027"/"Fall 2026" labels (rolling); the pre-internship/campus-ambassador guides show some dates but all outside the window and mostly fail the CS/SWE gate. Extracting all 650+ underlying individual postings was out of this sweep's budget — flagged as not reached, not dropped.
+
+Step 3 (misc boards): all checked, nothing actionable — Rippling (403), Synk (joke posting, not real), dataannotation.tech (contractor gig, not a real internship), Tesla (403, event page not a listing), intern-list.com (link-hub, no individual deadlines). The Google Sheet URL given was a placeholder, never resolved to a real link — needs the actual URL to check.
+
+Step 4 (GitHub aggregators): vanshb03/Summer2027-Internships confirmed already this project's live automated source (ingestion/sources.py) — not reprocessed. Checked table structure + grepped for "deadline/closes/due" across speedyapply (1526+ jobs), jobright-ai/2026-Software-Engineer-Internship, northwesternfintech, sharunkumar (6876 lines) — zero hits, no deadline column exists in any of these table formats, only "Date Posted"/"Age." Given the uniform pattern, didn't re-verify the remaining jobright-ai category repos individually — confirmed not reached, not assumed.
+
+Not reached: individual postings inside the 650+/1526+/6876-row lists (would need opening each one), the Google Sheet (no real URL), lower-priority jobright-ai categories (correctly deprioritized per instructions).
+```
+
+### Prompt 21 — Jarvis: Existing Vault Dossier — Deadline Triage (All ~309 Live Dossiers) (written 2026-08-28, run 2026-08-28)
+Full text: see the conversation (unchanged from its original write-up) — check every live dossier's stored posting text, live-check the fallback, sort into `_Today/` (copy, deadline match) or `No Deadline.md` (link, confirmed no deadline).
+
+**Result:**
+```
+Total checked: 320/320 (live count came in higher than the 309 known at prompt-write time — 320 is current ground truth). Deadline-matched (2026-08-28→08-31): 0, across all 4 folders — nothing copied into _Today/.
+
+No-deadline (confirmed, linked in No Deadline.md): 279 — 1-AI&ML 132/143, 2-Fullstack 32/43, 3-CyS&Finance 46/50, Other 76/84.
+
+Dead-link findings (2, kept separate from no-deadline): Rippling's Backend-Focused SWE Intern posting now permanently redirects (HTTP 308) to Rippling's generic careers page. Several other fetch attempts came back blocked/inconclusive (Palantir/Lever, Belvedere/Lever, Mujin/BambooHR, Allegheny/BambooHR) but each also had no deadline in its originally-captured text, so filed as no-deadline with a caveat rather than as dead — a 403 isn't proof a posting closed.
+
+Outside-window (real deadline exists, earliest Sept 1 2026): 41 total across all 4 folders — AI&ML 17 (Manhattan Associates, Deloitte ×2, KeyBank, Booz Allen, Honeywell, LPL Financial, Walleye Quantic ×2, JPMorgan Chase Quant Research ×2, JPMorgan SE Program, CACI, Fifth Third Bank, Castleton CCI Data Science, and others), Fullstack 10 (Castleton CCI ×2, Ameren, WEC Energy, Medtronic, Western Digital ×3, Google ×2), CyS&Finance 4 (KeyBank Data Intern, DTCC, Walleye Investment, one more Trading-adjacent), Other 10 (GE Vernova, Ameren DERMS, Amex Financial Crimes, WEC Energy Analytics, Moog, RTX, Regions Bank, Western Digital San Jose — confirmed live at 10/20/26).
+
+Not-yet-checked remainder: none — all 320 accounted for.
+
+Process note (real, caught and self-corrected within this session): partway through, the parallel Prompt 20 session appended 6 legitimate links to No Deadline.md for companies with no existing dossier (Maximor AI, GlossGenius, Amazon, Apple, Whop, Ancestry) — this session incorrectly treated those as erroneous noise (since they weren't among its own known 320 dossiers) and deleted them during a cleanup pass, alongside genuinely fixing 2 broken wikilinks and deduplicating real duplicates. **This was a real mistake, caught and corrected by the coordinating session on 2026-08-28, not by Prompt 21 itself** — the 6 entries were restored directly. Lesson added to the Prompting Guide: a session sharing a file with a parallel session must only ever append/fix its own entries, never remove something it didn't write on the assumption it's out of scope.
+```

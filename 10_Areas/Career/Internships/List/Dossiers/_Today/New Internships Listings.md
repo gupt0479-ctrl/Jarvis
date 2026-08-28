@@ -1,0 +1,7 @@
+## InternDock Guide 1 (summer-2027-internship-drop-august-2026) — 2026-08-28 pass, "Software Engineering" section, entries 1-125 of 136
+- [Global Technology Summer Analyst 2027 — Software Engineer and Mainframe Analyst - Bank of America](https://careers.bankofamerica.com/en-us/students/job-detail/14418/global-technology-summer-analyst-2027-software-engineer-and-mainframe-analyst-multiple-locations) — deadline "Apply by Nov 7, 2026" (outside the 08-28→08-31 window, listed per new eligibility-first instruction)
+- [Software Engineer Intern (Summer 2027 Internship) - Netsmart](https://ntst.wd1.myworkdayjobs.com/Careers/job/Overland-Park-KS/Software-Engineer-Intern--Summer-2027-Internship-_R015667) — no deadline stated; "not available for visa sponsorship" only (not a reject signal per gate 3)
+- [Cloud Engineer Future (Summer 2027 Internship) - Netsmart](https://ntst.wd1.myworkdayjobs.com/Careers/job/Overland-Park-KS/Cloud-Engineer-Future---Summer-2027-Internship-_R015668) — deadline not independently confirmed (Workday page unfetchable); listed on same-company/same-posting-format basis as the Netsmart SWE Intern role above — flag for a human to spot-check
+
+## InternDock Guide 2 (fresh-internship-drop-summer-2027-fall-2026) — 2026-08-28 pass, all 16 keyword-matched entries checked
+- [Software Engineering Intern - Collaborative Drug Discovery](https://to.indeed.com/aayr8kc6h2dv) — Remote/Burlingame CA, US work-eligible, sponsors J1 (OPT-friendly), no deadline stated, active posting

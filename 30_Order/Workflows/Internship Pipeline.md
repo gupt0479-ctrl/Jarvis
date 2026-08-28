@@ -2,7 +2,7 @@
 type: evergreen
 status: sprout
 created: 2026-07-16
-updated: 2026-08-23
+updated: 2026-08-28
 tags:
   - system
   - workflow
@@ -13,7 +13,8 @@ notes:
   - "[[40_Resources/Obsidian/Jarvis Vault Architecture]]"
   - "[[10_Areas/Career/Internships/Internships Hub]]"
   - "[[Internship - Design Rationale]]"
-next:
+  - "[[30_Order/Workflows/Application Document Preparation]]"
+next: null
 ---
 # Internship Pipeline
 Move a posting from "found on the web" to "offer or rejection recorded," without losing the research or the relationship along the way.
@@ -32,7 +33,7 @@ find           List/Dossiers/ — auto-discovered by internship-research-loop, s
 commit         Programs/Serious/<name>.md or Programs/Considering/<name>.md (same template, same
                depth — split only by preference/timing, never rigor) + Contacts/Each One/<name>.md
                (company-level contact research, run via the loop's enrich.py on promotion) —
-               created together, cross-linked
+               created together, cross-linked. No resume/cover-letter work happens at this step.
    ↓ once the Program note exists
 track          Tracker/Each One/Current/<name>.md — the dated index (noted/researched/created/
                applied/result, deadline, contact link, related notes, url). Source of truth until
@@ -40,14 +41,20 @@ track          Tracker/Each One/Current/<name>.md — the dated index (noted/res
    ↓ need a way in beyond the portal
 reach out      The live unsent draft lives in the Contacts/Each One note already created above,
                built from Contacts/Mimic.md templates.
-   ↓ need a resume that survives the JD, not just the ATS
-tailor         Resumes/Main Resume.md (bullet bank) → Resumes/Altered/<company>.md (per-application cut)
+   ↓ need a resume and cover letter that survive the JD, not just the ATS
+prepare        Applying/<name>.md (Applying Template) created now — before either document exists —
+               status: Preparing, date_applied null. Links program/tracker/contact, records the job
+               URL and one-line JD/networking/fit summaries. See Application Document Preparation.
+tailor         Resumes/Main Resume.md (bullet bank) + Cover Letters/Main Cover Letter.md (paragraph
+               bank) → one Resumes/<Role> - <Company>.docx + one Cover Letters/<Role> - <Company>.docx,
+               drafted, human-approved, and Humanizer-passed before either file is written. Overwritten
+               in place until date_applied is set. Full flow: Application Document Preparation.
    ↓ actually ready to apply, not just interested
 deep dive      Programs/Job & Company/<Company> - <Position>.md — interview-prep-grade research,
                created only now, not at commit time
    ↓ submit
-apply          Applying/Now.md entry + Applying/<name>.md (live narrative) created; Tracker note
-               moves Current/ → Applied/; Program note moves to its own Ended/ subfolder
+apply          Applying/Now.md entry added; Applying note's status → Applied, date_applied set;
+               Tracker note moves Current/ → Applied/; Program note moves to its own Ended/ subfolder
    ↓ you get a screen or an interview
 prep           Preperation/Interviews/<company>.md — linked from the Applying note's interview_note field
    ↓ outcome lands
@@ -79,13 +86,13 @@ When something passes the fit test, promote it in one sitting:
 The Contact note created in Step 3 ([[Contact Template]]) holds durable facts about the contact(s) found and, inline, the current unsent draft message. `Contacts/Mimic.md` is the template library — cold DM, recruiter follow-up, referral ask, thank-you note — pull a template into the Current Draft section and edit it until it sounds like you, not the template. Log every real exchange in Conversation Log so a later Claude Code session (or you, six weeks from now) knows what's already been said. Move the Contact note between `Ongoing/`, `Come Back/`, and `Ended/` as the relationship's real state changes.
 This is drafting help only. No message sends itself — every draft here is reviewed and sent by hand.
 ## Step 5 — Tailor (Resumes)
-`Resumes/Main Resume.md` is the editable bullet bank — the actual source of truth, since the PDF isn't taggable or diffable. Per the research behind this system: response rate moves most when you adjust the **top third** of the resume per role, not when you rewrite the whole thing. For each Applying note, create `Resumes/Altered/<company>.md`: pull the 3-5 bullets that best match this specific JD's keywords, in order, and link it back from the Applying note's `resume_version` field.
+The Applying note ([[Applying Template]]) is created at the **start** of this step, not at submission — `status: Preparing`, `date_applied` null. `Resumes/Main Resume.md` is the editable bullet bank and `Cover Letters/Main Cover Letter.md` is its cover-letter equivalent — the actual sources of truth, since a DOCX/PDF export isn't taggable or diffable. Full sequencing (draft → content-plan approval → Humanizer pass → write) lives in [[30_Order/Workflows/Application Document Preparation]]; the short version: for each application, write or overwrite exactly one `Resumes/<Role> - <Company>.docx` and one `Cover Letters/<Role> - <Company>.docx`, linked back from the Applying note's `resume_version` and `cover_letter` fields. Every claim in either document must trace to real evidence — see [[30_Order/Standards/Resume Alteration Standard]] and [[30_Order/Standards/Cover Letter Alteration Standard]] — never invented to match a JD.
 ## Step 6 — Deep Dive (Job & Company)
 Once you're actually ready to apply — not at commit time, and not for every program in `Considering/` — create `Programs/Job & Company/<Company> - <Position>.md`: relevant company projects, the company's mission mapped concretely to your own direction, role-specific research beyond the Program note, and what the verified contact has personally contributed. This is what makes an interview conversation sound genuinely informed. Past two real positions at one company, switch to a `[Company]/` subfolder with one note per position.
 ## Step 7 — Apply
-Submit. In the same sitting: add an entry to `Applying/Now.md`, create the Applying note ([[Applying Template]]) and link it both ways (`applying_note` on the Program, `program` on the Applying note), move the Tracker note from `Current/` to `Applied/`, and move the Program note into its own `Ended/` subfolder. Source-of-truth responsibility for "what's going on with this application" transfers to the Applying note: Current State, Next Action, Open Questions, meeting-prep content.
+Submit. The Applying note already exists (created at the start of Step 5, per [[30_Order/Workflows/Application Document Preparation]]) — this step updates it, not creates it: set `date_applied`, move `status` to `Applied`, add an entry to `Applying/Now.md`, confirm the `applying_note`/`program` link both ways, move the Tracker note from `Current/` to `Applied/`, and move the Program note into its own `Ended/` subfolder. Source-of-truth responsibility for "what's going on with this application" stays on the Applying note: Current State, Next Action, Open Questions, meeting-prep content.
 > [!IMPORTANT]
-> A Program note sitting in `Ended/` with no matching Applying note gets discarded, not kept — `Ended` means applied, and without an Applying note nothing was actually submitted.
+> A Program note sitting in `Ended/` with no matching Applying note gets discarded, not kept — `Ended` means applied, and without an Applying note nothing was actually submitted. Following this pipeline as written, every Program that reaches Step 5 already has one; a Program in `Ended/` with none is evidence a step was skipped, not an expected case.
 ## Step 8 — Prep (Interviews)
 Once a program moves to Phone Screen or Onsite, create `Preperation/Interviews/<company>.md` and link it from the Applying note's `interview_note` field. `Preperation/Interviews/Interview Questions.md` in the same folder is the generic behavioral bank — pull from it, don't duplicate it. `Preperation/System Design/` is the sibling folder for the system-design drill bank (see [[System Design Practice]]) — a different prep category, not interview-specific company research.
 ## Step 9 — Close
@@ -114,14 +121,15 @@ Step 1 (Find) is live: `gupta-builds/internship-research-loop` (GitHub Actions, 
 | Contact (per internship) | `contact` | `10_Areas/Career/Internships/Contacts/Each One/` |
 | Cheat | `evergreen` | `10_Areas/Career/Internships/Cheats/` |
 | Tracker (per internship) | (index note) | `10_Areas/Career/Internships/Tracker/Each One/` |
-| Applying | `project` | `20_Progress/Internship/Applying/` |
+| Applying | `project` | `20_Progress/Internship/Applying/`, created at the start of Step 5, not at submission |
 | Interview prep | `project` or `input` | `20_Progress/Internship/Preperation/Interviews/` |
 | System design drill bank | `project` | `20_Progress/Internship/Preperation/System Design/` |
-| Altered resume | (no `type` — working document) | `20_Progress/Internship/Resumes/Altered/` |
+| Tailored resume (per application) | (no `type` — working document, `.docx`) | `20_Progress/Internship/Resumes/` |
+| Tailored cover letter (per application) | (no `type` — working document, `.docx`) | `20_Progress/Internship/Cover Letters/` |
 | LinkedIn post | `output` | `20_Progress/Internship/Posts/` |
 ## Done When
 - Every posting you'd regret forgetting has a List row or a dossier.
-- Every program you're actually pursuing has a Programs note, a Contacts note, and a Tracker note, all cross-linked — plus an Applying note once real activity starts.
+- Every program you're actually pursuing has a Programs note, a Contacts note, and a Tracker note, all cross-linked — plus an Applying note once real application preparation starts, not just once it's submitted.
 - No Applying note has gone more than a week without a Log entry while it's active.
 - The Dashboard and the Kanban agree on what's currently in motion.
 - The session log records any structural change to this pipeline.
