@@ -7,7 +7,7 @@ title: "wsl-home-directory-cleanup"
 started_at: 2026-08-26T13:07:59
 ended_at: 2026-08-26T19:23:15
 duration_minutes: 375
-exported_at: 2026-08-28T02:15:02
+exported_at: 2026-08-28T12:45:03
 project: anant_gupta
 cwd: '/home/anant_gupta'
 session_id: 0664162f-1c33-4be9-9191-bb16b979de6c

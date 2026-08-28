@@ -1,12 +1,12 @@
 ---
 source_file: "vault_writer/validate.py"
 type: "code"
-community: "validate.py"
+community: "render_dossier"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/validatepy
+  - community/render_dossier
 ---
 
 # validate.py
@@ -27,4 +27,4 @@ tags:
 - [[test_validate.py]] - `imports_from` [EXTRACTED]
 - [[validate()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/validatepy
+#graphify/code #graphify/EXTRACTED #community/render_dossier

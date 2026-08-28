@@ -1,12 +1,12 @@
 ---
 source_file: "core/debate.py"
 type: "code"
-community: "test_render_dossier_shows_real_rendered_frontmatter_with_preference_match"
+community: "test_write_dossier_creates_missing_dossiers_dir"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_render_dossier_shows_real_rendered_frontmatter_with_preference_match
+  - community/test_write_dossier_creates_missing_dossiers_dir
 ---
 
 # debate.py
@@ -23,4 +23,4 @@ tags:
 - [[run_pipeline.py]] - `imports_from` [EXTRACTED]
 - [[test_debate.py]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_render_dossier_shows_real_rendered_frontmatter_with_preference_match
+#graphify/code #graphify/EXTRACTED #community/test_write_dossier_creates_missing_dossiers_dir

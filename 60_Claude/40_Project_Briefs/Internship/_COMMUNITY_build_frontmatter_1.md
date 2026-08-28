@@ -1,28 +1,29 @@
 ---
 type: community
-members: 15
+members: 16
 ---
 
 # build_frontmatter
 
-**Members:** 15 nodes
+**Members:** 16 nodes
 
 ## Members
-- [[Real rendered frontmatter (not just the dict) — confirms preference_tier     act]] - rationale - tests/test_writer.py
-- [[Same slugification as dossier_filename() lowercase, spaces to     hyphens, ille]] - rationale - vault_writer/writer.py
-- [[Two dossiers for the same company (varying casingwhitespace) must     produce t]] - rationale - tests/test_writer.py
-- [[_iso_date()]] - code - vault_writer/writer.py
-- [[_yaml_list()]] - code - vault_writer/writer.py
-- [[build_frontmatter()]] - code - vault_writer/writer.py
-- [[company_slug()]] - code - vault_writer/writer.py
-- [[listing's real company is 'Palantir' (testsfixturessimplifyjobs.json)     — no]] - rationale - tests/test_writer.py
-- [[test_build_frontmatter_includes_moc_link_and_company_tag()]] - code - tests/test_writer.py
-- [[test_build_frontmatter_preference_tier_matches_real_preferred_company()]] - code - tests/test_writer.py
-- [[test_build_frontmatter_preference_tier_null_when_no_preferred_companies_given()]] - code - tests/test_writer.py
-- [[test_company_slug_matches_real_standard_examples()]] - code - tests/test_writer.py
-- [[test_company_slug_normalizes_case_and_whitespace_for_same_company_clustering()]] - code - tests/test_writer.py
-- [[test_render_dossier_shows_real_rendered_frontmatter_with_preference_match()]] - code - tests/test_writer.py
-- [[uid and category are deliberately not rendered — uid stays available     interna]] - rationale - vault_writer/writer.py
+- [[A single fetch hiccup (fetch_count == 0, e.g. a swallowed     RequestException)]] - rationale - tests/test_zero_match_alert.py
+- [[A source that has never once produced a match isn't drifting, it's     just stru]] - rationale - tests/test_zero_match_alert.py
+- [[Integration-level confirmation that run_once actually calls issue_fn     once th]] - rationale - tests/test_zero_match_alert.py
+- [[Pins the real, concrete incident this task was built from (Prompt 19     Task 1)]] - rationale - tests/test_zero_match_alert.py
+- [[Task 3 (Prompt 19, 2026-08-28) — per-source zero-match-rate alert.  Same pure f]] - rationale - tests/test_zero_match_alert.py
+- [[test_load_save_zero_match_streaks_round_trips()]] - code - tests/test_zero_match_alert.py
+- [[test_load_zero_match_streaks_missing_file_returns_empty_dict()]] - code - tests/test_zero_match_alert.py
+- [[test_run_once_does_not_alert_below_threshold()]] - code - tests/test_zero_match_alert.py
+- [[test_run_once_files_issue_and_persists_state_on_zero_match_streak()]] - code - tests/test_zero_match_alert.py
+- [[test_zero_match_alert.py]] - code - tests/test_zero_match_alert.py
+- [[test_zero_match_streak_fires_exactly_once_at_threshold()]] - code - tests/test_zero_match_alert.py
+- [[test_zero_match_streak_increments_while_fetching_but_not_matching()]] - code - tests/test_zero_match_alert.py
+- [[test_zero_match_streak_never_alerts_if_source_never_matched()]] - code - tests/test_zero_match_alert.py
+- [[test_zero_match_streak_real_ashby_incident_shape()]] - code - tests/test_zero_match_alert.py
+- [[test_zero_match_streak_resets_on_a_real_match_and_marks_ever_matched()]] - code - tests/test_zero_match_alert.py
+- [[test_zero_match_streak_unaffected_by_a_zero_fetch_run()]] - code - tests/test_zero_match_alert.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -32,13 +33,10 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 12 edges to [[_COMMUNITY_build_frontmatter]]
-- 2 edges to [[_COMMUNITY_render_dossier]]
-- 1 edge to [[_COMMUNITY_test_render_dossier_shows_real_rendered_frontmatter_with_preference_match]]
+- 3 edges to [[_COMMUNITY_test_writer.py]]
+- 1 edge to [[_COMMUNITY_recheck.py]]
 
 ## Top bridge nodes
-- [[build_frontmatter()]] - degree 11, connects to 3 communities
-- [[test_render_dossier_shows_real_rendered_frontmatter_with_preference_match()]] - degree 4, connects to 2 communities
-- [[company_slug()]] - degree 8, connects to 1 community
-- [[test_build_frontmatter_includes_moc_link_and_company_tag()]] - degree 3, connects to 1 community
-- [[test_company_slug_normalizes_case_and_whitespace_for_same_company_clustering()]] - degree 3, connects to 1 community
+- [[test_zero_match_alert.py]] - degree 13, connects to 2 communities
+- [[test_run_once_files_issue_and_persists_state_on_zero_match_streak()]] - degree 3, connects to 1 community
+- [[test_run_once_does_not_alert_below_threshold()]] - degree 2, connects to 1 community

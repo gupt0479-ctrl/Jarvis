@@ -272,6 +272,13 @@
         "a": 1,
         "rgb": 10253663
       }
+    },
+    {
+      "query": "tag:#community/stage1_reject",
+      "color": {
+        "a": 1,
+        "rgb": 12234924
+      }
     }
   ]
 }

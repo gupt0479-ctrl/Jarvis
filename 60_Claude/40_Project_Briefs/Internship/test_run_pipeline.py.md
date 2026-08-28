@@ -79,5 +79,7 @@ tags:
 - [[test_validate_and_write_rejects_cross_source_duplicate()]] - `contains` [EXTRACTED]
 - [[test_validate_and_write_rejects_dead_url()]] - `contains` [EXTRACTED]
 - [[test_validate_and_write_seeds_dedup_keys_from_existing_vault_files()]] - `contains` [EXTRACTED]
+- [[test_write_gate_failures.py]] - `imports_from` [EXTRACTED]
+- [[test_zero_match_alert.py]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/test_writerpy

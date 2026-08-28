@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_recheck.py"
 type: "code"
-community: "plan_removals"
+community: "_fake_http_get_only_interndock"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/plan_removals
+  - community/_fake_http_get_only_interndock
 ---
 
 # test_absent_from_feed_is_removed()
@@ -15,4 +15,4 @@ tags:
 - [[plan_removals()]] - `calls` [EXTRACTED]
 - [[test_recheck.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/plan_removals
+#graphify/code #graphify/EXTRACTED #community/_fake_http_get_only_interndock

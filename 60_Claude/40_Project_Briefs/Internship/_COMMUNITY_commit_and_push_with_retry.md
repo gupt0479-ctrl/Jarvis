@@ -65,16 +65,17 @@ SORT file.name ASC
 
 ## Connections to other communities
 - 12 edges to [[_COMMUNITY_recheck.py]]
-- 11 edges to [[_COMMUNITY_write_dossier]]
+- 10 edges to [[_COMMUNITY_write_dossier]]
 - 5 edges to [[_COMMUNITY_test_write_dossier_different_uid_same_role_company_gets_collision_suffix]]
 - 4 edges to [[_COMMUNITY_build_frontmatter]]
 - 3 edges to [[_COMMUNITY_test_writer.py]]
+- 1 edge to [[_COMMUNITY_test_freehire.py]]
 - 1 edge to [[_COMMUNITY_vault_root]]
-- 1 edge to [[_COMMUNITY_plan_removals]]
-- 1 edge to [[_COMMUNITY_writer.py]]
+- 1 edge to [[_COMMUNITY__fake_http_get_only_interndock]]
+- 1 edge to [[_COMMUNITY_render_dossier]]
 
 ## Top bridge nodes
-- [[revalidate.py]] - degree 14, connects to 4 communities
+- [[revalidate.py]] - degree 14, connects to 5 communities
 - [[scan_dossiers()]] - degree 9, connects to 4 communities
 - [[git_ops.py]] - degree 8, connects to 3 communities
 - [[GitPushError]] - degree 8, connects to 3 communities

@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_run_pipeline.py"
 type: "code"
-community: "_fake_http_get_only_interndock"
+community: "test_writer.py"
 location: "L740"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/_fake_http_get_only_interndock
+  - community/test_writerpy
 ---
 
 # test_run_once_writes_interndock_listings_when_wired()
@@ -17,4 +17,4 @@ tags:
 - [[_run_once_kwargs()]] - `calls` [EXTRACTED]
 - [[test_run_pipeline.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/_fake_http_get_only_interndock
+#graphify/code #graphify/EXTRACTED #community/test_writerpy

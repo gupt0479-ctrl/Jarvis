@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_run_pipeline.py"
 type: "rationale"
-community: "_fake_http_get_only_interndock"
+community: "test_writer.py"
 location: "L741"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/_fake_http_get_only_interndock
+  - community/test_writerpy
 ---
 
 # End-to-end: InternDock flows through matches()/stage1_reject() and the     norma
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[test_run_once_writes_interndock_listings_when_wired()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/_fake_http_get_only_interndock
+#graphify/rationale #graphify/EXTRACTED #community/test_writerpy

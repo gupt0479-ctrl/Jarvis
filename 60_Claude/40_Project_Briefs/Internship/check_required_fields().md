@@ -1,12 +1,12 @@
 ---
 source_file: "vault_writer/validate.py"
 type: "code"
-community: "validate.py"
+community: "render_dossier"
 location: "L47"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/validatepy
+  - community/render_dossier
 ---
 
 # check_required_fields()
@@ -20,4 +20,4 @@ tags:
 - [[validate()]] - `calls` [EXTRACTED]
 - [[validate.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/validatepy
+#graphify/code #graphify/EXTRACTED #community/render_dossier

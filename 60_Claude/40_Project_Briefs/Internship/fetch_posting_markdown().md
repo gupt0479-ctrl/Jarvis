@@ -1,12 +1,12 @@
 ---
 source_file: "ingestion/posting_page.py"
 type: "code"
-community: "writer.py"
+community: "stage1_reject"
 location: "L149"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/writerpy
+  - community/stage1_reject
 ---
 
 # fetch_posting_markdown()
@@ -22,4 +22,4 @@ tags:
 - [[test_fetch_posting_markdown_strips_ashby_application_suffix_before_calling_firecrawl()]] - `calls` [EXTRACTED]
 - [[test_posting_page.py]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/writerpy
+#graphify/code #graphify/EXTRACTED #community/stage1_reject

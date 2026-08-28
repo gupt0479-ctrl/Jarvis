@@ -1,12 +1,12 @@
 ---
 source_file: "ingestion/posting_page.py"
 type: "code"
-community: "writer.py"
+community: "vault_root"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/writerpy
+  - community/vault_root
 ---
 
 # posting_page.py
@@ -24,4 +24,4 @@ tags:
 - [[run_pipeline.py]] - `imports_from` [EXTRACTED]
 - [[test_posting_page.py]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/writerpy
+#graphify/code #graphify/EXTRACTED #community/vault_root

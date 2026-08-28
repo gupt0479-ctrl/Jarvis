@@ -1,12 +1,12 @@
 ---
 source_file: "core/filter.py"
 type: "code"
-community: "write_dossier"
+community: "test_freehire.py"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/write_dossier
+  - community/test_freehirepy
 ---
 
 # filter.py
@@ -36,4 +36,4 @@ tags:
 - [[test_identity.py]] - `imports_from` [EXTRACTED]
 - [[test_run_pipeline.py]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/write_dossier
+#graphify/code #graphify/EXTRACTED #community/test_freehirepy

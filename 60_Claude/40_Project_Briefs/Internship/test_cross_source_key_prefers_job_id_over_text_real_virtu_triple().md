@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_identity.py"
 type: "code"
-community: "test_render_dossier_shows_real_rendered_frontmatter_with_preference_match"
+community: "render_dossier"
 location: "L175"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_render_dossier_shows_real_rendered_frontmatter_with_preference_match
+  - community/render_dossier
 ---
 
 # test_cross_source_key_prefers_job_id_over_text_real_virtu_triple()
@@ -16,4 +16,4 @@ tags:
 - [[cross_source_key()]] - `calls` [EXTRACTED]
 - [[test_identity.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_render_dossier_shows_real_rendered_frontmatter_with_preference_match
+#graphify/code #graphify/EXTRACTED #community/render_dossier

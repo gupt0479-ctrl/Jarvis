@@ -1,12 +1,12 @@
 ---
 source_file: "core/identity.py"
 type: "code"
-community: "test_render_dossier_shows_real_rendered_frontmatter_with_preference_match"
+community: "test_write_dossier_creates_missing_dossiers_dir"
 location: "L108"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_render_dossier_shows_real_rendered_frontmatter_with_preference_match
+  - community/test_write_dossier_creates_missing_dossiers_dir
 ---
 
 # company_matches_preference()
@@ -27,4 +27,4 @@ tags:
 - [[test_identity.py]] - `imports` [EXTRACTED]
 - [[writer.py]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/test_render_dossier_shows_real_rendered_frontmatter_with_preference_match
+#graphify/code #graphify/EXTRACTED #community/test_write_dossier_creates_missing_dossiers_dir

@@ -15,6 +15,7 @@ tags:
 - [[Path]] - `calls` [INFERRED]
 - [[append_excluded_log()]] - `calls` [EXTRACTED]
 - [[append_weekly_rollup()]] - `calls` [EXTRACTED]
+- [[append_write_gate_excluded_log()]] - `calls` [EXTRACTED]
 - [[run_log.py]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/recheckpy

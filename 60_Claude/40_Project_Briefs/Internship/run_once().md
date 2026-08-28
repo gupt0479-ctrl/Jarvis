@@ -2,7 +2,7 @@
 source_file: "run_pipeline.py"
 type: "code"
 community: "recheck.py"
-location: "L482"
+location: "L570"
 tags:
   - graphify/code
   - graphify/EXTRACTED
@@ -17,6 +17,7 @@ tags:
 - [[append_excluded_log()]] - `calls` [EXTRACTED]
 - [[append_run_log()]] - `calls` [EXTRACTED]
 - [[append_weekly_rollup()]] - `calls` [EXTRACTED]
+- [[append_write_gate_excluded_log()]] - `calls` [EXTRACTED]
 - [[check_all()]] - `calls` [EXTRACTED]
 - [[compute_uid()]] - `calls` [EXTRACTED]
 - [[count_dossiers_by_bucket()]] - `calls` [EXTRACTED]
@@ -31,16 +32,19 @@ tags:
 - [[load_profile()]] - `calls` [EXTRACTED]
 - [[load_recent_runs()]] - `calls` [EXTRACTED]
 - [[load_seen_ids()]] - `calls` [EXTRACTED]
+- [[load_write_gate_failures()]] - `calls` [EXTRACTED]
 - [[matches()]] - `calls` [EXTRACTED]
 - [[run_pipeline.py]] - `contains` [EXTRACTED]
 - [[save_capacity_notified()]] - `calls` [EXTRACTED]
 - [[save_debate_losses()]] - `calls` [EXTRACTED]
 - [[save_excluded_uids()]] - `calls` [EXTRACTED]
 - [[save_seen_ids()]] - `calls` [EXTRACTED]
+- [[save_write_gate_failures()]] - `calls` [EXTRACTED]
 - [[should_alert_on_exclusion_spike()]] - `calls` [EXTRACTED]
 - [[should_run_weekly_rollup()]] - `calls` [EXTRACTED]
 - [[stage1_reject()]] - `calls` [EXTRACTED]
 - [[update_debate_losses()]] - `calls` [EXTRACTED]
+- [[update_write_gate_failures()]] - `calls` [EXTRACTED]
 - [[validate_and_write()]] - `calls` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/recheckpy

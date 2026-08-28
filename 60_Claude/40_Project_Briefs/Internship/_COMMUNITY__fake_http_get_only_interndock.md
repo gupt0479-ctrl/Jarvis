@@ -1,21 +1,27 @@
 ---
 type: community
-members: 8
+members: 14
 ---
 
 # _fake_http_get_only_interndock
 
-**Members:** 8 nodes
+**Members:** 14 nodes
 
 ## Members
-- [[End-to-end InternDock flows through matches()stage1_reject() and the     norma]] - rationale - tests/test_run_pipeline.py
-- [[Every other source returns empty (in its own real response shape) —     isolates]] - rationale - tests/test_run_pipeline.py
-- [[Same 'absence means off' convention as fetch_page_fn.]] - rationale - tests/test_run_pipeline.py
-- [[_fake_http_get_only_interndock()]] - code - tests/test_run_pipeline.py
-- [[_fake_interndock_sitemap_get()]] - code - tests/test_run_pipeline.py
-- [[test_discover_interndock_fetches_only_new_candidates_and_persists_state()]] - code - tests/test_run_pipeline.py
-- [[test_discover_interndock_returns_empty_when_fetch_fn_is_none()]] - code - tests/test_run_pipeline.py
-- [[test_run_once_writes_interndock_listings_when_wired()]] - code - tests/test_run_pipeline.py
+- [[A dossier written before dossier_uids.json existed (or hand-edited into     the]] - rationale - tests/test_recheck.py
+- [[A source missing from feeds_by_source means its fetch failed — its     dossiers]] - rationale - tests/test_recheck.py
+- [[Real, reproducible bug found 2026-08-23 scan_dossiers() globs Viewed     along]] - rationale - tests/test_recheck.py
+- [[{uid, path, reason} for dossiers whose posting closed. A source that     faile]] - rationale - recheck.py
+- [[_fm()]] - code - tests/test_recheck.py
+- [[plan_removals is the recheck's whole decision surface — pure, tested offline.]] - rationale - tests/test_recheck.py
+- [[plan_removals()]] - code - recheck.py
+- [[test_absent_from_feed_is_removed()]] - code - tests/test_recheck.py
+- [[test_active_false_upstream_is_removed()]] - code - tests/test_recheck.py
+- [[test_all_active_removes_nothing()]] - code - tests/test_recheck.py
+- [[test_already_removed_dossier_is_not_re_swept()]] - code - tests/test_recheck.py
+- [[test_dossier_with_no_manifest_entry_is_skipped_not_removed()]] - code - tests/test_recheck.py
+- [[test_failed_fetch_skips_that_sources_dossiers_entirely()]] - code - tests/test_recheck.py
+- [[test_recheck.py]] - code - tests/test_recheck.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -25,11 +31,11 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 6 edges to [[_COMMUNITY_test_writer.py]]
+- 2 edges to [[_COMMUNITY_write_dossier]]
+- 2 edges to [[_COMMUNITY_recheck.py]]
+- 1 edge to [[_COMMUNITY_commit_and_push_with_retry]]
 
 ## Top bridge nodes
-- [[_fake_interndock_sitemap_get()]] - degree 4, connects to 1 community
-- [[_fake_http_get_only_interndock()]] - degree 4, connects to 1 community
-- [[test_run_once_writes_interndock_listings_when_wired()]] - degree 4, connects to 1 community
-- [[test_discover_interndock_returns_empty_when_fetch_fn_is_none()]] - degree 3, connects to 1 community
-- [[test_discover_interndock_fetches_only_new_candidates_and_persists_state()]] - degree 2, connects to 1 community
+- [[plan_removals()]] - degree 11, connects to 3 communities
+- [[test_recheck.py]] - degree 10, connects to 1 community
+- [[_fm()]] - degree 4, connects to 1 community

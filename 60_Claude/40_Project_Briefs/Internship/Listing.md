@@ -14,6 +14,7 @@ tags:
 ## Connections
 - [[_candidate()]] - `calls` [EXTRACTED]
 - [[_candidate()_1]] - `calls` [EXTRACTED]
+- [[_dead_link_listing()]] - `calls` [EXTRACTED]
 - [[interndock.py]] - `imports` [EXTRACTED]
 - [[normalize.py]] - `contains` [EXTRACTED]
 - [[normalize_ai_jobs()]] - `references` [EXTRACTED]
@@ -44,5 +45,6 @@ tags:
 - [[test_lever_rejects_explicit_wrong_year()]] - `calls` [EXTRACTED]
 - [[test_missing_raw_id_raises()]] - `calls` [EXTRACTED]
 - [[test_run_once_files_issue_on_exclusion_spike()]] - `calls` [EXTRACTED]
+- [[test_write_gate_failures.py]] - `imports` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/write_dossier

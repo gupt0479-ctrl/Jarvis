@@ -1,18 +1,19 @@
 ---
 type: community
-members: 5
+members: 6
 ---
 
 # dump_frontmatter
 
-**Members:** 5 nodes
+**Members:** 6 nodes
 
 ## Members
-- [[.increase_indent()]] - code - vault_writer/writer.py
-- [[Dumps None as a blank scalar (matching the plan's `field` empty style     inste]] - rationale - vault_writer/writer.py
-- [[Shared YAML rendering (None as blank scalar, indented list items) so     every d]] - rationale - vault_writer/writer.py
-- [[_FrontmatterDumper]] - code - vault_writer/writer.py
-- [[dump_frontmatter()]] - code - vault_writer/writer.py
+- [[Real Optiver 'Quantitative Research Intern, PhD (Summer 2027)'     (Greenhouse j]] - rationale - tests/test_posting_page.py
+- [[The matched PhD-exclusivity phrase, or None if the posting shows no     explicit]] - rationale - ingestion/posting_page.py
+- [[phd_only_exclusion()]] - code - ingestion/posting_page.py
+- [[test_phd_only_exclusion_does_not_reject_bachelors_masters_eligible_real_text()]] - code - tests/test_posting_page.py
+- [[test_phd_only_exclusion_rejects_explicit_equivalent_phrasing()]] - code - tests/test_posting_page.py
+- [[test_phd_only_exclusion_rejects_real_optiver_text()]] - code - tests/test_posting_page.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -22,9 +23,13 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 3 edges to [[_COMMUNITY_build_frontmatter]]
+- 4 edges to [[_COMMUNITY_plan_removals]]
+- 1 edge to [[_COMMUNITY_vault_root_1]]
+- 1 edge to [[_COMMUNITY_recheck.py]]
 - 1 edge to [[_COMMUNITY_render_dossier]]
 
 ## Top bridge nodes
-- [[dump_frontmatter()]] - degree 5, connects to 2 communities
-- [[_FrontmatterDumper]] - degree 4, connects to 1 community
+- [[phd_only_exclusion()]] - degree 8, connects to 4 communities
+- [[test_phd_only_exclusion_rejects_real_optiver_text()]] - degree 3, connects to 1 community
+- [[test_phd_only_exclusion_does_not_reject_bachelors_masters_eligible_real_text()]] - degree 2, connects to 1 community
+- [[test_phd_only_exclusion_rejects_explicit_equivalent_phrasing()]] - degree 2, connects to 1 community

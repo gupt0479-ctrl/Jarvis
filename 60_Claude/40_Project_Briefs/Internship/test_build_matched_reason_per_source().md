@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_run_pipeline.py"
 type: "code"
-community: "_fake_http_get"
+community: "normalize_simplify"
 location: "L234"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/_fake_http_get
+  - community/normalize_simplify
 ---
 
 # test_build_matched_reason_per_source()
@@ -18,4 +18,4 @@ tags:
 - [[normalize_simplify()]] - `calls` [EXTRACTED]
 - [[test_run_pipeline.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/_fake_http_get
+#graphify/code #graphify/EXTRACTED #community/normalize_simplify

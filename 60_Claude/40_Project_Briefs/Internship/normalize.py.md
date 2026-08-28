@@ -38,6 +38,7 @@ tags:
 - [[test_relevance.py]] - `imports_from` [EXTRACTED]
 - [[test_run_pipeline.py]] - `imports_from` [EXTRACTED]
 - [[test_validate.py]] - `imports_from` [EXTRACTED]
+- [[test_write_gate_failures.py]] - `imports_from` [EXTRACTED]
 - [[test_writer.py]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/write_dossier

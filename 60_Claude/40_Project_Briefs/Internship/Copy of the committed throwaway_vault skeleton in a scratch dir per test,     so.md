@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_writer.py"
 type: "rationale"
-community: "vault_root"
+community: "build_frontmatter"
 location: "L27"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/vault_root
+  - community/build_frontmatter
 ---
 
 # Copy of the committed throwaway_vault skeleton in a scratch dir per test,     so
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[vault_root()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/vault_root
+#graphify/rationale #graphify/EXTRACTED #community/build_frontmatter

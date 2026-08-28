@@ -1,12 +1,12 @@
 ---
 source_file: "ingestion/posting_page.py"
 type: "code"
-community: "writer.py"
+community: "vault_root"
 location: "L229"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/writerpy
+  - community/vault_root
 ---
 
 # _dedupe_paragraphs()
@@ -16,4 +16,4 @@ tags:
 - [[extract_content()]] - `calls` [EXTRACTED]
 - [[posting_page.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/writerpy
+#graphify/code #graphify/EXTRACTED #community/vault_root

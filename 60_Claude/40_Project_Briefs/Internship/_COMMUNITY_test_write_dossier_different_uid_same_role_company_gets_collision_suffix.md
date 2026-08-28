@@ -74,7 +74,7 @@ SORT file.name ASC
 - 5 edges to [[_COMMUNITY_commit_and_push_with_retry]]
 - 5 edges to [[_COMMUNITY_recheck.py]]
 - 2 edges to [[_COMMUNITY_normalize_simplify]]
-- 1 edge to [[_COMMUNITY_writer.py]]
+- 1 edge to [[_COMMUNITY_render_dossier]]
 - 1 edge to [[_COMMUNITY_write_dossier]]
 
 ## Top bridge nodes
