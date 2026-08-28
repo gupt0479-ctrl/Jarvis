@@ -6,7 +6,7 @@ source_os: windows
 title: "Internship-research-loop postmortem and gaps"
 started_at: 2026-08-26T17:09:28
 ended_at: 2026-08-26T19:47:02
-exported_at: 2026-08-28T17:00:02
+exported_at: 2026-08-28T19:40:10
 duration_minutes: 157.6
 project: Jarvis
 cwd: 'D:\Users\_Anant\10_Areas\Documents\Jarvis'
