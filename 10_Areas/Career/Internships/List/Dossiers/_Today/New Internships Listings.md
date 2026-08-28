@@ -180,3 +180,73 @@ Removed this pass (not silently dropped): SAP GPO iXp (procurement role), Aptiv/
 - [IT Intern - AI & Automation - Bennett Thrasher](https://jobright.ai/jobs/info/6a91b2829864261ccd29e406) — Atlanta, GA, United States (Aug 28)
 
 76 of 83 rows excluded as genuinely non-CS/SWE (mechanical/civil/construction/electrical/product-development/field engineering, per the repo's own general-"Engineer" scope, not software-specific) — spot-checked a sample of the exclusions and the irrelevance held.
+
+## jobright-ai/2026-Data-Analysis-Internship — 2026-08-29, full pass (85 rows scanned)
+- [2027 L'Oréal USA Summer Internship -Data Science– Undergraduate (NY) - L'Oréal](https://jobright.ai/jobs/info/6a7f3b69b56bea5779c09876) — New York, NY, United States (Aug 28)
+- [Data College Intern (PN 20085470) - Ohio BWC (official)](https://jobright.ai/jobs/info/6a91fbe7c12c90443efc9174) — Columbus, OH, United States (Aug 28)
+- [Graduate Intern, Data Scientist (Spring 2027) - Delta Air Lines](https://jobright.ai/jobs/info/6a90e6467c32860d14cfbc31) — Atlanta, GA, United States (Aug 28)
+- [Intern - Tech Ops Analytics & Business Intelligence (Summer 2027) - United Airlines](https://jobright.ai/jobs/info/6a88a0f9e8b6601d12907c30) — Chicago, IL, United States (Aug 28)
+- [Research Intern - Healthcare/Data Analysis: PRN - University Hospitals](https://jobright.ai/jobs/info/6a91da089864261ccd29f576) — Cleveland, OH, United States (Aug 28)
+- [Business Intelligence Intern - Sacramento Kings](https://jobright.ai/jobs/info/6a91bb168e59685453377412) — Sacramento, CA, United States (Aug 28)
+- [Computational Research Intern (2027) - Indiana Biosciences Research Institute (IBRI)](https://jobright.ai/jobs/info/6a91b5ee9864261ccd29e51f) — Indianapolis, IN, United States (Aug 28)
+- [Data Analyst Intern - Ameritas](https://jobright.ai/jobs/info/6a91a871a27a2d3c9848917d) — Lincoln, Nebraska, United States (Aug 28)
+- [Part Time Intern - Data Analytics Talent and Business Innovation/Ohio TechNet - Lorain County Community College](https://jobright.ai/jobs/info/6a9199cf9864261ccd29dbbd) — Elyria, OH, United States (Aug 28)
+- [Data Analyst Intern - iA](https://jobright.ai/jobs/info/6a9181acd18f756748278603) — Binghamton, NY, United States (Aug 28)
+- [Data Scientist Intern - HDR](https://jobright.ai/jobs/info/6a913780a198864866764007) — Omaha, NE, United States (Aug 28)
+- [Analytics Intern - CTP](https://jobright.ai/jobs/info/6a90cb37d96ad228f1263456) — Boston, MA, United States (Aug 27)
+- [Supply Chain Data Analyst Intern - Jabil](https://jobright.ai/jobs/info/6a91c2748e596854533779d9) — St. Petersburg, FL, United States (Aug 27)
+- [Summer 2027 Data and Analytics Internship - Huntington National Bank](https://jobright.ai/jobs/info/6a91c5eda27a2d3c9848a086) — Columbus, OH, United States (Aug 27)
+- [2027 New York Life Direct Summer Internship Program - AI & DS - New York Life](https://jobright.ai/jobs/info/6a90c8a12e254e06fb9f2ebc) — Tampa, FL, United States (Aug 27)
+- [Advisory Intern, Forensic Technology - Summer 2027 - BDO USA](https://jobright.ai/jobs/info/6a90b1f12e254e06fb9f26de) — McLean, VA, United States (Aug 27)
+- [Data Analytics Intern - Summer 2027 - IntelliScript - Milliman](https://jobright.ai/jobs/info/6a90b6278ffa38557e6ce8a5) — Brookfield, WI, United States (Aug 27)
+- [Business Intelligence Intern - WW Clyde](https://jobright.ai/jobs/info/6a90ade7a1988648667629ef) — Orem, UT, United States (Aug 27)
+- [Business Intelligence Intern - Sunpro Corporation](https://jobright.ai/jobs/info/6a90ac75a19886486676297b) — Orem, UT, United States (Aug 27)
+- [Business Intelligence Intern - Geneva Rock Products](https://jobright.ai/jobs/info/6a90aa588ffa38557e6ce4de) — Orem, UT, United States (Aug 27)
+- [Data Research Analyst Intern - Kingland](https://jobright.ai/jobs/info/6a906f4c8ffa38557e6ccead) — Ames, IA, United States (Aug 27)
+- [Data Science Intern - Central Insurance](https://jobright.ai/jobs/info/6a908f5d7c32860d14cfa13f) — Van Wert, OH, United States (Aug 27)
+- [Publications Data Management Intern - Doctors Without Borders/Médecins Sans Frontières - USA](https://jobright.ai/jobs/info/6a9068517c32860d14cf92a7) — New York, NY, United States (Aug 27)
+- [Data Analyst Intern - Hoffman Construction Company](https://jobright.ai/jobs/info/6a907009d96ad228f1261439) — Claude, Texas, United States (Aug 27)
+- [Intern - Regulatory Data Analyst (Actuary) - The Hanover Insurance Group](https://jobright.ai/jobs/info/6a9074590bd89e205d24a735) — Worcester, MA, United States (Aug 27)
+- [Analytics Intern - CTP](https://jobright.ai/jobs/info/6a9152d62e254e06fb9f405f) — Boston, MA, United States (Aug 27)
+- [Data Analyst Intern - PSECU](https://jobright.ai/jobs/info/6a903056a19886486675fc62) — Harrisburg, PA, United States (Aug 27)
+- [Research Assistant - Neuroimaging and Behavioral Data - Medical Organization for Latino Advancement (MOLA)](https://jobright.ai/jobs/info/6a90b4d90bd89e205d24be82) — North Chicago, IL, United States (Aug 27)
+- [Data Analytics and Data Catalog Intern - DHL Express](https://jobright.ai/jobs/info/6a8764cb680f314a29d38980) — Erlanger, KY, United States (Aug 26)
+- [Geospatial Information Systems Intern - Tetra Tech](https://jobright.ai/jobs/info/6a8ddc1f47679c68bf5e52d0) — Colorado Springs, CO, United States (Aug 26)
+- [Data Analyst Internship (2028 Graduates) - Gartner](https://jobright.ai/jobs/info/6a8fea0e7c32860d14cf7213) — Irving, TX, United States (Aug 26)
+
+Excluded from this pass: 4 RBC/HOOPP/CNRL entries (Canada); Grant Thornton x2 (duplicate of the posting already added from jobright-ai/2026-Engineer-Internship above); "Old Woman Creek..." Data College Intern (same PN 20085470 as the Ohio BWC entry kept above — looks like a scraper artifact, likely the same underlying state-of-Ohio posting under two agency labels); GigFinder.ai Economics/UT MD Anderson Hospital Medicine/ACS CAN Tobacco Control/Bombardier/Find Community Connection (volunteer, unpaid)/Integrated Packaging Machinery/BAE Systems (major defense contractor, clearance-risk pattern)/Allianz Life/Oak Ridge USDA-APHIS/MTA EAM Analyst x2/Amazon Science (same company as the already-excluded "Amazon" from Prompt 20's sweep) — all excluded for lacking real data/CS-technical content or being non-data-relevant research/domain roles.
+
+## jobright-ai/2026-Business-Analyst-Internship — 2026-08-29, full pass (54 rows scanned)
+This category held up as near-total non-CS/SWE-relevance under real per-row scrutiny, not a blanket skip: of 54 rows, the large majority are generic "Business Analyst"/"Business Intern"/"Enterprise Business Solutions" postings with no data or software content (McKinsey, CarMax, Koch Business Systems Analyst, the 4-way Utah "Enterprise Business Solutions Intern" cluster, CGI x2, Hanover Insurance x2, etc.), several are Canada-located (Mackenzie Investments, HOOPP, EQ Bank, RBC x2, RBC Dominion, Cargill Winnipeg), one (QTS "Process Analytics - Technology Delivery Team") is the same QTS posting Prompt 20 already found filled/closed, and Direct Agents/Bestow duplicate companies already excluded from the AI-jobs pass above. Only these two had genuine data/analytics-technical content:
+- [Business Analytics & Technology Intern - Amcor](https://jobright.ai/jobs/info/6a8dc88947679c68bf5e4b5c) — Evansville, IN, United States (Aug 25)
+- [Business Analytics and Reporting Intern - Merrill Manufacturing Company](https://jobright.ai/jobs/info/6a8e0453581f2d7bfdfea9a8) — Storm Lake, IA, United States (Aug 25)
+
+## northwesternfintech/2026QuantInternships — 2026-08-29, full pass (71 role-links across ~35 companies scanned)
+- [QR - Seven Research](https://job-boards.greenhouse.io/sevenresearch/jobs/4894946008) — NYC
+- [QR - Seven Research](https://job-boards.greenhouse.io/sevenresearch/jobs/4895007008) — NYC
+- [QD - Seven Research](https://job-boards.greenhouse.io/sevenresearch/jobs/4895082008) — NYC
+- [SWE - Seven Research](https://job-boards.greenhouse.io/sevenresearch/jobs/4895047008) — NYC
+- [QT - SIG](https://careers.sig.com/quantitative-trading-internships-co-ops/jobs/10849) — Bala Cynwyd, Chicago, NYC
+- [QT - SIG](https://careers.sig.com/quantitative-trading-internships-co-ops/jobs/10718) — Bala Cynwyd, Chicago, NYC
+- [QR - SIG](https://careers.sig.com/quantitative-systematic-trading-quantitative-research/jobs/10819) — Bala Cynwyd, Chicago, NYC
+- [QR - SIG](https://careers.sig.com/phds-postdocs/jobs/10820) — Bala Cynwyd, Chicago, NYC
+- [QR - SIG](https://careers.sig.com/phds-postdocs/jobs/10817) — Bala Cynwyd, Chicago, NYC
+- [QR - SIG](https://careers.sig.com/phds-postdocs/jobs/10818) — Bala Cynwyd, Chicago, NYC
+- [SWE - SIG](https://careers.sig.com/intern-co-op/jobs/10838) — Bala Cynwyd, Chicago, NYC
+- [SWE - SIG](https://careers.sig.com/intern-co-op-technology/jobs/10837) — Bala Cynwyd, Chicago, NYC
+- [DevOps/SRE - TransMarketGroup](https://job-boards.greenhouse.io/transmarketgroup/jobs/5151577007) — Chicago, Puerto Rico
+- [QT - TransMarketGroup](https://job-boards.greenhouse.io/transmarketgroup/jobs/5151569007) — Chicago, Puerto Rico
+- [QD - Voloridge](https://www.voloridge.com/jobs/voloridgeinvestmentmanagement/4224862009) — Jupiter, Florida
+- [QR - Voloridge](https://www.voloridge.com/jobs/voloridgeinvestmentmanagement/4226247009) — Jupiter, Florida
+- [QR Fellowship - Voloridge](https://www.voloridge.com/jobs/voloridgeinvestmentmanagement/4224950009) — Jupiter, Florida
+
+45 of 71 role-links were dossier-duplicates (Akuna, Citadel Securities, Citadel, DRW, Five Rings, Flow Traders, Hudson River Trading, IMC Trading, Jane Street, Optiver, Virtu Financial, Walleye Capital all already have dossiers covering these exact roles), 3 were already-excluded companies (Aquatic, Old Mission), 4 were exact-URL duplicates of Citadel Securities postings already added to this file from the speedyapply AI pass earlier today, and 2 ("Quantic" QD/QR) turned out to be the same Walleye Capital program already dossiered under its "Quantic" brand name — caught by title/URL cross-check, not company-name matching (worth noting: this repo labels Walleye's postings under the "Quantic" program brand, not "Walleye Capital", so company-name-only dedup would have missed it).
+
+## sharunkumar/Summer-Internships (README-Off-Season.md) — 2026-08-29, full pass (831 rows across 5 sections: Software Engineering, Product Management, Data Science/AI/ML, Quantitative Finance, Hardware Engineering)
+Checked the `Terms` column directly (this repo's HTML tables carry it per-row, unlike the other sources). Only 3 of 831 rows carry a Summer/Winter/Spring 2027 term at all — the rest are stale off-season postings for Winter 2025, Fall 2025, Spring 2026, and Winter 2026, genuinely out of cycle. Of those 3: an American Express Product Management role (fails gate 4), a T. Rowe Price Global Trading Internship Program (shows the closed-application 🔒 icon, not open), and a Plexus Hardware Engineer intern in Raleigh NC with no software content in the title (excluded per the same hardware-vs-software line drawn throughout this sweep — Plexus's own *software* internship in Neenah WI is already listed above from the speedyapply pass). **Zero new postings from this source.**
+
+## jobright-ai's remaining 9 category repos (Consultant, Marketing, Design, Sales, Art, Education, Public-Sector, HR, Legal) — 2026-08-29, full-repo keyword scan on each (not a sample)
+Scanned every row's title (not a subset) in all 9 repos — 613 rows total — for the same CS/SWE/data keyword set used throughout this sweep. 8 of 9 repos came back with zero genuine hits (a few string collisions like "Aide" matching on "ai" or "Engineering Sales Intern" matching on "engineer" — checked and confirmed irrelevant). One real hit surfaced in Legal-Internship, confirming the escalation trigger was live, not just assumed clean:
+- [Intern - Compliance Data Analyst - The Hanover Insurance Group](https://jobright.ai/jobs/info/6a8dc217581f2d7bfdfe7c17) — Worcester, MA, United States — a third, distinct Hanover Insurance internship (their Regulatory Data Analyst and Operations Business Analyst roles were already handled in earlier passes above)
+
+**Correction (2026-08-29):** the URL just above for "Intern - Compliance Data Analyst - The Hanover Insurance Group" was transcribed wrong. Correct link: https://jobright.ai/jobs/info/6a903ae0a19886486675ff1d
