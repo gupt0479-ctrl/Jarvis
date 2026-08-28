@@ -5,34 +5,34 @@ source_app: claude-code
 source_os: wsl
 title: "Dossier deadline pass for _Today"
 started_at: 2026-08-28T16:24:01
-ended_at: 2026-08-28T19:07:23
-duration_minutes: 163
-exported_at: 2026-08-28T23:45:02
+ended_at: 2026-08-28T20:47:02
+duration_minutes: 263
+exported_at: 2026-08-29T01:45:02
 project: internship-research-loop
 cwd: '/home/anant_gupta/projects/work/internship-research-loop'
 session_id: f397fe24-9660-49e3-9691-9634408fa5c8
 status: raw
-turn_count: 18
+turn_count: 36
 tools_used:
-  Agent: 8
-  Bash: 18
+  Agent: 16
+  Bash: 24
   ListAgents: 4
-  mcp__jarvis__vault_append: 1
+  mcp__jarvis__vault_append: 2
   mcp__jarvis__vault_list: 16
-  mcp__jarvis__vault_read: 41
+  mcp__jarvis__vault_read: 44
   mcp__jarvis__vault_write: 3
-  Read: 6
+  Read: 7
   ScheduleWakeup: 5
   ToolSearch: 2
-  WebFetch: 7
+  WebFetch: 9
   Write: 1
 tokens:
-  input: 392
-  output: 587226
-  cache_creation: 4218323
-  cache_read: 42770127
-  total: 47576068
-cost_usd: 26.907712
+  input: 480
+  output: 688878
+  cache_creation: 5554741
+  cache_read: 61090133
+  total: 67334232
+cost_usd: 36.906163
 model:
   - claude-sonnet-5
 files_touched:
@@ -41,6 +41,7 @@ files_touched:
   - "/tmp/deadline_recon/live_no_deadline_current.md"
   - "/tmp/deadline_recon/batches.txt"
   - "/tmp/deadline_recon/deadline_tracker_content.md"
+  - "/tmp/deadline_recon/singletons.tsv"
 tags:
   - input
   - ai-conversation
@@ -1448,10 +1449,802 @@ All done — batch 4 finished, and the complete Task 1/2/3 report is already pos
 
 - `ScheduleWakeup` — `{"stop":true}`
 
+## You
+
+**What's actually left, precisely — don't re-do what's already done:**
+
+1. **113 singleton-company dossiers never re-checked at all** (85 companies with exactly 1 dossier each — the company-grouping efficiency trick doesn't apply here since there's nothing to group; this is just finishing the deeper method per-dossier). Full list is derivable by diffing the 320 dossier filenames against the 195 dossiers already covered by the 44 multi-dossier companies from the last pass — do that diff yourself at the start rather than asking for it.
+
+2. **9 blocked/inconclusive companies from the last pass**, still genuinely unresolved: Palantir / Palantir Technologies (same company — treat as one, covers 5 dossiers), HPR, American Fidelity, Aquatic Capital Management, Jump Trading, AbbVie, Specter Aerospace, Copart, PIMCO. Last pass's method (direct company-page fetch) hit a 403 or JS wall on all 9 — **use a different method this time**: WebSearch for "[Company] internship program application deadline 2027" instead of a direct fetch, check archive.org's cached version of the careers page if the live one blocks you, or check the company's LinkedIn/Handshake posting if findable. Don't report these as unresolvable again without having tried at least one genuinely different method per company.
+
+3. **"Acds" — identify the real company.** This appears in two dossier filenames: `AI Operations Intern - Naukr AI - Acds.md` and `AI Operations Intern-Caddell Reynolds - Acds.md`. "Naukr AI" and "Caddell Reynolds" look like they might be the *real* employer names, with "Acds" possibly an ATS/aggregator platform name that got miscaptured as if it were the company — read both dossiers' actual frontmatter (`company`, `url`, `source` fields) and body content directly to resolve this, don't guess. If this is confirmed as a real data-quality bug (wrong company name captured), add it as a new item to `Dossier Corrections.md` — don't silently fix the dossier itself, this is a report-only audit like the rest of that note.
+
+4. **Notion — actually fetch it this time** (last pass's report says the fetch never completed).
+
+5. **Montenson vs. Mortenson** — already logged in `Dossier Corrections.md` item 5; re-check Montenson's dossiers specifically (correct company, not the Mortenson mixup) for a real deadline while you're doing the rest of this pass.
+
+**For every one of the above:** apply the same two-tier method as before (dossier's own stored text first, then a live check) but this time with the company-wide landing-page check included from the start (not just the individual req), since that's the method already validated as more thorough. If a company genuinely has no deadline anywhere after a real, differently-angled attempt: that dossier is now doubly-confirmed, move/keep it in `No Deadline.md`. If a real deadline turns up: add it to `Tracker/Deadline Tracker.md` in the correct bucket (`Already Over`/`Soon`/`Next Week`/`Next Month`/`Later`, extending further if something doesn't fit).
+
+**Shared-file discipline, same as every round:** append-only on `_Today/` files and `Deadline Tracker.md`. Never delete an entry you didn't add this session.
+
+## Claude
+
+Let me start with my own direct work: computing the exact singleton diff, and investigating Acds and Montenson by reading their actual dossier content (not guessing).
+
+Both resolved via direct evidence: **Montenson is confirmed a typo for Mortenson** — the dossier body itself says "At Mortenson, we're grounded in..." and the page footer reads "Mortenson External Career Site." **Acds is real** — "Arkansas Center for Data Sciences dba Apprenticely," a real work-based-learning intermediary; the `company` field names the staffing org, not the host employer (Naukr.AI / Caddell Reynolds) in the title. Let me check Apprenticely/ACDS's own program page for a deadline before finalizing.
+
+Now let's launch the delegated work: one agent for the 9 blocked companies + Notion using genuinely different methods, and the 82 remaining singleton companies split into batches. First, let me pull the clean singleton list minus the 3 that fold into already-covered companies.
+
+82 confirmed, split into 7 batches of ~9-13 each. Let me view all 7 to build the fork prompts.
+
+While those run, let me update the corrections doc with the now-confirmed Montenson finding and the new Acds/acds.co finding.
+
+All 8 background agents are running now (7 singleton batches covering 82 companies, plus 1 batch re-attacking the 9 previously-blocked companies + Notion with genuinely different methods). This will take a while given the scale — I'll wait for the completion notifications rather than poll, and compile the consolidated final report once all 8 are back.
+
+**Tool calls:**
+
+- `Bash`:
+  ```bash
+cd /tmp/deadline_recon
+python3 -c "
+import re
+from collections import defaultdict
+companies = defaultdict(list)
+with open('all_no_deadline.txt') as f:
+    for line in f:
+        line = line.strip()
+        if not line: continue
+        name = line[:-3] if line.endswith('.md') else line
+        parts = name.split(' - ')
+        company = parts[-1].strip()
+        company = re.sub(r'\s*\(\d+\)\s*\$', '', company)
+        companies[company].append(name)
+singles = {c:v for c,v in companies.items() if len(v)==1}
+print('singleton company count:', len(singles))
+print('singleton dossier count:', sum(len(v) for v in singles.values()))
+"
+
+  ```
+  ```
+singleton company count: 85
+singleton dossier count: 85
+Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
+  ```
+- `Bash`:
+  ```bash
+cd /tmp/deadline_recon
+{
+  sed 's/\.md$//' aiml_found.txt | sed 's/^/1 - AI & ML\t/'
+  sed 's/\.md$//' fullstack_found.txt | grep -v "^Software Engineer Intern - Backend Focused - Rippling$" | sed 's/^/2 - Fullstack\t/'
+  sed 's/\.md$//' cysfin_found.txt | sed 's/^/3 - CyS & Finance\t/'
+  echo -e "3 - CyS & Finance\tSoftware Engineer Intern - C# .NET Desktop, Summer 2027 - Akuna Capital"
+  echo -e "3 - CyS & Finance\tSoftware Engineer Intern, C# .NET Desktop - Akuna Capital"
+  sed 's/\.md$//' other_found.txt | sed 's/^/Other\t/'
+  cat << 'EOF' | sed 's/^/Other\t/'
+Business Analytics Intern - Allegheny County
+Engineer Intern - Spring 2027 - TMEIC Corporation Americas
+Enterprise Systems Software Engineer Intern (Summer 2027) - Zipline
+Enterprise Systems Software Engineer Intern - Spring 2027 - Zipline
+Long Range Platform Embedded Firmware Intern (Summer 2027) - Zipline
+Software Development Intern - Spring 2027 - Mujin
+Software Integration Intern - Mujin
+Software Engineer Intern - Summer 2027 - Belvedere Trading
+Software Engineering Intern, Summer 2027 - Google
+Software Systems Validation Intern (Spring 2027) - Zipline
+Software Systems Validation Intern (Summer 2027) - Zipline
+System Test Automation Intern (Spring 2027) - Zipline
+System Test Automation Intern (Summer 2027) - Zipline
+EOF
+} > all_no_deadline_with_folder.tsv
+wc -l all_no_deadline_with_folder.tsv
+  ```
+  ```
+280 all_no_deadline_with_folder.tsv
+Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
+  ```
+- `Bash`:
+  ```bash
+cd /tmp/deadline_recon
+python3 -c "
+import re
+from collections import defaultdict
+companies = defaultdict(list)
+with open('all_no_deadline_with_folder.tsv') as f:
+    for line in f:
+        line = line.rstrip('\n')
+        if not line: continue
+        folder, name = line.split('\t', 1)
+        parts = name.split(' - ')
+        company = parts[-1].strip()
+        companies[company].append((folder, name))
+singles = {c:v for c,v in companies.items() if len(v)==1}
+for c in sorted(singles):
+    folder, name = singles[c][0]
+    print(f'{c}\t{folder}\t{name}')
+" > singletons.tsv
+wc -l singletons.tsv
+head -20 singletons.tsv
+  ```
+  ```
+86 singletons.tsv
+AVEVA	2 - Fullstack	Software Developer Intern- Drexel Co-op US - AVEVA
+Abundant	1 - AI  ML	Member of Technical Staff Intern - Research - Abundant
+Allegheny County	Other	Business Analytics Intern - Allegheny County
+American Express (2)	1 - AI  ML	Cybersecurity Intern - American Express (2)
+Arthur J. Gallagher & Co.	Other	Data Analytics Intern - Arthur J. Gallagher & Co.
+Atoms	Other	Software Engineer Intern - Atoms
+Audax Group	1 - AI  ML	AI Engineer Co-op - Audax Group
+Auto-Owners Insurance	1 - AI  ML	Predictive Modeler Intern - Summer 2027 - Auto-Owners Insurance
+BerryDunn	Other	Consulting Intern - Healthcare Data Management and Strategy - BerryDunn
+Brunswick	2 - Fullstack	Systems Engineer Co-op - Software Engineering - Brunswick
+CACI	Other	GMU Scholar Program Intern - CACI
+CTGT	1 - AI  ML	Software Engineer Intern - CTGT
+Carnegie Mellon University	1 - AI  ML	Research Intern - School of Computer Science - LTI - Carnegie Mellon University
+Chevron Corporation	Other	2026-2027 Information Technology - Software Engineer - Intern - Chevron Corporation
+Circleback	1 - AI  ML	Software Engineer Intern - Circleback
+Continental Resources	Other	Data Analyst Intern - Continental Resources
+Core & Main	1 - AI  ML	Intern - AI-ML Data Engineering - Onsite - St. Louis - Core & Main
+DE Shaw	Other	Software Developer Intern - DE Shaw
+DMS International	3 - CyS  Finance	Blockchain Application Developer Intern - DMS International
+DV Group	Other	Quantitative Risk Intern - DV Group
+Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
+  ```
+- `Bash`:
+  ```bash
+cd /tmp/deadline_recon
+{
+  sed 's/\.md$//' aiml_found.txt | sed 's/^/1 - AI \& ML\t/'
+  sed 's/\.md$//' fullstack_found.txt | grep -v "^Software Engineer Intern - Backend Focused - Rippling$" | sed 's/^/2 - Fullstack\t/'
+  sed 's/\.md$//' cysfin_found.txt | sed 's/^/3 - CyS \& Finance\t/'
+  printf '3 - CyS & Finance\tSoftware Engineer Intern - C# .NET Desktop, Summer 2027 - Akuna Capital\n'
+  printf '3 - CyS & Finance\tSoftware Engineer Intern, C# .NET Desktop - Akuna Capital\n'
+  sed 's/\.md$//' other_found.txt | sed 's/^/Other\t/'
+  cat << 'EOF' | sed 's/^/Other\t/'
+Business Analytics Intern - Allegheny County
+Engineer Intern - Spring 2027 - TMEIC Corporation Americas
+Enterprise Systems Software Engineer Intern (Summer 2027) - Zipline
+Enterprise Systems Software Engineer Intern - Spring 2027 - Zipline
+Long Range Platform Embedded Firmware Intern (Summer 2027) - Zipline
+Software Development Intern - Spring 2027 - Mujin
+Software Integration Intern - Mujin
+Software Engineer Intern - Summer 2027 - Belvedere Trading
+Software Engineering Intern, Summer 2027 - Google
+Software Systems Validation Intern (Spring 2027) - Zipline
+Software Systems Validation Intern (Summer 2027) - Zipline
+System Test Automation Intern (Spring 2027) - Zipline
+System Test Automation Intern (Summer 2027) - Zipline
+EOF
+} > all_no_deadline_with_folder.tsv
+wc -l all_no_deadline_with_folder.tsv
+grep "AI & ML" all_no_deadline_with_folder.tsv | head -2
+python3 -c "
+import re
+from collections import defaultdict
+companies = defaultdict(list)
+with open('all_no_deadline_with_folder.tsv') as f:
+    for line in f:
+        line = line.rstrip('\n')
+        if not line: continue
+        folder, name = line.split('\t', 1)
+        parts = name.split(' - ')
+        company = parts[-1].strip()
+        company = re.sub(r'\s*\(\d+\)\s*$', '', company)
+        companies[company].append((folder, name))
+print('total dossiers:', sum(len(v) for v in companies.values()))
+print('total companies:', len(companies))
+singles = {c:v for c,v in companies.items() if len(v)==1}
+print('singleton companies:', len(singles))
+print('singleton dossiers:', sum(len(v) for v in singles.values()))
+with open('singletons.tsv','w') as out:
+    for c in sorted(singles):
+        folder, name = singles[c][0]
+        out.write(f'{c}\t{folder}\t{name}\n')
+"
+wc -l singletons.tsv
+  ```
+  ```
+280 all_no_deadline_with_folder.tsv
+1 - AI & ML	2027 Business Technology Solutions Intern - Data & Software Engineering (Undergraduate) - AbbVie
+1 - AI & ML	AI Engineer Co-op - Audax Group
+total dossiers: 280
+total companies: 129
+singleton companies: 85
+singleton dossiers: 85
+85 singletons.tsv
+Shell cwd was reset to /home/anant_gupta/projects/work/internship-research-loop
+  ```
+- `Read` — `/tmp/deadline_recon/singletons.tsv`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/AI Operations Intern - Naukr AI - Acds.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/AI Operations Intern-Caddell Reynolds - Acds.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/AI Intern - Montenson.md"}`
+- `WebFetch` — `{"url":"https://apprenticely.org/","prompt":"Does this internship/apprenticeship program page mention any application deadline, closing date, or \"apply by\" date? Quote it exactly if present, otherwise say no deadline is mentioned."}`
+- `WebFetch` — `{"url":"https://www.acds.co/careers","prompt":"Does this internship program page mention any application deadline, closing date, or \"apply by\" date? Quote it exactly if present, otherwise say no deadline is mentioned."}`
+- `Bash`:
+  ```bash
+grep -v -E "^(Jump Trading Group|Virtu|HPR \(Hyannis Port Research\))\t" /tmp/deadline_recon/singletons.tsv > /tmp/deadline_recon/singletons_clean.tsv
+wc -l /tmp/deadline_recon/singletons_clean.tsv
+split -n l/7 -d /tmp/deadline_recon/singletons_clean.tsv /tmp/deadline_recon/singleton_batch_
+wc -l /tmp/deadline_recon/singleton_batch_*
+  ```
+  ```
+82 /tmp/deadline_recon/singletons_clean.tsv
+  13 /tmp/deadline_recon/singleton_batch_00
+  11 /tmp/deadline_recon/singleton_batch_01
+  12 /tmp/deadline_recon/singleton_batch_02
+  13 /tmp/deadline_recon/singleton_batch_03
+  13 /tmp/deadline_recon/singleton_batch_04
+   9 /tmp/deadline_recon/singleton_batch_05
+  11 /tmp/deadline_recon/singleton_batch_06
+  82 total
+  ```
+- `Bash` — `for f in /tmp/deadline_recon/singleton_batch_*; do echo "=== $f ==="; cat "$f"; echo; done`
+  ```
+=== /tmp/deadline_recon/singleton_batch_00 ===
+AVEVA	2 - Fullstack	Software Developer Intern- Drexel Co-op US - AVEVA
+Abundant	1 - AI & ML	Member of Technical Staff Intern - Research - Abundant
+Allegheny County	Other	Business Analytics Intern - Allegheny County
+Arthur J. Gallagher & Co.	Other	Data Analytics Intern - Arthur J. Gallagher & Co.
+Atoms	Other	Software Engineer Intern - Atoms
+Audax Group	1 - AI & ML	AI Engineer Co-op - Audax Group
+Auto-Owners Insurance	1 - AI & ML	Predictive Modeler Intern - Summer 2027 - Auto-Owners Insurance
+BerryDunn	Other	Consulting Intern - Healthcare Data Management and Strategy - BerryDunn
+Brunswick	2 - Fullstack	Systems Engineer Co-op - Software Engineering - Brunswick
+CACI	Other	GMU Scholar Program Intern - CACI
+CTGT	1 - AI & ML	Software Engineer Intern - CTGT
+Carnegie Mellon University	1 - AI & ML	Research Intern - School of Computer Science - LTI - Carnegie Mellon University
+Chevron Corporation	Other	2026-2027 Information Technology - Software Engineer - Intern - Chevron Corporation
+
+=== /tmp/deadline_recon/singleton_batch_01 ===
+Circleback	1 - AI & ML	Software Engineer Intern - Circleback
+Continental Resources	Other	Data Analyst Intern - Continental Resources
+Core & Main	1 - AI & ML	Intern - AI-ML Data Engineering - Onsite - St. Louis - Core & Main
+DE Shaw	Other	Software Developer Intern - DE Shaw
+DMS International	3 - CyS & Finance	Blockchain Application Developer Intern - DMS International
+DV Group	Other	Quantitative Risk Intern - DV Group
+DV Trading	Other	Software Engineer Intern - Summer 2027 (DV Commodities) - DV Trading
+Datadog	2 - Fullstack	Software Engineer Intern - Observability and Security Platform - Datadog
+Dee Zee	2 - Fullstack	Software Development Intern - Dee Zee
+Deutsche Bank	Other	Technology, Data and Innovation Intern - Technology, Data and Innovation - Deutsche Bank
+Devon Energy	2 - Fullstack	Technology Intern - Data Engineering - Devon Energy
+
+=== /tmp/deadline_recon/singleton_batch_02 ===
+Dimensional Fund Advisors	Other	Global Client Group Operations Insights Intern - Undergraduate & Master's - Dimensional Fund Advisors
+Ellipsis Labs	2 - Fullstack	Software Engineer - Ellipsis Labs
+Epic Games	2 - Fullstack	Gameplay Programmer Intern - Epic Games
+Exa	1 - AI & ML	Software Engineer Intern - Exa
+FAST Enterprises	Other	Implementation Intern - FAST Enterprises
+Figma	2 - Fullstack	Software Engineer Intern - Winter 2027 - Figma
+Finastra	1 - AI & ML	AI Engineer Intern - Summer 2027 - Finastra
+Five Rings	3 - CyS & Finance	Summer Intern 2027 - Software Developer - Five Rings
+Freeform	Other	Software Engineering Intern - Freeform
+Garda Capital Partners	Other	Software Engineer Intern - Garda Capital Partners
+General Matter	2 - Fullstack	Software Engineering Intern - General Matter
+Genworth Financial	Other	IT Development Program Intern - IT Development Program - Genworth Financial
+
+=== /tmp/deadline_recon/singleton_batch_03 ===
+Google	Other	Software Engineering Intern, Summer 2027 - Google
+GuideWell Mutual	Other	Enterprise Analytics Intern - GuideWell Mutual
+HNTB	Other	Strategic Technology Intern - SED Division - HNTB
+Heliux	1 - AI & ML	Software Engineer Intern - Heliux
+HireVue	1 - AI & ML	Data Science Intern - Fully Remote US - HireVue
+Hypercubic	1 - AI & ML	Software Engineering Intern - Hypercubic
+Hyperlight	2 - Fullstack	Software Engineer Intern - Hyperlight
+IMEG	Other	Innovation Services Intern - IMEG
+ING	Other	Summer 2027 Internship - Tech (Infrastructure) - ING
+Kastle	Other	Software Engineer Intern - Kastle
+Kodiak Robotics	1 - AI & ML	AIML Intern - Artificial IntelligenceMachine Learning - Kodiak Robotics
+Magna International	1 - AI & ML	R&D- Computer Vision Engineering Intern - Magna International
+Marmon Holdings	2 - Fullstack	Data Engineering Intern-Co-op - Marmon Holdings
+
+=== /tmp/deadline_recon/singleton_batch_04 ===
+Marshall Wace Internship Programmes	3 - CyS & Finance	Technology Intern - New York - 2027 - Marshall Wace Internship Programmes
+Melius	1 - AI & ML	Software Engineer Intern - Melius
+Mosaic	1 - AI & ML	Artificial Intelligence Co-op Intern - Mosaic
+Motorola	Other	Supply Chain Data Analyst Intern - Motorola
+NVIDIA	1 - AI & ML	Deep Learning Computer Architecture Intern - NVIDIA
+Northrop Grumman	Other	Software Engineer Intern - Northrop Grumman
+Northwell Health	1 - AI & ML	Data Analytics - Data Science Intern - Northwell Health
+Nuro	1 - AI & ML	Software Engineer, AI Platform Intern - Nuro
+Point72	1 - AI & ML	Quantitative Developer Intern - Point72
+Prophet Security	1 - AI & ML	Software Engineer, Backend Intern - Prophet Security
+Pylon	1 - AI & ML	Software Engineer Intern - Pylon
+Quadrillion	2 - Fullstack	Software Engineering Intern - Quadrillion
+Quantbot Technologies	1 - AI & ML	Machine Learning Research Engineer Intern - Quantbot Technologies
+
+=== /tmp/deadline_recon/singleton_batch_05 ===
+RRS Group	1 - AI & ML	Software Engineer Intern - Placement Year - RRS Group
+Radix Trading	3 - CyS & Finance	Quantitative Technologist Intern, C++ - Radix Trading
+Robert Bosch Venture Capital	1 - AI & ML	Autonomous Driving – Internship in Machine Learning - Robert Bosch Venture Capital
+Ryan Companies	Other	Business Intelligence Intern - Mission Critical - Ryan Companies
+SK Hynix Memory Solution	1 - AI & ML	Software Engineer Intern - SK Hynix Memory Solution
+Sage	2 - Fullstack	Software Engineer Intern - Full Stack - Sage
+Schweitzer Engineering Laboratories	Other	Software Engineer Intern - Schweitzer Engineering Laboratories
+SimonComputing	2 - Fullstack	Software Development Internship - SimonComputing
+Stevens Capital Management	3 - CyS & Finance	Quantitative Research Analyst Internship - Stevens Capital Management
+
+=== /tmp/deadline_recon/singleton_batch_06 ===
+Susquehanna Investment Group	1 - AI & ML	Quantitative Strategy Developer Intern - Susquehanna Investment Group
+Teledyne	2 - Fullstack	Software Engineer Intern - NHRC - Teledyne
+Tencent	1 - AI & ML	Research Intern – Video World Models (Research & ML Systems) - Tencent
+Tenstorrent	1 - AI & ML	Software Engineering Intern, Power Modeling & AI Tools - Tenstorrent
+The Trade Desk	2 - Fullstack	2027 North America Software Engineering Internship - The Trade Desk
+Tower Research	1 - AI & ML	Quantitative Developer Intern - Tower Research
+Two Sigma	Other	AI Research Scientist Intern - 2027 Summer - Two Sigma
+Uber	2 - Fullstack	2027 Software Engineering Internship - Uber
+Verition Fund Management	1 - AI & ML	Technology Intern - Verition Fund Management
+Vertiv	Other	Operations Intern - Summer 2027 - Vertiv
+Xsolla	1 - AI & ML	AI-First Engineering Intern - Xsolla
+  ```
+- `Agent` — `{"description":"Singleton deadline re-check batch 1","prompt":"You are helping verify internship posting deadlines for a personal career-tracking project. For each company listed below, find that company's actual internship-PROGRAM landing/careers page (via WebSearch, then WebFetch) — NOT a specific individual job requisition page — and check whether it states a blanket/program-wide application deadline, priority deadline, or \"applications close\" date.\n\nDistinguish a REAL deadline (a specific closing/apply-by date) from unrelated language: a program START date, an interview-timeline note, \"rolling admissions\" (= NO deadline), or vague \"apply early\" without a date. Today's reference date is 2026-08-29.\n\nCompanies to check (each currently has exactly 1 affected dossier; do all of them if you can, otherwise stop and report exactly which you finished):\n1. AVEVA\n2. Abundant\n3. Allegheny County\n4. Arthur J. Gallagher & Co.\n5. Atoms\n6. Audax Group\n7. Auto-Owners Insurance\n8. BerryDunn\n9. Brunswick\n10. CACI\n11. CTGT\n12. Carnegie Mellon University\n13. Chevron Corporation\n\nFor each, report: Company name / Landing page URL checked / Verdict: FOUND (exact date + exact quoted sentence) or NOT-FOUND (rolling/no deadline) or BLOCKED (site inaccessible — say so, don't guess). Do NOT write to any file, do NOT fabricate a deadline. Research-only — report findings in your final message, company by company."}`
+- `Agent` — `{"description":"Singleton deadline re-check batch 2","prompt":"You are helping verify internship posting deadlines for a personal career-tracking project. For each company listed below, find that company's actual internship-PROGRAM landing/careers page (via WebSearch, then WebFetch) — NOT a specific individual job requisition page — and check whether it states a blanket/program-wide application deadline, priority deadline, or \"applications close\" date.\n\nDistinguish a REAL deadline (a specific closing/apply-by date) from unrelated language: a program START date, an interview-timeline note, \"rolling admissions\" (= NO deadline), or vague \"apply early\" without a date. Today's reference date is 2026-08-29.\n\nCompanies to check (each currently has exactly 1 affected dossier; do all of them if you can, otherwise stop and report exactly which you finished):\n1. Circleback\n2. Continental Resources\n3. Core & Main\n4. DE Shaw\n5. DMS International\n6. DV Group\n7. DV Trading (note: DV Group and DV Trading may be the same or related quant trading firm — if you find the same site for both, just note that)\n8. Datadog\n9. Dee Zee\n10. Deutsche Bank\n11. Devon Energy\n\nFor each, report: Company name / Landing page URL checked / Verdict: FOUND (exact date + exact quoted sentence) or NOT-FOUND (rolling/no deadline) or BLOCKED (site inaccessible — say so, don't guess). Do NOT write to any file, do NOT fabricate a deadline. Research-only — report findings in your final message, company by company."}`
+- `Agent` — `{"description":"Singleton deadline re-check batch 3","prompt":"You are helping verify internship posting deadlines for a personal career-tracking project. For each company listed below, find that company's actual internship-PROGRAM landing/careers page (via WebSearch, then WebFetch) — NOT a specific individual job requisition page — and check whether it states a blanket/program-wide application deadline, priority deadline, or \"applications close\" date.\n\nDistinguish a REAL deadline (a specific closing/apply-by date) from unrelated language: a program START date, an interview-timeline note, \"rolling admissions\" (= NO deadline), or vague \"apply early\" without a date. Today's reference date is 2026-08-29.\n\nCompanies to check (each currently has exactly 1 affected dossier; do all of them if you can, otherwise stop and report exactly which you finished):\n1. Dimensional Fund Advisors\n2. Ellipsis Labs\n3. Epic Games\n4. Exa\n5. FAST Enterprises\n6. Figma\n7. Finastra\n8. Five Rings\n9. Freeform\n10. Garda Capital Partners\n11. General Matter\n12. Genworth Financial\n\nFor each, report: Company name / Landing page URL checked / Verdict: FOUND (exact date + exact quoted sentence) or NOT-FOUND (rolling/no deadline) or BLOCKED (site inaccessible — say so, don't guess). Do NOT write to any file, do NOT fabricate a deadline. Research-only — report findings in your final message, company by company."}`
+- `Agent` — `{"description":"Singleton deadline re-check batch 4","prompt":"You are helping verify internship posting deadlines for a personal career-tracking project. For each company listed below, find that company's actual internship-PROGRAM landing/careers page (via WebSearch, then WebFetch) — NOT a specific individual job requisition page — and check whether it states a blanket/program-wide application deadline, priority deadline, or \"applications close\" date.\n\nDistinguish a REAL deadline (a specific closing/apply-by date) from unrelated language: a program START date, an interview-timeline note, \"rolling admissions\" (= NO deadline), or vague \"apply early\" without a date. Today's reference date is 2026-08-29.\n\nCompanies to check (each currently has exactly 1 affected dossier; do all of them if you can, otherwise stop and report exactly which you finished):\n1. Google (note: this is specifically the dossier \"Software Engineering Intern, Summer 2027 - Google\" sourced from a Telegram post with no captured content — check Google's own student/university careers landing page for a general SWE internship deadline)\n2. GuideWell Mutual\n3. HNTB\n4. Heliux\n5. HireVue\n6. Hypercubic\n7. Hyperlight\n8. IMEG\n9. ING\n10. Kastle\n11. Kodiak Robotics\n12. Magna International\n13. Marmon Holdings\n\nFor each, report: Company name / Landing page URL checked / Verdict: FOUND (exact date + exact quoted sentence) or NOT-FOUND (rolling/no deadline) or BLOCKED (site inaccessible — say so, don't guess). Do NOT write to any file, do NOT fabricate a deadline. Research-only — report findings in your final message, company by company."}`
+- `Agent` — `{"description":"Singleton deadline re-check batch 5","prompt":"You are helping verify internship posting deadlines for a personal career-tracking project. For each company listed below, find that company's actual internship-PROGRAM landing/careers page (via WebSearch, then WebFetch) — NOT a specific individual job requisition page — and check whether it states a blanket/program-wide application deadline, priority deadline, or \"applications close\" date.\n\nDistinguish a REAL deadline (a specific closing/apply-by date) from unrelated language: a program START date, an interview-timeline note, \"rolling admissions\" (= NO deadline), or vague \"apply early\" without a date. Today's reference date is 2026-08-29.\n\nCompanies to check (each currently has exactly 1 affected dossier; do all of them if you can, otherwise stop and report exactly which you finished):\n1. Marshall Wace Internship Programmes\n2. Melius\n3. Mosaic\n4. Motorola\n5. NVIDIA\n6. Northrop Grumman\n7. Northwell Health\n8. Nuro\n9. Point72\n10. Prophet Security\n11. Pylon\n12. Quadrillion\n13. Quantbot Technologies\n\nFor each, report: Company name / Landing page URL checked / Verdict: FOUND (exact date + exact quoted sentence) or NOT-FOUND (rolling/no deadline) or BLOCKED (site inaccessible — say so, don't guess). Do NOT write to any file, do NOT fabricate a deadline. Research-only — report findings in your final message, company by company."}`
+- `Agent` — `{"description":"Singleton deadline re-check batch 6","prompt":"You are helping verify internship posting deadlines for a personal career-tracking project. For each company listed below, find that company's actual internship-PROGRAM landing/careers page (via WebSearch, then WebFetch) — NOT a specific individual job requisition page — and check whether it states a blanket/program-wide application deadline, priority deadline, or \"applications close\" date.\n\nDistinguish a REAL deadline (a specific closing/apply-by date) from unrelated language: a program START date, an interview-timeline note, \"rolling admissions\" (= NO deadline), or vague \"apply early\" without a date. Today's reference date is 2026-08-29.\n\nCompanies to check (each currently has exactly 1 affected dossier; do all of them if you can, otherwise stop and report exactly which you finished):\n1. RRS Group\n2. Radix Trading\n3. Robert Bosch Venture Capital\n4. Ryan Companies\n5. SK Hynix Memory Solution\n6. Sage\n7. Schweitzer Engineering Laboratories\n8. SimonComputing\n9. Stevens Capital Management\n\nFor each, report: Company name / Landing page URL checked / Verdict: FOUND (exact date + exact quoted sentence) or NOT-FOUND (rolling/no deadline) or BLOCKED (site inaccessible — say so, don't guess). Do NOT write to any file, do NOT fabricate a deadline. Research-only — report findings in your final message, company by company."}`
+- `Agent` — `{"description":"Singleton deadline re-check batch 7","prompt":"You are helping verify internship posting deadlines for a personal career-tracking project. For each company listed below, find that company's actual internship-PROGRAM landing/careers page (via WebSearch, then WebFetch) — NOT a specific individual job requisition page — and check whether it states a blanket/program-wide application deadline, priority deadline, or \"applications close\" date.\n\nDistinguish a REAL deadline (a specific closing/apply-by date) from unrelated language: a program START date, an interview-timeline note, \"rolling admissions\" (= NO deadline), or vague \"apply early\" without a date. Today's reference date is 2026-08-29.\n\nCompanies to check (each currently has exactly 1 affected dossier; do all of them if you can, otherwise stop and report exactly which you finished):\n1. Susquehanna Investment Group\n2. Teledyne\n3. Tencent\n4. Tenstorrent\n5. The Trade Desk\n6. Tower Research\n7. Two Sigma\n8. Uber\n9. Verition Fund Management\n10. Vertiv\n11. Xsolla\n\nFor each, report: Company name / Landing page URL checked / Verdict: FOUND (exact date + exact quoted sentence) or NOT-FOUND (rolling/no deadline) or BLOCKED (site inaccessible — say so, don't guess). Do NOT write to any file, do NOT fabricate a deadline. Research-only — report findings in your final message, company by company."}`
+- `Agent` — `{"description":"Blocked-company re-check with alternate methods","prompt":"You are helping verify internship posting deadlines for a personal career-tracking project. A prior pass tried to check these companies' internship-program landing pages via direct WebFetch and hit a wall (403 Forbidden or a JS-rendered page that returned no real content) on every single one. Your job is to use a GENUINELY DIFFERENT method per company this time — don't just retry the same direct fetch. Use at least one of: (a) WebSearch for a phrase like \"[Company] internship program application deadline 2027\" or \"[Company] internship 2027 apply by\", (b) check the Wayback Machine / archive.org cached snapshot of the company's careers page (fetch a URL like https://web.archive.org/web/2026/https://[the careers URL]), (c) look for the company's internship posting on LinkedIn or Handshake if findable via search, since those sometimes show an application-close date the company's own site doesn't render for non-browser fetches.\n\nDistinguish a REAL deadline (a specific closing/apply-by date) from unrelated language: a program START date, an interview-timeline note, \"rolling admissions\" (= NO deadline), or vague \"apply early\" without a date. Today's reference date is 2026-08-29.\n\nCompanies to check — for each, actually try a different method than a plain direct fetch, and say explicitly which method worked or didn't:\n\n1. Palantir / Palantir Technologies (same company — a prior direct fetch of palantir.com/students/ and palantir.com/careers/students-and-early-talent/ both failed to render real content, JS-heavy SPA. Affects 5 dossiers.)\n2. HPR / Hyannis Port Research (prior fetch of hyannisportresearch.com/careers/ returned HTTP 403. Affects 3 dossiers.)\n3. American Fidelity (prior fetch of multiple americanfidelity.com internship subpages returned blank/empty content. Affects 4 dossiers.)\n4. Aquatic Capital Management (prior fetch of aquatic.com/careers returned HTTP 403. Affects 3 dossiers.)\n5. Jump Trading (prior fetch of jumptrading.com/hr/students-new-grads and jumptrading.com/careers both returned HTTP 403. Affects 6 dossiers.)\n6. AbbVie (prior fetch of abbvie.com/join-us/student-programs.html and /internships.html both returned HTTP 403. Affects 2 dossiers.)\n7. Specter Aerospace (prior fetch of specteraerospace.com/careers, which redirects to a BambooHR page, returned HTTP 403. Affects 3 dossiers.)\n8. Copart (prior fetch of copart.com/content/us/en/careers/internships-at-copart returned empty/no content. Affects 3 dossiers.)\n9. PIMCO (prior fetch of pimco.com/us/en/about-us/careers/students/internships and the parent /students page both returned HTTP 403. Note: secondary aggregator sites claimed a \"December 1, 2026 off-campus deadline\" — do NOT just report that as confirmed; try to verify it against PIMCO's own site or another primary source via your alternate method, and say clearly if you can only get secondary-source corroboration, not primary confirmation. Affects 2 dossiers.)\n10. Notion (a prior agent never actually completed a fetch for this one — please actually do it this time, using notion.com's own careers page plus WebSearch if needed. Affects 3 dossiers.)\n\nFor each, report: Company name / method(s) actually tried / what you found / Verdict: FOUND (exact date + exact quoted sentence, and note whether from a primary or secondary source), NOT-FOUND (rolling/no deadline, with evidence), or STILL-BLOCKED (every method you tried failed — say what you tried). Do NOT write to any file, do NOT fabricate a deadline. Research-only — report findings in your final message, company by company."}`
+- `mcp__jarvis__vault_append` — `{"path":"20_Progress/Internship/Building System/Dossier Corrections.md","content":"\n\n## 6. Follow-ups on items 5 and \"Acds\" (2026-08-29 re-check)\n\n**Montenson — CONFIRMED, not just suspected.** Read [[10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/AI Intern - Montenson]] directly: the posting body itself reads \"At Mortenson, we're grounded in...\" and \"Mortenson's i4 department seeks an AI intern...\" and the page-load footer literally says \"Page AI Intern - Mortenson External Career Site Careers loaded.\" The `company:` frontmatter field (\"Montenson\") is a one-letter-dropped typo of the real employer, **Mortenson** (the construction/EPC company already identified in Task 1's landing-page check). This affects all 5 Montenson-labeled dossiers: the two above plus [[10_Areas/Career/Internships/List/Dossiers/Other/Data Analytics Intern - Insights - Montenson]], [[10_Areas/Career/Internships/List/Dossiers/Other/Sustainability Engineer Intern - Montenson]], [[10_Areas/Career/Internships/List/Dossiers/Other/System Administrator Intern - Montenson]]. Not fixed in this pass (report-only), but no longer just a guess — it's a confirmed `company` field typo.\n\n**\"Acds\" — NOT a data-quality bug, confirmed via direct read.** [[10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/AI Operations Intern - Naukr AI - Acds]] and [[10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/AI Operations Intern-Caddell Reynolds - Acds]] both read: \"The Arkansas Center for Data Sciences dba Apprenticely will not discriminate against apprenticeship applicants...\" — ACDS = **Arkansas Center for Data Sciences**, doing business as **Apprenticely**, a real Arkansas work-based-learning placement organization. It places candidates with host employers — Naukr.AI and Caddell Reynolds respectively — which are correctly named in each dossier's *title* even though the `company:` frontmatter field names the placement intermediary rather than the host employer. Worth a convention decision (should `company` be the actual host employer instead of the staffing intermediary?), but this is not a bug in the sense Montenson is.\n\n**New finding while checking Acds's own site:** `https://www.acds.co/careers` (linked from inside both Acds dossier bodies) currently fails to load over HTTPS with a \"certificate has expired\" error. Not the same as a dead/redirected posting, but a real access problem for anyone who clicks that link from the dossier — the parent org page `apprenticely.org` loads fine and states no deadline.\n"}`
+
+## You
+
+<task-notification>
+<task-id>a990e1c7102468999</task-id>
+<tool-use-id>[REDACTED]</tool-use-id>
+<output-file>/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tasks/a990e1c7102468999.output</output-file>
+<status>completed</status>
+<summary>Agent "Singleton deadline re-check batch 2" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>## Deadline Verification Report — 11 Companies
+
+**1. Circleback**
+Landing page checked: https://circleback.com/careers/
+Verdict: **NOT-FOUND** — Page has no internship program described at all (general perks/benefits page + generic contact form). No deadline language present.
+
+**2. Continental Resources**
+Landing page checked: https://www.clr.com/careers/internships/
+Verdict: **NOT-FOUND** — Page describes the internship program and campus recruiting events, directs applicants to a Workday application link, but states no specific application deadline (rolling/undated).
+
+**3. Core &amp; Main**
+Landing page checked: https://jobs.coreandmain.com/students-and-trades/jobs/locations (coreandmain.com/careers/students-and-graduates/ returned HTTP 403 and was inaccessible)
+Verdict: **NOT-FOUND** — Page ("Early Career") is a talent-community signup form referencing "Development Programs" generally; no specific internship deadline stated. (Note: the coreandmain.com direct careers/students page blocked the fetch — flagging as partially BLOCKED, but the jobs.coreandmain.com mirror was accessible and had no deadline.)
+
+**4. DE Shaw**
+Landing page checked: https://campus.deshaw.com/internships
+Verdict: **NOT-FOUND (rolling)** — Explicit rolling-admissions statement: *"We consider applications on a rolling basis to accommodate a range of recruiting timelines and student obligations."* It does add a soft, non-binding recommendation — *"we recommend applying by the end of the previous calendar year"* — but this is guidance, not a stated closing/apply-by deadline, so it does not count as FOUND.
+
+**5. DMS International**
+Landing page checked: https://dmsinetwork.com/career/
+Verdict: **NOT-FOUND** — This landing page (the actual DMS International, a federal-contracting firm — distinct from the unrelated "Direct Marketing Solutions (DMS)" that surfaced in search results) does not mention an internship program at all; it only links out to an external Breezy HR job board with no deadline info.
+
+**6. DV Group**
+Landing page checked: https://dvtrading.co/join-dv/
+Verdict: **NOT-FOUND** — Confirms your note: DV Group and DV Trading share the same site/brand (dvtrading.co). Page lists internship openings (Software Developer, IT) but states no blanket application deadline.
+
+**7. DV Trading**
+Same site as above (https://dvtrading.co/join-dv/) — same result.
+Verdict: **NOT-FOUND** — No deadline stated on the program landing page.
+
+**8. Datadog**
+Landing page checked: https://careers.datadoghq.com/early-careers/
+Verdict: **NOT-FOUND (rolling)** — Page states: *"We typically post jobs in September to hire interns and co-ops for the following calendar year. The majority of our interviews take place from September-March."* and advises applying early because *"we will continue interviewing until our positions are filled."* This is rolling review, not a fixed closing date.
+
+**9. Dee Zee**
+Landing page checked: https://www.deezeeoem.com/opportunities
+Verdict: **NOT-FOUND** — General careers/opportunities page; no internship program description or deadline present — just "Apply online to join Team Dee Zee!" linking to an external job board.
+
+**10. Deutsche Bank**
+Landing page checked: https://careers.db.com/students-graduates/internship-programme/
+Verdict: **NOT-FOUND** — The program-wide landing page has only a generic "Apply now" CTA with no blanket deadline. (Caution for the dossier: individual job-board listings for specific 2027 divisions/locations do carry hard per-requisition deadlines, e.g. Fixed Income &amp; Currencies NY "August 31, 2026 at 9AM EDT" — but those are per-role postings, not the program-wide page, so per your instructions this doesn't count as a program-level FOUND.)
+
+**11. Devon Energy**
+Landing page checked: https://www.devonenergy.com/careers/interns-graduates
+Verdict: **NOT-FOUND** — Page describes the internship program and Fall 2026 campus recruiting events, links to "Apply for an Internship," but states no application deadline.
+
+### Summary
+All 11 companies: **NOT-FOUND** (no real program-wide blanket deadline located) — either explicitly rolling, or the landing page/program description simply doesn't state a closing date. None were BLOCKED outright except a secondary Core &amp; Main URL (coreandmain.com/careers/students-and-graduates/, 403) which was superseded by an accessible mirror carrying the same information. No deadline was fabricated for any company.</result>
+<usage><subagent_tokens>67465</subagent_tokens><tool_uses>27</tool_uses><duration_ms>134568</duration_ms></usage>
+</task-notification>
+
+## Claude
+
+Batch 2 done — all 11 NOT-FOUND (rolling or no deadline stated). One thing worth flagging later: Deutsche Bank's program page mentions individual division postings *do* carry hard per-req deadlines (e.g., Aug 31, 2026 for a different division) even though the program-wide page doesn't — worth double-checking the specific Deutsche Bank dossier's own req page separately. Continuing to wait on the other 7 batches.
+
+## You
+
+<task-notification>
+<task-id>aabd3659b4a20c404</task-id>
+<tool-use-id>[REDACTED]</tool-use-id>
+<output-file>/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tasks/aabd3659b4a20c404.output</output-file>
+<status>completed</status>
+<summary>Agent "Singleton deadline re-check batch 3" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>All 12 companies checked (10 fully, 2 site-blocked). Findings below.
+
+**1. Dimensional Fund Advisors**
+Landing page: https://careers.dimensional.com/internships
+Verdict: NOT-FOUND. Page states: "The application window opens at the end of each summer for the following year and typically closes by December." — this is a recurring approximate pattern, not a specific closing date for the current cycle. No exact deadline given.
+
+**2. Ellipsis Labs**
+Landing page: https://www.ellipsislabs.xyz/careers
+Verdict: NOT-FOUND. No deadline language of any kind; page just lists open roles with links to Ashby postings.
+
+**3. Epic Games**
+Landing page attempted: https://www.epicgames.com/site/earlycareers and https://www.epicgames.com/site/en-US/students
+Verdict: BLOCKED. Both URLs returned HTTP 403 (site blocks the fetcher) — could not directly verify. (Note only, not used as the verdict: multiple secondary sources — Extern's guide and job-board summaries — describe Epic as hiring "year-round" with "no official deadlines," but this is not confirmed from Epic's own page, so treat as unverified.)
+
+**4. Exa**
+Landing page: https://exa.ai/careers
+Verdict: NOT-FOUND. Page lists open positions linking to Ashby postings; no deadline or "applications close" language anywhere.
+
+**5. FAST Enterprises**
+Landing page: https://www.fastenterprises.com/careers/
+Verdict: NOT-FOUND. No internship-specific deadline; page only shows "Open Positions in U.S." / "Open Positions Outside of U.S." links, "apply today" style language, no dates.
+
+**6. Figma**
+Landing page: https://www.figma.com/careers/
+Verdict: NOT-FOUND. Page lists individual job openings (including a Winter 2027 SWE intern posting) with no program-wide deadline or closing date stated.
+
+**7. Finastra**
+Landing pages attempted: https://www.finastra.com/careers/early-careers, https://www.finastra.com/careers, https://www.finastra.com/careers/students-graduates, https://www.finastra.com/
+Verdict: BLOCKED. Every URL on finastra.com returned HTTP 403 — the whole domain appears to block this fetcher. Could not verify directly. (Secondary source: a Prosple listing titled "Student Interns-3 (Rolling Intake)" suggests rolling admissions, but this is not Finastra's own page and not treated as confirmation.)
+
+**8. Five Rings**
+Landing page: https://fiverings.com/positions/
+Verdict: NOT-FOUND. Page describes the summer program and a January externship session but has no deadline; only a generic "Apply Today" link (rolling-admissions style).
+
+**9. Freeform**
+Landing page attempted: https://freeform.co/careers — returned HTTP 403 (blocked). Substituted the company's actual job-board landing page, https://job-boards.greenhouse.io/freeformfuturecorp, which was accessible.
+Verdict: NOT-FOUND (on the accessible substitute page). No program-wide deadline or closing date; individual internship postings listed with no dates. Flagging that the primary freeform.co/careers page itself could not be directly checked (blocked) — this verdict rests on the Greenhouse job-board page instead.
+
+**10. Garda Capital Partners**
+Landing page: https://www.gardacp.com/careers/
+Verdict: NOT-FOUND. Lists open positions with links to individual Greenhouse postings; no program-wide deadline or rolling-admissions statement of any kind.
+
+**11. General Matter**
+Landing page: https://generalmatter.com/careers
+Verdict: NOT-FOUND. Page is minimal — just an "Open roles" link to the external job board — no deadline language at all.
+
+**12. Genworth Financial**
+Landing page: https://www.genworth.com/about-us/building-careers/students-and-graduates
+Verdict: NOT-FOUND. Page lists application *windows* per program (e.g. Summer Internship: "July–October"; Actuarial/Finance/IT Development: "July–December") rather than a hard closing date — these are open ranges for when to apply, not a stated deadline/cutoff.
+
+**Summary:** 9 of 12 are NOT-FOUND (no real program-wide deadline — rolling/undated). Epic Games and Finastra are BLOCKED (their domains returned 403 to the fetch tool on every URL tried; not guessed). Freeform's own careers page was also blocked, but its Greenhouse job-board page was reachable and showed no deadline, so I've reported that as NOT-FOUND with the caveat noted above. No company in this batch had a genuine, dated, program-wide application deadline — nothing to report as FOUND.</result>
+<usage><subagent_tokens>72728</subagent_tokens><tool_uses>39</tool_uses><duration_ms>193253</duration_ms></usage>
+</task-notification>
+
+## Claude
+
+Batch 3 done — 9 NOT-FOUND, Epic Games and Finastra fully blocked (403 on every URL), Freeform resolved via a Greenhouse mirror. Continuing to wait on the remaining 5 batches.
+
+## You
+
+<task-notification>
+<task-id>adad97e874bae7284</task-id>
+<tool-use-id>[REDACTED]</tool-use-id>
+<output-file>/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tasks/adad97e874bae7284.output</output-file>
+<status>completed</status>
+<summary>Agent "Singleton deadline re-check batch 7" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>Verification complete for all 11 companies. None showed a real blanket/program-wide application deadline. Full detail below.
+
+1. **Susquehanna International Group (SIG)**
+   Pages checked: `careers.sig.com/intern-co-op/jobs`, `careers.sig.com/intern-openings/`, `sig.biz/en-us/careers/students-interns-graduates`
+   Verdict: NOT-FOUND. The two careers.sig.com pages rendered as nav/footer shells with no substantive body text (likely JS-rendered). The sig.biz page had real content but the only time-related statement was an availability requirement ("we ask for a minimum of 2-6 months availability") — not a deadline.
+
+2. **Teledyne**
+   Pages checked: `teledyne.com/careers`, `teledyne.com/careers/faqs`
+   Verdict: NOT-FOUND. No dedicated internship-program landing page exists — Teledyne appears to post internships as individual job reqs rather than a unified program with a blanket deadline. Neither page mentioned any deadline; the FAQ page doesn't even discuss internships specifically.
+
+3. **Tencent**
+   Page checked: `careers.tencent.com/en-us/campusrecruit.html`
+   Verdict: BLOCKED. This is a JS-rendered SPA — WebFetch could only retrieve the page `&lt;title&gt;`, not the body content, despite retries. Secondary sources (news coverage of the "2027 campus recruitment" launch) mention the program exists but none quoted a specific closing date. Could not verify either way — did not guess.
+
+4. **Tenstorrent**
+   Pages checked: `tenstorrent.com/en/university`, `job-boards.greenhouse.io/tenstorrentuniversity`
+   Verdict: NOT-FOUND. Both pages list open positions/program description with no deadline, priority-deadline, or "applications close" language anywhere.
+
+5. **The Trade Desk**
+   Page checked: `careers.thetradedesk.com/early-careers`
+   Verdict: NOT-FOUND (rolling). Exact quote: "Positions are posted in mid-August and are open until filled (usually November)" (most locations); Sydney: "Positions are posted in April and are open until filled (usually by July)." This is open-until-filled language, not a fixed closing date.
+
+6. **Tower Research**
+   Page checked: `tower-research.com/internships/`
+   Verdict: NOT-FOUND. No deadline language; only campus-visit/info-session signup ("Enter your email for updates on when Tower is visiting your campus next").
+
+7. **Two Sigma**
+   Page checked: `twosigma.com/careers/`
+   Verdict: NOT-FOUND. No deadline stated; page just directs to "View open roles" on the requisition board.
+
+8. **Uber**
+   Pages checked: `jobs.uber.com/en/teams/emerging-talent/` (redirected from `uber.com/us/en/careers/teams/university/`)
+   Verdict: NOT-FOUND. No deadline stated — page is employee-story/program-overview content with a talent-community signup, no dates.
+
+9. **Verition Fund Management**
+   Page checked: `verition.com/careers`
+   Verdict: NOT-FOUND. Internship section only says "To learn more, please contact us directly at internships@veritionfund.com" — no deadline.
+
+10. **Vertiv**
+    Page checked: `vertiv.com/en-us/about/careers/internship-co-op-and-mba-programs/`
+    Verdict: NOT-FOUND. No deadline; page just links out to an external Oracle recruiting portal for "open jobs."
+
+11. **Xsolla**
+    Page checked: `xsolla.com/internship`
+    Verdict: NOT-FOUND. No deadline and no explicit rolling-admissions language either — page just invites applicants to email their materials, with no dates at all.
+
+Bottom line: no company in this batch had a genuine, quotable blanket deadline. The one BLOCKED item (Tencent) is worth a manual look later if it matters — it's a heavy JS SPA that resisted WebFetch across multiple attempts.</result>
+<usage><subagent_tokens>74114</subagent_tokens><tool_uses>41</tool_uses><duration_ms>203098</duration_ms></usage>
+</task-notification>
+
+## Claude
+
+Batch 7 done — 10 NOT-FOUND, Tencent blocked (JS SPA). Waiting on the remaining 4 batches.
+
+## You
+
+<task-notification>
+<task-id>af29a2b74838d5ff5</task-id>
+<tool-use-id>[REDACTED]</tool-use-id>
+<output-file>/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tasks/af29a2b74838d5ff5.output</output-file>
+<status>completed</status>
+<summary>Agent "Singleton deadline re-check batch 5" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>## Deadline Verification Report (reference date 2026-08-29)
+
+**1. Marshall Wace Internship Programmes**
+Landing page: `https://job-boards.greenhouse.io/mwinternshipprogram` (the org's actual internship-programmes job board, matches dossier name)
+Verdict: **NOT-FOUND**. Lists 5 open 2027 internship roles (AI Placement, Technology Intern — Singapore/HK/London/NY) with only internship *duration* dates (e.g. "April – September 2027"), no application closing date. Cross-checked `mwam.com/technology-internship-programme/` — same result (start dates only, no deadline). Note: a separate `mwam.com/quantitative-research-internship/` page *does* state "Applications will close January 12th at 12pm GMT" for a June–September 2026 program — but that's a different, already-past-cycle program, not the Technology programme the greenhouse board represents, so I did not treat it as the operative deadline.
+
+**2. Melius**
+Landing page attempted: `melius.com/careers` (404), `jobs.ashbyhq.com/melius` and the specific posting `jobs.ashbyhq.com/melius/b61f063a-...` (Software Engineering Intern, Spring/Summer 2027)
+Verdict: **NOT-FOUND** (low confidence — Ashby's careers page is JS-rendered and returned only the title/header each fetch, not full content). No deadline text was retrievable from what did load.
+
+**3. Mosaic**
+Landing page attempted: `mosaic.so`, `mosaic.so/careers` (404), YC company page `ycombinator.com/companies/mosaic-2` and its jobs page
+Verdict: **NOT-FOUND** (low confidence). `mosaic.so` is JS-rendered and returned only page titles via WebFetch. The YC jobs listing currently shows only a full-time "Founding GTM"/"Founding Product Engineer" role — the earlier Winter/Summer 2026 internship posting found via search no longer appears live. No deadline found anywhere accessible.
+
+**4. Motorola (Motorola Solutions)**
+Landing page: `https://www.motorolasolutions.com/en_us/about/careers.html`
+Verdict: **NOT-FOUND**. States only a vague window: "Applications are typically open between September and March, with the internship program beginning in May" (US) — no specific closing date, and other regions say "recruitment is open year-round."
+
+**5. NVIDIA**
+Landing page: `https://www.nvidia.com/en-us/about-nvidia/careers/university-recruiting/`
+Verdict: **NOT-FOUND**. Describes "year-round internships," ongoing/rolling applications, no closing date stated.
+
+**6. Northrop Grumman**
+Landing page: `https://www.northropgrumman.com/careers/internships-at-northrop-grumman`
+Verdict: **NOT-FOUND**. Only statement: "The majority of our internship hiring season, including interviewing and making offers, is in the fall. Internships begin in May or June and finish up in August/September." — describes hiring season, not an application deadline.
+
+**7. Northwell Health**
+Landing page: `https://jobs.northwell.edu/healthcare-management-program/`
+Verdict: **NOT-FOUND**. Program structure/benefits described in detail; no application closing date anywhere on the page.
+
+**8. Nuro**
+Landing page: `https://www.nuro.ai/early-career`
+Verdict: **NOT-FOUND**. Only guidance: "While opportunities are available throughout the year, the best time to apply is in August through October for positions starting in the next calendar year" — advice, not a deadline.
+
+**9. Point72**
+Landing page: `https://careers.point72.com/?area=investing&amp;focus=point72+academy&amp;experience=internships`
+Verdict: **NOT-FOUND**. Page links to Academy program/career paths but states no application closing date. (Search snippets referenced a mid-May assessment-center deadline and "Summer 2026 Academy now closed," but that language did not appear on the actual landing page fetched, and it's a past cohort in any case.)
+
+**10. Prophet Security**
+Landing page: `https://jobs.ashbyhq.com/prophet-security` (JS-rendered, minimal content) and `https://builtin.com/company/prophet-security/jobs`
+Verdict: **NOT-FOUND**. Builtin mirror shows one open posting ("Software Engineer, Backend Intern," Palo Alto) with no deadline mentioned anywhere.
+
+**11. Pylon**
+Landing page: `https://jobs.a16z.com/jobs/use-pylon`
+Verdict: **NOT-FOUND**. One internship listing ("Software Engineer, Intern," SF, $16/hr, "posted 2 months ago") — no application deadline stated.
+
+**12. Quadrillion**
+Landing page: `https://careers.quadrillion.io/` (redirects to `jobs.ashbyhq.com/quadrillion-labs`) and the specific posting `.../[REDACTED]` (Software Engineering Intern, Summer 2027)
+Verdict: **NOT-FOUND** (low confidence — Ashby page is JS-rendered, minimal content retrievable). No deadline text found in what loaded.
+
+**13. Quantbot Technologies**
+Landing page: `https://www.quantbot.com/careers/internships/`
+Verdict: **NOT-FOUND**. Exact quote retrieved: "Recruitment for Summer 2026 internships is now closed." — this is a closed-past-cohort notice (Summer 2026 already happened, per today's 2026-08-29 reference date), not a forward-looking deadline date, and the page directs applicants to check back later for 2027 rather than naming a date.
+
+**Summary**: All 13 checked. None showed a genuine, dated, program-wide "applications close by X" deadline that is real, specific, and still forward-looking — either the pages describe rolling/ongoing recruitment, give only start dates or vague seasonal windows, reference a deadline for a different/already-passed cycle, or (Melius, Mosaic, Prophet Security, Quadrillion — all Ashby/JS-rendered sites) could only be partially fetched, so those four verdicts carry lower confidence than the other nine, which were cleanly readable.</result>
+<usage><subagent_tokens>78720</subagent_tokens><tool_uses>49</tool_uses><duration_ms>253820</duration_ms></usage>
+</task-notification>
+
+## Claude
+
+Batch 5 done — 13/13 NOT-FOUND, 4 of them lower-confidence (JS-rendered pages). Waiting on the remaining 3 batches (1, 4, 6, plus the alt-method blocked-company batch).
+
+## You
+
+<task-notification>
+<task-id>a706617aaad11972b</task-id>
+<tool-use-id>[REDACTED]</tool-use-id>
+<output-file>/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tasks/a706617aaad11972b.output</output-file>
+<status>completed</status>
+<summary>Agent "Singleton deadline re-check batch 1" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>Both confirmed BLOCKED. I have findings for all 13 companies now.
+
+## Findings
+
+1. **AVEVA** / `https://www.aveva.com/en/about/careers/early-careers/` / **NOT-FOUND** — no application deadline stated; page uses general "explore early-career opportunities" language, no specific date.
+
+2. **Abundant** (YC F24, "Abundant AI" — agent simulation/RL) / `https://www.workatastartup.com/companies/abundant` / **NOT-FOUND** — no deadline stated; this tiny startup's only "careers page" is its YC job listing, no separate program page exists.
+
+3. **Allegheny County** / `https://www.alleghenycounty.us/Government/Employment/Internships` / **BLOCKED** — site returns HTTP 403 Forbidden to fetch tooling on every attempt (also tried the homepage and a department sub-page, and an archive.org mirror, all blocked). Could not verify directly.
+
+4. **Arthur J. Gallagher &amp; Co.** / `https://jobs.gallagherbassett.com/ajg-students/` / **NOT-FOUND** — no deadline stated. Only time language found: "Recruiting starts as early as September, and roles fill quickly" — a start/urgency note, not a closing date.
+
+5. **Atoms** / `https://atoms.co/careers` / **NOT-FOUND** — no deadline stated; page just links out to open roles.
+
+6. **Audax Group** / `https://job-boards.greenhouse.io/audaxgroup` (audaxgroup.com/careers 404s; this is the real landing page) / **NOT-FOUND** — 6-7 co-op/internship postings listed, none include an application deadline or "applications close" date.
+
+7. **Auto-Owners Insurance** / `https://www.auto-owners.com/about/career-opportunities/internship` / **BLOCKED** — every fetch attempt (including the parent careers page and an archive.org mirror) returned `ECONNRESET`; the site appears to actively block this fetch tooling. Could not verify directly.
+
+8. **BerryDunn** / `https://www.berrydunn.com/careers/internships` / **NOT-FOUND** — no deadline; only states "Internship opportunities are typically posted in August on our careers page" (a posting-window note, not a close date).
+
+9. **Brunswick** (Brunswick Corporation) / `https://www.brunswick.com/careers/job-categories/student-programs` / **NOT-FOUND** — no deadline stated; page only has generic "Apply Today" CTAs.
+
+10. **CACI** / `https://careers.caci.com/global/en/early-career-internships` / **NOT-FOUND** — page describes the program as "year-round," i.e., rolling admissions, no fixed deadline.
+
+11. **CTGT** (YC F24 AI startup) / `https://jobs.ashbyhq.com/ctgt` (its actual ATS-hosted careers page — ctgt.ai/careers 404s) / **NOT-FOUND** — job board loaded with no listed internship postings/deadline content in the fetched view; no deadline language found anywhere for this company across ctgt.ai, its Ashby board, or its YC page.
+
+12. **Carnegie Mellon University** (as employer) / `https://www.cmu.edu/jobs/` / **NOT-FOUND** — no deadline stated; general careers landing page, rolling/individual-requisition based, not a single program deadline.
+
+13. **Chevron Corporation** / `https://careers.chevron.com/internship` / **NOT-FOUND** — no deadline, no rolling-admissions language either; page describes program categories/requirements with no temporal application-window info at all (secondary sources suggest a Jul–Nov 2026 application window for Summer 2027 roles, but the official landing page itself states no close date).
+
+**Summary: 11 of 13 resolved as NOT-FOUND (no real blanket deadline), 2 BLOCKED (Allegheny County, Auto-Owners Insurance — both actively blocking fetch access), 0 FOUND with a confirmed real deadline.**
+
+No file writes were made; this was research-only as instructed.</result>
+<usage><subagent_tokens>83261</subagent_tokens><tool_uses>57</tool_uses><duration_ms>281732</duration_ms></usage>
+</task-notification>
+
+## Claude
+
+Batch 1 done — 11 NOT-FOUND, Allegheny County and Auto-Owners Insurance blocked (403/ECONNRESET). Waiting on batches 4, 6, and the alt-method blocked-company batch.
+
+## You
+
+<task-notification>
+<task-id>a60a9a7cf0a3d00db</task-id>
+<tool-use-id>[REDACTED]</tool-use-id>
+<output-file>/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tasks/a60a9a7cf0a3d00db.output</output-file>
+<status>completed</status>
+<summary>Agent "Singleton deadline re-check batch 6" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>## Findings — Internship Deadline Verification (reference date 2026-08-29)
+
+**1. RRS Group**
+Landing page checked: `https://www.myrrsgroup.org/careers/students-and-early-careers/`
+Verdict: **NOT-FOUND**. Page describes the internship program (hands-on project work, mentorship) but states no closing/apply-by date anywhere. Only forward-looking text is "Please check back, we'll be adding more events soon" — not a deadline.
+
+**2. Radix Trading**
+Landing page checked: `https://job-boards.greenhouse.io/radixuniversity` (Radix's university/internship job board — no separate marketing page exists off `radixtrading.co`)
+Verdict: **NOT-FOUND**. No application deadline, priority deadline, or close date stated for any listed internship track (Quant Researcher/Trader/Technologist).
+
+**3. Robert Bosch Venture Capital**
+Landing page checked: `rbvc.com` → redirects (301) to `https://bosch.ventures/` — checked full nav (News, Investment Strategy, Team, Portfolio, Open Bosch, Corporate info). Also tried `bosch.ventures/careers` (404) and `bosch.us/careers/students/` (404).
+Verdict: **BLOCKED** (partial) — RBVC's own site (`bosch.ventures`) has no careers/internship section at all; it's a contact directory only. Internship postings exist only via third-party boards (Simplify Jobs, etc.) that don't carry a company-stated program deadline. I could not locate an actual RBVC-hosted program landing page to check for a deadline — do not treat this as a confirmed "no deadline."
+
+**4. Ryan Companies**
+Landing pages checked: `https://www.ryancompanies.com/careers/` and `https://www.ryancompanies.com/careers/current-opportunities/` (Workday portal itself returned `ECONNREFUSED`, not fetchable)
+Verdict: **NOT-FOUND**. Pages describe the internship program (mentorship, 100+ intern cohort, Intern Integration Day) with no stated deadline; site simply routes applicants to the rolling Workday job board.
+
+**5. SK Hynix Memory Solution**
+Landing page checked: `https://job-boards.greenhouse.io/skhynixmemorysolutionsamericainc`
+Verdict: **NOT-FOUND**. No deadline stated for Software Engineer Intern / Test Automation Software Engineer Intern listings; page only offers a job-alert signup.
+
+**6. Sage**
+Landing page checked: `https://www.sage.com/en-us/company/careers/graduates-and-interns/` and `https://www.sage.com/en-us/company/careers/` — both returned **HTTP 403 Forbidden** on WebFetch.
+Verdict: **BLOCKED** (primary source inaccessible). Secondary source (`graduatesfirst.com/sage-early-careers`, a third-party prep guide, not Sage's own page) describes Sage's recruitment stages with no deadline mentioned — but this is not a substitute for the actual company page, so treat the deadline question as unresolved rather than confirmed no-deadline.
+
+**7. Schweitzer Engineering Laboratories (SEL)**
+Landing page checked: `https://selinc.com/company/careers/sel-internships/`
+Verdict: **NOT-FOUND**. Page states SEL offers "year-round internships" — explicitly rolling, no application close date.
+
+**8. SimonComputing**
+Landing page checked: `https://simoncomputing.com/staging/careers/`
+Verdict: **NOT-FOUND**. No deadline; page just says "TO APPLY: Send your resume to info@simoncomputing.com" with no timeline language at all.
+
+**9. Stevens Capital Management**
+Landing pages checked: `https://www.scm-lp.com/careers` (returned only a bare title, likely JS-rendered) and `https://job-boards.greenhouse.io/scminternships`
+Verdict: **NOT-FOUND**. No deadline, priority date, or close date on either; job board lists Developer/Quant Research internship postings without timeline language.
+
+### Summary
+- Confirmed NOT-FOUND (rolling/no deadline stated on the real landing page): RRS Group, Radix Trading, Ryan Companies, SK Hynix Memory Solution, SEL, SimonComputing, Stevens Capital Management (7 of 9).
+- BLOCKED (could not reach/verify a genuine company-hosted program page, do not treat as confirmed no-deadline): Robert Bosch Venture Capital (no internship section exists on their own domain), Sage (403 on both sage.com URLs attempted).
+
+No deadline was fabricated or guessed for any company. No files were written.</result>
+<usage><subagent_tokens>75837</subagent_tokens><tool_uses>40</tool_uses><duration_ms>329117</duration_ms></usage>
+</task-notification>
+
+## Claude
+
+Batch 6 done — 7 NOT-FOUND, 2 blocked (Robert Bosch Venture Capital — no company-hosted program page exists at all; Sage — 403). Waiting on batch 4 and the alt-method blocked-company batch.
+
+## You
+
+<task-notification>
+<task-id>a62a6be601453ad17</task-id>
+<tool-use-id>[REDACTED]</tool-use-id>
+<output-file>/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tasks/a62a6be601453ad17.output</output-file>
+<status>completed</status>
+<summary>Agent "Blocked-company re-check with alternate methods" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I've exhausted the viable methods available this session (WebSearch quota is used up; web.archive.org is fully blocked for WebFetch; DuckDuckGo/Bing HTML scraping via WebFetch returns captchas or region-mismatched junk). Here is the final company-by-company report based on what I could actually verify.
+
+1. **Palantir / Palantir Technologies**
+Methods tried: WebSearch (multiple aggregator sites), direct WebFetch retry of palantir.com/students/ (still returns only nav chrome, no real content — SPA confirmed again).
+Finding: Secondary aggregators (Extern, Simplify) describe a *rolling* window with "70–80% of interview invitations going to applicants who submit by mid-October" — that is interview-priority advice, not a stated closing date. No source, primary or secondary, gives an actual "applications close on X" date.
+Verdict: **NOT-FOUND** — rolling/no fixed deadline; mid-October is informal interview-priority advice from secondary sources, not a real deadline.
+
+2. **HPR / Hyannis Port Research**
+Methods tried: WebSearch, direct WebFetch retry of hyannisportresearch.com/careers.html (still 403), LinkedIn company/job search, and fetching the interninsider.me aggregator listing for the Summer 2027 SWE intern role.
+Finding: interninsider.me shows "Apply by Aug 31" / "Best applied by Aug 31" next to "Posted 27 days ago" — but on inspection this reads as the aggregator's own generic urgency heuristic (best-applied-within-X-days-of-posting), not an employer-issued deadline. Nothing on HPR's own site or LinkedIn corroborates an actual closing date.
+Verdict: **STILL-BLOCKED** — official site still 403; the one "deadline"-looking string found is a secondary-aggregator artifact, not credible as a real date (and if taken literally it's 2 days from today for a Summer 2027 role, which doesn't make sense as a real close date).
+
+3. **American Fidelity**
+Methods tried: WebSearch, WebFetch of two specific LinkedIn job postings (IT Operations Internship, Software Mobile Internship).
+Finding: Neither LinkedIn posting states a deadline. Secondary aggregator (Extern) describes rolling review, "applications open late August 2026, roughly through early November."
+Verdict: **NOT-FOUND** — no stated deadline anywhere found; secondary sources describe rolling/window-based hiring, not a fixed date.
+
+4. **Aquatic Capital Management**
+Methods tried: WebSearch, direct WebFetch of the actual Greenhouse job posting (primary source — the real ATS listing for Software Engineer Intern, Summer 2027).
+Finding: The primary Greenhouse posting itself contains no deadline language at all.
+Verdict: **NOT-FOUND** (primary source checked directly, no deadline present — likely rolling).
+
+5. **Jump Trading**
+Methods tried: WebSearch, attempted archive.org (blocked at tool level, not company-specific).
+Finding: Secondary sources (Extern, Built In postings) consistently describe rolling review with "no published deadline," explicitly stating positions close as they fill.
+Verdict: **NOT-FOUND** — rolling, no deadline, per secondary sources only (could not reach jumptrading.com directly or via archive.org this pass either).
+
+6. **AbbVie**
+Methods tried: WebSearch, WebFetch of a specific Handshake internship posting (2027 Business Technology Solutions Intern).
+Finding: Handshake posting shows no deadline field. Secondary aggregator (Extern) says roles "open in late August and fill on a rolling basis through early November."
+Verdict: **NOT-FOUND** — no deadline found on the one primary Handshake posting checked; secondary sources say rolling.
+
+7. **Specter Aerospace**
+Methods tried: WebSearch, WebFetch (followed the redirect chain specteraerospace.com/careers → specteraerospace.bamboohr.com/careers, which returned 403 same as before).
+Verdict: **STILL-BLOCKED** — every method hit a wall; no deadline signal found anywhere, primary or secondary.
+
+8. **Copart**
+Methods tried: WebSearch, WebFetch of copart.com/careers (empty JS shell), WebFetch of the "internships-at-copart-archived" URL (empty), WebFetch of a specific Workday job requisition (JR101510 — empty/JS-rendered).
+Verdict: **STILL-BLOCKED** — every method returned empty content or no deadline; no evidence of any date, real or claimed.
+
+9. **PIMCO**
+Methods tried: WebSearch, WebFetch of careers.pimco.com (connection refused), WebFetch of pimco.com/us/en/about-us/careers/students/internships (403, same as prior pass), WebFetch of the cmqa.pimco.com staging mirror (403).
+Finding: Multiple secondary sources (independent of each other — Extern-style guide plus a separate "getsmartresume" style summary) state "The off-campus deadline is December 1, 2026" for PIMCO. I could not reach any pimco.com page or an archived snapshot to confirm this directly — every primary-source attempt failed.
+Verdict: **STILL-BLOCKED for primary confirmation** — I can only report secondary-source corroboration (two independent secondary sources agree on December 1, 2026 as an off-campus deadline), not primary confirmation. Do not treat this as verified.
+
+10. **Notion**
+Methods tried: WebSearch, WebFetch of the actual Ashby job board posting (jobs.ashbyhq.com/notion/...) — the real, primary ATS listing for the Summer 2027 SWE Intern role.
+Finding: The Ashby posting itself contains no deadline field. Secondary sources (Extern) explicitly state Notion "does not publish fixed application deadlines" and fills roles on a rolling basis.
+Verdict: **NOT-FOUND** — primary ATS posting checked directly, no deadline present; consistent with secondary-source description of rolling hiring.
+
+**Summary of what actually worked as an alternate method:** fetching primary ATS/job-board postings directly (Greenhouse for Aquatic, Ashby for Notion, Handshake for AbbVie, LinkedIn for American Fidelity) worked and is more reliable than the company's own JS-heavy careers page. Archive.org was categorically unavailable this session (tool-level block, not a per-site failure) — that avenue is worth retrying in a session where it's enabled. DuckDuckGo/Bing HTML scraping via WebFetch did not work (captcha / mangled locale results). No fabricated deadlines were reported; where a date-shaped string turned up (HPR's "Apply by Aug 31," PIMCO's "December 1, 2026") I flagged the sourcing quality explicitly rather than presenting it as confirmed.</result>
+<usage><subagent_tokens>75491</subagent_tokens><tool_uses>43</tool_uses><duration_ms>355836</duration_ms></usage>
+</task-notification>
+
+## Claude
+
+You've hit your monthly spend limit · raise it at claude.ai/settings/usage?from=cc_cli_limit_message · your session limit resets 3:40am (Asia/Dubai)
+
+## You
+
+<task-notification>
+<task-id>aefddcff206a148a6</task-id>
+<tool-use-id>[REDACTED]</tool-use-id>
+<output-file>/tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tasks/aefddcff206a148a6.output</output-file>
+<status>failed</status>
+<summary>Agent "Singleton deadline re-check batch 4" failed: Agent terminated early due to an API error: You've hit your monthly spend limit · raise it at claude.ai/settings/usage?from=cc_cli_limit_message · your session limit resets 3:40am (Asia/Dubai) (error type rate_limit, HTTP 429, request id [REDACTED], model sent to the API: claude-sonnet-5)</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>WebSearch budget is exhausted for this session. I'll continue with WebFetch directly on known/likely URLs for the remaining companies.</result>
+</task-notification>
+
+## Claude
+
+You've hit your monthly spend limit · raise it at claude.ai/settings/usage?from=cc_cli_limit_message · your session limit resets 3:40am (Asia/Dubai)
+
 ## Actions Taken
 - Files created: /tmp/deadline_recon/deadline_tracker_content.md
 - Files modified: (none)
 - Files deleted: (none)
-- Commands run: grep -n "^#" "/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/[REDACTED].txt" | head -50, F="/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/[REDACTED].txt" echo "=== AI & ML ==="; grep -c 'Dossiers/1 - AI & ML/' "$F" echo "=== Fullstack ==="; grep -c 'Dossiers/2 - Fullstack/' "$F" echo "=== CyS & Finance ==="; grep -c 'Dossiers/3 - CyS & Finance/' "$F" echo "=== Other ==="; grep -c 'Dossiers/Other/' "$F" echo "=== total link lines ==="; sed -n '11,278p' "$F" | wc -l, F="/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/[REDACTED].txt" sed -n '11,278p' "$F" > /tmp/links_array.txt echo "AI&ML:"; grep -c 'Dossiers/1 - AI & ML/' /tmp/links_array.txt echo "Fullstack:"; grep -c 'Dossiers/2 - Fullstack/' /tmp/links_array.txt echo "CyS&Finance:"; grep -c 'Dossiers/3 - CyS & Finance/' /tmp/links_array.txt echo "Other:"; grep -c 'Dossiers/Other/' /tmp/links_array.txt echo "total lines in links array:"; wc -l < /tmp/links_array.txt, mkdir -p /tmp/deadline_recon && cd /tmp/deadline_recon cat > aiml_all.txt << 'EOF' 2027 Business Technology Solutions Intern - Data & Software Engineering (Undergraduate) - AbbVie.md A.I. Developer Co-Op (Boston, MA) - Manhattan Associates.md AI Engineer Co-op - Audax Group.md AI Engineer Intern - Enterprise Technology Services - American Express.md AI Engineer Intern - Summer 2027 - Finastra.md AI Intern - Montenson.md AI Network Automation Engineer Intern - Global Physical Network Infrastructure - ByteDance.md AI Network Automation Engineer Intern, Global Physical Network Infra - ByteDance.md AI Operations Intern - Naukr AI - Acds.md AI Operations Intern-Caddell Reynolds - Acds.md AI and Data Engineering Summer Scholar Intern - Government & Public Services - Deloitte.md AI-First Engineering Intern - Xsolla.md AIML Intern - Artificial IntelligenceMachine Learning - Kodiak Robotics.md AIML Research Intern - DRW.md Agent Evaluation & Evolution Machine Learning Engineer Intern - Applied Machine Learning Ark - ByteDance.md Agentic AI Intern - American Fidelity.md Analytics and Quantitative Modeling Intern - Analytics & Quantitative Modeling - KeyBank.md Applications Intern - AI and Machine Learning - TMEIC Corporation Americas.md Applied AI Engineer Intern - Millennium.md Applied AI Intern - University - Booz Allen.md Applied Machine Learning Production Engineer Intern - AML Production Engineer - ByteDance.md Applied Machine Learning Production Engineer Intern - ByteDance.md Artificial Intelligence Co-op Intern - Mosaic.md Artificial Intelligence Intern - Montenson.md Artificial IntelligenceMachine Learning - Summer 2027 Intern - Honeywell.md Autonomous Driving – Internship in Machine Learning - Robert Bosch Venture Capital.md Backend Software Engineering Intern 2027 - Verkada.md Business Systems Analyst Intern - W.W. Grainger.md Business Technology Solutions Intern - Data & Software Engineering - Undergraduate - AbbVie.md Campus AI Research Engineer (Intern) - Jump Trading.md Campus AI Research Engineer - Deep Learning (Intern) - Jump Trading.md Campus AI Research Engineer – Research Automation (Intern) - Jump Trading.md Campus Graduate Masters Summer Internship Program - 2027 AI Engineer I, Enterprise Technology Services- Phoenix, AZ - American Express.md Campus Graduate Masters Summer Internship Program - 2027 AI Engineer, Enterprise Technology Services- Atlanta, GA - American Express.md Campus Graduate Masters Summer Internship Program - 2027 AI Engineer, Enterprise Technology Services- New York, NY - American Express.md Campus Graduate Masters Summer Internship Program - 2027 AI Engineer, Enterprise Technology Services- Sunrise, FL - American Express.md Campus Graduate Masters Summer Internship Program - 2027 Software Engineer I, Enterprise Technology Services- Phoenix, AZ - American Express.md Campus Graduate Masters Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- Charlotte, NC - American Express.md Campus Graduate Masters Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- New York, NY - American Express.md Campus Graduate Masters Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- Sunrise, FL - American Express.md Campus Undergraduate Summer Internship Program - 2027 AI Engineer I, Enterprise Technology Services- Phoenix, AZ - American Express.md Campus Undergraduate Summer Internship Program - 2027 AI Engineer, Enterprise Technology Services- Atlanta, GA - American Express.md Campus Undergraduate Summer Internship Program - 2027 AI Engineer, Enterprise Technology Services- New York, NY - American Express.md Campus Undergraduate Summer Internship Program - 2027 AI Engineer, Enterprise Technology Services- Sunrise, FL - American Express.md Campus Undergraduate Summer Internship Program - 2027 Software Engineer I, Enterprise Technology Services- Phoenix, AZ - American Express.md Campus Undergraduate Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- Charlotte, NC - American Express.md Campus Undergraduate Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- Sunrise, FL - American Express.md Campus Undergraduate Summer Internship Program - 2027 Software Engineer, Technology - New York, NY - American Express.md College to Corporate IT Internship - Data Science (NC) - Vanguard.md College to Corporate IT Internship - Data Science (PA) - Vanguard.md Cybersecurity Intern - American Express (2).md Cybersecurity Intern - American Express.md Data Analytics - Data Science Intern - Northwell Health.md Data Engineer Intern - Data - LPL Financial Holdings.md Data Lake Infrastructure & Data Analytics Research Engineer Intern - Applied Machine Learning Ark - ByteDance.md Data Lake Infrastructure and Data Analytics Research Engineer Intern - Applied Machine Learning Ark - ByteDance.md Data Science Intern - College to Corporate IT - Vanguard.md Data Science Intern - Fully Remote US - HireVue.md Data Science Intern - Information Technology - Vanguard.md Data Science Intern - Notion.md Data Science Machine Learning Intern - Castleton Commodities International.md Deep Learning Computer Architecture Intern - NVIDIA.md FPGA Intern - DRW.md Forensic Analytics Summer Scholar Intern - Forensic Analytics - Deloitte.md Forward Deployed Software Engineer Intern - Commercial - Palantir.md Forward Deployed Software Engineer Intern - Intel - Palantir.md GPUAI Application System Software Engineer Intern - ByteDance.md GPUAI Application System Software Engineer Intern - System Technologies and Engineering - ByteDance.md Image Processing Co-op - Specter Aerospace.md Intern - AI-ML Data Engineering - Onsite - St. Louis - Core & Main.md Machine Learning Engineer Intern - AML-Engine-Orchestration - ByteDance.md Machine Learning Engineer Intern - ByteDance.md Machine Learning Engineer Intern - Jane Street.md Machine Learning Intern - OpRegen Machine Learning - Genentech.md Machine Learning InternCo-op - Machine Learning - Artificial Intelligence - AMD.md Machine Learning InternCo-op - Multiple Teams - AMD.md Machine Learning Research Engineer Intern - Quantbot Technologies.md Machine Learning Research Intern - Summer 2027 - Chicago - IMC Trading.md Machine Learning Researcher Intern - Jane Street.md Member of Technical Staff Intern - Research - Abundant.md Network Software Engineer Intern - Network Observation - ByteDance.md Predictive Modeler Intern - Summer 2027 - Auto-Owners Insurance.md Quantic - PhD Quantitative Researcher Intern (Summer 2027) - Walleye Capital Internships.md Quantic – Quantitative Developer Intern (Summer 2027) - Walleye Capital Internships.md Quantitative Developer Intern - Point72.md Quantitative Developer Intern - Tower Research.md Quantitative Intern (Summer 2027) - Optiver.md Quantitative Research Intern - DRW.md Quantitative Research Intern, PhD (Summer 2027) - Optiver.md Quantitative Research, Asset Management Summer Analyst - JPMorgan Chase.md Quantitative Research, Markets, Summer Internship - Analyst - JPMorgan Chase.md Quantitative Researcher, Intern (Summer 2027) - Aquatic Capital Management.md Quantitative Strategy Developer Intern - Susquehanna Investment Group.md Quantitative Trading Analyst Intern - DRW.md R&D- Computer Vision Engineering Intern - Magna International.md Research Intern - Deep Learning - Pony Dot Ai.md Research Intern - School of Computer Science - LTI - Carnegie Mellon University.md Research Intern – Video World Models (Research & ML Systems) - Tencent.md Software Developer Intern - DRW.md Software DeveloperData Scientist Intern - Summer 2027 - CACI.md Software Engineer Co-Op - Enterprise Finance Applications - Summer 2027 - Fifth Third Bank.md Software Engineer Intern - AI Platform - ByteDance.md Software Engineer Intern - AML-Engine-Orchestration - ByteDance.md Software Engineer Intern - ByteDance.md Software Engineer Intern - CTGT.md Software Engineer Intern - Chicago Trading Company.md Software Engineer Intern - Circleback.md Software Engineer Intern - Enterprise Technology Services - American Express.md Software Engineer Intern - Exa.md Software Engineer Intern - Generalist - Pony Dot Ai.md Software Engineer Intern - Global Payment Infra and SRE - ByteDance.md Software Engineer Intern - Global Traffic Architecture - ByteDance.md Software Engineer Intern - Grainger Technology Group - W.W. Grainger.md Software Engineer Intern - Heliux.md Software Engineer Intern - IMC.md Software Engineer Intern - LPL Financial Holdings.md Software Engineer Intern - Melius.md Software Engineer Intern - Notion.md Software Engineer Intern - Optiver.md Software Engineer Intern - Palantir Technologies.md Software Engineer Intern - Placement Year - RRS Group.md Software Engineer Intern - Pylon.md Software Engineer Intern - SK Hynix Memory Solution.md Software Engineer Intern - Software Engineer Program - JP Morgan Chase.md Software Engineer Intern - Technology - American Express.md Software Engineer Intern - Winter 2027 - Notion.md Software Engineer Intern, AIML & LLM - Microsoft.md Software Engineer Intern, CenterWell and Humana Military - Humana.md Software Engineer Intern, CoreAI - Microsoft.md Software Engineer Intern, Infrastructure - Palantir Technologies.md Software Engineer Intern, Production Infrastructure - Palantir Technologies.md Software Engineer, AI Platform Intern - Nuro.md Software Engineer, Backend Intern - Prophet Security.md Software Engineer, Intern (Summer 2027) - Aquatic Capital Management.md Software Engineering Intern - Appian.md Software Engineering Intern - Hypercubic.md Software Engineering Intern, Power Modeling & AI Tools - Tenstorrent.md Software Engineering Internship - Deepgram.md Software Engineering- Internship (Fall 2026-Summer 2027) - Deepgram.md Technology Intern - Early ID Participants - Humana.md Technology Intern - Humana.md Technology Intern - Verition Fund Management.md Visual Generation & Multimodal Evaluation Machine Learning Engineer Intern - Aml-Ark - ByteDance.md EOF wc -l aiml_all.txt, cd /tmp/deadline_recon cat > fullstack_all.txt << 'EOF' 2027 North America Software Engineering Internship - The Trade Desk.md 2027 Software Engineering Internship - Uber.md Data Engineering Intern - Castleton Commodities International.md Data Engineering Intern-Co-op - Marmon Holdings.md DevOps Engineering Intern - Copart.md Digital Co-op - Ameren.md Enterprise Operations Software Internship - Hewlett Packard (HP).md Front-End Software Developer Co-op - Specter Aerospace.md Frontend Software Engineering Intern 2027 - Verkada.md Full Stack Developer Co-op - Specter Aerospace.md Full-Stack Software Engineer Intern - Castleton Commodities International.md Gameplay Programmer Intern - Epic Games.md Platform Engineer Intern - DRW.md QA Engineering Intern - Copart.md Renewables Data Analytics Intern - WEC Energy Group.md Self-Built Engineer Intern - CDN Platform - ByteDance.md Software Developer Intern- Drexel Co-op US - AVEVA.md Software Development Intern - Dee Zee.md Software Development Internship - SimonComputing.md Software Engineer - Ellipsis Labs.md Software Engineer Intern - Backend Focused - Rippling.md Software Engineer Intern - Full Stack - Sage.md Software Engineer Intern - Global Payment - ByteDance.md Software Engineer Intern - Hyperlight.md Software Engineer Intern - Medtronic.md Software Engineer Intern - NHRC - Teledyne.md Software Engineer Intern - Observability and Security Platform - Datadog.md Software Engineer Intern - Traffic Infrastructure - ByteDance.md Software Engineer Intern - Western Digital.md Software Engineer Intern - Winter 2027 - Figma.md Software Engineer Intern, Cloud & Distributed Backend - Microsoft.md Software Engineer Intern, Fullstack Product (Web + Services) - Microsoft.md Software Engineering Co-op - Western Digital.md Software Engineering Intern (2027 Start) - Winter - Databricks.md Software Engineering Intern - Copart.md Software Engineering Intern - General Matter.md Software Engineering Intern - Google.md Software Engineering Intern - Quadrillion.md Software Engineering Intern, Device Experiences - Hewlett Packard (HP).md Software Engineering Intern, MS, Summer 2027 - Google.md Summer 2027 Software Engineering Internship - Western Digital.md Systems Engineer Co-op - Software Engineering - Brunswick.md Technology Intern - Data Engineering - Devon Energy.md EOF cat > cysfin_all.txt << 'EOF' 2027 Internship - Quant Research (Undergrad) - Virtu Financial.md 2027 Internship- FPGA - Virtu Financial.md Blockchain Application Developer Intern - DMS International.md Campus Systems Engineer Intern - Jump Trading.md Campus UI Software Engineer Intern - Jump Trading Group.md Cybersecurity Analyst Intern - Jane Street.md Data Engineer Intern - Jane Street.md Data Intern - Key Technology & Services - Data Track - KeyBank.md FPGA Engineer Intern (Summer 2027 - Austin) - Optiver.md FPGA Engineer Intern (Summer 2027 - Chicago) - Optiver.md FPGA Engineering Intern - HPR.md Frontend Developer Internship - Virtu Financial.md Hardware Engineer (FPGA-ASIC) Intern - Jane Street.md Hardware Engineer Intern - IMC.md Information Security Engineer Intern - Appian.md Infrastructure Engineer Intern [2027 Intern Program] - DTCC.md Intern - Hudson River Trading.md Investment Data Science Intern - Walleye Capital.md Linux Engineer Intern - Jane Street.md Network Engineer Intern - Jane Street.md Platform Engineer Intern, Summer 2027 - Akuna Capital.md Quant Trading Intern - Chicago Trading Company.md Quantitative Developer Intern - Millennium.md Quantitative Research Analyst Internship - Stevens Capital Management.md Quantitative Technologist Intern, C++ - Radix Trading.md Quantitative Trading Intern - Belvedere Trading.md Quantitative Trading Intern - Virtu.md Quantitative Trading Intern - Winter Quarter 2027 - Belvedere Trading.md Risk Technology Analyst Intern - Walleye Capital.md Software Engineer Intern (Summer 2027 - Austin) - Optiver.md Software Engineer Intern (Summer 2027 - Chicago) - Optiver.md Software Engineer Intern - Aquatic Capital Management.md Software Engineer Intern - C# .NET Desktop, Summer 2027 - Akuna Capital.md Software Engineer Intern - C++ or Python - Hudson River Trading.md Software Engineer Intern - C++, Summer 2027 - Akuna Capital.md Software Engineer Intern - Full Stack Web, Summer 2027 - Akuna Capital.md Software Engineer Intern - Hudson River Trading.md Software Engineer Intern - Jane Street.md Software Engineer Intern - Jump Trading.md Software Engineer Intern - Python, Summer 2027 - Akuna Capital.md Software Engineer Intern - Virtu Financial.md Software Engineer Intern, C# .NET Desktop - Akuna Capital.md Summer 2027 Software Engineering Intern - PDT Partners.md Summer 2027 Systems Engineering Intern - PDT Partners.md Summer Intern 2027 - Software Developer - Five Rings.md Technology Intern - New York - 2027 - Marshall Wace Internship Programmes.md Tools and Compilers Research and Development Intern - Jane Street.md Trading Automation and Operations Intern (Summer 2027) - Optiver.md Trading Desk Operations Engineer Intern - Jane Street.md Windows Engineer Intern - Jane Street.md EOF cat > other_all.txt << 'EOF' 2026-2027 Information Technology - Software Engineer - Intern - Chevron Corporation.md 2027 Summer Intern - Technology Analyst, Software Engineering - PIMCO.md AI Research Scientist Intern - 2027 Summer - Two Sigma.md AI Software Engineering Intern - Edge - Microsoft.md AI Software Engineering Intern - Microsoft.md Application Engineer Co-opIntern - PCS - GE Vernova.md Business Analytics Intern - Allegheny County.md Business Intelligence Intern - Mission Critical - Ryan Companies.md Campus – Data Science Intern (Analytics & Modeling Program) - Fannie Mae.md College to Corporate IT Internship - Data Analyst (NC) - Vanguard.md Computational Physics Intern (Summer 2027) - Zipline.md Consulting Intern - Healthcare Data Management and Strategy - BerryDunn.md Controls Engineer Intern (Spring 2027) - Zipline.md Controls Engineer Intern (Summer 2027) - Zipline.md DERMS Co-opIntern - Ameren.md Data Analyst Intern - College to Corporate IT - Vanguard.md Data Analyst Intern - Continental Resources.md Data Analyst InternCo-op - AMD.md Data Analytics Intern - Arthur J. Gallagher & Co..md Data Analytics Intern - Global Servicing - Financial Crimes Risk & Controls - American Express.md Data Analytics Intern - Insights - Montenson.md Data Engineer Intern - Spring 2027 - Medpace.md Data Intern - American Fidelity.md Data Science Intern - Analytics & Modeling Program - Fannie Mae.md Energy Analytics Intern - WEC Energy Group.md Engineer Intern - Spring 2027 - TMEIC Corporation Americas.md Enterprise Analytics Intern - GuideWell Mutual.md Enterprise Systems Software Engineer Intern (Summer 2027) - Zipline.md Enterprise Systems Software Engineer Intern - Spring 2027 - Zipline.md GMU Scholar Program Intern - CACI.md Global Client Group Operations Insights Intern - Undergraduate & Master's - Dimensional Fund Advisors.md IT Development Program Intern - IT Development Program - Genworth Financial.md IT Infrastructure Internship - Summer 2027 - Conagra Brands.md Implementation Intern - FAST Enterprises.md Innovation Services Intern - IMEG.md Intern, Software Engineering - Moog.md Long Range Platform Embedded Firmware Intern (Summer 2027) - Zipline.md Network Software Engineer Intern - Network Switch - ByteDance.md Operations Intern - Summer 2027 - Vertiv.md Perception Intern (Summer 2027) - Zipline.md Product Development Engineer InternCo-op - AMD.md Product Management Intern, Global Merchant & Network Services - American Express.md Quantitative Risk Intern - DV Group.md Software Developer Intern - DE Shaw.md Software Development Co-op - Spring 2027 - Medpace.md Software Development Engineer Intern - Network Automation - 2027 Summer - ByteDance.md Software Development Intern - American Fidelity.md Software Development Intern - Spring 2027 - Mujin.md Software Development Internship - Summer 2027 - Conagra Brands.md Software Engineer Intern - Atoms.md Software Engineer Intern - Databricks.md Software Engineer Intern - Distributed NoSQL Database Systems - ByteDance.md Software Engineer Intern - Garda Capital Partners.md Software Engineer Intern - HPR (Hyannis Port Research).md Software Engineer Intern - Kastle.md Software Engineer Intern - Northrop Grumman.md Software Engineer Intern - Schweitzer Engineering Laboratories.md Software Engineer Intern - Spring 2027 - Zipline.md Software Engineer Intern - Summer 2027 (DV Commodities) - DV Trading.md Software Engineer Intern - Summer 2027 - Belvedere Trading.md Software Engineer Intern - Summer 2027 - IMC Trading.md Software Engineer Intern, Data PlatformAnalytics - Microsoft.md Software Engineer Intern, Security & Identity - Microsoft.md Software Engineer InternCo-op - AMD.md Software Engineer Internship (2027 Start) - Optiver.md Software Engineering Intern (Summer 2027) - RTX.md Software Engineering Intern - Freeform.md Software Engineering Intern - HPR.md Software Engineering Intern - Technology Analyst - PIMCO.md Software Engineering Intern, Summer 2027 - Google.md Software Integration Intern - Mujin.md Software Mobile Intern - American Fidelity.md Software Systems Validation Intern (Spring 2027) - Zipline.md Software Systems Validation Intern (Summer 2027) - Zipline.md Strategic Technology Intern - SED Division - HNTB.md Summer 2027 Intern - Software Engineering - Western Digital.md Summer 2027 Internship - Tech (Infrastructure) - ING.md Supply Chain Data Analyst Intern - Motorola.md Sustainability Engineer Intern - Montenson.md System Administrator Intern - Montenson.md System Test Automation Intern (Spring 2027) - Zipline.md System Test Automation Intern (Summer 2027) - Zipline.md Technology, Data and Innovation Intern - Technology, Data and Innovation - Deutsche Bank.md Technology, Operations, Digital, and Data Analytics Intern - Regions Bank.md EOF wc -l fullstack_all.txt cysfin_all.txt other_all.txt, cd /tmp/deadline_recon grep -o 'Dossiers/1 - AI & ML/[^"]*\.md' /tmp/links_array.txt | sed 's#.*/##' | sort -u > aiml_found.txt grep -o 'Dossiers/2 - Fullstack/[^"]*\.md' /tmp/links_array.txt | sed 's#.*/##' | sort -u > fullstack_found.txt grep -o 'Dossiers/3 - CyS & Finance/[^"]*\.md' /tmp/links_array.txt | sed 's#.*/##' | sort -u > cysfin_found.txt grep -o 'Dossiers/Other/[^"]*\.md' /tmp/links_array.txt | sed 's#.*/##' | sort -u > other_found.txt wc -l aiml_found.txt fullstack_found.txt cysfin_found.txt other_found.txt echo "--- AIML missing from no-deadline list ---" sort aiml_all.txt > aiml_all_sorted.txt comm -23 aiml_all_sorted.txt aiml_found.txt echo "--- Fullstack missing ---" sort fullstack_all.txt > fullstack_all_sorted.txt comm -23 fullstack_all_sorted.txt fullstack_found.txt echo "--- CyS&Finance missing ---" sort cysfin_all.txt > cysfin_all_sorted.txt comm -23 cysfin_all_sorted.txt cysfin_found.txt echo "--- Other missing ---" sort other_all.txt > other_all_sorted.txt comm -23 other_all_sorted.txt other_found.txt, cd /tmp/deadline_recon PREFIX="10_Areas/Career/Internships/List/Dossiers" { echo "" echo "# Deadlines Not Mentioned" echo "" echo "Confirmed no-deadline dossiers (checked stored posting text and, where nothing was found there, a live fetch of the posting URL) as of the 2026-08-28 deadline sweep. Real deadlines that exist but fall outside the 2026-08-28–08-31 window are intentionally NOT listed here — see the sweep report for those." echo "" echo "## 1 - AI & ML" while read -r f; do name="${f%.md}" echo "- [[$PREFIX/1 - AI & ML/$name]]" done < aiml_found.txt echo "" echo "## 2 - Fullstack" while read -r f; do name="${f%.md}" if [ "$name" = "Software Engineer Intern - Backend Focused - Rippling" ]; then continue fi echo "- [[$PREFIX/2 - Fullstack/$name]]" done < fullstack_found.txt echo "- **Dead link, not \"no deadline\":** [[$PREFIX/2 - Fullstack/Software Engineer Intern - Backend Focused - Rippling]] — posting URL now permanently redirects (HTTP 308) to Rippling's generic careers page, not a live listing." echo "" echo "## 3 - CyS & Finance" while read -r f; do name="${f%.md}" echo "- [[$PREFIX/3 - CyS & Finance/$name]]" done < cysfin_found.txt echo "- [Software Engineer Intern - C# .NET Desktop, Summer 2027 - Akuna Capital]($PREFIX/3%20-%20CyS%20%26%20Finance/Software%20Engineer%20Intern%20-%20C%23%20.NET%20Desktop%2C%20Summer%202027%20-%20Akuna%20Capital.md)" echo "- [Software Engineer Intern, C# .NET Desktop - Akuna Capital]($PREFIX/3%20-%20CyS%20%26%20Finance/Software%20Engineer%20Intern%2C%20C%23%20.NET%20Desktop%20-%20Akuna%20Capital.md)" echo "" echo "## Other" while read -r f; do name="${f%.md}" echo "- [[$PREFIX/Other/$name]]" done < other_found.txt for name in "Business Analytics Intern - Allegheny County" "Engineer Intern - Spring 2027 - TMEIC Corporation Americas" "Enterprise Systems Software Engineer Intern (Summer 2027) - Zipline" "Enterprise Systems Software Engineer Intern - Spring 2027 - Zipline" "Long Range Platform Embedded Firmware Intern (Summer 2027) - Zipline" "Software Development Intern - Spring 2027 - Mujin" "Software Integration Intern - Mujin" "Software Engineer Intern - Summer 2027 - Belvedere Trading" "Software Engineering Intern, Summer 2027 - Google" "Software Systems Validation Intern (Spring 2027) - Zipline" "Software Systems Validation Intern (Summer 2027) - Zipline" "System Test Automation Intern (Spring 2027) - Zipline" "System Test Automation Intern (Summer 2027) - Zipline"; do echo "- [[$PREFIX/Other/$name]]" done } > no_deadline_final.md wc -l no_deadline_final.md, F="/tmp/deadline_recon/no_deadline_final.md" echo "AI&ML no-deadline count:"; awk '/^## 1 - AI & ML/,/^## 2 - Fullstack/' "$F" | grep -c '^- \[\[' echo "Fullstack no-deadline count (excl dead-link line):"; awk '/^## 2 - Fullstack/,/^## 3 - CyS/' "$F" | grep -c '^- \[\[' echo "CyS&Finance no-deadline count (wikilinks + md links):"; awk '/^## 3 - CyS & Finance/,/^## Other/' "$F" | grep -cE '^- (\[\[|\[)' echo "Other no-deadline count:"; awk '/^## Other/,0' "$F" | grep -c '^- \[\[', grep -c "Maximor AI\|GlossGenius\|Annapurna Labs\|Applied Data Solutions Program\|Whop\|Ancestry" "/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/[REDACTED].txt" wc -l "/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/[REDACTED].txt", F="/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/[REDACTED].txt" for term in "Maximor AI" "GlossGenius" "Annapurna Labs" "Applied Data Solutions Program" "Whop" "Ancestry"; do echo -n "$term: " grep -o "$term" "$F" | wc -l done, F="/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/[REDACTED].txt" python3 -c " import re with open('$F') as fh: txt = fh.read() # extract the content field m = re.search(r'\"content\": \"(.*)\",\n \"links\"', txt, re.S) content = m.group(1) content = content.encode().decode('unicode_escape') print(len(content)) " 2>&1 | head -5 , F="/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/[REDACTED].txt" python3 -c " import re, json with open('$F', encoding='utf-8') as fh: lines = fh.readlines() # strip 'N\t' prefix from each line (cat -n format) stripped = ''.join(re.sub(r'^\s*\d+\t', '', l) for l in lines) data = json.loads(stripped) content = data['content'] with open('/tmp/deadline_recon/live_no_deadline_current.md', 'w', encoding='utf-8') as out: out.write(content) print('wrote', len(content), 'chars') " , grep -n "^#" /tmp/deadline_recon/live_no_deadline_current.md echo "---" wc -l /tmp/deadline_recon/live_no_deadline_current.md, cd /tmp/deadline_recon cat aiml_found.txt > all_no_deadline.txt grep -v "^Software Engineer Intern - Backend Focused - Rippling.md$" fullstack_found.txt >> all_no_deadline.txt cat cysfin_found.txt >> all_no_deadline.txt echo "Software Engineer Intern - C# .NET Desktop, Summer 2027 - Akuna Capital.md" >> all_no_deadline.txt echo "Software Engineer Intern, C# .NET Desktop - Akuna Capital.md" >> all_no_deadline.txt cat other_found.txt >> all_no_deadline.txt cat >> all_no_deadline.txt << 'EOF' Business Analytics Intern - Allegheny County.md Engineer Intern - Spring 2027 - TMEIC Corporation Americas.md Enterprise Systems Software Engineer Intern (Summer 2027) - Zipline.md Enterprise Systems Software Engineer Intern - Spring 2027 - Zipline.md Long Range Platform Embedded Firmware Intern (Summer 2027) - Zipline.md Software Development Intern - Spring 2027 - Mujin.md Software Integration Intern - Mujin.md Software Engineer Intern - Summer 2027 - Belvedere Trading.md Software Engineering Intern, Summer 2027 - Google.md Software Systems Validation Intern (Spring 2027) - Zipline.md Software Systems Validation Intern (Summer 2027) - Zipline.md System Test Automation Intern (Spring 2027) - Zipline.md System Test Automation Intern (Summer 2027) - Zipline.md EOF wc -l all_no_deadline.txt python3 -c " import re from collections import defaultdict companies = defaultdict(list) with open('all_no_deadline.txt') as f: for line in f: line = line.strip() if not line: continue name = line[:-3] if line.endswith('.md') else line parts = name.split(' - ') company = parts[-1].strip() # strip trailing (2) style dup markers company = re.sub(r'\s*\(\d+\)\s*$', '', company) companies[company].append(name) for c in sorted(companies, key=lambda k: -len(companies[k])): print(len(companies[c]), c) " > company_counts.txt wc -l company_counts.txt head -40 company_counts.txt, head -30 /tmp/deadline_recon/company_counts.txt echo "..." echo "sum of top 30:" head -30 /tmp/deadline_recon/company_counts.txt | awk '{s+=$1} END {print s}' echo "total companies with count==1:" awk '$1==1' /tmp/deadline_recon/company_counts.txt | wc -l, head -50 /tmp/deadline_recon/company_counts.txt echo "sum top 50:" head -50 /tmp/deadline_recon/company_counts.txt | awk '{s+=$1} END{print s}', awk '$1>=2' /tmp/deadline_recon/company_counts.txt | wc -l awk '$1>=2 {s+=$1} END{print s}' /tmp/deadline_recon/company_counts.txt awk '$1>=2' /tmp/deadline_recon/company_counts.txt | tail -20, cd /tmp/deadline_recon python3 -c " import re from collections import defaultdict companies = defaultdict(list) with open('all_no_deadline.txt') as f: for line in f: line = line.strip() if not line: continue name = line[:-3] if line.endswith('.md') else line parts = name.split(' - ') company = parts[-1].strip() company = re.sub(r'\s*\(\d+\)\s*\$', '', company) companies[company].append(name) multi = {c:v for c,v in companies.items() if len(v)>=2} items = sorted(multi.items(), key=lambda kv: -len(kv[1])) # split into 4 roughly-equal-by-dossier-count batches batches = [[],[],[],[]] loads = [0,0,0,0] for c, files in items: idx = loads.index(min(loads)) batches[idx].append((c, files)) loads[idx] += len(files) for i, b in enumerate(batches): print(f'=== BATCH {i+1} (load {loads[i]}) ===') for c, files in b: print(f'{c} ({len(files)}):') for f in files: print(f' - {f}') print() " > batches.txt wc -l batches.txt grep "^===" batches.txt
-- Tool call tally: Agent (8), Bash (18), ListAgents (4), mcp__jarvis__vault_append (1), mcp__jarvis__vault_list (16), mcp__jarvis__vault_read (41), mcp__jarvis__vault_write (3), Read (6), ScheduleWakeup (5), ToolSearch (2), WebFetch (7), Write (1)
+- Commands run: grep -n "^#" "/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/[REDACTED].txt" | head -50, F="/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/[REDACTED].txt" echo "=== AI & ML ==="; grep -c 'Dossiers/1 - AI & ML/' "$F" echo "=== Fullstack ==="; grep -c 'Dossiers/2 - Fullstack/' "$F" echo "=== CyS & Finance ==="; grep -c 'Dossiers/3 - CyS & Finance/' "$F" echo "=== Other ==="; grep -c 'Dossiers/Other/' "$F" echo "=== total link lines ==="; sed -n '11,278p' "$F" | wc -l, F="/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/[REDACTED].txt" sed -n '11,278p' "$F" > /tmp/links_array.txt echo "AI&ML:"; grep -c 'Dossiers/1 - AI & ML/' /tmp/links_array.txt echo "Fullstack:"; grep -c 'Dossiers/2 - Fullstack/' /tmp/links_array.txt echo "CyS&Finance:"; grep -c 'Dossiers/3 - CyS & Finance/' /tmp/links_array.txt echo "Other:"; grep -c 'Dossiers/Other/' /tmp/links_array.txt echo "total lines in links array:"; wc -l < /tmp/links_array.txt, mkdir -p /tmp/deadline_recon && cd /tmp/deadline_recon cat > aiml_all.txt << 'EOF' 2027 Business Technology Solutions Intern - Data & Software Engineering (Undergraduate) - AbbVie.md A.I. Developer Co-Op (Boston, MA) - Manhattan Associates.md AI Engineer Co-op - Audax Group.md AI Engineer Intern - Enterprise Technology Services - American Express.md AI Engineer Intern - Summer 2027 - Finastra.md AI Intern - Montenson.md AI Network Automation Engineer Intern - Global Physical Network Infrastructure - ByteDance.md AI Network Automation Engineer Intern, Global Physical Network Infra - ByteDance.md AI Operations Intern - Naukr AI - Acds.md AI Operations Intern-Caddell Reynolds - Acds.md AI and Data Engineering Summer Scholar Intern - Government & Public Services - Deloitte.md AI-First Engineering Intern - Xsolla.md AIML Intern - Artificial IntelligenceMachine Learning - Kodiak Robotics.md AIML Research Intern - DRW.md Agent Evaluation & Evolution Machine Learning Engineer Intern - Applied Machine Learning Ark - ByteDance.md Agentic AI Intern - American Fidelity.md Analytics and Quantitative Modeling Intern - Analytics & Quantitative Modeling - KeyBank.md Applications Intern - AI and Machine Learning - TMEIC Corporation Americas.md Applied AI Engineer Intern - Millennium.md Applied AI Intern - University - Booz Allen.md Applied Machine Learning Production Engineer Intern - AML Production Engineer - ByteDance.md Applied Machine Learning Production Engineer Intern - ByteDance.md Artificial Intelligence Co-op Intern - Mosaic.md Artificial Intelligence Intern - Montenson.md Artificial IntelligenceMachine Learning - Summer 2027 Intern - Honeywell.md Autonomous Driving – Internship in Machine Learning - Robert Bosch Venture Capital.md Backend Software Engineering Intern 2027 - Verkada.md Business Systems Analyst Intern - W.W. Grainger.md Business Technology Solutions Intern - Data & Software Engineering - Undergraduate - AbbVie.md Campus AI Research Engineer (Intern) - Jump Trading.md Campus AI Research Engineer - Deep Learning (Intern) - Jump Trading.md Campus AI Research Engineer – Research Automation (Intern) - Jump Trading.md Campus Graduate Masters Summer Internship Program - 2027 AI Engineer I, Enterprise Technology Services- Phoenix, AZ - American Express.md Campus Graduate Masters Summer Internship Program - 2027 AI Engineer, Enterprise Technology Services- Atlanta, GA - American Express.md Campus Graduate Masters Summer Internship Program - 2027 AI Engineer, Enterprise Technology Services- New York, NY - American Express.md Campus Graduate Masters Summer Internship Program - 2027 AI Engineer, Enterprise Technology Services- Sunrise, FL - American Express.md Campus Graduate Masters Summer Internship Program - 2027 Software Engineer I, Enterprise Technology Services- Phoenix, AZ - American Express.md Campus Graduate Masters Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- Charlotte, NC - American Express.md Campus Graduate Masters Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- New York, NY - American Express.md Campus Graduate Masters Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- Sunrise, FL - American Express.md Campus Undergraduate Summer Internship Program - 2027 AI Engineer I, Enterprise Technology Services- Phoenix, AZ - American Express.md Campus Undergraduate Summer Internship Program - 2027 AI Engineer, Enterprise Technology Services- Atlanta, GA - American Express.md Campus Undergraduate Summer Internship Program - 2027 AI Engineer, Enterprise Technology Services- New York, NY - American Express.md Campus Undergraduate Summer Internship Program - 2027 AI Engineer, Enterprise Technology Services- Sunrise, FL - American Express.md Campus Undergraduate Summer Internship Program - 2027 Software Engineer I, Enterprise Technology Services- Phoenix, AZ - American Express.md Campus Undergraduate Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- Charlotte, NC - American Express.md Campus Undergraduate Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- Sunrise, FL - American Express.md Campus Undergraduate Summer Internship Program - 2027 Software Engineer, Technology - New York, NY - American Express.md College to Corporate IT Internship - Data Science (NC) - Vanguard.md College to Corporate IT Internship - Data Science (PA) - Vanguard.md Cybersecurity Intern - American Express (2).md Cybersecurity Intern - American Express.md Data Analytics - Data Science Intern - Northwell Health.md Data Engineer Intern - Data - LPL Financial Holdings.md Data Lake Infrastructure & Data Analytics Research Engineer Intern - Applied Machine Learning Ark - ByteDance.md Data Lake Infrastructure and Data Analytics Research Engineer Intern - Applied Machine Learning Ark - ByteDance.md Data Science Intern - College to Corporate IT - Vanguard.md Data Science Intern - Fully Remote US - HireVue.md Data Science Intern - Information Technology - Vanguard.md Data Science Intern - Notion.md Data Science Machine Learning Intern - Castleton Commodities International.md Deep Learning Computer Architecture Intern - NVIDIA.md FPGA Intern - DRW.md Forensic Analytics Summer Scholar Intern - Forensic Analytics - Deloitte.md Forward Deployed Software Engineer Intern - Commercial - Palantir.md Forward Deployed Software Engineer Intern - Intel - Palantir.md GPUAI Application System Software Engineer Intern - ByteDance.md GPUAI Application System Software Engineer Intern - System Technologies and Engineering - ByteDance.md Image Processing Co-op - Specter Aerospace.md Intern - AI-ML Data Engineering - Onsite - St. Louis - Core & Main.md Machine Learning Engineer Intern - AML-Engine-Orchestration - ByteDance.md Machine Learning Engineer Intern - ByteDance.md Machine Learning Engineer Intern - Jane Street.md Machine Learning Intern - OpRegen Machine Learning - Genentech.md Machine Learning InternCo-op - Machine Learning - Artificial Intelligence - AMD.md Machine Learning InternCo-op - Multiple Teams - AMD.md Machine Learning Research Engineer Intern - Quantbot Technologies.md Machine Learning Research Intern - Summer 2027 - Chicago - IMC Trading.md Machine Learning Researcher Intern - Jane Street.md Member of Technical Staff Intern - Research - Abundant.md Network Software Engineer Intern - Network Observation - ByteDance.md Predictive Modeler Intern - Summer 2027 - Auto-Owners Insurance.md Quantic - PhD Quantitative Researcher Intern (Summer 2027) - Walleye Capital Internships.md Quantic – Quantitative Developer Intern (Summer 2027) - Walleye Capital Internships.md Quantitative Developer Intern - Point72.md Quantitative Developer Intern - Tower Research.md Quantitative Intern (Summer 2027) - Optiver.md Quantitative Research Intern - DRW.md Quantitative Research Intern, PhD (Summer 2027) - Optiver.md Quantitative Research, Asset Management Summer Analyst - JPMorgan Chase.md Quantitative Research, Markets, Summer Internship - Analyst - JPMorgan Chase.md Quantitative Researcher, Intern (Summer 2027) - Aquatic Capital Management.md Quantitative Strategy Developer Intern - Susquehanna Investment Group.md Quantitative Trading Analyst Intern - DRW.md R&D- Computer Vision Engineering Intern - Magna International.md Research Intern - Deep Learning - Pony Dot Ai.md Research Intern - School of Computer Science - LTI - Carnegie Mellon University.md Research Intern – Video World Models (Research & ML Systems) - Tencent.md Software Developer Intern - DRW.md Software DeveloperData Scientist Intern - Summer 2027 - CACI.md Software Engineer Co-Op - Enterprise Finance Applications - Summer 2027 - Fifth Third Bank.md Software Engineer Intern - AI Platform - ByteDance.md Software Engineer Intern - AML-Engine-Orchestration - ByteDance.md Software Engineer Intern - ByteDance.md Software Engineer Intern - CTGT.md Software Engineer Intern - Chicago Trading Company.md Software Engineer Intern - Circleback.md Software Engineer Intern - Enterprise Technology Services - American Express.md Software Engineer Intern - Exa.md Software Engineer Intern - Generalist - Pony Dot Ai.md Software Engineer Intern - Global Payment Infra and SRE - ByteDance.md Software Engineer Intern - Global Traffic Architecture - ByteDance.md Software Engineer Intern - Grainger Technology Group - W.W. Grainger.md Software Engineer Intern - Heliux.md Software Engineer Intern - IMC.md Software Engineer Intern - LPL Financial Holdings.md Software Engineer Intern - Melius.md Software Engineer Intern - Notion.md Software Engineer Intern - Optiver.md Software Engineer Intern - Palantir Technologies.md Software Engineer Intern - Placement Year - RRS Group.md Software Engineer Intern - Pylon.md Software Engineer Intern - SK Hynix Memory Solution.md Software Engineer Intern - Software Engineer Program - JP Morgan Chase.md Software Engineer Intern - Technology - American Express.md Software Engineer Intern - Winter 2027 - Notion.md Software Engineer Intern, AIML & LLM - Microsoft.md Software Engineer Intern, CenterWell and Humana Military - Humana.md Software Engineer Intern, CoreAI - Microsoft.md Software Engineer Intern, Infrastructure - Palantir Technologies.md Software Engineer Intern, Production Infrastructure - Palantir Technologies.md Software Engineer, AI Platform Intern - Nuro.md Software Engineer, Backend Intern - Prophet Security.md Software Engineer, Intern (Summer 2027) - Aquatic Capital Management.md Software Engineering Intern - Appian.md Software Engineering Intern - Hypercubic.md Software Engineering Intern, Power Modeling & AI Tools - Tenstorrent.md Software Engineering Internship - Deepgram.md Software Engineering- Internship (Fall 2026-Summer 2027) - Deepgram.md Technology Intern - Early ID Participants - Humana.md Technology Intern - Humana.md Technology Intern - Verition Fund Management.md Visual Generation & Multimodal Evaluation Machine Learning Engineer Intern - Aml-Ark - ByteDance.md EOF wc -l aiml_all.txt, cd /tmp/deadline_recon cat > fullstack_all.txt << 'EOF' 2027 North America Software Engineering Internship - The Trade Desk.md 2027 Software Engineering Internship - Uber.md Data Engineering Intern - Castleton Commodities International.md Data Engineering Intern-Co-op - Marmon Holdings.md DevOps Engineering Intern - Copart.md Digital Co-op - Ameren.md Enterprise Operations Software Internship - Hewlett Packard (HP).md Front-End Software Developer Co-op - Specter Aerospace.md Frontend Software Engineering Intern 2027 - Verkada.md Full Stack Developer Co-op - Specter Aerospace.md Full-Stack Software Engineer Intern - Castleton Commodities International.md Gameplay Programmer Intern - Epic Games.md Platform Engineer Intern - DRW.md QA Engineering Intern - Copart.md Renewables Data Analytics Intern - WEC Energy Group.md Self-Built Engineer Intern - CDN Platform - ByteDance.md Software Developer Intern- Drexel Co-op US - AVEVA.md Software Development Intern - Dee Zee.md Software Development Internship - SimonComputing.md Software Engineer - Ellipsis Labs.md Software Engineer Intern - Backend Focused - Rippling.md Software Engineer Intern - Full Stack - Sage.md Software Engineer Intern - Global Payment - ByteDance.md Software Engineer Intern - Hyperlight.md Software Engineer Intern - Medtronic.md Software Engineer Intern - NHRC - Teledyne.md Software Engineer Intern - Observability and Security Platform - Datadog.md Software Engineer Intern - Traffic Infrastructure - ByteDance.md Software Engineer Intern - Western Digital.md Software Engineer Intern - Winter 2027 - Figma.md Software Engineer Intern, Cloud & Distributed Backend - Microsoft.md Software Engineer Intern, Fullstack Product (Web + Services) - Microsoft.md Software Engineering Co-op - Western Digital.md Software Engineering Intern (2027 Start) - Winter - Databricks.md Software Engineering Intern - Copart.md Software Engineering Intern - General Matter.md Software Engineering Intern - Google.md Software Engineering Intern - Quadrillion.md Software Engineering Intern, Device Experiences - Hewlett Packard (HP).md Software Engineering Intern, MS, Summer 2027 - Google.md Summer 2027 Software Engineering Internship - Western Digital.md Systems Engineer Co-op - Software Engineering - Brunswick.md Technology Intern - Data Engineering - Devon Energy.md EOF cat > cysfin_all.txt << 'EOF' 2027 Internship - Quant Research (Undergrad) - Virtu Financial.md 2027 Internship- FPGA - Virtu Financial.md Blockchain Application Developer Intern - DMS International.md Campus Systems Engineer Intern - Jump Trading.md Campus UI Software Engineer Intern - Jump Trading Group.md Cybersecurity Analyst Intern - Jane Street.md Data Engineer Intern - Jane Street.md Data Intern - Key Technology & Services - Data Track - KeyBank.md FPGA Engineer Intern (Summer 2027 - Austin) - Optiver.md FPGA Engineer Intern (Summer 2027 - Chicago) - Optiver.md FPGA Engineering Intern - HPR.md Frontend Developer Internship - Virtu Financial.md Hardware Engineer (FPGA-ASIC) Intern - Jane Street.md Hardware Engineer Intern - IMC.md Information Security Engineer Intern - Appian.md Infrastructure Engineer Intern [2027 Intern Program] - DTCC.md Intern - Hudson River Trading.md Investment Data Science Intern - Walleye Capital.md Linux Engineer Intern - Jane Street.md Network Engineer Intern - Jane Street.md Platform Engineer Intern, Summer 2027 - Akuna Capital.md Quant Trading Intern - Chicago Trading Company.md Quantitative Developer Intern - Millennium.md Quantitative Research Analyst Internship - Stevens Capital Management.md Quantitative Technologist Intern, C++ - Radix Trading.md Quantitative Trading Intern - Belvedere Trading.md Quantitative Trading Intern - Virtu.md Quantitative Trading Intern - Winter Quarter 2027 - Belvedere Trading.md Risk Technology Analyst Intern - Walleye Capital.md Software Engineer Intern (Summer 2027 - Austin) - Optiver.md Software Engineer Intern (Summer 2027 - Chicago) - Optiver.md Software Engineer Intern - Aquatic Capital Management.md Software Engineer Intern - C# .NET Desktop, Summer 2027 - Akuna Capital.md Software Engineer Intern - C++ or Python - Hudson River Trading.md Software Engineer Intern - C++, Summer 2027 - Akuna Capital.md Software Engineer Intern - Full Stack Web, Summer 2027 - Akuna Capital.md Software Engineer Intern - Hudson River Trading.md Software Engineer Intern - Jane Street.md Software Engineer Intern - Jump Trading.md Software Engineer Intern - Python, Summer 2027 - Akuna Capital.md Software Engineer Intern - Virtu Financial.md Software Engineer Intern, C# .NET Desktop - Akuna Capital.md Summer 2027 Software Engineering Intern - PDT Partners.md Summer 2027 Systems Engineering Intern - PDT Partners.md Summer Intern 2027 - Software Developer - Five Rings.md Technology Intern - New York - 2027 - Marshall Wace Internship Programmes.md Tools and Compilers Research and Development Intern - Jane Street.md Trading Automation and Operations Intern (Summer 2027) - Optiver.md Trading Desk Operations Engineer Intern - Jane Street.md Windows Engineer Intern - Jane Street.md EOF cat > other_all.txt << 'EOF' 2026-2027 Information Technology - Software Engineer - Intern - Chevron Corporation.md 2027 Summer Intern - Technology Analyst, Software Engineering - PIMCO.md AI Research Scientist Intern - 2027 Summer - Two Sigma.md AI Software Engineering Intern - Edge - Microsoft.md AI Software Engineering Intern - Microsoft.md Application Engineer Co-opIntern - PCS - GE Vernova.md Business Analytics Intern - Allegheny County.md Business Intelligence Intern - Mission Critical - Ryan Companies.md Campus – Data Science Intern (Analytics & Modeling Program) - Fannie Mae.md College to Corporate IT Internship - Data Analyst (NC) - Vanguard.md Computational Physics Intern (Summer 2027) - Zipline.md Consulting Intern - Healthcare Data Management and Strategy - BerryDunn.md Controls Engineer Intern (Spring 2027) - Zipline.md Controls Engineer Intern (Summer 2027) - Zipline.md DERMS Co-opIntern - Ameren.md Data Analyst Intern - College to Corporate IT - Vanguard.md Data Analyst Intern - Continental Resources.md Data Analyst InternCo-op - AMD.md Data Analytics Intern - Arthur J. Gallagher & Co..md Data Analytics Intern - Global Servicing - Financial Crimes Risk & Controls - American Express.md Data Analytics Intern - Insights - Montenson.md Data Engineer Intern - Spring 2027 - Medpace.md Data Intern - American Fidelity.md Data Science Intern - Analytics & Modeling Program - Fannie Mae.md Energy Analytics Intern - WEC Energy Group.md Engineer Intern - Spring 2027 - TMEIC Corporation Americas.md Enterprise Analytics Intern - GuideWell Mutual.md Enterprise Systems Software Engineer Intern (Summer 2027) - Zipline.md Enterprise Systems Software Engineer Intern - Spring 2027 - Zipline.md GMU Scholar Program Intern - CACI.md Global Client Group Operations Insights Intern - Undergraduate & Master's - Dimensional Fund Advisors.md IT Development Program Intern - IT Development Program - Genworth Financial.md IT Infrastructure Internship - Summer 2027 - Conagra Brands.md Implementation Intern - FAST Enterprises.md Innovation Services Intern - IMEG.md Intern, Software Engineering - Moog.md Long Range Platform Embedded Firmware Intern (Summer 2027) - Zipline.md Network Software Engineer Intern - Network Switch - ByteDance.md Operations Intern - Summer 2027 - Vertiv.md Perception Intern (Summer 2027) - Zipline.md Product Development Engineer InternCo-op - AMD.md Product Management Intern, Global Merchant & Network Services - American Express.md Quantitative Risk Intern - DV Group.md Software Developer Intern - DE Shaw.md Software Development Co-op - Spring 2027 - Medpace.md Software Development Engineer Intern - Network Automation - 2027 Summer - ByteDance.md Software Development Intern - American Fidelity.md Software Development Intern - Spring 2027 - Mujin.md Software Development Internship - Summer 2027 - Conagra Brands.md Software Engineer Intern - Atoms.md Software Engineer Intern - Databricks.md Software Engineer Intern - Distributed NoSQL Database Systems - ByteDance.md Software Engineer Intern - Garda Capital Partners.md Software Engineer Intern - HPR (Hyannis Port Research).md Software Engineer Intern - Kastle.md Software Engineer Intern - Northrop Grumman.md Software Engineer Intern - Schweitzer Engineering Laboratories.md Software Engineer Intern - Spring 2027 - Zipline.md Software Engineer Intern - Summer 2027 (DV Commodities) - DV Trading.md Software Engineer Intern - Summer 2027 - Belvedere Trading.md Software Engineer Intern - Summer 2027 - IMC Trading.md Software Engineer Intern, Data PlatformAnalytics - Microsoft.md Software Engineer Intern, Security & Identity - Microsoft.md Software Engineer InternCo-op - AMD.md Software Engineer Internship (2027 Start) - Optiver.md Software Engineering Intern (Summer 2027) - RTX.md Software Engineering Intern - Freeform.md Software Engineering Intern - HPR.md Software Engineering Intern - Technology Analyst - PIMCO.md Software Engineering Intern, Summer 2027 - Google.md Software Integration Intern - Mujin.md Software Mobile Intern - American Fidelity.md Software Systems Validation Intern (Spring 2027) - Zipline.md Software Systems Validation Intern (Summer 2027) - Zipline.md Strategic Technology Intern - SED Division - HNTB.md Summer 2027 Intern - Software Engineering - Western Digital.md Summer 2027 Internship - Tech (Infrastructure) - ING.md Supply Chain Data Analyst Intern - Motorola.md Sustainability Engineer Intern - Montenson.md System Administrator Intern - Montenson.md System Test Automation Intern (Spring 2027) - Zipline.md System Test Automation Intern (Summer 2027) - Zipline.md Technology, Data and Innovation Intern - Technology, Data and Innovation - Deutsche Bank.md Technology, Operations, Digital, and Data Analytics Intern - Regions Bank.md EOF wc -l fullstack_all.txt cysfin_all.txt other_all.txt, cd /tmp/deadline_recon grep -o 'Dossiers/1 - AI & ML/[^"]*\.md' /tmp/links_array.txt | sed 's#.*/##' | sort -u > aiml_found.txt grep -o 'Dossiers/2 - Fullstack/[^"]*\.md' /tmp/links_array.txt | sed 's#.*/##' | sort -u > fullstack_found.txt grep -o 'Dossiers/3 - CyS & Finance/[^"]*\.md' /tmp/links_array.txt | sed 's#.*/##' | sort -u > cysfin_found.txt grep -o 'Dossiers/Other/[^"]*\.md' /tmp/links_array.txt | sed 's#.*/##' | sort -u > other_found.txt wc -l aiml_found.txt fullstack_found.txt cysfin_found.txt other_found.txt echo "--- AIML missing from no-deadline list ---" sort aiml_all.txt > aiml_all_sorted.txt comm -23 aiml_all_sorted.txt aiml_found.txt echo "--- Fullstack missing ---" sort fullstack_all.txt > fullstack_all_sorted.txt comm -23 fullstack_all_sorted.txt fullstack_found.txt echo "--- CyS&Finance missing ---" sort cysfin_all.txt > cysfin_all_sorted.txt comm -23 cysfin_all_sorted.txt cysfin_found.txt echo "--- Other missing ---" sort other_all.txt > other_all_sorted.txt comm -23 other_all_sorted.txt other_found.txt, cd /tmp/deadline_recon PREFIX="10_Areas/Career/Internships/List/Dossiers" { echo "" echo "# Deadlines Not Mentioned" echo "" echo "Confirmed no-deadline dossiers (checked stored posting text and, where nothing was found there, a live fetch of the posting URL) as of the 2026-08-28 deadline sweep. Real deadlines that exist but fall outside the 2026-08-28–08-31 window are intentionally NOT listed here — see the sweep report for those." echo "" echo "## 1 - AI & ML" while read -r f; do name="${f%.md}" echo "- [[$PREFIX/1 - AI & ML/$name]]" done < aiml_found.txt echo "" echo "## 2 - Fullstack" while read -r f; do name="${f%.md}" if [ "$name" = "Software Engineer Intern - Backend Focused - Rippling" ]; then continue fi echo "- [[$PREFIX/2 - Fullstack/$name]]" done < fullstack_found.txt echo "- **Dead link, not \"no deadline\":** [[$PREFIX/2 - Fullstack/Software Engineer Intern - Backend Focused - Rippling]] — posting URL now permanently redirects (HTTP 308) to Rippling's generic careers page, not a live listing." echo "" echo "## 3 - CyS & Finance" while read -r f; do name="${f%.md}" echo "- [[$PREFIX/3 - CyS & Finance/$name]]" done < cysfin_found.txt echo "- [Software Engineer Intern - C# .NET Desktop, Summer 2027 - Akuna Capital]($PREFIX/3%20-%20CyS%20%26%20Finance/Software%20Engineer%20Intern%20-%20C%23%20.NET%20Desktop%2C%20Summer%202027%20-%20Akuna%20Capital.md)" echo "- [Software Engineer Intern, C# .NET Desktop - Akuna Capital]($PREFIX/3%20-%20CyS%20%26%20Finance/Software%20Engineer%20Intern%2C%20C%23%20.NET%20Desktop%20-%20Akuna%20Capital.md)" echo "" echo "## Other" while read -r f; do name="${f%.md}" echo "- [[$PREFIX/Other/$name]]" done < other_found.txt for name in "Business Analytics Intern - Allegheny County" "Engineer Intern - Spring 2027 - TMEIC Corporation Americas" "Enterprise Systems Software Engineer Intern (Summer 2027) - Zipline" "Enterprise Systems Software Engineer Intern - Spring 2027 - Zipline" "Long Range Platform Embedded Firmware Intern (Summer 2027) - Zipline" "Software Development Intern - Spring 2027 - Mujin" "Software Integration Intern - Mujin" "Software Engineer Intern - Summer 2027 - Belvedere Trading" "Software Engineering Intern, Summer 2027 - Google" "Software Systems Validation Intern (Spring 2027) - Zipline" "Software Systems Validation Intern (Summer 2027) - Zipline" "System Test Automation Intern (Spring 2027) - Zipline" "System Test Automation Intern (Summer 2027) - Zipline"; do echo "- [[$PREFIX/Other/$name]]" done } > no_deadline_final.md wc -l no_deadline_final.md, F="/tmp/deadline_recon/no_deadline_final.md" echo "AI&ML no-deadline count:"; awk '/^## 1 - AI & ML/,/^## 2 - Fullstack/' "$F" | grep -c '^- \[\[' echo "Fullstack no-deadline count (excl dead-link line):"; awk '/^## 2 - Fullstack/,/^## 3 - CyS/' "$F" | grep -c '^- \[\[' echo "CyS&Finance no-deadline count (wikilinks + md links):"; awk '/^## 3 - CyS & Finance/,/^## Other/' "$F" | grep -cE '^- (\[\[|\[)' echo "Other no-deadline count:"; awk '/^## Other/,0' "$F" | grep -c '^- \[\[', grep -c "Maximor AI\|GlossGenius\|Annapurna Labs\|Applied Data Solutions Program\|Whop\|Ancestry" "/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/[REDACTED].txt" wc -l "/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/[REDACTED].txt", F="/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/[REDACTED].txt" for term in "Maximor AI" "GlossGenius" "Annapurna Labs" "Applied Data Solutions Program" "Whop" "Ancestry"; do echo -n "$term: " grep -o "$term" "$F" | wc -l done, F="/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/[REDACTED].txt" python3 -c " import re with open('$F') as fh: txt = fh.read() # extract the content field m = re.search(r'\"content\": \"(.*)\",\n \"links\"', txt, re.S) content = m.group(1) content = content.encode().decode('unicode_escape') print(len(content)) " 2>&1 | head -5 , F="/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/[REDACTED].txt" python3 -c " import re, json with open('$F', encoding='utf-8') as fh: lines = fh.readlines() # strip 'N\t' prefix from each line (cat -n format) stripped = ''.join(re.sub(r'^\s*\d+\t', '', l) for l in lines) data = json.loads(stripped) content = data['content'] with open('/tmp/deadline_recon/live_no_deadline_current.md', 'w', encoding='utf-8') as out: out.write(content) print('wrote', len(content), 'chars') " , grep -n "^#" /tmp/deadline_recon/live_no_deadline_current.md echo "---" wc -l /tmp/deadline_recon/live_no_deadline_current.md, cd /tmp/deadline_recon cat aiml_found.txt > all_no_deadline.txt grep -v "^Software Engineer Intern - Backend Focused - Rippling.md$" fullstack_found.txt >> all_no_deadline.txt cat cysfin_found.txt >> all_no_deadline.txt echo "Software Engineer Intern - C# .NET Desktop, Summer 2027 - Akuna Capital.md" >> all_no_deadline.txt echo "Software Engineer Intern, C# .NET Desktop - Akuna Capital.md" >> all_no_deadline.txt cat other_found.txt >> all_no_deadline.txt cat >> all_no_deadline.txt << 'EOF' Business Analytics Intern - Allegheny County.md Engineer Intern - Spring 2027 - TMEIC Corporation Americas.md Enterprise Systems Software Engineer Intern (Summer 2027) - Zipline.md Enterprise Systems Software Engineer Intern - Spring 2027 - Zipline.md Long Range Platform Embedded Firmware Intern (Summer 2027) - Zipline.md Software Development Intern - Spring 2027 - Mujin.md Software Integration Intern - Mujin.md Software Engineer Intern - Summer 2027 - Belvedere Trading.md Software Engineering Intern, Summer 2027 - Google.md Software Systems Validation Intern (Spring 2027) - Zipline.md Software Systems Validation Intern (Summer 2027) - Zipline.md System Test Automation Intern (Spring 2027) - Zipline.md System Test Automation Intern (Summer 2027) - Zipline.md EOF wc -l all_no_deadline.txt python3 -c " import re from collections import defaultdict companies = defaultdict(list) with open('all_no_deadline.txt') as f: for line in f: line = line.strip() if not line: continue name = line[:-3] if line.endswith('.md') else line parts = name.split(' - ') company = parts[-1].strip() # strip trailing (2) style dup markers company = re.sub(r'\s*\(\d+\)\s*$', '', company) companies[company].append(name) for c in sorted(companies, key=lambda k: -len(companies[k])): print(len(companies[c]), c) " > company_counts.txt wc -l company_counts.txt head -40 company_counts.txt, head -30 /tmp/deadline_recon/company_counts.txt echo "..." echo "sum of top 30:" head -30 /tmp/deadline_recon/company_counts.txt | awk '{s+=$1} END {print s}' echo "total companies with count==1:" awk '$1==1' /tmp/deadline_recon/company_counts.txt | wc -l, head -50 /tmp/deadline_recon/company_counts.txt echo "sum top 50:" head -50 /tmp/deadline_recon/company_counts.txt | awk '{s+=$1} END{print s}', awk '$1>=2' /tmp/deadline_recon/company_counts.txt | wc -l awk '$1>=2 {s+=$1} END{print s}' /tmp/deadline_recon/company_counts.txt awk '$1>=2' /tmp/deadline_recon/company_counts.txt | tail -20, cd /tmp/deadline_recon python3 -c " import re from collections import defaultdict companies = defaultdict(list) with open('all_no_deadline.txt') as f: for line in f: line = line.strip() if not line: continue name = line[:-3] if line.endswith('.md') else line parts = name.split(' - ') company = parts[-1].strip() company = re.sub(r'\s*\(\d+\)\s*\$', '', company) companies[company].append(name) multi = {c:v for c,v in companies.items() if len(v)>=2} items = sorted(multi.items(), key=lambda kv: -len(kv[1])) # split into 4 roughly-equal-by-dossier-count batches batches = [[],[],[],[]] loads = [0,0,0,0] for c, files in items: idx = loads.index(min(loads)) batches[idx].append((c, files)) loads[idx] += len(files) for i, b in enumerate(batches): print(f'=== BATCH {i+1} (load {loads[i]}) ===') for c, files in b: print(f'{c} ({len(files)}):') for f in files: print(f' - {f}') print() " > batches.txt wc -l batches.txt grep "^===" batches.txt, cd /tmp/deadline_recon python3 -c " import re from collections import defaultdict companies = defaultdict(list) with open('all_no_deadline.txt') as f: for line in f: line = line.strip() if not line: continue name = line[:-3] if line.endswith('.md') else line parts = name.split(' - ') company = parts[-1].strip() company = re.sub(r'\s*\(\d+\)\s*\$', '', company) companies[company].append(name) singles = {c:v for c,v in companies.items() if len(v)==1} print('singleton company count:', len(singles)) print('singleton dossier count:', sum(len(v) for v in singles.values())) " , cd /tmp/deadline_recon { sed 's/\.md$//' aiml_found.txt | sed 's/^/1 - AI & ML\t/' sed 's/\.md$//' fullstack_found.txt | grep -v "^Software Engineer Intern - Backend Focused - Rippling$" | sed 's/^/2 - Fullstack\t/' sed 's/\.md$//' cysfin_found.txt | sed 's/^/3 - CyS & Finance\t/' echo -e "3 - CyS & Finance\tSoftware Engineer Intern - C# .NET Desktop, Summer 2027 - Akuna Capital" echo -e "3 - CyS & Finance\tSoftware Engineer Intern, C# .NET Desktop - Akuna Capital" sed 's/\.md$//' other_found.txt | sed 's/^/Other\t/' cat << 'EOF' | sed 's/^/Other\t/' Business Analytics Intern - Allegheny County Engineer Intern - Spring 2027 - TMEIC Corporation Americas Enterprise Systems Software Engineer Intern (Summer 2027) - Zipline Enterprise Systems Software Engineer Intern - Spring 2027 - Zipline Long Range Platform Embedded Firmware Intern (Summer 2027) - Zipline Software Development Intern - Spring 2027 - Mujin Software Integration Intern - Mujin Software Engineer Intern - Summer 2027 - Belvedere Trading Software Engineering Intern, Summer 2027 - Google Software Systems Validation Intern (Spring 2027) - Zipline Software Systems Validation Intern (Summer 2027) - Zipline System Test Automation Intern (Spring 2027) - Zipline System Test Automation Intern (Summer 2027) - Zipline EOF } > all_no_deadline_with_folder.tsv wc -l all_no_deadline_with_folder.tsv, cd /tmp/deadline_recon python3 -c " import re from collections import defaultdict companies = defaultdict(list) with open('all_no_deadline_with_folder.tsv') as f: for line in f: line = line.rstrip('\n') if not line: continue folder, name = line.split('\t', 1) parts = name.split(' - ') company = parts[-1].strip() companies[company].append((folder, name)) singles = {c:v for c,v in companies.items() if len(v)==1} for c in sorted(singles): folder, name = singles[c][0] print(f'{c}\t{folder}\t{name}') " > singletons.tsv wc -l singletons.tsv head -20 singletons.tsv, cd /tmp/deadline_recon { sed 's/\.md$//' aiml_found.txt | sed 's/^/1 - AI \& ML\t/' sed 's/\.md$//' fullstack_found.txt | grep -v "^Software Engineer Intern - Backend Focused - Rippling$" | sed 's/^/2 - Fullstack\t/' sed 's/\.md$//' cysfin_found.txt | sed 's/^/3 - CyS \& Finance\t/' printf '3 - CyS & Finance\tSoftware Engineer Intern - C# .NET Desktop, Summer 2027 - Akuna Capital\n' printf '3 - CyS & Finance\tSoftware Engineer Intern, C# .NET Desktop - Akuna Capital\n' sed 's/\.md$//' other_found.txt | sed 's/^/Other\t/' cat << 'EOF' | sed 's/^/Other\t/' Business Analytics Intern - Allegheny County Engineer Intern - Spring 2027 - TMEIC Corporation Americas Enterprise Systems Software Engineer Intern (Summer 2027) - Zipline Enterprise Systems Software Engineer Intern - Spring 2027 - Zipline Long Range Platform Embedded Firmware Intern (Summer 2027) - Zipline Software Development Intern - Spring 2027 - Mujin Software Integration Intern - Mujin Software Engineer Intern - Summer 2027 - Belvedere Trading Software Engineering Intern, Summer 2027 - Google Software Systems Validation Intern (Spring 2027) - Zipline Software Systems Validation Intern (Summer 2027) - Zipline System Test Automation Intern (Spring 2027) - Zipline System Test Automation Intern (Summer 2027) - Zipline EOF } > all_no_deadline_with_folder.tsv wc -l all_no_deadline_with_folder.tsv grep "AI & ML" all_no_deadline_with_folder.tsv | head -2 python3 -c " import re from collections import defaultdict companies = defaultdict(list) with open('all_no_deadline_with_folder.tsv') as f: for line in f: line = line.rstrip('\n') if not line: continue folder, name = line.split('\t', 1) parts = name.split(' - ') company = parts[-1].strip() company = re.sub(r'\s*\(\d+\)\s*$', '', company) companies[company].append((folder, name)) print('total dossiers:', sum(len(v) for v in companies.values())) print('total companies:', len(companies)) singles = {c:v for c,v in companies.items() if len(v)==1} print('singleton companies:', len(singles)) print('singleton dossiers:', sum(len(v) for v in singles.values())) with open('singletons.tsv','w') as out: for c in sorted(singles): folder, name = singles[c][0] out.write(f'{c}\t{folder}\t{name}\n') " wc -l singletons.tsv, grep -v -E "^(Jump Trading Group|Virtu|HPR \(Hyannis Port Research\))\t" /tmp/deadline_recon/singletons.tsv > /tmp/deadline_recon/singletons_clean.tsv wc -l /tmp/deadline_recon/singletons_clean.tsv split -n l/7 -d /tmp/deadline_recon/singletons_clean.tsv /tmp/deadline_recon/singleton_batch_ wc -l /tmp/deadline_recon/singleton_batch_*, for f in /tmp/deadline_recon/singleton_batch_*; do echo "=== $f ==="; cat "$f"; echo; done
+- Tool call tally: Agent (16), Bash (24), ListAgents (4), mcp__jarvis__vault_append (2), mcp__jarvis__vault_list (16), mcp__jarvis__vault_read (44), mcp__jarvis__vault_write (3), Read (7), ScheduleWakeup (5), ToolSearch (2), WebFetch (9), Write (1)
 

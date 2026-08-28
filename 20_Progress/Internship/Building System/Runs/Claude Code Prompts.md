@@ -2,7 +2,7 @@
 type: project
 status: active
 created: 2026-07-26
-updated: 2026-08-28
+updated: 2026-08-29
 related_progress:
   - "[[Source of Truth]]"
   - "[[20_Progress/Internship/Building System/Research Loop - Improvement Plan]]"
@@ -13,22 +13,20 @@ tags:
   - internship
   - automation
   - prompts
-next: "Prompts 20/21 archived 2026-08-28 — both completed (0 deadline matches in
-  the 08-28→08-31 window, real deadlines exist but are all months out). A real
-  cross-session bug happened and was fixed: Prompt 21 wrongly deleted 6
-  legitimate no-deadline links Prompt 20 had added; restored directly in No
-  Deadline.md's \"External sources (Prompt 20)\" section. Prompts 22/23 are
-  follow-ups meant to continue in the SAME two sessions (not fresh ones) since
-  both need context already built this cycle. Prompt 22: deep individual-posting
-  dive into the big aggregator repos
-  (speedyapply/jobright-ai/sharunkumar/InternDock drops), output as a flat link
-  list in _Today/New Internships Listings.md. Prompt 23: three parts — re-verify
-  the 279 no-deadline dossiers via a different method (company-wide program
-  pages, grouped by company), populate Tracker/Deadline Tracker.md (skeleton
-  already exists) with every dossier that has a real deadline, and write
-  20_Progress/Internship/Building System/Dossier Corrections — an audit of
-  what's wrong with the dossiers found during the deep read (likely-duplicate
-  pairs already spotted, misclassification, dead postings)."
+next: "Prompts 22/23 archived 2026-08-29 — both genuinely partial (Prompt 22:
+  only 2 of ~11 external sources individually opened; Prompt 23: 195/280
+  no-deadline dossiers re-verified, 113 singletons + 9 blocked companies + 1
+  unidentified company (\"Acds\") still unresolved), correctly self-reported as
+  such, not faked. Prompts 24/25 are strict completion passes — both continue
+  the SAME sessions (22→24, 23→25), both carry an explicit no-silent-stopping
+  rule: every source/company must end with a real checked-or-justified-skip
+  outcome, not a bare \"not reached.\" Prompt 25 requires literal reconciliation
+  arithmetic (280 no-deadline + 39 tracked + named exceptions = 320) as its
+  actual completion proof. Real scope warning carried into both: Prompt 24 still
+  has ~1500+ speedyapply rows, several more full-size jobright-ai repos, and a
+  6800-line sharunkumar list genuinely unopened — this is very unlikely to fully
+  close in one more pass despite the strict framing, and that's being told to
+  the human directly rather than promised away."
 ---
 # Claude Code Prompts — Internship Research Loop
 This file holds the next prompt(s) to run, and only that — it gets wiped and rewritten every build cycle, not accumulated. When a prompt finishes and its result is reviewed, its full text and result move into [[20_Progress/Internship/Building System/Runs/Claude Code Prompts — Archive]] and get deleted from here.
@@ -49,47 +47,55 @@ This file holds the next prompt(s) to run, and only that — it gets wiped and r
 - **When a follow-up genuinely needs the same deep context a session just built (e.g., re-checking its own just-completed work), tell the human to continue in the SAME session, not paste into a fresh one.** Re-deriving 320 already-read dossiers from scratch in a new session would re-burn the exact token cost being complained about — this project's usual "fresh session per prompt" default is a good default, not an absolute rule, when continuity itself is the point.
 
 # Jarvis
-### Prompt 22: New Internships Listings — Deep Individual-Posting Dive Into The Big Aggregators
-**Paste as a follow-up in the SAME session that ran Prompt 20 — do not start fresh.** That session already has the full context (which repos were checked, what's already in `No Deadline.md`, why speedyapply/jobright-ai/sharunkumar's table formats have no deadline column) — re-deriving that in a new session burns tokens for nothing. If that session is gone, the essential carry-over context is in Prompt 20's archived result (`Claude Code Prompts — Archive.md`) — read that first.
+### Prompt 24: Finish The External Resources Sweep — Every Aggregator, No Exceptions
+**Continue the SAME session that ran Prompts 20 and 22 — do not start fresh.** It already built the dedup context (which 320 dossiers exist, what's in `Excluded — Losing The Debate.md`, what's already in `_Today/New Internships Listings.md` and `No Deadline.md`). If that session is gone, read Prompts 20's and 22's archived results in `Claude Code Prompts — Archive.md` first — don't re-derive from zero.
+
+**This is a strict completion pass, not another partial one.** Two rounds have now reported "genuinely not reached" on the bulk of these sources. That stops being an acceptable outcome for this round. Every source listed below must end in one of two states in your report: **fully checked** (with real counts), or **explicitly, individually justified as skipped** (not "ran out of time" — a real reason, e.g. "this repo's category is Marketing, confirmed zero CS/SWE-relevant titles in a spot-check of 30 rows, full row-by-row would be wasted effort"). A source left as "not reached" with no individual reason is not an acceptable way to end this pass.
 
 ```
-**Context — the actual gap Prompt 20 left, don't re-litigate what it already found:** Prompt 20 confirmed 4 table-shaped repos (speedyapply/2026-AI-College-Jobs ~1526+ rows, speedyapply/2026-SWE-College-Jobs, jobright-ai/2026-Software-Engineer-Internship, sharunkumar/Summer-Internships ~6876 lines, northwesternfintech/2026QuantInternships) have NO deadline column — only "Date Posted"/"Age." That finding stands, don't re-check it. What Prompt 20 did NOT do: open the individual postings inside these lists (and the two main InternDock drops, 650+ listings each) to see whether their own pages state a deadline the table doesn't, and — separately — to find genuinely new, eligible postings this project doesn't have yet, deadline or not.
+**File-state clarification (no bug, just a miscommunication last round):** the "External sources (Prompt 20)" section lives in `_Today/No Deadline.md`, never in `_Today/New Internships Listings.md` — the prior session's confusion was misreading, nothing was lost. Confirmed both files are intact as of 2026-08-29.
 
-**The actual ask now (the human's own words): search for filtered deadlines, but also just find internships that pass profile eligibility, regardless of deadline. Every one that passes gets a link pasted into `10_Areas/Career/Internships/List/Dossiers/_Today/New Internships Listings.md` (currently empty) — that's it, a flat list of links, not per-posting dossier notes, not deadline-based routing.**
+**Method — same one that already worked, reuse it, don't rebuild it every time:** at the start of this session, list the 4 dossier folders (`List/Dossiers/{1 - AI & ML, 2 - Fullstack, 3 - CyS & Finance, Other}/`) once and read `List/Excluded — Losing The Debate.md` once — keep both in context for the rest of the session as your dedup index, rather than re-fetching per source. Keyword-prefilter every source's title/role column (software, developer, engineer, SWE, backend, frontend, full stack, machine learning, AI, data science, devops, infrastructure) before opening any individual posting. Same 4 eligibility gates as before (Summer/Winter/Spring 2027 timing, US location, OPT-eligible, genuinely CS/SWE-relevant). Anything passing goes into `_Today/New Internships Listings.md` as a plain link (append-only — a parallel session is touching the shared `_Today/` files too, never delete an entry you didn't add).
 
-**Eligibility gate — the same 4 hard gates Prompt 20 already used** (from `Source of Truth.md`, permissive-by-default): Summer 2027 / Winter 2027 (Dec 2026-Jan 2027) / Spring 2027 timing; US location (ambiguous/remote passes); OPT-eligible (rejected only on explicit citizenship/clearance/no-CPT language); genuinely CS/software-engineering-relevant. A posting passing this bar is "extremely useful/relevant" enough to list — no separate second-tier judgment call needed on top of it.
-
-**Make this tractable — don't open 1526+6876+650+650 postings one at a time.** Prefilter first: grep/scan each list's title column for CS/SWE-shaped keywords (software, developer, engineer, SWE, backend, frontend, full stack, machine learning, AI, data science, devops, infrastructure) before opening anything — most of these lists cover every major, and the bulk can be excluded by title alone, cheaply. Within the CS/SWE-shaped subset, prioritize by the list's own "Date Posted"/"Age" column — newest first, since those are most likely still open and most likely to actually need this deadline check. Only open a posting's real page (for deadline + final eligibility confirmation) once it's cleared the keyword prefilter.
-
-**Dedup, twice over:** (1) against the 320 existing vault dossiers (search company+title before listing anything) — many of these aggregator repos re-list postings already covered by SimplifyJobs/vanshb03/zshah101; (2) against what's already in `_Today/No Deadline.md` and `_Today/New Internships Listings.md` itself, including the "External sources (Prompt 20)" section restored there 2026-08-28 (Maximor AI, GlossGenius, Amazon, Apple, Whop, Ancestry — don't re-list these).
-
-**Priority order:** InternDock's two main drops first (already-known real, high-volume ongoing sources), then speedyapply's two lists, then jobright-ai/2026-Software-Engineer-Internship, then the rest as time allows. Given the real scale here, you almost certainly won't finish everything — stop and report exactly what you covered and what's left, don't silently truncate.
-
-**Shared-file discipline (a real mistake happened here once already — see Prompt 21's archived result):** `_Today/New Internships Listings.md` and `_Today/No Deadline.md` are also being touched by the parallel session running Prompt 23 right now. Use `vault_patch` `operation: append` only. **Never delete or "clean up" an entry in either file that you didn't personally add in this exact session — even if it looks unfamiliar or out of scope to you. If something looks wrong, say so in your report; don't unilaterally remove it.**
+**Sources — work this list top to bottom, every one gets a real outcome:**
+1. **Finish InternDock Guide 1's remaining 11 entries** (WebFetch's extraction cap stopped at 125/136 last round — try re-fetching with an offset/continuation, or WebSearch the guide page's remaining company names directly, or fetch the raw page source a second way; don't just re-hit the same cap and give up again).
+2. **InternDock Guide 2's 5 not-reached entries** (Instacart, Nebius, Clinical Ink, AptaSentry, WhiteRabbit.ai) — open each directly.
+3. **speedyapply/2026-AI-College-Jobs** — full pass: keyword-prefilter every row, dedup, eligibility-check and list every survivor. Real scale (~1526+ rows) — budget your session for this being the largest single item.
+4. **speedyapply/2026-SWE-College-Jobs** — same full pass (likely heavy overlap with #3, dedup against it too, not just against the vault).
+5. **jobright-ai/2026-Software-Engineer-Internship** and **jobright-ai/2026-Engineer-Internship** — full pass, these are the two most likely to carry genuinely new CS/SWE-relevant postings.
+6. **jobright-ai/2026-Data-Analysis-Internship** and **jobright-ai/2026-Business-Analyst-Internship** — full pass (data-adjacent roles are a real, not-yet-checked category for this profile).
+7. **northwesternfintech/2026QuantInternships** — full pass (quant/trading roles are directly relevant, this project already has a live `3 - CyS & Finance` bucket for exactly this).
+8. **sharunkumar/Summer-Internships (README-Off-Season.md)** — full pass (off-season/rolling roles are explicitly still in scope per this project's own permissive-by-default rule).
+9. **jobright-ai's remaining category repos** (Consultant, Marketing, Design, Sales, Art, Education, Public-Sector, HR, Legal Internship) — these were deprioritized as near-certainly irrelevant to a CS/SWE profile. Don't skip silently: do a real spot-check (a genuine sample, not zero rows) on each, confirm the CS/SWE-irrelevance holds, and say so with the sample size checked. If a spot-check surfaces even one real CS/SWE-adjacent posting, escalate to a full pass on that repo.
+10. **`20_Progress/Internship/Building System/Research Loop - Resources.md` and `10_Areas/Career/Internships/List/Resources.md`** — read both directly. These are the vault's own resource-tracking docs; confirm every source listed in them is either already covered by this sweep, already covered by the automated pipeline (and therefore correctly out of scope here), or genuinely new and worth adding to this list. Don't assume — read them fresh, they may name something not in the pasted-links/PDF set at all.
 
 ### Report back
-Per source: postings scanned / passed keyword prefilter / passed eligibility (now linked in New Internships Listings.md) / real deadline found among those (call it out specifically, even though the window itself is likely still empty) / duplicates skipped. What's left unchecked, named plainly.
+Per source, numbered exactly as above: real count scanned / passed prefilter / passed eligibility (now listed) / deduped away / skipped-with-reason. Total real postings added to `New Internships Listings.md` this pass. If genuinely still not everything gets fully checked in one sitting, say precisely which sources remain and why — no source gets left as a bare "not reached."
 ```
 
-### Prompt 23: Deeper No-Deadline Re-Verification + Deadline Tracker + Dossier Corrections
-**Paste as a follow-up in the SAME session that ran Prompt 21 — do not start fresh.** It already read all 320 dossiers in depth this cycle; re-deriving that from a new session would re-burn the exact token cost the human is objecting to. If that session is gone, the essential carry-over is in Prompt 21's archived result — read that first, and re-read the actual dossier content directly (not from memory) before writing anything below, since this task is explicitly checking your own prior work.
+### Prompt 25: Finish The Dossier Deadline Reconciliation — All 320, No Exceptions
+**Continue the SAME session that ran Prompts 21 and 23 — do not start fresh.** It already read all 320 dossiers this cycle. If that session is gone, read Prompts 21's and 23's archived results first.
+
+**Same strict-completion standard as Prompt 24.** The math has to close: every one of the 320 live dossiers ends up counted in exactly one of — `Tracker/Deadline Tracker.md` (has a real deadline), `_Today/No Deadline.md`'s per-bucket sections (genuinely checked, genuinely no deadline found — company-level AND req-level), or a named dead/expired/data-quality exception (like the Rippling dead link, or the Montenson/Mortenson mismatch already logged). **280 (no-deadline) + 39 (Tracker) + however many named exceptions must equal 320. Show this arithmetic explicitly in your report — that's the actual completion proof, not a claim.**
 
 ```
-**Context — the human is explicitly skeptical of the "279 confirmed no-deadline" result and wants a real, differently-angled re-check, not a re-statement.** Three real tasks, in this order:
+**What's actually left, precisely — don't re-do what's already done:**
 
-### Task 1 — Re-verify the no-deadline claim with a genuinely different method
-The original pass checked each dossier's stored text, then (if nothing) the individual posting's own URL. That leaves one real gap: many companies publish a blanket "applications close [date]" or "priority deadline [date]" on their **general internship-program landing page**, not on each individual req page — a per-req check would miss this entirely. Group the 279 no-deadline dossiers by company (this cuts real work a lot — ByteDance, American Express, Zipline, Optiver, Jane Street, Microsoft, DRW, AMD, and Akuna Capital alone account for a large share of the 279 across multiple dossiers each). For each unique company, find and check its actual internship-program landing/careers page (not the specific req) for a program-wide deadline. If found, it applies to every one of that company's dossiers in the 279 — update all of them at once. If a company genuinely has no program-wide deadline stated either, that company's dossiers are now doubly-confirmed, cite both checks in your report. Budget discipline: same as before — if you can't finish every company, stop and report exactly which are done and which remain, don't guess the rest as re-confirmed.
+1. **113 singleton-company dossiers never re-checked at all** (85 companies with exactly 1 dossier each — the company-grouping efficiency trick doesn't apply here since there's nothing to group; this is just finishing the deeper method per-dossier). Full list is derivable by diffing the 320 dossier filenames against the 195 dossiers already covered by the 44 multi-dossier companies from the last pass — do that diff yourself at the start rather than asking for it.
 
-### Task 2 — Populate `10_Areas/Career/Internships/Tracker/Deadline Tracker.md`
-The human already created the skeleton — use it as-is: `# Already Over`, `# Upcoming` with `## Soon` / `## Next Week` / `## Next Month`. Populate with every dossier that has a REAL, confirmed deadline — both the 41 already found in Prompt 21's sweep (outside the 08-28→08-31 window: Manhattan Associates, Deloitte ×2, KeyBank, Booz Allen, Honeywell, LPL Financial, Walleye Quantic ×2, JPMorgan ×3, CACI, Fifth Third Bank, Castleton CCI ×3, Ameren, WEC Energy ×2, Medtronic, Western Digital ×4, Google ×2, DTCC, Walleye Investment, GE Vernova, Amex Financial Crimes, Moog, RTX, Regions Bank, and others — re-confirm the full list from the archived report rather than assuming this exact list is complete) and any new ones Task 1 surfaces. Each entry: a real `[[wikilink]]` to the actual dossier note plus its real deadline date, sorted into the bucket it actually falls into relative to 2026-08-28 (define your own cutoffs if the given buckets don't cleanly fit something months out like Deloitte's 12/1/26 — add a `## Later` bucket rather than force a bad fit, and say you did so).
+2. **9 blocked/inconclusive companies from the last pass**, still genuinely unresolved: Palantir / Palantir Technologies (same company — treat as one, covers 5 dossiers), HPR, American Fidelity, Aquatic Capital Management, Jump Trading, AbbVie, Specter Aerospace, Copart, PIMCO. Last pass's method (direct company-page fetch) hit a 403 or JS wall on all 9 — **use a different method this time**: WebSearch for "[Company] internship program application deadline 2027" instead of a direct fetch, check archive.org's cached version of the careers page if the live one blocks you, or check the company's LinkedIn/Handshake posting if findable. Don't report these as unresolvable again without having tried at least one genuinely different method per company.
 
-### Task 3 — Write `20_Progress/Internship/Building System/Dossier Corrections`
-You just read all 320 dossiers in real depth for this sweep — capture what you noticed wrong along the way, not just deadlines. Real, already-spotted seeds to verify and expand on (don't stop at just these): (1) likely duplicate pairs from near-identical titles for the same company — e.g. `AI Network Automation Engineer Intern - Global Physical Network Infrastructure - ByteDance.md` vs. `AI Network Automation Engineer Intern, Global Physical Network Infra - ByteDance.md`; `Applied Machine Learning Production Engineer Intern - AML Production Engineer - ByteDance.md` vs. `Applied Machine Learning Production Engineer Intern - ByteDance.md`; `Data Lake Infrastructure & Data Analytics Research Engineer Intern...` vs. `...and Data Analytics...` (same company) — check whether these are genuinely the same posting duplicated or genuinely two different reqs, and say which; (2) any dossier your deep read found misclassified into the wrong priority bucket (an adjacent-field or business/finance role sitting in AI/ML or Fullstack without real software content, the same failure class this project's 2026-08-23 audit already found and partially fixed); (3) any dossier whose posting is now visibly closed/expired/redirected (beyond the 2 dead links Prompt 21 already found) that a human would waste time screening; (4) any dossier that clearly doesn't fit the human's real profile once you've actually read the full posting text (PhD-only, clearance-required, or otherwise miscategorized as eligible). Cite the real dossier filename and the specific reason for every finding — this project's own convention (see `CLAUDE.md`), no vague claims. This is a report-only audit — don't fix anything in this pass, just document it with enough specificity that a future prompt can act on it.
+3. **"Acds" — identify the real company.** This appears in two dossier filenames: `AI Operations Intern - Naukr AI - Acds.md` and `AI Operations Intern-Caddell Reynolds - Acds.md`. "Naukr AI" and "Caddell Reynolds" look like they might be the *real* employer names, with "Acds" possibly an ATS/aggregator platform name that got miscaptured as if it were the company — read both dossiers' actual frontmatter (`company`, `url`, `source` fields) and body content directly to resolve this, don't guess. If this is confirmed as a real data-quality bug (wrong company name captured), add it as a new item to `Dossier Corrections.md` — don't silently fix the dossier itself, this is a report-only audit like the rest of that note.
 
-### Shared-file discipline
-Same as Prompt 22 — `No Deadline.md`/`_Today/` are shared with the parallel session. Append-only. **Never remove an entry you didn't personally add — if something looks out of scope, say so in your report instead of deleting it.** (This is the exact mistake this session made last round with Prompt 20's 6 restored links — don't repeat it in the other direction.)
+4. **Notion — actually fetch it this time** (last pass's report says the fetch never completed).
 
-### Report back
-Task 1: how many companies re-checked, how many surfaced a new deadline, how many remain unchecked. Task 2: total entries added to Deadline Tracker, by bucket. Task 3: the full corrections list, cited.
+5. **Montenson vs. Mortenson** — already logged in `Dossier Corrections.md` item 5; re-check Montenson's dossiers specifically (correct company, not the Mortenson mixup) for a real deadline while you're doing the rest of this pass.
+
+**For every one of the above:** apply the same two-tier method as before (dossier's own stored text first, then a live check) but this time with the company-wide landing-page check included from the start (not just the individual req), since that's the method already validated as more thorough. If a company genuinely has no deadline anywhere after a real, differently-angled attempt: that dossier is now doubly-confirmed, move/keep it in `No Deadline.md`. If a real deadline turns up: add it to `Tracker/Deadline Tracker.md` in the correct bucket (`Already Over`/`Soon`/`Next Week`/`Next Month`/`Later`, extending further if something doesn't fit).
+
+**Shared-file discipline, same as every round:** append-only on `_Today/` files and `Deadline Tracker.md`. Never delete an entry you didn't add this session.
 ```
+
+#### Report back
+The full reconciliation arithmetic (280 + 39 + named exceptions = 320, updated with whatever moved between buckets this pass). Per remaining item above: real outcome, not "not reached" — if something is genuinely still unresolved after a real attempt with a different method, say so with what was tried, not just "blocked."
 

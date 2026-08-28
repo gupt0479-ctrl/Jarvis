@@ -43,6 +43,18 @@ One cover letter file per application, overwritten in place until `date_applied`
 ## 6. Approval Gate
 Same two-gate sequence as the resume side: explicit human approval of the content plan, then a pass through the Humanizer gate (see [[30_Order/Standards/Humanized Writing Standard]]), in that order, before any file is written or overwritten.
 
+## 7. Source Register — External Cover-Letter Guidance
+Same tier definitions as [[30_Order/Standards/Resume Alteration Standard#4. Source Register — External Resume-Writing Guidance]]. Full findings live in [[20_Progress/Internship/Building System/Resume & Cover Letter — ATS Research Log]] §C/§F/Session 2; this section holds only what's load-bearing here.
+
+**(b) sources verified 2026-08-29**, all independently converging on §3's 250–350 word default and one-page limit: University of Michigan Career Center's [Cover Letter Resources](https://careercenter.umich.edu/content/cover-letter-resources) (3–4 paragraphs, font matches the resume, margins 0.5–1in), UT Dallas Career Center's [Creating a Cover Letter](https://career.utdallas.edu/career-resource-library/resume-and-cover-letter/creating-a-cover-letter/) (explicit ATS framing — no templates, text boxes, images, QR codes, color, or shading; a true text-only version, not a designed document), Penn State Engineering Career Services' [Cover Letters](https://career.engr.psu.edu/students/basics/cover-letter.aspx) (block business-letter format, same typeface as the resume).
+
+**(a) sources verified 2026-08-29:**
+- Google Careers' [Human Resources Apprenticeship, September 2025 Start](https://www.google.com/about/careers/applications/jobs/results/77547348728652486-human-resources-apprenticeship-september-2025-start) requires one PDF containing an English CV and an English cover letter explaining the applicant's interest, intended degree/curriculum, and apprenticeship rhythm. This is a posting- and jurisdiction-specific instruction, **not** a universal Google or Google-internship requirement.
+- Capital One's [How to Write a Cover Letter for a Job](https://www.capitalone.com/learn-grow/life-events/how-to-write-a-cover-letter/) recommends a tailored letter that introduces role/strengths, connects qualifications to the organization, and adds depth rather than repeating the resume. It is company-published general career advice, **not** Capital One recruiting policy or proof that Capital One roles require a cover letter.
+
+**Format rule this adds to §3/§4**: no text boxes, images, QR codes, color, or shading — a cover letter is read as plain text by the same ATS pipeline as the resume (see [[30_Order/Standards/Resume Alteration Standard#8. ATS Format & Keyword Baseline (Sourced)]]), and a designed letter risks the identical parse failures.
+
+**Limit:** no target-company cover-letter-specific guidance was found for Lever, Workday, Jane Street, Citadel, HRT, Two Sigma, Microsoft Explore, Google ASDI, LinkedIn First Play, Bloomberg, MLH Fellowship, or NASA OSTEM. Never presume a cover letter is required; follow the live posting/application.
 ## Done When
 - `Main Cover Letter.md` exists with real, evidence-backed, reusable fragments — not a single fixed letter copy-pasted per application.
 - Every per-application letter names 2–3 real experiences, each traceable to §2's sources.

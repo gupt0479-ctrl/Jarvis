@@ -47,7 +47,25 @@ Every piece of external resume-writing guidance this system relies on (a named m
 - **(a) Primary/official** — a direct citation to the company's or organization's own published source.
 - **(b) University career-service guidance** — cited to the specific office/publication.
 - **(c) Third-party advisory** — a guide, course, or clipped resource (e.g. this vault's [[60_Claude/10_Source_Summaries/PDF Ingestion/MavGPT AI Resume & Job Search Guide (PDF)]]) — useful, but never presented as an official employer standard.
-**As of 2026-08-28**, this vault holds only category (c) material for anything resembling "Google's XYZ method," and holds no source at all for an "Amazon resume template." Both stay advisory — usable as guidance, not citable as an official standard — until a real (a) or (b) source is captured and logged in this section with its actual citation. Don't upgrade a (c) source to (a)/(b) by repetition; upgrade it only when a real primary source is found and recorded here.
+Full findings, dates, and every source not listed here live in [[20_Progress/Internship/Building System/Resume & Cover Letter — ATS Research Log]] (Session 1 2026-08-29, Session 2 2026-08-29) — this section holds only the citations actually load-bearing for §8 below.
+
+### ATS Vendor Documentation (a) — the four platforms named-program dossiers pass through
+- **Greenhouse Support** — [Supported formats for resumes, cover letters and other candidate uploads](https://support.greenhouse.io/hc/en-us/articles/360052218132), [Unsuccessful resume parse](https://support.greenhouse.io/hc/en-us/articles/200989175).
+- **Ashby** — [Bulk Import: Email Import — file requirements](https://docs.ashbyhq.com/bulk-import-email-import), [Reviewing 1500 resumes with AI-Assisted Application Review](https://www.ashbyhq.com/blog/recruiting/ai-assisted-application-review-in-practice).
+- **Lever Help Center** — [Understanding resume parsing](https://help.lever.co/hc/en-us/articles/20087345054749-Understanding-resume-parsing), [Adding and deleting resumes](https://help.lever.co/hc/en-us/articles/20087357076253): parses readable text from common file types; cannot parse image files (JPG/PNG); uploads accepted up to 10MB.
+- **Workday** — [HiredScore Grades](https://doc.workday.com/hiredscore/en-us/workday-hiredscore/recruiter-productivity-/concept--hiredscore-grades.html), [Candidate Profiles](https://doc.workday.com/hiredscore/en-us/workday-hiredscore/recruiter-productivity-/concept--candidate-profiles.html): public product/recruiter documentation confirms JD skills-and-qualifications matching and DOC/DOCX/PDF/RTF/TXT support. It is **not candidate-facing**, and HiredScore grades expressly exclude campus/graduate requisitions — don't infer that a Workday-hosted internship is automatically ranked.
+
+### Company & Named-Program Guidance (a)
+- **Google** — [Create Your Resume for Google: Tips and Advice](https://www.google.com/about/careers/applications/videos/google-resume-tips-and-advice/), hosted on `google.com/about/careers` — the real citation for "Google's XYZ method" ("Accomplished [X] as measured by [Y] by doing [Z]"), genuinely Google's own stated framework, not a third-party myth.
+- **Amazon** — [Amazon job application: Resume writing tips](https://www.aboutamazon.com/news/workplace/amazon-job-application-resume-writing-tips), on `aboutamazon.com`, quoting named Amazon recruiting staff. This is official *guidance*, not a downloadable "Amazon resume template" — no such template exists at (a) tier; don't describe it as one.
+- **NASA OSTEM** — [Intern FAQ](https://www.nasa.gov/learning-resources/internship-programs/intern-frequently-asked-questions/), [5 Tips to Craft a Standout NASA Internship Application](https://www.nasa.gov/learning-resources/tips-to-craft-standout-internship-application/): OSTEM uses application fields rather than a resume upload; the project-aligned personal statement, academics, extracurriculars, and skills are the relevant application evidence.
+- **MLH Fellowship** — [official application](https://fellowship.mlh.io/apply): at least one of resume/GitHub/LinkedIn/portfolio is required; DOC/DOCX/PDF resume uploads are accepted; the named program evaluates original essay responses.
+- **Bloomberg** — [Engineering: Student Application Process](https://www.bloomberg.com/company/careers/application-process/engineering-student/): Bloomberg reviews students' resumes and discusses technical-project contributions and impact.
+
+### University & Association Guidance (b / a-assoc)
+University of Florida Career Connections Center, University of Michigan Career Center, UT Dallas Career Center, Penn State Engineering Career Services — see the research log for what each says. NACE (National Association of Colleges and Employers) is the professional association several of these build on; treat it as authoritative but one tier below a named employer's own statement.
+
+**Limit:** no (a)/(b) resume-format, LaTeX, one-page, or GPA-threshold rule was found for Jane Street, Citadel, HRT, or Two Sigma. No official source validates a keyword-mention-count heuristic; see §8. The uConnect-hosted "CARS-669" handout (research log §C) could not be attributed to a specific university and is **not** registered here as (b) — don't cite it by name until its origin is confirmed.
 
 ## 5. File and Naming Convention
 - `Main Resume.md`, `Main Resume.docx`, `Main Resume.pdf` are reserved names at the root of `20_Progress/Internship/Resumes/`.
@@ -63,8 +81,19 @@ No per-application DOCX is written or overwritten until:
 2. The draft has passed the Humanizer gate (see [[30_Order/Standards/Humanized Writing Standard]]).
 Both gates are required, in that order — evidence/selection correctness first, tone correctness second. Neither substitutes for the other.
 
+## 8. ATS Format & Keyword Baseline (Sourced)
+Distilled from the §4 (a) sources plus the convergent (c) findings logged in [[20_Progress/Internship/Building System/Resume & Cover Letter — ATS Research Log]] — applies to every resume this Standard governs, on top of §2's evidence rule and §3's tailoring boundary:
+- **Layout**: single-column, top to bottom — no tables, text boxes, columns, sidebars, or graphics/icons/skill-bar images. This is Greenhouse's own documented parse-failure list, not a style preference.
+- **Section headings**: familiar labels only — Experience, Education, Skills (Summary optional). Greenhouse names unclear/inconsistent sections as a parse risk; no vendor source in §4 requires an exact heading beyond that.
+- **Contact info**: in the document body, first page, never in a header/footer.
+- **Dates**: one consistent, readable format throughout the document. No vendor source in §4 requires a specific date syntax (e.g. "MM/YYYY" is not a documented Workday/Greenhouse/Lever/Ashby requirement) — consistency is the actual rule, not a particular format.
+- **Fonts**: standard system fonts (Arial, Calibri, Times New Roman, Garamond, Helvetica) at 10–12pt.
+- **File**: PDF preferred, text-based/selectable (never a scanned image); DOCX acceptable. Keep under 2.5MB for Greenhouse; Lever accepts common resume types up to 10MB. Default to the stricter 2.5MB ceiling whenever the target ATS is unknown.
+- **Length**: one page by default for an internship/entry-level resume; two pages only where the target company's own guidance explicitly allows it for technical/engineering roles (Google's own video does — see §4).
+- **Keywords**: use the JD's exact terminology where it truthfully describes demonstrated work, each mention paired with real context and a result. No (a) source in §4 gives a repetition count or density threshold — Workday HiredScore documents JD-to-resume matching but not a frequency rule, and Lever's parsing docs don't address keyword matching at all. There is **no verified universal percentage or mention-count rule**; treat any specific count as (c)-tier advisory only, never a requirement. The one thing every source agrees on: never duplicate the identical phrase back-to-back with no new information attached — that pattern, not a raw count, is what reads as stuffing.
+- **GPA**: include only where the application form or JD explicitly asks for it, or where the target program conventionally expects one (quant/finance roles, per research log §G). The ~3.5 general / ~3.7 quant thresholds circulating in third-party guidance are unverified convention — usable as a rule of thumb, never stated as a named company's actual policy.
 ## Done When
 - `Main Resume.md` carries evidence-tagged bullets a human actually approved, not generic filler.
 - A spot-check of any per-application resume can trace every line back to §2's three sources or an explicitly logged gap.
 - No per-application resume file exists outside `Resumes/`, and none collides with the `Main Resume.*` reserved names.
-- No resume in this system cites "Google's XYZ method" or an "Amazon template" as official without a real (a)/(b) source logged in §4.
+- §4 and §8 cite a real (a)/(b) source for every format/keyword rule this system enforces — "Google's XYZ method" and Amazon's guidance are now sourced (2026-08-29); don't let a new claim about a company or ATS platform enter this Standard without the same treatment.

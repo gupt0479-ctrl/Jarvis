@@ -2,7 +2,7 @@
 type: reference
 status: tree
 created: 2026-08-22
-updated: 2026-08-28
+updated: 2026-08-29
 related_progress:
   - "[[Source of Truth]]"
   - "[[20_Progress/Internship/Building System/Research Loop - Improvement Plan]]"
@@ -545,4 +545,34 @@ Outside-window (real deadline exists, earliest Sept 1 2026): 41 total across all
 Not-yet-checked remainder: none — all 320 accounted for.
 
 Process note (real, caught and self-corrected within this session): partway through, the parallel Prompt 20 session appended 6 legitimate links to No Deadline.md for companies with no existing dossier (Maximor AI, GlossGenius, Amazon, Apple, Whop, Ancestry) — this session incorrectly treated those as erroneous noise (since they weren't among its own known 320 dossiers) and deleted them during a cleanup pass, alongside genuinely fixing 2 broken wikilinks and deduplicating real duplicates. **This was a real mistake, caught and corrected by the coordinating session on 2026-08-28, not by Prompt 21 itself** — the 6 entries were restored directly. Lesson added to the Prompting Guide: a session sharing a file with a parallel session must only ever append/fix its own entries, never remove something it didn't write on the assumption it's out of scope.
+```
+
+### Prompt 22 — Jarvis: New Internships Listings — Deep Individual-Posting Dive Into The Big Aggregators (written 2026-08-28, run 2026-08-28, continuation of the Prompt 20 session)
+Full text: see the conversation (unchanged from its original write-up) — open individual postings inside the aggregator repos, keyword-prefilter, dedup, list eligible finds in `_Today/New Internships Listings.md`.
+
+**Result — genuinely partial, correctly self-reported as such:**
+```
+File-state note: the session found New Internships Listings.md empty at start (a miscommunication, not a bug — the "External sources" content from Prompt 20 lives in No Deadline.md, never in New Internships Listings.md; nothing was actually lost).
+
+InternDock Guide 1 (summer-2027-internship-drop-august-2026): scanned 125 of 136 entries in the "Software Engineering" section (WebFetch's extraction cap — 11 entries at the tail not retrieved; page has 650+ total across all categories, this was the SWE-tagged subset only). 36 distinct postings passed the keyword prefilter. 26 deduped away (19 already dossiers, 8 already carry an explicit exclusion verdict in Excluded — Losing The Debate.md from an 08-21 automated pass, Deepgram/Nuro already known-promoted). Passed and listed: Bank of America Global Tech Summer Analyst, Netsmart Software Engineer Intern, Netsmart Cloud Engineer (deadline unconfirmed, flagged for a spot-check). Skipped ineligible: GDIT ×4 reqs + Leidos (clearance), Cargill Atlanta (explicit no-student-visa). No 08-28→08-31 deadline found among any of these.
+
+InternDock Guide 2 (fresh-internship-drop-summer-2027-fall-2026): fully scanned (only 16 keyword-shaped entries — a short curated list, not a large table). Deduped/excluded: Apple ×2, Amazon, Tesla, JPMorgan Chase, NVIDIA (wrong cycle, Summer 2026). Checked live and found expired: Platform9, Arcfield, Beyondsoft, K&L Gates. Passed and listed: Collaborative Drug Discovery — Software Engineering Intern. Not reached: Instacart (PhD-only, correctly would-be-skipped anyway), Nebius, Clinical Ink, AptaSentry, WhiteRabbit.ai — named plainly, not opened.
+
+Genuinely not reached this pass: speedyapply/2026-AI-College-Jobs, speedyapply/2026-SWE-College-Jobs, jobright-ai/2026-Software-Engineer-Internship, and everything after — none of these were opened at the individual-posting level at all. The session's own recommendation: build a reusable dedup index (dossier folders + Excluded log) once, before the next pass, rather than rebuilding it from scratch each time.
+```
+
+### Prompt 23 — Jarvis: Deeper No-Deadline Re-Verification + Deadline Tracker + Dossier Corrections (written 2026-08-28, run 2026-08-28, continuation of the Prompt 21 session)
+Full text: see the conversation (unchanged from its original write-up) — company-grouped re-check of the no-deadline claim, populate `Tracker/Deadline Tracker.md`, write `Dossier Corrections.md`.
+
+**Result — genuinely partial on Task 1, complete on Tasks 2/3:**
+```
+Correction to the prior report: the real no-deadline count is 280 (126 AI&ML + 32 Fullstack + 46 CyS&Finance + 76 Other), not 279; outside-window is 39, not 41.
+
+Task 1 — 44 multi-dossier companies attempted (covering 195 of 280 no-deadline dossiers, prioritized by dossier count as instructed). 0 surfaced a real program-wide deadline. 31 clean NOT-FOUND (real landing page fetched, explicit rolling-admissions language or no deadline stated: ByteDance, Virtu Financial, Belvedere Trading, Millennium, IMC Trading, Appian, Medpace, American Express, Akuna Capital, Hudson River Trading, TMEIC (no program page exists), IMC, Databricks, Fannie Mae, Zipline, Microsoft, DRW, Humana, Verkada, Pony Dot Ai, Deepgram, PDT Partners, Conagra Brands, Jane Street, Optiver, Vanguard, AMD, W.W. Grainger, Chicago Trading Company, Hewlett Packard (HP), Mujin). 2 low-confidence NOT-FOUND (Notion — page never actually fetched; Montenson — fetch actually hit "Mortenson," a different real company, see Dossier Corrections item 5). 9 blocked/inconclusive (403 or JS-rendered, never resolved either way: Palantir/Palantir Technologies — same company, split in two by the grouping, HPR, American Fidelity, Aquatic Capital Management, Jump Trading, AbbVie, Specter Aerospace, Copart, PIMCO). 1 unidentified: "Acds" — real company never confirmed. **Remaining unchecked: 85 companies / 113 singleton dossiers — not touched this pass**, correctly named rather than guessed into either bucket.
+
+Task 2 — Tracker/Deadline Tracker.md populated with all 39 outside-window dossiers: 7 Already Over, 5 Soon, 1 Next Week, 9 Next Month, 17 in a new "Later" bucket added for anything beyond 45 days out (some into 2027) — the given 3-bucket skeleton didn't cover that range, extended rather than forced.
+
+Task 3 — Dossier Corrections.md written, 5 cited sections: (1) 8 confirmed duplicate pairs (ByteDance ×4, AbbVie, Humana, one contradictory-sweep-note case needing a human diff, plus 2 title-pattern-only suspects flagged unverified); (2) systemic bucket-classification inconsistency (quant-trading roles split between AI&ML and CyS&Finance depending on keyword match; one standalone misfit, Business Systems Analyst Intern - W.W. Grainger, sitting in AI&ML); (3) 11 postings a human would waste time on (4 dossiers that only captured a generic listing page instead of the real req, 6 with already-lapsed deadlines and no staleness marker on the dossier); (4) 3 PhD-only/clearance-track roles flagged for a self-check; (5) the Montenson/Mortenson name mismatch.
+
+Confirmed: No Deadline.md's restored "External sources (Prompt 20)" section was left untouched and verified present before this session made any further edits.
 ```
