@@ -7,7 +7,7 @@ title: "Debate losses 24/48 dead-link gate bug investigation"
 started_at: 2026-08-28T08:58:01
 ended_at: 2026-08-28T09:15:17
 duration_minutes: 17
-exported_at: 2026-08-28T13:15:02
+exported_at: 2026-08-28T14:15:02
 project: internship-research-loop
 cwd: '/home/anant_gupta/projects/work/internship-research-loop'
 session_id: 57040b74-cd56-4bb6-9696-bbc4df2afa6c
