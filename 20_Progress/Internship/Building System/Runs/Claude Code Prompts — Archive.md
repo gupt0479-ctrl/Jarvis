@@ -2,7 +2,7 @@
 type: reference
 status: tree
 created: 2026-08-22
-updated: 2026-08-27
+updated: 2026-08-28
 related_progress:
   - "[[Source of Truth]]"
   - "[[20_Progress/Internship/Building System/Research Loop - Improvement Plan]]"
@@ -471,4 +471,42 @@ Task 1 — InternDock wired end-to-end, confirmed live via `grep fetch_interndoc
 Task 2 — ApplyGuy built and shipped. Confirmed live 2026-08-24: 202 real entries, own-sourced (not a re-scrape, unlike SuryaHarikrishnan/2027-internship-tracker, checked and rejected same-day), updates ~every 15 minutes, reaches Workday/Workable/Paylocity ATSes with zero other coverage. ~39% of entries (78/202) carry a literal "Not specified" season placeholder, deliberately mapped to empty terms at normalize time. Live-verified: 200 fetched, 137 real matches at build time — notably higher yield than every other source. Not wired into recheck.py's FEEDS (left open, no evidence either way on absence-from-feed reliability). 385 → 401 tests, full suite green.
 
 Task 3 — dreamworkhq/Tech-Internships-2027 evaluation: **never executed.** No commit, no code, no test, no mention anywhere in git history. Confirmed by direct search (`git log --all --grep`, grep across `ingestion/` and `tests/`) — this is a real, honest gap, not a "evaluated and declined" result. Still a real, open candidate (720 real entries, richer schema) if a future session wants it — not urgent given the write-starvation bottleneck this project is currently prioritizing over new source growth (see the 2026-08-26 postmortem and Prompts 18/19).
+```
+
+### Prompt 18 — Codebase: Write-Gate Failure Memory — Stopgap + Root-Cause Fix (written 2026-08-27, run 2026-08-27/28)
+Full text: see the conversation (unchanged from its original write-up) — recompute urgency, stopgap-if-warranted, confirm win-mechanism, build `write_gate_failures.json`.
+
+**Result:**
+```
+Committed at 778f531 (not pushed — no push without explicit ask, per repo convention).
+
+Task 1 — fresh numbers (as of 2026-08-28 ~09:00 UTC): debate_losses.json 338 entries (up from 271), max=30 (2 uids), largest cohort at 27 (148 entries, 143 ApplyGuy:*). excluded_uids.json still 388, zero ApplyGuy exclusions. Real growth rate measured from state history (not estimated): 24→30 took ~40 hours, i.e. ~6.6-9.85 hr/loss — slower than the postmortem's original ~3hr/loss pace, because run.yml is bursty (gaps up to 11h), not truly hourly. Verdict: NOT urgent — front reaches 48 in ~5-7+ days at current pace, runway growing not shrinking.
+
+Task 2 — no MAX_DEBATE_LOSSES bump. Runway is days-scale and growing; the root-cause fix should ease pressure rather than just outrun it.
+
+Task 3 — proceeded straight to the fix rather than adding throwaway logging. The cited dead-link uid still appeared in 186/186 checked runs including the very latest, and a real integration test drives it through the actual validate_and_write/run_once path — stronger, permanent confirmation than a one-off log line.
+
+Task 4 — write_gate_failures.json scoped to url_liveness + cross_source_duplicate only (both showed a real structural, repeating pattern across runs; required_fields/format_compliance and not_duplicate excluded — 0 real repeat occurrences, different failure shape). Threshold: 3 consecutive same-check failures (vs. debate's 48) — justified as "dead-is-dead, no need for that much benefit of the doubt." On crossing threshold, the uid joins the existing excluded_uids.json (reusing the gate, not building a parallel one) and is logged to a new Excluded — Failed The Write Gate.md.
+
+Task 5 — new tests/test_write_gate_failures.py (8 tests, pure-function + integration, including one driving the real cited SimplifyJobs:de926b0a-99e7-4dbd-94cd-334ec565be9f uid through to confirm it's excluded on schedule and never refetched after). Full suite: 444 passed.
+
+Process note: Prompt 19 (parallel session) had uncommitted WIP touching the same files (run_pipeline.py/core/schema_drift.py/tests). Isolated via git stash on just the overlapping files, committed this session's own work (778f531), then restored Prompt 19's WIP on top — one merge conflict (both sides adding new blocks to the same spot), resolved by keeping both, full suite verified passing at 444 after.
+
+Verified independently against the live repo 2026-08-28: local HEAD is 778f531, 1 commit ahead of origin/master (unpushed, as reported), full suite passes at 444 with Prompt 19's uncommitted WIP still in the working tree exactly as described.
+```
+
+### Prompt 19 — Codebase: Schema-Drift Coverage + Per-Source Zero-Match Alerting (written 2026-08-27, run 2026-08-27/28)
+Full text: see the conversation (unchanged from its original write-up) — investigate Ashby's zero-match streak, extend schema-drift coverage to the 6 unwatched sources, add a per-source zero-match alert.
+
+**Result:**
+```
+Full suite green (436 passed at report time). Left uncommitted (no commit requested) — later merged onto Prompt 18's commit by that session (see Prompt 18's process note).
+
+Task 1 — Ashby's zero-match streak (115 runs at report time) is genuine, not drift. Live-curled all 9 ASHBY_COMPANIES tokens: all 9 return HTTP 200, valid unchanged schema. Exactly 4 real employmentType:"Intern" postings exist right now (Ellipsis Labs 1, Circleback 1, Cohere 2). Ran the real fetch_ashby/matches/compute_uid code against them: Ellipsis Labs + Circleback's postings pass every filter but are already in excluded_uids.json (permanently excluded after losing the debate comparator 48 times — logs/runs.jsonl shows the exclusion wave 2026-08-21→08-25, exactly matching when the zero-streak began). Cohere's 2 postings are both location: "Canada" — correctly rejected by location_eligible(). Two unrelated, correct mechanisms converging, not a bug. Task 5: no Ashby token needs refresh, all 9 live and correct; "~4 open roles across 9 small companies" (the 2026-08-24 finding) still holds.
+
+Task 2 — schema-drift coverage extended to 5 of 6 sources: check_greenhouse_schema, check_ashby_schema, check_lever_schema, check_freehire_schema, check_ai_jobs_schema added to core/schema_drift.py, each checking one real, high-volume, live-confirmed company/slug per vendor (scaleai, elevenlabs, palantir, google) rather than every seeded token, to catch a vendor-wide field rename without multiplying request volume — each cites the real API response checked live 2026-08-28, targeting the specific fields whose silent rename would reproduce this incident (employmentType, text, enrichment.seniority, level). Added an allow_empty escape hatch after catching a real self-review bug: a company with zero current openings (hiring pause) would otherwise have been treated as "drift" and halted the run. InternDock got a different check (check_interndock_sitemap — confirms the free sitemap.xml still parses and still contains drop-shaped slugs) since it has no JSON API and its real posting shape only appears after a paid Firecrawl fetch of a page that might not even be a real drop — documented explicitly why a deeper check isn't meaningful there.
+
+Task 3 — zero-match alert, threshold = 24 (one day of hourly runs) — chosen as comfortably below the 115 runs it actually took a human to notice, but long enough that a normal dry hour doesn't trip it. New update_/load_/save_zero_match_streaks in run_pipeline.py, persisted in state/zero_match_streaks.json: increments while fetch_count > 0 and filter_match_count == 0, resets on a real match, marks ever_matched (a source that's never matched anything doesn't alert — permissive by design), a fetch hiccup (fetch_count == 0) leaves the streak untouched. Fires once (==, not >=) via issue_fn, recorded in the run log (record["zero_match_alerts"]).
+
+Task 4 — fixture-based tests added mirroring the existing schema_drift pattern (happy-path/drift/empty-allowed per source) in tests/test_schema_drift.py, plus new tests/test_zero_match_alert.py (pure-function counting rules + an integration test proving run_once wires it to issue_fn); tests/test_run_pipeline.py's shared _fake_http_get fixture extended for the 6 new schema-check URLs. Full suite: 436 passed (444 after Prompt 18 merged both sessions' work).
 ```

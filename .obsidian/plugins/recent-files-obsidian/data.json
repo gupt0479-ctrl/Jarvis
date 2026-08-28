@@ -1,16 +1,36 @@
 {
   "recentFiles": [
     {
+      "basename": "Deadline Tracker",
+      "path": "10_Areas/Career/Internships/Tracker/Deadline Tracker.md"
+    },
+    {
+      "basename": "Habit Tracker",
+      "path": "10_Areas/Career/Internships/Tracker/Habit Tracker.md"
+    },
+    {
+      "basename": "New Internships Listings",
+      "path": "10_Areas/Career/Internships/List/Dossiers/_Today/New Internships Listings.md"
+    },
+    {
+      "basename": "No Deadline",
+      "path": "10_Areas/Career/Internships/List/Dossiers/_Today/No Deadline.md"
+    },
+    {
       "basename": "Claude Code Prompts",
       "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
     },
     {
-      "basename": "Review System",
-      "path": "60_Claude/30_Reviews/Internship Loop/Review System.md"
-    },
-    {
       "basename": "Links & Interlinks",
       "path": "10_Areas/Career/Internships/Links & Interlinks.md"
+    },
+    {
+      "basename": "Excluded — Losing The Debate",
+      "path": "10_Areas/Career/Internships/List/Excluded — Losing The Debate.md"
+    },
+    {
+      "basename": "Review System",
+      "path": "60_Claude/30_Reviews/Internship Loop/Review System.md"
     },
     {
       "basename": "Internship Loop Reviews MOC",
@@ -27,10 +47,6 @@
     {
       "basename": "test_simplify_schema_detects_renamed_key()",
       "path": "60_Claude/40_Project_Briefs/Internship/test_simplify_schema_detects_renamed_key().md"
-    },
-    {
-      "basename": "Excluded — Losing The Debate",
-      "path": "10_Areas/Career/Internships/List/Excluded — Losing The Debate.md"
     },
     {
       "basename": "2026-07 Found",
@@ -183,22 +199,6 @@
     {
       "basename": "Business Systems Analyst Intern - W.W. Grainger",
       "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Business Systems Analyst Intern - W.W. Grainger.md"
-    },
-    {
-      "basename": "Applied Machine Learning Production Engineer Intern - AML Production Engineer - ByteDance",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Applied Machine Learning Production Engineer Intern - AML Production Engineer - ByteDance.md"
-    },
-    {
-      "basename": "Autonomous Driving – Internship in Machine Learning - Robert Bosch Venture Capital",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Autonomous Driving – Internship in Machine Learning - Robert Bosch Venture Capital.md"
-    },
-    {
-      "basename": "Campus AI Research Engineer – Research Automation (Intern) - Jump Trading",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Campus AI Research Engineer – Research Automation (Intern) - Jump Trading.md"
-    },
-    {
-      "basename": "Agentic AI Intern - American Fidelity",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Agentic AI Intern - American Fidelity.md"
     }
   ],
   "omittedPaths": [],

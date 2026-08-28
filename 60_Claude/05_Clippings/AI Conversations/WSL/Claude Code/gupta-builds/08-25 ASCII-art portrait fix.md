@@ -7,7 +7,7 @@ title: "ASCII-art portrait fix"
 started_at: 2026-08-25T17:09:22
 ended_at: 2026-08-28T14:17:35
 duration_minutes: 4148
-exported_at: 2026-08-28T18:45:01
+exported_at: 2026-08-28T19:45:02
 project: gupta-builds
 cwd: '/home/anant_gupta/projects/work/gupta-builds'
 session_id: 9f635f65-6e5a-4064-8163-1d5d541d2c57

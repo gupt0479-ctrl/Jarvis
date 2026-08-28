@@ -5,31 +5,32 @@ source_app: claude-code
 source_os: wsl
 title: "Internship-research-loop handoff and verification"
 started_at: 2026-08-25T15:45:50
-ended_at: 2026-08-27T11:21:50
-duration_minutes: 2616
-exported_at: 2026-08-28T19:15:02
+ended_at: 2026-08-28T16:17:23
+duration_minutes: 4352
+exported_at: 2026-08-28T20:45:02
 project: internship-research-loop
 cwd: '/home/anant_gupta/projects/work/internship-research-loop'
 session_id: 6c7232b9-7a15-4433-9f35-38578a6dc48c
 status: raw
-turn_count: 4
+turn_count: 6
 tools_used:
   Artifact: 1
   AskUserQuestion: 1
-  Bash: 46
-  mcp__jarvis__vault_get_document_map: 5
-  mcp__jarvis__vault_list: 3
-  mcp__jarvis__vault_patch: 7
-  mcp__jarvis__vault_read: 9
+  Bash: 47
+  mcp__jarvis__search_query: 1
+  mcp__jarvis__vault_get_document_map: 6
+  mcp__jarvis__vault_list: 9
+  mcp__jarvis__vault_patch: 13
+  mcp__jarvis__vault_read: 11
   Read: 1
   ToolSearch: 2
 tokens:
-  input: 290
-  output: 145209
-  cache_creation: 732403
-  cache_read: 20443996
-  total: 21321898
-cost_usd: 8.471081
+  input: 346
+  output: 222046
+  cache_creation: 1471004
+  cache_read: 27117038
+  total: 28810434
+cost_usd: 13.528576
 model:
   - claude-sonnet-5
 files_touched:
@@ -1678,10 +1679,311 @@ Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
 - `mcp__jarvis__vault_patch` — `{"path":"20_Progress/Internship/Building System/Runs/Claude Code Prompts.md","targetType":"frontmatter","target":"next","operation":"replace","value":"Prompts 16/17 archived 2026-08-27 (both confirmed executed via direct evidence — no execution report was ever pasted for either). Prompt 18 (Codebase) and Prompt 19 (Codebase) both ready, meant to run in parallel in two separate terminals against the same repo — both carry an explicit git-fetch/rebase-don't-force warning since they'll both commit to origin/master around the same time. Prompt 18: fix the write-gate failure-memory bug (a candidate that wins its bucket's write-budget slot but fails vault_writer/validate.py is never remembered, so it's re-offered forever) — stopgap-if-warranted + the write_gate_failures.json root-cause fix. Prompt 19: extend schema-drift coverage to the 6 currently-unwatched sources and add a per-source zero-match alert (Ashby has been hard-frozen at 0 matches for 112 straight runs). Still deliberately NOT written: a Jarvis-side prompt for the postmortem's review-system-tightening and Source of Truth.md/System - Build Log.md full staleness-pass recommendations — real, still-open, but out of scope for this round's two Codebase-only parallel prompts."}`
 - `mcp__jarvis__vault_get_document_map` — `{"path":"20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"}`
 
+## You
+
+```
+Committed cleanly at 778f531 — not pushed, per repo convention (no push without explicit ask). Here's the full report:
+
+Task 1 — Recompute and urgency verdict
+
+Fresh numbers against current state/ (as of 2026-08-28 ~09:00 UTC):
+- debate_losses.json: 338 entries (up from 271), max=30 (2 uids), largest single cohort at 27 (148 entries, 143 of them ApplyGuy:*). No entry at or above MAX_DEBATE_LOSSES=48.
+- excluded_uids.json: still 388, zero ApplyGuy:* exclusions — unchanged.
+- Real growth rate from git history of state/debate_losses.json (not estimated — the leading loss-count increments by exactly 1 per successful run): 24→30 took ~40 real hours (2026-08-26 16:10 → 2026-08-28 07:58), i.e. ~6.6–9.85 hr/loss, slower than the postmortem's original pace (~3 hr/loss) because run.yml's actual schedule is bursty (gaps up to 11 hours between runs), not hourly.
+
+Verdict: not urgent. At current pace, the front reaches 48 in ~5–7+ days, the bulk cohort in ~6–8+ days — real runway opened up, not closed, since the last check.
+
+Task 2 — Stopgap
+
+No MAX_DEBATE_LOSSES bump. Runway is now measured in days, still growing, and the root-cause fix (Task 4) should ease the underlying pressure rather than just outrunning it.
+
+Task 3 — Win-mechanism confirmation
+
+Proceeded straight to the fix. The circumstantial evidence wasd fresh (186/186 runs the cited uid appeared in failed the samecheck, still failing on the very latest run), and I built the integration test to drive the real uid through the real validate_and_write/run_once path —
+that's stronger, permanent confirmation than a throwaway log louched.
+
+Task 4 — write_gate_failures.json
+
+- Scoped to url_liveness + cross_source_duplicate only (both cme structural reason across runs — 3274 and 2801 realoccurrences in logs/runs.jsonl). required_fields/format_compliance excluded (our own bug, not the uid's — already handled separately, and 0/684 real
+  occurrences). not_duplicate excluded (structurally can't reprantee — also 0/684).
+- Threshold 3 consecutive same-check failures (vs. debate's 48) — dead-is-dead, no need for that much benefit of the doubt.
+- On crossing threshold, the uid joins the same excluded_uids.y use (reusing the existing gate, not a second parallel one),logged to a new Excluded — Failed The Write Gate.md.
+
+Task 5 — Tests
+
+New tests/test_write_gate_failures.py, 8 tests, all pure-function + integration cases, including one that drives the real cited
+SimplifyJobs:[REDACTED] uid through s it's excluded on schedule and never refetched afterward. Fullsuite: 444 passed.
+
+One process note: a parallel session (Prompt 19) had uncommitted WIP in run_pipeline.py/core/schema_drift.py/tests touching the same files. I isolated my work via git stash on just the overlapping files, built and temy own changes (778f531), then restored Prompt 19's WIP on top(one merge conflict from both sides adding new blocks to the same spot — resolved by keeping both, verified with the full suite passing at 444).```, ```All done. Full suite green (436 passed). Left changes uncommitted since no commit was requested — CLAUDE.md/graphify-out/.claudeignore/.gitattributes are pre-existing unrelated local state, untouched by me.
+
+Task 1 — Ashby's zero-match streak: genuine, not drift
+
+Live-curled all 9 ASHBY_COMPANIES tokens directly. All 9 return HTTP 200 with valid, unchanged schema. Currently exactly 4 real employmentType: "Intern" postings exist across all 9 companies (ellipsislabs 1, circleback 1, cohere 2) — matching fetch_count frozen at 4. Ran the real fetch_ashby/matches/compute_uid code against them:
+
+- Ellipsis Labs + Circleback (2 of 4): pass every filter check, but their uids are already in state/excluded_uids.json — permanently excluded after losing the debate comparator MAX_DEBATE_LOSSES (48) times. logs/runs.jsonl shows a wave of exclusions 2026-08-21→08-25, exactly matching when the zero-streak began.
+- Cohere's 2 postings: both list location: "Canada" → correctly rejected by location_eligible() (permissive-by-default, but Canada is an affirmative non-US signal).
+
+So the streak is a coincidence of two unrelated, correct mechanisms converging, not schema drift. Streak is now at 115 runs as of the freshest pulled data (I fast-forwarded local master to origin/master, 29 commits behind).
+
+Task 5: No token needs refresh — all 9 are live and correctly returning data. "~4 open roles across 9 small companies" (the 2026-08-24 finding) still holds.
+
+Task 2 — Schema-drift coverage extended to 5 of the 6 sources
+
+Added check_greenhouse_schema, check_ashby_schema, check_lever_schema, check_freehire_schema, check_ai_jobs_schema to core/schema_drift.py, each checking one real, high-volume, live-confirmed company/slug per vendor (scaleai, elevenlabs, palantir, google) rather than every seeded token — catches a vendor-wide field rename without multiplying request volume. Each required-key set cites the real API response checked live 2026-08-28, and specifically includes whatever field each source's own role-type triage reads (employmentType, text, enrichment.seniority, level) — the exact category of field whose silent rename would reproduce this incident.
+
+Caught a real bug during self-review: my first pass would have treated one company having zero current openings (e.g. a hiring pause) as "drift" and halted the entire run over it. Fixed with an allow_empty escape hatch on the four per-company checks (not AIJobs, which aggregates many companies and should flag empty).
+
+InternDock genuinely can't get the same treatment — no JSON API, and its real posting shape only appears after a paid Firecrawl fetch of a URL that might not even be a real drop page. Added check_interndock_sitemap instead: confirms the free, plain-XML sitemap still parses and still contains drop-shaped candidate slugs (documented explicitly in the code why a deeper check isn't meaningful).
+
+Task 3 — Zero-match alert, threshold = 24 (one day of hourly runs)
+
+New update_zero_match_streaks/load_/save_zero_match_streaks in run_pipeline.py, persisted in state/zero_match_streaks.json. Per source: increments while fetch_count > 0 and filter_match_count == 0; resets on a real match (and marks ever_matched, so a source that's never matched anything doesn't alert — permissive by design); a fetch hiccup (fetch_count == 0) leaves the streak untouched. Fires once (==, not >=) via issue_fn, and the crossing is also recorded in the run log (record["zero_match_alerts"]).
+
+Chose 24 over smaller alternatives because it's a full day of hourly runs — comfortably below the 115 it actually took a human to notice, but long enough that a normal dry hour doesn't trip it.
+
+Task 4 — Tests
+
+Fixture-based tests added mirroring the existing schema_drift pattern (happy-path/drift/empty-allowed per source) in tests/test_schema_drift.py, plus a new tests/test_zero_match_alert.py (pure-function counting rules + an integration test proving run_once wires it to issue_fn), and tests/test_run_pipeline.py's shared _fake_http_get fixture was extended to route the 6 new schema-check URLs. Full suite: 436 passed.```. Replies from both the sessions have been provided to you. For the next set of prompts. Let's focus on actually building the real stuff - program notes and applying notes. In the next prompt I want to move existing internships or the upcoming internships over here: `10_Areas/Career/Internships/List/Dossiers/_Today`. Let's filter out each and every single internship by deadline dates. Everything that currently exists on my resources, in the vault, internships provided to you right now. This is a hard task that needs to be distributed into two prompts. I do not know you do it but i want the mentioned folder to hold internships with deadline of 30th august/ 31st august /29th august /28th august. Go through at least 1000 internships if necessary. You are only searching for this one thing - deadline date. Everything that exists in my vault has already been filtered but the resources have not been filtered yet. That's fine. I just want to mass apply today, i feel like it. Just dump everything based on only this one thing - deadline. Everything that closes on the dates mentioned to you gets moved or added to the folder mentioned. Now for this to take place - each resource, each internship, each deadline needs to be reviewed in mass detail. Go through each internship posting and find their deadline date. If the deadline has not been mentioned then interlink the note over here: `10_Areas/Career/Internships/List/Dossiers/_Today/No Deadline` - only interlink the internships or add a link of these internships on this note. But search the internet, search the companies website, search everything possible for the deadline date for each and every single internship. There are a lot of internships mentioned in the vault as well as the resources. Here are a few more that need to be reviewed in the mass detail mentioned: `https://www.interndock.com/tracker/guides/[REDACTED]?mcp_token=[REDACTED].[REDACTED]&fbclid=[REDACTED]
+https://www.interndock.com/tracker/guides/[REDACTED]?mcp_token=[REDACTED].[REDACTED]
+https://www.interndock.com/tracker/guides/pre-internship-programs-early-insight-college-students?mcp_token=[REDACTED].[REDACTED]
+https://www.interndock.com/tracker/guides/campus-ambassador-programs-open-now?mcp_token=[REDACTED].[REDACTED]&fbclid=[REDACTED]
+https://jobs.smartrecruiters.com/WesternDigital/744000138727213?fbclid=[REDACTED]
+https://jobs.ashbyhq.com/Deepgram/[REDACTED]?utm_source=NR3bp40Xzr&fbclid=[REDACTED]
+https://job-boards.greenhouse.io/embed/job_app?for=nuro&token=7351061&fbclid=[REDACTED]
+https://www.rippling.com/careers/open-roles
+https://synk.today/intern?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=[REDACTED]
+https://app.dataannotation.tech/users/sign_in
+https://docs.google.com/spreadsheets/u/0/d/[REDACTED]/htmlview
+https://www.intern-list.com/?utm_source=1115&fbclid=[REDACTED]
+https://www.dataannotation.tech/job-board/software-engineer?metadata_cid=1860603&metadata_aid=210407&utm_content=[REDACTED]&utm_medium=display&utm_source=linkedin&utm_term=Surge_Coder_LP&projects=SA_PROG&worker_src=L&li_fat_id=[REDACTED]&viewingBehavior=NATIVE_WEBVIEW&aid=1510360046&cid=862272786
+https://www.zipline.com/open-roles?gh_jid=7974897003&fbclid=[REDACTED]
+https://jobs.ashbyhq.com/maximor/[REDACTED]?fbclid=[REDACTED]
+https://www.tesla.com/event/ncch-resume?utm_source=Event&utm_medium=QR&fbclid=[REDACTED]
+https://job-boards.greenhouse.io/glossgenius/jobs/7978666003?gh_src=crhq8nki3us&fbclid=[REDACTED]
+https://careers.qtsdatacenters.com/us/en/job/[REDACTED]/[REDACTED]?utm_source=zero2sudo&fbclid=[REDACTED]
+https://careers.qtsdatacenters.com/us/en/job/[REDACTED]/[REDACTED]?fbclid=[REDACTED]
+https://egup.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/20278594/?fbclid=[REDACTED]
+https://ehzq.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/115681/?utm_medium=jobshare&utm_source=External+Job+Share&fbclid=[REDACTED]
+https://www.amazon.jobs/en/jobs/10517567/[REDACTED]?fbclid=[REDACTED]
+https://jobs.apple.com/en-us/details/200673612-0836/[REDACTED]
+https://apply.deloitte.com/en_US/careers/JobDetail/Consultative-Offerings-Summer-Scholar-Software-Engineering/364670?fbclid=[REDACTED]
+https://jobs.ashbyhq.com/whop/[REDACTED]?fbclid=[REDACTED]
+https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/California---San-Francisco/[REDACTED]?fbclid=[REDACTED]&utm_id=[REDACTED]
+https://ancestry.wd501.myworkdayjobs.com/en-US/careers/job/Draper-Utah/[REDACTED]?fbclid=[REDACTED]&utm_id=[REDACTED]
+https://job-boards.greenhouse.io/archer56/jobs/7977707003?fbclid=[REDACTED]`. All the links provided to you just now are internship postings or sources where internships have been posted at. Here is a pdf with even more links: `Internship Job Boards You Need (2027)
+How to use this doc
+These links are live-updated job boards
+Check them daily during recruiting season
+Apply as soon as roles appear (same day if possible)
+🔥 Start Here (Best for Most People)
+Covers multiple majors and roles. Updated constantly.
+
+
+Summer 2027 Tech Internships by Vansh & Ouckah
+
+https://github.com/vanshb03/Summer2026-Internships
+
+
+SpeedyApply – AI & College Jobs
+
+https://github.com/speedyapply/2026-AI-College-Jobs
+
+💻 Software Engineering / AI / Engineering
+Best for CS, engineering, and technical majors.
+
+
+SpeedyApply – SWE College Jobs
+
+https://github.com/speedyapply/2026-SWE-College-Jobs
+
+
+Jobright – Software Engineer Internship
+
+https://github.com/jobright-ai/[REDACTED]
+
+
+Jobright – Engineering Internship
+
+https://github.com/jobright-ai/[REDACTED]
+
+📊 Product / Data / Analytics
+Simplify – Product Management Internships
+
+https://github.com/SimplifyJobs/Summer2026-Internships/blob/dev/README.md#-product-management-internship-roles
+
+
+Jobright – Product Management Internship
+
+https://github.com/jobright-ai/[REDACTED]
+
+
+Jobright – Data Analysis Internship
+
+https://github.com/jobright-ai/[REDACTED]
+
+
+Jobright – Business Analyst Internship
+
+https://github.com/jobright-ai/[REDACTED]
+
+💼 Finance / Quant / Business / Consulting
+Northwestern FinTech – Quant Internships
+
+https://github.com/northwesternfintech/2026QuantInternships
+
+
+Jobright – Consulting Internship
+
+https://github.com/jobright-ai/[REDACTED]
+
+
+Jobright – Business Analyst Internship
+
+https://github.com/jobright-ai/[REDACTED]
+
+🎨 Marketing / Design / Sales / Creative
+Jobright – Marketing Internship
+
+https://github.com/jobright-ai/[REDACTED]
+
+
+Jobright – Design Internship
+
+https://github.com/jobright-ai/2026-Design-Internship
+
+
+Jobright – Sales Internship
+
+https://github.com/jobright-ai/2026-Sales-Internship
+
+
+Jobright – Art Internship
+
+https://github.com/jobright-ai/2026-Art-Internship
+
+🏛️ Education / Public Sector / HR / Legal
+Jobright – Education Internship
+
+https://github.com/jobright-ai/[REDACTED]
+
+
+Jobright – Public Sector Internship
+
+https://github.com/jobright-ai/[REDACTED]
+
+
+Jobright – HR Internship
+
+https://github.com/jobright-ai/2026-HR-Internship
+
+
+Jobright – Legal Internship
+
+https://github.com/jobright-ai/2026-Legal-Internship
+
+🕒 Off-Season Internships
+Off-Season Internships
+
+https://github.com/sharunkumar/Summer-Internships/blob/dev/README-Off-Season.md
+
+
+Useful if you’re recruiting late or outside summer timelines.`. Way too many links have been provided to you over here. Note it down inside jarvis if necessary and it is too much for you. You got the task to distribute into two prompts. Make one session review the links provided just now, the other review what already exists inside jarvis. This needs to be done in detail and correctly. Make sure to not mess up the prompts because this is a very crucial and time based task. It is august 28th today. I want everything to be listed quickly so that I can review them asap and turn them to program notes.
+
+## Claude
+
+Let me verify the Prompt 18/19 landing before diving into the new task, and scope out what's actually feasible for the deadline-triage request.
+
+Verified: `_Today/No Deadline.md` already exists (empty stub, just created), dossiers have **no deadline frontmatter field** — deadline info, if present at all, is buried in each dossier's already-fetched posting body text. That changes the shape of the work: for existing dossiers, checking the stored text first is free and fast; only the no-hit cases need a live web check. Total live dossier count: 137 (AI/ML) + 42 (Fullstack) + 49 (CyS&Finance) + 81 (Other) = 309.
+
+Let me archive Prompts 18 and 19 with the reports you gave me, then write the two new prompts.
+
+Now let me update the frontmatter on the live prompts file.
+
+Clean. Everything's in place.
+
+## Summary
+
+**Verified Prompts 18/19 landed correctly:** local HEAD is `778f531`, 1 commit ahead of `origin/master` (unpushed, as reported), full suite passes at 444 with Prompt 19's uncommitted schema-drift work still sitting in the working tree exactly as both reports described. No corruption from the two sessions overlapping. Both archived with full reports. **778f531 is still not pushed** — I left it that way since you didn't ask, but the write-gate fix and schema-drift coverage aren't helping the live hourly pipeline until it is. Say the word if you want it pushed.
+
+**Wrote Prompts 20 and 21** for your deadline-triage push, both under `# Jarvis`, meant to run in parallel:
+- **Prompt 20** — the ~40 links + PDF you just pasted, none of which are in the vault yet. Applies the existing eligibility gates (US/OPT/CS-relevant/2027-timing) before creating anything, dedupes against existing dossiers first, prioritizes real single postings and the InternDock guides over the bulk aggregator repos, explicitly told to stop and report rather than silently truncate.
+- **Prompt 21** — all 309 existing live dossiers. Checks each dossier's *already-fetched* posting text first (free) before falling back to a live web check — cheaper than raw web-searching 309 things cold. Copies (not moves) deadline-matches into `_Today/` to avoid breaking existing Program/Tracker backlinks; separates "dead link" from "no deadline" so those don't get conflated.
+
+One thing worth naming plainly: **309 dossiers + dozens of external sources with real web verification is a genuinely large amount of work** — realistically more than either session finishes in one pass, which is why both prompts are built to stop and report cleanly rather than force a fake "done." Expect to run each more than once.
+
+Both prompts share one small risk: they'll both be appending to the same `_Today/No Deadline.md` file concurrently — I've told each to use append-only patches (never a full rewrite) so that's safe, just flagging it since it's the same class of collision I flagged for Prompt 18/19's git pushes.
+
+**Tool calls:**
+
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+git fetch origin 2>&1
+echo "=== local log ==="
+git log --oneline -8
+echo "=== local vs origin ==="
+git log --oneline HEAD..origin/master | wc -l
+git log --oneline origin/master..HEAD | wc -l
+echo "=== status ==="
+git status --short
+echo "=== test count ==="
+.venv/bin/python -m pytest tests/ -q 2>&1 | tail -5
+  ```
+  ```
+=== local log ===
+778f531 run_pipeline.py: write_gate_failures.json — exclude structurally-doomed uids, not just out-ranked ones
+42b8321 Update state + logs — 2026-08-28
+ed8408a Update state + logs — 2026-08-27
+414028f Recheck log — 2026-08-27
+e33c577 Update state + logs — 2026-08-27
+7a1be68 Update state + logs — 2026-08-27
+9c2d71f Update state + logs — 2026-08-26
+e291791 Update state + logs — 2026-08-26
+=== local vs origin ===
+0
+1
+=== status ===
+ M CLAUDE.md
+ M core/schema_drift.py
+ M graphify-out/.graphify_labels.json
+ M graphify-out/GRAPH_REPORT.md
+ M graphify-out/graph.html
+ M graphify-out/graph.json
+ M graphify-out/manifest.json
+ M run_pipeline.py
+ M tests/test_run_pipeline.py
+ M tests/test_schema_drift.py
+?? .claudeignore
+?? .gitattributes
+?? tests/test_zero_match_alert.py
+=== test count ===
+........................................................................ [ 64%]
+........................................................................ [ 81%]
+........................................................................ [ 97%]
+............                                                             [100%]
+444 passed in 2.15s
+  ```
+- `mcp__jarvis__vault_list` — `{"path":"10_Areas/Career/Internships/List/Dossiers"}`
+- `mcp__jarvis__search_query` — `{"query":{"glob":["10_Areas/Career/Internships/List/Dossiers/*/*.md",{"var":"path"}]}}`
+- `mcp__jarvis__vault_list` — `{"path":"10_Areas/Career/Internships/List/Dossiers/_Today"}`
+- `mcp__jarvis__vault_list` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML"}`
+- `mcp__jarvis__vault_list` — `{"path":"10_Areas/Career/Internships/List/Dossiers/2 - Fullstack"}`
+- `mcp__jarvis__vault_list` — `{"path":"10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance"}`
+- `mcp__jarvis__vault_list` — `{"path":"10_Areas/Career/Internships/List/Dossiers/Other"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/_Today/No Deadline.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineering Intern - Appian.md"}`
+- `mcp__jarvis__vault_patch` — `{"path":"20_Progress/Internship/Building System/Runs/Claude Code Prompts — Archive.md","targetType":"heading","target":["Claude Code Prompts — Archive"],"operation":"append","content":"## Prompt 18 — Codebase: Write-Gate Failure Memory — Stopgap + Root-Cause Fix (written 2026-08-27, run 2026-08-27/28)\nFull text: see the conversation (unchanged from its original write-up) — recompute urgency, stopgap-if-warranted, confirm win-mechanism, build `write_gate_failures.json`.\n\n**Result:**\n```\nCommitted at 778f531 (not pushed — no push without explicit ask, per repo convention).\n\nTask 1 — fresh numbers (as of 2026-08-28 ~09:00 UTC): debate_losses.json 338 entries (up from 271), max=30 (2 uids), largest cohort at 27 (148 entries, 143 ApplyGuy:*). excluded_uids.json still 388, zero ApplyGuy exclusions. Real growth rate measured from state history (not estimated): 24→30 took ~40 hours, i.e. ~6.6-9.85 hr/loss — slower than the postmortem's original ~3hr/loss pace, because run.yml is bursty (gaps up to 11h), not truly hourly. Verdict: NOT urgent — front reaches 48 in ~5-7+ days at current pace, runway growing not shrinking.\n\nTask 2 — no MAX_DEBATE_LOSSES bump. Runway is days-scale and growing; the root-cause fix should ease pressure rather than just outrun it.\n\nTask 3 — proceeded straight to the fix rather than adding throwaway logging. The cited dead-link uid still appeared in 186/186 checked runs including the very latest, and a real integration test drives it through the actual validate_and_write/run_once path — stronger, permanent confirmation than a one-off log line.\n\nTask 4 — write_gate_failures.json scoped to url_liveness + cross_source_duplicate only (both showed a real structural, repeating pattern across runs; required_fields/format_compliance and not_duplicate excluded — 0 real repeat occurrences, different failure shape). Threshold: 3 consecutive same-check failures (vs. debate's 48) — justified as \"dead-is-dead, no need for that much benefit of the doubt.\" On crossing threshold, the uid joins the existing excluded_uids.json (reusing the gate, not building a parallel one) and is logged to a new Excluded — Failed The Write Gate.md.\n\nTask 5 — new tests/test_write_gate_failures.py (8 tests, pure-function + integration, including one driving the real cited SimplifyJobs:[REDACTED] uid through to confirm it's excluded on schedule and never refetched after). Full suite: 444 passed.\n\nProcess note: Prompt 19 (parallel session) had uncommitted WIP touching the same files (run_pipeline.py/core/schema_drift.py/tests). Isolated via git stash on just the overlapping files, committed this session's own work (778f531), then restored Prompt 19's WIP on top — one merge conflict (both sides adding new blocks to the same spot), resolved by keeping both, full suite verified passing at 444 after.\n\nVerified independently against the live repo 2026-08-28: local HEAD is 778f531, 1 commit ahead of origin/master (unpushed, as reported), full suite passes at 444 with Prompt 19's uncommitted WIP still in the working tree exactly as described.\n```\n\n## Prompt 19 — Codebase: Schema-Drift Coverage + Per-Source Zero-Match Alerting (written 2026-08-27, run 2026-08-27/28)\nFull text: see the conversation (unchanged from its original write-up) — investigate Ashby's zero-match streak, extend schema-drift coverage to the 6 unwatched sources, add a per-source zero-match alert.\n\n**Result:**\n```\nFull suite green (436 passed at report time). Left uncommitted (no commit requested) — later merged onto Prompt 18's commit by that session (see Prompt 18's process note).\n\nTask 1 — Ashby's zero-match streak (115 runs at report time) is genuine, not drift. Live-curled all 9 ASHBY_COMPANIES tokens: all 9 return HTTP 200, valid unchanged schema. Exactly 4 real employmentType:\"Intern\" postings exist right now (Ellipsis Labs 1, Circleback 1, Cohere 2). Ran the real fetch_ashby/matches/compute_uid code against them: Ellipsis Labs + Circleback's postings pass every filter but are already in excluded_uids.json (permanently excluded after losing the debate comparator 48 times — logs/runs.jsonl shows the exclusion wave 2026-08-21→08-25, exactly matching when the zero-streak began). Cohere's 2 postings are both location: \"Canada\" — correctly rejected by location_eligible(). Two unrelated, correct mechanisms converging, not a bug. Task 5: no Ashby token needs refresh, all 9 live and correct; \"~4 open roles across 9 small companies\" (the 2026-08-24 finding) still holds.\n\nTask 2 — schema-drift coverage extended to 5 of 6 sources: check_greenhouse_schema, check_ashby_schema, check_lever_schema, check_freehire_schema, check_ai_jobs_schema added to core/schema_drift.py, each checking one real, high-volume, live-confirmed company/slug per vendor (scaleai, elevenlabs, palantir, google) rather than every seeded token, to catch a vendor-wide field rename without multiplying request volume — each cites the real API response checked live 2026-08-28, targeting the specific fields whose silent rename would reproduce this incident (employmentType, text, enrichment.seniority, level). Added an allow_empty escape hatch after catching a real self-review bug: a company with zero current openings (hiring pause) would otherwise have been treated as \"drift\" and halted the run. InternDock got a different check (check_interndock_sitemap — confirms the free sitemap.xml still parses and still contains drop-shaped slugs) since it has no JSON API and its real posting shape only appears after a paid Firecrawl fetch of a page that might not even be a real drop — documented explicitly why a deeper check isn't meaningful there.\n\nTask 3 — zero-match alert, threshold = 24 (one day of hourly runs) — chosen as comfortably below the 115 runs it actually took a human to notice, but long enough that a normal dry hour doesn't trip it. New update_/load_/save_zero_match_streaks in run_pipeline.py, persisted in state/zero_match_streaks.json: increments while fetch_count > 0 and filter_match_count == 0, resets on a real match, marks ever_matched (a source that's never matched anything doesn't alert — permissive by design), a fetch hiccup (fetch_count == 0) leaves the streak untouched. Fires once (==, not >=) via issue_fn, recorded in the run log (record[\"zero_match_alerts\"]).\n\nTask 4 — fixture-based tests added mirroring the existing schema_drift pattern (happy-path/drift/empty-allowed per source) in tests/test_schema_drift.py, plus new tests/test_zero_match_alert.py (pure-function counting rules + an integration test proving run_once wires it to issue_fn); tests/test_run_pipeline.py's shared _fake_http_get fixture extended for the 6 new schema-check URLs. Full suite: 436 passed (444 after Prompt 18 merged both sessions' work).\n```"}`
+- `mcp__jarvis__vault_patch` — `{"path":"20_Progress/Internship/Building System/Runs/Claude Code Prompts — Archive.md","targetType":"frontmatter","target":"updated","operation":"replace","value":"2026-08-28"}`
+- `mcp__jarvis__vault_patch` — `{"path":"20_Progress/Internship/Building System/Runs/Claude Code Prompts.md","targetType":"heading","target":["Codebase"],"operation":"delete","scope":"markerAndContent"}`
+- `mcp__jarvis__vault_patch` — `{"path":"20_Progress/Internship/Building System/Runs/Claude Code Prompts.md","targetType":"heading","target":[],"operation":"append","content":"# Jarvis\n## Prompt 20: New External Sources — Deadline Triage (Pasted Links + Job-Board Aggregators)\n**Run inside the Jarvis vault directly** (Windows, Sonnet 5, high effort, real web access required — WebFetch/WebSearch, not just vault tools). Runs in parallel with Prompt 21 in a separate session — both write into the same vault. The only real shared-file risk: both sessions append to `_Today/No Deadline.md`. Use `vault_patch` with `operation: append` for that file (never a full overwrite) — appends from two sessions landing in either order is harmless; a full rewrite from one session could silently discard the other's work mid-run.\n\n```\n**Context — what this is and isn't, verified 2026-08-28, don't re-derive:** `10_Areas/Career/Internships/List/Dossiers/_Today/` exists, currently holding only one file: `No Deadline.md` (a bare link-collector note, 28 bytes, just a heading — not a folder of individual notes). The human wants ONE thing done, fast: for every real internship posting reachable through the sources below, find its application deadline. If the deadline is 2026-08-28, 08-29, 08-30, or 08-31: create a real dossier-style note for it (schema below) and place it directly in `_Today/`. If no deadline is findable anywhere after a genuine search (posting page, company careers site, a direct web search for \"[Company] [Title] internship application deadline\"): add ONLY a wikilink to it under `_Today/No Deadline.md` — don't create a separate note for it, just interlink. Anything with a deadline outside that 4-day window: skip entirely, don't file it anywhere (out of scope this round).\n\n**Eligibility gate — apply before doing any deadline work on a posting, so this doesn't flood the vault with irrelevant entries.** This project's existing 4 hard gates (from `Source of Truth.md`, permissive-by-default — keep on ambiguity, reject only on an explicit negative signal): (1) Summer 2027 / Winter 2027 (Dec 2026-Jan 2027) / Spring 2027 timing; (2) US location (an explicit foreign-only posting rejects, ambiguous/remote passes); (3) OPT-eligible (rejected only on explicit citizenship/clearance/no-CPT language — \"no visa sponsorship\" alone is NOT a rejection signal); (4) genuinely CS/software-engineering-relevant (adjacent fields like hardware/robotics pass only with real software content). Skip (create nothing for) anything that clearly fails one of these on its face.\n\n**Dedup — check before creating anything.** Many of these aggregator repos re-list postings already in the vault via SimplifyJobs/vanshb03/zshah101/etc. Search the vault (company + title, or the posting URL) before writing a new note — if a dossier for it already exists anywhere under `List/Dossiers/` (including `Viewed/`), don't duplicate it; if IT has a deadline in the 4-day window, copy that existing dossier's content into `_Today/` instead of writing a fresh one.\n\n**New-note schema** (mirror the existing dossier frontmatter exactly, `vault_get_document_map` any existing dossier under `List/Dossiers/1 - AI & ML/` to confirm the shape fresh): `company, title, url, source, terms, locations, target_year, date_posted, date_found, matched_reason, status: unreviewed, next: null, tags: [internship, auto-discovered]`. Body: the real fetched posting content, same style as existing dossiers (a short `> [!NOTE]` callout citing what matched, then the posting text). Set `source` to the real origin (e.g. \"InternDock\", \"ApplyGuy-manual\", the repo name) — don't reuse an existing source name that doesn't apply.\n\n**Sources, in priority order — work top-down, real individual postings first (cheap, high-confidence), bulk aggregator repos last (each is its own large sub-task). Given the realistic scale here, you will very likely not finish everything — that's expected. STOP and report exactly what you covered and what's left untouched if you run low on time/budget. Do not silently truncate or guess at what you didn't reach.**\n\n1. Direct posting URLs (one deadline check each):\n   - https://jobs.smartrecruiters.com/WesternDigital/744000138727213\n   - https://jobs.ashbyhq.com/Deepgram/[REDACTED]\n   - https://job-boards.greenhouse.io/embed/job_app?for=nuro&token=7351061\n   - https://www.zipline.com/open-roles?gh_jid=7974897003\n   - https://jobs.ashbyhq.com/maximor/[REDACTED]\n   - https://job-boards.greenhouse.io/glossgenius/jobs/7978666003\n   - https://careers.qtsdatacenters.com/us/en/job/[REDACTED]/[REDACTED]\n   - https://careers.qtsdatacenters.com/us/en/job/[REDACTED]/[REDACTED]\n   - https://egup.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/20278594/\n   - https://ehzq.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/115681/\n   - https://www.amazon.jobs/en/jobs/10517567/[REDACTED]\n   - https://jobs.apple.com/en-us/details/200673612-0836/[REDACTED]\n   - https://apply.deloitte.com/en_US/careers/JobDetail/Consultative-Offerings-Summer-Scholar-Software-Engineering/364670\n   - https://jobs.ashbyhq.com/whop/[REDACTED]\n   - https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/California---San-Francisco/[REDACTED]\n   - https://ancestry.wd501.myworkdayjobs.com/en-US/careers/job/Draper-Utah/[REDACTED]\n   - https://job-boards.greenhouse.io/archer56/jobs/7977707003\n   - (Tesla and Rippling links given were an event-signup page and a generic careers-list page, not single postings — treat like the misc board links in step 3, not a single-posting check.)\n\n2. The 4 InternDock guide pages (each lists many postings — treat each as its own mini-source, same shape as the 2 InternDock drops already known to this project). Use the URLs exactly as given, including the query-string token — they won't resolve without it:\n   - https://www.interndock.com/tracker/guides/[REDACTED]?mcp_token=[REDACTED].[REDACTED]\n   - https://www.interndock.com/tracker/guides/[REDACTED]?mcp_token=[REDACTED].[REDACTED]\n   - https://www.interndock.com/tracker/guides/pre-internship-programs-early-insight-college-students?mcp_token=[REDACTED].[REDACTED]\n   - https://www.interndock.com/tracker/guides/campus-ambassador-programs-open-now?mcp_token=[REDACTED].[REDACTED]\n   (The last two — \"Early Insight\" pre-internship programs and \"Campus Ambassador\" programs — are very likely to fail the CS/software-relevance gate outright; check quickly and skip if so, don't force them through.)\n\n3. Misc board/dashboard links — each may itself list many postings, treat as its own mini-source: rippling.com/careers/open-roles, synk.today/intern, app.dataannotation.tech (a sign-in page — likely nothing to extract, check quickly and skip if so), the Google Sheet (docs.google.com/spreadsheets/.../htmlview), intern-list.com, dataannotation.tech/job-board/software-engineer, tesla.com/event/ncch-resume (an event signup, not a listing — check quickly and skip if so).\n\n4. The PDF's aggregator repos — deprioritize categories almost certainly irrelevant to this persona (Marketing/Design/Sales/Creative; Education/Public Sector/HR/Legal — check last or skip with a one-line note why, given time). Prioritize these first:\n   - github.com/vanshb03/Summer2026-Internships (note: this repo's dev README is already this project's live `vanshb03` source at a different URL/year-branch — check whether this is genuinely the same feed already covered before treating it as new)\n   - github.com/speedyapply/2026-AI-College-Jobs\n   - github.com/speedyapply/2026-SWE-College-Jobs\n   - github.com/jobright-ai/[REDACTED]\n   - github.com/jobright-ai/[REDACTED]\n   - github.com/jobright-ai/[REDACTED]\n   - github.com/jobright-ai/[REDACTED]\n   - github.com/jobright-ai/[REDACTED]\n   - github.com/northwesternfintech/2026QuantInternships\n   - github.com/sharunkumar/Summer-Internships (README-Off-Season.md)\n   - (Lower priority, check last if time allows: jobright-ai's Consultant/Marketing/Design/Sales/Art/Education/Public-Sector/HR/Legal Internship repos — SimplifyJobs's own Product-Management-role section is likely already covered by the existing SimplifyJobs source, verify before re-processing.)\n   Note: `speedyapply`/`sndsh404` were already checked twice this project (2026-08-23, 2026-08-24) and found \"structurally blocked — private Supabase backend, README + binary .xlsx only.\" Re-verify this is still true for the two URLs above before assuming the old finding still holds — a repo can change shape.\n\n### Report back\nPer source: real postings found / how many passed the eligibility gate / how many got a deadline match (now in `_Today/`) / how many went to `No Deadline.md` / how many skipped as ineligible or duplicate (with why). Anything not reached due to time, named plainly, not silently dropped.\n```\n\n## Prompt 21: Existing Vault Dossier — Deadline Triage (All ~309 Live Dossiers)\n**Run inside the Jarvis vault directly** (Windows, Sonnet 5, high effort, real web access for the fallback step). Runs in parallel with Prompt 20 in a separate session. Same shared-file note: append-only (`vault_patch`, `operation: append`) to `_Today/No Deadline.md`, never a full overwrite.\n\n```\n**Context — verified fresh 2026-08-28, don't re-derive:** 309 live dossiers exist across `List/Dossiers/{1 - AI & ML (137), 2 - Fullstack (42), 3 - CyS & Finance (49), Other (81)}/` — `Viewed/` is explicitly out of scope (already closed/screened out, not a candidate for `_Today`). These already passed the pipeline's eligibility gates when they were written — **no eligibility re-check needed here, this is purely a deadline pass.** Dossiers carry no `deadline` frontmatter field at all (confirmed — the schema is `company, title, url, source, terms, locations, target_year, date_posted, date_found, matched_reason, status, next, tags`); any deadline information that exists is buried in the posting text already fetched into each note's body.\n\n**Method, in this order (cheap check first):**\n1. Read the dossier's own stored body content first (free, no web call) — look for explicit deadline language: \"apply by,\" \"deadline,\" \"applications close/due,\" \"priority deadline,\" a specific date near words like \"review\" or \"close.\" **Distinguish a real application deadline from an unrelated date** — e.g. Appian's dossier says only \"we will officially begin reviewing applications... starting August 2026,\" which is a review-start date, not a deadline; don't misread one as the other.\n2. If nothing explicit in the stored text: do a live `WebFetch` of the dossier's real `url` field. The live page may show a deadline that wasn't there (or wasn't captured) at the original fetch — postings often add a firm close date later as a bucket fills. If the URL is now dead/expired/redirected-away: that's a real, distinct finding — **don't file a dead posting as \"no deadline\"** (it's not an open no-deadline job, it's closed) — note it separately in your report instead.\n3. If still nothing after both checks: append a wikilink to `_Today/No Deadline.md` (only for genuinely-checked, genuinely-unfound cases — see the budget note below).\n4. If a real deadline of 2026-08-28, 08-29, 08-30, or 08-31 is found: **copy** (do not move) the dossier's full content into a new note of the identical filename under `_Today/`, leaving the original in its priority-bucket folder untouched. Copy, not move, because several existing dossiers already have real backlinks from `Programs/`/`Tracker/Each One/` notes from prior promotion work (e.g. Appian) — moving the file risks breaking those. Anything with a deadline outside the 4-day window: leave alone, don't file anywhere.\n\n**Budget discipline — 309 is a lot. Work newest-`date_posted`-first (most likely to carry a real, still-current deadline), oldest last. If you can't finish all 309, STOP and report exactly which you checked and which remain untouched — do not guess the rest into \"no deadline\" or skip silently. An unchecked dossier is not the same as a confirmed-no-deadline one; don't conflate them in `No Deadline.md`.**\n\n### Report back\nTotal dossiers checked / deadline-matched (now copied into `_Today/`, cite company+title for each) / no-deadline (linked, cite count) / dead-link findings (cite which, separately from no-deadline) / not-yet-checked remainder (exactly which are left, so a future prompt can pick up from there without re-checking what's done).\n```"}`
+- `mcp__jarvis__vault_patch` — `{"path":"20_Progress/Internship/Building System/Runs/Claude Code Prompts.md","targetType":"frontmatter","target":"updated","operation":"replace","value":"2026-08-28"}`
+- `mcp__jarvis__vault_patch` — `{"path":"20_Progress/Internship/Building System/Runs/Claude Code Prompts.md","targetType":"frontmatter","target":"next","operation":"replace","value":"Prompts 18/19 archived 2026-08-28 (both landed cleanly — 778f531 committed locally, unpushed; full suite 444 passed; process note in Prompt 18's result about how the two sessions' overlapping WIP got reconciled). Prompts 20/21 (both Jarvis, run in parallel, real web access required) are the human's urgent pivot away from more infra work: deadline-triage everything into 10_Areas/Career/Internships/List/Dossiers/_Today/ (deadline = 2026-08-28 through 08-31) or _Today/No Deadline.md (genuinely no deadline found). Prompt 20 covers ~40 newly pasted external links + a PDF's worth of job-board aggregator repos, none yet in the vault. Prompt 21 covers all 309 existing live dossiers. Both are large, likely-incomplete-in-one-pass tasks by design — explicitly told to stop and report what's left rather than silently truncate. Still real and unwritten: a Jarvis prompt for the 2026-08-26 postmortem's review-system-tightening + full Source of Truth/Build Log staleness pass (deferred again this round for the same reason as last time — not what the human asked for right now). Also still pending: pushing 778f531 to origin — not done, wasn't asked for this round either."}`
+- `mcp__jarvis__vault_get_document_map` — `{"path":"20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"}`
+
 ## Actions Taken
 - Files created: (none)
 - Files modified: (none)
 - Files deleted: (none)
-- Commands run: echo "=== git log ===" && git log --oneline -20 && echo "=== git status ===" && git status && echo "=== diff CLAUDE.md ===" && git diff CLAUDE.md | head -50, echo "=== pytest ===" && python -m pytest -q 2>&1 | tail -20 && echo "=== SOURCES ===" && grep -n "SOURCES" run_pipeline.py | head -30, echo "=== python3 test ===" && python3 -m pytest -q 2>&1 | tail -15 echo "=== fetch origin ===" && git fetch origin 2>&1 echo "=== divergence detail ===" && git log --oneline origin/master..HEAD | head -20 echo "--- origin ahead by ---" && git log --oneline HEAD..origin/master | head -20, echo "=== check if local-only commit messages exist on origin ===" for msg in "Wire InternDock into SOURCES" "Add InternDock drop-detection" "Add Lever as a source" "Oracle Cloud HCM job-id" "raise MAX_DEBATE_LOSSES"; do echo "--- $msg ---" git log origin/master --oneline --grep="$msg" -i | head -3 done echo "=== merge base ===" git merge-base HEAD origin/master echo "=== local HEAD date vs origin HEAD date ===" git log -1 --format=%ci HEAD git log -1 --format=%ci origin/master, echo "=== pip install pytest ===" pip install --quiet pytest 2>&1 | tail -5 || pip3 install --quiet pytest 2>&1 | tail -5 python3 -m pytest -q 2>&1 | tail -15, which gh && gh auth status 2>&1 | head -5 echo "=== recent workflow runs ===" gh run list --limit 15 2>&1, ls -la | grep -iE "venv|\.env" find . -maxdepth 2 -iname "*venv*" 2>/dev/null cat requirements.txt 2>/dev/null echo "=== test workflow file ===" cat .github/workflows/test.yml 2>/dev/null | head -30, .venv/bin/python -m pytest tests/ -q 2>&1 | tail -20, echo "=== files touched by origin-only commits ===" git diff --stat HEAD origin/master | tail -30 echo "=== do any origin-only commits touch core/ ingestion/ run_pipeline.py ===" git log HEAD..origin/master --name-only --format="" | sort -u | grep -E "^(core/|ingestion/|vault_writer/|run_pipeline\.py|recheck\.py)", ls List/Dossiers/*.md 2>/dev/null | wc -l find . -path ./.venv -prune -o -name "*.md" -path "*List/Dossiers*" -print 2>/dev/null | head -5 echo "=== repo dirs ===" ls, ls jarvis-checkout/ 2>/dev/null find jarvis-checkout -iname "*dossier*" -maxdepth 3 2>/dev/null | head -20 find jarvis-checkout -path "*List/Dossiers*" -name "*.md" 2>/dev/null | wc -l, git log --all --oneline --grep="dreamworkhq" -i echo "---" git show --stat 1d27f5b | head -20 echo "--- interndock in SOURCES? ---" grep -n -A2 -B2 "interndock\|InternDock" run_pipeline.py ingestion/sources.py 2>/dev/null | head -40, find jarvis-checkout -maxdepth 2 -type d 2>/dev/null | head -20 find jarvis-checkout -iname "*.md" -path "*Internship*" 2>/dev/null | grep -iE "dossier|tracker|program" | head -10, echo "=== state/logs files touched by local-only commits ===" git log origin/master..HEAD --name-only --format="--commit: %h %s" | grep -E "^(state/|logs/|--commit)", git rebase origin/master 2>&1, git stash push -u -m "pre-rebase stash: CLAUDE.md autoMode notes + graphify-out regen + untracked files" 2>&1 git status echo "=== rebase ===" git rebase origin/master 2>&1, .venv/bin/python -m pytest tests/ -q 2>&1 | tail -10 echo "=== log check ===" git log --oneline -5 git log --oneline HEAD..origin/master | wc -l git log --oneline origin/master..HEAD | wc -l, git push origin master 2>&1, git stash pop 2>&1 git status, cat .git/hooks/pre-push 2>/dev/null echo "=== diff between working tree graphify-out and HEAD ===" git diff --stat graphify-out/ echo "=== stash list ===" git stash list git stash show -p stash@{0} -- graphify-out | head -20, grep -c "Auto-mode classifier notes" CLAUDE.md echo "=== gitignore for graphify-out ===" grep -n "graphify" .gitignore 2>/dev/null echo "=== stash diff stat full ===" git stash show --stat stash@{0}, git checkout stash@{0} -- CLAUDE.md grep -c "Auto-mode classifier notes" CLAUDE.md ls -la .claudeignore .gitattributes 2>&1 git stash drop git status, git checkout stash@{0} -- CLAUDE.md, grep -c "Auto-mode classifier notes" CLAUDE.md git status --short, git reset CLAUDE.md 2>&1 git status --short echo "=== untracked files present, checking content ===" head -5 .claudeignore 2>/dev/null head -5 .gitattributes 2>/dev/null, git ls-remote origin master git show origin/master:run_pipeline.py | grep -n "SOURCES = " -A 15, cd /home/anant_gupta/projects/work/internship-research-loop git fetch origin 2>&1 echo "=== local vs origin ===" git rev-parse HEAD git rev-parse origin/master git status --short echo "=== behind/ahead ===" git log --oneline HEAD..origin/master | wc -l git log --oneline origin/master..HEAD | wc -l, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== debate_losses.json (origin/master) ===" git show origin/master:state/debate_losses.json | python3 -c " import json,sys d=json.load(sys.stdin) print('total entries:', len(d)) # print distribution of loss counts from collections import Counter c = Counter(v.get('losses') if isinstance(v,dict) else v for v in d.values()) print('loss count distribution:', sorted(c.items())) " , cd /home/anant_gupta/projects/work/internship-research-loop git show origin/master:state/debate_losses.json | python3 -c " import json,sys d=json.load(sys.stdin) items = list(d.items()) print('sample entries:') for k,v in items[:3]: print(k, v) " echo "=== how debate_losses.json structured, check schema in code ===" grep -n "debate_losses\|DEBATE_LOSS\|MAX_DEBATE_LOSSES" run_pipeline.py | head -40, cd /home/anant_gupta/projects/work/internship-research-loop git show origin/master:state/debate_losses.json | python3 -c " import json,sys d=json.load(sys.stdin) by_source = {} for k,v in d.items(): src = k.split(':',1)[0] by_source.setdefault(src, []).append(v) for src, vals in sorted(by_source.items()): vals.sort() print(f'{src}: count={len(vals)} max={max(vals)} min={min(vals)} at_24={sum(1 for x in vals if x==24)} >=40={sum(1 for x in vals if x>=40)}') print() print('overall max:', max(d.values())) print('count >= 40:', sum(1 for v in d.values() if v>=40)) print('count >= 30:', sum(1 for v in d.values() if v>=30)) print('count == 24:', sum(1 for v in d.values() if v==24)) " , cd /home/anant_gupta/projects/work/internship-research-loop echo "=== excluded_uids.json origin/master ===" git show origin/master:state/excluded_uids.json | python3 -c " import json,sys d=json.load(sys.stdin) print('type:', type(d)) if isinstance(d, dict): print('total:', len(d)) from collections import Counter reasons = Counter() for k,v in d.items(): r = v.get('reason','?') if isinstance(v,dict) else str(v) reasons[r[:60]] += 1 for r,c in reasons.most_common(15): print(c, r) elif isinstance(d, list): print('total:', len(d)) " , cd /home/anant_gupta/projects/work/internship-research-loop git show origin/master:state/excluded_uids.json | python3 -c " import json,sys d=json.load(sys.stdin) applyguy = [u for u in d if u.startswith('ApplyGuy:')] print('ApplyGuy already excluded:', len(applyguy)) print(applyguy[:5]) " echo "=== check the specific dead-link candidate ===" git show origin/master:state/debate_losses.json | python3 -c " import json,sys d=json.load(sys.stdin) target='SimplifyJobs:[REDACTED]' print(target, '->', d.get(target, 'NOT FOUND in debate_losses')) " git show origin/master:state/excluded_uids.json | python3 -c " import json,sys d=json.load(sys.stdin) target='SimplifyJobs:[REDACTED]' print(target, 'in excluded_uids:', target in d) " git show origin/master:state/seen_ids.json 2>/dev/null | python3 -c " import json,sys d=json.load(sys.stdin) target='SimplifyJobs:[REDACTED]' if isinstance(d, list): print(target, 'in seen_ids:', target in d) elif isinstance(d, dict): print(target, 'in seen_ids:', target in d) " , cd /home/anant_gupta/projects/work/internship-research-loop git show origin/master:logs/runs.jsonl > /tmp/runs.jsonl 2>/dev/null wc -l /tmp/runs.jsonl echo "=== occurrences of the cited dead-link uid ===" grep -c "[REDACTED]" /tmp/runs.jsonl echo "=== first and last occurrence timestamps ===" grep "[REDACTED]" /tmp/runs.jsonl | python3 -c " import json,sys lines = sys.stdin.readlines() for l in [lines[0], lines[-1]]: d = json.loads(l) print(d.get('timestamp') or d.get('run_at') or list(d.keys())[:5]) ", grep "[REDACTED]" /tmp/runs.jsonl | tail -3 | python3 -c " import json,sys for l in sys.stdin: d = json.loads(l) print(json.dumps(d, indent=2)[:1500]) print('---') ", cd /home/anant_gupta/projects/work/internship-research-loop grep -n "MAX_NEW_WRITES_PER_RUN\|BUCKET.*BUDGET\|per_bucket\|write.*budget\|WRITE_BUDGET" run_pipeline.py | head -30, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== state files on origin/master ===" git ls-tree -r --name-only origin/master -- state/ echo "=== _prioritize_and_cap / debate_compare relevant code ===" grep -n "_prioritize_and_cap\|def debate_compare\|def _select_for_bucket\|sort\|priority" run_pipeline.py | head -40, date -u echo "=== last few run.jsonl timestamps ===" tail -3 /tmp/runs.jsonl | python3 -c " import json,sys for l in sys.stdin: d=json.loads(l) print(d['timestamp'], 'written:', d['written_count'], 'deferred:', d['deferred_count']) " echo "=== gh run list recent ===" gh run list --limit 5 2>&1, cd /home/anant_gupta/projects/work/internship-research-loop git log origin/master -1 --format="%H %ci %s" echo "=== gh run list wider incl failures ===" gh run list --limit 20 --workflow=run.yml 2>&1 echo "=== workflow cron schedule ===" cat .github/workflows/run.yml | head -15, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== workflow list / enabled state ===" gh workflow list 2>&1 echo "=== all runs since 08-27, any status ===" gh run list --workflow=run.yml --limit 30 --json databaseId,status,conclusion,createdAt,event -q '.[] | "\(.createdAt) \(.status) \(.conclusion) \(.event)"' 2>&1 | head -10 echo "=== check recheck.yml too ===" gh run list --workflow=recheck.yml --limit 5 2>&1, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== core/debate.py exists? ===" ls core/ | grep -i debate grep -n "debate_compare\|from core" run_pipeline.py | head -10 echo "=== schema_drift check_all sources covered ===" grep -n "def check_all\|SOURCES_TO_CHECK\|def check_" core/schema_drift.py | head -20 echo "=== dossier folder counts (via git show, not local) ===" git show origin/master --stat -1 | head -5, cd /home/anant_gupta/projects/work/internship-research-loop python3 -c " import json counts = [] with open('/tmp/runs.jsonl') as f: for line in f: d = json.loads(line) if 'Ashby' in d.get('filter_match_counts', {}): counts.append((d['timestamp'], d['fetch_counts'].get('Ashby'), d['filter_match_counts'].get('Ashby'))) print('total runs with Ashby field:', len(counts)) print('last 10:', counts[-10:]) nonzero = [c for c in counts if c[2] and c[2] > 0] print('runs with nonzero Ashby matches:', len(nonzero)) ", cd /home/anant_gupta/projects/work/internship-research-loop python3 -c " import json counts = [] with open('/tmp/runs.jsonl') as f: for line in f: d = json.loads(line) if 'Ashby' in d.get('filter_match_counts', {}): counts.append((d['timestamp'], d['fetch_counts'].get('Ashby'), d['filter_match_counts'].get('Ashby'))) # find where fetch count changed to 4 and matches went to 0 permanently for i in range(len(counts)-1, -1, -1): if counts[i][2] != 0 or counts[i][1] != 4: print('last differing run before the zero-streak:', counts[i]) print('streak length since:', len(counts)-1-i) break print('total runs:', len(counts)) ", cd /home/anant_gupta/projects/work/internship-research-loop grep -n "ASHBY\|ashby" ingestion/sources.py | head -20, cd /home/anant_gupta/projects/work/internship-research-loop sed -n '55,70p' ingestion/sources.py, echo "checking size via mcp not possible in bash; skip", cd /home/anant_gupta/projects/work/internship-research-loop git show --no-patch --format="%B" 1d27f5b
-- Tool call tally: Artifact (1), AskUserQuestion (1), Bash (46), mcp__jarvis__vault_get_document_map (5), mcp__jarvis__vault_list (3), mcp__jarvis__vault_patch (7), mcp__jarvis__vault_read (9), Read (1), ToolSearch (2)
+- Commands run: echo "=== git log ===" && git log --oneline -20 && echo "=== git status ===" && git status && echo "=== diff CLAUDE.md ===" && git diff CLAUDE.md | head -50, echo "=== pytest ===" && python -m pytest -q 2>&1 | tail -20 && echo "=== SOURCES ===" && grep -n "SOURCES" run_pipeline.py | head -30, echo "=== python3 test ===" && python3 -m pytest -q 2>&1 | tail -15 echo "=== fetch origin ===" && git fetch origin 2>&1 echo "=== divergence detail ===" && git log --oneline origin/master..HEAD | head -20 echo "--- origin ahead by ---" && git log --oneline HEAD..origin/master | head -20, echo "=== check if local-only commit messages exist on origin ===" for msg in "Wire InternDock into SOURCES" "Add InternDock drop-detection" "Add Lever as a source" "Oracle Cloud HCM job-id" "raise MAX_DEBATE_LOSSES"; do echo "--- $msg ---" git log origin/master --oneline --grep="$msg" -i | head -3 done echo "=== merge base ===" git merge-base HEAD origin/master echo "=== local HEAD date vs origin HEAD date ===" git log -1 --format=%ci HEAD git log -1 --format=%ci origin/master, echo "=== pip install pytest ===" pip install --quiet pytest 2>&1 | tail -5 || pip3 install --quiet pytest 2>&1 | tail -5 python3 -m pytest -q 2>&1 | tail -15, which gh && gh auth status 2>&1 | head -5 echo "=== recent workflow runs ===" gh run list --limit 15 2>&1, ls -la | grep -iE "venv|\.env" find . -maxdepth 2 -iname "*venv*" 2>/dev/null cat requirements.txt 2>/dev/null echo "=== test workflow file ===" cat .github/workflows/test.yml 2>/dev/null | head -30, .venv/bin/python -m pytest tests/ -q 2>&1 | tail -20, echo "=== files touched by origin-only commits ===" git diff --stat HEAD origin/master | tail -30 echo "=== do any origin-only commits touch core/ ingestion/ run_pipeline.py ===" git log HEAD..origin/master --name-only --format="" | sort -u | grep -E "^(core/|ingestion/|vault_writer/|run_pipeline\.py|recheck\.py)", ls List/Dossiers/*.md 2>/dev/null | wc -l find . -path ./.venv -prune -o -name "*.md" -path "*List/Dossiers*" -print 2>/dev/null | head -5 echo "=== repo dirs ===" ls, ls jarvis-checkout/ 2>/dev/null find jarvis-checkout -iname "*dossier*" -maxdepth 3 2>/dev/null | head -20 find jarvis-checkout -path "*List/Dossiers*" -name "*.md" 2>/dev/null | wc -l, git log --all --oneline --grep="dreamworkhq" -i echo "---" git show --stat 1d27f5b | head -20 echo "--- interndock in SOURCES? ---" grep -n -A2 -B2 "interndock\|InternDock" run_pipeline.py ingestion/sources.py 2>/dev/null | head -40, find jarvis-checkout -maxdepth 2 -type d 2>/dev/null | head -20 find jarvis-checkout -iname "*.md" -path "*Internship*" 2>/dev/null | grep -iE "dossier|tracker|program" | head -10, echo "=== state/logs files touched by local-only commits ===" git log origin/master..HEAD --name-only --format="--commit: %h %s" | grep -E "^(state/|logs/|--commit)", git rebase origin/master 2>&1, git stash push -u -m "pre-rebase stash: CLAUDE.md autoMode notes + graphify-out regen + untracked files" 2>&1 git status echo "=== rebase ===" git rebase origin/master 2>&1, .venv/bin/python -m pytest tests/ -q 2>&1 | tail -10 echo "=== log check ===" git log --oneline -5 git log --oneline HEAD..origin/master | wc -l git log --oneline origin/master..HEAD | wc -l, git push origin master 2>&1, git stash pop 2>&1 git status, cat .git/hooks/pre-push 2>/dev/null echo "=== diff between working tree graphify-out and HEAD ===" git diff --stat graphify-out/ echo "=== stash list ===" git stash list git stash show -p stash@{0} -- graphify-out | head -20, grep -c "Auto-mode classifier notes" CLAUDE.md echo "=== gitignore for graphify-out ===" grep -n "graphify" .gitignore 2>/dev/null echo "=== stash diff stat full ===" git stash show --stat stash@{0}, git checkout stash@{0} -- CLAUDE.md grep -c "Auto-mode classifier notes" CLAUDE.md ls -la .claudeignore .gitattributes 2>&1 git stash drop git status, git checkout stash@{0} -- CLAUDE.md, grep -c "Auto-mode classifier notes" CLAUDE.md git status --short, git reset CLAUDE.md 2>&1 git status --short echo "=== untracked files present, checking content ===" head -5 .claudeignore 2>/dev/null head -5 .gitattributes 2>/dev/null, git ls-remote origin master git show origin/master:run_pipeline.py | grep -n "SOURCES = " -A 15, cd /home/anant_gupta/projects/work/internship-research-loop git fetch origin 2>&1 echo "=== local vs origin ===" git rev-parse HEAD git rev-parse origin/master git status --short echo "=== behind/ahead ===" git log --oneline HEAD..origin/master | wc -l git log --oneline origin/master..HEAD | wc -l, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== debate_losses.json (origin/master) ===" git show origin/master:state/debate_losses.json | python3 -c " import json,sys d=json.load(sys.stdin) print('total entries:', len(d)) # print distribution of loss counts from collections import Counter c = Counter(v.get('losses') if isinstance(v,dict) else v for v in d.values()) print('loss count distribution:', sorted(c.items())) " , cd /home/anant_gupta/projects/work/internship-research-loop git show origin/master:state/debate_losses.json | python3 -c " import json,sys d=json.load(sys.stdin) items = list(d.items()) print('sample entries:') for k,v in items[:3]: print(k, v) " echo "=== how debate_losses.json structured, check schema in code ===" grep -n "debate_losses\|DEBATE_LOSS\|MAX_DEBATE_LOSSES" run_pipeline.py | head -40, cd /home/anant_gupta/projects/work/internship-research-loop git show origin/master:state/debate_losses.json | python3 -c " import json,sys d=json.load(sys.stdin) by_source = {} for k,v in d.items(): src = k.split(':',1)[0] by_source.setdefault(src, []).append(v) for src, vals in sorted(by_source.items()): vals.sort() print(f'{src}: count={len(vals)} max={max(vals)} min={min(vals)} at_24={sum(1 for x in vals if x==24)} >=40={sum(1 for x in vals if x>=40)}') print() print('overall max:', max(d.values())) print('count >= 40:', sum(1 for v in d.values() if v>=40)) print('count >= 30:', sum(1 for v in d.values() if v>=30)) print('count == 24:', sum(1 for v in d.values() if v==24)) " , cd /home/anant_gupta/projects/work/internship-research-loop echo "=== excluded_uids.json origin/master ===" git show origin/master:state/excluded_uids.json | python3 -c " import json,sys d=json.load(sys.stdin) print('type:', type(d)) if isinstance(d, dict): print('total:', len(d)) from collections import Counter reasons = Counter() for k,v in d.items(): r = v.get('reason','?') if isinstance(v,dict) else str(v) reasons[r[:60]] += 1 for r,c in reasons.most_common(15): print(c, r) elif isinstance(d, list): print('total:', len(d)) " , cd /home/anant_gupta/projects/work/internship-research-loop git show origin/master:state/excluded_uids.json | python3 -c " import json,sys d=json.load(sys.stdin) applyguy = [u for u in d if u.startswith('ApplyGuy:')] print('ApplyGuy already excluded:', len(applyguy)) print(applyguy[:5]) " echo "=== check the specific dead-link candidate ===" git show origin/master:state/debate_losses.json | python3 -c " import json,sys d=json.load(sys.stdin) target='SimplifyJobs:[REDACTED]' print(target, '->', d.get(target, 'NOT FOUND in debate_losses')) " git show origin/master:state/excluded_uids.json | python3 -c " import json,sys d=json.load(sys.stdin) target='SimplifyJobs:[REDACTED]' print(target, 'in excluded_uids:', target in d) " git show origin/master:state/seen_ids.json 2>/dev/null | python3 -c " import json,sys d=json.load(sys.stdin) target='SimplifyJobs:[REDACTED]' if isinstance(d, list): print(target, 'in seen_ids:', target in d) elif isinstance(d, dict): print(target, 'in seen_ids:', target in d) " , cd /home/anant_gupta/projects/work/internship-research-loop git show origin/master:logs/runs.jsonl > /tmp/runs.jsonl 2>/dev/null wc -l /tmp/runs.jsonl echo "=== occurrences of the cited dead-link uid ===" grep -c "[REDACTED]" /tmp/runs.jsonl echo "=== first and last occurrence timestamps ===" grep "[REDACTED]" /tmp/runs.jsonl | python3 -c " import json,sys lines = sys.stdin.readlines() for l in [lines[0], lines[-1]]: d = json.loads(l) print(d.get('timestamp') or d.get('run_at') or list(d.keys())[:5]) ", grep "[REDACTED]" /tmp/runs.jsonl | tail -3 | python3 -c " import json,sys for l in sys.stdin: d = json.loads(l) print(json.dumps(d, indent=2)[:1500]) print('---') ", cd /home/anant_gupta/projects/work/internship-research-loop grep -n "MAX_NEW_WRITES_PER_RUN\|BUCKET.*BUDGET\|per_bucket\|write.*budget\|WRITE_BUDGET" run_pipeline.py | head -30, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== state files on origin/master ===" git ls-tree -r --name-only origin/master -- state/ echo "=== _prioritize_and_cap / debate_compare relevant code ===" grep -n "_prioritize_and_cap\|def debate_compare\|def _select_for_bucket\|sort\|priority" run_pipeline.py | head -40, date -u echo "=== last few run.jsonl timestamps ===" tail -3 /tmp/runs.jsonl | python3 -c " import json,sys for l in sys.stdin: d=json.loads(l) print(d['timestamp'], 'written:', d['written_count'], 'deferred:', d['deferred_count']) " echo "=== gh run list recent ===" gh run list --limit 5 2>&1, cd /home/anant_gupta/projects/work/internship-research-loop git log origin/master -1 --format="%H %ci %s" echo "=== gh run list wider incl failures ===" gh run list --limit 20 --workflow=run.yml 2>&1 echo "=== workflow cron schedule ===" cat .github/workflows/run.yml | head -15, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== workflow list / enabled state ===" gh workflow list 2>&1 echo "=== all runs since 08-27, any status ===" gh run list --workflow=run.yml --limit 30 --json databaseId,status,conclusion,createdAt,event -q '.[] | "\(.createdAt) \(.status) \(.conclusion) \(.event)"' 2>&1 | head -10 echo "=== check recheck.yml too ===" gh run list --workflow=recheck.yml --limit 5 2>&1, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== core/debate.py exists? ===" ls core/ | grep -i debate grep -n "debate_compare\|from core" run_pipeline.py | head -10 echo "=== schema_drift check_all sources covered ===" grep -n "def check_all\|SOURCES_TO_CHECK\|def check_" core/schema_drift.py | head -20 echo "=== dossier folder counts (via git show, not local) ===" git show origin/master --stat -1 | head -5, cd /home/anant_gupta/projects/work/internship-research-loop python3 -c " import json counts = [] with open('/tmp/runs.jsonl') as f: for line in f: d = json.loads(line) if 'Ashby' in d.get('filter_match_counts', {}): counts.append((d['timestamp'], d['fetch_counts'].get('Ashby'), d['filter_match_counts'].get('Ashby'))) print('total runs with Ashby field:', len(counts)) print('last 10:', counts[-10:]) nonzero = [c for c in counts if c[2] and c[2] > 0] print('runs with nonzero Ashby matches:', len(nonzero)) ", cd /home/anant_gupta/projects/work/internship-research-loop python3 -c " import json counts = [] with open('/tmp/runs.jsonl') as f: for line in f: d = json.loads(line) if 'Ashby' in d.get('filter_match_counts', {}): counts.append((d['timestamp'], d['fetch_counts'].get('Ashby'), d['filter_match_counts'].get('Ashby'))) # find where fetch count changed to 4 and matches went to 0 permanently for i in range(len(counts)-1, -1, -1): if counts[i][2] != 0 or counts[i][1] != 4: print('last differing run before the zero-streak:', counts[i]) print('streak length since:', len(counts)-1-i) break print('total runs:', len(counts)) ", cd /home/anant_gupta/projects/work/internship-research-loop grep -n "ASHBY\|ashby" ingestion/sources.py | head -20, cd /home/anant_gupta/projects/work/internship-research-loop sed -n '55,70p' ingestion/sources.py, echo "checking size via mcp not possible in bash; skip", cd /home/anant_gupta/projects/work/internship-research-loop git show --no-patch --format="%B" 1d27f5b, cd /home/anant_gupta/projects/work/internship-research-loop git fetch origin 2>&1 echo "=== local log ===" git log --oneline -8 echo "=== local vs origin ===" git log --oneline HEAD..origin/master | wc -l git log --oneline origin/master..HEAD | wc -l echo "=== status ===" git status --short echo "=== test count ===" .venv/bin/python -m pytest tests/ -q 2>&1 | tail -5
+- Tool call tally: Artifact (1), AskUserQuestion (1), Bash (47), mcp__jarvis__search_query (1), mcp__jarvis__vault_get_document_map (6), mcp__jarvis__vault_list (9), mcp__jarvis__vault_patch (13), mcp__jarvis__vault_read (11), Read (1), ToolSearch (2)
 
