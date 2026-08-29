@@ -1,82 +1,10 @@
 ﻿[
     {
-        "timestamp":  "2026-08-29T08:00:05.5142593Z",
+        "timestamp":  "2026-08-29T19:00:07.8369169Z",
         "exitCode":  0
     },
     {
-        "timestamp":  "2026-08-29T08:30:05.1298175Z",
-        "exitCode":  0
-    },
-    {
-        "timestamp":  "2026-08-29T09:00:05.4154530Z",
-        "exitCode":  0
-    },
-    {
-        "timestamp":  "2026-08-29T09:30:05.6406230Z",
-        "exitCode":  0
-    },
-    {
-        "timestamp":  "2026-08-29T10:00:08.3022959Z",
-        "exitCode":  0
-    },
-    {
-        "timestamp":  "2026-08-29T10:30:04.8362369Z",
-        "exitCode":  0
-    },
-    {
-        "timestamp":  "2026-08-29T11:00:04.7908732Z",
-        "exitCode":  0
-    },
-    {
-        "timestamp":  "2026-08-29T11:30:09.5384938Z",
-        "exitCode":  0
-    },
-    {
-        "timestamp":  "2026-08-29T12:00:09.0565595Z",
-        "exitCode":  0
-    },
-    {
-        "timestamp":  "2026-08-29T12:30:04.5423760Z",
-        "exitCode":  0
-    },
-    {
-        "timestamp":  "2026-08-29T13:00:06.7270755Z",
-        "exitCode":  0
-    },
-    {
-        "timestamp":  "2026-08-29T13:59:18.2464436Z",
-        "exitCode":  0
-    },
-    {
-        "timestamp":  "2026-08-29T14:00:11.5307889Z",
-        "exitCode":  0
-    },
-    {
-        "timestamp":  "2026-08-29T14:30:07.1024825Z",
-        "exitCode":  0
-    },
-    {
-        "timestamp":  "2026-08-29T15:00:07.8521828Z",
-        "exitCode":  0
-    },
-    {
-        "timestamp":  "2026-08-29T16:11:26.0018148Z",
-        "exitCode":  0
-    },
-    {
-        "timestamp":  "2026-08-29T16:30:09.7605722Z",
-        "exitCode":  0
-    },
-    {
-        "timestamp":  "2026-08-29T17:05:54.4964997Z",
-        "exitCode":  1
-    },
-    {
-        "timestamp":  "2026-08-29T17:30:05.3470339Z",
-        "exitCode":  0
-    },
-    {
-        "timestamp":  "2026-08-29T18:00:05.0854003Z",
+        "timestamp":  "2026-08-29T20:33:32.1912862Z",
         "exitCode":  0
     }
 ]
