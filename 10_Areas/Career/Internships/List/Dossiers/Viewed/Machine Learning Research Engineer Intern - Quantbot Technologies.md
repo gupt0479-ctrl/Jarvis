@@ -11,11 +11,16 @@ target_year: []
 date_posted: '2026-08-11'
 date_found: '2026-08-11'
 matched_reason: Summer 2027, AI/ML/Data
-status: unreviewed
+status: removed
 next:
 tags:
   - internship
   - auto-discovered
+notes:
+  - '[[10_Areas/Career/Internships/List/Dossiers MOC]]'
+  - '[[10_Areas/Career/Internships/List/Dossiers/Viewed/Removed Dossiers MOC]]'
+removed_date: '2026-08-29'
+removed_reason: 'active: false upstream'
 ---
 # Machine Learning Research Engineer Intern
 Found 2026-08-11 via SimplifyJobs.
