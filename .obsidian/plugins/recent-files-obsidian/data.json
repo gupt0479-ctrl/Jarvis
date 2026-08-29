@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Main Resume",
+      "path": "20_Progress/Internship/Resumes/Main Resume.md"
+    },
+    {
       "basename": "Claude Code Prompts",
       "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Data Lake Infrastructure & Data Analytics Research Engineer Intern - Applied Machine Learning Ark - ByteDance",
       "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Lake Infrastructure & Data Analytics Research Engineer Intern - Applied Machine Learning Ark - ByteDance.md"
-    },
-    {
-      "basename": "Campus Undergraduate Summer Internship Program - 2027 AI Engineer I, Enterprise Technology Services- Phoenix, AZ - American Express",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Campus Undergraduate Summer Internship Program - 2027 AI Engineer I, Enterprise Technology Services- Phoenix, AZ - American Express.md"
     }
   ],
   "omittedPaths": [],

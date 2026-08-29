@@ -5,9 +5,9 @@ source_app: claude-code
 source_os: wsl
 title: "Internship deadline audit 2026-08-28 to 2026-08-31"
 started_at: 2026-08-28T16:09:04
-ended_at: 2026-08-29T07:29:02
-duration_minutes: 920
-exported_at: 2026-08-29T12:45:02
+ended_at: 2026-08-29T09:53:35
+duration_minutes: 1065
+exported_at: 2026-08-29T15:15:02
 project: internship-research-loop
 cwd: '/home/anant_gupta/projects/work/internship-research-loop'
 session_id: 584361af-9a7c-4540-b097-64b3acf4f12b

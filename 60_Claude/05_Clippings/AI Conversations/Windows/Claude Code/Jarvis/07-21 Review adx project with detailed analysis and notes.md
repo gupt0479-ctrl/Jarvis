@@ -4,9 +4,9 @@ input_kind: ai-conversation
 source_app: claude-code
 source_os: windows
 title: "Review adx project with detailed analysis and notes"
-started_at: 2026-07-21T21:08:26
-ended_at: 2026-08-08T14:25:30
-exported_at: 2026-08-12T15:00:03
+started_at: 2026-07-21T19:38:26
+ended_at: 2026-08-08T12:55:30
+exported_at: 2026-08-29T15:00:03
 duration_minutes: 25517.1
 project: Jarvis
 cwd: 'D:\Users\_Anant\10_Areas\Documents\Jarvis'
