@@ -5,32 +5,32 @@ source_app: claude-code
 source_os: wsl
 title: "Internship-research-loop handoff and verification"
 started_at: 2026-08-25T15:45:50
-ended_at: 2026-08-28T20:33:36
-duration_minutes: 4608
-exported_at: 2026-08-29T03:45:02
+ended_at: 2026-08-29T07:49:28
+duration_minutes: 5284
+exported_at: 2026-08-29T12:45:02
 project: internship-research-loop
 cwd: '/home/anant_gupta/projects/work/internship-research-loop'
 session_id: 6c7232b9-7a15-4433-9f35-38578a6dc48c
 status: raw
-turn_count: 10
+turn_count: 12
 tools_used:
   Artifact: 1
   AskUserQuestion: 1
-  Bash: 50
+  Bash: 52
   mcp__jarvis__search_query: 1
-  mcp__jarvis__vault_get_document_map: 10
-  mcp__jarvis__vault_list: 11
+  mcp__jarvis__vault_get_document_map: 12
+  mcp__jarvis__vault_list: 14
   mcp__jarvis__vault_patch: 25
-  mcp__jarvis__vault_read: 14
+  mcp__jarvis__vault_read: 16
   Read: 1
   ToolSearch: 2
 tokens:
-  input: 434
-  output: 347879
-  cache_creation: 4658707
-  cache_read: 37816171
-  total: 42823191
-cost_usd: 29.67772
+  input: 464
+  output: 379173
+  cache_creation: 6123488
+  cache_read: 41772251
+  total: 48275376
+cost_usd: 36.64106
 model:
   - claude-sonnet-5
 files_touched:
@@ -2243,10 +2243,224 @@ Now updating the frontmatter.
 - `mcp__jarvis__vault_patch` — `{"path":"20_Progress/Internship/Building System/Runs/Claude Code Prompts.md","targetType":"frontmatter","target":"updated","operation":"replace","value":"2026-08-29"}`
 - `mcp__jarvis__vault_patch` — `{"path":"20_Progress/Internship/Building System/Runs/Claude Code Prompts.md","targetType":"frontmatter","target":"next","operation":"replace","value":"Prompts 22/23 archived 2026-08-29 — both genuinely partial (Prompt 22: only 2 of ~11 external sources individually opened; Prompt 23: 195/280 no-deadline dossiers re-verified, 113 singletons + 9 blocked companies + 1 unidentified company (\"Acds\") still unresolved), correctly self-reported as such, not faked. Prompts 24/25 are strict completion passes — both continue the SAME sessions (22→24, 23→25), both carry an explicit no-silent-stopping rule: every source/company must end with a real checked-or-justified-skip outcome, not a bare \"not reached.\" Prompt 25 requires literal reconciliation arithmetic (280 no-deadline + 39 tracked + named exceptions = 320) as its actual completion proof. Real scope warning carried into both: Prompt 24 still has ~1500+ speedyapply rows, several more full-size jobright-ai repos, and a 6800-line sharunkumar list genuinely unopened — this is very unlikely to fully close in one more pass despite the strict framing, and that's being told to the human directly rather than promised away."}`
 
+## You
+
+```All 10 sources are done. Here's the final report.
+
+Final report — full eligibility sweep, 2026-08-29
+
+Total: 214 postings added to New Internships Listings.md this pass, across all 10 sources, every one deduped against the 4 dossier folders + Excluded — Losing The Debate.md (loaded once, reused all session) + against my own additions within the session itself. Method held up: reused the index without rebuilding, keyword-prefiltered every title column before opening anything, and every source got a real, evidenced outcome — no bare "not reached."
+
+#: 1
+Source: InternDock Guide 1, remaining 11 (125→136)
+Scanned: 11
+Passed prefilter → eligible (listed): 1 (Quantiq)
+Deduped away: —
+Notable exclusions: 1 same-company dup (Hartford, already excluded)
+────────────────────────────────────────
+#: 2
+Source: InternDock Guide 2, 5 unchecked
+Scanned: 5
+Passed prefilter → eligible (listed): 2 (Nebius, Whiterabbit.ai)
+Deduped away: —
+Notable exclusions: 3 expired (Instacart, Clinical Ink, AptaSentry)
+────────────────────────────────────────
+#: 3
+Source: speedyapply/2026-AI-College-Jobs
+Scanned: 259
+Passed prefilter → eligible (listed): 69
+Deduped away: 68 dossier + 91 excluded-list + 8 wrong-cycle
+Notable exclusions: 14 gate4/foreign-location
+────────────────────────────────────────
+#: 4
+Source: speedyapply/2026-SWE-College-Jobs
+Scanned: 266
+Passed prefilter → eligible (listed): 61
+Deduped away: 97 dossier + 81 excluded-list
+Notable exclusions: 12 wrong-cycle, 7 clearance, 6 manual (Skillbridge/conversion/already-surfaced)
+────────────────────────────────────────
+#: 5
+Source: jobright-ai SWE + Engineer repos
+Scanned: 70 + 83
+Passed prefilter → eligible (listed): 21 + 5 = 26
+Deduped away: 15 dossier/excluded
+Notable exclusions: 10 Canada/postdoc/wrong-cycle, 5 clearance (Raytheon=RTX dup, Redwire ITAR, Booz Allen×2, L3Harris), 76 non-software "Engineer" rows
+────────────────────────────────────────
+#: 6
+Source: jobright-ai Data-Analysis + Business-Analyst repos
+Scanned: 85 + 54
+Passed prefilter → eligible (listed): 31 + 2 = 33
+Deduped away: 24 dossier/excluded
+Notable exclusions: Canada×4, scraper-artifact dup, volunteer/postdoc/defense-contractor exclusions; BA repo confirmed near-total irrelevance under real
+per-row check
+────────────────────────────────────────
+#: 7
+Source: northwesternfintech/2026QuantInternships
+Scanned: 71 role-links
+Passed prefilter → eligible (listed): 17
+Deduped away: 45 dossier-dup, 3 excluded, 4 session-URL-dup, 2 brand-name dup (Quantic=Walleye)
+Notable exclusions: —
+────────────────────────────────────────
+#: 8
+Source: sharunkumar/Summer-Internships (off-season)
+Scanned: 831
+Passed prefilter → eligible (listed): 0
+Deduped away: —
+Notable exclusions: Only 3/831 rows even carry a 2027 term; all 3 failed (PM role, closed application, pure-hardware)
+────────────────────────────────────────
+#: 9
+Source: jobright-ai's 9 deprioritized category repos
+Scanned: 613
+Passed prefilter → eligible (listed): 1 (Hanover Insurance Compliance Data Analyst, Legal-Internship)
+Deduped away: —
+Notable exclusions: Full-repo keyword scan (not sampled) on all 9; 8 came back clean, 1 real hit escalated and added
+────────────────────────────────────────
+#: 10
+Source: Vault's own resource docs
+Scanned: 2 docs read
+Passed prefilter → eligible (listed): —
+Deduped away: —
+Notable exclusions: See below
+
+Source 10 findings
+
+- Confirmed all 9 sources I processed are correctly outside the automated pipeline's 9 live sources (SimplifyJobs, JGCL, vanshb03, zshah101, Greenhouse, Ashby, Lever, freehire, AIJobs) — no double-counting.
+- Two genuinely new candidate sources surfaced that were in neither your original list nor mine: ApplyGuy/2027-Internships (real JSON, confirmed live) and dreamworkhq/Tech-Internships-2027 (real JSON, 720 entries, richer schema). Neither has been evaluated by the automated pipeline or by me — flagging for a future pass, not processed here (outside this sweep's original 10-item scope).
+- sndsh404 and SuryaHarikrishnan/2027-internship-tracker confirmed correctly out of scope (binary-.xlsx-only / 100% re-aggregated, zero unique value).
+- The vault's own "Named-Program Coverage Check" confirms a structural gap: Citadel (Launch), LinkedIn (First Play), MLH Fellowship, NASA OSTEM, Bloomberg, and Capital One's named early-talent programs sit on Workday-class ATSes with no connector — matches the repeated individual Workday-fetch failures I hit throughout this sweep (Ancestry, Salesforce, several others). Not closeable within this sweep.
+
+One self-correction, logged in the file
+
+I transcribed the wrong URL for the Hanover Insurance "Compliance Data Analyst" entry in source 9 — caught it and appended a correction note directly under it (per append-only discipline, not an edit-in-place).
+
+What's genuinely still open
+
+Only the two newly-surfaced sources (ApplyGuy, dreamworkhq) — real, live, not yet touched by anyone. Everything else on both prompts' lists has a real, evidenced outcome now.```, ```Final report — second-pass company re-check
+
+Scope covered this round: all 85 remaining companies from the 280 no-deadline set — the 82 genuine singletons (fresh, first-time company-landing-page checks) plus the 9 previously-blocked companies + Notion, re-attacked with a genuinely different method (primary ATS postings — Greenhouse/Ashby/Handshake/LinkedIn — instead of the company's own JS-heavy page, plus archive.org where available). Combined with last round's 44 multi-dossier companies, every one of the 129 unique companies behind the 280 no-deadline dossiers has now been checked at the company-program level, not just per-req.
+
+Result: zero new confirmed deadlines. No dossier changes. Nothing gets added to Tracker/Deadline Tracker.md.
+
+Resolution breakdown for this round's 92 company-checks:
+- 73 of 82 singletons: clean NOT-FOUND (real page fetched — rolling admissions, seasonal-window language, or simply no deadline stated).
+- 9 of 82 singletons: BLOCKED — Allegheny County, Auto-Owners Insurance, Epic Games, Finastra, GuideWell Mutual, Marmon Holdings, Robert Bosch Venture Capital (no company-hosted internship page exists at all — see corrections doc), Sage, Tencent.
+- Of the 9 previously-blocked + Notion: Aquatic Capital Management, AbbVie, and Notion resolved cleanly via primary ATS listings (Greenhouse/Handshake/Ashby, no deadline present). Palantir, American Fidelity, and Jump Trading resolved to NOT-FOUND but only via secondary-source corroboration (their own sites stayed unreachable). HPR, Specter Aerospace, and Copart remain fully blocked — no method got through. PIMCO stays unconfirmed — two independent secondary sources claim a Dec 1, 2026 deadline, but I could never verify it against a PIMCO-owned source, so it's flagged in the corrections doc rather than added to the tracker.
+- A handful (Google, HireVue, ING, Hyperlight, Melius, Mosaic, Prophet Security, Quadrillion, Susquehanna Investment Group) returned NOT-FOUND but from JS-rendered pages that only served nav/title chrome — softer confidence than a fully-read page, though nothing contradicts the no-deadline finding.
+
+Net residual, after two full rounds: 13 companies (~25 dossiers) genuinely unresolved at the company level: HPR, Specter Aerospace, Copart, PIMCO (borderline), Allegheny County, Auto-Owners Insurance, Epic Games, Finastra, GuideWell Mutual, Marmon Holdings, Robert Bosch Venture Capital, Sage, Tencent. Their per-req status stands from the original sweep (no-deadline), just not independently corroborated at the program level.
+
+Correction to your framing: the actual singleton diff was 85 dossiers across 85 companies, not 113 — I computed this directly rather than trusting either number, as instructed.
+
+Acds and Montenson — resolved by reading the dossiers directly, not guessing:
+- Montenson is confirmed a typo for Mortenson — the dossier body itself reads "At Mortenson, we're grounded in..." and the page footer says "Mortenson External Career Site." Not a hypothesis anymore.
+- Acds is real — "Arkansas Center for Data Sciences dba Apprenticely," a genuine Arkansas work-based-learning placement org; the company field names the intermediary, not the host employer (Naukr.AI / Caddell Reynolds) named in the titles. Checked Apprenticely's own page directly: no deadline. Also found acds.co (linked from inside the dossiers) currently fails with an expired SSL certificate.
+
+All of this is written to Dossier Corrections.md (three new sections appended, nothing overwritten) and No Deadline.md/_Today/ were not touched at all this round — nothing needed to move.
+``` - replies from both the session. Let's summarize everything that's been done so far, what's left and what was done. Based on this discussion we have we either move on to new prompts or another follow up prompt. But first, I want to understand where we currently stand in our internship-research-loop.
+
+## Claude
+
+The deadline-sweep reports check out structurally. But I caught a factual error in one — let me verify the "new candidate sources" claim and check the actual promotion/application numbers, since that's the real metric this whole project cares about.
+
+I checked the live git/CI state and the actual Programs/Applying folders — not just the two reports — since "where do we stand" means the whole project, not just this sweep. One correction to flag: the resource-docs session got something wrong.
+
+## Where internship-research-loop actually stands — 2026-08-29
+
+### The metric that matters: applications submitted
+**Still zero.** `Applying/Now.md`'s own dashboard confirms it's empty by design ("first real row lands once a Tracker note moves from Current/ to Applied/"). Program notes have grown from 1 to **6** since the original handoff (5 in `Programs/Serious/`: HRT, Deepgram, Nuro, Uber, Western Digital — plus Appian still in `Considering/`) — real promotion work happened, just not through any of these Claude sessions. HRT's own Applying note is `Withdrawn` (sophomore-only program, ineligible after the class-year correction) — a worked example, not a live application. **Nothing has moved past Program note into Applying in this whole 6-round deadline-sweep effort.**
+
+### Code side: a real fix is sitting idle
+`778f531` (the write-gate failure-memory fix, built 2026-08-27) is **still unpushed** — same state as when I last checked 2 days ago. Prompt 19's schema-drift coverage work is still sitting uncommitted in the working tree on top of it. The hourly pipeline (last run 2026-08-29T02:36 UTC, healthy) is still running the **old** code — no write-gate memory, no extended schema-drift coverage, no zero-match alerting. This has been ready to ship for 2 days.
+
+### The deadline sweep (4 rounds, now genuinely complete on its own terms)
+- **All 320 live dossiers accounted for**, arithmetic closes: 0 with a deadline in the 08-28→08-31 window, **39 with a real deadline** (now in `Tracker/Deadline Tracker.md`, bucketed Already-Over/Soon/Next Week/Next Month/Later), 280 with no per-req deadline found.
+- Of those 280 (129 unique companies), **two full rounds** of company-level re-verification ran. **13 companies (~25 dossiers) remain genuinely unresolved** even after trying a second method (WebSearch/archive.org/secondary ATS listings) — this is real diminishing returns, not laziness: HPR, Specter Aerospace, Copart, PIMCO (borderline — a Dec 1 deadline claimed by 2 secondary sources, never confirmed against PIMCO itself), Allegheny County, Auto-Owners, Epic Games, Finastra, GuideWell Mutual, Marmon Holdings, Robert Bosch VC, Sage, Tencent.
+- **External sources: all 10 sources swept**, 214 new eligible postings found and linked (not dossiers, just links) in `_Today/New Internships Listings.md`. Zero of those 214 have a deadline in the window either.
+- `Dossier Corrections.md` now has 7 sections of real, cited findings (duplicate dossiers, bucket misclassification, stale/wasted-time postings, PhD/clearance mismatches) — **audit only, nothing has been acted on yet.**
+
+### One factual error I caught and want to flag directly
+The resource-docs session reported ApplyGuy as a "genuinely new candidate source... not yet evaluated by the automated pipeline." That's wrong — I verified `run_pipeline.py` directly: ApplyGuy has been a live source since Prompt 17 (2026-08-24), and every one of its postings already flowed into the 320 dossiers this whole sweep just triaged. The session's own list of "the pipeline's 9 live sources" simply omitted ApplyGuy and InternDock — it was working from a stale picture. **`dreamworkhq/Tech-Internships-2027` is the only genuinely real, still-never-evaluated candidate** — it's been surfaced and deferred at least 3 times now (Prompt 17, and again this round) without anyone actually checking it.
+
+### The honest picture
+Six rounds in, the discovery/triage machinery is now extremely thorough — 320 dossiers fully reconciled, 214 new postings found, a real corrections audit, a real deadline tracker. **None of it has produced a single new Program note, Contact note, or application.** This is the same structural pattern every prior handoff in this project has flagged: supply-side work keeps compounding while the human-processing step stays flat.
+
+**Real decision points, not guesses on my part:**
+1. Push `778f531` — quick, safe, unblocks real pipeline improvements sitting idle for 2 days.
+2. The 214 links in `New Internships Listings.md` are sitting unreviewed — worth a look before they go stale.
+3. The 13 unresolved companies are genuinely low-value to chase further (2 full rounds already tried) — I'd call that closed, not a 3rd round.
+4. `Dossier Corrections.md`'s findings (duplicates, misclassifications) are real but low-urgency cleanup, not blocking anything.
+5. The actual next real step, if you want it: stop triaging and start screening — pick from the 39 tracked deadlines or the 214 new links and turn something into a real Program note.
+
+What do you want to do with this?
+
+**Tool calls:**
+
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+git fetch origin 2>&1
+echo "=== local vs origin ==="
+git log --oneline -1
+git log --oneline HEAD..origin/master | wc -l
+git log --oneline origin/master..HEAD | wc -l
+git status --short
+echo "=== recent workflow runs ==="
+gh run list --limit 5 --workflow=run.yml 2>&1
+echo "=== date ==="
+date -u
+  ```
+  ```
+=== local vs origin ===
+778f531 run_pipeline.py: write_gate_failures.json — exclude structurally-doomed uids, not just out-ranked ones
+3
+1
+ M CLAUDE.md
+ M core/schema_drift.py
+ M graphify-out/.graphify_labels.json
+ M graphify-out/GRAPH_REPORT.md
+ M graphify-out/graph.html
+ M graphify-out/graph.json
+ M graphify-out/manifest.json
+ M run_pipeline.py
+ M tests/test_run_pipeline.py
+ M tests/test_schema_drift.py
+?? .claudeignore
+?? .cursor/
+?? .cursorignore
+?? .gitattributes
+?? tests/test_zero_match_alert.py
+=== recent workflow runs ===
+completed	success	run	run	master	schedule	33229379499	1m10s	2026-08-29T02:36:30Z
+completed	success	run	run	master	schedule	33205750096	32s	2026-08-28T19:52:13Z
+completed	success	run	run	master	schedule	33153423258	1m4s	2026-08-28T07:57:31Z
+completed	success	run	run	master	schedule	33125988682	1m2s	2026-08-27T23:21:30Z
+completed	success	run	run	master	schedule	33076306017	59s	2026-08-27T13:20:23Z
+=== date ===
+Sat Aug 29 07:44:46 UTC 2026
+  ```
+- `mcp__jarvis__vault_get_document_map` — `{"path":"10_Areas/Career/Internships/List/Dossiers/_Today/New Internships Listings.md"}`
+- `mcp__jarvis__vault_get_document_map` — `{"path":"20_Progress/Internship/Building System/Dossier Corrections.md"}`
+- `Bash`:
+  ```bash
+cd /home/anant_gupta/projects/work/internship-research-loop
+grep -n "ApplyGuy\|fetch_interndock" run_pipeline.py | head -5
+  ```
+  ```
+36:from ingestion.interndock import fetch_interndock_drop, fetch_interndock_drop_candidates, normalize_interndock
+57:    ("ApplyGuy", fetch_applyguy),
+286:        candidates = fetch_interndock_drop_candidates(http_get)
+909:        interndock_fetch_fn=(lambda url: fetch_interndock_drop(url, firecrawl_key)) if firecrawl_key else None,
+  ```
+- `mcp__jarvis__vault_list` — `{"path":"10_Areas/Career/Internships/Programs/Serious"}`
+- `mcp__jarvis__vault_list` — `{"path":"10_Areas/Career/Internships/Programs/Considering"}`
+- `mcp__jarvis__vault_list` — `{"path":"20_Progress/Internship/Applying"}`
+- `mcp__jarvis__vault_read` — `{"path":"20_Progress/Internship/Applying/Now.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"20_Progress/Internship/Applying/2026-HRT-Sophomore.md"}`
+
 ## Actions Taken
 - Files created: (none)
 - Files modified: (none)
 - Files deleted: (none)
-- Commands run: echo "=== git log ===" && git log --oneline -20 && echo "=== git status ===" && git status && echo "=== diff CLAUDE.md ===" && git diff CLAUDE.md | head -50, echo "=== pytest ===" && python -m pytest -q 2>&1 | tail -20 && echo "=== SOURCES ===" && grep -n "SOURCES" run_pipeline.py | head -30, echo "=== python3 test ===" && python3 -m pytest -q 2>&1 | tail -15 echo "=== fetch origin ===" && git fetch origin 2>&1 echo "=== divergence detail ===" && git log --oneline origin/master..HEAD | head -20 echo "--- origin ahead by ---" && git log --oneline HEAD..origin/master | head -20, echo "=== check if local-only commit messages exist on origin ===" for msg in "Wire InternDock into SOURCES" "Add InternDock drop-detection" "Add Lever as a source" "Oracle Cloud HCM job-id" "raise MAX_DEBATE_LOSSES"; do echo "--- $msg ---" git log origin/master --oneline --grep="$msg" -i | head -3 done echo "=== merge base ===" git merge-base HEAD origin/master echo "=== local HEAD date vs origin HEAD date ===" git log -1 --format=%ci HEAD git log -1 --format=%ci origin/master, echo "=== pip install pytest ===" pip install --quiet pytest 2>&1 | tail -5 || pip3 install --quiet pytest 2>&1 | tail -5 python3 -m pytest -q 2>&1 | tail -15, which gh && gh auth status 2>&1 | head -5 echo "=== recent workflow runs ===" gh run list --limit 15 2>&1, ls -la | grep -iE "venv|\.env" find . -maxdepth 2 -iname "*venv*" 2>/dev/null cat requirements.txt 2>/dev/null echo "=== test workflow file ===" cat .github/workflows/test.yml 2>/dev/null | head -30, .venv/bin/python -m pytest tests/ -q 2>&1 | tail -20, echo "=== files touched by origin-only commits ===" git diff --stat HEAD origin/master | tail -30 echo "=== do any origin-only commits touch core/ ingestion/ run_pipeline.py ===" git log HEAD..origin/master --name-only --format="" | sort -u | grep -E "^(core/|ingestion/|vault_writer/|run_pipeline\.py|recheck\.py)", ls List/Dossiers/*.md 2>/dev/null | wc -l find . -path ./.venv -prune -o -name "*.md" -path "*List/Dossiers*" -print 2>/dev/null | head -5 echo "=== repo dirs ===" ls, ls jarvis-checkout/ 2>/dev/null find jarvis-checkout -iname "*dossier*" -maxdepth 3 2>/dev/null | head -20 find jarvis-checkout -path "*List/Dossiers*" -name "*.md" 2>/dev/null | wc -l, git log --all --oneline --grep="dreamworkhq" -i echo "---" git show --stat 1d27f5b | head -20 echo "--- interndock in SOURCES? ---" grep -n -A2 -B2 "interndock\|InternDock" run_pipeline.py ingestion/sources.py 2>/dev/null | head -40, find jarvis-checkout -maxdepth 2 -type d 2>/dev/null | head -20 find jarvis-checkout -iname "*.md" -path "*Internship*" 2>/dev/null | grep -iE "dossier|tracker|program" | head -10, echo "=== state/logs files touched by local-only commits ===" git log origin/master..HEAD --name-only --format="--commit: %h %s" | grep -E "^(state/|logs/|--commit)", git rebase origin/master 2>&1, git stash push -u -m "pre-rebase stash: CLAUDE.md autoMode notes + graphify-out regen + untracked files" 2>&1 git status echo "=== rebase ===" git rebase origin/master 2>&1, .venv/bin/python -m pytest tests/ -q 2>&1 | tail -10 echo "=== log check ===" git log --oneline -5 git log --oneline HEAD..origin/master | wc -l git log --oneline origin/master..HEAD | wc -l, git push origin master 2>&1, git stash pop 2>&1 git status, cat .git/hooks/pre-push 2>/dev/null echo "=== diff between working tree graphify-out and HEAD ===" git diff --stat graphify-out/ echo "=== stash list ===" git stash list git stash show -p stash@{0} -- graphify-out | head -20, grep -c "Auto-mode classifier notes" CLAUDE.md echo "=== gitignore for graphify-out ===" grep -n "graphify" .gitignore 2>/dev/null echo "=== stash diff stat full ===" git stash show --stat stash@{0}, git checkout stash@{0} -- CLAUDE.md grep -c "Auto-mode classifier notes" CLAUDE.md ls -la .claudeignore .gitattributes 2>&1 git stash drop git status, git checkout stash@{0} -- CLAUDE.md, grep -c "Auto-mode classifier notes" CLAUDE.md git status --short, git reset CLAUDE.md 2>&1 git status --short echo "=== untracked files present, checking content ===" head -5 .claudeignore 2>/dev/null head -5 .gitattributes 2>/dev/null, git ls-remote origin master git show origin/master:run_pipeline.py | grep -n "SOURCES = " -A 15, cd /home/anant_gupta/projects/work/internship-research-loop git fetch origin 2>&1 echo "=== local vs origin ===" git rev-parse HEAD git rev-parse origin/master git status --short echo "=== behind/ahead ===" git log --oneline HEAD..origin/master | wc -l git log --oneline origin/master..HEAD | wc -l, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== debate_losses.json (origin/master) ===" git show origin/master:state/debate_losses.json | python3 -c " import json,sys d=json.load(sys.stdin) print('total entries:', len(d)) # print distribution of loss counts from collections import Counter c = Counter(v.get('losses') if isinstance(v,dict) else v for v in d.values()) print('loss count distribution:', sorted(c.items())) " , cd /home/anant_gupta/projects/work/internship-research-loop git show origin/master:state/debate_losses.json | python3 -c " import json,sys d=json.load(sys.stdin) items = list(d.items()) print('sample entries:') for k,v in items[:3]: print(k, v) " echo "=== how debate_losses.json structured, check schema in code ===" grep -n "debate_losses\|DEBATE_LOSS\|MAX_DEBATE_LOSSES" run_pipeline.py | head -40, cd /home/anant_gupta/projects/work/internship-research-loop git show origin/master:state/debate_losses.json | python3 -c " import json,sys d=json.load(sys.stdin) by_source = {} for k,v in d.items(): src = k.split(':',1)[0] by_source.setdefault(src, []).append(v) for src, vals in sorted(by_source.items()): vals.sort() print(f'{src}: count={len(vals)} max={max(vals)} min={min(vals)} at_24={sum(1 for x in vals if x==24)} >=40={sum(1 for x in vals if x>=40)}') print() print('overall max:', max(d.values())) print('count >= 40:', sum(1 for v in d.values() if v>=40)) print('count >= 30:', sum(1 for v in d.values() if v>=30)) print('count == 24:', sum(1 for v in d.values() if v==24)) " , cd /home/anant_gupta/projects/work/internship-research-loop echo "=== excluded_uids.json origin/master ===" git show origin/master:state/excluded_uids.json | python3 -c " import json,sys d=json.load(sys.stdin) print('type:', type(d)) if isinstance(d, dict): print('total:', len(d)) from collections import Counter reasons = Counter() for k,v in d.items(): r = v.get('reason','?') if isinstance(v,dict) else str(v) reasons[r[:60]] += 1 for r,c in reasons.most_common(15): print(c, r) elif isinstance(d, list): print('total:', len(d)) " , cd /home/anant_gupta/projects/work/internship-research-loop git show origin/master:state/excluded_uids.json | python3 -c " import json,sys d=json.load(sys.stdin) applyguy = [u for u in d if u.startswith('ApplyGuy:')] print('ApplyGuy already excluded:', len(applyguy)) print(applyguy[:5]) " echo "=== check the specific dead-link candidate ===" git show origin/master:state/debate_losses.json | python3 -c " import json,sys d=json.load(sys.stdin) target='SimplifyJobs:[REDACTED]' print(target, '->', d.get(target, 'NOT FOUND in debate_losses')) " git show origin/master:state/excluded_uids.json | python3 -c " import json,sys d=json.load(sys.stdin) target='SimplifyJobs:[REDACTED]' print(target, 'in excluded_uids:', target in d) " git show origin/master:state/seen_ids.json 2>/dev/null | python3 -c " import json,sys d=json.load(sys.stdin) target='SimplifyJobs:[REDACTED]' if isinstance(d, list): print(target, 'in seen_ids:', target in d) elif isinstance(d, dict): print(target, 'in seen_ids:', target in d) " , cd /home/anant_gupta/projects/work/internship-research-loop git show origin/master:logs/runs.jsonl > /tmp/runs.jsonl 2>/dev/null wc -l /tmp/runs.jsonl echo "=== occurrences of the cited dead-link uid ===" grep -c "[REDACTED]" /tmp/runs.jsonl echo "=== first and last occurrence timestamps ===" grep "[REDACTED]" /tmp/runs.jsonl | python3 -c " import json,sys lines = sys.stdin.readlines() for l in [lines[0], lines[-1]]: d = json.loads(l) print(d.get('timestamp') or d.get('run_at') or list(d.keys())[:5]) ", grep "[REDACTED]" /tmp/runs.jsonl | tail -3 | python3 -c " import json,sys for l in sys.stdin: d = json.loads(l) print(json.dumps(d, indent=2)[:1500]) print('---') ", cd /home/anant_gupta/projects/work/internship-research-loop grep -n "MAX_NEW_WRITES_PER_RUN\|BUCKET.*BUDGET\|per_bucket\|write.*budget\|WRITE_BUDGET" run_pipeline.py | head -30, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== state files on origin/master ===" git ls-tree -r --name-only origin/master -- state/ echo "=== _prioritize_and_cap / debate_compare relevant code ===" grep -n "_prioritize_and_cap\|def debate_compare\|def _select_for_bucket\|sort\|priority" run_pipeline.py | head -40, date -u echo "=== last few run.jsonl timestamps ===" tail -3 /tmp/runs.jsonl | python3 -c " import json,sys for l in sys.stdin: d=json.loads(l) print(d['timestamp'], 'written:', d['written_count'], 'deferred:', d['deferred_count']) " echo "=== gh run list recent ===" gh run list --limit 5 2>&1, cd /home/anant_gupta/projects/work/internship-research-loop git log origin/master -1 --format="%H %ci %s" echo "=== gh run list wider incl failures ===" gh run list --limit 20 --workflow=run.yml 2>&1 echo "=== workflow cron schedule ===" cat .github/workflows/run.yml | head -15, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== workflow list / enabled state ===" gh workflow list 2>&1 echo "=== all runs since 08-27, any status ===" gh run list --workflow=run.yml --limit 30 --json databaseId,status,conclusion,createdAt,event -q '.[] | "\(.createdAt) \(.status) \(.conclusion) \(.event)"' 2>&1 | head -10 echo "=== check recheck.yml too ===" gh run list --workflow=recheck.yml --limit 5 2>&1, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== core/debate.py exists? ===" ls core/ | grep -i debate grep -n "debate_compare\|from core" run_pipeline.py | head -10 echo "=== schema_drift check_all sources covered ===" grep -n "def check_all\|SOURCES_TO_CHECK\|def check_" core/schema_drift.py | head -20 echo "=== dossier folder counts (via git show, not local) ===" git show origin/master --stat -1 | head -5, cd /home/anant_gupta/projects/work/internship-research-loop python3 -c " import json counts = [] with open('/tmp/runs.jsonl') as f: for line in f: d = json.loads(line) if 'Ashby' in d.get('filter_match_counts', {}): counts.append((d['timestamp'], d['fetch_counts'].get('Ashby'), d['filter_match_counts'].get('Ashby'))) print('total runs with Ashby field:', len(counts)) print('last 10:', counts[-10:]) nonzero = [c for c in counts if c[2] and c[2] > 0] print('runs with nonzero Ashby matches:', len(nonzero)) ", cd /home/anant_gupta/projects/work/internship-research-loop python3 -c " import json counts = [] with open('/tmp/runs.jsonl') as f: for line in f: d = json.loads(line) if 'Ashby' in d.get('filter_match_counts', {}): counts.append((d['timestamp'], d['fetch_counts'].get('Ashby'), d['filter_match_counts'].get('Ashby'))) # find where fetch count changed to 4 and matches went to 0 permanently for i in range(len(counts)-1, -1, -1): if counts[i][2] != 0 or counts[i][1] != 4: print('last differing run before the zero-streak:', counts[i]) print('streak length since:', len(counts)-1-i) break print('total runs:', len(counts)) ", cd /home/anant_gupta/projects/work/internship-research-loop grep -n "ASHBY\|ashby" ingestion/sources.py | head -20, cd /home/anant_gupta/projects/work/internship-research-loop sed -n '55,70p' ingestion/sources.py, echo "checking size via mcp not possible in bash; skip", cd /home/anant_gupta/projects/work/internship-research-loop git show --no-patch --format="%B" 1d27f5b, cd /home/anant_gupta/projects/work/internship-research-loop git fetch origin 2>&1 echo "=== local log ===" git log --oneline -8 echo "=== local vs origin ===" git log --oneline HEAD..origin/master | wc -l git log --oneline origin/master..HEAD | wc -l echo "=== status ===" git status --short echo "=== test count ===" .venv/bin/python -m pytest tests/ -q 2>&1 | tail -5, grep -n -i "maximor\|glossgenius\|amazon\|apple\|whop\|ancestry" "/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/[REDACTED].txt" echo "=== total line count and section headers ===" grep -n "^#" "/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/[REDACTED].txt" wc -l "/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/[REDACTED].txt", FILE="/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/[REDACTED].txt" head -40 "$FILE" echo "...(middle skipped)..." tail -40 "$FILE", FILE="/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/bygc4w1o3.txt" wc -l "$FILE" grep -o -i "maximor\|glossgenius\|amazon\|apple\|whop\|ancestry\|deepgram\|nuro" "$FILE" | sort | uniq -c echo "=== headings ===" grep -o '## [A-Za-z0-9 &-]*' "$FILE" | sort -u
-- Tool call tally: Artifact (1), AskUserQuestion (1), Bash (50), mcp__jarvis__search_query (1), mcp__jarvis__vault_get_document_map (10), mcp__jarvis__vault_list (11), mcp__jarvis__vault_patch (25), mcp__jarvis__vault_read (14), Read (1), ToolSearch (2)
+- Commands run: echo "=== git log ===" && git log --oneline -20 && echo "=== git status ===" && git status && echo "=== diff CLAUDE.md ===" && git diff CLAUDE.md | head -50, echo "=== pytest ===" && python -m pytest -q 2>&1 | tail -20 && echo "=== SOURCES ===" && grep -n "SOURCES" run_pipeline.py | head -30, echo "=== python3 test ===" && python3 -m pytest -q 2>&1 | tail -15 echo "=== fetch origin ===" && git fetch origin 2>&1 echo "=== divergence detail ===" && git log --oneline origin/master..HEAD | head -20 echo "--- origin ahead by ---" && git log --oneline HEAD..origin/master | head -20, echo "=== check if local-only commit messages exist on origin ===" for msg in "Wire InternDock into SOURCES" "Add InternDock drop-detection" "Add Lever as a source" "Oracle Cloud HCM job-id" "raise MAX_DEBATE_LOSSES"; do echo "--- $msg ---" git log origin/master --oneline --grep="$msg" -i | head -3 done echo "=== merge base ===" git merge-base HEAD origin/master echo "=== local HEAD date vs origin HEAD date ===" git log -1 --format=%ci HEAD git log -1 --format=%ci origin/master, echo "=== pip install pytest ===" pip install --quiet pytest 2>&1 | tail -5 || pip3 install --quiet pytest 2>&1 | tail -5 python3 -m pytest -q 2>&1 | tail -15, which gh && gh auth status 2>&1 | head -5 echo "=== recent workflow runs ===" gh run list --limit 15 2>&1, ls -la | grep -iE "venv|\.env" find . -maxdepth 2 -iname "*venv*" 2>/dev/null cat requirements.txt 2>/dev/null echo "=== test workflow file ===" cat .github/workflows/test.yml 2>/dev/null | head -30, .venv/bin/python -m pytest tests/ -q 2>&1 | tail -20, echo "=== files touched by origin-only commits ===" git diff --stat HEAD origin/master | tail -30 echo "=== do any origin-only commits touch core/ ingestion/ run_pipeline.py ===" git log HEAD..origin/master --name-only --format="" | sort -u | grep -E "^(core/|ingestion/|vault_writer/|run_pipeline\.py|recheck\.py)", ls List/Dossiers/*.md 2>/dev/null | wc -l find . -path ./.venv -prune -o -name "*.md" -path "*List/Dossiers*" -print 2>/dev/null | head -5 echo "=== repo dirs ===" ls, ls jarvis-checkout/ 2>/dev/null find jarvis-checkout -iname "*dossier*" -maxdepth 3 2>/dev/null | head -20 find jarvis-checkout -path "*List/Dossiers*" -name "*.md" 2>/dev/null | wc -l, git log --all --oneline --grep="dreamworkhq" -i echo "---" git show --stat 1d27f5b | head -20 echo "--- interndock in SOURCES? ---" grep -n -A2 -B2 "interndock\|InternDock" run_pipeline.py ingestion/sources.py 2>/dev/null | head -40, find jarvis-checkout -maxdepth 2 -type d 2>/dev/null | head -20 find jarvis-checkout -iname "*.md" -path "*Internship*" 2>/dev/null | grep -iE "dossier|tracker|program" | head -10, echo "=== state/logs files touched by local-only commits ===" git log origin/master..HEAD --name-only --format="--commit: %h %s" | grep -E "^(state/|logs/|--commit)", git rebase origin/master 2>&1, git stash push -u -m "pre-rebase stash: CLAUDE.md autoMode notes + graphify-out regen + untracked files" 2>&1 git status echo "=== rebase ===" git rebase origin/master 2>&1, .venv/bin/python -m pytest tests/ -q 2>&1 | tail -10 echo "=== log check ===" git log --oneline -5 git log --oneline HEAD..origin/master | wc -l git log --oneline origin/master..HEAD | wc -l, git push origin master 2>&1, git stash pop 2>&1 git status, cat .git/hooks/pre-push 2>/dev/null echo "=== diff between working tree graphify-out and HEAD ===" git diff --stat graphify-out/ echo "=== stash list ===" git stash list git stash show -p stash@{0} -- graphify-out | head -20, grep -c "Auto-mode classifier notes" CLAUDE.md echo "=== gitignore for graphify-out ===" grep -n "graphify" .gitignore 2>/dev/null echo "=== stash diff stat full ===" git stash show --stat stash@{0}, git checkout stash@{0} -- CLAUDE.md grep -c "Auto-mode classifier notes" CLAUDE.md ls -la .claudeignore .gitattributes 2>&1 git stash drop git status, git checkout stash@{0} -- CLAUDE.md, grep -c "Auto-mode classifier notes" CLAUDE.md git status --short, git reset CLAUDE.md 2>&1 git status --short echo "=== untracked files present, checking content ===" head -5 .claudeignore 2>/dev/null head -5 .gitattributes 2>/dev/null, git ls-remote origin master git show origin/master:run_pipeline.py | grep -n "SOURCES = " -A 15, cd /home/anant_gupta/projects/work/internship-research-loop git fetch origin 2>&1 echo "=== local vs origin ===" git rev-parse HEAD git rev-parse origin/master git status --short echo "=== behind/ahead ===" git log --oneline HEAD..origin/master | wc -l git log --oneline origin/master..HEAD | wc -l, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== debate_losses.json (origin/master) ===" git show origin/master:state/debate_losses.json | python3 -c " import json,sys d=json.load(sys.stdin) print('total entries:', len(d)) # print distribution of loss counts from collections import Counter c = Counter(v.get('losses') if isinstance(v,dict) else v for v in d.values()) print('loss count distribution:', sorted(c.items())) " , cd /home/anant_gupta/projects/work/internship-research-loop git show origin/master:state/debate_losses.json | python3 -c " import json,sys d=json.load(sys.stdin) items = list(d.items()) print('sample entries:') for k,v in items[:3]: print(k, v) " echo "=== how debate_losses.json structured, check schema in code ===" grep -n "debate_losses\|DEBATE_LOSS\|MAX_DEBATE_LOSSES" run_pipeline.py | head -40, cd /home/anant_gupta/projects/work/internship-research-loop git show origin/master:state/debate_losses.json | python3 -c " import json,sys d=json.load(sys.stdin) by_source = {} for k,v in d.items(): src = k.split(':',1)[0] by_source.setdefault(src, []).append(v) for src, vals in sorted(by_source.items()): vals.sort() print(f'{src}: count={len(vals)} max={max(vals)} min={min(vals)} at_24={sum(1 for x in vals if x==24)} >=40={sum(1 for x in vals if x>=40)}') print() print('overall max:', max(d.values())) print('count >= 40:', sum(1 for v in d.values() if v>=40)) print('count >= 30:', sum(1 for v in d.values() if v>=30)) print('count == 24:', sum(1 for v in d.values() if v==24)) " , cd /home/anant_gupta/projects/work/internship-research-loop echo "=== excluded_uids.json origin/master ===" git show origin/master:state/excluded_uids.json | python3 -c " import json,sys d=json.load(sys.stdin) print('type:', type(d)) if isinstance(d, dict): print('total:', len(d)) from collections import Counter reasons = Counter() for k,v in d.items(): r = v.get('reason','?') if isinstance(v,dict) else str(v) reasons[r[:60]] += 1 for r,c in reasons.most_common(15): print(c, r) elif isinstance(d, list): print('total:', len(d)) " , cd /home/anant_gupta/projects/work/internship-research-loop git show origin/master:state/excluded_uids.json | python3 -c " import json,sys d=json.load(sys.stdin) applyguy = [u for u in d if u.startswith('ApplyGuy:')] print('ApplyGuy already excluded:', len(applyguy)) print(applyguy[:5]) " echo "=== check the specific dead-link candidate ===" git show origin/master:state/debate_losses.json | python3 -c " import json,sys d=json.load(sys.stdin) target='SimplifyJobs:[REDACTED]' print(target, '->', d.get(target, 'NOT FOUND in debate_losses')) " git show origin/master:state/excluded_uids.json | python3 -c " import json,sys d=json.load(sys.stdin) target='SimplifyJobs:[REDACTED]' print(target, 'in excluded_uids:', target in d) " git show origin/master:state/seen_ids.json 2>/dev/null | python3 -c " import json,sys d=json.load(sys.stdin) target='SimplifyJobs:[REDACTED]' if isinstance(d, list): print(target, 'in seen_ids:', target in d) elif isinstance(d, dict): print(target, 'in seen_ids:', target in d) " , cd /home/anant_gupta/projects/work/internship-research-loop git show origin/master:logs/runs.jsonl > /tmp/runs.jsonl 2>/dev/null wc -l /tmp/runs.jsonl echo "=== occurrences of the cited dead-link uid ===" grep -c "[REDACTED]" /tmp/runs.jsonl echo "=== first and last occurrence timestamps ===" grep "[REDACTED]" /tmp/runs.jsonl | python3 -c " import json,sys lines = sys.stdin.readlines() for l in [lines[0], lines[-1]]: d = json.loads(l) print(d.get('timestamp') or d.get('run_at') or list(d.keys())[:5]) ", grep "[REDACTED]" /tmp/runs.jsonl | tail -3 | python3 -c " import json,sys for l in sys.stdin: d = json.loads(l) print(json.dumps(d, indent=2)[:1500]) print('---') ", cd /home/anant_gupta/projects/work/internship-research-loop grep -n "MAX_NEW_WRITES_PER_RUN\|BUCKET.*BUDGET\|per_bucket\|write.*budget\|WRITE_BUDGET" run_pipeline.py | head -30, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== state files on origin/master ===" git ls-tree -r --name-only origin/master -- state/ echo "=== _prioritize_and_cap / debate_compare relevant code ===" grep -n "_prioritize_and_cap\|def debate_compare\|def _select_for_bucket\|sort\|priority" run_pipeline.py | head -40, date -u echo "=== last few run.jsonl timestamps ===" tail -3 /tmp/runs.jsonl | python3 -c " import json,sys for l in sys.stdin: d=json.loads(l) print(d['timestamp'], 'written:', d['written_count'], 'deferred:', d['deferred_count']) " echo "=== gh run list recent ===" gh run list --limit 5 2>&1, cd /home/anant_gupta/projects/work/internship-research-loop git log origin/master -1 --format="%H %ci %s" echo "=== gh run list wider incl failures ===" gh run list --limit 20 --workflow=run.yml 2>&1 echo "=== workflow cron schedule ===" cat .github/workflows/run.yml | head -15, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== workflow list / enabled state ===" gh workflow list 2>&1 echo "=== all runs since 08-27, any status ===" gh run list --workflow=run.yml --limit 30 --json databaseId,status,conclusion,createdAt,event -q '.[] | "\(.createdAt) \(.status) \(.conclusion) \(.event)"' 2>&1 | head -10 echo "=== check recheck.yml too ===" gh run list --workflow=recheck.yml --limit 5 2>&1, cd /home/anant_gupta/projects/work/internship-research-loop echo "=== core/debate.py exists? ===" ls core/ | grep -i debate grep -n "debate_compare\|from core" run_pipeline.py | head -10 echo "=== schema_drift check_all sources covered ===" grep -n "def check_all\|SOURCES_TO_CHECK\|def check_" core/schema_drift.py | head -20 echo "=== dossier folder counts (via git show, not local) ===" git show origin/master --stat -1 | head -5, cd /home/anant_gupta/projects/work/internship-research-loop python3 -c " import json counts = [] with open('/tmp/runs.jsonl') as f: for line in f: d = json.loads(line) if 'Ashby' in d.get('filter_match_counts', {}): counts.append((d['timestamp'], d['fetch_counts'].get('Ashby'), d['filter_match_counts'].get('Ashby'))) print('total runs with Ashby field:', len(counts)) print('last 10:', counts[-10:]) nonzero = [c for c in counts if c[2] and c[2] > 0] print('runs with nonzero Ashby matches:', len(nonzero)) ", cd /home/anant_gupta/projects/work/internship-research-loop python3 -c " import json counts = [] with open('/tmp/runs.jsonl') as f: for line in f: d = json.loads(line) if 'Ashby' in d.get('filter_match_counts', {}): counts.append((d['timestamp'], d['fetch_counts'].get('Ashby'), d['filter_match_counts'].get('Ashby'))) # find where fetch count changed to 4 and matches went to 0 permanently for i in range(len(counts)-1, -1, -1): if counts[i][2] != 0 or counts[i][1] != 4: print('last differing run before the zero-streak:', counts[i]) print('streak length since:', len(counts)-1-i) break print('total runs:', len(counts)) ", cd /home/anant_gupta/projects/work/internship-research-loop grep -n "ASHBY\|ashby" ingestion/sources.py | head -20, cd /home/anant_gupta/projects/work/internship-research-loop sed -n '55,70p' ingestion/sources.py, echo "checking size via mcp not possible in bash; skip", cd /home/anant_gupta/projects/work/internship-research-loop git show --no-patch --format="%B" 1d27f5b, cd /home/anant_gupta/projects/work/internship-research-loop git fetch origin 2>&1 echo "=== local log ===" git log --oneline -8 echo "=== local vs origin ===" git log --oneline HEAD..origin/master | wc -l git log --oneline origin/master..HEAD | wc -l echo "=== status ===" git status --short echo "=== test count ===" .venv/bin/python -m pytest tests/ -q 2>&1 | tail -5, grep -n -i "maximor\|glossgenius\|amazon\|apple\|whop\|ancestry" "/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/[REDACTED].txt" echo "=== total line count and section headers ===" grep -n "^#" "/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/[REDACTED].txt" wc -l "/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/[REDACTED].txt", FILE="/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/[REDACTED].txt" head -40 "$FILE" echo "...(middle skipped)..." tail -40 "$FILE", FILE="/home/anant_gupta/.claude/projects/-home-anant-gupta-projects-work-internship-research-loop/[REDACTED]/tool-results/bygc4w1o3.txt" wc -l "$FILE" grep -o -i "maximor\|glossgenius\|amazon\|apple\|whop\|ancestry\|deepgram\|nuro" "$FILE" | sort | uniq -c echo "=== headings ===" grep -o '## [A-Za-z0-9 &-]*' "$FILE" | sort -u, cd /home/anant_gupta/projects/work/internship-research-loop git fetch origin 2>&1 echo "=== local vs origin ===" git log --oneline -1 git log --oneline HEAD..origin/master | wc -l git log --oneline origin/master..HEAD | wc -l git status --short echo "=== recent workflow runs ===" gh run list --limit 5 --workflow=run.yml 2>&1 echo "=== date ===" date -u, cd /home/anant_gupta/projects/work/internship-research-loop grep -n "ApplyGuy\|fetch_interndock" run_pipeline.py | head -5
+- Tool call tally: Artifact (1), AskUserQuestion (1), Bash (52), mcp__jarvis__search_query (1), mcp__jarvis__vault_get_document_map (12), mcp__jarvis__vault_list (14), mcp__jarvis__vault_patch (25), mcp__jarvis__vault_read (16), Read (1), ToolSearch (2)
 
