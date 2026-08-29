@@ -299,3 +299,8 @@ Confirmed no-deadline dossiers (checked stored posting text and, where nothing w
 - [Apple — Applied Data Solutions Program Internships](https://jobs.apple.com/en-us/details/200673612-0836/applied-data-solutions-program-internships-summer-2027)
 - [Whop — Software Engineer Intern](https://jobs.ashbyhq.com/whop/1d904ce7-a18d-4dc1-ad05-d4854ceac2a0)
 - [Ancestry — Software Engineer, Observability Co-op](https://ancestry.wd501.myworkdayjobs.com/en-US/careers/job/Draper-Utah/Software-Engineer---Observability--Co-op_R003434)
+
+
+## New dossiers from the 2026-08-29 hourly runs (checked before pausing the pipeline)
+- [[10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Scientist Intern - Summer 2027 - Mastercard]] — live check returned empty content (Workday, JS-rendered, same pattern as other blocked Workday postings this session); no deadline in stored text either.
+- [[10_Areas/Career/Internships/List/Dossiers/2 - Fullstack/Software Engineer Intern - Full Stack - Intuit]] — no deadline stated; live-verified directly against the actual posting.

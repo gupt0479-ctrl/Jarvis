@@ -51,3 +51,9 @@ Bucket cutoffs (relative to 2026-08-28, today): **Soon** = within 7 days (throug
 - [[10_Areas/Career/Internships/List/Dossiers/2 - Fullstack/Digital Co-op - Ameren]] — deadline 2026-12-21
 - [[10_Areas/Career/Internships/List/Dossiers/Other/DERMS Co-opIntern - Ameren]] — deadline 2027-04-20
 - [[10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Artificial IntelligenceMachine Learning - Summer 2027 Intern - Honeywell]] — deadline 2027-03-31
+
+
+## New from the 2026-08-29 hourly runs (checked before pausing the pipeline) — Later bucket
+- [[10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Scientist Intern - University - Booz Allen (3)]] — deadline 2026-11-25 (Charleston, SC — req R0248137)
+- [[10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Scientist Intern - Summer Games - Booz Allen]] — deadline 2026-11-26 (Rome, NY — req R0248143)
+- [[10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Scientist Intern - Summer Games - Booz Allen (2)]] — deadline 2026-11-26 (Colorado Springs, CO — req R0248132)
