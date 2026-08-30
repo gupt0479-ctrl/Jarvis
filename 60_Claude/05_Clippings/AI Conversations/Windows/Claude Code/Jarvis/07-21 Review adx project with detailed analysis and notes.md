@@ -6,7 +6,7 @@ source_os: windows
 title: "Review adx project with detailed analysis and notes"
 started_at: 2026-07-21T19:38:26
 ended_at: 2026-08-30T18:57:38
-exported_at: 2026-08-30T20:06:57
+exported_at: 2026-08-30T21:00:24
 duration_minutes: 57559.2
 project: Jarvis
 cwd: 'D:\Users\_Anant\10_Areas\Documents\Jarvis'
