@@ -15,7 +15,7 @@ related: []
 ---
 # After Your Event - The Post-Event Process
 ## One-Line Answer
-== ==
+Submit the Post-Event Evaluation Form (receipts, balanced post-event budget, event description) ==within 30 days== or your grant is forfeited and funding must be returned.
 ## Within 30 days after your group's event:
 
 Your group is required to submit the [**Post-Event Evaluation Form**Links to an external site.](https://z.umn.edu/posteventeval)**.** 

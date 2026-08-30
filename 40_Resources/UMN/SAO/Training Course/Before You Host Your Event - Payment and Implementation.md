@@ -15,7 +15,7 @@ related: []
 ---
 # Before You Host Your Event - Payment and Implementation
 ## One-Line Answer
-== ==
+Funding arrives within 6 weeks of completing pre-event requirements - keep every ==compliant receipt== and use SAO/Coke branding on all promotions until then.
 ### **Prepare for your event:**
 
 #### **Receive SAO Grant Funding:**

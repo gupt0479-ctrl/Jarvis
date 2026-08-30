@@ -15,7 +15,7 @@ related: []
 ---
 # Before You Host Your Event - Pre-Event Requirements
 ## One-Line Answer
-== ==
+Within 2 weeks of an award, submit the correct ==Statement of Agreement (RSO vs CLP)== and schedule an advisor meeting if required, or the grant is forfeited.
 ## **Within 2 weeks after the** [**application deadline,** Links to an external site.](https://z.umn.edu/SAOgrantdeadlines)**committee decisions are sent via email**. 
 
 Primary and secondary applicants will receive the result of their application one week after the SAO Grants committee meeting. Dates of these meetings and expected messages can be found on our deadlines resource. 

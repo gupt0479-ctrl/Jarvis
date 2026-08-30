@@ -5,18 +5,18 @@ source_app: claude-code
 source_os: windows
 title: "Review adx project with detailed analysis and notes"
 started_at: 2026-07-21T19:38:26
-ended_at: 2026-08-08T12:55:30
-exported_at: 2026-08-30T15:30:02
-duration_minutes: 25517.1
+ended_at: 2026-08-30T17:51:11
+exported_at: 2026-08-30T18:00:02
+duration_minutes: 57492.8
 project: Jarvis
 cwd: 'D:\Users\_Anant\10_Areas\Documents\Jarvis'
 session_id: 8120f527-2019-4d9d-a5b3-4e232424dd37
 status: raw
-turn_count: 29
+turn_count: 31
 tools_used:
   Agent: 1
   AskUserQuestion: 1
-  Bash: 19
+  Bash: 20
   Edit: 16
   Glob: 6
   Grep: 6
@@ -24,17 +24,17 @@ tools_used:
   mcp__firecrawl__firecrawl_scrape: 23
   mcp__firecrawl__firecrawl_search: 3
   mcp__github__get_file_contents: 2
-  Read: 56
+  Read: 58
   Skill: 1
   ToolSearch: 2
   Write: 4
 tokens:
-  input: 52246
-  output: 652082
-  cache_creation: 8705191
-  cache_read: 61902182
-  total: 71311701
-cost_usd: 53.826512
+  input: 52262
+  output: 694954
+  cache_creation: 10924801
+  cache_read: 64110446
+  total: 75782463
+cost_usd: 63.575357
 model:
   - "claude-sonnet-5"
 files_touched:
@@ -2898,6 +2898,128 @@ next: None — already processed into [[Project Briefings - 2026-07-13]]
 ---
 ```
 
+## You
+
+Write a prompt for a new session inside jarvis to continue discussing about adx. We have driven into extreme detail about this project. There has been no update on the project's github since a month. We need to recommend fixes on github officially and send over an email to ahnaf with extreme details written about adx. We already have extremely rich content listed out inside jarvis. Let's make use of it. First starting with creating github issues. Everything mentioned inside: `20_Progress/Mentorship Program/adx/Recommended Fixes` should be a github issue? I want to strictly keep the issues created on github to be related to code and use cases of adx. Rest all other "suggestions" need to be in a google doc (created in the future). Right now, in this prompt you need to go through everything mentioned inside jarvis in extreme detail about adx and create github issues only based on on what already exists inside adx. Do not guess, actually go through adx codebase if necessary - provide a prompt for a new session inside second-brain-claudekit to verify claims or write more specific content inside jarvis. Let's create github issues for this project.
+
+## Claude
+
+Let me check current state before drafting this — three weeks have passed and I want to know whether `Recommended Fixes.md` actually got rewritten (I flagged it as urgently needed last time), and whether "no update in a month" still holds against the real repo right now.
+
+Good news on both fronts: the repo is still at the exact same commit (`1959708`, 2026-07-07) and has **zero open issues, zero PRs** — clean slate, no duplicate-issue risk. And `Recommended Fixes.md` already got the full rewrite I flagged as needed three weeks ago — it's genuinely excellent now: tiered by severity, every item marked as hardened/unchanged/new against the deeper pass, ~40 discrete findings.
+
+Direct answer to your question: **no, not everything in it should become a GitHub issue, but the large majority should.** Going through it item by item against your "code and use-cases only" rule:
+
+- **Issue-worthy (~38 of ~40 items):** Sections 0 through 7 are almost entirely concrete, reproducible, file-and-line-cited code or docs-vs-code mismatches — the npm collision, the `signedBy` hardcoding, the `--exec` worktree bypass, the `adx init` crash, the dead config fields, the `.tsx` resolution bug, all of it. That's exactly "code and use cases."
+- **Not issue-worthy (Google Doc instead):** `Competitive Positioning` (the Factory AI comparison) is pure market positioning, not a code defect. One catch worth flagging directly: the vault currently has a *standing decision on record* (in `Recommended Fixes.md`'s own Open Questions and in `Competitive Positioning.md`) that this should still be "exactly one GitHub issue." Your instruction just now overrides that — I'll have the new session correct those notes rather than silently ignore the conflict. The memory-layer feature idea from the mentor meeting is also better suited to the Doc — it's a *proposal for something new*, not a report of something broken, which is a different genre than everything else on the list.
+
+The remaining real work is judgment, not discovery: ~40 bullet points shouldn't become 40 issues (that would flood a dormant, zero-issue repo and read as spam, not serious review) — they need sensible grouping into maybe 12-18 well-scoped issues. That's what I've built into the prompt.
+
+```
+This is the issue-creation session — the payoff for everything researched
+since July. Repo state as of right now: HEAD is still 1959708 (2026-07-07),
+zero open issues, zero PRs. Confirmed fresh, not assumed.
+
+## The rule for what becomes a GitHub issue
+Strictly code and use-cases of adx — a real defect, a docs-vs-code mismatch,
+a missing/broken command, dead config, a reproducible bug. NOT positioning,
+market comparison, or "here's a new feature you should build." Two specific
+things to keep OUT of GitHub and instead flag clearly for the future Google
+Doc:
+- Competitive Positioning.md (the Factory AI comparison) — market
+  positioning, not a defect.
+- The memory-layer/evidence-bundle-persistence idea from the 2026-07-14
+  mentor meeting — a proposal for something new, not a report of something
+  broken.
+
+Important correction to make while you're in there: Recommended Fixes.md's
+own Open Questions section and Competitive Positioning.md both currently
+record a standing decision that the Factory comparison SHOULD be "exactly
+one GitHub issue." That decision is now overridden — update both notes to
+say so plainly, with today's date, rather than leaving a contradiction on
+record. Don't silently drop it; note that the call changed and why (strict
+code/use-case scoping for what goes on GitHub, everything else moves to the
+Google Doc instead).
+
+## Step 1 — Re-read everything fresh, don't trust my summary
+Read, in full, current state: Recommended Fixes.md, all five Codebase\ notes,
+Claims vs Implementation.md, Source Claims.md, and adx.md. Three weeks have
+passed and other sessions have touched these — confirm nothing has drifted
+since the versions described to you here before treating any of it as
+settled.
+
+## Step 2 — Group into real issues, not a 1:1 bullet dump
+Recommended Fixes.md has roughly 40 discrete items across 8 tiers. Do not
+open 40 issues. Group by what a maintainer would actually want to triage
+together — roughly the existing tier structure is already the right shape:
+- Distribution (npm collision, LICENSE) — likely 1-2 issues, and this is the
+  one to lead with; nothing else matters if nobody can install the tool
+- The Agency Ladder integrity findings (signedBy, CI auto-approve, the
+  worktree bypass, maintain override, the two false doc claims) — these
+  share one root theme (the accountability mechanism doesn't hold up) but
+  may be too large for one issue; use judgment on whether to split by
+  mechanism or keep together
+- Safety (mutation-testing corruption, silent worktree failures, undocumented
+  destructive sweep flags)
+- Process/CI (the typecheck-never-runs root cause, the 8 uncaught TS errors,
+  the init crash — these three are causally linked, consider whether they're
+  one issue or three cross-referenced ones)
+- Dead config/commands (router, maxRetries, enforceTasteCheck,
+  requireExplanationInvariants, adx ratchet, adx-intellij's dead actions) —
+  probably one consolidated issue, since they're the same shape of problem
+  repeated
+- The .tsx resolution bug and the sweep orphan-scoring bug — genuine
+  standalone code bugs, each their own issue
+- Documentation gaps (Config Reference, undocumented formulas, uncited
+  7-8%/34% claim, adx-vscode, adx-intellij, MCP Layer-1-only) — probably one
+  or two issues, grouped by whether they're "docs are silent" vs "docs
+  actively assert something false"
+- Repo hygiene (tracked files that should be gitignored, evidence-bundle
+  persistence/rotation) — one issue, lower priority
+
+Aim for something like 12-18 issues total. Each one needs a real title, a
+body that cites the exact file/line/commit evidence already sitting in the
+Codebase\ notes, and labels if the repo's label set supports it (check with
+`gh label list --repo ahnafyy/adx` first — don't invent labels that don't
+exist there).
+
+## Step 3 — Verify anything you're not fully sure of, don't guess
+If any item's evidence feels thin, second-hand, or like it needs a fresh
+look at the actual current code before you'd put your name behind it in a
+public issue on someone else's repo, do not write the issue from memory of
+the vault notes alone. Instead, write a tightly-scoped verification prompt
+for a fresh second-brain-claudekit (WSL) session — naming the exact specific
+claims that need re-checking, not "re-verify everything" — and hand that
+back before finalizing those specific issues. The sandbox clone is at
+/home/anant_gupta/projects/ai/claude/second-brain-claudekit/sandbox/adx and
+should still be intact.
+
+## Step 4 — Draft everything, then STOP before posting
+Write out the full set of issues — title, body, labels — as your response,
+not as live `gh issue create` calls yet. This is a real, public, visible
+action on someone else's repository; it gets one explicit look before
+anything actually posts, the same as every other checkpoint in this whole
+review. Once the drafts are approved, then run `gh issue create` for real,
+one at a time, and report back the issue numbers/URLs.
+
+## Not in scope for this session
+No Google Doc yet — just make sure Competitive Positioning.md and the
+memory-layer material are clearly flagged as "captured, not yet written up"
+so nothing gets lost when that doc actually gets built. No email to Ahnaf —
+that's the step after issues exist and can be linked from it.
+```
+
+### Tool Calls
+
+- `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Mentorship Program\adx\Recommended Fixes.md`
+- `Bash` -- `gh api repos/ahnafyy/adx/commits --jq '.[0] | {sha: .sha[0:7], date: .commit.author.date, message: .commit.message}' 2>&1; echo "---issues---"; gh issue list --repo ahnafyy/adx --state all 2>&1; echo "---prs---"; gh pr list --repo ahnafyy/adx --state all 2>&1`
+```
+{"date":"2026-07-07T07:43:53Z","message":"docs: overhaul landing page with richer content and infographics\n\n- New hero tagline framing the core problem (bad codebase context, not bad models)\n- Problem statement lede section\n- adx audit terminal output as hero infographic with score-guide pills\n- Four vitals expanded with what-it-measures + actionable fix lines\n- Three pillars listing actual commands with descriptions\n- adx init scaffold table pulled from getting-started\n- Steps component for 4-step quick start (install → init → audit → gate)\n- Explore the docs link cards at the bottom","sha":"1959708"}
+---issues---
+---prs---
+```
+- `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Mentorship Program\adx\Recommended Fixes.md`
+
 ## Actions Taken
 
 **Files created:**
@@ -2934,5 +3056,6 @@ _None detected_
 - `cd "D:/Users/_Anant/10_Areas/Documents/Jarvis/20_Progress/Mentorship Program/adx" && awk '{if ($0=="") print NR": <blank>"}' "adx — Source Claims.md" | head -20`
 - `python3 -c "print(open(r'C:/Users/Anant Gupta/.claude/projects/D--Users--Anant-10-Areas-Documents-Jarvis/8120f527-2019-4d9d-a5b3-4e232424dd37/tool-results/mcp-firecrawl-firecrawl_scrape-1784782612333.txt').read()[0:12000])"`
 - `head -c 12000 "C:/Users/Anant Gupta/.claude/projects/D--Users--Anant-10-Areas-Documents-Jarvis/8120f527-2019-4d9d-a5b3-4e232424dd37/tool-results/mcp-firecrawl-firecrawl_scrape-1784782612333.txt"`
+- `gh api repos/ahnafyy/adx/commits --jq '.[0] | {sha: .sha[0:7], date: .commit.author.date, message: .commit.message}' 2>&1; echo "---issues---"; gh issue list --repo ahnafyy/adx --state all 2>&1; echo "---prs---"; gh pr list --repo ahnafyy/adx --state all 2>&1`
 
 

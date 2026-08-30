@@ -15,7 +15,7 @@ related: []
 ---
 # FAQ - Additional Questions
 ## One-Line Answer
-== ==
+Receipts need itemized proof of purchase (==no Venmo/CashApp/PayPal screenshots==), event dates can move but not past May 31, 2027, and there's no appeals process.
 ### **Frequently Asked Questions:**
 
 - #### **[What is accepted for post-event receipts and documentationLinks to an external site.](https://z.umn.edu/saograntreceipts)?**

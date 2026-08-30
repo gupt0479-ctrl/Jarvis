@@ -11,7 +11,7 @@ related_progress:
   - "[[Codebase Deep Read]]"
 tags:
   - "#progress"
-next: "Share this list with Ahnaf and get his read on priority before recommending any of it upstream. Scope the Factory-comparison/positioning GitHub issue separately from the concrete bug-fix issues — see [[Competitive Positioning]]."
+next: "Share this list with Ahnaf and get his read on priority before recommending any of it upstream. GitHub issues are being drafted now, scoped strictly to code/use-case defects — see the corrected Open Questions entry below on Factory positioning."
 ---
 # adx — Recommended Fixes
 ==Everything below is a recommendation, not a fact — the factual record lives in [[Source Claims]], [[Claims vs Implementation]], and the five [[Codebase Deep Read|Codebase\]] notes; this note exists solely to turn those findings into one prioritized, actionable list.==
@@ -74,7 +74,7 @@ New tier this pass — the original review didn't look at the project's own buil
 ## Open Questions
 - [ ] Which of these does Ahnaf already know about, versus which are genuine blind spots worth raising directly?
 - [ ] Does he want this list raised all at once, or scoped down to the highest-leverage items — Section 0 and the `adx init` crash — for a first conversation?
-- [ ] Per standing direction: the eventual GitHub issue set should keep exactly one issue scoped to the Factory-comparison/positioning angle ([[Competitive Positioning]]), separate from the concrete bug-fix issues drawn from Sections 0–4 above. Don't blend that scoping decision away when issues actually get opened.
+- [ ] **Superseded 2026-08-30:** the standing direction below no longer holds. Original text, kept for the record: "the eventual GitHub issue set should keep exactly one issue scoped to the Factory-comparison/positioning angle ([[Competitive Positioning]]), separate from the concrete bug-fix issues drawn from Sections 0–4 above." **New decision:** GitHub issues on `ahnafyy/adx` are scoped strictly to code and use-cases of adx — real defects, docs-vs-code mismatches, missing/broken commands, dead config, reproducible bugs. Positioning and market-comparison material (the Factory AI comparison) is explicitly out of scope for GitHub and instead captured for a future Google Doc — see [[Competitive Positioning]]. Same treatment for the memory-layer/evidence-bundle-persistence proposal from the 2026-07-14 mentor meeting (a feature proposal, not a defect report) — captured in [[2026-07-14 Mentor Meeting — Actions]], not yet written up.
 ## Links Into The Vault
 - [[adx]] — judgment-level synthesis this list was originally extracted from
 - [[Source Claims]] — what adx claims about itself

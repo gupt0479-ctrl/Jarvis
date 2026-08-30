@@ -10,8 +10,8 @@ related_progress:
   - "[[Distribution and Adoption Gaps]]"
 tags:
   - "#progress"
-next: Decide whether to update adx.md's Competitive Read section with this, and
-  scope the single Factory-comparison GitHub issue.
+next: "Decide whether to update adx.md's Competitive Read section with this. Superseded
+  2026-08-30: this is no longer bound for a GitHub issue — see Open Questions."
 ---
 # adx — Competitive Positioning
 ==Factory AI's "Agent Readiness" is a sharper, more granular measurement tool than adx's four vitals — but it doesn't compete with adx's Agency Ladder at all, because it doesn't attempt the accountability problem. And its own published methodology has the same undisclosed-validation gap this review found in adx's abstraction.ts.==
@@ -44,3 +44,4 @@ This is close to being the sharpest available comparison for the mentor conversa
 ## Open Questions
 - [ ] Should [[adx]]'s Competitive Read section be updated with this now, or held until after the mentor conversation in case the framing changes based on what Ahnaf says?
 - [ ] Is the permission-gate vs. accountability-ledger distinction (Droid's autonomy levels vs. adx's Agency Ladder) worth its own follow-up — they're different enough mechanisms that "adx's ladder is better" isn't automatically true just because Factory doesn't have one.
+- [ ] **Superseded 2026-08-30:** this note previously stood behind a decision (recorded in this file's own `next:` field and in [[Recommended Fixes]]'s Open Questions) that the GitHub issue set should include exactly one issue scoped to this Factory comparison. That decision is overridden — GitHub issues on `ahnafyy/adx` are now scoped strictly to code and use-cases of adx (real defects, docs-vs-code mismatches, missing/broken commands, dead config, reproducible bugs), not positioning or market comparison. This note's content is captured, not yet written up — it's material for a future Google Doc covering positioning, not a GitHub issue.

@@ -15,7 +15,7 @@ related: []
 ---
 # FAQ - Payment for Services Performed by Individuals
 ## One-Line Answer
-== ==
+Paying an individual ==$600+ in a year requires a 1099-MISC== (plus Form 1096 to the IRS), and the payment must be authorized in your group's constitution/by-laws.
 ## Payment for Services Performed by Individuals
 
 ---

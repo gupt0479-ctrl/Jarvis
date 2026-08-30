@@ -2,7 +2,7 @@
 type: reference
 status: tree
 created: 2026-08-22
-updated: 2026-08-29
+updated: 2026-08-30
 related_progress:
   - "[[Source of Truth]]"
   - "[[20_Progress/Internship/Building System/Research Loop - Improvement Plan]]"
@@ -575,4 +575,32 @@ Task 2 — Tracker/Deadline Tracker.md populated with all 39 outside-window doss
 Task 3 — Dossier Corrections.md written, 5 cited sections: (1) 8 confirmed duplicate pairs (ByteDance ×4, AbbVie, Humana, one contradictory-sweep-note case needing a human diff, plus 2 title-pattern-only suspects flagged unverified); (2) systemic bucket-classification inconsistency (quant-trading roles split between AI&ML and CyS&Finance depending on keyword match; one standalone misfit, Business Systems Analyst Intern - W.W. Grainger, sitting in AI&ML); (3) 11 postings a human would waste time on (4 dossiers that only captured a generic listing page instead of the real req, 6 with already-lapsed deadlines and no staleness marker on the dossier); (4) 3 PhD-only/clearance-track roles flagged for a self-check; (5) the Montenson/Mortenson name mismatch.
 
 Confirmed: No Deadline.md's restored "External sources (Prompt 20)" section was left untouched and verified present before this session made any further edits.
+```
+
+### Prompt 24 — Jarvis: Finish The External Resources Sweep — Every Aggregator, No Exceptions (written 2026-08-29, run 2026-08-29, continuation of the Prompt 20/22 session)
+Full text: see the conversation (unchanged from its original write-up) — strict completion pass on all remaining external sources, every one gets a real checked-or-justified-skip outcome.
+
+**Result — genuinely complete on its own terms:**
+```
+All 10 listed sources done, every one with a real evidenced outcome, no bare "not reached." 214 postings added to New Internships Listings.md this pass, deduped against the 4 dossier folders + Excluded — Losing The Debate.md (loaded once, reused all session) + the session's own additions. Per-source: InternDock Guide 1 remainder (11 scanned, 1 listed), Guide 2 remainder (5 scanned, 2 listed), speedyapply/AI (259 scanned, 69 listed), speedyapply/SWE (266 scanned, 61 listed), jobright-ai SWE+Engineer (153 scanned, 26 listed), jobright-ai Data-Analysis+Business-Analyst (139 scanned, 33 listed), northwesternfintech (71 scanned, 17 listed), sharunkumar off-season (831 scanned, 0 listed — only 3/831 rows even carry a 2027 term, all 3 failed eligibility), jobright-ai's 9 deprioritized categories (613 scanned via full-repo keyword check, not a sample — 1 real hit escalated and added: Hanover Insurance Compliance Data Analyst), the vault's own Research Loop - Resources.md/List/Resources.md (read directly).
+
+Source 10 findings: confirmed the 9 sources this session processed sit correctly outside "the pipeline's 9 live sources" as the session understood them — **but that list itself was wrong and this needs correcting for the record**: the session's own enumeration (SimplifyJobs, JGCL, vanshb03, zshah101, Greenhouse, Ashby, Lever, freehire, AIJobs) omitted ApplyGuy and InternDock entirely. **Verified directly against run_pipeline.py 2026-08-29: ApplyGuy has been a live SOURCES entry since Prompt 17 (2026-08-24)** — it is not a new candidate, and every ApplyGuy posting already flowed into the 320 dossiers this whole sweep triaged. The session's report was factually wrong on this specific point; corrected here, not silently passed through. **dreamworkhq/Tech-Internships-2027 remains the one genuinely real, still-never-evaluated candidate** — surfaced and deferred at least 3 times now (Prompt 17, this round) without anyone actually checking it.
+
+One session self-correction, logged in the file: a wrong URL was transcribed for the Hanover Insurance entry, caught and append-corrected rather than edited in place.
+```
+
+### Prompt 25 — Jarvis: Finish The Dossier Deadline Reconciliation — All 320, No Exceptions (written 2026-08-29, run 2026-08-29/30, continuation of the Prompt 21/23 session)
+Full text: see the conversation (unchanged from its original write-up) — finish the 113 unchecked singletons, resolve the 9 blocked companies via a different method, identify "Acds," reconcile the arithmetic.
+
+**Result — genuinely complete on Task 1-3, plus a same-session addendum after the human paused the hourly pipeline:**
+```
+Corrected the actual singleton diff first (computed directly, not trusted): 85 companies/85 dossiers, not 113. All 85 checked this round, plus the 9 previously-blocked companies + Notion re-attacked with a different method (primary ATS listings — Greenhouse/Ashby/Handshake/LinkedIn — plus archive.org, instead of the company's own JS-heavy page). Combined with the prior round's 44 multi-dossier companies, all 129 unique companies behind the 280 no-deadline dossiers are now checked at the company-program level.
+
+Result: zero new confirmed deadlines this round. Of the 92 company-checks: 73 clean NOT-FOUND, 9 BLOCKED (Allegheny County, Auto-Owners, Epic Games, Finastra, GuideWell Mutual, Marmon Holdings, Robert Bosch VC, Sage, Tencent — no company-hosted internship page exists or is reachable at all), 3 of the prior 9 blocked resolved cleanly (Aquatic Capital, AbbVie, Notion — via primary ATS listings), 3 resolved to NOT-FOUND only via secondary-source corroboration (Palantir, American Fidelity, Jump Trading — own sites stayed unreachable), 3 remain fully unresolved (HPR, Specter Aerospace, Copart), PIMCO stays unconfirmed (2 secondary sources claim Dec 1 2026, never verified against a PIMCO-owned source — flagged in Dossier Corrections, not added to the tracker on unverified secondary evidence). Net residual after two full rounds: 13 companies (~25 dossiers) genuinely unresolved at the company level.
+
+Acds and Montenson resolved by reading the dossiers directly: Montenson confirmed a typo for Mortenson (the dossier's own body text and page footer both say "Mortenson"). Acds confirmed real — "Arkansas Center for Data Sciences dba Apprenticely," a real Arkansas work-based-learning intermediary; the company field names the intermediary, not the host employer (Naukr.AI / Caddell Reynolds) named in the actual titles. Apprenticely's own page checked directly: no deadline. Separately found acds.co (linked from inside the dossiers) currently fails with an expired SSL cert.
+
+Two new sections appended to Dossier Corrections.md (6 and 7) with all of this; nothing overwritten. No Deadline.md/_Today/ untouched this round — nothing needed to move.
+
+Same-session addendum, 2026-08-30 — the human paused the hourly pipeline to focus on promotion work: `gh workflow disable run` confirmed (disabled_manually), recheck (daily)/revalidate (weekly, read-only) deliberately left alone. Vault commit review used `gh api repos/gupta-builds/Jarvis/commits` (the local sibling checkout at projects/work/gupta-builds turned out to be an unrelated GitHub-profile README repo, not the vault) — confirmed the pipeline's own "Auto-discovered N internship(s)" commits are real and distinct from an unrelated cross-project vault-sync mechanism's "auto: HH:MM" commits. 5 new dossiers had arrived before the pause and were checked: 3 real deadlines found (Booz Allen ×3 — Charleston/Rome NY/Colorado Springs Data Scientist Intern, genuinely different reqs despite near-identical titles, all filed to Deadline Tracker's Later bucket at Nov 25/26/26 2026), 2 confirmed no-deadline (Intuit — clean; Mastercard — Workday page returned empty/JS-rendered live, filed with that caveat, same blocked pattern as other Workday postings this sweep). Both files append-only, nothing removed or rewritten.
 ```
