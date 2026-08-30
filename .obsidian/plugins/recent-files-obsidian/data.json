@@ -1,6 +1,118 @@
 {
   "recentFiles": [
     {
+      "basename": "Resources",
+      "path": "40_Resources/UMN/SAO/Training Course/Resources.md"
+    },
+    {
+      "basename": "After Your Event - The Post-Event Process",
+      "path": "40_Resources/UMN/SAO/Training Course/After Your Event - The Post-Event Process.md"
+    },
+    {
+      "basename": "FAQ - Additional Questions",
+      "path": "40_Resources/UMN/SAO/Training Course/FAQ - Additional Questions.md"
+    },
+    {
+      "basename": "FAQ - Payment for Services Performed by Individuals",
+      "path": "40_Resources/UMN/SAO/Training Course/FAQ - Payment for Services Performed by Individuals.md"
+    },
+    {
+      "basename": "Before You Host Your Event - Payment and Implementation",
+      "path": "40_Resources/UMN/SAO/Training Course/Before You Host Your Event - Payment and Implementation.md"
+    },
+    {
+      "basename": "Before You Host Your Event - Pre-Event Requirements",
+      "path": "40_Resources/UMN/SAO/Training Course/Before You Host Your Event - Pre-Event Requirements.md"
+    },
+    {
+      "basename": "Awarded Grant Requirements and Event Preparation - Overview",
+      "path": "40_Resources/UMN/SAO/Training Course/Awarded Grant Requirements and Event Preparation - Overview.md"
+    },
+    {
+      "basename": "Budget Proposal",
+      "path": "40_Resources/UMN/SAO/Training Course/Budget Proposal.md"
+    },
+    {
+      "basename": "Event Proposal - Questions 8 & 9",
+      "path": "40_Resources/UMN/SAO/Training Course/Event Proposal - Questions 8 & 9.md"
+    },
+    {
+      "basename": "Event Proposal - Questions 5, 6, &7",
+      "path": "40_Resources/UMN/SAO/Training Course/Event Proposal - Questions 5, 6, &7.md"
+    },
+    {
+      "basename": "Event Proposal - Questions 3 & 4",
+      "path": "40_Resources/UMN/SAO/Training Course/Event Proposal - Questions 3 & 4.md"
+    },
+    {
+      "basename": "Event Proposal - Question 2",
+      "path": "40_Resources/UMN/SAO/Training Course/Event Proposal - Question 2.md"
+    },
+    {
+      "basename": "Event Proposal - Question 1",
+      "path": "40_Resources/UMN/SAO/Training Course/Event Proposal - Question 1.md"
+    },
+    {
+      "basename": "Application Process",
+      "path": "40_Resources/UMN/SAO/Training Course/Application Process.md"
+    },
+    {
+      "basename": "For RSOs - Update your W-9",
+      "path": "40_Resources/UMN/SAO/Training Course/For RSOs - Update your W-9.md"
+    },
+    {
+      "basename": "Pre-Application - Event and Expense Eligibility",
+      "path": "40_Resources/UMN/SAO/Training Course/Pre-Application - Event and Expense Eligibility.md"
+    },
+    {
+      "basename": "Pre-Application - Group and Applicant Eligibility",
+      "path": "40_Resources/UMN/SAO/Training Course/Pre-Application - Group and Applicant Eligibility.md"
+    },
+    {
+      "basename": "Pre-Application - Determining Funding Eligibility",
+      "path": "40_Resources/UMN/SAO/Training Course/Pre-Application - Determining Funding Eligibility.md"
+    },
+    {
+      "basename": "General Program Overview",
+      "path": "40_Resources/UMN/SAO/Training Course/General Program Overview.md"
+    },
+    {
+      "basename": "AIIS",
+      "path": "40_Resources/UMN/SAO/AIIS.md"
+    },
+    {
+      "basename": "Event Accessibility",
+      "path": "40_Resources/UMN/SAO/Training Course/Event Accessibility.md"
+    },
+    {
+      "basename": "Event Planning After Event",
+      "path": "40_Resources/UMN/SAO/Training Course/Event Planning After Event.md"
+    },
+    {
+      "basename": "Event Promotion",
+      "path": "40_Resources/UMN/SAO/Training Course/Event Promotion.md"
+    },
+    {
+      "basename": "Event Permits & Insurance",
+      "path": "40_Resources/UMN/SAO/Training Course/Event Permits & Insurance.md"
+    },
+    {
+      "basename": "Event Venue",
+      "path": "40_Resources/UMN/SAO/Training Course/Event Venue.md"
+    },
+    {
+      "basename": "Event Budget",
+      "path": "40_Resources/UMN/SAO/Training Course/Event Budget.md"
+    },
+    {
+      "basename": "Event Planning",
+      "path": "40_Resources/UMN/SAO/Training Course/Event Planning.md"
+    },
+    {
+      "basename": "Outline",
+      "path": "40_Resources/UMN/SAO/Training Course/Outline.md"
+    },
+    {
       "basename": "Main Resume",
       "path": "20_Progress/Internship/Resumes/Main Resume.md"
     },
@@ -83,122 +195,6 @@
     {
       "basename": "Internship Pipeline",
       "path": "30_Order/Workflows/Internship Pipeline.md"
-    },
-    {
-      "basename": "Program Template",
-      "path": "30_Order/Templates/Career/Program Template.md"
-    },
-    {
-      "basename": "Tracking Template",
-      "path": "30_Order/Templates/Career/Tracking Template.md"
-    },
-    {
-      "basename": "Plan Template",
-      "path": "30_Order/Templates/Career/Plan Template.md"
-    },
-    {
-      "basename": "List Monthly Log Template",
-      "path": "30_Order/Templates/Career/List Monthly Log Template.md"
-    },
-    {
-      "basename": "LinkedIn Post Template",
-      "path": "30_Order/Templates/Career/LinkedIn Post Template.md"
-    },
-    {
-      "basename": "Job & Company Template",
-      "path": "30_Order/Templates/Career/Job & Company Template.md"
-    },
-    {
-      "basename": "Contact Template",
-      "path": "30_Order/Templates/Career/Contact Template.md"
-    },
-    {
-      "basename": "Cheat Template",
-      "path": "30_Order/Templates/Career/Cheat Template.md"
-    },
-    {
-      "basename": "Applying Template",
-      "path": "30_Order/Templates/Career/Applying Template.md"
-    },
-    {
-      "basename": "Tracking Standard",
-      "path": "30_Order/Standards/Tracking Standard.md"
-    },
-    {
-      "basename": "Internship Notes Standard",
-      "path": "30_Order/Standards/Internship Notes Standard.md"
-    },
-    {
-      "basename": "Full Stack Web Development Co-op - Spring 2027 - Draper",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Full Stack Web Development Co-op - Spring 2027 - Draper.md"
-    },
-    {
-      "basename": "GPUAI Application System Software Engineer Intern - ByteDance",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/GPUAI Application System Software Engineer Intern - ByteDance.md"
-    },
-    {
-      "basename": "Graduate Level Co-op – Data Scientist – Plymouth, MN – Summer 2027 - Philips",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Graduate Level Co-op – Data Scientist – Plymouth, MN – Summer 2027 - Philips.md"
-    },
-    {
-      "basename": "Image Processing Co-op - Specter Aerospace",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Image Processing Co-op - Specter Aerospace.md"
-    },
-    {
-      "basename": "Forward Deployed Software Engineer Intern - Commercial - Palantir",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Forward Deployed Software Engineer Intern - Commercial - Palantir.md"
-    },
-    {
-      "basename": "Data Science Intern - Notion",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Science Intern - Notion.md"
-    },
-    {
-      "basename": "Forward Deployed Software Engineer Intern - Intel - Palantir",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Forward Deployed Software Engineer Intern - Intel - Palantir.md"
-    },
-    {
-      "basename": "Data Science Machine Learning Intern - Castleton Commodities International",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Science Machine Learning Intern - Castleton Commodities International.md"
-    },
-    {
-      "basename": "Data Science Intern - Information Technology - Vanguard",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Science Intern - Information Technology - Vanguard.md"
-    },
-    {
-      "basename": "Data Science Intern - Fully Remote US - HireVue",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Science Intern - Fully Remote US - HireVue.md"
-    },
-    {
-      "basename": "Data Lake Infrastructure and Data Analytics Research Engineer Intern - Applied Machine Learning Ark - ByteDance",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Lake Infrastructure and Data Analytics Research Engineer Intern - Applied Machine Learning Ark - ByteDance.md"
-    },
-    {
-      "basename": "Data Engineer Intern - Data - LPL Financial Holdings",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Engineer Intern - Data - LPL Financial Holdings.md"
-    },
-    {
-      "basename": "Campus Undergraduate Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- Charlotte, NC - American Express",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Campus Undergraduate Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- Charlotte, NC - American Express.md"
-    },
-    {
-      "basename": "Campus Undergraduate Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- Sunrise, FL - American Express",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Campus Undergraduate Summer Internship Program - 2027 Software Engineer, Enterprise Technology Services- Sunrise, FL - American Express.md"
-    },
-    {
-      "basename": "College to Corporate IT Internship - Data Science (PA) - Vanguard",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/College to Corporate IT Internship - Data Science (PA) - Vanguard.md"
-    },
-    {
-      "basename": "Data Analytics - Data Science Intern - Northwell Health",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Analytics - Data Science Intern - Northwell Health.md"
-    },
-    {
-      "basename": "Data Science Intern - College to Corporate IT - Vanguard",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Science Intern - College to Corporate IT - Vanguard.md"
-    },
-    {
-      "basename": "Data Lake Infrastructure & Data Analytics Research Engineer Intern - Applied Machine Learning Ark - ByteDance",
-      "path": "10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Lake Infrastructure & Data Analytics Research Engineer Intern - Applied Machine Learning Ark - ByteDance.md"
     }
   ],
   "omittedPaths": [],

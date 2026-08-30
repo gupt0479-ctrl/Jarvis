@@ -7,7 +7,7 @@ title: "Internship deadline audit 2026-08-28 to 2026-08-31"
 started_at: 2026-08-28T16:09:04
 ended_at: 2026-08-29T09:53:35
 duration_minutes: 1065
-exported_at: 2026-08-30T13:15:02
+exported_at: 2026-08-30T16:15:03
 project: internship-research-loop
 cwd: '/home/anant_gupta/projects/work/internship-research-loop'
 session_id: 584361af-9a7c-4540-b097-64b3acf4f12b
