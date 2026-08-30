@@ -2,7 +2,7 @@
 source_file: "tests/test_run_pipeline.py"
 type: "rationale"
 community: "test_writer.py"
-location: "L666"
+location: "L717"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED

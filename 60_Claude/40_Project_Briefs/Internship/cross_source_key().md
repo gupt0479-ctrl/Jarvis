@@ -1,12 +1,12 @@
 ---
 source_file: "core/identity.py"
 type: "code"
-community: "render_dossier"
+community: "_fake_http_get_only_interndock"
 location: "L97"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/render_dossier
+  - community/_fake_http_get_only_interndock
 ---
 
 # cross_source_key()
@@ -29,4 +29,4 @@ tags:
 - [[validate.py]] - `imports` [EXTRACTED]
 - [[validate_and_write()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/render_dossier
+#graphify/code #graphify/EXTRACTED #community/_fake_http_get_only_interndock

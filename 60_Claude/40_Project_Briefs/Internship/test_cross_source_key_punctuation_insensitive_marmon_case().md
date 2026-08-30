@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_run_pipeline.py"
 type: "code"
-community: "render_dossier"
-location: "L568"
+community: "test_writer.py"
+location: "L619"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/render_dossier
+  - community/test_writerpy
 ---
 
 # test_cross_source_key_punctuation_insensitive_marmon_case()
@@ -16,4 +16,4 @@ tags:
 - [[cross_source_key()]] - `calls` [EXTRACTED]
 - [[test_run_pipeline.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/render_dossier
+#graphify/code #graphify/EXTRACTED #community/test_writerpy

@@ -1,12 +1,12 @@
 ---
 source_file: "recheck.py"
 type: "code"
-community: "_fake_http_get_only_interndock"
+community: "commit_and_push_with_retry"
 location: "L63"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/_fake_http_get_only_interndock
+  - community/commit_and_push_with_retry
 ---
 
 # plan_removals()
@@ -24,4 +24,4 @@ tags:
 - [[test_failed_fetch_skips_that_sources_dossiers_entirely()]] - `calls` [EXTRACTED]
 - [[test_recheck.py]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/_fake_http_get_only_interndock
+#graphify/code #graphify/EXTRACTED #community/commit_and_push_with_retry

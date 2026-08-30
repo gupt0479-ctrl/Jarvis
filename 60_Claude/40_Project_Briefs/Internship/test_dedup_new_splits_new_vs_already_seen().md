@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_run_pipeline.py"
 type: "code"
-community: "_fake_http_get"
-location: "L251"
+community: "test_writer.py"
+location: "L302"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/_fake_http_get
+  - community/test_writerpy
 ---
 
 # test_dedup_new_splits_new_vs_already_seen()
@@ -16,4 +16,4 @@ tags:
 - [[compute_uid()]] - `calls` [EXTRACTED]
 - [[test_run_pipeline.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/_fake_http_get
+#graphify/code #graphify/EXTRACTED #community/test_writerpy

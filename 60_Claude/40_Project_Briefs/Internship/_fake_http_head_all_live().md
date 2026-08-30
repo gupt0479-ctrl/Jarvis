@@ -2,7 +2,7 @@
 source_file: "tests/test_run_pipeline.py"
 type: "code"
 community: "normalize_simplify"
-location: "L84"
+location: "L135"
 tags:
   - graphify/code
   - graphify/INFERRED

@@ -1,12 +1,12 @@
 ---
 source_file: "core/filter.py"
 type: "rationale"
-community: "test_freehire.py"
+community: "write_dossier"
 location: "L1"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/test_freehirepy
+  - community/write_dossier
 ---
 
 # Layer 2 — pure field matching against each feed's own schema. No LLM, determinis
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[filter.py]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/test_freehirepy
+#graphify/rationale #graphify/EXTRACTED #community/write_dossier

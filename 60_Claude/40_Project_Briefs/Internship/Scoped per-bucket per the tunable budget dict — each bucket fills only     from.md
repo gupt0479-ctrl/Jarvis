@@ -1,12 +1,12 @@
 ---
 source_file: "run_pipeline.py"
 type: "rationale"
-community: "test_write_dossier_creates_missing_dossiers_dir"
+community: "recheck.py"
 location: "L100"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/test_write_dossier_creates_missing_dossiers_dir
+  - community/recheckpy
 ---
 
 # Scoped per-bucket per the tunable budget dict — each bucket fills only     from
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[_prioritize_and_cap()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/test_write_dossier_creates_missing_dossiers_dir
+#graphify/rationale #graphify/EXTRACTED #community/recheckpy

@@ -2,7 +2,7 @@
 source_file: "tests/test_schema_drift.py"
 type: "rationale"
 community: "vault_root"
-location: "L217"
+location: "L301"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED

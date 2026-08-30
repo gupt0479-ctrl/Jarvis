@@ -18,6 +18,8 @@ tags:
 - [[normalize.py]] - `imports_from` [EXTRACTED]
 - [[normalize_freehire()]] - `imports` [EXTRACTED]
 - [[run_pipeline.py]] - `imports_from` [EXTRACTED]
+- [[schema_drift.py]] - `imports_from` [EXTRACTED]
 - [[test_freehire.py]] - `imports_from` [EXTRACTED]
+- [[test_schema_drift.py]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/test_freehirepy

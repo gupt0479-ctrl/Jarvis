@@ -1,21 +1,37 @@
 ---
 type: community
-members: 8
+members: 24
 ---
 
 # _fake_http_get
 
-**Members:** 8 nodes
+**Members:** 24 nodes
 
 ## Members
-- [[_applyguy_raw()]] - code - tests/test_run_pipeline.py
-- [[_fake_http_get()]] - code - tests/test_run_pipeline.py
-- [[_josegael_raw()]] - code - tests/test_run_pipeline.py
-- [[_strip_case_keys()]] - code - tests/test_run_pipeline.py
-- [[_vanshb03_raw()]] - code - tests/test_run_pipeline.py
-- [[_zshah101_raw()]] - code - tests/test_run_pipeline.py
-- [[test_dedup_new_splits_new_vs_already_seen()]] - code - tests/test_run_pipeline.py
-- [[test_fetch_and_filter_counts_and_matches()]] - code - tests/test_run_pipeline.py
+- [[1. Program note_1]] - document - .cursor/skills/promote-dossier/reference/note-templates.md
+- [[1. Take the input_2]] - document - .cursor/skills/promote-dossier/SKILL.md
+- [[2. Ask two concrete questions_1]] - document - .cursor/skills/promote-dossier/SKILL.md
+- [[2. Contact note_1]] - document - .cursor/skills/promote-dossier/reference/note-templates.md
+- [[3. Invoke contact research and show findings — before writing anything_1]] - document - .cursor/skills/promote-dossier/SKILL.md
+- [[3. TrackerEach One note_1]] - document - .cursor/skills/promote-dossier/reference/note-templates.md
+- [[4. On explicit go-ahead only, write all three notes together_1]] - document - .cursor/skills/promote-dossier/SKILL.md
+- [[Backfill structured fields from the same content the body prose is drawn from — don't default to null_1]] - document - .cursor/skills/promote-dossier/reference/note-templates.md
+- [[Cross-linking summary (all three notes, written together, in one sitting)_1]] - document - .cursor/skills/promote-dossier/reference/note-templates.md
+- [[Hard line (non-negotiable, inherited from enrich.py's own docstring)_1]] - document - .cursor/skills/contact-researcher/SKILL.md
+- [[Note templates_1]] - document - .cursor/skills/promote-dossier/SKILL.md
+- [[Output format_3]] - document - .cursor/skills/contact-researcher/SKILL.md
+- [[Prerequisite — read this before running_2]] - document - .cursor/skills/promote-dossier/SKILL.md
+- [[SKILL_2]] - document - .cursor/skills/contact-researcher/SKILL.md
+- [[SKILL_5]] - document - .cursor/skills/promote-dossier/SKILL.md
+- [[Steps_2]] - document - .cursor/skills/promote-dossier/SKILL.md
+- [[The one rule that overrides everything else_1]] - document - .cursor/skills/contact-researcher/SKILL.md
+- [[What this skill does not do_2]] - document - .cursor/skills/promote-dossier/SKILL.md
+- [[What to look for, and how to report each_1]] - document - .cursor/skills/contact-researcher/SKILL.md
+- [[What you have available_1]] - document - .cursor/skills/contact-researcher/SKILL.md
+- [[contact-researcher_1]] - document - .cursor/skills/contact-researcher/SKILL.md
+- [[note-templates_1]] - document - .cursor/skills/promote-dossier/reference/note-templates.md
+- [[promote-dossier_1]] - document - .cursor/skills/promote-dossier/SKILL.md
+- [[promote-dossier note templates_1]] - document - .cursor/skills/promote-dossier/reference/note-templates.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -23,14 +39,3 @@ members: 8
 TABLE source_file, type FROM #community/_fake_http_get
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 10 edges to [[_COMMUNITY_test_writer.py]]
-- 5 edges to [[_COMMUNITY_normalize_simplify]]
-
-## Top bridge nodes
-- [[_fake_http_get()]] - degree 10, connects to 2 communities
-- [[_strip_case_keys()]] - degree 6, connects to 2 communities
-- [[_josegael_raw()]] - degree 5, connects to 2 communities
-- [[test_fetch_and_filter_counts_and_matches()]] - degree 4, connects to 2 communities
-- [[test_dedup_new_splits_new_vs_already_seen()]] - degree 3, connects to 2 communities

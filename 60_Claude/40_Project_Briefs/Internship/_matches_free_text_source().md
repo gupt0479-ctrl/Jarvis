@@ -1,12 +1,12 @@
 ---
 source_file: "core/filter.py"
 type: "code"
-community: "test_freehire.py"
+community: "write_dossier"
 location: "L280"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/test_freehirepy
+  - community/write_dossier
 ---
 
 # _matches_free_text_source()
@@ -17,4 +17,4 @@ tags:
 - [[_text_has_any()]] - `calls` [EXTRACTED]
 - [[filter.py]] - `indirect_call` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/test_freehirepy
+#graphify/code #graphify/EXTRACTED #community/write_dossier

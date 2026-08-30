@@ -2,7 +2,7 @@
 source_file: "tests/test_schema_drift.py"
 type: "code"
 community: "vault_root"
-location: "L20"
+location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
@@ -12,15 +12,36 @@ tags:
 # _json_response()
 
 ## Connections
+- [[test_ai_jobs_schema_detects_dropped_level_field()]] - `calls` [EXTRACTED]
+- [[test_ai_jobs_schema_detects_empty_jobs_list()]] - `calls` [EXTRACTED]
+- [[test_ai_jobs_schema_hits_the_real_url()]] - `calls` [EXTRACTED]
+- [[test_ai_jobs_schema_passes_on_real_shape()]] - `calls` [EXTRACTED]
 - [[test_applyguy_schema_detects_dropped_listing_url_field()]] - `calls` [EXTRACTED]
 - [[test_applyguy_schema_detects_dropped_season_field()]] - `calls` [EXTRACTED]
 - [[test_applyguy_schema_detects_empty_jobs_list()]] - `calls` [EXTRACTED]
 - [[test_applyguy_schema_detects_wrong_shape()]] - `calls` [EXTRACTED]
 - [[test_applyguy_schema_passes_on_real_shape()]] - `calls` [EXTRACTED]
+- [[test_ashby_schema_detects_dropped_employment_type()]] - `calls` [EXTRACTED]
+- [[test_ashby_schema_hits_the_schema_check_token()]] - `calls` [EXTRACTED]
+- [[test_ashby_schema_passes_on_empty_jobs_list()]] - `calls` [EXTRACTED]
+- [[test_ashby_schema_passes_on_real_shape()]] - `calls` [EXTRACTED]
 - [[test_check_all_raises_on_first_failing_source()]] - `calls` [EXTRACTED]
+- [[test_freehire_schema_detects_dropped_nested_seniority()]] - `calls` [EXTRACTED]
+- [[test_freehire_schema_detects_dropped_public_slug()]] - `calls` [EXTRACTED]
+- [[test_freehire_schema_hits_the_schema_check_slug()]] - `calls` [EXTRACTED]
+- [[test_freehire_schema_passes_on_empty_data_list()]] - `calls` [EXTRACTED]
+- [[test_freehire_schema_passes_on_real_shape()]] - `calls` [EXTRACTED]
+- [[test_greenhouse_schema_detects_renamed_absolute_url()]] - `calls` [EXTRACTED]
+- [[test_greenhouse_schema_hits_the_schema_check_token()]] - `calls` [EXTRACTED]
+- [[test_greenhouse_schema_passes_on_empty_jobs_list()]] - `calls` [EXTRACTED]
+- [[test_greenhouse_schema_passes_on_real_shape()]] - `calls` [EXTRACTED]
 - [[test_josegael_schema_detects_dropped_permissive_field()]] - `calls` [EXTRACTED]
 - [[test_josegael_schema_detects_renamed_key()]] - `calls` [EXTRACTED]
 - [[test_josegael_schema_passes_on_real_shape()]] - `calls` [EXTRACTED]
+- [[test_lever_schema_detects_dropped_text_field()]] - `calls` [EXTRACTED]
+- [[test_lever_schema_hits_the_schema_check_token()]] - `calls` [EXTRACTED]
+- [[test_lever_schema_passes_on_empty_list()]] - `calls` [EXTRACTED]
+- [[test_lever_schema_passes_on_real_shape()]] - `calls` [EXTRACTED]
 - [[test_schema_drift.py]] - `contains` [EXTRACTED]
 - [[test_simplify_schema_detects_dropped_optional_field()]] - `calls` [EXTRACTED]
 - [[test_simplify_schema_detects_dropped_permissive_field()]] - `calls` [EXTRACTED]

@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_schema_drift.py"
 type: "rationale"
-community: "vault_root"
-location: "L31"
+community: "test_schema_drift.py"
+location: "L44"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/vault_root
+  - community/test_schema_driftpy
 ---
 
 # Fixtures carry a test-only _case label; real upstream entries don't.
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[_strip_case_keys()_1]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/vault_root
+#graphify/rationale #graphify/EXTRACTED #community/test_schema_driftpy

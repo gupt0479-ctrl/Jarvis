@@ -1,12 +1,12 @@
 ---
 source_file: "core/debate.py"
 type: "rationale"
-community: "test_write_dossier_creates_missing_dossiers_dir"
+community: "recheck.py"
 location: "L74"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/test_write_dossier_creates_missing_dossiers_dir
+  - community/recheckpy
 ---
 
 # {bucket: max(0, budget[bucket] - candidate_count[bucket])} for every     bucket
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[compute_bucket_urgency()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/test_write_dossier_creates_missing_dossiers_dir
+#graphify/rationale #graphify/EXTRACTED #community/recheckpy

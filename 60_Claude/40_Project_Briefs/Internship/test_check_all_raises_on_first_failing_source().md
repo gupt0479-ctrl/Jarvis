@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_schema_drift.py"
 type: "code"
-community: "vault_root"
-location: "L116"
+community: "check_all"
+location: "L187"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/vault_root
+  - community/check_all
 ---
 
 # test_check_all_raises_on_first_failing_source()
@@ -16,4 +16,4 @@ tags:
 - [[check_all()]] - `calls` [EXTRACTED]
 - [[test_schema_drift.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/vault_root
+#graphify/code #graphify/EXTRACTED #community/check_all

@@ -2,7 +2,7 @@
 source_file: "run_pipeline.py"
 type: "code"
 community: "recheck.py"
-location: "L570"
+location: "L638"
 tags:
   - graphify/code
   - graphify/EXTRACTED
@@ -33,6 +33,7 @@ tags:
 - [[load_recent_runs()]] - `calls` [EXTRACTED]
 - [[load_seen_ids()]] - `calls` [EXTRACTED]
 - [[load_write_gate_failures()]] - `calls` [EXTRACTED]
+- [[load_zero_match_streaks()]] - `calls` [EXTRACTED]
 - [[matches()]] - `calls` [EXTRACTED]
 - [[run_pipeline.py]] - `contains` [EXTRACTED]
 - [[save_capacity_notified()]] - `calls` [EXTRACTED]
@@ -40,11 +41,13 @@ tags:
 - [[save_excluded_uids()]] - `calls` [EXTRACTED]
 - [[save_seen_ids()]] - `calls` [EXTRACTED]
 - [[save_write_gate_failures()]] - `calls` [EXTRACTED]
+- [[save_zero_match_streaks()]] - `calls` [EXTRACTED]
 - [[should_alert_on_exclusion_spike()]] - `calls` [EXTRACTED]
 - [[should_run_weekly_rollup()]] - `calls` [EXTRACTED]
 - [[stage1_reject()]] - `calls` [EXTRACTED]
 - [[update_debate_losses()]] - `calls` [EXTRACTED]
 - [[update_write_gate_failures()]] - `calls` [EXTRACTED]
+- [[update_zero_match_streaks()]] - `calls` [EXTRACTED]
 - [[validate_and_write()]] - `calls` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/recheckpy

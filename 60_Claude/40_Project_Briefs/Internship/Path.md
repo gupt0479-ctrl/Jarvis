@@ -29,6 +29,7 @@ tags:
 - [[load_recent_runs()]] - `calls` [INFERRED]
 - [[load_seen_ids()]] - `calls` [INFERRED]
 - [[load_write_gate_failures()]] - `calls` [INFERRED]
+- [[load_zero_match_streaks()]] - `calls` [INFERRED]
 - [[move_dossier_to_viewed()]] - `references` [EXTRACTED]
 - [[plan_removals()]] - `calls` [INFERRED]
 - [[run_once()]] - `calls` [INFERRED]
@@ -39,6 +40,7 @@ tags:
 - [[save_interndock_seen_guides()]] - `calls` [INFERRED]
 - [[save_seen_ids()]] - `calls` [INFERRED]
 - [[save_write_gate_failures()]] - `calls` [INFERRED]
+- [[save_zero_match_streaks()]] - `calls` [INFERRED]
 - [[scan_dossiers()]] - `calls` [EXTRACTED]
 - [[write_dossier()]] - `references` [EXTRACTED]
 

@@ -1,12 +1,12 @@
 ---
 source_file: "run_pipeline.py"
 type: "code"
-community: "render_dossier"
-location: "L477"
+community: "_fake_http_get_only_interndock"
+location: "L545"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/render_dossier
+  - community/_fake_http_get_only_interndock
 ---
 
 # validate_and_write()
@@ -29,4 +29,4 @@ tags:
 - [[validate()]] - `calls` [EXTRACTED]
 - [[write_dossier()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/render_dossier
+#graphify/code #graphify/EXTRACTED #community/_fake_http_get_only_interndock

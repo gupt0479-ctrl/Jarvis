@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_schema_drift.py"
 type: "code"
-community: "vault_root"
+community: "test_schema_drift.py"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/vault_root
+  - community/test_schema_driftpy
 ---
 
 # test_schema_drift.py
@@ -16,26 +16,66 @@ tags:
 - [[_json_response()]] - `contains` [EXTRACTED]
 - [[_strip_case_keys()_1]] - `contains` [EXTRACTED]
 - [[_text_response()]] - `contains` [EXTRACTED]
+- [[ai_jobs_raw()]] - `contains` [EXTRACTED]
 - [[applyguy_raw()]] - `contains` [EXTRACTED]
+- [[ashby_raw()]] - `contains` [EXTRACTED]
+- [[check_ai_jobs_schema()]] - `imports` [EXTRACTED]
 - [[check_all()]] - `imports` [EXTRACTED]
 - [[check_applyguy_schema()]] - `imports` [EXTRACTED]
+- [[check_ashby_schema()]] - `imports` [EXTRACTED]
+- [[check_freehire_schema()]] - `imports` [EXTRACTED]
+- [[check_greenhouse_schema()]] - `imports` [EXTRACTED]
+- [[check_interndock_sitemap()]] - `imports` [EXTRACTED]
 - [[check_josegael_schema()]] - `imports` [EXTRACTED]
+- [[check_lever_schema()]] - `imports` [EXTRACTED]
 - [[check_simplify_schema()]] - `imports` [EXTRACTED]
 - [[check_vanshb03_schema()]] - `imports` [EXTRACTED]
 - [[check_zshah101_schema()]] - `imports` [EXTRACTED]
+- [[freehire.py]] - `imports_from` [EXTRACTED]
+- [[freehire_raw()]] - `contains` [EXTRACTED]
+- [[greenhouse_raw()]] - `contains` [EXTRACTED]
+- [[interndock.py]] - `imports_from` [EXTRACTED]
+- [[interndock_sitemap_text()]] - `contains` [EXTRACTED]
 - [[josegael_raw()]] - `contains` [EXTRACTED]
+- [[lever_raw()]] - `contains` [EXTRACTED]
 - [[schema_drift.py]] - `imports_from` [EXTRACTED]
 - [[simplify_raw()]] - `contains` [EXTRACTED]
+- [[sources.py]] - `imports_from` [EXTRACTED]
+- [[test_ai_jobs_schema_detects_dropped_level_field()]] - `contains` [EXTRACTED]
+- [[test_ai_jobs_schema_detects_empty_jobs_list()]] - `contains` [EXTRACTED]
+- [[test_ai_jobs_schema_hits_the_real_url()]] - `contains` [EXTRACTED]
+- [[test_ai_jobs_schema_passes_on_real_shape()]] - `contains` [EXTRACTED]
 - [[test_applyguy_schema_detects_dropped_listing_url_field()]] - `contains` [EXTRACTED]
 - [[test_applyguy_schema_detects_dropped_season_field()]] - `contains` [EXTRACTED]
 - [[test_applyguy_schema_detects_empty_jobs_list()]] - `contains` [EXTRACTED]
 - [[test_applyguy_schema_detects_wrong_shape()]] - `contains` [EXTRACTED]
 - [[test_applyguy_schema_passes_on_real_shape()]] - `contains` [EXTRACTED]
+- [[test_ashby_schema_detects_dropped_employment_type()]] - `contains` [EXTRACTED]
+- [[test_ashby_schema_hits_the_schema_check_token()]] - `contains` [EXTRACTED]
+- [[test_ashby_schema_passes_on_empty_jobs_list()]] - `contains` [EXTRACTED]
+- [[test_ashby_schema_passes_on_real_shape()]] - `contains` [EXTRACTED]
 - [[test_check_all_passes_when_all_sources_are_healthy()]] - `contains` [EXTRACTED]
 - [[test_check_all_raises_on_first_failing_source()]] - `contains` [EXTRACTED]
+- [[test_freehire_schema_detects_dropped_nested_seniority()]] - `contains` [EXTRACTED]
+- [[test_freehire_schema_detects_dropped_public_slug()]] - `contains` [EXTRACTED]
+- [[test_freehire_schema_hits_the_schema_check_slug()]] - `contains` [EXTRACTED]
+- [[test_freehire_schema_passes_on_empty_data_list()]] - `contains` [EXTRACTED]
+- [[test_freehire_schema_passes_on_real_shape()]] - `contains` [EXTRACTED]
+- [[test_greenhouse_schema_detects_renamed_absolute_url()]] - `contains` [EXTRACTED]
+- [[test_greenhouse_schema_hits_the_schema_check_token()]] - `contains` [EXTRACTED]
+- [[test_greenhouse_schema_passes_on_empty_jobs_list()]] - `contains` [EXTRACTED]
+- [[test_greenhouse_schema_passes_on_real_shape()]] - `contains` [EXTRACTED]
+- [[test_interndock_sitemap_detects_no_drop_shaped_candidates()]] - `contains` [EXTRACTED]
+- [[test_interndock_sitemap_detects_no_loc_entries()]] - `contains` [EXTRACTED]
+- [[test_interndock_sitemap_hits_the_real_url()]] - `contains` [EXTRACTED]
+- [[test_interndock_sitemap_passes_on_real_shape()]] - `contains` [EXTRACTED]
 - [[test_josegael_schema_detects_dropped_permissive_field()]] - `contains` [EXTRACTED]
 - [[test_josegael_schema_detects_renamed_key()]] - `contains` [EXTRACTED]
 - [[test_josegael_schema_passes_on_real_shape()]] - `contains` [EXTRACTED]
+- [[test_lever_schema_detects_dropped_text_field()]] - `contains` [EXTRACTED]
+- [[test_lever_schema_hits_the_schema_check_token()]] - `contains` [EXTRACTED]
+- [[test_lever_schema_passes_on_empty_list()]] - `contains` [EXTRACTED]
+- [[test_lever_schema_passes_on_real_shape()]] - `contains` [EXTRACTED]
 - [[test_simplify_schema_detects_dropped_optional_field()]] - `contains` [EXTRACTED]
 - [[test_simplify_schema_detects_dropped_permissive_field()]] - `contains` [EXTRACTED]
 - [[test_simplify_schema_detects_empty_list()]] - `contains` [EXTRACTED]
@@ -50,4 +90,4 @@ tags:
 - [[vanshb03_raw()]] - `contains` [EXTRACTED]
 - [[zshah101_raw()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/vault_root
+#graphify/code #graphify/EXTRACTED #community/test_schema_driftpy

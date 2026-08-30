@@ -2,7 +2,7 @@
 source_file: "tests/test_run_pipeline.py"
 type: "rationale"
 community: "_listing_with_date"
-location: "L188"
+location: "L239"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED

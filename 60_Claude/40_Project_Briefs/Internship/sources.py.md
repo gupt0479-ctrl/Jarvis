@@ -35,5 +35,6 @@ tags:
 - [[recheck.py]] - `imports_from` [EXTRACTED]
 - [[run_pipeline.py]] - `imports_from` [EXTRACTED]
 - [[schema_drift.py]] - `imports_from` [EXTRACTED]
+- [[test_schema_drift.py]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/write_dossier

@@ -1,12 +1,12 @@
 ---
 source_file: "tests/test_schema_drift.py"
 type: "code"
-community: "vault_root"
-location: "L41"
+community: "test_schema_drift.py"
+location: "L54"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/vault_root
+  - community/test_schema_driftpy
 ---
 
 # josegael_raw()
@@ -15,4 +15,4 @@ tags:
 - [[_strip_case_keys()_1]] - `calls` [EXTRACTED]
 - [[test_schema_drift.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/vault_root
+#graphify/code #graphify/EXTRACTED #community/test_schema_driftpy

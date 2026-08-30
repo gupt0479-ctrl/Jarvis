@@ -1,12 +1,12 @@
 ---
 source_file: "core/schema_drift.py"
 type: "rationale"
-community: "vault_root"
+community: "schema_drift.py"
 location: "L1"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/vault_root
+  - community/schema_driftpy
 ---
 
 # Schema-drift check. Runs before the scheduled pipeline touches feeds for real: f
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[schema_drift.py]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/vault_root
+#graphify/rationale #graphify/EXTRACTED #community/schema_driftpy

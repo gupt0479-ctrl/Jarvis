@@ -2,7 +2,7 @@
 source_file: "tests/test_schema_drift.py"
 type: "code"
 community: "vault_root"
-location: "L232"
+location: "L316"
 tags:
   - graphify/code
   - graphify/EXTRACTED

@@ -1,12 +1,12 @@
 ---
 source_file: "vault_writer/writer.py"
 type: "code"
-community: "build_frontmatter"
+community: "writer.py"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/build_frontmatter
+  - community/writerpy
 ---
 
 # writer.py
@@ -35,4 +35,4 @@ tags:
 - [[test_writer.py]] - `imports_from` [EXTRACTED]
 - [[write_dossier()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/build_frontmatter
+#graphify/code #graphify/EXTRACTED #community/writerpy

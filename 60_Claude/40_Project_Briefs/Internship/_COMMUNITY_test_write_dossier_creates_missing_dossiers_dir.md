@@ -1,11 +1,11 @@
 ---
 type: community
-members: 50
+members: 38
 ---
 
 # test_write_dossier_creates_missing_dossiers_dir
 
-**Members:** 50 nodes
+**Members:** 38 nodes
 
 ## Members
 - [[Layer 2.5b — priority-bucket classification for listings that already passed cor]] - rationale - core/classify.py
@@ -14,25 +14,18 @@ members: 50
 - [[Real committed fixture Poshmark 'Cloud Platform Engineer Intern,     Growth' (t]] - rationale - tests/test_classify.py
 - [[Real committed fixture plain 'Software Engineer Intern', category     Software]] - rationale - tests/test_classify.py
 - [[Real false positive Mosaic Company 'Operations & Automation     Engineering Co-]] - rationale - tests/test_classify.py
-- [[Real profile.yaml entry 'D.E. Shaw' must match the real vault dossier     compan]] - rationale - tests/test_identity.py
 - [[Returns (bucket_name, signal) — signal is the specific real phrase     that drov]] - rationale - core/classify.py
 - [[Same bucket for both candidates — stage 2 is explicitly a no-op here     per spe]] - rationale - tests/test_debate.py
-- [[Scoped per-bucket per the tunable budget dict — each bucket fills only     from]] - rationale - run_pipeline.py
 - [[Standard cmp semantics negative if a should rank first, positive if     b shoul]] - rationale - core/debate.py
 - [[Task L — the deterministic pairwise 'debate' comparator. Each stage is tested in]] - rationale - tests/test_debate.py
-- [[The matched preference tier (e.g. 'high'), or None if company isn't in     prefe]] - rationale - core/identity.py
 - [[Two non-preferred candidates (stage 1 ties), different buckets, one     bucket's]] - rationale - tests/test_debate.py
 - [[Two preferred companies with different dates — stage 1 ties (both     'high'), r]] - rationale - tests/test_debate.py
 - [[_candidate()]] - code - tests/test_debate.py
-- [[_norm_company()]] - code - core/identity.py
 - [[_preference_rank()]] - code - core/debate.py
-- [[_prioritize_and_cap()]] - code - run_pipeline.py
 - [[bucket_urgency=None (the default) skips stage 2 entirely, falling     straight t]] - rationale - tests/test_debate.py
 - [[classification_callout()]] - code - core/classify.py
 - [[classify()]] - code - core/classify.py
 - [[classify.py]] - code - core/classify.py
-- [[company_matches_preference()]] - code - core/identity.py
-- [[compute_bucket_urgency()]] - code - core/debate.py
 - [[coreclassify.py — real examples throughout, same fixtures as test_relevance.py]] - rationale - tests/test_classify.py
 - [[debate.py]] - code - core/debate.py
 - [[debate_compare()]] - code - core/debate.py
@@ -45,10 +38,6 @@ members: 50
 - [[test_classify_fullstack_from_real_vanshb03_fixture()]] - code - tests/test_classify.py
 - [[test_classify_other_from_real_zshah101_fixture()]] - code - tests/test_classify.py
 - [[test_classify_still_matches_genuine_threat_intelligence_content()]] - code - tests/test_classify.py
-- [[test_company_matches_preference_case_insensitive()]] - code - tests/test_identity.py
-- [[test_company_matches_preference_none_for_empty_preferred_dict()]] - code - tests/test_identity.py
-- [[test_company_matches_preference_none_for_unlisted_company()]] - code - tests/test_identity.py
-- [[test_company_matches_preference_punctuation_insensitive_real_de_shaw_case()]] - code - tests/test_identity.py
 - [[test_debate.py]] - code - tests/test_debate.py
 - [[test_debate_compare_missing_date_posted_sorts_last()]] - code - tests/test_debate.py
 - [[test_debate_compare_prefers_bucket_at_risk_of_going_unfilled()]] - code - tests/test_debate.py
@@ -57,7 +46,6 @@ members: 50
 - [[test_debate_compare_skips_bucket_fill_need_for_same_bucket_pair()]] - code - tests/test_debate.py
 - [[test_debate_compare_ties_between_two_preferred_companies_falls_through()]] - code - tests/test_debate.py
 - [[test_debate_compare_without_bucket_urgency_skips_stage_2()]] - code - tests/test_debate.py
-- [[{bucket max(0, budgetbucket - candidate_countbucket)} for every     bucket]] - rationale - core/debate.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -67,16 +55,14 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 10 edges to [[_COMMUNITY_recheck.py]]
-- 8 edges to [[_COMMUNITY_test_render_dossier_shows_real_rendered_frontmatter_with_preference_match]]
-- 8 edges to [[_COMMUNITY_write_dossier]]
-- 2 edges to [[_COMMUNITY_render_dossier]]
-- 2 edges to [[_COMMUNITY_build_frontmatter]]
-- 1 edge to [[_COMMUNITY_test_freehire.py]]
+- 12 edges to [[_COMMUNITY_recheck.py]]
+- 9 edges to [[_COMMUNITY_write_dossier]]
+- 3 edges to [[_COMMUNITY_test_render_dossier_shows_real_rendered_frontmatter_with_preference_match]]
+- 2 edges to [[_COMMUNITY__fake_http_get_only_interndock]]
 
 ## Top bridge nodes
-- [[test_debate.py]] - degree 16, connects to 3 communities
-- [[company_matches_preference()]] - degree 14, connects to 3 communities
+- [[test_debate.py]] - degree 16, connects to 2 communities
 - [[classify()]] - degree 15, connects to 2 communities
 - [[debate.py]] - degree 10, connects to 2 communities
 - [[classification_callout()]] - degree 7, connects to 2 communities
+- [[test_classify.py]] - degree 15, connects to 1 community

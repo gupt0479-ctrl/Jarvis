@@ -38,9 +38,11 @@ SORT file.name ASC
 - 5 edges to [[_COMMUNITY_recheck.py]]
 - 2 edges to [[_COMMUNITY_write_dossier]]
 - 2 edges to [[_COMMUNITY_stage1_reject]]
+- 1 edge to [[_COMMUNITY_schema_drift.py]]
 - 1 edge to [[_COMMUNITY_vault_root_1]]
+- 1 edge to [[_COMMUNITY_test_schema_drift.py]]
 
 ## Top bridge nodes
-- [[interndock.py]] - degree 11, connects to 4 communities
+- [[interndock.py]] - degree 13, connects to 6 communities
 - [[fetch_interndock_drop()]] - degree 9, connects to 2 communities
 - [[fetch_interndock_drop_candidates()]] - degree 6, connects to 1 community

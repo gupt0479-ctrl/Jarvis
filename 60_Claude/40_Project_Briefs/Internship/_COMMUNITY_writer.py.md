@@ -38,7 +38,7 @@ SORT file.name ASC
 - 10 edges to [[_COMMUNITY_plan_removals]]
 - 3 edges to [[_COMMUNITY_vault_root_1]]
 - 1 edge to [[_COMMUNITY_recheck.py]]
-- 1 edge to [[_COMMUNITY_render_dossier]]
+- 1 edge to [[_COMMUNITY__fake_http_get_only_interndock]]
 
 ## Top bridge nodes
 - [[extract_content()]] - degree 16, connects to 4 communities

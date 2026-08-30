@@ -1,12 +1,12 @@
 ---
 source_file: "recheck.py"
 type: "rationale"
-community: "_fake_http_get_only_interndock"
+community: "commit_and_push_with_retry"
 location: "L64"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/_fake_http_get_only_interndock
+  - community/commit_and_push_with_retry
 ---
 
 # [{uid, path, reason}] for dossiers whose posting closed. A source that     faile
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[plan_removals()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/_fake_http_get_only_interndock
+#graphify/rationale #graphify/EXTRACTED #community/commit_and_push_with_retry

@@ -1,12 +1,12 @@
 ---
 source_file: "core/schema_drift.py"
 type: "code"
-community: "vault_root"
-location: "L71"
+community: "schema_drift.py"
+location: "L153"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/vault_root
+  - community/schema_driftpy
 ---
 
 # check_zshah101_schema()
@@ -20,4 +20,4 @@ tags:
 - [[test_zshah101_schema_detects_wrong_shape()]] - `calls` [EXTRACTED]
 - [[test_zshah101_schema_passes_on_real_shape()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/vault_root
+#graphify/code #graphify/EXTRACTED #community/schema_driftpy
