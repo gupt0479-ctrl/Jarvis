@@ -5,14 +5,14 @@ source_app: claude-code
 source_os: windows
 title: "Review adx project with detailed analysis and notes"
 started_at: 2026-07-21T19:38:26
-ended_at: 2026-08-30T17:51:11
-exported_at: 2026-08-30T18:00:02
-duration_minutes: 57492.8
+ended_at: 2026-08-30T18:57:38
+exported_at: 2026-08-30T20:06:57
+duration_minutes: 57559.2
 project: Jarvis
 cwd: 'D:\Users\_Anant\10_Areas\Documents\Jarvis'
 session_id: 8120f527-2019-4d9d-a5b3-4e232424dd37
 status: raw
-turn_count: 31
+turn_count: 33
 tools_used:
   Agent: 1
   AskUserQuestion: 1
@@ -29,12 +29,12 @@ tools_used:
   ToolSearch: 2
   Write: 4
 tokens:
-  input: 52262
-  output: 694954
-  cache_creation: 10924801
+  input: 52266
+  output: 710328
+  cache_creation: 12063529
   cache_read: 64110446
-  total: 75782463
-cost_usd: 63.575357
+  total: 76936569
+cost_usd: 68.284017
 model:
   - "claude-sonnet-5"
 files_touched:
@@ -3019,6 +3019,103 @@ that's the step after issues exist and can be linked from it.
 ---prs---
 ```
 - `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Mentorship Program\adx\Recommended Fixes.md`
+
+## You
+
+Great, all the github issues have been created. Let's move on to the next task - writing the google doc for ahnaf to review. Everything detailed about adx that could be improved and the future image we see for adx is written down inside this markdown file: `20_Progress/Mentorship Program/adx/Future Image`. Everything we plan to write in the google doc will be listed in this note. The competitor and major plans for the future. We talk about everything that is written down in jarvis onto that one google doc. This is a human readable doc and should not exceed more than 3 pages. Do not spout ai nonsense onto the note that you will create focus on keeping this note extremely rich with content that has already been discovered. Write a prompt based on the human content we wish to write inside a limited word document. But everything that needs to be on the word document will be noted down in the markdown note.
+
+## Claude
+
+Makes sense — the GitHub issues just filed are the backward-looking "here's what's broken" layer; `Future Image.md` is the forward-looking complement, and it needs to pull together material that's currently scattered: `Competitive Positioning.md`'s Factory AI research, the memory-layer idea from the mentor meeting (currently just flagged as "captured, not yet written up" in a couple of notes), and whatever survives of the original strategic judgment from `adx.md` before I moved its fix-worthy content into `Recommended Fixes.md`.
+
+One structural call worth building into the prompt: the note itself shouldn't be capped at 3 pages — it's the full reservoir. The 3-page limit belongs to the eventual Google Doc, which gets built later by curating this note down. So the note should clearly separate what's actually doc-bound (tight, quotable, human) from the supporting evidence behind it (why we believe it, which stays in Jarvis either way).
+
+```
+Write 20_Progress/Mentorship Program/adx/Future Image.md — the forward-looking
+complement to everything already filed as GitHub issues. Those issues are the
+"here's what's broken" layer; this note is "here's where the growth energy
+should go next." It is the full reservoir of content for an eventual Google
+Doc (separate future work, not this session's job) — this note is NOT capped
+at 3 pages, but everything in it must trace to something already discovered
+in this vault. No invented vision, no generic "AI could really help teams
+ship faster" filler — HUMAN_WRITING.md's standard applies here as much as it
+did to every other note in this folder.
+
+## Structure — separate what's doc-bound from what's supporting depth
+For every section: a short "For the doc" block (tight, specific, human,
+quotable as-is in a 3-page document) and, below it, "Supporting depth" (the
+fuller evidence/reasoning, staying in Jarvis, not meant to survive into the
+final 3-pager). This makes building the actual doc later a curation pass, not
+a rewrite.
+
+## Section 1 — Where adx stands, honestly
+For the doc: three pillars, one real differentiator (the Agency Ladder — no
+competitor researched attempts genuine per-change human accountability, not
+just diff scoring), and the honest state: that differentiator's integrity
+gaps are the subject of the GitHub issues just filed, not a secret held back
+from Ahnaf.
+Pull from: adx.md's "What Is adx" and Competitive Read sections.
+
+## Section 2 — The competitive landscape, precisely
+For the doc: Factory AI as the sharpest comparison (their environmental-
+readiness breadth — devcontainer, CI, secrets scanning, task discovery — vs
+adx's pure context/token-legibility focus), CodeRabbit's visibility mechanism
+(PR comments everyone sees vs adx's local-terminal-only output), GitClear's
+published research as real empirical backing adx could cite for its own
+"agents produce dark code" premise instead of asserting it uncited.
+Pull from: Competitive Positioning.md in full — this is the richest existing
+source for this section, already real and sourced.
+
+## Section 3 — The moat, and how to actually own it
+For the doc: the sharpest line from the whole review — Factory doesn't
+out-compete adx's accountability layer, it doesn't attempt that problem at
+all. adx is going after something harder and more valuable than its nearest
+comparable competitor even tries. Now that the integrity bugs are filed as
+issues, fixing them is what makes this claim honest rather than aspirational.
+Pull from: Codebase Deep Read.md's "Single Best Insight" section.
+
+## Section 4 — The memory-layer idea, written up properly for the first time
+This has been flagged as "captured, not yet written up" across at least two
+notes (Recommended Fixes.md, Codebase Deep Read.md's log) — this is where it
+actually gets written. For the doc: the evidence-bundle-as-flat-files problem
+(unmanageable past ~200 PRs, every new agent session starts cold), the
+proposal (a queryable, cross-PR memory layer), and the validation already
+done — none of Factory, CodeRabbit, CodeScene, or GitClear persist anything
+like this; they all score a snapshot. Name Ahnaf's own OpenHands reference as
+the prior art worth studying before this gets pitched as fully original.
+Pull from: the 2026-07-14 Mentor Meeting Playbook Session Log entry and
+Project Briefings - 2026-07-13.md for the original framing; check whether
+OpenHands' actual memory architecture ever got looked into per that meeting's
+instruction — if not, say so plainly rather than implying it was done.
+
+## Section 5 — What's actually filed vs what's still a judgment call
+For the doc: one tight paragraph, not a list — the GitHub issues (fetch the
+real count and a couple of representative numbers/titles via `gh issue list
+--repo ahnafyy/adx`, don't guess or reuse old counts) are the concrete fix
+list; this doc is the conversation about where adx goes from there. Do not
+re-explain individual bugs here — that's what the issues are for. Two
+open strategic questions worth surfacing rather than resolving on adx's
+behalf: whether adx wants to be a product, a framework, or a methodology
+(each implies a different growth path), and whether one real before/after
+case study repo would do more for credibility than any single code fix.
+Pull from: adx.md's Open Questions and whatever remains of its original
+"product/framework/methodology" framing.
+
+## Before writing: check what didn't survive the earlier edits
+adx.md used to carry a "What Would Make It Extremely Useful" ranked list that
+got removed when Recommended Fixes.md was created, on the assumption its
+content would migrate there — but Recommended Fixes.md is now scoped strictly
+to code fixes per standing direction. Check whether anything from that
+original list (the case-study-repo idea, the weight-tuning-rationale
+disclosure, the product/framework/methodology question) actually made it
+anywhere, or quietly fell through the cracks. If it fell through, this note
+is where it belongs — recover it from git history if adx.md's edit history
+still has it, rather than reconstructing it from memory.
+
+## Explicitly not this session's job
+Do not write the Google Doc itself. Do not touch GitHub again. Do not re-draft
+or re-explain the issues already filed.
+```
 
 ## Actions Taken
 
