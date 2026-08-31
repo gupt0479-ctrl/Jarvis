@@ -6,7 +6,7 @@ source_os: windows
 title: "Future Image for adx"
 started_at: 2026-08-30T20:36:53
 ended_at: 2026-08-30T21:00:57
-exported_at: 2026-08-31T16:30:02
+exported_at: 2026-08-31T18:37:48
 duration_minutes: 24.1
 project: Jarvis
 cwd: 'D:\Users\_Anant\10_Areas\Documents\Jarvis'
