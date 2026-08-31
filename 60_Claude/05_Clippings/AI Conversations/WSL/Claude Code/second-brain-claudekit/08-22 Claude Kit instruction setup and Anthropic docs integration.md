@@ -7,7 +7,7 @@ title: "Claude Kit instruction setup and Anthropic docs integration"
 started_at: 2026-08-22T10:12:27
 ended_at: 2026-08-22T11:18:47
 duration_minutes: 66
-exported_at: 2026-08-31T18:10:44
+exported_at: 2026-08-31T19:45:02
 project: second-brain-claudekit
 cwd: '/home/anant_gupta/projects/ai/claude/second-brain-claudekit'
 session_id: 87047a9b-6411-41d6-b578-0108ee169af2
