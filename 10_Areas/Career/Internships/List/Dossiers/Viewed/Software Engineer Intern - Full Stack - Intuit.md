@@ -15,15 +15,18 @@ target_year: []
 date_posted: '2026-08-29'
 date_found: '2026-08-29'
 matched_reason: Summer 2027, Software
-status: unreviewed
+status: removed
 next:
 notes:
   - '[[10_Areas/Career/Internships/List/Dossiers MOC]]'
+  - '[[10_Areas/Career/Internships/List/Dossiers/Viewed/Removed Dossiers MOC]]'
 preference_tier:
 tags:
   - internship
   - auto-discovered
   - company/intuit
+removed_date: '2026-08-31'
+removed_reason: 'active: false upstream'
 ---
 # Software Engineer Intern - Full Stack
 Found 2026-08-29 via SimplifyJobs.
