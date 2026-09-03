@@ -4,9 +4,9 @@ input_kind: ai-conversation
 source_app: claude-code
 source_os: windows
 title: "Future Image for adx"
-started_at: 2026-08-30T20:36:53
-ended_at: 2026-08-30T21:00:57
-exported_at: 2026-09-01T05:23:35
+started_at: 2026-08-30T11:36:53
+ended_at: 2026-08-30T12:00:57
+exported_at: 2026-09-02T15:58:54
 duration_minutes: 24.1
 project: Jarvis
 cwd: 'D:\Users\_Anant\10_Areas\Documents\Jarvis'
