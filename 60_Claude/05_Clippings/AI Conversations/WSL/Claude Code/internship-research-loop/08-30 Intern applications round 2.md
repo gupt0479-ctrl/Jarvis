@@ -7,7 +7,7 @@ title: "Intern applications round 2"
 started_at: 2026-08-30T19:46:55
 ended_at: 2026-08-30T20:19:10
 duration_minutes: 32
-exported_at: 2026-09-03T20:45:02
+exported_at: 2026-09-04T07:51:02
 project: internship-research-loop
 cwd: '/home/anant_gupta/projects/work/internship-research-loop'
 session_id: 723a68b4-28b4-491d-b5f4-36baa6b0a918

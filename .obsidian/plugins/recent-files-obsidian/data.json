@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Guitar",
+      "path": "20_Progress/Projects/Extra/Guitar.md"
+    },
+    {
       "basename": "Software Engineer Co-Op - Enterprise Finance Applications - Summer 2027 - Fifth Third Bank",
       "path": "10_Areas/Career/Internships/Programs/Serious/Software Engineer Co-Op - Enterprise Finance Applications - Summer 2027 - Fifth Third Bank.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Outline",
       "path": "40_Resources/UMN/SAO/Training Course/Outline.md"
-    },
-    {
-      "basename": "Main Resume",
-      "path": "20_Progress/Internship/Resumes/Main Resume.md"
     }
   ],
   "omittedPaths": [],
