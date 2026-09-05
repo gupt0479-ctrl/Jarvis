@@ -2,31 +2,18 @@
 type: project
 status: active
 created: 2026-07-26
-updated: 2026-08-30
+updated: 2026-09-04
 related_progress:
   - "[[Source of Truth]]"
   - "[[20_Progress/Internship/Building System/Research Loop - Improvement Plan]]"
-  - "[[30_Order/Standards/Internship Notes Standard]]"
-  - "[[20_Progress/Internship/Building System/Runs/Claude Code Prompts —
-    Archive]]"
+  - "[[Internship Notes Standard]]"
+  - "[[20_Progress/Internship/Building System/Runs/Claude Code Prompts — Archive]]"
+  - "[[20_Progress/Internship/Building System/Runs/Prompt 1 Reboot — Building System Refresh Session (2026-09-04)]]"
 tags:
   - internship
   - automation
   - prompts
-next: "Prompts 24/25 archived 2026-08-30 (both fully complete — external sweep
-  and dossier reconciliation genuinely closed, with one factual correction
-  logged: ApplyGuy is not a new source, it's been live since Prompt 17). Hourly
-  run.yml is paused (human's deliberate call, 2026-08-30, gh workflow disable —
-  re-enable with gh workflow enable run when discovery should resume). Prompts
-  26/27 pivot to actual promotion: two parallel Codebase sessions, each invoking
-  /promote-dossier on a real, deadline-ordered half of the 15 dossiers in
-  Tracker/Deadline Tracker.md's Soon/Next Week/Next Month buckets. This is
-  deliberately NOT a 300-application mass-apply — that was the human's opening
-  framing but the actual ask (confirmed in the request itself) was building real
-  Program/Contact/Tracker notes, which only exist for 15 dossiers with a
-  genuinely known near-term deadline right now. /promote-dossier's own consent
-  gate is preserved, not bypassed. Reach Out and Apply remain explicit human
-  steps after these notes exist — not attempted by these prompts."
+next: "Numbering reset 2026-09-04 — Prompts 1-27 archived in full, this file now holds Prompt 1 of the new era (see the note it points to). Tasks A/B/E are runnable; C/D are blocked on open questions from the 2026-09-04 chat session. run.yml stays disabled_manually until the human decides separately, after reviewing the write-gate-failure fix trace in Research Loop - Improvement Plan's # Plan section — do not re-enable it from inside a prompt."
 ---
 # Claude Code Prompts — Internship Research Loop
 This file holds the next prompt(s) to run, and only that — it gets wiped and rewritten every build cycle, not accumulated. When a prompt finishes and its result is reviewed, its full text and result move into [[20_Progress/Internship/Building System/Runs/Claude Code Prompts — Archive]] and get deleted from here.
@@ -46,48 +33,10 @@ This file holds the next prompt(s) to run, and only that — it gets wiped and r
 - **A session sharing a file with a parallel session must only ever append or fix its own entries — never remove something it didn't write because it looks unfamiliar or out of scope.** Real incident, 2026-08-28: Prompt 21's session found 6 legitimate links Prompt 20's session had added to a shared `No Deadline.md` (companies with no existing dossier, correctly out of Prompt 21's own 320-dossier scope) and deleted them as presumed noise during its own cleanup pass. Caught and restored by the coordinating session, not by either prompt session itself. If something in a shared file looks wrong, say so in the report — don't unilaterally remove it.
 - **When a follow-up genuinely needs the same deep context a session just built (e.g., re-checking its own just-completed work), tell the human to continue in the SAME session, not paste into a fresh one.** Re-deriving 320 already-read dossiers from scratch in a new session would re-burn the exact token cost being complained about — this project's usual "fresh session per prompt" default is a good default, not an absolute rule, when continuity itself is the point.
 
-# Codebase
-### Prompt 26: Batch Program + Contact + Tracker Notes — Deadline-Priority Batch A (8 dossiers)
-**Fresh session**, `gupta-builds/internship-research-loop`. Read `CLAUDE.md` first, then invoke the `/promote-dossier` skill for each dossier below in order — don't build these notes freehand, the skill already encodes the real template contract, the contact-researcher agent invocation, and (deliberately, by this project's own design) a human consent gate before each write. Confirm the Jarvis vault is reachable (sibling checkout or `jarvis` MCP tools) before starting, per the skill's own prerequisite.
+# Vault
+## Numbering Reset, 2026-09-04
+Prompts 1-27 (the discovery-build and deadline/promotion-sweep era) are done and archived in full in [[20_Progress/Internship/Building System/Runs/Claude Code Prompts — Archive]] — nothing deleted, nothing lost. This file restarts numbering at Prompt 1 for the next era: discovery is currently paused (`run.yml` disabled_manually, human's deliberate choice, 2026-08-30) with its write-starvation fix shipped and unexercised; promotion has real traction (14 total promotions, 0 Applying notes); the goal now is throughput (5 dossiers/hour once discovery resumes), a cleaner test suite, reconciled documentation, and a public v0. Full context, ground truth, and the open questions this reset depends on: [[20_Progress/Internship/Building System/Runs/Prompt 1 Reboot — Building System Refresh Session (2026-09-04)]].
 
-```
-**Context — real, verified 2026-08-30, don't re-derive:** These 8 dossiers are drawn directly from `Tracker/Deadline Tracker.md`'s real, already-confirmed deadlines (built across Prompts 21/23/25's deadline sweep) — every date below is a real deadline read from the dossier's own posting text or a live confirmation, not estimated. Ordered by deadline, most urgent first:
-
-1. `List/Dossiers/1 - AI & ML/Data Science Machine Learning Intern - Castleton Commodities International.md` — deadline 2026-09-01
-2. `List/Dossiers/2 - Fullstack/Full-Stack Software Engineer Intern - Castleton Commodities International.md` — deadline 2026-09-01
-3. `List/Dossiers/3 - CyS & Finance/Data Intern - Key Technology & Services - Data Track - KeyBank.md` — deadline 2026-09-04
-4. `List/Dossiers/1 - AI & ML/Data Engineer Intern - Data - LPL Financial Holdings.md` — priority deadline 2026-09-21
-5. `List/Dossiers/1 - AI & ML/AI and Data Engineering Summer Scholar Intern - Government & Public Services - Deloitte.md` — deadline 2026-09-24
-6. `List/Dossiers/1 - AI & ML/A.I. Developer Co-Op (Boston, MA) - Manhattan Associates.md` — deadline 2026-09-30
-7. `List/Dossiers/Other/Data Analytics Intern - Global Servicing - Financial Crimes Risk & Controls - American Express.md` — deadline 2026-10-01
-8. `List/Dossiers/1 - AI & ML/Software Engineer Co-Op - Enterprise Finance Applications - Summer 2027 - Fifth Third Bank.md` — deadline 2026-10-09
-
-**Efficiency note, real: two of these (#1/#2) share a company (Castleton Commodities International).** Do the real contact-research pass once per company where possible and reuse it across that company's dossiers — don't pay for duplicate research on the same employer's recruiting org.
-
-**Scope — this builds Program + Contact + Tracker notes only (Internship Pipeline.md's Screen→Commit step), not further.** Reach Out and Apply are the human's own next actions once these notes exist — don't attempt to draft outreach messages or submit anything on an external site as part of this prompt.
-
-**Discipline:** real research only, no fabricated fields (the contact-researcher agent already refuses to fabricate — trust that, don't override it under time pressure). The skill's consent gate is deliberate — go through it for each dossier, don't look for a way around it.
-
-### Report back
-Per dossier: Program note created (Serious/ or Considering/, with your reasoning), Contact note created (or "genuinely nothing found," which is a valid, honest outcome), Tracker note created. Anything that hit a real blocker (dead posting, no reachable contact signal at all) — say so plainly, don't force a fabricated note through.
-```
-
-### Prompt 27: Batch Program + Contact + Tracker Notes — Deadline-Priority Batch B (7 dossiers)
-**Fresh session**, `gupta-builds/internship-research-loop`. Runs in parallel with Prompt 26 in a separate terminal. Same setup: read `CLAUDE.md`, confirm vault reachability, invoke `/promote-dossier` per dossier, same consent-gate discipline as Prompt 26 — don't duplicate that context here, it applies identically.
-
-```
-**The other half of the same real, deadline-ordered list** (round-robin split with Prompt 26 so both sessions cover the full urgency range, not front-loaded/back-loaded):
-
-1. `List/Dossiers/2 - Fullstack/Data Engineering Intern - Castleton Commodities International.md` — deadline 2026-09-01
-2. `List/Dossiers/1 - AI & ML/Analytics and Quantitative Modeling Intern - Analytics & Quantitative Modeling - KeyBank.md` — deadline 2026-09-04
-3. `List/Dossiers/1 - AI & ML/Machine Learning Intern - OpRegen Machine Learning - Genentech.md` — deadline 2026-09-08
-4. `List/Dossiers/1 - AI & ML/Software Engineer Intern - LPL Financial Holdings.md` — priority deadline 2026-09-21
-5. `List/Dossiers/Other/Technology, Operations, Digital, and Data Analytics Intern - Regions Bank.md` — deadline 2026-09-25
-6. `List/Dossiers/3 - CyS & Finance/Infrastructure Engineer Intern [2027 Intern Program] - DTCC.md` — deadline 2026-10-01
-7. `List/Dossiers/Other/Application Engineer Co-opIntern - PCS - GE Vernova.md` — deadline 2026-10-02
-
-**Efficiency note, real: two of these (#1 here, plus #3 in Prompt 26's list) share Castleton Commodities International, and #4 here shares LPL Financial with #4 in Prompt 26's list.** These are running in two different sessions, so you can't literally reuse the other session's research — but check whether either company's contact/program info is already sitting in a `Considering/`/`Serious/` note or a Contact note from prior work before re-researching from zero.
-
-Same scope boundary, same discipline, same report-back shape as Prompt 26 — see that prompt's text for the full detail, it applies identically here.
-```
+### Prompt 1 — Building System Refresh (Tasks A/B/E runnable now; C/D pending)
+See [[20_Progress/Internship/Building System/Runs/Prompt 1 Reboot — Building System Refresh Session (2026-09-04)]] for the full prompt — ground truth, non-negotiable rules, and Task A through E. **Do not run Tasks C or D until their `[PLACEHOLDER]`s in that note are resolved.** Task A is a status check only — re-enabling `run.yml` is explicitly reserved for the human and is not part of this or any prompt until said so directly.
 

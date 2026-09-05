@@ -8,8 +8,8 @@ tags:
   - internship
   - outreach
 notes:
-  - "[[30_Order/Workflows/Internship Pipeline]]"
-next: "Add a template every time a real draft gets a response"
+  - "[[Internship Pipeline]]"
+next: Add a template every time a real draft gets a response
 ---
 # Mimic
 ==Reusable message drafts by scenario. Every Contact note's Current Draft section starts here, then gets edited until it sounds like you, not the template.== This is a template library, not a contact — it earns new entries only from drafts that actually got a response, not speculation.

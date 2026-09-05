@@ -7300,10 +7300,10 @@ next: "Prompt 4 ran and was code-reviewed 2026-07-30 (two real gaps found). Prom
 updated: 2026-08-22
 related_progress:
   - "[[Internships Hub]]"
-  - "[[30_Order/Workflows/Internship Pipeline]]"
+  - "[[Internship Pipeline]]"
   - "[[Source of Truth]]"
   - "[[20_Progress/Internship/Building System/Research Loop - Improvement Plan]]"
-  - "[[30_Order/Standards/Internship Notes Standard]]"
+  - "[[Internship Notes Standard]]"
 tags:
   - internship
   - career

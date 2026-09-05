@@ -19,7 +19,7 @@ tags:
 next: "Apply before the 2026-10-01 deadline"
 ---
 # Data Analytics Intern (Global Servicing, Financial Crimes Risk & Controls) — American Express
-The dated index for this internship — source of truth for "where does this stand" until an Applying note exists (see [[30_Order/Workflows/Internship Pipeline]] Step 8).
+The dated index for this internship — source of truth for "where does this stand" until an Applying note exists (see [[Internship Pipeline]] Step 8).
 ## Timeline
 - **Noted:** 2026-08-18
 - **Researched:** 2026-08-31

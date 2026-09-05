@@ -10,7 +10,7 @@ tags:
   - dashboard
 notes:
   - "[[Internships Hub]]"
-  - "[[30_Order/Workflows/Internship Pipeline]]"
+  - "[[Internship Pipeline]]"
   - "[[Source of Truth]]"
 ---
 # 📊 Internship Dashboard — The Whole Process

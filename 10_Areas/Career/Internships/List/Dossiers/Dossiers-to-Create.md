@@ -2,6 +2,7 @@
 type: evergreen
 status: active
 created: 2026-07-26
+updated: 2026-09-04
 tags:
   - internship
   - process
@@ -10,6 +11,7 @@ notes:
   - "[[Source of Truth]]"
   - "[[20_Progress/Internship/Building System/Research Loop - Improvement Plan]]"
   - "[[Dossiers MOC]]"
+  - "[[Internship Notes Standard]]"
 next: "[[20_Progress/Internship/Building System/Claude Code Prompts]] for the priority-classification build that sorts these into subfolders."
 ---
 # Dossiers — How Notes Get Created Here
@@ -19,7 +21,9 @@ next: "[[20_Progress/Internship/Building System/Claude Code Prompts]] for the pr
 2. **CS/software relevance** — a new hard rule: the posting has to be genuinely software engineering at its core. Adjacent fields (hardware, robotics, astrophysics, space, firmware) aren't auto-excluded, but they only pass if the specific posting's content shows real software/CS relevance a real fit — not just adjacency. Anything that isn't software engineering at all (analyst, risk, tax, sports-performance-analytics roles) is rejected outright, before it reaches step 3 — it does not land in `Other` either.
 3. **Priority classification** — every survivor gets sorted into exactly one subfolder: `1 - AI & ML/`, `2 - Fullstack/`, `3 - CyS & Finance/`, or `Other/` (real software engineering that just isn't one of the three named niches — same research rigor applies to `Other`, it is not a lesser bucket). Each dossier carries a short callout at the top stating which real signal from the posting drove the classification — never a numeric "Priority N" label; the folder location already encodes the category.
 ## What Does Not Belong Here
-A lead you found yourself — career fair, LinkedIn, a referral — never becomes a dossier. It goes straight into `Programs/Considering/` (or `Serious/`) per [[30_Order/Workflows/Internship Pipeline]] Step 1, skipping this folder entirely.
+A lead you found yourself — career fair, LinkedIn, a referral — never becomes a dossier. It goes straight into `Programs/Considering/` (or `Serious/`) per [[Internship Pipeline]] Step 1, skipping this folder entirely.
+## After The Gate — Screen Gets Recorded Here Too
+Once a dossier clears the eligibility/relevance/classification gates above, [[Internship Pipeline]] Step 2's fit test (goal-push, personal fit, contact-reachability noted-not-gated) still has to happen before promotion — and per [[Internship Notes Standard]] §7, that decision is written back onto the dossier itself (`screened_date`/`screened_decision`/`screened_reason`), not left as an unrecorded mental check. This isn't automated by the loop — it's a human (or Claude, assisting one) recording a real Screen call at the moment it happens, same footing as the gate fields above even though a different party writes them.
 ## What Good Dossier Content Looks Like
 - **Real posting substance, not chrome.** Role summary, requirements, comp if stated — verbatim/structural extraction, trimmed of nav/form/EEO boilerplate. If a fetch comes back thin (form-only page, JS-rendered content that didn't load), that's a real extraction gap to flag, not something to pad with invented detail.
 - **The classification callout cites a real signal**, quoted or paraphrased from the actual posting or company description — never a generic "seems AI-related" guess. If you can't point to the sentence that justified the bucket, the classification is wrong or the content is too thin to classify yet.

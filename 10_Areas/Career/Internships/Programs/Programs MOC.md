@@ -7,7 +7,7 @@ tags:
   - moc
 notes:
   - "[[10_Areas/Career/Internships/Programs/Programs-to-Create]]"
-  - "[[30_Order/Workflows/Internship Pipeline]]"
+  - "[[Internship Pipeline]]"
   - "[[10_Areas/Career/Internships/Tracker/Internship - Dashboard]]"
 ---
 # Programs — Map of Content

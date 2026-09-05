@@ -3,12 +3,12 @@ type: dashboard
 status: active
 created: 2026-07-26
 notes:
-  - "[[30_Order/Workflows/Internship Pipeline]]"
+  - "[[Internship Pipeline]]"
   - "[[Internships Hub]]"
 tags:
   - internship
   - habit
-next: "Tick a box today."
+next: Tick a box today.
 ---
 # Habit Tracker
 ## Overview

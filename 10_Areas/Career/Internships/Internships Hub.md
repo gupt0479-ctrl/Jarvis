@@ -8,14 +8,14 @@ tags:
   - career
   - internship
 notes:
-  - "[[30_Order/Workflows/Internship Pipeline]]"
+  - "[[Internship Pipeline]]"
   - "[[10_Areas/Career/Internships/README]]"
   - "[[System - Build Log]]"
   - "[[Source of Truth]]"
-next: "Confirm the live code fires correctly on a real hourly run, then build the dossier count-limit throttle — see System - Build Log."
+next: Confirm the live code fires correctly on a real hourly run, then build the dossier count-limit throttle — see System - Build Log.
 ---
 # Internships Hub
-==The status page for the whole loop — is it actually working, what's broken, what's lacking, what's the habit score, is the rulebook actually being followed.== [[30_Order/Workflows/Internship Pipeline]] is the operating procedure; [[System - Build Log]] is the full history; this note is the current-state dashboard for the questions that matter most right now.
+==The status page for the whole loop — is it actually working, what's broken, what's lacking, what's the habit score, is the rulebook actually being followed.== [[Internship Pipeline]] is the operating procedure; [[System - Build Log]] is the full history; this note is the current-state dashboard for the questions that matter most right now.
 ## Is It Working?
 **Discovery: yes, verified repeatedly by fresh sessions with no stake in the claims.** Six sources, four hard gates, priority classification — independently re-checked, not just self-reported. **Promotion onward: proven once, manually.** The Appian promotion (2026-07-26) is the first time this pipeline has ever gone from dossier to real Program + Contact + Tracker notes — six days after that gap was first named. One real promotion is evidence the design works, not evidence the loop runs itself yet.
 ## What's Broken Right Now

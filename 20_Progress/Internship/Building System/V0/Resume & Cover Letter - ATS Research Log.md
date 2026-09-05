@@ -12,12 +12,12 @@ tags:
 notes:
   - "[[Resume Alteration]]"
   - "[[Cover Letter Alteration]]"
-  - "[[30_Order/Standards/Resume Alteration Standard]]"
-  - "[[30_Order/Standards/Cover Letter Alteration Standard]]"
+  - "[[Resume Alteration Standard]]"
+  - "[[Cover Letter Alteration Standard]]"
 next: "Session 2 — see #Session 2 Task List at bottom. Don't re-search what's already logged here; extend it."
 ---
 # Resume & Cover Letter — ATS Research Log
-==Running, cross-session log of every external resume/cover-letter/ATS resource found for the goal in [[30_Order/Standards/Resume Alteration Standard]] and [[30_Order/Standards/Cover Letter Alteration Standard]]: writing application documents that pass automated screening at the specific ATS platforms and companies this loop's own dossiers come from, with zero fabricated citations.== Each session appends a dated section below — never overwrites a prior session's findings. Classification follows the Standards' own §4 source-register tiers, extended with one clarifying tier this research surfaced a real need for.
+==Running, cross-session log of every external resume/cover-letter/ATS resource found for the goal in [[Resume Alteration Standard]] and [[Cover Letter Alteration Standard]]: writing application documents that pass automated screening at the specific ATS platforms and companies this loop's own dossiers come from, with zero fabricated citations.== Each session appends a dated section below — never overwrites a prior session's findings. Classification follows the Standards' own §4 source-register tiers, extended with one clarifying tier this research surfaced a real need for.
 
 ## Source Tiers (extends the Standards' §4 definitions)
 - **(a) Primary/official** — the company's or ATS vendor's own published page/doc/video, fetched and read directly, not paraphrased by a third party.
@@ -71,14 +71,14 @@ Cross-checked four independent (c-1)/(c-2) sources plus one indirect SEO-industr
 - **askcruit.com's specific number worth logging**: candidates who use the exact job title naturally on their resume are, per Jobscan's own research (cited by askcruit, not independently verified here), 10.6x more likely to get an interview than those who omit it or force it in unnaturally.
 
 ### F. Cover letter length — convergent answer
-Five sources (Michigan (b), UT Dallas (b), Penn State (b), Indeed, Resume.io) independently converge: **one page or less, 250–400 words, 3–4 paragraphs**, with entry-level/internship candidates trending toward the 200–300 end. This matches — and now sources — the 250–350 word default already written into [[30_Order/Standards/Cover Letter Alteration Standard]] §3 before this research pass; that section's number didn't need correcting, it just didn't have a citation yet.
+Five sources (Michigan (b), UT Dallas (b), Penn State (b), Indeed, Resume.io) independently converge: **one page or less, 250–400 words, 3–4 paragraphs**, with entry-level/internship candidates trending toward the 200–300 end. This matches — and now sources — the 250–350 word default already written into [[Cover Letter Alteration Standard]] §3 before this research pass; that section's number didn't need correcting, it just didn't have a citation yet.
 
 ### G. Niche/quant-firm-specific guidance (Jane Street, Citadel, HRT, Two Sigma) — real gap, not resolved this session
 Searched directly since these are named target programs in [[Internship Tracking Dashboard — 2027 Calendar, Programs, & Application Pipeline]]. **Found nothing at (a) or (b) tier** — every quant-resume source this session found (quantvault.org, quantt.co.uk, openquant.co, profileelevate.com) is (c-2): third-party quant-career blogs, none citing or linking to Jane Street/Citadel/HRT/Two Sigma's own published application guidance. Recurring claims worth testing against a real (a) source if one turns up: one-page LaTeX resume as "informal standard" in quant finance (Jake's Resume / moderncv templates named repeatedly), GPA inclusion threshold quoted higher than general tech (~3.7 vs. ~3.5), rolling review favoring early submission. **Do not treat any of this as verified company policy** — it's pattern-matched convention from candidates and advisory sites, not from the firms themselves. Real target for Session 2: check each firm's own careers/FAQ page directly (jane-street.com, citadel.com, hudsonrivertrading.com, twosigma.com) before relying further on these.
 
 ## What This Changes In The Standards (actioned same session, cross-reference)
-- [[30_Order/Standards/Resume Alteration Standard]] §4's register updated with the Greenhouse/Ashby/Google/Amazon (a) citations above, replacing the "only (c) material exists" statement that's now out of date. A new §8 folds the distilled format/keyword baseline (Section A/E above) into an actionable checklist.
-- [[30_Order/Standards/Cover Letter Alteration Standard]] gets a new §7 citing the (b) cover-letter-length/format sources above.
+- [[Resume Alteration Standard]] §4's register updated with the Greenhouse/Ashby/Google/Amazon (a) citations above, replacing the "only (c) material exists" statement that's now out of date. A new §8 folds the distilled format/keyword baseline (Section A/E above) into an actionable checklist.
+- [[Cover Letter Alteration Standard]] gets a new §7 citing the (b) cover-letter-length/format sources above.
 
 ## Session 2 Task List — read this before searching, don't re-run what's already answered above
 1. **Lever's own candidate-facing upload/parsing docs** — not checked this session; Lever is a live source per [[20_Progress/Internship/Building System/Research Loop - Resources]]. Check `help.lever.co` or Lever's own developer/candidate docs directly, same pattern as the Greenhouse/Ashby checks above.
@@ -132,5 +132,5 @@ Searched directly since these are named target programs in [[Internship Tracking
 - No target-company cover-letter guidance was found for Lever, Workday, Jane Street, Citadel, HRT, Two Sigma, Microsoft Explore, Google ASDI, LinkedIn First Play, Bloomberg, MLH Fellowship, or NASA OSTEM. For those programs, no cover letter should be presumed required; follow the specific live posting/application instead.
 
 ### What This Changes In The Standards (actioned this session, cross-reference)
-- [[30_Order/Standards/Resume Alteration Standard]] §4 now records Lever, Workday (with its non-campus limitation), and the strongest named-program application sources. §8 removes the unsupported presentation of a 2–4 keyword count and any claim that Workday requires exact standard headings/dates; it retains only vendor-documented parsing/matching facts.
-- [[30_Order/Standards/Cover Letter Alteration Standard]] §7 now records Google's posting-specific apprenticeship cover-letter requirement and Capital One's company-published, non-recruiting-specific cover-letter guidance. The prior statement that no (a) source exists is no longer true, but no universal company requirement is inferred.
+- [[Resume Alteration Standard]] §4 now records Lever, Workday (with its non-campus limitation), and the strongest named-program application sources. §8 removes the unsupported presentation of a 2–4 keyword count and any claim that Workday requires exact standard headings/dates; it retains only vendor-documented parsing/matching facts.
+- [[Cover Letter Alteration Standard]] §7 now records Google's posting-specific apprenticeship cover-letter requirement and Capital One's company-published, non-recruiting-specific cover-letter guidance. The prior statement that no (a) source exists is no longer true, but no universal company requirement is inferred.

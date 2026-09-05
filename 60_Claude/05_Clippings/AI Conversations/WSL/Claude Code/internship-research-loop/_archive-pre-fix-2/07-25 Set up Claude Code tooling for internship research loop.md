@@ -705,7 +705,7 @@ index 56dc587..2b6e5c0 100644
  ---
  {{ frontmatter_yaml }}---
 -# {{ company }} — {{ title }}
--{% if posting_content %}Auto-discovered {{ date_found }} from {{ source }}. Posting content below fetched at discovery (verbatim extraction, trimmed); company/contact enrichment happens on promotion, per [[30_Order/Workflows/Internship Pipeline]].
+-{% if posting_content %}Auto-discovered {{ date_found }} from {{ source }}. Posting content below fetched at discovery (verbatim extraction, trimmed); company/contact enrichment happens on promotion, per [[Internship Pipeline]].
 +# {{ title }}
 +{% if posting_content -%}
 +Found {{ date_found }} via {{ source }}.
@@ -714,7 +714,7 @@ index 56dc587..2b6e5c0 100644
 +{% endif -%}
  ## Posting (fetched {{ date_found }})
  {{ posting_content }}
--{%- else %}Auto-discovered {{ date_found }} from {{ source }}. No enrichment yet — company/contact research happens on promotion, per [[30_Order/Workflows/Internship Pipeline]].
+-{%- else %}Auto-discovered {{ date_found }} from {{ source }}. No enrichment yet — company/contact research happens on promotion, per [[Internship Pipeline]].
 +{%- else -%}
 +Found {{ date_found }} via {{ source }}. No posting content fetched.
 +{% if classification_callout -%}
@@ -3184,7 +3184,7 @@ next: "[[20_Progress/Internship/Building System/Claude Code Prompts]] for the pr
 2. **CS/software relevance** — a new hard rule: the posting has to be genuinely software engineering at its core. Adjacent fields (hardware, robotics, astrophysics, space, firmware) aren't auto-excluded, but they only pass if the specific posting's content shows real software/CS relevance a real fit — not just adjacency. Anything that isn't software engineering at all (analyst, risk, tax, sports-performance-analytics roles) is rejected outright, before it reaches step 3 — it does not land in `Other` either.
 3. **Priority classification** — every survivor gets sorted into exactly one subfolder: `1 - AI & ML/`, `2 - Fullstack/`, `3 - CyS & Finance/`, or `Other/` (real software engineering that just isn't one of the three named niches — same research rigor applies to `Other`, it is not a lesser bucket). Each dossier carries a short callout at the top stating which real signal from the posting drove the classification — never a numeric "Priority N" label; the folder location already encodes the category.
 ## What Does Not Belong Here
-A lead you found yourself — career fair, LinkedIn, a referral — never becomes a dossier. It goes straight into `Programs/Considering/` (or `Serious/`) per [[30_Order/Workflows/Internship Pipeline]] Step 1, skipping this folder entirely.
+A lead you found yourself — career fair, LinkedIn, a referral — never becomes a dossier. It goes straight into `Programs/Considering/` (or `Serious/`) per [[Internship Pipeline]] Step 1, skipping this folder entirely.
 ## What Good Dossier Content Looks Like
 - **Real posting substance, not chrome.** Role summary, requirements, comp if stated — verbatim/structural extraction, trimmed of nav/form/EEO boilerplate. If a fetch comes back thin (form-only page, JS-rendered content that didn't load), that's a real extraction gap to flag, not something to pad with invented detail.
 - **The classification callout cites a real signal**, quoted or paraphrased from the actual posting or company description — never a generic "seems AI-related" guess. If you can't point to the sentence that justified the bucket, the classification is wrong or the content is too thin to classify yet.
@@ -3216,7 +3216,7 @@ tags:
   - moc
 notes:
   - "[[10_Areas/Career/Internships/Programs/Programs-to-Create]]"
-  - "[[30_Order/Workflows/Internship Pipeline]]"
+  - "[[Internship Pipeline]]"
   - "[[10_Areas/Career/Internships/Tracker/Internship - Dashboard]]"
 ---
 # Programs — Map of Content
@@ -3272,7 +3272,7 @@ next: "The 2026-07-26 code (persona config, CS-relevance gate, priority classifi
 ## What This System Is
 Two halves, deliberately different in rigor. **Discovery** is a GitHub Actions workflow (`gupta-builds/internship-research-loop`) that polls eight internship-listing sources hourly, filters through a zero-Claude/Anthropic-LLM deterministic gate, and writes survivors into `10_Areas/Career/Internships/List/Dossiers/` — mechanical, unattended, cheap by design. **Promotion onward** is entirely manual, human-judgment-driven, and stays that way on purpose: a dossier becoming a Program note, a Program note turning into real outreach, an outreach turning into a submitted application — none of that is automated, none of it should be.
 ## The End Goal, Stated Plainly
-A real Summer 2027, Winter 2027 (Dec-Jan), or lower-priority Spring 2027 SWE/AI internship, open in the US and OPT-eligible, reaches this vault within an hour of going live anywhere it's discoverable — already carrying enough real content that deciding whether to pursue it takes 60 seconds, not a webpage visit. **A dossier landing in `List/Dossiers/` is not the finish line.** The finish line is a submitted application, and the loop only earns its cost once dossiers are actually promoted through [[30_Order/Workflows/Internship Pipeline]] into real Program notes, real contact research, and real outreach. The success metric is applications submitted per week — not dossiers written, not tests passing, not folders looking tidy.
+A real Summer 2027, Winter 2027 (Dec-Jan), or lower-priority Spring 2027 SWE/AI internship, open in the US and OPT-eligible, reaches this vault within an hour of going live anywhere it's discoverable — already carrying enough real content that deciding whether to pursue it takes 60 seconds, not a webpage visit. **A dossier landing in `List/Dossiers/` is not the finish line.** The finish line is a submitted application, and the loop only earns its cost once dossiers are actually promoted through [[Internship Pipeline]] into real Program notes, real contact research, and real outreach. The success metric is applications submitted per week — not dossiers written, not tests passing, not folders looking tidy.
 ## The Four Hard Gates — What Has To Be True Before A Dossier Exists
 All four share one design principle, applied consistently since the very first rule (`locations_allow`, Phase 2): **permissive by default, exclude only on an explicit negative signal.** A false exclusion silently loses a real opportunity with nothing to show for it; a false inclusion costs one human screening read. That asymmetry is why every rule below errs toward keeping, not discarding, when a signal is ambiguous.
 1. **Timing** — `terms: ["Summer 2027", "Winter 2027", "Spring 2027"]` in `core/profile.yaml`. Summer 2027 and Winter 2027 (genuinely Dec 2026-Jan 2027, not the full "Winter" label bucket) are equally high priority; Spring 2027 is wanted but explicitly lower-weighted (`terms_weight`), never a second pass/fail gate.
@@ -3437,7 +3437,7 @@ Per [[20_Progress/Internship/Building System/Source of Truth]] and [[10_Areas/Ca
   + # Dossiers — Map of Content
 ==Everything currently in `List/Dossiers/`, live, by priority folder.== See [[10_Areas/Career/Internships/List/Dossiers/Dossiers-to-Create]] for the gate that gets a posting here at all. Nothing here is hand-edited into existence — this note only reads what the loop already wrote.
 ## ⚠️ Capacity Notification
-Live-computed, not code-maintained — this section reads the real folder counts every time this note renders, so a bucket crossing its threshold shows up here without anyone having to push a change. See [[30_Order/Standards/Internship Notes Standard]] §5: crossing 50 is a notification, never a silent write-refusal.
+Live-computed, not code-maintained — this section reads the real folder counts every time this note renders, so a bucket crossing its threshold shows up here without anyone having to push a change. See [[Internship Notes Standard]] §5: crossing 50 is a notification, never a silent write-refusal.
 ```dataviewjs
 const buckets = ["1 - AI & ML", "2 - Fullstack", "3 - CyS & Finance", "Other"];
 const root = "10_Areas/Career/Internships/List/Dossiers";
@@ -3593,10 +3593,10 @@ next: "Get Prompt 1-3's code (persona config, CS-relevance gate, priority classi
 updated: 2026-07-29
 related_progress:
   - "[[Internships Hub]]"
-  - "[[30_Order/Workflows/Internship Pipeline]]"
+  - "[[Internship Pipeline]]"
   - "[[Source of Truth]]"
   - "[[20_Progress/Internship/Building System/Research Loop - Improvement Plan]]"
-  - "[[30_Order/Standards/Internship Notes Standard]]"
+  - "[[Internship Notes Standard]]"
 tags:
   - internship
   - career

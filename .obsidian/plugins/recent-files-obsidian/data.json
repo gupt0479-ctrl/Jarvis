@@ -1,6 +1,34 @@
 {
   "recentFiles": [
     {
+      "basename": "Main Log",
+      "path": "10_Areas/Career/Internships/Tracker/Main Log.md"
+    },
+    {
+      "basename": "Internship Tracker Standard",
+      "path": "30_Order/Standards/Internship/Internship Tracker Standard.md"
+    },
+    {
+      "basename": "Humanized Writing Standard",
+      "path": "30_Order/Standards/Humanized Writing Standard.md"
+    },
+    {
+      "basename": "Cover Letter Alteration Standard",
+      "path": "30_Order/Standards/Internship/Cover Letter Alteration Standard.md"
+    },
+    {
+      "basename": "Concept Standard",
+      "path": "30_Order/Standards/Concept Standard.md"
+    },
+    {
+      "basename": "Course Week Standard",
+      "path": "30_Order/Standards/Course Week Standard.md"
+    },
+    {
+      "basename": "2026-08-19-claude-code-second-brain-claudekit-jarvis-notes-sync — Summary",
+      "path": "60_Claude/07_AI_Information/AI Conversation - Summaries/Claude Code/2026-08-19-claude-code-second-brain-claudekit-jarvis-notes-sync — Summary.md"
+    },
+    {
       "basename": "Resume & Cover Letter - ATS Research Log",
       "path": "20_Progress/Internship/Building System/V0/Resume & Cover Letter - ATS Research Log.md"
     },
@@ -171,34 +199,6 @@
     {
       "basename": "SAO Grant Process",
       "path": "40_Resources/UMN/SAO/SAO Grant Process.md"
-    },
-    {
-      "basename": "Quizzes",
-      "path": "40_Resources/UMN/SAO/Training Course/Quizzes.md"
-    },
-    {
-      "basename": "Resources",
-      "path": "40_Resources/UMN/SAO/Training Course/Resources.md"
-    },
-    {
-      "basename": "After Your Event - The Post-Event Process",
-      "path": "40_Resources/UMN/SAO/Training Course/After Your Event - The Post-Event Process.md"
-    },
-    {
-      "basename": "Before You Host Your Event - Payment and Implementation",
-      "path": "40_Resources/UMN/SAO/Training Course/Before You Host Your Event - Payment and Implementation.md"
-    },
-    {
-      "basename": "Before You Host Your Event - Pre-Event Requirements",
-      "path": "40_Resources/UMN/SAO/Training Course/Before You Host Your Event - Pre-Event Requirements.md"
-    },
-    {
-      "basename": "Awarded Grant Requirements and Event Preparation - Overview",
-      "path": "40_Resources/UMN/SAO/Training Course/Awarded Grant Requirements and Event Preparation - Overview.md"
-    },
-    {
-      "basename": "Event Proposal - Questions 5, 6, &7",
-      "path": "40_Resources/UMN/SAO/Training Course/Event Proposal - Questions 5, 6, &7.md"
     }
   ],
   "omittedPaths": [],

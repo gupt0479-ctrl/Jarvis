@@ -8,13 +8,13 @@ tags:
   - internship
   - career
 notes:
-  - "[[30_Order/Workflows/Internship Pipeline]]"
+  - "[[Internship Pipeline]]"
   - "[[20_Progress/Internship/Building System/System - Build Log]]"
   - "[[Source of Truth]]"
 next:
 ---
 # Internship Pipeline - Design Rationale
-==Why each piece of [[30_Order/Workflows/Internship Pipeline]] is shaped the way it is, and exactly what has to be true for a real internship to move from one stage to the next.== The Pipeline note is the lean operating procedure — what to do. This note is *why*, and *under what condition each transition actually fires*. Read this when a step feels arbitrary or when deciding whether to bend a rule.
+==Why each piece of [[Internship Pipeline]] is shaped the way it is, and exactly what has to be true for a real internship to move from one stage to the next.== The Pipeline note is the lean operating procedure — what to do. This note is *why*, and *under what condition each transition actually fires*. Read this when a step feels arbitrary or when deciding whether to bend a rule.
 ## Why A Dossier Looks The Way It Does
 A dossier exists to make a 60-second decision possible without visiting the actual posting. That's the entire design constraint behind every choice in it:
 - **It's auto-generated, never hand-typed** — because the whole value of discovery is speed (within an hour of a posting going live) and volume (eight sources, hourly). A human writing dossiers by hand could never match either, so the loop does it, and a human only ever reads and judges.

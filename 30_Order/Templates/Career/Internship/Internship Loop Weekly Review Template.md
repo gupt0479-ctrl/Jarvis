@@ -25,7 +25,7 @@ tags:
 _Against [[20_Progress/Internship/Building System/Source of Truth|Source of Truth]]'s four hard gates: timing, US location, OPT, CS/software relevance._
 -
 ## Standard Conformance
-_Against [[30_Order/Standards/Internship Notes Standard|Internship Notes Standard]]: frontmatter fields, `notes:` interlink, `company/<slug>` tag, body dedup/structure, removal fields._
+_Against [[Internship Notes Standard|Internship Notes Standard]]: frontmatter fields, `notes:` interlink, `company/<slug>` tag, body dedup/structure, removal fields._
 -
 ## Priority Classification Accuracy
 -
@@ -36,7 +36,7 @@ _Against [[30_Order/Standards/Internship Notes Standard|Internship Notes Standar
 ## Findings
 -
 ## Decided Fixes
-_Only items with 100% clarity — see [[30_Order/Standards/Internship Loop Review Standard]]._
+_Only items with 100% clarity — see [[Internship Loop Review Standard]]._
 -
 ## Open Questions
 -

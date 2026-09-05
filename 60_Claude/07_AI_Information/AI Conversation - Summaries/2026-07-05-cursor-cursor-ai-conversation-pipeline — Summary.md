@@ -50,7 +50,7 @@ notes: []
 
 ## Related Notes
 - [[60_Claude/05_Clippings/AI Conversations/README]]
-- [[30_Order/Workflows/Conversation Capture]]
+- [[Conversation Capture]]
 
 ## Should Be Promoted?
 - decision: partial — promote the "one SQLite store, route by URI" fact into cursor-workflow README (done); defer hook/junction decisions until explicitly requested.

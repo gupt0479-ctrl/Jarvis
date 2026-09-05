@@ -9,15 +9,15 @@ tags:
   - standard
 notes:
   - "[[Humanizer]]"
-  - "[[30_Order/Standards/Resume Alteration Standard]]"
-  - "[[30_Order/Standards/Cover Letter Alteration Standard]]"
+  - "[[Resume Alteration Standard]]"
+  - "[[Cover Letter Alteration Standard]]"
 next:
 ---
 # Humanized Writing Standard
 ==The checklist behind [[Humanizer]]'s pass/fail gate.== This is the internship-application-specific instance of a planned global humanizer system — scoped narrowly so resume/cover-letter drafting isn't blocked waiting for that larger build. A starter checklist, not exhaustive; extend it as real drafts surface new patterns worth naming, the same way `internship-research-loop`'s own filter rules only ever get added against real observed data, not speculation.
 
 ## Scope
-Applies to every resume content plan and cover-letter draft before it's written as a DOCX (see [[30_Order/Workflows/Application Document Preparation]]'s `humanize` step). Checks tone and phrasing only — factual/evidence correctness is a separate, prior gate (Resume/Cover Letter Alteration Standard §2), already passed by the time a draft reaches this check.
+Applies to every resume content plan and cover-letter draft before it's written as a DOCX (see [[30_Order/Workflows/Internship/Application Document Preparation]]'s `humanize` step). Checks tone and phrasing only — factual/evidence correctness is a separate, prior gate (Resume/Cover Letter Alteration Standard §2), already passed by the time a draft reaches this check.
 
 ## Prohibited Patterns (Starter List)
 - **Generic filler claims** — "passionate about," "excited to," "dynamic team player," "results-driven," "hardworking" — vague enough to apply to any candidate, any role.

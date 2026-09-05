@@ -19,7 +19,7 @@ tags:
 next: "Apply before the 2026-09-01 11:59pm EST deadline"
 ---
 # Full-Stack Software Engineer Intern — Castleton Commodities International
-The dated index for this internship — source of truth for "where does this stand" until an Applying note exists (see [[30_Order/Workflows/Internship Pipeline]] Step 8).
+The dated index for this internship — source of truth for "where does this stand" until an Applying note exists (see [[Internship Pipeline]] Step 8).
 ## Timeline
 - **Noted:** 2026-07-22
 - **Researched:** 2026-08-30

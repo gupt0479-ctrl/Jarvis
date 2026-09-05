@@ -9,7 +9,7 @@ tags:
   - standard
 notes:
   - "[[Resume Alteration]]"
-  - "[[30_Order/Workflows/Application Document Preparation]]"
+  - "[[30_Order/Workflows/Internship/Application Document Preparation]]"
   - "[[30_Order/Standards/Humanized Writing Standard]]"
 next:
 ---
@@ -17,7 +17,7 @@ next:
 ==The enforceable rules behind [[Resume Alteration]].== That note is the narrative — why the system looks this way. This is the contract: what a future resume-alteration skill/agent, or a human doing the same work by hand, must actually do.
 
 ## Scope
-Governs `20_Progress/Internship/Resumes/Main Resume.md` / `.docx` / `.pdf` and every per-application tailored resume DOCX in that same folder. Does not govern cover letters (see [[30_Order/Standards/Cover Letter Alteration Standard]]) or the tone/style checklist itself (see [[30_Order/Standards/Humanized Writing Standard]]) — a resume can pass every rule below and still fail the Humanizer gate for how it reads.
+Governs `20_Progress/Internship/Resumes/Main Resume.md` / `.docx` / `.pdf` and every per-application tailored resume DOCX in that same folder. Does not govern cover letters (see [[Cover Letter Alteration Standard]]) or the tone/style checklist itself (see [[30_Order/Standards/Humanized Writing Standard]]) — a resume can pass every rule below and still fail the Humanizer gate for how it reads.
 
 ## 1. Source-of-Truth Hierarchy
 `Main Resume.md` is authoritative. `Main Resume.docx` and `Main Resume.pdf` are generated exports — never hand-edited independently of the Markdown. If the exports and the Markdown ever disagree, the Markdown wins and the exports get regenerated, not patched individually. A per-application resume derives its content only from `Main Resume.md`'s approved bullets plus anything explicitly approved as a one-off addition during that application's content-plan review (see §2) — it never introduces a claim that doesn't also belong, in principle, on the master.

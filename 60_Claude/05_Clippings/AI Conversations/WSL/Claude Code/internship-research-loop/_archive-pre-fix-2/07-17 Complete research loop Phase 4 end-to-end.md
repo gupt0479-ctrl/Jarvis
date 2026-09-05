@@ -192,7 +192,7 @@ tags:
   - auto-discovered
 ---
 # Fidelity Investments — Undergraduate Intern
-Auto-discovered 2026-07-17 from SimplifyJobs. No enrichment yet — company/contact research happens on promotion, per [[30_Order/Workflows/Internship Pipeline]].
+Auto-discovered 2026-07-17 from SimplifyJobs. No enrichment yet — company/contact research happens on promotion, per [[Internship Pipeline]].
   ```
 - `Bash` — `cd /tmp/claude-1001/-home-anant-gupta-projects-work-internship-research-loop/af1cc1c7-e783-48d6-9b5a-fa48ca0577ce/scratchpad && curl -sL https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json -o simplify.json && curl -sL https://raw.githubusercontent.com/Jose-Gael-Cruz-Lopez/underclassmen-opportunities/main/.github/scripts/listings.json -o josegael.json && wc -c simplify.json josegael.json`
   ```
@@ -908,7 +908,7 @@ tags:
 next: "Build the first Tailored/ cut for whichever program applies first"
 ---
 # Main Resume
-==The editable bullet bank — the PDF is the output format, this is the source of truth.== Per [[30_Order/Workflows/Internship Pipeline]], tailoring per application means rewriting the **top third** (Objective + which bullets lead), not the whole document. Each bullet below is tagged by theme so a tailored cut can pull the 3-5 that actually match a given JD's keywords.
+==The editable bullet bank — the PDF is the output format, this is the source of truth.== Per [[Internship Pipeline]], tailoring per application means rewriting the **top third** (Objective + which bullets lead), not the whole document. Each bullet below is tagged by theme so a tailored cut can pull the 3-5 that actually match a given JD's keywords.
 ## Header
 Anant Gupta — 1000 University Ave, Apt 413, SE, Minneapolis MN 55414 — linkedin.com/in/anant-gupta-7373b4367 — 763-485-3457 — gupt0479@umn.edu
 ## Education
@@ -1841,7 +1841,7 @@ Fetched both live `listings.json` feeds (14,900 + 112 entries, **1,216 distinct 
 *Dry-run against all 137 real dossiers:* 20 have no locations data (pass as unrestricted); **exactly 13 would reject**, every one via an explicit `canada`/`uk` denylist token (Kroll, CIBC, DRW, RTX — Toronto/Montreal/Mississauga; 3× Motorola — Ontario/Remote in Canada; Confluent + Crowdstrike — Remote in UK; Voleon, Marshall Wace, IMC — London; Scottish Water — Edinburgh/Glasgow), zero rejected for merely lacking a US signal.
 *Decision on record:* the 13 existing non-US dossiers are **permanently grandfathered** — the filter is Layer 2, prospective only; nothing in the automation re-evaluates, edits, or deletes an existing dossier, and their uids stay in `seen_ids.json` so they can't be rewritten. They sit at `status: unreviewed` for manual archiving or ignoring.
 ### Layer 5 — `enrich.py`: built and unit-tested, **never run live**
-Manual CLI run at Step 2 (Commit) of [[30_Order/Workflows/Internship Pipeline]] — deliberately **not** called from `run_pipeline.py`, never automatic on discovery-loop writes (the trigger design the scope decision flagged for explicit statement — stated, confirmed, built that way). Firecrawl scrape of company site/engineering blog (verbatim trimmed text, zero LLM calls), contacts from public sources only — GitHub org public members, blog author bylines, pattern-inferred `first.last@domain` validated against MX records via DNS-over-HTTPS (no new dependency; this machine has no `dig`). Appends a replaceable `## Enrichment` section to the dossier (re-runs replace, never duplicate). Hard line honored: no LinkedIn, no CAPTCHA bypass, no cookie injection, no stealth browser, no login walls.
+Manual CLI run at Step 2 (Commit) of [[Internship Pipeline]] — deliberately **not** called from `run_pipeline.py`, never automatic on discovery-loop writes (the trigger design the scope decision flagged for explicit statement — stated, confirmed, built that way). Firecrawl scrape of company site/engineering blog (verbatim trimmed text, zero LLM calls), contacts from public sources only — GitHub org public members, blog author bylines, pattern-inferred `first.last@domain` validated against MX records via DNS-over-HTTPS (no new dependency; this machine has no `dig`). Appends a replaceable `## Enrichment` section to the dossier (re-runs replace, never duplicate). Hard line honored: no LinkedIn, no CAPTCHA bypass, no cookie injection, no stealth browser, no login walls.
 > [!WARNING]
 > No `FIRECRAWL_API_KEY` exists anywhere in this environment (env, shell configs, repo secrets all checked) — the full path has **never executed end-to-end** and is not claimed as done. The script fails fast with a clear message until a key is exported. The keyless halves *were* verified live 2026-07-18: GitHub org discovery resolved Confluent → `confluentinc` with 5 real public members, `mx_ok('confluent.io')` → True, garbage domain → False, inference produced `ansh.jain@confluent.io`.
 ### Layer 6 — `grade_resume.py`: built, tested, run against a real JD
@@ -1932,7 +1932,7 @@ Root causes, not yet fixed in code — will recur without a pipeline change:
 4. No cross-source dedup — the same program can land as separate files from two sources (MLH Fellowship appeared via both zapplyjobs and JGCL).
 5. zapplyjobs should stop feeding this pipeline entirely per this session's decision.
 ## Phase 4 Scope Decision (2026-07-17)
-Reversed the plan's original "on-demand only" boundary for what counts as "finishing" this project — Layer 5 (company/contact enrichment) and Layer 6 (resume grader), previously scoped as separate future tools outside the automation, are now in scope to actually build. Trigger semantics are not reversed: Layer 5 stays promotion-triggered (a script run explicitly when a dossier is promoted through [[30_Order/Workflows/Internship Pipeline]]), not automatic on every dossier — this wasn't re-confirmed explicitly when the scope decision was made, flagged for the build prompt to state plainly rather than assume silently. PRD.md's own NEEDS WORK sections (Success Metrics, Risks) are explicitly a separate prompt, not folded into this one.
+Reversed the plan's original "on-demand only" boundary for what counts as "finishing" this project — Layer 5 (company/contact enrichment) and Layer 6 (resume grader), previously scoped as separate future tools outside the automation, are now in scope to actually build. Trigger semantics are not reversed: Layer 5 stays promotion-triggered (a script run explicitly when a dossier is promoted through [[Internship Pipeline]]), not automatic on every dossier — this wasn't re-confirmed explicitly when the scope decision was made, flagged for the build prompt to state plainly rather than assume silently. PRD.md's own NEEDS WORK sections (Success Metrics, Risks) are explicitly a separate prompt, not folded into this one.
 ## Phase 4 — Locations Filter, Enrichment, Resume Grader (2026-07-18)
 Built and verified 2026-07-18; everything below is from an evidence pass (fresh test runs, live dry-runs, real transcripts), not a build summary. ==Closes three of the five "What's Not Built" gaps: `locations_allow`, Layer 5 (built, not yet run live), Layer 6. The rollup and cadence gaps are time-gated, unchanged, with check dates below.== Test suite: **131/131 passing** (was 87 — +36 locations tests on verbatim live strings, +5 enrich, +3 grader). Shipped as commit `697c110` on master, pushed through `commit_and_push_with_retry()` — which did real work on the way out: rebased over `c31c51c`, that morning's automation commit, the exact two-writer race it was built for. CI (`test.yml`) green on the pushed commit.
 ### `locations_allow` — built from live data, live on the loop
@@ -1940,7 +1940,7 @@ Fetched both live `listings.json` feeds (14,900 + 112 entries, **1,216 distinct 
 *Dry-run against all 137 real dossiers:* 20 have no locations data (pass as unrestricted); **exactly 13 would reject**, every one via an explicit `canada`/`uk` denylist token (Kroll, CIBC, DRW, RTX — Toronto/Montreal/Mississauga; 3× Motorola — Ontario/Remote in Canada; Confluent + Crowdstrike — Remote in UK; Voleon, Marshall Wace, IMC — London; Scottish Water — Edinburgh/Glasgow), zero rejected for merely lacking a US signal.
 *Decision on record:* the 13 existing non-US dossiers are **permanently grandfathered** — the filter is Layer 2, prospective only; nothing in the automation re-evaluates, edits, or deletes an existing dossier, and their uids stay in `seen_ids.json` so they can't be rewritten. They sit at `status: unreviewed` for manual archiving or ignoring.
 ### Layer 5 — `enrich.py`: built and unit-tested, **never run live**
-Manual CLI run at Step 2 (Commit) of [[30_Order/Workflows/Internship Pipeline]] — deliberately **not** called from `run_pipeline.py`, never automatic on discovery-loop writes (the trigger design the scope decision flagged for explicit statement — stated, confirmed, built that way). Firecrawl scrape of company site/engineering blog (verbatim trimmed text, zero LLM calls), contacts from public sources only — GitHub org public members, blog author bylines, pattern-inferred `first.last@domain` validated against MX records via DNS-over-HTTPS (no new dependency; this machine has no `dig`). Appends a replaceable `## Enrichment` section to the dossier (re-runs replace, never duplicate). Hard line honored: no LinkedIn, no CAPTCHA bypass, no cookie injection, no stealth browser, no login walls.
+Manual CLI run at Step 2 (Commit) of [[Internship Pipeline]] — deliberately **not** called from `run_pipeline.py`, never automatic on discovery-loop writes (the trigger design the scope decision flagged for explicit statement — stated, confirmed, built that way). Firecrawl scrape of company site/engineering blog (verbatim trimmed text, zero LLM calls), contacts from public sources only — GitHub org public members, blog author bylines, pattern-inferred `first.last@domain` validated against MX records via DNS-over-HTTPS (no new dependency; this machine has no `dig`). Appends a replaceable `## Enrichment` section to the dossier (re-runs replace, never duplicate). Hard line honored: no LinkedIn, no CAPTCHA bypass, no cookie injection, no stealth browser, no login walls.
 > [!WARNING]
 > No `FIRECRAWL_API_KEY` exists anywhere in this environment (env, shell configs, repo secrets all checked) — the full path has **never executed end-to-end** and is not claimed as done. The script fails fast with a clear message until a key is exported. The keyless halves *were* verified live 2026-07-18: GitHub org discovery resolved Confluent → `confluentinc` with 5 real public members, `mx_ok('confluent.io')` → True, garbage domain → False, inference produced `ansh.jain@confluent.io`.
 ### Layer 6 — `grade_resume.py`: built, tested, run against a real JD
@@ -3617,7 +3617,7 @@ Root causes, not yet fixed in code — will recur without a pipeline change:
 4. No cross-source dedup — the same program can land as separate files from two sources (MLH Fellowship appeared via both zapplyjobs and JGCL).
 5. zapplyjobs should stop feeding this pipeline entirely per this session's decision.
 ## Phase 4 Scope Decision (2026-07-17)
-Reversed the plan's original "on-demand only" boundary for what counts as "finishing" this project — Layer 5 (company/contact enrichment) and Layer 6 (resume grader), previously scoped as separate future tools outside the automation, are now in scope to actually build. Trigger semantics are not reversed: Layer 5 stays promotion-triggered (a script run explicitly when a dossier is promoted through [[30_Order/Workflows/Internship Pipeline]]), not automatic on every dossier — this wasn't re-confirmed explicitly when the scope decision was made, flagged for the build prompt to state plainly rather than assume silently. PRD.md's own NEEDS WORK sections (Success Metrics, Risks) are explicitly a separate prompt, not folded into this one.
+Reversed the plan's original "on-demand only" boundary for what counts as "finishing" this project — Layer 5 (company/contact enrichment) and Layer 6 (resume grader), previously scoped as separate future tools outside the automation, are now in scope to actually build. Trigger semantics are not reversed: Layer 5 stays promotion-triggered (a script run explicitly when a dossier is promoted through [[Internship Pipeline]]), not automatic on every dossier — this wasn't re-confirmed explicitly when the scope decision was made, flagged for the build prompt to state plainly rather than assume silently. PRD.md's own NEEDS WORK sections (Success Metrics, Risks) are explicitly a separate prompt, not folded into this one.
 ## Phase 4 — Locations Filter, Enrichment, Resume Grader (2026-07-18)
 Built and verified 2026-07-18; everything below is from an evidence pass (fresh test runs, live dry-runs, real transcripts), not a build summary. ==Closes three of the five "What's Not Built" gaps: `locations_allow`, Layer 5 (built, not yet run live), Layer 6. The rollup and cadence gaps are time-gated, unchanged, with check dates below.== Test suite: **131/131 passing** (was 87 — +36 locations tests on verbatim live strings, +5 enrich, +3 grader). Shipped as commit `697c110` on master, pushed through `commit_and_push_with_retry()` — which did real work on the way out: rebased over `c31c51c`, that morning's automation commit, the exact two-writer race it was built for. CI (`test.yml`) green on the pushed commit.
 ### `locations_allow` — built from live data, live on the loop
@@ -3965,7 +3965,7 @@ export FIRECRAWL_API_KEY=fc-a310...
 ---
 {{ frontmatter_yaml }}---
 # {{ company }} — {{ title }}
-Auto-discovered {{ date_found }} from {{ source }}. No enrichment yet — company/contact research happens on promotion, per [[30_Order/Workflows/Internship Pipeline]].
+Auto-discovered {{ date_found }} from {{ source }}. No enrichment yet — company/contact research happens on promotion, per [[Internship Pipeline]].
 requests==2.34.2
 pyyaml==6.0.3
 pytest==9.1.1
@@ -5056,10 +5056,10 @@ def extract_content(markdown: str, limit: int = CONTENT_LIMIT) -> str:
 ---
 {{ frontmatter_yaml }}---
 # {{ company }} — {{ title }}
-{% if posting_content %}Auto-discovered {{ date_found }} from {{ source }}. Posting content below fetched at discovery (verbatim extraction, trimmed); company/contact enrichment happens on promotion, per [[30_Order/Workflows/Internship Pipeline]].
+{% if posting_content %}Auto-discovered {{ date_found }} from {{ source }}. Posting content below fetched at discovery (verbatim extraction, trimmed); company/contact enrichment happens on promotion, per [[Internship Pipeline]].
 ## Posting (fetched {{ date_found }})
 {{ posting_content }}
-{%- else %}Auto-discovered {{ date_found }} from {{ source }}. No enrichment yet — company/contact research happens on promotion, per [[30_Order/Workflows/Internship Pipeline]].
+{%- else %}Auto-discovered {{ date_found }} from {{ source }}. No enrichment yet — company/contact research happens on promotion, per [[Internship Pipeline]].
 {%- endif %}
 
   ```
@@ -5111,10 +5111,10 @@ def extract_content(markdown: str, limit: int = CONTENT_LIMIT) -> str:
 ---
 {{ frontmatter_yaml }}---
 # {{ company }} — {{ title }}
-{% if posting_content %}Auto-discovered {{ date_found }} from {{ source }}. Posting content below fetched at discovery (verbatim extraction, trimmed); company/contact enrichment happens on promotion, per [[30_Order/Workflows/Internship Pipeline]].
+{% if posting_content %}Auto-discovered {{ date_found }} from {{ source }}. Posting content below fetched at discovery (verbatim extraction, trimmed); company/contact enrichment happens on promotion, per [[Internship Pipeline]].
 ## Posting (fetched {{ date_found }})
 {{ posting_content }}
-{%- else %}Auto-discovered {{ date_found }} from {{ source }}. No enrichment yet — company/contact research happens on promotion, per [[30_Order/Workflows/Internship Pipeline]].
+{%- else %}Auto-discovered {{ date_found }} from {{ source }}. No enrichment yet — company/contact research happens on promotion, per [[Internship Pipeline]].
 {%- endif %}
 
   ```
@@ -5566,7 +5566,7 @@ created: 2025-10-30
 updated: 2026-07-18
 related_progress:
   - "[[20_Progress/Internship/Building System/Phases 1-3 Run]]"
-  - "[[30_Order/Workflows/Internship Pipeline]]"
+  - "[[Internship Pipeline]]"
 tags:
   - internship
   - opt
@@ -5610,7 +5610,7 @@ created: 2025-10-30
 updated: 2026-07-18
 related_progress:
   - "[[20_Progress/Internship/Building System/Phases 1-3 Run]]"
-  - "[[30_Order/Workflows/Internship Pipeline]]"
+  - "[[Internship Pipeline]]"
 tags:
   - internship
   - opt

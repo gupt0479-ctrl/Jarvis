@@ -3103,7 +3103,7 @@ done`
 ```
 === [REDACTED].md ===
 # Quadrillion � Software Engineering Intern
-Auto-discovered 2026-07-24 from SimplifyJobs. Posting content below fetched at discovery (verbatim extraction, trimmed); company/contact enrichment happens on promotion, per [[30_Order/Workflows/Internship Pipeline]].
+Auto-discovered 2026-07-24 from SimplifyJobs. Posting content below fetched at discovery (verbatim extraction, trimmed); company/contact enrichment happens on promotion, per[[Internship Pipeline]]].
 ## Posting (fetched 2026-07-24)
 # Software Engineering Intern (Summer 2027)
 ## Location
@@ -3947,7 +3947,7 @@ tags:
   - auto-discovered
 ---
 # The Trade Desk — 2027 North America Software Engineering Internship
-Auto-discovered 2026-07-25 from zshah101. No enrichment yet — company/contact research happens on promotion, per [[30_Order/Workflows/Internship Pipeline]].
+Auto-discovered 2026-07-25 from zshah101. No enrichment yet — company/contact research happens on promotion, per[[Internship Pipeline]]].
 ```
 - `Bash` -- `cd "D:/Users/_Anant/10_Areas/Documents/Jarvis/10_Areas/Career/Internships/List/Dossiers" && python -c "
 import re
@@ -5033,14 +5033,14 @@ tags:
   - career
   - internship
 notes:
-  - "[[30_Order/Workflows/Internship Pipeline]]"
+  - [[Internship Pipeline]]]"
   - "[[10_Areas/Career/Internships/README]]"
   - "[[System - Build Log]]"
   - "[[Source of Truth]]"
 next: "Get the 2026-07-26 code committed and pushed — see System - Build Log."
 ---
 # Internships Hub
-==The status page for the whole loop — is it actually working, what's broken, what's lacking, what's the habit score, is the rulebook actually being followed.== [[30_Order/Workflows/Internship Pipeline]] is the operating procedure; [[System - Build Log]] is the full history; this note is the current-state dashboard for the questions that matter most right now.
+==The status page for the whole loop — is it actually working, what's broken, what's lacking, what's the habit score, is the rulebook actually being followed.==[[Internship Pipeline]]] is the operating procedure; [[System - Build Log]] is the full history; this note is the current-state dashboard for the questions that matter most right now.
 ## Is It Working?
 **Discovery: yes, verified repeatedly by fresh sessions with no stake in the claims.** Six sources, four hard gates, priority classification — independently re-checked, not just self-reported. **Promotion onward: proven once, manually.** The Appian promotion (2026-07-26) is the first time this pipeline has ever gone from dossier to real Program + Contact + Tracker notes — six days after that gap was first named. One real promotion is evidence the design works, not evidence the loop runs itself yet.
 ## What's Broken Right Now
@@ -5445,7 +5445,7 @@ WHERE date_found >= date(this.month + "-01") AND date_found < date(this.month + 
 SORT date_found DESC
 ```
 ## Promotion Rule
-A dossier's `status` moves from `unreviewed` to a link (`promoted: "[[Programs/Company - Role]]"`) only when you decide to seriously pursue it — see [[30_Order/Workflows/Internship Pipeline]]. Promotion creates a Programs note (static research) and an Applying note (live status) together.
+A dossier's `status` moves from `unreviewed` to a link (`promoted: "[[Programs/Company - Role]]"`) only when you decide to seriously pursue it — see[[Internship Pipeline]]]. Promotion creates a Programs note (static research) and an Applying note (live status) together.
 + # 2026-07 Found
 ==Generated view, not hand-typed.== Every row is a dossier file in `List/Dossiers/` (recursively, across all four priority subfolders), written by the research loop. This note tracks not just what was found this month, but how much of it actually turned into something — the real quality signal for the discovery half of the loop.
 ## Found And Used — Linked Into The Pipeline
@@ -5484,7 +5484,7 @@ GROUP BY true
 > [!NOTE]
 > Watch this ratio over time, not any single month's number — a growing "found, not yet used" pile means screening is falling behind discovery; a rising used-rate means the classification and fit test are actually pointing at the right things.
 ## Promotion Rule
-A dossier gets linked into the pipeline only once you decide to seriously pursue it — see [[30_Order/Workflows/Internship Pipeline]] Step 2 (the fit test) and Step 3 (Commit, which creates the Program note that produces the backlink this note tracks).
+A dossier gets linked into the pipeline only once you decide to seriously pursue it — see[[Internship Pipeline]]] Step 2 (the fit test) and Step 3 (Commit, which creates the Program note that produces the backlink this note tracks).
 ```
 - `TaskUpdate` -- `{"taskId":"13","status":"completed"}`
 - `TaskUpdate` -- `{"taskId":"14","status":"in_progress"}`
@@ -5502,7 +5502,7 @@ tags:
   - dashboard
 notes:
   - "[[Internships Hub]]"
-  - "[[30_Order/Workflows/Internship Pipeline]]"
+  - [[Internship Pipeline]]]"
   - "[[Source of Truth]]"
 ---
 # 📊 Internship Dashboard — The Whole Process
@@ -5839,7 +5839,7 @@ type: dashboard
 status: active
 created: 2026-07-26
 notes:
-  - "[[30_Order/Workflows/Internship Pipeline]]"
+  - [[Internship Pipeline]]]"
   - "[[Internships Hub]]"
 tags:
   - internship

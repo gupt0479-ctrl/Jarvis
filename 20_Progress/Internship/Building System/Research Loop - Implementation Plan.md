@@ -5,7 +5,7 @@ created: 2026-07-16
 updated: 2026-07-19
 related_progress:
   - "[[System - Build Log]]"
-  - "[[30_Order/Workflows/Internship Pipeline]]"
+  - "[[Internship Pipeline]]"
   - "[[Phases Run]]"
   - "[[Source of Truth]]"
 tags:

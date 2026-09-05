@@ -2,18 +2,18 @@
 type: reference
 status: tree
 created: 2026-08-22
-updated: 2026-08-30
+updated: 2026-09-04
 related_progress:
   - "[[Source of Truth]]"
   - "[[20_Progress/Internship/Building System/Research Loop - Improvement Plan]]"
-  - "[[30_Order/Standards/Internship Notes Standard]]"
+  - "[[Internship Notes Standard]]"
   - "[[20_Progress/Internship/Building System/Runs/Claude Code Prompts]]"
 tags:
   - internship
   - automation
   - prompts
   - archive
-next: null
+next:
 ---
 # Claude Code Prompts — Archive
 Every prompt ever run against `gupta-builds/internship-research-loop`, in order, verbatim, with what actually happened when it ran. [[20_Progress/Internship/Building System/Runs/Claude Code Prompts]] is the live counterpart — it holds only the guide plus whatever prompt runs next, and gets overwritten every build cycle; this note is where that content lands once a prompt is done, so nothing is lost. Read [[System - Build Log]] for the narrative/decision history around these; read this note for the prompts' exact text and exact results.
@@ -604,3 +604,50 @@ Two new sections appended to Dossier Corrections.md (6 and 7) with all of this; 
 
 Same-session addendum, 2026-08-30 — the human paused the hourly pipeline to focus on promotion work: `gh workflow disable run` confirmed (disabled_manually), recheck (daily)/revalidate (weekly, read-only) deliberately left alone. Vault commit review used `gh api repos/gupta-builds/Jarvis/commits` (the local sibling checkout at projects/work/gupta-builds turned out to be an unrelated GitHub-profile README repo, not the vault) — confirmed the pipeline's own "Auto-discovered N internship(s)" commits are real and distinct from an unrelated cross-project vault-sync mechanism's "auto: HH:MM" commits. 5 new dossiers had arrived before the pause and were checked: 3 real deadlines found (Booz Allen ×3 — Charleston/Rome NY/Colorado Springs Data Scientist Intern, genuinely different reqs despite near-identical titles, all filed to Deadline Tracker's Later bucket at Nov 25/26/26 2026), 2 confirmed no-deadline (Intuit — clean; Mastercard — Workday page returned empty/JS-rendered live, filed with that caveat, same blocked pattern as other Workday postings this sweep). Both files append-only, nothing removed or rewritten.
 ```
+
+### Prompt 26 — Batch Program + Contact + Tracker Notes — Deadline-Priority Batch A (8 dossiers) (written 2026-08-30, archived 2026-09-04)
+Full original text:
+```
+**Fresh session**, `gupta-builds/internship-research-loop`. Read `CLAUDE.md` first, then invoke the `/promote-dossier` skill for each dossier below in order — don't build these notes freehand, the skill already encodes the real template contract, the contact-researcher agent invocation, and (deliberately, by this project's own design) a human consent gate before each write. Confirm the Jarvis vault is reachable (sibling checkout or `jarvis` MCP tools) before starting, per the skill's own prerequisite.
+
+**Context — real, verified 2026-08-30, don't re-derive:** These 8 dossiers are drawn directly from `Tracker/Deadline Tracker.md`'s real, already-confirmed deadlines (built across Prompts 21/23/25's deadline sweep) — every date below is a real deadline read from the dossier's own posting text or a live confirmation, not estimated. Ordered by deadline, most urgent first:
+
+1. `List/Dossiers/1 - AI & ML/Data Science Machine Learning Intern - Castleton Commodities International.md` — deadline 2026-09-01
+2. `List/Dossiers/2 - Fullstack/Full-Stack Software Engineer Intern - Castleton Commodities International.md` — deadline 2026-09-01
+3. `List/Dossiers/3 - CyS & Finance/Data Intern - Key Technology & Services - Data Track - KeyBank.md` — deadline 2026-09-04
+4. `List/Dossiers/1 - AI & ML/Data Engineer Intern - Data - LPL Financial Holdings.md` — priority deadline 2026-09-21
+5. `List/Dossiers/1 - AI & ML/AI and Data Engineering Summer Scholar Intern - Government & Public Services - Deloitte.md` — deadline 2026-09-24
+6. `List/Dossiers/1 - AI & ML/A.I. Developer Co-Op (Boston, MA) - Manhattan Associates.md` — deadline 2026-09-30
+7. `List/Dossiers/Other/Data Analytics Intern - Global Servicing - Financial Crimes Risk & Controls - American Express.md` — deadline 2026-10-01
+8. `List/Dossiers/1 - AI & ML/Software Engineer Co-Op - Enterprise Finance Applications - Summer 2027 - Fifth Third Bank.md` — deadline 2026-10-09
+
+**Efficiency note, real: two of these (#1/#2) share a company (Castleton Commodities International).** Do the real contact-research pass once per company where possible and reuse it across that company's dossiers — don't pay for duplicate research on the same employer's recruiting org.
+
+**Scope — this builds Program + Contact + Tracker notes only (Internship Pipeline.md's Screen→Commit step), not further.** Reach Out and Apply are the human's own next actions once these notes exist — don't attempt to draft outreach messages or submit anything on an external site as part of this prompt.
+
+**Discipline:** real research only, no fabricated fields (the contact-researcher agent already refuses to fabricate — trust that, don't override it under time pressure). The skill's consent gate is deliberate — go through it for each dossier, don't look for a way around it.
+```
+
+### Prompt 27 — Batch Program + Contact + Tracker Notes — Deadline-Priority Batch B (7 dossiers) (written 2026-08-30, archived 2026-09-04)
+Full original text:
+```
+**Fresh session**, `gupta-builds/internship-research-loop`. Runs in parallel with Prompt 26 in a separate terminal. Same setup: read `CLAUDE.md`, confirm vault reachability, invoke `/promote-dossier` per dossier, same consent-gate discipline as Prompt 26.
+
+**The other half of the same real, deadline-ordered list** (round-robin split with Prompt 26 so both sessions cover the full urgency range, not front-loaded/back-loaded):
+
+1. `List/Dossiers/2 - Fullstack/Data Engineering Intern - Castleton Commodities International.md` — deadline 2026-09-01
+2. `List/Dossiers/1 - AI & ML/Analytics and Quantitative Modeling Intern - Analytics & Quantitative Modeling - KeyBank.md` — deadline 2026-09-04
+3. `List/Dossiers/1 - AI & ML/Machine Learning Intern - OpRegen Machine Learning - Genentech.md` — deadline 2026-09-08
+4. `List/Dossiers/1 - AI & ML/Software Engineer Intern - LPL Financial Holdings.md` — priority deadline 2026-09-21
+5. `List/Dossiers/Other/Technology, Operations, Digital, and Data Analytics Intern - Regions Bank.md` — deadline 2026-09-25
+6. `List/Dossiers/3 - CyS & Finance/Infrastructure Engineer Intern [2027 Intern Program] - DTCC.md` — deadline 2026-10-01
+7. `List/Dossiers/Other/Application Engineer Co-opIntern - PCS - GE Vernova.md` — deadline 2026-10-02
+
+**Efficiency note, real: two of these (#1 here, plus #3 in Prompt 26's list) share Castleton Commodities International, and #4 here shares LPL Financial with #4 in Prompt 26's list.** These are running in two different sessions — check whether either company's contact/program info is already sitting in a `Considering/`/`Serious/` note or a Contact note from prior work before re-researching from zero.
+
+Same scope boundary, same discipline, same report-back shape as Prompt 26.
+```
+
+**Result — corrected 2026-09-04, five days after the fact.** This entry originally had no Result block at all — the gap itself, not a declined consent or a bug. The session that ran this prompt (`08-30 Intern applications round 2.md`, 2026-08-30 19:46–20:19) completed Step 1 and Step 3 in full: it caught that the dossier paths in the prompt were missing the `10_Areas/Career/Internships/` prefix, re-derived the real paths, reused Castleton's existing contact research, and ran all 6 remaining `contact-researcher` agents successfully (KeyBank, Genentech, LPL Financial, Regions Bank, DTCC, GE Vernova — every one returned real, sourced findings). It never reached Step 2 (target-folder question) or Step 4 (the write) for any of the 7 dossiers: the human's very next message in that same session redirected it entirely to an unrelated task ("commit all the changes on this repo... push everything") — the exact schema-drift/zero-match-alerting commit (`2fa8b76`) — and the session's own auto-logged footer confirms zero files were created, modified, or deleted. Verified against live vault state 2026-09-04: none of the 7 existed anywhere in `Programs/`, `Contacts/Each One/`, or `Tracker/Each One/` (vs. Prompt 26's 8/8, confirmed in one commit, `84acd694`). All 7 promoted to `Programs/Serious/` in this same 2026-09-04 session, reusing the 2026-08-30 research rather than re-running it — see each note's own Conversation Log / Traps section for per-company caveats (2 of the 7 dossiers' deadlines had already passed or expired by 2026-09-04; both promoted anyway for the contact-research record, flagged honestly rather than promoted as if still live).
+
+**Result — inferred from verified vault state, not from a first-hand session report (the actual per-dossier session output was never captured in this file — flagged, not fabricated).** Confirmed directly against the live vault, 2026-09-04: `Programs/Serious/` + `Programs/Considering/` hold 10 + 4 = 14 notes (up from 5 total promotions as of the last Monthly Review), `Contacts/Each One/` holds 10, `Tracker/Each One/` holds 10 — roughly consistent with most of the combined 15-dossier Batch A/B list having gone through `/promote-dossier` successfully, with a small shortfall between Program count (14) and Contact/Tracker count (10) that could mean either a few dossiers didn't get a Contact/Tracker note, or per-company contact-research reuse (Castleton, LPL) meant one Contact note serves multiple Programs. **Not resolved**: which of the 15 specific dossiers succeeded, which (if any) hit "nothing found" on contact research, and why Contacts/Tracker undercounts Programs by 4. Worth a direct per-dossier check before treating this batch as fully closed.

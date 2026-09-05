@@ -5,7 +5,7 @@ created: 2025-10-30
 updated: 2026-07-18
 related_progress:
   - "[[Phases Run]]"
-  - "[[30_Order/Workflows/Internship Pipeline]]"
+  - "[[Internship Pipeline]]"
 tags:
   - internship
   - opt

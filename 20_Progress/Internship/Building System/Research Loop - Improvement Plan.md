@@ -2,25 +2,89 @@
 type: project
 status: active
 created: 2026-07-19
-updated: 2026-07-25
+updated: 2026-09-04
 related_progress:
   - "[[Source of Truth]]"
   - "[[Phases Run]]"
-  - "[[30_Order/Workflows/Internship Pipeline]]"
+  - "[[Internship Pipeline]]"
+  - "[[20_Progress/Internship/Building System/Runs/Discovery Step Postmortem — Write-Starvation Incident (2026-08-26)]]"
+  - "[[20_Progress/Internship/Building System/V0/Dossier Corrections]]"
 tags:
   - internship
   - automation
   - system-design
-next: "Decide the first-run backlog question below, then push and go live. After that: Priority 1 — promote 3-5 real dossiers by hand, unchanged since 2026-07-19, still not done."
+next: "URGENT: run.yml has been disabled_manually since 2026-08-29T09:33:51Z (confirmed live via gh api, 2026-09-04) — the write-starvation fix (commit e856e05, 2026-08-30) has shipped and sat unexercised for 6 days. Decide re-enable timing before anything else in # Plan below. Old Plan's Priority 1 (prove promotion works) is no longer the top blocker — 14 real promotions now exist (Prompts 26/27) — but 0 Applying notes still exist, so Reach Out/Apply remain the next unproven step once discovery is confirmed healthy again."
 ---
 # Research Loop — Improvement Plan
 ==The honest account of what's actually broken or missing. First written 2026-07-19 against the live repo and live vault; substantially updated 2026-07-25 after a live follow-up session that investigated real misses (a Google posting, four manually-clipped internships), checked real hit rates against Greenhouse/Lever/Ashby, and then built and tested four new ingestion sources plus a measured OPT-regex improvement. Priority 2 moved from "planned" to "built, tested, not yet pushed" in that session. Priority 1 has not moved — it is still the single most important thing not yet done.== [[Source of Truth]] states what the system was supposed to become; this note states what's still standing between here and there.
 
 ## The Real Verdict: Discovery Works, Nothing Downstream Does
-25-29 real, live, currently-open dossiers have sat in `10_Areas/Career/Internships/List/Dossiers/` throughout this whole period (the exact count moves week to week as the recheck removes closed postings and new matches land — it was 26 on 2026-07-19, 25 on 2026-07-23 after a manual JGCL deletion, 29 by 2026-07-25). Precisely **zero** of them have ever been promoted through [[30_Order/Workflows/Internship Pipeline]]. `Tracker/Tracker.md`'s kanban has an empty card in every column. `Applying/_This Week.md` still reads "Nothing active yet." The bottleneck was never discovery, and this session made discovery meaningfully bigger and better without touching that fact even once. **Priority 1 is unchanged and still first.**
+25-29 real, live, currently-open dossiers have sat in `10_Areas/Career/Internships/List/Dossiers/` throughout this whole period (the exact count moves week to week as the recheck removes closed postings and new matches land — it was 26 on 2026-07-19, 25 on 2026-07-23 after a manual JGCL deletion, 29 by 2026-07-25). Precisely **zero** of them have ever been promoted through [[Internship Pipeline]]. `Tracker/Tracker.md`'s kanban has an empty card in every column. `Applying/_This Week.md` still reads "Nothing active yet." The bottleneck was never discovery, and this session made discovery meaningfully bigger and better without touching that fact even once. **Priority 1 is unchanged and still first.**
 
 # Plan
-##
+==Written 2026-09-04, superseding everything below under `# Old Plan` (kept for history, not deleted). That earlier plan's own verdict — "discovery works, nothing downstream does" — has partly reversed: promotion moved from 5 lifetime promotions to 14 (10 `Programs/Serious/` + 4 `Considering/`, 10 Contacts, 10 Tracker notes, via Prompts 26/27) between 2026-08-30 and now. But discovery itself is currently the broken half: `run.yml` has been `disabled_manually` since 2026-08-29T09:33:51Z — independently confirmed live via `gh api` and `gh run list` on 2026-09-04, 6 days of zero new dossiers, not the "1-3/day" originally assumed.== Source: a full repo-and-log audit run against live state 2026-09-04 (cited to file+line, commit, or timestamp throughout — re-verify before acting, several numbers here will already be stale by the time this is read).
+
+## 1. Why Throughput Collapsed
+Two separate, sequential causes, not one:
+1. **`run.yml` (hourly discovery) is turned off.** `gh api repos/gupta-builds/internship-research-loop/actions/workflows` shows `state: disabled_manually`; last successful run 2026-08-29T09:33:51Z. `recheck.yml`, `revalidate.yml`, and `test.yml` are all still active. `logs/runs.jsonl` (687 lines) stops dead at that exact timestamp — not a logging bug, the workflow that writes those lines hasn't executed since.
+2. **The fix for the write-starvation bug had already shipped and was already confirmed healthy *before* discovery was paused — the pause was a deliberate choice, not a crisis reaction.** Correcting an earlier guess in this note (and in this session's own first pass): [[20_Progress/Internship/Building System/Runs/Claude Code Prompts — Archive]]'s Prompt 25 entry records the real reason directly — "the human paused the hourly pipeline to focus on promotion work: `gh workflow disable run` confirmed" — logged the same session Prompts 26/27's promotion batch ran. Not an emergency stopgap. **Corrected dates, verified against the actual commits (the pasted source report said "both 2026-08-30" — imprecise):** `e856e05` ("`write_gate_failures.json` — exclude structurally-doomed uids, not just out-ranked ones") landed 2026-08-28, one day *before* the deliberate pause; `2fa8b76` ("per-source schema drift checks and zero-match-rate alerting") landed 2026-08-31, *after* the pause, as a codebase-only session that didn't need `run.yml` running. Both carry real test coverage (`tests/test_write_gate_failures.py`, `tests/test_zero_match_alert.py`). **Nobody re-enabled `run.yml` after `2fa8b76` shipped.**
+
+**What the two fixes actually do — traced directly against the real diffs, for your review before deciding on re-enabling (per your explicit instruction not to flip this switch without your own sign-off):**
+- `e856e05` adds `update_write_gate_failures()`: tracks per-uid consecutive-same-check counts, scoped only to `url_liveness` and `cross_source_duplicate` (the two checks the real incident and the run log both confirmed repeat identically for a structural, not transient, reason — `required_fields`/`format_compliance` are our own bugs, already handled elsewhere; `not_duplicate` structurally can't repeat). A uid failing the *same* check 3 consecutive times it's rejected joins the same `excluded_ids` set `MAX_DEBATE_LOSSES` already uses, and gets a line in a new reviewable log (`Excluded — Failed The Write Gate.md`) — same "notify, don't silently drop" pattern as everywhere else in this codebase. A win (the uid gets written) clears its history entirely — a dead link can come back alive. The commit's own author validated this against real post-deploy data before the pause: the leading `debate_losses.json` cluster's pace *slowed* (24→30 losses over ~40 hours instead of the pre-fix ~3 hr/loss) and zero ApplyGuy uids had crossed into permanent exclusion. This directly targets the exact mechanism this session's postmortem traced (a candidate that always wins the ranking, always fails the gate, never gets any memory of either).
+- `2fa8b76` extends `core/schema_drift.py` to the 6 sources that had none (Greenhouse/Ashby/Lever/Freehire/AIJobs get one real, high-volume, currently-live company/slug checked per vendor — enough to catch a vendor-wide field rename without multiplying request volume; InternDock gets a sitemap-shape check since it has no JSON API to schema-check at all), plus a `zero_match_streaks.json`-backed alert that fires once a source stays at exactly zero matches for 24 consecutive runs despite still fetching real data — built from a real incident (Ashby stuck at 0 matches for 115 runs before a human noticed by hand, 2026-08-21 to 2026-08-28). Both directly close gaps this session's own postmortem named independently before either report existed.
+**My own read, for what it's worth, not a decision:** both fixes are well-scoped, cite real evidence, have real tests, and the write-gate fix already has a day of real, monitored, healthy production data behind it from before the pause. The open question isn't "does the fix work" (it appears to, on the evidence available) — it's whether you want to watch it live yourself before trusting it unattended again.
+
+**Underneath both of those, a real capacity mismatch — already largely explained by the same bug, not a separate problem:**
+
+| Week | Runs | Written | New (matched) | Deferred |
+|---|---|---|---|---|
+| W29 (07-17) | 44 | 143 | 689 | 0 |
+| W30 | 86 | 123 | 3,026 | 2,231 |
+| W31 | 86 | 51 | 6,888 | 5,340 |
+| W32 | 101 | 40 | 20,907 | 19,089 |
+| W33 | 138 | 76 | 34,499 | 32,015 |
+| W34 (08-16) | 162 | 173 | 31,277 | 28,839 |
+| W35 (partial, ends 08-29) | 70 | 27 | 8,022 | 7,292 |
+
+`new_count` grew ~30x (689 → 34,499/week) as sources went 2 → 11; the write budget (`MAX_NEW_WRITES_PER_RUN` = 3 AI/ML + 3 Fullstack + 3 CyS&Finance + 1 Other, `run_pipeline.py:81`, unchanged since 2026-07-25) stayed fixed at ~10/run, ~1,680/week ceiling. `written` never got close to even that ceiling — the gap is the write-starvation bug, now fixed in code but not yet proven live. **A 5/hour target is already below the existing design ceiling (~10/hour) — this was never a capacity problem, it was a "the existing capacity was never reachable" problem.**
+
+## 2. Test Suite — 444 Passing, One Real Consolidation Target
+Per-file density, counted directly:
+
+| File | Tests | Lines | Lines/test |
+|---|---|---|---|
+| `test_run_pipeline.py` | 39 | 815 | 21 |
+| `test_schema_drift.py` | 46 | 529 | 11 |
+| `test_filter.py` | 48 | 467 | 10 |
+| `test_relevance.py` | 30 | 460 | 15 |
+
+**`test_schema_drift.py` is the real target.** Its 46 tests repeat one mechanical pattern per source (`_passes_on_real_shape` / `_detects_renamed_key` / `_detects_wrong_shape` / `_detects_empty_<list>` × 11 sources) — correct coverage (this closed the exact gap the postmortem's finding #1 named: 6 of 11 sources had zero drift coverage before `2fa8b76`), but now uniform enough to `@pytest.mark.parametrize`. Keep every source's real fixture untouched; collapse the four repeated assertion shapes into one parametrized block. Estimated: ~250-300 lines removed, zero coverage loss.
+
+**`test_filter.py` and `test_relevance.py` are dense but not redundant — leave them alone.** Per this repo's own convention (cite the real data a rule was built from), most of these are one company/posting-shaped regression test each (Mosaic, Databricks, AbbVie, Prophet Security, the NL/HK/PL/IL denylist gaps). Consolidating these would delete the specific real-world incident each one guards against — the wrong kind of "fewer tests."
+
+## 3. Path To 5/Hour, In Priority Order
+1. **Confirm the fix, then re-enable `run.yml`.** This alone should recover throughput toward the existing ~10/hour ceiling, which already clears the 5/hour target. Nothing else matters until this is proven in production, not just in `pytest`.
+2. **Watch the first 24-48 hours closely.** Specifically: does `write_gate_failures.json` actually stop the `SimplifyJobs:de926b0a...`-class permanent squatter the postmortem named, and does the ~154-entry stuck ApplyGuy cohort in `state/debate_losses.json` actually clear instead of continuing to age toward `MAX_DEBATE_LOSSES` (48).
+3. **Only if still short of 5/hour after that**, the postmortem's two harder, still-open recommendations become relevant: (a) a graded/reserved preference-tier scheme, since one source's volume (ApplyGuy alone added 168 matches/run on its first exposure) can still starve everything else even with the failure-memory fix in place; (b) actually raising `MAX_NEW_WRITES_PER_RUN` — nothing in this audit found evidence the ceiling itself is too low, only that it was never reachable. **Do not raise it before steps 1-2 are confirmed** — that adds capacity to a pipe that's still clogged.
+4. **Not recommended right now:** more sources, parallel fetch, or dedup rework. `new_count` is already ~30x the write ceiling; none of fetch speed, source count, or dedup logic is the bottleneck. Adding either would repeat the exact ApplyGuy-launch pattern that helped trigger the original incident.
+
+## 4. Vault Housekeeping — Verified 2026-09-04
+Current: 287 dossiers (134 AI/ML, 42 Fullstack, 50 CyS&Finance, 61 Other, 58 in `Viewed/`), 10 `Programs/Serious/` + 4 `Considering/`, 10 Contacts, 10 Tracker notes, **0 Applying notes** — Reach Out and Apply remain fully manual and fully unexercised even after Prompts 26/27's promotion batch.
+
+`[[20_Progress/Internship/Building System/V0/Dossier Corrections]]` (2026-08-28 audit) found real, cited, still-live defects in this exact set: ~10 confirmed duplicate pairs (mostly ByteDance/AbbVie/Amex title variants of the same posting), systemic quant-firm bucket misclassification (Optiver/IMC/Chicago Trading Company split inconsistently between AI/ML and CyS&Finance depending on which keyword matches first), a confirmed company-name typo (Montenson → Mortenson, 5 dossiers), and 6 Zipline dossiers still carrying only the generic `/open-roles` directory page despite the SPA-extraction fix (`ceeea7d`, 2026-08-23) — that fix only prevents *new* bad writes; nothing retroactively re-evaluates what was written before it landed. Same structural gap the postmortem already named generically ("cleanup debt never gets retroactively applied"), now a second concrete instance.
+
+**Proposal, without touching `/promote-dossier`'s consent gate** (promotion throughput, 14 in six-plus weeks against hundreds of dossiers, is a volume-vs-attention gap, not a tooling gap — the skill works):
+- (a) Run `Dossier Corrections`-style sweeps on a recurring schedule, not as an on-demand one-off, and fix the recurring patterns at the source (`core/classify.py`, a quant-firm allowlist) instead of re-discovering them by hand each time.
+- (b) Surface a per-bucket "ready to screen" view sorted by existing preference tier, so limited human promotion attention goes to the highest-value 10-15 dossiers first, not 287 undifferentiated ones.
+
+## 5. Public v0 README — Outline Only, Pending Confirmation Below
+- **What it does:** hourly, zero-LLM discovery across 11 public sources → deterministic eligibility filter → 5-check write gate → content-carrying Obsidian dossiers. State plainly: discovery-only; promotion and application remain manual by design.
+- **Eligibility, made generic:** replace `core/profile.yaml`'s hardcoded single-persona config with a documented schema (grad year, class year, terms, categories, locations, degrees) plus a "bring your own profile.yaml" setup step. This is the one real code change implied by "not tuned to my personal profile" — flagged here, not built.
+- **Setup:** `.venv` + `requirements.txt` (already pinned), `FIRECRAWL_API_KEY`/`JARVIS_PUSH_TOKEN` as required secrets, the vault-writer target as a configurable path instead of a hardcoded Jarvis-vault assumption.
+- **Verifying capture completeness — needs a real, checkable answer, not a claim.** `logs/runs.jsonl`'s `fetch_counts` per source is already falsifiable ("SimplifyJobs fetched 14,907, matched 29" can be checked against SimplifyJobs' own feed size). Proposed: a small `verify.py` a stranger can run — fetch a source directly, compare its live count to the last logged `fetch_counts` entry, flag drift. New, small, zero-LLM. Not built yet — scoped here for confirmation before writing it.
+
+## Open, Blocking Decisions (need your answer before any of the above ships)
+See the questions in this session's chat response — repeated here so they don't get lost in the note: run.yml re-enable timing, `MAX_NEW_WRITES_PER_RUN` scope, public-repo generalization scope, and the "5 dossiers/hour" target's exact definition (per-run cap vs. steady-state average).
 
 # Old Plan
 ## Priority 1 — Prove the promotion step works, on real data, this week
@@ -69,7 +133,7 @@ Unchanged since 2026-07-19: real, tested, never run once against real data (stil
 No longer "built from exactly one real example." As of 2026-07-25 it's been measured against 22 real citizens-only-tagged postings (see above), improved once from real evidence (27% → 59% catch rate), and the remaining gap is now understood and categorized rather than unknown. Still real regex, still no LLM in the loop, still permissive-by-default. The next improvement, if any, should follow the same rule: measure against real postings first, don't write a pattern from imagination.
 
 ## Priority 4 — Give the loop a real feedback mechanism, not just a test suite
-Unchanged and still correctly gated: this only starts mattering once Priority 1 produces a first real, human-reviewed rejection to learn from. Decision on record for when that happens: `rejection_reason` lives on the **Applying note**, not the dossier — the dossier is auto-generated pipeline output and gets overwritten/removed by `recheck.py`; the Applying note is the durable, human-owned record of what happened during screening. Trigger for the periodic review pass: the existing **Friday ritual** already defined in [[30_Order/Workflows/Internship Pipeline]] (`Applying/_This Week.md`) — no new calendar mechanism needed, just fold "scan rejection_reason fields set this week" into that existing weekly pass once there's real data to scan.
+Unchanged and still correctly gated: this only starts mattering once Priority 1 produces a first real, human-reviewed rejection to learn from. Decision on record for when that happens: `rejection_reason` lives on the **Applying note**, not the dossier — the dossier is auto-generated pipeline output and gets overwritten/removed by `recheck.py`; the Applying note is the durable, human-owned record of what happened during screening. Trigger for the periodic review pass: the existing **Friday ritual** already defined in [[Internship Pipeline]] (`Applying/_This Week.md`) — no new calendar mechanism needed, just fold "scan rejection_reason fields set this week" into that existing weekly pass once there's real data to scan.
 
 ## What "100x" Actually Means Here
 Unchanged: applications submitted per week, and coverage — not dossier volume, not test count, not source count. Discovery got wider and more accurate this session; none of that moves the real number yet.

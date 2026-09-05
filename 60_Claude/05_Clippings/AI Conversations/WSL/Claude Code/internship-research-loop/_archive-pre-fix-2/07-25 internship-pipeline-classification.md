@@ -2048,10 +2048,10 @@ def write_dossier(vault_root, uid: str, markdown: str, role: str, company: str, 
   - ---
 {{ frontmatter_yaml }}---
 # {{ company }} — {{ title }}
-{% if posting_content %}Auto-discovered {{ date_found }} from {{ source }}. Posting content below fetched at discovery (verbatim extraction, trimmed); company/contact enrichment happens on promotion, per [[30_Order/Workflows/Internship Pipeline]].
+{% if posting_content %}Auto-discovered {{ date_found }} from {{ source }}. Posting content below fetched at discovery (verbatim extraction, trimmed); company/contact enrichment happens on promotion, per [[Internship Pipeline]].
 ## Posting (fetched {{ date_found }})
 {{ posting_content }}
-{%- else %}Auto-discovered {{ date_found }} from {{ source }}. No enrichment yet — company/contact research happens on promotion, per [[30_Order/Workflows/Internship Pipeline]].
+{%- else %}Auto-discovered {{ date_found }} from {{ source }}. No enrichment yet — company/contact research happens on promotion, per [[Internship Pipeline]].
 {%- endif %}
   + ---
 {{ frontmatter_yaml }}---

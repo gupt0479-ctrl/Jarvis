@@ -8,7 +8,7 @@ tags:
   - career
 notes:
   - "[[Internships Hub]]"
-  - "[[30_Order/Workflows/Internship Pipeline]]"
+  - "[[Internship Pipeline]]"
 ---
 # README — Internships Folder
 Start at [[Internships Hub]] for what this domain covers and why it's split from `20_Progress/Internship/`. This file is the mechanical folder guide — what goes where, not why.
@@ -21,6 +21,6 @@ Start at [[Internships Hub]] for what this domain covers and why it's split from
 | `Cheats/` | Proven tactics and methods | [[Cheat Template]] |
 | `Tracker/` | Dashboard (detailed) and Kanban (glance); `Each One/` — one dated index note per committed internship, the fast-scan source of truth until an Applying note exists | — |
 ## Rewritten 2026-07-16
-This README previously documented a one-time 2027-cycle setup guide (13 hardcoded programs, a single-tier tracker). That content is superseded by [[30_Order/Workflows/Internship Pipeline]], which splits static research (here) from live status (`20_Progress/Internship/Applying/`). The full session record of that redesign is in [[System - Build Log]].
+This README previously documented a one-time 2027-cycle setup guide (13 hardcoded programs, a single-tier tracker). That content is superseded by [[Internship Pipeline]], which splits static research (here) from live status (`20_Progress/Internship/Applying/`). The full session record of that redesign is in [[System - Build Log]].
 ## Updated 2026-07-26
-Added the priority-folder dossier system, the `Programs/Serious` + `Programs/Considering` split, and `Tracker/Each One` + `Contacts/Each One` — see [[30_Order/Workflows/Internship Pipeline]] for the full sequence and [[Claude Code Prompts]] for the codebase side of this change.
+Added the priority-folder dossier system, the `Programs/Serious` + `Programs/Considering` split, and `Tracker/Each One` + `Contacts/Each One` — see [[Internship Pipeline]] for the full sequence and [[Claude Code Prompts]] for the codebase side of this change.

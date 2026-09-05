@@ -19,7 +19,7 @@ tags:
 next: "Confirm Security Clearance eligibility, then apply before the 2026-09-24 deadline"
 ---
 # AI and Data Engineering Summer Scholar Intern (Government & Public Services) — Deloitte
-The dated index for this internship — source of truth for "where does this stand" until an Applying note exists (see [[30_Order/Workflows/Internship Pipeline]] Step 8).
+The dated index for this internship — source of truth for "where does this stand" until an Applying note exists (see [[Internship Pipeline]] Step 8).
 ## Timeline
 - **Noted:** 2026-08-11
 - **Researched:** 2026-08-31

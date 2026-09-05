@@ -12,10 +12,10 @@ notes:
   - "[[Resume Alteration]]"
   - "[[Cover Letter Alteration]]"
   - "[[Humanizer]]"
-  - "[[30_Order/Standards/Resume Alteration Standard]]"
-  - "[[30_Order/Standards/Cover Letter Alteration Standard]]"
+  - "[[Resume Alteration Standard]]"
+  - "[[Cover Letter Alteration Standard]]"
   - "[[30_Order/Standards/Humanized Writing Standard]]"
-  - "[[30_Order/Workflows/Application Document Preparation]]"
+  - "[[30_Order/Workflows/Internship/Application Document Preparation]]"
   - "[[Resume & Cover Letter - ATS Research Log]]"
 next: "Rebuild Resumes/Main Resume.md into evidence-tagged bullets — the one blocker every downstream note (Standards §2, both Cursor skills' Prerequisite section) is waiting on. See #Status below."
 ---
@@ -31,14 +31,14 @@ The resume/cover-letter system now spans nine vault notes plus two repo-side Cur
 - [[Humanizer]] — the pre-write style gate both documents pass through before a file is ever written; defines the minimal input/output interface, not the full checklist (that's the Standard below).
 
 ## The Enforceable Layer — what a skill/agent/human must actually do
-- [[30_Order/Standards/Resume Alteration Standard]] — the resume contract: source-of-truth hierarchy, evidence-only claims (fail-closed), the tailoring boundary, the external-source register (§4, reorganized 2026-08-29 into ATS-vendor / company-and-program / university-and-association groups), file/naming/overwrite rules, the approval gate, and the sourced ATS format & keyword baseline (§8).
-- [[30_Order/Standards/Cover Letter Alteration Standard]] — the mirrored cover-letter contract: same evidence rule, narrative selection and length instead of bullet ordering, its own §7 source register.
+- [[Resume Alteration Standard]] — the resume contract: source-of-truth hierarchy, evidence-only claims (fail-closed), the tailoring boundary, the external-source register (§4, reorganized 2026-08-29 into ATS-vendor / company-and-program / university-and-association groups), file/naming/overwrite rules, the approval gate, and the sourced ATS format & keyword baseline (§8).
+- [[Cover Letter Alteration Standard]] — the mirrored cover-letter contract: same evidence rule, narrative selection and length instead of bullet ordering, its own §7 source register.
 - [[30_Order/Standards/Humanized Writing Standard]] — the tone/style checklist both Standards defer to; a document can pass every rule above and still fail this gate for how it reads.
 
 ## The Workflow Layer — when each of the above actually runs
-- [[30_Order/Workflows/Application Document Preparation]] — the `prepare → draft → plan → approve → humanize → write → link → apply` sequence that ties the Design and Enforceable layers to a real Applying note.
-- [[30_Order/Workflows/Internship Pipeline]] — Step 5 (Tailor) triggers this whole system; Step 7 (Apply) is where it hands back off to a human submitting the application. Read those two steps specifically, not the whole pipeline, if you're only touching this system.
-- [[30_Order/Templates/Career/Applying Template]] — the note this system reads from and writes back to (`job_url`, `resume_version`, `cover_letter` fields, Documents section).
+- [[30_Order/Workflows/Internship/Application Document Preparation]] — the `prepare → draft → plan → approve → humanize → write → link → apply` sequence that ties the Design and Enforceable layers to a real Applying note.
+- [[Internship Pipeline]] — Step 5 (Tailor) triggers this whole system; Step 7 (Apply) is where it hands back off to a human submitting the application. Read those two steps specifically, not the whole pipeline, if you're only touching this system.
+- [[Applying Template]] — the note this system reads from and writes back to (`job_url`, `resume_version`, `cover_letter` fields, Documents section).
 
 ## The Research Layer — what's actually sourced, and what still isn't
 - [[Resume & Cover Letter - ATS Research Log]] — the running, cross-session log of every external resume/cover-letter/ATS resource found (Session 1 + Session 2, both 2026-08-29), classified (a)/(a-assoc)/(b)/(c-1)/(c-2). This is where a *new* claim about a company or ATS platform gets checked and logged before it's allowed into either Standard — see the Standards' own §4/§7/§8 for what's already been promoted from this log into an enforceable rule.

@@ -9,13 +9,13 @@ tags:
   - automation
 notes:
   - "[[10_Areas/Career/Internships/List/Dossiers/Viewed/What was Viewed]]"
-  - "[[30_Order/Standards/Internship Notes Standard]]"
+  - "[[Internship Notes Standard]]"
   - "[[10_Areas/Career/Internships/List/Dossiers MOC]]"
-next: "Re-check this MOC after recheck.py's next removal batch — currently only the single 2026-08-23 batch exists."
+next: Re-check this MOC after recheck.py's next removal batch — currently only the single 2026-08-23 batch exists.
 ---
 # Removed Dossiers — Map of Content
 ## Purpose
-Every dossier `recheck.py` finds closed upstream moves here instead of being deleted, per [[30_Order/Standards/Internship Notes Standard]] §4 — this is the map every such dossier's `notes:` field points back to, so a removed dossier stays reachable rather than becoming an orphan. See [[10_Areas/Career/Internships/List/Dossiers/Viewed/What was Viewed]] for why this folder exists at all and what it's deliberately not (an applied-internships tracker).
+Every dossier `recheck.py` finds closed upstream moves here instead of being deleted, per [[Internship Notes Standard]] §4 — this is the map every such dossier's `notes:` field points back to, so a removed dossier stays reachable rather than becoming an orphan. See [[10_Areas/Career/Internships/List/Dossiers/Viewed/What was Viewed]] for why this folder exists at all and what it's deliberately not (an applied-internships tracker).
 ## Map
 As of 2026-08-24, four real dossiers have gone through the move-not-delete path, all in a single batch on 2026-08-23, all for the same reason (`removed_reason: "active: false upstream"` — the posting was live when found and gone by the next recheck, not a bad match caught late):
 - **Capital One closed two postings the same day** — [[10_Areas/Career/Internships/List/Dossiers/Viewed/Cyber Security Intern - Capital One (2)|Cyber Security Intern]] and [[10_Areas/Career/Internships/List/Dossiers/Viewed/Software Engineer Intern - Capital One (2)|Software Engineer Intern]], both found 2026-08-03 via vanshb03, both removed 2026-08-23. Two independent postings from the same company closing on the same recheck is exactly the hiring-cadence signal [[10_Areas/Career/Internships/List/Dossiers/Viewed/What was Viewed|What was Viewed]] says this folder should be read for, not re-screened by hand.

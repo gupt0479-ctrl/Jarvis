@@ -19,7 +19,7 @@ tags:
 - [ ] `20_Progress/Internship/Applying/{Now.md,Applied/}`
 - [ ] `Preperation/Interviews/`
 ## Pipeline Checklist
-_Direct against [[30_Order/Workflows/Internship Pipeline]]'s own `Done When` list._
+_Direct against [[Internship Pipeline]]'s own `Done When` list._
 - [ ] Every program actually pursued has a Program note, a Contacts note, and a Tracker note, all cross-linked
 - [ ] No Applying note has gone more than a week without a Log entry while active
 - [ ] The Dashboard and the Kanban agree on what's currently in motion
@@ -28,7 +28,7 @@ _Direct against [[30_Order/Workflows/Internship Pipeline]]'s own `Done When` lis
 | Program | Noted | Researched | Created | Applied | Result | Stalled? |
 |---|---|---|---|---|---|---|
 ## Note-Shape Conformance — Provisional
-_See [[30_Order/Standards/Internship Loop Review Standard]]'s dependency warning — grade only against current templates/Pipeline prose, name what's blocked on the pending 30_Order note-definition session._
+_See [[Internship Loop Review Standard]]'s dependency warning — grade only against current templates/Pipeline prose, name what's blocked on the pending 30_Order note-definition session._
 -
 ## Findings
 -

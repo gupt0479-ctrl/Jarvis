@@ -970,7 +970,7 @@ tags:
 next: "Build the first Tailored/ cut for whichever program applies first"
 ---
 # Main Resume
-==The editable bullet bank — the PDF is the output format, this is the source of truth.== Per [[30_Order/Workflows/Internship Pipeline]], tailoring per application means rewriting the **top third** (Objective + which bullets lead), not the whole document. Each bullet below is tagged by theme so a tailored cut can pull the 3-5 that actually match a given JD's keywords.
+==The editable bullet bank — the PDF is the output format, this is the source of truth.== Per[[Internship Pipeline]]], tailoring per application means rewriting the **top third** (Objective + which bullets lead), not the whole document. Each bullet below is tagged by theme so a tailored cut can pull the 3-5 that actually match a given JD's keywords.
 ## Header
 Anant Gupta — 1000 University Ave, Apt 413, SE, Minneapolis MN 55414 — linkedin.com/in/anant-gupta-7373b4367 — 763-485-3457 — gupt0479@umn.edu
 ## Education
@@ -1905,7 +1905,7 @@ WHERE date_found >= date(this.month + "-01") AND date_found < date(this.month + 
 SORT date_found DESC
 ```
 ## Promotion Rule
-A dossier's `status` moves from `unreviewed` to a link (`promoted: "[[Programs/Company - Role]]"`) only when you decide to seriously pursue it — see [[30_Order/Workflows/Internship Pipeline]]. Promotion creates a Programs note (static research) and an Applying note (live status) together.
+A dossier's `status` moves from `unreviewed` to a link (`promoted: "[[Programs/Company - Role]]"`) only when you decide to seriously pursue it — see[[Internship Pipeline]]]. Promotion creates a Programs note (static research) and an Applying note (live status) together.
 ```
 - `Write` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Internship\Building System\Research Loop — Implementation Plan.md`
 ```
@@ -1916,7 +1916,7 @@ created: 2026-07-16
 updated: 2026-07-16
 related_progress:
   - "[[Internship System — Build Log]]"
-  - "[[30_Order/Workflows/Internship Pipeline]]"
+  - [[Internship Pipeline]]]"
 tags:
   - internship
   - automation
@@ -5865,7 +5865,7 @@ next: "Run the verification prompt in the 2026-07-25 session log entry against t
 ## Phase 7 — Independent Audit (2026-07-19)
 A fresh session, with no memory of the sessions that built the pipeline, was asked to review the entire codebase and vault state and report honestly against [[20_Progress/Internship/Building System/Research Loop - Source of Truth]]'s scope checklist. Verdict: essentially everything held up. Both claimed Phase 6 bug fixes (a whitespace-only JGCL `season` crash, an unhandled `RequestException` during schema-drift) were real, with real regression tests. 167/167 tests, independently re-run, not just quoted. All three hard criteria (timing, location, OPT) genuinely enforced in `profile.yaml`/`filter.py`. Five specific opens were investigated and closed out: the one 948-byte thin Palantir dossier turned out to have a stored `url` pointing at a Lever `/apply` form page, not the JD — Firecrawl fetched successfully, there just wasn't much real content on that page to extract, a distinct failure mode from the fail-open path. Layer 5 `enrich.py` confirmed never run once (one git commit ever, zero `## Enrichment` sections in any dossier). The weekly rollup confirmed correctly not-yet-fired (time-gated, not broken). `state/opt_cache.json`'s then-6 entries had zero overlap with `Companies giving OPT & CPT.md`'s ~20 manually-audited entries — the vault note was never updated once the machine cache started writing for real, flagged as stale.
 ## Phase 8 — The Real Gap Was Never The Code (2026-07-19)
-Independent of the audit, this session read the vault's tracking layer directly — `Tracker/Tracker.md` (kanban, every column empty), `Tracker/Internship - Dashboard.md` (correctly built, empty by construction), `Applying/_This Week.md` (still "Nothing active yet," written 2026-07-16). **Zero of the then-26 real, live, already-screened dossiers had ever been promoted through [[30_Order/Workflows/Internship Pipeline]].** This became Priority 1 of the new [[20_Progress/Internship/Building System/Research Loop - Improvement Plan]], written the same day, and has not moved since — still true as of this note. `enrich.py` and the OPT regex were also found real-but-shallow at this point (never run live; built from exactly one real phrasing example) — this became Priority 3, substantially addressed in Phase 12 below.
+Independent of the audit, this session read the vault's tracking layer directly — `Tracker/Tracker.md` (kanban, every column empty), `Tracker/Internship - Dashboard.md` (correctly built, empty by construction), `Applying/_This Week.md` (still "Nothing active yet," written 2026-07-16). **Zero of the then-26 real, live, already-screened dossiers had ever been promoted through[[Internship Pipeline]]].** This became Priority 1 of the new [[20_Progress/Internship/Building System/Research Loop - Improvement Plan]], written the same day, and has not moved since — still true as of this note. `enrich.py` and the OPT regex were also found real-but-shallow at this point (never run live; built from exactly one real phrasing example) — this became Priority 3, substantially addressed in Phase 12 below.
 ## Phase 9 — Ingestion Latency: The Google Case (2026-07-19 → 2026-07-23)
 The user noticed a real Google SWE internship never reached the vault and pushed back on the "closed" framing — a fair challenge that reopened Priority 2. Investigation, in order:
 1. Direct live check of SimplifyJobs' feed (this session, via `gh api`/`curl`): Google has 8 entries, not zero — ruling out "Google isn't covered."
@@ -5910,7 +5910,7 @@ The four-source addition (Greenhouse, Ashby, `vanshb03`, `zshah101`) produced a 
 - **Live and committed:** the original two-source pipeline (SimplifyJobs, JGCL), the three hard criteria, discovery-time content+OPT enrichment, `recheck.py`, and — as of commit `a21b2fa` — Greenhouse, Ashby, `vanshb03`, and `zshah101` as four additional sources, plus the improved OPT regex and the Summer-2027-permissive fix. Six sources total, not two.
 - **Researched and agreed, not yet built:** `freehire`, `artificialintelligencejobs.co`.
 - **Deliberately deferred, not forgotten:** Lever (one example, Palantir), `speedyapply` (no accessible data), `sndsh404` (no structured data), Intern Dock (snapshot page, no API).
-- **Unchanged since 2026-07-19, and the single most important open item:** Priority 1. Zero dossiers have ever been promoted through [[30_Order/Workflows/Internship Pipeline]], and this phase made the incoming match volume meaningfully larger without touching that fact once.
+- **Unchanged since 2026-07-19, and the single most important open item:** Priority 1. Zero dossiers have ever been promoted through[[Internship Pipeline]]], and this phase made the incoming match volume meaningfully larger without touching that fact once.
 
 ```
 - `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\60_Claude\07_AI_Information\Session Logs\log.md`

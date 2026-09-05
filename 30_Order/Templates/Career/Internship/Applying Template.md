@@ -19,7 +19,7 @@ tags:
 next:
 ---
 # [Role] - [Company]
-==Created at the start of real application preparation — before a resume or cover letter exists, not at submission.== `status` moves `Preparing` → `Applied` → `Offer`/`Rejected`/`Withdrawn`. Source-of-truth responsibility transfers here from the paired Tracker note once this exists; see [[30_Order/Workflows/Application Document Preparation]] for the full drafting sequence.
+==Created at the start of real application preparation — before a resume or cover letter exists, not at submission.== `status` moves `Preparing` → `Applied` → `Offer`/`Rejected`/`Withdrawn`. Source-of-truth responsibility transfers here from the paired Tracker note once this exists; see [[30_Order/Workflows/Internship/Application Document Preparation]] for the full drafting sequence.
 ## Goal
 Get an offer from [Role] - [Company]. One sentence on what winning looks like for this specific program.
 ## Current State
@@ -41,7 +41,7 @@ One line: how this specific role advances [[10_Areas/Career/Engineer Edge Roadma
 ## Documents
 - **Resume** (`resume_version`): one line — what it leads with for this application.
 - **Cover Letter** (`cover_letter`): one line — what it opens with.
-Both generated per [[30_Order/Workflows/Application Document Preparation]] — overwritten in place until `date_applied` is set.
+Both generated per [[30_Order/Workflows/Internship/Application Document Preparation]] — overwritten in place until `date_applied` is set.
 ## Next Action
 The single next physical action. Mirrors `next:` above.
 ## Open Questions

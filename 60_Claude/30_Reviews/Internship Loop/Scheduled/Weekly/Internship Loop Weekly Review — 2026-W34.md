@@ -8,11 +8,11 @@ tags:
   - review
   - internship
 notes:
-  - "[[30_Order/Standards/Internship Loop Review Standard]]"
+  - "[[Internship Loop Review Standard]]"
   - "[[20_Progress/Internship/Building System/Source of Truth]]"
-  - "[[30_Order/Standards/Internship Notes Standard]]"
+  - "[[Internship Notes Standard]]"
   - "[[10_Areas/Career/Internships/List/Dossiers MOC]]"
-next: "Fix the notes:/company-tag write-time gap and the Virtu exact-URL duplicate at the code level (separate build session) — this review only names them."
+next: Fix the notes:/company-tag write-time gap and the Virtu exact-URL duplicate at the code level (separate build session) — this review only names them.
 ---
 # Internship Loop Weekly Review — 2026-W34
 ## Period Covered
@@ -30,9 +30,9 @@ Corpus size this period, counted directly (`find`, not the MOC's cached render):
 The other 11 sampled dossiers pass: TMEIC's "Applications Intern - AI and Machine Learning" and American Express's "AI Engineer" role are genuinely AI/ML by title and content; the Fullstack and Other samples (Trade Desk, ByteDance, Microsoft, Chevron, Vanguard, Amex Data Analytics) all show real software/data content matching their bucket.
 ## Standard Conformance
 Checked exactly, by grep across the full 392-dossier corpus, not the 12-dossier sample — this is a countable fact, not a judgment call:
-- **`notes:` interlink field: 11/392 (2.8%).** [[30_Order/Standards/Internship Notes Standard|Internship Notes Standard]] §1 states this field shipped 2026-07-30 and is required on every dossier. Of the 11 that have it, 6 are Microsoft dossiers all dated `date_found: 2026-08-21` and 4 are `Viewed/` removals (which get the field appended at move time by `recheck.py`, per §4) — meaning the *write-time* path for every other source (SimplifyJobs, JGCL, vanshb03, zshah101, Greenhouse outside the one Microsoft batch, Ashby, AIJobs, freehire) is not adding it. The AbbVie dossier sampled below (`date_found: 2026-08-20`, one day before the Microsoft batch) confirms this: no `notes:` field at all.
+- **`notes:` interlink field: 11/392 (2.8%).** [[Internship Notes Standard|Internship Notes Standard]] §1 states this field shipped 2026-07-30 and is required on every dossier. Of the 11 that have it, 6 are Microsoft dossiers all dated `date_found: 2026-08-21` and 4 are `Viewed/` removals (which get the field appended at move time by `recheck.py`, per §4) — meaning the *write-time* path for every other source (SimplifyJobs, JGCL, vanshb03, zshah101, Greenhouse outside the one Microsoft batch, Ashby, AIJobs, freehire) is not adding it. The AbbVie dossier sampled below (`date_found: 2026-08-20`, one day before the Microsoft batch) confirms this: no `notes:` field at all.
 - **`company/<slug>` tag: 69/392 (17.6%).** Same shape of gap — present on the one Microsoft dossier sampled, absent on the other 11.
-- Body dedup/structure: none of the 12 sampled dossiers showed duplicated paragraphs or jammed ATS-chrome run-ons in this pass — the specific defects [[30_Order/Standards/Internship Notes Standard|Internship Notes Standard]] §2 describes (Conagra's repeated "About Us," `locationsChicago...` run-ons) weren't reproduced in this sample. Not proof they're fixed corpus-wide, just not seen in these 12.
+- Body dedup/structure: none of the 12 sampled dossiers showed duplicated paragraphs or jammed ATS-chrome run-ons in this pass — the specific defects [[Internship Notes Standard|Internship Notes Standard]] §2 describes (Conagra's repeated "About Us," `locationsChicago...` run-ons) weren't reproduced in this sample. Not proof they're fixed corpus-wide, just not seen in these 12.
 > [!WARNING]
 > The `notes:`/tag gap is a real conformance failure, not a documentation lag — the Standard says "shipped," the corpus says otherwise for 97%+ of live dossiers. Whether this is a reverted commit, an unpushed fix, or a fix that only ever touched one source's writer path is a code-side question this review can't answer without repo access — see Open Questions.
 ## Priority Classification Accuracy

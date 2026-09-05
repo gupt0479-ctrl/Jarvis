@@ -1105,9 +1105,9 @@ tags:
   - review
   - internship
 notes:
-  - "[[30_Order/Standards/Internship Loop Review Standard]]"
+  - [[Internship Loop Review Standard]]]"
   - "[[20_Progress/Internship/Building System/Source of Truth]]"
-  - "[[30_Order/Standards/Internship Notes Standard]]"
+  - [[Internship Notes Standard]]]"
   - "[[10_Areas/Career/Internships/List/Dossiers MOC]]"
 next: "Fix the notes:/company-tag write-time gap and the Virtu exact-URL duplicate at the code level (separate build session) — this review only names them."
 ---
@@ -1127,9 +1127,9 @@ Corpus size this period, counted directly (`find`, not the MOC's cached render):
 The other 11 sampled dossiers pass: TMEIC's "Applications Intern - AI and Machine Learning" and American Express's "AI Engineer" role are genuinely AI/ML by title and content; the Fullstack and Other samples (Trade Desk, ByteDance, Microsoft, Chevron, Vanguard, Amex Data Analytics) all show real software/data content matching their bucket.
 ## Standard Conformance
 Checked exactly, by grep across the full 392-dossier corpus, not the 12-dossier sample — this is a countable fact, not a judgment call:
-- **`notes:` interlink field: 11/392 (2.8%).** [[30_Order/Standards/Internship Notes Standard|Internship Notes Standard]] §1 states this field shipped 2026-07-30 and is required on every dossier. Of the 11 that have it, 6 are Microsoft dossiers all dated `date_found: 2026-08-21` and 4 are `Viewed/` removals (which get the field appended at move time by `recheck.py`, per §4) — meaning the *write-time* path for every other source (SimplifyJobs, JGCL, vanshb03, zshah101, Greenhouse outside the one Microsoft batch, Ashby, AIJobs, freehire) is not adding it. The AbbVie dossier sampled below (`date_found: 2026-08-20`, one day before the Microsoft batch) confirms this: no `notes:` field at all.
+- **`notes:` interlink field: 11/392 (2.8%).**[[Internship Notes Standard|Internship Notes Standard]]] §1 states this field shipped 2026-07-30 and is required on every dossier. Of the 11 that have it, 6 are Microsoft dossiers all dated `date_found: 2026-08-21` and 4 are `Viewed/` removals (which get the field appended at move time by `recheck.py`, per §4) — meaning the *write-time* path for every other source (SimplifyJobs, JGCL, vanshb03, zshah101, Greenhouse outside the one Microsoft batch, Ashby, AIJobs, freehire) is not adding it. The AbbVie dossier sampled below (`date_found: 2026-08-20`, one day before the Microsoft batch) confirms this: no `notes:` field at all.
 - **`company/<slug>` tag: 69/392 (17.6%).** Same shape of gap — present on the one Microsoft dossier sampled, absent on the other 11.
-- Body dedup/structure: none of the 12 sampled dossiers showed duplicated paragraphs or jammed ATS-chrome run-ons in this pass — the specific defects [[30_Order/Standards/Internship Notes Standard|Internship Notes Standard]] §2 describes (Conagra's repeated "About Us," `locationsChicago...` run-ons) weren't reproduced in this sample. Not proof they're fixed corpus-wide, just not seen in these 12.
+- Body dedup/structure: none of the 12 sampled dossiers showed duplicated paragraphs or jammed ATS-chrome run-ons in this pass — the specific defects[[Internship Notes Standard|Internship Notes Standard]]] §2 describes (Conagra's repeated "About Us," `locationsChicago...` run-ons) weren't reproduced in this sample. Not proof they're fixed corpus-wide, just not seen in these 12.
 > [!WARNING]
 > The `notes:`/tag gap is a real conformance failure, not a documentation lag — the Standard says "shipped," the corpus says otherwise for 97%+ of live dossiers. Whether this is a reverted commit, an unpushed fix, or a fix that only ever touched one source's writer path is a code-side question this review can't answer without repo access — see Open Questions.
 ## Priority Classification Accuracy
@@ -1211,7 +1211,7 @@ tags:
   - dashboard
 notes:
   - "[[Internships Hub]]"
-  - "[[30_Order/Workflows/Internship Pipeline]]"
+  - [[Internship Pipeline]]]"
   - "[[Source of Truth]]"
 ---
 # 📊 Internship Dashboard — The Whole Process
@@ -1279,8 +1279,8 @@ tags:
   - review
   - internship
 notes:
-  - "[[30_Order/Standards/Internship Loop Review Standard]]"
-  - "[[30_Order/Workflows/Internship Pipeline]]"
+  - [[Internship Loop Review Standard]]]"
+  - [[Internship Pipeline]]]"
   - "[[10_Areas/Career/Internships/Programs/Considering/Software Engineering Intern - Appian]]"
 next: "Decide HRT-Sophomore's fate (discard vs. keep as reference) and create the missing Deepgram/Nuro/Uber/WesternDigital Contacts+Tracker notes, or explicitly decide they don't need one yet — don't leave the gap silent."
 ---
@@ -1294,7 +1294,7 @@ next: "Decide HRT-Sophomore's fate (discard vs. keep as reference) and create th
 - [x] `20_Progress/Internship/Applying/Now.md` and `Applied/`
 - [ ] `Preperation/Interviews/` — not opened; nothing in this pass reached that stage
 ## Pipeline Checklist
-_Against [[30_Order/Workflows/Internship Pipeline]]'s own `Done When` list._
+_Against[[Internship Pipeline]]]'s own `Done When` list._
 - [ ] **Every program actually pursued has a Program note, a Contacts note, and a Tracker note, all cross-linked — FAILS for 4 of 5 `Serious/` programs.** See Per-Program Trace.
 - [x] No Applying note has gone more than a week without a Log entry while active — vacuously true, `20_Progress/Internship/Applying/` has no active Applying note yet (only `Applied/` exists, empty, and reference stubs `2026-HRT-Sophomore.md`/`AI Applying.md`/`Applications-to-Create.md`).
 - [x] The Dashboard and the Kanban agree on what's currently in motion — both show nothing applied yet; `Tracker/Tracker.md`'s "Applied" lane is empty and `Applying/Now.md`'s dataview query has nothing to return, consistent with each other.
@@ -1303,24 +1303,24 @@ _Against [[30_Order/Workflows/Internship Pipeline]]'s own `Done When` list._
 | Program | Noted | Researched | Created | Applied | Result | Stalled? |
 |---|---|---|---|---|---|---|
 | Appian (Considering) | 2026-07-25 | 2026-07-26 | 2026-07-26 | — | — | Trio complete and cross-linked (Program ↔ Contact ↔ Tracker all resolve). Tracker's `Next Action` says "no rush, applications aren't reviewed until August 2026" — written 2026-07-26, and it is now 2026-08-23. That reasoning is stale on its own terms, not re-checked since. |
-| Deepgram (Serious) | — | — | 2026-07-29 (per [[30_Order/Workflows/Internship Pipeline]]'s Step 1 note) | — | — | **No Contacts note, no Tracker note exists anywhere in `Contacts/Each One/` or `Tracker/Each One/`.** Committed via the manual-web-clip rule alongside Uber/Nuro/Western Digital, but only the Program note was actually created. |
+| Deepgram (Serious) | — | — | 2026-07-29 (per[[Internship Pipeline]]]'s Step 1 note) | — | — | **No Contacts note, no Tracker note exists anywhere in `Contacts/Each One/` or `Tracker/Each One/`.** Committed via the manual-web-clip rule alongside Uber/Nuro/Western Digital, but only the Program note was actually created. |
 | Nuro (Serious) | — | — | 2026-07-29 | — | — | Same gap as Deepgram — Program note only. |
 | Uber (Serious) | — | — | 2026-07-29 | — | — | Same gap as Deepgram — Program note only. |
 | Western Digital (Serious) | — | — | 2026-07-29 | — | — | Same gap as Deepgram — Program note only. |
 | HRT-Sophomore (Serious) | 2026-07-16 | 2026-07-16 | 2026-07-16 | — | — | **Explicitly withdrawn the same day it was created**, per [[20_Progress/Internship/Building System/System - Build Log|Build Log]]'s own 2026-07-16 entry ("Class-year correction... withdrew the HRT worked example"). Still sitting in `Programs/Serious/` more than five weeks later, not moved to `Ended/`, not discarded, no Contacts/Tracker note ever existed for it. |
 ## Note-Shape Conformance — Provisional
-See [[30_Order/Standards/Internship Loop Review Standard]]'s dependency warning — the checks below are graded against current templates/Pipeline prose only.
+See[[Internship Loop Review Standard]]]'s dependency warning — the checks below are graded against current templates/Pipeline prose only.
 - Appian's trio uses the field names the current `Program`/`Tracking`/`Contact` templates actually use (`list_origin`, `recruiter_contact`, `applying_note` on the Program; `program`/`contact`/`related_notes` on the Tracker) and every cross-link resolves to a real file — checked directly, not assumed.
 - Deepgram/Nuro/Uber/Western Digital's Program notes have no `created`/`updated`/`next` frontmatter fields at all — consistent with the Program Template not using those field names, not itself a defect, but it does mean there's no dated signal inside the note for *when* it last got real attention, which makes a gap like the missing Contacts/Tracker notes harder to notice without a review like this one.
 ## Findings
-1. **Four of five `Serious/` programs (Deepgram, Nuro, Uber, Western Digital) are missing their Contacts and Tracker notes**, violating [[30_Order/Workflows/Internship Pipeline]] Step 3's "created together" rule and the pipeline's own `Done When` checklist. All four were committed the same day (2026-07-29) via the same manual-web-clip backfill described in Pipeline Step 1 — this looks like a one-time batch where only the Program-note half of the three-note commit ritual actually happened.
+1. **Four of five `Serious/` programs (Deepgram, Nuro, Uber, Western Digital) are missing their Contacts and Tracker notes**, violating[[Internship Pipeline]]] Step 3's "created together" rule and the pipeline's own `Done When` checklist. All four were committed the same day (2026-07-29) via the same manual-web-clip backfill described in Pipeline Step 1 — this looks like a one-time batch where only the Program-note half of the three-note commit ritual actually happened.
 2. **HRT-Sophomore is a stale orphan** — created and withdrawn the same day (2026-07-16) per the project's own Build Log, still physically present in `Programs/Serious/` five-plus weeks later with no Contacts/Tracker note and no move to `Ended/` or deletion.
 3. **Appian's Tracker note carries a time-relative claim that has since expired** — "no rush... reviewed until August 2026," written 2026-07-26, unrevisited as of this review (2026-08-23, inside August).
 ## Decided Fixes
 None this pass — every finding above needs a real decision (create the missing notes now vs. decide these four aren't actually being pursued; discard HRT-Sophomore vs. keep it as a dated reference; re-evaluate Appian's timing now that August has arrived), not a mechanical correction with 100% clarity. Per [[30_Order/Standards/Review Standard]]'s rule, a review naming a problem isn't authorization to resolve it here.
 ## Open Questions
 - Are Deepgram/Nuro/Uber/Western Digital still being actively pursued, or did they quietly stall after the 2026-07-29 backfill? The answer decides whether the missing Contacts/Tracker notes are a real gap to close or a sign these should move toward discard.
-- Should HRT-Sophomore be deleted outright (it was withdrawn same-day, never a real candidate) or kept in `Ended/` as a dated record of the class-year-eligibility mistake, the way [[30_Order/Standards/Internship Notes Standard]] argues dossiers should be moved-not-deleted on removal? The Pipeline note doesn't state a rule for this Program-note case specifically.
+- Should HRT-Sophomore be deleted outright (it was withdrawn same-day, never a real candidate) or kept in `Ended/` as a dated record of the class-year-eligibility mistake, the way[[Internship Notes Standard]]] argues dossiers should be moved-not-deleted on removal? The Pipeline note doesn't state a rule for this Program-note case specifically.
 - Has Appian's application-review timing actually opened now that it's August — worth a direct check against the company's own portal, not assumed from a five-week-old note.
 ## Next Period's Watch List
 - Whether the Deepgram/Nuro/Uber/Western Digital gap closed (real Contacts/Tracker notes created) or was resolved by explicit discard.
