@@ -1,12 +1,56 @@
 {
   "recentFiles": [
     {
-      "basename": "Main Log",
-      "path": "10_Areas/Career/Internships/Tracker/Main Log.md"
+      "basename": "Cover Letter Template",
+      "path": "30_Order/Templates/Career/Internship/Cover Letter Template.md"
+    },
+    {
+      "basename": "Internship Tracking Workflow",
+      "path": "30_Order/Workflows/Internship/Internship Tracking Workflow.md"
+    },
+    {
+      "basename": "Internship Review System",
+      "path": "30_Order/Workflows/Internship/Internship Review System.md"
+    },
+    {
+      "basename": "Internship - Design Rationale",
+      "path": "30_Order/Workflows/Internship/Internship - Design Rationale.md"
+    },
+    {
+      "basename": "Internship Pipeline",
+      "path": "30_Order/Workflows/Internship/Internship Pipeline.md"
+    },
+    {
+      "basename": "Promotion",
+      "path": "30_Order/Workflows/Internship/Promotion.md"
+    },
+    {
+      "basename": "Application Document Preparation",
+      "path": "30_Order/Workflows/Internship/Application Document Preparation.md"
+    },
+    {
+      "basename": "Applying Standard",
+      "path": "30_Order/Standards/Internship/Applying Standard.md"
     },
     {
       "basename": "Internship Tracker Standard",
       "path": "30_Order/Standards/Internship/Internship Tracker Standard.md"
+    },
+    {
+      "basename": "Internship Notes Standard",
+      "path": "30_Order/Standards/Internship/Internship Notes Standard.md"
+    },
+    {
+      "basename": "Internship Loop Review Standard",
+      "path": "30_Order/Standards/Internship/Internship Loop Review Standard.md"
+    },
+    {
+      "basename": "Deadline and Intake Triage Standard",
+      "path": "30_Order/Standards/Internship/Deadline and Intake Triage Standard.md"
+    },
+    {
+      "basename": "Main Log",
+      "path": "10_Areas/Career/Internships/Tracker/Main Log.md"
     },
     {
       "basename": "Humanized Writing Standard",
@@ -155,50 +199,6 @@
     {
       "basename": "Recommended Fixes",
       "path": "20_Progress/Mentorship Program/adx/Recommended Fixes.md"
-    },
-    {
-      "basename": "Codebase Deep Read",
-      "path": "20_Progress/Mentorship Program/adx/Codebase/Codebase Deep Read.md"
-    },
-    {
-      "basename": "AI Engineer Roadmap - Virtual Mentor Gap-Check",
-      "path": "10_Areas/Career/Mentors/AI Engineer Roadmap - Virtual Mentor Gap-Check.md"
-    },
-    {
-      "basename": "Budget Proposal",
-      "path": "40_Resources/UMN/SAO/Training Course/Budget Proposal.md"
-    },
-    {
-      "basename": "Event Proposal - Questions 8 & 9",
-      "path": "40_Resources/UMN/SAO/Training Course/Event Proposal - Questions 8 & 9.md"
-    },
-    {
-      "basename": "FAQ - Payment for Services Performed by Individuals",
-      "path": "40_Resources/UMN/SAO/Training Course/FAQ - Payment for Services Performed by Individuals.md"
-    },
-    {
-      "basename": "FAQ - Additional Questions",
-      "path": "40_Resources/UMN/SAO/Training Course/FAQ - Additional Questions.md"
-    },
-    {
-      "basename": "For RSOs - Update your W-9",
-      "path": "40_Resources/UMN/SAO/Training Course/For RSOs - Update your W-9.md"
-    },
-    {
-      "basename": "Pre-Application - Group and Applicant Eligibility",
-      "path": "40_Resources/UMN/SAO/Training Course/Pre-Application - Group and Applicant Eligibility.md"
-    },
-    {
-      "basename": "Pre-Application - Event and Expense Eligibility",
-      "path": "40_Resources/UMN/SAO/Training Course/Pre-Application - Event and Expense Eligibility.md"
-    },
-    {
-      "basename": "Pre-Application - Determining Funding Eligibility",
-      "path": "40_Resources/UMN/SAO/Training Course/Pre-Application - Determining Funding Eligibility.md"
-    },
-    {
-      "basename": "SAO Grant Process",
-      "path": "40_Resources/UMN/SAO/SAO Grant Process.md"
     }
   ],
   "omittedPaths": [],
