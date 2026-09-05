@@ -9,14 +9,14 @@ tags:
   - cover-letter
   - map
 notes:
-  - "[[20_Progress/Internship/Building System/Resume Alteration]]"
-  - "[[20_Progress/Internship/Building System/Cover Letter Alteration]]"
-  - "[[20_Progress/Internship/Building System/Humanizer]]"
+  - "[[Resume Alteration]]"
+  - "[[Cover Letter Alteration]]"
+  - "[[Humanizer]]"
   - "[[30_Order/Standards/Resume Alteration Standard]]"
   - "[[30_Order/Standards/Cover Letter Alteration Standard]]"
   - "[[30_Order/Standards/Humanized Writing Standard]]"
   - "[[30_Order/Workflows/Application Document Preparation]]"
-  - "[[20_Progress/Internship/Building System/Resume & Cover Letter — ATS Research Log]]"
+  - "[[Resume & Cover Letter - ATS Research Log]]"
 next: "Rebuild Resumes/Main Resume.md into evidence-tagged bullets — the one blocker every downstream note (Standards §2, both Cursor skills' Prerequisite section) is waiting on. See #Status below."
 ---
 # Resume & Cover Letter — System Map
@@ -26,9 +26,9 @@ next: "Rebuild Resumes/Main Resume.md into evidence-tagged bullets — the one b
 The resume/cover-letter system now spans nine vault notes plus two repo-side Cursor skills, written across three sessions. No single note lists all of them together, and the evidence chain that makes every Standard's "fail-closed" rule actually enforceable — a real human fact source — was never written down anywhere. This note is both: a map, and the place that states the fact-source rule explicitly (see [[#Where The Facts Actually Come From]]).
 
 ## The Design Layer — why the system looks this way
-- [[20_Progress/Internship/Building System/Resume Alteration]] — the master-resume contract, the evidence rule, the tailoring boundary, and the per-application flow, narrated.
-- [[20_Progress/Internship/Building System/Cover Letter Alteration]] — the parallel contract for cover letters; describes the not-yet-built `Main Cover Letter.md` as a paragraph/story bank.
-- [[20_Progress/Internship/Building System/Humanizer]] — the pre-write style gate both documents pass through before a file is ever written; defines the minimal input/output interface, not the full checklist (that's the Standard below).
+- [[Resume Alteration]] — the master-resume contract, the evidence rule, the tailoring boundary, and the per-application flow, narrated.
+- [[Cover Letter Alteration]] — the parallel contract for cover letters; describes the not-yet-built `Main Cover Letter.md` as a paragraph/story bank.
+- [[Humanizer]] — the pre-write style gate both documents pass through before a file is ever written; defines the minimal input/output interface, not the full checklist (that's the Standard below).
 
 ## The Enforceable Layer — what a skill/agent/human must actually do
 - [[30_Order/Standards/Resume Alteration Standard]] — the resume contract: source-of-truth hierarchy, evidence-only claims (fail-closed), the tailoring boundary, the external-source register (§4, reorganized 2026-08-29 into ATS-vendor / company-and-program / university-and-association groups), file/naming/overwrite rules, the approval gate, and the sourced ATS format & keyword baseline (§8).
@@ -41,7 +41,7 @@ The resume/cover-letter system now spans nine vault notes plus two repo-side Cur
 - [[30_Order/Templates/Career/Applying Template]] — the note this system reads from and writes back to (`job_url`, `resume_version`, `cover_letter` fields, Documents section).
 
 ## The Research Layer — what's actually sourced, and what still isn't
-- [[20_Progress/Internship/Building System/Resume & Cover Letter — ATS Research Log]] — the running, cross-session log of every external resume/cover-letter/ATS resource found (Session 1 + Session 2, both 2026-08-29), classified (a)/(a-assoc)/(b)/(c-1)/(c-2). This is where a *new* claim about a company or ATS platform gets checked and logged before it's allowed into either Standard — see the Standards' own §4/§7/§8 for what's already been promoted from this log into an enforceable rule.
+- [[Resume & Cover Letter - ATS Research Log]] — the running, cross-session log of every external resume/cover-letter/ATS resource found (Session 1 + Session 2, both 2026-08-29), classified (a)/(a-assoc)/(b)/(c-1)/(c-2). This is where a *new* claim about a company or ATS platform gets checked and logged before it's allowed into either Standard — see the Standards' own §4/§7/§8 for what's already been promoted from this log into an enforceable rule.
 - [[10_Areas/Career/Internships/Cheats/Resume Tailoring, LinkedIn Search & Outreach Discovery]] — the pre-existing (c)-tier cheat sheet (MavGPT's five-prompt tailoring sequence, LinkedIn search operators, the Outreach-tool verdict). Still valid as advisory content; superseded as an *authority* by the (a)/(b) sources the research log now carries for anything it overlaps with.
 - [[60_Claude/10_Source_Summaries/PDF Ingestion/MavGPT AI Resume & Job Search Guide (PDF)]] — the original (c)-tier PDF ingestion behind that cheat sheet.
 
@@ -60,7 +60,7 @@ Every Standard above enforces the same three-source evidence rule (Resume Standa
 - This is distinct from the Program note's Company Information section or contact-research findings (which supply *company*-side facts for cover letters) — this is specifically the *candidate*-side fact inventory: what Anant actually built, did, measured, and used.
 
 ## Status — what's real, what's still a gap
-- **Blocking everything downstream**: `20_Progress/Internship/Resumes/Main Resume.md` is still generic filler, not the evidence-tagged bullet bank the Resume Standard's §1/§2 assume. Per [[20_Progress/Internship/Building System/Resume Alteration]]'s own "Not Yet Built" section, this rebuild is separate, gated work — it hasn't started.
+- **Blocking everything downstream**: `20_Progress/Internship/Resumes/Main Resume.md` is still generic filler, not the evidence-tagged bullet bank the Resume Standard's §1/§2 assume. Per [[Resume Alteration]]'s own "Not Yet Built" section, this rebuild is separate, gated work — it hasn't started.
 - **Not yet built at all**: `20_Progress/Internship/Cover Letters/Main Cover Letter.md` — no paragraph/story bank exists yet.
 - **No DOCX-generation mechanism confirmed** in this environment — both Cursor skills' §5 ("Write the file") stop short and fall back to a Markdown content-plan file rather than fabricating a tool call that doesn't exist, until this is set up.
 - **Sourced and current** as of 2026-08-29: both Standards' external-guidance registers (§4/§7) and the ATS format baseline (§8) — see the research log for exactly what's (a)/(b) vs. still (c)-tier advisory.

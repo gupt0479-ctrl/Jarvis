@@ -1,16 +1,72 @@
 {
   "recentFiles": [
     {
+      "basename": "Resume & Cover Letter - ATS Research Log",
+      "path": "20_Progress/Internship/Building System/V0/Resume & Cover Letter - ATS Research Log.md"
+    },
+    {
+      "basename": "Resume & Cover Letter - System Map",
+      "path": "20_Progress/Internship/Building System/Resume & Cover Letter - System Map.md"
+    },
+    {
+      "basename": "Resume Alteration",
+      "path": "20_Progress/Internship/Building System/V0/Resume Alteration.md"
+    },
+    {
+      "basename": "Research Loop - Improvement Plan",
+      "path": "20_Progress/Internship/Building System/Research Loop - Improvement Plan.md"
+    },
+    {
+      "basename": "Engineer Edge Roadmap",
+      "path": "10_Areas/Career/Engineer Edge Roadmap.md"
+    },
+    {
+      "basename": "Tracker",
+      "path": "10_Areas/Career/Internships/Tracker/Tracker.md"
+    },
+    {
+      "basename": "Habit Tracker",
+      "path": "10_Areas/Career/Internships/Tracker/Habit Tracker.md"
+    },
+    {
+      "basename": "Application Tracker",
+      "path": "10_Areas/Career/Internships/Tracker/Application Tracker.md"
+    },
+    {
+      "basename": "Outreach Discovery & Automation Status",
+      "path": "10_Areas/Career/Internships/Contacts/Outreach Discovery & Automation Status.md"
+    },
+    {
+      "basename": "Networking Strategies",
+      "path": "10_Areas/Career/Internships/Contacts/Networking Strategies.md"
+    },
+    {
+      "basename": "Mimic",
+      "path": "10_Areas/Career/Internships/Contacts/Mimic.md"
+    },
+    {
+      "basename": "Software Engineering Intern - Appian",
+      "path": "10_Areas/Career/Internships/Contacts/Each One/Ongoing/Software Engineering Intern - Appian.md"
+    },
+    {
+      "basename": "Data Analytics Intern - Global Servicing - Financial Crimes Risk & Controls - American Express",
+      "path": "10_Areas/Career/Internships/Contacts/Each One/Data Analytics Intern - Global Servicing - Financial Crimes Risk & Controls - American Express.md"
+    },
+    {
+      "basename": "A.I. Developer Co-Op (Boston, MA) - Manhattan Associates",
+      "path": "10_Areas/Career/Internships/Contacts/Each One/A.I. Developer Co-Op (Boston, MA) - Manhattan Associates.md"
+    },
+    {
       "basename": "Claude Code Prompts",
       "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
     },
     {
-      "basename": "Guitar",
-      "path": "20_Progress/Projects/Extra/Guitar.md"
-    },
-    {
       "basename": "Software Engineer Co-Op - Enterprise Finance Applications - Summer 2027 - Fifth Third Bank",
       "path": "10_Areas/Career/Internships/Programs/Serious/Software Engineer Co-Op - Enterprise Finance Applications - Summer 2027 - Fifth Third Bank.md"
+    },
+    {
+      "basename": "Guitar",
+      "path": "20_Progress/Projects/Extra/Guitar.md"
     },
     {
       "basename": "Full-Stack Software Engineer Intern - Castleton Commodities International",
@@ -54,7 +110,7 @@
     },
     {
       "basename": "Dossier Corrections",
-      "path": "20_Progress/Internship/Building System/Dossier Corrections.md"
+      "path": "20_Progress/Internship/Building System/V0/Dossier Corrections.md"
     },
     {
       "basename": "Future Image",
@@ -143,62 +199,6 @@
     {
       "basename": "Event Proposal - Questions 5, 6, &7",
       "path": "40_Resources/UMN/SAO/Training Course/Event Proposal - Questions 5, 6, &7.md"
-    },
-    {
-      "basename": "Event Proposal - Questions 3 & 4",
-      "path": "40_Resources/UMN/SAO/Training Course/Event Proposal - Questions 3 & 4.md"
-    },
-    {
-      "basename": "Event Proposal - Question 2",
-      "path": "40_Resources/UMN/SAO/Training Course/Event Proposal - Question 2.md"
-    },
-    {
-      "basename": "Event Proposal - Question 1",
-      "path": "40_Resources/UMN/SAO/Training Course/Event Proposal - Question 1.md"
-    },
-    {
-      "basename": "Application Process",
-      "path": "40_Resources/UMN/SAO/Training Course/Application Process.md"
-    },
-    {
-      "basename": "General Program Overview",
-      "path": "40_Resources/UMN/SAO/Training Course/General Program Overview.md"
-    },
-    {
-      "basename": "AIIS",
-      "path": "40_Resources/UMN/SAO/AIIS.md"
-    },
-    {
-      "basename": "Event Accessibility",
-      "path": "40_Resources/UMN/SAO/Training Course/Event Accessibility.md"
-    },
-    {
-      "basename": "Event Planning After Event",
-      "path": "40_Resources/UMN/SAO/Training Course/Event Planning After Event.md"
-    },
-    {
-      "basename": "Event Promotion",
-      "path": "40_Resources/UMN/SAO/Training Course/Event Promotion.md"
-    },
-    {
-      "basename": "Event Permits & Insurance",
-      "path": "40_Resources/UMN/SAO/Training Course/Event Permits & Insurance.md"
-    },
-    {
-      "basename": "Event Venue",
-      "path": "40_Resources/UMN/SAO/Training Course/Event Venue.md"
-    },
-    {
-      "basename": "Event Budget",
-      "path": "40_Resources/UMN/SAO/Training Course/Event Budget.md"
-    },
-    {
-      "basename": "Event Planning",
-      "path": "40_Resources/UMN/SAO/Training Course/Event Planning.md"
-    },
-    {
-      "basename": "Outline",
-      "path": "40_Resources/UMN/SAO/Training Course/Outline.md"
     }
   ],
   "omittedPaths": [],

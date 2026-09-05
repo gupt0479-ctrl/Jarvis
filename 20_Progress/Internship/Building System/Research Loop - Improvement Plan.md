@@ -19,6 +19,10 @@ next: "Decide the first-run backlog question below, then push and go live. After
 ## The Real Verdict: Discovery Works, Nothing Downstream Does
 25-29 real, live, currently-open dossiers have sat in `10_Areas/Career/Internships/List/Dossiers/` throughout this whole period (the exact count moves week to week as the recheck removes closed postings and new matches land — it was 26 on 2026-07-19, 25 on 2026-07-23 after a manual JGCL deletion, 29 by 2026-07-25). Precisely **zero** of them have ever been promoted through [[30_Order/Workflows/Internship Pipeline]]. `Tracker/Tracker.md`'s kanban has an empty card in every column. `Applying/_This Week.md` still reads "Nothing active yet." The bottleneck was never discovery, and this session made discovery meaningfully bigger and better without touching that fact even once. **Priority 1 is unchanged and still first.**
 
+# Plan
+##
+
+# Old Plan
 ## Priority 1 — Prove the promotion step works, on real data, this week
 Still not done. Pick 3-5 of the current real dossiers (Rippling, SIG, Optiver, Western Digital was one suggested mix, still live options as of 2026-07-25) and run Steps 2 through 5 of the Pipeline by hand, once, for real. This is still the single highest-leverage thing to do next, and it's more true now than it was on 2026-07-19: Priority 2's build below is about to roughly double or triple the weekly match volume, which makes an unproven promotion step an even bigger bottleneck than it already was.
 

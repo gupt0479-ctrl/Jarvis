@@ -10,8 +10,8 @@ tags:
   - ats
   - research
 notes:
-  - "[[20_Progress/Internship/Building System/Resume Alteration]]"
-  - "[[20_Progress/Internship/Building System/Cover Letter Alteration]]"
+  - "[[Resume Alteration]]"
+  - "[[Cover Letter Alteration]]"
   - "[[30_Order/Standards/Resume Alteration Standard]]"
   - "[[30_Order/Standards/Cover Letter Alteration Standard]]"
 next: "Session 2 — see #Session 2 Task List at bottom. Don't re-search what's already logged here; extend it."

@@ -8,15 +8,13 @@ tags:
   - humanizer
   - system
 notes:
-  - "[[20_Progress/Internship/Building System/Resume Alteration]]"
-  - "[[20_Progress/Internship/Building System/Cover Letter Alteration]]"
+  - "[[Resume Alteration]]"
+  - "[[Cover Letter Alteration]]"
   - "[[30_Order/Standards/Humanized Writing Standard]]"
-next: Design the real global humanizer agent/skill/command system (also used for
-  networking) as separate work — this note only commits to the minimal interface
-  resume/cover-letter drafting needs from it now.
+next: Design the real global humanizer agent/skill/command system (also used for networking) as separate work — this note only commits to the minimal interface resume/cover-letter drafting needs from it now.
 ---
 # Humanizer
-==Interface-only note.== A global humanizer system — an agent, skills, and commands that keep AI-assisted writing sounding like one consistent professional human across resumes, cover letters, and networking messages — is planned separately and is a larger build than this session's scope. This note commits only to the minimal contract [[20_Progress/Internship/Building System/Resume Alteration]] and [[20_Progress/Internship/Building System/Cover Letter Alteration]] need from it *now*, so those two systems aren't blocked waiting on the full global build. When the global system exists, it should implement or extend this contract, not conflict with it.
+==Interface-only note.== A global humanizer system — an agent, skills, and commands that keep AI-assisted writing sounding like one consistent professional human across resumes, cover letters, and networking messages — is planned separately and is a larger build than this session's scope. This note commits only to the minimal contract [[Resume Alteration]] and [[Cover Letter Alteration]] need from it *now*, so those two systems aren't blocked waiting on the full global build. When the global system exists, it should implement or extend this contract, not conflict with it.
 
 ## The Contract
 **Input:** a drafted resume content plan or cover-letter draft, plus context (the target JD, the role, which evidence source each claim traces to).
@@ -34,5 +32,5 @@ Every resume content plan and every cover-letter draft passes through this gate 
 
 ## Interfaces
 - [[30_Order/Standards/Humanized Writing Standard]] — the actual checklist (prohibited patterns, required checks) this gate runs.
-- [[20_Progress/Internship/Building System/Resume Alteration]] / [[20_Progress/Internship/Building System/Cover Letter Alteration]] — the two systems that call this gate before writing a file.
+- [[Resume Alteration]] / [[Cover Letter Alteration]] — the two systems that call this gate before writing a file.
 - [[30_Order/Workflows/Application Document Preparation]] — where in the sequence this gate runs.

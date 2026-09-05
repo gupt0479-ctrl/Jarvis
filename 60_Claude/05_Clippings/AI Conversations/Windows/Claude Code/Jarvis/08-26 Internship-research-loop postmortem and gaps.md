@@ -5,14 +5,14 @@ source_app: claude-code
 source_os: windows
 title: "Internship-research-loop postmortem and gaps"
 started_at: 2026-08-26T08:09:28
-ended_at: 2026-08-26T10:47:02
-exported_at: 2026-09-04T17:00:02
-duration_minutes: 157.6
+ended_at: 2026-09-04T18:01:07
+exported_at: 2026-09-04T19:00:02
+duration_minutes: 13551.6
 project: Jarvis
 cwd: 'D:\Users\_Anant\10_Areas\Documents\Jarvis'
 session_id: 48087f6f-1442-42d9-9cca-fcafbf8038ef
 status: raw
-turn_count: 2
+turn_count: 3
 tools_used:
   Bash: 17
   Edit: 4
@@ -1374,6 +1374,10 @@ tags:
   - system-design
 next: "URGENT (2026-08-26): a live write-starvation bug is squatting the entire write budget on structurally-doomed candidates while ~156 real ApplyGuy candidates climb toward permanent debate-loss exclusion (48 losses) within roughly a day — see [[20_Progress/Internship/Building System/Runs/Discovery Step Postmortem — Write-Starvation Incident (2026-08-26)]] before touching anything else in this repo. Prompt 17 (InternDock/ApplyGuy evaluation) has since shipped for real — both are live sources as of this postmortem — but that entry below is now stale on that point; the postmortem note is the current source of truth until this file is updated to match."
 ```
+
+## You
+
+Now. listen to me very carefully, the notes mentioned below were just added and updated onto jarvis. Go through the provided prompt in detail and execute it to the end.
 
 ## Actions Taken
 

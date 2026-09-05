@@ -11,15 +11,15 @@ notes:
   - "[[30_Order/Workflows/Internship Pipeline]]"
   - "[[30_Order/Workflows/Application Document Preparation]]"
   - "[[30_Order/Standards/Cover Letter Alteration Standard]]"
-  - "[[20_Progress/Internship/Building System/Resume Alteration]]"
-  - "[[20_Progress/Internship/Building System/Humanizer]]"
-next: "Build Cover Letters/Main Cover Letter.md — the paragraph-bank equivalent of Main Resume.md — once the resume rebuild's evidence structure is proven out."
+  - "[[Resume Alteration]]"
+  - "[[Humanizer]]"
+next: Build Cover Letters/Main Cover Letter.md — the paragraph-bank equivalent of Main Resume.md — once the resume rebuild's evidence structure is proven out.
 ---
 # Cover Letter Alteration
-==The sibling system to [[20_Progress/Internship/Building System/Resume Alteration]].== A cover letter and a resume get read differently — one gets skimmed and keyword-matched, the other gets read start to finish by an actual human — so they're two systems with the same evidence discipline, not one system with two outputs. Enforceable rules live in [[30_Order/Standards/Cover Letter Alteration Standard]]; this note is the narrative.
+==The sibling system to [[Resume Alteration]].== A cover letter and a resume get read differently — one gets skimmed and keyword-matched, the other gets read start to finish by an actual human — so they're two systems with the same evidence discipline, not one system with two outputs. Enforceable rules live in [[30_Order/Standards/Cover Letter Alteration Standard]]; this note is the narrative.
 
 ## Scope
-Governs a new master, `Cover Letters/Main Cover Letter.md`, and every per-application cover letter DOCX in `20_Progress/Internship/Cover Letters/`. That folder doesn't exist yet — nothing has been written to it. Does not govern the resume side (see [[20_Progress/Internship/Building System/Resume Alteration]]) or the style/tone pass itself (see [[20_Progress/Internship/Building System/Humanizer]]).
+Governs a new master, `Cover Letters/Main Cover Letter.md`, and every per-application cover letter DOCX in `20_Progress/Internship/Cover Letters/`. That folder doesn't exist yet — nothing has been written to it. Does not govern the resume side (see [[Resume Alteration]]) or the style/tone pass itself (see [[Humanizer]]).
 
 ## The Master Cover Letter (Mirrors The Resume's Three-Artifact Contract)
 1. **`Cover Letters/Main Cover Letter.md`** — not yet built. The intended shape is a paragraph/story bank, not a single fixed letter: reusable, evidence-backed narrative fragments (an opening hook per company-type, 2–3 experience paragraphs each tied to a specific real project or role, a closing) that a per-application letter selects from and recombines — the cover-letter equivalent of Main Resume's tagged bullet bank. This is genuinely new content to write, not an extraction from something that already exists in the vault.
@@ -28,7 +28,7 @@ Governs a new master, `Cover Letters/Main Cover Letter.md`, and every per-applic
 `Main Cover Letter.*` are reserved filenames at the root of `Cover Letters/`, same reservation rule as `Main Resume.*`.
 
 ## Evidence Rule — Same As The Resume Side
-Every paragraph traces to an approved fragment in `Main Cover Letter.md`, a linked Jarvis project note, or an explicit human-supplied fact — identical three-source rule to [[20_Progress/Internship/Building System/Resume Alteration#The Evidence Rule (Load-Bearing)]]. A cover letter is exactly the kind of document where invented enthusiasm ("I've always dreamed of working at X") or an invented specific fact about the company is the most tempting failure mode — the rule exists precisely to block that, not just generic false-metric risk.
+Every paragraph traces to an approved fragment in `Main Cover Letter.md`, a linked Jarvis project note, or an explicit human-supplied fact — identical three-source rule to [[Resume Alteration#The Evidence Rule (Load-Bearing)]]. A cover letter is exactly the kind of document where invented enthusiasm ("I've always dreamed of working at X") or an invented specific fact about the company is the most tempting failure mode — the rule exists precisely to block that, not just generic false-metric risk.
 
 ## What Tailoring Means Here
 Select 2–3 real, evidence-backed experiences that best map to the JD's top requirements — not more; a letter that tries to cover everything reads as generic by trying to be complete. Open with something specific to the company (a real product, a real problem, something from the Program note's Company Information section — never a generic "I am passionate about your mission" line). Default length: 250–350 words, per [[30_Order/Standards/Cover Letter Alteration Standard]] — short enough to read start to finish, long enough to make a real case. Deviating from that range needs a stated reason (a company that explicitly asks for a specific format), not a default drift.
@@ -50,5 +50,5 @@ Runs in the same sitting as the resume side, sharing one Applying note and one a
 ## Interfaces
 - [[30_Order/Standards/Cover Letter Alteration Standard]] — enforceable length/evidence/naming/overwrite rules.
 - [[30_Order/Workflows/Application Document Preparation]] — shared sequencing with the resume side.
-- [[20_Progress/Internship/Building System/Humanizer]] — shared pre-write style gate.
-- [[20_Progress/Internship/Building System/Resume Alteration]] — the sibling system this mirrors.
+- [[Humanizer]] — shared pre-write style gate.
+- [[Resume Alteration]] — the sibling system this mirrors.

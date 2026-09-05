@@ -8,13 +8,13 @@ tags:
   - resume
   - standard
 notes:
-  - "[[20_Progress/Internship/Building System/Resume Alteration]]"
+  - "[[Resume Alteration]]"
   - "[[30_Order/Workflows/Application Document Preparation]]"
   - "[[30_Order/Standards/Humanized Writing Standard]]"
-next: null
+next:
 ---
 # Resume Alteration Standard
-==The enforceable rules behind [[20_Progress/Internship/Building System/Resume Alteration]].== That note is the narrative — why the system looks this way. This is the contract: what a future resume-alteration skill/agent, or a human doing the same work by hand, must actually do.
+==The enforceable rules behind [[Resume Alteration]].== That note is the narrative — why the system looks this way. This is the contract: what a future resume-alteration skill/agent, or a human doing the same work by hand, must actually do.
 
 ## Scope
 Governs `20_Progress/Internship/Resumes/Main Resume.md` / `.docx` / `.pdf` and every per-application tailored resume DOCX in that same folder. Does not govern cover letters (see [[30_Order/Standards/Cover Letter Alteration Standard]]) or the tone/style checklist itself (see [[30_Order/Standards/Humanized Writing Standard]]) — a resume can pass every rule below and still fail the Humanizer gate for how it reads.
@@ -47,7 +47,7 @@ Every piece of external resume-writing guidance this system relies on (a named m
 - **(a) Primary/official** — a direct citation to the company's or organization's own published source.
 - **(b) University career-service guidance** — cited to the specific office/publication.
 - **(c) Third-party advisory** — a guide, course, or clipped resource (e.g. this vault's [[60_Claude/10_Source_Summaries/PDF Ingestion/MavGPT AI Resume & Job Search Guide (PDF)]]) — useful, but never presented as an official employer standard.
-Full findings, dates, and every source not listed here live in [[20_Progress/Internship/Building System/Resume & Cover Letter — ATS Research Log]] (Session 1 2026-08-29, Session 2 2026-08-29) — this section holds only the citations actually load-bearing for §8 below.
+Full findings, dates, and every source not listed here live in [[Resume & Cover Letter - ATS Research Log]] (Session 1 2026-08-29, Session 2 2026-08-29) — this section holds only the citations actually load-bearing for §8 below.
 
 ### ATS Vendor Documentation (a) — the four platforms named-program dossiers pass through
 - **Greenhouse Support** — [Supported formats for resumes, cover letters and other candidate uploads](https://support.greenhouse.io/hc/en-us/articles/360052218132), [Unsuccessful resume parse](https://support.greenhouse.io/hc/en-us/articles/200989175).
@@ -82,7 +82,7 @@ No per-application DOCX is written or overwritten until:
 Both gates are required, in that order — evidence/selection correctness first, tone correctness second. Neither substitutes for the other.
 
 ## 8. ATS Format & Keyword Baseline (Sourced)
-Distilled from the §4 (a) sources plus the convergent (c) findings logged in [[20_Progress/Internship/Building System/Resume & Cover Letter — ATS Research Log]] — applies to every resume this Standard governs, on top of §2's evidence rule and §3's tailoring boundary:
+Distilled from the §4 (a) sources plus the convergent (c) findings logged in [[Resume & Cover Letter - ATS Research Log]] — applies to every resume this Standard governs, on top of §2's evidence rule and §3's tailoring boundary:
 - **Layout**: single-column, top to bottom — no tables, text boxes, columns, sidebars, or graphics/icons/skill-bar images. This is Greenhouse's own documented parse-failure list, not a style preference.
 - **Section headings**: familiar labels only — Experience, Education, Skills (Summary optional). Greenhouse names unclear/inconsistent sections as a parse risk; no vendor source in §4 requires an exact heading beyond that.
 - **Contact info**: in the document body, first page, never in a header/footer.

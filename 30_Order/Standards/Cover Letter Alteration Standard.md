@@ -8,14 +8,14 @@ tags:
   - cover-letter
   - standard
 notes:
-  - "[[20_Progress/Internship/Building System/Cover Letter Alteration]]"
+  - "[[Cover Letter Alteration]]"
   - "[[30_Order/Workflows/Application Document Preparation]]"
   - "[[30_Order/Standards/Resume Alteration Standard]]"
   - "[[30_Order/Standards/Humanized Writing Standard]]"
-next: null
+next:
 ---
 # Cover Letter Alteration Standard
-==The enforceable rules behind [[20_Progress/Internship/Building System/Cover Letter Alteration]].== Mirrors [[30_Order/Standards/Resume Alteration Standard]]'s structure; only the content-specific rules differ (a cover letter is read start to finish by a human, not skimmed and keyword-matched, so its rules are about narrative selection and length, not bullet ordering).
+==The enforceable rules behind [[Cover Letter Alteration]].== Mirrors [[30_Order/Standards/Resume Alteration Standard]]'s structure; only the content-specific rules differ (a cover letter is read start to finish by a human, not skimmed and keyword-matched, so its rules are about narrative selection and length, not bullet ordering).
 
 ## Scope
 Governs `20_Progress/Internship/Cover Letters/Main Cover Letter.md` / `.docx` / `.pdf` (not yet built) and every per-application cover letter DOCX in that folder. Does not govern the resume side or the tone/style checklist itself (see [[30_Order/Standards/Humanized Writing Standard]]).
@@ -44,7 +44,7 @@ One cover letter file per application, overwritten in place until `date_applied`
 Same two-gate sequence as the resume side: explicit human approval of the content plan, then a pass through the Humanizer gate (see [[30_Order/Standards/Humanized Writing Standard]]), in that order, before any file is written or overwritten.
 
 ## 7. Source Register — External Cover-Letter Guidance
-Same tier definitions as [[30_Order/Standards/Resume Alteration Standard#4. Source Register — External Resume-Writing Guidance]]. Full findings live in [[20_Progress/Internship/Building System/Resume & Cover Letter — ATS Research Log]] §C/§F/Session 2; this section holds only what's load-bearing here.
+Same tier definitions as [[30_Order/Standards/Resume Alteration Standard#4. Source Register — External Resume-Writing Guidance]]. Full findings live in [[Resume & Cover Letter - ATS Research Log]] §C/§F/Session 2; this section holds only what's load-bearing here.
 
 **(b) sources verified 2026-08-29**, all independently converging on §3's 250–350 word default and one-page limit: University of Michigan Career Center's [Cover Letter Resources](https://careercenter.umich.edu/content/cover-letter-resources) (3–4 paragraphs, font matches the resume, margins 0.5–1in), UT Dallas Career Center's [Creating a Cover Letter](https://career.utdallas.edu/career-resource-library/resume-and-cover-letter/creating-a-cover-letter/) (explicit ATS framing — no templates, text boxes, images, QR codes, color, or shading; a true text-only version, not a designed document), Penn State Engineering Career Services' [Cover Letters](https://career.engr.psu.edu/students/basics/cover-letter.aspx) (block business-letter format, same typeface as the resume).
 

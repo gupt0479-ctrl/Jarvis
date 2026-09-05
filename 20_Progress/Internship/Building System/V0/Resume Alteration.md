@@ -11,17 +11,15 @@ notes:
   - "[[30_Order/Workflows/Internship Pipeline]]"
   - "[[30_Order/Workflows/Application Document Preparation]]"
   - "[[30_Order/Standards/Resume Alteration Standard]]"
-  - "[[20_Progress/Internship/Building System/Cover Letter Alteration]]"
-  - "[[20_Progress/Internship/Building System/Humanizer]]"
-next: Rebuild Main Resume.md into the evidence-tagged structure this note
-  assumes — gated on the human reviewing Resume Alteration Standard first (see
-  'Not Yet Built' below).
+  - "[[Cover Letter Alteration]]"
+  - "[[Humanizer]]"
+next: Rebuild Main Resume.md into the evidence-tagged structure this note assumes — gated on the human reviewing Resume Alteration Standard first (see 'Not Yet Built' below).
 ---
 # Resume Alteration
 ==Was an empty stub until 2026-08-28. This is the design note for turning [[20_Progress/Internship/Resumes/Main Resume]] — currently a vague bullet bank behind a PDF — into a real per-application resume system.== Written after a discovery session that clarified the missing piece in [[30_Order/Workflows/Internship Pipeline]]: nothing defined what actually happens between "I found a program" and "a resume exists that's actually tailored to it." This note is that definition. The enforceable rules live in [[30_Order/Standards/Resume Alteration Standard]]; this note is the narrative — why the system is shaped this way and how it fits the rest of the pipeline.
 
 ## Scope
-Governs the Main Resume master (`Resumes/Main Resume.md` / `.docx` / `.pdf`) and every per-application tailored resume DOCX. Cover letters have their own parallel note, [[20_Progress/Internship/Building System/Cover Letter Alteration]] — the two systems are siblings, not one system with two outputs, because a resume and a cover letter get evaluated by different readers (ATS + skim vs. a human reading start to finish) and can be revised independently. The style/tone review both pass through before either is written lives in [[20_Progress/Internship/Building System/Humanizer]], not here.
+Governs the Main Resume master (`Resumes/Main Resume.md` / `.docx` / `.pdf`) and every per-application tailored resume DOCX. Cover letters have their own parallel note, [[Cover Letter Alteration]] — the two systems are siblings, not one system with two outputs, because a resume and a cover letter get evaluated by different readers (ATS + skim vs. a human reading start to finish) and can be revised independently. The style/tone review both pass through before either is written lives in [[Humanizer]], not here.
 
 ## Current State (2026-08-28) — What's Actually True Right Now
 - `Resumes/Main Resume.md` is real and editable, but its content is generic ("seeking internships where I can build reliable AI-driven products...") rather than evidence-specific, and it has never been rewritten since 2026-07-16.
@@ -52,7 +50,7 @@ Full step-by-step sequencing (with the cover-letter side folded in) lives in [[3
 2. **An Applying note is created at the start of real application preparation** — not at submission, which is where the pipeline used to place it. `status: Preparing`, `date_applied: null`. It links the Program, Tracker, and Contact notes, and records the job URL plus one-line JD/networking/fit summaries (see the revised [[30_Order/Templates/Career/Applying Template]]).
 3. **Creating that note is meant to invoke a drafting step** (once the resume-alteration skill/agent below is actually built): read `Main Resume.md`, the Applying note's JD/fit fields, and any linked Jarvis project notes; ask the human for anything a JD needs that isn't already sourced, rather than inventing it.
 4. **The agent proposes a short, traceable content plan** before writing anything — which bullets, in what order, what's rephrased and why, which JD keywords are covered, which are honest gaps. This plan is what gets approved, not the final document sight-unseen.
-5. **On explicit approval, and only after the plan passes the Humanizer gate** ([[20_Progress/Internship/Building System/Humanizer]]), write or overwrite exactly one file: `Resumes/<Role> - <Company>.docx` — same naming convention as the Program/Contact/Tracker notes it's paired with.
+5. **On explicit approval, and only after the plan passes the Humanizer gate** ([[Humanizer]]), write or overwrite exactly one file: `Resumes/<Role> - <Company>.docx` — same naming convention as the Program/Contact/Tracker notes it's paired with.
 6. **Overwrite in place** for any revision made before `date_applied` is set on the Applying note — no `v1`/`v2` files, per the explicit decision that applying should stay a quick step. Once `date_applied` is set, the file is historical; changing a submitted application's resume is a new, explicit human decision (e.g. a real resubmission), not a background rewrite.
 7. **The Applying note's `resume_version` field links to the file**, and its short Documents section carries a one-line plain-language summary of what the resume leads with — the actual reasoning lives in the content plan and the file itself, not duplicated as prose on the Applying note.
 
@@ -65,5 +63,5 @@ Nothing in this note is live automation. It's the contract the next build has to
 ## Interfaces
 - [[30_Order/Standards/Resume Alteration Standard]] — the enforceable evidence/source/naming/overwrite rules.
 - [[30_Order/Workflows/Application Document Preparation]] — where this slots into [[30_Order/Workflows/Internship Pipeline]] Step 5, alongside the cover-letter half.
-- [[20_Progress/Internship/Building System/Humanizer]] — the pre-write style gate every draft passes through.
-- [[20_Progress/Internship/Building System/Cover Letter Alteration]] — the sibling system for the other half of an application packet.
+- [[Humanizer]] — the pre-write style gate every draft passes through.
+- [[Cover Letter Alteration]] — the sibling system for the other half of an application packet.

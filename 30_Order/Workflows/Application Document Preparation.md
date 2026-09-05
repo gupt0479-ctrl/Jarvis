@@ -10,16 +10,16 @@ tags:
   - career
 notes:
   - "[[30_Order/Workflows/Internship Pipeline]]"
-  - "[[20_Progress/Internship/Building System/Resume Alteration]]"
-  - "[[20_Progress/Internship/Building System/Cover Letter Alteration]]"
-  - "[[20_Progress/Internship/Building System/Humanizer]]"
+  - "[[Resume Alteration]]"
+  - "[[Cover Letter Alteration]]"
+  - "[[Humanizer]]"
   - "[[30_Order/Standards/Resume Alteration Standard]]"
   - "[[30_Order/Standards/Cover Letter Alteration Standard]]"
   - "[[30_Order/Standards/Humanized Writing Standard]]"
-next: "Build the resume-alteration and cover-letter-alteration Cursor skills for real, once Main Resume.md and Main Cover Letter.md exist in their evidence-tagged shape."
+next: Build the resume-alteration and cover-letter-alteration Cursor skills for real, once Main Resume.md and Main Cover Letter.md exist in their evidence-tagged shape.
 ---
 # Application Document Preparation
-==The sub-workflow [[30_Order/Workflows/Internship Pipeline]] Step 5 (Tailor) now runs, folding resume and cover-letter drafting into one sequence sharing a single Applying note and a single approval gate.== Written 2026-08-28 alongside [[20_Progress/Internship/Building System/Resume Alteration]] and [[20_Progress/Internship/Building System/Cover Letter Alteration]] — read those two for *why* the rules below exist; this note is only the *sequence*.
+==The sub-workflow [[30_Order/Workflows/Internship Pipeline]] Step 5 (Tailor) now runs, folding resume and cover-letter drafting into one sequence sharing a single Applying note and a single approval gate.== Written 2026-08-28 alongside [[Resume Alteration]] and [[Cover Letter Alteration]] — read those two for *why* the rules below exist; this note is only the *sequence*.
 
 ## Relationship To Internship Pipeline
 This changes when the Applying note gets created. Previously (per the Pipeline's old Step 7 text), the Applying note was created **at submission**, in the same sitting as actually applying. That's too late for a note-created drafting step to have anything to prepare — the application would already be out the door. As of this note:
@@ -70,7 +70,7 @@ None of the `draft` / `plan` / `humanize` / `write` steps are live — there is 
 
 ## Interfaces
 - [[30_Order/Workflows/Internship Pipeline]] — the parent pipeline this slots into (Steps 5–7).
-- [[20_Progress/Internship/Building System/Resume Alteration]] / [[30_Order/Standards/Resume Alteration Standard]] — resume-side rules.
-- [[20_Progress/Internship/Building System/Cover Letter Alteration]] / [[30_Order/Standards/Cover Letter Alteration Standard]] — cover-letter-side rules.
-- [[20_Progress/Internship/Building System/Humanizer]] / [[30_Order/Standards/Humanized Writing Standard]] — the shared tone gate.
+- [[Resume Alteration]] / [[30_Order/Standards/Resume Alteration Standard]] — resume-side rules.
+- [[Cover Letter Alteration]] / [[30_Order/Standards/Cover Letter Alteration Standard]] — cover-letter-side rules.
+- [[Humanizer]] / [[30_Order/Standards/Humanized Writing Standard]] — the shared tone gate.
 - [[30_Order/Templates/Career/Applying Template]] — the note this sequence starts from.
