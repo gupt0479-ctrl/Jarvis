@@ -2,22 +2,25 @@
 name: Analytics and Quantitative Modeling Intern at KeyBank
 company: KeyBank
 program_type: Analytics & Quantitative Modeling
-eligible_classes: ["Junior", "Senior"]
-grad_year: null
+eligible_classes:
+  - Junior
+  - Senior
+grad_year:
 role_type: internship
-wave: null
-opens_date: null
-deadline_posted: '2026-09-04'
-deadline_real: null
-pay_per_week: null
+wave:
+opens_date:
+deadline_posted: 2026-09-04
+deadline_real:
+pay_per_week:
 pay_currency: USD
 duration_weeks: 10.5
-benefits: ["$2,000 Summer Internship Sign-on Bonus"]
+benefits:
+  - $2,000 Summer Internship Sign-on Bonus
 application_url: https://keybank.wd5.myworkdayjobs.com/External_Career_Site/job/Cleveland-OH/XMLNAME-2027-Summer-Analytics-and-Quantitative-Modeling-Internship--Cleveland_R-41380
 careers_page: https://www.key.com/about/careers/students-graduates.html
 list_origin: "[[10_Areas/Career/Internships/List/Dossiers/Viewed/Analytics and Quantitative Modeling Intern - Analytics & Quantitative Modeling - KeyBank]]"
-applying_note: null
-recruiter_contact: "[[10_Areas/Career/Internships/Contacts/Each One/Analytics and Quantitative Modeling Intern - Analytics & Quantitative Modeling - KeyBank]]"
+applying_note:
+recruiter_contact: "[[10_Areas/Career/Internships/Contacts/Each One/Ongoing/Analytics and Quantitative Modeling Intern - Analytics & Quantitative Modeling - KeyBank]]"
 tags:
   - internship
   - program

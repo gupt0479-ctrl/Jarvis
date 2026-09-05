@@ -2,22 +2,23 @@
 name: AI and Data Engineering Summer Scholar Intern (Government & Public Services) at Deloitte
 company: Deloitte
 program_type: AI/ML
-eligible_classes: ["Bachelor's or higher"]
+eligible_classes:
+  - Bachelor's or higher
 grad_year: 2028
 role_type: internship
-wave: null
-opens_date: null
-deadline_posted: '2026-09-24'
-deadline_real: null
-pay_per_week: null
+wave:
+opens_date:
+deadline_posted: 2026-09-24
+deadline_real:
+pay_per_week:
 pay_currency: USD
-duration_weeks: null
+duration_weeks:
 benefits: []
 application_url: https://apply.deloitte.com/en_US/careers/JobDetail/Consultative-Offerings-Government-Public-Services-Summer-Scholar-AI-and-Data-Engineering/362479
 careers_page: https://www.deloitte.com/us/en/careers/join-deloitte/government-and-public-services-careers.html
 list_origin: "[[10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/AI and Data Engineering Summer Scholar Intern - Government & Public Services - Deloitte]]"
-applying_note: null
-recruiter_contact: "[[10_Areas/Career/Internships/Contacts/Each One/AI and Data Engineering Summer Scholar Intern - Government & Public Services - Deloitte]]"
+applying_note:
+recruiter_contact: "[[10_Areas/Career/Internships/Contacts/Each One/Ongoing/AI and Data Engineering Summer Scholar Intern - Government & Public Services - Deloitte]]"
 tags:
   - internship
   - program

@@ -224,10 +224,10 @@ Genuinely not built yet — no gsap/ScrollTrigger anywhere in Education today, o
 
 ### Logo
 
-> **2026-09-05 correction:** the shader-based "A" glyph (`HeaderLogo`) is rendered **only in `Footer.tsx`** today — it does not exist in the header (`HeaderScrolling.tsx` uses a plain text wordmark) or in the Lab panel (`PortfolioLab.tsx` has no logo at all). There is no code path tying glow/intensity to sidebar open state anywhere. Full trace + open question for the user: [[ui-fix-06-logo-footer]].
+> **2026-09-05 correction:** the shader-based "A" glyph (`HeaderLogo`) is rendered **only in `Footer.tsx`** today — it does not exist in the header (`HeaderScrolling.tsx` uses a plain text wordmark) or in the Lab panel (`PortfolioLab.tsx` has no logo at all). There is no code path tying glow/intensity to sidebar open state anywhere. **Resolved:** the user confirmed "glow mismatch" meant the static browser-tab favicon (`icon.svg`) — which has no filter/glow and can't differ by app state — so this is closed with no code change. Full trace: [[ui-fix-06-logo-footer]].
 
 - **Thinner, more cursive A** (real, actionable): regenerate `LOGO_GLYPH_SVG_PATH` in `logoGlyphPath.ts`; downstream renderers (`icon.svg`, `HeaderLogoFallback.tsx`, the `useLogoTexture` rasterizer) already just reference the shared constants.
-- **"No glow difference tab open vs closed"** (blocked): no logo instance exists anywhere that could differ by sidebar state — needs a fresh repro from the user before any shader code is touched. Do not implement a fix for an unconfirmed bug.
+- **"No glow difference tab open vs closed"** (closed, no code change): confirmed to be about the static favicon, which has no glow/filter and no state-dependence anywhere in the codebase.
 - Footer: keep leftmost placement (already correct), fix sizing — see [[ui-fix-06-logo-footer]].
 
 ### Footer

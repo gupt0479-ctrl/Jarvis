@@ -14,7 +14,8 @@ tags:
   - "#portfolio"
   - "#seo"
   - "#aeo"
-next: "Export GSC impressions/clicks/queries for anantgupta.dev, then implement sitemap.ts + robots.ts + metadataBase"
+next: Export GSC impressions/clicks/queries for anantgupta.dev, then implement
+  sitemap.ts + robots.ts + metadataBase
 ---
 
 # SEO & AEO Discoverability Strategy
@@ -383,6 +384,56 @@ Frame Portfolio Lab as a **public interactive lab** for grounded agents: persona
 
 ---
 
+### Ranking #1 for "Anant Gupta"
+
+> Added 2026-09-05. Live-searched "Anant Gupta" and three qualified variants to answer the user's literal ask ("make sure we get my portfolio as the first result upon searching my name") honestly, not aspirationally.
+
+#### The bare name is not winnable near-term — here's the actual competition
+
+A live search for **"Anant Gupta"** (bare name, no qualifier) returns, on page one: a **Wikipedia article** for an Anant Gupta (former President & CEO of HCL Technologies, later founder of TECHCELX), a **Washington Post staff profile** (a Post reporter/researcher who moved to Scroll.in as a political correspondent, Pulitzer finalist team member), a **Google Scholar** author page, a **Kedaara Capital** (VC firm) team-member page for a board director at Lenskart/Purplle/Vishal Megamart, and several unrelated LinkedIn profiles under the same name (a Deloitte intern, a GrowthToolkit/WhatChimp founder, a Bay Area professional, an Apple backend engineer). A search for **"anantgupta.dev"** itself surfaces zero results about this portfolio — it returns GitHub users with similar handles (`anantgupta`, `anantgupta129`, `anantgupta2`) and unrelated social profiles instead. The domain is not indexed with any authority yet.
+
+**Why this matters for strategy:** Wikipedia and a major newspaper's staff-profile page are close to un-outrankable by a personal site for a bare two-word name query — those pages carry decades of aggregate domain authority no amount of on-page SEO overcomes in a realistic timeframe. Promising "#1 for 'Anant Gupta'" as a near-term goal would be setting up a guaranteed miss.
+
+#### What's actually winnable, and the honest sequencing
+
+| Query | Realistic outcome | Why |
+|---|---|---|
+| `Anant Gupta` (bare) | Not top-3 near-term; possible over years with sustained backlinks + Knowledge Panel eligibility | Wikipedia/WaPo-tier competition |
+| `Anant Gupta portfolio` | **Winnable in weeks**, once Phase 5A (metadata/sitemap) ships | Zero competition found — no other "Anant Gupta portfolio" result surfaced in search |
+| `Anant Gupta developer` / `Anant Gupta software engineer` | **Winnable short-term** | Low, unspecific competition; the other Anant Guptas found are exec/journalist/VC/researcher, not branded as "developer" |
+| `Anant Gupta UMN` / `Anant Gupta Minneapolis` / `Anant Gupta computer science` | **Winnable short-term**, and the most useful query for the actual audience (recruiters searching a specific candidate) | Geographic + institutional qualifiers eliminate essentially all name-collision competition |
+| `anantgupta.dev` | **Winnable immediately** once indexed — exact-domain queries almost always resolve to the domain itself | Currently unindexed; first crawl after Phase 5A ships should fix this |
+
+**Recommendation:** stop optimizing for the bare name as the success metric. Target the qualified queries above in on-page copy, meta descriptions, and the `Person` JSON-LD `jobTitle`/`description` fields (e.g. "Anant Gupta, computer science student at the University of Minnesota Twin Cities" — a sentence a recruiter's exact search would match). The bare-name query becomes winnable as a multi-year side effect of accumulated backlinks, not a Phase 5 deliverable.
+
+#### Entity-building plan (the actual lever for name search, distinct from general site SEO)
+
+This is a different problem than "SEO the portfolio page" — it's "give Google one coherent identity to attach the name to." Current best-practice guidance (2026 personal-brand SEO sources) converges on the same short list note 01 already has half-built:
+
+1. **One consistent identity across every property** — same name spelling, same headshot/avatar where a photo appears, same one-line bio phrasing on GitHub, LinkedIn, and the portfolio. Inconsistency (a nickname on one, full name on another) actively prevents Google from merging signals into one entity.
+2. **`Person` schema is the correct mechanism** (already drafted in `## Structured Data Spec` above) — its `sameAs` array is exactly the cross-property linking signal entity-SEO guidance recommends. **Action:** populate every real URL (GitHub, LinkedIn, and anything else that exists) — a `sameAs` array with placeholder `REPLACE_IF_PUBLIC` values (as currently drafted above) does nothing until filled in.
+3. **Backlinks from the user's own other properties reinforce canonicality** — a GitHub profile README linking to `anantgupta.dev`, and a LinkedIn "Featured" link to the same URL, are two free, zero-cost backlinks from already-high-authority domains (GitHub and LinkedIn both rank extremely well) pointing at the portfolio. This table's own [[#Free Distribution and Authority Moves]] section below already recommends both — this is the SEO mechanism *why* that recommendation matters, not a new task.
+4. **Wikidata / Knowledge Panel eligibility: not realistic, don't pursue.** Wikidata and Google Knowledge Panels are generally reserved for people with independent notability coverage (press, notable org affiliation) — a CS student's personal portfolio does not meet that bar today, and pursuing it (e.g. attempting to create a Wikidata entry) would likely be rejected or flagged. Skip this rather than spend effort on it; revisit only if genuine third-party press coverage happens later (e.g. a hackathon win with press pickup).
+
+**No ranking guarantee, consistent with this note's existing framing:** all of the above increases *entity clarity and citation eligibility*; it does not purchase a #1 slot. Measure via the qualified-query table above, not the bare name.
+### Portfolio Award & Directory Submissions
+
+> Added 2026-09-05, in response to the user's ask for "suggested portfolio awards." Researched live 2026 pricing/process for the major showcase directories. Respects the existing "no paid backlink vendors, no Product Hunt" exclusion below — these are a different category (curated design/dev showcases, not backlink brokers), evaluated on their own merits.
+
+**Framing:** a listing on a curated showcase site is a credibility signal + a backlink + occasional referral traffic — it is not a guaranteed AI-citation or search-ranking lever (per the GEO research below: even being included in a "best of" listicle does not mean the aggregator actually recommends *you* — Lily Ray's 2026 B2B study found AI Overviews cited self-promotional listicles but excluded the underlying publisher from the actual recommendation 69% of the time). Treat these as portfolio-quality/networking wins, not an SEO shortcut.
+
+| Directory | URL | Cost | Fit for this portfolio | Recommendation |
+|---|---|---|---|---|
+| **Siteinspire** | siteinspire.com | Free (1–3 week review) | Good — accepts individual dev/design sites, not agency-only | **Submit now**, zero cost, zero downside |
+| **Godly** | godly.website | Free, pure curation (no awards) | Good — curation-only site, developer-friendly bar | **Submit now**, zero cost |
+| **Land-book** | land-book.com | Paid submission (editorial review) | Weak — Land-book skews toward startup landing pages / marketing sites, not personal dev portfolios | **Skip** — poor fit for the fee |
+| **Dribbble** | dribbble.com | Free portfolio account (Pro tiers $4–99/mo unnecessary) | Weak — Dribbble's audience is visual/graphic design shots, not full working sites; a 3D/AI-agent portfolio doesn't fit the format | **Skip**, or only cross-post a single striking visual if one exists — not a submission priority |
+| **CSS Design Awards** | cssdesignawards.com | $50/submission | Moderate — accepts individual developer sites, but the bar and audience skew toward visual polish over the "AI agent demo" angle this portfolio wants to lead with | **Revisit later** — only after the UI-fixes pass (pinned scroll sections, volumetric scatter) ships; submitting the current build risks a rejection that wastes the fee |
+| **Awwwards** | awwwards.com | $65 single / $165/yr for 3 | Moderate-to-weak fit today — Awwwards' bar is agency/studio-grade visual craft; judges score design execution heavily, and a strong AI-feature story alone doesn't offset average visual polish. The fee is charged regardless of outcome (submission fee, not a prize entry) | **Revisit later**, same gate as CSS Design Awards — after the UI polish pass, not before |
+| **Bestfolios** | bestfolios.com | Free submission (curated) | Good — explicitly a developer/engineer portfolio gallery, not a visual-design-only bar; direct audience overlap with recruiters/engineers | **Submit now**, zero cost |
+| **Show HN (Hacker News)** | news.ycombinator.com | Free | **Best fit of all of these** — HN's own rule is "you must have personally worked on it, others can try/run/inspect it," and this portfolio's actual differentiator (Orby, a live grounded AI agent visitors can talk to) is exactly the kind of interactive, inspectable thing that gets traction there, unlike a static visual portfolio | **Submit — highest-leverage, zero-cost pick.** Title plainly per HN norms (no hype/exclamation/emoji): e.g. "Show HN: My portfolio has a grounded AI agent that answers questions about my work" — be present in the thread to answer questions, don't ask anyone to upvote |
+
+**Recommended order:** Siteinspire, Godly, Bestfolios, and Show HN first — all free, all reasonable fit, no reason to wait. Hold CSS Design Awards and Awwwards until after the frontend UI-fixes pass in [[frontend/frontend-ui-fixes-tasks]] ships (pinned sections, volumetric scatter, polish) — submitting the current build to a paid, visual-craft-judged directory before that work lands risks paying twice (once now for a likely-weaker submission, again later for a resubmission). Skip Land-book and Dribbble outright — wrong audience/format, not worth the cost or effort either way.
 ## Free Distribution and Authority Moves
 
 No paid SEO. Leverage vault-documented assets:
@@ -518,6 +569,19 @@ Important: Orby Q&A is available in the browser at Portfolio Lab; the `/api/chat
 - [Imperva Bad Bot Report 2026](https://www.imperva.com/blog/bad-bot-report-2026-bots-agentic-age/) — 53% automated traffic 2025
 - [Google web.dev: Build agent-friendly websites](https://web.dev/articles/ai-agent-site-ux)
 - [llms.txt specification v2](https://llmstxt.org/)
+
+- Live search results for `"Anant Gupta"`, `"Anant Gupta" portfolio developer University of Minnesota`, and `anantgupta.dev` (2026-09-05) — SERP competition basis for [[#Ranking #1 for "Anant Gupta"]]
+- [Personal Brand SEO: How to Rank for Your Name & Control What Google Shows](https://www.media-village.co.uk/marketing/personal-brand-seo-guide/) — entity clarity, `sameAs`/schema, consistency-across-properties guidance
+- [Entity SEO: Complete Guide to Ranking in 2026](https://decodegrowth.in/blogs/why-entity-seo-is-the-new-ranking-advantage/)
+- [Kevin Indig, ChatGPT citation behavioral study, July 2026](https://searchengineland.com/mastering-generative-engine-optimization-in-2026-full-guide-469142) — 44.2% of ChatGPT citations came from the first 30% of a page
+- [Lily Ray, 2026 B2B AI Overviews citation study](https://searchengineland.com/mastering-generative-engine-optimization-in-2026-full-guide-469142) — self-promotional listicles cited but publisher excluded from recommendation 69% of the time — basis for the award-directory framing caveat
+- [Awwwards](https://www.awwwards.com/) — $65 single submission / $165/yr for 3
+- [CSS Design Awards](https://www.cssdesignawards.com/) — $50/submission
+- [Siteinspire](https://www.siteinspire.com/) — free submission
+- [Godly](https://godly.website/) — free, curation-only, no fees
+- [Land-book](https://land-book.com/) — paid editorial submission, startup/landing-page focus
+- [Bestfolios](https://www.bestfolios.com/) — free developer/engineer portfolio gallery
+- [Hacker News Show HN guidelines](https://news.ycombinator.com/item?id=47205127) — "you must have personally worked on it, others can try/run/inspect it"
 
 ### External — MCP (deferred Phase 6)
 - [MCP Authorization spec (2026-07-28)](https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization)

@@ -7,7 +7,7 @@ title: "Remove recurring files from repo and add to gitignore"
 started_at: 2026-09-04T20:50:00
 ended_at: 2026-09-05T01:44:38
 duration_minutes: 295
-exported_at: 2026-09-05T00:45:04
+exported_at: 2026-09-05T01:15:02
 project: internship-research-loop
 cwd: '/home/anant_gupta/projects/work/internship-research-loop'
 session_id: 24177476-b678-4c51-b804-8372859b05f4
@@ -1961,7 +1961,7 @@ application_url: https://keybank.wd5.myworkdayjobs.com/External_Career_Site/job/
 careers_page: https://www.key.com/about/careers/students-graduates.html
 list_origin: "[[10_Areas/Career/Internships/List/Dossiers/Viewed/Analytics and Quantitative Modeling Intern - Analytics & Quantitative Modeling - KeyBank]]"
 applying_note: null
-recruiter_contact: "[[10_Areas/Career/Internships/Contacts/Each One/Analytics and Quantitative Modeling Intern - Analytics & Quantitative Modeling - KeyBank]]"
+recruiter_contact: "[[10_Areas/Career/Internships/Contacts/Each One/Ongoing/Analytics and Quantitative Modeling Intern - Analytics & Quantitative Modeling - KeyBank]]"
 tags:
   - internship
   - program
@@ -2023,7 +2023,7 @@ Posting closed 2026-09-04. Check back for a 2027-cycle successor posting before 
 ---
 type: tracker
 program: "[[10_Areas/Career/Internships/Programs/Serious/Analytics and Quantitative Modeling Intern - Analytics & Quantitative Modeling - KeyBank]]"
-contact: "[[10_Areas/Career/Internships/Contacts/Each One/Analytics and Quantitative Modeling Intern - Analytics & Quantitative Modeling - KeyBank]]"
+contact: "[[10_Areas/Career/Internships/Contacts/Each One/Ongoing/Analytics and Quantitative Modeling Intern - Analytics & Quantitative Modeling - KeyBank]]"
 company: KeyBank
 url: https://keybank.wd5.myworkdayjobs.com/External_Career_Site/job/Cleveland-OH/[REDACTED]
 date_noted: '2026-08-14'
@@ -2536,7 +2536,7 @@ application_url: https://gevernova.wd5.myworkdayjobs.com/vernova_externalsite/jo
 careers_page: https://careers.gevernova.com/early-careers
 list_origin: "[[10_Areas/Career/Internships/List/Dossiers/Other/Application Engineer Co-opIntern - PCS - GE Vernova]]"
 applying_note: null
-recruiter_contact: "[[10_Areas/Career/Internships/Contacts/Each One/Application Engineer Co-opIntern - PCS - GE Vernova]]"
+recruiter_contact: "[[10_Areas/Career/Internships/Contacts/Each One/Ongoing/Application Engineer Co-opIntern - PCS - GE Vernova]]"
 tags:
   - internship
   - program
@@ -2602,7 +2602,7 @@ Reach out to Tessa Nguyen first (explicitly mentions internship/leadership-progr
 ---
 type: tracker
 program: "[[10_Areas/Career/Internships/Programs/Serious/Application Engineer Co-opIntern - PCS - GE Vernova]]"
-contact: "[[10_Areas/Career/Internships/Contacts/Each One/Application Engineer Co-opIntern - PCS - GE Vernova]]"
+contact: "[[10_Areas/Career/Internships/Contacts/Each One/Ongoing/Application Engineer Co-opIntern - PCS - GE Vernova]]"
 company: GE Vernova
 url: https://gevernova.wd5.myworkdayjobs.com/vernova_externalsite/job/Findlay-Township/[REDACTED]
 date_noted: '2026-08-19'

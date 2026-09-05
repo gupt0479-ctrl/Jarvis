@@ -199,9 +199,9 @@ Run pnpm typecheck.
 
 ### Task 6.1 — Logo: remove tab glow, thinner cursive A
 
-**Files:** `src/lib/logoGlyphPath.ts` (glyph shape only — the "remove tab glow" half of this task is blocked, see below)
+**Files:** `src/lib/logoGlyphPath.ts` (glyph shape only — the "remove tab glow" half of this task is resolved closed, see below)
 
-**Prompt:** Use the implementation prompt in [[ui-fix-06-logo-footer]] verbatim. 2026-09-05 correction: no logo instance exists in the header or Lab panel today (only in `Footer.tsx`), and no code ties glow to sidebar open/closed state anywhere — the "remove tab glow" premise did not survive a repo check. That prompt implements only the glyph-shape regeneration and excludes the glow item pending a fresh repro from the user. Do not paste an older version of this prompt that sends an agent hunting for a glow bug in `HeaderLogoCanvas.tsx`/`useAnimationGate.ts`.
+**Prompt:** Use the implementation prompt in [[ui-fix-06-logo-footer]] verbatim. 2026-09-05 correction: no logo instance exists in the header or Lab panel today (only in `Footer.tsx`), and no code ties glow to sidebar open/closed state anywhere. The user confirmed the "glow" complaint was about the static browser-tab favicon (`icon.svg`), which was then checked directly and found to have no filter/glow and no mechanism to differ by app state — closed, no code change. That prompt implements only the glyph-shape regeneration and footer sizing. Do not paste an older version of this prompt that sends an agent hunting for a glow bug in `HeaderLogoCanvas.tsx`/`useAnimationGate.ts`, and do not "fix" the favicon unless separately asked to tone down its gradient brightness as a standalone design tweak.
 
 ### Task 6.2 — Footer logo placement
 

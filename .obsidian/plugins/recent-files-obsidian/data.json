@@ -1,12 +1,52 @@
 {
   "recentFiles": [
     {
-      "basename": "Claude Code Prompts",
-      "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
+      "basename": "Prompt",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/Prompt.md"
+    },
+    {
+      "basename": "frontend-ui-fixes-tasks",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/frontend-ui-fixes-tasks.md"
+    },
+    {
+      "basename": "frontend-ui-fixes-requirements",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/frontend-ui-fixes-requirements.md"
+    },
+    {
+      "basename": "frontend-ui-fixes-index",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/frontend-ui-fixes-index.md"
+    },
+    {
+      "basename": "claude-prompt-ui-fixes-pass-3",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-prompt-ui-fixes-pass-3.md"
+    },
+    {
+      "basename": "claude-prompt-ui-fixes-implementation",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-prompt-ui-fixes-implementation.md"
+    },
+    {
+      "basename": "claude-prompt-ui-fixes-audit-pass",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-prompt-ui-fixes-audit-pass.md"
     },
     {
       "basename": "claude-prompt-ui-fixes-analysis",
       "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-prompt-ui-fixes-analysis.md"
+    },
+    {
+      "basename": "Prompts",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Claude Code/Prompts.md"
+    },
+    {
+      "basename": "Claude Code Prompts",
+      "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
+    },
+    {
+      "basename": "Main Log",
+      "path": "10_Areas/Career/Internships/Tracker/Main Log.md"
+    },
+    {
+      "basename": "Prompt 1 Reboot — Building System Refresh Session (2026-09-04)",
+      "path": "20_Progress/Internship/Building System/Runs/Prompt 1 Reboot — Building System Refresh Session (2026-09-04).md"
     },
     {
       "basename": "Scarcity Imprint — The Hidden Operating System Behind Income Ceilings",
@@ -63,10 +103,6 @@
     {
       "basename": "Deadline and Intake Triage Standard",
       "path": "30_Order/Standards/Internship/Deadline and Intake Triage Standard.md"
-    },
-    {
-      "basename": "Main Log",
-      "path": "10_Areas/Career/Internships/Tracker/Main Log.md"
     },
     {
       "basename": "Humanized Writing Standard",
@@ -138,11 +174,11 @@
     },
     {
       "basename": "Data Analytics Intern - Global Servicing - Financial Crimes Risk & Controls - American Express",
-      "path": "10_Areas/Career/Internships/Contacts/Each One/Data Analytics Intern - Global Servicing - Financial Crimes Risk & Controls - American Express.md"
+      "path": "10_Areas/Career/Internships/Contacts/Each One/Ongoing/Data Analytics Intern - Global Servicing - Financial Crimes Risk & Controls - American Express.md"
     },
     {
       "basename": "A.I. Developer Co-Op (Boston, MA) - Manhattan Associates",
-      "path": "10_Areas/Career/Internships/Contacts/Each One/A.I. Developer Co-Op (Boston, MA) - Manhattan Associates.md"
+      "path": "10_Areas/Career/Internships/Contacts/Each One/Ongoing/A.I. Developer Co-Op (Boston, MA) - Manhattan Associates.md"
     },
     {
       "basename": "Software Engineer Co-Op - Enterprise Finance Applications - Summer 2027 - Fifth Third Bank",
@@ -163,42 +199,6 @@
     {
       "basename": "AI and Data Engineering Summer Scholar Intern - Government & Public Services - Deloitte",
       "path": "10_Areas/Career/Internships/Programs/Serious/AI and Data Engineering Summer Scholar Intern - Government & Public Services - Deloitte.md"
-    },
-    {
-      "basename": "A.I. Developer Co-Op (Boston, MA) - Manhattan Associates",
-      "path": "10_Areas/Career/Internships/Programs/Serious/A.I. Developer Co-Op (Boston, MA) - Manhattan Associates.md"
-    },
-    {
-      "basename": "2027-WesternDigital-SWE-EarlyCareer",
-      "path": "10_Areas/Career/Internships/Programs/Serious/2027-WesternDigital-SWE-EarlyCareer.md"
-    },
-    {
-      "basename": "2027-Uber-SWE-CareerPrep",
-      "path": "10_Areas/Career/Internships/Programs/Serious/2027-Uber-SWE-CareerPrep.md"
-    },
-    {
-      "basename": "2027-Nuro-AI-Platform-SWE",
-      "path": "10_Areas/Career/Internships/Programs/Serious/2027-Nuro-AI-Platform-SWE.md"
-    },
-    {
-      "basename": "2027-Deepgram-SWE-VoiceAI",
-      "path": "10_Areas/Career/Internships/Programs/Serious/2027-Deepgram-SWE-VoiceAI.md"
-    },
-    {
-      "basename": "2026-HRT-Sophomore",
-      "path": "10_Areas/Career/Internships/Programs/Serious/2026-HRT-Sophomore.md"
-    },
-    {
-      "basename": "Internship Research Loop — Full Pipeline",
-      "path": "20_Progress/Internship/Building System/Internship Research Loop — Full Pipeline.excalidraw"
-    },
-    {
-      "basename": "Dossier Corrections",
-      "path": "20_Progress/Internship/Building System/V0/Dossier Corrections.md"
-    },
-    {
-      "basename": "Future Image",
-      "path": "20_Progress/Mentorship Program/adx/Future Image.md"
     }
   ],
   "omittedPaths": [],

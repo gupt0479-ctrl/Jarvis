@@ -2,22 +2,24 @@
 name: Data Analytics Intern (Global Servicing, Financial Crimes Risk & Controls) at American Express
 company: American Express
 program_type: Data Analytics
-eligible_classes: ["Bachelor's"]
-grad_year: null
+eligible_classes:
+  - Bachelor's
+grad_year:
 role_type: internship
-wave: null
-opens_date: null
-deadline_posted: '2026-10-01'
-deadline_real: null
-pay_per_week: null
+wave:
+opens_date:
+deadline_posted: 2026-10-01
+deadline_real:
+pay_per_week:
 pay_currency: USD
-duration_weeks: null
-benefits: ["sign-on bonus"]
+duration_weeks:
+benefits:
+  - sign-on bonus
 application_url: https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/26012627
 careers_page: https://www.americanexpress.com/en-us/careers/career-areas/
 list_origin: "[[10_Areas/Career/Internships/List/Dossiers/Other/Data Analytics Intern - Global Servicing - Financial Crimes Risk & Controls - American Express]]"
-applying_note: null
-recruiter_contact: "[[10_Areas/Career/Internships/Contacts/Each One/Data Analytics Intern - Global Servicing - Financial Crimes Risk & Controls - American Express]]"
+applying_note:
+recruiter_contact: "[[10_Areas/Career/Internships/Contacts/Each One/Ongoing/Data Analytics Intern - Global Servicing - Financial Crimes Risk & Controls - American Express]]"
 tags:
   - internship
   - program

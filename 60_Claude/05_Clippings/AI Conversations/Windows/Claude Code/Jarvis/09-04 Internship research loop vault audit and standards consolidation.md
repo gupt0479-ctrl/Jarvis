@@ -5,9 +5,9 @@ source_app: claude-code
 source_os: windows
 title: "Internship research loop vault audit and standards consolidation"
 started_at: 2026-09-04T18:01:31
-ended_at: 2026-09-05T01:00:52
-exported_at: 2026-09-05T01:01:38
-duration_minutes: 419.4
+ended_at: 2026-09-05T01:29:58
+exported_at: 2026-09-05T03:00:03
+duration_minutes: 448.5
 project: Jarvis
 cwd: 'D:\Users\_Anant\10_Areas\Documents\Jarvis'
 session_id: d924b0b1-5105-4f87-b8f4-6050f926a208
@@ -16,22 +16,22 @@ turn_count: 8
 tools_used:
   AskUserQuestion: 1
   Bash: 10
-  Edit: 40
+  Edit: 43
   Glob: 20
-  Grep: 24
-  PowerShell: 48
-  Read: 62
+  Grep: 25
+  PowerShell: 55
+  Read: 67
   Skill: 2
   ToolSearch: 1
   WebFetch: 6
   Write: 28
 tokens:
-  input: 716
-  output: 592051
-  cache_creation: 3296232
-  cache_read: 106692083
-  total: 110581082
-cost_usd: 40.445287
+  input: 774
+  output: 653222
+  cache_creation: 3446535
+  cache_read: 121314999
+  total: 125415530
+cost_usd: 44.582908
 model:
   - "claude-sonnet-5"
 files_touched:
@@ -87,6 +87,11 @@ files_touched:
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Internship\\Building System\\V0\\Resume Alteration.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Internship\\Resumes\\Main Resume.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Projects\\AI Use\\Claude Kit\\Build Map.md"
+  - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Projects\\AI Use\\Claude Kit\\Claude Code\\Claudekit Session Context.md"
+  - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Projects\\AI Use\\Claude Kit\\Claude Code\\Prompts.md"
+  - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Projects\\AI Use\\Claude Kit\\Claude Code\\Windows Environment.md"
+  - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Projects\\AI Use\\Claude Kit\\Claude Code\\WSL Environment.md"
+  - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Projects\\AI Use\\Claude Kit\\Log.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Projects\\AI Use\\Claude Kit\\Overview.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Projects\\AI Use\\Claude Kit\\Source of Truth\\The Qualification Pipeline.md"
   - "D:\\Users\\_Anant\\10_Areas\\Documents\\Jarvis\\20_Progress\\Projects\\AI Use\\Claude Kit\\Tool Map.md"
@@ -2396,6 +2401,27 @@ Now, a lot was just laid out inside both jarvis as well as the internship-loop. 
 
 Found it — `second-brain-claudekit` and a likely "sandbox" repo called `everything-claude-code`, both under WSL, plus a rich set of vault notes under `20_Progress/Projects/AI Use/Claude Kit/`. Let me read the core docs before exploring the repos themselves.
 
+I now have the full, precise picture of how this pipeline actually works. Let me write the prompt, following this project's own established convention (dated rounds in `Claude Kit/Claude Code/Prompts.md`, prompt text in a fenced block).
+
+The prompt is written into `Claude Kit/Claude Code/Prompts.md` as Round 9, following this project's own established convention. Here's the summary of what I found and what the prompt covers.
+
+## What I found (investigation, no changes made to claudekit/Jarvis/internship-loop this turn)
+
+- **The pipeline is real and precisely documented**: `sandbox/` (32 clones) → `tested-tools/` (cleared review) → an explicit human decision → per-project staging (`agents/<Project>/`, etc.) in second-brain-claudekit → a read-only Jarvis-side mirror. The one thing explicitly never built: the **"third hop"** — staged content actually landing in a project's *real* `.claude/`. That's what Round 9 attempts for the first time.
+- **Jarvis's 6 empty agents are equally empty in claudekit's mirror** (confirmed by line count, not assumed) — not a "draft already written, just needs copying" situation as I first guessed. Real content still needs to be written, in staging first, per the established "drafted here, promoted from here" rule.
+- **No `hooks/Jarvis/` bucket exists at all** — none of Jarvis's three real hooks (including the one I built this session) have ever been staged into this pipeline.
+- **`internship-research-loop` has no sync-manifest entry** — everything I built this week is completely invisible to this pipeline.
+- **Windows global `~/.claude`** is confirmed bare (0 agents/commands/hooks) — genuinely a blank slate, not under-documented.
+- **WSL global `~/.claude`** is populated but has known stale vault paths from a pre-reorg era, never fixed.
+- **gbrain** cleared all four promotion gates back on 2026-08-20 and *still* isn't installed anywhere — the single most concrete, ready-to-execute action available.
+- **The repo's own git status has ~53 dirty paths**, including a 2-week-old unresolved item (`Architecture.md`/`PRD.md` relocation) already flagged in Log.md as never closed out.
+- **`sandbox/hiring-agent`** is the one sandboxed tool explicitly tied to internship-research-loop's real use case, with a named next step ("run it once against a real search pass") never executed — now finally has a real target to test against.
+
+## What Round 9 (the prompt) actually asks a fresh session to do
+Clean workspace first → Jarvis (write the 6 agents + 2 rules + MEMORY.md in staging, stage the hooks bucket, then execute the third hop with a diff-and-confirm gate) → global homes (fix WSL's stale paths, bootstrap Windows from near-scratch, install gbrain) → onboard internship-research-loop (new manifest entry, run hiring-agent for real) → audit claudekit's own `.claude/` → a scoped sandbox review (one real verdict each for the ~8 still-open items, not the 15 already-closed ones) → update Tool Map/Log with the same citation density every prior round used.
+
+It explicitly flags one thing I could not resolve myself: two vault notes describe the project↔claudekit sync direction differently, so the prompt tells the fresh session to verify the real direction from `sync-manifest.json` itself rather than trust either note.
+
 ### Tool Calls
 
 - `Grep` -- pattern `second-brain-claudekit|claudekit|Claude Kit` path `D:\Users\_Anant\10_Areas\Documents\Jarvis`
@@ -2408,6 +2434,129 @@ Found it — `second-brain-claudekit` and a likely "sandbox" repo called `everyt
 - `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Projects\AI Use\Claude Kit\Tool Map.md`
 - `PowerShell` -- `{"command":"wsl.exe -d Ubuntu -- bash -lc \"cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit \u0026\u0026 git status --short | head -60; echo \u0027---BRANCH/LOG---\u0027; git log --oneline -5; echo \u0027---TOP LEVEL---\u0027; ls -la\"","description":"Check second-brain-claudekit git status and top-level structure"}`
 - `PowerShell` -- `{"command":"wsl.exe -d Ubuntu -- bash -lc \"ls -la ~/.claude 2\u003e\u00261 | head -60\"","description":"List WSL home ~/.claude directory"}`
+- `PowerShell` -- `{"command":"wsl.exe -d Ubuntu -- bash -lc \"cat \u0027/home/anant_gupta/projects/ai/claude/second-brain-claudekit/agents/Jarvis/daily-operator.md\u0027 | head -40\"","description":"Preview one staged Jarvis agent draft"}`
+- `PowerShell` -- `{"command":"wsl.exe -d Ubuntu -- bash -lc \"ls -la /home/anant_gupta/projects/ai/claude/second-brain-claudekit/_docs/; echo \u0027---sandbox count---\u0027; ls -d /home/anant_gupta/projects/ai/claude/second-brain-claudekit/sandbox/*/ | wc -l; echo \u0027---tested-tools---\u0027; find /home/anant_gupta/projects/ai/claude/second-brain-claudekit/tested-tools -maxdepth 2 -type d | sort\"","description":"Check _docs contents, sandbox count, tested-tools structure"}`
+- `PowerShell` -- `{"command":"wsl.exe -d Ubuntu -- bash -lc \"wc -l /home/anant_gupta/projects/ai/claude/second-brain-claudekit/agents/Jarvis/*.md\"\nwsl.exe -d Ubuntu -- bash -lc \"wc -l /home/anant_gupta/projects/ai/claude/second-brain-claudekit/skills/Jarvis/*/SKILL.md 2\u003e\u00261 | tail -5\"","description":"Check line counts of staged Jarvis agent and skill drafts"}`
+- `PowerShell` -- `{"command":"wsl.exe -d Ubuntu -- bash -lc \"cd /home/anant_gupta/projects/ai/claude/second-brain-claudekit \u0026\u0026 git status --short | wc -l; echo \u0027---full status (all)---\u0027; git status --short\"","description":"Full unscoped git status of second-brain-claudekit"}`
+- `PowerShell` -- `{"command":"wsl.exe -d Ubuntu -- bash -lc \"find /home/anant_gupta/projects/ai/claude/second-brain-claudekit/.claude -maxdepth 3 -type f | sort; echo \u0027---agents top level---\u0027; ls /home/anant_gupta/projects/ai/claude/second-brain-claudekit/agents/; echo \u0027---commands top level---\u0027; ls /home/anant_gupta/projects/ai/claude/second-brain-claudekit/commands/; echo \u0027---hooks top level---\u0027; ls /home/anant_gupta/projects/ai/claude/second-brain-claudekit/hooks/; echo \u0027---skills top level---\u0027; ls /home/anant_gupta/projects/ai/claude/second-brain-claudekit/skills/; echo \u0027---instructions top level---\u0027; ls /home/anant_gupta/projects/ai/claude/second-brain-claudekit/instructions/\"","description":"Explore second-brain-claudekit\u0027s own .claude and per-project staging buckets"}`
+- `PowerShell` -- `{"command":"Write-Output \"--- agents ---\"; Get-ChildItem \"$env:USERPROFILE\\.claude\\agents\" -Recurse -File | Select-Object FullName, Length\nWrite-Output \"--- commands ---\"; Get-ChildItem \"$env:USERPROFILE\\.claude\\commands\" -Recurse -File | Select-Object FullName, Length\nWrite-Output \"--- hooks ---\"; Get-ChildItem \"$env:USERPROFILE\\.claude\\hooks\" -Recurse -File -ErrorAction SilentlyContinue | Select-Object FullName, Length\nWrite-Output \"--- skills (top level only) ---\"; Get-ChildItem \"$env:USERPROFILE\\.claude\\skills\" | Select-Object Name","description":"Check Windows global ~/.claude agents/commands/hooks/skills contents"}`
+- `PowerShell` -- `{"command":"wsl.exe -d Ubuntu -- bash -lc \"ls ~/.claude/agents ~/.claude/commands ~/.claude/hooks 2\u003e\u00261; echo \u0027---skills---\u0027; ls ~/.claude/skills\"","description":"Check WSL home ~/.claude agents/commands/hooks/skills contents"}`
+- `Grep` -- pattern `division of labor|Division of Labor` path `C:\Users\Anant Gupta\AppData\Local\Temp\claude`
+- `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Projects\AI Use\Claude Kit\Claude Code\Prompts.md`
+- `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Projects\AI Use\Claude Kit\Claude Code\Windows Environment.md`
+- `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Projects\AI Use\Claude Kit\Claude Code\Claudekit Session Context.md`
+- `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Projects\AI Use\Claude Kit\Log.md`
+- `Read` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Projects\AI Use\Claude Kit\Claude Code\WSL Environment.md`
+- `Edit` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Projects\AI Use\Claude Kit\Claude Code\Prompts.md`
+```diff
+- next: "Round 8, 2026-08-21 — instructions/ scope corrected for the third time, mechanism fixed so it can't recur. Codebase: fresh session. Jarvis: fresh Windows session, short, verification-only. After this: tests/ refinement is the next real phase."
++ next: "Round 9, 2026-09-05 — the first real 'third hop' attempt: staged/mirrored content actually promoted into real .claude/ config, across Jarvis, both global homes, and a brand-new internship-research-loop manifest entry. After this: whatever the session's own report names as the real next gap — don't pre-guess it here."
+```
+- `Edit` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Projects\AI Use\Claude Kit\Claude Code\Prompts.md`
+```diff
+- # Claudekit
+
+**Round 8, 2026-08-21 — fresh session.**
++ # Claudekit
+
+**Round 9, 2026-09-05 — the first real "third hop" attempt.** Everything before this round built and proved the pipeline (`sandbox/` → `tested-tools/` → an explicit per-item decision → `agents/<Project>/`+siblings in this repo → a read-only Jarvis-side mirror) but explicitly left one thing "not attempted, not scheduled" per [[20_Progress/Projects/AI Use/Claude Kit/Log]]'s 2026-08-21 entry: whether/how staged content ever flows into a real project's *actual live* `.claude/`. This round is the first real attempt at that hop — for Jarvis (most-built real `.claude/`, several genuinely empty stubs both there and in this repo's mirror of it), for both global home directories (WSL populated but stale in places, Windows nearly bare), and for `internship-research-loop` (fully built this same week directly in the vault session, per [[20_Progress/Internship/Building System/System - Build Log]]'s 2026-09-04 entries — but never onboarded into this repo's sync pipeline at all; no manifest entry exists for it).
+
+Paste into a fresh Claude Code session, cwd = `~/projects/ai/claude/second-brain-claudekit`, `high` or `xhigh` effort. Do not start this until git status is clean or every dirty path below has an explicit decision — see Step 0.
+
+```
+You're picking up second-brain-claudekit with no memory of prior sessions. Read _docs/Architecture.md, _docs/Design.md, _docs/Promotion-Criteria.md, _docs/Jarvis.md, and _docs/Sync.md in full before doing anything else — this prompt cites them throughout and assumes you've actually read them, not skimmed the summary below. Also read sync-manifest.json directly (don't trust any note's paraphrase of its schema) and 20_Progress/Projects/AI Use/Claude Kit/{Tool Map,Log,Claude Code/Claudekit Session Context}.md in the Jarvis vault (reachable via /mnt/d/Users/_Anant/10_Areas/Documents/Jarvis or the jarvis MCP tools) for the dated narrative behind the current state.
+
+## What's already established, cited so you don't re-derive it
+
+- **The pipeline**: `sandbox/<repo>/` (bare clone) → clears `_docs/Promotion-Criteria.md`'s four gates → `tested-tools/<type>/<use-case>/<repo>/` → an explicit, per-item human decision → lands in exactly one of: `agents/<Project>/`, `commands/<Project>/`, `hooks/<Project>/`, `skills/<Project>/`, `instructions/<Project>/` in this repo (real destination names today: CausalOps, Jarvis, Portfolio, Trading View, Resq, OpsPilot, The Plan, second-brain-claudekit, `.claude_windows`, `.claude_wsl` — ten manifest entries, confirmed all `status: live` as of 2026-08-21).
+- **Two different things populate the same `<Project>/` folders and you must not conflate them**: (a) for the eight *real, already-existing* projects, Unison syncs each project's actual live `.claude/{agents,commands,hooks}` + main instruction files into this repo's matching `<Project>/` folder — the project's real config is the source, this repo's copy is a mirror (see `_docs/Jarvis Environment` notes — actually check `sync-manifest.json`'s per-entry `direction`/`force_source` fields directly, since two Jarvis-side notes describe this differently and you need the real schema, not a paraphrase); (b) for a *newly promoted* sandbox tool, a human manually places files into the matching `<Project>/` folder as a one-time decision, per Design.md. **Verify which direction actually applies to each entry before writing anything** — don't assume (a) or (b) uniformly.
+- **The still-open "third hop"**, per Log.md's 2026-08-21 entry verbatim: "whether/how staged content... ever flows into a real project's actual live `.claude/` config — is an open question, not attempted, not scheduled." This round is attempting it for the first time, deliberately, not stumbling into it by accident — treat every write into a real project's `.claude/` as a decision worth its own line in Log.md, not a mechanical copy.
+- **Jarvis's real `.claude/`** (`/mnt/d/Users/_Anant/10_Areas/Documents/Jarvis/.claude/`) is the most built of any destination — confirmed this week: `skills/` holds real, structured folders (SKILL.md + reference.md/examples.md where needed), `agents/` holds 11 files, 6 of them **genuinely empty on both sides** (`daily-operator.md`, `human-operator.md`, `ingestion.md`, `llm-council.md`, `note-to-actions.md`, `professor.md` — confirmed 0 lines in both Jarvis's real file and this repo's `agents/Jarvis/` mirror, checked directly 2026-09-05, not assumed from either side alone), the other 5 (`anti-slop-editor`, `career-operator`, `learning-agent`, `research-distiller`, `vault-curator`) real and substantial (33–207 lines). `rules/` has `human-writing.md` (real) plus two empty stubs (`what-to-read.md`, `how-to-write.md`); `context/workspace-context.md` is real, `context/MEMORY.md` is empty. **No `hooks/Jarvis/` bucket exists in this repo at all** — Jarvis's three real, tested PowerShell hooks (`jarvis-write-guard.ps1`, `jarvis-session-continuity.ps1`, and a brand-new `jarvis-internship-note-guard.ps1` added 2026-09-04, all registered in Jarvis's real `.claude/settings.json`) have never been staged into this pipeline at all.
+- **`internship-research-loop`** (`~/projects/work/internship-research-loop`) got a full `.claude/` build this week, directly in a vault session, never through this pipeline: 7 agents (`contact-researcher`, `loop-verifier` pre-existing; `program-writer`, `tracking`, `promotion`, `applying`, `testing-tools` new), 4 skills (`promote-dossier`, `review-loop-change` pre-existing; `promoting-manual-find`, `tailoring-application` new), 3 `rules/` files, an extended `CLAUDE.md`, and a `settings.json` with a new `PostToolUse` convention-reminder hook (`review-reminder.sh`). **No sync-manifest.json entry exists for this project** — it's real, live, committed to nothing yet (working tree, not pushed), and completely outside this pipeline's visibility.
+- **Global homes**: WSL (`~/.claude`) is populated — 3 agents, 7 commands, 3 hooks, 28 skills — but per Log.md's 2026-08-20 entry, the WSL agents/commands reference **pre-reorg vault paths that no longer exist** (`10_UMN/`, `00_Inbox/Headway/`, `50_Archive/copilot/`), not fixed at the time because editing them syncs into a live home a real session depends on — that's exactly the kind of fix this round should actually make, carefully. Windows (`C:\Users\Anant Gupta\.claude`) is **confirmed bare 2026-09-05, re-verified directly**: zero agents, zero commands, zero hooks, skills/ holding only `export-ai-session/` plus ~30 firecrawl-* plugin skills (untouched, not this pipeline's concern). `gbrain` cleared all four Promotion-Criteria gates for global promotion back on 2026-08-20 (`tested-tools/mcp-servers/gbrain/VERDICT.md`) and **still isn't installed on either home** — the single most concrete, already-decided, ready-to-execute action available to this round.
+- **This repo's own git status is dirty in a way that predates this round** — `git status --short` shows ~53 changed paths as of 2026-09-05, including a known, already-logged, ~2-week-old unresolved item: `_docs/Architecture.md`/`_docs/PRD.md` show as deleted, `Architecture.md`/`PRD.md` show as new at repo root, uncommitted since the 2026-08-21 `instructions/` fix round explicitly flagged this as "a separate, pre-existing decision this fix didn't touch." Also present: several `M` changes under `commands/.claude_wsl/`, `hooks/.claude_wsl/`, `skills/.claude_wsl/` (real drift between this repo's WSL-home mirror and the live WSL home — check which side is actually newer before resolving either direction), a new untracked `.claude/hooks/pre-artifact-edit-check.sh` that also appears staged at `hooks/second-brain-claudekit/pre-artifact-edit-check.sh` (confirm these are meant to be the same file before assuming one is stale), and the full `agents/Jarvis/`+`skills/Jarvis/` trees showing as untracked (never committed since the sync started populating them).
+
+## Step 0 — clean workspace, a real precondition, not a formality
+
+Before any of the tasks below: run `git status`, read every one of the ~53 (or however many, re-count, don't trust this prompt's number) changed paths, and for each one either (a) commit it as part of a coherent, explained change, (b) explicitly decide and record "leave dirty, here's why" (e.g. an actively-syncing mirror folder that's expected to show as untracked between Unison runs), or (c) flag it as something you can't safely resolve without asking Anant. Do not proceed to Task 1 with unexplained dirty paths. The `Architecture.md`/`PRD.md` relocation is the oldest, most important one to actually close out — it's been open since 2026-08-21.
+
+## Procedure for anything genuinely new you write this round
+
+Per Anant's explicit instruction: **skills first, then hooks, then agents — and when you write an agent, write its matching command in the same pass.** Don't write an agent with no way to invoke it deliberately, and don't build hook automation before the skill it supports actually exists in a reviewable form.
+
+## Task 1 — Jarvis: close the 6-agent gap and the missing hooks bucket
+
+1. For each of the 6 empty agents (`daily-operator`, `human-operator`, `ingestion`, `llm-council`, `note-to-actions`, `professor`): figure out, from the name and from what it's apparently replacing (the old roster was `research-distiller`, `vault-curator`, `career-operator`, `anti-slop-editor`, `learning-agent` — some of these new names look like renames/consolidations of the old ones, some look genuinely new; don't assume which without checking whether the old agent is still referenced anywhere live — CLAUDE.md's skills table, `.claude/commands/*.md`, AGENTS.md) what each one is actually supposed to do. Ask Anant directly if the intent isn't recoverable from context — don't invent a plausible-sounding purpose for a name alone.
+2. Write real content for each, in this repo's `agents/Jarvis/` staging first (per "drafted here, promoted from here"), following Jarvis's own build standard (`Jarvis OS — North Star.md` Part 5.2: frontmatter `name`+`description` in the "Use proactively for… MUST BE USED for…" pattern, a tight `tools` allowlist, `model`).
+3. Do the same for `rules/what-to-read.md` and `rules/how-to-write.md` (empty) and `context/MEMORY.md` (empty) — check what `rules/human-writing.md` and `context/workspace-context.md` (both real) actually do first, so the two new rules files fill a genuinely different, non-duplicate role, same discipline the internship-research-loop `rules/` files used this week (each one either a real addition or a thin pointer, never a restatement).
+4. Create the missing `hooks/Jarvis/` bucket and stage Jarvis's three real hook scripts into it (copy, don't move — the real scripts stay in Jarvis's `.claude/hooks/`), plus a short per-hook note (what it does, what event it's registered on) mirroring `_docs/`'s existing per-tool documentation depth.
+5. **Execute the third hop, carefully, for the first time**: once the 6 agents + 2 rules + MEMORY.md have real, reviewed content in this repo's staging, copy them into Jarvis's actual `.claude/agents/`, `.claude/rules/`, `.claude/context/` — show the diff before writing, confirm with Anant before the first one lands (this is a new kind of write this pipeline has never done; don't assume the green light extends to all 9 files just because it's granted for the first one).
+6. Log every promotion decision as its own line in this repo's own commit history and in the Jarvis vault's [[20_Progress/Projects/AI Use/Claude Kit/Log]] (same file, same append-only dated-entry convention already established there) — cite exactly what changed and why, per that file's own standard (see any 2026-08-20/21 entry for the expected density).
+
+## Task 2 — Global homes: WSL cleanup, Windows bootstrap, gbrain install
+
+1. **WSL**: fix the confirmed stale vault-path references in `~/.claude/agents/*.md` and `~/.claude/commands/*.md` (the pre-reorg paths named in this repo's own Log.md 2026-08-20 entry) — read each file, confirm the real current path for whatever it references, fix in place. This edits a live global home a real session depends on; show the diff, confirm before writing.
+2. **Windows**: this is closer to a blank slate than a merge job, per this repo's own `.claude_windows` manifest entry and `Windows Environment.md`. Before writing a global `CLAUDE.md`/agents/commands there, re-run the WSL-side global-scope test from `_docs/Design.md` ("useful with no regard to which project is open") against whatever you're about to add — don't copy WSL's agents/commands over wholesale; several are Obsidian-vault-specific in a way that's arguably fine for WSL's actual usage pattern but shouldn't be assumed to transfer. If a 2026-08-22 Cursor/Grok+Sonnet session (see this file's own prior round) already produced a `_global-config-plan.md` on either home and executed it, find and read that evidence first (check both homes for a leftover plan file, check git-adjacent history/backups) — don't redo work that already happened; if no evidence it ran, say so plainly and proceed as if starting fresh.
+3. **gbrain**: cleared for global promotion since 2026-08-20, still not installed on either home. This is the single most concrete, already-decided action available — do it now on whichever home(s) make sense (check `tested-tools/mcp-servers/gbrain/VERDICT.md` for the exact install steps already verified working), and update Tool Map.md's gbrain row the moment it's actually running on a real home, not before.
+
+## Task 3 — Onboard internship-research-loop into the pipeline
+
+1. Add a new `sync-manifest.json` entry for `internship-research-loop` (`~/projects/work/internship-research-loop`), matching the schema the other 8 real-project entries use — confirm the schema by reading 2-3 existing entries directly, don't guess the field names.
+2. Create `agents/internship-research-loop/`, `commands/internship-research-loop/` (if this project has any — check; it may not), `hooks/internship-research-loop/`, `skills/internship-research-loop/`, `instructions/internship-research-loop/` and let the first sync run populate them from the real repo's current `.claude/` (7 agents, 4 skills, 3 rules, `CLAUDE.md`, `settings.json`) — or, if the sync direction for a brand-new entry needs a manual first population before Unison picks it up (check `_docs/Sync.md` for the actual bootstrap procedure for a new entry, don't assume), do that manually once.
+3. This project's `settings.json` also has proposed-but-not-yet-applied permission entries and a hook that were written by hand this week (python execution permissions, MCP vault-tool allow/ask split, `review-reminder.sh` on `PostToolUse`) — confirm the real repo's `settings.json` already has them (it should — they were applied directly, not just proposed, as of 2026-09-04) before assuming this task still needs to add them.
+4. Cross-reference `sandbox/hiring-agent/` (InterviewStreet's hiring agent, cloned 2026-07-30, explicitly tied to "evaluate usefulness for the internship research loop" per this repo's own Tool Map row, real next step never attempted) — now that internship-research-loop's own `.claude/` is genuinely built out, actually run hiring-agent once against a real internship-search pass and compare its output to what `program-writer`/`promotion`/`tracking` already do. Record a real keep/drop/blend verdict, same rigor as the `cpr-compress-preserve-resume` blend decision — don't leave this as another "still worth evaluating" entry that sits idle for weeks.
+
+## Task 4 — This repo's own `.claude/`
+
+1. Resolve the `pre-artifact-edit-check.sh` duplication (`.claude/hooks/` vs. staged `hooks/second-brain-claudekit/`) — confirm whether these are meant to be identical (this repo self-mirrors, per the manifest's `second-brain-claudekit` entry) and if so which is the real source; if they've diverged, reconcile deliberately, not by picking one arbitrarily.
+2. Review this repo's own 3 agents (`research-distiller`, `vault-curator`, `weekly-reviewer`) and 10 commands against the same North Star Part 5 build standard Jarvis's are held to — this repo has never been audited against that standard itself, only used it as a design reference for others.
+
+## Sandbox review — classify what's sitting there, using Promotion-Criteria.md's own four gates
+
+Do not re-clone or re-triage the 13 already-dropped repos (agent-skills, andrej-karpathy-skills, claude-skills-llm-council, llm-council, last30days-skill, claude-code-best-practice, system-prompts-and-models-of-ai-tools, CL4R1T4S, agentscope, autoresearch, gsd-core, agency-agents, agent-skill-simplified-technical-english, Agent-Reach) or the 2 out-of-scope-here special cases (adx, memsearch) — those decisions are recorded and stand. Focus on what's actually still open, one real next action each:
+- **hiring-agent** — see Task 3.4 above, now has a real, ready use case.
+- **obsidian-mind** — read its procedural-vs-content split and five-hook lifecycle against `Jarvis OS — North Star.md` Part 5 (which already cites it as a design model) and note explicitly what Jarvis's real hooks already match vs. what's still missing (the `PostToolUse`-validate-frontmatter pattern and the `UserPromptSubmit`-classify-and-route pattern from North Star Part 5.3 are both still unbuilt in Jarvis as of 2026-09-04 — check whether obsidian-mind's real implementation of either is worth adapting directly rather than building from scratch).
+- **obsidian-second-brain** — diff its vault-rules against `60_Claude/vault-rules/` (this repo's own) once; note real disagreements, don't just skim.
+- **claude-mem** — hold per its own recorded reasoning (overlaps gbrain + `jarvis-memory` MCP) until gbrain is actually running (Task 2.3) — re-check only after that, don't jump ahead.
+- **agentic-inbox** — compare its triage logic against this repo's own `commands/inbox-process.md` (confirmed zero-provenance native scaffold, currently unused) — a real improvement-or-not verdict, not another deferral.
+- **spec-kit, claude-context, promptfoo** — each already had a real install/run step executed 2026-08-20 (10 skill files scaffolded; 108 files/1369 chunks indexed at 4/4 correct semantic queries; 1-of-2 promptfoo eval pass with a genuine rubric-caught weakness in `/challenge`). None promotion-decided yet — for at least one of the three, walk it through Promotion-Criteria.md's four gates for real and record an actual verdict in Tool Map.md, don't leave all three open again.
+- **gstack** — still blocked on missing WSL libs (`libnss3.so` etc.) per its own documented fix command in Tool Map.md. If this session has a real interactive terminal, run the fix and retry `./setup`; if not, say so plainly and leave it blocked rather than guessing at success.
+- **mattpocock-engineering** — 0 of 17 skills individually tested, a real dated backlog table exists (`tests/skills/mattpocock-engineering/README.md`). Test at least 2-3 of the 17 for real this round rather than leaving the backlog at zero again.
+
+For anything genuinely new found in `sandbox/` beyond the 32 already tracked (re-run `ls -d sandbox/*/ | wc -l` and compare against 32 — if it's grown, the new ones need the same one-line keep/drop/still-worth-evaluating treatment the 2026-08-20 triage gave the prior 32, not silent omission).
+
+## After the ingestion work — review and tighten
+
+1. Read `_All-Projects-Sync-Log.md` for the real, current sync-task health (it has failed silently before, per this repo's own 2026-08-20/21 history) before trusting that anything you just staged will actually propagate.
+2. Update [[20_Progress/Projects/AI Use/Claude Kit/Tool Map]] and [[20_Progress/Projects/AI Use/Claude Kit/Log]] with every real state change this round produced — new manifest entry, every promotion, every sandbox verdict, per those files' own established append-only, cited-evidence convention. Do not summarize loosely; cite exact paths, exact line/file counts, exact commit hashes, the same density every prior round in this file used.
+3. Make further improvements to this repo's own `.claude/` folder and documentation/procedure only *after* the above — name anything real you find (a stale doc, a convention that should be tightened, a genuine second-brain-claudekit-scoped gap), don't invent busywork to fill this step.
+
+## Report back
+
+- Step 0: the real dirty-path count, and the decision made on each category.
+- Task 1: which of the 6 agents got real content, what each does, whether the third hop actually landed in Jarvis's real `.claude/` (and if Anant didn't confirm past the first file, say exactly where you stopped).
+- Task 2: WSL path fixes made, Windows's real starting state re-confirmed or corrected, gbrain's install status on each home.
+- Task 3: the new manifest entry, its first sync result, the hiring-agent verdict.
+- Task 4: the pre-artifact-edit-check.sh resolution, the self-audit finding.
+- Sandbox: one line per item above — verdict and evidence.
+- Anything in this prompt's own "already established" section that turned out wrong when you checked it directly — state that plainly, same discipline every prior round in this file has used.
+```
+
+</br>
+
+**Round 8, 2026-08-21 — fresh session.**
+```
+- `Edit` -- `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Projects\AI Use\Claude Kit\Claude Code\Prompts.md`
+```diff
+- ```
+
+</br>
+
+**Round 8, 2026-08-21 — fresh session.**
++ ```
+
+**Round 8, 2026-08-21 — fresh session.**
+```
 
 ## Actions Taken
 
@@ -2454,6 +2603,7 @@ Found it — `second-brain-claudekit` and a likely "sandbox" repo called `everyt
 - `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Internship\Building System\V0\Cover Letter Alteration.md`
 - `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Internship\Building System\V0\Humanizer.md`
 - `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Internship\Building System\V0\Resume Alteration.md`
+- `D:\Users\_Anant\10_Areas\Documents\Jarvis\20_Progress\Projects\AI Use\Claude Kit\Claude Code\Prompts.md`
 - `D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\Standards\Humanized Writing Standard.md`
 - `D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\Standards\Internship\Cover Letter Alteration Standard.md`
 - `D:\Users\_Anant\10_Areas\Documents\Jarvis\30_Order\Standards\Internship\Internship Loop Review Standard.md`
