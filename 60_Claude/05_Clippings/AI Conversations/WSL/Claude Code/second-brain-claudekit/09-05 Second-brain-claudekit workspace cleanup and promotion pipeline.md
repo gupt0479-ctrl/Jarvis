@@ -7,7 +7,7 @@ title: "Second-brain-claudekit workspace cleanup and promotion pipeline"
 started_at: 2026-09-05T06:00:51
 ended_at: 2026-09-05T07:03:55
 duration_minutes: 63
-exported_at: 2026-09-05T02:45:02
+exported_at: 2026-09-05T04:45:02
 project: second-brain-claudekit
 cwd: '/home/anant_gupta/projects/ai/claude/second-brain-claudekit'
 session_id: b53199c5-f2a4-4016-8873-dbf9f7c7bde3
