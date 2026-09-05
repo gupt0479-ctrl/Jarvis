@@ -2073,7 +2073,7 @@ application_url: https://roche.wd3.myworkdayjobs.com/ROG-A2O-GENE/job/South-San-
 careers_page: https://careers.gene.com
 list_origin: "[[10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Machine Learning Intern - OpRegen Machine Learning - Genentech]]"
 applying_note: null
-recruiter_contact: "[[10_Areas/Career/Internships/Contacts/Each One/Machine Learning Intern - OpRegen Machine Learning - Genentech]]"
+recruiter_contact: "[[10_Areas/Career/Internships/Contacts/Each One/Ongoing/Machine Learning Intern - OpRegen Machine Learning - Genentech]]"
 tags:
   - internship
   - program
@@ -2140,7 +2140,7 @@ Pick one of the five general Genentech TA contacts to reach out to cold, or appl
 ---
 type: tracker
 program: "[[10_Areas/Career/Internships/Programs/Serious/Machine Learning Intern - OpRegen Machine Learning - Genentech]]"
-contact: "[[10_Areas/Career/Internships/Contacts/Each One/Machine Learning Intern - OpRegen Machine Learning - Genentech]]"
+contact: "[[10_Areas/Career/Internships/Contacts/Each One/Ongoing/Machine Learning Intern - OpRegen Machine Learning - Genentech]]"
 company: Genentech
 url: https://roche.wd3.myworkdayjobs.com/ROG-A2O-GENE/job/South-San-Francisco/[REDACTED]
 date_noted: '2026-08-25'
@@ -2421,7 +2421,7 @@ application_url: https://ebxr.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/e
 careers_page: https://dtcc.com/careers/early-career-programs
 list_origin: "[[10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Infrastructure Engineer Intern [2027 Intern Program] - DTCC]]"
 applying_note: null
-recruiter_contact: "[[10_Areas/Career/Internships/Contacts/Each One/Infrastructure Engineer Intern [2027 Intern Program] - DTCC]]"
+recruiter_contact: "[[10_Areas/Career/Internships/Contacts/Each One/Ongoing/Infrastructure Engineer Intern [2027 Intern Program] - DTCC]]"
 tags:
   - internship
   - program
@@ -2486,7 +2486,7 @@ Consider a warm-intro angle via Marc Masri's or Dan Thieke's engineering-blog by
 ---
 type: tracker
 program: "[[10_Areas/Career/Internships/Programs/Serious/Infrastructure Engineer Intern [2027 Intern Program] - DTCC]]"
-contact: "[[10_Areas/Career/Internships/Contacts/Each One/Infrastructure Engineer Intern [2027 Intern Program] - DTCC]]"
+contact: "[[10_Areas/Career/Internships/Contacts/Each One/Ongoing/Infrastructure Engineer Intern [2027 Intern Program] - DTCC]]"
 company: DTCC
 url: https://ebxr.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/214473
 date_noted: '2026-08-25'

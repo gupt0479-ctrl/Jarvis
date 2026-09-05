@@ -2,22 +2,24 @@
 name: Data Engineer Intern (Data) at LPL Financial Holdings
 company: LPL Financial Holdings
 program_type: Data Engineering
-eligible_classes: ["Bachelor's", "Master's"]
-grad_year: null
+eligible_classes:
+  - Bachelor's
+  - Master's
+grad_year:
 role_type: internship
-wave: null
-opens_date: null
-deadline_posted: '2026-09-21'
-deadline_real: null
-pay_per_week: null
+wave:
+opens_date:
+deadline_posted: 2026-09-21
+deadline_real:
+pay_per_week:
 pay_currency: USD
 duration_weeks: 10
 benefits: []
 application_url: https://lplfinancial.wd1.myworkdayjobs.com/university/job/Fort-MillCharlotte/Summer-Intern-2027---Data_R-052914
 careers_page: https://career.lpl.com/internship
 list_origin: "[[10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Data Engineer Intern - Data - LPL Financial Holdings]]"
-applying_note: null
-recruiter_contact: "[[10_Areas/Career/Internships/Contacts/Each One/Data Engineer Intern - Data - LPL Financial Holdings]]"
+applying_note:
+recruiter_contact: "[[10_Areas/Career/Internships/Contacts/Each One/Ongoing/Data Engineer Intern - Data - LPL Financial Holdings]]"
 tags:
   - internship
   - program

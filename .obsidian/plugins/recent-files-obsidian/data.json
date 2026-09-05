@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "Prompts",
+      "path": "20_Progress/Projects/AI Use/Claude Kit/Claude Code/Prompts.md"
+    },
+    {
+      "basename": "claude-prompt-ui-fixes-analysis",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-prompt-ui-fixes-analysis.md"
+    },
+    {
+      "basename": "Claude OS Dashboard",
+      "path": "20_Progress/AI/Claude OS Dashboard.canvas"
+    },
+    {
       "basename": "Prompt",
       "path": "20_Progress/Projects/CS/Portfolio/frontend/Prompt.md"
     },
@@ -27,14 +39,6 @@
     {
       "basename": "claude-prompt-ui-fixes-audit-pass",
       "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-prompt-ui-fixes-audit-pass.md"
-    },
-    {
-      "basename": "claude-prompt-ui-fixes-analysis",
-      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-prompt-ui-fixes-analysis.md"
-    },
-    {
-      "basename": "Prompts",
-      "path": "20_Progress/Projects/AI Use/Claude Kit/Claude Code/Prompts.md"
     },
     {
       "basename": "Claude Code Prompts",
@@ -195,10 +199,6 @@
     {
       "basename": "Data Science Machine Learning Intern - Castleton Commodities International",
       "path": "10_Areas/Career/Internships/Programs/Serious/Data Science Machine Learning Intern - Castleton Commodities International.md"
-    },
-    {
-      "basename": "AI and Data Engineering Summer Scholar Intern - Government & Public Services - Deloitte",
-      "path": "10_Areas/Career/Internships/Programs/Serious/AI and Data Engineering Summer Scholar Intern - Government & Public Services - Deloitte.md"
     }
   ],
   "omittedPaths": [],

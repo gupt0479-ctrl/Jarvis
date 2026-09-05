@@ -20,11 +20,12 @@ notes:
   - "[[20_Progress/AI/Claude Code/Portfolio/Setup]]"
   - "[[20_Progress/AI/Claude Code/Trading View/Setup]]"
   - "[[20_Progress/AI/Claude Code/second-brain-claudekit/Setup]]"
+  - "[[20_Progress/AI/Claude Code/internship-research-loop/Setup]]"
   - "[[20_Progress/Projects/AI Use/Claude Kit/Tool Map]]"
   - "[[20_Progress/AI/Claude Code/Management]]"
   - "[[20_Progress/Projects/AI Use/Claude Kit/Log]]"
   - "[[20_Progress/AI/Claude Code/Sync - Unison]]"
-next: All candidate projects onboarded 2026-08-10; only remaining sync work is the deferred settings.json/settings.local.json portability question
+next: internship-research-loop onboarded 2026-09-05 (11th live entry) - decide whether it joins the 15-minute Scheduled Task or stays manual; deferred settings.json/settings.local.json portability question still open
 ---
 # Claude Code — Content Map
 Every project folder under `20_Progress/AI/Claude Code/` now has a `Setup.md` that inventories its files and tags each markdown note with a `setup_status`. This MOC is the one place to see all of them at once and find what needs work, without opening every folder.
@@ -49,6 +50,7 @@ Every project folder under `20_Progress/AI/Claude Code/` now has a `Setup.md` th
 | Portfolio | live-synced | 2026-08-10 | [[20_Progress/AI/Claude Code/Portfolio/Setup\|Setup]] |
 | Trading View | live-synced | 2026-08-10 | [[20_Progress/AI/Claude Code/Trading View/Setup\|Setup]] |
 | second-brain-claudekit | live-synced | 2026-08-10 | [[20_Progress/AI/Claude Code/second-brain-claudekit/Setup\|Setup]] |
+| internship-research-loop | live-synced | 2026-09-05 | [[20_Progress/AI/Claude Code/internship-research-loop/Setup\|Setup]] |
 | .claude_windows | live-synced | 2026-08-10 | [[20_Progress/AI/Claude Code/.claude_windows/Setup\|Setup]] |
 | .claude_wsl | live-synced | 2026-08-10 | [[20_Progress/AI/Claude Code/.claude_wsl/Setup\|Setup]] |
 ## Needs Work

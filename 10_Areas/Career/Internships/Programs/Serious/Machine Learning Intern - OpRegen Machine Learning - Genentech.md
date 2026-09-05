@@ -2,22 +2,26 @@
 name: Machine Learning Intern (OpRegen Machine Learning) at Genentech
 company: Genentech
 program_type: Machine Learning
-eligible_classes: ["Associate's", "Bachelor's", "Master's"]
-grad_year: null
+eligible_classes:
+  - Associate's
+  - Bachelor's
+  - Master's
+grad_year:
 role_type: internship
-wave: null
-opens_date: null
-deadline_posted: '2026-09-08'
-deadline_real: null
-pay_per_week: null
+wave:
+opens_date:
+deadline_posted: 2026-09-08
+deadline_real:
+pay_per_week:
 pay_currency: USD
 duration_weeks: 26
-benefits: ["Paid holiday time off benefits"]
+benefits:
+  - Paid holiday time off benefits
 application_url: https://roche.wd3.myworkdayjobs.com/ROG-A2O-GENE/job/South-San-Francisco/XMLNAME-2027-Spring-Intern---OpRegen-Machine-Learning_202608-121800
 careers_page: https://careers.gene.com
 list_origin: "[[10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Machine Learning Intern - OpRegen Machine Learning - Genentech]]"
-applying_note: null
-recruiter_contact: "[[10_Areas/Career/Internships/Contacts/Each One/Machine Learning Intern - OpRegen Machine Learning - Genentech]]"
+applying_note:
+recruiter_contact: "[[10_Areas/Career/Internships/Contacts/Each One/Ongoing/Machine Learning Intern - OpRegen Machine Learning - Genentech]]"
 tags:
   - internship
   - program

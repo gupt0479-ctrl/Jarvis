@@ -2,22 +2,24 @@
 name: Full-Stack Software Engineer Intern at Castleton Commodities International
 company: Castleton Commodities International
 program_type: Software
-eligible_classes: ["Bachelor's", "Master's"]
-grad_year: null
+eligible_classes:
+  - Bachelor's
+  - Master's
+grad_year:
 role_type: internship
-wave: null
-opens_date: null
-deadline_posted: '2026-09-01'
-deadline_real: null
-pay_per_week: null
+wave:
+opens_date:
+deadline_posted: 2026-09-01
+deadline_real:
+pay_per_week:
 pay_currency: USD
-duration_weeks: null
+duration_weeks:
 benefits: []
 application_url: https://osv-cci.wd1.myworkdayjobs.com/en-US/CCICareers/job/Stamford-CT/Full-Stack-Software-Engineer-Internship--Summer-2027-_R1350
 careers_page: https://cci.com/careers/students/
 list_origin: "[[10_Areas/Career/Internships/List/Dossiers/2 - Fullstack/Full-Stack Software Engineer Intern - Castleton Commodities International]]"
-applying_note: null
-recruiter_contact: "[[10_Areas/Career/Internships/Contacts/Each One/Full-Stack Software Engineer Intern - Castleton Commodities International]]"
+applying_note:
+recruiter_contact: "[[10_Areas/Career/Internships/Contacts/Each One/Ongoing/Full-Stack Software Engineer Intern - Castleton Commodities International]]"
 tags:
   - internship
   - program

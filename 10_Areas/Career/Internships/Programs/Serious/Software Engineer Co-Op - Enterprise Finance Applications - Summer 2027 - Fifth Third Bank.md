@@ -2,22 +2,24 @@
 name: Software Engineer Co-Op (Enterprise Finance Applications) at Fifth Third Bank
 company: Fifth Third Bank
 program_type: Software
-eligible_classes: ["Junior", "Senior"]
-grad_year: null
+eligible_classes:
+  - Junior
+  - Senior
+grad_year:
 role_type: internship
-wave: null
-opens_date: null
-deadline_posted: '2026-10-09'
-deadline_real: null
-pay_per_week: null
+wave:
+opens_date:
+deadline_posted: 2026-10-09
+deadline_real:
+pay_per_week:
 pay_currency: USD
-duration_weeks: null
+duration_weeks:
 benefits: []
 application_url: https://fifththird.wd5.myworkdayjobs.com/53careers/job/Cincinnati-OH/Software-Engineer-Co-Op---Enterprise-Finance-Applications---Summer-2027_R71588
 careers_page: https://www.53.com/content/fifth-third/en/careers/early-careers.html
 list_origin: "[[10_Areas/Career/Internships/List/Dossiers/1 - AI & ML/Software Engineer Co-Op - Enterprise Finance Applications - Summer 2027 - Fifth Third Bank]]"
-applying_note: null
-recruiter_contact: "[[10_Areas/Career/Internships/Contacts/Each One/Software Engineer Co-Op - Enterprise Finance Applications - Summer 2027 - Fifth Third Bank]]"
+applying_note:
+recruiter_contact: "[[10_Areas/Career/Internships/Contacts/Each One/Ongoing/Software Engineer Co-Op - Enterprise Finance Applications - Summer 2027 - Fifth Third Bank]]"
 tags:
   - internship
   - program

@@ -2,22 +2,23 @@
 name: Infrastructure Engineer Intern [2027 Intern Program] at DTCC
 company: DTCC
 program_type: Infrastructure Engineering
-eligible_classes: ["Bachelor's"]
-grad_year: null
+eligible_classes:
+  - Bachelor's
+grad_year:
 role_type: internship
-wave: null
-opens_date: null
-deadline_posted: '2026-10-01'
-deadline_real: null
-pay_per_week: null
+wave:
+opens_date:
+deadline_posted: 2026-10-01
+deadline_real:
+pay_per_week:
 pay_currency: USD
 duration_weeks: 10
 benefits: []
 application_url: https://ebxr.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/214473
 careers_page: https://dtcc.com/careers/early-career-programs
 list_origin: "[[10_Areas/Career/Internships/List/Dossiers/3 - CyS & Finance/Infrastructure Engineer Intern [2027 Intern Program] - DTCC]]"
-applying_note: null
-recruiter_contact: "[[10_Areas/Career/Internships/Contacts/Each One/Infrastructure Engineer Intern [2027 Intern Program] - DTCC]]"
+applying_note:
+recruiter_contact: "[[10_Areas/Career/Internships/Contacts/Each One/Ongoing/Infrastructure Engineer Intern [2027 Intern Program] - DTCC]]"
 tags:
   - internship
   - program
