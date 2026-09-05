@@ -8,6 +8,7 @@ notes:
   - "[[Tracking Template]]"
   - "[[Application Tracker]]"
   - "[[30_Order/Standards/Internship/Internship Tracker Standard]]"
+  - "[[30_Order/Workflows/Internship/Internship Tracking Workflow]]"
 tags:
   - internship
   - process

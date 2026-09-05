@@ -13,6 +13,7 @@ notes:
   - "[[Cover Letter Alteration Standard]]"
   - "[[Resume Alteration]]"
   - "[[Humanizer]]"
+  - "[[30_Order/Templates/Career/Internship/Cover Letter Template]]"
 next: Build Cover Letters/Main Cover Letter.md — the paragraph-bank equivalent of Main Resume.md — once the resume rebuild's evidence structure is proven out.
 ---
 # Cover Letter Alteration
@@ -22,7 +23,7 @@ next: Build Cover Letters/Main Cover Letter.md — the paragraph-bank equivalent
 Governs a new master, `Cover Letters/Main Cover Letter.md`, and every per-application cover letter DOCX in `20_Progress/Internship/Cover Letters/`. That folder doesn't exist yet — nothing has been written to it. Does not govern the resume side (see [[Resume Alteration]]) or the style/tone pass itself (see [[Humanizer]]).
 
 ## The Master Cover Letter (Mirrors The Resume's Three-Artifact Contract)
-1. **`Cover Letters/Main Cover Letter.md`** — not yet built. The intended shape is a paragraph/story bank, not a single fixed letter: reusable, evidence-backed narrative fragments (an opening hook per company-type, 2–3 experience paragraphs each tied to a specific real project or role, a closing) that a per-application letter selects from and recombines — the cover-letter equivalent of Main Resume's tagged bullet bank. This is genuinely new content to write, not an extraction from something that already exists in the vault.
+1. **`Cover Letters/Main Cover Letter.md`** — not yet built. The intended shape is a paragraph/story bank, not a single fixed letter: reusable, evidence-backed narrative fragments (an opening hook per company-type, 2–3 experience paragraphs each tied to a specific real project or role, a closing) that a per-application letter selects from and recombines — the cover-letter equivalent of Main Resume's tagged bullet bank. This is genuinely new content to write, not an extraction from something that already exists in the vault. The empty scaffold for it — the fragment categories and tagging convention, no real content yet — lives at [[30_Order/Templates/Career/Internship/Cover Letter Template]].
 2. **`Cover Letters/Main Cover Letter.docx`** — canonical export, regenerated from the Markdown, never edited independently.
 3. **`Cover Letters/Main Cover Letter.pdf`** — submission-format export.
 `Main Cover Letter.*` are reserved filenames at the root of `Cover Letters/`, same reservation rule as `Main Resume.*`.

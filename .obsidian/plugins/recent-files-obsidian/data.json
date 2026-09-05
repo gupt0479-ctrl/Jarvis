@@ -1,6 +1,22 @@
 {
   "recentFiles": [
     {
+      "basename": "Claude Code Prompts",
+      "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
+    },
+    {
+      "basename": "claude-prompt-ui-fixes-analysis",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/claude-prompt-ui-fixes-analysis.md"
+    },
+    {
+      "basename": "Scarcity Imprint — The Hidden Operating System Behind Income Ceilings",
+      "path": "60_Claude/20_Distilled_Notes/Scarcity Imprint — The Hidden Operating System Behind Income Ceilings.md"
+    },
+    {
+      "basename": "UI Fixes",
+      "path": "20_Progress/Projects/CS/Portfolio/frontend/UI Fixes.md"
+    },
+    {
       "basename": "Cover Letter Template",
       "path": "30_Order/Templates/Career/Internship/Cover Letter Template.md"
     },
@@ -129,10 +145,6 @@
       "path": "10_Areas/Career/Internships/Contacts/Each One/A.I. Developer Co-Op (Boston, MA) - Manhattan Associates.md"
     },
     {
-      "basename": "Claude Code Prompts",
-      "path": "20_Progress/Internship/Building System/Runs/Claude Code Prompts.md"
-    },
-    {
       "basename": "Software Engineer Co-Op - Enterprise Finance Applications - Summer 2027 - Fifth Third Bank",
       "path": "10_Areas/Career/Internships/Programs/Serious/Software Engineer Co-Op - Enterprise Finance Applications - Summer 2027 - Fifth Third Bank.md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "Future Image",
       "path": "20_Progress/Mentorship Program/adx/Future Image.md"
-    },
-    {
-      "basename": "Source Claims",
-      "path": "20_Progress/Mentorship Program/adx/Source Claims.md"
-    },
-    {
-      "basename": "Github Issues",
-      "path": "20_Progress/Mentorship Program/adx/Github Issues.md"
-    },
-    {
-      "basename": "Recommended Fixes",
-      "path": "20_Progress/Mentorship Program/adx/Recommended Fixes.md"
     }
   ],
   "omittedPaths": [],

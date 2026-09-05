@@ -19,7 +19,7 @@ tags:
 next:
 ---
 # [Role] - [Company]
-==Created at the start of real application preparation — before a resume or cover letter exists, not at submission.== `status` moves `Preparing` → `Applied` → `Offer`/`Rejected`/`Withdrawn`. Source-of-truth responsibility transfers here from the paired Tracker note once this exists; see [[30_Order/Workflows/Internship/Application Document Preparation]] for the full drafting sequence.
+==Created at the start of real application preparation — before a resume or cover letter exists, not at submission.== `status` moves `Preparing` → `Applied` → `Offer`/`Rejected`/`Withdrawn`. Source-of-truth responsibility transfers here from the paired Tracker note once this exists; see [[30_Order/Workflows/Internship/Application Document Preparation]] for the full drafting sequence and [[30_Order/Standards/Internship/Applying Standard]] for the enforceable field/section rules this template's shape is drawn from.
 ## Goal
 Get an offer from [Role] - [Company]. One sentence on what winning looks like for this specific program.
 ## Current State

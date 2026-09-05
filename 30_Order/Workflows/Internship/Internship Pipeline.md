@@ -14,6 +14,9 @@ notes:
   - "[[10_Areas/Career/Internships/Internships Hub]]"
   - "[[Internship - Design Rationale]]"
   - "[[30_Order/Workflows/Internship/Application Document Preparation]]"
+  - "[[30_Order/Standards/Internship/Applying Standard]]"
+  - "[[30_Order/Workflows/Internship/Internship Tracking Workflow]]"
+  - "[[30_Order/Workflows/Internship/Internship Review System]]"
 next: null
 ---
 # Internship Pipeline

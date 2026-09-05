@@ -12,6 +12,7 @@ notes:
   - "[[30_Order/Workflows/Internship/Application Document Preparation]]"
   - "[[Resume Alteration Standard]]"
   - "[[30_Order/Standards/Humanized Writing Standard]]"
+  - "[[30_Order/Templates/Career/Internship/Cover Letter Template]]"
 next:
 ---
 # Cover Letter Alteration Standard

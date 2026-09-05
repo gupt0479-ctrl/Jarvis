@@ -15,6 +15,7 @@ notes:
   - "[[20_Progress/Internship/Building System/System - Build Log]]"
   - "[[60_Claude/30_Reviews/Internship Loop/Internship Loop Reviews MOC]]"
   - "[[Deadline and Intake Triage Standard]]"
+  - "[[30_Order/Workflows/Internship/Internship Review System]]"
 next: First run of both review types shipped 2026-08-23. Tighten the Monthly review's Note-Shape Conformance section once the parallel 30_Order note-definition session lands concrete field specs for Program/Contact/Tracker/Applying/Job & Company notes — see that section's own warning.
 ---
 # Internship Loop Review Standard

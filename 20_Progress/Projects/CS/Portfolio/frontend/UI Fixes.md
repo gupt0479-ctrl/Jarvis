@@ -1,116 +1,258 @@
 ---
 type: class
 input_kind: project
-status: seed
-created:
-updated:
-area:
+status: active
+created: 2026-07-11
+updated: 2026-09-05
+area: portfolio/frontend
 tags:
   - "#class"
-next:
+  - portfolio
+  - frontend
+  - ui-fixes
+next: "[[frontend-ui-fixes-requirements]]"
+notes:
+  - "[[frontend-ui-fixes-requirements]]"
+  - "[[frontend-ui-fixes-design]]"
+  - "[[frontend-ui-fixes-tasks]]"
 ---
-# 
 
-## Overview
-- 
-## Plan
-- [ ] Break down tasks
-- [ ] Solve core
-- [ ] Writeup/tests
-- [ ] Submit
-## Detailed analysis of ui fixes
--  I'm going to tell you the detail and UI fix that needed to be implemented in my portfolio overall.
+# UI Fixes — Master Note
 
-We are going to talk about V0. This is from localhost. Everything that we have done on the localhost is deployed, and it's all in sync. Actually, if you could verify that, that would also be great.
+### Per-component build specs (implementation-ready)
 
-Now, diving into the UI fixes that we need to do: as soon as I open the landing screen, I want my image to be static. It should not be moving around. And the half wave over the photo should have a nice effect. It should have a comic card effect, but it shouldn't be very deep. It should be a very light effect. 
+Each fix area has a **detailed standalone spec** with verified file paths, current vs target behavior, acceptance criteria, and copy-paste prompts:
 
-Let's remove the terminal because it didn't do much for the space. The wiggle effect is not really necessary.
+→ **Start here:** [[frontend-ui-fixes-index]]
 
-I've received feedback that the initial part of the portfolio is not that great. As we scroll down, it gets better and better, but it's not really eye-catching as soon as the user opens it. So we need to work with the background and make it much more initially eye-catching. The background should do something else as soon as the portfolio opens up, and it should be a slow effect.
+| Area | Spec |
+|---|---|
+| Hero / background | [[ui-fix-01-hero-background]] |
+| About pin + summary | [[ui-fix-02-about-section]] |
+| About telemetry (2 glow cards) | [[ui-fix-03-about-telemetry]] |
+| Projects cinematic pin | [[ui-fix-04-projects-section]] |
+| Education spring/rope | [[ui-fix-05-education-section]] |
+| Logo + footer | [[ui-fix-06-logo-footer]] |
+| Portfolio Lab input | [[ui-fix-07-portfolio-lab]] |
+| July carry-forward | [[ui-fix-08-carry-forward]] |
 
-How about all these stars, all these particles around the revolving planet, being entirely scattered around the screen? The ball is inside a perimeter that is all scattered over, and slowly the entire ball connects like a very satisfying graph. It appears like these nodes are connected, and they form the perfect circle that it is currently at. This should resolve to exactly as it is right now. The background size and everything should resolve to this, but as soon as you open it, it's all scattered away.
+Formal trio: [[frontend-ui-fixes-requirements]] · [[frontend-ui-fixes-design]] · [[frontend-ui-fixes-tasks]]
 
-Again, we are removing the terminal that is just below the landing screen. We're not deleting the file, but we're just removing it for now and deciding what we can do about it later.
+---
 
-We'll have to push up the About Me, and the About Me should be something that's toggleable. It should only show about 3 or 4 sentences in the nice format they're in right now. As soon as it is toggled, it changes into what is currently seen.
+> **Current source of truth:** the **Current Localhost Walkthrough (Sep 2026)** section below.
+> The July 2026 raw dump is preserved under **Historical Context** for reference only — several items there are superseded.
+> Formal spec lives in [[frontend-ui-fixes-requirements]], [[frontend-ui-fixes-design]], [[frontend-ui-fixes-tasks]].
 
-Basically, we need to build something that's going to shorten the About Me, and we're going to write something additional on top of it. We're not only going to shorten this so that when the user clicks on it, he sees something, but when it's not toggled, he sees something else.
+---
 
-The 4 boxes down there need to be enhanced further as something clickable that shows more detail. So we shorten everything over here, and the About Me should only be about a screen big when it is not toggled. Everything should be clickable in the About Me section.
+## Current Localhost Walkthrough (Sep 2026)
 
-Upon clicking these boxes, I want it to show a tiny graph about what exactly I am talking about. This could be something like my skill section graph, but much tinier. There's a summary just below it saying something about the specific thing written down. 
+Verified against localhost + screenshots from session `2026-09-04`. This is the active fix list.
 
-The toggle on the sidebar on a phone, especially the send button, is not entirely applicable for each and every screen. For a small phone, the send button gets outside the phone, and you have to zoom out to click the button. So, the sidebar is not exactly responsive for each and every single device.
+### Status Legend
 
-We need to make sure that the layout for the send button and the writing button is clean.
+| Status | Meaning |
+|---|---|
+| **open** | Not built or visibly wrong on localhost |
+| **partial** | Exists but does not match spec |
+| **done** | Matches spec on localhost |
+| **superseded** | Old requirement — do not implement |
 
-Also, when writing a very long message, the user cannot see how long the message has been. I want the message part to be in a way that, when the user types more, the box increases. This can only increase to about 3 lines.
+---
 
-The character limit per line should be until the send button. Over here, I am going to give you an example of when the character limit hits for the send button, and the user can know more and see what is written exactly after this.
+### 1. Hero / Background Sphere
 
-Also, I noticed that the cursor movement for left and right to switch between the text is not really working. Only if I click on the specific part of the text is that working.
+| Fix | Status | Detail |
+|---|---|---|
+| Profile image static | **partial** | Previously fixed from moving; must stay static at all times — no ambient drift after entrance |
+| Image hover overlay full cover | **open** | On hover, Open Portfolio Lab / Close tab overlay must cover the **entire** profile image. Current gap on left border and bottom border is visible |
+| Sphere click → 3D volumetric scatter | **open** | Clicking center of sphere triggers a **2D-feeling** effect today. Must become a true **3D volumetric scatter**: particles fly outward in depth, then reform. Same visual language as load-in scatter but spatial |
+| Scroll-driven background upgrade | **open** | Scroll effect improved but needs next level — see About/Projects/Education pinned sections below |
 
-Here is our text character limit upon gibberish that I typed: "ahshdahshdhshahshdhahshdhasgdhhshdagsdah".
+**Components:** `HeroContent.tsx`, `ProfileImage.tsx`, `ObsidianBackgroundCanvas.tsx`
 
+**Screenshots:** landing hero (profile card right, particle sphere center)
+
+---
+
+### 2. About Section — Pinned Scroll + Summary
+
+| Fix | Status | Detail |
+|---|---|---|
+| Pinned one-screen scroll moment | **open** | As user scrolls past landing, About pins for one viewport. First frame: short summary + 2 stat cards. One more scroll: summary transforms/reveals next state |
+| Mesmerizing background scatter on pin | **open** | During About pin, background does a **mesmerizing scatter/reform** — same family as sphere click but more attention-catching. This is the "pause and scroll" hook |
+| Click-anywhere bio expand | **open** | Full bio currently only expands via "Read full bio" button. Must expand when clicking **anywhere** on the About card or description text |
+| Remove bottom 2 stat cards | **open** | Remove "2+ Coding Experience" and "15+ Technologies Mastered" cards |
+| Keep 2 Sanity-editable cards | **open** | Keep only: **"Ongoing always (5+)" / Side Quests** and **"100%" / Eager to Learn**. Both editable in Sanity (`profile.stats[]`) |
+| Glow-only card interaction | **open** | Clicking either card triggers a **subtle whole-card glow** at a mild, noticeable pace. **No dropdown, no graph, no accordion** — supersedes July spec's mini-graph expand |
+
+**Components:** `AboutSection.tsx`, `AboutSectionClient.tsx`, `AboutTelemetry.tsx`, `ObsidianBackgroundCanvas.tsx` (background sync)
+
+**GSAP:** ScrollTrigger pin required — see [[frontend-ui-fixes-design]] § Pinned Sections
+
+**Screenshots:** About collapsed (4 cards visible — target is 2), About expanded (full bio + 4 cards — target is 2 glow cards)
+
+---
+
+### 3. Projects Section — Pinned Cinematic Lock
+
+| Fix | Status | Detail |
+|---|---|---|
+| Pinned lock-screen on scroll | **open** | Similar to About: section pins when user reaches Projects |
+| Border/edge background effect | **open** | Soothing recurring effect on **outer borders/edges of screen** while auto-scroll runs — distinct from About's center scatter |
+| Cards emerge from space | **open** | On reaching scroll point, 3 project cards emerge from fully translucent → solid 3D-feeling cards that appear **in space** (not sliding around) |
+| Side card ambient drift | **open** | While auto-scroll + background effect run, the two translucent side cards drift subtly within a **designated bounded space** |
+| Auto-play scope | **partial** | July spec: auto-play indices 0–2 only. Still valid unless user changes — confirm during build |
+
+**Components:** `ProjectsSlider.tsx`, `ObsidianBackgroundCanvas.tsx`, section wrapper
+
+**GSAP:** ScrollTrigger pin + timeline for card emergence
+
+**Brainstorm note:** Document should have active role in card effects — options to explore in design doc before coding
+
+**Screenshots:** Projects carousel (Resq center, TradingView/OpsPilot faded sides)
+
+---
+
+### 4. Education Section — Spring, Rope, Deform
+
+| Fix | Status | Detail |
+|---|---|---|
+| Pinned one-screen lock | **open** | Education fits one viewport on entry; spring entrance sequence plays inside pin |
+| Spring bounce entry sequence | **open** | Bachelor's sphere bounces up first, then High School, then Middle School — spring-like, not instant |
+| Rope connectors (not rigid lines) | **open** | Lines connecting spheres must look like **flexible bent rope**, extendable, not straight rigid arcs |
+| Dot delay +0.5s | **open** | Travelling dot starts ~0.5s later than now so Bachelor's can return to rigid shape before next loop |
+| Bachelor's gradual deform with dot | **open** | Bachelor's starts as rigid circle. As dot **leaves** Bachelor's, deformity **gradually increases** until it matches Middle School level. As dot reaches Middle School, Bachelor's **subtly returns** to rigid. Loop repeats |
+| Reduce Education header padding | **open** | Header padding covers/obscures Bachelor's sphere — tighten so sphere is unobstructed |
+
+**Components:** `EducationSection.tsx`, `EducationFlowchart.tsx`, `globals.css` (section padding)
+
+**Supersedes (partially):** July deformity direction had middle-school-most-deformed on entry — Sep spec ties deformity to **dot travel timing**, not just scroll-into-view stagger
+
+**Screenshots:** Education section (Bachelor's rigid circle top, deformed blobs below, rigid white connector lines — target is rope)
+
+---
+
+### 5. Logo & Footer
+
+| Fix | Status | Detail |
+|---|---|---|
+| Remove tab-open glow on logo | **open** | When Portfolio Lab tab is open, logo has bright glow that washes out letterforms (e.g. "e" invisible). Remove glow — **same logo in open and closed states** |
+| Thinner, more cursive "A" | **open** | Keep structure and alignment; refine the A to be thinner and more cursive within existing logo system |
+| Footer logo placement | **open** | Fixed logo renders **leftmost** in footer, **left of "Anant's Hub"**, same size as footer text characters. Only the fixed logo glyph — not the full "Anant." wordmark |
+
+**Components:** Logo component (header + tab), `Footer.tsx`, `PortfolioLab.tsx` (tab state)
+
+**Screenshots:** Tab open (glowing A + "Ana"), footer pill (small glyph + "Anant's Hub")
+
+---
+
+### 6. Portfolio Lab — Chat Input
+
+| Fix | Status | Detail |
+|---|---|---|
+| Textarea vertical centering | **open** | When input has 1–3 lines, typed text sits at **bottom** of card instead of vertically centered. Text must be **left-aligned, vertically centered** when short; top-align naturally as it grows to 3-line cap |
+| Growable textarea (3 lines) | **partial** | July spec — likely partially built; verify against localhost |
+| Mobile send button layout | **open** | Still needs on-device repro at 320/375/390px — see requirements Fix Area 4 |
+
+**Components:** `ChatInputBar.tsx`, `PortfolioLab.tsx`
+
+**Screenshots:** Lab input ("Say something to Orby..." placeholder appears centered; typed multi-line text misaligns)
+
+---
+
+### 7. Items Still Valid From July (Unchanged Priority)
+
+These remain open unless marked done in codebase:
+
+- Hero terminal removed from render tree (**done** in code — verify visually)
+- Scatter-intro on page load (**partial** — verify 3D depth quality)
+- Experience card line-clamp (**partial**)
+- Skills graph 2022 start + 35 cap (**partial**)
+- Skills/Education section padding tighten (**partial**)
+- Dark mode toggle wiring + light tokens (**partial** — toggle may still be no-op)
+- Orby radio/wave/idle commentary/roaming (**partial**)
+- Chat bubble `break-words` (**partial**)
+- Deploy sync verification (**open** — local HEAD may differ from production)
+
+---
+
+### 8. Explicitly Superseded (Do Not Build)
+
+| Old requirement (July) | Superseded by (Sep) |
+|---|---|
+| 4 telemetry cards with click-to-expand mini-graph + accordion | 2 cards, glow-only, no dropdown |
+| About: 4 cards clickable with graph detail | Same |
+| Education: deformity stagger on section entry only | Dot-synchronized gradual deform + spring pin sequence |
+| Projects: auto-play only (no pin/emerge) | Pinned cinematic section with emerge + border effect |
+
+---
+
+### 9. Open Questions (Resolve Before Implementation)
+
+1. **About pin steps:** Exact number of scroll "beats" inside pin — 2 (summary → transformed summary) or 3 (+ full bio reveal)?
+2. **Projects border effect:** Color, speed, and shape of edge effect — needs visual reference or mood board
+3. **Education rope physics:** Pure SVG/canvas bend vs. physics simulation vs. GSAP morph — design decision
+4. **Logo asset:** SVG path edit vs. font swap — same system, but confirm source file location
+5. **Orby speech bubble alignment:** Contact screenshot shows Orby bubble text bottom-aligned — separate fix or in scope?
+
+---
+
+## Historical Context — July 2026 Raw Dump
+
+> Preserved verbatim-ish from original dictated notes. **Do not treat as current spec** where contradicted above.
+
+### Original Overview
+- Deploy sync verification requested at start of session
+- Profile image should be static; light comet effect on photo (not deep 3D tilt)
+- Remove HeroTerminal from render (keep file)
+- Background: stars/particles scattered on load, converge to sphere over 2–4s
+- About: collapsible 3–4 sentence summary; full bio on toggle
+- 4 telemetry boxes: clickable, reveal tiny graph + summary per stat
+- Lab: responsive send button, growable textarea (3 lines), character indicator
+- Experience: content quality out of scope; line-clamp for summaries
+- Projects: auto-play first 3 only; strong chatbot slug navigation
+- Skills: graph starts 2022, no skill above 35 at start; reduce pill effect variety
+- Education: deformity hierarchy (middle most deformed, bachelor's solid); padding tighten
+- Sphere click scatter within blast radius, scales with scroll zoom
+- Dark mode: real toggle, inverted-but-not-white palette
+- Orby: radio antenna, full wave, AI idle comments, walking, ground anchor
+- Footer polish
+
+### Original Screenshots (July embeds — paths may be unresolved)
 ![[Pasted image 20260711204507.png]]
 ![[Pasted image 20260711204540.png]]
-
-The experience section just needs richer content. The summary should be much better. The bullet points need to be better. The achievements need to be better as well. The content is poor. UI-wise, that is alright. UI-wise, actually, it's perfect. I don't think there's anything else we can do for this.
-
-Also, set a limit for each and every summary so it does not cross the page. The line limit should be there only till that much for each and every single summary. It should show three dots, and the card should just stop there. It should be a hard stop.
-
-For the project section, we need to improve the UI for the section a lot. We have too many projects and too many buttons to click here. I don't want it to keep rolling all 9 projects. I want it to only keep auto-rolling the first 3 projects. It will roll through 1, 2, and then 3, and then go back to 1 again. It will not go through all 9 projects. But the user can see that there are 9 projects because it says the project number you are currently on. So the user can click more and find out more.
-
-Also, the navigation link with the chatbot for each and every single project is not on point. The chatbot can't seem to go to the exact project number. I want this navigation link to be extremely strong, and the chatbot should show the exact correct project each and every single time.
-
-Then, coming to skills and expertise, the UI effect on each and every single card could be improved much more. I'm talking about the skills that render down when clicked on a skill category. The UI effect on each of them seems to be laggy and not exactly the most eye-pleasing effect. There are very limited types of effects taking place on each and every single skill. I want these to be much more enhanced. Even the skill category UI effects almost seem to be laggy, but they need to have a much cleaner effect.
-
-The graph should not be starting at 2021. The graph should be starting at 2022. Also, each and every single skill should not start above 35. No skill should be above the familiarity/applied depth starting point for any single type of skill in the graph.
-
-The padding between the education section above and skill sections below is too much. The most highlighting part about the education is the middle school. The bachelor's in computer science is not highlighted at all.
-
-To fix this, we are going to add a much better UI background and color contrast to the bachelor's in computer science sphere. We are gonna trace the dots movement in a manner that, as soon as the user lands on the education section, the dots start from middle school, with the bachelor's in computer science being the most deformed shape. When the dot gets to high school, it is in between the deformity of middle school and high school. The percentage for deformity should be just between that. As soon as it gets to bachelor's in computer science, the deformity of it is 0. It's a solid sphere.
-
-This transition should be very UI-pleasing, and it should be clean between each and every single UI change.
-
-Again, the padding between the certifications just above and education just below sections is too much. There is too much of a gap between them.
-
-The background should have an effect of scattering away and rejoining back as the perimeter of the blast radius changes. What I mean by that is, the perimeter is going to be just above where the stars or the particles surrounding the sphere are. That is the blast radius capacity each and every single time. So upon clicking it, as the user scrolls, it scatters away in the same form that it was scattered away in at the start of the opening of the landing page. When the starting effect took place, it should have a similar effect, but adjusting itself to the zoom-in effect of the background.
-
-What I mean by that is that the user can only display this effect if the user clicks inside the sphere, or clicks at the sphere, clicks inside the blast radius, basically. If the user clicks inside the blast radius, then the sphere scatters and the similar effect takes place. So there should be a perimeter around the stars in a manner that this blast radius is adjustable as these zoom and scroll effects take place. These stars are particles of the planet.
-
-Something that we decided would be inside v2 was the dark mode effect.
-
-There should be a color contrast on light mode for this entire portfolio, in a manner that the black, white, and purplish-purple-bluish color changes into another contrast on light mode. It should not exactly be white, but it should be something close to white. It should be an exact opposite contrast of the color combination we have on this portfolio.
-
-The dark mode is an already applicable hovering button on the header, but it does absolutely nothing. So we need to make sure that this dark mode feature has been enabled.
-
-Now, when talking about RB, we need to upgrade RB to be much more sophisticated and UI-pleasing to the eye. The hand movement for RB is still not that good, and the radio in hand is just a purple thing. It should actually look like a radio with an antenna on it. It should appear that he is talking to someone sometimes because his hand lifts up entirely to say hi. Right now, Orbi's hand does not entirely lift out to say hi either. Orbi does not stick to the ground entirely, as stated earlier.
-
-We were working on RB before, but this seems to be alright because RB still sticks to the bottom majority of the portfolio. But as this is a very static moment of Orbi, it should still stick to the bottom, but it should still have multiple effects:
-
-- walking around
-- talking on his radio
-- dropping funny comments
-
-This should all be AI through the model that you are using. This should be generated from a backup model provider that we already have in the portfolio. Most of the RB messages are going to be AI-generated in this version, and AI RB talks much more than it was talking previously.
-
-As the user clicks around, RB acts up and says something that is completely generated. If the user spends some time on a particular section, then RB also says something at that point. When RB moves around the entire portfolio as the user scrolls, RB should do something. It should probably be hovering or doing a lot of actions. Right now, all it does is slide around from one corner to another, and the movement is very lousy. All it does is zoom from one place to another.
-
-The footer could be much more eye-pleasing, much better.
-
-## Ui images of all fixes required
-The sidebar has been shown above clearly, below are screenshots of further ui fixes that needs some viewing
 ![[Pasted image 20260711211130.png]]
 ![[Pasted image 20260711211213.png]]
 ![[Pasted image 20260711211259.png]]
 ![[Pasted image 20260711211336.png]]
 ![[Pasted image 20260711211404.png]]
 
+---
+
+## Plan (tracking)
+
+- [x] Phase 1 — Master ledger + localhost walkthrough (Sep 2026)
+- [x] Phase 2 — Update requirements / design / tasks trio + per-component specs
+- [ ] Phase 3 — GSAP research + About carousel architecture (separate engagement)
+- [ ] Phase 4 — Implementation via [[frontend-ui-fixes-tasks]] + [[frontend-ui-fixes-index]]
+
 ## Concepts used
-- [[Concept - ...]]
-- [[Concept - ...]]
+- [[frontend-ui-fixes-requirements]]
+- [[frontend-ui-fixes-design]]
+- [[frontend-ui-fixes-tasks]]
+
+- [[frontend-ui-fixes-index]]
+- [[ui-fix-01-hero-background]]
+- [[ui-fix-02-about-section]]
+- [[ui-fix-03-about-telemetry]]
+- [[ui-fix-04-projects-section]]
+- [[ui-fix-05-education-section]]
+- [[ui-fix-06-logo-footer]]
+- [[ui-fix-07-portfolio-lab]]
+- [[ui-fix-08-carry-forward]]
+
 ## Post-submit reflection
 - What failed first?
 - What pattern repeats?

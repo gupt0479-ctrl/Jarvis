@@ -9,6 +9,7 @@ notes:
   - "[[Now]]"
   - "[[_This Week]]"
   - "[[30_Order/Workflows/Internship/Application Document Preparation]]"
+  - "[[30_Order/Standards/Internship/Applying Standard]]"
 tags:
   - internship
   - process

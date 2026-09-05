@@ -5,26 +5,27 @@ source_app: claude-code
 source_os: wsl
 title: "Portfolio frontend UI fixes implementation"
 started_at: 2026-09-05T00:48:08
-ended_at: 2026-09-05T01:03:03
-duration_minutes: 15
-exported_at: 2026-09-04T22:45:02
+ended_at: 2026-09-05T05:28:24
+duration_minutes: 280
+exported_at: 2026-09-05T00:45:04
 project: portfolio
 cwd: '/home/anant_gupta/projects/hub/portfolio'
 session_id: 106c6b9c-288b-4f1d-a2f3-02193b4d4bfb
 status: raw
-turn_count: 2
+turn_count: 4
 tools_used:
-  mcp__jarvis__vault_get_document_map: 10
-  mcp__jarvis__vault_list: 3
-  mcp__jarvis__vault_read: 12
+  Bash: 1
+  mcp__jarvis__vault_get_document_map: 23
+  mcp__jarvis__vault_list: 15
+  mcp__jarvis__vault_read: 22
   ToolSearch: 1
 tokens:
-  input: 76
-  output: 72782
-  cache_creation: 360934
-  cache_read: 3159676
-  total: 3593468
-cost_usd: 2.803643
+  input: 168
+  output: 213588
+  cache_creation: 1053037
+  cache_read: 9245812
+  total: 10512605
+cost_usd: 8.197526
 model:
   - claude-sonnet-5
 tags:
@@ -185,10 +186,270 @@ A couple of things worth deciding before you send this: whether you want GPT‑5
 - `mcp__jarvis__vault_read` — `{"path":"20_Progress/Projects/CS/Portfolio/frontend/claude-code-setup/05 - Orby Final Polish Prompts.md","targetType":"frontmatter","target":"created"}`
 - `mcp__jarvis__vault_read` — `{"path":"20_Progress/Projects/CS/Portfolio/frontend/claude-code-setup/05 - Orby Final Polish Prompts.md","targetType":"heading","target":["Orby Final Polish Prompts — make Orby a living being (last chatbot pass)","What's broken (from the live screenshots)"]}`
 
+## You
+
+Now another session inside cursor to have a very detailed plan about the orby, deployment ready checks, securitymeasuers and rate limiting fixes that need to be done to the portfolio. We note all these down inside jarvis excellently in another cursor session too. For everything that I am talking about refer to the existing notes already laid out side the portfolio folder(`20_Progress/Projects/CS/Portfolio`). There are tons of thigs that need our attention - seo and AEO as well. Actuall, you are going to provide me with two prompts over here now. Both opf these sessions are going to write well structurted notes insidfe jarvis. One of them is going to be focus on searching SEO and AEO content strategies - how exactly do we make sure that our website domain is rendered on google and other platforms? We want it to be suggested as the best portfolio, ai agent, lab, ai chatbot, pet, screenings, etc. There are tons of things that need to be taken care in detail so that we complete our seo and aeo journey. One entire session just dedicated for this reseach and writing notes process is required. I might have a few inbgestions listed about these builds already such as: `20_Progress/Projects/AI Use/Builds & Resources/Code Review & Eval Gap`, `60_Claude/20_Distilled_Notes/Sources - Plan/_Notes Created From Ingestion`. We need strong things structured and well laid out from the ingestion discussion that was done for portfolio things. Write two prompts for two sessions to write notes into jarvis after asking a lot of questions and making sure that everything is laid out perfectly.
+
+## Claude
+
+Both `security/` and `AEO & SEO/` folders already exist under `20_Progress/Projects/CS/Portfolio` with real prior work — this isn't a blank-slate research task, it's a reconciliation task. Two things worth flagging directly before the prompts:
+
+- **The model-provider chain is documented four different, contradictory ways** across the vault: `chatbot/02-model-router.md` (graphify snapshot) says Gemini→Groq; `nextgen-chatbot/05` says Azure GPT-4o-mini→Cerebras→Groq→Mistral→degraded; `security/README.md` (the most recently *code-verified* one, June 15) says Cerebras→Groq→Mistral→degraded with **no Azure at all**; and `Problems with Portfolio Lab.md` separately complains backup providers "never fire" and mentions a Z.ai GLM 4.7 leg nobody else mentions. Your own recent commits (`ci: switch eval provider to Cerebras — Mistral key unauthorized`) confirm Mistral is currently broken. This needs a real read of the live router file, not another note.
+- **`security/README.md`'s two pre-launch blockers** (CSP still Report-Only, `/api/health` still Clerk-gated) are dated June 15 — three months ago — and match a CSP gap `frontend/BUILD-STATUS.md` also flagged. Worth checking if either shipped since.
+
+Both prompts below tell the session to verify these against live code before writing anything, and both end with an explicit instruction to ask you clarifying questions before finalizing notes.
+
+**PROMPT 1 — Orby, Deployment Readiness, Security & Rate Limiting**
+
+```
+ROLE & MODE
+Deep research + vault-documentation session. Cursor, this repo (gupta-builds/Portfolio).
+Your deliverable is well-structured Obsidian notes written into the Jarvis vault — NOT code
+changes. Do not edit any application source file. You may read the repo freely to verify claims.
+
+WHY THIS SESSION EXISTS
+Three security/reliability planning passes happened in this vault in June 2026 (security/,
+nextgen-chatbot/, and a graphify auto-generated codebase snapshot). None have been reconciled
+against each other or against the live repo since, and it's now three months later. This session's
+job is to produce ONE current, verified ground-truth record of: Orby's actual reliability posture,
+what's actually deployment-ready, what security work actually landed, and what rate
+limiting/abuse controls actually exist — then get my sign-off on open decisions before writing it.
+
+READ IN THIS ORDER — vault paths relative to `20_Progress/Projects/CS/Portfolio/`
+
+1. `security/README.md` — the master index, last verified against code 2026-06-15. States two
+   launch blockers: CSP still Report-Only (not enforced), `/api/health` still Clerk-gated (blocks
+   uptime monitoring). Then read `security/phase-1-auth-clerk.md` through `phase-5-monitoring.md`
+   in order, then `security/claude-code-prompts.md` and `security/manual-actions.md` (what was
+   supposed to get executed, split between Claude Code and manual dashboard steps).
+
+2. `nextgen-chatbot/08 - Build Phases & Milestones.md` — the master tracker (status: sprout),
+   Phase 0 through Phase 8 ("Launch readiness") with a coverage table. Read this as the entry
+   point for Orby's overall build state.
+3. `nextgen-chatbot/00 - Nextgen Chatbot — Build Plan.md` and
+   `nextgen-chatbot/02 - Premortem & Failure Defenses.md` — 10 ranked failure modes (worst:
+   "it lied about me to a recruiter") plus a "Defense coverage check". Only failures 2, 5, 6 are
+   confirmed addressed elsewhere in the notes — verify the rest (1, 3, 4, 7, 8, 9, 10) against
+   current code yourself.
+4. `nextgen-chatbot/05 - Model Layer, Rate Limiting & Abuse.md` — the "finalized" plan (2026-06-14):
+   Azure OpenAI GPT-4o-mini primary (Azure for Students credit) → Cerebras → Groq → Mistral →
+   degraded, plus the budget-tiering, caching, and origin-locking design. Treat the Azure leg as
+   UNVERIFIED — see the contradiction note below.
+5. `nextgen-chatbot/09 - Orby Fixes.md` and `nextgen-chatbot/Problems with Portfolio Lab.md` —
+   the fix log and a distilled root-cause note (raw JSON leaking to the user, Orby not speaking,
+   backup providers never firing, a first-prompt-specific bug, Cloudflare Turnstile errors, and a
+   Z.ai GLM 4.7 issue nothing else in the vault mentions). Verify which of these are actually fixed.
+6. `nextgen-chatbot/10 - Orby Golden Eval Dataset (Grounding Cases).md` and
+   `claude-code setup/04 - Eval Harness — promptfoo.md` — the eval gate design ("the real quality
+   gate" + a CI gate section). Cross-check against recent git log: recent commits show the eval
+   gate being switched to Cerebras and made advisory/continue-on-error because the Mistral key is
+   unauthorized. Confirm this is still true and explain what it means for the "real quality gate."
+
+7. GRAPHIFY SNAPSHOT — READ FOR ORIENTATION ONLY, TRUST NOTHING SPECIFIC:
+   `chatbot/*`, `architecture/*`, `components/*`, `data/*`, `communities/*`, `INDEX.md`,
+   `god-nodes.md`, `GRAPH_REPORT.md` are all auto-generated by graphify from one old commit
+   (`89cd2c0e`, ~2026-06-12). `chatbot/02-model-router.md` alone already contradicts two later
+   notes (it says Gemini→Groq, nobody else does) — proof this snapshot is stale. Use it only to
+   find file paths quickly, then verify everything against current HEAD.
+8. `claude-code setup/00 - Claude Code Build Kit — Index.md` through `05 - Per-Phase Build
+   Prompts.md` — background on the subagents/commands/hooks already set up for this chatbot build.
+   Don't duplicate what already exists (`ai-engineer`, `eval-runner` agents; `/eval`, `/deploy`,
+   `/ship-check`, `/security-review` commands are visible in this session's own skill list).
+
+9. INGESTION SOURCES — these three files are huge and cover the user's entire vault, not just
+   the portfolio. Search/grep for the specific sections named below rather than reading wholesale:
+   - `60_Claude/20_Distilled_Notes/Sources - Plan/PDF's Ingestion Implementation.md` — find the
+     "Code Review & Eval Gap: Pre-Commit AI Backstop - BUILD" and "Orby (Portfolio): Model
+     Regression Detection for Eval - BUILD" sections.
+   - `20_Progress/Projects/AI Use/Builds & Resources/Code Review & Eval Gap.md` — read in full
+     (short). Documents the decision: Semgrep (permanent static-analysis layer, free) +
+     `/simplify` + `/code-review` as a standing habit (not a new tool) + promptfoo, not deepeval,
+     for output validation. Verify Semgrep is actually wired into CI/pre-commit in this repo.
+   - `60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md` — search for the resolved
+     verdicts on the two topics above.
+
+THE CONTRADICTION YOU MUST RESOLVE BEFORE WRITING ANYTHING
+Four different documented model-provider chains exist across these notes (listed above). Read
+the actual router file in `src/lib/` (name may have changed — grep for it) and the actual env var
+names in use, plus recent `git log` on this branch, to determine: what is the REAL current
+provider chain, is Azure OpenAI wired in at all, and what exactly is broken with the Mistral key
+right now (recent commits reference this as a live, unresolved issue).
+
+WHAT TO VERIFY, SYSTEMATICALLY
+- Every phase in `security/README.md`'s Phase Map (1–5): still true, or changed since June 15?
+- Both named launch blockers (CSP enforcement, `/api/health` auth): fixed or still open?
+- Every premortem failure mode (1–10) in note 02: has a real defense in code, or still exposed?
+- The rate limiting numbers themselves (burst/day caps, HMAC token TTL, origin allowlist) —
+  confirm against the live code, not any single note (they disagree slightly across notes).
+- Whether the promptfoo CI gate is currently blocking or advisory, and why.
+- Out of scope for you: Orby's visual/animation polish (radio antenna, walking, ground-anchoring,
+  idle AI commentary) is being handled in a separate frontend UI session from `frontend/UI Fixes.md`
+  — note its existence if relevant but don't duplicate that work here.
+
+BEFORE WRITING THE FINAL NOTE — ASK ME QUESTIONS
+Do not guess on anything that's a real decision rather than a code fact. At minimum, surface:
+- Is the Azure for Students credit still active/wanted, or should that leg be dropped from the plan
+  entirely since the live code doesn't have it?
+- Should the promptfoo eval gate be made blocking again once the Mistral key is fixed, or stay
+  advisory long-term?
+- `AEO & SEO/00 - Agent-Ready Infrastructure Build Plan.md` has a deferred "Agent-Callable Orby
+  via MCP" idea that explicitly says it "needs a real security-model conversation first" before
+  becoming a real phase — a parallel session is researching the AEO case for this. Do you want to
+  make a real go/no-go call on it now, or leave it deferred?
+- Is Vercel WAF Attack Challenge Mode actually turned on?
+- What's the real production domain, for the origin allowlist check?
+
+DELIVERABLE
+A new, dated, clearly-current note (propose a name/location to me before writing, e.g. a
+`nextgen-chatbot/11 -` or a new dated section in `security/README.md`) that: states, per item
+above, done / partially done / not done / contradicted-by-live-code with the exact file:line you
+checked; gives a prioritized "must-do before public launch" list; and explicitly reconciles the
+four-way model-chain contradiction into one true statement. Follow this vault's existing
+conventions (frontmatter `type/status/created/updated/tags`, `[[wikilink]]` cross-references,
+an `## Evidence` section citing what you verified). Do not delete or archive any existing note —
+supersede with a clear correction banner, the way `frontend/BUILD-STATUS.md` already does.
+```
+
+**PROMPT 2 — SEO & AEO Discoverability Strategy**
+
+```
+ROLE & MODE
+Research + vault-documentation session. Cursor. Your deliverable is a well-structured Obsidian
+note (or set of notes) written into the Jarvis vault — not code. You may read the portfolio repo
+to verify what's actually shipped, but do not edit application source.
+
+WHY THIS SESSION EXISTS
+`20_Progress/Projects/CS/Portfolio/AEO & SEO/00 - Agent-Ready Infrastructure Build Plan.md`
+already exists (created 2026-07-29) with a real 5-phase plan (metadata exports, sitemap.ts/
+robots.ts, OpenGraph/Twitter tags, a privacy policy page, then an AEO audit) plus a deferred
+"Agent-Callable Orby via MCP" idea. This is not a green-field research task — it's "verify what
+of that plan actually shipped in the ~5 weeks since, then go much deeper" on both classic SEO and
+the newer AEO (answer-engine optimization) side, specifically aimed at the site being surfaced
+and recommended — by Google AND by AI assistants a person might ask — as the best portfolio,
+best AI agent/lab project, best AI chatbot demo, and (the more unusual angles) as a memorable
+"AI pet/companion" (Orby) and as a legitimate recruiter-screening tool.
+
+READ IN THIS ORDER
+
+1. `AEO & SEO/00 - Agent-Ready Infrastructure Build Plan.md` — full read (you likely already
+   have the gist, but read it directly for exact wording). Note its "Market Context" stats
+   (agents are 51% of traffic, AI Overviews cutting publisher traffic 25%) — verify these are
+   still the best available figures or find more current ones; this data ages fast.
+2. `20_Progress/Projects/CS/Portfolio/architecture/01-nextjs-routes.md` — WARNING: this is a
+   graphify auto-generated snapshot from an old commit (~2026-06-12), already stale by the time
+   AEO/00 was written in July. Do not trust its "zero metadata exports" claim — check
+   `src/app/` directly, right now, for `metadata`/`generateMetadata`, `sitemap.ts`, `robots.ts`,
+   and OpenGraph tags. The repo has had extensive uncommitted work recently; some of Phase 1–4
+   may already be done.
+3. `20_Progress/Projects/CS/Portfolio/chatbot/01-api-route.md` — the existing Orby endpoint the
+   deferred "Agent-Callable Orby" idea would extend.
+4. In `60_Claude/20_Distilled_Notes/Sources - Plan/Web Ingestion Implementation.md` — this file
+   is huge and covers the user's entire vault, not just the portfolio. Find and read only the
+   "Agent-Ready Infrastructure (AEO + MCP) - BUILD" section — the original proposal AEO/00 was
+   built from.
+5. In `60_Claude/20_Distilled_Notes/Sources - Plan/00_Execution.md` — search for the resolved
+   verdict on that same Agent-Ready Infrastructure item.
+6. `60_Claude/05_Clippings/Web/Security/App Privacy Policy Generator.md` — the tool AEO/00's
+   Phase 4 already picked; confirm it's still the right call before citing it again.
+
+CROSS-SESSION BOUNDARY
+A parallel Cursor session is reconciling Orby's security/rate-limiting posture and will make any
+real go/no-go call on exposing "Agent-Callable Orby via MCP" — that involves a real security-model
+change (a machine-callable endpoint is a different threat model than a rate-limited chat widget).
+Your job here is to document the AEO *case* for it (why it would help discoverability, what
+official patterns exist for it) and flag the dependency — not to decide or implement it.
+
+NEW RESEARCH TO DO — go find current, official-source information; SEO/AEO practice and platform
+crawler behavior change fast enough that pre-training knowledge is not reliable here. Cite sources.
+
+- Technical SEO for a Next.js personal portfolio: structured data (schema.org `Person`,
+  `ProfilePage`, `SoftwareApplication` for the projects, `FAQPage` for Orby-answerable questions),
+  canonical URLs, Google Search Console + Bing Webmaster Tools verification and sitemap
+  submission, and how much Core Web Vitals actually weighs into ranking today.
+- AEO / getting cited by AI answer engines specifically: the `llms.txt` convention, what
+  ChatGPT/Perplexity/Google AI Overviews/Claude actually look for structurally, crawler
+  user-agents to explicitly allow in `robots.ts` (GPTBot, PerplexityBot, ClaudeBot, Google-Extended,
+  etc.), and writing page copy as directly-extractable factual sentences rather than marketing copy.
+- Realistic backlink/domain-authority moves for a solo student portfolio — no paid SEO services.
+  Check what's already available in this vault before inventing generic advice: GitHub README
+  cross-links, `10_Areas/Career/Hackathon/Hackathons.md` (devpost/hackathon project listings),
+  and any dev.to/Hashnode/LinkedIn presence already documented elsewhere in the vault.
+- Specifically research how to build toward each of these positioning/query angles — treat them
+  as content and structured-data targets, not literal keywords to stuff: "best portfolio site,"
+  "AI agent portfolio," "AI lab," "AI chatbot" (Orby as the concrete proof), "AI pet/companion"
+  (Orby's character angle — unusual but worth researching how mascot/character AI products get
+  discovered and shared), and "recruiter screening tool" (positioning Orby as something a
+  recruiter can actually interrogate about the candidate).
+- Current best practice for exposing an MCP server or agent-callable API from a personal site
+  (for the deferred Agent-Callable Orby idea) — document what you find; do not decide on it.
+
+BEFORE WRITING THE FINAL NOTE — ASK ME QUESTIONS
+At minimum: what is the real production domain; is Google Search Console / Bing Webmaster /
+any analytics already set up (and if so, what does current traffic/impression data already show —
+that would change the whole strategy from "starting cold" to "optimizing"); do you want a real
+decision surfaced on the Agent-Callable-Orby idea or should it stay explicitly deferred here too;
+which of the positioning angles (best portfolio / AI agent / AI lab / AI chatbot / AI pet /
+screening tool) matters most to prioritize first; and whether any paid or semi-paid moves (a
+custom domain if not already owned, a Product Hunt style launch) are actually in scope or off
+the table for a solo student project.
+
+DELIVERABLE
+Extend the `AEO & SEO/` folder with a new note (propose the exact filename to me, e.g.
+`01 - SEO & AEO Discoverability Strategy.md`) containing: a verified status check of AEO/00's
+Phases 1–4 against live code; a structured-data spec (concrete JSON-LD to add, not just "add
+structured data"); a crawler/robots.ts checklist; a content strategy mapped to each positioning
+angle above; and a phased action plan that picks up from AEO/00's Phase 5 onward. Cite every
+external claim with its source. Follow this vault's existing note conventions (frontmatter,
+`[[wikilinks]]`, an `## Evidence` section) and cross-link back to `AEO & SEO/00` rather than
+duplicating it.
+```
+
+**Tool calls:**
+
+- `mcp__jarvis__vault_list` — `{"path":"20_Progress/Projects/CS/Portfolio"}`
+- `mcp__jarvis__vault_list` — `{"path":"20_Progress/Projects/AI Use/Builds & Resources/Code Review & Eval Gap"}`
+- `mcp__jarvis__vault_list` — `{"path":"60_Claude/20_Distilled_Notes/Sources - Plan/_Notes Created From Ingestion"}`
+- `mcp__jarvis__vault_list` — `{"path":"20_Progress/Projects/CS/Portfolio/security"}`
+- `mcp__jarvis__vault_list` — `{"path":"20_Progress/Projects/CS/Portfolio/AEO & SEO"}`
+- `mcp__jarvis__vault_list` — `{"path":"20_Progress/Projects/CS/Portfolio/chatbot"}`
+- `mcp__jarvis__vault_list` — `{"path":"20_Progress/Projects/CS/Portfolio/nextgen-chatbot"}`
+- `mcp__jarvis__vault_list` — `{"path":"20_Progress/Projects/CS/Portfolio/architecture"}`
+- `mcp__jarvis__vault_list` — `{"path":"20_Progress/Projects/AI Use/Builds & Resources"}`
+- `mcp__jarvis__vault_list` — `{"path":"60_Claude/20_Distilled_Notes/Sources - Plan"}`
+- `mcp__jarvis__vault_list` — `{"path":"20_Progress/Projects/CS/Portfolio/claude-code setup"}`
+- `mcp__jarvis__vault_get_document_map` — `{"path":"20_Progress/Projects/CS/Portfolio/security/README.md"}`
+- `mcp__jarvis__vault_get_document_map` — `{"path":"20_Progress/Projects/CS/Portfolio/security/[REDACTED].md"}`
+- `mcp__jarvis__vault_get_document_map` — `{"path":"20_Progress/Projects/CS/Portfolio/security/[REDACTED].md"}`
+- `mcp__jarvis__vault_get_document_map` — `{"path":"20_Progress/Projects/CS/Portfolio/security/phase-5-monitoring.md"}`
+- `mcp__jarvis__vault_get_document_map` — `{"path":"20_Progress/Projects/CS/Portfolio/nextgen-chatbot/05 - Model Layer, Rate Limiting & Abuse.md"}`
+- `mcp__jarvis__vault_get_document_map` — `{"path":"20_Progress/Projects/CS/Portfolio/nextgen-chatbot/09 - Orby Fixes.md"}`
+- `mcp__jarvis__vault_get_document_map` — `{"path":"20_Progress/Projects/CS/Portfolio/nextgen-chatbot/Problems with Portfolio Lab.md"}`
+- `mcp__jarvis__vault_get_document_map` — `{"path":"20_Progress/Projects/CS/Portfolio/AEO & SEO/00 - Agent-Ready Infrastructure Build Plan.md"}`
+- `mcp__jarvis__vault_get_document_map` — `{"path":"20_Progress/Projects/AI Use/Builds & Resources/Code Review & Eval Gap.md"}`
+- `mcp__jarvis__vault_get_document_map` — `{"path":"60_Claude/20_Distilled_Notes/Sources - Plan/_Notes Created From Ingestion.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"20_Progress/Projects/CS/Portfolio/security/README.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"20_Progress/Projects/CS/Portfolio/AEO & SEO/00 - Agent-Ready Infrastructure Build Plan.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"20_Progress/Projects/CS/Portfolio/nextgen-chatbot/05 - Model Layer, Rate Limiting & Abuse.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"20_Progress/Projects/CS/Portfolio/chatbot/02-model-router.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"20_Progress/Projects/CS/Portfolio/nextgen-chatbot/Problems with Portfolio Lab.md","targetType":"frontmatter","target":"updated"}`
+- `mcp__jarvis__vault_read` — `{"path":"20_Progress/Projects/CS/Portfolio/nextgen-chatbot/Problems with Portfolio Lab.md","targetType":"heading","target":["Problems with Portfolio Lab","Evidence From This Vault"]}`
+- `mcp__jarvis__vault_read` — `{"path":"60_Claude/20_Distilled_Notes/Sources - Plan/_Notes Created From Ingestion.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"20_Progress/Projects/AI Use/Builds & Resources/Code Review & Eval Gap.md","targetType":"heading","target":["Code Review & Eval Gap","Evidence"]}`
+- `mcp__jarvis__vault_get_document_map` — `{"path":"20_Progress/Projects/CS/Portfolio/nextgen-chatbot/02 - Premortem & Failure Defenses.md"}`
+- `mcp__jarvis__vault_get_document_map` — `{"path":"20_Progress/Projects/CS/Portfolio/nextgen-chatbot/08 - Build Phases & Milestones.md"}`
+- `mcp__jarvis__vault_read` — `{"path":"20_Progress/Projects/CS/Portfolio/nextgen-chatbot/08 - Build Phases & Milestones.md","targetType":"frontmatter","target":"status"}`
+- `mcp__jarvis__vault_get_document_map` — `{"path":"20_Progress/Projects/CS/Portfolio/claude-code setup/04 - Eval Harness — promptfoo.md"}`
+- `mcp__jarvis__vault_list` — `{"path":"20_Progress/Projects/CS/Portfolio/communities"}`
+- `mcp__jarvis__vault_read` — `{"path":"20_Progress/Projects/CS/Portfolio/INDEX.md"}`
+- `Bash` — `true`
+  ```
+(Bash completed with no output)
+  ```
+
 ## Actions Taken
 - Files created: (none)
 - Files modified: (none)
 - Files deleted: (none)
-- Commands run: (none)
-- Tool call tally: mcp__jarvis__vault_get_document_map (10), mcp__jarvis__vault_list (3), mcp__jarvis__vault_read (12), ToolSearch (1)
+- Commands run: true
+- Tool call tally: Bash (1), mcp__jarvis__vault_get_document_map (23), mcp__jarvis__vault_list (15), mcp__jarvis__vault_read (22), ToolSearch (1)
 
